@@ -29,14 +29,14 @@ jobs:
           fetch-depth: 1
           submodules: true
 
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: pnpm
-
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 7
 
       - run: pnpm i --frozen-lockfile
 
