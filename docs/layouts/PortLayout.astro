@@ -13,6 +13,9 @@ import { SITE_LANGUAGE_KEBAB, formatPageTitle } from '../constants.mjs';
 
 import '../styles/main.scss';
 
+// HACK: make CSS utils recognized by UnoCSS
+import '../components/search/SearchOverlay.vue';
+
 interface Props {
   readonly frontmatter: PortFrontmatter;
   readonly headings: readonly MarkdownHeading[];
