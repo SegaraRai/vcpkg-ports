@@ -1,0 +1,21 @@
+---
+interface Props {
+  readonly class?: any;
+  readonly wrap?: boolean | undefined;
+}
+
+const { wrap, class: classList } = Astro.props;
+---
+
+{
+  wrap ? (
+    <details class:list={classList}>
+      <summary>
+        <slot />
+      </summary>
+      <slot name="details" />
+    </details>
+  ) : (
+    <slot />
+  )
+}

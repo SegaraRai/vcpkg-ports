@@ -1,0 +1,39 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+
+const dataFilenames = Object.keys(import.meta.glob('./data/*.json.*'))
+  .map((filename) =>
+    filename
+      .split('/')
+      .pop()!
+      .replace(/\.[^.]+$/, '')
+  )
+  .sort();
+---
+
+<MainLayout fixedHeight title="Data API" description="Data API of vcpkg ports">
+  <article id="article">
+    <h1 class=":uno: mb-8 text-4xl font-bold">Data API</h1>
+    <p class=":uno: my-4 text-[var(--theme-text-light)]">
+      We provide following data API:
+    </p>
+    <ul
+      class:list={['plain-list', ':uno: flex flex-col gap-y-1.5 leading-tight']}
+    >
+      {
+        dataFilenames.map((filename) => {
+          return (
+            <li>
+              <a
+                class="link"
+                target="_blank"
+                href={`/data/${filename}`}
+                set:text={`/data/${filename}`}
+              />
+            </li>
+          );
+        })
+      }
+    </ul>
+  </article>
+</MainLayout>

@@ -1,0 +1,25 @@
+---
+interface Props {
+  readonly href?: string | undefined;
+  readonly title?: string | undefined;
+}
+
+const { href, title } = Astro.props;
+---
+
+{
+  href ? (
+    <a
+      class=":uno: flex-none inline-block select-none text-85% i-mdi-alert text-orange"
+      href={href}
+      title={title}
+      target="_blank"
+      rel="noreferrer"
+    />
+  ) : (
+    <span
+      class=":uno: flex-none inline-block select-none text-85% i-mdi-alert text-orange"
+      title={title}
+    />
+  )
+}

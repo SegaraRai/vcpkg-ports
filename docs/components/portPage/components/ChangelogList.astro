@@ -1,0 +1,34 @@
+---
+interface Props {
+  readonly moreText?: string | undefined;
+}
+
+const { moreText } = Astro.props;
+---
+
+<ul
+  class:list={[
+    'plain-list',
+    ':uno: flex flex-col flex-nowrap gap-y-1 leading-normal',
+  ]}
+>
+  <slot />
+</ul>
+
+{
+  !!moreText && (
+    <details>
+      <summary>
+        <em set:text={moreText} />
+      </summary>
+      <ul
+        class:list={[
+          'plain-list',
+          ':uno: flex flex-col flex-nowrap gap-y-1 leading-normal',
+        ]}
+      >
+        <slot name="more" />
+      </ul>
+    </details>
+  )
+}

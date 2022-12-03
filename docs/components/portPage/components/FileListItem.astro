@@ -1,0 +1,49 @@
+---
+interface Props {
+  readonly class?: any;
+  readonly filename: string;
+  readonly href: string;
+}
+
+const { class: classList, filename, href } = Astro.props;
+
+const icon = /^\.+$|\/$/.test(filename)
+  ? ':uno: i-lucide-folder'
+  : /^vcpkg\.json$/i.test(filename)
+  ? ':uno: i-lucide-file-box'
+  : /^portfile\.cmake$/i.test(filename)
+  ? ':uno: i-lucide-file-cog'
+  : /\.(diff|patch)$/i.test(filename)
+  ? ':uno: i-lucide-file-diff'
+  : /^configure$|^Makefile$|^CMakeLists\.txt$|\.cmake$|\.cmakein$|\.sln$|\.vcx?proj$|\.props$|\.in$|\.def$|\.gni?$/i.test(
+      filename
+    )
+  ? ':uno: i-lucide-file-cog'
+  : /\.(bat|cmd|[cm]?[jt]sx?|pl|ps1|py|rb|sh|[ch]|cc|hh|[ch]pp|[ch]xx|[ch]\+\+|inc)$/i.test(
+      filename
+    )
+  ? ':uno: i-lucide-file-code'
+  : /\.json$/i.test(filename)
+  ? ':uno: i-lucide-file-json-2'
+  : /^usage|usage$|^license|^copyright|^readme|\.md$|\.txt$/i.test(filename)
+  ? ':uno: i-lucide-file-text'
+  : ':uno: i-lucide-file';
+---
+
+<li
+  class:list={[
+    ':uno: flex flex-row flex-nowrap gap-x-2 items-center w-full !leading-none',
+    classList || '',
+  ]}
+>
+  <div class:list={[':uno: flex-none text-lg', icon]}></div>
+  <div class=":uno: flex-1">
+    <a
+      class=":uno: whitespace-pre"
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      set:text={filename.replace(/\/+$/, '')}
+    />
+  </div>
+</li>

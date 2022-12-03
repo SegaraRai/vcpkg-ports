@@ -1,0 +1,22 @@
+---
+import SectionWrapper from '../SectionWrapper.astro';
+import Dependents from '../components/Dependents.astro';
+import HostDependencyHelpBadge from '../components/HostDependencyHelpBadge.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Host Dependents',
+});
+
+const {
+  context: { hostDependents },
+  section,
+} = Astro.props;
+---
+
+<SectionWrapper section={section}>
+  <HostDependencyHelpBadge slot="heading-after" />
+  <Dependents dependents={hostDependents} />
+</SectionWrapper>

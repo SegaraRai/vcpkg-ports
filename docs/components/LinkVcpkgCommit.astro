@@ -1,0 +1,24 @@
+---
+import { VCPKG_REPO_URL } from '../../shared/pageConstants.mjs';
+import { shortenCommitId } from '../../shared/utils.mjs';
+
+interface Props {
+  readonly class?: any;
+  readonly commit: string;
+  readonly type?: 'commit' | 'tree' | undefined;
+}
+
+const { class: classList, commit, type = 'commit' } = Astro.props;
+const shortCommit = shortenCommitId(commit);
+---
+
+<a
+  class:list={['link', classList || '']}
+  href={`${VCPKG_REPO_URL}/${type}/${commit}`}
+  target="_blank"
+  rel="noreferrer"
+>
+  <slot>
+    <code class="code" set:text={shortCommit} />
+  </slot>
+</a>

@@ -1,0 +1,48 @@
+---
+import DateTime from '../../DateTime.vue';
+import LinkVcpkgCommit from '../../LinkVcpkgCommit.astro';
+
+interface Props {
+  readonly class?: any;
+  readonly latest?: boolean | undefined;
+  readonly oldest?: boolean | undefined;
+  readonly commit: string;
+  readonly timestamp: string;
+}
+
+const { class: classList, latest, oldest, commit, timestamp } = Astro.props;
+---
+
+<li
+  class:list={[
+    ':uno: flex items-start w-full',
+    latest ? ':uno: light:text-green-600 dark:text-green-400' : '',
+    classList || '',
+  ]}
+>
+  <div class=":uno: flex-none flex flex-row items-center">
+    <div
+      class:list={[
+        ':uno: flex-none text-2xl opacity-80',
+        oldest ? ':uno: i-mdi-source-commit-end' : ':uno: i-mdi-source-commit',
+      ]}
+    >
+    </div>
+    <LinkVcpkgCommit
+      class=":uno: block flex-none mr-1.5 lt-sm:hidden"
+      commit={commit}
+    />
+  </div>
+  <div class=":uno: flex-1">
+    <span>
+      <LinkVcpkgCommit class=":uno: mr-1.5 sm:hidden" commit={commit} />
+      <span class=":uno: break-words">
+        <slot />
+      </span>
+    </span>
+    <div class=":uno: float-right text-sm opacity-60 align-bottom pl-2 pt-1">
+      <DateTime client:visible timestamp={timestamp} />
+    </div>
+    <div class=":uno: clear-both"></div>
+  </div>
+</li>

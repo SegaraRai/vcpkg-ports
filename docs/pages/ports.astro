@@ -1,0 +1,56 @@
+---
+import { getPortPageURL } from '../../shared/pageConstants.mjs';
+import HeadingAnchor from '../components/HeadingAnchor.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import portNames from '../virtual/portNames.mjs';
+
+const categories = [...'#ABCDEFGHJIJKLMNOPQRSTUVWXYZ'].map((letter) => {
+  return {
+    slug: letter.toLowerCase().replace('#', 'num'),
+    title: letter,
+    letter,
+    portNames: portNames.filter(
+      letter === '#'
+        ? (portName) => /^[^a-z]/i.test(portName)
+        : (portName) => portName.toUpperCase().startsWith(letter)
+    ),
+  };
+});
+---
+
+<MainLayout title="Port Catalog" description="List of ports in vcpkg">
+  <article id="article">
+    <h1 class=":uno: mb-8 text-4xl font-bold">Port Catalog</h1>
+    <div class=":uno: columns-[12rem]">
+      {
+        categories.map(({ slug, title, portNames }) => (
+          <>
+            <h2
+              id={slug}
+              class:list={['has-anchor', ':uno: !mt-0 mb-2 font-bold !text-xl']}
+            >
+              <HeadingAnchor level="2" slug={slug} text={title} />
+              {title}
+            </h2>
+            <ol
+              class:list={[
+                'plain-list',
+                ':uno: mb-8 leading-tight flex flex-col gap-y-2',
+              ]}
+            >
+              {portNames.map((portName) => (
+                <li>
+                  <a
+                    class="link"
+                    href={getPortPageURL(portName)}
+                    set:text={portName}
+                  />
+                </li>
+              ))}
+            </ol>
+          </>
+        ))
+      }
+    </div>
+  </article>
+</MainLayout>

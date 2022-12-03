@@ -1,0 +1,57 @@
+---
+import licenseInfoMap from 'spdx-license-list';
+import { toUniqueArray } from '../../../../shared/utils.mjs';
+import LinkExternal from '../../LinkExternal.astro';
+import SectionWrapper from '../SectionWrapper.astro';
+import CodeBlock from '../components/CodeBlock.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'License',
+});
+
+const {
+  context: { manifest, fileContents },
+  section,
+} = Astro.props;
+
+const licenseSpec = manifest.license;
+const foundLicenses = toUniqueArray(
+  (licenseSpec || '').split(/[()\s]/).map((l) => l.trim())
+)
+  .map((l) => licenseInfoMap[l])
+  .filter((l) => !!l);
+const licenseText = fileContents.find(([filename]) =>
+  /^license/i.test(filename)
+)?.[1];
+---
+
+<SectionWrapper section={section}>
+  <p>
+    {
+      licenseSpec ? (
+        <code set:text={licenseSpec} />
+      ) : (
+        <em set:text={licenseSpec === null ? 'Unspecified' : 'Unknown'} />
+      )
+    }
+  </p>
+
+  {
+    !!foundLicenses.length && (
+      <ul
+        class:list={['plain-list', ':uno: flex flex-col gap-y-2 leading-tight']}
+      >
+        {foundLicenses.map((license) => (
+          <li>
+            <LinkExternal href={license.url} set:text={license.name} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {licenseText && <CodeBlock lang="plaintext" code={licenseText.trim()} />}
+</SectionWrapper>

@@ -1,0 +1,109 @@
+---
+import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
+import { toUniqueArray } from '../../../../shared/utils.mjs';
+import {
+  DEPENDENCY_PATH_DELIMITER,
+  VcpkgDependencyObjectEx,
+} from '../../../../shared/vcpkg/portDependencies.mjs';
+import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
+import LinkPortPage from '../../LinkPortPage.astro';
+import DetailsWrapper from './DetailsWrapper.astro';
+import WarningBadge from './WarningBadge.astro';
+
+interface Props {
+  readonly dependency: VcpkgDependencyObject | VcpkgDependencyObjectEx;
+  readonly portMap: ReadonlyMap<string, DataPortsPort>;
+}
+
+const { dependency, portMap } = Astro.props;
+
+const exists = portMap.has(dependency.name);
+const dependents =
+  '$ex' in dependency
+    ? toUniqueArray(
+        dependency.$dependents.map(
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          (d) => d.split(DEPENDENCY_PATH_DELIMITER).pop()!
+        )
+      ).sort()
+    : [];
+const featureNames = toUniqueArray(
+  '$ex' in dependency
+    ? dependency.$features
+    : [
+        ...((dependency['default-features'] !== false &&
+          portMap.get(dependency.name)?.manifest['default-features']) ||
+          []),
+        ...(dependency.features || []),
+      ]
+).sort();
+const hasDetails =
+  !!dependency.platform ||
+  dependency['default-features'] === false ||
+  !!dependency.features;
+---
+
+<li>
+  <DetailsWrapper wrap={hasDetails} class="narrowest">
+    {
+      exists ? (
+        <LinkPortPage port={dependency.name} />
+      ) : (
+        <>
+          {dependency.name}
+          <WarningBadge title="Dependency not found in vcpkg repository." />
+        </>
+      )
+    }
+    {
+      !!dependency['version>='] && (
+        <code set:text={`>= v${dependency['version>=']}`} />
+      )
+    }
+    {
+      !!dependents.length && (
+        <span class:list={['dependency-dependent', ':uno: opacity-90']}>
+          {'(by '}
+          {dependents.map((d, i) => (
+            <>
+              {!!i && ', '}
+              <LinkPortPage port={d} />
+            </>
+          ))}
+          {' )'}
+        </span>
+      )
+    }
+    <Fragment slot="details">
+      <p class=":uno: !mb-0">
+        {
+          !!dependency.platform && (
+            <>
+              Platforms: <code set:text={dependency.platform} />
+              <br />
+            </>
+          )
+        }
+        {
+          (dependency['default-features'] === false ||
+            !!dependency.features) && (
+            <>
+              Features:{' '}
+              {featureNames.length ? (
+                featureNames.map((featureName, i) => (
+                  <>
+                    {!!i && ', '}
+                    <code set:text={featureName} />
+                  </>
+                ))
+              ) : (
+                <em>(none)</em>
+              )}
+              <br />
+            </>
+          )
+        }
+      </p>
+    </Fragment>
+  </DetailsWrapper>
+</li>

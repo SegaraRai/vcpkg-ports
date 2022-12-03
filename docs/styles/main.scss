@@ -1,0 +1,311 @@
+/* stylelint-disable value-keyword-case */
+
+/* Global focus outline reset */
+
+*:focus:not(:focus-visible) {
+  @apply \!outline-none;
+}
+
+html {
+  @apply w-full;
+  @apply h-full;
+}
+
+body {
+  @apply flex;
+  @apply flex-col;
+  @apply font-[var(--font-body)];
+  @apply min-h-100vh;
+  @apply max-w-100vw;
+  @apply overflow-x-hidden;
+  @apply overflow-y-auto;
+}
+
+/*
+html,
+body {
+  @apply scroll-smooth;
+}
+*/
+
+/* Page layout */
+
+html.fixed-height,
+html.fixed-height body {
+  @apply h-full;
+  @apply overflow-hidden;
+}
+
+html.stable-scrollbar-gutter,
+html.stable-scrollbar-gutter body {
+  scrollbar-gutter: stable;
+}
+
+body.no-scroll {
+  @apply \!overflow-hidden;
+}
+
+/* Scroll margin */
+
+:target:not(h1) {
+  @apply scroll-m-[6rem_0_2rem];
+  @apply md:scroll-m-[2rem_0_2rem];
+}
+
+article h1,
+#article {
+  /* scroll to top */
+  @apply scroll-mt-40;
+}
+
+/* Heading typography */
+
+main :not(nav) {
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-none;
+    @apply font-bold;
+  }
+
+  h1,
+  h2 {
+    @apply mb-6;
+
+    max-width: 40ch;
+  }
+
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-4;
+  }
+
+  h1 {
+    @apply text-5xl;
+    @apply font-800;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h2:not(:first-child) {
+    @apply mt-16;
+  }
+
+  h3:not(:first-child) {
+    @apply mt-16;
+  }
+
+  :is(h4, h5, h6):not(:first-child) {
+    @apply mt-12;
+  }
+}
+
+/* Article nav */
+
+article.content {
+  nav {
+    @apply mt-4;
+    @apply mb-8;
+  }
+}
+
+/* Rendered contents */
+
+/* Elements such as blockquote, table, img, etc. are not styled as they are not currently used */
+
+.rendered code,
+.code,
+kbd {
+  @apply font-[var(--font-mono)];
+
+  font-feature-settings: var(--font-feat-mono);
+}
+
+.link,
+.rendered a {
+  @apply text-[var(--theme-text-accent)];
+  @apply font-normal;
+  @apply transition-colors-200;
+
+  & > code {
+    @apply \!bg-[var(--theme-code-inline-bg-link)];
+  }
+
+  &:hover,
+  &:focus {
+    @apply color-[var(--theme-text-accent-hover)];
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 0.25em;
+  }
+}
+
+.rendered :not(.code-block, pre) > code,
+.code {
+  @apply text-[0.875em];
+  @apply bg-[var(--theme-code-inline-bg)];
+  @apply px-1;
+  @apply py-0.5;
+  @apply -my-0.5;
+  @apply rounded;
+  @apply break-words;
+}
+
+.rendered {
+  p {
+    @apply my-4;
+    @apply leading-relaxed;
+  }
+
+  p,
+  ul,
+  ol,
+  summary {
+    @apply text-[var(--theme-text-light)];
+  }
+
+  ul:not(.plain-list) {
+    @apply list-disc;
+  }
+
+  ol:not(.plain-list) {
+    @apply list-decimal;
+  }
+
+  ul:not(.plain-list),
+  ol:not(.plain-list) {
+    @apply leading-tight;
+    @apply flex;
+    @apply flex-col;
+    @apply gap-y-2;
+    @apply pl-6;
+  }
+
+  ::marker {
+    @apply text-[var(--theme-text-light)];
+  }
+
+  details > summary {
+    @apply my-4;
+  }
+
+  details.narrow > summary {
+    @apply my-2;
+  }
+
+  details.narrowest > summary {
+    @apply my-0;
+  }
+
+  details.narrowest[open] > summary {
+    @apply mb-2;
+  }
+
+  details p {
+    @apply mt-0;
+  }
+
+  strong {
+    @apply font-600;
+  }
+
+  em {
+    @apply italic;
+  }
+
+  del {
+    @apply line-through;
+  }
+}
+
+/* TOC */
+
+nav.toc {
+  h2.heading {
+    @apply text-base;
+    @apply font-bold;
+    @apply uppercase;
+    @apply mb-3;
+  }
+
+  aside > & h2.heading {
+    @apply pl-4;
+  }
+
+  :not(aside) > & h2.heading {
+    @apply opacity-80;
+  }
+
+  li.header-link {
+    @apply transition-colors-200;
+    @apply border-l-4px;
+    @apply border-color-[var(--theme-divider)];
+
+    padding-inline-start: 1rem;
+
+    a {
+      @apply flex;
+      @apply items-center;
+      @apply gap-x-1;
+      @apply py-1;
+      @apply leading-tight;
+    }
+
+    /* Add line and padding on the left side */
+
+    &.depth-3 {
+      padding-inline-start: 2rem;
+    }
+
+    &.depth-4 {
+      padding-inline-start: 3rem;
+    }
+
+    &:hover,
+    &:focus,
+    &:focus-within {
+      @apply border-color-[var(--theme-text)];
+    }
+
+    &:hover a,
+    & a:focus {
+      @apply \!color-[var(--theme-text-accent)];
+    }
+
+    /* Highlight TOC header link matching the current scroll position */
+    &.current-header-link {
+      @apply bg-[var(--theme-bg-accent)];
+
+      /* Indicates the current heading for forced colors users in older browsers */
+      outline: 1px solid transparent;
+    }
+
+    @media (forced-colors: active) {
+      &.current-header-link {
+        border: 1px solid CanvasText;
+      }
+    }
+
+    &.current-header-link a {
+      @apply color-[var(--theme-text)];
+    }
+  }
+}

@@ -1,0 +1,16 @@
+---
+import { getPortPageURL } from '../../shared/pageConstants.mjs';
+
+interface Props {
+  readonly class?: any;
+  readonly port: string;
+  readonly feature?: string | undefined;
+}
+
+const { class: classList, port, feature } = Astro.props;
+const href = getPortPageURL(port, feature);
+---
+
+<a class:list={['link', classList || '']} href={href}>
+  <slot set:text={port} />
+</a>

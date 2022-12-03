@@ -1,0 +1,53 @@
+---
+import { getFeatureSlug } from '../../../../shared/pageConstants.mjs';
+import SectionWrapper from '../SectionWrapper.astro';
+import Feature from '../components/Feature.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Features',
+  noHeading: false,
+});
+
+const { context, section } = Astro.props;
+
+const featureNames = Object.keys(context.manifest.features || {}).sort();
+const defaultFeatures = (context.manifest['default-features'] || [])
+  .slice()
+  .sort();
+---
+
+<SectionWrapper section={section}>
+  {
+    featureNames.length ? (
+      <>
+        <p>
+          {defaultFeatures.length ? (
+            <>
+              {`Default feature${defaultFeatures.length > 1 ? 's' : ''}: `}
+              {defaultFeatures.map((featureName, i) => (
+                <>
+                  {!!i && ', '}
+                  <a class="link" href={`#${getFeatureSlug(featureName)}`}>
+                    <code class="code" set:text={featureName} />
+                  </a>
+                </>
+              ))}
+            </>
+          ) : (
+            <em>No default features set.</em>
+          )}
+        </p>
+        {featureNames.map((featureName) => (
+          <Feature context={context} featureName={featureName} />
+        ))}
+      </>
+    ) : (
+      <p>
+        <em>No features defined.</em>
+      </p>
+    )
+  }
+</SectionWrapper>

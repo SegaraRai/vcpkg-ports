@@ -1,0 +1,42 @@
+---
+interface Props {
+  readonly level: string | number;
+  readonly slug: string;
+  readonly text: string;
+}
+
+const { slug } = Astro.props;
+---
+
+<a class="anchor link" href={`#${slug}`}>#</a>
+
+<style is:global>
+  :is(h1, h2, h3, h4, h5, h6).has-anchor {
+    @apply relative;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6).has-anchor > .anchor {
+    @apply select-none;
+    @apply absolute;
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply text-center;
+    @apply overflow-hidden;
+    @apply w-7;
+    @apply -left-7;
+    @apply top-0;
+    @apply bottom-0;
+    @apply my-auto;
+    @apply opacity-0;
+    @apply !transition-all-200;
+
+    @apply focus:opacity-100;
+    @apply hover:opacity-100;
+    @apply active:opacity-100;
+  }
+
+  :is(h1, h2, h3, h4, h5, h6).has-anchor:hover > .anchor {
+    @apply opacity-100;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import DateTime from '../DateTime.vue';
+
+interface Props {
+  readonly createdAt: string;
+  readonly modifiedAt: string;
+}
+
+const { createdAt, modifiedAt } = Astro.props;
+
+const items = [
+  ['Created', createdAt, ''],
+  ['Updated', modifiedAt, ':uno: light:text-green-600 dark:text-green-400'],
+] as const;
+---
+
+<dl
+  class=":uno: flex flex-col my-4 py-1 leading-tight gap-y-1.5 text-[var(--theme-text-light)]"
+>
+  {
+    items.map(([label, datetime, extraClass]) => (
+      <div class:list={[':uno: flex gap-x-4 items-center', extraClass]}>
+        <dt class=":uno: flex-none w-24 opacity-60" set:text={label} />
+        <dd class=":uno: flex-1">
+          <DateTime client:load timestamp={datetime} long />
+        </dd>
+      </div>
+    ))
+  }
+</dl>

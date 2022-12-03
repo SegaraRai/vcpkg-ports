@@ -1,0 +1,61 @@
+---
+import type { MarkdownHeading } from 'astro';
+import type { PortFrontmatter } from '../../shared/dataTypes/frontmatter.mjs';
+import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Footer from '../components/footer/Footer.astro';
+import Header from '../components/header/Header.astro';
+import PortPageContent from '../components/portPage/PortPageContent.astro';
+import RightSidebar from '../components/portPage/RightSidebar.astro';
+import ManagedSearch from '../components/search/ManagedSearch.vue';
+import { SITE_LANGUAGE_KEBAB, formatPageTitle } from '../constants.mjs';
+
+import '../styles/main.scss';
+
+interface Props {
+  readonly frontmatter: PortFrontmatter;
+  readonly headings: readonly MarkdownHeading[];
+  readonly ogImage?: string | null | undefined;
+  readonly portManifest: Vcpkg;
+}
+
+const { frontmatter, headings, ogImage, portManifest } = Astro.props as Props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const formattedTitle = formatPageTitle(frontmatter.title);
+---
+
+<html class="stable-scrollbar-gutter" dir="ltr" lang={SITE_LANGUAGE_KEBAB}>
+  <head>
+    <HeadCommon />
+    <HeadSEO
+      title={frontmatter.title}
+      description={frontmatter.description}
+      canonicalURL={canonicalURL}
+      ogImage={ogImage}
+      portManifest={portManifest}
+    />
+    <title set:text={formattedTitle} />
+  </head>
+
+  <body>
+    <Header />
+    <main
+      class=":uno: w-full max-w-320 lg:flex flex-row pr-7 lg:pr-12 pt-4 pb-10 mx-auto gap-x-12 justify-center lg:justify-between"
+    >
+      <div class=":uno: flex-1 overflow-hidden pl-7 lg:pl-12 max-w-190 mx-auto">
+        <PortPageContent frontmatter={frontmatter} headings={headings}>
+          <slot />
+        </PortPageContent>
+      </div>
+      <aside
+        class=":uno: flex-none lt-lg:hidden w-70 overflow-visible"
+        title="Table of Contents"
+      >
+        <RightSidebar headings={headings} />
+      </aside>
+    </main>
+    <Footer />
+    <ManagedSearch client:only="vue" />
+  </body>
+</html>

@@ -1,0 +1,63 @@
+---
+import type { TechArticle } from 'schema-dts';
+import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
+import {
+  DEFAULT_OG_IMAGE_URL,
+  SITE_DESCRIPTION,
+  SITE_LANGUAGE_SNAKE,
+  SITE_TITLE,
+  formatPageTitle,
+} from '../constants.mjs';
+
+interface Props {
+  readonly canonicalURL: URL;
+  readonly isHome?: boolean | undefined;
+  readonly title?: string | undefined;
+  readonly description?: string | undefined;
+  readonly ogImage?: string | null | undefined;
+  readonly portManifest?: Vcpkg | undefined;
+}
+
+const { title, description, canonicalURL, isHome, ogImage } =
+  Astro.props as Props;
+const formattedTitle = formatPageTitle(title);
+const formattedDescription = description ?? SITE_DESCRIPTION;
+const canonicalImageSrc = new URL(ogImage || DEFAULT_OG_IMAGE_URL, Astro.url);
+
+// TODO
+const jsonLD: TechArticle | undefined = undefined;
+
+const strJSONLD =
+  jsonLD &&
+  JSON.stringify(jsonLD).replace(
+    /[<>&]/g,
+    (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`
+  );
+---
+
+<!-- Page Metadata -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- OpenGraph Tags -->
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:type" content={isHome ? 'website' : 'article'} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:locale" content={SITE_LANGUAGE_SNAKE} />
+<meta property="og:image" content={canonicalImageSrc} />
+<meta
+  name="description"
+  property="og:description"
+  content={formattedDescription}
+/>
+<meta property="og:site_name" content={SITE_TITLE} />
+
+<!-- Twitter Tags -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={formattedTitle} />
+<meta name="twitter:description" content={formattedDescription} />
+<meta name="twitter:image" content={canonicalImageSrc} />
+
+{
+  // eslint-disable-next-line astro/no-set-html-directive
+  strJSONLD && <script type="application/ld+json" set:html={strJSONLD} />
+}

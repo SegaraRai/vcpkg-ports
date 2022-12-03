@@ -1,0 +1,41 @@
+---
+import { DEPENDENT_FEATURE_DELIMITER } from '../../../../shared/vcpkg/portDependents.mjs';
+import LinkPortPage from '../../LinkPortPage.astro';
+
+interface Props {
+  readonly dependents: readonly string[];
+}
+
+const { dependents } = Astro.props;
+
+const parsedDependents = dependents.map((dependent) =>
+  dependent.split(DEPENDENT_FEATURE_DELIMITER)
+);
+---
+
+{
+  parsedDependents.length ? (
+    <ul class=":uno: my-2">
+      {parsedDependents.map(([portName, featureName]) => (
+        <li>
+          <LinkPortPage port={portName} />
+          {!!featureName && (
+            <span class:list={['dependent-feature', ':uno: opacity-90']}>
+              (feature{' '}
+              {
+                <LinkPortPage port={portName} feature={featureName}>
+                  <code set:text={featureName} />
+                </LinkPortPage>
+              }
+              )
+            </span>
+          )}
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p>
+      <em>No dependents.</em>
+    </p>
+  )
+}

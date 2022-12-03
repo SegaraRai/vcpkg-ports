@@ -1,0 +1,62 @@
+---
+import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
+import type { VcpkgDependencyObjectEx } from '../../../../shared/vcpkg/portDependencies.mjs';
+import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
+import { pluralize } from '../utils/pluralize.mjs';
+import DependencyList from './DependencyList.astro';
+
+interface Props {
+  readonly dependencies: readonly VcpkgDependencyObject[];
+  readonly transitiveDependencies: readonly VcpkgDependencyObjectEx[];
+  readonly portMap: ReadonlyMap<string, DataPortsPort>;
+  readonly narrowDetails?: boolean | undefined;
+  readonly openTransitiveIfNoDirect?: boolean | undefined;
+}
+
+const {
+  dependencies,
+  transitiveDependencies,
+  portMap,
+  narrowDetails,
+  openTransitiveIfNoDirect,
+} = Astro.props;
+---
+
+{
+  !dependencies.length && !transitiveDependencies.length && (
+    <p>
+      <em>No dependencies.</em>
+    </p>
+  )
+}
+
+{
+  !!dependencies.length && (
+    <DependencyList dependencies={dependencies} portMap={portMap} />
+  )
+}
+
+{
+  transitiveDependencies.length ? (
+    <details
+      class:list={narrowDetails ? 'narrow' : []}
+      open={openTransitiveIfNoDirect && !dependencies.length}
+    >
+      <summary>
+        <em
+          set:text={`${dependencies.length ? 'and ' : ''}${pluralize(
+            transitiveDependencies.length,
+            'transitive dependency'
+          )}:`}
+        />
+      </summary>
+      <DependencyList dependencies={transitiveDependencies} portMap={portMap} />
+    </details>
+  ) : (
+    !!dependencies.length && (
+      <p>
+        <em>No transitive dependencies.</em>
+      </p>
+    )
+  )
+}

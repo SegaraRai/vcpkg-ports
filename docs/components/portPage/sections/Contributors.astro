@@ -1,0 +1,79 @@
+---
+import { CONTRIBUTOR_IMAGE_SIZE } from '../../../../shared/pageConstants.mjs';
+import {
+  getContributorAvatarURL,
+  toUniqueArray,
+} from '../../../../shared/utils.mjs';
+import commitMap from '../../../virtual/commitMap.mjs';
+import SectionWrapper from '../SectionWrapper.astro';
+import ContributorList from '../components/ContributorList.astro';
+import ContributorListItem from '../components/ContributorListItem.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Contributors',
+});
+
+const {
+  context: { commits },
+  section,
+} = Astro.props;
+
+const resolvedCommits = commits.map((commit) => {
+  const resolvedCommit = commitMap.get(commit);
+  if (!resolvedCommit) {
+    throw new Error(`Could not find commit ${commit}`);
+  }
+  return resolvedCommit;
+});
+
+// `new Map()` is last writer wins
+// we use latest name for each email
+const emailHashToNameMap = new Map<string, string>(
+  resolvedCommits.flatMap(({ author, committer }) => {
+    return [
+      [author[2], author[1]],
+      [committer[2], committer[1]],
+    ];
+  })
+);
+
+const emailHashToGitHubUserMap = new Map<string, string | null>(
+  resolvedCommits.flatMap(({ author, committer }) => {
+    return [
+      [author[2], author[3]],
+      [committer[2], committer[3]],
+    ];
+  })
+);
+
+// we only count authors
+const contributorEmailHashes = toUniqueArray(
+  resolvedCommits.flatMap(({ author }) => {
+    return [author[2]];
+  })
+);
+---
+
+<SectionWrapper section={section}>
+  <ContributorList>
+    {
+      contributorEmailHashes.map((emailHash) => (
+        <ContributorListItem
+          name={
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            emailHashToNameMap.get(emailHash)!
+          }
+          image={getContributorAvatarURL(
+            emailHash,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            emailHashToGitHubUserMap.get(emailHash)!,
+            CONTRIBUTOR_IMAGE_SIZE
+          )}
+        />
+      ))
+    }
+  </ContributorList>
+</SectionWrapper>

@@ -1,0 +1,24 @@
+---
+interface Props {
+  readonly class?: any;
+  readonly name: string;
+  readonly image: string;
+}
+
+const { class: classList, name, image } = Astro.props;
+---
+
+<li
+  class:list={[
+    ':uno: rounded-full inline-flex flex-row flex-nowrap gap-x-2 items-center text-[var(--theme-text-light)]',
+    classList || '',
+  ]}
+>
+  <img
+    class=":uno: flex-none rounded-full w-8 h-8 select-none"
+    referrerpolicy="no-referrer"
+    src={image}
+    alt={`${name}'s avatar`}
+  />
+  <span class=":uno: flex-none text-lg" set:text={name} />
+</li>

@@ -1,0 +1,70 @@
+---
+import { getSupports } from '../../../../shared/vcpkg/portSupports.mjs';
+import { isHostOnlyPort } from '../../../../shared/vcpkg/portUtils.mjs';
+import { FULL_TRIPLETS } from '../../../../shared/vcpkg/triplets.mjs';
+import SectionWrapper from '../SectionWrapper.astro';
+import HostOnlyBadge from '../components/HostOnlyBadge.astro';
+import SupportedListItem from '../components/SupportedListItem.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Supported Platforms',
+});
+
+const {
+  context: { manifest },
+  section,
+} = Astro.props;
+
+const hostOnly = isHostOnlyPort(manifest);
+const { supportedMinified, unsupportedMinified } = getSupports(
+  manifest.supports || '',
+  FULL_TRIPLETS
+);
+
+const allSupported = !manifest.supports || manifest.supports === 'native';
+---
+
+<SectionWrapper section={section}>
+  {
+    !!manifest.supports && (
+      <p>
+        <code set:text={manifest.supports} />
+        {hostOnly && <HostOnlyBadge />}
+      </p>
+    )
+  }
+
+  {
+    allSupported ? (
+      <p>
+        <em>All platforms are supported</em>
+      </p>
+    ) : (
+      <>
+        <ul
+          class:list={[
+            'plain-list',
+            ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+          ]}
+        >
+          {supportedMinified.map((triplet) => (
+            <SupportedListItem triplet={triplet} />
+          ))}
+        </ul>
+        <ul
+          class:list={[
+            'plain-list',
+            ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+          ]}
+        >
+          {unsupportedMinified.map((triplet) => (
+            <SupportedListItem triplet={triplet} unsupported />
+          ))}
+        </ul>
+      </>
+    )
+  }
+</SectionWrapper>

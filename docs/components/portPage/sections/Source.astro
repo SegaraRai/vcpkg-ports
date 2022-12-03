@@ -1,0 +1,53 @@
+---
+import {
+  VCPKG_REF_OVERRIDE,
+  VCPKG_REPO_URL,
+} from '../../../../shared/pageConstants.mjs';
+import { toUniqueArray } from '../../../../shared/utils.mjs';
+import headCommit from '../../../virtual/headCommit.mjs';
+import SectionWrapper from '../SectionWrapper.astro';
+import FileList from '../components/FileList.astro';
+import FileListItem from '../components/FileListItem.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Source',
+});
+
+const {
+  context: { name: portName, files },
+  section,
+} = Astro.props;
+
+const directories = toUniqueArray(
+  files.filter((file) => file.includes('/')).map((file) => file.split('/')[0])
+).sort();
+const filenames = files.filter((file) => !file.includes('/')).sort();
+---
+
+<SectionWrapper section={section}>
+  <FileList>
+    {
+      directories.map((filename) => (
+        <FileListItem
+          filename={`${filename}/`}
+          href={`${VCPKG_REPO_URL}/tree/${
+            VCPKG_REF_OVERRIDE || headCommit.oid
+          }/ports/${portName}/${filename}`}
+        />
+      ))
+    }
+    {
+      filenames.map((filename) => (
+        <FileListItem
+          filename={filename}
+          href={`${VCPKG_REPO_URL}/blob/${
+            VCPKG_REF_OVERRIDE || headCommit.oid
+          }/ports/${portName}/${filename}`}
+        />
+      ))
+    }
+  </FileList>
+</SectionWrapper>

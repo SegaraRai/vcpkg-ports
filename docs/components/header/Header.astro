@@ -1,0 +1,62 @@
+---
+import ManagedSearchBoxButton from '../search/ManagedSearchBoxButton.vue';
+import SkipToContent from './SkipToContent.astro';
+import ThemeToggleButton from './ThemeToggleButton.vue';
+
+interface Props {
+  readonly hideSearch?: boolean | undefined;
+  readonly isHome?: boolean | undefined;
+}
+
+const { hideSearch, isHome } = Astro.props;
+
+const LinkElement = isHome ? 'span' : 'a';
+---
+
+<header
+  class=":uno: flex-none lt-lg:sticky top-0 z-90 flex flex-col items-center justify-center overflow-hidden h-14 bg-[var(--theme-navbar-bg)] w-full"
+>
+  <SkipToContent />
+  <nav
+    class=":uno: relative flex-1 block w-full h-full max-w-204 lg:max-w-296 px-8"
+    title="Top Navigation"
+  >
+    <div
+      class=":uno: lt-lg:-mx-4 h-full flex items-center justify-between gap-x-8"
+    >
+      <div class=":uno: flex-none">
+        <LinkElement
+          class:list={[
+            ':uno: flex items-center select-none color-[var(--theme-text)] leading-tight',
+            !isHome &&
+              ':uno: transition-colors-200 light:hover:color-[var(--theme-text-light)] light:active:color-[var(--theme-text-light)] dark:hover:color-[var(--theme-text-accent)] dark:active:color-[var(--theme-text-accent)]',
+          ]}
+          href={isHome ? undefined : '/'}
+        >
+          <span class=":uno: flex-none i-noto-package w-42px h-42px"></span>
+          <span
+            class:list={[
+              ':uno: ml-2 flex-1 text-3xl pb-1',
+              hideSearch ? ':uno: lt-sm:hidden' : ':uno: lt-sm:hidden',
+            ]}
+          >
+            <span class=":uno: font-bold">Vcpkg</span>
+            <span class=":uno: font-normal">Ports</span>
+          </span>
+        </LinkElement>
+      </div>
+      <div class=":uno: flex items-center justify-end gap-x-4 flex-1 max-w-80">
+        {
+          !hideSearch && (
+            <div class=":uno: flex-1">
+              <ManagedSearchBoxButton client:load />
+            </div>
+          )
+        }
+        <div class=":uno: flex-none">
+          <ThemeToggleButton client:load />
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

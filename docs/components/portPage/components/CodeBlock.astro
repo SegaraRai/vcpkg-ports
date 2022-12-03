@@ -1,0 +1,32 @@
+---
+import { normalizeText } from '../../../../shared/utils.mjs';
+import CodeBlockRaw from './CodeBlockRaw.astro';
+
+const shiki = await import('shiki');
+
+interface Props {
+  readonly class?: any;
+  readonly lang: string;
+  readonly code: string;
+}
+
+const { class: classList, lang, code } = Astro.props;
+
+const highlighter = await shiki.getHighlighter({
+  theme: 'monokai',
+  langs: ['cmake', 'cpp'],
+});
+
+const html = highlighter
+  .codeToHtml(normalizeText(code), { lang })
+  .trim()
+  .replaceAll('\n', '')
+  .replace(/^<pre[^>]+><code>/, '')
+  .replace('</code></pre>', '')
+  .replace(/[{}]/g, (c) => `&#${c.charCodeAt(0)};`);
+---
+
+<CodeBlockRaw class={classList} lang={lang}>
+  {/* eslint-disable-next-line astro/no-set-html-directive */}
+  <Fragment set:html={html} />
+</CodeBlockRaw>

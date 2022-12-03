@@ -1,0 +1,33 @@
+---
+import HeadingAnchor from '../HeadingAnchor.astro';
+import type { SectionSubset } from './defineSection.mjs';
+
+interface Props {
+  readonly section: SectionSubset;
+}
+
+const { section } = Astro.props;
+const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
+---
+
+{
+  !section.noHeading && (
+    <HeadingTag
+      id={section.slug}
+      class:list={['has-anchor', ':uno: flex items-center']}
+    >
+      <HeadingAnchor
+        level={section.level}
+        slug={section.slug}
+        text={section.title}
+      />
+      <slot name="heading-before" />
+      {section.title}
+      <slot name="heading-after" />
+    </HeadingTag>
+  )
+}
+
+<div class={`port-${section.slug}`}>
+  <slot />
+</div>

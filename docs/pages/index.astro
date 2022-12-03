@@ -1,0 +1,22 @@
+---
+import SearchPage from '../components/search/SearchPage.vue';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout fixedHeight hideSearch isHome>
+  <article
+    id="article"
+    class=":uno: h-full overflow-hidden flex flex-col gap-y-4 items-center text-center"
+  >
+    <h1
+      class=":uno: flex-none flex flex-col items-center justify-center gap-x-4 gap-y-4 mb-0 lg:mt-4 lg:mb-8 lt-lg:flex-row text-4xl"
+    >
+      <div class=":uno: flex-none w-16 h-16 lg:w-36 lg:h-36 i-noto-package">
+      </div>
+      <div class=":uno: flex-1">Vcpkg Ports</div>
+    </h1>
+    <div class=":uno: flex-1 w-full max-w-160 overflow-hidden text-left">
+      <SearchPage client:idle />
+    </div>
+  </article>
+</MainLayout>

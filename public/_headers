@@ -1,0 +1,27 @@
+/*
+  # ${#CSP_HEADER}
+  Cross-Origin-Embedder-Policy: require-corp
+  Cross-Origin-Opener-Policy: same-origin
+  Origin-Agent-Cluster: ?1
+  Permissions-Policy: document-domain=(), camera=(), microphone=(), geolocation=()
+  Referrer-Policy: strict-origin-when-cross-origin
+  X-Content-Type-Options: nosniff
+  X-DNS-Prefetch-Control: off
+  X-Download-Options: noopen
+  X-Frame-Options: DENY
+  X-Permitted-Cross-Domain-Policies: none
+  X-XSS-Protection: 0
+  Cache-Control: public, max-age=43200, stale-while-revalidate=864000, stale-if-error=864000
+  # ${#EXPIRES_HEADER}
+
+/assets/*
+  ! Cache-Control
+  ! Expires
+  Cache-Control: public, no-transform, immutable, max-age=31536000
+
+/data/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+
+https://:project.pages.dev/*
+  X-Robots-Tag: noarchive, noindex

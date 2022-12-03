@@ -1,0 +1,24 @@
+---
+import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
+import { compareString } from '../../../../shared/utils.mjs';
+import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
+import DependencyListItem from './DependencyListItem.astro';
+
+interface Props {
+  readonly dependencies: readonly VcpkgDependencyObject[];
+  readonly portMap: ReadonlyMap<string, DataPortsPort>;
+}
+
+const { dependencies, portMap } = Astro.props;
+---
+
+<ul class=":uno: my-2">
+  {
+    dependencies
+      .slice()
+      .sort((a, b) => compareString(a.name, b.name))
+      .map((dependency) => (
+        <DependencyListItem dependency={dependency} portMap={portMap} />
+      ))
+  }
+</ul>

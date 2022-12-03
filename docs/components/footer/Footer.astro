@@ -1,0 +1,39 @@
+---
+import { VCPKG_PORTS_REPO_URL } from '../../../shared/pageConstants.mjs';
+import headCommit from '../../virtual/headCommit.mjs';
+import portNames from '../../virtual/portNames.mjs';
+import DateTime from '../DateTime.vue';
+import LinkVcpkgCommit from '../LinkVcpkgCommit.astro';
+---
+
+<footer
+  class=":uno: mt-auto flex-none flex lt-sm:flex-col-reverse items-center justify-end gap-x-4 gap-y-2 px-5 py-2 border-t-1 border-[var(--theme-divider)] leading-tight text-[var(--theme-text-light)]"
+>
+  <div class=":uno: flex-none flex gap-x-4">
+    <span class=":uno: flex-none">&copy; 2022 SegaraRai</span>
+    <span class=":uno: flex-none select-none">/</span>
+    <a
+      class:list={['link', ':uno: flex-none']}
+      href={`${VCPKG_PORTS_REPO_URL}/blob/main/LICENSE`}
+      target="_blank"
+      rel="noreferrer"
+    >
+      MIT License
+    </a>
+  </div>
+  <div class=":uno: flex-none select-none lt-sm:hidden">/</div>
+  <div class=":uno: flex-none flex gap-x-4">
+    <span class=":uno: flex-none">
+      vcpkg
+      <LinkVcpkgCommit commit={headCommit.oid} type="tree" />
+      <span>
+        (<DateTime client:load timestamp={headCommit.committer[0]} />)
+      </span>
+    </span>
+    <span class=":uno: flex-none select-none lt-sm:hidden">/</span>
+    <span
+      class=":uno: flex-none lt-sm:hidden"
+      set:text={`${portNames.length} ports`}
+    />
+  </div>
+</footer>

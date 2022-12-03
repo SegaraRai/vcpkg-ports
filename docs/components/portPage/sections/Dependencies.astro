@@ -1,0 +1,31 @@
+---
+import { analyzeDependencies } from '../../../../shared/vcpkg/portDependencies.mjs';
+import portMap from '../../../virtual/portMap.mjs';
+import SectionWrapper from '../SectionWrapper.astro';
+import Dependencies from '../components/Dependencies.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Dependencies',
+});
+
+const {
+  context: { manifest },
+  section,
+} = Astro.props;
+
+const { directNormalDeps, transitiveNormalDeps } = analyzeDependencies(
+  manifest,
+  portMap
+);
+---
+
+<SectionWrapper section={section}>
+  <Dependencies
+    dependencies={directNormalDeps}
+    transitiveDependencies={transitiveNormalDeps}
+    portMap={portMap}
+  />
+</SectionWrapper>

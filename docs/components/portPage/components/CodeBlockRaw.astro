@@ -1,0 +1,82 @@
+---
+interface Props {
+  readonly class?: any;
+  readonly lang: string;
+}
+
+const { class: classList, lang } = Astro.props;
+
+// NOTE: we use <div> instead of <pre> because <pre> prevents minification. maybe we should wrap <pre> with <div>?
+---
+
+<div
+  class:list={[
+    ':uno: relative !whitespace-normal overflow-hidden !p-0 bg-[#35312b] dark:bg-[#16130d] rounded-2 text-sm',
+    `code-block language-${lang}`,
+    classList || '',
+  ]}
+>
+  <code
+    class=":uno: !whitespace-normal block max-h-60 overflow-auto px-5 py-3"
+    tabindex="0"
+  >
+    <slot />
+  </code>
+  <button
+    class:list={[
+      ':uno: absolute top-2 right-6 select-none transition-all-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded',
+      'copy',
+    ]}
+    title="Copy Code"
+  >
+    <span
+      class:list={[
+        ':uno: opacity-0 block w-full h-full transition-opacity-250 i-mdi-clipboard-text-outline',
+        'icon',
+      ]}></span>
+    {
+      lang !== 'plaintext' && (
+        <span
+          class:list={[
+            ':uno: block absolute top-0 right-1 pointer-events-none transition-opacity-250',
+            'lang',
+          ]}
+          set:text={lang}
+        />
+      )
+    }
+  </button>
+</div>
+
+<style is:global>
+  div.code-block > code > .line {
+    @apply block;
+    @apply whitespace-pre;
+  }
+
+  div.code-block:hover > .copy > .lang,
+  div.code-block > .copy:focus > .lang {
+    @apply opacity-0;
+  }
+
+  div.code-block:hover > .copy > .icon,
+  div.code-block > .copy:focus > .icon {
+    @apply opacity-100;
+  }
+</style>
+
+<script>
+  const copyButtons = document.querySelectorAll('div.code-block > button.copy');
+  for (const button of copyButtons) {
+    button.addEventListener('click', (): void => {
+      if (!navigator.clipboard) {
+        return;
+      }
+      const code = button.parentElement?.querySelector('code');
+      if (!code) {
+        return;
+      }
+      navigator.clipboard.writeText(code.innerText.trim() + '\n');
+    });
+  }
+</script>

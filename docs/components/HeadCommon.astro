@@ -1,0 +1,25 @@
+---
+import '../styles/theme.css';
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width" />
+
+<!--#__CSP_PLACEHOLDER__#-->
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<script is:inline>
+  // prevent FOUC
+  (() => {
+    const configTheme = localStorage?.getItem('theme');
+    const isDark =
+      !configTheme || configTheme === 'auto'
+        ? window.matchMedia('(prefers-color-scheme:dark)').matches
+        : configTheme === 'dark';
+    document.documentElement.classList.add(
+      `theme-${isDark ? 'dark' : 'light'}`
+    );
+  })();
+</script>

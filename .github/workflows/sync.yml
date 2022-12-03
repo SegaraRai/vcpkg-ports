@@ -1,0 +1,88 @@
+name: Sync vcpkg and deploy
+
+concurrency:
+  group: sync
+  cancel-in-progress: true
+
+on:
+  push:
+    branches:
+      - develop
+    paths:
+      - .github/workflows/sync.yml
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
+
+env:
+  COMMIT_BRANCH: main
+  COMMIT_AUTHOR_NAME: github-actions
+  COMMIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
+  COMMIT_MESSAGE: 'sync: update vcpkg'
+  CLOUDFLARE_ACCOUNT_ID: 1a5d304db1c315f0731d67e097a1ee6c
+  PAGES_PROJECT_NAME: vcpkg
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    name: Update vcpkg submodule and commit to main branch
+
+    permissions:
+      contents: write
+      deployments: write
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.COMMIT_BRANCH }}
+          fetch-depth: 1
+          submodules: true
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - run: pnpm i --frozen-lockfile
+
+      - run: pnpm run sync:vcpkg
+
+      - name: Check for changes
+        id: check_for_changes
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "modified=1" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push
+        if: steps.check_for_changes.outputs.modified == '1'
+        run: |
+          git config --global user.name "$COMMIT_AUTHOR_NAME"
+          git config --global user.email "$COMMIT_AUTHOR_EMAIL"
+          git add .
+          git commit -m "$COMMIT_MESSAGE"
+          git push origin "$COMMIT_BRANCH"
+
+      - run: pnpm run generate:images
+        if: steps.check_for_changes.outputs.modified == '1'
+
+      - run: pnpm run build
+        if: steps.check_for_changes.outputs.modified == '1'
+        env:
+          VP_ENABLE_EXPIRES_HEADER: 1
+
+      - name: Deploy
+        if: steps.check_for_changes.outputs.modified == '1'
+        uses: cloudflare/pages-action@1
+        with:
+          branch: main
+          directory: dist
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ env.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ env.PAGES_PROJECT_NAME }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

@@ -1,0 +1,25 @@
+---
+import type { MarkdownHeading } from 'astro';
+import TableOfContents from '../TableOfContents.vue';
+import MoreMenu from './MoreMenu.astro';
+
+interface Props {
+  readonly headings: readonly MarkdownHeading[];
+}
+
+const { headings } = Astro.props as Props;
+---
+
+<nav
+  class:list={['toc', ':uno: sticky top-4 w-full']}
+  aria-labelledby="grid-right"
+>
+  <div class=":uno: h-full overflow-auto p-0 pt-[var(--doc-padding)]">
+    <TableOfContents
+      highlight
+      client:media="(min-width: 1024px)"
+      headings={headings}
+    />
+    <MoreMenu />
+  </div>
+</nav>

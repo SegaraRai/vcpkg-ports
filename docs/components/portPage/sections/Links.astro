@@ -1,0 +1,41 @@
+---
+import LinkExternal from '../../LinkExternal.astro';
+import SectionWrapper from '../SectionWrapper.astro';
+import { SectionProps, defineSection } from '../defineSection.mjs';
+
+type Props = SectionProps;
+
+export const getSection = defineSection({
+  title: 'Links',
+  noHeading: true,
+});
+
+const {
+  context: { manifest },
+  section,
+} = Astro.props;
+
+const links = (
+  [
+    ['', manifest.homepage || ''],
+    ['Documentation', manifest.documentation || ''],
+  ] as const
+).filter(([, url]) => url);
+---
+
+<SectionWrapper section={section}>
+  {
+    !!links.length && (
+      <ul
+        class:list={['plain-list', ':uno: flex flex-col gap-y-2 leading-tight']}
+      >
+        {links.map(([label, url]) => (
+          <li class=":uno: overflow-hidden text-ellipsis">
+            {label ? `${label}: ` : undefined}
+            <LinkExternal href={url} />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</SectionWrapper>

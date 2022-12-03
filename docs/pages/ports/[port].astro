@@ -1,0 +1,80 @@
+---
+import type { PortFrontmatter } from '../../../shared/dataTypes/frontmatter.mjs';
+import {
+  PORT_OG_IMAGE_PATH,
+  getFallbackDescription,
+} from '../../../shared/pageConstants.mjs';
+import type {
+  ResolvedSection,
+  SectionProps,
+} from '../../components/portPage/defineSection.mjs';
+import PortLayout from '../../layouts/PortLayout.astro';
+import portContexts from '../../virtual/portContexts.mjs';
+import portPages from '../../virtual/portPages.mjs';
+
+interface Params {
+  readonly port: string;
+}
+
+export function getStaticPaths(): readonly { readonly params: Params }[] {
+  return portPages.map((port) => ({ params: { port } }));
+}
+
+const SECTIONS = await Promise.all([
+  import('../../components/portPage/sections/Overview.astro'),
+  import('../../components/portPage/sections/Links.astro'),
+  import('../../components/portPage/sections/Usage.astro'),
+  import('../../components/portPage/sections/License.astro'),
+  import('../../components/portPage/sections/Supports.astro'),
+  import('../../components/portPage/sections/Features.astro'),
+  import('../../components/portPage/sections/Dependencies.astro'),
+  import('../../components/portPage/sections/HostDependencies.astro'),
+  import('../../components/portPage/sections/Dependents.astro'),
+  import('../../components/portPage/sections/HostDependents.astro'),
+  import('../../components/portPage/sections/Contributors.astro'),
+  import('../../components/portPage/sections/Changelog.astro'),
+  import('../../components/portPage/sections/Source.astro'),
+]);
+
+const { port: portName } = Astro.params as unknown as Params;
+
+const context = portContexts.find((manifest) => manifest.name === portName);
+if (!context) {
+  Astro.redirect('/404');
+  return;
+}
+
+const resolvedSections = SECTIONS.map(
+  (section) => [section.default, section.getSection(context)] as const
+).filter(
+  (item): item is readonly [(props: SectionProps) => any, ResolvedSection] =>
+    !!item[1]?.exists
+);
+
+const frontmatter: PortFrontmatter = {
+  portName: context.name,
+  portVersion: context.version,
+  title: `${context.name} v${context.version}`,
+  description: context.shortDescription || getFallbackDescription(context.name),
+  createdAt: context.createdAt,
+  modifiedAt: context.modifiedAt,
+};
+
+const headings = resolvedSections.map(([, section]) => section.headings).flat();
+
+const ogImage =
+  context.ogImageFilename && `${PORT_OG_IMAGE_PATH}/${context.ogImageFilename}`;
+---
+
+<PortLayout
+  frontmatter={frontmatter}
+  headings={headings}
+  ogImage={ogImage}
+  portManifest={context.manifest}
+>
+  {
+    resolvedSections.map(([Component, section]) => (
+      <Component context={context} section={section} />
+    ))
+  }
+</PortLayout>

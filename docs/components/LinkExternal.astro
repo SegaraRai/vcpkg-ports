@@ -1,0 +1,17 @@
+---
+interface Props {
+  readonly class?: any;
+  readonly href: string;
+}
+
+const { class: classList, href } = Astro.props;
+---
+
+<a
+  class:list={['link', classList || '']}
+  href={href}
+  target="_blank"
+  rel="noreferrer"
+>
+  <slot set:text={href} />
+</a>

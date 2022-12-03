@@ -1,0 +1,51 @@
+---
+import HeadCommon from '../components/HeadCommon.astro';
+import HeadSEO from '../components/HeadSEO.astro';
+import Footer from '../components/footer/Footer.astro';
+import Header from '../components/header/Header.astro';
+import ManagedSearch from '../components/search/ManagedSearch.vue';
+import { SITE_LANGUAGE_KEBAB, formatPageTitle } from '../constants.mjs';
+
+import '../styles/main.scss';
+
+interface Props {
+  readonly title?: string | undefined;
+  readonly description?: string | undefined;
+  readonly fixedHeight?: boolean | undefined;
+  readonly hideSearch?: boolean | undefined;
+  readonly isHome?: boolean | undefined;
+}
+
+const { title, description, fixedHeight, hideSearch, isHome } =
+  Astro.props as Props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const formattedTitle = formatPageTitle(title);
+---
+
+<html
+  class:list={fixedHeight ? 'fixed-height' : 'stable-scrollbar-gutter'}
+  dir="ltr"
+  lang={SITE_LANGUAGE_KEBAB}
+>
+  <head>
+    <HeadCommon />
+    <HeadSEO
+      title={title}
+      description={description}
+      canonicalURL={canonicalURL}
+      isHome={isHome}
+    />
+    <title set:text={formattedTitle} />
+  </head>
+
+  <body>
+    <Header hideSearch={hideSearch} isHome={isHome} />
+    <main
+      class=":uno: flex-1 w-full max-w-294 px-7 lg:px-12 pt-4 pb-10 mx-auto overflow-hidden"
+    >
+      <slot />
+    </main>
+    <Footer />
+    {!hideSearch && <ManagedSearch client:only="vue" />}
+  </body>
+</html>
