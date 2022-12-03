@@ -13,7 +13,7 @@ import {
   DATA_PORT_OG_INDEX_FILE,
   DATA_VERSION_FILE,
 } from '../constants.mjs';
-import { readJSON } from '../jsonUtils.mjs';
+import { readJSON, tryReadJSON } from '../jsonUtils.mjs';
 import { createPortContexts } from '../portContextUtils.mjs';
 
 function getDataNameFromId(id: string): string | undefined {
@@ -38,9 +38,16 @@ export default function virtualDataLoader(): Plugin {
     const vcpkgPorts = (await readJSON(DATA_PORTS_FILE)) as DataPorts;
     const vcpkgVersion = (await readJSON(DATA_VERSION_FILE)) as DataVersion;
     const history = (await readJSON(DATA_HISTORY_FILE)) as DataHistory;
-    const ogIndex = (await readJSON(
+    let ogIndex = (await tryReadJSON(
       DATA_PORT_OG_INDEX_FILE
     )) as DataPortOGIndex;
+    if (!ogIndex) {
+      console.warn('VirtualDataLoader: OG index not found');
+      ogIndex = {
+        version: vcpkgVersion.version,
+        ogImageFilenames: [],
+      };
+    }
     const portContexts = await createPortContexts(vcpkgPorts, history, ogIndex);
     return {
       commitMap: new Map(history.commits.map((e) => [e.oid, e])),
