@@ -23,7 +23,8 @@ export default defineConfig({
   transformers: [
     transformerCompileClass({
       classPrefix: 'u_',
-      trigger: env.NODE_ENV === 'production' ? ':uno:' : ':uno: :dev:',
+      trigger:
+        env.CI || env.NODE_ENV === 'production' ? ':uno:' : ':uno: :dev:',
     }),
     transformerDirectives(),
   ],
