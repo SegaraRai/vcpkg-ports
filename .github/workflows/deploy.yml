@@ -1,13 +1,14 @@
-name: Deploy preview
+name: Deploy on push
 
 concurrency:
-  group: preview
+  group: deploy
   cancel-in-progress: true
 
 on:
   push:
     branches:
       - develop
+      - main
 
 env:
   CLOUDFLARE_ACCOUNT_ID: 1a5d304db1c315f0731d67e097a1ee6c
@@ -49,6 +50,9 @@ jobs:
           pnpm run typecheck
 
       - run: pnpm run generate:images
+
+      - run: echo "VP_ENABLE_EXPIRES_HEADER=1" >> $GITHUB_ENV
+        if: github.ref == 'refs/heads/main'
 
       - run: pnpm run build
 
