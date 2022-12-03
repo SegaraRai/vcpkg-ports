@@ -16,12 +16,15 @@ interface Props {
   readonly description?: string | undefined;
   readonly fixedHeight?: boolean | undefined;
   readonly hideSearch?: boolean | undefined;
+  readonly is404?: boolean | undefined;
   readonly isHome?: boolean | undefined;
 }
 
-const { title, description, fixedHeight, hideSearch, isHome } =
+const { title, description, fixedHeight, hideSearch, is404, isHome } =
   Astro.props as Props;
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const canonicalURL = !is404
+  ? new URL(Astro.url.pathname.replace(/\.html?$/, ''), Astro.site)
+  : undefined;
 const formattedTitle = formatPageTitle(title);
 ---
 
@@ -32,12 +35,16 @@ const formattedTitle = formatPageTitle(title);
 >
   <head>
     <HeadCommon />
-    <HeadSEO
-      title={title}
-      description={description}
-      canonicalURL={canonicalURL}
-      isHome={isHome}
-    />
+    {
+      canonicalURL && (
+        <HeadSEO
+          title={title}
+          description={description}
+          canonicalURL={canonicalURL}
+          isHome={isHome}
+        />
+      )
+    }
     <title set:text={formattedTitle} />
   </head>
 
