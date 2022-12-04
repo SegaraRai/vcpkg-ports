@@ -15,10 +15,13 @@ const { class: classList, name, image } = Astro.props;
   ]}
 >
   <img
-    class=":uno: flex-none rounded-full w-8 h-8 select-none"
+    class=":uno: flex-none rounded-full block w-8 h-8 overflow-hidden select-none"
     referrerpolicy="no-referrer"
     src={image}
     alt={`${name}'s avatar`}
+    loading="lazy"
+    width="32"
+    height="32"
   />
   <span class=":uno: flex-none text-lg" set:text={name} />
 </li>
