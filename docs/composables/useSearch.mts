@@ -81,7 +81,7 @@ export function useSearch(query: Readonly<Ref<string | null | undefined>>) {
         (query.value?.trim() && fuse.value?.search(query.value.trim())) || []
     ),
     load: async (): Promise<void> => {
-      if (fuse.value) {
+      if (fuse.value || gFusePromise) {
         return;
       }
       if (import.meta.env.SSR || typeof window === 'undefined') {

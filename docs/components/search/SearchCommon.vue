@@ -51,11 +51,11 @@ const term = useVModel(props, 'modelValue', emit);
 
 const termDebounced = useDebounce(term, 200);
 const { load, loading, results } = useSearch(termDebounced);
-const loading2 = computedEager(
+const loadingOrWaiting = computedEager(
   () => loading.value || termDebounced.value !== term.value
 );
 
-// fuse lazy load
+// lazy load data and fuse
 watchEffect((): void => {
   if (term.value) {
     load();
@@ -154,11 +154,11 @@ const moveFocusByKey = (event: KeyboardEvent): void => {
       wrapper-class=":uno: text-xl"
       v-model="term"
       focused
-      :loading="!!term && loading2"
+      :loading="!!term && loadingOrWaiting"
       @keydown="moveFocusByKey"
     />
     <div class=":uno: overflow-auto text-base">
-      <template v-if="!termDebounced">
+      <template v-if="loading || !termDebounced">
         <div
           class=":uno: flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight"
         >
