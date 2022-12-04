@@ -58,6 +58,7 @@ export default defineComponent({
     <input
       class=":uno: flex-1 block w-full h-full !bg-transparent !outline-none"
       type="text"
+      aria-label="Search"
       ref="inputEl"
       v-model="modelValue"
       v-bind="$attrs"
