@@ -20,7 +20,6 @@ const highlighter = await shiki.getHighlighter({
 const html = highlighter
   .codeToHtml(normalizeText(code), { lang })
   .trim()
-  .replaceAll('\n', '')
   .replace(/^<pre[^>]+><code>/, '')
   .replace('</code></pre>', '')
   .replace(/[{}]/g, (c) => `&#${c.charCodeAt(0)};`);

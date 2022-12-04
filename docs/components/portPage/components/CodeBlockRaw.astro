@@ -5,8 +5,6 @@ interface Props {
 }
 
 const { class: classList, lang } = Astro.props;
-
-// NOTE: we use <div> instead of <pre> because <pre> prevents minification. maybe we should wrap <pre> with <div>?
 ---
 
 <div
@@ -16,12 +14,9 @@ const { class: classList, lang } = Astro.props;
     classList || '',
   ]}
 >
-  <code
-    class=":uno: !whitespace-normal block max-h-60 overflow-auto px-5 py-3"
-    tabindex="0"
-  >
-    <slot />
-  </code>
+  <pre
+    class=":uno: block max-h-80 overflow-auto px-5 py-3"
+    tabindex="0"><code class=":uno: block w-full h-full"><slot /></code></pre>
   <button
     class:list={[
       ':uno: absolute top-2 right-6 select-none transition-all-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded',
