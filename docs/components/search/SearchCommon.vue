@@ -21,6 +21,7 @@ import {
   SEARCH_PAGE_QUERY_KEY,
 } from '../../constants.mjs';
 import SearchBox from './SearchBox.vue';
+import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
 
 const NO_RESULT_ICONS = [
   defineAsyncComponent(() => import('~icons/line-md/cancel')),
@@ -140,6 +141,13 @@ const moveFocusByKey = (event: KeyboardEvent): void => {
   event.stopPropagation();
   moveFocus(offset);
 };
+
+// defer focus to prevent '/' key from being typed
+const deferFocus = (): void => {
+  setTimeout((): void => {
+    searchBoxEl.value?.focus();
+  }, 0);
+};
 </script>
 
 <template>
@@ -157,6 +165,7 @@ const moveFocusByKey = (event: KeyboardEvent): void => {
       :loading="!!term && loadingOrWaiting"
       @keydown="moveFocusByKey"
     />
+    <ShortcutKeyHandler @press="deferFocus" />
     <div class=":uno: overflow-auto text-base">
       <template v-if="loading || !termDebounced">
         <div
