@@ -34,6 +34,8 @@ export const SEARCH_EXAMPLE_TERMS = [
   'websocket',
 ] as const;
 
+export const SEARCH_TERM_DEBOUNCE = 200;
+
 export const SEARCH_MAX_RESULTS_FOR_SUGGEST = 10;
 export const SEARCH_MAX_RESULTS_FOR_POPUP = 5;
 export const SEARCH_MAX_RESULTS_FOR_PAGE = 500;

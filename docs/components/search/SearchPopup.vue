@@ -13,6 +13,7 @@ import {
   SEARCH_EXAMPLE_TERMS,
   SEARCH_MAX_RESULTS_FOR_POPUP,
   SEARCH_NUM_EXAMPLE_TERMS_SHOWN,
+  SEARCH_TERM_DEBOUNCE,
 } from '../../constants.mjs';
 import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
 import SearchBox from './SearchBox.vue';
@@ -45,7 +46,7 @@ const searchBoxEl = shallowRef<typeof SearchBox | null>(null);
 
 const term = useVModel(props, 'modelValue', emit);
 
-const termDebounced = useDebounce(term, 200);
+const termDebounced = useDebounce(term, SEARCH_TERM_DEBOUNCE);
 const { load, loading, results } = useSearch(termDebounced);
 const loadingOrWaiting = computedEager(
   (): boolean => loading.value || termDebounced.value !== term.value
