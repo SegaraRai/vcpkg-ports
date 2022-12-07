@@ -49,7 +49,9 @@ const formattedTitle = formatPageTitle(title);
   </head>
 
   <body>
-    <Header hideSearch={hideSearch} isHome={isHome} />
+    <Header hideSearch={hideSearch} isHome={isHome}>
+      <slot name="header" />
+    </Header>
     <main
       class=":uno: flex-1 w-full max-w-294 px-7 lg:px-12 pt-4 pb-10 mx-auto overflow-hidden"
     >

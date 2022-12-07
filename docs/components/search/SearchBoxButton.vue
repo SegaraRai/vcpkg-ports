@@ -8,6 +8,7 @@ const modifier = ref('Ctrl');
 onMounted((): void => {
   if (
     !import.meta.env.SSR &&
+    typeof navigator !== 'undefined' &&
     /Mac|iPhone|iPod|iPad/i.test(navigator.platform)
   ) {
     modifier.value = '⌘';
@@ -32,7 +33,7 @@ onMounted((): void => {
     <span
       class=":uno: border border-color-[var(--theme-divider)] rounded-sm px-2 py-1 text-sm leading-none lt-sm:hidden"
     >
-      <kbd v-text="`${modifier} K`"></kbd>
+      <kbd v-text="`${modifier} K`" />
     </span>
   </button>
 </template>

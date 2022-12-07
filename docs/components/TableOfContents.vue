@@ -8,7 +8,7 @@ const props = defineProps<{
   highlight?: boolean;
 }>();
 
-const headings2 = computed<MarkdownHeading[]>(() =>
+const headings2 = computed<readonly MarkdownHeading[]>(() =>
   props.headings.filter((h) => h.depth === 2)
 );
 const activeAnchor = useActiveAnchor(headings2);
@@ -27,7 +27,7 @@ const activeAnchor = useActiveAnchor(headings2);
             : '',
         ]"
       >
-        <a :href="`#${heading.slug}`" v-text="heading.text"></a>
+        <a :href="`#${heading.slug}`" v-text="heading.text" />
       </li>
     </template>
   </ul>

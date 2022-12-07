@@ -14,7 +14,7 @@ const LinkElement = isHome ? 'span' : 'a';
 ---
 
 <header
-  class=":uno: flex-none sticky top-0 z-90 flex flex-col items-center justify-center overflow-hidden h-14 bg-[var(--theme-navbar-bg)] w-full"
+  class=":uno: flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-[var(--theme-navbar-bg)] w-full"
 >
   <SkipToContent />
   <nav
@@ -46,7 +46,13 @@ const LinkElement = isHome ? 'span' : 'a';
           </span>
         </LinkElement>
       </div>
-      <div class=":uno: flex items-center justify-end gap-x-4 flex-1 max-w-80">
+      <slot />
+      <div
+        class:list={[
+          ':uno: flex items-center justify-end gap-x-4',
+          hideSearch ? ':uno: flex-none' : ':uno: flex-1 max-w-80',
+        ]}
+      >
         {
           !hideSearch && (
             <div class=":uno: flex-1">

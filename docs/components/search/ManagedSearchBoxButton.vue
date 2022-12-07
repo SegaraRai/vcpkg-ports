@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import SearchBoxButton from './SearchBoxButton.vue';
 import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
-import { useSearchShow } from './managedStore.mjs';
+import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
 
-const show = useSearchShow();
+const show = useGlobalRef('_vpSearchPopup', false);
 
 const showOverlay = (): void => {
   show.value = true;

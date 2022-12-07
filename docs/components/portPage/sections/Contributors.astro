@@ -1,9 +1,9 @@
 ---
-import { CONTRIBUTOR_IMAGE_SIZE } from '../../../../shared/pageConstants.mjs';
 import {
   getContributorAvatarURL,
   toUniqueArray,
 } from '../../../../shared/utils.mjs';
+import { CONTRIBUTOR_IMAGE_SIZE } from '../../../constants.mjs';
 import commitMap from '../../../virtual/commitMap.mjs';
 import SectionWrapper from '../SectionWrapper.astro';
 import ContributorList from '../components/ContributorList.astro';
@@ -49,6 +49,7 @@ const emailHashToGitHubUserMap = new Map<string, string | null>(
   })
 );
 
+// all the contributors counted by emails
 // we only count authors
 const contributorEmailHashes = toUniqueArray(
   resolvedCommits.flatMap(({ author }) => {

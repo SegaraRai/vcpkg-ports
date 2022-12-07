@@ -1,19 +1,20 @@
 <script lang="ts" setup>
-import { useSearchShow, useSearchTerm } from './managedStore.mjs';
 import { defineAsyncComponent, ref, watchEffect } from 'vue';
+import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
 
-const show = useSearchShow();
-const term = useSearchTerm();
 const component = defineAsyncComponent(() => import('./SearchOverlay.vue'));
 
-watchEffect(() => {
+const show = useGlobalRef('_vpSearchPopup', false);
+const term = useGlobalRef('_vpSearchTerm', '');
+
+watchEffect((): void => {
   if (!show.value) {
     term.value = '';
   }
 });
 
 const load = ref(false);
-watchEffect(() => {
+watchEffect((): void => {
   if (show.value) {
     load.value = true;
   }

@@ -10,19 +10,20 @@ import { Ref, computed, ref, watchEffect } from 'vue';
 import { OFFSET_FOR_ACTIVE_ANCHOR } from '../constants.mjs';
 
 export function useActiveAnchor(
-  headings: Readonly<Ref<MarkdownHeading[]>>
+  headings: Readonly<Ref<readonly MarkdownHeading[]>>
 ): Readonly<Ref<string | null>> {
   if (import.meta.env.SSR || typeof window === 'undefined') {
     return ref(null);
   }
 
   const mounted = useMounted();
+  // we have to observe body size because of <details> elements
   const { height } = useElementSize(
-    computed(() => (mounted.value ? document.body : null))
+    computed((): HTMLElement | null => (mounted.value ? document.body : null))
   );
   const headingWithOffset = computedWithControl(
-    () => mounted.value && height.value,
-    () => {
+    (): unknown => mounted.value && height.value,
+    (): readonly (MarkdownHeading & { readonly offset: number })[] => {
       if (!mounted.value) {
         return [];
       }

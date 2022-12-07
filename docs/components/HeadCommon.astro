@@ -12,8 +12,10 @@ import '../styles/theme.css';
 
 <script is:inline>
   // prevent FOUC
+  // note that inlined scripts are embedded as-is, meaning that we can't use TypeScript here
+  // minification is done by the astro-compress integration
   (() => {
-    const configTheme = localStorage?.getItem('theme');
+    const configTheme = window.localStorage?.getItem('theme');
     const isDark =
       !configTheme || configTheme === 'auto'
         ? window.matchMedia('(prefers-color-scheme:dark)').matches

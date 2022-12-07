@@ -1,5 +1,5 @@
 import LinkifyIt from 'linkify-it';
-import { VCPKG_REPO_URL } from '../../../../shared/pageConstants.mjs';
+import { VCPKG_REPO_URL } from '../../../constants.mjs';
 import { escapeAll, renderExternalLink } from './htmlUtils.mjs';
 
 function replaceAndTransform<T>(

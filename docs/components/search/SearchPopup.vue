@@ -5,21 +5,16 @@ import {
   useMounted,
   useVModel,
 } from '@vueuse/core';
-import {
-  computed,
-  defineAsyncComponent,
-  ref,
-  shallowRef,
-  watchEffect,
-} from 'vue';
-import { getPortPageURL } from '../../../shared/pageConstants.mjs';
+import { computed, defineAsyncComponent, shallowRef, watchEffect } from 'vue';
+import { getPortPageURL, getSearchPageURL } from '../../constants.mjs';
 import { pickRandom } from '../../../shared/utils.mjs';
 import { useSearch } from '../../composables/useSearch.mjs';
 import {
   SEARCH_EXAMPLE_TERMS,
+  SEARCH_MAX_RESULTS_FOR_POPUP,
   SEARCH_NUM_EXAMPLE_TERMS_SHOWN,
-  SEARCH_PAGE_QUERY_KEY,
 } from '../../constants.mjs';
+import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
 import SearchBox from './SearchBox.vue';
 import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
 
@@ -37,23 +32,23 @@ const NO_RESULT_ICONS = [
 
 const props = defineProps<{
   modelValue: string;
-  maxResults: number;
-  showMore?: boolean;
-  enableKeys?: boolean;
 }>();
 
 const emit = defineEmits<{
   (e: 'update:modelValue', value: string): void;
+  (e: 'close'): void;
 }>();
 
 const mounted = useMounted();
+
+const searchBoxEl = shallowRef<typeof SearchBox | null>(null);
 
 const term = useVModel(props, 'modelValue', emit);
 
 const termDebounced = useDebounce(term, 200);
 const { load, loading, results } = useSearch(termDebounced);
 const loadingOrWaiting = computedEager(
-  () => loading.value || termDebounced.value !== term.value
+  (): boolean => loading.value || termDebounced.value !== term.value
 );
 
 // lazy load data and fuse
@@ -65,17 +60,17 @@ watchEffect((): void => {
 
 // result slicing
 const resultsSliced = computedEager(() =>
-  results.value.slice(0, props.maxResults)
+  results.value.slice(0, SEARCH_MAX_RESULTS_FOR_POPUP)
 );
 const hasMore = computedEager(
-  () => resultsSliced.value.length < results.value.length
+  (): boolean => resultsSliced.value.length < results.value.length
 );
 
 // example terms
-const exampleTerms = ref(
+const exampleTerms = shallowRef(
   SEARCH_EXAMPLE_TERMS.slice(0, SEARCH_NUM_EXAMPLE_TERMS_SHOWN)
 );
-watchEffect(() => {
+watchEffect((): void => {
   if (mounted.value && !termDebounced.value) {
     exampleTerms.value = pickRandom(
       SEARCH_EXAMPLE_TERMS,
@@ -86,7 +81,7 @@ watchEffect(() => {
 
 // no result icon
 const showNoResult = computed(
-  () => !!termDebounced.value && !results.value.length
+  (): boolean => !!termDebounced.value && !results.value.length
 );
 const noResultIcon = shallowRef(NO_RESULT_ICONS[0]);
 watchEffect((): void => {
@@ -95,52 +90,6 @@ watchEffect((): void => {
       NO_RESULT_ICONS[Math.floor(Math.random() * NO_RESULT_ICONS.length)];
   }
 });
-
-// move focus by ↑ ↓ key
-const searchBoxEl = ref<typeof SearchBox | null>(null);
-const containerEl = ref<HTMLDivElement | null>(null);
-const moveFocus = (offset: number): void => {
-  const tabbableElements = containerEl.value?.querySelectorAll('.tabbable');
-  if (!tabbableElements) {
-    return;
-  }
-  const tabbableElementsArray = Array.from(tabbableElements) as HTMLElement[];
-  const currentFocusIndex = tabbableElementsArray.findIndex(
-    (el) => el === document.activeElement
-  );
-  if (currentFocusIndex < 0) {
-    return;
-  }
-  const nextFocusIndex =
-    (currentFocusIndex + offset + tabbableElementsArray.length) %
-    tabbableElementsArray.length;
-  const nextFocusElement = tabbableElementsArray[nextFocusIndex];
-  setTimeout((): void => {
-    nextFocusElement?.focus();
-  }, 0);
-};
-const moveFocusByKey = (event: KeyboardEvent): void => {
-  if (!props.enableKeys) {
-    return;
-  }
-
-  if ((event.target as HTMLElement | null)?.tagName !== 'INPUT') {
-    if (/^[A-Z]$/i.test(event.key)) {
-      searchBoxEl.value?.focus();
-      return;
-    }
-  }
-
-  const offset =
-    event.key === 'ArrowUp' ? -1 : event.key === 'ArrowDown' ? 1 : 0;
-  if (!offset) {
-    return;
-  }
-
-  event.preventDefault();
-  event.stopPropagation();
-  moveFocus(offset);
-};
 
 // defer focus to prevent '/' key from being typed
 const deferFocus = (): void => {
@@ -155,6 +104,8 @@ const deferFocus = (): void => {
     ref="containerEl"
     class=":uno: w-full max-h-full px-3 py-4 rounded-2 flex flex-col gap-y-4 bg-[var(--theme-bg)] text-lg"
     @click.stop
+    @keydown.escape.prevent.stop="emit('close')"
+    v-focus-by-key
   >
     <SearchBox
       ref="searchBoxEl"
@@ -163,7 +114,7 @@ const deferFocus = (): void => {
       v-model="term"
       focused
       :loading="!!term && loadingOrWaiting"
-      @keydown="moveFocusByKey"
+      @keydown.escape.prevent.stop="term ? (term = '') : emit('close')"
     />
     <ShortcutKeyHandler @press="deferFocus" />
     <div class=":uno: overflow-auto text-base">
@@ -180,7 +131,7 @@ const deferFocus = (): void => {
                   class=":uno: text-[var(--theme-text-accent)]"
                   v-text="example"
                   @click="term = example"
-                ></button>
+                />
               </template>
             </div>
           </template>
@@ -193,12 +144,10 @@ const deferFocus = (): void => {
           <div class=":uno: w-20 h-20 opacity-60">
             <Component :is="noResultIcon" class=":uno: w-full h-full" />
           </div>
-          <div v-text="`No results for ${termDebounced}`"></div>
+          <div v-text="`No results for ${termDebounced}`" />
           <div class=":uno: mt-4 text-sm">
             &raquo;
-            <a class="tabbable link" href="/ports" @keydown="moveFocusByKey">
-              Port Catalog
-            </a>
+            <a class="tabbable link" href="/ports">Port Catalog</a>
           </div>
         </div>
       </template>
@@ -206,28 +155,25 @@ const deferFocus = (): void => {
         <ul
           class=":uno: flex flex-col gap-y-4 mt-2 text-[var(--theme-text-light)]"
         >
-          <template v-for="result in resultsSliced">
+          <template v-for="result in resultsSliced" :key="result.item.name">
             <li class=":uno: block">
               <a
                 :class="[
                   'tabbable',
-                  ':uno: flex flex-col gap-y-1 leading-tight px-2 pt-1 pb-2 rounded hover:bg-[var(--theme-bg-accent)] focus:bg-[var(--theme-bg-accent)]',
+                  ':uno: flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-[var(--theme-bg-accent)] focus:bg-[var(--theme-bg-accent)]',
                 ]"
                 :href="getPortPageURL(result.item.name)"
-                :title="result.item.description"
-                @keydown="moveFocusByKey"
               >
                 <div
                   class=":uno: text-lg font-bold text-[var(--theme-text-accent)]"
-                >
-                  {{ result.item.name }}
-                </div>
+                  v-text="result.item.name"
+                />
                 <template v-if="result.item.description">
                   <div
                     class=":uno: text-sm line-clamp-2 overflow-hidden text-ellipsis"
-                  >
-                    {{ result.item.description }}
-                  </div>
+                    :title="result.item.description"
+                    v-text="result.item.description"
+                  />
                 </template>
                 <template v-else>
                   <div
@@ -240,13 +186,9 @@ const deferFocus = (): void => {
             </li>
           </template>
         </ul>
-        <template v-if="showMore && hasMore">
+        <template v-if="hasMore">
           <div class=":uno: text-left mt-8 px-2 text-sm">
-            <a
-              class="tabbable link"
-              :href="`/#${SEARCH_PAGE_QUERY_KEY}=${encodeURIComponent(term)}`"
-              @keydown="moveFocusByKey"
-            >
+            <a class="tabbable link" :href="getSearchPageURL(term)">
               Browse More
             </a>
           </div>

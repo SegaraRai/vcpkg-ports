@@ -1,6 +1,6 @@
 import type { MarkdownHeading } from 'astro';
 import type { PortContext } from '../../../shared/dataTypes/portContext.mjs';
-import { slugify } from '../../../shared/pageConstants.mjs';
+import { slugify } from '../../constants.mjs';
 
 export interface SectionProps {
   readonly context: PortContext;

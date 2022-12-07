@@ -9,7 +9,13 @@
  */
 export function pluralize(
   count: number,
-  text: `${string}${'commit' | 'dependency' | 'dependent' | 'item' | 'port'}`,
+  text: `${string}${
+    | 'commit'
+    | 'dependency'
+    | 'dependent'
+    | 'item'
+    | 'port'
+    | 'result'}`,
   capitalize = false
 ): string {
   return `${(capitalize ? ['No', 'One'] : ['no', 'one'])[count] || count} ${

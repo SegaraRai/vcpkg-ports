@@ -1,0 +1,21 @@
+---
+import SearchPageContent from '../components/search/SearchPageContent.vue';
+import SearchPageSearchBox from '../components/search/SearchPageSearchBox.vue';
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout hideSearch>
+  <div slot="header" class=":uno: flex-1">
+    <div class=":uno: max-w-140">
+      <SearchPageSearchBox client:idle />
+    </div>
+  </div>
+  <article
+    id="article"
+    class=":uno: h-full overflow-hidden flex flex-col gap-y-4 items-center"
+  >
+    <div class=":uno: flex-1 w-full max-w-160">
+      <SearchPageContent client:load />
+    </div>
+  </article>
+</MainLayout>

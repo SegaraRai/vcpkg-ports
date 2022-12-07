@@ -12,22 +12,24 @@ const useTernaryEager = <T, F>(
   truthy: Readonly<MaybeRef<T>>,
   falsy: Readonly<MaybeRef<F>>
 ): Readonly<Ref<T | F>> =>
-  computedEager(() => (unref(condition) ? unref(truthy) : unref(falsy)));
+  computedEager(
+    (): Readonly<T | F> => (unref(condition) ? unref(truthy) : unref(falsy))
+  );
 
 const mounted = useMounted();
-const timestamp = computedEager(() => props.timestamp);
-const localTime = computedEager(() =>
+const timestamp = computedEager((): string => props.timestamp);
+const localTime = computedEager((): string =>
   new Date(timestamp.value).toLocaleString()
 );
 const timeAgo = useTimeAgo(timestamp);
 const text = useTernaryEager(
   mounted,
   timeAgo,
-  computedEager(() => timestamp.value.replace(/T.+/, ''))
+  computedEager((): string => timestamp.value.replace(/T.+/, ''))
 );
 const textLong = useTernaryEager(
-  computedEager(() => mounted.value && !!props.long),
-  computedEager(() => `(${localTime.value})`),
+  computedEager((): boolean => mounted.value && !!props.long),
+  computedEager((): string => `(${localTime.value})`),
   ref('')
 );
 const title = useTernaryEager(mounted, localTime, timestamp);
@@ -39,13 +41,13 @@ const title = useTernaryEager(mounted, localTime, timestamp);
     :dateTime="timestamp"
     :title="title"
     v-text="text"
-  ></time>
+  />
   <template v-if="textLong">
     <time
       class=":uno: whitespace-nowrap lt-sm:hidden ml-2 opacity-60 text-sm !leading-tight"
       :dateTime="timestamp"
       :title="title"
       v-text="textLong"
-    ></time>
+    />
   </template>
 </template>

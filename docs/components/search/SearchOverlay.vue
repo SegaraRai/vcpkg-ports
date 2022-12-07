@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { useMounted, useVModel } from '@vueuse/core';
 import { watchEffect } from 'vue';
-import SearchCommon from './SearchCommon.vue';
-import { SEARCH_MAX_RESULTS_FOR_OVERLAY } from '../../constants.mjs';
+import SearchPopup from './SearchPopup.vue';
 
 const props = defineProps<{
   modelValue: boolean;
@@ -24,7 +23,11 @@ const close = (): void => {
 
 // no-scroll
 const mounted = useMounted();
-watchEffect(() => {
+watchEffect((): void => {
+  if (import.meta.env.SSR) {
+    return;
+  }
+
   document.body.classList.toggle('no-scroll', mounted.value && show.value);
 });
 </script>
@@ -47,12 +50,7 @@ watchEffect(() => {
         @click="close"
       >
         <div class=":uno: w-full max-w-160 h-full pt-10 lg:pt-20">
-          <SearchCommon
-            v-model="term"
-            :max-results="SEARCH_MAX_RESULTS_FOR_OVERLAY"
-            enable-keys
-            show-more
-          />
+          <SearchPopup v-model="term" @close="close" />
         </div>
       </div>
     </div>

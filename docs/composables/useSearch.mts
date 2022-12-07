@@ -1,11 +1,11 @@
 import { computedEager } from '@vueuse/core';
 import type Fuse from 'fuse.js';
-import { Ref, computed, ref } from 'vue';
+import { Ref, computed, shallowRef } from 'vue';
 import type { DataSearchItem } from '../../shared/dataTypes/searchItem.mjs';
 import { pickRandom } from '../../shared/utils.mjs';
 import { SEARCH_RANDOM_MAX_RESULTS } from '../constants.mjs';
 
-async function createFuseAsync() {
+async function createFuseAsync(nameOnly: boolean) {
   const [{ default: Fuse }, { default: searchItems }] = await Promise.all([
     import('fuse.js'),
     import('../virtual/searchItems.mjs'),
@@ -17,14 +17,18 @@ async function createFuseAsync() {
         name: 'name',
         weight: 1,
       },
-      {
-        name: 'description',
-        weight: 0.75,
-      },
-      {
-        name: 'url',
-        weight: 0.25,
-      },
+      ...(nameOnly
+        ? []
+        : [
+            {
+              name: 'description',
+              weight: 0.75,
+            },
+            {
+              name: 'url',
+              weight: 0.25,
+            },
+          ]),
     ],
     threshold: 0.25,
     isCaseSensitive: false,
@@ -60,28 +64,37 @@ async function createFuseAsync() {
 
 type FuseInstance = Awaited<ReturnType<typeof createFuseAsync>>;
 
-let gFusePromise: Promise<FuseInstance> | undefined;
-function loadFuse(): Promise<FuseInstance> {
-  if (!gFusePromise) {
-    gFusePromise = createFuseAsync();
+const gFusePromiseMap = new Map<boolean, Promise<FuseInstance>>();
+function loadFuse(nameOnly: boolean): Promise<FuseInstance> {
+  let instance = gFusePromiseMap.get(nameOnly);
+  if (!instance) {
+    instance = createFuseAsync(nameOnly);
+    gFusePromiseMap.set(nameOnly, instance);
   }
-  return gFusePromise;
+  return instance;
 }
 
-export function useSearch(query: Readonly<Ref<string | null | undefined>>) {
-  const fuse = ref<FuseInstance | undefined>();
-  gFusePromise?.then((f): void => {
+export function useSearch(
+  query: Readonly<Ref<string | null | undefined>>,
+  nameOnly = false,
+  eager = false
+) {
+  const fuse = shallowRef<FuseInstance | undefined>();
+  if (eager) {
+    loadFuse(nameOnly);
+  }
+  gFusePromiseMap.get(nameOnly)?.then((f): void => {
     fuse.value = f;
   });
 
   return {
-    loading: computedEager(() => !fuse.value),
+    loading: computedEager((): boolean => !fuse.value),
     results: computed(
       (): Fuse.FuseResult<DataSearchItem>[] =>
         (query.value?.trim() && fuse.value?.search(query.value.trim())) || []
     ),
     load: async (): Promise<void> => {
-      if (fuse.value || gFusePromise) {
+      if (fuse.value || gFusePromiseMap.has(nameOnly)) {
         return;
       }
       if (import.meta.env.SSR || typeof window === 'undefined') {
@@ -89,7 +102,7 @@ export function useSearch(query: Readonly<Ref<string | null | undefined>>) {
         console.info('Skip loading fuse.js in SSR/SSG');
         return;
       }
-      fuse.value = await loadFuse();
+      fuse.value = await loadFuse(nameOnly);
     },
   };
 }

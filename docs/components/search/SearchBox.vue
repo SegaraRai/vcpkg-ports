@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { computedEager, useFocus, useVModel } from '@vueuse/core';
-import { defineComponent, onMounted, ref } from 'vue';
+import { defineComponent, onMounted, shallowRef } from 'vue';
 import IconSearch from '~icons/line-md/search';
 
 const props = defineProps<{
@@ -17,16 +17,19 @@ const emit = defineEmits<{
 
 const modelValue = useVModel(props, 'modelValue', emit);
 
-const inputEl = ref<HTMLInputElement | null>(null);
+const inputEl = shallowRef<HTMLInputElement | null>(null);
 const { focused } = useFocus(inputEl);
 
-const wrapperClassEx = computedEager(() =>
+const wrapperClassEx = computedEager((): string =>
   focused.value
     ? ':uno: light:border-orange-500/70 light:bg-black/1 dark:border-orange-400/70 dark:bg-white/5'
     : ':uno: light:border-black/20 light:hover:border-orange-500/70 light:bg-black/0 light:hover:bg-black/1 dark:border-white/50 dark:hover:border-orange-400/70 dark:bg-white/2 dark:hover:bg-white/5'
 );
 
 defineExpose({
+  blur: (): void => {
+    focused.value = false;
+  },
   focus: (): void => {
     focused.value = true;
   },
@@ -57,7 +60,7 @@ export default defineComponent({
     </span>
     <input
       class=":uno: flex-1 block w-full h-full !bg-transparent !outline-none"
-      type="text"
+      type="search"
       aria-label="Search"
       ref="inputEl"
       v-model="modelValue"
