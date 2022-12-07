@@ -85,7 +85,7 @@ const close = (focus?: boolean): void => {
       :loading="!!term && loadingOrWaiting"
       @keydown.arrow-down="deferShow"
       @keydown.arrow-up="deferShow"
-      @keydown.escape.stop="close(show)"
+      @keydown.escape.stop="term ? (term = '') : close(show)"
       @keydown.enter.stop="close(false), emit('search', term)"
     />
     <ShortcutKeyHandler @press="deferFocus()" />
