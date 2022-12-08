@@ -52,7 +52,7 @@ export default defineComponent({
 
 <template>
   <label
-    class=":uno: w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-1.25 transition-colors"
+    class=":uno: w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-1.25 transition-colors select-none"
     :class="[wrapperClass, wrapperClassEx]"
   >
     <span class=":uno: flex-none block opacity-80 w-1.25em h-1.25em ml-0.5">

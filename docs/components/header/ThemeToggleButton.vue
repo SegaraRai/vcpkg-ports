@@ -11,7 +11,7 @@ const toggleDark = useToggle(isDark);
 
 <template>
   <div
-    class=":uno: block !w-8 !h-8 p-1.5 rounded-full transition-colors-200 !bg-opacity-0 hover:!bg-opacity-20 bg-white"
+    class=":uno: block !w-8 !h-8 p-1.5 rounded-full transition-colors-200 !bg-opacity-0 hover:!bg-opacity-20 bg-white select-none"
   >
     <button
       class=":uno: block !w-full !h-full light:text-true-gray-600 i-lucide-moon dark:i-lucide-sun"
