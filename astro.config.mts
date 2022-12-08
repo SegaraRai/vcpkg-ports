@@ -7,7 +7,7 @@ import icons from 'unplugin-icons/vite';
 import { CSP_HEADER_VALUE, DATA_HISTORY_FILE } from './scripts/constants.mjs';
 import { readJSON } from './scripts/jsonUtils.mjs';
 import copyOGImages from './scripts/plugins/copyOGImages.mjs';
-import postprocessHeaders from './scripts/plugins/postprocessHeaders.mjs';
+import postprocess from './scripts/plugins/postprocess.mjs';
 import virtualDataLoader from './scripts/plugins/virtualDataLoader.mjs';
 import type { DataHistory } from './shared/dataTypes/history.mjs';
 import { filenameToPortName } from './shared/pageConstants.mjs';
@@ -81,7 +81,7 @@ export default defineConfig({
         multipass: true,
       },
     }),
-    postprocessHeaders(),
+    postprocess(),
     copyOGImages(),
   ],
   vite: {

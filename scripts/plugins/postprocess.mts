@@ -4,6 +4,7 @@ import path from 'node:path';
 import { env } from 'node:process';
 import { fileURLToPath } from 'url';
 import type { AstroConfig, AstroIntegration } from 'astro';
+import Critters from 'critters';
 import fg from 'fast-glob';
 import { asyncForeach } from '../../shared/asyncUtils.mjs';
 import { replaceTemplates } from '../../shared/templateProcessor.mjs';
@@ -27,19 +28,55 @@ function extractScripts(content: string, set: Set<string>): void {
   }
 }
 
-function extractStyles(content: string, set: Set<string>): void {
-  for (const [, code] of content.matchAll(/<style[^>]*>(.*?)<\/style>/gs)) {
-    if (code) {
-      set.add(code);
-    }
-  }
+async function processHTML(
+  filename: string,
+  outDir: string,
+  critters: Critters
+): Promise<void> {
+  const filepath = path.join(outDir, filename);
+
+  let content = await fsp.readFile(filepath, 'utf-8');
+
+  // add theme classes to inline color schemes by theme
+  content = content.replaceAll(
+    'HTML_ROOT_CLASS_PLACEHOLDER',
+    'HTML_ROOT_CLASS_P_BEGIN theme-dark theme-light HTML_ROOT_CLASS_P_END'
+  );
+
+  content = await critters.process(content);
+
+  // remove theme classes
+  content = content.replaceAll(
+    /HTML_ROOT_CLASS_P_BEGIN theme-dark theme-light HTML_ROOT_CLASS_P_END\s*/g,
+    ''
+  );
+
+  const scriptSet = new Set<string>();
+  extractScripts(content, scriptSet);
+
+  // Cloudflare Pages do not send too long header
+  // so we have to embed long parts to the HTML files, rather than headers
+  const metaCSPValue = [
+    `script-src 'self' 'unsafe-inline' static.cloudflareinsights.com${[
+      ...scriptSet,
+    ]
+      .map((t) => ` ${generateCSPHash(t)}`)
+      .sort()
+      .join('')}`,
+  ].join('; ');
+  const cspTag = `<meta content="${metaCSPValue}" http-equiv=Content-Security-Policy>`;
+
+  await fsp.writeFile(
+    filepath,
+    content.replace('<!--#__CSP_PLACEHOLDER__#-->', cspTag)
+  );
 }
 
-export default function postprocessHeaders(): AstroIntegration {
+export default function postprocess(): AstroIntegration {
   let config: AstroConfig;
 
   return {
-    name: 'vp-postprocess-headers',
+    name: 'vp-postprocess',
     hooks: {
       'astro:config:done': (options) => {
         ({ config } = options);
@@ -50,27 +87,9 @@ export default function postprocessHeaders(): AstroIntegration {
         const outDir = fileURLToPath(config.outDir);
         const headersFilepath = path.join(outDir, HEADERS_FILENAME);
 
-        const scriptSet = new Set<string>();
-        const styleSet = new Set<string>();
-
         const htmlFilenames = await fg('**/*.{html,htm}', {
           cwd: outDir,
         });
-        await asyncForeach(
-          htmlFilenames,
-          async (filename) => {
-            const content = await fsp.readFile(
-              path.join(outDir, filename),
-              'utf-8'
-            );
-            extractScripts(content, scriptSet);
-            extractStyles(content, styleSet);
-          },
-          CONCURRENCY
-        );
-
-        // eslint-disable-next-line no-console
-        console.info(`Scanned ${htmlFilenames.length} HTML files`);
 
         const nextMidnight = new Date();
         nextMidnight.setUTCHours(24, 0, 0, 0);
@@ -96,36 +115,35 @@ export default function postprocessHeaders(): AstroIntegration {
           replacements
         );
 
-        // Cloudflare Pages do not send too long header
-        // so we have to embed long parts to the HTML files, rather than headers
+        const critters = new Critters({
+          path: outDir,
+          logLevel: 'warn',
+          external: true,
+          preloadFonts: true,
+          inlineFonts: false,
+          minimumExternalSize: 2048,
+        });
 
-        const metaCSPValue = [
-          `script-src 'self' 'unsafe-inline' static.cloudflareinsights.com${[
-            ...scriptSet,
-          ]
-            .map((t) => ` ${generateCSPHash(t)}`)
-            .sort()
-            .join('')}`,
-          /*
-          // we disable style-src hashes as it seems to break some styles
-          `style-src 'self' 'unsafe-inline'${[...styleSet]
-            .map((t) => ` ${generateCSPHash(t)}`)
-            .sort()
-            .join('')}`,
-          //*/
-        ].join('; ');
+        const cache = new Map<string, Promise<string>>();
+        critters.readFile = (filename): Promise<string> => {
+          let promise = cache.get(filename);
+          if (!promise) {
+            promise = fsp.readFile(filename, 'utf-8').then((code): string =>
+              // avoid inlining too large icons
+              code.replace(
+                /(?<=[\s;{])(?:background|--un-icon)\s*:\s*url\s*\(\s*["']data:[\s\S]+?["']\)[^};]*(?:;|(?=}))/g,
+                (match): string => (match.length <= 256 ? match : '')
+              )
+            );
+            cache.set(filename, promise);
+          }
+          return promise;
+        };
 
-        const cspTag = `<meta content="${metaCSPValue}" http-equiv=Content-Security-Policy>`;
+        // process HTML files
         await asyncForeach(
           htmlFilenames,
-          async (filename) => {
-            const filepath = path.join(outDir, filename);
-            const content = await fsp.readFile(filepath, 'utf-8');
-            await fsp.writeFile(
-              filepath,
-              content.replace('<!--#__CSP_PLACEHOLDER__#-->', cspTag)
-            );
-          },
+          (filename) => processHTML(filename, outDir, critters),
           CONCURRENCY
         );
 
