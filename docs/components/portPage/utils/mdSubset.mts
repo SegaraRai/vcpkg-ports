@@ -97,7 +97,10 @@ export function renderMarkdownSubset(
       (chunk) => ({
         type: 'inlineCodeBlock',
         chunks: [], // empty chunks means no further processing
-        render: () => `<code>${escapeAll(unwrapInlineCodeBlock(chunk))}</code>`,
+        render: () =>
+          `<code translate="no">${escapeAll(
+            unwrapInlineCodeBlock(chunk)
+          )}</code>`,
       })
     );
   }

@@ -32,7 +32,7 @@ const licenseText = fileContents.find(([filename]) =>
   <p>
     {
       licenseSpec ? (
-        <code set:text={licenseSpec} />
+        <code translate="no" set:text={licenseSpec} />
       ) : (
         <em set:text={licenseSpec === null ? 'Unspecified' : 'Unknown'} />
       )
@@ -46,7 +46,11 @@ const licenseText = fileContents.find(([filename]) =>
       >
         {foundLicenses.map((license) => (
           <li>
-            <LinkExternal href={license.url} set:text={license.name} />
+            <LinkExternal
+              href={license.url}
+              translate={null}
+              set:text={license.name}
+            />
           </li>
         ))}
       </ul>

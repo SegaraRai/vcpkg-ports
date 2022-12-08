@@ -99,6 +99,7 @@ const close = (focus?: boolean): void => {
       >
         <ul
           class=":uno: flex flex-col text-[var(--theme-text-light)]"
+          translate="no"
           v-on-click-outside="() => close(false)"
           @keydown.escape.prevent.stop="close(true)"
         >

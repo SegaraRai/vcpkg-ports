@@ -1,4 +1,6 @@
 ---
+import LinkExternal from '../../LinkExternal.astro';
+
 interface Props {
   readonly class?: any;
   readonly filename: string;
@@ -38,12 +40,8 @@ const icon = /^\.+$|\/$/.test(filename)
 >
   <div class:list={[':uno: flex-none text-lg', icon]}></div>
   <div class=":uno: flex-1">
-    <a
-      class=":uno: whitespace-pre"
-      href={href}
-      target="_blank"
-      rel="noreferrer"
-      set:text={filename.replace(/\/+$/, '')}
-    />
+    <LinkExternal class=":uno: whitespace-nowrap" href={href}>
+      {filename.replace(/\/+$/, '')}
+    </LinkExternal>
   </div>
 </li>

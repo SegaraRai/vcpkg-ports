@@ -27,14 +27,16 @@ const defaultFeatures = (context.manifest['default-features'] || [])
           {defaultFeatures.length ? (
             <>
               {`Default feature${defaultFeatures.length > 1 ? 's' : ''}: `}
-              {defaultFeatures.map((featureName, i) => (
-                <>
-                  {!!i && ', '}
-                  <a class="link" href={`#${getFeatureSlug(featureName)}`}>
-                    <code class="code" set:text={featureName} />
-                  </a>
-                </>
-              ))}
+              <span translate="no">
+                {defaultFeatures.map((featureName, i) => (
+                  <>
+                    {!!i && ', '}
+                    <a href={`#${getFeatureSlug(featureName)}`}>
+                      <code translate="no" set:text={featureName} />
+                    </a>
+                  </>
+                ))}
+              </span>
             </>
           ) : (
             <em>No default features set.</em>

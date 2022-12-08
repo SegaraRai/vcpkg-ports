@@ -4,9 +4,10 @@ import type { SectionSubset } from './defineSection.mjs';
 
 interface Props {
   readonly section: SectionSubset;
+  readonly translate?: 'yes' | 'no' | null | undefined;
 }
 
-const { section } = Astro.props;
+const { section, translate } = Astro.props;
 const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
 ---
 
@@ -22,7 +23,7 @@ const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
         text={section.title}
       />
       <slot name="heading-before" />
-      {section.title}
+      <span translate={translate} set:text={section.title} />
       <slot name="heading-after" />
     </HeadingTag>
   )

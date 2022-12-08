@@ -130,6 +130,7 @@ const deferFocus = (): void => {
               <template v-for="example in exampleTerms" :key="example">
                 <button
                   class=":uno: text-[var(--theme-text-accent)]"
+                  translate="no"
                   v-text="example"
                   @click="term = example"
                 />
@@ -167,6 +168,7 @@ const deferFocus = (): void => {
               >
                 <div
                   class=":uno: text-lg font-bold text-[var(--theme-text-accent)]"
+                  translate="no"
                   v-text="result.item.name"
                 />
                 <template v-if="result.item.description">

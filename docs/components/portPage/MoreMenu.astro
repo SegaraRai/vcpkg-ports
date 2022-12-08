@@ -1,19 +1,20 @@
 ---
 import { VCPKG_PORTS_REPO_URL, VCPKG_REPO_URL } from '../../constants.mjs';
+import LinkExternal from '../LinkExternal.astro';
 ---
 
 <h2 class="heading">More</h2>
-<ul class="plain-list">
+<ul class="plain-list" translate="no">
   <li class="header-link depth-2">
-    <a href={VCPKG_REPO_URL} target="_blank" rel="noreferrer">
+    <LinkExternal href={VCPKG_REPO_URL}>
       <sppn class=":uno: flex-none block w-5 h-5 i-mdi-github"></sppn>
       <span>vcpkg</span>
-    </a>
+    </LinkExternal>
   </li>
   <li class="header-link depth-2">
-    <a href={VCPKG_PORTS_REPO_URL} target="_blank" rel="noreferrer">
+    <LinkExternal href={VCPKG_PORTS_REPO_URL}>
       <sppn class=":uno: flex-none block w-5 h-5 i-mdi-github"></sppn>
       <span>vcpkg-ports</span>
-    </a>
+    </LinkExternal>
   </li>
 </ul>

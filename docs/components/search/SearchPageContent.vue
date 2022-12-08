@@ -123,7 +123,7 @@ onMounted((): (() => void) => {
         <div v-text="`No results for ${term}`" />
         <div class=":uno: mt-4 text-sm">
           &raquo;
-          <a class="tabbable link" href="/ports"> Port Catalog </a>
+          <a class="tabbable link" href="/ports">Port Catalog</a>
         </div>
       </div>
     </template>
@@ -144,7 +144,7 @@ onMounted((): (() => void) => {
         <template v-for="result in resultsSliced" :key="result.item.name">
           <li class=":uno: block">
             <div class=":uno: flex flex-col gap-y-1 leading-tight">
-              <div class=":uno: overflow-hidden text-ellipsis">
+              <div class=":uno: overflow-hidden text-ellipsis" translate="no">
                 <a
                   :class="['link', ':uno: text-lg !font-bold mr-2']"
                   :href="getPortPageURL(result.item.name)"

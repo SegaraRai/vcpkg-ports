@@ -16,7 +16,7 @@ const { class: classList, lang } = Astro.props;
 >
   <pre
     class=":uno: block max-h-80 overflow-auto px-5 py-3"
-    tabindex="0"><code class=":uno: block w-full h-full"><slot /></code></pre>
+    tabindex="0"><code class=":uno: block w-full h-full" translate="no"><slot /></code></pre>
   <button
     class:list={[
       ':uno: absolute top-2 right-6 select-none transition-all-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded',
@@ -36,6 +36,7 @@ const { class: classList, lang } = Astro.props;
             ':uno: block absolute top-0 right-1 pointer-events-none transition-opacity-250',
             'lang',
           ]}
+          translate="no"
           set:text={lang}
         />
       )

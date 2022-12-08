@@ -2,16 +2,18 @@
 interface Props {
   readonly class?: any;
   readonly href: string;
+  readonly translate?: 'yes' | 'no' | null | undefined;
 }
 
-const { class: classList, href } = Astro.props;
+const { class: classList, href, translate = 'no' } = Astro.props;
 ---
 
 <a
-  class:list={['link', classList || '']}
+  class:list={classList}
   href={href}
   target="_blank"
   rel="noreferrer"
+  translate={translate}
 >
   <slot set:text={href} />
 </a>

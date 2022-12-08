@@ -6,17 +6,24 @@ interface Props {
   readonly class?: any;
   readonly commit: string;
   readonly type?: 'commit' | 'tree' | undefined;
+  readonly translate?: 'yes' | 'no' | null | undefined;
 }
 
-const { class: classList, commit, type = 'commit' } = Astro.props;
+const {
+  class: classList,
+  commit,
+  type = 'commit',
+  translate = 'no',
+} = Astro.props;
 const shortCommit = shortenCommitId(commit);
 ---
 
 <a
-  class:list={['link', classList || '']}
+  class:list={classList}
   href={`${VCPKG_REPO_URL}/${type}/${commit}`}
   target="_blank"
   rel="noreferrer"
+  translate={translate}
 >
   <slot>
     <code class="code" set:text={shortCommit} />

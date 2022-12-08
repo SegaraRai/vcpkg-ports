@@ -59,7 +59,7 @@ const htmlDescription = renderMarkdownSubset(
 );
 ---
 
-<SectionWrapper section={section}>
+<SectionWrapper section={section} translate="no">
   {isDefaultFeature && <DefaultFeatureBadge slot="heading-after" />}
 
   {
@@ -75,10 +75,10 @@ const htmlDescription = renderMarkdownSubset(
     !!supports && !!feature.supports && (
       <details class="port-feature-supports narrow">
         <summary>
-          <em>Supports:</em> <code set:text={feature.supports} />
+          <em>Supports:</em> <code translate="no" set:text={feature.supports} />
         </summary>
         {!!supports.supportedMinified && !!supports.unsupportedMinified && (
-          <div class=":uno: mb-4">
+          <div class=":uno: mb-4" translate="no">
             <ul
               class:list={[
                 'plain-list',

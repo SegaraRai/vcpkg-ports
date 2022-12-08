@@ -31,7 +31,7 @@ const allSupported = !manifest.supports || manifest.supports === 'native';
   {
     !!manifest.supports && (
       <p>
-        <code set:text={manifest.supports} />
+        <code translate="no" set:text={manifest.supports} />
         {hostOnly && <HostOnlyBadge />}
       </p>
     )
@@ -49,6 +49,7 @@ const allSupported = !manifest.supports || manifest.supports === 'native';
             'plain-list',
             ':uno: my-2 flex flex-col gap-y-1 leading-tight',
           ]}
+          translate="no"
         >
           {supportedMinified.map((triplet) => (
             <SupportedListItem triplet={triplet} />

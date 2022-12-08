@@ -18,11 +18,14 @@ export function escapeAll(
 export function renderExternalLink(
   url: string,
   text?: string,
-  code = false
+  code = false,
+  translate: 'yes' | 'no' | null | undefined = 'no'
 ): string {
   return `<a class="link" href="${escapeAll(
     url
-  )}" target="_blank" rel="noreferrer">${
-    code ? '<code class="code">' : ''
-  }${escapeAll(text || url)}${code ? '</code>' : ''}</a>`;
+  )}" target="_blank" rel="noreferrer"${
+    translate != null ? ` translate="${translate}"` : ''
+  }>${code ? '<code class="code">' : ''}${escapeAll(text || url)}${
+    code ? '</code>' : ''
+  }</a>`;
 }

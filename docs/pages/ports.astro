@@ -1,6 +1,6 @@
 ---
 import HeadingAnchor from '../components/HeadingAnchor.astro';
-import { getPortPageURL } from '../constants.mjs';
+import LinkPortPage from '../components/LinkPortPage.astro';
 import MainLayout from '../layouts/MainLayout.astro';
 import portNames from '../virtual/portNames.mjs';
 
@@ -21,7 +21,7 @@ const categories = [...'#ABCDEFGHJIJKLMNOPQRSTUVWXYZ'].map((letter) => {
 <MainLayout title="Port Catalog" description="List of ports in vcpkg">
   <article id="article">
     <h1 class=":uno: mb-8 text-4xl font-bold">Port Catalog</h1>
-    <div class=":uno: columns-[12rem]">
+    <div class=":uno: columns-[12rem]" translate="no">
       {
         categories.map(({ slug, title, portNames }) => (
           <>
@@ -40,11 +40,7 @@ const categories = [...'#ABCDEFGHJIJKLMNOPQRSTUVWXYZ'].map((letter) => {
             >
               {portNames.map((portName) => (
                 <li>
-                  <a
-                    class="link"
-                    href={getPortPageURL(portName)}
-                    set:text={portName}
-                  />
+                  <LinkPortPage class="link" translate={null} port={portName} />
                 </li>
               ))}
             </ol>

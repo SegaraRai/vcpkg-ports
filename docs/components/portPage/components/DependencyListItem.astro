@@ -50,14 +50,14 @@ const hasDetails =
         <LinkPortPage port={dependency.name} />
       ) : (
         <>
-          {dependency.name}
+          <span translate="no" set:text={dependency.name} />
           <WarningBadge title="Dependency not found in vcpkg repository." />
         </>
       )
     }
     {
       !!dependency['version>='] && (
-        <code set:text={`>= v${dependency['version>=']}`} />
+        <code translate="no" set:text={`>= v${dependency['version>=']}`} />
       )
     }
     {
@@ -79,7 +79,7 @@ const hasDetails =
         {
           !!dependency.platform && (
             <>
-              Platforms: <code set:text={dependency.platform} />
+              Platforms: <code translate="no" set:text={dependency.platform} />
               <br />
             </>
           )
@@ -90,12 +90,14 @@ const hasDetails =
             <>
               Features:{' '}
               {featureNames.length ? (
-                featureNames.map((featureName, i) => (
-                  <>
-                    {!!i && ', '}
-                    <code set:text={featureName} />
-                  </>
-                ))
+                <span translate="no">
+                  {featureNames.map((featureName, i) => (
+                    <>
+                      {!!i && ', '}
+                      <code translate="no" set:text={featureName} />
+                    </>
+                  ))}
+                </span>
               ) : (
                 <em>(none)</em>
               )}
