@@ -1,5 +1,5 @@
 {
-  "version": "163fe7bd3d67c41200617caaa245b5ba2ba854e6",
+  "version": "30a20e8f15ff26eec665205dea52f4ffc6f0814b",
   "ports": [
     {
       "name": "3fd",
@@ -15756,7 +15756,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.4.0"
+        "version-semver": "0.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -18276,7 +18276,7 @@
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
-        "version": "0.11.2"
+        "version": "0.11.3"
       },
       "files": [
         "portfile.cmake",
@@ -19429,7 +19429,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.6.0"
+        "version-semver": "3.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -21022,7 +21022,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-19"
+        "version-date": "2022-12-04"
       },
       "files": [
         "portfile.cmake",
@@ -21094,6 +21094,7 @@
       "name": "dlfcn-win32",
       "manifest": {
         "name": "dlfcn-win32",
+        "port-version": 1,
         "description": "dlfcn-win32 is an implementation of dlfcn for Windows.",
         "homepage": "https://github.com/dlfcn-win32/dlfcn-win32",
         "license": "MIT",
@@ -21101,6 +21102,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -25803,7 +25808,7 @@
             "host": true
           }
         ],
-        "version": "1.14.1"
+        "version": "1.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -26335,10 +26340,17 @@
       "name": "geotrans",
       "manifest": {
         "name": "geotrans",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GEOTRANS is an application that allows you to convert geographic coordinates among a wide variety of coordinate systems, map projections, grids, and datums. GEOTRANS runs in Microsoft Windows and LINUX environments.",
         "homepage": "https://earth-info.nga.mil/GandG/update/index.php?action=home",
+        "license": null,
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version": "3.8"
       },
       "files": [
@@ -40085,7 +40097,6 @@
       "name": "libpng",
       "manifest": {
         "name": "libpng",
-        "port-version": 1,
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
         "homepage": "https://github.com/glennrp/libpng",
         "license": "libpng-2.0",
@@ -40105,7 +40116,7 @@
             "description": "This is backward compatible with the regular libpng, both in library usage and format"
           }
         },
-        "version": "1.6.38"
+        "version": "1.6.39"
       },
       "files": [
         "cmake.patch",
@@ -43703,7 +43714,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-07-14"
+        "version-date": "2022-12-01"
       },
       "files": [
         "CMakeLists.txt",
@@ -43828,6 +43839,7 @@
       "name": "llhttp",
       "manifest": {
         "name": "llhttp",
+        "port-version": 1,
         "description": "Port of http_parser to llparse.",
         "homepage": "https://github.com/nodejs/llhttp",
         "license": "MIT",
@@ -49063,7 +49075,7 @@
             "host": true
           }
         ],
-        "version": "4.3.7"
+        "version": "4.3.9"
       },
       "files": [
         "fix-cmakefile.patch",
@@ -52192,7 +52204,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 15,
+        "port-version": 16,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -52351,7 +52363,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 3,
+        "port-version": 5,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -52671,6 +52683,7 @@
         "0013-fix-ceres.patch",
         "0016-fix-freetype-contrib.patch",
         "0018-fix-depend-tesseract.patch",
+        "fix-tbb-error.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -52680,7 +52693,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 9,
+        "port-version": 10,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -57153,14 +57166,13 @@
             "description": "Build tools"
           }
         },
-        "version": "9.1.0"
+        "version": "9.1.1"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
         "fix-win-output-name.patch",
         "portfile.cmake",
         "remove-doc.patch",
-        "tools-cmake.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -57386,6 +57398,7 @@
         "name": "protopuf",
         "description": "A little, highly templated, and protobuf-compatible serialization/deserialization library written in C++20",
         "homepage": "https://github.com/PragmaTwice/protopuf",
+        "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -57396,7 +57409,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -59923,7 +59936,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62036,7 +62049,7 @@
       "name": "quazip",
       "manifest": {
         "name": "quazip",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt/C++ wrapper over minizip",
         "homepage": "https://stachenov.github.io/quazip/",
         "license": "LGPL-2.1-or-later",
@@ -62128,7 +62141,7 @@
             "host": true
           }
         ],
-        "version": "2.4.2"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -63371,9 +63384,10 @@
       "name": "rocksdb",
       "manifest": {
         "name": "rocksdb",
+        "port-version": 1,
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/facebook/rocksdb",
-        "license": "GPL-2.0-only AND Apache-2.0",
+        "license": "GPL-2.0-only OR Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -64687,6 +64701,7 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
+        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -66114,6 +66129,36 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "smf",
+      "manifest": {
+        "name": "smf",
+        "description": "State machine framework",
+        "homepage": "https://github.com/vpetrigo/smf",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "hierarchical": {
+            "description": "Enable hierarchical state machine support"
+          }
+        },
+        "version": "0.1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -67547,6 +67592,20 @@
           "zlib"
         ],
         "version-semver": "0.9.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sse2neon",
+      "manifest": {
+        "name": "sse2neon",
+        "description": "A translator from Intel SSE intrinsics to Arm/Aarch64 NEON implementation",
+        "homepage": "https://github.com/DLTcollab/sse2neon",
+        "license": "MIT",
+        "version-semver": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -69395,13 +69454,14 @@
         "name": "tl-ranges",
         "description": "Ranges that didn't make C++20",
         "homepage": "https://tl.tartanllama.xyz",
+        "license": "CC0-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2021-12-02"
+        "version-date": "2022-12-07"
       },
       "files": [
         "portfile.cmake",
@@ -74588,7 +74648,7 @@
       "name": "zstd",
       "manifest": {
         "name": "zstd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Zstandard - Fast real-time compression algorithm",
         "homepage": "https://facebook.github.io/zstd/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
