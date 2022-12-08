@@ -22,7 +22,7 @@
     "validate:manifests": "tsx scripts/bin/validatePortManifests.mts",
     "validate:sync": "tsx scripts/bin/checkDataSync.mts",
     "sync:deps": "taze -w major && pnpm i && pnpm update --latest",
-    "sync:vcpkg": "cd .vcpkg && git fetch --deepen=2 && git fetch origin && git reset --hard origin/master && cd .. && pnpm run validate:manifests && pnpm run generate:data",
+    "sync:vcpkg": "cd .vcpkg && git pull --ff-only --depth=40 && cd .. && pnpm run validate:manifests && pnpm run generate:data",
     "typecheck": "astro check && vue-tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
