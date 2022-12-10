@@ -1,5 +1,5 @@
 {
-  "version": "5402d24c77889c7cb70691f0abb0df1a262b6f55",
+  "version": "cf1fda5443f2acfa976d5bda70c50fa22c26fe80",
   "ports": [
     {
       "name": "3fd",
@@ -18311,8 +18311,10 @@
       "name": "cpp-jwt",
       "manifest": {
         "name": "cpp-jwt",
+        "port-version": 1,
         "description": "JSON Web Token library for C++",
         "homepage": "https://github.com/arun11299/cpp-jwt",
+        "license": "MIT",
         "dependencies": [
           "nlohmann-json",
           "openssl",
@@ -26424,7 +26426,7 @@
       "name": "getopt-win32",
       "manifest": {
         "name": "getopt-win32",
-        "port-version": 4,
+        "port-version": 5,
         "description": "An implementation of getopt.",
         "homepage": "https://github.com/libimobiledevice-win32/getopt",
         "license": "LGPL-3.0-only",
@@ -26432,6 +26434,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -26441,6 +26447,7 @@
         "CMakeLists.txt",
         "getopt.h.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -43071,7 +43078,6 @@
       "name": "libxpm",
       "manifest": {
         "name": "libxpm",
-        "port-version": 2,
         "description": "XPM format pixmap library",
         "homepage": "https://github.com/freedesktop/libXpm",
         "license": "MIT",
@@ -43099,7 +43105,7 @@
             ]
           }
         },
-        "version": "3.5.11"
+        "version": "3.5.14"
       },
       "files": [
         "fix-dependency-gettext.patch",
@@ -59648,13 +59654,15 @@
       "name": "qt5-webglplugin",
       "manifest": {
         "name": "qt5-webglplugin",
-        "description": "Qt5 webglplugin Module;",
+        "port-version": 1,
+        "description": "Qt5 Webglplugin Module",
         "license": null,
         "dependencies": [
           {
             "name": "qt5-base",
             "default-features": false
-          }
+          },
+          "qt5-websockets"
         ],
         "version": "5.15.7"
       },
