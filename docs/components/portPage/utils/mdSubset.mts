@@ -75,14 +75,14 @@ export interface RenderMarkdownSubsetOptions {
  */
 export function renderMarkdownSubset(
   text: string,
-  options: RenderMarkdownSubsetOptions = {
-    linkify: true,
-    inlineCodeBlock: true,
-    githubIssues: false,
-    newline: 'space',
-  }
+  options?: RenderMarkdownSubsetOptions
 ): string {
-  const { linkify, inlineCodeBlock, githubIssues, newline } = options;
+  const {
+    linkify = true,
+    inlineCodeBlock = true,
+    githubIssues = false,
+    newline = 'space',
+  } = options || {};
   let rootChunk: Chunk = {
     type: 'root',
     chunks: [text],
