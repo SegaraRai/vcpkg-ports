@@ -1,7 +1,7 @@
 ---
 import SectionWrapper from '../SectionWrapper.astro';
+import MarkdownSubset from '../components/MarkdownSubset.astro';
 import { SectionProps, defineSection } from '../defineSection.mjs';
-import { renderMarkdownSubset } from '../utils/mdSubset.mjs';
 
 type Props = SectionProps;
 
@@ -14,17 +14,16 @@ const {
   context: { description },
   section,
 } = Astro.props;
-
-const html = description
-  ? renderMarkdownSubset(description, {
-      newline: 'break',
-    })
-  : undefined;
 ---
 
 <SectionWrapper section={section}>
   {
-    // eslint-disable-next-line astro/no-set-html-directive
-    !!html && <p class=":uno: overflow-hidden text-ellipsis" set:html={html} />
+    !!description && (
+      <MarkdownSubset
+        class=":uno: overflow-hidden text-ellipsis"
+        content={description}
+        newline="break"
+      />
+    )
   }
 </SectionWrapper>

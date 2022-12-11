@@ -8,7 +8,6 @@ import SectionWrapper from '../SectionWrapper.astro';
 import ChangelogList from '../components/ChangelogList.astro';
 import ChangelogListItem from '../components/ChangelogListItem.astro';
 import { SectionProps, defineSection } from '../defineSection.mjs';
-import { renderMarkdownSubset } from '../utils/mdSubset.mjs';
 import { pluralize } from '../utils/pluralize.mjs';
 
 type Props = SectionProps;
@@ -31,17 +30,12 @@ const items = commits
       throw new Error(`Commit ${commit} not found in commitMap`);
     }
     const { message, committer } = commitData;
-    const messageRendered = renderMarkdownSubset(message, {
-      linkify: false,
-      inlineCodeBlock: true,
-      githubIssues: true,
-    });
     return {
       commit,
       timestamp: committer[0],
       latest: index === 0,
       oldest: index === commits.length - 1,
-      html: messageRendered,
+      message,
     };
   });
 
@@ -58,20 +52,10 @@ const moreText = collapsed.length
 
 <SectionWrapper section={section}>
   <ChangelogList moreText={moreText}>
-    {
-      nonCollapsed.map((item) => (
-        // eslint-disable-next-line astro/no-set-html-directive
-        <ChangelogListItem {...item} set:html={item.html} />
-      ))
-    }
+    {nonCollapsed.map((item) => <ChangelogListItem {...item} />)}
 
     <Fragment slot="more">
-      {
-        collapsed.map((item) => (
-          // eslint-disable-next-line astro/no-set-html-directive
-          <ChangelogListItem {...item} set:html={item.html} />
-        ))
-      }
+      {collapsed.map((item) => <ChangelogListItem {...item} />)}
     </Fragment>
   </ChangelogList>
 </SectionWrapper>

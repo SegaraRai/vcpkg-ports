@@ -1,0 +1,25 @@
+---
+/* eslint-disable astro/no-set-html-directive */
+
+import {
+  RenderMarkdownSubsetOptions,
+  renderMarkdownSubset,
+} from '../utils/mdSubset.mjs';
+
+type Props = RenderMarkdownSubsetOptions & {
+  class?: any;
+  tag?: string;
+  content: string;
+};
+
+const {
+  class: classList,
+  content,
+  tag: Tag = Astro.props.newline === 'break' ? 'p' : 'span',
+  ...options
+} = Astro.props;
+
+const html = renderMarkdownSubset(content, options);
+---
+
+<Tag class:list={classList} set:html={html} />

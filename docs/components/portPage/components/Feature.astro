@@ -11,7 +11,7 @@ import DefaultFeatureBadge from '../components/DefaultFeatureBadge.astro';
 import Dependencies from '../components/Dependencies.astro';
 import SupportedListItem from '../components/SupportedListItem.astro';
 import type { SectionSubset } from '../defineSection.mjs';
-import { renderMarkdownSubset } from '../utils/mdSubset.mjs';
+import MarkdownSubset from './MarkdownSubset.astro';
 
 interface Props {
   readonly context: PortContext;
@@ -51,21 +51,19 @@ const supports = feature.supports
   ? getSupports(feature.supports, allTriplets)
   : null;
 
-const htmlDescription = renderMarkdownSubset(
-  stringifyPortDescription(feature.description),
-  {
-    newline: 'break',
-  }
-);
+const description = stringifyPortDescription(feature.description);
 ---
 
 <SectionWrapper section={section} translate="no">
   {isDefaultFeature && <DefaultFeatureBadge slot="heading-after" />}
 
   {
-    htmlDescription ? (
-      // eslint-disable-next-line astro/no-set-html-directive
-      <p class="port-feature-description" set:html={htmlDescription} />
+    description ? (
+      <MarkdownSubset
+        class="port-feature-description"
+        content={description}
+        newline="break"
+      />
     ) : (
       <p class="port-feature-no-description" />
     )

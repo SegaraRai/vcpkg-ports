@@ -1,6 +1,7 @@
 ---
 import DateTime from '../../DateTime.vue';
 import LinkVcpkgCommit from '../../LinkVcpkgCommit.astro';
+import MarkdownSubset from './MarkdownSubset.astro';
 
 interface Props {
   readonly class?: any;
@@ -8,9 +9,17 @@ interface Props {
   readonly oldest?: boolean | undefined;
   readonly commit: string;
   readonly timestamp: string;
+  readonly message: string;
 }
 
-const { class: classList, latest, oldest, commit, timestamp } = Astro.props;
+const {
+  class: classList,
+  latest,
+  oldest,
+  commit,
+  timestamp,
+  message,
+} = Astro.props;
 ---
 
 <li
@@ -36,9 +45,11 @@ const { class: classList, latest, oldest, commit, timestamp } = Astro.props;
   <div class=":uno: flex-1">
     <span>
       <LinkVcpkgCommit class=":uno: mr-1.5 sm:hidden" commit={commit} />
-      <span class=":uno: break-words">
-        <slot />
-      </span>
+      <MarkdownSubset
+        class=":uno: break-words"
+        content={message}
+        githubIssues
+      />
     </span>
     <div class=":uno: float-right text-sm opacity-60 align-bottom pl-2 pt-1">
       <DateTime client:visible timestamp={timestamp} />
