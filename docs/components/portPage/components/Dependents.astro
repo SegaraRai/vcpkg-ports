@@ -21,13 +21,13 @@ const parsedDependents = dependents.map((dependent) =>
           <LinkPortPage port={portName} />
           {!!featureName && (
             <span class:list={['dependent-feature', ':uno: opacity-90']}>
-              (feature{' '}
+              {'(feature '}
               {
                 <LinkPortPage port={portName} feature={featureName}>
                   <code set:text={featureName} />
                 </LinkPortPage>
               }
-              )
+              {')'}
             </span>
           )}
         </li>
