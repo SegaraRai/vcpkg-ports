@@ -24,7 +24,7 @@ const foundLicenses = toUniqueArray(
   .map((l) => licenseInfoMap[l])
   .filter((l) => !!l);
 const licenseText = fileContents.find(([filename]) =>
-  /^license/i.test(filename)
+  /^(copyright|license)/i.test(filename)
 )?.[1];
 ---
 
