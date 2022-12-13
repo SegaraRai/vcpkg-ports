@@ -1,5 +1,5 @@
 {
-  "version": "cf1fda5443f2acfa976d5bda70c50fa22c26fe80",
+  "version": "5d27b1b578e4978689cdbf446f7b77b3db3bc639",
   "ports": [
     {
       "name": "3fd",
@@ -20606,7 +20606,7 @@
       "name": "devil",
       "manifest": {
         "name": "devil",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A full featured cross-platform image library",
         "homepage": "https://github.com/DentonW/DevIL",
         "default-features": [
@@ -20665,6 +20665,7 @@
         "0005-fix-pkgconfig.patch",
         "0006-fix-ilut-header.patch",
         "enable-static.patch",
+        "jasper-4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21261,7 +21262,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -22837,13 +22838,23 @@
       "name": "fastcdr",
       "manifest": {
         "name": "fastcdr",
-        "port-version": 1,
         "description": "eProsima FastCDR is a C++ library that provides two serialization mechanisms. One is the standard CDR serialization mechanism, while the other is a faster implementation that modifies the standard.",
         "homepage": "https://github.com/eProsima/Fast-CDR",
-        "version-semver": "1.0.15"
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.0.25"
       },
       "files": [
-        "install-cmake.patch",
+        "pdb-file.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27199,7 +27210,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.74.1"
+        "version": "2.75.0"
       },
       "files": [
         "libintl.patch",
@@ -32923,7 +32934,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -33237,9 +33248,8 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
-        "port-version": 6,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
-        "homepage": "https://github.com/mdadams/jasper",
+        "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
         "dependencies": [
           "libjpeg-turbo",
@@ -33283,9 +33293,10 @@
             ]
           }
         },
-        "version": "2.0.33"
+        "version": "4.0.0"
       },
       "files": [
+        "no_stdc_check.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34968,6 +34979,7 @@
       "name": "kf5solid",
       "manifest": {
         "name": "kf5solid",
+        "port-version": 1,
         "description": "Desktop hardware abstraction",
         "homepage": "https://api.kde.org/frameworks/solid/html/index.html",
         "dependencies": [
@@ -40366,13 +40378,11 @@
       "name": "libproxy",
       "manifest": {
         "name": "libproxy",
-        "port-version": 5,
         "description": "libproxy is a library that provides automatic proxy configuration management.",
         "homepage": "https://github.com/libproxy/libproxy",
         "license": "LGPL-2.1-only",
-        "supports": "!uwp & !staticcrt",
+        "supports": "!uwp",
         "dependencies": [
-          "libmodman",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -40405,11 +40415,9 @@
             "description": "build tools"
           }
         },
-        "version": "0.4.17"
+        "version": "0.4.18"
       },
       "files": [
-        "fix-arm-build.patch",
-        "fix-dependency-libmodman.patch",
         "fix-install-py.patch",
         "fix-module-lib-name.patch",
         "fix-tools-path.patch",
@@ -42943,9 +42951,8 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
-        "homepage": "https://xmlsoft.org/",
+        "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
         "dependencies": [
           "libiconv",
@@ -42965,11 +42972,10 @@
             "description": "Build tools"
           }
         },
-        "version": "2.9.14"
+        "version": "2.10.3"
       },
       "files": [
         "disable-docs.patch",
-        "fix-uwp.patch",
         "fix_cmakelist.patch",
         "portfile.cmake",
         "usage",
@@ -43556,6 +43562,7 @@
         "name": "libzippp",
         "description": "Simple basic C++ wrapper around the libzip library. It is meant to be a portable and easy-to-use library for ZIP handling",
         "homepage": "https://github.com/ctabin/libzippp",
+        "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "libzip",
@@ -43579,7 +43586,7 @@
             "description": "Support encryption"
           }
         },
-        "version": "5.1-1.8.0"
+        "version": "6.0-1.9.2"
       },
       "files": [
         "fix-find-lzma.patch",
@@ -43706,6 +43713,7 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
+        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
@@ -56080,7 +56088,7 @@
             "host": true
           }
         ],
-        "version": "0.3.60"
+        "version": "0.3.62"
       },
       "files": [
         "portfile.cmake",
@@ -63287,8 +63295,14 @@
         "license": "MIT",
         "dependencies": [
           "robin-hood-hashing",
-          "vcpkg-cmake",
-          "vcpkg-cmake-config"
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "default-features": [
           "freetype"
@@ -63310,7 +63324,7 @@
             ]
           }
         },
-        "version": "4.4"
+        "version": "5.0"
       },
       "files": [
         "add-robin-hood.patch",
@@ -67613,6 +67627,7 @@
       "name": "sse2neon",
       "manifest": {
         "name": "sse2neon",
+        "port-version": 1,
         "description": "A translator from Intel SSE intrinsics to Arm/Aarch64 NEON implementation",
         "homepage": "https://github.com/DLTcollab/sse2neon",
         "license": "MIT",
@@ -68177,10 +68192,20 @@
       "name": "tabulate",
       "manifest": {
         "name": "tabulate",
-        "port-version": 1,
         "description": "Table maker for modern C++",
         "homepage": "https://github.com/p-ranav/tabulate",
-        "version-string": "2019-01-06"
+        "license": "MIT AND BSL-1.0 AND BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4"
       },
       "files": [
         "portfile.cmake",
@@ -72240,7 +72265,7 @@
         "dependencies": [
           "wayland"
         ],
-        "version": "1.27"
+        "version": "1.31"
       },
       "files": [
         "portfile.cmake",
