@@ -26,9 +26,18 @@ const { class: classList, lang } = Astro.props;
   >
     <span
       class:list={[
-        ':uno: opacity-0 block w-full h-full transition-opacity-250 i-mdi-clipboard-text-outline',
+        ':uno: opacity-0 block w-full h-full transition-opacity-250 relative',
         'icon',
-      ]}></span>
+      ]}
+      data-mode="initial"
+    >
+      <span class:list={[':uno: i-mdi-clipboard-text-outline', 'icon-initial']}
+      ></span>
+      <span class:list={[':uno: i-mdi-clipboard-check-outline', 'icon-copied']}
+      ></span>
+      <span class:list={[':uno: i-mdi-clipboard-remove-outline', 'icon-failed']}
+      ></span>
+    </span>
     {
       lang !== 'plaintext' && (
         <span
@@ -59,20 +68,67 @@ const { class: classList, lang } = Astro.props;
   div.code-block > .copy:focus > .icon {
     @apply opacity-100;
   }
+
+  div.code-block > .copy > .icon > * {
+    @apply block;
+    @apply w-full;
+    @apply h-full;
+    @apply opacity-0;
+    @apply transition-opacity-250;
+  }
+
+  div.code-block > .copy > .icon > :not(.icon-initial) {
+    @apply absolute;
+    @apply top-0;
+    @apply left-0;
+  }
+
+  div.code-block > .copy > .icon[data-mode='initial'] > .icon-initial,
+  div.code-block > .copy > .icon[data-mode='copied'] > .icon-copied,
+  div.code-block > .copy > .icon[data-mode='failed'] > .icon-failed {
+    @apply opacity-100;
+  }
 </style>
 
 <script>
-  const copyButtons = document.querySelectorAll('div.code-block > button.copy');
-  for (const button of copyButtons) {
-    button.addEventListener('click', (): void => {
-      if (!navigator.clipboard) {
+  const ICON_TIMEOUT = 2000;
+
+  const copyAsync = async (button: HTMLElement): Promise<boolean> => {
+    if (!navigator.clipboard) {
+      return false;
+    }
+    const code = button.parentElement?.querySelector('code');
+    if (!code) {
+      return false;
+    }
+    try {
+      await navigator.clipboard.writeText(code.innerText.trim() + '\n');
+    } catch {
+      return false;
+    }
+    return true;
+  };
+
+  const handleCopy = (button: HTMLElement): void => {
+    copyAsync(button).then((result): void => {
+      const icon = button.querySelector<HTMLElement>('.icon');
+      if (!icon) {
         return;
       }
-      const code = button.parentElement?.querySelector('code');
-      if (!code) {
-        return;
+      icon.dataset.mode = result ? 'copied' : 'failed';
+      if ((icon as any)._timer != null) {
+        clearTimeout((icon as any)._timer);
       }
-      navigator.clipboard.writeText(code.innerText.trim() + '\n');
+      (icon as any)._timer = setTimeout((): void => {
+        icon.dataset.mode = 'initial';
+      }, ICON_TIMEOUT);
     });
+  };
+
+  const copyButtons = document.querySelectorAll<HTMLButtonElement>(
+    'div.code-block>button.copy'
+  );
+  for (const button of copyButtons) {
+    button.addEventListener('click', (): void => handleCopy(button));
   }
 </script>
