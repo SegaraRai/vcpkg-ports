@@ -181,8 +181,6 @@ function parseExpression<T>(
         case SYM_D_NEG:
           return count ? undefined : [[], 0];
       }
-
-      throw new Error(`invalid decorator: ${String(sym)}`);
     }
 
     throw new Error(`invalid expression: ${String(expression)}`);
