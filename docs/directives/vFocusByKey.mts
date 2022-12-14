@@ -26,7 +26,9 @@ function moveFocus(container: HTMLElement, offset: number): void {
 
 function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
   if ((event.target as HTMLElement | null)?.tagName !== 'INPUT') {
-    const ctrlOrMeta = event.ctrlKey !== event.metaKey;
+    const ctrlOrMeta = /Mac|iPhone|iPod|iPad/i.test(navigator.platform)
+      ? event.metaKey
+      : event.ctrlKey;
     if (
       (!event.altKey &&
         !event.ctrlKey &&
