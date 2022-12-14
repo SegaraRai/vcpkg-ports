@@ -97,6 +97,8 @@ module.exports = defineConfig({
     'no-redeclare': 'off',
     '@typescript-eslint/no-redeclare': ['error'],
 
+    '@typescript-eslint/no-non-null-assertion': ['warn'],
+
     // our rules
 
     'no-constant-condition': [
@@ -142,25 +144,8 @@ module.exports = defineConfig({
           'sibling',
           'index',
         ],
-        pathGroups: [
-          {
-            pattern: '$/**',
-            group: 'internal',
-          },
-          {
-            pattern: '$prisma/**',
-            group: 'internal',
-            position: 'before',
-          },
-          {
-            pattern: '$*/**',
-            group: 'unknown',
-          },
-        ],
         pathGroupsExcludedImportTypes: ['builtin', 'external'],
       },
     ],
-
-    '@typescript-eslint/no-non-null-assertion': ['warn'],
   },
 });
