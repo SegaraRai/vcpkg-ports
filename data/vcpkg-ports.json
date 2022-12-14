@@ -1,5 +1,5 @@
 {
-  "version": "5d27b1b578e4978689cdbf446f7b77b3db3bc639",
+  "version": "c3091537af05a0205f150813f4125661aa22ac3f",
   "ports": [
     {
       "name": "3fd",
@@ -21702,7 +21702,7 @@
             ]
           }
         },
-        "version": "11.29"
+        "version": "11.30"
       },
       "files": [
         "portfile.cmake",
@@ -22014,7 +22014,7 @@
         "homepage": "https://github.com/Microsoft/FX11",
         "documentation": "https://github.com/microsoft/FX11/wiki",
         "license": "MIT",
-        "supports": "windows",
+        "supports": "windows & !mingw",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -22025,7 +22025,7 @@
             "host": true
           }
         ],
-        "version": "11.28"
+        "version": "11.29"
       },
       "files": [
         "portfile.cmake",
@@ -40060,6 +40060,42 @@
         "CMakeLists.txt",
         "Config.cmake.in",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libphonenumber",
+      "manifest": {
+        "name": "libphonenumber",
+        "description": "Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers.",
+        "license": "Apache-2.0",
+        "supports": "!static & !linux & !osx",
+        "dependencies": [
+          "abseil",
+          "boost-date-time",
+          "boost-system",
+          "boost-thread",
+          "icu",
+          "protobuf",
+          "re2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "8.13.1"
+      },
+      "files": [
+        "fix-absl-with-geocoder-off.patch",
+        "fix-icui18n-lib-name.patch",
+        "fix-re2-identifiers.patch",
+        "portfile.cmake",
+        "remove-build-test.patch",
+        "remove-shared-lib.patch",
         "vcpkg.json"
       ]
     },
@@ -63746,8 +63782,10 @@
       "name": "rtaudio",
       "manifest": {
         "name": "rtaudio",
+        "port-version": 1,
         "description": "A set of C++ classes that provide a common API for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X (CoreAudio and JACK), and Windows (DirectSound, ASIO and WASAPI) operating systems.",
         "homepage": "https://github.com/thestk/rtaudio",
+        "license": null,
         "supports": "!uwp",
         "dependencies": [
           {
@@ -63764,10 +63802,12 @@
             "description": "Build ALSA API",
             "dependencies": [
               "alsa"
-            ]
+            ],
+            "supports": "linux"
           },
           "asio": {
-            "description": "Build with ASIO backend"
+            "description": "Build with ASIO backend",
+            "supports": "windows"
           }
         },
         "version-date": "2021-11-16"
