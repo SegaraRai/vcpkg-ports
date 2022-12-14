@@ -26,11 +26,15 @@ function moveFocus(container: HTMLElement, offset: number): void {
 
 function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
   if ((event.target as HTMLElement | null)?.tagName !== 'INPUT') {
+    const ctrlOrMeta = event.ctrlKey !== event.metaKey;
     if (
-      !event.altKey &&
-      !event.ctrlKey &&
-      !event.metaKey &&
-      /^([A-Z\d]|ArrowLeft|ArrowRight|Backspace|Delete|Space)$/i.test(event.key)
+      (!event.altKey &&
+        !event.ctrlKey &&
+        !event.metaKey &&
+        /^([ -~]|Decimal|Multiply|Add|Divide|Subtract|Separator|ArrowLeft|ArrowRight|Backspace|Clear|Delete|EraseEof|Paste|Redo|Undo)$/i.test(
+          event.key
+        )) ||
+      (ctrlOrMeta && /^[AV]$/i.test(event.key))
     ) {
       container.querySelector<HTMLElement>('input,textarea')?.focus();
       return;
