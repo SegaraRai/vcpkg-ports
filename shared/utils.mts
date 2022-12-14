@@ -63,5 +63,5 @@ export function pickRandom<T>(array: readonly T[], max = array.length): T[] {
 }
 
 export function isFileIncludedInPortContext(filename: string): boolean {
-  return /^(copyright|license|usage$)/i.test(filename);
+  return /^(copyright|license|usage$|portfile\.cmake$)/i.test(filename);
 }

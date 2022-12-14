@@ -11,14 +11,16 @@ export const getSection = defineSection({
 });
 
 const {
-  context: { manifest },
+  context: {
+    manifest: { documentation, homepage },
+  },
   section,
 } = Astro.props;
 
 const links = (
   [
-    ['', manifest.homepage || ''],
-    ['Documentation', manifest.documentation || ''],
+    ['', homepage || ''],
+    ['Documentation', documentation || ''],
   ] as const
 ).filter(([, url]) => url);
 ---

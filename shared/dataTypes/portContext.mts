@@ -17,4 +17,5 @@ export interface PortContext {
     filename: string,
     content: string
   ])[];
+  readonly inferredCopyrightURLs: readonly string[];
 }

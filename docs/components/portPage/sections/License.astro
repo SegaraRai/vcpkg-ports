@@ -13,13 +13,16 @@ export const getSection = defineSection({
 });
 
 const {
-  context: { manifest, fileContents },
+  context: {
+    manifest: { license },
+    fileContents,
+    inferredCopyrightURLs,
+  },
   section,
 } = Astro.props;
 
-const licenseSpec = manifest.license;
 const foundLicenses = toUniqueArray(
-  (licenseSpec || '').split(/[()\s]/).map((l) => l.trim())
+  (license || '').split(/[()\s]/).map((l) => l.trim())
 )
   .map((l) => licenseInfoMap[l])
   .filter((l) => !!l);
@@ -31,10 +34,10 @@ const licenseText = fileContents.find(([filename]) =>
 <SectionWrapper section={section}>
   <p>
     {
-      licenseSpec ? (
-        <code translate="no" set:text={licenseSpec} />
+      license ? (
+        <code translate="no" set:text={license} />
       ) : (
-        <em set:text={licenseSpec === null ? 'Unspecified' : 'Unknown'} />
+        <em set:text={license === null ? 'Unspecified' : 'Unknown'} />
       )
     }
   </p>
@@ -42,7 +45,10 @@ const licenseText = fileContents.find(([filename]) =>
   {
     !!foundLicenses.length && (
       <ul
-        class:list={['plain-list', ':uno: flex flex-col gap-y-2 leading-tight']}
+        class:list={[
+          'plain-list',
+          ':uno: my-4 flex flex-col gap-y-2 leading-tight',
+        ]}
       >
         {foundLicenses.map((license) => (
           <li>
@@ -50,6 +56,28 @@ const licenseText = fileContents.find(([filename]) =>
               href={license.url}
               translate={null}
               set:text={license.name}
+            />
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    !!inferredCopyrightURLs.length && (
+      <ul
+        class:list={[
+          'plain-list',
+          ':uno: my-4 flex flex-col gap-y-2 leading-tight',
+        ]}
+      >
+        {inferredCopyrightURLs.map((url) => (
+          <li>
+            <LinkExternal
+              href={url}
+              set:text={
+                decodeURIComponent(url.match(/[^/]+$/)?.[0] || '') || url
+              }
             />
           </li>
         ))}

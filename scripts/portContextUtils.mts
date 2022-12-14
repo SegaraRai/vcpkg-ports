@@ -5,6 +5,7 @@ import type { DataHistory } from '../shared/dataTypes/history.mjs';
 import type { DataPortOGIndex } from '../shared/dataTypes/ogIndex.mjs';
 import type { PortContext } from '../shared/dataTypes/portContext.mjs';
 import type { DataPorts, DataPortsPort } from '../shared/dataTypes/ports.mjs';
+import { inferCopyrightsFromPortfile } from '../shared/inferCopyrightsFromPortfile.mjs';
 import { isFileIncludedInPortContext } from '../shared/utils.mjs';
 import { createDependentsMap } from '../shared/vcpkg/portDependents.mjs';
 import {
@@ -31,15 +32,16 @@ export function createPortContexts(
     manifest,
     files,
   }: DataPortsPort): Promise<PortContext> => {
-    const commits = portCommitsMap.get(manifest.name);
+    const { name } = manifest;
+    const commits = portCommitsMap.get(name);
     if (!commits) {
       throw new Error(
-        `No commits found for port ${manifest.name}. run 'pnpm generate:data'.`
+        `No commits found for port ${name}. run 'pnpm generate:data'.`
       );
     }
-    const dependents = dependentsMap.get(manifest.name);
+    const dependents = dependentsMap.get(name);
     if (!dependents) {
-      throw new Error(`No dependents found for port ${manifest.name}.`);
+      throw new Error(`No dependents found for port ${name}.`);
     }
     const firstCommit = commitMap.get(commits[0]);
     if (!firstCommit) {
@@ -49,14 +51,24 @@ export function createPortContexts(
     if (!lastCommit) {
       throw new Error(`Commit ${commits[commits.length - 1]} not found.`);
     }
+    const version = getPortVersionText(manifest);
+    const portfile = await fsp.readFile(
+      path.join(VCPKG_DIR, 'ports', name, 'portfile.cmake'),
+      'utf-8'
+    );
+    const inferredCopyrightURLs = inferCopyrightsFromPortfile(
+      name,
+      version,
+      portfile
+    );
     return {
-      name: manifest.name,
-      version: getPortVersionText(manifest),
+      name,
+      version,
       description: stringifyPortDescription(manifest.description),
       shortDescription: getShortPortDescription(manifest.description),
       createdAt: firstCommit.committer[0],
       modifiedAt: lastCommit.committer[0],
-      ogImageFilename: ogImageFilenameMap.get(manifest.name),
+      ogImageFilename: ogImageFilenameMap.get(name),
       manifest,
       commits,
       normalDependents: dependents[0],
@@ -68,11 +80,12 @@ export function createPortContexts(
           .map(async (filename) => [
             filename,
             await fsp.readFile(
-              path.join(VCPKG_DIR, 'ports', manifest.name, filename),
+              path.join(VCPKG_DIR, 'ports', name, filename),
               'utf-8'
             ),
           ])
       ),
+      inferredCopyrightURLs,
     };
   };
 
