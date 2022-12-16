@@ -1,5 +1,5 @@
 {
-  "version": "9074f833496ebd1b3e050f62568b9bba014f2d17",
+  "version": "4b6bce313ef917b9635e9287d06225743e242888",
   "ports": [
     {
       "name": "3fd",
@@ -544,6 +544,21 @@
         "fix-plugin-dir.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "amd-amf",
+      "manifest": {
+        "name": "amd-amf",
+        "description": "AMD Advanced Media Framework headers",
+        "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
+        "license": "MIT",
+        "supports": "!osx",
+        "version": "1.4.26"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -1503,6 +1518,7 @@
       "name": "asio",
       "manifest": {
         "name": "asio",
+        "port-version": 1,
         "description": "Asio is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.",
         "homepage": "https://github.com/chriskohlhoff/asio",
         "documentation": "https://think-async.com/Asio/asio-1.24.0/doc/",
@@ -16227,7 +16243,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.2.0"
+        "version-semver": "3.2.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -25166,7 +25182,7 @@
       "name": "freetype",
       "manifest": {
         "name": "freetype",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library to render fonts.",
         "homepage": "https://www.freetype.org/",
         "license": "FTL OR GPL-2.0-or-later",
@@ -25224,6 +25240,7 @@
         "error-strings.patch",
         "fix-exports.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -57918,7 +57935,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -59014,7 +59031,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
