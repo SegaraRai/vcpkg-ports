@@ -1,5 +1,5 @@
 {
-  "version": "4b6bce313ef917b9635e9287d06225743e242888",
+  "version": "b6b5c0b9a44819b095b369f507599c79ac885ec5",
   "ports": [
     {
       "name": "3fd",
@@ -4669,12 +4669,16 @@
       "name": "bgfx",
       "manifest": {
         "name": "bgfx",
+        "port-version": 1,
         "maintainers": "Sandy Carter <bwrsandman@users.noreply.github.com>",
         "description": "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library.",
         "homepage": "https://bkaradzic.github.io/bgfx/overview.html",
         "documentation": "https://bkaradzic.github.io/bgfx",
         "license": "BSD-2-Clause",
         "dependencies": [
+          "libsquish",
+          "nvtt",
+          "tinyexr",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -4698,6 +4702,8 @@
         "version": "1.118.8384-362"
       },
       "files": [
+        "fix-dependencies.patch",
+        "fix-headerfile.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19334,8 +19340,10 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
+        "port-version": 1,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
+        "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -27427,7 +27435,6 @@
       "name": "glslang",
       "manifest": {
         "name": "glslang",
-        "port-version": 1,
         "description": "Khronos reference front-end for GLSL and ESSL, and sample SPIR-V generator",
         "homepage": "https://github.com/KhronosGroup/glslang",
         "license": "Apache-2.0 AND BSD-3-Clause AND MIT AND GPL-3.0-or-later",
@@ -27449,7 +27456,7 @@
             "description": "Build the glslangValidator and spirv-remap binaries"
           }
         },
-        "version": "11.12.0"
+        "version": "11.13.0"
       },
       "files": [
         "ignore-crt.patch",
@@ -31712,8 +31719,9 @@
       "name": "ideviceinstaller",
       "manifest": {
         "name": "ideviceinstaller",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Manage apps of iOS devices",
+        "homepage": "https://libimobiledevice.org/",
         "license": "LGPL-2.1-only",
         "supports": "windows & !arm64",
         "dependencies": [
@@ -31723,6 +31731,7 @@
         "version": "1.1.2.23"
       },
       "files": [
+        "Add-missing-lib.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -38654,10 +38663,10 @@
       "name": "libirecovery",
       "manifest": {
         "name": "libirecovery",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Library and utility to talk to iBoot/iBSS via USB on Mac OS X, Windows, and Linux",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm64",
+        "supports": "windows & !arm64 & !static & !staticcrt",
         "dependencies": [
           "getopt",
           "libusbmuxd",
@@ -40141,7 +40150,7 @@
         "name": "libphonenumber",
         "description": "Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers.",
         "license": "Apache-2.0",
-        "supports": "!static & !linux & !osx",
+        "supports": "!linux & !osx",
         "dependencies": [
           "abseil",
           "boost-date-time",
@@ -40494,6 +40503,7 @@
       "name": "libproxy",
       "manifest": {
         "name": "libproxy",
+        "port-version": 1,
         "description": "libproxy is a library that provides automatic proxy configuration management.",
         "homepage": "https://github.com/libproxy/libproxy",
         "license": "LGPL-2.1-only",
@@ -44988,7 +44998,7 @@
             "host": true
           }
         ],
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -70732,11 +70742,11 @@
       "name": "usbmuxd",
       "manifest": {
         "name": "usbmuxd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A socket daemon to multiplex connections from and to iOS devices",
         "homepage": "http://www.libimobiledevice.org",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm64",
+        "supports": "windows & !arm64 & !static",
         "dependencies": [
           "libimobiledevice",
           "libusb",
