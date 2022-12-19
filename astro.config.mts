@@ -30,6 +30,11 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  server: {
+    headers: {
+      'Content-Security-Policy': CSP_HEADER_VALUE,
+    },
+  } as any,
   srcDir: 'docs',
   site: `https://vcpkg.roundtrip.dev`,
   trailingSlash: 'never', // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
@@ -102,12 +107,5 @@ export default defineConfig({
       }),
       virtualDataLoader(),
     ],
-    // this does not work with astro
-    // use `vite preview` instead
-    server: {
-      headers: {
-        'Content-Security-Policy': CSP_HEADER_VALUE,
-      },
-    },
   },
 });
