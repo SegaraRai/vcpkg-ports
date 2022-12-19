@@ -43,7 +43,7 @@ export default defineConfig({
     vue(),
     sitemap({
       changefreq: 'daily' as any,
-      priority: 0.5,
+      priority: 1,
       serialize: async (item) => {
         const { commitMap, portCommitsMap } = await sitemapDataPromise;
         const match = item.url.match(/\/ports\/([^/]+)$/);
@@ -59,6 +59,7 @@ export default defineConfig({
             throw new Error(`No commit found for ${commits.at(-1)}`);
           }
           item.lastmod = commit.committer[0];
+          item.priority = 0.5;
         }
         return item;
       },
