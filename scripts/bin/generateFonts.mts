@@ -19,7 +19,7 @@ const TEXT =
   ' !"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~';
 
 for (const fontFile of FONT_FILES) {
-  const buffer = await fsp.readFile(path.join(SRC_FONTS_DIR));
+  const buffer = await fsp.readFile(path.join(SRC_FONTS_DIR, fontFile));
   const subset = await subsetFont(buffer, TEXT, {
     targetFormat: 'woff2',
   });
