@@ -12,7 +12,7 @@ export function useGlobalRef<T>(
   key: string | symbol,
   initialValue?: T
 ): Ref<UnwrapRef<T> | undefined> {
-  if (import.meta.env.SSR || typeof window === 'undefined') {
+  if (import.meta.env.SSR) {
     return ref(initialValue);
   }
 

@@ -97,7 +97,7 @@ export function useSearch(
       if (fuse.value || gFusePromiseMap.has(nameOnly)) {
         return;
       }
-      if (import.meta.env.SSR || typeof window === 'undefined') {
+      if (import.meta.env.SSR) {
         // eslint-disable-next-line no-console
         console.info('Skip loading fuse.js in SSR/SSG');
         return;

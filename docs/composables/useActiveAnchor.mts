@@ -12,7 +12,7 @@ import { OFFSET_FOR_ACTIVE_ANCHOR } from '../constants.mjs';
 export function useActiveAnchor(
   headings: Readonly<Ref<readonly MarkdownHeading[]>>
 ): Readonly<Ref<string | null>> {
-  if (import.meta.env.SSR || typeof window === 'undefined') {
+  if (import.meta.env.SSR) {
     return ref(null);
   }
 
