@@ -11,15 +11,21 @@ import '../styles/theme.css';
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <script is:inline>
-  // prevent FOUC
-  // note that inlined scripts are embedded as-is, meaning that we can't use TypeScript here
-  // minification is done by the astro-compress integration
+  // prevent FOUC. note that
+  // - inlined scripts are embedded as-is, meaning that we can't use TypeScript here
+  // - we cannot use type="module" because it makes the script load deferred, which is not what we want
+  // - minification is done by the astro-compress integration
   (() => {
-    const configTheme = window.localStorage?.getItem('theme');
-    const isDark =
-      !configTheme || configTheme === 'auto'
-        ? window.matchMedia('(prefers-color-scheme:dark)').matches
-        : configTheme === 'dark';
+    let isDark;
+    try {
+      const configTheme = localStorage.getItem('theme');
+      isDark =
+        !configTheme || configTheme === 'auto'
+          ? matchMedia('(prefers-color-scheme:dark)').matches
+          : configTheme === 'dark';
+    } catch {
+      // do nothing
+    }
     document.documentElement.classList.add(
       `theme-${isDark ? 'dark' : 'light'}`
     );
