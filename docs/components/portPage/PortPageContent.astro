@@ -27,14 +27,14 @@ const { portName, portVersion } = frontmatter;
       createdAt={frontmatter.createdAt}
       modifiedAt={frontmatter.modifiedAt}
     />
-    <nav class:list={['toc', ':uno: lg:hidden']}>
+    <nav class:list={['toc', ':uno: block lg:hidden mt-4 mb-8']}>
       <!-- hydration is disabled as this TOC is not interactive -->
       <TableOfContents headings={headings} />
     </nav>
     <div class="rendered">
       <slot />
     </div>
-    <nav class:list={['toc', ':uno: block sm:hidden']}>
+    <nav class:list={['toc', ':uno: block lg:hidden mt-16']}>
       <MoreMenu />
     </nav>
   </section>

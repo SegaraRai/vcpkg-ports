@@ -119,22 +119,13 @@ main :not(nav) {
   }
 }
 
-/* Article nav */
-
-article.content {
-  nav {
-    @apply mt-4;
-    @apply mb-8;
-  }
-}
-
 /* Rendered contents */
 
 /* Elements such as blockquote, table, img, etc. are not styled as they are not currently used */
 
-.rendered code,
+kbd,
 .code,
-kbd {
+.rendered code {
   @apply font-[var(--font-mono)];
 
   font-feature-settings: var(--font-feat-mono);
@@ -161,8 +152,8 @@ kbd {
   }
 }
 
-.rendered :not(.code-block, pre) > code,
-.code {
+.code,
+.rendered :not(.code-block, pre) > code {
   @apply text-[0.875em];
   @apply bg-[var(--theme-code-inline-bg)];
   @apply px-1;
