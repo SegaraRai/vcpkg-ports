@@ -102,6 +102,7 @@ const { class: classList, lang } = Astro.props;
       return false;
     }
     try {
+      // eslint-disable-next-line unicorn/prefer-dom-node-text-content
       await navigator.clipboard.writeText(code.innerText.trim() + '\n');
     } catch {
       return false;
