@@ -15,19 +15,20 @@ import '../styles/theme.css';
   // - inlined scripts are embedded as-is, meaning that we can't use TypeScript here
   // - we cannot use type="module" because it makes the script load deferred, which is not what we want
   // - minification is done by the astro-compress integration
-  (() => {
-    let isDark;
-    try {
-      const configTheme = localStorage.getItem('theme');
-      isDark =
-        !configTheme || configTheme === 'auto'
-          ? matchMedia('(prefers-color-scheme:dark)').matches
-          : configTheme === 'dark';
-    } catch {
-      // do nothing
-    }
-    document.documentElement.classList.add(
-      `theme-${isDark ? 'dark' : 'light'}`
-    );
-  })();
+  document.documentElement.classList.add(
+    `theme-${
+      (() => {
+        try {
+          const theme = localStorage.getItem('theme');
+          return !theme || theme === 'auto'
+            ? matchMedia('(prefers-color-scheme:dark)').matches
+            : theme === 'dark';
+        } catch {
+          // do nothing; returns undefined
+        }
+      })()
+        ? 'dark'
+        : 'light'
+    }`
+  );
 </script>
