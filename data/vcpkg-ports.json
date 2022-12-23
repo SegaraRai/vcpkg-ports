@@ -1,5 +1,5 @@
 {
-  "version": "44b540607036e0587f6564c91f93663b0212ab98",
+  "version": "6adca01a3fadca0cc0b80f03ec57c7c3a0be5c02",
   "ports": [
     {
       "name": "3fd",
@@ -63,7 +63,7 @@
       "name": "ableton",
       "manifest": {
         "name": "ableton",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Ableton Link, a technology that synchronizes musical beat, tempo, and phase across multiple applications running on one or more devices.",
         "homepage": "https://www.ableton.com/en/link/",
         "documentation": "http://ableton.github.io/link/",
@@ -109,6 +109,7 @@
       },
       "files": [
         "correct_cmake_include_directory.patch",
+        "no-werror.patch",
         "portfile.cmake",
         "replace_asiosdk_download_by_vcpkg_asiosdk.patch",
         "replace_local_asiostandalone_by_vcpkg_asio.patch",
@@ -170,6 +171,7 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
+        "port-version": 1,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -185,7 +187,8 @@
             "description": "The ACE ORB"
           },
           "wchar": {
-            "description": "Enable extra wide char functions in ACE"
+            "description": "Enable extra wide char functions in ACE",
+            "supports": "!osx"
           },
           "xml": {
             "description": "Enable XML features in ACE"
@@ -55538,7 +55541,6 @@
       "name": "pcapplusplus",
       "manifest": {
         "name": "pcapplusplus",
-        "port-version": 2,
         "description": "PcapPlusPlus is a multi-platform C++ library for capturing, parsing and crafting of network packets",
         "homepage": "https://github.com/seladb/PcapPlusPlus",
         "license": null,
@@ -55564,7 +55566,7 @@
             "platform": "windows"
           }
         ],
-        "version-string": "22.05"
+        "version-string": "22.11"
       },
       "files": [
         "CMakeLists.txt",
