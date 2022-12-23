@@ -39,7 +39,7 @@ watchEffect((): void => {
   >
     <div
       v-if="show"
-      class=":uno: z-9999 fixed left-0 top-0 right-0 bottom-0 w-100vw h-full transition-opacity-200"
+      class=":uno: z-9999 fixed left-0 top-0 right-0 bottom-0 w-full h-full transition-opacity-200"
       @keydown.escape="close"
     >
       <div
