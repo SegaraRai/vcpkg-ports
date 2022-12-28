@@ -1,5 +1,5 @@
 {
-  "version": "6adca01a3fadca0cc0b80f03ec57c7c3a0be5c02",
+  "version": "a0cd246334a33107cdef4f701b0b532a71514b19",
   "ports": [
     {
       "name": "3fd",
@@ -275,7 +275,7 @@
       "name": "air-ctl",
       "manifest": {
         "name": "air-ctl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C template container library",
         "homepage": "https://github.com/inie0722/CTL",
         "license": "BSL-1.0",
@@ -15736,7 +15736,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.5.1"
+        "version-semver": "0.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -22393,6 +22393,30 @@
       ]
     },
     {
+      "name": "etl",
+      "manifest": {
+        "name": "etl",
+        "description": "A C++ template library for embedded applications",
+        "homepage": "https://www.etlcpp.com",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "20.35.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "eve",
       "manifest": {
         "name": "eve",
@@ -24480,10 +24504,17 @@
       "name": "fluidlite",
       "manifest": {
         "name": "fluidlite",
-        "port-version": 2,
+        "port-version": 3,
         "description": "FluidLite is a very light version of FluidSynth designed to be hardware, platform and external dependency independant.",
         "homepage": "https://github.com/divideconcept/FluidLite",
-        "version-string": "2020-08-27"
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2020-08-27"
       },
       "files": [
         "portfile.cmake",
@@ -27269,7 +27300,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.75.0"
+        "version": "2.75.1"
       },
       "files": [
         "libintl.patch",
@@ -29422,7 +29453,7 @@
             "host": true
           }
         ],
-        "version": "1.20.4"
+        "version": "1.20.5"
       },
       "files": [
         "portfile.cmake",
@@ -30151,7 +30182,7 @@
             ]
           }
         },
-        "version": "1.20.4"
+        "version": "1.20.5"
       },
       "files": [
         "fix-clang-cl-bad.patch",
@@ -31792,7 +31823,6 @@
       "name": "ignition-cmake2",
       "manifest": {
         "name": "ignition-cmake2",
-        "port-version": 3,
         "description": "CMake helper functions for building robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/cmake",
         "license": null,
@@ -31802,7 +31832,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.16.0"
       },
       "files": [
         "FindGTS.patch",
@@ -31858,7 +31888,6 @@
       "name": "ignition-common3",
       "manifest": {
         "name": "ignition-common3",
-        "port-version": 4,
         "description": "Common libraries for robotics applications",
         "homepage": "https://ignitionrobotics.org/libs/common",
         "license": null,
@@ -31882,7 +31911,7 @@
           },
           "tinyxml2"
         ],
-        "version": "3.9.0"
+        "version": "3.14.1"
       },
       "files": [
         "fix-dependencies.patch",
@@ -31972,7 +32001,6 @@
       "name": "ignition-math6",
       "manifest": {
         "name": "ignition-math6",
-        "port-version": 3,
         "description": "Math API for robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/math",
         "license": null,
@@ -31984,7 +32012,7 @@
             "host": true
           }
         ],
-        "version": "6.6.0"
+        "version": "6.9.2"
       },
       "files": [
         "fix-isspace.patch",
@@ -39853,8 +39881,20 @@
       "name": "libogg",
       "manifest": {
         "name": "libogg",
+        "port-version": 1,
         "description": "Ogg is a multimedia container format, and the native file and stream format for the Xiph.org multimedia codecs.",
         "homepage": "https://www.xiph.org/ogg",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.3.5"
       },
       "files": [
@@ -40883,9 +40923,21 @@
       "name": "libsamplerate",
       "manifest": {
         "name": "libsamplerate",
+        "port-version": 1,
         "description": "Sample Rate Converter for audio",
         "homepage": "http://libsndfile.github.io/libsamplerate/",
-        "version-string": "0.2.2"
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -47437,6 +47489,7 @@
       "name": "mfx-dispatch",
       "manifest": {
         "name": "mfx-dispatch",
+        "port-version": 1,
         "description": "Open source Intel media sdk dispatcher",
         "homepage": "https://github.com/lu-zero/mfx_dispatch",
         "license": "BSD-3-Clause",
@@ -47450,6 +47503,7 @@
         "version": "1.35.1"
       },
       "files": [
+        "fix-pkgconf.patch",
         "fix-unresolved-symbol.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -49928,7 +49982,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -50580,11 +50634,11 @@
       "name": "nvtt",
       "manifest": {
         "name": "nvtt",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Texture processing tools with support for Direct3D 10 and 11 formats.",
         "homepage": "https://github.com/castano/nvidia-texture-tools",
         "license": "MIT",
-        "supports": "!x86 & !uwp & !arm",
+        "supports": "!uwp & !arm",
         "dependencies": [
           "libsquish",
           {
@@ -57963,7 +58017,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -64851,7 +64905,7 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -64883,6 +64937,12 @@
               }
             ]
           },
+          "samplerate": {
+            "description": "Use libsamplerate for audio rate conversion",
+            "dependencies": [
+              "libsamplerate"
+            ]
+          },
           "vulkan": {
             "description": "Vulkan functionality for SDL"
           },
@@ -64898,6 +64958,7 @@
         "version": "2.26.1"
       },
       "files": [
+        "deps.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69378,11 +69439,24 @@
       "name": "tiny-process-library",
       "manifest": {
         "name": "tiny-process-library",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A small platform independent library to create and stop new processes in C++",
-        "version-string": "2.0.4"
+        "homepage": "https://gitlab.com/eidheim/tiny-process-library/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.4"
       },
       "files": [
+        "disable-examples.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
