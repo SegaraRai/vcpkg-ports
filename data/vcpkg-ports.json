@@ -1,5 +1,5 @@
 {
-  "version": "a0cd246334a33107cdef4f701b0b532a71514b19",
+  "version": "df1f6083410860f78bcda2ed9928e1004c13f771",
   "ports": [
     {
       "name": "3fd",
@@ -1173,15 +1173,27 @@
       "name": "argtable2",
       "manifest": {
         "name": "argtable2",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Argtable is an ANSI C library for parsing GNU style command line options with a minimum of fuss.",
         "homepage": "http://argtable.sourceforge.net",
+        "license": "LGPL-2.0-only",
         "supports": "!uwp",
-        "version-string": "2.13"
+        "dependencies": [
+          {
+            "name": "getopt",
+            "platform": "windows & !mingw"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "2.13"
       },
       "files": [
         "0001-fix-install-dirs.patch",
         "0002-include-correct-headers.patch",
+        "0003-add-dependence-getopt.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -1190,11 +1202,15 @@
       "name": "argtable3",
       "manifest": {
         "name": "argtable3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options",
         "homepage": "https://www.argtable.org/",
-        "license": "BSD-2-Clause-FreeBSD",
+        "license": "BSD-2-Clause-NetBSD AND TCL",
         "dependencies": [
+          {
+            "name": "getopt",
+            "platform": "windows & !mingw"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -1207,6 +1223,7 @@
         "version": "3.2.1"
       },
       "files": [
+        "Fix-dependence-getopt.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -1847,7 +1864,6 @@
       "name": "aubio",
       "manifest": {
         "name": "aubio",
-        "port-version": 9,
         "description": "Aubio is a tool designed for the extraction of annotations from audio signals. Its features include segmenting a sound file before each of its attacks, performing pitch detection, tapping the beat and producing midi streams from live audio.",
         "homepage": "https://github.com/aubio/aubio",
         "license": "GPL-3.0-or-later",
@@ -1889,7 +1905,7 @@
             ]
           }
         },
-        "version-semver": "0.4.9"
+        "version-date": "2022-01-26"
       },
       "files": [
         "CMakeLists.txt",
@@ -1999,9 +2015,9 @@
       "name": "avcpp",
       "manifest": {
         "name": "avcpp",
-        "port-version": 1,
         "description": "Wrapper for the FFmpeg that simplify usage it from C++ projects.",
         "homepage": "https://github.com/h4tr3d/avcpp",
+        "license": "LGPL-2.1-only OR BSD-3-Clause",
         "dependencies": [
           {
             "name": "ffmpeg",
@@ -2017,6 +2033,10 @@
             ]
           },
           {
+            "name": "pkgconf",
+            "host": true
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -2025,7 +2045,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-06-14"
+        "version": "2.1.0"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
@@ -2442,9 +2462,10 @@
       "name": "aws-crt-cpp",
       "manifest": {
         "name": "aws-crt-cpp",
-        "port-version": 3,
-        "description": "Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations.",
+        "port-version": 4,
+        "description": "C++ wrapper around the aws-c-* libraries. Provides Cross-Platform Transport Protocols and SSL/TLS implementations for C++.",
         "homepage": "https://github.com/awslabs/aws-crt-cpp",
+        "license": "Apache-2.0",
         "supports": "!(windows & arm) & !uwp",
         "dependencies": [
           "aws-c-auth",
@@ -2475,6 +2496,7 @@
       "files": [
         "fix-cmake-target-path.patch",
         "fix-ios-build.patch",
+        "no-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16776,16 +16798,24 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
-        "port-version": 3,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
         "supports": "!osx & !uwp & (linux | (!static & !staticcrt))",
-        "version-date": "2021-04-22"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2022-11-09"
       },
       "files": [
         "add-missing-reference.patch",
-        "fix-debug-linux-build.patch",
         "no-warning-as-error.props",
         "portfile.cmake",
         "vcpkg.json"
@@ -21014,6 +21044,7 @@
       "name": "discordcoreapi",
       "manifest": {
         "name": "discordcoreapi",
+        "port-version": 1,
         "description": "A Discord bot library written in C++ using custom asynchronous coroutines.",
         "homepage": "https://discordcoreapi.com",
         "license": "LGPL-2.1-or-later",
@@ -21036,6 +21067,7 @@
         "version-date": "2022-12-04"
       },
       "files": [
+        "0001-Add-extern-C-to-avcodec.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22142,6 +22174,34 @@
       ]
     },
     {
+      "name": "elements",
+      "manifest": {
+        "name": "elements",
+        "description": "Elements is a lightweight, fine-grained, resolution independent, modular GUI library.",
+        "homepage": "https://cycfi.github.io/elements",
+        "license": "MIT",
+        "dependencies": [
+          "asio",
+          "cairo",
+          {
+            "name": "gtk3",
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2022-12-07"
+      },
+      "files": [
+        "asio-headers.patch",
+        "portfile.cmake",
+        "vcpkg.json",
+        "win-find-libraries.patch"
+      ]
+    },
+    {
       "name": "elfio",
       "manifest": {
         "name": "elfio",
@@ -22587,7 +22647,7 @@
       "name": "expat",
       "manifest": {
         "name": "expat",
-        "port-version": 2,
+        "port-version": 3,
         "description": "XML parser library written in C",
         "homepage": "https://github.com/libexpat/libexpat",
         "license": "MIT",
@@ -23215,7 +23275,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -23427,17 +23487,17 @@
                 "name": "ffmpeg",
                 "default-features": false,
                 "features": [
-                  "x265"
+                  "x264"
                 ],
-                "platform": "!(uwp | arm)"
+                "platform": "!(arm & windows)"
               },
               {
                 "name": "ffmpeg",
                 "default-features": false,
                 "features": [
-                  "x264"
+                  "x265"
                 ],
-                "platform": "!(arm & windows)"
+                "platform": "!uwp & !(arm & windows)"
               },
               {
                 "name": "ffmpeg",
@@ -24448,7 +24508,7 @@
       "name": "fltk",
       "manifest": {
         "name": "fltk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "FLTK (pronounced fulltick) is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows, and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL and its built-in GLUT emulation.",
         "homepage": "https://www.fltk.org/",
         "license": null,
@@ -24456,7 +24516,8 @@
         "dependencies": [
           {
             "name": "fltk",
-            "host": true
+            "host": true,
+            "default-features": false
           },
           {
             "name": "fontconfig",
@@ -24496,6 +24557,7 @@
         "dependencies.patch",
         "fix-system-link.patch",
         "include.patch",
+        "math-h-polyfill.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26223,12 +26285,17 @@
       "name": "gdcm",
       "manifest": {
         "name": "gdcm",
+        "port-version": 1,
         "description": "Grassroots DICOM library",
         "homepage": "https://github.com/malaterre/GDCM",
         "license": "BSD-3-Clause",
         "supports": "!uwp & !(windows & arm)",
         "dependencies": [
           "expat",
+          {
+            "name": "getopt",
+            "platform": "windows & !mingw"
+          },
           "openjpeg",
           {
             "name": "vcpkg-cmake",
@@ -26244,6 +26311,7 @@
       },
       "files": [
         "Fix-Cmake_DIR.patch",
+        "fix-dependence-getopt.patch",
         "fix-share-path.patch",
         "portfile.cmake",
         "use-openjpeg-config.patch",
@@ -26527,7 +26595,7 @@
       "name": "getopt-win32",
       "manifest": {
         "name": "getopt-win32",
-        "port-version": 6,
+        "port-version": 7,
         "description": "An implementation of getopt.",
         "homepage": "https://github.com/libimobiledevice-win32/getopt",
         "license": "LGPL-3.0-only",
@@ -38928,6 +38996,32 @@
       ]
     },
     {
+      "name": "libleidenalg",
+      "manifest": {
+        "name": "libleidenalg",
+        "maintainers": "Andrew Robbins <andrew@robbinsa.me>",
+        "description": "Leiden is a general algorithm for methods of community detection in large networks.",
+        "homepage": "https://github.com/vtraag/libleidenalg",
+        "license": "GPL-3.0-or-later",
+        "dependencies": [
+          "igraph",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.9.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "liblemon",
       "manifest": {
         "name": "liblemon",
@@ -42261,11 +42355,22 @@
       "name": "libusb-win32",
       "manifest": {
         "name": "libusb-win32",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Allows user space applications to access many USB device on Windows.",
         "homepage": "https://sourceforge.net/projects/libusb-win32",
-        "supports": "windows",
-        "version-string": "1.2.6.0"
+        "license": "LGPL-3.0-only",
+        "supports": "windows & !static",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.6.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -42507,6 +42612,7 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
+        "port-version": 1,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -42601,7 +42707,8 @@
                 "name": "sdl1",
                 "platform": "windows"
               }
-            ]
+            ],
+            "supports": "!osx"
           },
           "gif2webp": {
             "description": "Build the gif2webp conversion tool.",
@@ -42681,7 +42788,8 @@
                 "platform": "!osx"
               },
               "opengl"
-            ]
+            ],
+            "supports": "!osx"
           },
           "vwebp-sdl": {
             "description": "Build the vwebp viewer tool.",
@@ -42697,7 +42805,8 @@
                 "name": "sdl1",
                 "platform": "windows"
               }
-            ]
+            ],
+            "supports": "!osx"
           }
         },
         "version": "1.2.4"
@@ -48629,16 +48738,16 @@
       "name": "mpfr",
       "manifest": {
         "name": "mpfr",
-        "port-version": 7,
         "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding",
         "homepage": "https://www.mpfr.org",
         "license": "LGPL-3.0-or-later",
         "dependencies": [
           "gmp"
         ],
-        "version": "4.1.0"
+        "version": "4.1.1"
       },
       "files": [
+        "4.1.1-p1.patch",
         "dll.patch",
         "portfile.cmake",
         "src-only.patch",
@@ -51394,19 +51503,32 @@
       "name": "omplapp",
       "manifest": {
         "name": "omplapp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Use OMPL for reading meshes and performing collision checking",
         "homepage": "https://ompl.kavrakilab.org/",
+        "license": null,
         "dependencies": [
           "assimp",
+          "boost-dynamic-bitset",
           "boost-filesystem",
+          "boost-graph",
+          "boost-odeint",
           "boost-program-options",
           "boost-serialization",
           "boost-system",
+          "boost-test",
+          "boost-timer",
+          "boost-ublas",
           "ccd",
           "eigen3",
           "fcl",
-          "ompl",
+          {
+            "name": "omplapp",
+            "features": [
+              "threads"
+            ],
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -56388,7 +56510,7 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT",
@@ -57862,16 +57984,24 @@
       "name": "pthreads",
       "manifest": {
         "name": "pthreads",
-        "port-version": 12,
+        "port-version": 13,
         "description": "Meta-package that provides PThreads4W on Windows, or assumes presence of system pthreads on POSIX systems.",
         "homepage": "https://sourceforge.net/projects/pthreads4w/",
         "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "3.0.0"
       },
       "files": [
         "PThreads4WConfig.cmake",
         "fix-arm-macro.patch",
         "fix-arm64-version_rc.patch",
+        "fix-install.patch",
+        "fix-pthread_getname_np.patch",
         "fix-uwp-linkage.patch",
         "portfile.cmake",
         "usage",
@@ -59113,7 +59243,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -59199,6 +59329,7 @@
         "patches/cocoa.patch",
         "patches/create_cmake.patch",
         "patches/egl.patch",
+        "patches/fix_angle.patch",
         "patches/gui_configure.patch",
         "patches/icu.patch",
         "patches/mysql-configure.patch",
@@ -60190,7 +60321,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62784,6 +62915,7 @@
       "name": "raylib",
       "manifest": {
         "name": "raylib",
+        "port-version": 1,
         "description": "A simple and easy-to-use library to enjoy videogames programming",
         "homepage": "https://github.com/raysan5/raylib",
         "license": "Zlib",
@@ -62791,7 +62923,7 @@
         "dependencies": [
           {
             "name": "glfw3",
-            "platform": "!windows"
+            "platform": "!(windows | emscripten)"
           },
           {
             "name": "vcpkg-cmake",
@@ -66063,6 +66195,7 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
+        "port-version": 1,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -72728,6 +72861,30 @@
       ]
     },
     {
+      "name": "wg21-linear-algebra",
+      "manifest": {
+        "name": "wg21-linear-algebra",
+        "description": "A linear algebra proposal for the C++ standard library",
+        "license": "NCSA",
+        "dependencies": [
+          "mdspan",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.7.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "wg21-sg14",
       "manifest": {
         "name": "wg21-sg14",
@@ -73543,11 +73700,11 @@
       "name": "x265",
       "manifest": {
         "name": "x265",
-        "port-version": 7,
+        "port-version": 8,
         "description": "x265 is a H.265 / HEVC video encoder application library, designed to encode video or images into an H.265 / HEVC encoded bitstream.",
         "homepage": "https://github.com/videolan/x265",
         "license": "GPL-2.0-or-later",
-        "supports": "!(uwp | arm)",
+        "supports": "!uwp & !(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
