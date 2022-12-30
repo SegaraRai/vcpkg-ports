@@ -34,7 +34,7 @@ export default defineConfig({
     headers: {
       'Content-Security-Policy': CSP_HEADER_VALUE,
     },
-  } as any,
+  },
   srcDir: 'docs',
   site: `https://vcpkg.roundtrip.dev`,
   trailingSlash: 'never', // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
