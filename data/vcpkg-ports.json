@@ -1,5 +1,5 @@
 {
-  "version": "df1f6083410860f78bcda2ed9928e1004c13f771",
+  "version": "8d9c52191e039fe49c580807efee502d22f32786",
   "ports": [
     {
       "name": "3fd",
@@ -10015,6 +10015,7 @@
       "name": "boost-locale",
       "manifest": {
         "name": "boost-locale",
+        "port-version": 1,
         "description": "Boost locale module",
         "homepage": "https://github.com/boostorg/locale",
         "license": "BSL-1.0",
@@ -25060,10 +25061,11 @@
       "name": "freeglut",
       "manifest": {
         "name": "freeglut",
-        "description": "Open source implementation of GLUT with source and binary backwards compatibility.",
+        "description": "A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library.",
         "homepage": "https://sourceforge.net/projects/freeglut/",
         "license": null,
         "dependencies": [
+          "opengl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -25073,17 +25075,16 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.4.0"
       },
       "files": [
         "fix-debug-macro.patch",
-        "macOS_Xquartz.patch",
         "no_x64_enforcement.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json",
-        "windows-static-output-name.patch",
+        "windows-output-name.patch",
         "x11-dependencies-export.patch"
       ]
     },
@@ -27510,6 +27511,69 @@
         "version-string": "20201203"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "glpk",
+      "manifest": {
+        "name": "glpk",
+        "maintainers": "Fabio A. Correa Duran",
+        "description": [
+          "The GNU Linear Programming Kit (GLPK) solves large-scale linear programming (LP), mixed integer programming (MIP), and related problems.",
+          "GLPK includes the following main components:",
+          "Primal and dual simplex methods",
+          "Primal-dual interior-point method",
+          "Branch-and-cut method",
+          "Translator for GNU MathProg",
+          "Application program interface (API)",
+          "Stand-alone LP/MIP solver "
+        ],
+        "homepage": "https://www.gnu.org/software/glpk/",
+        "documentation": "https://www.gnu.org/software/glpk/#documentation",
+        "license": "GPL-3.0-or-later",
+        "features": {
+          "dl": {
+            "description": "Enable shared library support",
+            "dependencies": [
+              "dlfcn-win32"
+            ]
+          },
+          "gmp": {
+            "description": "Use the GNU Multiple Precision Arithmetic Library",
+            "dependencies": [
+              "gmp"
+            ]
+          },
+          "mysql": {
+            "description": "Sharing between MathProg objects and MySQL databases (libmysql)",
+            "dependencies": [
+              {
+                "name": "glpk",
+                "features": [
+                  "dl"
+                ]
+              },
+              "libmysql"
+            ]
+          },
+          "odbc": {
+            "description": "Sharing between MathProg objects and databases through ODBC (libiodbc)",
+            "dependencies": [
+              {
+                "name": "glpk",
+                "features": [
+                  "dl"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "5.0"
+      },
+      "files": [
+        "configure.ac.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31598,7 +31662,7 @@
       "name": "hunspell",
       "manifest": {
         "name": "hunspell",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The most popular spellchecking library.",
         "homepage": "https://github.com/hunspell/hunspell",
         "license": "MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later",
@@ -31629,11 +31693,7 @@
       },
       "files": [
         "0001_fix_unistd.patch",
-        "0002-disable-test.patch",
-        "0003-fix-win-build.patch",
-        "0004-add-win-arm64.patch",
         "0005-autotools-subdirs.patch",
-        "0006-remove-gm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60321,7 +60381,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -63784,7 +63844,6 @@
       "name": "rocksdb",
       "manifest": {
         "name": "rocksdb",
-        "port-version": 1,
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/facebook/rocksdb",
         "license": "GPL-2.0-only OR Apache-2.0",
@@ -63839,7 +63898,7 @@
             ]
           }
         },
-        "version": "7.7.3"
+        "version": "7.8.3"
       },
       "files": [
         "0002-only-build-one-flavor.patch",
@@ -68170,6 +68229,31 @@
       ]
     },
     {
+      "name": "staticjson",
+      "manifest": {
+        "name": "staticjson",
+        "description": "Fast, direct and static typed parsing of JSON with C++",
+        "homepage": "https://github.com/netheril96/StaticJSON",
+        "license": "MIT",
+        "dependencies": [
+          "rapidjson",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "status-code",
       "manifest": {
         "name": "status-code",
@@ -71359,7 +71443,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.31.0"
+        "version-semver": "20.34.0"
       },
       "files": [
         "portfile.cmake",
