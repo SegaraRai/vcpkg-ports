@@ -1,5 +1,5 @@
 {
-  "version": "8d9c52191e039fe49c580807efee502d22f32786",
+  "version": "dbd30811862212d24bf929db99361c7c12326783",
   "ports": [
     {
       "name": "3fd",
@@ -171,7 +171,7 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -4782,8 +4782,7 @@
       "name": "bitserializer",
       "manifest": {
         "name": "bitserializer",
-        "port-version": 2,
-        "description": "C++ 17 library for serialization to JSON, XML, YAML",
+        "description": "C++ 17 library for serialization to JSON, XML, YAML, CSV",
         "homepage": "https://bitbucket.org/Pavel_Kisliak/bitserializer",
         "license": "MIT",
         "dependencies": [
@@ -4802,6 +4801,9 @@
             "dependencies": [
               "cpprestsdk"
             ]
+          },
+          "csv-archive": {
+            "description": "Module for support CSV"
           },
           "pugixml-archive": {
             "description": "Module for support XML (implementation based on the PugiXml library)",
@@ -4822,10 +4824,11 @@
             ]
           }
         },
-        "version": "0.44"
+        "version": "0.50"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -16368,7 +16371,7 @@
       "name": "celero",
       "manifest": {
         "name": "celero",
-        "description": "Celero is a modern cross-platform (Windows, Linux, MacOS) Microbenchmarking library for C++.",
+        "description": "Celero is a modern cross-platform (Windows, Linux, MacOS) Microbenchmarking library for C++ 11 and later.",
         "homepage": "https://github.com/DigitalInBlue/Celero",
         "license": "Apache-2.0",
         "dependencies": [
@@ -16381,7 +16384,7 @@
             "host": true
           }
         ],
-        "version": "2.8.3"
+        "version": "2.8.5"
       },
       "files": [
         "fix-bin-install-path.patch",
@@ -25742,6 +25745,7 @@
       "name": "gamenetworkingsockets",
       "manifest": {
         "name": "gamenetworkingsockets",
+        "port-version": 1,
         "description": "GameNetworkingSockets is a basic transport layer for games.",
         "homepage": "https://github.com/ValveSoftware/GameNetworkingSockets",
         "license": "BSD-3-Clause",
@@ -25758,9 +25762,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.4.1"
+        "version": "1.4.1"
       },
       "files": [
+        "fix-depend-protobuf.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31951,6 +31956,7 @@
       "name": "ignition-cmake2",
       "manifest": {
         "name": "ignition-cmake2",
+        "port-version": 1,
         "description": "CMake helper functions for building robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/cmake",
         "license": null,
@@ -31963,7 +31969,6 @@
         "version": "2.16.0"
       },
       "files": [
-        "FindGTS.patch",
         "add-pkgconfig-and-remove-privatefor-limit.patch",
         "portfile.cmake",
         "usage",
@@ -32129,6 +32134,7 @@
       "name": "ignition-math6",
       "manifest": {
         "name": "ignition-math6",
+        "port-version": 1,
         "description": "Math API for robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/math",
         "license": null,
@@ -32143,7 +32149,6 @@
         "version": "6.9.2"
       },
       "files": [
-        "fix-isspace.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41404,7 +41409,6 @@
       "name": "libsndfile",
       "manifest": {
         "name": "libsndfile",
-        "port-version": 1,
         "description": "A library for reading and writing audio files",
         "homepage": "https://github.com/erikd/libsndfile",
         "license": "LGPL-2.1-or-later",
@@ -41451,11 +41455,9 @@
             ]
           }
         },
-        "version-semver": "1.1.0"
+        "version-semver": "1.2.0"
       },
       "files": [
-        "fix-mp3lame.patch",
-        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -59303,7 +59305,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71295,7 +71297,7 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -73588,7 +73590,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -73620,6 +73622,7 @@
           "libjpeg-turbo",
           "libpng",
           "nanosvg",
+          "opengl",
           "pcre2",
           "tiff",
           {
