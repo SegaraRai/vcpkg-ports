@@ -40,7 +40,9 @@ export function evalVcpkgSupportsExpr(
   expr: jsep.Expression,
   truthyValues: readonly string[]
 ): boolean {
-  const cExpr = expr as jsep.CoreExpression;
+  const cExpr = expr as
+    | jsep.CoreExpression
+    | { type: 'SequenceExpression'; expressions: jsep.Expression[] };
 
   switch (cExpr.type) {
     case 'Identifier':
@@ -76,11 +78,18 @@ export function evalVcpkgSupportsExpr(
           throw new Error(`Unknown binary operator: ${cExpr.operator}`);
       }
 
+    case 'SequenceExpression':
+      // same as | operator
+      return cExpr.expressions.some((e) =>
+        evalVcpkgSupportsExpr(e, truthyValues)
+      );
+
     case 'Compound':
       // same as | operator
       return cExpr.body.some((e) => evalVcpkgSupportsExpr(e, truthyValues));
 
     default:
+      console.log(cExpr);
       throw new Error(`Unknown expression type: ${cExpr.type}`);
   }
 }
