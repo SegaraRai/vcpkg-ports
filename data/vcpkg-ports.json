@@ -1,5 +1,5 @@
 {
-  "version": "0f719b3fdfc36f8dd45229370a0df180fdbf68f6",
+  "version": "0d239eb4d32f125c3da90e612096b14a11ef1474",
   "ports": [
     {
       "name": "3fd",
@@ -708,12 +708,13 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
         ],
         "homepage": "https://github.com/google/angle",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "egl-registry",
           {
@@ -749,6 +750,8 @@
         "angle_commit.h",
         "portfile.cmake",
         "third-party-zlib-far-undef.patch",
+        "unofficial-angle-config.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -1288,14 +1291,15 @@
             "host": true
           }
         ],
-        "version": "11.2.3"
+        "version": "11.4.3"
       },
       "files": [
-        "add-disable-find-package.patch",
-        "fix-CMakePath.patch",
+        "cmake-config.patch",
+        "dependencies.patch",
+        "pkgconfig.patch",
         "portfile.cmake",
-        "remove_custom_modules.patch",
         "usage",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -14797,6 +14801,7 @@
       "name": "boost-vcpkg-helpers",
       "manifest": {
         "name": "boost-vcpkg-helpers",
+        "port-version": 1,
         "description": "Internal vcpkg port used to modularize Boost",
         "license": "MIT",
         "dependencies": [
@@ -14808,6 +14813,7 @@
         "version": "1.81.0"
       },
       "files": [
+        "LICENSE.txt",
         "boost-modular-headers.cmake",
         "portfile.cmake",
         "usage",
@@ -16802,6 +16808,7 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
+        "port-version": 1,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
@@ -17007,6 +17014,30 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cista",
+      "manifest": {
+        "name": "cista",
+        "description": "Cista is a simple, high-performance, zero-copy C++ serialization & reflection library.",
+        "homepage": "https://github.com/felixguendling/cista",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.11"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17601,9 +17632,10 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.1"
+        "version": "3.5.0"
       },
       "files": [
+        "fix-sodium-dep.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -18817,8 +18849,20 @@
       "name": "cpptoml",
       "manifest": {
         "name": "cpptoml",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A header-only library for parsing TOML configuration files.",
+        "homepage": "https://github.com/skystrife/cpptoml",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "v0.1.1"
       },
       "files": [
@@ -18890,7 +18934,7 @@
         "documentation": "https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/",
         "license": "MIT",
         "supports": "windows",
-        "version": "2.0.220929.3"
+        "version": "2.0.221121.5"
       },
       "files": [
         "cppwinrt-config.cmake",
@@ -19323,7 +19367,7 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -19452,6 +19496,26 @@
           }
         },
         "version-string": "6.6.1_P1_20210406_se"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ctpg",
+      "manifest": {
+        "name": "ctpg",
+        "description": "Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time.",
+        "homepage": "https://github.com/peter-winter/ctpg",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.3.7"
       },
       "files": [
         "portfile.cmake",
@@ -20826,9 +20890,12 @@
         "features": {
           "dx12": {
             "description": "Build with DirectX12 support for Windows 10"
+          },
+          "spectre": {
+            "description": "Build Spectre-mitigated library"
           }
         },
-        "version-date": "2022-10-17"
+        "version-date": "2022-12-15"
       },
       "files": [
         "portfile.cmake",
@@ -20891,9 +20958,12 @@
             "dependencies": [
               "openexr"
             ]
+          },
+          "spectre": {
+            "description": "Build Spectre-mitigated library"
           }
         },
-        "version-date": "2022-10-17"
+        "version-date": "2022-12-15"
       },
       "files": [
         "portfile.cmake",
@@ -20921,6 +20991,9 @@
           }
         ],
         "features": {
+          "spectre": {
+            "description": "Build Spectre-mitigated library"
+          },
           "xaudio2-8": {
             "description": "Build with XAudio 2.8 support for Windows 8.x or later"
           },
@@ -20937,7 +21010,7 @@
             ]
           }
         },
-        "version-date": "2022-10-17"
+        "version-date": "2022-12-15"
       },
       "files": [
         "portfile.cmake",
@@ -20973,6 +21046,9 @@
           "xaudio2-9"
         ],
         "features": {
+          "spectre": {
+            "description": "Build Spectre-mitigated library"
+          },
           "xaudio2-9": {
             "description": "Build with XAudio 2.9 support for Windows 10/11"
           },
@@ -20986,7 +21062,7 @@
             ]
           }
         },
-        "version-date": "2022-10-17"
+        "version-date": "2022-12-15"
       },
       "files": [
         "portfile.cmake",
@@ -22337,7 +22413,8 @@
       "manifest": {
         "name": "ensmallen",
         "description": "A header-only C++ library for mathematical optimization",
-        "homepage": "https://github.com/mlpack/ensmallen",
+        "homepage": "http://ensmallen.org/",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "armadillo",
           "blas",
@@ -22351,9 +22428,10 @@
             "host": true
           }
         ],
-        "version-semver": "2.18.1"
+        "version-semver": "2.19.0"
       },
       "files": [
+        "dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24918,6 +24996,31 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "foonathan-lexy",
+      "manifest": {
+        "name": "foonathan-lexy",
+        "description": "C++ parsing DSL",
+        "homepage": "https://github.com/foonathan/lexy",
+        "license": "BSL-1.0",
+        "supports": "x64 | arm64",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2022.12.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -31147,6 +31250,7 @@
           "boost-asio",
           "boost-chrono",
           "boost-format",
+          "boost-multiprecision",
           "boost-optional",
           "boost-property-tree",
           "boost-system",
@@ -31172,7 +31276,7 @@
             ]
           }
         },
-        "version-semver": "5.0.0"
+        "version-semver": "5.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -32419,7 +32523,6 @@
       "name": "igraph",
       "manifest": {
         "name": "igraph",
-        "port-version": 1,
         "description": "igraph is a C library for network analysis and graph theory, with an emphasis on efficiency portability and ease of use.",
         "homepage": "https://igraph.org/",
         "license": "GPL-2.0-or-later",
@@ -32449,7 +32552,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.2"
+        "version": "0.10.3"
       },
       "files": [
         "arith_osx.h",
@@ -32942,6 +33045,20 @@
         "portfile.cmake",
         "vcpkg.json",
         "win32_ssize_t.patch"
+      ]
+    },
+    {
+      "name": "inipp",
+      "manifest": {
+        "name": "inipp",
+        "description": "Simple header-only C++ ini parser and generator",
+        "homepage": "https://github.com/mcmtroffaes/inipp",
+        "license": "MIT",
+        "version": "1.0.12"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -35954,12 +36071,14 @@
             ]
           }
         },
-        "version": "3.10.1"
+        "version": "3.11.0"
       },
       "files": [
         "FindLAPACK.cmake",
+        "cmake-config.patch",
         "lapacke.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -37382,6 +37501,34 @@
         "version-string": "1.2.6"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libenvpp",
+      "manifest": {
+        "name": "libenvpp",
+        "description": "A modern C++ library for type-safe environment variable parsing ",
+        "homepage": "https://github.com/ph3at/libenvpp",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "fmt",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "fix-dependencies.patch",
+        "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45122,7 +45269,6 @@
       "name": "lz4",
       "manifest": {
         "name": "lz4",
-        "port-version": 4,
         "description": "Lossless compression algorithm, providing compression speed at 400 MB/s per core.",
         "homepage": "https://github.com/lz4/lz4",
         "license": "BSD-2-Clause AND GPL-2.0-only",
@@ -45136,10 +45282,9 @@
             "host": true
           }
         ],
-        "version": "1.9.3"
+        "version": "1.9.4"
       },
       "files": [
-        "0001-Fix-potential-memory-corruption-with-negative-memmov.patch",
         "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
@@ -46779,6 +46924,7 @@
       "name": "marisa-trie",
       "manifest": {
         "name": "marisa-trie",
+        "port-version": 1,
         "description": "Matching Algorithm with Recursively Implemented StorAge (MARISA) is a space-efficient trie data structure. This is a C++ library for an implementation of MARISA.",
         "homepage": "https://github.com/s-yata/marisa-trie",
         "license": "BSD-2-Clause OR LGPL-2.1-or-later",
@@ -48565,12 +48711,13 @@
       "name": "monkeys-audio",
       "manifest": {
         "name": "monkeys-audio",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Monkey's Audio is an excellent audio compression tool which has multiple advantages over traditional methods.",
           "Audio files compressed with it end with .ape extension."
         ],
         "homepage": "https://monkeysaudio.com",
+        "license": null,
         "supports": "!(uwp | osx | linux)",
         "features": {
           "tools": {
@@ -48580,6 +48727,7 @@
         "version": "5.70"
       },
       "files": [
+        "fix-C2471.patch",
         "fix-project-config.patch",
         "license",
         "portfile.cmake",
@@ -49797,7 +49945,7 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Free software emulation of curses in System V Release 4.0, and more",
         "homepage": "https://invisible-island.net/ncurses/announce.html",
         "license": "MIT",
@@ -50047,8 +50195,9 @@
       "manifest": {
         "name": "nethost",
         "description": "Provides a set of APIs that can be used to host .NET Core (dotnet)",
-        "homepage": "https://github.com/dotnet/runtime/tree/master/src/installer/corehost/cli/nethost",
-        "supports": "!uwp",
+        "homepage": "https://github.com/dotnet/runtime/tree/main/src/native/corehost/nethost",
+        "license": "MIT",
+        "supports": "(windows & !uwp), (linux, osx)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -50059,7 +50208,7 @@
             "host": true
           }
         ],
-        "version": "6.0.5"
+        "version": "7.0.0"
       },
       "files": [
         "0001-nethost-cmakelists.patch",
@@ -50135,7 +50284,7 @@
             "host": true
           }
         ],
-        "version": "1.50.0"
+        "version": "1.51.0"
       },
       "files": [
         "portfile.cmake",
@@ -50486,6 +50635,32 @@
       "files": [
         "fix-cmakelists.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "node-api",
+      "manifest": {
+        "name": "node-api",
+        "description": "NodeJS API for writing modules in C++",
+        "homepage": "https://nodejs.org/api/addons.html",
+        "license": null,
+        "supports": "((windows & !arm) | linux | osx) & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "18.12.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-node-api-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -55345,6 +55520,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
+        "port-version": 1,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -55352,6 +55528,7 @@
         "dependencies": [
           "eigen3",
           "glew",
+          "palsigslot",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -55473,6 +55650,7 @@
         "version": "0.8"
       },
       "files": [
+        "devendor-palsigslot.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -57942,6 +58120,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ptc-print",
+      "manifest": {
+        "name": "ptc-print",
+        "description": "A single-header library for custom printing to the output stream.",
+        "homepage": "https://github.com/JustWhit3/ptc-print",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -67665,6 +67868,7 @@
       "name": "spirv-reflect",
       "manifest": {
         "name": "spirv-reflect",
+        "port-version": 1,
         "description": "SPIRV-Reflect is a lightweight library that provides a C/C++ reflection API for SPIR-V shader bytecode in Vulkan applications.",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Reflect",
         "license": "Apache-2.0",
@@ -67676,8 +67880,7 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "vulkan"
+          }
         ],
         "version": "1.3.204.1"
       },
@@ -69800,10 +70003,21 @@
       "name": "tinyexr",
       "manifest": {
         "name": "tinyexr",
-        "port-version": 1,
         "description": "Library to load and save OpenEXR(.exr) images",
         "homepage": "https://github.com/syoyo/tinyexr",
-        "version-string": "1.0.0"
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "miniz",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
       },
       "files": [
         "fixtargets.patch",
@@ -70327,6 +70541,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
+        "port-version": 1,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -70382,6 +70597,7 @@
       "files": [
         "001-fix-vcxproj-vcpkg.patch",
         "002-fix-capstone-5.patch",
+        "003-fix-imgui-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -71406,9 +71622,12 @@
               "eigen3",
               "spectra"
             ]
+          },
+          "spectre": {
+            "description": "Build Spectre-mitigated library"
           }
         },
-        "version-date": "2022-10-17"
+        "version-date": "2022-12-15"
       },
       "files": [
         "openexr.patch",
