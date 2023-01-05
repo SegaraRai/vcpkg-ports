@@ -89,7 +89,6 @@ export function evalVcpkgSupportsExpr(
       return cExpr.body.some((e) => evalVcpkgSupportsExpr(e, truthyValues));
 
     default:
-      console.log(cExpr);
       throw new Error(`Unknown expression type: ${cExpr.type}`);
   }
 }
