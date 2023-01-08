@@ -1,5 +1,5 @@
 {
-  "version": "12c2a93b4007612b5ffa980c9d2235eb0bcac10f",
+  "version": "739824a6d3179d85820eedc0637e81c0c68b874c",
   "ports": [
     {
       "name": "3fd",
@@ -827,10 +827,10 @@
       "name": "aom",
       "manifest": {
         "name": "aom",
+        "port-version": 1,
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
-        "supports": "!(windows & arm & !uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -17677,7 +17677,6 @@
       "name": "cocoyaxi",
       "manifest": {
         "name": "cocoyaxi",
-        "port-version": 3,
         "description": "A go-style coroutine library in C++11 and more",
         "homepage": "https://github.com/idealvin/cocoyaxi",
         "license": "MIT",
@@ -17685,6 +17684,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -17708,7 +17711,7 @@
             ]
           }
         },
-        "version-semver": "2.0.3"
+        "version": "3.0.0"
       },
       "files": [
         "fix-event-destruct.patch",
@@ -20367,10 +20370,11 @@
       "name": "dav1d",
       "manifest": {
         "name": "dav1d",
+        "port-version": 1,
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
         "license": "BSD-2-Clause",
-        "supports": "!(uwp | arm | x86)",
+        "supports": "!(uwp | (windows & x86 & !static))",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
@@ -24534,7 +24538,6 @@
       "name": "flatbuffers",
       "manifest": {
         "name": "flatbuffers",
-        "port-version": 1,
         "description": [
           "Memory Efficient Serialization Library",
           "FlatBuffers is an efficient cross platform serialization library for games and other memory constrained apps. It allows you to directly access serialized data without unpacking/parsing it first, while still having great forwards/backwards compatibility."
@@ -24555,7 +24558,7 @@
             "host": true
           }
         ],
-        "version": "22.10.26"
+        "version": "23.1.4"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -26410,7 +26413,7 @@
             ]
           }
         },
-        "version-semver": "3.6.1"
+        "version-semver": "3.6.2"
       },
       "files": [
         "find-link-libraries.patch",
@@ -33928,7 +33931,7 @@
             "host": true
           }
         ],
-        "version": "0.168.7"
+        "version": "0.169.0"
       },
       "files": [
         "portfile.cmake",
@@ -47058,10 +47061,16 @@
       "name": "mathgl",
       "manifest": {
         "name": "mathgl",
-        "port-version": 2,
         "description": "MathGL is a free library of fast C++ routines for the plotting of the data varied in one or more dimensions",
         "license": "GPL-3.0-only",
+        "supports": "!uwp",
         "dependencies": [
+          "getopt",
+          {
+            "name": "mathgl",
+            "host": true,
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -47084,10 +47093,16 @@
               "armadillo"
             ]
           },
+          "examples": {
+            "description": "Build example programs (not installed)"
+          },
           "fltk": {
             "description": "fltk module",
             "dependencies": [
-              "fltk"
+              {
+                "name": "fltk",
+                "default-features": false
+              }
             ]
           },
           "gif": {
@@ -47099,7 +47114,17 @@
           "glut": {
             "description": "glut module",
             "dependencies": [
-              "freeglut"
+              {
+                "name": "freeglut",
+                "platform": "!osx"
+              },
+              {
+                "name": "mathgl",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
+              }
             ]
           },
           "gsl": {
@@ -47111,7 +47136,10 @@
           "hdf5": {
             "description": "hdf5 module",
             "dependencies": [
-              "hdf5"
+              {
+                "name": "hdf5",
+                "default-features": false
+              }
             ]
           },
           "jpeg": {
@@ -47135,13 +47163,19 @@
           "qt5": {
             "description": "qt5 module",
             "dependencies": [
-              "qt5"
+              {
+                "name": "qt5-base",
+                "default-features": false
+              }
             ]
           },
           "wx": {
             "description": "wx module",
             "dependencies": [
-              "wxwidgets"
+              {
+                "name": "wxwidgets",
+                "default-features": false
+              }
             ]
           },
           "zlib": {
@@ -47151,15 +47185,21 @@
             ]
           }
         },
-        "version": "2.5"
+        "version": "8.0.1"
       },
       "files": [
-        "fix_arma_sprintf.patch",
-        "fix_attribute.patch",
-        "fix_cmakelists_and_cpp.patch",
-        "fix_default_graph_init.patch",
-        "fix_mglDataList.patch",
+        "cmake-config.patch",
+        "cmake-project-include.cmake",
+        "dependencies.patch",
+        "enable-examples.patch",
+        "fix-cross-builds.patch",
+        "fix-examples.patch",
+        "fix-format-specifiers.patch",
+        "fix-glut.patch",
+        "fix-mgllab.patch",
+        "linkage.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -71990,7 +72030,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-09-04"
+        "version-date": "2022-12-16"
       },
       "files": [
         "cmake_get_vars/CMakeLists.txt",
@@ -73882,7 +73922,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -73984,6 +74024,7 @@
         "example/CMakeLists.txt",
         "fix-libs-export.patch",
         "fix-pcre2.patch",
+        "fix_include.patch",
         "gtk3-link-libraries.patch",
         "install-layout.patch",
         "nanosvg-ext-depend.patch",
@@ -75165,7 +75206,7 @@
             "description": "Build with JSON writer"
           }
         },
-        "version": "0.5.1"
+        "version": "0.6.0"
       },
       "files": [
         "portfile.cmake",
