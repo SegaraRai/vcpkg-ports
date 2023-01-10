@@ -1,5 +1,5 @@
 {
-  "version": "739824a6d3179d85820eedc0637e81c0c68b874c",
+  "version": "5bb5f3923a33d862b25c18fd4514e08c74c698e1",
   "ports": [
     {
       "name": "3fd",
@@ -1790,12 +1790,20 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "GPL-2.0-only",
         "dependencies": [
           "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
           "glib",
           {
             "name": "glib",
@@ -1858,6 +1866,21 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "version-date": "2021-05-03"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "attr",
+      "manifest": {
+        "name": "attr",
+        "description": "Commands for Manipulating Filesystem Extended Attributes",
+        "homepage": "http://savannah.nongnu.org/projects/attr",
+        "license": "LGPL-2.1-or-later",
+        "supports": "linux",
+        "version-semver": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -18509,26 +18532,21 @@
       "name": "cppad",
       "manifest": {
         "name": "cppad",
-        "port-version": 3,
         "description": "CppAD: A Package for Differentiation of C++ Algorithms",
         "homepage": "https://github.com/coin-or/CppAD",
+        "license": "EPL-2.0",
         "supports": "!(arm | uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version-string": "20210000.7"
+        "version": "20230000.0"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json",
-        "windows-fix.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -19509,6 +19527,7 @@
       "name": "ctpg",
       "manifest": {
         "name": "ctpg",
+        "port-version": 1,
         "description": "Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time.",
         "homepage": "https://github.com/peter-winter/ctpg",
         "license": "MIT",
@@ -20815,8 +20834,18 @@
         "homepage": "https://github.com/microsoft/DirectXShaderCompiler",
         "documentation": "https://github.com/microsoft/DirectXShaderCompiler/wiki",
         "license": null,
-        "supports": "windows & (x64 | arm64) & !uwp & !staticcrt",
-        "version-date": "2022-07-18"
+        "supports": "(windows & !arm32 & !uwp) | (linux & x64)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2022-12-16"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -20843,7 +20872,7 @@
             "host": true
           }
         ],
-        "version": "1.606.4"
+        "version": "1.608.2"
       },
       "files": [
         "portfile.cmake",
@@ -23376,6 +23405,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29486,6 +29516,7 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
+        "port-version": 1,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
@@ -29521,9 +29552,12 @@
         "version-semver": "7.0.0"
       },
       "files": [
+        "cmake-project-include.cmake",
         "fix-dependencies.patch",
+        "no-absolute-paths.patch",
         "portfile.cmake",
         "select-plugins.patch",
+        "static-linkage.patch",
         "vcpkg.json"
       ]
     },
@@ -29738,6 +29772,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
+        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -30566,6 +30601,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -30620,6 +30656,7 @@
       },
       "files": [
         "0001-build.patch",
+        "cairo-cpp-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31319,7 +31356,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 3,
+        "port-version": 4,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -31978,10 +32015,9 @@
             "host": true
           }
         ],
-        "version": "71.1"
+        "version": "72.1"
       },
       "files": [
-        "check-autoconf-archive.patch",
         "disable-escapestr-tool.patch",
         "disable-static-prefix.patch",
         "fix-extra.patch",
@@ -32815,7 +32851,7 @@
             "supports": "windows"
           }
         },
-        "version": "1.89.1"
+        "version": "1.89.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -33301,7 +33337,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -34030,6 +34066,44 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kaitai-struct-cpp-stl-runtime",
+      "manifest": {
+        "name": "kaitai-struct-cpp-stl-runtime",
+        "description": "Kaitai Struct is a declarative language used for describe various binary data structures, laid out in files or in memory. This library implements Kaitai Struct API for C++ using STL",
+        "homepage": "http://kaitai.io/",
+        "documentation": "https://doc.kaitai.io/lang_cpp_stl.html",
+        "license": "MIT",
+        "supports": "!staticcrt",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "default-features": [
+          "iconv"
+        ],
+        "features": {
+          "iconv": {
+            "description": "Set the way strings have to be encoded to ICONV",
+            "dependencies": [
+              "libiconv"
+            ]
+          }
+        },
+        "version": "0.10"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -36161,6 +36235,7 @@
         "name": "launch-darkly-server",
         "description": "LaunchDarkly server-side SDK for C/C++",
         "homepage": "https://github.com/launchdarkly/c-server-sdk",
+        "license": "Apache-2.0",
         "supports": "!uwp & !arm",
         "dependencies": [
           "curl",
@@ -36174,10 +36249,14 @@
             "host": true
           }
         ],
-        "version": "2.4.3"
+        "version": "2.8.6"
       },
       "files": [
+        "FixStrictPrototypes.patch",
+        "findPCRE.patch",
+        "launch-darkly-server-config.cmake",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -36466,6 +36545,31 @@
       },
       "files": [
         "fix-cmakelists.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libadwaita",
+      "manifest": {
+        "name": "libadwaita",
+        "description": "Building blocks for modern GNOME applications",
+        "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "glib",
+            "host": true
+          },
+          "gtk",
+          {
+            "name": "sassc",
+            "host": true
+          }
+        ],
+        "version": "1.2.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -38005,7 +38109,7 @@
       "name": "libgd",
       "manifest": {
         "name": "libgd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open source code library for the dynamic creation of images by programmers.",
         "homepage": "https://github.com/libgd/libgd",
         "license": "GD",
@@ -38068,8 +38172,10 @@
         "version-semver": "2.3.3"
       },
       "files": [
+        "cmake-project-include.cmake",
         "control-build.patch",
         "fix-dependencies.cmake",
+        "fix-static-usage.patch",
         "fix_msvc_build.patch",
         "portfile.cmake",
         "usage",
@@ -38572,7 +38678,7 @@
           },
           "x265"
         ],
-        "version": "1.13.0"
+        "version": "1.14.2"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -43748,6 +43854,7 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
+        "port-version": 1,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -45299,6 +45406,7 @@
       "name": "lz4",
       "manifest": {
         "name": "lz4",
+        "port-version": 1,
         "description": "Lossless compression algorithm, providing compression speed at 400 MB/s per core.",
         "homepage": "https://github.com/lz4/lz4",
         "license": "BSD-2-Clause AND GPL-2.0-only",
@@ -51809,7 +51917,7 @@
       "name": "omplapp",
       "manifest": {
         "name": "omplapp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Use OMPL for reading meshes and performing collision checking",
         "homepage": "https://ompl.kavrakilab.org/",
         "license": null,
@@ -52016,11 +52124,11 @@
       "name": "onnxruntime-gpu",
       "manifest": {
         "name": "onnxruntime-gpu",
-        "port-version": 1,
         "description": "onnxruntime (GPU)",
         "homepage": "https://github.com/microsoft/onnxruntime",
+        "license": "MIT",
         "supports": "windows & !x86 & !uwp & !static & !arm",
-        "version": "1.5.1"
+        "version": "1.12.1"
       },
       "files": [
         "portfile.cmake",
@@ -53024,7 +53132,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -54367,7 +54475,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -55544,6 +55652,7 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
+        "port-version": 1,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-only",
@@ -55579,6 +55688,7 @@
         "version": "1.50.12"
       },
       "files": [
+        "freetype2-pc.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -56623,6 +56733,7 @@
       "name": "physfs",
       "manifest": {
         "name": "physfs",
+        "port-version": 1,
         "description": "a library to provide abstract access to various archives",
         "homepage": "https://icculus.org/physfs/",
         "license": "Zlib",
@@ -56634,13 +56745,14 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "zlib"
+          }
         ],
         "version-semver": "3.2.0"
       },
       "files": [
         "portfile.cmake",
+        "usage",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -58463,7 +58575,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -58527,6 +58639,7 @@
         "0009-bz2d.patch",
         "0010-dont-skip-rpath.patch",
         "0011-gcc-ldflags-fix.patch",
+        "0012-force-disable-curses.patch",
         "openssl.props.in",
         "portfile.cmake",
         "python_vcpkg.props.in",
@@ -63345,6 +63458,30 @@
       ]
     },
     {
+      "name": "reactiveplusplus",
+      "manifest": {
+        "name": "reactiveplusplus",
+        "description": "ReactivePlusPlus is reactive programming library for C++ language",
+        "homepage": "https://github.com/victimsnino/ReactivePlusPlus",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.2.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "readerwriterqueue",
       "manifest": {
         "name": "readerwriterqueue",
@@ -65378,7 +65515,6 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -65428,7 +65564,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.26.1"
+        "version": "2.26.2"
       },
       "files": [
         "deps.patch",
@@ -67935,11 +68071,11 @@
       "name": "spirv-reflect",
       "manifest": {
         "name": "spirv-reflect",
-        "port-version": 1,
         "description": "SPIRV-Reflect is a lightweight library that provides a C/C++ reflection API for SPIR-V shader bytecode in Vulkan applications.",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Reflect",
         "license": "Apache-2.0",
         "dependencies": [
+          "spirv-headers",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -67949,7 +68085,7 @@
             "host": true
           }
         ],
-        "version": "1.3.204.1"
+        "version": "1.3.236.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -71990,7 +72126,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://vcpkg.io/en/docs/maintainers/ports/vcpkg-cmake.html",
         "license": "MIT",
-        "version-date": "2022-10-30"
+        "version-date": "2022-11-13"
       },
       "files": [
         "portfile.cmake",
