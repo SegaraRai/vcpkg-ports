@@ -1,5 +1,5 @@
 {
-  "version": "5bb5f3923a33d862b25c18fd4514e08c74c698e1",
+  "version": "c30de8e1369e03f4a569f8f224eed418dd0949bb",
   "ports": [
     {
       "name": "3fd",
@@ -17700,6 +17700,7 @@
       "name": "cocoyaxi",
       "manifest": {
         "name": "cocoyaxi",
+        "port-version": 1,
         "description": "A go-style coroutine library in C++11 and more",
         "homepage": "https://github.com/idealvin/cocoyaxi",
         "license": "MIT",
@@ -22228,11 +22229,21 @@
       "name": "efsw",
       "manifest": {
         "name": "efsw",
-        "port-version": 3,
         "description": "efsw is a C++ cross-platform file system watcher and notifier.",
         "homepage": "https://github.com/SpartanJ/efsw",
+        "license": "MIT",
         "supports": "!uwp",
-        "version-date": "2020-06-08"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-01-06"
       },
       "files": [
         "portfile.cmake",
@@ -32923,6 +32934,7 @@
         "name": "immer",
         "description": "Postmodern immutable and persistent data structures for C++",
         "homepage": "https://sinusoid.es/immer/",
+        "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -32938,7 +32950,7 @@
             "description": "Build documentation"
           }
         },
-        "version-date": "2022-02-12"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -58525,10 +58537,9 @@
       "name": "pystring",
       "manifest": {
         "name": "pystring",
-        "port-version": 5,
         "description": "Pystring is a collection of C++ functions which match the interface and behavior of python's string class methods using std::string",
         "homepage": "https://github.com/imageworks/pystring",
-        "license": "LGPL-2.1-only",
+        "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -58539,7 +58550,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -58929,6 +58940,7 @@
             ]
           },
           "qtinterfaceframework",
+          "qtlanguageserver",
           {
             "name": "qtlottie",
             "default-features": false,
@@ -59005,6 +59017,11 @@
           "qtserialbus",
           "qtserialport",
           "qtshadertools",
+          {
+            "name": "qtspeech",
+            "default-features": false,
+            "platform": "!(windows & x86)"
+          },
           "qtsvg",
           {
             "name": "qttools",
@@ -59088,7 +59105,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -59238,7 +59255,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -60664,7 +60681,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -60705,7 +60722,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -60741,7 +60758,7 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "bump-cmake-version.patch",
@@ -60755,7 +60772,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 5,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -61213,7 +61229,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "GLIB2-static.patch",
@@ -61277,7 +61293,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61300,7 +61316,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61325,7 +61341,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61353,7 +61369,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61386,7 +61402,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61411,7 +61427,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61431,7 +61447,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61455,7 +61471,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61466,7 +61482,6 @@
       "name": "qtimageformats",
       "manifest": {
         "name": "qtimageformats",
-        "port-version": 1,
         "description": "Additional Image Format plugins for Qt",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -61508,7 +61523,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -61556,7 +61571,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "fix-taglib-search.patch",
@@ -61641,6 +61656,38 @@
       ]
     },
     {
+      "name": "qtlanguageserver",
+      "manifest": {
+        "name": "qtlanguageserver",
+        "description": "An implementation of the Language Server Protocol",
+        "homepage": "https://www.qt.io/",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "concurrent",
+              "network"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ],
+            "platform": "android"
+          }
+        ],
+        "version": "6.4.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "qtlocation",
       "manifest": {
         "name": "qtlocation",
@@ -61662,7 +61709,7 @@
           },
           "qtpositioning"
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61694,7 +61741,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61717,7 +61764,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61728,7 +61775,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 1,
         "description": "Qt Multimedia",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -61803,7 +61849,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "fix_avfoundation_target.patch",
@@ -61830,7 +61876,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61906,7 +61952,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61941,7 +61987,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -61986,7 +62032,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62006,7 +62052,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62044,7 +62090,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62094,7 +62140,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62133,7 +62179,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62171,7 +62217,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62211,7 +62257,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62231,7 +62277,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62259,7 +62305,40 @@
             "default-features": false
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "qtspeech",
+      "manifest": {
+        "name": "qtspeech",
+        "description": "Qt Speech support",
+        "homepage": "https://www.qt.io/",
+        "license": null,
+        "supports": "!(windows & x86)",
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui",
+              "widgets"
+            ]
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "qtmultimedia",
+            "default-features": false
+          }
+        ],
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62282,7 +62361,7 @@
             ]
           }
         ],
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62374,7 +62453,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "fix_static_build.patch",
@@ -62411,7 +62490,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62463,7 +62542,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -62499,7 +62578,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62530,7 +62609,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62541,7 +62620,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 1,
         "description": "Qt WebEngine",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62691,12 +62769,12 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
-        "add-missing-string.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "vector.patch"
       ]
     },
     {
@@ -62726,7 +62804,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62770,7 +62848,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.4.1"
+        "version": "6.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -62968,7 +63046,7 @@
             "host": true
           }
         ],
-        "version": "2.5.1"
+        "version": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -73312,19 +73390,28 @@
       "name": "wayland",
       "manifest": {
         "name": "wayland",
+        "port-version": 1,
         "description": "Core Wayland window system code and protocol",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
         "supports": "!(windows | osx)",
-        "dependencies": [
-          "expat",
-          "libffi",
-          "libxml2",
-          {
-            "name": "vcpkg-tool-meson",
-            "host": true
+        "features": {
+          "force-build": {
+            "description": [
+              "Build wayland libraries instead of depending on system ones.",
+              "Requires triplet variable X_VCPKG_FORCE_VCPKG_WAYLAND_LIBRARIES to be set."
+            ],
+            "dependencies": [
+              "expat",
+              "libffi",
+              "libxml2",
+              {
+                "name": "vcpkg-tool-meson",
+                "host": true
+              }
+            ]
           }
-        ],
+        },
         "version": "1.21.0"
       },
       "files": [
@@ -73336,12 +73423,29 @@
       "name": "wayland-protocols",
       "manifest": {
         "name": "wayland-protocols",
+        "port-version": 1,
         "description": "wayland-protocols contains Wayland protocols that add functionality not available in the Wayland core protocol.",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
         "dependencies": [
           "wayland"
         ],
+        "features": {
+          "force-build": {
+            "description": [
+              "Build wayland libraries instead of depending on system ones.",
+              "Requires triplet variable X_VCPKG_FORCE_VCPKG_WAYLAND_LIBRARIES to be set."
+            ],
+            "dependencies": [
+              {
+                "name": "wayland",
+                "features": [
+                  "force-build"
+                ]
+              }
+            ]
+          }
+        },
         "version": "1.31"
       },
       "files": [
@@ -74303,11 +74407,12 @@
       "name": "xaudio2redist",
       "manifest": {
         "name": "xaudio2redist",
+        "port-version": 1,
         "description": "Redistributable version of XAudio 2.9 for Windows 7 SP1 or later",
         "homepage": "https://aka.ms/XAudio2Redist",
         "documentation": "https://aka.ms/XAudio2Redist",
         "license": null,
-        "supports": "windows & !arm & !uwp & !staticcrt",
+        "supports": "windows & !arm & !uwp",
         "version": "1.2.10"
       },
       "files": [
