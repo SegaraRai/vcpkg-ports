@@ -1,5 +1,5 @@
 {
-  "version": "c30de8e1369e03f4a569f8f224eed418dd0949bb",
+  "version": "4c5be28bfac45e53fa8c4100a1d759a8e5ee97fb",
   "ports": [
     {
       "name": "3fd",
@@ -63,7 +63,6 @@
       "name": "ableton",
       "manifest": {
         "name": "ableton",
-        "port-version": 2,
         "description": "Ableton Link, a technology that synchronizes musical beat, tempo, and phase across multiple applications running on one or more devices.",
         "homepage": "https://www.ableton.com/en/link/",
         "documentation": "http://ableton.github.io/link/",
@@ -105,7 +104,7 @@
             "description": "Build LinkHutSilent command line tool"
           }
         },
-        "version": "3.0.5"
+        "version": "3.0.6"
       },
       "files": [
         "correct_cmake_include_directory.patch",
@@ -212,6 +211,24 @@
           }
         },
         "version": "7.0.11"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "acl",
+      "manifest": {
+        "name": "acl",
+        "description": "Commands for Manipulating POSIX Access Control Lists",
+        "homepage": "https://savannah.nongnu.org/projects/acl",
+        "license": "LGPL-2.1-or-later",
+        "supports": "linux",
+        "dependencies": [
+          "attr"
+        ],
+        "version-semver": "2.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -536,7 +553,7 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
@@ -1764,6 +1781,7 @@
       "name": "at-spi2-core",
       "manifest": {
         "name": "at-spi2-core",
+        "port-version": 1,
         "description": "Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -16883,11 +16901,11 @@
       "name": "chartdir",
       "manifest": {
         "name": "chartdir",
-        "port-version": 5,
+        "port-version": 6,
         "description": "ChartDirector is a powerful chart component for creating professional looking charts for web and windows applications.",
         "homepage": "https://www.advsofteng.com/",
         "license": null,
-        "supports": "!arm & !uwp",
+        "supports": "!(arm & windows) & !uwp",
         "version": "7.0.0"
       },
       "files": [
@@ -19492,10 +19510,10 @@
       "name": "ctemplate",
       "manifest": {
         "name": "ctemplate",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C++ CTemplate system",
         "homepage": "https://github.com/OlafvdSpek/ctemplate",
-        "supports": "!arm",
+        "supports": "windows & !arm",
         "version-date": "2020-09-14"
       },
       "files": [
@@ -22098,17 +22116,17 @@
       "name": "ecsutil",
       "manifest": {
         "name": "ecsutil",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Native Windows SDK for accessing ECS via the S3 HTTP protocol.",
         "homepage": "https://github.com/EMCECS/ecs-object-client-windows-cpp",
-        "supports": "windows & (x64 | x86)",
+        "supports": "windows & (x64 | x86) & !uwp",
         "dependencies": [
           {
             "name": "atlmfc",
             "platform": "windows"
           }
         ],
-        "version-string": "1.0.7.15"
+        "version": "1.0.7.15"
       },
       "files": [
         "portfile.cmake",
@@ -27482,7 +27500,7 @@
       "name": "glfw3",
       "manifest": {
         "name": "glfw3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.",
         "homepage": "https://github.com/glfw/glfw",
         "license": "Zlib",
@@ -27496,6 +27514,15 @@
             "host": true
           }
         ],
+        "features": {
+          "wayland": {
+            "description": "Use Wayland display server",
+            "dependencies": [
+              "wayland"
+            ],
+            "supports": "linux"
+          }
+        },
         "version-semver": "3.3.8"
       },
       "files": [
@@ -31546,7 +31573,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.12.0"
+        "version-semver": "0.13.1"
       },
       "files": [
         "portfile.cmake",
@@ -38671,6 +38698,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -47644,12 +47672,11 @@
       "name": "mdnsresponder",
       "manifest": {
         "name": "mdnsresponder",
-        "port-version": 2,
         "description": "The mDNSResponder project is a component of Bonjour, Apple's ease-of-use IP networking initiative.",
-        "homepage": "https://developer.apple.com/bonjour/",
-        "license": null,
+        "homepage": "https://github.com/apple-oss-distributions/mDNSResponder",
+        "license": "Apache-2.0",
         "supports": "windows & !uwp & !arm",
-        "version": "878.270.2"
+        "version": "1557.140.5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -47730,10 +47757,11 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
+        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
-        "supports": "!(windows & arm)",
+        "supports": "!(windows & arm) & !staticcrt",
         "dependencies": [
           {
             "name": "vcpkg-get-python-packages",
@@ -47757,20 +47785,8 @@
                 "name": "mesa",
                 "default-features": false,
                 "features": [
-                  "gles1"
-                ]
-              },
-              {
-                "name": "mesa",
-                "default-features": false,
-                "features": [
-                  "gles2"
-                ]
-              },
-              {
-                "name": "mesa",
-                "default-features": false,
-                "features": [
+                  "gles1",
+                  "gles2",
                   "opengl"
                 ]
               },
@@ -47787,10 +47803,7 @@
           "egl": {
             "description": "Build support for EGL platform",
             "dependencies": [
-              {
-                "name": "mesa",
-                "default-features": false
-              }
+              "egl-registry"
             ]
           },
           "gles1": {
@@ -47798,7 +47811,10 @@
             "dependencies": [
               {
                 "name": "mesa",
-                "default-features": false
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
               }
             ]
           },
@@ -47807,7 +47823,10 @@
             "dependencies": [
               {
                 "name": "mesa",
-                "default-features": false
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
               }
             ]
           },
@@ -47854,10 +47873,7 @@
           "opengl": {
             "description": "Build support for OpenGL (all versions)",
             "dependencies": [
-              {
-                "name": "mesa",
-                "default-features": false
-              }
+              "opengl"
             ]
           }
         },
@@ -51033,7 +51049,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -53924,7 +53940,7 @@
         "dependencies": [
           "opengl-registry"
         ],
-        "version-date": "2022-10-08"
+        "version-date": "2022-12-04"
       },
       "files": [
         "glu.pc.in",
@@ -59266,7 +59282,6 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
-        "port-version": 1,
         "description": "Qt5 Application Framework",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -59614,7 +59629,7 @@
             ]
           }
         },
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59637,7 +59652,7 @@
           "qt5-gamepad",
           "qt5-imageformats"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59658,7 +59673,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59678,7 +59693,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59689,7 +59704,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 5,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -59754,7 +59768,7 @@
             ]
           }
         },
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -59823,7 +59837,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59842,7 +59856,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59863,7 +59877,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59884,7 +59898,7 @@
           "qt5-imageformats",
           "qt5-svg"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59907,7 +59921,7 @@
           "qt5-quickcontrols2",
           "qt5-tools"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59927,7 +59941,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59947,7 +59961,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59958,7 +59972,6 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
-        "port-version": 1,
         "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
         "license": null,
         "dependencies": [
@@ -59974,7 +59987,7 @@
             "host": true
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -59997,7 +60010,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60017,7 +60030,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60049,7 +60062,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60069,7 +60082,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60088,7 +60101,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60108,7 +60121,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60129,7 +60142,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60150,7 +60163,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60170,7 +60183,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60190,7 +60203,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60210,7 +60223,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60230,7 +60243,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60250,7 +60263,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60269,7 +60282,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60294,7 +60307,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60313,7 +60326,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60338,7 +60351,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60358,7 +60371,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60377,7 +60390,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60397,7 +60410,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60417,7 +60430,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60461,7 +60474,7 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "build_1.patch",
@@ -60477,7 +60490,6 @@
       "name": "qt5-webglplugin",
       "manifest": {
         "name": "qt5-webglplugin",
-        "port-version": 1,
         "description": "Qt5 Webglplugin Module",
         "license": null,
         "dependencies": [
@@ -60487,7 +60499,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60507,7 +60519,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60523,7 +60535,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60552,7 +60564,7 @@
             ]
           }
         },
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "patches/require_quick.patch",
@@ -60573,7 +60585,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -60593,7 +60605,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.7"
+        "version": "5.15.8"
       },
       "files": [
         "portfile.cmake",
@@ -63814,7 +63826,7 @@
             "description": "Build redis-plus-plus with cxx 17 standard"
           }
         },
-        "version-semver": "1.3.6"
+        "version-semver": "1.3.7"
       },
       "files": [
         "fix-conversion.patch",
@@ -64316,7 +64328,6 @@
       "name": "robin-map",
       "manifest": {
         "name": "robin-map",
-        "port-version": 1,
         "description": "A C++ implementation of a fast hash map and hash set using robin hood hashing",
         "homepage": "https://github.com/Tessil/robin-map",
         "license": "MIT",
@@ -64330,7 +64341,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.1"
+        "version-semver": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -65326,6 +65337,33 @@
         "portfile.cmake",
         "vcpkg.json",
         "win32-install-fix.patch"
+      ]
+    },
+    {
+      "name": "scenepic",
+      "manifest": {
+        "name": "scenepic",
+        "description": "A Powerful, easy to use, and portable visualization toolkit for mixed 3D and 2D content",
+        "homepage": "https://microsoft.github.io/scenepic/",
+        "license": "MIT",
+        "dependencies": [
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.16"
+      },
+      "files": [
+        "fix-CMakeInstall.patch",
+        "fix_dependencies.patch",
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -66722,7 +66760,6 @@
       "name": "simbody",
       "manifest": {
         "name": "simbody",
-        "port-version": 2,
         "description": "High-performance C++ multibody dynamics/physics library for simulating articulated biomechanical and mechanical systems like vehicles, robots, and the human skeleton.",
         "homepage": "https://simtk.org/home/simbody",
         "license": "Apache-2.0",
@@ -66739,10 +66776,12 @@
             "host": true
           }
         ],
-        "version-date": "2022-01-04"
+        "version-date": "2023-01-10"
       },
       "files": [
+        "common-name-libs.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -66750,7 +66789,7 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -71725,10 +71764,6 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
         "features": {
@@ -71748,7 +71783,7 @@
             ]
           }
         },
-        "version": "0.8.3"
+        "version": "0.8.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -72585,7 +72620,10 @@
       "name": "vk-bootstrap",
       "manifest": {
         "name": "vk-bootstrap",
+        "port-version": 1,
         "description": "Vulkan bootstraping library",
+        "homepage": "https://github.com/charles-lunarg/vk-bootstrap",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -74110,6 +74148,7 @@
       "name": "wxchartdir",
       "manifest": {
         "name": "wxchartdir",
+        "port-version": 1,
         "description": "wxChartDir provides components for the integration and use of the commercial C++ library ChartDirector, a universal chart component developed by Advanced Software Engineering Ltd, in wxWidgets based applications.",
         "homepage": "https://github.com/utelle/wxchartdir",
         "license": "GPL-3.0-only AND LGPL-3.0 AND wxWindows",
@@ -75733,9 +75772,11 @@
       "name": "zint",
       "manifest": {
         "name": "zint",
+        "port-version": 1,
         "description": "A barcode encoding library supporting over 50 symbologies",
         "homepage": "https://github.com/zint/zint",
         "license": null,
+        "supports": "!osx",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
