@@ -1,5 +1,5 @@
 {
-  "version": "4c5be28bfac45e53fa8c4100a1d759a8e5ee97fb",
+  "version": "472ed329f5492e133028dd12a3b4758b0b676d00",
   "ports": [
     {
       "name": "3fd",
@@ -4157,7 +4157,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.4.0"
+        "version-semver": "12.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -25109,7 +25109,7 @@
             "host": true
           }
         ],
-        "version": "2022.12.0"
+        "version": "2022.12.1"
       },
       "files": [
         "portfile.cmake",
@@ -29442,6 +29442,32 @@
       ]
     },
     {
+      "name": "grantlee",
+      "manifest": {
+        "name": "grantlee",
+        "description": "Libraries for text templating with Qt",
+        "homepage": "https://github.com/steveire/grantlee",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!staticcrt",
+        "dependencies": [
+          "qt5-declarative",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "5.3.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "graphene",
       "manifest": {
         "name": "graphene",
@@ -31326,6 +31352,27 @@
       "files": [
         "001-fix-macos.patch",
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "hashids",
+      "manifest": {
+        "name": "hashids",
+        "description": "generate short unique ids from integers",
+        "homepage": "https://hashids.org/c/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "getopt",
+            "platform": "windows & !mingw"
+          }
+        ],
+        "version": "1.2.1"
+      },
+      "files": [
+        "hashids.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -37300,6 +37347,21 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libcsv",
+      "manifest": {
+        "name": "libcsv",
+        "description": "CSV parser and writer library",
+        "homepage": "https://github.com/rgamble/libcsv",
+        "license": "GPL-2.0-or-later",
+        "version": "3.0.3"
+      },
+      "files": [
+        "Makefile.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -54006,6 +54068,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -54126,6 +54189,7 @@
         "fix-openexr-dll.patch",
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
+        "fix-vs2019-encoding-conversion.patch",
         "imath-version-guard.patch",
         "portfile.cmake",
         "usage",
@@ -54415,7 +54479,7 @@
             "description": "OpenMP support for openmvs"
           }
         },
-        "version": "2.0.1"
+        "version": "2.1.0"
       },
       "files": [
         "fix-build.patch",
@@ -65972,11 +66036,9 @@
             ]
           }
         },
-        "version": "4.0.0"
+        "version": "4.1.1"
       },
       "files": [
-        "fix-find_package.patch",
-        "gsl.patch",
         "portfile.cmake",
         "shared-zstd.patch",
         "vcpkg.json"
@@ -66083,6 +66145,7 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -66100,7 +66163,10 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "zlib"
+          {
+            "name": "zlib",
+            "platform": "ios | osx | windows"
+          }
         ],
         "version": "0.5.3"
       },
@@ -66108,7 +66174,6 @@
         "fix-config-cmake.patch",
         "fix-warningC5105.patch",
         "portfile.cmake",
-        "use-zlib-target.patch",
         "vcpkg.json"
       ]
     },
