@@ -1,5 +1,5 @@
 {
-  "version": "1e9facc7992107ad639b4dcc87bd9a7ade1594e8",
+  "version": "877e3dc2323a4d4c3c75e7168c22a0c4e921d4db",
   "ports": [
     {
       "name": "3fd",
@@ -221,6 +221,7 @@
       "name": "acl",
       "manifest": {
         "name": "acl",
+        "port-version": 1,
         "description": "Commands for Manipulating POSIX Access Control Lists",
         "homepage": "https://savannah.nongnu.org/projects/acl",
         "license": "LGPL-2.1-or-later",
@@ -1390,7 +1391,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -1518,6 +1519,8 @@
       },
       "files": [
         "brotli.patch",
+        "fix-dataset.patch",
+        "fix-pkgconfig-windows.patch",
         "msvc-static-name.patch",
         "portfile.cmake",
         "thrift.patch",
@@ -5079,7 +5082,7 @@
             "description": "Default feature. Enables use of futex."
           },
           "jit": {
-            "description": "Default feature. Enables jit pipeline compilation. Not supported for ARM and UWP."
+            "description": "Default feature. Enables jit pipeline compilation."
           },
           "logging": {
             "description": "Default feature. Enables logging."
@@ -5088,7 +5091,7 @@
             "description": "Default feature. Enables use of thread_local feature. Disable for platforms where thread local storage is expensive or not supported."
           }
         },
-        "version-date": "2022-05-02"
+        "version-date": "2022-12-31"
       },
       "files": [
         "portfile.cmake",
@@ -23055,10 +23058,11 @@
       "name": "fast-cpp-csv-parser",
       "manifest": {
         "name": "fast-cpp-csv-parser",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A small, easy-to-use and fast header-only library for reading comma separated value (CSV) files",
         "homepage": "https://github.com/ben-strasser/fast-cpp-csv-parser",
-        "version-string": "2021-01-03"
+        "license": "BSD-3-Clause",
+        "version-date": "2021-01-03"
       },
       "files": [
         "portfile.cmake",
@@ -23106,7 +23110,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.25"
+        "version-semver": "1.0.26"
       },
       "files": [
         "pdb-file.patch",
@@ -26185,6 +26189,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -26246,6 +26251,7 @@
                 "features": [
                   "gif",
                   "iconv",
+                  "libkml",
                   "libxml2",
                   "lzma",
                   "openjpeg",
@@ -26328,6 +26334,12 @@
             "description": "Enable LERC support",
             "dependencies": [
               "lerc"
+            ]
+          },
+          "libkml": {
+            "description": "Enable the LibKML driver",
+            "dependencies": [
+              "libkml"
             ]
           },
           "libspatialite": {
@@ -26475,7 +26487,9 @@
       },
       "files": [
         "find-link-libraries.patch",
+        "fix-find-package2.patch",
         "fix-gdal-target-interfaces.patch",
+        "libkml.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -29683,7 +29697,7 @@
             "description": "Build code generator machinery"
           }
         },
-        "version-semver": "1.50.1"
+        "version-semver": "1.51.1"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -31273,7 +31287,6 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 3,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -31319,10 +31332,9 @@
             ]
           }
         },
-        "version": "5.0.1"
+        "version": "5.3.1"
       },
       "files": [
-        "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
         "vcpkg.json"
@@ -39347,7 +39359,7 @@
       "name": "libkml",
       "manifest": {
         "name": "libkml",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Reference implementation of OGC KML 2.2",
         "homepage": "https://github.com/libkml/libkml",
         "license": "BSD-3-Clause",
@@ -39653,7 +39665,7 @@
             "supports": "!windows, mingw"
           }
         },
-        "version-semver": "5.4.0"
+        "version-semver": "5.4.1"
       },
       "files": [
         "add_support_ios.patch",
@@ -40552,17 +40564,17 @@
       "name": "libosmium",
       "manifest": {
         "name": "libosmium",
+        "port-version": 1,
         "description": "A fast and flexible C++ library for working with OpenStreetMap data",
         "homepage": "https://osmcode.org/libosmium/",
         "license": "BSL-1.0",
         "dependencies": [
-          "boost",
+          "boost-crc",
+          "boost-variant",
           "bzip2",
           "expat",
           "lz4",
-          "proj",
           "protozero",
-          "utfcpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -42037,7 +42049,7 @@
       "name": "libsquish",
       "manifest": {
         "name": "libsquish",
-        "port-version": 12,
+        "port-version": 13,
         "description": "Open source DXT compression library.",
         "homepage": "https://sourceforge.net/projects/libsquish",
         "license": "MIT",
@@ -42054,7 +42066,7 @@
         "features": {
           "sse2": {
             "description": "Build with SSE2",
-            "supports": "osx"
+            "supports": "osx & x64"
           }
         },
         "version": "1.15"
@@ -47165,7 +47177,7 @@
       "name": "marisa-trie",
       "manifest": {
         "name": "marisa-trie",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Matching Algorithm with Recursively Implemented StorAge (MARISA) is a space-efficient trie data structure. This is a C++ library for an implementation of MARISA.",
         "homepage": "https://github.com/s-yata/marisa-trie",
         "license": "BSD-2-Clause OR LGPL-2.1-or-later",
@@ -47174,6 +47186,7 @@
       },
       "files": [
         "portfile.cmake",
+        "remove-windows-tests.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -57006,7 +57019,6 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
-        "port-version": 5,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT",
@@ -57017,14 +57029,13 @@
             "host": true
           }
         ],
-        "version": "0.40.0"
+        "version": "0.42.2"
       },
       "files": [
         "fix_clang-cl.patch",
         "missing_intrin_include.patch",
         "no-host-cpu-checks.patch",
         "portfile.cmake",
-        "remove_test_demos.patch",
         "vcpkg.json"
       ]
     },
@@ -64689,7 +64700,6 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 4,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
@@ -64739,11 +64749,11 @@
             ]
           }
         },
-        "version": "0.20.13"
+        "version": "0.20.16"
       },
       "files": [
         "0001-add-bigobj-for-msvc.patch",
-        "0002-fix-opencv46.patch",
+        "0002-fix-opencv47.patch",
         "0003-fix-qt.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -68456,7 +68466,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://github.com/sqlite/sqlite",
         "license": "blessing",
@@ -69078,6 +69088,30 @@
           }
         ],
         "version": "1.6.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "strong-type",
+      "manifest": {
+        "name": "strong-type",
+        "description": "An additive strong typedef library for C++14/17/20",
+        "homepage": "https://github.com/rollbear/strong_type",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "8"
       },
       "files": [
         "portfile.cmake",
@@ -70156,7 +70190,7 @@
       "name": "tiff",
       "manifest": {
         "name": "tiff",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library that supports the manipulation of TIFF image files",
         "homepage": "https://libtiff.gitlab.io/libtiff/",
         "license": null,
@@ -73483,7 +73517,7 @@
             "host": true
           }
         ],
-        "version": "5.5.0"
+        "version": "5.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -74763,10 +74797,23 @@
       "name": "xerces-c",
       "manifest": {
         "name": "xerces-c",
-        "port-version": 4,
         "description": "Xerces-C++ is a XML parser, for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs.",
         "homepage": "https://github.com/apache/xerces-c",
         "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "libiconv",
+            "platform": "!windows & !osx"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "icu": {
             "description": "ICU support",
@@ -74778,9 +74825,10 @@
             "description": "XMLCh type uses wchar_t"
           }
         },
-        "version": "3.2.3"
+        "version": "3.2.4"
       },
       "files": [
+        "dependencies.patch",
         "disable-tests.patch",
         "portfile.cmake",
         "remove-dll-export-macro.patch",
@@ -76027,7 +76075,7 @@
       "name": "zstd",
       "manifest": {
         "name": "zstd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Zstandard - Fast real-time compression algorithm",
         "homepage": "https://facebook.github.io/zstd/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
