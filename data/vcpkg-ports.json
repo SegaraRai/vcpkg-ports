@@ -1,5 +1,5 @@
 {
-  "version": "877e3dc2323a4d4c3c75e7168c22a0c4e921d4db",
+  "version": "ae826fceaa15109814d0531faeda424f43047822",
   "ports": [
     {
       "name": "3fd",
@@ -1811,7 +1811,7 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "GPL-2.0-only",
@@ -1835,6 +1835,21 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              }
+            ]
+          }
+        },
         "version": "2.38.0"
       },
       "files": [
@@ -19549,13 +19564,17 @@
       "name": "ctpg",
       "manifest": {
         "name": "ctpg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Compile Time Parser Generator is a C++ single header library which takes a language description as a C++ code and turns it into a LR1 table parser with a deterministic finite automaton lexical analyzer, all in compile time.",
         "homepage": "https://github.com/peter-winter/ctpg",
         "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -23437,7 +23456,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -25145,9 +25164,11 @@
       "name": "forge",
       "manifest": {
         "name": "forge",
+        "port-version": 1,
         "description": "An OpenGL interop library that can be used with ArrayFire or any other application using CUDA or OpenCL compute backend.",
         "homepage": "https://github.com/arrayfire/forge",
-        "supports": "x64",
+        "license": "BSD-3-Clause",
+        "supports": "!(windows & (arm | uwp))",
         "dependencies": [
           "boost-functional",
           {
@@ -25158,7 +25179,15 @@
           "freetype",
           "glad",
           "glfw3",
-          "glm"
+          "glm",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-semver": "1.0.8"
       },
@@ -26554,7 +26583,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -26576,6 +26605,21 @@
           },
           "zlib"
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              }
+            ]
+          }
+        },
         "version": "2.42.9"
       },
       "files": [
@@ -29484,6 +29528,7 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
+        "port-version": 1,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
@@ -29500,6 +29545,21 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              }
+            ]
+          }
+        },
         "version": "1.10.8"
       },
       "files": [
@@ -30617,6 +30677,7 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -30664,6 +30725,49 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "atk",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "gdk-pixbuf",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              },
+              {
+                "name": "graphene",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "pango",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              }
+            ]
+          }
+        },
         "version": "4.6.8"
       },
       "files": [
@@ -30678,7 +30782,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -30729,6 +30833,50 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "atk",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "gdk-pixbuf",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "gdk-pixbuf",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              },
+              {
+                "name": "pango",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              }
+            ]
+          }
+        },
         "version": "3.24.34"
       },
       "files": [
@@ -31287,6 +31435,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -31329,6 +31478,20 @@
             "description": "icu support for harfbuzz",
             "dependencies": [
               "icu"
+            ]
+          },
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              "glib",
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              }
             ]
           }
         },
@@ -33017,6 +33180,7 @@
       "name": "immer",
       "manifest": {
         "name": "immer",
+        "port-version": 1,
         "description": "Postmodern immutable and persistent data structures for C++",
         "homepage": "https://sinusoid.es/immer/",
         "license": "BSL-1.0",
@@ -33038,6 +33202,7 @@
         "version": "0.8.0"
       },
       "files": [
+        "fix-ExportConfigVersion.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -53066,7 +53231,7 @@
             ]
           }
         },
-        "version": "4.6.0"
+        "version": "4.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -53566,7 +53731,6 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 10,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -53885,7 +54049,7 @@
             "description": "Compile to a single package support for opencv"
           }
         },
-        "version": "4.6.0"
+        "version": "4.7.0"
       },
       "files": [
         "0001-disable-downloading.patch",
@@ -53900,11 +54064,8 @@
         "0010-fix-uwp-tiff-imgcodecs.patch",
         "0011-remove-python2.patch",
         "0012-fix-zlib.patch",
-        "0013-fix-ceres.patch",
-        "0014-fix-ogre.patch",
         "0015-fix-freetype.patch",
         "0016-fix-freetype-contrib.patch",
-        "0017-mingw-strsafe-no-deprecate.patch",
         "0018-fix-depend-tesseract.patch",
         "portfile.cmake",
         "usage.in",
@@ -54347,6 +54508,7 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
+        "port-version": 1,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
         "supports": "!(windows | uwp)",
@@ -55758,7 +55920,7 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-only",
@@ -55791,6 +55953,27 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "build with introspection",
+            "dependencies": [
+              {
+                "name": "gobject-introspection",
+                "host": true
+              },
+              {
+                "name": "gobject-introspection",
+                "platform": "windows & x86"
+              },
+              {
+                "name": "harfbuzz",
+                "features": [
+                  "introspection"
+                ]
+              }
+            ]
+          }
+        },
         "version": "1.50.12"
       },
       "files": [
@@ -68588,7 +68771,7 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -68614,6 +68797,12 @@
             "description": "Use MySQL connector",
             "dependencies": [
               "libmysql"
+            ]
+          },
+          "postgresql": {
+            "description": "Use PostgreSQL connector",
+            "dependencies": [
+              "libpq"
             ]
           },
           "sqlite3": {
