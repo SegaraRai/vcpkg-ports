@@ -1,7 +1,7 @@
 import sitemap from '@astrojs/sitemap';
 import vue from '@astrojs/vue';
-import compress from 'astro-compress';
 import { defineConfig } from 'astro/config';
+import compress from 'astro-compress';
 import unoCSS from 'unocss/astro';
 import icons from 'unplugin-icons/vite';
 import { CSP_HEADER_VALUE, DATA_HISTORY_FILE } from './scripts/constants.mjs';
