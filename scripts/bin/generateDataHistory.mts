@@ -108,7 +108,9 @@ async function generateHistory(
     console.log('History: Build history from scratch');
   }
 
-  const transformCommit = (commit: typeof allCommits[0]): DataHistoryCommit => {
+  const transformCommit = (
+    commit: (typeof allCommits)[0]
+  ): DataHistoryCommit => {
     return {
       oid: commit.oid,
       message: commit.message,
