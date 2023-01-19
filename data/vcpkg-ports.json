@@ -1,5 +1,5 @@
 {
-  "version": "ae826fceaa15109814d0531faeda424f43047822",
+  "version": "f1c9431598c2b8aa5168c35485c9a28321ff9f09",
   "ports": [
     {
       "name": "3fd",
@@ -15310,9 +15310,10 @@
       "name": "breakpad",
       "manifest": {
         "name": "breakpad",
-        "port-version": 1,
+        "port-version": 2,
         "description": "a set of client and server components which implement a crash-reporting system.",
         "homepage": "https://github.com/google/breakpad",
+        "license": "BSD-3-Clause",
         "supports": "!uwp & (!windows | !arm) & (!windows | !arm64)",
         "dependencies": [
           "libdisasm",
@@ -15325,6 +15326,12 @@
             "host": true
           }
         ],
+        "features": {
+          "tools": {
+            "description": "Build breakpad tools",
+            "supports": "linux"
+          }
+        },
         "version-date": "2022-07-12"
       },
       "files": [
@@ -15866,30 +15873,19 @@
       "name": "caffe2",
       "manifest": {
         "name": "caffe2",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Caffe2 is a lightweight, modular, and scalable deep learning framework.",
         "homepage": "https://github.com/caffe2/caffe2",
         "license": "Apache-2.0",
-        "supports": "!x86",
         "dependencies": [
-          "eigen3",
-          "gflags",
-          "glog",
-          "lmdb",
-          "protobuf",
           {
-            "name": "vcpkg-cmake",
-            "host": true
+            "name": "libtorch",
+            "default-features": false
           }
         ],
         "version": "0.8.1"
       },
       "files": [
-        "fix-isgloginitialized.patch",
-        "fix-protobuf-deprecated.patch",
-        "fix-space.patch",
-        "msvc-fixes.patch",
-        "no-inout-macros.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17575,11 +17571,10 @@
       "name": "cmakerc",
       "manifest": {
         "name": "cmakerc",
-        "port-version": 1,
         "description": "A Resource Compiler in a Single CMake Script",
         "homepage": "https://github.com/vector-of-bool/cmrc",
         "license": "MIT",
-        "version-date": "2021-08-27"
+        "version-date": "2022-09-08"
       },
       "files": [
         "portfile.cmake",
@@ -39005,10 +39000,11 @@
       "name": "libhv",
       "manifest": {
         "name": "libhv",
+        "port-version": 1,
         "description": "Libhv is a C/C++ network library similar to libevent/libuv.",
         "homepage": "https://github.com/ithewei/libhv",
         "license": "BSD-3-Clause",
-        "supports": "!(arm | uwp)",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -39030,6 +39026,7 @@
         "version": "1.3.0"
       },
       "files": [
+        "d77287e954f02706502028baadc8c87e7382301b.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41198,7 +41195,6 @@
       "name": "libpqxx",
       "manifest": {
         "name": "libpqxx",
-        "port-version": 1,
         "description": "The official C++ client API for PostgreSQL",
         "homepage": "https://www.postgresql.org/",
         "license": "BSD-3-Clause",
@@ -41216,7 +41212,7 @@
             "host": true
           }
         ],
-        "version": "7.7.3"
+        "version": "7.7.4"
       },
       "files": [
         "config-internal-compiler.h.in",
@@ -42690,6 +42686,142 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libtorch",
+      "manifest": {
+        "name": "libtorch",
+        "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
+        "homepage": "https://pytorch.org/",
+        "license": null,
+        "supports": "(windows & !static) | osx | linux",
+        "dependencies": [
+          "cpuinfo",
+          "eigen3",
+          "flatbuffers",
+          {
+            "name": "flatbuffers",
+            "host": true
+          },
+          "fmt",
+          "foxi",
+          "gemmlowp",
+          "gflags",
+          "glog",
+          "lmdb",
+          {
+            "name": "mpi",
+            "platform": "linux"
+          },
+          "onnx",
+          "onnx-optimizer",
+          {
+            "name": "openblas",
+            "platform": "windows"
+          },
+          "protobuf",
+          {
+            "name": "protobuf",
+            "host": true
+          },
+          "sleef",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "xnnpack"
+        ],
+        "features": {
+          "dist": {
+            "description": "Use distributed with MPI, Gloo, libuv, TensorPipe",
+            "dependencies": [
+              {
+                "name": "gloo",
+                "platform": "linux"
+              },
+              {
+                "name": "libuv",
+                "platform": "windows | osx"
+              },
+              {
+                "name": "openmpi",
+                "platform": "linux | osx"
+              },
+              {
+                "name": "tensorpipe",
+                "platform": "linux | osx"
+              }
+            ]
+          },
+          "leveldb": {
+            "description": "Build with LevelDB",
+            "dependencies": [
+              "leveldb",
+              "snappy"
+            ]
+          },
+          "nnpack": {
+            "description": "Build with NNPack",
+            "dependencies": [
+              "nnpack"
+            ],
+            "supports": "linux | osx"
+          },
+          "opencv": {
+            "description": "Build with OpenCV 3.x",
+            "dependencies": [
+              "opencv"
+            ]
+          },
+          "tbb": {
+            "description": "Build with Intel TBB",
+            "dependencies": [
+              "tbb"
+            ]
+          },
+          "vulkan": {
+            "description": "Build with Vulkan GPU backend",
+            "dependencies": [
+              "vulkan"
+            ],
+            "supports": "!windows"
+          },
+          "xnnpack": {
+            "description": "Build with XNNPack",
+            "dependencies": [
+              "xnnpack"
+            ]
+          },
+          "zstd": {
+            "description": "Build with ZSTD",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "1.12.1"
+      },
+      "files": [
+        "fix-c10-glog.patch",
+        "fix-cmake.patch",
+        "fix-fbgemm-include.patch",
+        "fix-windows.patch",
+        "portfile.cmake",
+        "pytorch-pr-85958.patch",
+        "use-flatbuffers2.patch",
+        "vcpkg-dependencies.cmake",
         "vcpkg.json"
       ]
     },
@@ -44781,6 +44913,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
+        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -44833,7 +44966,16 @@
             ]
           },
           "clang-tools-extra": {
-            "description": "Include Clang tools."
+            "description": "Include Clang tools.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "clang"
+                ]
+              }
+            ]
           },
           "compiler-rt": {
             "description": "Include compiler's runtime libraries."
@@ -49143,7 +49285,7 @@
             ]
           }
         },
-        "version": "7.6"
+        "version": "7.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -50184,6 +50326,17 @@
         "name": "nanopb",
         "description": "A small code-size Protocol Buffers implementation in ANSI C.",
         "homepage": "https://jpa.kapsi.fi/nanopb/",
+        "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "generator": {
             "description": "build the generator",
@@ -50195,10 +50348,10 @@
             ]
           }
         },
-        "version-semver": "0.4.5"
+        "version-semver": "0.4.7"
       },
       "files": [
-        "fix-python.patch",
+        "fix-cmakelist-and-pb-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51086,6 +51239,7 @@
       "name": "node-api",
       "manifest": {
         "name": "node-api",
+        "port-version": 1,
         "description": "NodeJS API for writing modules in C++",
         "homepage": "https://nodejs.org/api/addons.html",
         "license": null,
@@ -51864,7 +52018,6 @@
       "name": "ode",
       "manifest": {
         "name": "ode",
-        "port-version": 4,
         "description": "Open Dynamics Engine",
         "homepage": "https://bitbucket.org/odedevs/ode/src/master/",
         "license": "BSD-3-Clause OR LGPL-2.1-or-later",
@@ -51878,10 +52031,9 @@
             "host": true
           }
         ],
-        "version": "0.16.1"
+        "version": "0.16.3"
       },
       "files": [
-        "fix-error-C3861.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57226,7 +57378,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -57240,6 +57392,7 @@
         "version": "1.8.0"
       },
       "files": [
+        "bufferoverflow.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -58861,7 +59014,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -58926,6 +59079,7 @@
         "0010-dont-skip-rpath.patch",
         "0011-gcc-ldflags-fix.patch",
         "0012-force-disable-curses.patch",
+        "0013-configure-no-libcrypt.patch",
         "openssl.props.in",
         "portfile.cmake",
         "python_vcpkg.props.in",
@@ -63153,15 +63307,12 @@
         "description": "The QuantLib C++ library",
         "homepage": "https://www.quantlib.org/",
         "license": "BSD-3-Clause",
-        "supports": "!(windows & !staticcrt)",
+        "supports": "!(windows & !static)",
         "dependencies": [
           "boost-accumulators",
           "boost-algorithm",
           "boost-any",
-          "boost-array",
           "boost-assert",
-          "boost-assign",
-          "boost-atomic",
           "boost-bind",
           "boost-config",
           "boost-core",
@@ -63171,17 +63322,12 @@
           "boost-function",
           "boost-functional",
           "boost-iterator",
-          "boost-lexical-cast",
           "boost-math",
           "boost-multi-array",
           "boost-multiprecision",
           "boost-optional",
           "boost-preprocessor",
-          "boost-random",
-          "boost-serialization",
-          "boost-signals2",
           "boost-smart-ptr",
-          "boost-thread",
           "boost-tuple",
           "boost-type-traits",
           "boost-ublas",
@@ -63196,7 +63342,7 @@
             "host": true
           }
         ],
-        "version": "1.28"
+        "version": "1.29"
       },
       "files": [
         "portfile.cmake",
@@ -64255,7 +64401,7 @@
       "name": "restc-cpp",
       "manifest": {
         "name": "restc-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Modern C++ REST Client library",
         "homepage": "https://github.com/jgaa/restc-cpp",
         "license": "MIT",
@@ -64269,7 +64415,15 @@
           "boost-program-options",
           "boost-system",
           "boost-uuid",
-          "rapidjson"
+          "rapidjson",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "default-features": [
           "openssl",
@@ -67218,7 +67372,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -67233,8 +67387,9 @@
           "libpng",
           "libwebp",
           {
-            "name": "vcpkg-cmake-config",
-            "host": true
+            "name": "opengl",
+            "default-features": false,
+            "platform": "windows & !arm64 & !uwp"
           },
           {
             "name": "vcpkg-cmake-get-vars",
@@ -67355,10 +67510,10 @@
         "version": "0.36.0"
       },
       "files": [
+        "core-opengl32.patch",
         "disable-msvc-env-setup.patch",
         "example/CMakeLists.txt",
         "portfile.cmake",
-        "python-executable.patch",
         "skia-functions.cmake",
         "skiaConfig.cmake",
         "third-party.gn.in",
@@ -69105,15 +69260,15 @@
       "name": "stb",
       "manifest": {
         "name": "stb",
-        "port-version": 1,
         "description": "public domain header-only libraries",
         "homepage": "https://github.com/nothings/stb",
         "license": "MIT OR CC-PDDC",
-        "version-date": "2021-09-10"
+        "version-date": "2022-09-09"
       },
       "files": [
         "FindStb.cmake",
         "portfile.cmake",
+        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -69963,7 +70118,7 @@
       "name": "tensorpipe",
       "manifest": {
         "name": "tensorpipe",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A tensor-aware point-to-point communication primitive for machine learning",
         "homepage": "https://github.com/pytorch/tensorpipe",
         "license": "BSD-3-Clause",
@@ -72528,7 +72683,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://vcpkg.io/en/docs/maintainers/ports/vcpkg-cmake.html",
         "license": "MIT",
-        "version-date": "2022-11-13"
+        "version-date": "2022-12-22"
       },
       "files": [
         "portfile.cmake",
@@ -75177,7 +75332,6 @@
       "name": "xnnpack",
       "manifest": {
         "name": "xnnpack",
-        "port-version": 2,
         "description": "High-efficiency floating-point neural network inference operators for mobile, server, and Web",
         "homepage": "https://github.com/google/XNNPACK",
         "license": "BSD-3-Clause",
@@ -75196,10 +75350,11 @@
             "host": true
           }
         ],
-        "version-date": "2021-05-17"
+        "version-date": "2022-02-17"
       },
       "files": [
         "portfile.cmake",
+        "use-c-cpp-11.patch",
         "use-packages.patch",
         "vcpkg.json"
       ]
