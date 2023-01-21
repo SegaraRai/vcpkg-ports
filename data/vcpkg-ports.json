@@ -1,5 +1,5 @@
 {
-  "version": "2578040872f99afe504cc5634285693c9cbf088d",
+  "version": "12b7cfe6109a9d68319334b56a01c44a302a13b6",
   "ports": [
     {
       "name": "3fd",
@@ -4758,7 +4758,6 @@
       "name": "bgfx",
       "manifest": {
         "name": "bgfx",
-        "port-version": 1,
         "maintainers": "Sandy Carter <bwrsandman@users.noreply.github.com>",
         "description": "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library.",
         "homepage": "https://bkaradzic.github.io/bgfx/overview.html",
@@ -4766,7 +4765,7 @@
         "license": "BSD-2-Clause",
         "dependencies": [
           "libsquish",
-          "nvtt",
+          "miniz",
           "tinyexr",
           {
             "name": "vcpkg-cmake",
@@ -4788,12 +4787,11 @@
             "description": "Shader, Texture and Geometry compilers for bgfx."
           }
         },
-        "version": "1.118.8384-362"
+        "version": "1.118.8398-400"
       },
       "files": [
-        "fix-dependencies.patch",
-        "fix-headerfile.patch",
         "portfile.cmake",
+        "vcpkg-inject-packages.cmake",
         "vcpkg.json"
       ]
     },
@@ -15832,9 +15830,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-semver": "0.6.1"
+        "version-semver": "0.6.2"
       },
       "files": [
         "portfile.cmake",
@@ -16764,7 +16766,7 @@
       "name": "cgns",
       "manifest": {
         "name": "cgns",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The CFD General Notation System (CGNS) provides a standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations.",
         "homepage": "http://cgns.org/",
         "license": "Zlib",
@@ -16905,7 +16907,7 @@
             "host": true
           }
         ],
-        "version": "2.3.4"
+        "version": "2.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -31611,7 +31613,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 4,
+        "port-version": 5,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -44749,7 +44751,6 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
-        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
@@ -44764,7 +44765,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-12-01"
+        "version-date": "2023-01-19"
       },
       "files": [
         "CMakeLists.txt",
@@ -47739,6 +47740,7 @@
       "name": "matio",
       "manifest": {
         "name": "matio",
+        "port-version": 1,
         "description": "MATLAB MAT File I/O Library",
         "homepage": "https://github.com/tbeu/matio",
         "license": "BSD-2-Clause",
@@ -47759,7 +47761,10 @@
           "hdf5": {
             "description": "Check for HDF5 library",
             "dependencies": [
-              "hdf5"
+              {
+                "name": "hdf5",
+                "default-features": false
+              }
             ]
           },
           "mat73": {
@@ -47775,7 +47780,7 @@
             ]
           }
         },
-        "version-semver": "1.5.23"
+        "version": "1.5.23"
       },
       "files": [
         "fix-dependencies.patch",
@@ -49543,10 +49548,9 @@
         "dependencies": [
           "gmp"
         ],
-        "version": "4.1.1"
+        "version": "4.2.0"
       },
       "files": [
-        "4.1.1-p1.patch",
         "dll.patch",
         "portfile.cmake",
         "src-only.patch",
@@ -53884,6 +53888,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -54396,7 +54401,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -56350,7 +56355,6 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 2,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -56446,12 +56450,10 @@
             ]
           }
         },
-        "version": "5.9.1"
+        "version": "5.11.0"
       },
       "files": [
         "add-tools-option.patch",
-        "catalyst_install.patch",
-        "cgns.patch",
         "external_vtk.patch",
         "portfile.cmake",
         "python_include.patch",
@@ -64820,7 +64822,7 @@
             ]
           }
         },
-        "version": "7.8.3"
+        "version": "7.9.2"
       },
       "files": [
         "0002-only-build-one-flavor.patch",
@@ -66331,6 +66333,83 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "seacas",
+      "manifest": {
+        "name": "seacas",
+        "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
+        "homepage": "https://github.com/sandialabs/seacas",
+        "license": null,
+        "dependencies": [
+          "cereal",
+          "cgns",
+          "fmt",
+          {
+            "name": "hdf5",
+            "default-features": false
+          },
+          {
+            "name": "matio",
+            "default-features": false,
+            "features": [
+              "hdf5"
+            ]
+          },
+          "metis",
+          {
+            "name": "netcdf-c",
+            "default-features": false,
+            "features": [
+              "hdf5"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "features": {
+          "mpi": {
+            "description": "Enable MPI support",
+            "dependencies": [
+              {
+                "name": "cgns",
+                "default-features": false,
+                "features": [
+                  "mpi"
+                ]
+              },
+              {
+                "name": "hdf5",
+                "default-features": false,
+                "features": [
+                  "parallel"
+                ]
+              },
+              {
+                "name": "parmetis",
+                "default-features": false,
+                "platform": "!osx"
+              }
+            ]
+          }
+        },
+        "version-date": "2022-11-22"
+      },
+      "files": [
+        "deps-and-shared.patch",
+        "fix-ioss-includes.patch",
+        "fix-mpi.patch",
+        "fix_tpl_libs.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -70086,7 +70165,7 @@
       "name": "tensorflow-common",
       "manifest": {
         "name": "tensorflow-common",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This meta package holds common files for the C [tensorflow] and the C++ [tensorflow-cc] API version of TensorFlow but is not installable on its own.",
         "homepage": "https://github.com/tensorflow/tensorflow",
         "license": "Apache-2.0",
@@ -70910,13 +70989,22 @@
       "name": "tinyply",
       "manifest": {
         "name": "tinyply",
-        "port-version": 2,
         "description": "C++11 ply 3d mesh format importer & exporter",
         "homepage": "https://github.com/ddiakopoulos/tinyply",
-        "version-string": "2020-05-22"
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.3.4"
       },
       "files": [
-        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72865,6 +72953,7 @@
       "name": "vcpkg-tool-gn",
       "manifest": {
         "name": "vcpkg-tool-gn",
+        "port-version": 1,
         "description": "GN build system",
         "homepage": "https://gn.googlesource.com/gn/",
         "license": null,
@@ -73014,6 +73103,32 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "verdict",
+      "manifest": {
+        "name": "verdict",
+        "description": "Compute quality functions of 2 and 3-dimensional regions.",
+        "homepage": "https://github.com/sandialabs/verdict",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.0"
+      },
+      "files": [
+        "fix_osx.patch",
+        "include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73316,7 +73431,6 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 12,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -73324,6 +73438,8 @@
           "double-conversion",
           "eigen3",
           "expat",
+          "exprtk",
+          "fmt",
           "freetype",
           "glew",
           {
@@ -73331,7 +73447,10 @@
             "default-features": false
           },
           "jsoncpp",
-          "libharu",
+          {
+            "name": "libharu",
+            "version>=": "2.4.3"
+          },
           "libjpeg-turbo",
           "liblzma",
           "libogg",
@@ -73343,7 +73462,15 @@
           "pegtl-2",
           "proj",
           "pugixml",
+          {
+            "name": "seacas",
+            "default-features": false
+          },
           "sqlite3",
+          {
+            "name": "sqlite3",
+            "host": true
+          },
           "tiff",
           "utfcpp",
           {
@@ -73354,6 +73481,7 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
+          "verdict",
           "zlib"
         ],
         "features": {
@@ -73427,6 +73555,20 @@
               },
               "mpi",
               {
+                "name": "seacas",
+                "default-features": false,
+                "features": [
+                  "mpi"
+                ]
+              },
+              {
+                "name": "vtk",
+                "default-features": false,
+                "features": [
+                  "vtkm"
+                ]
+              },
+              {
                 "name": "vtk-m",
                 "default-features": false,
                 "features": [
@@ -73454,6 +73596,7 @@
           "paraview": {
             "description": "Build vtk modules required by paraview",
             "dependencies": [
+              "cli11",
               {
                 "name": "vtk",
                 "default-features": false,
@@ -73474,19 +73617,23 @@
           "python": {
             "description": "Python functionality for VTK",
             "dependencies": [
-              "python3"
+              "python3",
+              {
+                "name": "python3",
+                "host": true
+              }
             ]
           },
           "qt": {
             "description": "Qt functionality for VTK",
             "dependencies": [
+              "qt5-declarative",
               "qt5-imageformats",
               "qt5-tools",
               {
                 "name": "qt5-x11extras",
                 "platform": "linux"
-              },
-              "qt5-xmlpatterns"
+              }
             ]
           },
           "utf8": {
@@ -73508,30 +73655,27 @@
             ]
           }
         },
-        "version-semver": "9.0.3-pv5.9.1"
+        "version-semver": "9.2.0-pv5.11.0"
       },
       "files": [
-        "156fb524.patch",
-        "1f00a0c9.patch",
         "FindExpat.patch",
         "FindHDF5.cmake",
         "FindLZ4.patch",
         "FindLZMA.patch",
         "Findproj.patch",
         "NoUndefDebug.patch",
-        "UseProj5Api.patch",
-        "d107698a.patch",
-        "fix-find-libharu.patch",
+        "afxdll.patch",
+        "cgns.patch",
         "fix-gdal.patch",
-        "fix-libharu2.4-compat.patch",
         "fix-using-hdf5.patch",
-        "missing-limits.patch",
+        "iotr.patch",
+        "jsoncpp.patch",
         "pegtl.patch",
         "portfile.cmake",
-        "python_debug.patch",
         "pythonwrapper.patch",
         "usage",
         "vcpkg.json",
+        "vtkioss.patch",
         "vtkm.patch"
       ]
     },
@@ -73539,10 +73683,16 @@
       "name": "vtk-dicom",
       "manifest": {
         "name": "vtk-dicom",
+        "port-version": 1,
         "description": "DICOM for VTK",
         "homepage": "https://github.com/dgobbi/vtk-dicom",
         "license": "BSD-3-Clause",
         "dependencies": [
+          {
+            "name": "python3",
+            "host": true,
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -73576,10 +73726,10 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
-        "port-version": 2,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
-        "supports": "!x86 & !uwp",
+        "license": null,
+        "supports": "!x86 & !uwp & !(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -73616,7 +73766,7 @@
             ]
           }
         },
-        "version-semver": "1.6.0"
+        "version": "1.9.0"
       },
       "files": [
         "portfile.cmake",
