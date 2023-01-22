@@ -1,5 +1,5 @@
 {
-  "version": "12b7cfe6109a9d68319334b56a01c44a302a13b6",
+  "version": "e69dd972ba64840955f46704ecce6241bf607c0f",
   "ports": [
     {
       "name": "3fd",
@@ -19728,7 +19728,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -31433,7 +31433,6 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -31493,7 +31492,7 @@
             ]
           }
         },
-        "version": "5.3.1"
+        "version": "6.0.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -36938,7 +36937,7 @@
       "name": "libarchive",
       "manifest": {
         "name": "libarchive",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library for reading and writing streaming archives",
         "homepage": "https://github.com/libarchive/libarchive",
         "license": null,
@@ -44449,9 +44448,9 @@
       "name": "libyuv",
       "manifest": {
         "name": "libyuv",
-        "port-version": 1,
         "description": "libyuv is an open source project that includes YUV scaling and conversion functionality",
         "homepage": "https://chromium.googlesource.com/libyuv/libyuv",
+        "license": null,
         "dependencies": [
           "libjpeg-turbo",
           {
@@ -44461,16 +44460,20 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
           }
         ],
-        "version-date": "2021-04-15"
+        "version": "1857"
       },
       "files": [
-        "deprecated-warning.patch",
-        "fix-build-type.patch",
-        "fix_cmakelists.patch",
+        "fix-cmakelists.patch",
         "libyuv-config.cmake",
         "portfile.cmake",
+        "usage",
+        "usage-msvc",
         "vcpkg.json"
       ]
     },
@@ -49136,9 +49139,17 @@
       "name": "modp-base64",
       "manifest": {
         "name": "modp-base64",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High performance base64 encoder/decoder",
-        "version-string": "2020-09-26"
+        "homepage": "https://github.com/client9/stringencoders",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2020-09-26"
       },
       "files": [
         "CMakeLists.txt",
@@ -49802,7 +49813,6 @@
         "homepage": "https://github.com/Chlumsky/msdfgen",
         "license": "MIT",
         "dependencies": [
-          "freetype",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -49812,15 +49822,52 @@
             "host": true
           }
         ],
+        "default-features": [
+          "extensions",
+          "geometry-preprocessing"
+        ],
         "features": {
+          "extensions": {
+            "description": "Extended functionality that depends on external libraries - loading fonts and SVG files, generating PNG images.",
+            "dependencies": [
+              "freetype",
+              "libpng",
+              "tinyxml2"
+            ]
+          },
+          "geometry-preprocessing": {
+            "description": "Preprocessing of non-compliant vector geometry via the Skia library.",
+            "dependencies": [
+              {
+                "name": "msdfgen",
+                "default-features": false,
+                "features": [
+                  "extensions"
+                ]
+              },
+              {
+                "name": "skia",
+                "default-features": false
+              }
+            ]
+          },
           "openmp": {
             "description": "Build with OpenMP support for multi-threaded code."
           },
           "tools": {
-            "description": "Generates an executable inside the tools folder. Not supported on UWP."
+            "description": "Generates an executable inside the tools folder. Not supported on UWP.",
+            "dependencies": [
+              {
+                "name": "msdfgen",
+                "default-features": false,
+                "features": [
+                  "extensions"
+                ]
+              }
+            ]
           }
         },
-        "version": "1.9.2"
+        "version": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -73805,7 +73852,7 @@
             "host": true
           }
         ],
-        "version": "1.3.238"
+        "version": "1.3.239"
       },
       "files": [
         "portfile.cmake",
