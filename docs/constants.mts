@@ -84,7 +84,7 @@ export function getFallbackDescription(portName: string): string {
 }
 
 export function formatPageTitle(pageTitle: string | null | undefined): string {
-  return pageTitle ? `${pageTitle} 📦 ${SITE_TITLE}` : SITE_TITLE;
+  return pageTitle ? `${pageTitle} - ${SITE_TITLE}` : SITE_TITLE;
 }
 
 export const getSearchPageURL = (
