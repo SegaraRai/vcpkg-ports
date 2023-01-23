@@ -69,61 +69,64 @@ const description = stringifyPortDescription(feature.description);
     )
   }
 
-  {
-    !!supports && !!feature.supports && (
-      <details class="port-feature-supports narrow">
-        <summary>
-          <em>Supports:</em> <code translate="no" set:text={feature.supports} />
-        </summary>
-        {!!supports.supportedMinified && !!supports.unsupportedMinified && (
-          <div class=":uno: mb-4" translate="no">
-            <ul
-              class:list={[
-                'plain-list',
-                ':uno: my-2 flex flex-col gap-y-1 leading-tight',
-              ]}
-            >
-              {supports.supportedMinified.map((triplet) => (
-                <SupportedListItem triplet={triplet} />
-              ))}
-            </ul>
-            <ul
-              class:list={[
-                'plain-list',
-                ':uno: my-2 flex flex-col gap-y-1 leading-tight',
-              ]}
-            >
-              {supports.unsupportedMinified.map((triplet) => (
-                <SupportedListItem triplet={triplet} unsupported />
-              ))}
-            </ul>
-          </div>
-        )}
-      </details>
-    )
-  }
+  <div data-nosnippet>
+    {
+      !!supports && !!feature.supports && (
+        <details class="port-feature-supports narrow">
+          <summary>
+            <em>Supports:</em>{' '}
+            <code translate="no" set:text={feature.supports} />
+          </summary>
+          {!!supports.supportedMinified && !!supports.unsupportedMinified && (
+            <div class=":uno: mb-4" translate="no">
+              <ul
+                class:list={[
+                  'plain-list',
+                  ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+                ]}
+              >
+                {supports.supportedMinified.map((triplet) => (
+                  <SupportedListItem triplet={triplet} />
+                ))}
+              </ul>
+              <ul
+                class:list={[
+                  'plain-list',
+                  ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+                ]}
+              >
+                {supports.unsupportedMinified.map((triplet) => (
+                  <SupportedListItem triplet={triplet} unsupported />
+                ))}
+              </ul>
+            </div>
+          )}
+        </details>
+      )
+    }
 
-  <details class="port-feature-dependencies narrow">
-    <summary><em>Dependencies:</em></summary>
-    <Dependencies
-      dependencies={directNormalDeps}
-      transitiveDependencies={transitiveNormalDeps}
-      portMap={portMap}
-      narrowDetails
-      openTransitiveIfNoDirect
-    />
-  </details>
+    <details class="port-feature-dependencies narrow">
+      <summary><em>Dependencies:</em></summary>
+      <Dependencies
+        dependencies={directNormalDeps}
+        transitiveDependencies={transitiveNormalDeps}
+        portMap={portMap}
+        narrowDetails
+        openTransitiveIfNoDirect
+      />
+    </details>
 
-  <details class="port-feature-host-dependencies narrow">
-    <summary>
-      <em>Host Dependencies:</em>
-    </summary>
-    <Dependencies
-      dependencies={directHostDeps}
-      transitiveDependencies={transitiveHostDeps}
-      portMap={portMap}
-      narrowDetails
-      openTransitiveIfNoDirect
-    />
-  </details>
+    <details class="port-feature-host-dependencies narrow">
+      <summary>
+        <em>Host Dependencies:</em>
+      </summary>
+      <Dependencies
+        dependencies={directHostDeps}
+        transitiveDependencies={transitiveHostDeps}
+        portMap={portMap}
+        narrowDetails
+        openTransitiveIfNoDirect
+      />
+    </details>
+  </div>
 </SectionWrapper>

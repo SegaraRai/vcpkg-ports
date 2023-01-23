@@ -86,5 +86,9 @@ const licenseText = fileContents.find(([filename]) =>
     )
   }
 
-  {licenseText && <CodeBlock lang="plaintext" code={licenseText.trim()} />}
+  {
+    licenseText && (
+      <CodeBlock nosnippet lang="plaintext" code={licenseText.trim()} />
+    )
+  }
 </SectionWrapper>

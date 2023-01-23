@@ -5,9 +5,10 @@ import type { SectionSubset } from './defineSection.mjs';
 interface Props {
   readonly section: SectionSubset;
   readonly translate?: 'yes' | 'no' | null | undefined;
+  readonly nosnippet?: boolean | undefined;
 }
 
-const { section, translate } = Astro.props;
+const { section, translate, nosnippet } = Astro.props;
 const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
 ---
 
@@ -29,6 +30,6 @@ const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
   )
 }
 
-<div class={`port-${section.slug}`}>
+<div class={`port-${section.slug}`} data-nosnippet={nosnippet || undefined}>
   <slot />
 </div>

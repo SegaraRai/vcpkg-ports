@@ -2,9 +2,10 @@
 interface Props {
   readonly class?: any;
   readonly lang: string;
+  readonly nosnippet?: boolean | undefined;
 }
 
-const { class: classList, lang } = Astro.props;
+const { class: classList, lang, nosnippet } = Astro.props;
 ---
 
 <div
@@ -13,6 +14,7 @@ const { class: classList, lang } = Astro.props;
     `code-block language-${lang}`,
     classList || '',
   ]}
+  data-nosnippet={nosnippet || undefined}
 >
   <pre
     class=":uno: block max-h-80 overflow-auto px-5 py-3"

@@ -8,9 +8,10 @@ interface Props {
   readonly class?: any;
   readonly lang: string;
   readonly code: string;
+  readonly nosnippet?: boolean | undefined;
 }
 
-const { class: classList, lang, code } = Astro.props;
+const { class: classList, lang, code, nosnippet } = Astro.props;
 
 const highlighter = await shiki.getHighlighter({
   theme: 'monokai',
@@ -25,7 +26,7 @@ const html = highlighter
   .replace(/[{}]/g, (c) => `&#${c.charCodeAt(0)};`);
 ---
 
-<CodeBlockRaw class={classList} lang={lang}>
+<CodeBlockRaw class={classList} lang={lang} nosnippet={nosnippet}>
   {/* eslint-disable-next-line astro/no-set-html-directive */}
   <Fragment set:html={html} />
 </CodeBlockRaw>

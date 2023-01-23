@@ -19,7 +19,10 @@ const items = [
 >
   {
     items.map(([label, datetime, extraClass]) => (
-      <div class:list={[':uno: flex gap-x-4 items-center', extraClass]}>
+      <div
+        class:list={[':uno: flex gap-x-4 items-center', extraClass]}
+        data-nosnippet
+      >
         <dt class=":uno: flex-none w-24 opacity-60" set:text={label} />
         <dd class=":uno: flex-1">
           <DateTime client:load timestamp={datetime} long />
