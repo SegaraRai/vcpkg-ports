@@ -1,5 +1,5 @@
 {
-  "version": "e69dd972ba64840955f46704ecce6241bf607c0f",
+  "version": "6174e7f6f86cad5044582cf32b4fb69bc0e7f815",
   "ports": [
     {
       "name": "3fd",
@@ -2593,7 +2593,7 @@
       "name": "aws-sdk-cpp",
       "manifest": {
         "name": "aws-sdk-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "AWS SDK for C++",
         "homepage": "https://github.com/aws/aws-sdk-cpp",
         "supports": "!(windows & arm) & !uwp",
@@ -3470,6 +3470,7 @@
         "fix-openssl3.patch",
         "generateFeatures.ps1",
         "lock-curl-http-and-tls-settings.patch",
+        "no-werror.patch",
         "patch-relocatable-rpath.patch",
         "portfile.cmake",
         "usage",
@@ -5004,7 +5005,6 @@
       "name": "blake3",
       "manifest": {
         "name": "blake3",
-        "port-version": 1,
         "description": "BLAKE3 cryptographic hash function.",
         "homepage": "https://github.com/BLAKE3-team/BLAKE3",
         "license": "CC0-1.0 OR Apache-2.0",
@@ -5014,7 +5014,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -16745,6 +16745,32 @@
         "Config.cmake.in",
         "fix-c1083-error.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cglm",
+      "manifest": {
+        "name": "cglm",
+        "description": "Highly Optimized Graphics Math (glm) for C",
+        "homepage": "https://github.com/recp/cglm",
+        "license": "MIT",
+        "supports": "!(arm | uwp)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "0.8.8"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -32258,6 +32284,52 @@
       ]
     },
     {
+      "name": "iceoryx",
+      "manifest": {
+        "name": "iceoryx",
+        "description": "True zero-copy inter-process-communication",
+        "homepage": "https://iceoryx.io",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "acl",
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "many-to-many",
+          "toml-config"
+        ],
+        "features": {
+          "many-to-many": {
+            "description": "Using the n:n pattern for communication"
+          },
+          "toml-config": {
+            "description": "TOML support for RouDi with dynamic configuration",
+            "dependencies": [
+              "cpptoml"
+            ]
+          }
+        },
+        "version": "2.0.2"
+      },
+      "files": [
+        "acl.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "icu",
       "manifest": {
         "name": "icu",
@@ -40627,8 +40699,9 @@
       "name": "libopenmpt",
       "manifest": {
         "name": "libopenmpt",
-        "description": "a library to render tracker music",
+        "description": "a cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.",
         "homepage": "https://openmpt.org/",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "libogg",
           "libvorbis",
@@ -40643,7 +40716,7 @@
           },
           "zlib"
         ],
-        "version": "0.5.12"
+        "version": "0.6.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -48558,7 +48631,6 @@
       "name": "mimalloc",
       "manifest": {
         "name": "mimalloc",
-        "port-version": 1,
         "description": "Compact general purpose allocator with excellent performance",
         "homepage": "https://github.com/microsoft/mimalloc",
         "license": "MIT",
@@ -48584,7 +48656,7 @@
             "description": "Use security mitigations (like guard pages and randomization)"
           }
         },
-        "version": "2.0.7"
+        "version": "2.0.9"
       },
       "files": [
         "fix-cmake.patch",
@@ -57404,6 +57476,7 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
+        "port-version": 1,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT",
@@ -68931,9 +69004,8 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
-        "homepage": "https://github.com/sqlite/sqlite",
+        "homepage": "https://sqlite.org/",
         "license": "blessing",
         "dependencies": [
           {
@@ -68992,7 +69064,7 @@
             ]
           }
         },
-        "version": "3.40.0"
+        "version": "3.40.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -74565,7 +74637,7 @@
             "host": true
           }
         ],
-        "version": "0.9.7"
+        "version": "0.10.5"
       },
       "files": [
         "portfile.cmake",
