@@ -1,5 +1,5 @@
 {
-  "version": "6174e7f6f86cad5044582cf32b4fb69bc0e7f815",
+  "version": "136ad069fd2a7e61eeca5e4c48608c1fd3921a70",
   "ports": [
     {
       "name": "3fd",
@@ -956,7 +956,6 @@
       "name": "apsi",
       "manifest": {
         "name": "apsi",
-        "port-version": 1,
         "description": "APSI is a research library for asymmetric private set intersection.",
         "homepage": "https://github.com/microsoft/APSI",
         "license": "MIT",
@@ -1010,10 +1009,9 @@
             ]
           }
         },
-        "version-semver": "0.8.2"
+        "version-semver": "0.9.0"
       },
       "files": [
-        "fix-find_package.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4409,7 +4407,7 @@
       "name": "b64",
       "manifest": {
         "name": "b64",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libb64 is a library of ANSI C routines for fast encoding/decoding data into and from a base64-encoded format",
         "license": null,
         "dependencies": [
@@ -4788,7 +4786,7 @@
             "description": "Shader, Texture and Geometry compilers for bgfx."
           }
         },
-        "version": "1.118.8398-400"
+        "version": "1.118.8415-411"
       },
       "files": [
         "portfile.cmake",
@@ -5182,7 +5180,7 @@
             "host": true
           }
         ],
-        "version": "7.20.5"
+        "version": "7.22.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -16260,7 +16258,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.2.1"
+        "version-semver": "3.3.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -18724,7 +18722,7 @@
             "host": true
           }
         ],
-        "version": "4.5.0"
+        "version": "4.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -19043,7 +19041,6 @@
       "name": "cppzmq",
       "manifest": {
         "name": "cppzmq",
-        "port-version": 1,
         "description": "Header-only C++ binding for ZeroMQ",
         "homepage": "https://github.com/zeromq/cppzmq",
         "license": "MIT",
@@ -19063,7 +19060,7 @@
             "description": "Build and install draft"
           }
         },
-        "version": "4.8.1"
+        "version": "4.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -19112,7 +19109,7 @@
             ]
           }
         },
-        "version-semver": "1.9.2"
+        "version-semver": "1.9.3"
       },
       "files": [
         "001-cpr-config.patch",
@@ -21958,7 +21955,7 @@
         "description": "earcut.hpp is a C++ port of earcut.js, a fast, header-only polygon triangulation library.",
         "homepage": "https://github.com/mapbox/earcut.hpp",
         "license": "ISC",
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -23480,7 +23477,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -25721,10 +25718,16 @@
       "name": "fruit",
       "manifest": {
         "name": "fruit",
-        "port-version": 1,
         "description": "Fruit, a dependency injection framework for C++ by Google",
         "homepage": "https://github.com/google/fruit",
-        "version-string": "3.6.0"
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "3.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -31136,9 +31139,9 @@
       "name": "h3",
       "manifest": {
         "name": "h3",
-        "port-version": 1,
         "description": "A Hexagonal Hierarchical Geospatial Indexing System",
         "homepage": "https://github.com/uber/h3",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -31150,7 +31153,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.7.2"
+        "version-semver": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -36057,7 +36060,6 @@
       "name": "kfr",
       "manifest": {
         "name": "kfr",
-        "port-version": 2,
         "description": "Fast, modern C++ DSP framework.",
         "homepage": "https://www.kfr.dev/",
         "license": "GPL-2.0",
@@ -36088,7 +36090,7 @@
             "description": "Enable non-power of 2 DFT."
           }
         },
-        "version-semver": "4.2.1"
+        "version-semver": "5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -39411,7 +39413,7 @@
       "name": "libimobiledevice",
       "manifest": {
         "name": "libimobiledevice",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A cross-platform protocol library to communicate with iOS devices",
         "homepage": "http://www.libimobiledevice.org",
         "license": "LGPL-2.1-only",
@@ -39421,6 +39423,7 @@
           "libplist",
           "libusbmuxd",
           "openssl",
+          "pkgconf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -39431,6 +39434,7 @@
       "files": [
         "CMakeLists.txt",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -48871,9 +48875,9 @@
       "name": "miniz",
       "manifest": {
         "name": "miniz",
-        "port-version": 1,
         "description": "Single C source file zlib-replacement library",
         "homepage": "https://github.com/richgel999/miniz",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -48884,10 +48888,9 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "3.0.2"
       },
       "files": [
-        "fix-pkgconfig-location.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50427,17 +50430,28 @@
       "name": "nanomsg",
       "manifest": {
         "name": "nanomsg",
-        "port-version": 4,
         "description": [
-          "a simple high-performance implementation of several \"scalability protocols\".",
+          "A simple high-performance implementation of several \"scalability protocols\".",
           "These scalability protocols are light-weight messaging protocols which can be used to solve a number of very common messaging patterns, such as request/reply, publish/subscribe, surveyor/respondent, and so forth. These protocols can run over a variety of transports such as TCP, UNIX sockets, and even WebSocket."
+        ],
+        "homepage": "https://nanomsg.org/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "features": {
           "tool": {
             "description": "nanomsg tool (nanocat)"
           }
         },
-        "version-string": "1.1.5"
+        "version-semver": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -50655,7 +50669,7 @@
             "host": true
           }
         ],
-        "version": "20220729"
+        "version": "20221128"
       },
       "files": [
         "portfile.cmake",
@@ -50666,12 +50680,11 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 4,
         "description": "Free software emulation of curses in System V Release 4.0, and more",
         "homepage": "https://invisible-island.net/ncurses/announce.html",
         "license": "MIT",
         "supports": "!windows | mingw",
-        "version": "6.3"
+        "version": "6.4"
       },
       "files": [
         "portfile.cmake",
@@ -55379,11 +55392,11 @@
       "name": "openvr",
       "manifest": {
         "name": "openvr",
-        "port-version": 2,
-        "description": "an API and runtime that allows access to VR hardware from multiple vendors without requiring that applications have specific knowledge of the hardware they are targeting.",
+        "description": "An API and runtime that allows access to VR hardware from multiple vendors without requiring that applications have specific knowledge of the hardware they are targeting.",
         "homepage": "https://github.com/ValveSoftware/openvr",
+        "license": "BSD-3-Clause",
         "supports": "!(arm | uwp | osx | android)",
-        "version": "1.16.8"
+        "version": "1.23.7"
       },
       "files": [
         "portfile.cmake",
@@ -64054,7 +64067,6 @@
       "name": "re2",
       "manifest": {
         "name": "re2",
-        "port-version": 1,
         "description": "RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python. It is a C++ library.",
         "homepage": "https://github.com/google/re2",
         "license": "BSD-3-Clause",
@@ -64068,7 +64080,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-11-01"
+        "version-date": "2022-12-01"
       },
       "files": [
         "portfile.cmake",
@@ -66460,6 +66472,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
+        "port-version": 1,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -66693,16 +66706,12 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
         "supports": "osx | (!arm & !uwp)",
         "dependencies": [
-          {
-            "name": "curl",
-            "platform": "!windows"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -66710,12 +66719,41 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          {
-            "name": "zlib",
-            "platform": "ios | osx | windows"
           }
         ],
+        "default-features": [
+          "backend",
+          "transport"
+        ],
+        "features": {
+          "backend": {
+            "description": [
+              "Enables the platform-specific backend.",
+              "This feature does nothing for some platforms.",
+              "Cf. https://github.com/getsentry/sentry-native#compile-time-options"
+            ],
+            "dependencies": [
+              {
+                "name": "zlib",
+                "platform": "!android & !ios"
+              }
+            ]
+          },
+          "transport": {
+            "description": [
+              "Enables the platform-specific network transport.",
+              "This feature does nothing for some platforms.",
+              "Cf. https://github.com/getsentry/sentry-native#compile-time-options"
+            ],
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false,
+                "platform": "!windows"
+              }
+            ]
+          }
+        },
         "version": "0.5.3"
       },
       "files": [
@@ -67572,7 +67610,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -70054,7 +70092,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -70451,7 +70489,7 @@
       "name": "tgbot-cpp",
       "manifest": {
         "name": "tgbot-cpp",
-        "description": "C++14 library for Telegram bot API.",
+        "description": "C++ library for Telegram bot API.",
         "homepage": "https://github.com/reo7sp/tgbot-cpp",
         "license": "MIT",
         "dependencies": [
@@ -70470,7 +70508,7 @@
           },
           "zlib"
         ],
-        "version": "1.3"
+        "version": "1.6"
       },
       "files": [
         "portfile.cmake",
@@ -72092,10 +72130,16 @@
       "name": "units",
       "manifest": {
         "name": "units",
-        "port-version": 1,
         "description": "A compile-time, header-only, dimensional analysis and unit conversion library built on c++14 with no dependencies.",
         "homepage": "https://github.com/nholthaus/units",
-        "version-string": "2.3.1"
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "2.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -73845,6 +73889,7 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
+        "port-version": 1,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
         "license": null,
@@ -75797,7 +75842,7 @@
             ]
           }
         },
-        "version": "0.24.0"
+        "version": "0.24.3"
       },
       "files": [
         "portfile.cmake",
@@ -76664,7 +76709,7 @@
         "description": "A lightweight C++20 serialization and RPC library",
         "homepage": "https://github.com/eyalz800/zpp_bits",
         "license": "MIT",
-        "version": "4.4.12"
+        "version": "4.4.13"
       },
       "files": [
         "portfile.cmake",
