@@ -28,6 +28,7 @@ const sitemapDataPromise = createDataForSitemap();
 
 export default defineConfig({
   build: {
+    assets: 'assets',
     format: 'file',
   },
   server: {
@@ -36,7 +37,7 @@ export default defineConfig({
     },
   },
   srcDir: 'docs',
-  site: `https://vcpkg.roundtrip.dev`,
+  site: `https://vcpkg.roundtrip.dev/`,
   trailingSlash: 'never', // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
   integrations: [
     unoCSS(),
