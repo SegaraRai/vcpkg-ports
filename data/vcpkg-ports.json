@@ -1,5 +1,5 @@
 {
-  "version": "136ad069fd2a7e61eeca5e4c48608c1fd3921a70",
+  "version": "4efb7ed628be5e56eeee009524e6ca7f3cc49c74",
   "ports": [
     {
       "name": "3fd",
@@ -18680,9 +18680,20 @@
       "name": "cppfs",
       "manifest": {
         "name": "cppfs",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross-platform C++ file system library supporting multiple backends",
+        "license": "MIT",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "ssh": {
             "description": "SSH backend for cppfs",
@@ -18693,7 +18704,7 @@
             ]
           }
         },
-        "version-string": "1.3.0"
+        "version": "1.3.0"
       },
       "files": [
         "LibCrypto-fix.patch",
@@ -36759,6 +36770,7 @@
       "name": "lerc",
       "manifest": {
         "name": "lerc",
+        "port-version": 1,
         "description": "An open-source image or raster format which supports rapid encoding and decoding for any pixel type",
         "homepage": "https://github.com/Esri/lerc",
         "license": "Apache-2.0",
@@ -36776,6 +36788,7 @@
       },
       "files": [
         "create_package.patch",
+        "include_algorithm_for_std_min.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -37011,9 +37024,8 @@
       "name": "libarchive",
       "manifest": {
         "name": "libarchive",
-        "port-version": 2,
         "description": "Library for reading and writing streaming archives",
-        "homepage": "https://github.com/libarchive/libarchive",
+        "homepage": "https://www.libarchive.org",
         "license": null,
         "supports": "!uwp",
         "dependencies": [
@@ -37025,10 +37037,10 @@
         ],
         "default-features": [
           "bzip2",
+          "crypto",
           "libxml2",
           "lz4",
           "lzma",
-          "openssl",
           "zstd"
         ],
         "features": {
@@ -37036,6 +37048,19 @@
             "description": "BZip2 support",
             "dependencies": [
               "bzip2"
+            ]
+          },
+          "crypto": {
+            "description": "Support for cryptographic features",
+            "dependencies": [
+              {
+                "name": "mbedtls",
+                "platform": "osx"
+              },
+              {
+                "name": "openssl",
+                "platform": "!osx"
+              }
             ]
           },
           "libxml2": {
@@ -37063,10 +37088,14 @@
             ]
           },
           "openssl": {
-            "description": "OpenSSL support (not available on macOS)",
+            "description": "Deprecated. Use feature crypto instead.",
             "dependencies": [
               {
-                "name": "openssl",
+                "name": "libarchive",
+                "default-features": false,
+                "features": [
+                  "crypto"
+                ],
                 "platform": "!osx"
               }
             ]
@@ -37078,14 +37107,13 @@
             ]
           }
         },
-        "version": "3.6.1"
+        "version": "3.6.2"
       },
       "files": [
         "disable-warnings.patch",
         "fix-buildsystem.patch",
         "fix-cpu-set.patch",
         "fix-deps.patch",
-        "pkgconfig-modules.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -39554,7 +39582,7 @@
             ]
           }
         },
-        "version-semver": "0.7.0"
+        "version-semver": "0.8.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -43097,7 +43125,6 @@
       "name": "libunifex",
       "manifest": {
         "name": "libunifex",
-        "port-version": 1,
         "description": "Unified Executors",
         "homepage": "https://github.com/facebookexperimental/libunifex",
         "dependencies": [
@@ -43115,6 +43142,9 @@
           }
         ],
         "features": {
+          "coroutines": {
+            "description": "Support coroutine"
+          },
           "test": {
             "description": "Build test/example programs",
             "dependencies": [
@@ -43122,7 +43152,7 @@
             ]
           }
         },
-        "version-date": "2021-12-07"
+        "version-date": "2023-01-25"
       },
       "files": [
         "fix-compile-error.patch",
@@ -44995,7 +45025,6 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -45379,7 +45408,7 @@
             "description": "Build LLVM utils."
           }
         },
-        "version": "14.0.4"
+        "version": "14.0.6"
       },
       "files": [
         "0002-fix-install-paths.patch",
@@ -45628,7 +45657,7 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
         "license": null,
@@ -48169,7 +48198,7 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -49035,9 +49064,20 @@
       "name": "mio",
       "manifest": {
         "name": "mio",
-        "port-version": 1,
         "description": "Cross-platform header-only C++11 library for memory mapped file IO.",
-        "version-string": "2019-02-10"
+        "homepage": "https://github.com/mandreyel/mio",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-01-25"
       },
       "files": [
         "portfile.cmake",
@@ -57489,7 +57529,7 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT",
@@ -57514,7 +57554,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
-        "port-version": 4,
+        "port-version": 5,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -57528,7 +57568,6 @@
         "version": "1.8.0"
       },
       "files": [
-        "bufferoverflow.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65221,11 +65260,9 @@
             ]
           }
         },
-        "version": "0.20.16"
+        "version": "0.20.23"
       },
       "files": [
-        "0001-add-bigobj-for-msvc.patch",
-        "0002-fix-opencv47.patch",
         "0003-fix-qt.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -67246,7 +67283,7 @@
       "name": "simage",
       "manifest": {
         "name": "simage",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Image file format library abstraction layer",
         "homepage": "https://github.com/coin3d/simage",
         "license": "ISC",
@@ -67341,10 +67378,12 @@
             ]
           },
           "avienc": {
-            "description": "Use Video for Windows for AVI encoding"
+            "description": "Use Video for Windows for AVI encoding",
+            "supports": "windows"
           },
           "gdiplus": {
-            "description": "Use GDI+ on Windows to load/save images"
+            "description": "Use GDI+ on Windows to load/save images",
+            "supports": "windows"
           },
           "giflib": {
             "description": "Enable support for GIF images",
@@ -70587,7 +70626,7 @@
       "name": "theia",
       "manifest": {
         "name": "theia",
-        "port-version": 7,
+        "port-version": 8,
         "description": "An open source library for multiview geometry and structure from motion",
         "homepage": "https://github.com/sweeneychris/TheiaSfM",
         "license": "BSD-3-Clause",
@@ -70618,6 +70657,7 @@
         "version": "0.8"
       },
       "files": [
+        "266.diff",
         "eigen-3.4.patch",
         "fix-external-dependencies.patch",
         "fix-external-dependencies2.patch",
@@ -73594,6 +73634,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
+        "port-version": 1,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -75082,7 +75123,7 @@
         "description": "The FASTEST QUALITY hash function, random number generators (PRNG) and hash map.",
         "homepage": "https://github.com/wangyi-fudan/wyhash",
         "license": "Unlicense",
-        "version-date": "2022-10-12"
+        "version-date": "2023-01-25"
       },
       "files": [
         "portfile.cmake",
@@ -75205,13 +75246,12 @@
       "name": "xaudio2redist",
       "manifest": {
         "name": "xaudio2redist",
-        "port-version": 1,
         "description": "Redistributable version of XAudio 2.9 for Windows 7 SP1 or later",
         "homepage": "https://aka.ms/XAudio2Redist",
         "documentation": "https://aka.ms/XAudio2Redist",
         "license": null,
         "supports": "windows & !arm & !uwp",
-        "version": "1.2.10"
+        "version": "1.2.11"
       },
       "files": [
         "portfile.cmake",
