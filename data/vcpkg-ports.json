@@ -1,5 +1,5 @@
 {
-  "version": "ac12118f02e127ef1fe9806ffe1a23e7db7ef988",
+  "version": "91dd61bd441a68b4017b61011d0350b2e6aeeccf",
   "ports": [
     {
       "name": "3fd",
@@ -4486,7 +4486,6 @@
       "name": "bddisasm",
       "manifest": {
         "name": "bddisasm",
-        "port-version": 1,
         "maintainers": "Cristi Anichitei <ianichitei@bitdefender.com>",
         "description": "bddisasm is a fast, lightweight, x86/x64 instruction decoder and emulator.",
         "homepage": "https://github.com/bitdefender/bddisasm",
@@ -4503,7 +4502,7 @@
             "host": true
           }
         ],
-        "version": "1.34.7"
+        "version": "1.34.10"
       },
       "files": [
         "portfile.cmake",
@@ -17045,12 +17044,16 @@
       "name": "chromium-base",
       "manifest": {
         "name": "chromium-base",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Chromium is an open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web.",
         "homepage": "https://chromium.googlesource.com/chromium/src",
         "license": "BSD-3-Clause",
         "supports": "x64 & (osx | windows | linux) & !uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-gn",
+            "host": true
+          },
           {
             "name": "vcpkg-tool-gn",
             "host": true
@@ -19240,7 +19243,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -19251,6 +19254,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-gn",
             "host": true
           },
           {
@@ -19764,7 +19771,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -19955,7 +19961,8 @@
                   "schannel"
                 ]
               }
-            ]
+            ],
+            "supports": "windows & !uwp"
           },
           "wolfssl": {
             "description": "SSL support (wolfSSL)",
@@ -19964,7 +19971,7 @@
             ]
           }
         },
-        "version": "7.86.0"
+        "version": "7.87.0"
       },
       "files": [
         "0002_fix_uwp.patch",
@@ -20883,9 +20890,10 @@
       "name": "dimcli",
       "manifest": {
         "name": "dimcli",
-        "port-version": 3,
         "description": "C++ command line parser toolkit",
         "homepage": "https://github.com/gknowles/dimcli",
+        "documentation": "https://gknowles.github.io/dimcli",
+        "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -20893,10 +20901,9 @@
             "host": true
           }
         ],
-        "version-semver": "5.0.2"
+        "version-semver": "7.1.0"
       },
       "files": [
-        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23490,7 +23497,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -24177,12 +24183,14 @@
             ]
           }
         },
-        "version": "5.0.2"
+        "version": "5.1.2"
       },
       "files": [
         "0001-create-lib-libraries.patch",
+        "0002-fix-msvc-link.patch",
         "0003-fix-windowsinclude.patch",
         "0004-fix-debug-build.patch",
+        "0005-fix-nasm.patch",
         "0006-fix-StaticFeatures.patch",
         "0007-fix-lib-naming.patch",
         "0009-Fix-fdk-detection.patch",
@@ -24190,7 +24198,6 @@
         "0012-Fix-ssl-110-detection.patch",
         "0013-define-WINVER.patch",
         "0015-Fix-xml2-detection.patch",
-        "0019-libx264-Do-not-explicitly-set-X264_API_IMPORTS.patch",
         "0020-fix-aarch64-libswscale.patch",
         "0022-fix-iconv.patch",
         "0023-fix-qsv-init.patch",
@@ -26258,7 +26265,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -26555,6 +26562,7 @@
         "version-semver": "3.6.2"
       },
       "files": [
+        "cmake-project-include.cmake",
         "find-link-libraries.patch",
         "fix-find-package2.patch",
         "fix-gdal-target-interfaces.patch",
@@ -26924,33 +26932,32 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "port-version": 9,
         "description": "GNU gettext provides libintl and a set of tools to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
+        "license": null,
         "dependencies": [
           "libiconv"
         ],
         "features": {
           "tools": {
-            "description": "Build gettext tools"
+            "description": "Build gettext tools",
+            "supports": "!uwp"
           }
         },
-        "version": "0.21"
+        "version": "0.21.1"
       },
       "files": [
-        "0002-Fix-uwp-build.patch",
         "0003-Fix-win-unicode-paths.patch",
-        "0004-Fix-uwp-tools-build.patch",
         "Makefile",
         "android.patch",
-        "gettext-tools_woe32dll_gettextsrc-exports.c.patch",
         "install-autopoint.cmake",
         "portfile.cmake",
         "rel_path.patch",
-        "uwp_remove_localcharset.patch",
+        "uwp.patch",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-port-config.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "win-gethostname.patch"
       ]
     },
     {
@@ -31786,10 +31793,20 @@
       "name": "hffix",
       "manifest": {
         "name": "hffix",
-        "port-version": 1,
         "description": "Financial Information Exchange Protocol C++ Library",
         "homepage": "https://jamesdbrock.github.io/hffix",
-        "version-string": "1.0.0"
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -32349,6 +32366,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
+        "port-version": 1,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -32356,9 +32374,17 @@
         "dependencies": [
           {
             "name": "icu",
-            "host": true
+            "host": true,
+            "features": [
+              "tools"
+            ]
           }
         ],
+        "features": {
+          "tools": {
+            "description": "Build tools"
+          }
+        },
         "version": "72.1"
       },
       "files": [
@@ -32964,7 +32990,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.3"
+        "version": "0.10.4"
       },
       "files": [
         "arith_osx.h",
@@ -33671,7 +33697,7 @@
             "host": true
           }
         ],
-        "version": "1.13.0"
+        "version": "1.13.2"
       },
       "files": [
         "fix-depends-hdf5.patch",
@@ -38160,11 +38186,17 @@
       "name": "libexif",
       "manifest": {
         "name": "libexif",
-        "port-version": 2,
         "description": "a library for parsing, editing, and saving EXIF data",
         "homepage": "https://libexif.github.io/",
+        "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
-        "version": "0.6.22"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.6.24"
       },
       "files": [
         "CMakeLists.txt",
@@ -39561,6 +39593,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
+        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -39589,6 +39622,7 @@
       "files": [
         "fix-dependencies.patch",
         "portfile.cmake",
+        "trim-shared-build.patch",
         "vcpkg.json"
       ]
     },
@@ -39734,6 +39768,7 @@
       "name": "libleidenalg",
       "manifest": {
         "name": "libleidenalg",
+        "port-version": 1,
         "maintainers": "Andrew Robbins <andrew@robbinsa.me>",
         "description": "Leiden is a general algorithm for methods of community detection in large networks.",
         "homepage": "https://github.com/vtraag/libleidenalg",
@@ -43482,7 +43517,6 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
-        "port-version": 1,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -43494,6 +43528,14 @@
               "unicode"
             ],
             "platform": "windows"
+          },
+          {
+            "name": "libwebp",
+            "default-features": false,
+            "features": [
+              "simd"
+            ],
+            "platform": "osx & x64"
           },
           {
             "name": "vcpkg-cmake",
@@ -43519,6 +43561,7 @@
                   "anim",
                   "cwebp",
                   "dwebp",
+                  "extras",
                   "gif2webp",
                   "img2webp",
                   "info",
@@ -43531,22 +43574,25 @@
               {
                 "name": "libwebp",
                 "features": [
-                  "extras"
+                  "vwebp"
                 ],
-                "platform": "!osx"
+                "platform": "!osx & !static"
               },
               {
                 "name": "libwebp",
                 "features": [
                   "vwebp-sdl"
                 ],
-                "platform": "!osx"
+                "platform": "!osx & !static & !uwp"
               }
             ]
           },
           "anim": {
             "description": "Build animation utilities.",
             "dependencies": [
+              "giflib",
+              "libjpeg-turbo",
+              "libpng",
               {
                 "name": "libwebp",
                 "default-features": false,
@@ -43554,31 +43600,33 @@
                   "img2webp",
                   "mux"
                 ]
-              }
+              },
+              "tiff"
             ]
           },
           "cwebp": {
-            "description": "Build the cwebp command line tool."
+            "description": "Build the cwebp command line tool.",
+            "dependencies": [
+              "libjpeg-turbo",
+              "libpng",
+              "tiff"
+            ]
           },
           "dwebp": {
-            "description": "Build the dwebp command line tool."
+            "description": "Build the dwebp command line tool.",
+            "dependencies": [
+              "libjpeg-turbo",
+              "libpng",
+              "tiff"
+            ]
           },
           "extras": {
-            "description": "Build extras.",
+            "description": "Build extras. (Doesn't include vwebp-sdl.)",
             "dependencies": [
-              {
-                "name": "libwebp",
-                "default-features": false,
-                "features": [
-                  "vwebp"
-                ]
-              },
-              {
-                "name": "sdl1",
-                "platform": "windows"
-              }
-            ],
-            "supports": "!osx"
+              "libjpeg-turbo",
+              "libpng",
+              "tiff"
+            ]
           },
           "gif2webp": {
             "description": "Build the gif2webp conversion tool.",
@@ -43653,42 +43701,35 @@
           "vwebp": {
             "description": "Build the vwebp viewer tool.",
             "dependencies": [
-              {
-                "name": "freeglut",
-                "platform": "!osx"
-              },
+              "freeglut",
               "opengl"
             ],
-            "supports": "!osx"
+            "supports": "!osx & !static"
           },
           "vwebp-sdl": {
-            "description": "Build the vwebp viewer tool.",
+            "description": "Build the vwebp viewer tool for SDL.",
             "dependencies": [
               {
                 "name": "libwebp",
                 "default-features": false,
                 "features": [
+                  "extras",
                   "vwebp"
                 ]
               },
-              {
-                "name": "sdl1",
-                "platform": "windows"
-              }
-            ],
-            "supports": "!osx"
+              "sdl1"
+            ]
           }
         },
-        "version": "1.2.4"
+        "version": "1.3.0"
       },
       "files": [
         "0002-cmake-config.patch",
-        "0003-fix-tool-dependencies.patch",
         "0007-fix-arm-build.patch",
         "0008-sdl.patch",
-        "0009-glut.patch",
         "0010-fix_build.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -45786,7 +45827,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-22"
+        "version-date": "2023-01-04"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -47289,11 +47330,12 @@
         "name": "mapbox-polylabel",
         "description": "A fast algorithm for finding the pole of inaccessibility of a polygon (in JavaScript and C++)",
         "homepage": "https://github.com/mapbox/polylabel",
+        "license": "ISC",
         "dependencies": [
           "mapbox-geometry",
           "mapbox-variant"
         ],
-        "version-semver": "1.0.4"
+        "version-semver": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -47330,11 +47372,9 @@
       "name": "mapnik",
       "manifest": {
         "name": "mapnik",
-        "port-version": 2,
         "description": "Mapnik is an open source toolkit for developing mapping applications.",
         "homepage": "https://github.com/mapnik/mapnik",
         "license": "LGPL-2.1-only",
-        "supports": "!(static & windows)",
         "dependencies": [
           "boost-assign",
           "boost-bimap",
@@ -47440,14 +47480,12 @@
           "input-pgraster": {
             "description": "PGRASTER input plugin",
             "dependencies": [
-              "libodb-pgsql",
               "libpq"
             ]
           },
           "input-postgis": {
             "description": "POSTGIS input plugin",
             "dependencies": [
-              "libodb-pgsql",
               "libpq"
             ]
           },
@@ -47524,7 +47562,6 @@
             "description": "utility application pgsql2sqlite",
             "dependencies": [
               "boost-program-options",
-              "libodb-pgsql",
               "libpq",
               "sqlite3"
             ]
@@ -47554,7 +47591,7 @@
             ]
           }
         },
-        "version-date": "2022-01-28"
+        "version-date": "2023-01-17"
       },
       "files": [
         "portfile.cmake",
@@ -51528,7 +51565,7 @@
             "host": true
           }
         ],
-        "version": "4.33"
+        "version": "4.35"
       },
       "files": [
         "portfile.cmake",
@@ -51547,7 +51584,7 @@
           "nspr",
           "sqlite3",
           {
-            "name": "vcpkg-tool-gyp-nss",
+            "name": "vcpkg-tool-gyp-next",
             "host": true
           },
           {
@@ -51555,7 +51592,7 @@
             "host": true
           }
         ],
-        "version": "3.78"
+        "version": "3.87"
       },
       "files": [
         "01-nspr-no-lib-prefix.patch",
@@ -54062,7 +54099,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 1,
+        "port-version": 2,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -54313,9 +54350,16 @@
           "qt": {
             "description": "Qt GUI support for opencv",
             "dependencies": [
+              "qt5compat",
               {
-                "name": "qt5-base",
-                "default-features": false
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "concurrent",
+                  "gui",
+                  "testlib",
+                  "widgets"
+                ]
               }
             ]
           },
@@ -54575,7 +54619,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -54677,7 +54721,7 @@
             "dependencies": [
               "opengl",
               {
-                "name": "qt5-base",
+                "name": "qtbase",
                 "default-features": false
               }
             ]
@@ -54698,7 +54742,9 @@
         "fix-static-ffmpeg.patch",
         "fix-vs2019-encoding-conversion.patch",
         "imath-version-guard.patch",
+        "more_qt6.patch",
         "portfile.cmake",
+        "qt6.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -56318,7 +56364,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -56449,6 +56495,7 @@
       },
       "files": [
         "devendor-palsigslot.patch",
+        "ffmpeg-vxmc.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -56529,6 +56576,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
+        "port-version": 1,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -56538,6 +56586,7 @@
           "boost-format",
           "cgns",
           "protobuf",
+          "qt5compat",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -56609,7 +56658,10 @@
             ]
           },
           "tools": {
-            "description": "Build paraview tools"
+            "description": "Build paraview tools",
+            "dependencies": [
+              "qtsvg"
+            ]
           },
           "vtkm": {
             "description": "enables vtkm for the build of paraview",
@@ -56627,11 +56679,13 @@
         "version": "5.11.0"
       },
       "files": [
+        "53.diff",
         "add-tools-option.patch",
         "external_vtk.patch",
         "portfile.cmake",
         "python_include.patch",
         "python_wrapper.patch",
+        "qt6-all.patch",
         "removedoublesymbols.patch",
         "vcpkg.json"
       ]
@@ -59485,6 +59539,7 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
+        "port-version": 1,
         "description": "Qt",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -59693,13 +59748,6 @@
                   "qml"
                 ],
                 "platform": "windows"
-              },
-              {
-                "name": "qtbase",
-                "features": [
-                  "gles2"
-                ],
-                "platform": "linux"
               },
               {
                 "name": "qtwayland",
@@ -60294,6 +60342,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
+        "port-version": 1,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -60308,6 +60357,9 @@
           "harfbuzz",
           {
             "name": "icu",
+            "features": [
+              "tools"
+            ],
             "platform": "!uwp"
           },
           "libjpeg-turbo",
@@ -60562,6 +60614,7 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
+        "port-version": 1,
         "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
         "license": null,
         "dependencies": [
@@ -62974,6 +63027,7 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
+        "port-version": 1,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -63028,6 +63082,19 @@
                 "default-features": false,
                 "features": [
                   "designer"
+                ]
+              }
+            ]
+          },
+          "qdbus": {
+            "description": "Build qdbusviewer",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "dbus",
+                  "widgets"
                 ]
               }
             ]
@@ -65213,6 +65280,7 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
+        "port-version": 1,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
@@ -65266,6 +65334,7 @@
       },
       "files": [
         "0003-fix-qt.patch",
+        "cpp17.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66745,7 +66814,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 2,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -66793,7 +66861,7 @@
             ]
           }
         },
-        "version": "0.5.3"
+        "version": "0.5.4"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -67651,7 +67719,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -67672,6 +67740,10 @@
           },
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-gn",
             "host": true
           },
           {
@@ -69699,6 +69771,7 @@
       "manifest": {
         "name": "string-view-lite",
         "description": "A C++17-like string_view for C++98, C++11 and later in a single-file header-only library",
+        "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -69709,7 +69782,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -72796,7 +72869,7 @@
       "name": "v8",
       "manifest": {
         "name": "v8",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Google Chrome's JavaScript engine",
         "homepage": "https://v8.dev",
         "license": "BSD-3-Clause",
@@ -72810,6 +72883,10 @@
           {
             "name": "pthread",
             "platform": "linux"
+          },
+          {
+            "name": "vcpkg-gn",
+            "host": true
           },
           {
             "name": "vcpkg-tool-python2",
@@ -73063,14 +73140,14 @@
       "name": "vcpkg-gn",
       "manifest": {
         "name": "vcpkg-gn",
-        "port-version": 2,
+        "port-version": 3,
         "description": "https://gn.googlesource.com/gn/+/4aa9bdfa05b688c58d3d7d3e496f3f18cbb3d89e",
         "documentation": "https://vcpkg.io/en/docs/README.html",
         "license": "MIT",
-        "supports": "native & !x86",
+        "supports": "native",
         "dependencies": [
           {
-            "name": "vcpkg-tool-python2",
+            "name": "vcpkg-tool-gn",
             "host": true
           }
         ],
@@ -73082,7 +73159,7 @@
         "vcpkg.json",
         "vcpkg_gn_configure.cmake",
         "vcpkg_gn_install.cmake",
-        "z_vcpkg_gn_real_path.cmake"
+        "z_vcpkg_gn_fixup_path.cmake"
       ]
     },
     {
@@ -73171,12 +73248,12 @@
       ]
     },
     {
-      "name": "vcpkg-tool-gyp-nss",
+      "name": "vcpkg-tool-gyp-next",
       "manifest": {
-        "name": "vcpkg-tool-gyp-nss",
-        "description": "https://github.com/plq/gyp-nss",
+        "name": "vcpkg-tool-gyp-next",
+        "description": "https://github.com/nodejs/gyp-next",
         "supports": "native",
-        "version-date": "2022-03-04"
+        "version-date": "2022-10-15"
       },
       "files": [
         "portfile.cmake",
@@ -73222,7 +73299,7 @@
         "description": "mozbuild is a Python package providing functionality used by Mozilla’s build system",
         "homepage": "https://firefox-source-docs.mozilla.org/build/buildsystem/mozbuild/index.html",
         "supports": "native & x64 & windows",
-        "version": "3.3"
+        "version": "4.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -73636,7 +73713,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -73833,12 +73910,20 @@
           "qt": {
             "description": "Qt functionality for VTK",
             "dependencies": [
-              "qt5-declarative",
-              "qt5-imageformats",
-              "qt5-tools",
               {
-                "name": "qt5-x11extras",
-                "platform": "linux"
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui",
+                  "opengl",
+                  "widgets"
+                ]
+              },
+              "qtdeclarative",
+              "qtimageformats",
+              {
+                "name": "qttools",
+                "default-features": false
               }
             ]
           },
