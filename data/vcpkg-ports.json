@@ -1,5 +1,5 @@
 {
-  "version": "f7ada2a29215ff646f152475b61beb85742bbbb1",
+  "version": "0ba60bfef5dea4cb2599daa7ad8364e309835a68",
   "ports": [
     {
       "name": "3fd",
@@ -63,6 +63,25 @@
       "name": "ableton",
       "manifest": {
         "name": "ableton",
+        "port-version": 2,
+        "description": "Meta-package for transitioning to abletonlink port.",
+        "homepage": "https://www.ableton.com/en/link/",
+        "documentation": "http://ableton.github.io/link/",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "ableton-link"
+        ],
+        "version": "3.0.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ableton-link",
+      "manifest": {
+        "name": "ableton-link",
         "description": "Ableton Link, a technology that synchronizes musical beat, tempo, and phase across multiple applications running on one or more devices.",
         "homepage": "https://www.ableton.com/en/link/",
         "documentation": "http://ableton.github.io/link/",
@@ -778,6 +797,7 @@
       "name": "antlr4",
       "manifest": {
         "name": "antlr4",
+        "port-version": 1,
         "description": "ANother Tool for Language Recognition",
         "homepage": "https://www.antlr.org",
         "license": "BSD-3-Clause",
@@ -802,6 +822,7 @@
         "export_guid.patch",
         "fix_build_4.11.1.patch",
         "portfile.cmake",
+        "set-export-macro-define-as-private.patch",
         "vcpkg.json"
       ]
     },
@@ -1070,6 +1091,28 @@
       "files": [
         "0001-fix-protobuf-deprecated.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arg-router",
+      "manifest": {
+        "name": "arg-router",
+        "description": "C++ command line argument parsing and routing.",
+        "homepage": "https://github.com/cmannett85/arg_router",
+        "documentation": "https://cmannett85.github.io/arg_router/",
+        "license": "BSL-1.0",
+        "dependencies": [
+          "boost-lexical-cast",
+          "boost-mp11",
+          "boost-preprocessor",
+          "span-lite"
+        ],
+        "version": "1.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -3557,34 +3600,7 @@
             "host": true
           }
         ],
-        "features": {
-          "public-preview": {
-            "description": "Azure C SDKs common code (public preview)",
-            "dependencies": [
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "curl",
-                "platform": "linux"
-              },
-              {
-                "name": "openssl",
-                "platform": "linux"
-              },
-              {
-                "name": "umock-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
-          }
-        },
-        "version-date": "2022-09-15"
+        "version-date": "2023-01-18"
       },
       "files": [
         "disable-error.patch",
@@ -3602,7 +3618,6 @@
       "name": "azure-core-cpp",
       "manifest": {
         "name": "azure-core-cpp",
-        "port-version": 2,
         "description": [
           "Microsoft Azure Core SDK for C++",
           "This library provides shared primitives, abstractions, and helpers for modern Azure SDK client libraries written in the C++."
@@ -3670,15 +3685,15 @@
               {
                 "name": "azure-core-cpp",
                 "default-features": false
-              }
+              },
+              "wil"
             ],
             "supports": "windows"
           }
         },
-        "version-semver": "1.7.2"
+        "version-semver": "1.8.0"
       },
       "files": [
-        "add-ws232.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3698,7 +3713,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.7.0-beta.1"
+            "version>=": "1.8.0"
           },
           {
             "name": "opentelemetry-cpp",
@@ -3713,7 +3728,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.3"
+        "version-semver": "1.0.0-beta.4"
       },
       "files": [
         "portfile.cmake",
@@ -3757,7 +3772,6 @@
       "name": "azure-iot-sdk-c",
       "manifest": {
         "name": "azure-iot-sdk-c",
-        "port-version": 1,
         "description": "A C99 SDK for connecting devices to Microsoft Azure IoT services",
         "homepage": "https://github.com/Azure/azure-iot-sdk-c",
         "license": "MIT",
@@ -3778,53 +3792,7 @@
             "host": true
           }
         ],
-        "features": {
-          "public-preview": {
-            "description": "A version of the azure-iot-sdk-c containing public-preview features.",
-            "dependencies": [
-              {
-                "name": "azure-c-shared-utility",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-uamqp-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-uhttp-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-umqtt-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "umock-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
-          },
-          "use-prov-client": {
-            "description": "Enables device provisioning client for DPS"
-          }
-        },
-        "version-date": "2022-09-15"
+        "version-date": "2023-01-18"
       },
       "files": [
         "fix-install-location.patch",
@@ -3905,12 +3873,19 @@
       "name": "azure-macro-utils-c",
       "manifest": {
         "name": "azure-macro-utils-c",
+        "port-version": 1,
         "description": "A library of macros for the Azure IoT SDK Suite",
-        "features": {
-          "public-preview": {
-            "description": "A library of macros for the Azure IoT SDK Suite (public-preview)"
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
-        },
+        ],
         "version-date": "2022-01-21"
       },
       "files": [
@@ -4283,32 +4258,7 @@
             "host": true
           }
         ],
-        "features": {
-          "public-preview": {
-            "description": "AMQP library for C (public preview)",
-            "dependencies": [
-              {
-                "name": "azure-c-shared-utility",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "umock-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
-          }
-        },
-        "version-date": "2022-09-15"
+        "version-date": "2023-01-18"
       },
       "files": [
         "portfile.cmake",
@@ -4335,32 +4285,7 @@
             "host": true
           }
         ],
-        "features": {
-          "public-preview": {
-            "description": "Azure HTTP Library written in C (public preview)",
-            "dependencies": [
-              {
-                "name": "azure-c-shared-utility",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "umock-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
-          }
-        },
-        "version-date": "2022-09-15"
+        "version-date": "2023-01-18"
       },
       "files": [
         "package-location-fix-preview.patch",
@@ -4388,32 +4313,7 @@
             "host": true
           }
         ],
-        "features": {
-          "public-preview": {
-            "description": "General purpose library for communication over the mqtt protocol (public preview)",
-            "dependencies": [
-              {
-                "name": "azure-c-shared-utility",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              },
-              {
-                "name": "umock-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
-          }
-        },
-        "version-date": "2022-09-15"
+        "version-date": "2023-01-18"
       },
       "files": [
         "package-location-fix-preview.patch",
@@ -5084,11 +4984,12 @@
       "name": "blend2d",
       "manifest": {
         "name": "blend2d",
+        "port-version": 1,
         "description": "Beta 2D Vector Graphics Powered by a JIT Compiler",
         "homepage": "https://github.com/blend2d/blend2d",
         "documentation": "https://blend2d.com/doc/index.html",
         "license": "Zlib",
-        "supports": "!arm & !uwp & !wasm32",
+        "supports": "!(arm & windows) & !uwp & !wasm32",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -5160,20 +5061,27 @@
       "name": "blosc",
       "manifest": {
         "name": "blosc",
-        "port-version": 4,
         "description": "A blocking, shuffling and loss-less compression library that can be faster than `memcpy()`",
         "homepage": "https://github.com/Blosc/c-blosc",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "lz4",
           "snappy",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib",
           "zstd"
         ],
-        "version-string": "1.18.1"
+        "version": "1.21.3"
       },
       "files": [
-        "0001-find-deps.patch",
-        "0002-export-blosc-config.patch",
+        "0001-fix-CMake-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16423,7 +16331,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.0"
+        "version-semver": "3.3.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -16663,7 +16571,7 @@
       "name": "ceres",
       "manifest": {
         "name": "ceres",
-        "port-version": 2,
+        "port-version": 3,
         "description": "non-linear optimization package",
         "homepage": "https://github.com/ceres-solver/ceres-solver",
         "license": "Apache-2.0",
@@ -17712,6 +17620,27 @@
       ]
     },
     {
+      "name": "clipper2",
+      "manifest": {
+        "name": "clipper2",
+        "description": "Polygon Clipping and Offsetting",
+        "homepage": "http://www.angusj.com/clipper2",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "clockutils",
       "manifest": {
         "name": "clockutils",
@@ -17923,7 +17852,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.5.0"
+        "version": "3.6.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -19669,7 +19598,7 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -19974,6 +19903,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -20182,6 +20112,7 @@
         "0012-fix-dependency-idn2.patch",
         "0020-fix-pc-file.patch",
         "0022-deduplicate-libs.patch",
+        "0023-fix-find-cares.patch",
         "cmake-project-include.cmake",
         "export-components.patch",
         "mbedtls-ws2_32.patch",
@@ -20302,6 +20233,103 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cyclonedds",
+      "manifest": {
+        "name": "cyclonedds",
+        "description": "Eclipse Cyclone DDS is a very performant and robust open-source implementation of the OMG DDS specification",
+        "homepage": "https://cyclonedds.io",
+        "license": "EPL-2.0 OR BSD-3-Clause",
+        "supports": "!uwp & !(arm64 & windows)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "deadline-missed",
+          "ipv6",
+          "lifespan",
+          "security",
+          "source-specific-multicast",
+          "topic-discovery",
+          "type-discovery"
+        ],
+        "features": {
+          "ddsperf": {
+            "description": "Build ddsperf tool",
+            "dependencies": [
+              {
+                "name": "cyclonedds",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "idlc"
+                ]
+              }
+            ]
+          },
+          "deadline-missed": {
+            "description": "Enable Deadline Missed QoS suppor"
+          },
+          "idlc": {
+            "description": "Build IDL preprocessor"
+          },
+          "ipv6": {
+            "description": "Enable ipv6 support"
+          },
+          "lifespan": {
+            "description": "Enable Lifespan QoS support"
+          },
+          "security": {
+            "description": "Enable OMG DDS Security support"
+          },
+          "shm": {
+            "description": "Enable shared memory support",
+            "dependencies": [
+              "iceoryx"
+            ],
+            "supports": "!windows"
+          },
+          "source-specific-multicast": {
+            "description": "Enable support for source-specific multicast"
+          },
+          "ssl": {
+            "description": "Enable OpenSSL support",
+            "dependencies": [
+              "openssl"
+            ]
+          },
+          "topic-discovery": {
+            "description": "Enable Topic Discovery support",
+            "dependencies": [
+              {
+                "name": "cyclonedds",
+                "default-features": false,
+                "features": [
+                  "type-discovery"
+                ]
+              }
+            ]
+          },
+          "type-discovery": {
+            "description": "Enable Type Discovery support"
+          }
+        },
+        "version-semver": "0.10.2"
+      },
+      "files": [
+        "enable-security.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -21275,7 +21303,7 @@
         ],
         "features": {
           "dx12": {
-            "description": "Build with DirectX12 support for Windows 10"
+            "description": "Build with DirectX12 support for Windows 10/Windows 11"
           },
           "openexr": {
             "description": "Enable OpenEXR support",
@@ -21287,7 +21315,7 @@
             "description": "Build Spectre-mitigated library"
           }
         },
-        "version-date": "2022-12-15"
+        "version-date": "2023-01-31"
       },
       "files": [
         "portfile.cmake",
@@ -22675,6 +22703,7 @@
       "name": "embree3",
       "manifest": {
         "name": "embree3",
+        "port-version": 1,
         "description": "High Performance Ray Tracing Kernels.",
         "homepage": "https://github.com/embree/embree",
         "license": "Apache-2.0",
@@ -28870,6 +28899,18 @@
               }
             ]
           },
+          "gkemulticloud": {
+            "description": "Anthos Multi-Cloud C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "grafeas": {
             "description": "Protocol buffers implementing the 'Grafeas API' (metadata about software artifacts)",
             "dependencies": [
@@ -29547,7 +29588,7 @@
             ]
           }
         },
-        "version": "2.6.0"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -31865,7 +31906,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 5,
+        "port-version": 6,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -32524,6 +32565,7 @@
       "name": "iceoryx",
       "manifest": {
         "name": "iceoryx",
+        "port-version": 1,
         "description": "True zero-copy inter-process-communication",
         "homepage": "https://iceoryx.io",
         "license": "Apache-2.0",
@@ -32548,7 +32590,7 @@
         ],
         "features": {
           "many-to-many": {
-            "description": "Using the n:n pattern for communication"
+            "description": "Using the m:n pattern for communication"
           },
           "toml-config": {
             "description": "TOML support for RouDi with dynamic configuration",
@@ -33948,7 +33990,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -34071,6 +34113,7 @@
         "openjpeg.patch",
         "openjpeg2.patch",
         "portfile.cmake",
+        "rtk/Add-missing-include-for-Cuda.patch",
         "rtk/already_defined.patch",
         "rtk/unresolved.patch",
         "use-the-lrintf-intrinsic.patch",
@@ -34793,6 +34836,21 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kdalgorithms",
+      "manifest": {
+        "name": "kdalgorithms",
+        "description": "KDAB's algorithm helpers for C++14 and up",
+        "homepage": "https://github.com/KDAB/KDAlgorithms",
+        "license": "MIT",
+        "version-date": "2023-01-31"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -37794,12 +37852,13 @@
       "name": "libcopp",
       "manifest": {
         "name": "libcopp",
-        "port-version": 2,
+        "port-version": 3,
         "maintainers": "owent <admin@owent.net>",
         "description": "A cross-platfrom coroutine library for C++",
         "homepage": "https://github.com/owent/libcopp",
         "documentation": "https://libcopp.atframe.work/",
         "license": "MIT",
+        "supports": "!(windows & arm)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -39799,7 +39858,7 @@
             "description": "Emulate libjpeg v8 API/ABI (this makes libjpeg-turbo backward-incompatible with libjpeg v6b!)"
           }
         },
-        "version": "2.1.4"
+        "version": "2.1.5"
       },
       "files": [
         "add-options-for-exes-docs-headers.patch",
@@ -43496,10 +43555,10 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
-        "port-version": 2,
+        "port-version": 3,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
-        "license": "LGPL-2.1",
+        "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "version": "1.0.26"
       },
@@ -44373,6 +44432,7 @@
         "name": "libxlsxwriter",
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -44380,7 +44440,7 @@
           },
           "zlib"
         ],
-        "version-semver": "1.1.4"
+        "version": "1.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -49100,17 +49160,25 @@
       "name": "minifb",
       "manifest": {
         "name": "minifb",
-        "port-version": 2,
         "description": "MiniFB (Mini FrameBuffer) is a small cross platform library that makes it easy to render (32-bit) pixels in a window.",
         "homepage": "https://github.com/emoon/minifb",
+        "license": "MIT",
         "supports": "!uwp",
-        "version-string": "2019-08-20"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-02-03"
       },
       "files": [
-        "fix-arm-build-error.patch",
-        "fix-build-error.patch",
-        "fix-install-error.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -50754,7 +50822,7 @@
             "host": true
           }
         ],
-        "version": "1.4.2"
+        "version": "1.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -51494,12 +51562,20 @@
       "name": "nifticlib",
       "manifest": {
         "name": "nifticlib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Nifticlib is a C I/O library for reading and writing files in the nifti-1 data format.",
         "homepage": "https://github.com/NIFTI-Imaging/nifti_clib",
         "license": null,
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "default-features": [
@@ -51508,22 +51584,19 @@
         ],
         "features": {
           "cifti": {
-            "description": "Build cifti libraries and tools"
+            "description": "Build cifti libraries"
           },
           "fsl": {
-            "description": "Build fsl libraries and tools"
+            "description": "Build fsl libraries"
           },
           "nifti2": {
-            "description": "Build nifti2 libraries and tools"
+            "description": "Build nifti2 libraries"
           },
           "nifticdf": {
-            "description": "Build nifticdf libraries and tools"
-          },
-          "tests": {
-            "description": "Build tests"
+            "description": "Build nifticdf libraries"
           },
           "tools": {
-            "description": "Build tools"
+            "description": "Builds the core tool and the tools for 'nifti2' and 'nifticdf' if selected"
           }
         },
         "version-date": "2020-04-30"
@@ -53155,10 +53228,10 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
-        "port-version": 4,
+        "port-version": 5,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
-        "license": "GPL-2.0-or-later",
+        "license": "LGPL-2.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -55717,6 +55790,7 @@
       "name": "openvdb",
       "manifest": {
         "name": "openvdb",
+        "port-version": 1,
         "description": "Sparse volume data structure and tools",
         "homepage": "https://github.com/dreamworksanimation/openvdb",
         "license": "MPL-2.0",
@@ -56281,7 +56355,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 4,
+        "port-version": 5,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
@@ -56334,7 +56408,7 @@
                 "features": [
                   "blend2d"
                 ],
-                "platform": "!arm & !uwp & !wasm32"
+                "platform": "!(arm & windows) & !uwp & !wasm32"
               }
             ]
           },
@@ -57722,6 +57796,21 @@
       ]
     },
     {
+      "name": "physac",
+      "manifest": {
+        "name": "physac",
+        "description": "2D physics header-only library for videogames developed in C using raylib library.",
+        "homepage": "https://github.com/victorfisac/Physac",
+        "license": "MIT",
+        "version": "1.1"
+      },
+      "files": [
+        "LICENSE",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "physfs",
       "manifest": {
         "name": "physfs",
@@ -57979,7 +58068,18 @@
         "name": "platform-folders",
         "description": "A C++ library to look for special directories like \"My Documents\" and \"%APPDATA%\"",
         "homepage": "https://github.com/sago007/PlatformFolders",
-        "version": "4.1.0"
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -64263,6 +64363,7 @@
         "name": "rapidcheck",
         "description": "A property-based testing library for C++ (a la QuickCheck) with the goal of being simple to use with as little boilerplate as possible.",
         "homepage": "https://github.com/emil-e/rapidcheck",
+        "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -64273,7 +64374,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-12-20"
+        "version-date": "2023-01-13"
       },
       "files": [
         "portfile.cmake",
@@ -64401,6 +64502,20 @@
         "CMakeLists.txt",
         "portfile.cmake",
         "rappture.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "raygui",
+      "manifest": {
+        "name": "raygui",
+        "description": "A simple and easy-to-use immediate-mode gui library",
+        "homepage": "https://github.com/raysan5/raylib",
+        "license": "Zlib",
+        "version": "3.2"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -64838,7 +64953,7 @@
         "description": "Vulkan render graph implementation.",
         "homepage": "https://github.com/DragonJoker/RenderGraph",
         "license": "MIT",
-        "supports": "!x86 & !uwp",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -64850,7 +64965,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -69910,6 +70025,7 @@
       "name": "status-code",
       "manifest": {
         "name": "status-code",
+        "port-version": 1,
         "maintainers": [
           "Niall Douglas <s_github@nedprod.com>",
           "Henrik Gaßmann <henrik@gassmann.onl>"
@@ -70892,15 +71008,20 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
-        "port-version": 3,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false
+          },
           "leptonica",
-          "libarchive",
+          {
+            "name": "libarchive",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -70911,9 +71032,6 @@
           }
         ],
         "features": {
-          "cpu-independed": {
-            "description": "build on any cpu extension commands support"
-          },
           "training-tools": {
             "description": "build training tools",
             "dependencies": [
@@ -70924,10 +71042,12 @@
             ]
           }
         },
-        "version": "5.2.0"
+        "version": "5.3.0"
       },
       "files": [
+        "fix-debug-postfix.patch",
         "fix-depend-libarchive.patch",
+        "fix-tools.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72044,7 +72164,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -72093,6 +72213,9 @@
               "glfw3"
             ],
             "supports": "!(windows & x86)"
+          },
+          "on-demand": {
+            "description": "Enable on-demand profiling"
           }
         },
         "version-semver": "0.9.0"
@@ -72523,24 +72646,21 @@
       "name": "umock-c",
       "manifest": {
         "name": "umock-c",
+        "port-version": 1,
         "description": "A pure C mocking library",
         "homepage": "https://github.com/Azure/umock-c",
+        "license": "MIT",
         "dependencies": [
-          "azure-macro-utils-c"
-        ],
-        "features": {
-          "public-preview": {
-            "description": "A pure C mocking library (public-preview)",
-            "dependencies": [
-              {
-                "name": "azure-macro-utils-c",
-                "features": [
-                  "public-preview"
-                ]
-              }
-            ]
+          "azure-macro-utils-c",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
-        },
+        ],
         "version-date": "2022-01-21"
       },
       "files": [
@@ -72776,7 +72896,7 @@
       "name": "urho3d",
       "manifest": {
         "name": "urho3d",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license. Greatly inspired by OGRE and Horde3D.",
         "homepage": "https://github.com/urho3d/Urho3D",
         "supports": "!(arm | uwp)",
@@ -73179,7 +73299,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.34.0"
+        "version-semver": "20.36.0"
       },
       "files": [
         "portfile.cmake",
@@ -74906,7 +75026,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-09-23"
+        "version-date": "2023-02-02"
       },
       "files": [
         "portfile.cmake",
@@ -75971,6 +76091,7 @@
       "name": "xcb-util-wm",
       "manifest": {
         "name": "xcb-util-wm",
+        "port-version": 1,
         "description": "XCB client and window-manager helpers for ICCCM & EWMH.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm/",
         "license": null,
@@ -75992,6 +76113,7 @@
       "name": "xerces-c",
       "manifest": {
         "name": "xerces-c",
+        "port-version": 1,
         "description": "Xerces-C++ is a XML parser, for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs.",
         "homepage": "https://github.com/apache/xerces-c",
         "license": "Apache-2.0",
