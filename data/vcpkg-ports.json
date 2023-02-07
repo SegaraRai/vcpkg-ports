@@ -1,5 +1,5 @@
 {
-  "version": "0ba60bfef5dea4cb2599daa7ad8364e309835a68",
+  "version": "185a7aa23ac037d711a2a87d5e8d99e7131dbcd8",
   "ports": [
     {
       "name": "3fd",
@@ -23723,7 +23723,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -59396,6 +59396,7 @@
       "name": "ptc-print",
       "manifest": {
         "name": "ptc-print",
+        "port-version": 1,
         "description": "A single-header library for custom printing to the output stream.",
         "homepage": "https://github.com/JustWhit3/ptc-print",
         "license": "MIT",
@@ -59413,7 +59414,6 @@
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -68080,7 +68080,7 @@
             "description": "Link with thread support"
           }
         },
-        "version": "3.0.1"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -68181,7 +68181,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -68316,7 +68316,8 @@
           "vulkan": {
             "description": "Vulkan support for skia",
             "dependencies": [
-              "vulkan"
+              "vulkan",
+              "vulkan-memory-allocator"
             ]
           }
         },
@@ -69618,6 +69619,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -69672,7 +69674,7 @@
             "description": "Build sqlite3 executable"
           },
           "zlib": {
-            "description": "Build sqlite3 with zlib support",
+            "description": "Build sqlite3 command line tool with zlib support; has no effect on the library itself",
             "dependencies": [
               "zlib"
             ]
@@ -69682,10 +69684,13 @@
       },
       "files": [
         "CMakeLists.txt",
+        "add-config-include.patch",
         "fix-arm-uwp.patch",
         "portfile.cmake",
         "sqlite3-config.in.cmake",
+        "sqlite3-vcpkg-config.h.in",
         "sqlite3.pc.in",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -69693,10 +69698,12 @@
       "name": "sqlitecpp",
       "manifest": {
         "name": "sqlitecpp",
+        "port-version": 1,
         "description": "SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.",
         "homepage": "https://github.com/SRombauts/SQLiteCpp",
         "license": "MIT",
         "dependencies": [
+          "sqlite3",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -69720,10 +69727,7 @@
             ]
           },
           "sqlite": {
-            "description": "Use the (unofficial) sqlite3 port of vcpkg",
-            "dependencies": [
-              "sqlite3"
-            ]
+            "description": "Deprecated; no effects"
           }
         },
         "version": "3.2.0"
@@ -70431,11 +70435,9 @@
       "name": "superlu",
       "manifest": {
         "name": "superlu",
-        "port-version": 6,
         "description": "Supernodal sparse direct solver.",
         "homepage": "https://github.com/xiaoyeli/superlu",
-        "license": "BSD-4-Clause-UC",
-        "supports": "!(uwp | arm)",
+        "license": "BSD-3-Clause-LBNL",
         "dependencies": [
           "blas",
           {
@@ -70447,10 +70449,9 @@
             "host": true
           }
         ],
-        "version-date": "2020-01-07"
+        "version": "5.3.0"
       },
       "files": [
-        "fix-libm.patch",
         "portfile.cmake",
         "remove-make.inc.patch",
         "vcpkg.json"
