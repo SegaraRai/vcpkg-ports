@@ -1,5 +1,5 @@
 {
-  "version": "2196a2c7d653602b40ef5ee5cec4db16cb8ace21",
+  "version": "37fce29a263a1546262eaed6af7ccac53b0094cd",
   "ports": [
     {
       "name": "3fd",
@@ -813,7 +813,7 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 7,
+        "port-version": 8,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -3816,7 +3816,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.4.0"
+            "version>=": "1.8.0"
           },
           "openssl",
           {
@@ -3828,7 +3828,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.3.0"
+        "version-semver": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -3974,7 +3974,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.7.0-beta.1"
+            "version>=": "1.8.0"
           },
           "openssl",
           {
@@ -3986,7 +3986,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0"
+        "version-semver": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -5236,7 +5236,7 @@
       "name": "boost",
       "manifest": {
         "name": "boost",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Peer-reviewed portable C++ source libraries",
         "homepage": "https://boost.org",
         "license": "BSL-1.0",
@@ -5852,7 +5852,6 @@
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -6653,7 +6652,7 @@
       "name": "boost-build",
       "manifest": {
         "name": "boost-build",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Boost.Build",
         "homepage": "https://github.com/boostorg/build",
         "license": "BSL-1.0",
@@ -6667,6 +6666,7 @@
       },
       "files": [
         "0002-fix-get-version.patch",
+        "0003-fix-emscripten.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -10649,7 +10649,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -16856,35 +16856,6 @@
       ]
     },
     {
-      "name": "cgl",
-      "manifest": {
-        "name": "cgl",
-        "description": "The COIN-OR Cut Generation Library (Cgl) is a collection of cut generators that can be used with other COIN-OR packages that make use of cuts, such as, among others, the linear solver Clp or the mixed integer linear programming solvers Cbc or BCP.",
-        "homepage": "https://github.com/coin-or/Cgl",
-        "dependencies": [
-          "clp",
-          "coinutils",
-          "osi",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "0.60.3"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "Config.cmake.in",
-        "fix-c1083-error.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "cglm",
       "manifest": {
         "name": "cglm",
@@ -17728,25 +17699,6 @@
       ]
     },
     {
-      "name": "clp",
-      "manifest": {
-        "name": "clp",
-        "port-version": 1,
-        "description": "Clp (Coin-or linear programming) is an open-source linear programming solver written in C++. It is primarily meant to be used as a callable library, but a basic, stand-alone executable version is also available.",
-        "dependencies": [
-          "coinutils",
-          "osi"
-        ],
-        "version-string": "1.17.6"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "Config.cmake.in",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "clrng",
       "manifest": {
         "name": "clrng",
@@ -18080,16 +18032,114 @@
       ]
     },
     {
+      "name": "coin-or-buildtools",
+      "manifest": {
+        "name": "coin-or-buildtools",
+        "description": "Macros and patches for GNU autotools ",
+        "homepage": "https://coin-or-tools.github.io/BuildTools/",
+        "license": "EPL-2.0",
+        "version-date": "2023-02-02"
+      },
+      "files": [
+        "buildtools.patch",
+        "buildtools2.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "coin-or-cgl",
+      "manifest": {
+        "name": "coin-or-cgl",
+        "description": "The COIN-OR Cut Generation Library (Cgl) is a collection of cut generators that can be used with other COIN-OR packages that make use of cuts, such as, among others, the linear solver Clp or the mixed integer linear programming solvers Cbc or BCP.",
+        "homepage": "https://github.com/coin-or/Cgl",
+        "license": "EPL-2.0",
+        "dependencies": [
+          "coin-or-clp",
+          "coin-or-osi",
+          "coinutils"
+        ],
+        "version-date": "2023-02-01"
+      },
+      "files": [
+        "fix-c1083-error.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "coin-or-clp",
+      "manifest": {
+        "name": "coin-or-clp",
+        "description": "Clp (Coin-or linear programming) is an open-source linear programming solver written in C++. It is primarily meant to be used as a callable library, but a basic, stand-alone executable version is also available.",
+        "license": "EPL-2.0",
+        "dependencies": [
+          "coin-or-osi",
+          "coinutils"
+        ],
+        "version-date": "2023-02-01"
+      },
+      "files": [
+        "dep.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "coin-or-ipopt",
+      "manifest": {
+        "name": "coin-or-ipopt",
+        "description": "Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software package for large-scale nonlinear optimization",
+        "homepage": "https://github.com/coin-or/Ipopt",
+        "license": "EPL-2.0",
+        "dependencies": [
+          "coinutils",
+          "intel-mkl"
+        ],
+        "version-date": "2023-02-01"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "coin-or-osi",
+      "manifest": {
+        "name": "coin-or-osi",
+        "description": "Osi (Open Solver Interface) provides an abstract base class to a generic linear programming (LP) solver, along with derived classes for specific solvers. Many applications may be able to use the Osi to insulate themselves from a specific LP solver.",
+        "license": "EPL-2.0",
+        "dependencies": [
+          "coinutils"
+        ],
+        "version-date": "2023-02-01"
+      },
+      "files": [
+        "glpk.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "coinutils",
       "manifest": {
         "name": "coinutils",
-        "port-version": 1,
         "description": "CoinUtils (Coin-or Utilities) is an open-source collection of classes and functions that are generally useful to more than one COIN-OR project",
-        "version-string": "2.11.4"
+        "homepage": "https://www.coin-or.org/",
+        "license": "EPL-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "bzip2",
+          "coin-or-buildtools",
+          "glpk",
+          "lapack",
+          "zlib"
+        ],
+        "version-date": "2023-02-02"
       },
       "files": [
-        "CMakeLists.txt",
-        "Config.cmake.in",
+        "coinutils.patch",
+        "coinutils2.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -18125,7 +18175,7 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
-        "port-version": 1,
+        "port-version": 2,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -20978,7 +21028,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -21428,7 +21478,7 @@
             ]
           }
         },
-        "version-date": "2022-12-15"
+        "version-date": "2023-02-06"
       },
       "files": [
         "portfile.cmake",
@@ -21480,7 +21530,7 @@
             ]
           }
         },
-        "version-date": "2022-12-15"
+        "version-date": "2023-02-06"
       },
       "files": [
         "portfile.cmake",
@@ -23426,11 +23476,11 @@
       "name": "farmhash",
       "manifest": {
         "name": "farmhash",
-        "port-version": 4,
+        "port-version": 5,
         "description": "FarmHash, a family of hash functions.",
         "homepage": "https://github.com/google/farmhash",
         "supports": "!arm",
-        "version-string": "1.1"
+        "version": "1.1"
       },
       "files": [
         "farmhashConfig.cmake",
@@ -23822,7 +23872,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -26111,6 +26161,7 @@
       "name": "ftxui",
       "manifest": {
         "name": "ftxui",
+        "port-version": 1,
         "description": "C++ Functional Terminal User Interface",
         "homepage": "https://github.com/ArthurSonzogni/FTXUI",
         "license": "MIT",
@@ -26128,6 +26179,7 @@
         "version-semver": "3.0.0"
       },
       "files": [
+        "fix_clang_crash-094d8d9d.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28165,6 +28217,7 @@
       "name": "glpk",
       "manifest": {
         "name": "glpk",
+        "port-version": 1,
         "maintainers": "Fabio A. Correa Duran",
         "description": [
           "The GNU Linear Programming Kit (GLPK) solves large-scale linear programming (LP), mixed integer programming (MIP), and related problems.",
@@ -28220,6 +28273,7 @@
       },
       "files": [
         "configure.ac.patch",
+        "glpk.pc.in",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29730,7 +29784,7 @@
       "name": "googleapis",
       "manifest": {
         "name": "googleapis",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Deprecated, use google-cloud-cpp instead.",
         "dependencies": [
           "google-cloud-cpp"
@@ -29739,7 +29793,6 @@
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -31040,6 +31093,7 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
+        "port-version": 1,
         "description": "GoogleTest and GoogleMock testing frameworks",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -32710,7 +32764,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -33603,7 +33657,7 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
@@ -38133,7 +38187,7 @@
         "name": "libdatachannel",
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
-        "license": "LGPL-2.1-only",
+        "license": "MPL-2.0",
         "dependencies": [
           "libjuice",
           "openssl",
@@ -38165,7 +38219,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.17.11"
+        "version-semver": "0.18.2"
       },
       "files": [
         "0001-fix-for-vcpkg.patch",
@@ -39007,7 +39061,7 @@
       "name": "libgeotiff",
       "manifest": {
         "name": "libgeotiff",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libgeotiff is an open source library on top of libtiff for reading and writing GeoTIFF information tags.",
         "homepage": "https://github.com/OSGeo/libgeotiff",
         "license": "MIT",
@@ -42418,7 +42472,7 @@
         "name": "libsigcpp",
         "description": "Typesafe callback framework for C++",
         "homepage": "https://libsigcplusplus.github.io/libsigcplusplus/",
-        "license": "LGPL-3.0",
+        "license": "LGPL-3.0-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -42429,11 +42483,12 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.4.0"
       },
       "files": [
         "disable_tests_enable_static_build.patch",
         "fix-shared-windows-build.patch",
+        "fix_include_path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42497,6 +42552,37 @@
         "portfile.cmake",
         "vcpkg.json",
         "windows.patch"
+      ]
+    },
+    {
+      "name": "libsmacker",
+      "manifest": {
+        "name": "libsmacker",
+        "description": "libsmacker is a cross-platform C library which can be used for decoding Smacker Video files produced by RAD Game Tools",
+        "homepage": "https://libsmacker.sourceforge.net",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
+            "description": "Build driver (dump tool) and smk2avi"
+          }
+        },
+        "version": "1.2.0"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "smacker.def",
+        "vcpkg.json"
       ]
     },
     {
@@ -42862,7 +42948,7 @@
       "name": "libssh",
       "manifest": {
         "name": "libssh",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
         "homepage": "https://www.libssh.org/",
         "license": "LGPL-2.1-only",
@@ -42935,6 +43021,7 @@
         "0001-export-pkgconfig-file.patch",
         "0002-mingw_for_Android.patch",
         "0003-create_symlink_unix_only.patch",
+        "0004-file-permissions-constants.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -49912,7 +49999,7 @@
             ]
           }
         },
-        "version": "7.8"
+        "version": "7.9"
       },
       "files": [
         "CMakeLists.txt",
@@ -50200,7 +50287,7 @@
             "platform": "windows"
           }
         ],
-        "version": "1.29.3"
+        "version": "1.31.2"
       },
       "files": [
         "fix-m1-build.patch",
@@ -51778,7 +51865,7 @@
       "name": "nmap",
       "manifest": {
         "name": "nmap",
-        "port-version": 7,
+        "port-version": 8,
         "description": "A library for scanning network ports.",
         "dependencies": [
           {
@@ -55064,6 +55151,7 @@
       "name": "opengl",
       "manifest": {
         "name": "opengl",
+        "port-version": 1,
         "description": "Open Graphics Library (OpenGL)[3][4][5] is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics.",
         "license": null,
         "dependencies": [
@@ -55422,7 +55510,7 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 5,
+        "port-version": 6,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
         "license": "MPL-2.0-no-copyleft-exception",
         "supports": "!(osx & arm64)",
@@ -55435,14 +55523,14 @@
               "suitesparse"
             ]
           },
-          "clp",
+          "coin-or-clp",
+          "coin-or-osi",
           "coinutils",
           "eigen3",
           "flann",
           "libjpeg-turbo",
           "liblemon",
           "libpng",
-          "osi",
           "tiff",
           {
             "name": "vcpkg-cmake",
@@ -55484,6 +55572,7 @@
         "0001-eigen_3.4.0.patch",
         "0002-eigen-3.4.patch",
         "build_fixes.patch",
+        "fix-coinutils.patch",
         "no-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -56237,13 +56326,18 @@
       "name": "opusfile",
       "manifest": {
         "name": "opusfile",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Stand-alone decoder library for .opus streams",
         "homepage": "https://github.com/xiph/opusfile",
+        "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           "libogg",
-          "opus"
+          "opus",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "features": {
           "opusurl": {
@@ -56253,7 +56347,7 @@
             ]
           }
         },
-        "version-string": "0.12"
+        "version": "0.12"
       },
       "files": [
         "CMakeLists.txt",
@@ -56648,24 +56742,6 @@
         "portfile.cmake",
         "remove-lerc-gltf.patch",
         "remove-tool-debug-suffix.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "osi",
-      "manifest": {
-        "name": "osi",
-        "port-version": 1,
-        "description": "Osi (Open Solver Interface) provides an abstract base class to a generic linear programming (LP) solver, along with derived classes for specific solvers. Many applications may be able to use the Osi to insulate themselves from a specific LP solver.",
-        "dependencies": [
-          "coinutils"
-        ],
-        "version-string": "0.108.6"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "Config.cmake.in",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -58883,6 +58959,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
+        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -60985,7 +61062,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -64384,6 +64461,7 @@
       "name": "qwt",
       "manifest": {
         "name": "qwt",
+        "port-version": 1,
         "description": "qt widgets library for technical applications",
         "homepage": "https://sourceforge.net/projects/qwt",
         "license": null,
@@ -64394,6 +64472,7 @@
             "features": [
               "concurrent",
               "gui",
+              "opengl",
               "widgets"
             ]
           },
@@ -67050,7 +67129,6 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
-        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -67086,9 +67164,10 @@
             ]
           }
         },
-        "version": "2.6.2"
+        "version": "2.6.3"
       },
       "files": [
+        "fix-findwebp.patch",
         "fix-pkgconfig.patch",
         "portfile.cmake",
         "usage",
@@ -70656,6 +70735,7 @@
       "name": "superlu",
       "manifest": {
         "name": "superlu",
+        "port-version": 1,
         "description": "Supernodal sparse direct solver.",
         "homepage": "https://github.com/xiaoyeli/superlu",
         "license": "BSD-3-Clause-LBNL",
@@ -72971,7 +73051,7 @@
       "name": "unixodbc",
       "manifest": {
         "name": "unixodbc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "unixODBC is an Open Source ODBC sub-system and an ODBC SDK for Linux, Mac OSX, and UNIX",
         "homepage": "https://github.com/lurcher/unixODBC",
         "license": "LGPL-2.1-only",
@@ -73474,7 +73554,7 @@
             "description": "Build Spectre-mitigated library"
           }
         },
-        "version-date": "2022-12-15"
+        "version-date": "2023-02-06"
       },
       "files": [
         "openexr.patch",
@@ -74760,9 +74840,9 @@
       "name": "vulkan",
       "manifest": {
         "name": "vulkan",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs on a wide variety of devices.",
-        "version-string": "1.1.82.1"
+        "version": "1.1.82.1"
       },
       "files": [
         "LICENSE.txt",
@@ -75754,7 +75834,7 @@
             ]
           }
         },
-        "version": "4.8.1"
+        "version": "4.9.1"
       },
       "files": [
         "0002-link-glew.patch",
@@ -76335,7 +76415,7 @@
       "name": "xerces-c",
       "manifest": {
         "name": "xerces-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Xerces-C++ is a XML parser, for parsing, generating, manipulating, and validating XML documents using the DOM, SAX, and SAX2 APIs.",
         "homepage": "https://github.com/apache/xerces-c",
         "license": "Apache-2.0",
@@ -77411,31 +77491,42 @@
       "name": "zfp",
       "manifest": {
         "name": "zfp",
-        "port-version": 3,
         "description": "Zfp is an open source C/C++ library for compressed numerical arrays that support high throughput read and write random access. zfp also supports streaming compression of integer and floating-point data, e.g., for applications that read and write large data sets to and from disk. zfp is primarily written in C and C++ but also includes Python and Fortran bindings.",
         "homepage": "https://github.com/LLNL/zfp",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "all": {
-            "description": "Build all components"
+            "description": "Obsolete. This feature is left for compatibility",
+            "dependencies": [
+              {
+                "name": "zfp",
+                "features": [
+                  "cfp",
+                  "utility"
+                ]
+              }
+            ]
           },
           "cfp": {
             "description": "cfp support for cfp"
-          },
-          "example": {
-            "description": "Build example"
-          },
-          "test": {
-            "description": "Build test"
           },
           "utility": {
             "description": "Build utility"
           }
         },
-        "version-string": "0.5.5"
+        "version": "1.0.0"
       },
       "files": [
-        "fix-build-error.patch",
-        "fix-install-tools.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
