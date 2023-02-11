@@ -1,5 +1,5 @@
 {
-  "version": "37fce29a263a1546262eaed6af7ccac53b0094cd",
+  "version": "36fb23307e10cc6ffcec566c46c4bb3f567c82c6",
   "ports": [
     {
       "name": "3fd",
@@ -813,7 +813,6 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 8,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -845,16 +844,20 @@
           },
           "zlib"
         ],
-        "version-string": "chromium_4472"
+        "version-string": "chromium_5414"
       },
       "files": [
         "001-fix-uwp.patch",
         "002-fix-builder-error.patch",
         "003-fix-mingw.patch",
-        "CMakeLists.txt",
-        "angle_commit.h",
+        "angle_commit.h.in",
+        "cmake-buildsystem/CMakeLists.txt",
+        "cmake-buildsystem/PlatformLinux.cmake",
+        "cmake-buildsystem/PlatformMac.cmake",
+        "cmake-buildsystem/PlatformWin.cmake",
+        "cmake-buildsystem/cmake/WebKitCommon-minimal.cmake",
+        "cmake-buildsystem/linux.cmake",
         "portfile.cmake",
-        "third-party-zlib-far-undef.patch",
         "unofficial-angle-config.cmake",
         "usage",
         "vcpkg.json"
@@ -4790,6 +4793,31 @@
       "files": [
         "CMakeLists.txt",
         "fix-osx-usage.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "binlog",
+      "manifest": {
+        "name": "binlog",
+        "description": "Binlog is a high performance C++ log library to produce structured binary logs.",
+        "homepage": "http://opensource.morganstanley.com/binlog/",
+        "license": "Apache-2.0",
+        "supports": "!uwp & !(arm64 & windows)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2021-04-16"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -18148,9 +18176,10 @@
       "name": "collada-dom",
       "manifest": {
         "name": "collada-dom",
-        "port-version": 6,
+        "port-version": 7,
         "description": "The COLLADA Document Object Model (DOM) is an application programming interface (API) that provides a C++ object representation of a COLLADA XML instance document.",
         "homepage": "https://github.com/rdiankov/collada-dom",
+        "license": null,
         "dependencies": [
           "boost-filesystem",
           "boost-system",
@@ -18158,11 +18187,20 @@
           "minizip",
           "pcre",
           "uriparser",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
-        "version-string": "2.5.0"
+        "version": "2.5.0"
       },
       "files": [
+        "fix-emscripten.patch",
         "fix-shared-keyword.patch",
         "portfile.cmake",
         "use-uriparser.patch",
@@ -19279,7 +19317,7 @@
         "documentation": "https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/",
         "license": "MIT",
         "supports": "windows",
-        "version": "2.0.221121.5"
+        "version": "2.0.230207.1"
       },
       "files": [
         "cppwinrt-config.cmake",
@@ -19490,7 +19528,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -28381,7 +28419,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 14,
+        "port-version": 15,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -38004,7 +38042,6 @@
       "name": "libcopp",
       "manifest": {
         "name": "libcopp",
-        "port-version": 3,
         "maintainers": "owent <admin@owent.net>",
         "description": "A cross-platfrom coroutine library for C++",
         "homepage": "https://github.com/owent/libcopp",
@@ -38021,7 +38058,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.4.1"
+        "version": "2.1.2"
       },
       "files": [
         "fix-x86-windows.patch",
@@ -40128,7 +40165,7 @@
       "name": "libkml",
       "manifest": {
         "name": "libkml",
-        "port-version": 10,
+        "port-version": 11,
         "description": "Reference implementation of OGC KML 2.2",
         "homepage": "https://github.com/libkml/libkml",
         "license": "BSD-3-Clause",
@@ -40150,6 +40187,7 @@
         "version": "1.3.0"
       },
       "files": [
+        "add-target-include-directories.patch",
         "fix-mingw.patch",
         "fix-minizip.patch",
         "patch_empty_literal_on_vc.patch",
@@ -40416,6 +40454,7 @@
       "name": "liblzma",
       "manifest": {
         "name": "liblzma",
+        "port-version": 1,
         "description": "Compression library with an API similar to that of zlib.",
         "homepage": "https://tukaani.org/xz/",
         "license": null,
@@ -50011,7 +50050,6 @@
       "name": "monkeys-audio",
       "manifest": {
         "name": "monkeys-audio",
-        "port-version": 3,
         "description": [
           "Monkey's Audio is an excellent audio compression tool which has multiple advantages over traditional methods.",
           "Audio files compressed with it end with .ape extension."
@@ -50024,10 +50062,9 @@
             "description": "Build monkeys-audio tools"
           }
         },
-        "version": "5.70"
+        "version-string": "9.04"
       },
       "files": [
-        "fix-C2471.patch",
         "fix-project-config.patch",
         "license",
         "portfile.cmake",
@@ -50937,6 +50974,7 @@
       "name": "nanobench",
       "manifest": {
         "name": "nanobench",
+        "port-version": 1,
         "description": "Simple, fast, accurate single-header microbenchmarking functionality for C++11/14/17/20",
         "homepage": "https://nanobench.ankerl.com",
         "license": "MIT",
@@ -52766,12 +52804,11 @@
       "name": "ocilib",
       "manifest": {
         "name": "ocilib",
-        "port-version": 2,
         "description": "OCILIB is an open source and cross platform Oracle Driver that delivers efficient access to Oracle databases.",
         "homepage": "https://vrogier.github.io/ocilib/",
         "license": "Apache-2.0",
         "supports": "!(arm | uwp)",
-        "version": "4.7.3"
+        "version": "4.7.5"
       },
       "files": [
         "fix-DisableWC4191.patch",
@@ -55763,7 +55800,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -55782,7 +55818,7 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "3.0.7"
+        "version": "3.0.8"
       },
       "files": [
         "install-pc-files.cmake",
@@ -55796,7 +55832,8 @@
         "vcpkg.json",
         "windows/install-layout.patch",
         "windows/install-pdbs.patch",
-        "windows/portfile.cmake"
+        "windows/portfile.cmake",
+        "windows/umul128-arm64.patch"
       ]
     },
     {
@@ -67178,7 +67215,6 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 2,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -67237,11 +67273,14 @@
             ]
           }
         },
-        "version": "2.6.1"
+        "version": "2.6.3"
       },
       "files": [
+        "fix-deps-link.patch",
+        "fix-missing-find-opusfile.patch",
         "fix-pkg-prefix.patch",
         "fix-pkgconfig.patch",
+        "fix-windows-static-findfluidsynth.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
