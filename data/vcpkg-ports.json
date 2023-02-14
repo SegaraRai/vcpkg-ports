@@ -1,5 +1,5 @@
 {
-  "version": "36fb23307e10cc6ffcec566c46c4bb3f567c82c6",
+  "version": "25f613278886a8055aded1bffb14daba98c39d6c",
   "ports": [
     {
       "name": "3fd",
@@ -4773,7 +4773,7 @@
             "description": "Shader, Texture and Geometry compilers for bgfx."
           }
         },
-        "version": "1.118.8415-411"
+        "version": "1.118.8417-415"
       },
       "files": [
         "portfile.cmake",
@@ -15592,7 +15592,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.4.0"
       },
       "files": [
         "fix-boost-ptr.patch",
@@ -16000,7 +16000,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.6.2"
+        "version-semver": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -18176,7 +18176,7 @@
       "name": "collada-dom",
       "manifest": {
         "name": "collada-dom",
-        "port-version": 7,
+        "port-version": 8,
         "description": "The COLLADA Document Object Model (DOM) is an application programming interface (API) that provides a C++ object representation of a COLLADA XML instance document.",
         "homepage": "https://github.com/rdiankov/collada-dom",
         "license": null,
@@ -18185,7 +18185,6 @@
           "boost-system",
           "libxml2",
           "minizip",
-          "pcre",
           "uriparser",
           {
             "name": "vcpkg-cmake",
@@ -21438,6 +21437,7 @@
       "name": "directxtex",
       "manifest": {
         "name": "directxtex",
+        "port-version": 1,
         "description": "DirectXTex texture processing library",
         "homepage": "https://github.com/Microsoft/DirectXTex",
         "documentation": "https://github.com/microsoft/DirectXTex/wiki",
@@ -21455,7 +21455,13 @@
             "host": true
           }
         ],
+        "default-features": [
+          "dx11"
+        ],
         "features": {
+          "dx11": {
+            "description": "Build with DirectX11 support"
+          },
           "dx12": {
             "description": "Build with DirectX12 support for Windows 10/Windows 11"
           },
@@ -22331,7 +22337,7 @@
             "description": "Build Spectre-mitigated library"
           }
         },
-        "version": "11.30"
+        "version": "11.31"
       },
       "files": [
         "portfile.cmake",
@@ -23910,7 +23916,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -25253,6 +25259,10 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "features": {
@@ -25272,10 +25282,9 @@
             ]
           }
         },
-        "version": "2.2.8"
+        "version": "2.3.1"
       },
       "files": [
-        "fix-dependencies.patch",
         "gentables.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -35036,7 +35045,7 @@
         "description": "KDAB's algorithm helpers for C++14 and up",
         "homepage": "https://github.com/KDAB/KDAlgorithms",
         "license": "MIT",
-        "version-date": "2023-01-31"
+        "version-date": "2023-02-11"
       },
       "files": [
         "portfile.cmake",
@@ -38788,10 +38797,9 @@
       "name": "libflac",
       "manifest": {
         "name": "libflac",
-        "port-version": 1,
         "description": "Library for manipulating FLAC files",
         "homepage": "https://xiph.org/flac/",
-        "license": "GFDL-1.2-or-later",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "libogg",
           {
@@ -38809,12 +38817,12 @@
             "supports": "x86"
           }
         },
-        "version": "1.3.4"
+        "version": "1.4.2"
       },
       "files": [
         "fix-compile-options.patch",
         "portfile.cmake",
-        "uwp-createfile2.patch",
+        "usage",
         "uwp-library-console.patch",
         "vcpkg.json"
       ]
@@ -40863,7 +40871,7 @@
             "host": true
           }
         ],
-        "version": "0.2.8"
+        "version": "0.2.11"
       },
       "files": [
         "portfile.cmake",
@@ -41944,16 +41952,24 @@
       "name": "libqcow",
       "manifest": {
         "name": "libqcow",
-        "port-version": 2,
         "description": "Library and tools to access the QEMU Copy-On-Write (QCOW) image format.",
         "homepage": "https://github.com/libyal/libqcow",
+        "license": "LGPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           "gettext",
           "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
-        "version-string": "20210419"
+        "version": "20221124"
       },
       "files": [
         "CMakeLists.txt",
@@ -42987,7 +43003,7 @@
       "name": "libssh",
       "manifest": {
         "name": "libssh",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
         "homepage": "https://www.libssh.org/",
         "license": "LGPL-2.1-only",
@@ -50724,14 +50740,27 @@
       "name": "mujs",
       "manifest": {
         "name": "mujs",
-        "port-version": 2,
+        "port-version": 1,
         "description": "An embeddable Javascript interpreter in C",
         "homepage": "https://github.com/ccxvii/mujs",
-        "version-string": "2018-07-30"
+        "license": "ISC",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.2"
       },
       "files": [
         "CMakeLists.txt",
+        "mujs.pc",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -56363,7 +56392,6 @@
       "name": "opusfile",
       "manifest": {
         "name": "opusfile",
-        "port-version": 2,
         "description": "Stand-alone decoder library for .opus streams",
         "homepage": "https://github.com/xiph/opusfile",
         "license": "BSD-3-Clause",
@@ -56374,6 +56402,10 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "features": {
@@ -56381,14 +56413,15 @@
             "description": "Support decoding of http(s) streams",
             "dependencies": [
               "openssl"
-            ]
+            ],
+            "supports": "!windows"
           }
         },
-        "version": "0.12"
+        "version": "0.12+20221121"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -65735,7 +65768,6 @@
       "name": "roaring",
       "manifest": {
         "name": "roaring",
-        "port-version": 1,
         "description": "A better compressed bitset in C (and C++)",
         "homepage": "https://github.com/RoaringBitmap/CRoaring",
         "license": "Apache-2.0 OR MIT",
@@ -65749,7 +65781,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -67085,6 +67117,7 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -67109,12 +67142,17 @@
                 "name": "sdl2",
                 "default-features": false,
                 "features": [
+                  "ibus",
                   "wayland",
                   "x11"
                 ],
                 "platform": "linux"
               }
             ]
+          },
+          "ibus": {
+            "description": "Build with ibus IME support",
+            "supports": "linux"
           },
           "samplerate": {
             "description": "Use libsamplerate for audio rate conversion",
@@ -68872,7 +68910,7 @@
       "name": "snappy",
       "manifest": {
         "name": "snappy",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A fast compressor/decompressor.",
         "homepage": "https://github.com/google/snappy",
         "license": null,
@@ -73556,6 +73594,7 @@
       "name": "uvatlas",
       "manifest": {
         "name": "uvatlas",
+        "port-version": 1,
         "description": "UVAtlas isochart texture atlas",
         "homepage": "https://github.com/Microsoft/UVAtlas",
         "documentation": "https://github.com/Microsoft/UVAtlas/wiki",
@@ -73570,6 +73609,7 @@
           },
           {
             "name": "directxtex",
+            "default-features": false,
             "platform": "!(uwp | linux)"
           },
           {
