@@ -1,5 +1,5 @@
 {
-  "version": "25f613278886a8055aded1bffb14daba98c39d6c",
+  "version": "93895b28ea7bc8cda10f156c5d336f3fc070f8b1",
   "ports": [
     {
       "name": "3fd",
@@ -16121,7 +16121,7 @@
       "name": "cairomm",
       "manifest": {
         "name": "cairomm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A C++ wrapper for the cairo graphics library",
         "homepage": "https://www.cairographics.org",
         "license": "LGPL-2.0-only",
@@ -16136,6 +16136,7 @@
         "version": "1.16.2"
       },
       "files": [
+        "fix_include_path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -25239,6 +25240,7 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
+        "port-version": 1,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -25285,8 +25287,10 @@
         "version": "2.3.1"
       },
       "files": [
+        "add-usage-requirements.patch",
         "gentables.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -40417,7 +40421,7 @@
             "host": true
           }
         ],
-        "version": "1.16.0"
+        "version": "1.16.1"
       },
       "files": [
         "portfile.cmake",
@@ -52084,7 +52088,7 @@
             "host": true
           }
         ],
-        "version": "5.0.0"
+        "version": "6.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -52097,7 +52101,7 @@
       "name": "node-api",
       "manifest": {
         "name": "node-api",
-        "port-version": 1,
+        "port-version": 2,
         "description": "NodeJS API for writing modules in C++",
         "homepage": "https://nodejs.org/api/addons.html",
         "license": null,
@@ -52116,7 +52120,7 @@
       },
       "files": [
         "portfile.cmake",
-        "unofficial-node-api-config.cmake",
+        "unofficial-node-api-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -56392,6 +56396,7 @@
       "name": "opusfile",
       "manifest": {
         "name": "opusfile",
+        "port-version": 1,
         "description": "Stand-alone decoder library for .opus streams",
         "homepage": "https://github.com/xiph/opusfile",
         "license": "BSD-3-Clause",
@@ -56819,11 +56824,10 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
-        "port-version": 2,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "http://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.463"
+        "version": "4.0.476"
       },
       "files": [
         "portfile.cmake",
