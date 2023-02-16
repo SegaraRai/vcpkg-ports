@@ -1,5 +1,5 @@
 {
-  "version": "93895b28ea7bc8cda10f156c5d336f3fc070f8b1",
+  "version": "959f8e317599dd439bc86f5cb5f0aca648d88c3f",
   "ports": [
     {
       "name": "3fd",
@@ -1176,9 +1176,17 @@
           "boost-lexical-cast",
           "boost-mp11",
           "boost-preprocessor",
-          "span-lite"
+          "span-lite",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -20372,6 +20380,7 @@
         "name": "cxxopts",
         "description": "This is a lightweight C++ option parser library, supporting the standard GNU style syntax for options",
         "homepage": "https://github.com/jarro2783/cxxopts",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -20382,7 +20391,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.0.0"
+        "version-semver": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -28107,7 +28116,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.75.1"
+        "version": "2.75.3"
       },
       "files": [
         "libintl.patch",
@@ -33695,7 +33704,7 @@
             "supports": "windows"
           }
         },
-        "version": "1.89.2"
+        "version": "1.89.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -38617,10 +38626,9 @@
       "name": "libevent",
       "manifest": {
         "name": "libevent",
-        "port-version": 7,
         "description": "An event notification library",
         "homepage": "https://github.com/libevent/libevent",
-        "supports": "!uwp",
+        "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -38651,13 +38659,13 @@
             "description": "Support for thread"
           }
         },
-        "version": "2.1.12"
+        "version": "2.1.12+20230128"
       },
       "files": [
         "fix-LibeventConfig_cmake_in_path.patch",
-        "fix-android-threads.patch",
         "fix-file_path.patch",
         "fix-usage.patch",
+        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62826,6 +62834,7 @@
       "name": "qtdeclarative",
       "manifest": {
         "name": "qtdeclarative",
+        "port-version": 1,
         "description": "Qt Declarative (Quick 2)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67704,7 +67713,7 @@
             ]
           }
         },
-        "version": "0.5.4"
+        "version": "0.6.0"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -76002,7 +76011,6 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 4,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -76098,7 +76106,7 @@
             ]
           }
         },
-        "version": "3.2.1"
+        "version": "3.2.2.1"
       },
       "files": [
         "example/CMakeLists.txt",
