@@ -20,7 +20,10 @@ export const zVcpkgFeatureName = z
 export const zVcpkgURL = z
   .string()
   .min(1)
-  .regex(/^https?:\/\//);
+  .transform((v) => /^[^.:/]+\./.test(v) ? `https://${v}` : v)
+  .refine((v) => /^https?:\/\//.test(v), {
+    message: 'URL must start with http:// or https://',
+  });
 // NOTE: empty string and empty array are allowed
 export const zVcpkgDescription = z.union([z.string(), z.array(z.string())]);
 export type VcpkgDescription = DeepReadonly<z.infer<typeof zVcpkgDescription>>;
