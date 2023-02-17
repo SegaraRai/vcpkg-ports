@@ -20,7 +20,7 @@ export const zVcpkgFeatureName = z
 export const zVcpkgURL = z
   .string()
   .min(1)
-  .transform((v) => /^[^.:/]+\./.test(v) ? `https://${v}` : v)
+  .transform((v) => (/^[^.:/]+\./.test(v) ? `https://${v}` : v))
   .refine((v) => /^https?:\/\//.test(v), {
     message: 'URL must start with http:// or https://',
   });
