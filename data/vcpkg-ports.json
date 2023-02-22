@@ -1,5 +1,5 @@
 {
-  "version": "a325228200d7f229f3337e612e0077f2a5307090",
+  "version": "703a8113f42e794534df5dfc5cece5dabcb949d0",
   "ports": [
     {
       "name": "3fd",
@@ -162,11 +162,11 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version-string": "20220623.1"
+        "version": "20230125.0"
       },
       "files": [
         "fix-32-bit-arm.patch",
-        "fix-cxx-standard.patch",
+        "fix-dll-support.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -298,6 +298,7 @@
       "name": "adios2",
       "manifest": {
         "name": "adios2",
+        "port-version": 1,
         "description": "Next generation of ADIOS developed in the Exascale Computing Program",
         "homepage": "https://github.com/ornladios/ADIOS2",
         "license": "Apache-2.0",
@@ -351,6 +352,12 @@
                 "host": true
               }
             ]
+          },
+          "zfp": {
+            "description": "Enable zfp support",
+            "dependencies": [
+              "zfp"
+            ]
           }
         },
         "version": "2.8.3"
@@ -358,7 +365,8 @@
       "files": [
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
+        "vcpkg.json",
+        "zfp-version.patch"
       ]
     },
     {
@@ -732,9 +740,9 @@
       "name": "amqpcpp",
       "manifest": {
         "name": "amqpcpp",
-        "port-version": 1,
         "description": "AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker",
         "homepage": "https://github.com/CopernicaMarketingSoftware/AMQP-CPP",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           "openssl",
@@ -747,7 +755,7 @@
             "host": true
           }
         ],
-        "version": "4.3.15"
+        "version": "4.3.19"
       },
       "files": [
         "find-openssl.patch",
@@ -1417,7 +1425,7 @@
       "manifest": {
         "name": "armadillo",
         "description": "Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use",
-        "homepage": "http://arma.sourceforge.net",
+        "homepage": "https://arma.sourceforge.net/",
         "license": "Apache-2.0",
         "dependencies": [
           "blas",
@@ -1431,7 +1439,7 @@
             "host": true
           }
         ],
-        "version": "11.4.3"
+        "version": "11.4.4"
       },
       "files": [
         "cmake-config.patch",
@@ -15901,11 +15909,9 @@
       "name": "c-ares",
       "manifest": {
         "name": "c-ares",
-        "port-version": 1,
         "description": "A C library for asynchronous DNS requests",
         "homepage": "https://github.com/c-ares/c-ares",
         "license": "MIT-CMU",
-        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -15916,11 +15922,11 @@
             "host": true
           }
         ],
-        "version-semver": "1.18.1"
+        "version-semver": "1.19.0"
       },
       "files": [
         "avoid-docs.patch",
-        "guard-imported-lib.patch",
+        "fix-uwp.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -20064,7 +20070,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -20265,7 +20270,7 @@
             ]
           }
         },
-        "version": "7.87.0"
+        "version": "7.88.1"
       },
       "files": [
         "0002_fix_uwp.patch",
@@ -22087,10 +22092,12 @@
       "name": "drogon",
       "manifest": {
         "name": "drogon",
+        "port-version": 1,
         "description": "A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows",
         "homepage": "https://github.com/an-tao/drogon",
         "documentation": "https://drogon.docsforge.com/master/overview/",
         "license": "MIT",
+        "supports": "!uwp",
         "dependencies": [
           "brotli",
           "jsoncpp",
@@ -22291,7 +22298,6 @@
       "name": "dv-processing",
       "manifest": {
         "name": "dv-processing",
-        "port-version": 1,
         "description": "Generic algorithms for event cameras.",
         "homepage": "https://gitlab.com/inivation/dv/dv-processing",
         "license": "Apache-2.0",
@@ -22310,6 +22316,7 @@
           "libcaer",
           "lz4",
           "opencv4",
+          "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22321,7 +22328,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "1.5.1"
+        "version": "1.7.8"
       },
       "files": [
         "portfile.cmake",
@@ -23120,6 +23127,7 @@
       "name": "etcd-cpp-apiv3",
       "manifest": {
         "name": "etcd-cpp-apiv3",
+        "port-version": 1,
         "description": "The etcd-cpp-apiv3 is a C++ API for etcd's v3 client API, i.e., ETCDCTL_API=3.",
         "homepage": "https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3",
         "license": "BSD-3-Clause",
@@ -23144,6 +23152,8 @@
         "version": "0.2.12"
       },
       "files": [
+        "0001-do-not-hardcode-cxx-standard.patch",
+        "0002-use-target-link-libraries.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -23278,10 +23288,9 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
-        "port-version": 3,
         "description": "Image metadata library and tools",
-        "homepage": "https://www.exiv2.org",
-        "license": "GPL-2.0",
+        "homepage": "https://exiv2.org",
+        "license": "GPL-2.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -23301,6 +23310,7 @@
           "nls": {
             "description": "Build native language support",
             "dependencies": [
+              "gettext",
               {
                 "name": "gettext",
                 "host": true,
@@ -23311,14 +23321,14 @@
             ]
           },
           "png": {
-            "description": "Build with png support (requires libz)",
+            "description": "Build with png support",
             "dependencies": [
               "libpng",
               "zlib"
             ]
           },
           "unicode": {
-            "description": "Compile with unicode support on windows",
+            "description": "Compile with Unicode support on Windows",
             "supports": "windows"
           },
           "video": {
@@ -23331,7 +23341,7 @@
             ]
           }
         },
-        "version": "0.27.5"
+        "version": "0.27.6"
       },
       "files": [
         "fix-find_expat.patch",
@@ -25450,7 +25460,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 3,
+        "port-version": 4,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -25497,6 +25507,12 @@
             "description": "Support libsodium for cryto",
             "dependencies": [
               "libsodium"
+            ]
+          },
+          "liburing": {
+            "description": "Support compile with liburing",
+            "dependencies": [
+              "liburing"
             ]
           },
           "lz4": {
@@ -26274,7 +26290,6 @@
       "name": "ftxui",
       "manifest": {
         "name": "ftxui",
-        "port-version": 1,
         "description": "C++ Functional Terminal User Interface",
         "homepage": "https://github.com/ArthurSonzogni/FTXUI",
         "license": "MIT",
@@ -26289,10 +26304,9 @@
             "host": true
           }
         ],
-        "version-semver": "3.0.0"
+        "version-semver": "4.0.0"
       },
       "files": [
-        "fix_clang_crash-094d8d9d.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32830,7 +32844,6 @@
       "name": "iceoryx",
       "manifest": {
         "name": "iceoryx",
-        "port-version": 1,
         "description": "True zero-copy inter-process-communication",
         "homepage": "https://iceoryx.io",
         "license": "Apache-2.0",
@@ -32864,7 +32877,7 @@
             ]
           }
         },
-        "version": "2.0.2"
+        "version": "2.0.3"
       },
       "files": [
         "acl.patch",
@@ -39644,7 +39657,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -39664,7 +39676,7 @@
           },
           "x265"
         ],
-        "version": "1.14.2"
+        "version": "1.15.1"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -39897,7 +39909,7 @@
       "name": "libidn2",
       "manifest": {
         "name": "libidn2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GNU Libidn is an implementation of the Stringprep, Punycode and IDNA 2003 specifications. Libidn's purpose is to encode and decode internationalized domain names.",
         "homepage": "https://www.gnu.org/software/libidn/",
         "license": null,
@@ -39925,6 +39937,7 @@
       "files": [
         "disable-subdirs.patch",
         "fix-msvc.patch",
+        "fix-static-into-shared-linking.patch",
         "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -45536,6 +45549,30 @@
       ]
     },
     {
+      "name": "litehtml",
+      "manifest": {
+        "name": "litehtml",
+        "description": "litehtml is the lightweight HTML rendering engine with CSS2/CSS3 support. ",
+        "homepage": "https://github.com/litehtml/litehtml",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "live555",
       "manifest": {
         "name": "live555",
@@ -46524,6 +46561,72 @@
       "files": [
         "CMakeLists.txt",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "luminoengine",
+      "manifest": {
+        "name": "luminoengine",
+        "description": "C++17 games and visualization toolkit.",
+        "homepage": "https://github.com/LuminoEngine/Lumino",
+        "license": "MIT",
+        "supports": "x64 & windows & !uwp",
+        "dependencies": [
+          "gtest",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "engine": {
+            "description": "Make engine module.",
+            "dependencies": [
+              "box2d",
+              "bullet3",
+              {
+                "name": "freetype",
+                "features": [
+                  "png",
+                  "zlib"
+                ]
+              },
+              "glad",
+              "glfw3",
+              "glslang",
+              {
+                "name": "imgui",
+                "features": [
+                  "docking-experimental"
+                ]
+              },
+              "libogg",
+              "libpng",
+              "libvorbis",
+              "nanovg",
+              "openal-soft",
+              "pcre2",
+              "spirv-cross",
+              "stb",
+              "tinygltf",
+              "tinyobjloader",
+              "toml11",
+              "vulkan-headers",
+              "yaml-cpp",
+              "zlib"
+            ]
+          }
+        },
+        "version": "0.10.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -48744,16 +48847,12 @@
       "name": "mchehab-zbar",
       "manifest": {
         "name": "mchehab-zbar",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ZBar is an open source software suite for reading bar codes from various sources, including webcams. This fork is actively maintained.",
         "homepage": "https://github.com/mchehab/zbar",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "dependencies": [
-          {
-            "name": "gettext",
-            "host": true
-          },
           "libiconv"
         ],
         "features": {
@@ -50146,7 +50245,7 @@
       "name": "monkeys-audio",
       "manifest": {
         "name": "monkeys-audio",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Monkey's Audio is an excellent audio compression tool which has multiple advantages over traditional methods.",
           "Audio files compressed with it end with .ape extension."
@@ -50162,8 +50261,6 @@
         "version-string": "9.04"
       },
       "files": [
-        "fix-C2471.patch",
-        "fix-project-config.patch",
         "license",
         "portfile.cmake",
         "remove-certificate-step.patch",
@@ -55406,7 +55503,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -55529,6 +55626,7 @@
       "files": [
         "fix-dependencies.patch",
         "fix-openexr-dll.patch",
+        "fix-openexr-target-missing.patch",
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
         "fix-vs2019-encoding-conversion.patch",
@@ -59146,7 +59244,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -59230,6 +59328,15 @@
           },
           "private-api": {
             "description": "Install headers for private API (aka unstable API/ABI headers)"
+          },
+          "qt": {
+            "description": "Enable the Qt API",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false
+              }
+            ]
           },
           "splash": {
             "description": "The splash backend is always enabled. This option is kept for compatibility."
@@ -63932,11 +64039,12 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
+          "litehtml",
           {
             "name": "qtbase",
             "default-features": false
@@ -64030,7 +64138,7 @@
         "version": "6.4.2"
       },
       "files": [
-        "fix_static_build.patch",
+        "devendor-litehtml.patch",
         "portfile.cmake",
         "vcpkg.json",
         "windeployqt.debug.bat"
@@ -65110,7 +65218,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-12-01"
+        "version-date": "2023-02-01"
       },
       "files": [
         "portfile.cmake",
@@ -66947,6 +67055,7 @@
       "name": "scenepic",
       "manifest": {
         "name": "scenepic",
+        "port-version": 1,
         "description": "A Powerful, easy to use, and portable visualization toolkit for mixed 3D and 2D content",
         "homepage": "https://microsoft.github.io/scenepic/",
         "license": "MIT",
@@ -70849,21 +70958,28 @@
       "name": "stx",
       "manifest": {
         "name": "stx",
-        "port-version": 1,
-        "description": "C++17 & C++ 20 error-handling and utility extensions",
+        "description": "STX is a collection of libraries and utilities designed to make working with C++ easier and less error-prone.",
         "homepage": "https://github.com/lamarrr/STX",
+        "license": "MIT",
+        "dependencies": [
+          "abseil",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "backtrace": {
-            "description": "stacktrace support for STX",
-            "dependencies": [
-              "abseil"
-            ]
+            "description": "stacktrace support for STX"
           }
         },
-        "version-string": "1.0.1"
+        "version": "0.0.3"
       },
       "files": [
-        "CMakeLists.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73116,12 +73232,16 @@
       "name": "uchardet",
       "manifest": {
         "name": "uchardet",
-        "port-version": 2,
         "description": "An encoding detector library ported from Mozilla.",
         "homepage": "https://cgit.freedesktop.org/uchardet/uchardet/",
+        "license": "GPL-2.0 AND MPL-1.1",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -73133,9 +73253,10 @@
             ]
           }
         },
-        "version-date": "2021-09-03"
+        "version": "0.0.8"
       },
       "files": [
+        "fix-config-error.patch",
         "fix-uwp-build.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -73164,6 +73285,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "uni-algo",
+      "manifest": {
+        "name": "uni-algo",
+        "description": "Unicode Algorithms Implementation",
+        "homepage": "https://github.com/uni-algo/uni-algo",
+        "license": "Unlicense OR MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "0.7.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74683,7 +74829,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -74712,7 +74858,7 @@
           "libxml2",
           "lz4",
           "netcdf-c",
-          "pegtl-2",
+          "pegtl",
           "proj",
           "pugixml",
           {
