@@ -1,5 +1,5 @@
 {
-  "version": "703a8113f42e794534df5dfc5cece5dabcb949d0",
+  "version": "82e03905f54fc49d11346e5148e3860747604d86",
   "ports": [
     {
       "name": "3fd",
@@ -19942,7 +19942,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.7.1"
+        "version-semver": "3.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -32185,7 +32185,6 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 6,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -32211,6 +32210,9 @@
           "fortran": {
             "description": "Build with fortran"
           },
+          "map": {
+            "description": "Build the map API"
+          },
           "parallel": {
             "description": "parallel support for HDF5",
             "dependencies": [
@@ -32226,8 +32228,12 @@
           "threadsafe": {
             "description": "thread safety for HDF5",
             "dependencies": [
-              "pthreads"
-            ]
+              {
+                "name": "pthreads",
+                "platform": "!windows"
+              }
+            ],
+            "supports": "!(static & windows)"
           },
           "tools": {
             "description": "Build hdf tools"
@@ -32242,7 +32248,7 @@
             ]
           }
         },
-        "version": "1.12.2"
+        "version": "1.14.0"
       },
       "files": [
         "hdf5_config.patch",
@@ -36720,14 +36726,15 @@
       "name": "kinectsdk1",
       "manifest": {
         "name": "kinectsdk1",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Kinect for Windows SDK for Kinect v1 sensor.",
         "license": null,
         "supports": "!arm & windows",
         "dependencies": [
           {
             "name": "vcpkg-tool-lessmsi",
-            "host": true
+            "host": true,
+            "version>=": "1.10#1"
           }
         ],
         "version": "1.8"
@@ -36742,14 +36749,15 @@
       "name": "kinectsdk2",
       "manifest": {
         "name": "kinectsdk2",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Kinect for Windows SDK for Kinect v2 sensor.",
         "license": null,
         "supports": "!arm & windows",
         "dependencies": [
           {
             "name": "vcpkg-tool-lessmsi",
-            "host": true
+            "host": true,
+            "version>=": "1.10#1"
           }
         ],
         "version": "2.0"
@@ -49577,6 +49585,20 @@
       ]
     },
     {
+      "name": "miniaudio",
+      "manifest": {
+        "name": "miniaudio",
+        "description": "Audio playback and capture library written in C, in a single source file",
+        "homepage": "https://github.com/mackron/miniaudio",
+        "license": "Unlicense OR MIT-0",
+        "version": "0.11.11"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "minifb",
       "manifest": {
         "name": "minifb",
@@ -61356,7 +61378,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -61444,7 +61466,7 @@
         "patches/egl.patch",
         "patches/fix_angle.patch",
         "patches/gui_configure.patch",
-        "patches/icu.patch",
+        "patches/mingw9.patch",
         "patches/mysql-configure.patch",
         "patches/mysql_plugin_include.patch",
         "patches/qt_app.patch",
@@ -74380,6 +74402,7 @@
       "name": "vcpkg-tool-lessmsi",
       "manifest": {
         "name": "vcpkg-tool-lessmsi",
+        "port-version": 1,
         "description": "This is a utility with a graphical user interface and a command line interface that can be used to view and extract the contents of an MSI file.",
         "homepage": "https://github.com/activescott/lessmsi",
         "license": "MIT",
@@ -74388,6 +74411,7 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -74461,6 +74485,7 @@
       "name": "vcpkg-tool-python2",
       "manifest": {
         "name": "vcpkg-tool-python2",
+        "port-version": 1,
         "description": "Python 2",
         "homepage": "https://www.python.org/download/releases/2.0/",
         "license": "PSF-2.0",
@@ -74829,7 +74854,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -75065,6 +75090,7 @@
         "version-semver": "9.2.0-pv5.11.0"
       },
       "files": [
+        "9690.diff",
         "FindExpat.patch",
         "FindHDF5.cmake",
         "FindLZ4.patch",
