@@ -1,5 +1,5 @@
 {
-  "version": "82e03905f54fc49d11346e5148e3860747604d86",
+  "version": "ec96844b8b1515d8982b134c73d7bc2b248d2c42",
   "ports": [
     {
       "name": "3fd",
@@ -28508,7 +28508,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 15,
+        "port-version": 16,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -28525,7 +28525,7 @@
         "features": {
           "fat": {
             "description": "Enable runtime selection of optimized low level routines",
-            "supports": "x86 | x64"
+            "supports": "(x86 | x64) & !(mingw & !static)"
           }
         },
         "version": "6.2.1"
@@ -31220,7 +31220,6 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
-        "port-version": 1,
         "description": "GoogleTest and GoogleMock testing frameworks",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -31234,9 +31233,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.12.1"
+        "version-semver": "1.13.0"
       },
       "files": [
+        "001-fix-UWP-death-test.patch",
         "clang-tidy-no-lint.patch",
         "fix-main-lib-path.patch",
         "portfile.cmake",
@@ -31640,7 +31640,7 @@
       "name": "gumbo",
       "manifest": {
         "name": "gumbo",
-        "port-version": 5,
+        "port-version": 6,
         "description": "An HTML5 parsing library in pure C99",
         "homepage": "https://github.com/google/gumbo-parser",
         "license": "Apache-2.0",
@@ -36889,6 +36889,7 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
+        "port-version": 1,
         "description": "A small library of functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them",
         "homepage": "https://github.com/KhronosGroup/KTX-Software",
         "license": "Apache-2.0",
@@ -37153,13 +37154,23 @@
       "name": "lastools",
       "manifest": {
         "name": "lastools",
-        "port-version": 1,
         "description": "LAStools: award-winning software for efficient LiDAR processing (with LASzip)",
         "homepage": "https://github.com/LAStools/LAStools",
         "supports": "!uwp",
-        "version-string": "2020-05-09"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.2+20230206"
       },
       "files": [
+        "fix_include_directories_lastools.patch",
         "fix_install_paths_lastools.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -37841,7 +37852,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.10.1"
+        "version-semver": "0.11.1"
       },
       "files": [
         "disable-source-utf8.patch",
@@ -45560,10 +45571,12 @@
       "name": "litehtml",
       "manifest": {
         "name": "litehtml",
-        "description": "litehtml is the lightweight HTML rendering engine with CSS2/CSS3 support. ",
+        "port-version": 1,
+        "description": "litehtml is the lightweight HTML rendering engine with CSS2/CSS3 support.",
         "homepage": "https://github.com/litehtml/litehtml",
         "license": "BSD-3-Clause",
         "dependencies": [
+          "gumbo",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -45576,7 +45589,9 @@
         "version": "0.6.0"
       },
       "files": [
+        "fix-relative-includes.patch",
         "portfile.cmake",
+        "use-vcpkg-gumbo.patch",
         "vcpkg.json"
       ]
     },
@@ -53901,7 +53916,6 @@
       "name": "opencc",
       "manifest": {
         "name": "opencc",
-        "port-version": 3,
         "description": "A project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai)",
         "homepage": "https://github.com/BYVoid/OpenCC",
         "license": "Apache-2.0",
@@ -53924,7 +53938,7 @@
             "description": "Build OpenCC command-line tools"
           }
         },
-        "version": "1.1.4"
+        "version": "1.1.6"
       },
       "files": [
         "fix-dependencies.patch",
@@ -66523,7 +66537,6 @@
       "name": "rttr",
       "manifest": {
         "name": "rttr",
-        "port-version": 5,
         "description": "an easy and intuitive way to use reflection in C++",
         "homepage": "https://github.com/rttrorg/rttr",
         "license": "MIT",
@@ -66539,11 +66552,11 @@
             "host": true
           }
         ],
-        "version": "0.9.6"
+        "version": "0.9.6+20210811"
       },
       "files": [
-        "253.patch",
         "Fix-depends.patch",
+        "disable-unsupport-header.patch",
         "fix-directory-output.patch",
         "portfile.cmake",
         "remove-owner-read-perms.patch",
