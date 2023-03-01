@@ -1,5 +1,5 @@
 {
-  "version": "9ff0d3aadc25ec348d35f70c99d0eb0ed8d5b1a6",
+  "version": "9ccc64ca98b320404d059df4349220bd2c1b4a46",
   "ports": [
     {
       "name": "3fd",
@@ -2747,6 +2747,7 @@
       "name": "aws-lambda-cpp",
       "manifest": {
         "name": "aws-lambda-cpp",
+        "port-version": 1,
         "description": "C++ Runtime for AWS Lambda.",
         "license": "Apache-2.0",
         "supports": "linux",
@@ -15746,10 +15747,9 @@
             "host": true
           }
         ],
-        "version": "1.6.7"
+        "version": "1.6.8"
       },
       "files": [
-        "fix-clang-cl.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32436,7 +32436,7 @@
       "name": "highfive",
       "manifest": {
         "name": "highfive",
-        "port-version": 1,
+        "port-version": 2,
         "description": "HighFive is a modern header-only C++/C++11 friendly interface for libhdf5",
         "homepage": "https://github.com/BlueBrain/HighFive",
         "license": "BSL-1.0",
@@ -37016,7 +37016,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-09"
+        "version": "0.6.0"
       },
       "files": [
         "001-fix-destination.patch",
@@ -38889,6 +38889,7 @@
       "name": "libffi",
       "manifest": {
         "name": "libffi",
+        "port-version": 1,
         "description": "Portable, high level programming interface to various calling conventions",
         "homepage": "https://github.com/libffi/libffi",
         "license": "MIT",
@@ -40248,7 +40249,6 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -40272,7 +40272,7 @@
             ]
           }
         },
-        "version-semver": "0.8.0"
+        "version-semver": "0.8.1"
       },
       "files": [
         "fix-dependencies.patch",
@@ -45621,7 +45621,7 @@
       "name": "litehtml",
       "manifest": {
         "name": "litehtml",
-        "port-version": 1,
+        "port-version": 2,
         "description": "litehtml is the lightweight HTML rendering engine with CSS2/CSS3 support.",
         "homepage": "https://github.com/litehtml/litehtml",
         "license": "BSD-3-Clause",
@@ -46641,6 +46641,7 @@
       "name": "luminoengine",
       "manifest": {
         "name": "luminoengine",
+        "port-version": 1,
         "description": "C++17 games and visualization toolkit.",
         "homepage": "https://github.com/LuminoEngine/Lumino",
         "license": "MIT",
@@ -46698,6 +46699,7 @@
         "version": "0.10.1"
       },
       "files": [
+        "fix-cmake-config.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -51673,6 +51675,7 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
+        "port-version": 1,
         "description": "Free software emulation of curses in System V Release 4.0, and more",
         "homepage": "https://invisible-island.net/ncurses/announce.html",
         "license": "MIT",
@@ -56158,6 +56161,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -56179,10 +56183,15 @@
         "version": "3.0.8"
       },
       "files": [
+        "disable-install-docs.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
-        "unix/CMakeLists.txt",
+        "script-prefix.patch",
+        "unix/configure",
+        "unix/move-openssldir.patch",
+        "unix/no-empty-dirs.patch",
+        "unix/no-static-libs-for-shared.patch",
         "unix/portfile.cmake",
         "unix/remove-deps.cmake",
         "usage",
@@ -67282,6 +67291,20 @@
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
         "version": "1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "scope-guard",
+      "manifest": {
+        "name": "scope-guard",
+        "description": "A public, general, simple, and fast C++11 scope guard that defends against implicitly ignored returns and optionally enforces noexcept at compile time (in C++17), all in a SFINAE-friendly maner.",
+        "homepage": "https://github.com/ricab/scope_guard",
+        "license": "Unlicense",
+        "version-semver": "1.0.0"
       },
       "files": [
         "portfile.cmake",
