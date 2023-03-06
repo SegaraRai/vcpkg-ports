@@ -122,6 +122,7 @@ const parse = createParser<TokenType>([
     NT_SEPARATED_ARGUMENTS,
     OR(
       [Q1N(NT_SEPARATION), Q01(NT_ARGUMENT)],
+      [NT_ARGUMENT],
       [Q0N(NT_SEPARATION), '(', NT_ARGUMENTS, ')']
     ),
     (tokens: Tokens): readonly TokenTypeArgument[] =>
