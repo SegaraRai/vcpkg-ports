@@ -1,5 +1,5 @@
 {
-  "version": "9ccc64ca98b320404d059df4349220bd2c1b4a46",
+  "version": "ee0b81848fd88be2ee736f5f11d4da502b2b6b3d",
   "ports": [
     {
       "name": "3fd",
@@ -175,9 +175,19 @@
       "name": "absent",
       "manifest": {
         "name": "absent",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A small C++17 library meant to simplify the composition of nullable types in a generic, type-safe, and declarative way",
         "homepage": "https://github.com/rvarago/absent",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.3.1"
       },
       "files": [
@@ -285,8 +295,18 @@
       "name": "ade",
       "manifest": {
         "name": "ade",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ADE Framework is a graph construction, manipulation, and processing framework. ADE Framework is suitable for organizing data flow processing and execution.",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.1.1f"
       },
       "files": [
@@ -460,10 +480,20 @@
       "name": "alac",
       "manifest": {
         "name": "alac",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Apple Lossless Audio Codec (ALAC) is a lossless audio codec developed by Apple and deployed on all of its platforms and devices.",
         "homepage": "https://github.com/macosforge/alac",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2017-11-03-c38887c5"
       },
       "files": [
@@ -476,9 +506,19 @@
       "name": "alac-decoder",
       "manifest": {
         "name": "alac-decoder",
-        "port-version": 5,
+        "port-version": 6,
         "description": "ALAC C implementation of a decoder, written from reverse engineering the file format",
         "homepage": "https://distfiles.macports.org/alac_decoder",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.2"
       },
       "files": [
@@ -530,12 +570,20 @@
       "name": "aliyun-oss-c-sdk",
       "manifest": {
         "name": "aliyun-oss-c-sdk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Alibaba Cloud Object Storage Service (OSS) is a cloud storage service provided by Alibaba Cloud, featuring massive capacity, security, a low cost, and high reliability.",
         "supports": "!(uwp | linux | osx)",
         "dependencies": [
           "apr-util",
-          "curl"
+          "curl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "3.10.0"
       },
@@ -713,7 +761,7 @@
       "name": "ampl-mp",
       "manifest": {
         "name": "ampl-mp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "An open-source library for mathematical programming",
         "homepage": "https://github.com/ampl/mp",
         "supports": "!uwp",
@@ -721,6 +769,14 @@
           "ampl-asl",
           {
             "name": "ampl-mp",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -873,6 +929,30 @@
       ]
     },
     {
+      "name": "annoy",
+      "manifest": {
+        "name": "annoy",
+        "description": "Approximate Nearest Neighbors optimized for memory usage and loading/saving to disk",
+        "homepage": "https://github.com/spotify/annoy",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-02-25"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "antlr4",
       "manifest": {
         "name": "antlr4",
@@ -931,9 +1011,19 @@
       "name": "anyrpc",
       "manifest": {
         "name": "anyrpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A multiprotocol remote procedure call system for C++.",
         "homepage": "https://github.com/sgieseking/anyrpc",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2021-08-24"
       },
       "files": [
@@ -1195,7 +1285,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -1207,8 +1297,18 @@
       "name": "argagg",
       "manifest": {
         "name": "argagg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A simple C++11 command line argument parser",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.4.6"
       },
       "files": [
@@ -1384,9 +1484,19 @@
       "name": "argumentum",
       "manifest": {
         "name": "argumentum",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A C++17 command line argument parser inspired by Python argparse",
         "homepage": "https://github.com/mmahnic/argumentum",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.3.1"
       },
       "files": [
@@ -1456,6 +1566,7 @@
       "name": "arpack-ng",
       "manifest": {
         "name": "arpack-ng",
+        "port-version": 1,
         "description": "ARPACK-NG is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.",
         "homepage": "https://github.com/opencollab/arpack-ng",
         "license": "BSD-3-Clause",
@@ -1690,6 +1801,31 @@
         "usage",
         "usage-parquet",
         "utf8proc.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arsenalgear",
+      "manifest": {
+        "name": "arsenalgear",
+        "description": "A library containing general purpose C++ utils.",
+        "homepage": "https://github.com/JustWhit3/arsenalgear-cpp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.1.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -4218,7 +4354,7 @@
       "name": "azure-storage-cpp",
       "manifest": {
         "name": "azure-storage-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "[legacy] Microsoft Azure Storage Client SDK for C++",
           "A client library for working with Microsoft Azure storage services including blobs, files, tables, and queues. This client library enables working with the Microsoft Azure storage services which include the blob service for storing binary and text data, the file service for storing binary and text data, the table service for storing structured non-relational data, and the queue service for storing messages that may be accessed by a client."
@@ -4253,6 +4389,14 @@
           {
             "name": "libxml2",
             "platform": "!windows & !uwp"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version-string": "7.5.0"
@@ -4605,13 +4749,21 @@
       "name": "behaviortree-cpp",
       "manifest": {
         "name": "behaviortree-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Behavior Trees Library in C++.",
         "homepage": "https://www.behaviortree.dev",
         "supports": "!uwp",
         "dependencies": [
           "boost-coroutine2",
-          "cppzmq"
+          "cppzmq",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "3.5.6"
       },
@@ -4673,10 +4825,20 @@
       "name": "berkeleydb",
       "manifest": {
         "name": "berkeleydb",
-        "port-version": 8,
+        "port-version": 9,
         "description": "BDB - A high-performance embedded database for key/value data.",
         "homepage": "https://download.oracle.com/",
         "supports": "!(uwp | linux | osx)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "4.8.30"
       },
       "files": [
@@ -4835,9 +4997,19 @@
       "name": "bigint",
       "manifest": {
         "name": "bigint",
-        "port-version": 7,
+        "port-version": 8,
         "description": "C++ Big Integer Library",
         "homepage": "https://mattmccutchen.net/bigint",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2010.04.30"
       },
       "files": [
@@ -4876,8 +5048,18 @@
       "name": "binn",
       "manifest": {
         "name": "binn",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Binn is a binary data serialization format designed to be compact, fast and easy to use.",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "3.0"
       },
       "files": [
@@ -5086,10 +5268,18 @@
       "name": "blas",
       "manifest": {
         "name": "blas",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Metapackage for packages which provide BLAS",
         "dependencies": [
-          "openblas"
+          "openblas",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1"
       },
@@ -15486,10 +15676,20 @@
       "name": "box2d",
       "manifest": {
         "name": "box2d",
-        "port-version": 2,
+        "port-version": 3,
         "description": "An open source C++ engine for simulating rigid bodies in 2D",
         "homepage": "https://box2d.org",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-semver": "2.4.1"
       },
       "files": [
@@ -15736,6 +15936,7 @@
       "name": "buck-yeh-bux",
       "manifest": {
         "name": "buck-yeh-bux",
+        "port-version": 1,
         "description": "A supplemental C++ library with functionalities not directly supported from Modern C++ standard.",
         "homepage": "https://github.com/buck-yeh/bux",
         "license": "MIT",
@@ -15872,12 +16073,20 @@
       "name": "butteraugli",
       "manifest": {
         "name": "butteraugli",
-        "port-version": 2,
+        "port-version": 3,
         "description": "butteraugli estimates the psychovisual difference between two images",
         "homepage": "https://github.com/google/butteraugli",
         "dependencies": [
           "libjpeg-turbo",
-          "libpng"
+          "libpng",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-05-08"
       },
@@ -15992,7 +16201,6 @@
       "name": "c4core",
       "manifest": {
         "name": "c4core",
-        "port-version": 1,
         "description": "Library of low-level C++ utilities",
         "homepage": "https://github.com/biojppm/c4core",
         "license": "MIT",
@@ -16007,7 +16215,7 @@
             "host": true
           }
         ],
-        "version": "0.1.9"
+        "version": "0.1.11"
       },
       "files": [
         "portfile.cmake",
@@ -16638,11 +16846,19 @@
       "name": "cctz",
       "manifest": {
         "name": "cctz",
-        "port-version": 3,
+        "port-version": 4,
         "description": "two libraries that cooperate with <chrono> to give C++ programmers all the necessary tools for computing with dates, times, and time zones in a simple and correct manner.",
         "homepage": "https://github.com/google/cctz",
         "dependencies": [
-          "benchmark"
+          "benchmark",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2.3"
       },
@@ -16681,9 +16897,19 @@
       "name": "cello",
       "manifest": {
         "name": "cello",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Higher level programming in C",
         "homepage": "https://libcello.org/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2019-07-23"
       },
       "files": [
@@ -16803,10 +17029,18 @@
       "name": "cfitsio",
       "manifest": {
         "name": "cfitsio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format",
         "homepage": "https://heasarc.gsfc.nasa.gov/fitsio/",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "features": {
@@ -16927,9 +17161,19 @@
       "name": "cgicc",
       "manifest": {
         "name": "cgicc",
-        "port-version": 5,
+        "port-version": 6,
         "description": "GNU Cgicc is an ANSI C++ compliant class library that greatly simplifies the creation of CGI applications for the World Wide Web",
         "homepage": "https://www.gnu.org/software/cgicc/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "3.2.19"
       },
       "files": [
@@ -17182,9 +17426,19 @@
       "name": "chipmunk",
       "manifest": {
         "name": "chipmunk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A fast and lightweight 2D game physics library.",
         "homepage": "https://github.com/slembcke/Chipmunk2D",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "7.0.3"
       },
       "files": [
@@ -17219,12 +17473,20 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
         "dependencies": [
-          "ffmpeg"
+          "ffmpeg",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "1.5.0"
       },
@@ -17462,7 +17724,7 @@
       "name": "clamav",
       "manifest": {
         "name": "clamav",
-        "port-version": 3,
+        "port-version": 4,
         "description": "ClamAV is an open-source anti-virus toolkit.",
         "homepage": "https://www.clamav.net",
         "supports": "!uwp & !static",
@@ -17474,6 +17736,14 @@
           "openssl",
           "pcre2",
           "pthreads",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "version-semver": "0.103.0"
@@ -17491,11 +17761,19 @@
       "name": "clapack",
       "manifest": {
         "name": "clapack",
-        "port-version": 20,
+        "port-version": 21,
         "description": "CLAPACK (f2c'ed version of LAPACK)",
         "homepage": "https://www.netlib.org/clapack",
         "dependencies": [
-          "blas"
+          "blas",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "3.2.1"
       },
@@ -17884,9 +18162,19 @@
       "name": "cmcstl2",
       "manifest": {
         "name": "cmcstl2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An implementation of C++ Extensions for Ranges",
         "homepage": "https://github.com/CaseyCarter/cmcstl2",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-20"
       },
       "files": [
@@ -17918,10 +18206,20 @@
       "name": "cmocka",
       "manifest": {
         "name": "cmocka",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An elegant unit testing framework for C with support for mock objects",
         "homepage": "https://cmocka.org/",
         "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-08-01"
       },
       "files": [
@@ -17967,9 +18265,19 @@
       "name": "cnl",
       "manifest": {
         "name": "cnl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A Compositional Numeric Library for C++",
         "homepage": "https://github.com/johnmcfarlane/cnl",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.1.7"
       },
       "files": [
@@ -18048,7 +18356,7 @@
       "name": "coin",
       "manifest": {
         "name": "coin",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A high-level 3D visualization library with Open Inventor 2.1 API",
         "homepage": "https://github.com/coin3d/coin",
         "supports": "!(arm | arm64 | uwp)",
@@ -18059,7 +18367,15 @@
           "boost-math",
           "boost-smart-ptr",
           "boost-static-assert",
-          "opengl-registry"
+          "opengl-registry",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "default-features": [
           "simage",
@@ -18472,8 +18788,19 @@
       "name": "concurrentqueue",
       "manifest": {
         "name": "concurrentqueue",
+        "port-version": 1,
         "description": "A fast multi-producer, multi-consumer lock-free concurrent queue for C++11",
         "homepage": "https://github.com/cameron314/concurrentqueue",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.0.3"
       },
       "files": [
@@ -18554,9 +18881,19 @@
       "name": "constexpr-contracts",
       "manifest": {
         "name": "constexpr-contracts",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A constexpr-friendly, optimisation-friendly contracts library.",
         "homepage": "https://github.com/cjdb/constexpr-contracts",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-08-09"
       },
       "files": [
@@ -18652,12 +18989,20 @@
       "name": "coroutine",
       "manifest": {
         "name": "coroutine",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++ 20 Coroutines helper/example library",
         "homepage": "https://github.com/luncliff/coroutine",
         "supports": "!uwp",
         "dependencies": [
-          "ms-gsl"
+          "ms-gsl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "1.5.0"
       },
@@ -18673,7 +19018,7 @@
       "name": "corrade",
       "manifest": {
         "name": "corrade",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++11/C++14 multiplatform utility library.",
         "homepage": "https://magnum.graphics/corrade/",
         "dependencies": [
@@ -18684,6 +19029,14 @@
             "features": [
               "utility"
             ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "default-features": [
@@ -18834,7 +19187,7 @@
       "name": "cpp-netlib",
       "manifest": {
         "name": "cpp-netlib",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A collection of network-related routines/implementations geared towards providing a robust cross-platform networking library",
         "homepage": "https://cpp-netlib.org/",
         "supports": "!uwp",
@@ -18845,7 +19198,15 @@
           "boost-program-options",
           "boost-scope-exit",
           "boost-smart-ptr",
-          "boost-spirit"
+          "boost-spirit",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.13.0"
       },
@@ -18989,8 +19350,18 @@
       "name": "cppcodec",
       "manifest": {
         "name": "cppcodec",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Header-only C++11 library to encode/decode base64, base64url, base32, base32hex and hex (a.k.a. base16) as specified in RFC 4648, plus Crockford's base32.",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "0.2"
       },
       "files": [
@@ -19093,11 +19464,19 @@
       "name": "cppitertools",
       "manifest": {
         "name": "cppitertools",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Range-based for loop add-ons inspired by the Python builtins and itertools library",
         "homepage": "https://github.com/ryanhaining/cppitertools",
         "dependencies": [
-          "boost-optional"
+          "boost-optional",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "2.1"
       },
@@ -19110,12 +19489,20 @@
       "name": "cppkafka",
       "manifest": {
         "name": "cppkafka",
-        "port-version": 3,
+        "port-version": 4,
         "description": "cppkafka allows C++ applications to consume and produce messages using the Apache Kafka protocol. The library is built on top of librdkafka, and provides a high level API that uses modern C++ features to make it easier to write code while keeping the wrapper's performance overhead to a minimum.",
         "homepage": "https://github.com/mfontanini/cppkafka",
         "dependencies": [
           "boost-program-options",
-          "librdkafka"
+          "librdkafka",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.3.1"
       },
@@ -19129,10 +19516,19 @@
       "name": "cppmicroservices",
       "manifest": {
         "name": "cppmicroservices",
+        "port-version": 1,
         "description": "An OSGi-like C++ dynamic module system and service registry",
         "homepage": "https://github.com/CppMicroServices/CppMicroServices",
         "dependencies": [
-          "gtest"
+          "gtest",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "3.6.0"
       },
@@ -19894,11 +20290,19 @@
       "name": "ctbignum",
       "manifest": {
         "name": "ctbignum",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This is a header-only template library for fixed-width \"small big-integer\" computations, for use during run-time as well as compile-time.",
         "homepage": "https://github.com/niekbouman/ctbignum",
         "dependencies": [
-          "boost"
+          "boost",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-08-02"
       },
@@ -19911,10 +20315,20 @@
       "name": "ctemplate",
       "manifest": {
         "name": "ctemplate",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++ CTemplate system",
         "homepage": "https://github.com/OlafvdSpek/ctemplate",
         "supports": "windows & !arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2020-09-14"
       },
       "files": [
@@ -20113,6 +20527,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -20450,6 +20865,7 @@
       "name": "cyclonedds",
       "manifest": {
         "name": "cyclonedds",
+        "port-version": 1,
         "description": "Eclipse Cyclone DDS is a very performant and robust open-source implementation of the OMG DDS specification",
         "homepage": "https://cyclonedds.io",
         "license": "EPL-2.0 OR BSD-3-Clause",
@@ -20538,6 +20954,7 @@
       },
       "files": [
         "enable-security.patch",
+        "idlc-generate.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -20547,6 +20964,7 @@
       "name": "cyclonedds-cxx",
       "manifest": {
         "name": "cyclonedds-cxx",
+        "port-version": 1,
         "description": "C++ binding for Eclipse Cyclone DDS",
         "homepage": "https://cyclonedds.io",
         "license": "EPL-2.0",
@@ -20583,7 +21001,6 @@
       },
       "files": [
         "portfile.cmake",
-        "static-idllib.patch",
         "vcpkg.json"
       ]
     },
@@ -20836,8 +21253,18 @@
       "name": "darts-clone",
       "manifest": {
         "name": "darts-clone",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A static double-array trie structure",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1767ab87cffe"
       },
       "files": [
@@ -20957,6 +21384,7 @@
       "name": "dav1d",
       "manifest": {
         "name": "dav1d",
+        "port-version": 1,
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
         "license": "BSD-2-Clause",
@@ -20971,6 +21399,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -21016,7 +21445,7 @@
             "host": true
           }
         ],
-        "version": "3.10.0"
+        "version": "3.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -21079,11 +21508,19 @@
       "name": "dbow2",
       "manifest": {
         "name": "dbow2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "DBoW2 is an improved version of the DBow library, an open source C++ library for indexing and converting images into a bag-of-word representation.",
         "homepage": "https://github.com/dorian3d/DBoW2",
         "dependencies": [
-          "opencv"
+          "opencv",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-08-05"
       },
@@ -21242,8 +21679,19 @@
       "name": "debug-assert",
       "manifest": {
         "name": "debug-assert",
+        "port-version": 1,
         "description": "Provides flexible DEBUG_ASSERT() macro.",
         "homepage": "https://github.com/foonathan/debug_assert",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.3.3"
       },
       "files": [
@@ -21308,9 +21756,19 @@
       "name": "devil",
       "manifest": {
         "name": "devil",
-        "port-version": 9,
+        "port-version": 10,
         "description": "A full featured cross-platform image library",
         "homepage": "https://github.com/DentonW/DevIL",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "default-features": [
           "jasper",
           "lcms",
@@ -21413,7 +21871,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-12-16"
+        "version-date": "2022-03-01"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -21700,10 +22158,20 @@
       "name": "discord-game-sdk",
       "manifest": {
         "name": "discord-game-sdk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Discord GameSDK is an easy drop-in SDK to help you manage all the hard things that come with making a game.",
         "homepage": "https://discord.com/developers/docs/game-sdk/sdk-starter-guide",
         "supports": "((x64 & (windows | osx | linux)) | (x86 & windows)) & !uwp & !static",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "2.5.6"
       },
       "files": [
@@ -21719,11 +22187,19 @@
       "name": "discord-rpc",
       "manifest": {
         "name": "discord-rpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Rich Presence allows you to leverage the totally overhauled \"Now Playing\" section in a Discord user's profile to help people play your game together.",
         "homepage": "https://github.com/discordapp/discord-rpc",
         "dependencies": [
-          "rapidjson"
+          "rapidjson",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "3.4.0"
       },
@@ -21768,9 +22244,19 @@
       "name": "discount",
       "manifest": {
         "name": "discount",
-        "port-version": 1,
+        "port-version": 2,
         "description": "DISCOUNT is a implementation of John Gruber & Aaron Swartz's Markdown markup language.",
         "homepage": "https://github.com/Orc/discount",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.2.6"
       },
       "files": [
@@ -21786,12 +22272,20 @@
       "name": "discreture",
       "manifest": {
         "name": "discreture",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A modern C++ library for efficiently and easily iterating through common combinatorial objects, such as combinations, permutations, partitions and more.",
         "homepage": "https://github.com/mraggi/discreture",
         "dependencies": [
           "boost-container",
-          "boost-iterator"
+          "boost-iterator",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2020-01-29"
       },
@@ -21942,8 +22436,18 @@
       "name": "docopt",
       "manifest": {
         "name": "docopt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Command line arguments parser that will make you smile (C++11 port).",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2018-11-01"
       },
       "files": [
@@ -22080,10 +22584,9 @@
           },
           "zlib"
         ],
-        "version": "10.0.21"
+        "version": "10.0.23"
       },
       "files": [
-        "make-pkgconfig-required.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -22323,9 +22826,19 @@
       "name": "duktape",
       "manifest": {
         "name": "duktape",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Embeddable Javascript engine with a focus on portability and compact footprint.",
         "homepage": "https://github.com/svaarala/duktape",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.5.0"
       },
       "files": [
@@ -22451,9 +22964,19 @@
       "name": "eabase",
       "manifest": {
         "name": "eabase",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Electronic Arts Base. EABase is a small set of header files that define platform-independent data types and macros.",
         "homepage": "https://github.com/electronicarts/EABase",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.09.12"
       },
       "files": [
@@ -25180,6 +25703,7 @@
       "name": "flatbuffers",
       "manifest": {
         "name": "flatbuffers",
+        "port-version": 2,
         "description": [
           "Memory Efficient Serialization Library",
           "FlatBuffers is an efficient cross platform serialization library for games and other memory constrained apps. It allows you to directly access serialized data without unpacking/parsing it first, while still having great forwards/backwards compatibility."
@@ -25203,6 +25727,7 @@
         "version": "23.1.21"
       },
       "files": [
+        "fix-abseil-cxx14.patch",
         "fix-uwp-build.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -28734,6 +29259,30 @@
               }
             ]
           },
+          "advisorynotifications": {
+            "description": "Advisory Notifications API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "alloydb": {
+            "description": "Alloy DB API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "apigateway": {
             "description": "API Gateway API C++ Client Library",
             "dependencies": [
@@ -28748,6 +29297,18 @@
           },
           "apigeeconnect": {
             "description": "Apigee Connect API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "apikeys": {
+            "description": "API Keys API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -29910,7 +30471,7 @@
             ]
           }
         },
-        "version": "2.7.0"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -32585,6 +33146,21 @@
         "fix-timeval.patch",
         "portfile.cmake",
         "support-static.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "hnswlib",
+      "manifest": {
+        "name": "hnswlib",
+        "description": "Header-only library for fast approximate nearest neighbors",
+        "homepage": "https://github.com/nmslib/hnswlib",
+        "license": "Apache-2.0",
+        "version": "0.7.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -37578,6 +38154,68 @@
       ]
     },
     {
+      "name": "libadlmidi",
+      "manifest": {
+        "name": "libadlmidi",
+        "description": "libADLMIDI is a free Software MIDI synthesizer library with OPL3 emulation",
+        "homepage": "https://github.com/Wohlstand/libADLMIDI",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "dosbox-emulator",
+          "embedded-banks",
+          "java-emulator",
+          "midi-sequencer",
+          "mus",
+          "nuked-emulator",
+          "opal-emulator",
+          "xmi"
+        ],
+        "features": {
+          "dosbox-emulator": {
+            "description": "Build with DosBox 0.74 OPL3 emulator (well-accurate and fast)"
+          },
+          "embedded-banks": {
+            "description": "Build with embedded banks"
+          },
+          "java-emulator": {
+            "description": "Build with Java OPL3 emulator (semi-accurate)"
+          },
+          "midi-sequencer": {
+            "description": "Build with embedded MIDI sequencer"
+          },
+          "mus": {
+            "description": "Support for DMX MUS files"
+          },
+          "nuked-emulator": {
+            "description": "Build with Nuked OPL3 emulator (very-accurate, needs more CPU power)"
+          },
+          "opal-emulator": {
+            "description": "Build with Opal OPL3 emulator (innacurate)"
+          },
+          "xmi": {
+            "description": "Support for AIL XMI files"
+          }
+        },
+        "version": "1.5.1"
+      },
+      "files": [
+        "cmake-build-shared-libs-support.patch",
+        "cmake-package-export.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libadwaita",
       "manifest": {
         "name": "libadwaita",
@@ -38501,6 +39139,52 @@
       "files": [
         "fix-libde265-headers.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libdeflate",
+      "manifest": {
+        "name": "libdeflate",
+        "description": "libdeflate is a library for fast, whole-buffer DEFLATE-based compression and decompression.",
+        "homepage": "https://github.com/ebiggers/libdeflate",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "compression",
+          "decompression",
+          "gzip",
+          "zlib"
+        ],
+        "features": {
+          "compression": {
+            "description": "Support compression"
+          },
+          "decompression": {
+            "description": "Support decompression"
+          },
+          "gzip": {
+            "description": "Support the gzip format"
+          },
+          "zlib": {
+            "description": "Support the zlib format"
+          }
+        },
+        "version": "1.17"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove_wrong_c_flags_modification.diff",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -41836,7 +42520,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 3,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -41959,9 +42642,15 @@
             "dependencies": [
               "zlib"
             ]
+          },
+          "zstd": {
+            "description": "Use zstd (else --without-zstd)",
+            "dependencies": [
+              "zstd"
+            ]
           }
         },
-        "version": "14.4"
+        "version": "15.2"
       },
       "files": [
         "Makefile",
@@ -46445,7 +47134,7 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
         "license": null,
@@ -50100,7 +50789,7 @@
       "name": "mnn",
       "manifest": {
         "name": "mnn",
-        "port-version": 3,
+        "port-version": 4,
         "description": "MNN is a blazing fast, lightweight deep learning framework, battle-tested by business-critical use cases in Alibaba",
         "homepage": "https://www.mnn.zone/",
         "license": "Apache-2.0",
@@ -50112,7 +50801,11 @@
             "host": true
           },
           "rapidjson",
-          "stb"
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "features": {
           "cuda": {
@@ -50386,11 +51079,15 @@
       "name": "moos-essential",
       "manifest": {
         "name": "moos-essential",
-        "port-version": 3,
+        "port-version": 4,
         "description": "a set of useful applications that leverage the core-moos communications layer.",
         "homepage": "https://sites.google.com/site/moossoftware/",
         "dependencies": [
-          "moos-core"
+          "moos-core",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "10.0.1"
       },
@@ -50404,11 +51101,15 @@
       "name": "moos-ui",
       "manifest": {
         "name": "moos-ui",
-        "port-version": 3,
+        "port-version": 4,
         "description": "set of user interface tools to use and leverage the MOOS project.",
         "homepage": "https://sites.google.com/site/moossoftware/",
         "dependencies": [
-          "moos-core"
+          "moos-core",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "10.0.1"
       },
@@ -50421,9 +51122,19 @@
       "name": "morton-nd",
       "manifest": {
         "name": "morton-nd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "header-only constexpr library for fast Morton encoding/decoding in N dimensions.",
         "homepage": "https://github.com/kevinhartman/morton-nd",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "4.0.0"
       },
       "files": [
@@ -50540,8 +51251,18 @@
       "name": "mpark-variant",
       "manifest": {
         "name": "mpark-variant",
-        "port-version": 1,
+        "port-version": 2,
         "description": "an implementation of C++17 std::variant for C++11/14/17.",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.4.0"
       },
       "files": [
@@ -50896,10 +51617,20 @@
       "name": "msgpack",
       "manifest": {
         "name": "msgpack",
-        "port-version": 3,
+        "port-version": 4,
         "description": "MessagePack is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's faster and smaller.",
         "homepage": "https://github.com/msgpack/msgpack-c",
         "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "3.3.0"
       },
       "files": [
@@ -50911,11 +51642,15 @@
       "name": "msgpack11",
       "manifest": {
         "name": "msgpack11",
-        "port-version": 3,
+        "port-version": 4,
         "description": "msgpack11 is a tiny MsgPack library for C++11, providing MsgPack parsing and serialization.This library is inspired by json11.The API of msgpack11 is designed to be similar with json11.",
         "homepage": "https://msgpack.org",
         "dependencies": [
-          "gtest"
+          "gtest",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version": "0.0.10"
       },
@@ -50945,7 +51680,7 @@
       "name": "msix",
       "manifest": {
         "name": "msix",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The MSIX Packaging SDK project is an effort to enable developers on a variety of platforms to pack and unpack packages for the purposes of distribution from either the Microsoft Store, or their own content distribution networks.The MSIX Packaging APIs that a client app would use to interact with .msix/.appx packages are a subset of those documented here. See sample/ExtractContentsSample/ExtractContentsSample.cpp for additional details.",
         "homepage": "https://github.com/microsoft/msix-packaging",
         "license": "MIT",
@@ -50955,6 +51690,10 @@
           {
             "name": "openssl",
             "platform": "!uwp & !windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
           },
           "xerces-c",
           "zlib"
@@ -50990,11 +51729,19 @@
       "name": "mstch",
       "manifest": {
         "name": "mstch",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Mstch is a complete implementation of {{mustache}} templates using modern C++",
         "homepage": "https://github.com/no1msd/mstch",
         "dependencies": [
-          "boost-variant"
+          "boost-variant",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.0.2"
       },
@@ -51121,10 +51868,20 @@
       "name": "murmurhash",
       "manifest": {
         "name": "murmurhash",
-        "port-version": 5,
+        "port-version": 6,
         "description": "MurmurHash a family of hash functions.",
         "homepage": "https://github.com/aappleby/smhasher",
         "supports": "!uwp & !arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2016-01-09"
       },
       "files": [
@@ -51265,7 +52022,7 @@
       "name": "nana",
       "manifest": {
         "name": "nana",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Cross-platform library for GUI programming in modern C++ style.",
         "homepage": "https://github.com/cnjinhao/nana",
         "dependencies": [
@@ -51278,7 +52035,15 @@
             "platform": "!uwp & !windows & !mingw"
           },
           "libjpeg-turbo",
-          "libpng"
+          "libpng",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.7.4"
       },
@@ -51556,12 +52321,16 @@
       "name": "nanovg",
       "manifest": {
         "name": "nanovg",
-        "port-version": 5,
+        "port-version": 6,
         "description": "NanoVG is small antialiased vector graphics rendering library for OpenGL.",
         "homepage": "https://github.com/memononen/nanovg",
         "supports": "!uwp",
         "dependencies": [
-          "stb"
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-date": "2019-08-30"
       },
@@ -51902,12 +52671,20 @@
       "name": "netcdf-cxx4",
       "manifest": {
         "name": "netcdf-cxx4",
-        "port-version": 3,
+        "port-version": 4,
         "description": "a set of machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-cxx4",
         "dependencies": [
           "hdf5",
-          "netcdf-c"
+          "netcdf-c",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "4.3.1"
       },
@@ -51950,6 +52727,7 @@
       "name": "nettle",
       "manifest": {
         "name": "nettle",
+        "port-version": 1,
         "description": "Nettle is a low-level cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
         "homepage": "https://git.lysator.liu.se/nettle/nettle",
         "license": null,
@@ -51971,16 +52749,16 @@
         "version": "3.7.3"
       },
       "files": [
+        "ccas.patch",
         "compile.patch",
-        "fix-InstallLibPath.patch",
-        "flags.patch",
+        "fix-libdir.patch",
         "hogweed-x64.def",
         "hogweed-x86.def",
+        "host-tools.patch",
         "libname-windows.patch",
         "nettle-x64.def",
         "nettle-x86.def",
         "portfile.cmake",
-        "remove_gmpd.patch",
         "vcpkg.json",
         "yasm.patch"
       ]
@@ -52004,6 +52782,7 @@
       "name": "nghttp2",
       "manifest": {
         "name": "nghttp2",
+        "port-version": 1,
         "description": "Implementation of the Hypertext Transfer Protocol version 2 in C",
         "homepage": "https://github.com/nghttp2/nghttp2",
         "license": "MIT",
@@ -52021,6 +52800,56 @@
       ]
     },
     {
+      "name": "nghttp2-asio",
+      "manifest": {
+        "name": "nghttp2-asio",
+        "description": "High level abstraction API to build HTTP/2 applications with nghttp2 and boost asio.",
+        "homepage": "https://github.com/nghttp2/nghttp2-asio",
+        "license": "MIT",
+        "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "boost-asio",
+            "version>=": "1.81.0"
+          },
+          "boost-system",
+          "boost-thread",
+          {
+            "name": "nghttp2",
+            "version>=": "1.51.0"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "tls"
+        ],
+        "features": {
+          "tls": {
+            "description": "Support HTTP/2 over TLS aka h2.",
+            "dependencies": [
+              {
+                "name": "boost-asio",
+                "features": [
+                  "ssl"
+                ]
+              },
+              "openssl"
+            ]
+          }
+        },
+        "version-date": "2022-08-11"
+      },
+      "files": [
+        "0001-Fix-exception-in-server.patch",
+        "0002-Honor-BUILD_SHARED_LIBS.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "nghttp3",
       "manifest": {
         "name": "nghttp3",
@@ -52033,7 +52862,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -52072,6 +52901,7 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
+        "port-version": 1,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -52086,7 +52916,7 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.13.1"
       },
       "files": [
         "export-unofficical-target.patch",
@@ -52171,9 +53001,19 @@
       "name": "nlohmann-fifo-map",
       "manifest": {
         "name": "nlohmann-fifo-map",
-        "port-version": 2,
+        "port-version": 3,
         "description": "a FIFO-ordered associative container for C++",
         "homepage": "https://github.com/nlohmann/fifo_map",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2018.05.07"
       },
       "files": [
@@ -52331,11 +53171,19 @@
       "name": "nngpp",
       "manifest": {
         "name": "nngpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ wrapper around the nanomsg NNG API.",
         "homepage": "https://github.com/cwzx/nngpp",
         "dependencies": [
-          "nng"
+          "nng",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.3.0"
       },
@@ -52431,12 +53279,20 @@
       "name": "nonius",
       "manifest": {
         "name": "nonius",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A C++ micro-benchmarking framework",
         "dependencies": [
           "boost-algorithm",
           "boost-lexical-cast",
-          "boost-math"
+          "boost-math",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-04-20"
       },
@@ -52581,9 +53437,15 @@
       "name": "nt-wrapper",
       "manifest": {
         "name": "nt-wrapper",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A header only wrapper library around native windows system APIs",
         "homepage": "https://github.com/JustasMasiulis/nt_wrapper",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2019-08-10"
       },
       "files": [
@@ -53127,8 +53989,18 @@
       "name": "observer-ptr-lite",
       "manifest": {
         "name": "observer-ptr-lite",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A C++17-like observer_ptr for C++98 and later in a single-file header-only library",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.4.0"
       },
       "files": [
@@ -54105,10 +54977,18 @@
       "name": "opencsg",
       "manifest": {
         "name": "opencsg",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenCSG is a library that does image-based CSG rendering using OpenGL. OpenCSG is written in C++ and supports most modern graphics hardware using Microsoft Windows or the Linux operating system.",
         "dependencies": [
-          "glew"
+          "glew",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.4.2"
       },
@@ -55604,9 +56484,15 @@
       "name": "openigtlink",
       "manifest": {
         "name": "openigtlink",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenIGTLink is an open-source network communication interface specifically designed for image-guided interventions.",
         "homepage": "https://github.com/openigtlink/OpenIGTLink",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "3.0"
       },
       "files": [
@@ -55845,14 +56731,18 @@
       "name": "openmama",
       "manifest": {
         "name": "openmama",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenMAMA is a high performance vendor neutral lightweight wrapper that provides a common API interface to different middleware and messaging solutions across a variety of platforms and languages",
         "homepage": "https://github.com/finos/OpenMAMA",
         "supports": "windows & (x64 | x86)",
         "dependencies": [
           "apr",
           "libevent",
-          "qpid-proton"
+          "qpid-proton",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-semver": "6.3.1"
       },
@@ -56662,8 +57552,18 @@
       "name": "optional-bare",
       "manifest": {
         "name": "optional-bare",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A simple version of a C++17-like optional for default-constructible, copyable types, for C++98 and later in a single-file header-only library",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.1.0"
       },
       "files": [
@@ -56801,11 +57701,19 @@
       "name": "orocos-kdl",
       "manifest": {
         "name": "orocos-kdl",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Kinematics and Dynamics Library.",
         "homepage": "https://github.com/orocos/orocos_kinematics_dynamics",
         "dependencies": [
-          "eigen3"
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "1.4"
       },
@@ -57243,9 +58151,15 @@
       "name": "p-ranav-csv",
       "manifest": {
         "name": "p-ranav-csv",
-        "port-version": 1,
+        "port-version": 2,
         "description": "[deprecated] CSV for modern C++",
         "homepage": "https://github.com/p-ranav/csv",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-11"
       },
       "files": [
@@ -57257,9 +58171,19 @@
       "name": "p-ranav-csv2",
       "manifest": {
         "name": "p-ranav-csv2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "CSV for modern C++",
         "homepage": "https://github.com/p-ranav/csv2",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-12-14"
       },
       "files": [
@@ -57660,11 +58584,19 @@
       "name": "parallelstl",
       "manifest": {
         "name": "parallelstl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Parallel STL is an implementation of the C++ standard library algorithms with support for execution policies, as specified in ISO/IEC 14882:2017 standard, commonly called C++17.",
         "homepage": "https://github.com/intel/parallelstl",
         "dependencies": [
-          "tbb"
+          "tbb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "20200330"
       },
@@ -58407,9 +59339,19 @@
       "name": "pegtl-2",
       "manifest": {
         "name": "pegtl-2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Parsing Expression Grammar Template Library (PEGTL) is a zero-dependency C++ header-only parser combinator library for creating parsers according to a Parsing Expression Grammar (PEG). This version maintains compatibility with C++11.",
         "homepage": "https://github.com/taocpp/PEGTL",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.8.3"
       },
       "files": [
@@ -58469,7 +59411,7 @@
       "name": "pfultz2-linq",
       "manifest": {
         "name": "pfultz2-linq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Linq for list comprehension in C++",
         "dependencies": [
           "boost-fusion",
@@ -58481,7 +59423,15 @@
           "boost-static-assert",
           "boost-type-traits",
           "boost-unordered",
-          "boost-utility"
+          "boost-utility",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-05-14"
       },
@@ -58888,10 +59838,16 @@
       "name": "plibsys",
       "manifest": {
         "name": "plibsys",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Highly portable C system library: threads and synchronization, sockets, IPC, data structures and more.",
         "homepage": "https://github.com/saprykin/plibsys",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version": "0.0.4"
       },
       "files": [
@@ -58981,11 +59937,15 @@
       "name": "plustache",
       "manifest": {
         "name": "plustache",
-        "port-version": 2,
+        "port-version": 3,
         "description": "{{mustaches}} for C++",
         "dependencies": [
           "boost-algorithm",
-          "boost-regex"
+          "boost-regex",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "0.4.0"
       },
@@ -59031,11 +59991,19 @@
       "name": "pngwriter",
       "manifest": {
         "name": "pngwriter",
-        "port-version": 3,
+        "port-version": 4,
         "description": "PNGwriter is a very easy to use open source graphics library that uses PNG as its output format",
         "dependencies": [
           "freetype",
           "libpng",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "version-string": "0.7.0"
@@ -59049,7 +60017,7 @@
       "name": "poco",
       "manifest": {
         "name": "poco",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Modern, powerful open source C++ class libraries for building network and internet-based applications that run on desktop, server, mobile and embedded systems.",
         "homepage": "https://github.com/pocoproject/poco",
         "license": "BSL-1.0",
@@ -59068,6 +60036,12 @@
           "zlib"
         ],
         "features": {
+          "crypto": {
+            "description": "Crypto support",
+            "dependencies": [
+              "openssl"
+            ]
+          },
           "mariadb": {
             "description": "MariaDB support for POCO",
             "dependencies": [
@@ -59081,11 +60055,17 @@
             ]
           },
           "netssl": {
-            "description": "NetSSL support for POCO",
+            "description": [
+              "NetSSL support for POCO",
+              "By default, this feature uses the OpenSSL implementation. The `POCO_ENABLE_NETSSL_WIN` triplet variable can be used to switch to the NetSSL_Win module."
+            ],
             "dependencies": [
               {
-                "name": "openssl",
-                "platform": "!windows"
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "crypto"
+                ]
               }
             ]
           },
@@ -59228,9 +60208,19 @@
       "name": "polyclipping",
       "manifest": {
         "name": "polyclipping",
-        "port-version": 10,
+        "port-version": 11,
         "description": "The Clipper library performs clipping and offsetting for both lines and polygons. All four boolean clipping operations are supported - intersection, union, difference and exclusive-or. Polygons can be of any shape including self-intersecting polygons.",
         "homepage": "https://sourceforge.net/projects/polyclipping/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "6.4.2"
       },
       "files": [
@@ -59486,12 +60476,20 @@
       "name": "popsift",
       "manifest": {
         "name": "popsift",
-        "port-version": 3,
+        "port-version": 4,
         "description": "PopSift is an implementation of the SIFT algorithm in CUDA.",
         "homepage": "https://github.com/alicevision/popsift",
         "supports": "!(uwp | arm | arm64 | android | x86)",
         "dependencies": [
-          "cuda"
+          "cuda",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "features": {
           "apps": {
@@ -59516,11 +60514,21 @@
       "name": "portable-snippets",
       "manifest": {
         "name": "portable-snippets",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Collection of miscellaneous portable C snippets",
         "homepage": "https://github.com/nemequ/portable-snippets",
         "license": null,
         "supports": "!(arm & osx)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2019-09-20"
       },
       "files": [
@@ -59533,10 +60541,20 @@
       "name": "portaudio",
       "manifest": {
         "name": "portaudio",
-        "port-version": 3,
+        "port-version": 4,
         "description": "PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.",
         "homepage": "http://www.portaudio.com",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "19.7"
       },
       "files": [
@@ -59604,7 +60622,7 @@
       "name": "ppconsul",
       "manifest": {
         "name": "ppconsul",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A C++ client library for Consul. Consul is a distributed tool for discovering and configuring services in your infrastructure.",
         "homepage": "https://github.com/oliora/ppconsul",
         "dependencies": [
@@ -59618,7 +60636,15 @@
               "openssl"
             ]
           },
-          "json11"
+          "json11",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.5"
       },
@@ -59646,9 +60672,19 @@
       "name": "pprint",
       "manifest": {
         "name": "pprint",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Pretty Printer for Modern C++",
         "homepage": "https://github.com/p-ranav/pprint",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-19"
       },
       "files": [
@@ -59660,9 +60696,19 @@
       "name": "pqp",
       "manifest": {
         "name": "pqp",
-        "port-version": 5,
+        "port-version": 6,
         "description": "a proximity query package",
         "homepage": "https://gamma.cs.unc.edu/SSV/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.3"
       },
       "files": [
@@ -59677,9 +60723,15 @@
       "name": "presentmon",
       "manifest": {
         "name": "presentmon",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PresentMon is a tool to capture and analyze ETW events related to swap chain presentation on Windows.",
         "supports": "windows & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "features": {
           "tools": {
             "description": "Build tool PresentMon"
@@ -59750,7 +60802,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.1.1"
+        "version": "9.2.0"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -60101,8 +61153,15 @@
       "name": "psimd",
       "manifest": {
         "name": "psimd",
+        "port-version": 1,
         "description": "Portable 128-bit SIMD intrinsics",
         "homepage": "https://github.com/Maratyszcza/psimd",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2021-02-21"
       },
       "files": [
@@ -60201,11 +61260,19 @@
       "name": "pthreadpool",
       "manifest": {
         "name": "pthreadpool",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Portable (POSIX/Windows/Emscripten) thread pool for C/C++",
         "homepage": "https://github.com/Maratyszcza/pthreadpool",
         "dependencies": [
-          "fxdiv"
+          "fxdiv",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-date": "2020-04-10"
       },
@@ -60305,7 +61372,6 @@
       "name": "pybind11",
       "manifest": {
         "name": "pybind11",
-        "port-version": 1,
         "description": "pybind11 is a lightweight header-only library that exposes C++ types in Python and vice versa, mainly to create Python bindings of existing C++ code",
         "homepage": "https://github.com/pybind/pybind11",
         "license": "BSD-3-Clause",
@@ -60321,10 +61387,9 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.10.3"
       },
       "files": [
-        "fix-usage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64781,11 +65846,19 @@
       "name": "quickfast",
       "manifest": {
         "name": "quickfast",
-        "port-version": 1,
+        "port-version": 2,
         "description": "QuickFAST is an Open Source native C++ implementation of the FAST Protocol [SM].",
         "homepage": "https://github.com/objectcomputing/quickfast",
         "dependencies": [
           "boost-asio",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "xerces-c"
         ],
         "version-string": "1.5"
@@ -64918,7 +65991,7 @@
       "name": "qwtw",
       "manifest": {
         "name": "qwtw",
-        "port-version": 2,
+        "port-version": 3,
         "description": "qwt-based 2D plotting library",
         "homepage": "https://github.com/ig-or/qwtw",
         "supports": "windows & x64 & !static",
@@ -64935,7 +66008,15 @@
           "qt5-base",
           "qt5-networkauth",
           "qt5-svg",
-          "qwt"
+          "qwt",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "3.1.0"
       },
@@ -64948,12 +66029,20 @@
       "name": "rabit",
       "manifest": {
         "name": "rabit",
-        "port-version": 3,
+        "port-version": 4,
         "description": "rabit is a light weight library that provides a fault tolerant interface of Allreduce and Broadcast. It is designed to support easy implementations of distributed machine learning programs, many of which fall naturally under the Allreduce abstraction.",
         "homepage": "https://github.com/dmlc/rabit",
         "supports": "!uwp",
         "dependencies": [
-          "dmlc"
+          "dmlc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.1"
       },
@@ -64967,9 +66056,19 @@
       "name": "ragel",
       "manifest": {
         "name": "ragel",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Ragel State Machine Compiler",
         "homepage": "https://www.colm.net/files/ragel",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "6.10"
       },
       "files": [
@@ -65765,12 +66864,18 @@
       "name": "restbed",
       "manifest": {
         "name": "restbed",
+        "port-version": 2,
         "description": "Corvusoft's Restbed framework brings asynchronous RESTful functionality to C++14 applications.",
         "homepage": "https://github.com/corvusoft/restbed",
+        "license": "AGPL-3.0-or-later OR CPL-1.0",
         "dependencies": [
           "asio",
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -65793,6 +66898,7 @@
       "files": [
         "fix-cmake.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -65991,9 +67097,19 @@
       "name": "riffcpp",
       "manifest": {
         "name": "riffcpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simple library for reading RIFF files",
         "homepage": "https://github.com/libdmusic/riffcpp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.2.4"
       },
       "files": [
@@ -66005,8 +67121,19 @@
       "name": "ring-span-lite",
       "manifest": {
         "name": "ring-span-lite",
+        "port-version": 1,
         "description": "A C++yy-like ring_span type for C++98, C++11 and later in a single-file header-only library",
         "homepage": "https://github.com/martinmoene/ring-span-lite",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "0.6.0"
       },
       "files": [
@@ -66260,9 +67387,19 @@
       "name": "rpclib",
       "manifest": {
         "name": "rpclib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "a RPC library for C++, providing both a client and server implementation. It is built using modern C++14.",
         "homepage": "https://github.com/rpclib/rpclib",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-semver": "2.3.0"
       },
       "files": [
@@ -66274,9 +67411,19 @@
       "name": "rply",
       "manifest": {
         "name": "rply",
-        "port-version": 1,
+        "port-version": 2,
         "description": "ANSI C Library for PLY file format input and output",
         "homepage": "http://w3.impa.br/~diego/software/rply",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.1.4"
       },
       "files": [
@@ -66463,7 +67610,7 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
@@ -66518,6 +67665,7 @@
       "files": [
         "0003-fix-qt.patch",
         "cpp17.patch",
+        "fix-CMake-export.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66566,7 +67714,7 @@
       "name": "rtlsdr",
       "manifest": {
         "name": "rtlsdr",
-        "port-version": 3,
+        "port-version": 4,
         "description": "rtl-sdr is a library that turns your Realtek RTL2832 based DVB dongle into a SDR receiver",
         "homepage": "https://osmocom.org/projects/rtl-sdr",
         "supports": "windows & (x86 | x64)",
@@ -66575,6 +67723,14 @@
           {
             "name": "pthreads",
             "platform": "windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version-date": "2020-04-16"
@@ -66583,6 +67739,32 @@
         "Compile-with-msvc.patch",
         "Findlibusb.cmake",
         "fix-version.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rtmfp-cpp",
+      "manifest": {
+        "name": "rtmfp-cpp",
+        "description": "Secure Real-Time Media Flow Protocol Library (RTMFP)",
+        "homepage": "https://github.com/zenomt/rtmfp-cpp",
+        "license": "MIT",
+        "supports": "x64 & !uwp",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.0-20230213.18168ec"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66792,7 +67974,7 @@
             "description": "Enable ryml's default implementation of callbacks: allocate(), free(), error()"
           }
         },
-        "version": "0.4.1"
+        "version": "0.5.0"
       },
       "files": [
         "cmake-fix.patch",
@@ -67067,8 +68249,14 @@
       "name": "sais",
       "manifest": {
         "name": "sais",
-        "port-version": 3,
+        "port-version": 4,
         "description": "An implementation of the induced sorting algorithm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2.4.1"
       },
       "files": [
@@ -67080,8 +68268,18 @@
       "name": "sajson",
       "manifest": {
         "name": "sajson",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Lightweight, extremely high-performance JSON parser for C++11",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2018-09-21"
       },
       "files": [
@@ -67288,8 +68486,19 @@
       "name": "scnlib",
       "manifest": {
         "name": "scnlib",
+        "port-version": 1,
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.0"
       },
       "files": [
@@ -67470,10 +68679,14 @@
       "name": "sdl1-net",
       "manifest": {
         "name": "sdl1-net",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Networking library for SDL",
         "dependencies": [
-          "sdl1"
+          "sdl1",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "1.2.8"
       },
@@ -67555,10 +68768,18 @@
       "name": "sdl2-gfx",
       "manifest": {
         "name": "sdl2-gfx",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Graphics primitives (line, circle, rectangle etc.) with AA support, rotozoomer and other drawing related support functions wrapped up in a C based add-on library for the Simple Direct Media (SDL) cross-platform API layer.",
         "dependencies": [
-          "sdl2"
+          "sdl2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.0.4"
       },
@@ -68105,9 +69326,19 @@
       "name": "septag-sx",
       "manifest": {
         "name": "septag-sx",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Portable base library for C programmers, designed for performance and simplicity.",
         "supports": "!(uwp | arm)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-05-07"
       },
       "files": [
@@ -68132,9 +69363,20 @@
       "name": "serd",
       "manifest": {
         "name": "serd",
+        "port-version": 1,
         "description": "Serd is a lightweight C library for RDF syntax which supports reading and writing Turtle, TRiG, NTriples, and NQuads.",
         "homepage": "https://drobilla.net/software/serd",
         "license": "ISC",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.30.4"
       },
       "files": [
@@ -68174,8 +69416,18 @@
       "name": "sf2cute",
       "manifest": {
         "name": "sf2cute",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++14 Library for SoundFont 2",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "example": {
             "description": "Installs an example application"
@@ -68192,11 +69444,19 @@
       "name": "sfgui",
       "manifest": {
         "name": "sfgui",
-        "port-version": 5,
+        "port-version": 6,
         "description": "simple and fast graphical user interface library",
         "homepage": "https://github.com/TankOs/SFGUI",
         "dependencies": [
-          "sfml"
+          "sfml",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "0.4.0"
       },
@@ -68246,8 +69506,15 @@
       "name": "sfsexp",
       "manifest": {
         "name": "sfsexp",
+        "port-version": 1,
         "description": "Small Fast S-Expression Library",
         "homepage": "https://github.com/mjsottile/sfsexp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version": "1.3.1"
       },
       "files": [
@@ -68468,14 +69735,22 @@
       "name": "shiva-sfml",
       "manifest": {
         "name": "shiva-sfml",
-        "port-version": 2,
+        "port-version": 3,
         "description": "shiva-sfml plugins of shiva C++ engine",
         "dependencies": [
           {
             "name": "sfml",
             "platform": "windows"
           },
-          "shiva"
+          "shiva",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.0"
       },
@@ -68488,7 +69763,7 @@
       "name": "shogun",
       "manifest": {
         "name": "shogun",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Unified and efficient Machine Learning",
         "homepage": "https://github.com/shogun-toolbox/shogun",
         "dependencies": [
@@ -68504,6 +69779,14 @@
           "protobuf",
           "rxcpp",
           "snappy",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "version-string": "6.1.4"
@@ -68523,7 +69806,7 @@
       "name": "signalrclient",
       "manifest": {
         "name": "signalrclient",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ client for SignalR.",
         "homepage": "https://github.com/SignalR/SignalR-Client-Cpp",
         "dependencies": [
@@ -68534,7 +69817,11 @@
               "websockets"
             ]
           },
-          "openssl"
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "1.0.0-beta1-9"
       },
@@ -69198,12 +70485,20 @@
       "name": "slikenet",
       "manifest": {
         "name": "slikenet",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SLikeNetT is an Open Source/Free Software cross-platform network engine written in C++ and specifially designed for games (and applications which have comparable requirements on a network engine like games) building upon the discontinued RakNet network engine which had more than 13 years of active development.",
         "homepage": "https://github.com/SLikeSoft/SLikeNet",
         "supports": "!uwp",
         "dependencies": [
-          "openssl"
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-date": "2021-06-07"
       },
@@ -69220,8 +70515,19 @@
       "name": "sltbench",
       "manifest": {
         "name": "sltbench",
+        "port-version": 1,
         "description": "C++ benchmark tool. Practical, stable and fast performance testing framework.",
         "homepage": "https://github.com/ivafanas/sltbench",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.4.0"
       },
       "files": [
@@ -69263,11 +70569,15 @@
       "name": "smpeg2",
       "manifest": {
         "name": "smpeg2",
-        "port-version": 7,
+        "port-version": 8,
         "description": "SDL MPEG Player Library",
         "homepage": "https://www.libsdl.org/projects/smpeg/",
         "dependencies": [
-          "sdl2"
+          "sdl2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "2.0.0"
       },
@@ -69516,11 +70826,15 @@
       "name": "soem",
       "manifest": {
         "name": "soem",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Simple Open Source EtherCAT Master",
         "homepage": "https://github.com/OpenEtherCATsociety/SOEM",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
           {
             "name": "winpcap",
             "platform": "windows"
@@ -69539,10 +70853,16 @@
       "name": "soil",
       "manifest": {
         "name": "soil",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SOIL is a tiny C library used primarily for uploading textures into OpenGL.",
         "homepage": "https://github.com/paralin/soil",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-date": "2021-04-22"
       },
       "files": [
@@ -69710,11 +71030,20 @@
       "name": "sord",
       "manifest": {
         "name": "sord",
+        "port-version": 1,
         "description": "Sord is a lightweight C library for storing RDF statements in memory.",
         "homepage": "https://drobilla.net/software/sord",
         "license": "ISC",
         "dependencies": [
-          "serd"
+          "serd",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.16.4"
       },
@@ -69796,9 +71125,13 @@
       "name": "spaceland",
       "manifest": {
         "name": "spaceland",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Spaceland Lib (sl) is a suite for geometric computation, specifically adapted to OpenGL.",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
           "zlib"
         ],
         "version-string": "7.8.2"
@@ -69851,8 +71184,14 @@
       "name": "sparsepp",
       "manifest": {
         "name": "sparsepp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A fast, memory efficient hash map for C++",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.22"
       },
       "files": [
@@ -69899,13 +71238,17 @@
       "name": "spdk",
       "manifest": {
         "name": "spdk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Storage Performance Development Kit",
         "supports": "linux",
         "dependencies": [
           "spdk-dpdk",
           "spdk-ipsec",
-          "spdk-isal"
+          "spdk-isal",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
         ],
         "version-string": "19.01.1"
       },
@@ -69925,9 +71268,15 @@
       "name": "spdk-dpdk",
       "manifest": {
         "name": "spdk-dpdk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SPDK mirror of DPDK. A set of libraries and drivers for fast packet processing",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-date": "2018-11-24"
       },
       "files": [
@@ -69943,9 +71292,15 @@
       "name": "spdk-ipsec",
       "manifest": {
         "name": "spdk-ipsec",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SPDK mirror of ipsec. Intel(R) Multi-Buffer Crypto for IPsec Library",
         "supports": "x64 & linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-date": "2018-07-11"
       },
       "files": [
@@ -70262,9 +71617,19 @@
       "name": "spscqueue",
       "manifest": {
         "name": "spscqueue",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A bounded single-producer single-consumer wait-free and lock-free queue written in C++11",
         "homepage": "https://github.com/rigtorp/SPSCQueue",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.1"
       },
       "files": [
@@ -70646,13 +72011,22 @@
       "name": "sratom",
       "manifest": {
         "name": "sratom",
+        "port-version": 1,
         "description": "Sratom is a library for serialising LV2 atoms to and from RDF, particularly the Turtle syntax.",
         "homepage": "https://drobilla.net/software/sratom",
         "license": "ISC",
         "dependencies": [
           "lv2",
           "serd",
-          "sord"
+          "sord",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "0.6.4"
       },
@@ -70811,9 +72185,19 @@
       "name": "status-value-lite",
       "manifest": {
         "name": "status-value-lite",
-        "port-version": 1,
+        "port-version": 2,
         "description": "status_value is a single-file header-only library for objects that represent a status and an optional value. It is intended for use with C++11 and later.",
         "homepage": "https://github.com/martinmoene/status-value-lite",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "test": {
             "description": "Build with test"
@@ -70913,7 +72297,7 @@
       "name": "stlab",
       "manifest": {
         "name": "stlab",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "stlab is the ongoing work of what was Adobe Software Technology Lab.",
           "The Concurrency library provides futures and channels, high level constructs for implementing algorithms that eases the use of multiple CPU cores while minimizing contention. This library solves several problems of the C++11 and C++17 TS futures."
@@ -70922,6 +72306,14 @@
           {
             "name": "boost-variant",
             "platform": "osx"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version-string": "1.6.2"
@@ -70935,10 +72327,18 @@
       "name": "stormlib",
       "manifest": {
         "name": "stormlib",
-        "port-version": 3,
+        "port-version": 4,
         "description": "StormLib is a library for opening and manipulating Blizzard MPQ files",
         "dependencies": [
           "bzip2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "version-string": "2019-05-10"
@@ -71134,8 +72534,18 @@
       "name": "stxxl",
       "manifest": {
         "name": "stxxl",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Standard Template Library for Extra Large Data Sets",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-date": "2018-11-15"
       },
       "files": [
@@ -71149,12 +72559,20 @@
       "name": "suitesparse",
       "manifest": {
         "name": "suitesparse",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A suite of sparse matrix algorithms. Also provides libcxsparse.",
         "homepage": "http://suitesparse.com",
         "dependencies": [
           "lapack",
-          "metis"
+          "metis",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-semver": "5.8.0"
       },
@@ -71289,8 +72707,18 @@
       "name": "systemc",
       "manifest": {
         "name": "systemc",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A set of C++ classes and macros which provide an event-driven simulation kernel in C++",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.3.3"
       },
       "files": [
@@ -71355,9 +72783,15 @@
       "name": "tacopie",
       "manifest": {
         "name": "tacopie",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Tacopie is a TCP Client & Server C++11 library",
         "homepage": "https://github.com/cpp-redis/tacopie",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "3.2.0"
       },
       "files": [
@@ -71393,8 +72827,18 @@
       "name": "taocpp-json",
       "manifest": {
         "name": "taocpp-json",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ header-only JSON library",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-09-14"
       },
       "files": [
@@ -71583,7 +73027,7 @@
       "name": "telnetpp",
       "manifest": {
         "name": "telnetpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Telnet++ is an implementation of the Telnet Session Layer protocol using C++14",
         "homepage": "https://github.com/KazDragon/telnetpp",
         "supports": "!uwp",
@@ -71593,7 +73037,15 @@
           "boost-range",
           "boost-signals2",
           "boost-variant",
-          "gsl-lite"
+          "gsl-lite",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "default-features": [
           "zlib"
@@ -71817,10 +73269,16 @@
       "name": "tfhe",
       "manifest": {
         "name": "tfhe",
-        "port-version": 4,
+        "port-version": 5,
         "description": "TFHE is open-source software distributed under the terms of the Apache 2.0 license.",
         "homepage": "https://github.com/tfhe/tfhe",
         "supports": "!windows & !arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-semver": "1.0.1"
       },
       "files": [
@@ -71863,9 +73321,19 @@
       "name": "tgc",
       "manifest": {
         "name": "tgc",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A tiny garbage collector for C",
         "homepage": "https://github.com/orangeduck/tgc",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-08-11"
       },
       "files": [
@@ -72186,9 +73654,19 @@
       "name": "tinkerforge",
       "manifest": {
         "name": "tinkerforge",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Tinkerforge C API bindings for bricks and bricklets",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "2.1.25"
       },
       "files": [
@@ -72202,9 +73680,19 @@
       "name": "tiny-aes-c",
       "manifest": {
         "name": "tiny-aes-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Small portable AES128/192/256 in C",
         "homepage": "https://github.com/kokke/tiny-AES-c",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-31"
       },
       "files": [
@@ -72217,9 +73705,19 @@
       "name": "tiny-bignum-c",
       "manifest": {
         "name": "tiny-bignum-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Small portable multiple-precision unsigned integer arithmetic in C",
         "homepage": "https://github.com/kokke/tiny-bignum-c",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-31"
       },
       "files": [
@@ -72272,9 +73770,19 @@
       "name": "tiny-regex-c",
       "manifest": {
         "name": "tiny-regex-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A small regex implementation in C",
         "homepage": "https://github.com/kokke/tiny-regex-c",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2019-07-31"
       },
       "files": [
@@ -72309,9 +73817,15 @@
       "name": "tinycthread",
       "manifest": {
         "name": "tinycthread",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Small, portable implementation of the C11 threads API",
         "homepage": "https://tinycthread.github.io/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2019-08-06"
       },
       "files": [
@@ -72361,9 +73875,20 @@
       "name": "tinyexpr",
       "manifest": {
         "name": "tinyexpr",
+        "port-version": 1,
         "description": "Tiny recursive descent parser and evaluation engine in C",
         "homepage": "https://codeplea.com/tinyexpr",
         "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-09-25"
       },
       "files": [
@@ -72447,9 +73972,17 @@
       "name": "tinynpy",
       "manifest": {
         "name": "tinynpy",
-        "port-version": 4,
+        "port-version": 5,
         "description": "tiny C++ loader/exporter of python numpy array NPY/NPZ files",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zlib"
         ],
         "version-string": "1.0.0"
@@ -72539,9 +74072,15 @@
       "name": "tinythread",
       "manifest": {
         "name": "tinythread",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Implements a fairly compatible subset of the C++11 thread management classes",
         "homepage": "https://tinythreadpp.bitsnbites.eu/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.1"
       },
       "files": [
@@ -72587,9 +74126,19 @@
       "name": "tinyxml",
       "manifest": {
         "name": "tinyxml",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A simple, small, minimal, C++ XML parser that can be easily integrating into other programs.",
         "homepage": "https://sourceforge.net/projects/tinyxml",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2.6.2"
       },
       "files": [
@@ -72658,8 +74207,14 @@
       "name": "tl-function-ref",
       "manifest": {
         "name": "tl-function-ref",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A lightweight, non-owning reference to a callable.",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.0.0"
       },
       "files": [
@@ -72741,9 +74296,19 @@
       "name": "tlx",
       "manifest": {
         "name": "tlx",
-        "port-version": 2,
+        "port-version": 3,
         "description": "tlx is a collection of C++ helpers and extensions universally needed, but not found in the STL",
         "homepage": "https://github.com/tlx/tlx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "0.5.20191212"
       },
       "files": [
@@ -73046,9 +74611,15 @@
       "name": "tre",
       "manifest": {
         "name": "tre",
-        "port-version": 4,
+        "port-version": 5,
         "description": "TRE is a lightweight, robust, and efficient POSIX compliant regexp matching library with some exciting features such as approximate (fuzzy) matching.",
         "homepage": "https://github.com/laurikari/tre",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version": "0.8.0"
       },
       "files": [
@@ -73103,11 +74674,19 @@
       "name": "treehopper",
       "manifest": {
         "name": "treehopper",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Treehopper connects the physical world to your computer, tablet, or smartphone.",
         "homepage": "https://treehopper.io",
         "dependencies": [
-          "libusb"
+          "libusb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.11.3"
       },
@@ -73120,10 +74699,20 @@
       "name": "triangle",
       "manifest": {
         "name": "triangle",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A Two-Dimensional Quality Mesh Generator and Delaunay Triangulator.",
         "homepage": "http://www.cs.cmu.edu/~quake/triangle.html",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.6"
       },
       "files": [
@@ -73216,8 +74805,14 @@
       "name": "tsl-hopscotch-map",
       "manifest": {
         "name": "tsl-hopscotch-map",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ implementation of a fast hash map and hash set using hopscotch hashing",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "2.3.0"
       },
       "files": [
@@ -73229,8 +74824,14 @@
       "name": "tsl-ordered-map",
       "manifest": {
         "name": "tsl-ordered-map",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ hash map and hash set which preserve the order of insertion",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.0.0"
       },
       "files": [
@@ -73242,8 +74843,14 @@
       "name": "tsl-sparse-map",
       "manifest": {
         "name": "tsl-sparse-map",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ implementation of a memory efficient hash map and hash set",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "0.6.2"
       },
       "files": [
@@ -73328,8 +74935,19 @@
       "name": "tweeny",
       "manifest": {
         "name": "tweeny",
+        "port-version": 1,
         "description": "A modern C++ tweening library",
         "homepage": "https://github.com/mobius3/tweeny",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "3.2.0"
       },
       "files": [
@@ -73341,9 +74959,19 @@
       "name": "type-lite",
       "manifest": {
         "name": "type-lite",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Strong types for C++98, C++11 and later in a single-file header-only library.",
         "homepage": "https://github.com/martinmoene/type-lite",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "test": {
             "description": "Build with test"
@@ -73532,9 +75160,19 @@
       "name": "unittest-cpp",
       "manifest": {
         "name": "unittest-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A lightweight unit testing framework for C++",
         "homepage": "https://github.com/unittest-cpp/unittest-cpp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-semver": "2.0.0"
       },
       "files": [
@@ -73565,9 +75203,16 @@
       "name": "unqlite",
       "manifest": {
         "name": "unqlite",
+        "port-version": 1,
         "description": "An embedded NoSQL, transactional database engine",
         "homepage": "https://unqlite.org/",
         "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.1.9"
       },
       "files": [
@@ -73957,9 +75602,15 @@
       "name": "utfz",
       "manifest": {
         "name": "utfz",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A tiny C++ library for parsing and encoding utf-8",
         "homepage": "https://github.com/IMQS/utfz",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.2"
       },
       "files": [
@@ -74110,10 +75761,20 @@
       "name": "v-hacd",
       "manifest": {
         "name": "v-hacd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The V-HACD library decomposes a 3D surface into a set of \"near\" convex parts.",
         "homepage": "https://github.com/kmammou/v-hacd",
         "supports": "!arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "opencl": {
             "description": "Builds opencl enabled lib",
@@ -74721,8 +76382,18 @@
       "name": "visit-struct",
       "manifest": {
         "name": "visit-struct",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A header-only library providing structure visitors for C++11 and C++14",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "1.0"
       },
       "files": [
@@ -74774,9 +76445,19 @@
       "name": "vlfeat",
       "manifest": {
         "name": "vlfeat",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An open library of computer vision algorithms",
         "homepage": "https://www.vlfeat.org",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version-string": "2020-07-10"
       },
       "files": [
@@ -75799,10 +77480,16 @@
       "name": "wepoll",
       "manifest": {
         "name": "wepoll",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Fast epoll for windows",
         "homepage": "https://github.com/piscisaureus/wepoll",
         "supports": "windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
         "version-string": "1.5.8"
       },
       "files": [
@@ -76143,8 +77830,18 @@
       "name": "wordnet",
       "manifest": {
         "name": "wordnet",
-        "port-version": 1,
+        "port-version": 2,
         "description": "WordNet is a large lexical database of English",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "features": {
           "dbfiles": {
             "description": "WordNet 3.1 database files"
@@ -77034,10 +78731,18 @@
       "name": "xframe",
       "manifest": {
         "name": "xframe",
-        "port-version": 1,
+        "port-version": 2,
         "description": "xframe is a dataframe for C++, based on xtensor and xtl.",
         "homepage": "https://github.com/xtensor-stack/xframe",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "xtensor",
           "xtl"
         ],
@@ -77223,9 +78928,17 @@
       "name": "xproperty",
       "manifest": {
         "name": "xproperty",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Traitlets-like C++ properties and implementation of the observer pattern",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "xtl"
         ],
         "version-string": "0.8.1"
@@ -77393,11 +79106,19 @@
       "name": "xtensor-fftw",
       "manifest": {
         "name": "xtensor-fftw",
-        "port-version": 2,
+        "port-version": 3,
         "description": "FFTW bindings for the xtensor C++14 multi-dimensional array library",
         "homepage": "https://github.com/xtensor-stack/xtensor-fftw",
         "dependencies": [
           "fftw3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "xtensor"
         ],
         "version-string": "2019-11-30"
@@ -77437,10 +79158,19 @@
       "name": "xtl",
       "manifest": {
         "name": "xtl",
+        "port-version": 1,
         "description": "The x template library",
         "homepage": "https://github.com/xtensor-stack/xtl",
         "dependencies": [
-          "nlohmann-json"
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version": "0.7.2"
       },
@@ -77719,6 +79449,7 @@
       "name": "yomm2",
       "manifest": {
         "name": "yomm2",
+        "port-version": 1,
         "description": "YOMM2 is an implementation of open multi-methods.",
         "homepage": "https://github.com/jll63/yomm2",
         "dependencies": [
@@ -77726,7 +79457,15 @@
           "boost-integer",
           "boost-move",
           "boost-preprocessor",
-          "boost-type-traits"
+          "boost-type-traits",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "1.1.2"
       },
@@ -77983,7 +79722,6 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 6,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "LGPL-3.0-only",
@@ -78012,21 +79750,20 @@
             "description": "Enable WebSocket transport through builtin sha1 (libzmq#3676)"
           }
         },
-        "version": "4.3.4"
+        "version-date": "2023-01-31"
       },
       "files": [
         "fix-arm.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json",
-        "zeromq-libzmq-4310-64e6d37ab8.diff",
-        "zeromq-libzmq-4311-2b04e0ce47.diff"
+        "vcpkg.json"
       ]
     },
     {
       "name": "zfp",
       "manifest": {
         "name": "zfp",
+        "port-version": 1,
         "description": "Zfp is an open source C/C++ library for compressed numerical arrays that support high throughput read and write random access. zfp also supports streaming compression of integer and floating-point data, e.g., for applications that read and write large data sets to and from disk. zfp is primarily written in C and C++ but also includes Python and Fortran bindings.",
         "homepage": "https://github.com/LLNL/zfp",
         "license": "BSD-3-Clause",
@@ -78107,11 +79844,19 @@
       "name": "zkpp",
       "manifest": {
         "name": "zkpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A ZooKeeper client for C++.",
         "homepage": "https://github.com/tgockel/zookeeper-cpp",
         "supports": "!windows",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "zookeeper"
         ],
         "version": "0.2.3"
@@ -78409,11 +80154,19 @@
       "name": "zyre",
       "manifest": {
         "name": "zyre",
-        "port-version": 3,
+        "port-version": 4,
         "description": "An open-source framework for proximity-based peer-to-peer applications",
         "homepage": "https://github.com/zeromq/zyre",
         "dependencies": [
-          "czmq"
+          "czmq",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-string": "2019-07-07"
       },
