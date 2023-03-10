@@ -6,18 +6,20 @@ import {
   minifyTriplets,
 } from './triplets.mjs';
 
-// https://github.com/microsoft/vcpkg/blob/master/docs/maintainers/manifest-files.md#supports
+// https://learn.microsoft.com/vcpkg/reference/vcpkg-json#platform-expression
 export const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
   // platform
   'android',
   'emscripten',
-  'freebsd', // not documented but used (community?)
-  'ios', // not documented but used (community?)
+  'freebsd',
+  'ios',
   'linux',
   'mingw',
+  'openbsd',
   'osx',
   'uwp',
   'windows',
+  'xbox', // not documented but used (community?)
   // arch
   'x64',
   'x86',
