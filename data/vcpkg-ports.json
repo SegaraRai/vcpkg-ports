@@ -1,5 +1,5 @@
 {
-  "version": "02ad673d3bf004f17ec780cb6363ba1c7f928851",
+  "version": "dd1b57240ef5db0232e83442712574dfa6c29931",
   "ports": [
     {
       "name": "3fd",
@@ -139,6 +139,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
+        "port-version": 1,
         "description": [
           "an open-source collection designed to augment the C++ standard library.",
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
@@ -4183,6 +4184,38 @@
       ]
     },
     {
+      "name": "azure-security-keyvault-administration-cpp",
+      "manifest": {
+        "name": "azure-security-keyvault-administration-cpp",
+        "description": [
+          "Microsoft Azure Key Vault Administration SDK for C++",
+          "This library provides Azure Key Vault Administration SDK."
+        ],
+        "homepage": "https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/keyvault/azure-security-keyvault-administration",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "azure-core-cpp",
+            "default-features": false,
+            "version>=": "1.7.2"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "4.0.0-beta.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "azure-security-keyvault-certificates-cpp",
       "manifest": {
         "name": "azure-security-keyvault-certificates-cpp",
@@ -4292,7 +4325,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.3.0"
+            "version>=": "12.3.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -4303,7 +4336,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.6.2"
+        "version-semver": "12.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -4324,7 +4357,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.7.1"
+            "version>=": "1.8.0"
           },
           {
             "name": "libxml2",
@@ -4343,7 +4376,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.3.0"
+        "version-semver": "12.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -4452,7 +4485,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.3.0"
+            "version>=": "12.3.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -4463,7 +4496,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.3.0"
+        "version-semver": "12.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -16012,7 +16045,6 @@
       "name": "bullet3",
       "manifest": {
         "name": "bullet3",
-        "port-version": 2,
         "description": "Bullet Physics is a professional collision detection, rigid body, and soft body dynamics library",
         "homepage": "https://github.com/bulletphysics/bullet3",
         "license": "Zlib",
@@ -16037,7 +16069,7 @@
             "description": "Enable RTTI on windows"
           }
         },
-        "version": "3.22"
+        "version": "3.25"
       },
       "files": [
         "cmake-fix.patch",
@@ -20858,7 +20890,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.1.0"
+        "version-semver": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -21107,8 +21139,11 @@
       "name": "d3dx12",
       "manifest": {
         "name": "d3dx12",
+        "port-version": 1,
         "description": "The D3D12 Helper Library",
         "homepage": "https://docs.microsoft.com/en-us/windows/win32/direct3d12/helper-structures-and-functions-for-d3d12",
+        "license": "MIT",
+        "supports": "(windows & !xbox) | linux",
         "version-string": "may2021"
       },
       "files": [
@@ -21424,7 +21459,7 @@
             "host": true
           }
         ],
-        "version": "2.76.2"
+        "version": "2.88.0"
       },
       "files": [
         "portfile.cmake",
@@ -21474,7 +21509,7 @@
             "host": true
           }
         ],
-        "version": "2.2.2"
+        "version": "2.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -21860,11 +21895,12 @@
       "name": "directx-dxc",
       "manifest": {
         "name": "directx-dxc",
+        "port-version": 1,
         "description": "DirectX Shader Compiler (LLVM/Clang)",
         "homepage": "https://github.com/microsoft/DirectXShaderCompiler",
         "documentation": "https://github.com/microsoft/DirectXShaderCompiler/wiki",
         "license": null,
-        "supports": "(windows & !arm32 & !uwp) | (linux & x64)",
+        "supports": "(windows & !arm32 & !uwp & !xbox) | (linux & x64)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -21887,11 +21923,12 @@
       "name": "directx-headers",
       "manifest": {
         "name": "directx-headers",
+        "port-version": 1,
         "description": "Official DirectX 12 Headers",
         "homepage": "https://devblogs.microsoft.com/directx/",
         "documentation": "https://devblogs.microsoft.com/directx/gettingstarted-dx12agility/",
         "license": "MIT",
-        "supports": "windows | linux",
+        "supports": "(windows & !xbox) | linux",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -21938,14 +21975,22 @@
       "name": "directxmesh",
       "manifest": {
         "name": "directxmesh",
+        "port-version": 1,
         "description": "DirectXMesh geometry processing library",
         "homepage": "https://github.com/Microsoft/DirectXMesh",
         "documentation": "https://github.com/microsoft/DirectXMesh/wiki",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
-          "directx-headers",
+          {
+            "name": "directx-headers",
+            "platform": "(windows & !xbox) | linux"
+          },
           "directxmath",
+          {
+            "name": "ms-gdkx",
+            "platform": "xbox"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -21974,10 +22019,11 @@
       "name": "directxsdk",
       "manifest": {
         "name": "directxsdk",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Legacy DirectX SDK",
         "homepage": "https://docs.microsoft.com/en-us/windows/win32/directx-sdk--august-2009-",
-        "supports": "windows & !uwp & !arm",
+        "license": null,
+        "supports": "windows & !uwp & !xbox & !arm",
         "features": {
           "xaudio2-7": {
             "description": "Include headers/libs for legacy XAudio 2.7 (prefer use of XAudio2Redist)"
@@ -22000,15 +22046,22 @@
       "name": "directxtex",
       "manifest": {
         "name": "directxtex",
-        "port-version": 1,
+        "port-version": 2,
         "description": "DirectXTex texture processing library",
         "homepage": "https://github.com/Microsoft/DirectXTex",
         "documentation": "https://github.com/microsoft/DirectXTex/wiki",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
-          "directx-headers",
+          {
+            "name": "directx-headers",
+            "platform": "(windows & !xbox) | linux"
+          },
           "directxmath",
+          {
+            "name": "ms-gdkx",
+            "platform": "xbox"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22049,11 +22102,12 @@
       "name": "directxtk",
       "manifest": {
         "name": "directxtk",
+        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 11.x code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK",
         "documentation": "https://github.com/microsoft/DirectXTK/wiki",
         "license": "MIT",
-        "supports": "windows",
+        "supports": "windows & !xbox",
         "dependencies": [
           "directxmath",
           {
@@ -22096,6 +22150,7 @@
       "name": "directxtk12",
       "manifest": {
         "name": "directxtk12",
+        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 12 code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK12",
         "documentation": "https://github.com/microsoft/DirectXTK12/wiki",
@@ -22104,10 +22159,18 @@
         "dependencies": [
           {
             "name": "directx-dxc",
-            "host": true
+            "host": true,
+            "platform": "windows & !xbox"
           },
-          "directx-headers",
+          {
+            "name": "directx-headers",
+            "platform": "windows & !xbox"
+          },
           "directxmath",
+          {
+            "name": "ms-gdkx",
+            "platform": "xbox"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22569,6 +22632,7 @@
       "name": "dpp",
       "manifest": {
         "name": "dpp",
+        "port-version": 1,
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
         "license": "Apache-2.0",
@@ -22592,6 +22656,7 @@
       },
       "files": [
         "portfile.cmake",
+        "remove-wrong-header.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -22745,12 +22810,12 @@
       "name": "dstorage",
       "manifest": {
         "name": "dstorage",
-        "port-version": 1,
+        "port-version": 2,
         "description": "DirectStorage for Windows",
         "homepage": "https://aka.ms/directstorage/",
         "documentation": "https://github.com/microsoft/DirectStorage",
         "license": null,
-        "supports": "windows & !uwp & !staticcrt",
+        "supports": "windows & !uwp & !xbox & !staticcrt",
         "version": "1.1.0"
       },
       "files": [
@@ -22912,11 +22977,11 @@
       "name": "dxsdk-d3dx",
       "manifest": {
         "name": "dxsdk-d3dx",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Redistributable package for the legacy DirectX SDK's D3DX9, D3DX10, and/or D3DX11 utility libraries.",
         "homepage": "https://walbourn.github.io/legacy-d3dx-on-nuget/",
         "license": null,
-        "supports": "windows & !arm & !uwp & !staticcrt",
+        "supports": "windows & !arm & !uwp & !xbox & !staticcrt",
         "version": "9.29.952.8"
       },
       "files": [
@@ -22929,12 +22994,12 @@
       "name": "dxut",
       "manifest": {
         "name": "dxut",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A \"GLUT\"-like framework for Direct3D 11.x Win32 desktop applications",
         "homepage": "https://github.com/Microsoft/DXUT",
         "documentation": "https://github.com/microsoft/DXUT/wiki",
         "license": "MIT",
-        "supports": "windows & !uwp",
+        "supports": "windows & !uwp & !xbox",
         "dependencies": [
           "directxmath",
           {
@@ -23275,12 +23340,12 @@
       "name": "effects11",
       "manifest": {
         "name": "effects11",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Effects for Direct3D 11 (FX11) is a management runtime for authoring HLSL shaders, render state, and runtime variables together.",
         "homepage": "https://github.com/Microsoft/FX11",
         "documentation": "https://github.com/microsoft/FX11/wiki",
         "license": "MIT",
-        "supports": "windows & !mingw",
+        "supports": "windows & !xbox & !mingw",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -24549,7 +24614,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -25707,7 +25772,6 @@
       "name": "flatbuffers",
       "manifest": {
         "name": "flatbuffers",
-        "port-version": 2,
         "description": [
           "Memory Efficient Serialization Library",
           "FlatBuffers is an efficient cross platform serialization library for games and other memory constrained apps. It allows you to directly access serialized data without unpacking/parsing it first, while still having great forwards/backwards compatibility."
@@ -25728,10 +25792,9 @@
             "host": true
           }
         ],
-        "version": "23.1.21"
+        "version": "23.3.3"
       },
       "files": [
-        "fix-abseil-cxx14.patch",
         "fix-uwp-build.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -27850,7 +27913,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.1.2"
+        "version": "2.2"
       },
       "files": [
         "portfile.cmake",
@@ -35215,6 +35278,7 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
+        "port-version": 1,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -42301,6 +42365,78 @@
       ]
     },
     {
+      "name": "libopnmidi",
+      "manifest": {
+        "name": "libopnmidi",
+        "description": "libOPNMIDI is a free Software MIDI synthesizer library with OPN2 (YM2612) and OPNA (YM2608) emulation",
+        "homepage": "https://github.com/Wohlstand/libOPNMIDI",
+        "license": "LGPL-2.1-or-later OR GPL-2.0-or-later OR GPL-3.0-or-later OR MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "gens-emulator",
+          "mame-ym2608-emulator",
+          "mame-ym2612-emulator",
+          "midi-sequencer",
+          "mus",
+          "np2-emulator",
+          "nuked-emulator",
+          "xmi"
+        ],
+        "features": {
+          "gens-emulator": {
+            "description": "Build with GENS 2.10 emulator (innacurate, fastest)"
+          },
+          "gx-emulator": {
+            "description": "Build with Genesis Plus GX emulator (experimental)"
+          },
+          "mame-ym2608-emulator": {
+            "description": "Build with MAME YM2608 emulator (well-accurate and fast)"
+          },
+          "mame-ym2612-emulator": {
+            "description": "Build with MAME YM2612 emulator (well-accurate and fast)"
+          },
+          "midi-sequencer": {
+            "description": "Build with embedded MIDI sequencer"
+          },
+          "mus": {
+            "description": "Support for DMX MUS files"
+          },
+          "np2-emulator": {
+            "description": "Build with Neko Project 2 YM2608 emulator (semi-accurate and fast)"
+          },
+          "nuked-emulator": {
+            "description": "Build with Nuked OPN2 emulator (very accurate, needs more CPU power)"
+          },
+          "pmdwin-emulator": {
+            "description": "Build with PMDWin emulator (experimental)"
+          },
+          "xmi": {
+            "description": "Support for AIL XMI files"
+          }
+        },
+        "version": "1.5.1"
+      },
+      "files": [
+        "cmake-build-shared-libs-support.patch",
+        "cmake-package-export.patch",
+        "disable-wopn2hpp.patch",
+        "fix-build-without-sequencer.patch",
+        "fix-pmdwin-emulator-include.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libopusenc",
       "manifest": {
         "name": "libopusenc",
@@ -44236,6 +44372,7 @@
       "name": "libtasn1",
       "manifest": {
         "name": "libtasn1",
+        "port-version": 1,
         "description": "A secure communications library implementing the SSL, TLS and DTLS protocols",
         "homepage": "https://www.gnutls.org/",
         "license": null,
@@ -44253,6 +44390,7 @@
         "version": "4.19.0"
       },
       "files": [
+        "clang-fortify.patch",
         "msvc_fixes.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -51144,10 +51282,10 @@
       "name": "mmx",
       "manifest": {
         "name": "mmx",
-        "port-version": 1,
         "description": "Single header libraries for C/C++",
         "homepage": "https://github.com/vurtun/mmx",
-        "version-string": "2019-09-29"
+        "license": null,
+        "version-date": "2022-03-27"
       },
       "files": [
         "copyright",
@@ -51813,6 +51951,22 @@
           "angle"
         ],
         "version-string": "alias"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ms-gdkx",
+      "manifest": {
+        "name": "ms-gdkx",
+        "description": "Stub port that ensures the Microsoft GDK with Xbox Extensions is installed.",
+        "homepage": "https://aka.ms/gdkx",
+        "documentation": "https://aka.ms/gamedevdocs",
+        "license": null,
+        "supports": "xbox",
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -56796,9 +56950,10 @@
       "name": "opengl",
       "manifest": {
         "name": "opengl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open Graphics Library (OpenGL)[3][4][5] is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics.",
         "license": null,
+        "supports": "!xbox",
         "dependencies": [
           "opengl-registry"
         ],
@@ -56816,8 +56971,10 @@
       "name": "opengl-registry",
       "manifest": {
         "name": "opengl-registry",
+        "port-version": 1,
         "description": "the API and Extension registries for the OpenGL family APIs",
         "homepage": "https://github.com/KhronosGroup/OpenGL-Registry",
+        "supports": "!xbox",
         "dependencies": [
           "egl-registry"
         ],
@@ -58429,6 +58586,31 @@
         "portfile.cmake",
         "remove-lerc-gltf.patch",
         "remove-tool-debug-suffix.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "osmanip",
+      "manifest": {
+        "name": "osmanip",
+        "description": "A cross-platform library for output stream manipulation using ANSI escape sequences.",
+        "homepage": "https://github.com/JustWhit3/osmanip",
+        "license": "MIT",
+        "dependencies": [
+          "arsenalgear",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.5.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -62492,6 +62674,7 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
+        "port-version": 1,
         "description": "Qt5 Application Framework",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62582,6 +62765,7 @@
                 "name": "qt5-base",
                 "default-features": false,
                 "features": [
+                  "icu",
                   "mysqlplugin",
                   "postgresqlplugin"
                 ]
@@ -62914,7 +63098,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62927,10 +63111,6 @@
           },
           "freetype",
           "harfbuzz",
-          {
-            "name": "icu",
-            "platform": "!uwp"
-          },
           "libjpeg-turbo",
           "libpng",
           {
@@ -62957,6 +63137,15 @@
           "zstd"
         ],
         "features": {
+          "icu": {
+            "description": "Enable ICU support",
+            "dependencies": [
+              {
+                "name": "icu",
+                "platform": "!uwp"
+              }
+            ]
+          },
           "latest": {
             "description": "(deprecated)"
           },
@@ -76033,14 +76222,17 @@
       "name": "uvatlas",
       "manifest": {
         "name": "uvatlas",
-        "port-version": 1,
+        "port-version": 2,
         "description": "UVAtlas isochart texture atlas",
         "homepage": "https://github.com/Microsoft/UVAtlas",
         "documentation": "https://github.com/Microsoft/UVAtlas/wiki",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
-          "directx-headers",
+          {
+            "name": "directx-headers",
+            "platform": "(windows & !xbox) | linux"
+          },
           "directxmath",
           {
             "name": "directxmesh",
@@ -76050,6 +76242,10 @@
             "name": "directxtex",
             "default-features": false,
             "platform": "!(uwp | linux)"
+          },
+          {
+            "name": "ms-gdkx",
+            "platform": "xbox"
           },
           {
             "name": "vcpkg-cmake",
@@ -77393,8 +77589,9 @@
       "name": "vulkan",
       "manifest": {
         "name": "vulkan",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs on a wide variety of devices.",
+        "supports": "!xbox",
         "version": "1.1.82.1"
       },
       "files": [
@@ -77408,9 +77605,11 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
+        "port-version": 1,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -77432,7 +77631,10 @@
       "name": "vulkan-hpp",
       "manifest": {
         "name": "vulkan-hpp",
+        "port-version": 1,
         "description": "Header only C++ bindings for the Vulkan C API",
+        "license": "Apache-2.0",
+        "supports": "!xbox",
         "dependencies": [
           "vulkan"
         ],
@@ -78781,11 +78983,12 @@
       "name": "xaudio2redist",
       "manifest": {
         "name": "xaudio2redist",
+        "port-version": 1,
         "description": "Redistributable version of XAudio 2.9 for Windows 7 SP1 or later",
         "homepage": "https://aka.ms/XAudio2Redist",
         "documentation": "https://aka.ms/XAudio2Redist",
         "license": null,
-        "supports": "windows & !arm & !uwp",
+        "supports": "windows & !arm & !uwp & !xbox",
         "version": "1.2.11"
       },
       "files": [
