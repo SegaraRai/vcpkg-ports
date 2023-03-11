@@ -1,5 +1,5 @@
 {
-  "version": "dd1b57240ef5db0232e83442712574dfa6c29931",
+  "version": "716c3524a54f1f50a25d16a4cdd360f5a7fcc150",
   "ports": [
     {
       "name": "3fd",
@@ -19525,22 +19525,19 @@
       "name": "cppkafka",
       "manifest": {
         "name": "cppkafka",
-        "port-version": 4,
+        "port-version": 5,
         "description": "cppkafka allows C++ applications to consume and produce messages using the Apache Kafka protocol. The library is built on top of librdkafka, and provides a high level API that uses modern C++ features to make it easier to write code while keeping the wrapper's performance overhead to a minimum.",
         "homepage": "https://github.com/mfontanini/cppkafka",
+        "license": "BSD-2-Clause",
         "dependencies": [
           "boost-program-options",
           "librdkafka",
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version-string": "0.3.1"
+        "version": "0.3.1"
       },
       "files": [
         "fix-dynamic.patch",
@@ -21510,6 +21507,64 @@
           }
         ],
         "version": "2.2.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "daxa",
+      "manifest": {
+        "name": "daxa",
+        "description": "Daxa C++ Vulkan Abstraction",
+        "homepage": "https://github.com/Ipotrick/Daxa",
+        "license": "MIT",
+        "supports": "(windows | linux) & !x86",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "vulkan",
+          "vulkan-memory-allocator",
+          {
+            "name": "wayland",
+            "default-features": false,
+            "platform": "linux"
+          }
+        ],
+        "default-features": [
+          "utils-imgui",
+          "utils-mem",
+          "utils-pipeline-manager-glslang",
+          "utils-task-list"
+        ],
+        "features": {
+          "utils-imgui": {
+            "description": "The ImGUI Daxa utility",
+            "dependencies": [
+              "imgui"
+            ]
+          },
+          "utils-mem": {
+            "description": "The Mem Daxa utility"
+          },
+          "utils-pipeline-manager-glslang": {
+            "description": "Build with glslang",
+            "dependencies": [
+              "glslang"
+            ]
+          },
+          "utils-task-list": {
+            "description": "The Task-List Daxa utility"
+          }
+        },
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -25817,7 +25872,7 @@
             "host": true
           }
         ],
-        "version": "3.1.4"
+        "version": "3.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -37642,6 +37697,7 @@
       "name": "kubernetes",
       "manifest": {
         "name": "kubernetes",
+        "port-version": 1,
         "description": "Kubernetes C client",
         "homepage": "https://github.com/kubernetes-client/c/",
         "license": "Apache-2.0",
@@ -39300,6 +39356,7 @@
       "name": "libdivide",
       "manifest": {
         "name": "libdivide",
+        "port-version": 1,
         "description": "libdivide.h is a header-only C/C++ library for optimizing integer division.",
         "homepage": "https://github.com/ridiculousfish/libdivide",
         "dependencies": [
@@ -39320,6 +39377,7 @@
         "version": "5.0"
       },
       "files": [
+        "no-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50531,7 +50589,7 @@
       "name": "mfl",
       "manifest": {
         "name": "mfl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Computes the layout information for mathematical formulas provided in TeX-like syntax.",
         "homepage": "https://github.com/cpp-niel/mfl",
         "license": "MIT",
@@ -50555,6 +50613,7 @@
       },
       "files": [
         "disable-tests.patch",
+        "fix-clang-detection.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70604,7 +70663,6 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
-        "port-version": 2,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -70619,10 +70677,9 @@
             "host": true
           }
         ],
-        "version": "5.1.119"
+        "version": "5.2.123"
       },
       "files": [
-        "fix-CMakeLists-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
