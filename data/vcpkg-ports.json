@@ -1,5 +1,5 @@
 {
-  "version": "cfdeb75bb67fee475b517a2f45d8f93f2b46bdb4",
+  "version": "b2b743ab909c8e3b4882f9133445b9b39f056f95",
   "ports": [
     {
       "name": "3fd",
@@ -1926,13 +1926,13 @@
         ],
         "features": {
           "boost-container": {
-            "description": "Use Boost.Container instead of <memory_resource>",
+            "description": "Use Boost.Container instead of <memory_resource> (deprecated)",
             "dependencies": [
               "boost-container"
             ]
           }
         },
-        "version": "2.4.0"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -38885,7 +38885,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.10.2"
       },
       "files": [
         "LibCborConfig.cmake",
@@ -42880,6 +42880,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
+        "port-version": 1,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -43026,12 +43027,11 @@
         "patches/windows/Solution_RELEASE.patch",
         "patches/windows/arm.patch",
         "patches/windows/fix-compile-flag-Zi.patch",
-        "patches/windows/host_skip_openssl.patch",
         "patches/windows/install.patch",
         "patches/windows/macro-def.patch",
         "patches/windows/minimize_install.patch",
         "patches/windows/msgfmt.patch",
-        "patches/windows/openssl_exe_path.patch",
+        "patches/windows/openssl-version.patch",
         "patches/windows/python3_build_DEBUG.patch",
         "patches/windows/python3_build_RELEASE.patch",
         "patches/windows/python_lib.patch",
@@ -53556,7 +53556,7 @@
       "name": "nifticlib",
       "manifest": {
         "name": "nifticlib",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Nifticlib is a C I/O library for reading and writing files in the nifti-1 data format.",
         "homepage": "https://github.com/NIFTI-Imaging/nifti_clib",
         "license": null,
@@ -57664,7 +57664,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -57679,18 +57679,26 @@
           },
           {
             "name": "vcpkg-cmake-get-vars",
-            "host": true,
-            "platform": "windows & !mingw"
+            "host": true
           }
         ],
+        "features": {
+          "tools": {
+            "description": "Install openssl executable and scripts",
+            "supports": "!uwp"
+          }
+        },
         "version": "3.0.8"
       },
       "files": [
+        "disable-apps.patch",
         "disable-install-docs.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
         "script-prefix.patch",
+        "unix/Makefile.emscripten",
+        "unix/android-cc.patch",
         "unix/configure",
         "unix/move-openssldir.patch",
         "unix/no-empty-dirs.patch",
@@ -58008,7 +58016,7 @@
       "name": "openvdb",
       "manifest": {
         "name": "openvdb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Sparse volume data structure and tools",
         "homepage": "https://github.com/dreamworksanimation/openvdb",
         "license": "MPL-2.0",
@@ -69635,7 +69643,7 @@
       "name": "sdl2pp",
       "manifest": {
         "name": "sdl2pp",
-        "port-version": 6,
+        "port-version": 7,
         "description": "C++11 bindings/wrapper for SDL2",
         "homepage": "https://sdl2pp.amdmi3.ru",
         "license": "Zlib",
@@ -70756,7 +70764,8 @@
         "default-features": [
           "deprecated",
           "exceptions",
-          "threads"
+          "threads",
+          "utf8-validation"
         ],
         "features": {
           "deprecated": {
@@ -70767,9 +70776,12 @@
           },
           "threads": {
             "description": "Link with thread support"
+          },
+          "utf8-validation": {
+            "description": "Enable UTF8 validation"
           }
         },
-        "version": "3.1.2"
+        "version": "3.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -76707,7 +76719,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-12-16"
+        "version-date": "2023-03-02"
       },
       "files": [
         "cmake_get_vars/CMakeLists.txt",
