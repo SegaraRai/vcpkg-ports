@@ -1,5 +1,5 @@
 {
-  "version": "f9a27e08b3e4eed6ae58d8b852b31ea46d96a660",
+  "version": "6489ba464c59d2b9d5ec126455a98a76b18a0fea",
   "ports": [
     {
       "name": "3fd",
@@ -22986,40 +22986,54 @@
       "name": "dv-processing",
       "manifest": {
         "name": "dv-processing",
-        "description": "Generic algorithms for event cameras.",
+        "port-version": 1,
+        "description": "Generic algorithms for event cameras. (C++20 required.)",
         "homepage": "https://gitlab.com/inivation/dv/dv-processing",
         "license": "Apache-2.0",
         "dependencies": [
+          "boost-algorithm",
+          {
+            "name": "boost-asio",
+            "features": [
+              "ssl"
+            ]
+          },
           "boost-callable-traits",
           "boost-circular-buffer",
+          "boost-core",
+          "boost-endian",
           "boost-geometry",
           "boost-lockfree",
           "boost-nowide",
           "boost-property-tree",
           "boost-stacktrace",
-          "boost-tti",
           "cli11",
           "eigen3",
           "fmt",
           "libcaer",
           "lz4",
-          "opencv4",
+          {
+            "name": "opencv4",
+            "default-features": false
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
           },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "zlib",
           "zstd"
         ],
+        "features": {
+          "tools": {
+            "description": "Build CLI utilities"
+          }
+        },
         "version": "1.7.8"
       },
       "files": [
+        "cmake-project-include.cmake",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -35675,7 +35689,7 @@
             "host": true
           }
         ],
-        "version": "0.169.0"
+        "version": "0.170.0"
       },
       "files": [
         "portfile.cmake",
@@ -38772,13 +38786,16 @@
       "name": "libcaer",
       "manifest": {
         "name": "libcaer",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Minimal C library to access, configure and get data from neuromorphic sensors and processors.",
         "homepage": "https://gitlab.com/inivation/dv/libcaer",
         "license": "BSD-2-Clause",
         "dependencies": [
           "libusb",
-          "opencv4",
+          {
+            "name": "opencv4",
+            "default-features": false
+          },
           "pkgconf",
           {
             "name": "vcpkg-cmake",
@@ -38792,6 +38809,7 @@
         "version-date": "2022-07-25"
       },
       "files": [
+        "fix-libusb.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -59264,7 +59282,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 1,
+        "port-version": 2,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -59275,6 +59293,7 @@
           "cgns",
           "protobuf",
           "qt5compat",
+          "qtsvg",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -59346,10 +59365,7 @@
             ]
           },
           "tools": {
-            "description": "Build paraview tools",
-            "dependencies": [
-              "qtsvg"
-            ]
+            "description": "Build paraview tools"
           },
           "vtkm": {
             "description": "enables vtkm for the build of paraview",
@@ -61656,7 +61672,7 @@
       "name": "protobuf-c",
       "manifest": {
         "name": "protobuf-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This is protobuf-c, a C implementation of the Google Protocol Buffers data serialization format.",
         "homepage": "https://github.com/protobuf-c/protobuf-c",
         "dependencies": [
@@ -74688,7 +74704,7 @@
           "nlohmann-json",
           "stb"
         ],
-        "version": "2.5.0"
+        "version": "2.8.4"
       },
       "files": [
         "portfile.cmake",
