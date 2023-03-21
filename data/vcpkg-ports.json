@@ -1,5 +1,5 @@
 {
-  "version": "ffe7360e0f5ba62f98b620575294ecb9d8a02980",
+  "version": "e249dfb528731136b66d5fab6c6e00be243cbbbc",
   "ports": [
     {
       "name": "3fd",
@@ -1078,7 +1078,6 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
-        "port-version": 12,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
@@ -1100,7 +1099,7 @@
             "description": "Install non-standard files required for building Apache httpd"
           }
         },
-        "version": "1.7.0"
+        "version": "1.7.2"
       },
       "files": [
         "fix-configcmake.patch",
@@ -1391,7 +1390,7 @@
             "host": true
           }
         ],
-        "version": "2.8"
+        "version": "2.9"
       },
       "files": [
         "portfile.cmake",
@@ -1551,7 +1550,7 @@
             "host": true
           }
         ],
-        "version": "11.4.4"
+        "version": "12.0.1"
       },
       "files": [
         "cmake-config.patch",
@@ -1600,7 +1599,7 @@
       "name": "arrayfire",
       "manifest": {
         "name": "arrayfire",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ArrayFire is a general-purpose library that simplifies the process of developing software that targets parallel and massively-parallel architectures including CPUs, GPUs, and other hardware acceleration devices.",
         "homepage": "https://github.com/arrayfire/arrayfire",
         "license": "BSD-3-Clause",
@@ -1932,7 +1931,7 @@
             ]
           }
         },
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -15768,7 +15767,7 @@
       "name": "breakpad",
       "manifest": {
         "name": "breakpad",
-        "port-version": 3,
+        "port-version": 4,
         "description": "a set of client and server components which implement a crash-reporting system.",
         "homepage": "https://github.com/google/breakpad",
         "license": "BSD-3-Clause",
@@ -16304,6 +16303,41 @@
         "version-semver": "0.7.0"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cachelib",
+      "manifest": {
+        "name": "cachelib",
+        "description": "facebook cachelib",
+        "homepage": "https://github.com/facebook/CacheLib",
+        "license": "Apache-2.0",
+        "supports": "linux & x64 & static",
+        "dependencies": [
+          "fbthrift",
+          "fizz",
+          "fmt",
+          "folly",
+          "gflags",
+          "glog",
+          "gtest",
+          "tsl-sparse-map",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "wangle"
+        ],
+        "version-string": "2023.02.27.00"
+      },
+      "files": [
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19001,7 +19035,6 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
-        "port-version": 2,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
@@ -19019,7 +19052,7 @@
             "host": true
           }
         ],
-        "version-semver": "6.4.1"
+        "version-semver": "6.4.3"
       },
       "files": [
         "fix-builderror.patch",
@@ -19825,9 +19858,11 @@
       "name": "cppxaml",
       "manifest": {
         "name": "cppxaml",
+        "port-version": 1,
         "description": "CppXaml is a library to facilitate usage of the XAML UI framework in C++ Windows apps.",
         "homepage": "https://asklar.github.io/xaml-islands",
-        "supports": "windows",
+        "license": "MIT",
+        "supports": "windows & !xbox",
         "version": "0.0.16"
       },
       "files": [
@@ -20291,7 +20326,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -20504,11 +20539,11 @@
       "name": "cuda",
       "manifest": {
         "name": "cuda",
-        "port-version": 11,
+        "port-version": 12,
         "description": "A parallel computing platform and programming model",
         "homepage": "https://developer.nvidia.com/cuda-toolkit",
         "license": null,
-        "supports": "(windows & x64 & !uwp) | (linux & x64) | (linux & arm64)",
+        "supports": "(windows & x64 & !uwp & !xbox) | (linux & x64) | (linux & arm64)",
         "version": "10.1"
       },
       "files": [
@@ -20907,7 +20942,7 @@
       "name": "cyclonedds",
       "manifest": {
         "name": "cyclonedds",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Eclipse Cyclone DDS is a very performant and robust open-source implementation of the OMG DDS specification",
         "homepage": "https://cyclonedds.io",
         "license": "EPL-2.0 OR BSD-3-Clause",
@@ -23839,7 +23874,6 @@
       "name": "etcd-cpp-apiv3",
       "manifest": {
         "name": "etcd-cpp-apiv3",
-        "port-version": 1,
         "description": "The etcd-cpp-apiv3 is a C++ API for etcd's v3 client API, i.e., ETCDCTL_API=3.",
         "homepage": "https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3",
         "license": "BSD-3-Clause",
@@ -23861,11 +23895,9 @@
             "host": true
           }
         ],
-        "version": "0.2.12"
+        "version": "0.14.2"
       },
       "files": [
-        "0001-do-not-hardcode-cxx-standard.patch",
-        "0002-use-target-link-libraries.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -25936,7 +25968,7 @@
       "name": "fltk",
       "manifest": {
         "name": "fltk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "FLTK (pronounced fulltick) is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows, and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL and its built-in GLUT emulation.",
         "homepage": "https://www.fltk.org/",
         "license": null,
@@ -25983,6 +26015,7 @@
       "files": [
         "config-path.patch",
         "dependencies.patch",
+        "fix-narrow.patch",
         "fix-system-link.patch",
         "include.patch",
         "math-h-polyfill.patch",
@@ -26015,7 +26048,7 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 1,
+        "port-version": 2,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -29224,7 +29257,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 16,
+        "port-version": 17,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -29241,7 +29274,7 @@
         "features": {
           "fat": {
             "description": "Enable runtime selection of optimized low level routines",
-            "supports": "(x86 | x64) & !(mingw & !static)"
+            "supports": "!windows | mingw"
           }
         },
         "version": "6.2.1"
@@ -32901,6 +32934,7 @@
         "description": "C++ client library for Hazelcast in-memory database.",
         "homepage": "https://github.com/hazelcast/hazelcast-cpp-client",
         "documentation": "http://hazelcast.github.io/hazelcast-cpp-client/index.html",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           "boost-any",
@@ -32933,7 +32967,7 @@
             ]
           }
         },
-        "version-semver": "5.1.0"
+        "version": "5.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -34879,12 +34913,24 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
-        "port-version": 2,
-        "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors. Due to the complexity involved, this package doesn't install MKL. It instead verifies that MKL is installed. Please download and install MKL from https://registrationcenter.intel.com/en/products/download/3178/ manually before using it in vcpkg.",
-        "version": "2020.0.0"
+        "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
+        "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
+        "license": null,
+        "supports": "(windows | linux) & x64",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-lessmsi",
+            "host": true,
+            "platform": "windows"
+          }
+        ],
+        "version": "2023.0.0"
       },
       "files": [
         "portfile.cmake",
+        "usage",
+        "vcpkg-cmake-wrapper.cmake",
+        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -37502,10 +37548,10 @@
       "name": "kinectsdk1",
       "manifest": {
         "name": "kinectsdk1",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Kinect for Windows SDK for Kinect v1 sensor.",
         "license": null,
-        "supports": "!arm & windows",
+        "supports": "!arm & windows & !uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-tool-lessmsi",
@@ -37525,10 +37571,10 @@
       "name": "kinectsdk2",
       "manifest": {
         "name": "kinectsdk2",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Kinect for Windows SDK for Kinect v2 sensor.",
         "license": null,
-        "supports": "!arm & windows",
+        "supports": "!arm & windows & !uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-tool-lessmsi",
@@ -37932,6 +37978,7 @@
       "name": "lastools",
       "manifest": {
         "name": "lastools",
+        "port-version": 1,
         "description": "LAStools: award-winning software for efficient LiDAR processing (with LASzip)",
         "homepage": "https://github.com/LAStools/LAStools",
         "supports": "!uwp",
@@ -42091,7 +42138,7 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 9,
+        "port-version": 10,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -42842,6 +42889,7 @@
       "name": "libpng",
       "manifest": {
         "name": "libpng",
+        "port-version": 1,
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
         "homepage": "https://github.com/glennrp/libpng",
         "license": "libpng-2.0",
@@ -42853,6 +42901,11 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true,
+            "platform": "arm & android"
           },
           "zlib"
         ],
@@ -43416,12 +43469,14 @@
       ]
     },
     {
-      "name": "libressl",
+      "name": "libredwg",
       "manifest": {
-        "name": "libressl",
-        "description": "LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
-        "supports": "!(uwp | arm)",
+        "name": "libredwg",
+        "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
+        "homepage": "https://www.gnu.org/software/libredwg/",
+        "license": "GPL-3.0",
         "dependencies": [
+          "jsmn",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -43433,10 +43488,39 @@
         ],
         "features": {
           "tools": {
+            "description": "Build dwg/dxf manipulation command-line tools"
+          }
+        },
+        "version": "0.12.5.5178"
+      },
+      "files": [
+        "fix_arm64_build.patch",
+        "fix_dependency.patch",
+        "fix_install.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libressl",
+      "manifest": {
+        "name": "libressl",
+        "description": "LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
+        "license": "ISC",
+        "supports": "!(uwp | arm)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "3.4.2"
+        "version": "3.6.2"
       },
       "files": [
         "0001-enable-ocspcheck-on-msvc.patch",
@@ -51321,10 +51405,9 @@
             ]
           }
         },
-        "version": "4.0.0"
+        "version": "4.0.1"
       },
       "files": [
-        "Fix-build-with-MSVC.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -52063,11 +52146,12 @@
       "name": "ms-gdkx",
       "manifest": {
         "name": "ms-gdkx",
+        "port-version": 1,
         "description": "Stub port that ensures the Microsoft GDK with Xbox Extensions is installed.",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
         "license": null,
-        "supports": "xbox",
+        "supports": "windows & x64 & !uwp",
         "version": "1.0.0"
       },
       "files": [
@@ -52243,11 +52327,11 @@
       "name": "msgpack",
       "manifest": {
         "name": "msgpack",
-        "port-version": 4,
         "description": "MessagePack is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's faster and smaller.",
         "homepage": "https://github.com/msgpack/msgpack-c",
         "license": "BSL-1.0",
         "dependencies": [
+          "boost",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -52257,7 +52341,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "4.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -52933,12 +53017,16 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-date": "2022-04-29"
+        "version-date": "2022-12-04"
       },
       "files": [
-        "CMakeLists.txt",
+        "fltk.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -53001,6 +53089,7 @@
       "name": "nayuki-qr-code-generator",
       "manifest": {
         "name": "nayuki-qr-code-generator",
+        "port-version": 1,
         "description": "High-quality QR Code generator library in C++",
         "homepage": "https://github.com/nayuki/QR-Code-generator",
         "dependencies": [
@@ -55122,7 +55211,6 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
-        "port-version": 1,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
@@ -55154,7 +55242,7 @@
             ]
           }
         },
-        "version-semver": "1.10.2"
+        "version-semver": "1.13.1"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -55351,6 +55439,7 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
+        "port-version": 1,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/xianyi/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -55375,7 +55464,8 @@
         ],
         "features": {
           "dynamic-arch": {
-            "description": "Support for multiple targets in a single library"
+            "description": "Support for multiple targets in a single library",
+            "supports": "mingw"
           },
           "simplethread": {
             "description": "Use simple thread",
@@ -57060,10 +57150,10 @@
       "name": "opengl",
       "manifest": {
         "name": "opengl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Open Graphics Library (OpenGL)[3][4][5] is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics.",
         "license": null,
-        "supports": "!xbox",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "opengl-registry"
         ],
@@ -57141,7 +57231,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 6,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -57259,20 +57348,16 @@
             ]
           }
         },
-        "version": "2.4.5.0"
+        "version": "2.4.9.0"
       },
       "files": [
-        "1aa2cf6edf9f2bd57a21998fceeb095cbe1f2b84.patch",
         "fix-dependencies.patch",
         "fix-openexr-dll.patch",
         "fix-openexr-target-missing.patch",
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
-        "fix-vs2019-encoding-conversion.patch",
         "imath-version-guard.patch",
-        "more_qt6.patch",
         "portfile.cmake",
-        "qt6.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -57688,7 +57773,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -57712,7 +57796,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.0.8"
+        "version": "3.1.0"
       },
       "files": [
         "disable-apps.patch",
@@ -57734,8 +57818,7 @@
         "vcpkg.json",
         "windows/install-layout.patch",
         "windows/install-pdbs.patch",
-        "windows/portfile.cmake",
-        "windows/umul128-arm64.patch"
+        "windows/portfile.cmake"
       ]
     },
     {
@@ -59542,6 +59625,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
+        "port-version": 1,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -59602,7 +59686,12 @@
           "examples": {
             "description": "Build PCL examples",
             "dependencies": [
-              "vtk"
+              {
+                "name": "pcl",
+                "features": [
+                  "visualization"
+                ]
+              }
             ]
           },
           "libusb": {
@@ -60167,7 +60256,7 @@
       "name": "physx",
       "manifest": {
         "name": "physx",
-        "port-version": 5,
+        "port-version": 6,
         "description": "The NVIDIA PhysX SDK is a scalable multi-platform physics solution supporting a wide range of devices, from smartphones to high-end multicore CPUs and GPUs",
         "homepage": "https://github.com/NVIDIAGameWorks/PhysX",
         "license": null,
@@ -61242,6 +61331,7 @@
       "name": "portmidi",
       "manifest": {
         "name": "portmidi",
+        "port-version": 1,
         "description": "PortMidi is a cross platform (Windows, macOS, Linux, and BSDs which support alsalib) library for interfacing with operating systems' MIDI I/O APIs.",
         "homepage": "https://github.com/PortMidi/portmidi",
         "license": "MIT",
@@ -61264,6 +61354,8 @@
       },
       "files": [
         "portfile.cmake",
+        "search-for-threads-in-config.patch",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -62386,10 +62478,9 @@
       "name": "qscintilla",
       "manifest": {
         "name": "qscintilla",
-        "port-version": 1,
         "description": "QScintilla is a port to Qt of the Scintilla editing component. Features syntax highlighting, code-completion and much more (Barebone build without python bindings (missing dependeny PyQt) and without QtDesigner plugin)",
         "homepage": "https://www.riverbankcomputing.com/software/qscintilla",
-        "supports": "!(windows & (arm | arm64))",
+        "license": "GPL-3.0-or-later",
         "dependencies": [
           {
             "name": "qt5-base",
@@ -62404,7 +62495,7 @@
             "platform": "windows"
           }
         ],
-        "version": "2.12.0"
+        "version": "2.13.4"
       },
       "files": [
         "fix-static.patch",
@@ -62416,7 +62507,6 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
-        "port-version": 1,
         "description": "Qt",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -62636,7 +62726,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -62786,7 +62876,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64220,7 +64310,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64261,7 +64351,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64297,7 +64387,7 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "bump-cmake-version.patch",
@@ -64768,7 +64858,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "GLIB2-static.patch",
@@ -64832,7 +64922,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64855,7 +64945,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64880,7 +64970,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64908,7 +64998,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64919,7 +65009,6 @@
       "name": "qtdeclarative",
       "manifest": {
         "name": "qtdeclarative",
-        "port-version": 2,
         "description": "Qt Declarative (Quick 2)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -64942,7 +65031,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64967,7 +65056,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -64987,7 +65076,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65011,7 +65100,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65063,7 +65152,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -65111,7 +65200,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "fix-taglib-search.patch",
@@ -65220,7 +65309,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65249,7 +65338,7 @@
           },
           "qtpositioning"
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65281,7 +65370,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65304,7 +65393,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65389,7 +65478,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "fix_avfoundation_target.patch",
@@ -65416,7 +65505,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65492,7 +65581,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65527,7 +65616,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65572,7 +65661,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65592,7 +65681,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65630,7 +65719,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65680,7 +65769,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65719,7 +65808,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65757,7 +65846,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65797,7 +65886,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65817,7 +65906,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65845,7 +65934,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65878,7 +65967,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65901,7 +65990,7 @@
             ]
           }
         ],
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65912,7 +66001,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 2,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66008,7 +66096,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -66045,7 +66133,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -66097,7 +66185,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -66133,7 +66221,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -66164,7 +66252,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -66324,12 +66412,11 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json",
-        "vector.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -66359,7 +66446,7 @@
             ]
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -66403,7 +66490,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.4.2"
+        "version": "6.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -67028,7 +67115,6 @@
       "name": "raylib",
       "manifest": {
         "name": "raylib",
-        "port-version": 1,
         "description": "A simple and easy-to-use library to enjoy videogames programming",
         "homepage": "https://github.com/raysan5/raylib",
         "license": "Zlib",
@@ -67058,7 +67144,7 @@
             "description": "Build raylib with audio module"
           }
         },
-        "version-semver": "4.2.0"
+        "version-semver": "4.5.0"
       },
       "files": [
         "fix-linkGlfw.patch",
@@ -68056,7 +68142,7 @@
             ]
           }
         },
-        "version": "7.9.2"
+        "version": "7.10.2"
       },
       "files": [
         "0002-only-build-one-flavor.patch",
@@ -68764,6 +68850,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
+        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -68895,9 +68982,6 @@
           },
           "qoi": {
             "description": "Enable QOI codec"
-          },
-          "svg": {
-            "description": "Enable SVG codec"
           },
           "tga": {
             "description": "Enable TGA codec"
@@ -69197,7 +69281,7 @@
         "description": "A public, general, simple, and fast C++11 scope guard that defends against implicitly ignored returns and optionally enforces noexcept at compile time (in C++17), all in a SFINAE-friendly maner.",
         "homepage": "https://github.com/ricab/scope_guard",
         "license": "Unlicense",
-        "version-semver": "1.0.0"
+        "version-semver": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -77385,7 +77469,7 @@
           },
           "zlib"
         ],
-        "version": "9.6.0"
+        "version": "9.8.0"
       },
       "files": [
         "cmake_remove_bin_targets.patch",
@@ -77770,9 +77854,10 @@
       "name": "vulkan",
       "manifest": {
         "name": "vulkan",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A graphics and compute API that provides high-efficiency, cross-platform access to modern GPUs on a wide variety of devices.",
-        "supports": "!xbox",
+        "license": null,
+        "supports": "!uwp & !xbox",
         "version": "1.1.82.1"
       },
       "files": [
@@ -77786,11 +77871,11 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0",
-        "supports": "!xbox",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -77812,10 +77897,10 @@
       "name": "vulkan-hpp",
       "manifest": {
         "name": "vulkan-hpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Header only C++ bindings for the Vulkan C API",
         "license": "Apache-2.0",
-        "supports": "!xbox",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "vulkan"
         ],
@@ -77830,9 +77915,11 @@
       "name": "vulkan-memory-allocator",
       "manifest": {
         "name": "vulkan-memory-allocator",
+        "port-version": 1,
         "description": "Easy to integrate Vulkan memory allocation library from GPUOpen",
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator",
         "license": "MIT",
+        "supports": "!uwp & !xbox",
         "version": "3.0.1"
       },
       "files": [
@@ -77845,9 +77932,11 @@
       "name": "vulkan-memory-allocator-hpp",
       "manifest": {
         "name": "vulkan-memory-allocator-hpp",
+        "port-version": 1,
         "description": "C++ bindings for VulkanMemoryAllocator",
         "homepage": "https://github.com/YaaZ/VulkanMemoryAllocator-Hpp",
         "license": "CC0-1.0",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "vulkan"
         ],
@@ -78906,6 +78995,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
+        "port-version": 1,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
