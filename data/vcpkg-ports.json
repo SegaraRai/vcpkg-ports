@@ -1,5 +1,5 @@
 {
-  "version": "e249dfb528731136b66d5fab6c6e00be243cbbbc",
+  "version": "ae59b93af0c1dce4126e963fca5b330662495fa1",
   "ports": [
     {
       "name": "3fd",
@@ -16845,7 +16845,7 @@
       "name": "cctag",
       "manifest": {
         "name": "cctag",
-        "port-version": 2,
+        "port-version": 3,
         "maintainers": "alicevision-team@googlegroups.com",
         "description": "Computer vision library for detecting CCTag markers made up of concentric circles",
         "homepage": "https://github.com/alicevision/CCTag",
@@ -18910,7 +18910,7 @@
           },
           "z4kn4fein-semver"
         ],
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -20539,7 +20539,7 @@
       "name": "cuda",
       "manifest": {
         "name": "cuda",
-        "port-version": 12,
+        "port-version": 13,
         "description": "A parallel computing platform and programming model",
         "homepage": "https://developer.nvidia.com/cuda-toolkit",
         "license": null,
@@ -20548,6 +20548,7 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg-port-config.cmake",
         "vcpkg.json",
         "vcpkg_find_cuda.cmake"
       ]
@@ -20556,7 +20557,7 @@
       "name": "cudnn",
       "manifest": {
         "name": "cudnn",
-        "port-version": 8,
+        "port-version": 9,
         "description": "NVIDIA's cuDNN deep neural network acceleration library.",
         "homepage": "https://developer.nvidia.com/cudnn",
         "license": null,
@@ -24279,7 +24280,7 @@
             ]
           }
         },
-        "version-semver": "1.7.2"
+        "version": "1.7.3"
       },
       "files": [
         "fix-dependencies.patch",
@@ -34585,7 +34586,7 @@
             "supports": "windows"
           }
         },
-        "version": "1.89.3"
+        "version": "1.89.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -34630,6 +34631,7 @@
       "name": "imguizmo",
       "manifest": {
         "name": "imguizmo",
+        "port-version": 1,
         "description": "Immediate mode 3D gizmo for scene editing and other controls based on Dear ImGui",
         "homepage": "https://github.com/CedricGuillemet/ImGuizmo",
         "dependencies": [
@@ -34647,6 +34649,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34686,6 +34689,7 @@
       "name": "implot",
       "manifest": {
         "name": "implot",
+        "port-version": 1,
         "description": "Advanced 2D Plotting for Dear ImGui",
         "homepage": "https://github.com/epezent/implot",
         "license": "MIT",
@@ -34704,6 +34708,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52022,7 +52027,7 @@
             "platform": "windows"
           }
         ],
-        "version": "1.31.2"
+        "version": "1.31.3"
       },
       "files": [
         "fix-m1-build.patch",
@@ -53442,7 +53447,6 @@
       "name": "nettle",
       "manifest": {
         "name": "nettle",
-        "port-version": 1,
         "description": "Nettle is a low-level cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
         "homepage": "https://git.lysator.liu.se/nettle/nettle",
         "license": null,
@@ -53461,7 +53465,12 @@
             "platform": "windows"
           }
         ],
-        "version": "3.7.3"
+        "features": {
+          "tools": {
+            "description": "Build tools"
+          }
+        },
+        "version": "3.8.1"
       },
       "files": [
         "ccas.patch",
@@ -53470,10 +53479,13 @@
         "hogweed-x64.def",
         "hogweed-x86.def",
         "host-tools.patch",
+        "install-dll.patch",
+        "lib-to-def.cmake",
         "libname-windows.patch",
         "nettle-x64.def",
         "nettle-x86.def",
         "portfile.cmake",
+        "subdirs.patch",
         "vcpkg.json",
         "yasm.patch"
       ]
@@ -61240,7 +61252,7 @@
       "name": "popsift",
       "manifest": {
         "name": "popsift",
-        "port-version": 4,
+        "port-version": 5,
         "description": "PopSift is an implementation of the SIFT algorithm in CUDA.",
         "homepage": "https://github.com/alicevision/popsift",
         "supports": "!(uwp | arm | arm64 | android | x86)",
@@ -61269,6 +61281,8 @@
         "version": "0.9"
       },
       "files": [
+        "144.patch",
+        "cuda_12_1.patch",
         "fix_missing_thrust_include.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -62294,12 +62308,15 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
-        "port-version": 3,
         "description": "Qt Cryptographic Architecture (QCA).",
-        "homepage": "https://cgit.kde.org/qca.git/",
+        "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
           {
-            "name": "qt5-base",
+            "name": "qt5compat",
+            "default-features": false
+          },
+          {
+            "name": "qtbase",
             "default-features": false
           },
           {
@@ -62322,11 +62339,12 @@
             ]
           }
         },
-        "version": "2.3.4"
+        "version": "2.3.5"
       },
       "files": [
         "0001-fix-path-for-vcpkg.patch",
         "0002-fix-build-error.patch",
+        "0003-Define-NOMINMAX-for-botan-plugin-with-MSVC.patch",
         "mk-ca-bundle.pl",
         "portfile.cmake",
         "vcpkg.json"
@@ -69611,10 +69629,12 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
+        "port-version": 1,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
         "dependencies": [
+          "libvorbis",
           "sdl2",
           {
             "name": "vcpkg-cmake",
@@ -69625,9 +69645,6 @@
             "host": true
           }
         ],
-        "default-features": [
-          "nativemidi"
-        ],
         "features": {
           "fluidsynth": {
             "description": "Use FluidSynth to play MIDI audio format.",
@@ -69636,34 +69653,25 @@
             ]
           },
           "libflac": {
-            "description": "Use libflac to play FLAC audio format instead of the built-in dr_flac.",
+            "description": "Use libflac to play FLAC audio format.",
             "dependencies": [
               "libflac"
             ]
           },
           "libmodplug": {
-            "description": "Support for MOD audio format using libmodplug.",
+            "description": "Use libmodplug to play MOD audio format.",
             "dependencies": [
               "libmodplug"
             ]
           },
-          "libvorbis": {
-            "description": "Use libvorbis to play OGG Vorbis audio format instead of the built-in stb_vorbis.",
-            "dependencies": [
-              "libvorbis"
-            ]
-          },
           "mpg123": {
-            "description": "Use mpg123 to play MP3 audio format instead of the built-in dr_mp3.",
+            "description": "Use mpg123 to play MP3 audio format.",
             "dependencies": [
               "mpg123"
             ]
           },
-          "nativemidi": {
-            "description": "Support for MIDI audio format on Windows and macOS."
-          },
           "opusfile": {
-            "description": "Support for Opus audio format using opusfile.",
+            "description": "Use opusfile to play Opus audio format.",
             "dependencies": [
               "opusfile"
             ]
@@ -69672,11 +69680,9 @@
         "version": "2.6.3"
       },
       "files": [
-        "fix-deps-link.patch",
-        "fix-missing-find-opusfile.patch",
+        "fix-deps-targets.patch",
         "fix-pkg-prefix.patch",
         "fix-pkgconfig.patch",
-        "fix-windows-static-findfluidsynth.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -75425,7 +75431,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.8"
+        "version-semver": "1.5.11"
       },
       "files": [
         "portfile.cmake",
@@ -76049,6 +76055,7 @@
       "name": "unrar",
       "manifest": {
         "name": "unrar",
+        "port-version": 1,
         "description": "rarlab's unrar library",
         "homepage": "https://www.rarlab.com",
         "license": null,
