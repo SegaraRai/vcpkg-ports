@@ -1,5 +1,5 @@
 {
-  "version": "ae59b93af0c1dce4126e963fca5b330662495fa1",
+  "version": "8875aa3cd9b3b62e7c7207ee172cebd0c944abca",
   "ports": [
     {
       "name": "3fd",
@@ -28933,7 +28933,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.75.3"
+        "version": "2.76.0"
       },
       "files": [
         "libintl.patch",
@@ -40334,6 +40334,78 @@
       ]
     },
     {
+      "name": "libgme",
+      "manifest": {
+        "name": "libgme",
+        "description": "Video game music file emulation/playback library",
+        "homepage": "https://bitbucket.org/mpyne/game-music-emu/wiki/Home",
+        "license": "LGPL-2.1-or-later OR GPL-2.0-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "ay",
+          "gbs",
+          "gym",
+          "hes",
+          "kss",
+          "nsf",
+          "nsfe",
+          "sap",
+          "spc",
+          "vgm"
+        ],
+        "features": {
+          "ay": {
+            "description": "Enable Spectrum ZX music emulation"
+          },
+          "gbs": {
+            "description": "Enable Game Boy music emulation"
+          },
+          "gym": {
+            "description": "Enable Sega MegaDrive/Genesis music emulation"
+          },
+          "hes": {
+            "description": "Enable PC Engine/TurboGrafx-16 music emulation"
+          },
+          "kss": {
+            "description": "Enable MSX or other Z80 systems music emulation"
+          },
+          "nsf": {
+            "description": "Enable NES NSF music emulation"
+          },
+          "nsfe": {
+            "description": "Enable NES NSFE and NSF music emulation"
+          },
+          "sap": {
+            "description": "Enable Atari SAP music emulation"
+          },
+          "spc": {
+            "description": "Enable SNES SPC music emulation"
+          },
+          "spc-isolated-echo-buffer": {
+            "description": "Enable isolated echo buffer on SPC emulator to allow correct playing of \"dodgy\" SPC files made for various ROM hacks ran on ZSNES"
+          },
+          "vgm": {
+            "description": "Enable Sega VGM/VGZ music emulation",
+            "dependencies": [
+              "zlib"
+            ]
+          }
+        },
+        "version": "0.6.3"
+      },
+      "files": [
+        "disable-player-and-demo.patch",
+        "disable-static-zlib-hack.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libgnutls",
       "manifest": {
         "name": "libgnutls",
@@ -42752,7 +42824,7 @@
       "name": "libpcap",
       "manifest": {
         "name": "libpcap",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A portable C/C++ library for network traffic capture",
         "homepage": "https://www.tcpdump.org/",
         "supports": "!uwp",
@@ -44177,14 +44249,19 @@
       "name": "libspatialite",
       "manifest": {
         "name": "libspatialite",
-        "port-version": 10,
+        "port-version": 11,
         "description": "SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.",
         "homepage": "https://www.gaia-gis.it/gaia-sins/libspatialite-sources",
         "license": null,
         "dependencies": [
           "geos",
           "libiconv",
-          "libxml2",
+          {
+            "name": "libxml2",
+            "features": [
+              "http"
+            ]
+          },
           "proj",
           {
             "name": "sqlite3",
@@ -46094,12 +46171,11 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
+        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
         "dependencies": [
-          "libiconv",
-          "liblzma",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -46107,12 +46183,45 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
+          }
+        ],
+        "default-features": [
+          "iconv",
+          "lzma",
           "zlib"
         ],
         "features": {
+          "ftp": {
+            "description": "Add the FTP support",
+            "supports": "!uwp"
+          },
+          "http": {
+            "description": "Add the HTTP support",
+            "supports": "!uwp"
+          },
+          "iconv": {
+            "description": "Add ICONV support",
+            "dependencies": [
+              "libiconv"
+            ]
+          },
+          "legacy": {
+            "description": "Add deprecated APIs for compatibility"
+          },
+          "lzma": {
+            "description": "Use LZMA",
+            "dependencies": [
+              "liblzma"
+            ]
+          },
           "tools": {
             "description": "Build tools"
+          },
+          "zlib": {
+            "description": "Use ZLib",
+            "dependencies": [
+              "zlib"
+            ]
           }
         },
         "version": "2.10.3"
@@ -53094,7 +53203,6 @@
       "name": "nayuki-qr-code-generator",
       "manifest": {
         "name": "nayuki-qr-code-generator",
-        "port-version": 1,
         "description": "High-quality QR Code generator library in C++",
         "homepage": "https://github.com/nayuki/QR-Code-generator",
         "dependencies": [
@@ -53107,7 +53215,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -59881,7 +59989,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -59896,7 +60004,12 @@
             "default-features": false
           },
           "libgeotiff",
-          "libxml2",
+          {
+            "name": "libxml2",
+            "features": [
+              "http"
+            ]
+          },
           "nanoflann",
           "nlohmann-json",
           {
@@ -71979,7 +72092,7 @@
       "name": "spatialite-tools",
       "manifest": {
         "name": "spatialite-tools",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Contains spatialite.exe and other command line tools to work with SpatiaLite databases (import, export, SQL queries)",
         "homepage": "https://www.gaia-gis.it/fossil/spatialite-tools/index",
         "license": "GPL-3.0-or-later",
@@ -71993,7 +72106,12 @@
               "rttopo"
             ]
           },
-          "libxml2",
+          {
+            "name": "libxml2",
+            "features": [
+              "http"
+            ]
+          },
           "readosm",
           "sqlite3",
           {
@@ -75027,7 +75145,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-24"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
