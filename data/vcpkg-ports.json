@@ -1,5 +1,5 @@
 {
-  "version": "1271068e139c1fc30bae405c0bca0e379e155bd2",
+  "version": "d10d511f25620ca0f315cd83dcef6485efc63010",
   "ports": [
     {
       "name": "3fd",
@@ -16133,6 +16133,27 @@
       ]
     },
     {
+      "name": "bxzstr",
+      "manifest": {
+        "name": "bxzstr",
+        "description": "A C++ header-only ZLib/libBZ2/libLZMA/Zstandard wrapper.",
+        "homepage": "https://github.com/tmaklin/bxzstr",
+        "license": "MPL-2.0",
+        "dependencies": [
+          "bzip2",
+          "liblzma",
+          "zlib",
+          "zstd"
+        ],
+        "version": "1.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "byte-lite",
       "manifest": {
         "name": "byte-lite",
@@ -20670,7 +20691,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -20871,7 +20891,7 @@
             ]
           }
         },
-        "version": "7.88.1"
+        "version": "8.0.1"
       },
       "files": [
         "0002_fix_uwp.patch",
@@ -20885,7 +20905,8 @@
         "mbedtls-ws2_32.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "version-major-7-8.patch"
       ]
     },
     {
@@ -25989,7 +26010,7 @@
             "host": true
           }
         ],
-        "version": "3.1.5"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -33555,7 +33576,7 @@
       "name": "hunspell",
       "manifest": {
         "name": "hunspell",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The most popular spellchecking library.",
         "homepage": "https://github.com/hunspell/hunspell",
         "license": "MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later",
@@ -46868,6 +46889,7 @@
       "name": "libzip",
       "manifest": {
         "name": "libzip",
+        "port-version": 1,
         "description": "A library for reading, creating, and modifying zip archives.",
         "homepage": "https://github.com/nih-at/libzip",
         "license": "BSD-3-Clause",
@@ -55951,7 +55973,7 @@
             "host": true
           }
         ],
-        "version-string": "v2022.09.30"
+        "version-string": "v2023.02.06"
       },
       "files": [
         "0001-include-unistd-for-gete-ug-id.patch",
@@ -64718,6 +64740,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -64883,7 +64906,8 @@
             ]
           },
           "framework": {
-            "description": "MAC framework build"
+            "description": "MAC framework build",
+            "supports": "osx & !static"
           },
           "freetype": {
             "description": "Supports the FreeType 2 font engine (and its supported font formats).",
@@ -64905,7 +64929,7 @@
                 ]
               }
             ],
-            "supports": "!windows"
+            "supports": "!windows & !osx"
           },
           "glib": {
             "description": "GLib",
@@ -70379,7 +70403,7 @@
             ]
           }
         },
-        "version": "0.6.0"
+        "version": "0.6.1"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -80940,6 +80964,7 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
+        "port-version": 1,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "LGPL-3.0-only",
@@ -80964,14 +80989,28 @@
               "libsodium"
             ]
           },
-          "websockets-sha1": {
-            "description": "Enable WebSocket transport through builtin sha1 (libzmq#3676)"
+          "websockets": {
+            "description": "Enable WebSocket transport"
+          },
+          "websockets-secure": {
+            "description": "Enable WebSocket transport with TSL (wss)",
+            "dependencies": [
+              "libgnutls",
+              {
+                "name": "zeromq",
+                "default-features": false,
+                "features": [
+                  "websockets"
+                ]
+              }
+            ]
           }
         },
         "version-date": "2023-01-31"
       },
       "files": [
         "fix-arm.patch",
+        "include-dir-gnutls.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
