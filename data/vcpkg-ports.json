@@ -1,5 +1,5 @@
 {
-  "version": "d10d511f25620ca0f315cd83dcef6485efc63010",
+  "version": "c9f906558f9bb12ee9811d6edc98ec9255c6cda5",
   "ports": [
     {
       "name": "3fd",
@@ -4646,6 +4646,30 @@
         "portfile.cmake",
         "vcpkg.json",
         "windows-fix.patch"
+      ]
+    },
+    {
+      "name": "backward-cpp",
+      "manifest": {
+        "name": "backward-cpp",
+        "description": "A beautiful stack trace pretty printer for C++",
+        "homepage": "https://github.com/bombela/backward-cpp",
+        "supports": "!uwp & !(windows & arm)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -24456,7 +24480,7 @@
             "host": true
           }
         ],
-        "version": "3.5.1"
+        "version": "3.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -27251,6 +27275,7 @@
       "name": "g3log",
       "manifest": {
         "name": "g3log",
+        "port-version": 1,
         "description": "Asynchronous logger with Dynamic Sinks",
         "homepage": "https://github.com/KjellKod/g3log",
         "license": "Unlicense",
@@ -32600,7 +32625,6 @@
       "name": "halide",
       "manifest": {
         "name": "halide",
-        "port-version": 1,
         "description": "Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines.",
         "homepage": "https://github.com/halide/Halide",
         "license": "MIT",
@@ -32805,7 +32829,7 @@
             ]
           }
         },
-        "version": "14.0.0"
+        "version": "15.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -41481,7 +41505,7 @@
       "name": "libkml",
       "manifest": {
         "name": "libkml",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Reference implementation of OGC KML 2.2",
         "homepage": "https://github.com/libkml/libkml",
         "license": "BSD-3-Clause",
@@ -43040,7 +43064,7 @@
             "host": true
           }
         ],
-        "version": "8.13.7"
+        "version": "8.13.9"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -48110,7 +48134,7 @@
         "description": "A lightweight, dependency-free, suitable for game development library for binding Lua to C++17",
         "homepage": "https://github.com/kunitoki/LuaBridge3",
         "license": "MIT",
-        "version": "3.0-beta4"
+        "version": "3.0-rc3"
       },
       "files": [
         "portfile.cmake",
@@ -50789,7 +50813,6 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
@@ -50909,11 +50932,9 @@
             ]
           }
         },
-        "version": "22.1.7"
+        "version": "23.0.1"
       },
       "files": [
-        "clover.patch",
-        "def-fixes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51676,7 +51697,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-01-25"
+        "version-date": "2023-03-03"
       },
       "files": [
         "portfile.cmake",
@@ -53928,7 +53949,7 @@
             "description": "Adds optional code models for XSPICE, ADMS (verilog integration) and B-/E-/G- sources."
           }
         },
-        "version": "37"
+        "version": "39"
       },
       "files": [
         "Fix-C2065.patch",
@@ -55622,6 +55643,7 @@
       "name": "onnxruntime-gpu",
       "manifest": {
         "name": "onnxruntime-gpu",
+        "port-version": 1,
         "description": "onnxruntime (GPU)",
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
@@ -62676,17 +62698,24 @@
       "name": "qcustomplot",
       "manifest": {
         "name": "qcustomplot",
-        "port-version": 5,
         "description": "QCustomPlot is a Qt C++ widget for plotting and data visualization.",
+        "homepage": "https://www.qcustomplot.com/",
+        "license": "GPL-3.0-or-later",
         "dependencies": [
           {
-            "name": "qt5-base",
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-qmake",
+            "host": true,
             "default-features": false
           }
         ],
-        "version": "2.0.1"
+        "version": "2.1.1"
       },
       "files": [
+        "config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68498,7 +68527,7 @@
             ]
           }
         },
-        "version": "7.10.2"
+        "version": "8.0.0"
       },
       "files": [
         "0002-only-build-one-flavor.patch",
@@ -70702,7 +70731,21 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "default-features": [
+          "spirv"
+        ],
+        "features": {
+          "glsl": {
+            "description": "Compiles GLSL exporter."
+          },
+          "hlsl": {
+            "description": "Compiles HLSL exporter."
+          },
+          "spirv": {
+            "description": "Compiles SPIR-V exporter."
+          }
+        },
+        "version": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -71157,6 +71200,7 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
+        "port-version": 1,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
