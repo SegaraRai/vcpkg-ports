@@ -1,5 +1,5 @@
 {
-  "version": "69efe9cc2df0015f0bb2d37d55acde4a75c9a25b",
+  "version": "b619a233fbf7b2c9765fb4458f3ecb05bd3166e3",
   "ports": [
     {
       "name": "3fd",
@@ -720,7 +720,7 @@
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
         "supports": "!osx",
-        "version": "1.4.26"
+        "version": "1.4.29"
       },
       "files": [
         "portfile.cmake",
@@ -1837,7 +1837,7 @@
         "description": "Drop-in replacement to Vulkan's shared library, allowing the use of OpenGL or Direct3D11 in addition to Vulkan.",
         "homepage": "https://github.com/DragonJoker/Ashes",
         "license": "MIT",
-        "supports": "!osx & !linux & !ios & !android & !uwp & !x86 & !arm & !static",
+        "supports": "!ios & !android & !uwp & !x86 & !arm32 & !static",
         "dependencies": [
           "opengl",
           "spirv-cross",
@@ -1851,7 +1851,22 @@
           },
           "vulkan-headers"
         ],
-        "version-date": "2022-06-08"
+        "default-features": [
+          "opengl",
+          "vulkan"
+        ],
+        "features": {
+          "direct3d11": {
+            "description": "Compiles Direct3D11 renderer."
+          },
+          "opengl": {
+            "description": "Compiles OpenGL renderer."
+          },
+          "vulkan": {
+            "description": "Compiles Vulkan renderer."
+          }
+        },
+        "version-date": "2023-03-12"
       },
       "files": [
         "portfile.cmake",
@@ -17484,7 +17499,7 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
@@ -19119,6 +19134,7 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
+        "port-version": 1,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
@@ -21467,11 +21483,10 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
-        "supports": "!x86",
         "dependencies": [
           "assimp",
           "boost-algorithm",
@@ -33344,6 +33359,35 @@
       ]
     },
     {
+      "name": "highs",
+      "manifest": {
+        "name": "highs",
+        "description": "High performance library to solve linear, mixed-integer, and convex quadratic optimization problems.",
+        "homepage": "https://highs.dev",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "1.5.1"
+      },
+      "files": [
+        "fix-cmake-output.patch",
+        "fix-hconfig-path.patch",
+        "fix-threads.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "highway",
       "manifest": {
         "name": "highway",
@@ -38842,10 +38886,9 @@
       "name": "libatomic-ops",
       "manifest": {
         "name": "libatomic-ops",
-        "port-version": 1,
         "description": "The atomic_ops project (Atomic memory update operations portable implementation)",
         "homepage": "https://github.com/ivmai/libatomic_ops",
-        "license": null,
+        "license": "MIT OR GPL-2.0-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -38856,7 +38899,7 @@
             "host": true
           }
         ],
-        "version": "7.7.0"
+        "version": "7.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -46890,8 +46933,8 @@
       "name": "libzen",
       "manifest": {
         "name": "libzen",
-        "port-version": 1,
         "description": "ZenLib is a C++ utility library for easiest cross-platform development",
+        "license": "Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -46902,7 +46945,7 @@
             "host": true
           }
         ],
-        "version": "0.4.39"
+        "version": "0.4.40"
       },
       "files": [
         "portfile.cmake",
@@ -47404,6 +47447,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
+        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -47797,6 +47841,7 @@
         "0009-fix-tools-install-path.patch",
         "0010-fix-libffi.patch",
         "0011-fix-install-bolt.patch",
+        "0012-disable-libomp-aliases.patch",
         "clang_usage",
         "flang_usage",
         "lld_usage",
@@ -51367,7 +51412,7 @@
         "description": "Audio playback and capture library written in C, in a single source file",
         "homepage": "https://github.com/mackron/miniaudio",
         "license": "Unlicense OR MIT-0",
-        "version": "0.11.11"
+        "version": "0.11.14"
       },
       "files": [
         "portfile.cmake",
@@ -52663,7 +52708,10 @@
         "homepage": "https://github.com/msgpack/msgpack-c",
         "license": "BSL-1.0",
         "dependencies": [
-          "boost",
+          "boost-fusion",
+          "boost-numeric-conversion",
+          "boost-optional",
+          "boost-variant",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -52673,7 +52721,7 @@
             "host": true
           }
         ],
-        "version": "4.1.3"
+        "version": "6.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -67941,7 +67989,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -68765,12 +68813,13 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 2,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
         "supports": "windows & !static",
         "dependencies": [
+          "ceres",
+          "g2o",
           {
             "name": "opencv",
             "default-features": false
@@ -68782,6 +68831,7 @@
               "vtk"
             ]
           },
+          "sqlite3",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -68793,11 +68843,47 @@
           "zlib"
         ],
         "default-features": [
-          "opencv-contrib"
+          "gui",
+          "opencv-contrib",
+          "opencv-nonfree",
+          "tools"
         ],
         "features": {
+          "gui": {
+            "description": "Build RTAB-Map with GUI support (Qt)",
+            "dependencies": [
+              {
+                "name": "pcl",
+                "default-features": false,
+                "features": [
+                  "qt"
+                ]
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui",
+                  "opengl",
+                  "widgets"
+                ]
+              }
+            ]
+          },
+          "k4w2": {
+            "description": "Build RTAB-Map with Kinect For Windows SDK 2.0 camera driver",
+            "dependencies": [
+              "kinectsdk2"
+            ]
+          },
+          "octomap": {
+            "description": "Build RTAB-Map with OctoMap support",
+            "dependencies": [
+              "octomap"
+            ]
+          },
           "opencv-contrib": {
-            "description": "Use OpenCV with contrib modules",
+            "description": "Use OpenCV with contrib modules (e.g., xfeatures2d, aruco)",
             "dependencies": [
               {
                 "name": "opencv",
@@ -68808,19 +68894,61 @@
               }
             ]
           },
+          "opencv-cuda": {
+            "description": "Use OpenCV with CUDA (accelerated SIFT ad SURF GPU options)",
+            "dependencies": [
+              {
+                "name": "opencv",
+                "default-features": false,
+                "features": [
+                  "cuda"
+                ]
+              }
+            ]
+          },
+          "opencv-nonfree": {
+            "description": "Use OpenCV with nonfree module (surf feature)",
+            "dependencies": [
+              {
+                "name": "opencv",
+                "default-features": false,
+                "features": [
+                  "nonfree"
+                ]
+              }
+            ]
+          },
+          "openni2": {
+            "description": "Build RTAB-Map with OpenNI2 camera driver",
+            "dependencies": [
+              "kinectsdk1",
+              "openni2"
+            ]
+          },
+          "realsense2": {
+            "description": "Build RTAB-Map with RealSense2 camera driver",
+            "dependencies": [
+              {
+                "name": "realsense2",
+                "default-features": false,
+                "features": [
+                  "tm2"
+                ]
+              }
+            ]
+          },
           "tools": {
-            "description": "Build tools",
+            "description": "Build RTAB-Map's tools",
             "dependencies": [
               "yaml-cpp"
             ]
           }
         },
-        "version": "0.20.23"
+        "version": "0.21.0"
       },
       "files": [
-        "0003-fix-qt.patch",
-        "cpp17.patch",
-        "fix-CMake-export.patch",
+        "fix_autouic.patch",
+        "fix_qt_deploy_plugins.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72835,6 +72963,7 @@
       "name": "sqlcipher",
       "manifest": {
         "name": "sqlcipher",
+        "port-version": 1,
         "description": "SQLCipher extends the SQLite database library to add security enhancements that make it more suitable for encrypted local data storage.",
         "homepage": "https://www.zetetic.net/sqlcipher",
         "license": null,
@@ -72852,6 +72981,9 @@
           }
         ],
         "features": {
+          "fts5": {
+            "description": "enable FTS5 functionality for sqlite3"
+          },
           "geopoly": {
             "description": "enable geopoly functionality for sqlite3"
           },
@@ -72929,7 +73061,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -72944,6 +73076,9 @@
           }
         ],
         "features": {
+          "dbstat": {
+            "description": "Enable the DBSTAT virtual table"
+          },
           "fts3": {
             "description": "Enable the FTS3 extension"
           },
@@ -80570,17 +80705,32 @@
         "homepage": "https://github.com/VirusTotal/yara",
         "license": "BSD-3-Clause",
         "dependencies": [
-          "jansson",
           "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "4.2.3"
+        "features": {
+          "cuckoo": {
+            "description": "The Cuckoo module enables you to create YARA rules based on behavioral information generated by Cuckoo sandbox.",
+            "dependencies": [
+              "jansson"
+            ]
+          },
+          "dotnet": {
+            "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
+          }
+        },
+        "version": "4.3.0"
       },
       "files": [
         "CMakeLists.txt",
+        "Disable-module-elf.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
