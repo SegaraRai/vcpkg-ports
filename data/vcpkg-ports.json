@@ -1,5 +1,5 @@
 {
-  "version": "b619a233fbf7b2c9765fb4458f3ecb05bd3166e3",
+  "version": "6fe40ca767af63cee757093b32fd6b3c49b218f1",
   "ports": [
     {
       "name": "3fd",
@@ -17320,7 +17320,7 @@
             ]
           }
         },
-        "version": "5.5.1"
+        "version": "5.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -18763,6 +18763,7 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
+        "port-version": 1,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -23795,11 +23796,11 @@
       "name": "embree3",
       "manifest": {
         "name": "embree3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High Performance Ray Tracing Kernels.",
         "homepage": "https://github.com/embree/embree",
         "license": "Apache-2.0",
-        "supports": "!arm",
+        "supports": "!arm | osx",
         "dependencies": [
           "tbb",
           {
@@ -23812,10 +23813,7 @@
           }
         ],
         "default-features": [
-          "avx",
-          "avx2",
-          "sse2",
-          "sse42"
+          "default-features"
         ],
         "features": {
           "avx": {
@@ -23826,6 +23824,22 @@
           },
           "avx512": {
             "description": "Enables AVX512 ISA."
+          },
+          "default-features": {
+            "description": "Enables all default features.",
+            "dependencies": [
+              {
+                "name": "embree3",
+                "default-features": false,
+                "features": [
+                  "avx",
+                  "avx2",
+                  "sse2",
+                  "sse42"
+                ],
+                "platform": "x64 | x86"
+              }
+            ]
           },
           "sse2": {
             "description": "Enables SSE2 ISA."
@@ -33100,6 +33114,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
+        "port-version": 1,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -33172,6 +33187,7 @@
         "portfile.cmake",
         "szip.patch",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -35919,8 +35935,9 @@
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
+        "port-version": 1,
         "description": "A few classes for parsing and serializing json - very rapidly.",
-        "homepage": "https://https://github.com/realtimechris/jsonifier",
+        "homepage": "https://github.com/RealTimeChris/Jsonifier",
         "license": "LGPL-2.1-or-later",
         "supports": "(windows & x64 & !uwp) | (linux & x64) | (osx & x64)",
         "dependencies": [
@@ -43642,14 +43659,16 @@
       "name": "libraqm",
       "manifest": {
         "name": "libraqm",
+        "port-version": 1,
         "description": "A library for complex text layout",
+        "homepage": "https://github.com/HOST-Oman/libraqm",
         "dependencies": [
           "freetype",
           "fribidi",
           "harfbuzz",
           "vcpkg-cmake"
         ],
-        "version-string": "0.9.0"
+        "version": "0.9.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -45483,12 +45502,11 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
-        "port-version": 3,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
-        "version": "1.0.26"
+        "version": "1.0.26.11791"
       },
       "files": [
         "portfile.cmake",
@@ -47271,7 +47289,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-01-19"
+        "version-date": "2023-03-30"
       },
       "files": [
         "CMakeLists.txt",
@@ -52097,7 +52115,6 @@
       "name": "monkeys-audio",
       "manifest": {
         "name": "monkeys-audio",
-        "port-version": 4,
         "description": [
           "Monkey's Audio is an excellent audio compression tool which has multiple advantages over traditional methods.",
           "Audio files compressed with it end with .ape extension."
@@ -52110,7 +52127,7 @@
             "description": "Build monkeys-audio tools"
           }
         },
-        "version-string": "9.04"
+        "version-string": "10.08"
       },
       "files": [
         "license",
@@ -58367,7 +58384,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -58404,6 +58421,10 @@
             "description": "Whether to include the OpenTelemetry Protocol in the SDK",
             "dependencies": [
               "grpc",
+              {
+                "name": "grpc",
+                "host": true
+              },
               "protobuf"
             ]
           },
@@ -61769,9 +61790,8 @@
       "name": "portsmf",
       "manifest": {
         "name": "portsmf",
-        "port-version": 1,
         "description": "Portsmf is 'Port Standard MIDI File', a cross-platform, C++ library for reading and writing Standard MIDI Files.",
-        "homepage": "https://github.com/tenacityteam/portsmf",
+        "homepage": "https://codeberg.org/tenacityteam/portsmf",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
@@ -61784,7 +61804,7 @@
             "host": true
           }
         ],
-        "version": "0.238"
+        "version": "239"
       },
       "files": [
         "portfile.cmake",
@@ -69269,15 +69289,26 @@
       "name": "ryu",
       "manifest": {
         "name": "ryu",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Ryu generates the shortest decimal representation of a floating point number that maintains round-trip safety.",
         "homepage": "https://github.com/ulfjack/ryu",
         "supports": "!(uwp | arm | x86)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-bazel",
+            "host": true
+          }
+        ],
         "version": "2.0"
       },
       "files": [
         "portfile.cmake",
         "ryuConfig.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -70278,7 +70309,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -73559,6 +73590,7 @@
       "name": "stdexec",
       "manifest": {
         "name": "stdexec",
+        "port-version": 1,
         "description": "stdexec is an experimental reference implementation of the Senders model of asynchronous programming proposed by P2300 - std::execution for adoption into the C++ Standard.",
         "homepage": "https://github.com/NVIDIA/stdexec",
         "license": "Apache-2.0",
@@ -78061,7 +78093,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
