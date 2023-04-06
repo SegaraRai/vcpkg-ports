@@ -1,5 +1,5 @@
 {
-  "version": "6fe40ca767af63cee757093b32fd6b3c49b218f1",
+  "version": "657bfe23f401f234d2bea75c36f79777ad944d21",
   "ports": [
     {
       "name": "3fd",
@@ -471,6 +471,30 @@
           }
         ],
         "version": "1.43"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "aklomp-base64",
+      "manifest": {
+        "name": "aklomp-base64",
+        "description": "Implementation of a base64 stream encoding/decoding library in C99 with SIMD (AVX2, AVX512, NEON, AArch64/NEON, SSSE3, SSE4.1, SSE4.2, AVX) and OpenMP acceleration",
+        "homepage": "https://github.com/aklomp/base64",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-01-06"
       },
       "files": [
         "portfile.cmake",
@@ -1485,9 +1509,9 @@
       "name": "argumentum",
       "manifest": {
         "name": "argumentum",
-        "port-version": 2,
         "description": "A C++17 command line argument parser inspired by Python argparse",
         "homepage": "https://github.com/mmahnic/argumentum",
+        "license": "MPL-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -1498,7 +1522,7 @@
             "host": true
           }
         ],
-        "version-string": "0.3.1"
+        "version": "0.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -4667,6 +4691,7 @@
       "name": "backward-cpp",
       "manifest": {
         "name": "backward-cpp",
+        "port-version": 1,
         "description": "A beautiful stack trace pretty printer for C++",
         "homepage": "https://github.com/bombela/backward-cpp",
         "supports": "!uwp & !(windows & arm)",
@@ -4683,6 +4708,7 @@
         "version": "1.6"
       },
       "files": [
+        "include-dir.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22200,7 +22226,6 @@
       "name": "directxmesh",
       "manifest": {
         "name": "directxmesh",
-        "port-version": 1,
         "description": "DirectXMesh geometry processing library",
         "homepage": "https://github.com/Microsoft/DirectXMesh",
         "documentation": "https://github.com/microsoft/DirectXMesh/wiki",
@@ -22227,13 +22252,17 @@
         ],
         "features": {
           "dx12": {
-            "description": "Build with DirectX12 support for Windows 10"
+            "description": "Build with DirectX12 support for Windows 10/Windows 11"
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
+          },
+          "tools": {
+            "description": "meshconvert command-line tool",
+            "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2022-12-15"
+        "version-date": "2023-03-30"
       },
       "files": [
         "portfile.cmake",
@@ -22271,7 +22300,6 @@
       "name": "directxtex",
       "manifest": {
         "name": "directxtex",
-        "port-version": 2,
         "description": "DirectXTex texture processing library",
         "homepage": "https://github.com/Microsoft/DirectXTex",
         "documentation": "https://github.com/microsoft/DirectXTex/wiki",
@@ -22314,9 +22342,13 @@
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
+          },
+          "tools": {
+            "description": "texture command-line tools",
+            "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-01-31"
+        "version-date": "2023-03-30"
       },
       "files": [
         "portfile.cmake",
@@ -22327,7 +22359,6 @@
       "name": "directxtk",
       "manifest": {
         "name": "directxtk",
-        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 11.x code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK",
         "documentation": "https://github.com/microsoft/DirectXTK/wiki",
@@ -22348,6 +22379,10 @@
           "spectre": {
             "description": "Build Spectre-mitigated library"
           },
+          "tools": {
+            "description": "MakeSpriteFont and xwbtool command-line tools",
+            "supports": "windows & !uwp & !xbox"
+          },
           "xaudio2-8": {
             "description": "Build with XAudio 2.8 support for Windows 8.x or later"
           },
@@ -22364,7 +22399,7 @@
             ]
           }
         },
-        "version-date": "2023-02-06"
+        "version-date": "2023-03-30"
       },
       "files": [
         "portfile.cmake",
@@ -22375,7 +22410,6 @@
       "name": "directxtk12",
       "manifest": {
         "name": "directxtk12",
-        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 12 code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK12",
         "documentation": "https://github.com/microsoft/DirectXTK12/wiki",
@@ -22412,6 +22446,10 @@
           "spectre": {
             "description": "Build Spectre-mitigated library"
           },
+          "tools": {
+            "description": "MakeSpriteFont and xwbtool command-line tools",
+            "supports": "windows & !uwp & !xbox & (x64 | arm64)"
+          },
           "xaudio2-9": {
             "description": "Build with XAudio 2.9 support for Windows 10/11"
           },
@@ -22425,7 +22463,7 @@
             ]
           }
         },
-        "version-date": "2023-02-06"
+        "version-date": "2023-03-30"
       },
       "files": [
         "portfile.cmake",
@@ -30788,7 +30826,7 @@
             ]
           }
         },
-        "version": "2.8.0"
+        "version": "2.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -31401,7 +31439,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 2,
+        "port-version": 3,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -31678,6 +31716,15 @@
                 ]
               },
               "libjpeg-turbo"
+            ]
+          },
+          "libav": {
+            "description": "libav plugins",
+            "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false
+              }
             ]
           },
           "libde265": {
@@ -32128,6 +32175,7 @@
         "version": "1.20.5"
       },
       "files": [
+        "fix-bz2-windows-debug-dependency.patch",
         "fix-clang-cl-bad.patch",
         "fix-clang-cl-base.patch",
         "fix-clang-cl-good.patch",
@@ -32556,7 +32604,7 @@
             "host": true
           }
         ],
-        "version": "2.7.1"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -34323,11 +34371,13 @@
       "name": "ignition-tools",
       "manifest": {
         "name": "ignition-tools",
+        "port-version": 1,
         "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
         "homepage": "https://gazebosim.org",
         "license": "Apache-2.0",
         "supports": "!(arm & windows) & !uwp",
         "dependencies": [
+          "backward-cpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -41242,7 +41292,7 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
         "license": "GPL-3.0-only",
@@ -42491,7 +42541,6 @@
       "name": "libnice",
       "manifest": {
         "name": "libnice",
-        "port-version": 1,
         "description": "Libnice is an implementation of the IETF's Interactive Connectivity Establishment (ICE) standard (RFC 5245) and the Session Traversal Utilities for NAT (STUN) standard (RFC 5389).",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -42504,10 +42553,29 @@
           },
           "openssl"
         ],
-        "version": "0.1.18"
+        "version": "0.1.21"
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libnice-gst",
+      "manifest": {
+        "name": "libnice-gst",
+        "description": "Gstreamer Libnice plugins.",
+        "homepage": "https://nice.freedesktop.org",
+        "license": "LGPL-2.1-only AND MPL-1.1",
+        "dependencies": [
+          "gstreamer",
+          "libnice"
+        ],
+        "version": "0.1.21"
+      },
+      "files": [
+        "portfile.cmake",
+        "skip_libnice.patch",
         "vcpkg.json"
       ]
     },
@@ -43260,7 +43328,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -55854,7 +55922,7 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/xianyi/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -55880,7 +55948,7 @@
         "features": {
           "dynamic-arch": {
             "description": "Support for multiple targets in a single library",
-            "supports": "mingw"
+            "supports": "!windows | mingw"
           },
           "simplethread": {
             "description": "Use simple thread",
@@ -57868,20 +57936,19 @@
       "name": "openmama",
       "manifest": {
         "name": "openmama",
-        "port-version": 2,
         "description": "OpenMAMA is a high performance vendor neutral lightweight wrapper that provides a common API interface to different middleware and messaging solutions across a variety of platforms and languages",
         "homepage": "https://github.com/finos/OpenMAMA",
+        "license": "LGPL-2.1",
         "supports": "windows & (x64 | x86)",
         "dependencies": [
           "apr",
+          "apr-util",
           "libevent",
           "qpid-proton",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
+          "vcpkg-cmake",
+          "vcpkg-cmake-config"
         ],
-        "version-semver": "6.3.1"
+        "version-semver": "6.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -58155,6 +58222,7 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
+        "port-version": 1,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-or-later",
@@ -60472,6 +60540,7 @@
       "name": "pe-parse",
       "manifest": {
         "name": "pe-parse",
+        "port-version": 1,
         "description": "pe-parse is a principled, lightweight C/C++ PE parser",
         "homepage": "https://github.com/trailofbits/pe-parse",
         "supports": "!uwp",
@@ -60489,6 +60558,7 @@
       },
       "files": [
         "arm64-windows-fix.patch",
+        "no-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62720,6 +62790,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
+        "port-version": 1,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
@@ -62747,7 +62818,11 @@
           "botan": {
             "description": "Build with botan",
             "dependencies": [
-              "botan"
+              "botan",
+              {
+                "name": "pkgconf",
+                "host": true
+              }
             ]
           }
         },
@@ -68233,9 +68308,11 @@
             "host": true
           }
         ],
-        "version": "0.6.17"
+        "version": "0.6.18"
       },
       "files": [
+        "fix-cmake-config.diff",
+        "fix-project.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68977,7 +69054,7 @@
       "name": "rtaudio",
       "manifest": {
         "name": "rtaudio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A set of C++ classes that provide a common API for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X (CoreAudio and JACK), and Windows (DirectSound, ASIO and WASAPI) operating systems.",
         "homepage": "https://github.com/thestk/rtaudio",
         "license": null,
@@ -69003,6 +69080,10 @@
           "asio": {
             "description": "Build with ASIO backend",
             "supports": "windows"
+          },
+          "pulse": {
+            "description": "Build with PulseAudio backend",
+            "supports": "linux"
           }
         },
         "version-date": "2021-11-16"
@@ -70066,7 +70147,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.26.4"
+        "version": "2.26.5"
       },
       "files": [
         "deps.patch",
@@ -73514,7 +73595,7 @@
       "name": "status-code",
       "manifest": {
         "name": "status-code",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": [
           "Niall Douglas <s_github@nedprod.com>",
           "Henrik Gaßmann <henrik@gassmann.onl>"
@@ -73535,6 +73616,7 @@
         "version-date": "2023-01-27"
       },
       "files": [
+        "add-missing-include.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -77078,7 +77160,6 @@
       "name": "uvatlas",
       "manifest": {
         "name": "uvatlas",
-        "port-version": 2,
         "description": "UVAtlas isochart texture atlas",
         "homepage": "https://github.com/Microsoft/UVAtlas",
         "documentation": "https://github.com/Microsoft/UVAtlas/wiki",
@@ -77090,15 +77171,6 @@
             "platform": "(windows & !xbox) | linux"
           },
           "directxmath",
-          {
-            "name": "directxmesh",
-            "platform": "!(uwp | linux)"
-          },
-          {
-            "name": "directxtex",
-            "default-features": false,
-            "platform": "!(uwp | linux)"
-          },
           {
             "name": "ms-gdkx",
             "platform": "xbox"
@@ -77122,9 +77194,23 @@
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
+          },
+          "tools": {
+            "description": "meshconvert command-line tool",
+            "dependencies": [
+              {
+                "name": "directxmesh",
+                "default-features": false
+              },
+              {
+                "name": "directxtex",
+                "default-features": false
+              }
+            ],
+            "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-02-06"
+        "version-date": "2023-03-30"
       },
       "files": [
         "openexr.patch",
@@ -78481,7 +78567,7 @@
             "host": true
           }
         ],
-        "version": "1.3.239"
+        "version": "1.3.243"
       },
       "files": [
         "portfile.cmake",
@@ -79739,7 +79825,7 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
-        "port-version": 2,
+        "port-version": 3,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
@@ -79757,6 +79843,9 @@
             "description": "Enable platform-specific assembly optimizations",
             "supports": "x86 | x64 | (arm & !windows) | arm64"
           },
+          "chroma-format-all": {
+            "description": "Output all chroma formats"
+          },
           "default-features": {
             "description": "Default set of features",
             "dependencies": [
@@ -79768,6 +79857,9 @@
                 "platform": "x86 | x64 | (arm & !windows) | arm64"
               }
             ]
+          },
+          "disable-gpl": {
+            "description": "Disable GPL-only features"
           },
           "tool": {
             "description": "Build the command line tool",
