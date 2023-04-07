@@ -1,5 +1,5 @@
 {
-  "version": "657bfe23f401f234d2bea75c36f79777ad944d21",
+  "version": "b7b490ac105c4bf350881580ff7a7fd6df0ce70f",
   "ports": [
     {
       "name": "3fd",
@@ -26529,7 +26529,7 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -69475,7 +69475,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -69633,9 +69633,11 @@
         "version-semver": "0.9.0-rc3"
       },
       "files": [
+        "avif.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
+        "vcpkg.json",
+        "webp.patch"
       ]
     },
     {
@@ -73764,16 +73766,13 @@
       "name": "stlab",
       "manifest": {
         "name": "stlab",
-        "port-version": 2,
         "description": [
           "stlab is the ongoing work of what was Adobe Software Technology Lab.",
           "The Concurrency library provides futures and channels, high level constructs for implementing algorithms that eases the use of multiple CPU cores while minimizing contention. This library solves several problems of the C++11 and C++17 TS futures."
         ],
+        "homepage": "https://github.com/stlab/libraries",
+        "license": "BSL-1.0",
         "dependencies": [
-          {
-            "name": "boost-variant",
-            "platform": "osx"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -73783,7 +73782,19 @@
             "host": true
           }
         ],
-        "version-string": "1.6.2"
+        "default-features": [
+          "cpp17shims"
+        ],
+        "features": {
+          "cpp17shims": {
+            "description": "Support C++11/14 by polyfilling stlab's use of `optional` and `variant` with boost. On by default.",
+            "dependencies": [
+              "boost-optional",
+              "boost-variant"
+            ]
+          }
+        },
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -81148,7 +81159,7 @@
       "name": "zeroc-ice",
       "manifest": {
         "name": "zeroc-ice",
-        "port-version": 3,
+        "port-version": 4,
         "maintainers": "Benjamin Oldenburg <benjamin.oldenburg@ordis.co.th>",
         "description": "Comprehensive RPC framework with support for C++, CSharp, Java, JavaScript, Python and more.",
         "homepage": "https://github.com/zeroc-ice/ice",
@@ -81272,6 +81283,7 @@
         "change_to_mt.ps1",
         "mcppd_fix.patch",
         "md5i_fix.patch",
+        "no-werror.patch",
         "portfile.cmake",
         "prepare_for_build.cmake",
         "slice2swift.patch",
