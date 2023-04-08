@@ -1,5 +1,5 @@
 {
-  "version": "b7b490ac105c4bf350881580ff7a7fd6df0ce70f",
+  "version": "cd5a39fc6333563884d9eea15bfb6f5a450b1cf1",
   "ports": [
     {
       "name": "3fd",
@@ -24898,7 +24898,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -32513,6 +32513,49 @@
         "fix_missing_extern.patch",
         "portfile.cmake",
         "predicates_init.h",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gtsam",
+      "manifest": {
+        "name": "gtsam",
+        "description": "GTSAM is a library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.",
+        "homepage": "https://github.com/borglab/gtsam",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "boost-assign",
+          "boost-bimap",
+          "boost-date-time",
+          "boost-filesystem",
+          "boost-format",
+          "boost-graph",
+          "boost-math",
+          "boost-program-options",
+          "boost-regex",
+          "boost-serialization",
+          "boost-system",
+          "boost-thread",
+          "boost-timer",
+          "eigen3",
+          "metis",
+          "tbb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-string": "4.2a9"
+      },
+      "files": [
+        "build-fixes.patch",
+        "path-fixes.patch",
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -62955,7 +62998,6 @@
       "name": "qpid-proton",
       "manifest": {
         "name": "qpid-proton",
-        "port-version": 3,
         "description": "Qpid Proton is a high-performance, lightweight messaging library.",
         "homepage": "https://github.com/apache/qpid-proton",
         "license": "Apache-2.0",
@@ -62978,7 +63020,7 @@
             "host": true
           }
         ],
-        "version": "0.37.0"
+        "version": "0.38.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -64565,7 +64607,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -64604,12 +64646,13 @@
       "files": [
         "build_1.patch",
         "build_2.patch",
-        "build_3.patch",
+        "build_3.with_missing_stdbool_include.patch",
         "common.pri.patch",
         "gl.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "workaround-msvc2022-ice.patch"
+        "workaround-msvc2022-ice.patch",
+        "workaround-msvc2022-missing-include-in-chromium-ui-accessability.patch"
       ]
     },
     {
@@ -69249,7 +69292,7 @@
             ]
           }
         },
-        "version": "3.1.1"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -75426,6 +75469,20 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tinyfsm",
+      "manifest": {
+        "name": "tinyfsm",
+        "description": "A simple C++ finite state machine library",
+        "homepage": "https://digint.ch/tinyfsm/",
+        "license": "MIT",
+        "version": "0.3.3"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
