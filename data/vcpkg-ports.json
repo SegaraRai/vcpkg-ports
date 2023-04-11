@@ -1,5 +1,5 @@
 {
-  "version": "217194cea7e3491c14779c763beec50b6a4575d6",
+  "version": "5a101fc741f41cf05e13fe660168d32c516fb658",
   "ports": [
     {
       "name": "3fd",
@@ -3989,7 +3989,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.8.0"
+        "version-semver": "1.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -19314,7 +19314,6 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
-        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -19329,7 +19328,7 @@
             "host": true
           }
         ],
-        "version": "0.11.3"
+        "version": "0.12.2"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -31439,7 +31438,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 3,
+        "port-version": 4,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -31519,6 +31518,32 @@
                 ]
               },
               "libass"
+            ]
+          },
+          "bzip2-bad": {
+            "description": "Enable bzip2 stream compression in bad plugins",
+            "dependencies": [
+              "bzip2",
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-bad"
+                ]
+              }
+            ]
+          },
+          "bzip2-good": {
+            "description": "Enable bzip2 stream compression in good plugins",
+            "dependencies": [
+              "bzip2",
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-good"
+                ]
+              }
             ]
           },
           "cairo": {
@@ -32745,11 +32770,43 @@
       "name": "halide",
       "manifest": {
         "name": "halide",
+        "port-version": 1,
         "description": "Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines.",
         "homepage": "https://github.com/halide/Halide",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "halide",
+            "default-features": false,
+            "features": [
+              "target-arm"
+            ],
+            "platform": "arm32"
+          },
+          {
+            "name": "halide",
+            "default-features": false,
+            "features": [
+              "target-aarch64"
+            ],
+            "platform": "arm64"
+          },
+          {
+            "name": "halide",
+            "default-features": false,
+            "features": [
+              "target-x86"
+            ],
+            "platform": "x86 | x64"
+          },
+          {
+            "name": "halide",
+            "features": [
+              "target-all"
+            ],
+            "platform": "!x86 & !x64 & !arm"
+          },
           {
             "name": "llvm",
             "default-features": false,
@@ -32768,46 +32825,7 @@
             "host": true
           }
         ],
-        "default-features": [
-          "jit"
-        ],
         "features": {
-          "jit": {
-            "description": "Include targets required for jit compilation",
-            "dependencies": [
-              {
-                "name": "halide",
-                "default-features": false,
-                "features": [
-                  "target-aarch64"
-                ],
-                "platform": "arm64"
-              },
-              {
-                "name": "halide",
-                "default-features": false,
-                "features": [
-                  "target-x86"
-                ],
-                "platform": "x86 | x64"
-              },
-              {
-                "name": "halide",
-                "default-features": false,
-                "features": [
-                  "target-arm"
-                ],
-                "platform": "arm & !arm64"
-              },
-              {
-                "name": "halide",
-                "features": [
-                  "target-all"
-                ],
-                "platform": "!x86 & !x64 & !arm & !arm64"
-              }
-            ]
-          },
           "target-aarch64": {
             "description": "Include AArch64 target",
             "dependencies": [
@@ -32836,6 +32854,7 @@
                   "target-mips",
                   "target-nvptx",
                   "target-opencl",
+                  "target-opengl-compute",
                   "target-powerpc",
                   "target-riscv",
                   "target-x86"
@@ -32911,6 +32930,9 @@
           },
           "target-opencl": {
             "description": "Include OpenCL-C target"
+          },
+          "target-opengl-compute": {
+            "description": "Include OpenGL Compute target"
           },
           "target-powerpc": {
             "description": "Include PowerPC target",
@@ -35845,7 +35867,7 @@
       "name": "json-c",
       "manifest": {
         "name": "json-c",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A JSON implementation in C",
         "homepage": "https://github.com/json-c/json-c",
         "license": "MIT",
@@ -35862,6 +35884,7 @@
         "version-date": "2022-06-26"
       },
       "files": [
+        "fix-build-with-clang.patch",
         "fix-clang-cl.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -39127,16 +39150,12 @@
       "name": "libcaer",
       "manifest": {
         "name": "libcaer",
-        "port-version": 4,
         "description": "Minimal C library to access, configure and get data from neuromorphic sensors and processors.",
         "homepage": "https://gitlab.com/inivation/dv/libcaer",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND Apache-2.0",
+        "supports": "!(arm & windows & !mingw)",
         "dependencies": [
           "libusb",
-          {
-            "name": "opencv4",
-            "default-features": false
-          },
           {
             "name": "pkgconf",
             "host": true
@@ -39150,7 +39169,18 @@
             "host": true
           }
         ],
-        "version-date": "2022-07-25"
+        "features": {
+          "opencv": {
+            "description": "Enable support for frame enhancements using OpenCV",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "3.3.15"
       },
       "files": [
         "fix-libusb.diff",
@@ -39365,7 +39395,7 @@
             "host": true
           }
         ],
-        "version": "2.1.2"
+        "version": "2.1.4"
       },
       "files": [
         "fix-x86-windows.patch",
@@ -51455,7 +51485,7 @@
             "description": "Use security mitigations (like guard pages and randomization)"
           }
         },
-        "version": "2.0.9"
+        "version": "2.1.1"
       },
       "files": [
         "fix-cmake.patch",
@@ -58495,7 +58525,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -58503,6 +58533,7 @@
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp",
         "license": "Apache-2.0",
         "dependencies": [
+          "abseil",
           "curl",
           "nlohmann-json",
           {
@@ -58562,8 +58593,10 @@
         "version-semver": "1.8.3"
       },
       "files": [
+        "add-missing-dependencies.patch",
+        "add-missing-find-dependency.patch",
         "portfile.cmake",
-        "support_absl_cxx17.patch",
+        "use-default-cxx-version.patch",
         "vcpkg.json"
       ]
     },
@@ -62833,7 +62866,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
@@ -62861,11 +62894,7 @@
           "botan": {
             "description": "Build with botan",
             "dependencies": [
-              "botan",
-              {
-                "name": "pkgconf",
-                "host": true
-              }
+              "botan"
             ]
           }
         },
@@ -80893,6 +80922,7 @@
       "name": "yara",
       "manifest": {
         "name": "yara",
+        "port-version": 1,
         "description": "The pattern matching swiss knife",
         "homepage": "https://github.com/VirusTotal/yara",
         "license": "BSD-3-Clause",
