@@ -1,5 +1,5 @@
 {
-  "version": "4116148a7f5c09d39da34ffb75f33283796d687b",
+  "version": "4f9d25a7f299db656c376af402637819ee2caba0",
   "ports": [
     {
       "name": "3fd",
@@ -445,32 +445,6 @@
           }
         ],
         "version": "1.5.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "akali",
-      "manifest": {
-        "name": "akali",
-        "port-version": 1,
-        "description": "C++ Common Library.",
-        "homepage": "https://github.com/winsoft666/akali",
-        "license": "MIT",
-        "supports": "!(arm | arm64 | uwp)",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "1.43"
       },
       "files": [
         "portfile.cmake",
@@ -1691,7 +1665,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 4,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -1815,12 +1788,9 @@
             ]
           }
         },
-        "version": "10.0.1"
+        "version": "11.0.0"
       },
       "files": [
-        "brotli.patch",
-        "fix-dataset.patch",
-        "fix-pkgconfig-windows.patch",
         "msvc-static-name.patch",
         "portfile.cmake",
         "thrift.patch",
@@ -23206,6 +23176,28 @@
       ]
     },
     {
+      "name": "dumb",
+      "manifest": {
+        "name": "dumb",
+        "description": "Module/tracker based music format parser and player library",
+        "homepage": "https://github.com/kode54/dumb",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "2.0.3"
+      },
+      "files": [
+        "check-for-math-lib.patch",
+        "do-not-overwrite-cflags.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "dv-processing",
       "manifest": {
         "name": "dv-processing",
@@ -25743,6 +25735,7 @@
       "name": "fizz",
       "manifest": {
         "name": "fizz",
+        "port-version": 1,
         "description": "a TLS 1.3 implementation by Facebook",
         "homepage": "https://github.com/facebookincubator/fizz",
         "license": "BSD-3-Clause",
@@ -25750,6 +25743,9 @@
           "double-conversion",
           "fmt",
           "folly",
+          "gflags",
+          "glog",
+          "gtest",
           "libevent",
           "libsodium",
           "openssl",
@@ -25768,6 +25764,7 @@
       "files": [
         "0001-fix-libsodium.patch",
         "0002-fix-libevent.patch",
+        "0003-fix-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31405,7 +31402,7 @@
             "host": true
           }
         ],
-        "version": "0.40.0"
+        "version": "0.41.0"
       },
       "files": [
         "portfile.cmake",
@@ -34004,7 +34001,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -41387,15 +41384,12 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
         "license": "GPL-3.0-only",
         "dependencies": [
           "eigen3",
-          "gmp",
-          "mpfr",
-          "pkgconf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -41409,15 +41403,11 @@
           "cgal": {
             "description": "Build with cgal",
             "dependencies": [
-              "cgal",
               {
                 "name": "cgal",
                 "default-features": false
               }
             ]
-          },
-          "comiso": {
-            "description": "Build with comiso"
           },
           "embree": {
             "description": "Build with embree",
@@ -41470,11 +41460,18 @@
               "opengl"
             ]
           },
-          "tetgen": {
-            "description": "Build with tetgen"
-          },
-          "triangle": {
-            "description": "Build with triangle"
+          "png": {
+            "description": "Install PNG support",
+            "dependencies": [
+              {
+                "name": "libigl",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
+              },
+              "stb"
+            ]
           },
           "xml": {
             "description": "Build with libxml",
@@ -45872,6 +45869,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
+        "port-version": 1,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -47270,7 +47268,6 @@
       "name": "licensepp",
       "manifest": {
         "name": "licensepp",
-        "port-version": 4,
         "description": "Cross platform software licensing library",
         "homepage": "https://github.com/zuhd-org/licensepp",
         "supports": "!uwp",
@@ -47290,11 +47287,11 @@
             "host": true
           }
         ],
-        "version-date": "2020-05-19"
+        "version-date": "2020-11-24"
       },
       "files": [
         "0001-use-old-pem-pack.patch",
-        "0002-fix-cmake.patch",
+        "0002-fix-compilation-macos.patch",
         "FindCryptoPP.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -47625,7 +47622,6 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -47704,7 +47700,8 @@
                   "enable-bindings",
                   "enable-terminfo",
                   "enable-threads",
-                  "enable-zlib"
+                  "enable-zlib",
+                  "enable-zstd"
                 ]
               }
             ]
@@ -47786,6 +47783,18 @@
               "libffi"
             ]
           },
+          "enable-ios": {
+            "description": "Build compiler-rt for iOS SDK.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "target-arm"
+                ]
+              }
+            ]
+          },
           "enable-libxml2": {
             "description": "Build with LibXml2.",
             "dependencies": [
@@ -47805,6 +47814,12 @@
             "description": "Build with ZLib.",
             "dependencies": [
               "zlib"
+            ]
+          },
+          "enable-zstd": {
+            "description": "Build with zstd.",
+            "dependencies": [
+              "zstd"
             ]
           },
           "flang": {
@@ -48009,17 +48024,18 @@
             "description": "Build LLVM utils."
           }
         },
-        "version": "14.0.6"
+        "version": "15.0.7"
       },
       "files": [
-        "0002-fix-install-paths.patch",
-        "0004-fix-dr-1734.patch",
-        "0005-fix-tools-path.patch",
-        "0007-fix-compiler-rt-install-path.patch",
-        "0009-fix-tools-install-path.patch",
-        "0010-fix-libffi.patch",
-        "0011-fix-install-bolt.patch",
-        "0012-disable-libomp-aliases.patch",
+        "0001-Fix-install-paths.patch",
+        "0002-Fix-DR-1734.patch",
+        "0003-Fix-tools-path.patch",
+        "0004-Fix-compiler-rt-install-path.patch",
+        "0005-Fix-tools-install-path.patch",
+        "0006-Fix-libffi.patch",
+        "0007-Fix-install-bolt.patch",
+        "0008-llvm_assert.patch",
+        "0009-disable-libomp-aliases.patch",
         "clang_usage",
         "flang_usage",
         "lld_usage",
@@ -50743,9 +50759,11 @@
         "name": "matroska",
         "description": "a C++ library to parse Matroska files (.mkv and .mka)",
         "homepage": "https://github.com/Matroska-Org/libmatroska",
-        "supports": "!uwp",
         "dependencies": [
-          "ebml",
+          {
+            "name": "ebml",
+            "version>=": "1.4.3"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -50755,7 +50773,7 @@
             "host": true
           }
         ],
-        "version": "1.6.3"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -63473,7 +63491,6 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
-        "port-version": 1,
         "description": "Qt5 Application Framework",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -63822,7 +63839,7 @@
             ]
           }
         },
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -63845,7 +63862,7 @@
           "qt5-gamepad",
           "qt5-imageformats"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -63866,7 +63883,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -63886,7 +63903,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -63897,7 +63914,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 5,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -63967,7 +63983,7 @@
             ]
           }
         },
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -64036,7 +64052,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64055,7 +64071,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64076,7 +64092,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64097,7 +64113,7 @@
           "qt5-imageformats",
           "qt5-svg"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64120,7 +64136,7 @@
           "qt5-quickcontrols2",
           "qt5-tools"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64140,7 +64156,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64160,7 +64176,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64171,7 +64187,6 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
-        "port-version": 1,
         "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
         "license": null,
         "dependencies": [
@@ -64187,7 +64202,7 @@
             "host": true
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64210,7 +64225,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64230,7 +64245,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64262,7 +64277,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64282,7 +64297,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64301,7 +64316,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64321,7 +64336,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64342,7 +64357,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64363,7 +64378,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64383,7 +64398,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64403,7 +64418,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64423,7 +64438,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64443,7 +64458,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64463,7 +64478,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64482,7 +64497,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64507,7 +64522,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64526,7 +64541,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64551,7 +64566,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64571,7 +64586,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64590,7 +64605,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64610,7 +64625,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64630,7 +64645,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64641,7 +64656,6 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 3,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -64675,7 +64689,7 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "build_1.patch",
@@ -64702,7 +64716,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64722,7 +64736,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64738,7 +64752,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64767,7 +64781,7 @@
             ]
           }
         },
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "patches/require_quick.patch",
@@ -64780,7 +64794,6 @@
       "name": "qt5-x11extras",
       "manifest": {
         "name": "qt5-x11extras",
-        "port-version": 1,
         "description": "Qt5 x11extras Module;",
         "license": null,
         "supports": "!windows",
@@ -64790,7 +64803,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -64810,7 +64823,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.8"
+        "version": "5.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -73737,7 +73750,7 @@
         "description": "public domain header-only libraries",
         "homepage": "https://github.com/nothings/stb",
         "license": "MIT OR CC-PDDC",
-        "version-date": "2022-09-09"
+        "version-date": "2023-04-11"
       },
       "files": [
         "FindStb.cmake",
@@ -74776,6 +74789,7 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
+        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -78043,7 +78057,7 @@
         "description": "Vulkan/CUDA/HIP/OpenCL/Level Zero Fast Fourier Transform library",
         "homepage": "https://github.com/DTolm/VkFFT",
         "license": "MIT",
-        "version": "1.2.17"
+        "version": "1.2.31"
       },
       "files": [
         "portfile.cmake",
