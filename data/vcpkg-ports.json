@@ -1,5 +1,5 @@
 {
-  "version": "f0b5a6b60ad6d7aed68062371bfb886331206d70",
+  "version": "6b7352ef918f4a2c1ca0a5e5ee629c3f4c4c4d2c",
   "ports": [
     {
       "name": "3fd",
@@ -24759,6 +24759,7 @@
       "name": "fastrtps",
       "manifest": {
         "name": "fastrtps",
+        "port-version": 1,
         "description": "Eprosima Fast RTPS is a C++ implementation of the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
         "license": "Apache-2.0",
@@ -24782,6 +24783,7 @@
       "files": [
         "disable-symlink.patch",
         "fix-find-package-asio.patch",
+        "fix-xtime.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26622,7 +26624,6 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 2,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -26647,10 +26648,9 @@
             "host": true
           }
         ],
-        "version": "2.14.1"
+        "version": "2.14.2"
       },
       "files": [
-        "fix-mingw-gperf-fallback.patch",
         "fix-preprocessor-clang-cl.patch",
         "libgetopt.patch",
         "no-etc-symlinks.patch",
@@ -31634,6 +31634,7 @@
       "name": "gst-rtsp-server",
       "manifest": {
         "name": "gst-rtsp-server",
+        "port-version": 1,
         "description": "gst-rtsp-server is a library on top of GStreamer for building an RTSP server",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.1-only",
@@ -31662,7 +31663,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 4,
+        "port-version": 5,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -38359,11 +38360,13 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
-        "port-version": 1,
-        "description": "A small library of functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them",
+        "description": [
+          "The Khronos KTX library and tools.",
+          "Functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them."
+        ],
         "homepage": "https://github.com/KhronosGroup/KTX-Software",
-        "license": "Apache-2.0",
-        "supports": "!(uwp | x86 | (arm & !arm64))",
+        "license": null,
+        "supports": "arm64 | x64 | !windows",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -38377,18 +38380,21 @@
         ],
         "features": {
           "tools": {
-            "description": "Build tools"
+            "description": "Build tools",
+            "supports": "!android"
           },
           "vulkan": {
-            "description": "Build Vulkan support"
+            "description": "Build Vulkan support",
+            "supports": "!emscripten"
           }
         },
-        "version-semver": "4.1.0-rc3"
+        "version-semver": "4.1.0"
       },
       "files": [
         "0001-Use-vcpkg-zstd.patch",
         "0002-Fix-versioning.patch",
-        "0003-libtool.patch",
+        "0003-mkversion.patch",
+        "0004-quirks.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43023,6 +43029,7 @@
       "name": "libnice-gst",
       "manifest": {
         "name": "libnice-gst",
+        "port-version": 1,
         "description": "Gstreamer Libnice plugins.",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -56319,7 +56326,6 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
-        "port-version": 1,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
@@ -56356,10 +56362,9 @@
             ]
           }
         },
-        "version": "1.2.3"
+        "version": "1.3.5"
       },
       "files": [
-        "openssl.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64306,6 +64311,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
+        "port-version": 1,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65396,7 +65402,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66515,6 +66521,7 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
+        "port-version": 1,
         "description": "Qt wrapper for existing OPC UA stacks",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66583,6 +66590,7 @@
         "version": "6.4.3"
       },
       "files": [
+        "open62541_v1.3_support.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
