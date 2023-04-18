@@ -79,7 +79,7 @@ export const zVcpkgFeature = z
 export type VcpkgFeature = DeepReadonly<z.infer<typeof zVcpkgFeature>>;
 
 // vcpkg.json without versioning fields
-// https://github.com/microsoft/vcpkg/blob/master/docs/users/manifests.md
+// https://learn.microsoft.com/vcpkg/reference/vcpkg-json
 const zVcpkgBase = z.object({
   name: zVcpkgPortName,
   'port-version': z.number().int().min(0).optional(),
@@ -96,7 +96,8 @@ const zVcpkgBase = z.object({
   features: z.record(zVcpkgFeatureName, zVcpkgFeature).optional(),
 });
 
-// https://github.com/microsoft/vcpkg/blob/master/docs/users/versioning.md
+// https://learn.microsoft.com/vcpkg/reference/vcpkg-json#version
+// https://learn.microsoft.com/vcpkg/users/versioning#version-schemes
 export const zVcpkg = z.union([
   // NOTE: though correct syntax for `version` is `/^(0|[1-9]\d*)(\.(0|[1-9]\d*))*$/`, some old ports do not comply with this.
   // so we use same regex as version-string.
