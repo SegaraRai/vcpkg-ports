@@ -1,5 +1,5 @@
 {
-  "version": "501db0f17ef6df184fcdbfbe0f87cde2313b6ab1",
+  "version": "9c7c66471005cb132832786d5d65d83d2cf503ad",
   "ports": [
     {
       "name": "3fd",
@@ -697,12 +697,11 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
-        "port-version": 2,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "1.2.6.1"
+        "version": "1.2.8"
       },
       "files": [
         "fix-plugin-dir.patch",
@@ -1986,7 +1985,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-06"
+        "version-date": "2023-03-25"
       },
       "files": [
         "portfile.cmake",
@@ -2120,7 +2119,7 @@
       "name": "at-spi2-core",
       "manifest": {
         "name": "at-spi2-core",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -5414,7 +5413,7 @@
       "name": "blend2d",
       "manifest": {
         "name": "blend2d",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Beta 2D Vector Graphics Powered by a JIT Compiler",
         "homepage": "https://github.com/blend2d/blend2d",
         "documentation": "https://blend2d.com/doc/index.html",
@@ -5441,13 +5440,42 @@
             "description": "Default feature. Enables use of futex."
           },
           "jit": {
-            "description": "Default feature. Enables jit pipeline compilation."
+            "description": "Default feature. Enables jit pipeline compilation.",
+            "dependencies": [
+              {
+                "name": "blend2d",
+                "default-features": false,
+                "features": [
+                  "futex"
+                ],
+                "platform": "windows"
+              }
+            ]
           },
           "logging": {
-            "description": "Default feature. Enables logging."
+            "description": "Default feature. Enables logging.",
+            "dependencies": [
+              {
+                "name": "blend2d",
+                "default-features": false,
+                "features": [
+                  "jit"
+                ]
+              }
+            ]
           },
           "tls": {
-            "description": "Default feature. Enables use of thread_local feature. Disable for platforms where thread local storage is expensive or not supported."
+            "description": "Default feature. Enables use of thread_local feature. Disable for platforms where thread local storage is expensive or not supported.",
+            "dependencies": [
+              {
+                "name": "blend2d",
+                "default-features": false,
+                "features": [
+                  "futex"
+                ],
+                "platform": "windows"
+              }
+            ]
           }
         },
         "version-date": "2022-12-31"
@@ -24855,7 +24883,7 @@
       "name": "fbthrift",
       "manifest": {
         "name": "fbthrift",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Facebook's branch of Apache Thrift, including a new C++ server.",
         "homepage": "https://github.com/facebook/fbthrift",
         "license": "Apache-2.0",
@@ -24889,6 +24917,7 @@
       },
       "files": [
         "0001-fix-compatibility-with-boost-1.79.0.patch",
+        "0002-fix-dependency.patch",
         "fix-glog.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -26203,7 +26232,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -29749,7 +29778,7 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A middleware layer between C libraries (using GObject) and language bindings.",
         "homepage": "https://gi.readthedocs.io/en/latest/",
         "license": null,
@@ -31285,7 +31314,7 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
@@ -32485,7 +32514,7 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -32698,7 +32727,7 @@
       "name": "gtkmm",
       "manifest": {
         "name": "gtkmm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "gtkmm is the official C++ interface for the popular GUI library GTK+.",
         "homepage": "https://www.gtkmm.org/",
         "license": "LGPL-3.0-or-later",
@@ -34331,6 +34360,51 @@
         "fix-libgen.h-cannot-be-found.patch",
         "fix-vcxproj.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "idyntree",
+      "manifest": {
+        "name": "idyntree",
+        "description": "Multibody Dynamics Library designed for Free Floating Robots.",
+        "homepage": "https://github.com/robotology/idyntree",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "eigen3",
+          "libxml2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "assimp",
+          "irrlicht"
+        ],
+        "features": {
+          "assimp": {
+            "description": "Add support for loading meshes",
+            "dependencies": [
+              "assimp"
+            ]
+          },
+          "irrlicht": {
+            "description": "Add support for irrlicht-based visualizer",
+            "dependencies": [
+              "irrlicht"
+            ]
+          }
+        },
+        "version": "8.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -44651,7 +44725,7 @@
       "name": "libsecret",
       "manifest": {
         "name": "libsecret",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libsecret is a GObject-based library for accessing the Secret Service API of the freedesktop.org project, a cross-desktop effort to access passwords, tokens and other types of secrets. libsecret provides a convenient wrapper for these methods so consumers do not have to call the low-level DBus methods.",
         "homepage": "https://gitlab.gnome.org/GNOME/libsecret/",
         "license": "LGPL-2.1-or-later",
@@ -48644,13 +48718,10 @@
             "host": true
           }
         ],
-        "version": "0.13.0.1"
+        "version": "1.0.0"
       },
       "files": [
-        "expat.patch",
-        "linux.patch",
         "portfile.cmake",
-        "threadutility.patch",
         "vcpkg.json"
       ]
     },
@@ -50398,6 +50469,20 @@
           }
         ],
         "version": "0.21.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "makeid",
+      "manifest": {
+        "name": "makeid",
+        "description": "MakeID is a cross platform C++ library for IDs allocation/deallocation",
+        "homepage": "http://www.humus.name/index.php?page=3D",
+        "license": null,
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -54986,6 +55071,7 @@
       "name": "node-api-headers",
       "manifest": {
         "name": "node-api-headers",
+        "port-version": 1,
         "description": "NodeJS API for writing modules in C++",
         "homepage": "https://nodejs.org/api/addons.html",
         "license": "MIT",
@@ -57220,7 +57306,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 17,
+        "port-version": 18,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -57379,7 +57465,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -57709,7 +57795,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 4,
+        "port-version": 5,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -58478,21 +58564,36 @@
       "name": "openmama",
       "manifest": {
         "name": "openmama",
+        "port-version": 1,
         "description": "OpenMAMA is a high performance vendor neutral lightweight wrapper that provides a common API interface to different middleware and messaging solutions across a variety of platforms and languages",
         "homepage": "https://github.com/finos/OpenMAMA",
         "license": "LGPL-2.1",
-        "supports": "windows & (x64 | x86)",
         "dependencies": [
           "apr",
           "apr-util",
           "libevent",
-          "qpid-proton",
-          "vcpkg-cmake",
-          "vcpkg-cmake-config"
+          {
+            "name": "libuuid",
+            "platform": "!windows & !osx"
+          },
+          {
+            "name": "qpid-proton",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
         "version-semver": "6.3.2"
       },
       "files": [
+        "fix-dependencies.diff",
+        "git-no-tags.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60122,7 +60223,6 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 2,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-only",
@@ -60176,10 +60276,9 @@
             ]
           }
         },
-        "version": "1.50.12"
+        "version": "1.50.14"
       },
       "files": [
-        "freetype2-pc.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60329,7 +60428,7 @@
       "name": "pangomm",
       "manifest": {
         "name": "pangomm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "pangomm is the official C++ interface for the Pango font layout library. See, for instance, the Pango::Layout class.",
         "homepage": "https://gitlab.gnome.org/GNOME/pangomm",
         "license": "LGPL-2.1-or-later",
@@ -60672,7 +60771,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -60728,7 +60827,8 @@
             "description": "CUDA support for PCL",
             "dependencies": [
               "cuda"
-            ]
+            ],
+            "supports": "x64"
           },
           "examples": {
             "description": "Build PCL examples",
@@ -60805,7 +60905,8 @@
             "description": "Build PCL utilities",
             "dependencies": [
               "boost-accumulators"
-            ]
+            ],
+            "supports": "!static"
           },
           "visualization": {
             "description": "Build visualization",
@@ -69075,7 +69176,7 @@
             ]
           }
         },
-        "version": "5.0"
+        "version": "5.1"
       },
       "files": [
         "add-robin-hood.patch",
@@ -79646,7 +79747,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-02-02"
+        "version-date": "2023-04-11"
       },
       "files": [
         "portfile.cmake",
