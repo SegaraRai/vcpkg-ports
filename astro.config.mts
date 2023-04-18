@@ -40,7 +40,9 @@ export default defineConfig({
   site: `https://vcpkg.roundtrip.dev/`,
   trailingSlash: 'never', // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
   integrations: [
-    unoCSS(),
+    unoCSS({
+      injectReset: true,
+    }),
     vue(),
     sitemap({
       changefreq: 'daily' as any,
