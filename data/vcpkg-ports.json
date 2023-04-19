@@ -1,5 +1,5 @@
 {
-  "version": "9c7c66471005cb132832786d5d65d83d2cf503ad",
+  "version": "29fd45c883a67f498fada324f9e270c1f8d7a183",
   "ports": [
     {
       "name": "3fd",
@@ -36206,7 +36206,6 @@
       "name": "joltphysics",
       "manifest": {
         "name": "joltphysics",
-        "port-version": 2,
         "description": "A multi core friendly rigid body physics and collision detection library suitable for games and VR applications",
         "homepage": "https://github.com/jrouwe/JoltPhysics",
         "license": "MIT",
@@ -36220,10 +36219,9 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "3.0.1"
       },
       "files": [
-        "disable-warningC5266.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -40045,6 +40043,7 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
+        "port-version": 1,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -40082,7 +40081,7 @@
         "version-semver": "0.18.2"
       },
       "files": [
-        "0001-fix-for-vcpkg.patch",
+        "fix-for-vcpkg.patch",
         "portfile.cmake",
         "uwp-warnings.patch",
         "vcpkg.json"
@@ -42133,6 +42132,7 @@
       "name": "libkeyfinder",
       "manifest": {
         "name": "libkeyfinder",
+        "port-version": 1,
         "description": "Musical key detection for digital audio",
         "homepage": "https://github.com/mixxxdj/libkeyfinder",
         "license": "GPL-3.0-or-later",
@@ -42147,14 +42147,6 @@
             "host": true
           }
         ],
-        "features": {
-          "test": {
-            "description": "Build tests",
-            "dependencies": [
-              "catch2"
-            ]
-          }
-        },
         "version": "2.2.6"
       },
       "files": [
@@ -47199,30 +47191,6 @@
       ]
     },
     {
-      "name": "libxmp-lite",
-      "manifest": {
-        "name": "libxmp-lite",
-        "port-version": 8,
-        "description": "Lightweight version of libxmp that supports MOD, S3M, XM and IT modules.",
-        "homepage": "https://sourceforge.net/projects/xmp/",
-        "supports": "windows",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "4.4.1"
-      },
-      "files": [
-        "0001-msvc-buildfix.patch",
-        "0002-fix-symbols.patch",
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "libxmu",
       "manifest": {
         "name": "libxmu",
@@ -48123,6 +48091,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
+        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -48787,7 +48756,7 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
         "license": null,
@@ -53247,7 +53216,7 @@
       "name": "ms-gltf",
       "manifest": {
         "name": "ms-gltf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "glTF-SDK is a C++ Software Development Kit for glTF",
         "homepage": "https://github.com/microsoft/glTF-SDK",
         "license": "MIT",
@@ -53264,7 +53233,8 @@
         ],
         "features": {
           "samples": {
-            "description": "Build with GLTF samples"
+            "description": "Build with GLTF samples",
+            "supports": "!osx & !ios & !android"
           },
           "test": {
             "description": "Build test programs",
@@ -53276,7 +53246,6 @@
         "version-date": "2022-06-28"
       },
       "files": [
-        "fix-apple-filesystem.patch",
         "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -74183,7 +74152,7 @@
       "name": "starlink-ast",
       "manifest": {
         "name": "starlink-ast",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The AST library provides a comprehensive range of facilities for attaching world coordinate systems to astronomical data, for retrieving and interpreting that information and for generating graphical output based on it",
         "homepage": "https://starlink.eao.hawaii.edu/starlink/AST",
         "supports": "windows",
@@ -78560,8 +78529,8 @@
       "name": "visit-struct",
       "manifest": {
         "name": "visit-struct",
-        "port-version": 4,
         "description": "A header-only library providing structure visitors for C++11 and C++14",
+        "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -78572,7 +78541,7 @@
             "host": true
           }
         ],
-        "version": "1.0"
+        "version": "1.1.0"
       },
       "files": [
         "CMakeLists.txt",
