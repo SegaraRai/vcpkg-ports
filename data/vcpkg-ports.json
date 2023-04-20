@@ -1,5 +1,5 @@
 {
-  "version": "29fd45c883a67f498fada324f9e270c1f8d7a183",
+  "version": "48483c4fc3200d6700126f971c720277130332c7",
   "ports": [
     {
       "name": "3fd",
@@ -24632,7 +24632,7 @@
             "host": true
           }
         ],
-        "version": "3.11.0"
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -26332,7 +26332,6 @@
       "name": "fluidlite",
       "manifest": {
         "name": "fluidlite",
-        "port-version": 3,
         "description": "FluidLite is a very light version of FluidSynth designed to be hardware, platform and external dependency independant.",
         "homepage": "https://github.com/divideconcept/FluidLite",
         "license": "LGPL-2.1-or-later",
@@ -26340,12 +26339,29 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-date": "2020-08-27"
+        "default-features": [
+          "sf3"
+        ],
+        "features": {
+          "sf3": {
+            "description": "Enable SF3 files (ogg/vorbis compressed samples)",
+            "dependencies": [
+              "libvorbis"
+            ]
+          }
+        },
+        "version-date": "2023-04-18"
       },
       "files": [
+        "fix-dependencies.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -26353,7 +26369,6 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 2,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -26397,10 +26412,10 @@
             ]
           }
         },
-        "version": "2.3.1"
+        "version": "2.3.2"
       },
       "files": [
-        "add-usage-requirements.patch",
+        "alsa-libdl.patch",
         "gentables.patch",
         "portfile.cmake",
         "usage",
@@ -42264,13 +42279,15 @@
       "name": "libleidenalg",
       "manifest": {
         "name": "libleidenalg",
-        "port-version": 1,
         "maintainers": "Andrew Robbins <andrew@robbinsa.me>",
         "description": "Leiden is a general algorithm for methods of community detection in large networks.",
         "homepage": "https://github.com/vtraag/libleidenalg",
         "license": "GPL-3.0-or-later",
         "dependencies": [
-          "igraph",
+          {
+            "name": "igraph",
+            "version>=": "0.10.1"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -42280,7 +42297,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -44385,7 +44402,7 @@
             ]
           }
         },
-        "version": "2.0.2"
+        "version": "2.1.0"
       },
       "files": [
         "fix_curl.patch",
@@ -46182,7 +46199,7 @@
       "name": "libuuid",
       "manifest": {
         "name": "libuuid",
-        "port-version": 12,
+        "port-version": 13,
         "description": "Universally unique id library",
         "homepage": "https://sourceforge.net/projects/libuuid",
         "supports": "!osx & !windows",
@@ -54347,7 +54364,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "dependencies": [
@@ -60109,6 +60126,10 @@
         "homepage": "https://github.com/eclipse/paho.mqtt.c",
         "license": "EPL-2.0",
         "dependencies": [
+          {
+            "name": "libuuid",
+            "platform": "!osx & !windows"
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -60119,9 +60140,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.3.10"
+        "version": "1.3.12"
       },
       "files": [
+        "fix-ODR-libuuid-linux.patch",
         "fix-unresolvedsymbol-arm.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -65355,6 +65377,7 @@
       "name": "qt5compat",
       "manifest": {
         "name": "qt5compat",
+        "port-version": 1,
         "description": "The module contains unsupported Qt 5 APIs",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65523,7 +65546,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67129,6 +67152,7 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
+        "port-version": 1,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67204,7 +67228,14 @@
           "qdoc": {
             "description": "Build QDoc.",
             "dependencies": [
-              "llvm"
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "clang",
+                  "enable-rtti"
+                ]
+              }
             ]
           },
           "qml": {
@@ -69980,10 +70011,9 @@
       "name": "ryu",
       "manifest": {
         "name": "ryu",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Ryu generates the shortest decimal representation of a floating point number that maintains round-trip safety.",
         "homepage": "https://github.com/ulfjack/ryu",
-        "supports": "!(uwp | arm | x86)",
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
@@ -70402,7 +70432,7 @@
             "host": true
           }
         ],
-        "version": "1.0.16"
+        "version": "1.1.0"
       },
       "files": [
         "fix-CMakeInstall.patch",
@@ -75239,7 +75269,7 @@
       "name": "tensorpipe",
       "manifest": {
         "name": "tensorpipe",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A tensor-aware point-to-point communication primitive for machine learning",
         "homepage": "https://github.com/pytorch/tensorpipe",
         "license": "BSD-3-Clause",
@@ -81651,9 +81681,9 @@
       "name": "yomm2",
       "manifest": {
         "name": "yomm2",
-        "port-version": 2,
         "description": "YOMM2 is an implementation of open multi-methods.",
         "homepage": "https://github.com/jll63/yomm2",
+        "license": "BSL-1.0",
         "dependencies": [
           "boost-dynamic-bitset",
           "boost-integer",
@@ -81669,11 +81699,10 @@
             "host": true
           }
         ],
-        "version": "1.1.2"
+        "version": "1.3.1"
       },
       "files": [
         "fix_find_boost.patch",
-        "fix_uwp_osx.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
