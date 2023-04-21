@@ -1,5 +1,5 @@
 {
-  "version": "48483c4fc3200d6700126f971c720277130332c7",
+  "version": "16e3ce03f378468c78a99112c405e1f191a43175",
   "ports": [
     {
       "name": "3fd",
@@ -697,6 +697,7 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
+        "port-version": 1,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
@@ -707,6 +708,7 @@
         "fix-plugin-dir.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -17068,7 +17070,6 @@
       "name": "cdt",
       "manifest": {
         "name": "cdt",
-        "port-version": 1,
         "description": "Constrained Delaunay Triangulation",
         "homepage": "https://github.com/artem-ogre/CDT.git",
         "license": "MPL-2.0",
@@ -17088,18 +17089,11 @@
           },
           "as-compiled-library": {
             "description": "Templates for float and double will be instantiated and compiled into a library"
-          },
-          "boost": {
-            "description": "Boost is used as a fall-back for features missing in C++98 and performance tweaks",
-            "dependencies": [
-              "boost-container"
-            ]
           }
         },
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
-        "boost-link.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20251,14 +20245,14 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
         ],
         "homepage": "https://chromium.googlesource.com/crashpad/crashpad/+/master/README.md",
         "license": "Apache-2.0",
-        "supports": "osx | (windows & !uwp)",
+        "supports": "linux | osx | (windows & !uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
@@ -26535,7 +26529,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 4,
+        "port-version": 5,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -26553,6 +26547,7 @@
           "boost-smart-ptr",
           "boost-system",
           "boost-thread",
+          "boost-variant",
           "double-conversion",
           "fmt",
           "gflags",
@@ -32529,7 +32524,6 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -32566,6 +32560,12 @@
             "host": true
           },
           "graphene",
+          {
+            "name": "harfbuzz",
+            "features": [
+              "glib"
+            ]
+          },
           "libepoxy",
           "pango",
           {
@@ -32620,12 +32620,10 @@
             ]
           }
         },
-        "version": "4.6.8"
+        "version": "4.10.1"
       },
       "files": [
         "0001-build.patch",
-        "0002-windows-build.patch",
-        "0004-macos-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34184,7 +34182,7 @@
             "host": true
           }
         ],
-        "version": "5.4.0"
+        "version": "5.4.2"
       },
       "files": [
         "0001-remove-Werror.patch",
@@ -49871,7 +49869,7 @@
       "name": "magnum-integration",
       "manifest": {
         "name": "magnum-integration",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Integrations for magnum, C++11/C++14 graphics middleware for games and data visualization",
         "homepage": "https://magnum.graphics/",
         "license": null,
@@ -59081,7 +59079,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -59142,7 +59140,13 @@
             "description": "Whether to include the OpenTelemetry Protocol over HTTP in the SDK",
             "dependencies": [
               "curl",
-              "protobuf"
+              {
+                "name": "opentelemetry-cpp",
+                "default-features": false,
+                "features": [
+                  "otlp"
+                ]
+              }
             ]
           },
           "prometheus": {
@@ -67859,7 +67863,7 @@
             "host": true
           }
         ],
-        "version": "2.7.0"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -68284,6 +68288,7 @@
       "name": "raylib",
       "manifest": {
         "name": "raylib",
+        "port-version": 1,
         "description": "A simple and easy-to-use library to enjoy videogames programming",
         "homepage": "https://github.com/raysan5/raylib",
         "license": "Zlib",
@@ -68317,6 +68322,7 @@
       },
       "files": [
         "fix-linkGlfw.patch",
+        "fix-project-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75708,7 +75714,7 @@
       "name": "tiff",
       "manifest": {
         "name": "tiff",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library that supports the manipulation of TIFF image files",
         "homepage": "https://libtiff.gitlab.io/libtiff/",
         "license": null,
@@ -81420,7 +81426,7 @@
       "name": "xxhash",
       "manifest": {
         "name": "xxhash",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Extremely fast hash algorithm",
         "homepage": "https://github.com/Cyan4973/xxHash",
         "dependencies": [
@@ -81441,6 +81447,7 @@
         "version": "0.8.1"
       },
       "files": [
+        "fix_xxhsum1_path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
