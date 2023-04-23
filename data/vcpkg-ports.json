@@ -1,5 +1,5 @@
 {
-  "version": "f35bb4410a41adea1248337be07292678fae6780",
+  "version": "b3e0a1e625a0cc00073efb763e39088e5b75939e",
   "ports": [
     {
       "name": "3fd",
@@ -16671,7 +16671,7 @@
       "name": "capstone",
       "manifest": {
         "name": "capstone",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Multi-architecture disassembly framework",
         "homepage": "https://github.com/capstone-engine/capstone",
         "dependencies": [
@@ -16706,9 +16706,6 @@
           "mips": {
             "description": "Capstone disassembly support for MIPS"
           },
-          "osxkernel": {
-            "description": "Support for embedding Capstone into OSX Kernel extensions"
-          },
           "ppc": {
             "description": "Capstone disassembly support for PowerPC"
           },
@@ -16723,17 +16720,6 @@
           },
           "x86": {
             "description": "Capstone disassembly support for x86"
-          },
-          "x86-reduce": {
-            "description": "Capstone disassembly support for x86 without support for less used instructions",
-            "dependencies": [
-              {
-                "name": "capstone",
-                "features": [
-                  "x86"
-                ]
-              }
-            ]
           },
           "xcore": {
             "description": "Capstone disassembly support for XCore"
@@ -22334,6 +22320,7 @@
       "name": "directxtex",
       "manifest": {
         "name": "directxtex",
+        "port-version": 1,
         "description": "DirectXTex texture processing library",
         "homepage": "https://github.com/Microsoft/DirectXTex",
         "documentation": "https://github.com/microsoft/DirectXTex/wiki",
@@ -22367,6 +22354,9 @@
           },
           "dx12": {
             "description": "Build with DirectX12 support for Windows 10/Windows 11"
+          },
+          "no-omp": {
+            "description": "Build without using OpenMP support for the BC6H/BC7 software codec"
           },
           "openexr": {
             "description": "Enable OpenEXR support",
@@ -48117,7 +48107,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -48163,7 +48153,6 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
-                  "compiler-rt",
                   "tools"
                 ]
               }
@@ -48182,7 +48171,16 @@
             ]
           },
           "compiler-rt": {
-            "description": "Include compiler's runtime libraries."
+            "description": "Include compiler's runtime libraries.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "clang"
+                ]
+              }
+            ]
           },
           "default-options": {
             "description": "Build with default options.",
@@ -48348,10 +48346,28 @@
             ]
           },
           "libcxxabi": {
-            "description": "Include libcxxabi library."
+            "description": "Include libcxxabi library.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "tools"
+                ]
+              }
+            ]
           },
           "libunwind": {
-            "description": "Include libunwind library."
+            "description": "Include libunwind library.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "tools"
+                ]
+              }
+            ]
           },
           "lld": {
             "description": "Include LLVM linker.",
@@ -48372,6 +48388,8 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
+                  "clang",
+                  "enable-terminfo",
                   "tools"
                 ]
               }
@@ -48396,6 +48414,7 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
+                  "clang",
                   "utils"
                 ]
               }
@@ -61052,7 +61071,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 2,
+        "port-version": 3,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -61114,9 +61133,6 @@
             "dependencies": [
               "zlib"
             ]
-          },
-          "laszip": {
-            "description": "Obsolete. PDAL includes LAZperf."
           },
           "liblzma": {
             "description": "Support for compression/decompression with LZMA",
