@@ -1,5 +1,5 @@
 {
-  "version": "b3e0a1e625a0cc00073efb763e39088e5b75939e",
+  "version": "3b7e8b500ee8e2043966b5f070baf2fb419a0b27",
   "ports": [
     {
       "name": "3fd",
@@ -3988,7 +3988,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.8.1"
+        "version-semver": "1.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -29214,9 +29214,10 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
+        "supports": "!(arm64 & windows)",
         "dependencies": [
           "opengl",
           {
@@ -48965,7 +48966,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.3.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -53785,7 +53786,7 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
@@ -57834,7 +57835,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 5,
+        "port-version": 6,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -58603,7 +58604,7 @@
       "name": "openmama",
       "manifest": {
         "name": "openmama",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenMAMA is a high performance vendor neutral lightweight wrapper that provides a common API interface to different middleware and messaging solutions across a variety of platforms and languages",
         "homepage": "https://github.com/finos/OpenMAMA",
         "license": "LGPL-2.1",
@@ -58684,10 +58685,10 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 6,
+        "port-version": 7,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
         "license": "MPL-2.0-no-copyleft-exception",
-        "supports": "!(osx & arm64)",
+        "supports": "x86 | x64",
         "dependencies": [
           "cereal",
           {
@@ -60825,11 +60826,10 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
-        "supports": "!(arm64 & windows)",
         "dependencies": [
           "boost-asio",
           "boost-date-time",
@@ -60902,7 +60902,10 @@
             ]
           },
           "opengl": {
-            "description": "OpenGL support for PCL"
+            "description": "OpenGL support for PCL",
+            "dependencies": [
+              "opengl"
+            ]
           },
           "openni2": {
             "description": "OpenNI2 support for PCL",
@@ -60955,6 +60958,12 @@
               }
             ]
           },
+          "surface-on-nurbs": {
+            "description": "Fitting NURBS to point clouds",
+            "dependencies": [
+              "zlib"
+            ]
+          },
           "tools": {
             "description": "Build PCL utilities",
             "dependencies": [
@@ -60991,6 +61000,7 @@
       "files": [
         "add-gcc-version-check.patch",
         "add_bigobj_option.patch",
+        "devendor-zlib.patch",
         "disable_kinfu_for_cuda12.patch",
         "fix-check-sse.patch",
         "fix-numeric-literals-flag.patch",
@@ -67157,6 +67167,7 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
+        "port-version": 1,
         "description": "Qt Speech support",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -82085,7 +82096,7 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "LGPL-3.0-only",
