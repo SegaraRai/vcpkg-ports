@@ -1,5 +1,5 @@
 {
-  "version": "b669595870177598587d3ff67e675f4f9213fe82",
+  "version": "7ec2e3fde059c63f856a5e0256a085c2869ecff5",
   "ports": [
     {
       "name": "3fd",
@@ -200,7 +200,6 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
-        "port-version": 2,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -240,7 +239,7 @@
             ]
           }
         },
-        "version": "7.0.11"
+        "version": "7.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -3541,9 +3540,6 @@
           "mobile": {
             "description": "C++ SDK for the AWS mobile service"
           },
-          "mobileanalytics": {
-            "description": "C++ SDK for the AWS mobileanalytics service"
-          },
           "monitoring": {
             "description": "C++ SDK for the AWS monitoring service"
           },
@@ -3827,7 +3823,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.4"
+        "version": "1.11.65"
       },
       "files": [
         "compute_build_only.cmake",
@@ -3837,6 +3833,7 @@
         "lock-curl-http-and-tls-settings.patch",
         "patch-relocatable-rpath.patch",
         "portfile.cmake",
+        "turn-off-warnings-as-errors.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -18782,7 +18779,7 @@
       "name": "collada-dom",
       "manifest": {
         "name": "collada-dom",
-        "port-version": 8,
+        "port-version": 9,
         "description": "The COLLADA Document Object Model (DOM) is an application programming interface (API) that provides a C++ object representation of a COLLADA XML instance document.",
         "homepage": "https://github.com/rdiankov/collada-dom",
         "license": null,
@@ -26465,7 +26462,7 @@
       "name": "fmilib",
       "manifest": {
         "name": "fmilib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "FMI library is intended as a foundation for applications interfacing FMUs (Functional Mockup Units) that follow FMI Standard. This version of the library supports FMI 1.0 and FMI2.0.",
         "homepage": "https://www.fmi-standard.org/",
         "license": "BSD-3-Clause",
@@ -26487,6 +26484,7 @@
       "files": [
         "devendor-sublibs.diff",
         "fix-mergestaticlibs.diff",
+        "minizip.patch",
         "portfile.cmake",
         "unofficial-export.diff",
         "unofficial-fmilib-config.cmake",
@@ -26525,7 +26523,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 5,
+        "port-version": 6,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29309,6 +29307,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -31710,7 +31709,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 5,
+        "port-version": 6,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -32021,6 +32020,13 @@
               {
                 "name": "ffmpeg",
                 "default-features": false
+              },
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-base"
+                ]
               }
             ]
           },
@@ -32736,34 +32742,23 @@
       "name": "gtkmm",
       "manifest": {
         "name": "gtkmm",
-        "port-version": 2,
         "description": "gtkmm is the official C++ interface for the popular GUI library GTK+.",
         "homepage": "https://www.gtkmm.org/",
         "license": "LGPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
-          "atk",
-          "atkmm",
-          "cairo",
           "cairomm",
           "gdk-pixbuf",
-          "gettext",
-          "glib",
-          {
-            "name": "glib",
-            "host": true
-          },
           "glibmm",
           "gtk",
           "libepoxy",
-          "pango",
           "pangomm",
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
-        "version": "4.6.0"
+        "version": "4.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -32783,7 +32778,7 @@
             "host": true
           }
         ],
-        "version": "1.1.5"
+        "version": "1.1.8"
       },
       "files": [
         "portfile.cmake",
@@ -35133,6 +35128,7 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
+        "port-version": 1,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -35181,7 +35177,10 @@
           "glfw-binding": {
             "description": "Make available GLFW binding",
             "dependencies": [
-              "glfw3"
+              {
+                "name": "glfw3",
+                "platform": "!emscripten"
+              }
             ]
           },
           "glut-binding": {
@@ -41346,7 +41345,6 @@
       "name": "libgpiod",
       "manifest": {
         "name": "libgpiod",
-        "port-version": 2,
         "description": "C library and tools for interacting with the linux GPIO character device",
         "homepage": "https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git",
         "license": "LGPL-2.1-or-later",
@@ -41362,7 +41360,7 @@
             "description": "Make available cxx bindings"
           }
         },
-        "version": "1.6.3"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -41571,6 +41569,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -42048,6 +42047,7 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
+        "port-version": 1,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
         "license": "BSD-3-Clause",
@@ -45725,7 +45725,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -45851,6 +45851,7 @@
         "fix-cmake.patch",
         "fix-fbgemm-include.patch",
         "fix-windows.patch",
+        "fix_werror.patch",
         "portfile.cmake",
         "pytorch-pr-85958.patch",
         "use-flatbuffers2.patch",
@@ -50987,6 +50988,7 @@
       "name": "mathgl",
       "manifest": {
         "name": "mathgl",
+        "port-version": 1,
         "description": "MathGL is a free library of fast C++ routines for the plotting of the data varied in one or more dimensions",
         "license": "GPL-3.0-only",
         "supports": "!uwp",
@@ -51083,7 +51085,14 @@
           "png": {
             "description": "png module",
             "dependencies": [
-              "libpng"
+              "libpng",
+              {
+                "name": "mathgl",
+                "default-features": false,
+                "features": [
+                  "zlib"
+                ]
+              }
             ]
           },
           "qt5": {
@@ -51122,6 +51131,7 @@
         "fix-examples.patch",
         "fix-format-specifiers.patch",
         "fix-glut.patch",
+        "fix-include-property.patch",
         "fix-mgllab.patch",
         "linkage.patch",
         "portfile.cmake",
@@ -51588,6 +51598,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
+        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
@@ -51698,7 +51709,16 @@
             ]
           },
           "offscreen": {
-            "description": "Build with support for offscreen rendering (OSMesa)"
+            "description": "Build with support for offscreen rendering (OSMesa)",
+            "dependencies": [
+              {
+                "name": "mesa",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
+              }
+            ]
           },
           "opengl": {
             "description": "Build support for OpenGL (all versions)",
@@ -51916,7 +51936,7 @@
       "name": "microsoft-signalr",
       "manifest": {
         "name": "microsoft-signalr",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C++ Client for ASP.NET Core SignalR.",
         "homepage": "https://github.com/aspnet/SignalR-Client-Cpp",
         "dependencies": [
@@ -51968,6 +51988,7 @@
         "version": "0.1.0-alpha4"
       },
       "files": [
+        "find-msgpack.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52347,7 +52368,8 @@
       "name": "minizip",
       "manifest": {
         "name": "minizip",
-        "description": "Zip compression library",
+        "port-version": 1,
+        "description": "Minizip zip file manipulation library",
         "homepage": "https://github.com/madler/zlib",
         "license": "Zlib",
         "supports": "!uwp",
@@ -52368,6 +52390,10 @@
             "dependencies": [
               "bzip2"
             ]
+          },
+          "tools": {
+            "description": "Install tools",
+            "supports": "!ios"
           }
         },
         "version-semver": "1.2.13"
@@ -52378,7 +52404,9 @@
         "0003-no-io64.patch",
         "CMakeLists.txt",
         "minizipConfig.cmake.in",
+        "pkgconfig.patch",
         "portfile.cmake",
+        "unofficial-minizipConfig.cmake.in",
         "usage",
         "vcpkg.json"
       ]
@@ -63433,7 +63461,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 5,
+        "port-version": 6,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -63499,6 +63527,7 @@
         "0011-gcc-ldflags-fix.patch",
         "0012-force-disable-curses.patch",
         "0013-configure-no-libcrypt.patch",
+        "0014-fix-get-python-inc-output.patch",
         "openssl.props.in",
         "portfile.cmake",
         "python_vcpkg.props.in",
@@ -63735,7 +63764,6 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
-        "port-version": 1,
         "description": "Qt",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -63952,7 +63980,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -64102,7 +64130,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -65459,7 +65487,6 @@
       "name": "qt5compat",
       "manifest": {
         "name": "qt5compat",
-        "port-version": 1,
         "description": "The module contains unsupported Qt 5 APIs",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65537,7 +65564,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -65578,7 +65605,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -65614,10 +65641,9 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
-        "bump-cmake-version.patch",
         "portfile.cmake",
         "stack-walker-arm64.patch",
         "vcpkg.json",
@@ -65628,7 +65654,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 3,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66087,7 +66112,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "GLIB2-static.patch",
@@ -66151,7 +66176,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66174,7 +66199,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66199,7 +66224,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66227,7 +66252,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66260,7 +66285,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66285,7 +66310,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66305,7 +66330,40 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "qtgrpc",
+      "manifest": {
+        "name": "qtgrpc",
+        "description": "Qt framework based gRPC clients and services.",
+        "homepage": "https://www.qt.io/",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "grpc",
+            "default-features": false
+          },
+          {
+            "name": "protobuf",
+            "default-features": false
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "qtgrpc",
+            "host": true,
+            "default-features": false
+          }
+        ],
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66329,7 +66387,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66381,7 +66439,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -66429,7 +66487,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "fix-taglib-search.patch",
@@ -66539,7 +66597,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66566,9 +66624,19 @@
             ],
             "platform": "linux"
           },
-          "qtpositioning"
+          {
+            "name": "qtpositioning",
+            "default-features": false,
+            "features": [
+              "qml"
+            ]
+          },
+          {
+            "name": "qtshadertools",
+            "default-features": false
+          }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66600,7 +66668,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66623,7 +66691,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66634,7 +66702,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 1,
         "description": "Qt Multimedia",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66709,7 +66776,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "fix_avfoundation_target.patch",
@@ -66736,7 +66803,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66747,7 +66814,7 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
-        "port-version": 2,
+        "port-version": 1,
         "description": "Qt wrapper for existing OPC UA stacks",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66813,10 +66880,9 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
-        "open62541_v1.3_support.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66849,7 +66915,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66860,7 +66926,6 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
-        "port-version": 1,
         "description": "A new module and API for defining 3D content in Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66895,7 +66960,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66915,7 +66980,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66940,6 +67005,42 @@
       ]
     },
     {
+      "name": "qtquickeffectmaker",
+      "manifest": {
+        "name": "qtquickeffectmaker",
+        "description": "Qt Quick Effect Maker (QQEM) for creating and editing custom shader effects.",
+        "homepage": "https://www.qt.io/",
+        "license": null,
+        "supports": "native",
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "qtquick3d",
+            "default-features": false
+          },
+          {
+            "name": "qtshadertools",
+            "default-features": false
+          }
+        ],
+        "version": "6.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "qtquicktimeline",
       "manifest": {
         "name": "qtquicktimeline",
@@ -66953,7 +67054,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67003,7 +67104,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67042,7 +67143,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67080,7 +67181,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67120,7 +67221,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67140,7 +67241,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67168,7 +67269,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67179,7 +67280,6 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
-        "port-version": 1,
         "description": "Qt Speech support",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67202,7 +67302,7 @@
             "default-features": false
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67225,7 +67325,7 @@
             ]
           }
         ],
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67236,7 +67336,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67339,7 +67438,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -67376,7 +67475,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67428,7 +67527,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -67464,7 +67563,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67495,7 +67594,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67655,7 +67754,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67689,7 +67788,7 @@
             ]
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67700,7 +67799,6 @@
       "name": "qtwebview",
       "manifest": {
         "name": "qtwebview",
-        "port-version": 1,
         "description": "Qt Web View",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67729,7 +67827,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.4.3"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -67798,10 +67896,11 @@
             "host": true
           }
         ],
-        "version": "1.29"
+        "version": "1.30"
       },
       "files": [
         "portfile.cmake",
+        "remove-amortizingbonds-all.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -69637,6 +69736,7 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
+        "port-version": 1,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
@@ -69772,7 +69872,6 @@
       },
       "files": [
         "fix_autouic.patch",
-        "fix_qt_deploy_plugins.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73736,32 +73835,6 @@
       ]
     },
     {
-      "name": "spix",
-      "manifest": {
-        "name": "spix",
-        "description": "A minimally invasive UI testing library that enables your Qt/QML app's UI to be controlled either via c++ code, or through an http RPC interface.",
-        "homepage": "https://github.com/faaxm/spix",
-        "license": "MIT",
-        "dependencies": [
-          "anyrpc",
-          {
-            "name": "qtbase",
-            "default-features": false
-          },
-          "qtdeclarative",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "0.5"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "spout2",
       "manifest": {
         "name": "spout2",
@@ -73936,7 +74009,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -74879,7 +74952,6 @@
       "name": "superlu",
       "manifest": {
         "name": "superlu",
-        "port-version": 1,
         "description": "Supernodal sparse direct solver.",
         "homepage": "https://github.com/xiaoyeli/superlu",
         "license": "BSD-3-Clause-LBNL",
@@ -74894,11 +74966,12 @@
             "host": true
           }
         ],
-        "version": "5.3.0"
+        "version": "6.0.0"
       },
       "files": [
         "portfile.cmake",
         "remove-make.inc.patch",
+        "superfluous-configure.patch",
         "vcpkg.json"
       ]
     },
@@ -75168,7 +75241,7 @@
             "host": true
           }
         ],
-        "version": "2021.8.0"
+        "version": "2021.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -79562,6 +79635,7 @@
       "name": "wangle",
       "manifest": {
         "name": "wangle",
+        "port-version": 1,
         "description": "Wangle is a framework providing a set of common client/server abstractions for building services in a consistent, modular, and composable way.",
         "homepage": "https://github.com/facebook/wangle",
         "license": "Apache-2.0",
@@ -79574,6 +79648,7 @@
           "double-conversion",
           "fizz",
           "folly",
+          "gflags",
           "glog",
           "libevent",
           "openssl",
@@ -81065,7 +81140,7 @@
       "name": "xeus",
       "manifest": {
         "name": "xeus",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ implementation of the Jupyter kernel protocol",
         "homepage": "https://github.com/jupyter-xeus/xeus",
         "license": "BSD-3-Clause",
@@ -81073,7 +81148,7 @@
           "cppzmq",
           {
             "name": "libuuid",
-            "platform": "linux"
+            "platform": "!windows & !osx"
           },
           "nlohmann-json",
           "openssl",
@@ -81156,7 +81231,6 @@
       "name": "xlsxio",
       "manifest": {
         "name": "xlsxio",
-        "port-version": 1,
         "description": "Cross-platform C library for reading values from and writing values to .xlsx files",
         "homepage": "https://github.com/brechtsanders/xlsxio",
         "license": "MIT",
@@ -81177,10 +81251,9 @@
             "host": true
           }
         ],
-        "version-date": "2021-03-24"
+        "version": "0.2.34"
       },
       "files": [
-        "export-targets.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
