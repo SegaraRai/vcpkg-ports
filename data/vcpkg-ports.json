@@ -1,5 +1,5 @@
 {
-  "version": "7ec2e3fde059c63f856a5e0256a085c2869ecff5",
+  "version": "187712658b806926b30b63473b42a628d3225c9a",
   "ports": [
     {
       "name": "3fd",
@@ -29184,6 +29184,31 @@
       ]
     },
     {
+      "name": "glaze",
+      "manifest": {
+        "name": "glaze",
+        "description": "One of the fastest JSON libraries in the world. Glaze reads and writes from C++ memory, simplifying interfaces and offering incredible performance.",
+        "homepage": "https://github.com/stephenberry/glaze",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "glbinding",
       "manifest": {
         "name": "glbinding",
@@ -36793,7 +36818,7 @@
       "name": "kenlm",
       "manifest": {
         "name": "kenlm",
-        "port-version": 3,
+        "port-version": 4,
         "description": "KenLM: Faster and Smaller Language Model Queries",
         "supports": "!(arm64 & windows)",
         "dependencies": [
@@ -36823,7 +36848,8 @@
                 "name": "eigen3",
                 "platform": "!windows"
               }
-            ]
+            ],
+            "supports": "!windows"
           }
         },
         "version": "20200924"
@@ -36831,6 +36857,7 @@
       "files": [
         "fix-boost.patch",
         "fix-const-overloaded.patch",
+        "include_functional.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50988,7 +51015,7 @@
       "name": "mathgl",
       "manifest": {
         "name": "mathgl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "MathGL is a free library of fast C++ routines for the plotting of the data varied in one or more dimensions",
         "license": "GPL-3.0-only",
         "supports": "!uwp",
@@ -51133,6 +51160,7 @@
         "fix-glut.patch",
         "fix-include-property.patch",
         "fix-mgllab.patch",
+        "include_functional.patch",
         "linkage.patch",
         "portfile.cmake",
         "usage",
@@ -52904,10 +52932,10 @@
       "name": "moos-core",
       "manifest": {
         "name": "moos-core",
-        "port-version": 7,
+        "port-version": 8,
         "description": "A very light weight, easy to use middleware.",
         "homepage": "https://sites.google.com/site/moossoftware/",
-        "license": null,
+        "license": "GPL-2.0-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -52922,6 +52950,7 @@
       },
       "files": [
         "cmake_fix.patch",
+        "include_functional.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -56233,6 +56262,43 @@
       ]
     },
     {
+      "name": "omniorb",
+      "manifest": {
+        "name": "omniorb",
+        "description": "omniORB is a robust high performance CORBA ORB for C++",
+        "homepage": "https://omniorb.sourceforge.io/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!uwp & !((arm | x86) & windows) & !osx",
+        "dependencies": [
+          "openssl",
+          "python3",
+          {
+            "name": "python3",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          "zlib",
+          "zstd"
+        ],
+        "version": "4.3.0"
+      },
+      "files": [
+        "add_win_into_autotools.patch",
+        "def_gen_fix.patch",
+        "fix_dependency.patch",
+        "hardcode_vaargs_for_msvc.patch",
+        "msvc-src-build-fixes.patch",
+        "portfile.cmake",
+        "python-fixes.patch",
+        "release-debug-static.patch",
+        "vcpkg.json",
+        "vcpkg.mk"
+      ]
+    },
+    {
       "name": "ompl",
       "manifest": {
         "name": "ompl",
@@ -57540,7 +57606,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -59952,7 +60018,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 5,
+        "port-version": 6,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
@@ -68373,7 +68439,6 @@
       "name": "rapidjson",
       "manifest": {
         "name": "rapidjson",
-        "port-version": 3,
         "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API <http://rapidjson.org/>",
         "homepage": "http://rapidjson.org/",
         "license": "MIT",
@@ -68387,7 +68452,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-06-28"
+        "version-date": "2023-04-27"
       },
       "files": [
         "portfile.cmake",
@@ -68425,7 +68490,7 @@
       "name": "rappture",
       "manifest": {
         "name": "rappture",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Rappture is a toolkit supporting Rapid application infrastructure, making it quick and easy to develop powerful scientific applications.",
         "license": null,
         "dependencies": [
@@ -68444,6 +68509,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "include_functional.patch",
         "portfile.cmake",
         "rappture.patch",
         "vcpkg.json"
@@ -73383,7 +73449,7 @@
       "name": "spaceland",
       "manifest": {
         "name": "spaceland",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Spaceland Lib (sl) is a suite for geometric computation, specifically adapted to OpenGL.",
         "dependencies": [
           {
@@ -73395,6 +73461,7 @@
         "version": "7.8.2"
       },
       "files": [
+        "include_functional.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75869,6 +75936,7 @@
       "name": "thrift",
       "manifest": {
         "name": "thrift",
+        "port-version": 1,
         "description": "Apache Thrift is a software project spanning a variety of programming languages and use cases. Our goal is to make reliable, performant communication and data serialization across languages as efficient and seamless as possible.",
         "homepage": "https://github.com/apache/thrift",
         "license": "Apache-2.0",
@@ -77724,7 +77792,7 @@
       "name": "urho3d",
       "manifest": {
         "name": "urho3d",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++ and released under the MIT license. Greatly inspired by OGRE and Horde3D.",
         "homepage": "https://github.com/urho3d/Urho3D",
         "supports": "!(arm | uwp)",
@@ -79371,7 +79439,7 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
-        "port-version": 1,
+        "port-version": 2,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
         "license": null,
@@ -79415,6 +79483,7 @@
         "version": "1.9.0"
       },
       "files": [
+        "omp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -80726,7 +80795,7 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
-        "port-version": 3,
+        "port-version": 4,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
@@ -80753,14 +80822,15 @@
               {
                 "name": "x264",
                 "features": [
-                  "asm"
+                  "asm",
+                  "gpl"
                 ],
                 "platform": "x86 | x64 | (arm & !windows) | arm64"
               }
             ]
           },
-          "disable-gpl": {
-            "description": "Disable GPL-only features"
+          "gpl": {
+            "description": "Allow use of GPL code, the resulting libs and binaries will be under GPL"
           },
           "tool": {
             "description": "Build the command line tool",
@@ -82048,7 +82118,6 @@
       "name": "zeroc-ice",
       "manifest": {
         "name": "zeroc-ice",
-        "port-version": 4,
         "maintainers": "Benjamin Oldenburg <benjamin.oldenburg@ordis.co.th>",
         "description": "Comprehensive RPC framework with support for C++, CSharp, Java, JavaScript, Python and more.",
         "homepage": "https://github.com/zeroc-ice/ice",
@@ -82065,6 +82134,11 @@
           },
           "zlib"
         ],
+        "default-features": [
+          "glacier2lib",
+          "icegridlib",
+          "icestormlib"
+        ],
         "features": {
           "glacier2lib": {
             "description": "Glacier2 libraries"
@@ -82079,13 +82153,16 @@
                   "icessl"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & static)"
           },
           "iceboxlib": {
-            "description": "IceBox libraries and runtime"
+            "description": "IceBox libraries and runtime",
+            "supports": "!(windows & static)"
           },
           "iceboxtools": {
-            "description": "IceBox tools"
+            "description": "IceBox tools",
+            "supports": "!(windows & static)"
           },
           "icebridge": {
             "description": "IceBridge",
@@ -82096,7 +82173,8 @@
                   "iceboxlib"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & static)"
           },
           "icediscovery": {
             "description": "IceDiscovery",
@@ -82136,7 +82214,8 @@
                   "icessl"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & static)"
           },
           "icessl": {
             "description": "IceSSL",
@@ -82163,19 +82242,18 @@
                   "icestormlib"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & static)"
           }
         },
-        "version": "3.7.7"
+        "version": "3.7.9"
       },
       "files": [
         "change_to_mt.ps1",
         "mcppd_fix.patch",
-        "md5i_fix.patch",
         "no-werror.patch",
         "portfile.cmake",
         "prepare_for_build.cmake",
-        "slice2swift.patch",
         "vcpkg.json"
       ]
     },
@@ -82183,7 +82261,7 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 2,
+        "port-version": 4,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "LGPL-3.0-only",
@@ -82471,7 +82549,7 @@
         "description": "Tiny cross-platform webview library for C/C++/Golang.",
         "homepage": "https://github.com/webview/webview",
         "license": "MIT",
-        "version-date": "2022-09-07"
+        "version-date": "2023-04-15"
       },
       "files": [
         "portfile.cmake",
