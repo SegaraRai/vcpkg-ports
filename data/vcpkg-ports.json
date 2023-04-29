@@ -1,5 +1,5 @@
 {
-  "version": "187712658b806926b30b63473b42a628d3225c9a",
+  "version": "cb1301e9977b5f10b49f7988f68b808f7a558970",
   "ports": [
     {
       "name": "3fd",
@@ -42736,7 +42736,6 @@
       "name": "libmediainfo",
       "manifest": {
         "name": "libmediainfo",
-        "port-version": 2,
         "description": "Get most relevant technical and tag data from video and audio files",
         "homepage": "https://github.com/MediaArea/MediaInfoLib",
         "dependencies": [
@@ -42753,12 +42752,14 @@
           },
           "zlib"
         ],
-        "version-string": "21.03"
+        "version": "23.4"
       },
       "files": [
+        "dependencies.diff",
+        "msvc-arm.diff",
+        "no-windows-namespace.diff",
         "portfile.cmake",
-        "vcpkg.json",
-        "vcpkg_support_in_cmakelists.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -47631,6 +47632,7 @@
       "manifest": {
         "name": "libzen",
         "description": "ZenLib is a C++ utility library for easiest cross-platform development",
+        "homepage": "https://github.com/MediaArea/ZenLib",
         "license": "Zlib",
         "dependencies": [
           {
@@ -47642,7 +47644,7 @@
             "host": true
           }
         ],
-        "version": "0.4.40"
+        "version": "0.4.41"
       },
       "files": [
         "portfile.cmake",
@@ -56755,7 +56757,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1",
@@ -56784,6 +56786,9 @@
             "dependencies": [
               "rapidjson"
             ]
+          },
+          "samples": {
+            "description": "Enable optional samples"
           },
           "tbb": {
             "description": "Enable optional usage of tbb",
@@ -59047,7 +59052,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
