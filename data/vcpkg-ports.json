@@ -1,5 +1,5 @@
 {
-  "version": "cb1301e9977b5f10b49f7988f68b808f7a558970",
+  "version": "a5d91f7d264786b42b0d6bb7b1d31a3f2842a39c",
   "ports": [
     {
       "name": "3fd",
@@ -22287,7 +22287,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-03-30"
+        "version-date": "2023-04-28"
       },
       "files": [
         "portfile.cmake",
@@ -22360,9 +22360,6 @@
           "dx12": {
             "description": "Build with DirectX12 support for Windows 10/Windows 11"
           },
-          "no-omp": {
-            "description": "Build without using OpenMP support for the BC6H/BC7 software codec"
-          },
           "openexr": {
             "description": "Enable OpenEXR support",
             "dependencies": [
@@ -22377,7 +22374,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-03-30"
+        "version-date": "2023-04-28"
       },
       "files": [
         "portfile.cmake",
@@ -22428,7 +22425,7 @@
             ]
           }
         },
-        "version-date": "2023-03-30"
+        "version-date": "2023-04-28"
       },
       "files": [
         "portfile.cmake",
@@ -22492,7 +22489,7 @@
             ]
           }
         },
-        "version-date": "2023-03-30"
+        "version-date": "2023-04-28"
       },
       "files": [
         "portfile.cmake",
@@ -23537,6 +23534,7 @@
       "name": "ebml",
       "manifest": {
         "name": "ebml",
+        "port-version": 1,
         "description": "A C++ library to parse EBML files",
         "homepage": "https://github.com/Matroska-Org/libebml",
         "dependencies": [
@@ -26356,7 +26354,7 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 1,
+        "port-version": 2,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -26386,6 +26384,10 @@
         "features": {
           "buildtools": {
             "description": "Build tools gentables"
+          },
+          "pulseaudio": {
+            "description": "Build with PulseAudio support",
+            "supports": "linux"
           },
           "sndfile": {
             "description": "Enable rendering to file and SF3 support",
@@ -27425,7 +27427,7 @@
       "name": "functions-framework-cpp",
       "manifest": {
         "name": "functions-framework-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Functions Framework for C++.",
         "homepage": "https://github.com/GoogleCloudPlatform/functions-framework-cpp/",
         "license": "Apache-2.0",
@@ -29243,10 +29245,9 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
-        "supports": "!(arm64 & windows)",
         "dependencies": [
           "opengl",
           {
@@ -29261,6 +29262,7 @@
         "version": "2.2.0"
       },
       "files": [
+        "base_address.patch",
         "fix-LNK2019.patch",
         "portfile.cmake",
         "usage",
@@ -30157,6 +30159,18 @@
               }
             ]
           },
+          "confidentialcomputing": {
+            "description": "Confidential Computing API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "connectors": {
             "description": "Connectors API C++ Client Library",
             "dependencies": [
@@ -30919,6 +30933,18 @@
               "nlohmann-json"
             ]
           },
+          "storageinsights": {
+            "description": "Storage Insights API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "storagetransfer": {
             "description": "Storage Transfer API C++ Client Library",
             "dependencies": [
@@ -31110,9 +31136,21 @@
                 ]
               }
             ]
+          },
+          "workstations": {
+            "description": "Workstations API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
           }
         },
-        "version": "2.9.0"
+        "version": "2.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -32997,6 +33035,92 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gz-cmake3",
+      "manifest": {
+        "name": "gz-cmake3",
+        "description": "CMake helper functions for building robotic applications",
+        "homepage": "https://ignitionrobotics.org/libs/cmake",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "ignition-modularscripts",
+            "host": true
+          }
+        ],
+        "version": "3.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gz-math7",
+      "manifest": {
+        "name": "gz-math7",
+        "description": "Math API for robotic applications",
+        "homepage": "https://ignitionrobotics.org/libs/math",
+        "license": null,
+        "dependencies": [
+          "eigen3",
+          "gz-cmake3",
+          "gz-utils2",
+          {
+            "name": "ignition-modularscripts",
+            "host": true
+          }
+        ],
+        "version": "7.0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gz-tools2",
+      "manifest": {
+        "name": "gz-tools2",
+        "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
+        "homepage": "https://gazebosim.org",
+        "license": "Apache-2.0",
+        "supports": "!(arm & windows) & !uwp",
+        "dependencies": [
+          {
+            "name": "ignition-modularscripts",
+            "host": true
+          }
+        ],
+        "version": "2.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gz-utils2",
+      "manifest": {
+        "name": "gz-utils2",
+        "description": "Ignition Utils, a component of Ignition Robotics, provides general purpose classes and functions designed for robotic applications.",
+        "homepage": "https://gazebosim.org",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "gz-cmake3",
+          {
+            "name": "ignition-modularscripts",
+            "host": true
+          }
+        ],
+        "version": "2.0.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -38686,7 +38810,7 @@
             "description": "Build documentation"
           }
         },
-        "version-date": "2022-02-21"
+        "version-date": "2023-03-19"
       },
       "files": [
         "portfile.cmake",
@@ -43087,7 +43211,7 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -47779,10 +47903,9 @@
             "description": "Support encryption"
           }
         },
-        "version": "6.0-1.9.2"
+        "version": "6.1-1.9.2"
       },
       "files": [
-        "fix-find-lzma.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47904,7 +48027,7 @@
         "description": "A C++ commandline for use in servers and chat software. Provides very simple asynchronous input/output.",
         "homepage": "https://github.com/lionkor/commandline/",
         "license": "MIT",
-        "supports": "!osx & !uwp",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -47915,7 +48038,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.0.0"
+        "version-semver": "2.2.0"
       },
       "files": [
         "add-install.patch",
@@ -51331,6 +51454,7 @@
       "name": "matroska",
       "manifest": {
         "name": "matroska",
+        "port-version": 1,
         "description": "a C++ library to parse Matroska files (.mkv and .mka)",
         "homepage": "https://github.com/Matroska-Org/libmatroska",
         "dependencies": [
@@ -55385,10 +55509,10 @@
       "name": "nu-book-zxing-cpp",
       "manifest": {
         "name": "nu-book-zxing-cpp",
+        "port-version": 1,
         "description": "Barcode detection and decoding library.",
         "homepage": "https://github.com/zxing-cpp/zxing-cpp",
         "license": "Apache-2.0",
-        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -60023,11 +60147,11 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 6,
+        "port-version": 7,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
-        "supports": "!(x86 | wasm32)",
+        "supports": "!(arm | x86 | wasm32)",
         "dependencies": [
           "basisu",
           "cfitsio",
@@ -61413,7 +61537,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.2.6"
+        "version-semver": "3.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -64635,7 +64759,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -70267,7 +70391,7 @@
       "name": "ryu",
       "manifest": {
         "name": "ryu",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Ryu generates the shortest decimal representation of a floating point number that maintains round-trip safety.",
         "homepage": "https://github.com/ulfjack/ryu",
         "dependencies": [
@@ -74472,30 +74596,30 @@
       "name": "starlink-ast",
       "manifest": {
         "name": "starlink-ast",
-        "port-version": 3,
         "description": "The AST library provides a comprehensive range of facilities for attaching world coordinate systems to astronomical data, for retrieving and interpreting that information and for generating graphical output based on it",
         "homepage": "https://starlink.eao.hawaii.edu/starlink/AST",
-        "supports": "windows",
+        "license": null,
         "dependencies": [
           "cminpack"
         ],
         "features": {
           "pthreads": {
-            "description": "build with POSIX threads support",
+            "description": "Build with POSIX threads support",
             "dependencies": [
               "pthreads"
             ]
           },
           "yaml": {
-            "description": "build with YAML support",
+            "description": "Build with YAML support",
             "dependencies": [
               "libyaml"
             ]
           }
         },
-        "version": "9.2.7"
+        "version": "9.2.10"
       },
       "files": [
+        "cminpack.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78171,7 +78295,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-03-30"
+        "version-date": "2023-04-28"
       },
       "files": [
         "openexr.patch",
@@ -82565,7 +82689,6 @@
       "name": "zstd",
       "manifest": {
         "name": "zstd",
-        "port-version": 2,
         "description": "Zstandard - Fast real-time compression algorithm",
         "homepage": "https://facebook.github.io/zstd/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -82579,7 +82702,7 @@
             "host": true
           }
         ],
-        "version": "1.5.4"
+        "version": "1.5.5"
       },
       "files": [
         "fix-emscripten-and-clang-cl.patch",
