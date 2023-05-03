@@ -1,5 +1,5 @@
 {
-  "version": "a5d91f7d264786b42b0d6bb7b1d31a3f2842a39c",
+  "version": "6d69bbacd2fbeae957f034dbbd2b454b5e3941fe",
   "ports": [
     {
       "name": "3fd",
@@ -878,7 +878,7 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -5491,6 +5491,26 @@
         "portfile.cmake",
         "usage",
         "usage_static.txt",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "blingfire",
+      "manifest": {
+        "name": "blingfire",
+        "description": "BlingFire is a lightning fast Finite State machine and REgular expression manipulation library.",
+        "license": "MIT",
+        "supports": "windows & !static & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.1.8.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -19719,7 +19739,6 @@
       "name": "cppkafka",
       "manifest": {
         "name": "cppkafka",
-        "port-version": 5,
         "description": "cppkafka allows C++ applications to consume and produce messages using the Apache Kafka protocol. The library is built on top of librdkafka, and provides a high level API that uses modern C++ features to make it easier to write code while keeping the wrapper's performance overhead to a minimum.",
         "homepage": "https://github.com/mfontanini/cppkafka",
         "license": "BSD-2-Clause",
@@ -19729,12 +19748,17 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "0.4.0"
       },
       "files": [
-        "fix-dynamic.patch",
+        "0001-Fix-static-lib.patch",
+        "0002-Remove-min-max-macros.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34011,7 +34035,7 @@
       "name": "hiredis",
       "manifest": {
         "name": "hiredis",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Hiredis is a minimalistic C client library for the Redis database.",
         "homepage": "https://github.com/redis/hiredis",
         "license": "BSD-3-Clause",
@@ -38535,7 +38559,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-10-18"
+        "version-date": "2023-02-04"
       },
       "files": [
         "portfile.cmake",
@@ -49138,7 +49162,6 @@
       "name": "luasocket",
       "manifest": {
         "name": "luasocket",
-        "port-version": 1,
         "description": "LuaSocket is a Lua extension library that is composed by two parts: a C core that provides support for the TCP and UDP transport layers, and a set of Lua modules that add support for functionality commonly needed by applications that deal with the Internet.",
         "homepage": "https://lunarmodules.github.io/luasocket/",
         "license": "MIT",
@@ -49150,7 +49173,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -56184,7 +56207,7 @@
       "name": "ogre",
       "manifest": {
         "name": "ogre",
-        "port-version": 1,
+        "port-version": 2,
         "description": "3D Object-Oriented Graphics Rendering Engine",
         "homepage": "https://github.com/OGRECave/ogre",
         "license": "MIT",
@@ -56301,6 +56324,7 @@
       "files": [
         "cfg-rel-paths.patch",
         "fix-dependencies.patch",
+        "fix_override.patch",
         "pkgconfig.patch",
         "portfile.cmake",
         "same-install-rules-all-platforms.patch",
@@ -65849,6 +65873,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -66055,6 +66080,14 @@
                 "features": [
                   "freetype"
                 ]
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ],
+                "platform": "osx"
               },
               {
                 "name": "qtbase",
@@ -71726,7 +71759,7 @@
             ]
           }
         },
-        "version": "0.6.1"
+        "version": "0.6.2"
       },
       "files": [
         "fix-config-cmake.patch",
