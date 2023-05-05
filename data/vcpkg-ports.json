@@ -1,5 +1,5 @@
 {
-  "version": "388e9f1c82e077d4cea8f94991c6e31599f1239b",
+  "version": "60e2c07d20aeb4bf534a8deabf92a70cbcb07617",
   "ports": [
     {
       "name": "3fd",
@@ -3993,7 +3993,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.8.2"
+        "version-semver": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -4051,7 +4051,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.8.0"
+            "version>=": "1.9.0"
           },
           "openssl",
           {
@@ -4063,7 +4063,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.4.0"
+        "version-semver": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -4242,7 +4242,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.7.2"
+            "version>=": "1.9.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -4253,7 +4253,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.0.0-beta.2"
+        "version-semver": "4.0.0-beta.3"
       },
       "files": [
         "portfile.cmake",
@@ -17825,6 +17825,24 @@
       ]
     },
     {
+      "name": "cialloo-rcon",
+      "manifest": {
+        "name": "cialloo-rcon",
+        "description": "implementation in valve source rcon protocal",
+        "homepage": "https://github.com/luckyweNda/rcon",
+        "license": "MIT",
+        "dependencies": [
+          "asio"
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cimg",
       "manifest": {
         "name": "cimg",
@@ -28451,12 +28469,13 @@
             "host": true
           }
         ],
-        "version": "3.11.1"
+        "version": "3.11.2"
       },
       "files": [
         "disable-warning-4996.patch",
         "fix-dll-builds.patch",
         "fix-exported-config.patch",
+        "gcc-13-fix-backport.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -33111,11 +33130,13 @@
       "name": "gz-tools2",
       "manifest": {
         "name": "gz-tools2",
+        "port-version": 1,
         "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
         "homepage": "https://gazebosim.org",
         "license": "Apache-2.0",
         "supports": "!(arm & windows) & !uwp",
         "dependencies": [
+          "gz-cmake3",
           {
             "name": "ignition-modularscripts",
             "host": true
@@ -36260,7 +36281,7 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -36309,6 +36330,7 @@
         "version": "4.0.0"
       },
       "files": [
+        "fix-library-name.patch",
         "no_stdc_check.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -42388,20 +42410,17 @@
       "name": "liblas",
       "manifest": {
         "name": "liblas",
-        "port-version": 12,
+        "port-version": 13,
         "description": "A C/C++ library for reading and writing the very common LAS LiDAR format.",
         "license": null,
         "supports": "!arm & !staticcrt",
         "dependencies": [
-          "boost-detail",
-          "boost-filesystem",
+          "boost-foreach",
           "boost-interprocess",
           "boost-iostreams",
           "boost-lambda",
-          "boost-multi-index",
           "boost-program-options",
-          "boost-system",
-          "boost-thread",
+          "boost-property-tree",
           "boost-uuid",
           "libgeotiff",
           {
@@ -42429,8 +42448,10 @@
       "files": [
         "fix-boost-headers.patch",
         "fix-cmake-config.patch",
+        "fix-crosscompiling.diff",
         "misc-fixes.patch",
         "portfile.cmake",
+        "remove_unnecessary_boost_dependency.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -43235,7 +43256,7 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -55323,6 +55344,7 @@
       "name": "node-api-headers",
       "manifest": {
         "name": "node-api-headers",
+        "port-version": 1,
         "description": "NodeJS API for writing modules in C++",
         "homepage": "https://nodejs.org/api/addons.html",
         "license": "MIT",
@@ -55345,6 +55367,7 @@
         "CMakeLists.txt",
         "portfile.cmake",
         "unofficial-node-api-headers-config.cmake.in",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -58498,7 +58521,6 @@
       "name": "openexr",
       "manifest": {
         "name": "openexr",
-        "port-version": 1,
         "description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications",
         "homepage": "https://www.openexr.com/",
         "license": "BSD-3-Clause",
@@ -58520,10 +58542,9 @@
             "description": "Build tools"
           }
         },
-        "version": "3.1.5"
+        "version": "3.1.7"
       },
       "files": [
-        "avx.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -59200,7 +59221,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -59400,7 +59421,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -63520,7 +63541,7 @@
       "name": "pthreads",
       "manifest": {
         "name": "pthreads",
-        "port-version": 13,
+        "port-version": 14,
         "description": "Meta-package that provides PThreads4W on Windows, or assumes presence of system pthreads on POSIX systems.",
         "homepage": "https://sourceforge.net/projects/pthreads4w/",
         "license": "Apache-2.0",
@@ -63546,7 +63567,8 @@
         "vcpkg-cmake-wrapper-pthread.cmake",
         "vcpkg-cmake-wrapper-pthreads-windows.cmake",
         "vcpkg-cmake-wrapper-pthreads.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "whitespace_in_path.patch"
       ]
     },
     {
@@ -77212,6 +77234,31 @@
         "CMakeLists.txt",
         "fix-config.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tree-similarity",
+      "manifest": {
+        "name": "tree-similarity",
+        "description": "Tree edit distance (TED) and similarity measurement library, offering multiple algorithm implementation such as APTED and LGM.",
+        "homepage": "https://github.com/DatabaseGroup/tree-similarity",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "0.1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
