@@ -1,11 +1,11 @@
 {
-  "version": "4746870785b3b4a77556cfc9cf260b4034724e10",
+  "version": "e1cdda71f61c57bd615eb82217652dc7a55d7d48",
   "ports": [
     {
       "name": "3fd",
       "manifest": {
         "name": "3fd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ Framework For Fast Development",
         "supports": "windows & !static & !arm64",
         "dependencies": [
@@ -200,6 +200,7 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
+        "port-version": 1,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -269,7 +270,7 @@
       "name": "activemq-cpp",
       "manifest": {
         "name": "activemq-cpp",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Apache ActiveMQ is the most popular and powerful open source messaging and Integration Patterns server.",
         "license": "Apache-2.0",
         "supports": "!(uwp | osx)",
@@ -5591,7 +5592,7 @@
             "host": true
           }
         ],
-        "version": "7.22.0"
+        "version": "7.22.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -5603,7 +5604,6 @@
       "name": "bond",
       "manifest": {
         "name": "bond",
-        "port-version": 3,
         "description": "Bond is a cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data. Bond is broadly used at Microsoft in high scale services.",
         "homepage": "https://github.com/Microsoft/bond",
         "dependencies": [
@@ -5629,7 +5629,7 @@
             ]
           }
         },
-        "version": "9.0.3"
+        "version": "10.0.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -19392,7 +19392,7 @@
             "host": true
           }
         ],
-        "version": "0.12.2"
+        "version": "0.12.3"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23508,7 +23508,7 @@
       "name": "easyhook",
       "manifest": {
         "name": "easyhook",
-        "port-version": 5,
+        "port-version": 6,
         "description": "This project supports extending (hooking) unmanaged code (APIs) with pure managed ones, from within a fully managed environment on 32- or 64-bit Windows Vista x64, Windows Server 2008 x64, Windows 7, Windows 8.1, and Windows 10.",
         "homepage": "https://github.com/EasyHook/EasyHook",
         "supports": "windows & !static & !uwp & (x86 | x64)",
@@ -23648,7 +23648,7 @@
       "name": "ecsutil",
       "manifest": {
         "name": "ecsutil",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Native Windows SDK for accessing ECS via the S3 HTTP protocol.",
         "homepage": "https://github.com/EMCECS/ecs-object-client-windows-cpp",
         "supports": "windows & (x64 | x86) & !uwp",
@@ -29247,7 +29247,7 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -29763,7 +29763,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 17,
+        "port-version": 18,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -31816,7 +31816,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 6,
+        "port-version": 7,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -33108,6 +33108,7 @@
       "name": "gz-math7",
       "manifest": {
         "name": "gz-math7",
+        "port-version": 1,
         "description": "Math API for robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/math",
         "license": null,
@@ -36641,7 +36642,7 @@
             "host": true
           }
         ],
-        "version": "0.170.0"
+        "version": "0.170.1"
       },
       "files": [
         "portfile.cmake",
@@ -41257,6 +41258,7 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
+        "port-version": 1,
         "description": "Git linkable library",
         "homepage": "https://github.com/libgit2/libgit2",
         "supports": "!uwp",
@@ -41281,7 +41283,8 @@
             "description": "SSL support (mbedTLS)",
             "dependencies": [
               "mbedtls"
-            ]
+            ],
+            "supports": "!windows"
           },
           "openssl": {
             "description": "SSL support (OpenSSL)",
@@ -41302,18 +41305,12 @@
             ]
           },
           "sectransp": {
-            "description": "SSL support (sectransp)"
+            "description": "SSL support (sectransp)",
+            "supports": "!osx"
           },
           "ssh": {
             "description": "SSH support via libssh2",
             "dependencies": [
-              {
-                "name": "libgit2",
-                "default-features": false,
-                "features": [
-                  "openssl"
-                ]
-              },
               "libssh2"
             ]
           },
@@ -41347,7 +41344,8 @@
             ]
           },
           "winhttp": {
-            "description": "SSL support (WinHTTP)"
+            "description": "SSL support (WinHTTP)",
+            "supports": "windows & !uwp"
           }
         },
         "version-semver": "1.4.2"
@@ -47293,10 +47291,12 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
+        "port-version": 1,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "license": null,
         "dependencies": [
+          "minizip",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -47306,6 +47306,7 @@
         "version": "1.1.5"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47871,6 +47872,40 @@
         "version": "0.4.41"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libzim",
+      "manifest": {
+        "name": "libzim",
+        "description": "The Libzim is the reference implementation for the ZIM file format. It's a software library to read and write ZIM files on many systems and architectures. More information about the ZIM format and the openZIM project at https://openzim.org/.",
+        "homepage": "https://github.com/openzim/libzim",
+        "license": "GPL-2.0-or-later",
+        "supports": "!android",
+        "dependencies": [
+          "icu",
+          "liblzma",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          },
+          "zstd"
+        ],
+        "features": {
+          "xapian": {
+            "description": "Enable xapian support",
+            "dependencies": [
+              "xapian"
+            ],
+            "supports": "!(windows & !mingw)"
+          }
+        },
+        "version": "8.2.0"
+      },
+      "files": [
+        "0001-build-share-library.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49179,11 +49214,28 @@
       "name": "luajit",
       "manifest": {
         "name": "luajit",
+        "port-version": 1,
         "description": "LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.",
         "homepage": "https://github.com/LuaJIT/LuaJIT",
         "license": "MIT",
-        "supports": "!uwp",
+        "supports": "!uwp & !(arm64 & windows)",
         "dependencies": [
+          {
+            "name": "luajit",
+            "host": true,
+            "features": [
+              "buildvm-64"
+            ],
+            "platform": "!native & (arm64 | x64) & (!windows | mingw)"
+          },
+          {
+            "name": "luajit",
+            "host": true,
+            "features": [
+              "buildvm-32"
+            ],
+            "platform": "!native & ((arm & !arm64) | x86) & (!windows | mingw)"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -49191,15 +49243,31 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
           }
         ],
+        "features": {
+          "buildvm-32": {
+            "description": "Install host tools for 32 bit targets",
+            "supports": "native & ((arm & !arm64) | x86) & (!windows | mingw)"
+          },
+          "buildvm-64": {
+            "description": "Install host tools for 64 bit targets",
+            "supports": "native & (arm64 | x64) & (!windows | mingw)"
+          }
+        },
         "version-date": "2023-01-04"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
-        "004-fix-build-path-and-crt-linkage.patch",
         "005-do-not-pass-ld-e-macosx.patch",
+        "Makefile.nmake",
+        "configure",
         "luajit.pc.win.in",
+        "msvcbuild.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52189,7 +52257,7 @@
       "name": "microsoft-signalr",
       "manifest": {
         "name": "microsoft-signalr",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++ Client for ASP.NET Core SignalR.",
         "homepage": "https://github.com/aspnet/SignalR-Client-Cpp",
         "dependencies": [
@@ -56166,6 +56234,7 @@
       "name": "ocilib",
       "manifest": {
         "name": "ocilib",
+        "port-version": 1,
         "description": "OCILIB is an open source and cross platform Oracle Driver that delivers efficient access to Oracle databases.",
         "homepage": "https://vrogier.github.io/ocilib/",
         "license": "Apache-2.0",
@@ -61417,7 +61486,6 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 3,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -61522,13 +61590,13 @@
             ]
           }
         },
-        "version": "2.4.3"
+        "version": "2.5.3"
       },
       "files": [
         "cmake-project-include.cmake",
         "fix-dependency.patch",
         "fix-find-library-suffix.patch",
-        "fix-gcc8-compatibility.patch",
+        "fix-gcc-13-build.patch",
         "fix-unix-compiler-options.patch",
         "no-pkgconfig-requires.patch",
         "no-rpath.patch",
@@ -61541,7 +61609,6 @@
       "name": "pdal-c",
       "manifest": {
         "name": "pdal-c",
-        "port-version": 1,
         "description": "C API for the Point Data Abstraction Library (PDAL)",
         "homepage": "https://github.com/PDAL/CAPI#readme",
         "supports": "!(windows & staticcrt)",
@@ -61555,7 +61622,7 @@
             "host": true
           }
         ],
-        "version": "2.1"
+        "version": "2.2.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -65051,6 +65118,7 @@
       "name": "qt5-declarative",
       "manifest": {
         "name": "qt5-declarative",
+        "port-version": 1,
         "description": "Qt5 Declarative (Quick 2) Module. Includes QtQuick, QtQuickParticles, QtQuickWidgets, QtQml, and QtPacketProtocol.",
         "license": null,
         "dependencies": [
@@ -65061,6 +65129,27 @@
           "qt5-imageformats",
           "qt5-svg"
         ],
+        "default-features": [
+          "platform-default-features"
+        ],
+        "features": {
+          "d3d12": {
+            "description": "Provides a Direct3D 12 backend for the scenegraph.",
+            "supports": "windows"
+          },
+          "platform-default-features": {
+            "description": "Enable platform-dependent default features",
+            "dependencies": [
+              {
+                "name": "qt5-declarative",
+                "features": [
+                  "d3d12"
+                ],
+                "platform": "windows"
+              }
+            ]
+          }
+        },
         "version": "5.15.9"
       },
       "files": [
@@ -65135,21 +65224,54 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
+        "port-version": 1,
         "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
         "license": null,
         "dependencies": [
-          "jasper",
-          "libwebp",
           {
             "name": "qt5-base",
             "default-features": false
-          },
-          "tiff",
-          {
-            "name": "vcpkg-pkgconfig-get-modules",
-            "host": true
           }
         ],
+        "default-features": [
+          "tiff",
+          "webp"
+        ],
+        "features": {
+          "jasper": {
+            "description": "Enable JPEG-2000 support using the JasPer library",
+            "dependencies": [
+              {
+                "name": "jasper",
+                "default-features": false
+              },
+              {
+                "name": "vcpkg-pkgconfig-get-modules",
+                "host": true
+              }
+            ]
+          },
+          "tiff": {
+            "description": "Enable TIFF support",
+            "dependencies": [
+              "tiff",
+              {
+                "name": "vcpkg-pkgconfig-get-modules",
+                "host": true
+              }
+            ]
+          },
+          "webp": {
+            "description": "Enable WEBP support",
+            "dependencies": [
+              "libwebp",
+              {
+                "name": "vcpkg-pkgconfig-get-modules",
+                "host": true
+              }
+            ]
+          }
+        },
         "version": "5.15.9"
       },
       "files": [
@@ -67642,6 +67764,7 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
+        "port-version": 1,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -69871,7 +69994,7 @@
       "name": "rsasynccpp",
       "manifest": {
         "name": "rsasynccpp",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": "Rene Stein <rene@renestein.net>",
         "description": "Task Parallel Library (TPL)/dataflow/actors/async primitives for C++ based on C++ 20 coroutines.",
         "homepage": "https://github.com/renestein/Rstein.AsyncCpp",
@@ -71455,6 +71578,136 @@
         "fix-deps-targets.patch",
         "fix-pkg-prefix.patch",
         "fix-pkgconfig.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sdl2-mixer-ext",
+      "manifest": {
+        "name": "sdl2-mixer-ext",
+        "description": "An audio mixer library based on the SDL library, a fork of SDL_mixer",
+        "homepage": "https://wohlsoft.github.io/SDL-Mixer-X",
+        "license": "Zlib OR LGPL-2.1-or-later OR GPL-2.0-or-later OR GPL-3.0-or-later",
+        "dependencies": [
+          "sdl2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cmd": {
+            "description": "Use external command for playing music (Linux only).",
+            "supports": "linux"
+          },
+          "ffmpeg": {
+            "description": "Use FFMPEG to play WMA and AAC audio formats.",
+            "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false
+              }
+            ]
+          },
+          "fluidsynth": {
+            "description": "Use FluidSynth to play MIDI audio format.",
+            "dependencies": [
+              {
+                "name": "fluidsynth",
+                "default-features": false
+              }
+            ]
+          },
+          "libadlmidi": {
+            "description": "Use libADLMIDI to play XMI, MUS, IMF and regular MIDI audio format with OPL3 (YMF262) emulator.",
+            "dependencies": [
+              {
+                "name": "libadlmidi",
+                "default-features": false
+              }
+            ]
+          },
+          "libflac": {
+            "description": "Use libflac to play FLAC audio format.",
+            "dependencies": [
+              "libflac"
+            ]
+          },
+          "libgme": {
+            "description": "Use libgme to play chip music (AY, GBS, GYM, HES, KSS, NSF/NSFE, SAP, SPC, VGM/VGZ).",
+            "dependencies": [
+              {
+                "name": "libgme",
+                "default-features": false
+              }
+            ]
+          },
+          "libmodplug": {
+            "description": "Use libmodplug to play tracker music including exclusive formats (AMS, DMF, DSM, MT2).",
+            "dependencies": [
+              "libmodplug"
+            ]
+          },
+          "libopnmidi": {
+            "description": "Use libOPNMIDI to play MIDI and RMI audio format with OPN2 (YM2612) emulator.",
+            "dependencies": [
+              {
+                "name": "libopnmidi",
+                "default-features": false
+              }
+            ]
+          },
+          "libvorbis": {
+            "description": "Use libvorbis to play OGG audio format.",
+            "dependencies": [
+              "libvorbis"
+            ]
+          },
+          "libxmp": {
+            "description": "Use libxmp to play tracker music including exclusive formats (ABK, DIGI, DTM, EMOD, FLX, FNK, GDM, IMF, J2B, LIQ, M15, MFP, MGT, MMDC, MTN, RTM, SFX, SPM, STIM, STX, WOW).",
+            "dependencies": [
+              {
+                "name": "libxmp",
+                "default-features": false
+              }
+            ]
+          },
+          "mpg123": {
+            "description": "Use mpg123 to play MP3 audio format.",
+            "dependencies": [
+              "mpg123"
+            ]
+          },
+          "nativemidi": {
+            "description": "Use Native MIDI Player to play MIDI audio format.",
+            "supports": "windows | osx"
+          },
+          "opusfile": {
+            "description": "Use opusfile to play Opus audio format.",
+            "dependencies": [
+              "opusfile"
+            ]
+          },
+          "timidity": {
+            "description": "Use Timidity to play MIDI audio format."
+          },
+          "wavpack": {
+            "description": "Use wavpack to play VW audio format.",
+            "dependencies": [
+              "wavpack"
+            ]
+          }
+        },
+        "version-date": "2023-05-04"
+      },
+      "files": [
+        "fix-dependencies.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -78156,6 +78409,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
@@ -78170,6 +78424,7 @@
           "boost-program-options",
           "boost-regex",
           "boost-system",
+          "boost-variant",
           "boost-vmd",
           "tbb",
           {
@@ -78441,8 +78696,7 @@
       "name": "uvw",
       "manifest": {
         "name": "uvw",
-        "port-version": 2,
-        "description": "Header-only, event based, tiny and easy to use libuv wrapper in modern C++.",
+        "description": "A compilable static library, event based, tiny and easy to use libuv wrapper in modern C++.",
         "homepage": "https://github.com/skypjack/uvw",
         "license": "MIT",
         "dependencies": [
@@ -78456,12 +78710,11 @@
             "host": true
           }
         ],
-        "version": "2.12.1"
+        "version": "3.0.0"
       },
       "files": [
-        "CMakeLists.txt",
+        "fix-find-libuv.patch",
         "portfile.cmake",
-        "uvw-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -79132,7 +79385,6 @@
       "name": "vk-bootstrap",
       "manifest": {
         "name": "vk-bootstrap",
-        "port-version": 1,
         "description": "Vulkan bootstraping library",
         "homepage": "https://github.com/charles-lunarg/vk-bootstrap",
         "license": "MIT",
@@ -79143,7 +79395,7 @@
           },
           "vulkan"
         ],
-        "version": "0.5"
+        "version": "0.7"
       },
       "files": [
         "portfile.cmake",
@@ -79390,6 +79642,33 @@
       },
       "files": [
         "fix_paths.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vsg",
+      "manifest": {
+        "name": "vsg",
+        "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
+        "homepage": "http://www.vulkanscenegraph.org/",
+        "license": "MIT",
+        "dependencies": [
+          "glslang",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "vulkan"
+        ],
+        "version": "1.0.5"
+      },
+      "files": [
+        "devendor-glslang.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81694,7 +81973,7 @@
           "rapidjson",
           "rapidxml"
         ],
-        "version-date": "2023-02-06"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
