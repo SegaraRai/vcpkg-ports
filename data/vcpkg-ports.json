@@ -1,5 +1,5 @@
 {
-  "version": "e1cdda71f61c57bd615eb82217652dc7a55d7d48",
+  "version": "d163f9d5f55bac7743abf89c86b7ab3ce26e3175",
   "ports": [
     {
       "name": "3fd",
@@ -1711,6 +1711,9 @@
           "parquet"
         ],
         "features": {
+          "acero": {
+            "description": "Acero support"
+          },
           "csv": {
             "description": "CSV support"
           },
@@ -1776,10 +1779,6 @@
               "rapidjson"
             ]
           },
-          "plasma": {
-            "description": "Plasma support",
-            "supports": "!windows"
-          },
           "s3": {
             "description": "S3 support",
             "dependencies": [
@@ -1798,7 +1797,7 @@
             ]
           }
         },
-        "version": "11.0.0"
+        "version": "12.0.0"
       },
       "files": [
         "msvc-static-name.patch",
@@ -4275,7 +4274,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.5.0"
+            "version>=": "1.9.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -4286,7 +4285,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.1.0"
+        "version-semver": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -4307,7 +4306,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.5.0"
+            "version>=": "1.9.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -4318,7 +4317,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.3.0"
+        "version-semver": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -4339,7 +4338,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.5.0"
+            "version>=": "1.9.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -4350,7 +4349,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.1.0"
+        "version-semver": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -4897,7 +4896,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.7.1"
+        "version-semver": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -34104,14 +34103,25 @@
       "name": "hnswlib",
       "manifest": {
         "name": "hnswlib",
+        "port-version": 1,
         "description": "Header-only library for fast approximate nearest neighbors",
         "homepage": "https://github.com/nmslib/hnswlib",
         "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "0.7.0"
       },
       "files": [
+        "cmake.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -41258,7 +41268,7 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Git linkable library",
         "homepage": "https://github.com/libgit2/libgit2",
         "supports": "!uwp",
@@ -41306,7 +41316,7 @@
           },
           "sectransp": {
             "description": "SSL support (sectransp)",
-            "supports": "!osx"
+            "supports": "osx"
           },
           "ssh": {
             "description": "SSH support via libssh2",
@@ -44823,8 +44833,9 @@
       "name": "libsbml",
       "manifest": {
         "name": "libsbml",
-        "port-version": 2,
         "description": "A library for reading / writing SBML files",
+        "homepage": "https://github.com/sbmlteam/libsbml",
+        "license": "LGPL-2.1",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -44838,7 +44849,6 @@
         ],
         "default-features": [
           "comp",
-          "expat",
           "fbc",
           "groups",
           "layout",
@@ -44901,10 +44911,13 @@
             ]
           }
         },
-        "version": "5.19.0"
+        "version": "5.20.0"
       },
       "files": [
+        "fix-deps-libxml.patch",
+        "libsbml-config.cmake",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -55757,6 +55770,7 @@
         "license": "MIT",
         "dependencies": [
           "boost-algorithm",
+          "boost-date-time",
           "boost-endian",
           "boost-integer",
           "boost-math",
@@ -55781,7 +55795,7 @@
             ]
           }
         },
-        "version": "2.6.0"
+        "version": "2.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -75774,7 +75788,7 @@
             "host": true
           }
         ],
-        "version": "3.5.0"
+        "version": "3.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -78409,7 +78423,6 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
@@ -78437,7 +78450,7 @@
           },
           "zlib"
         ],
-        "version": "23.2"
+        "version": "23.5"
       },
       "files": [
         "fix_build-location.patch",
@@ -78729,7 +78742,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.40.0"
+        "version-semver": "20.41.0"
       },
       "files": [
         "portfile.cmake",
@@ -81432,9 +81445,8 @@
       "name": "xapian",
       "manifest": {
         "name": "xapian",
-        "port-version": 1,
         "description": "Xapian is an Open Source Search Engine Library, released under the GPL v2+. It's written in C++, with bindings to allow use from Perl, Python 2, Python 3, PHP 5, PHP 7, Java, Tcl, C#, Ruby, Lua, Erlang, Node.js and R (so far!)",
-        "homepage": "https://github.com/xapian/xapian",
+        "homepage": "https://xapian.org/",
         "license": "GPL-2.0-or-later",
         "supports": "!(windows & arm) & !uwp",
         "dependencies": [
@@ -81444,7 +81456,7 @@
           },
           "zlib"
         ],
-        "version": "1.4.21"
+        "version": "1.4.22"
       },
       "files": [
         "portfile.cmake",
@@ -82087,7 +82099,7 @@
             ]
           }
         },
-        "version": "9.0.1"
+        "version": "10.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -82127,9 +82139,10 @@
             ]
           }
         },
-        "version": "0.24.3"
+        "version": "0.24.6"
       },
       "files": [
+        "fix-find-tbb-and-install-destination.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82214,9 +82227,9 @@
       "name": "xtl",
       "manifest": {
         "name": "xtl",
-        "port-version": 1,
         "description": "The x template library",
         "homepage": "https://github.com/xtensor-stack/xtl",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "nlohmann-json",
           {
@@ -82228,7 +82241,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.7.5"
       },
       "files": [
         "fix-fixup-cmake.patch",
