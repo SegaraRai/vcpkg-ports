@@ -1,5 +1,5 @@
 {
-  "version": "d163f9d5f55bac7743abf89c86b7ab3ce26e3175",
+  "version": "ed8fb07a8bd19568c8594c6f1a04955242f82d35",
   "ports": [
     {
       "name": "3fd",
@@ -4853,7 +4853,6 @@
       "name": "behaviortree-cpp",
       "manifest": {
         "name": "behaviortree-cpp",
-        "port-version": 3,
         "description": "Behavior Trees Library in C++.",
         "homepage": "https://www.behaviortree.dev",
         "supports": "!uwp",
@@ -4869,11 +4868,10 @@
             "host": true
           }
         ],
-        "version": "3.5.6"
+        "version": "4.1.1"
       },
       "files": [
-        "001_port_fixes.patch",
-        "002_fix_dependencies.patch",
+        "fix-x86_build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -5576,6 +5574,7 @@
       "name": "boinc",
       "manifest": {
         "name": "boinc",
+        "port-version": 1,
         "description": "Open-source software for volunteer computing and grid computing.",
         "homepage": "https://boinc.berkeley.edu/",
         "license": "LGPL-3.0-or-later",
@@ -5595,6 +5594,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31815,7 +31815,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 7,
+        "port-version": 8,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -35780,10 +35780,11 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
+        "port-version": 1,
         "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
         "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
         "license": null,
-        "supports": "(windows | linux) & x64",
+        "supports": "(windows | linux | osx) & x64",
         "dependencies": [
           {
             "name": "vcpkg-tool-lessmsi",
@@ -35794,10 +35795,9 @@
         "version": "2023.0.0"
       },
       "files": [
+        "copy-from-dmg.cmake",
         "portfile.cmake",
         "usage",
-        "vcpkg-cmake-wrapper.cmake",
-        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -36686,9 +36686,8 @@
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
-        "port-version": 1,
         "description": "A few classes for parsing and serializing json - very rapidly.",
-        "homepage": "https://github.com/RealTimeChris/Jsonifier",
+        "homepage": "https://github.com/realtimechris/jsonifier",
         "license": "LGPL-2.1-or-later",
         "supports": "(windows & x64 & !uwp) | (linux & x64) | (osx & x64)",
         "dependencies": [
@@ -36701,7 +36700,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -42734,7 +42733,7 @@
       "name": "libmad",
       "manifest": {
         "name": "libmad",
-        "port-version": 11,
+        "port-version": 12,
         "description": "high-quality MPEG audio decoder",
         "homepage": "http://www.mars.org/home/rob/proj/mpeg/",
         "dependencies": [
@@ -42748,6 +42747,7 @@
       "files": [
         "0001-Fix-MSVC-ARM.patch",
         "CMakeLists.txt",
+        "mad.pc.in",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52270,7 +52270,7 @@
       "name": "microsoft-signalr",
       "manifest": {
         "name": "microsoft-signalr",
-        "port-version": 5,
+        "port-version": 6,
         "description": "C++ Client for ASP.NET Core SignalR.",
         "homepage": "https://github.com/aspnet/SignalR-Client-Cpp",
         "dependencies": [
@@ -56248,11 +56248,11 @@
       "name": "ocilib",
       "manifest": {
         "name": "ocilib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OCILIB is an open source and cross platform Oracle Driver that delivers efficient access to Oracle databases.",
         "homepage": "https://vrogier.github.io/ocilib/",
         "license": "Apache-2.0",
-        "supports": "!(arm | uwp)",
+        "supports": "!uwp & !(arm & windows)",
         "version": "4.7.5"
       },
       "files": [
@@ -57001,7 +57001,6 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
-        "port-version": 2,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/xianyi/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -57050,11 +57049,10 @@
             ]
           }
         },
-        "version": "0.3.21"
+        "version": "0.3.23"
       },
       "files": [
         "fix-redefinition-function.patch",
-        "fix-space-path.patch",
         "fix-uwp-build.patch",
         "install-tools.patch",
         "openblas_common.h",
@@ -61468,7 +61466,7 @@
       "name": "pcre2",
       "manifest": {
         "name": "pcre2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Regular Expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "https://github.com/PCRE2Project/pcre2",
         "license": "BSD-3-Clause",
@@ -61487,6 +61485,27 @@
           },
           "zlib"
         ],
+        "default-features": [
+          "platform-default-features"
+        ],
+        "features": {
+          "jit": {
+            "description": "Build JIT support",
+            "supports": "!emscripten"
+          },
+          "platform-default-features": {
+            "description": "Enable default features",
+            "dependencies": [
+              {
+                "name": "pcre2",
+                "features": [
+                  "jit"
+                ],
+                "platform": "!emscripten"
+              }
+            ]
+          }
+        },
         "version": "10.40"
       },
       "files": [
@@ -72283,7 +72302,7 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
-        "port-version": 14,
+        "port-version": 15,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/sfml/sfml",
         "license": "Zlib",
@@ -78284,11 +78303,12 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "0001_use_math_defines.patch",
         "0005-fix-config-and-install.patch",
+        "0006-pc_file_for_windows.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
