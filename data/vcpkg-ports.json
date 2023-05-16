@@ -1,5 +1,5 @@
 {
-  "version": "7f52deab66689f912da6d04de105c457d8ba671e",
+  "version": "d4d39d71b3e6dd7536592c36ab2f7e84a8a64942",
   "ports": [
     {
       "name": "3fd",
@@ -812,10 +812,11 @@
             "host": true
           }
         ],
-        "version": "4.3.19"
+        "version": "4.3.23"
       },
       "files": [
         "find-openssl.patch",
+        "fix-max_min_macros.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28234,7 +28235,7 @@
             ]
           }
         },
-        "version-semver": "3.6.4"
+        "version-semver": "3.7.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -35639,11 +35640,19 @@
       "name": "infoware",
       "manifest": {
         "name": "infoware",
-        "port-version": 1,
         "description": "C++ Library for pulling system and hardware information, without hitting the command line.",
         "homepage": "https://github.com/ThePhD/infoware",
-        "supports": "!(arm | uwp)",
+        "license": "CC0-1.0",
+        "supports": "!android & !uwp & !(windows & arm)",
         "dependencies": [
+          {
+            "name": "infoware",
+            "host": true
+          },
+          {
+            "name": "pciids",
+            "platform": "native"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35655,21 +35664,37 @@
         ],
         "features": {
           "d3d": {
-            "description": "Prefer usage of Direct3D to find graphical capabilities (typically only works on Windows systems)."
+            "description": [
+              "Use Direct3D for GPU detection.",
+              "This choice has priority over opencl and opengl."
+            ],
+            "supports": "windows"
           },
           "opencl": {
-            "description": "Prefer usage of OpenCL to find graphical capabilities of the system."
+            "description": [
+              "Use OpenCL for GPU detection.",
+              "This choice has priority over opengl."
+            ],
+            "dependencies": [
+              "opencl"
+            ]
           },
           "opengl": {
-            "description": "Prefer usage of OpenGL to find graphical capabilities (may require additional libraries to be available for linking depending on the system)."
+            "description": "Use OpenGL for GPU detection.",
+            "dependencies": [
+              "opengl"
+            ],
+            "supports": "!osx & !ios"
           },
           "x11": {
-            "description": "Prefer usage of X11 to find graphical capabilities."
+            "description": "Use X11 for display detection.",
+            "supports": "!windows"
           }
         },
-        "version-date": "2021-06-16"
+        "version-date": "2023-04-12"
       },
       "files": [
+        "cross-build.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -36664,7 +36689,7 @@
             "host": true
           }
         ],
-        "version": "0.170.1"
+        "version": "0.170.2"
       },
       "files": [
         "portfile.cmake",
@@ -41278,7 +41303,7 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Git linkable library",
         "homepage": "https://github.com/libgit2/libgit2",
         "supports": "!uwp",
@@ -43276,7 +43301,7 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -61406,6 +61431,23 @@
       ]
     },
     {
+      "name": "pciids",
+      "manifest": {
+        "name": "pciids",
+        "description": "Maintainer function to acquire a PCI ID Repository database snapshot",
+        "homepage": "https://pci-ids.ucw.cz/",
+        "license": "GPL-2.0-or-later OR BSD-3-Clause",
+        "supports": "native",
+        "version-date": "2023-04-11"
+      },
+      "files": [
+        "acquire_pciids.cmake",
+        "portfile.cmake",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pcl",
       "manifest": {
         "name": "pcl",
@@ -61685,6 +61727,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
+        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -61797,6 +61840,8 @@
         "fix-find-library-suffix.patch",
         "fix-gcc-13-build.patch",
         "fix-unix-compiler-options.patch",
+        "gdal-3.7.patch",
+        "mingw.patch",
         "no-pkgconfig-requires.patch",
         "no-rpath.patch",
         "portfile.cmake",
@@ -72522,12 +72567,11 @@
       "name": "shader-slang",
       "manifest": {
         "name": "shader-slang",
-        "port-version": 1,
         "description": "Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is based on years of collaboration between researchers at NVIDIA, Carnegie Mellon University, and Stanford.",
         "homepage": "https://github.com/shader-slang/slang",
         "license": "MIT",
         "supports": "((x86 & windows) | (x64 & (windows | linux | osx)) | (arm64 & (linux | osx))) & !uwp & !static",
-        "version": "0.24.43"
+        "version": "0.27.20"
       },
       "files": [
         "portfile.cmake",
@@ -80483,7 +80527,6 @@
       "name": "wasmedge",
       "manifest": {
         "name": "wasmedge",
-        "port-version": 1,
         "description": "WasmEdge is a high-performance WebAssembly runtime for edge computing.",
         "homepage": "https://WasmEdge.org",
         "license": "Apache-2.0",
@@ -80532,11 +80575,10 @@
             "description": "Build tools"
           }
         },
-        "version-semver": "0.12.0-alpha.1"
+        "version": "0.12.1"
       },
       "files": [
         "portfile.cmake",
-        "quotes.patch",
         "vcpkg.json"
       ]
     },
