@@ -1,5 +1,5 @@
 {
-  "version": "d4d39d71b3e6dd7536592c36ab2f7e84a8a64942",
+  "version": "a618637937298060bdbe5fbcfb628eabd1082c8a",
   "ports": [
     {
       "name": "3fd",
@@ -15797,6 +15797,7 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
+        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -16074,7 +16075,7 @@
         "homepage": "https://github.com/bshoshany/thread-pool",
         "documentation": "https://github.com/bshoshany/thread-pool/blob/master/README.md",
         "license": "MIT",
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -25836,6 +25837,33 @@
         "version-date": "2019-12-19"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "fineftp",
+      "manifest": {
+        "name": "fineftp",
+        "description": "FineFTP is a minimal FTP server library for Windows and Unix flavors.",
+        "homepage": "https://github.com/eclipse-ecal/fineftp-server",
+        "license": "MIT",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          "asio",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.4"
+      },
+      "files": [
+        "asio.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -39355,6 +39383,30 @@
       },
       "files": [
         "add-install.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "lexbor",
+      "manifest": {
+        "name": "lexbor",
+        "description": "Lexbor is development of an open source HTML Renderer library.",
+        "homepage": "https://github.com/lexbor/lexbor",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.2.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -80696,6 +80748,21 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wcslib",
+      "manifest": {
+        "name": "wcslib",
+        "description": "World Coordinate System (WCS) (Library)",
+        "homepage": "https://www.atnf.csiro.au/people/mcalabre/WCS/",
+        "supports": "!windows",
+        "version": "7.12"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
