@@ -1,5 +1,5 @@
 {
-  "version": "a618637937298060bdbe5fbcfb628eabd1082c8a",
+  "version": "7b30311f0a79d395bf2d933d82fec1853c6a4e77",
   "ports": [
     {
       "name": "3fd",
@@ -15767,7 +15767,7 @@
       "name": "boringssl",
       "manifest": {
         "name": "boringssl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "BoringSSL is a fork of OpenSSL developed by Google",
         "homepage": "https://boringssl.googlesource.com/boringssl",
         "supports": "!uwp",
@@ -15790,6 +15790,7 @@
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -16961,7 +16962,7 @@
       "name": "ccfits",
       "manifest": {
         "name": "ccfits",
-        "port-version": 10,
+        "port-version": 11,
         "description": "CCfits is an object oriented interface to the cfitsio library. It is designed to make the capabilities of cfitsio available to programmers working in C++.",
         "homepage": "https://heasarc.gsfc.nasa.gov/fitsio/CCfits/",
         "license": "NASA-1.3",
@@ -26300,7 +26301,7 @@
             "host": true
           }
         ],
-        "version": "3.2.1"
+        "version": "3.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -27276,7 +27277,7 @@
       "name": "freetype-gl",
       "manifest": {
         "name": "freetype-gl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenGL text using one vertex buffer, one texture and FreeType",
         "homepage": "https://github.com/rougier/freetype-gl",
         "dependencies": [
@@ -27291,6 +27292,14 @@
             "host": true
           }
         ],
+        "features": {
+          "glad": {
+            "description": "Use the GLAD gl loader",
+            "dependencies": [
+              "glad"
+            ]
+          }
+        },
         "version-date": "2022-01-17"
       },
       "files": [
@@ -35637,7 +35646,7 @@
         "homepage": "https://github.com/offa/influxdb-cxx",
         "license": "MIT",
         "dependencies": [
-          "curl",
+          "cpr",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35657,9 +35666,10 @@
             ]
           }
         },
-        "version-date": "2022-09-02"
+        "version": "0.7.1"
       },
       "files": [
+        "fix-dllexports.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42155,10 +42165,10 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
-        "license": "GPL-3.0-only",
+        "license": null,
         "dependencies": [
           "eigen3",
           {
@@ -42255,6 +42265,7 @@
       },
       "files": [
         "dependencies.patch",
+        "install-extra-targets.patch",
         "portfile.cmake",
         "upstream_fixes.patch",
         "vcpkg.json"
@@ -55269,7 +55280,6 @@
       "name": "nghttp2",
       "manifest": {
         "name": "nghttp2",
-        "port-version": 1,
         "description": "Implementation of the Hypertext Transfer Protocol version 2 in C",
         "homepage": "https://github.com/nghttp2/nghttp2",
         "license": "MIT",
@@ -55279,7 +55289,7 @@
             "host": true
           }
         ],
-        "version": "1.51.0"
+        "version": "1.53.0"
       },
       "files": [
         "portfile.cmake",
@@ -57308,7 +57318,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1",
