@@ -1,5 +1,5 @@
 {
-  "version": "7b30311f0a79d395bf2d933d82fec1853c6a4e77",
+  "version": "40619a55c3e76dc4005c8d1b7395071471bb8b96",
   "ports": [
     {
       "name": "3fd",
@@ -534,7 +534,6 @@
       "name": "alembic",
       "manifest": {
         "name": "alembic",
-        "port-version": 1,
         "description": "Alembic is an open framework for storing and sharing scene data that includes a C++ library, a file format, and client plugins and applications.",
         "homepage": "https://alembic.io/",
         "supports": "!(windows & x86) & !uwp",
@@ -557,10 +556,9 @@
             ]
           }
         },
-        "version": "1.8.3"
+        "version": "1.8.5"
       },
       "files": [
-        "disable-warnings-as-error.patch",
         "fix-runtime-destination.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -22558,10 +22556,9 @@
       "name": "discord-game-sdk",
       "manifest": {
         "name": "discord-game-sdk",
-        "port-version": 5,
         "description": "The Discord GameSDK is an easy drop-in SDK to help you manage all the hard things that come with making a game.",
         "homepage": "https://discord.com/developers/docs/game-sdk/sdk-starter-guide",
-        "supports": "((x64 & (windows | osx | linux)) | (x86 & windows)) & !uwp & !static",
+        "supports": "((x64 & (windows | osx | linux)) | (x86 & windows) | (arm64 & osx)) & !uwp & !static",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -22572,7 +22569,7 @@
             "host": true
           }
         ],
-        "version": "2.5.6"
+        "version": "3.2.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -26288,6 +26285,7 @@
       "name": "flecs",
       "manifest": {
         "name": "flecs",
+        "port-version": 1,
         "description": "A fast entity component system (ECS) for C & C++",
         "homepage": "https://github.com/SanderMertens/flecs",
         "license": "MIT",
@@ -26305,6 +26303,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -28289,7 +28288,6 @@
       "name": "gdcm",
       "manifest": {
         "name": "gdcm",
-        "port-version": 1,
         "description": "Grassroots DICOM library",
         "homepage": "https://github.com/malaterre/GDCM",
         "license": "BSD-3-Clause",
@@ -28311,7 +28309,7 @@
           },
           "zlib"
         ],
-        "version": "3.0.12"
+        "version": "3.0.22"
       },
       "files": [
         "Fix-Cmake_DIR.patch",
@@ -29427,7 +29425,6 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -29457,7 +29454,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.76.1"
+        "version": "2.76.2"
       },
       "files": [
         "libintl.patch",
@@ -40471,6 +40468,7 @@
       "name": "libde265",
       "manifest": {
         "name": "libde265",
+        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "https://www.libde265.org/",
         "license": "LGPL-3.0-only",
@@ -40495,6 +40493,7 @@
       },
       "files": [
         "fix-interface-include.patch",
+        "fix-lib-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -48340,7 +48339,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-03-30"
+        "version-date": "2023-05-10"
       },
       "files": [
         "CMakeLists.txt",
@@ -59052,7 +59051,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -59170,10 +59168,11 @@
             ]
           }
         },
-        "version": "2.4.9.0"
+        "version": "2.4.11.1"
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-msvc-build.patch",
         "fix-openexr-dll.patch",
         "fix-openexr-target-missing.patch",
         "fix-openimageio_include_dir.patch",
@@ -61940,9 +61939,10 @@
       "name": "pdcurses",
       "manifest": {
         "name": "pdcurses",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Public Domain Curses - a curses library for environments that don't fit the termcap/terminfo model.",
         "homepage": "https://pdcurses.org/",
+        "license": null,
         "supports": "windows & !uwp & !mingw",
         "version": "3.9"
       },
@@ -61950,6 +61950,7 @@
         "LICENSE",
         "nmake-install.patch",
         "portfile.cmake",
+        "unofficial-pdcurses-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -73235,7 +73236,7 @@
             "description": "Enable UTF8 validation"
           }
         },
-        "version": "3.1.7"
+        "version": "3.1.8"
       },
       "files": [
         "portfile.cmake",
@@ -77708,7 +77709,6 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 3,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -77768,13 +77768,13 @@
             "description": "Enable on-demand profiling"
           }
         },
-        "version-semver": "0.9.0"
+        "version-semver": "0.9.1"
       },
       "files": [
         "001-fix-vcxproj-vcpkg.patch",
         "002-fix-capstone-5.patch",
         "003-fix-imgui-path.patch",
-        "004-fix-crash-handler.patch",
+        "004-fix-missing-threads-dep.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
