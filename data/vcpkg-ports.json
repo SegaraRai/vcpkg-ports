@@ -1,5 +1,5 @@
 {
-  "version": "40619a55c3e76dc4005c8d1b7395071471bb8b96",
+  "version": "0ccb3d11406922bef1dcc29002f68f633a321f19",
   "ports": [
     {
       "name": "3fd",
@@ -846,7 +846,6 @@
       "name": "angelscript",
       "manifest": {
         "name": "angelscript",
-        "port-version": 1,
         "description": "The AngelCode Scripting Library, or AngelScript as it is also known, is an extremely flexible cross-platform scripting library designed to allow applications to extend their functionality through external scripts. It has been designed from the beginning to be an easy to use component, both for the application programmer and the script writer.",
         "homepage": "https://angelcode.com/angelscript",
         "license": "Zlib",
@@ -866,7 +865,7 @@
             "description": "Installs all addons for use in compiling scripts addons"
           }
         },
-        "version": "2.36.0"
+        "version": "2.36.1"
       },
       "files": [
         "mark-threads-private.patch",
@@ -1674,6 +1673,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -1799,6 +1799,7 @@
         "version": "12.0.0"
       },
       "files": [
+        "fix-ci-error.patch",
         "msvc-static-name.patch",
         "portfile.cmake",
         "thrift.patch",
@@ -5574,7 +5575,6 @@
       "name": "boinc",
       "manifest": {
         "name": "boinc",
-        "port-version": 1,
         "description": "Open-source software for volunteer computing and grid computing.",
         "homepage": "https://boinc.berkeley.edu/",
         "license": "LGPL-3.0-or-later",
@@ -5590,11 +5590,10 @@
             "host": true
           }
         ],
-        "version": "7.22.1"
+        "version": "7.22.2"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16454,7 +16453,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.7.0"
+        "version-semver": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -16488,10 +16487,11 @@
           },
           "wangle"
         ],
-        "version-string": "2023.02.27.00"
+        "version-string": "2023.05.08.00"
       },
       "files": [
         "fix-build.patch",
+        "fmt-10.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16608,7 +16608,7 @@
       "name": "cairomm",
       "manifest": {
         "name": "cairomm",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A C++ wrapper for the cairo graphics library",
         "homepage": "https://www.cairographics.org",
         "license": "LGPL-2.0-only",
@@ -17613,7 +17613,7 @@
             "host": true
           }
         ],
-        "version": "2.4.1"
+        "version": "2.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -19225,7 +19225,7 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
@@ -19358,6 +19358,21 @@
         "build-corrade-rc-always.patch",
         "fix-vs2019.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cpp-async",
+      "manifest": {
+        "name": "cpp-async",
+        "description": "Support types and functions for C++20 coroutines",
+        "homepage": "https://github.com/microsoft/cpp-async",
+        "license": "MIT",
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -26285,7 +26300,6 @@
       "name": "flecs",
       "manifest": {
         "name": "flecs",
-        "port-version": 1,
         "description": "A fast entity component system (ECS) for C & C++",
         "homepage": "https://github.com/SanderMertens/flecs",
         "license": "MIT",
@@ -26299,7 +26313,7 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -26580,7 +26594,6 @@
       "name": "fmt",
       "manifest": {
         "name": "fmt",
-        "port-version": 1,
         "description": "Formatting library for C++. It can be used as a safe alternative to printf or as a fast alternative to IOStreams.",
         "homepage": "https://github.com/fmtlib/fmt",
         "license": "MIT",
@@ -26594,7 +26607,7 @@
             "host": true
           }
         ],
-        "version": "9.1.0"
+        "version": "10.0.0"
       },
       "files": [
         "fix-format-conflict.patch",
@@ -28645,15 +28658,23 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "description": "GNU gettext provides libintl and a set of tools to help produce multi-lingual messages.",
+        "port-version": 1,
+        "description": "A GNU framework to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
-        "license": null,
+        "license": "GPL-3.0-only",
         "dependencies": [
-          "libiconv"
+          "gettext-libintl"
         ],
         "features": {
+          "runtime-tools": {
+            "description": "Build runtime tools for internationalization of scripts",
+            "supports": "!uwp"
+          },
           "tools": {
             "description": "Build gettext tools",
+            "dependencies": [
+              "libiconv"
+            ],
             "supports": "!uwp"
           }
         },
@@ -28661,16 +28682,44 @@
       },
       "files": [
         "0003-Fix-win-unicode-paths.patch",
-        "Makefile",
         "android.patch",
+        "bashify.cmake",
         "install-autopoint.cmake",
+        "macosx-libs.patch",
+        "parallel-gettext-tools.patch",
         "portfile.cmake",
         "rel_path.patch",
+        "subdirs.patch",
         "uwp.patch",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json",
         "win-gethostname.patch"
+      ]
+    },
+    {
+      "name": "gettext-libintl",
+      "manifest": {
+        "name": "gettext-libintl",
+        "description": "The libintl C library from GNU gettext-runtime.",
+        "homepage": "https://www.gnu.org/software/gettext/",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "libiconv",
+            "platform": "!linux"
+          }
+        ],
+        "version": "0.21.1"
+      },
+      "files": [
+        "0003-Fix-win-unicode-paths.patch",
+        "android.patch",
+        "bashify.cmake",
+        "portfile.cmake",
+        "usage",
+        "uwp.patch",
+        "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -29712,16 +29761,13 @@
             "host": true
           }
         ],
-        "default-features": [
-          "tools"
-        ],
         "features": {
           "tools": {
             "description": "Build the glslangValidator and spirv-remap binaries",
             "supports": "!ios"
           }
         },
-        "version": "12.1.0"
+        "version": "12.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -31764,7 +31810,7 @@
       "name": "gsl",
       "manifest": {
         "name": "gsl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The GNU Scientific Library is a numerical library for C and C++ programmers",
         "homepage": "https://www.gnu.org/software/gsl/",
         "license": "GPL-3.0-or-later",
@@ -33626,7 +33672,7 @@
             ]
           }
         },
-        "version": "7.1.0"
+        "version": "7.2.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -34640,8 +34686,7 @@
           }
         ],
         "default-features": [
-          "assimp",
-          "irrlicht"
+          "assimp"
         ],
         "features": {
           "assimp": {
@@ -34653,11 +34698,13 @@
           "irrlicht": {
             "description": "Add support for irrlicht-based visualizer",
             "dependencies": [
+              "glfw3",
               "irrlicht"
-            ]
+            ],
+            "supports": "!windows"
           }
         },
-        "version": "8.1.0"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -51954,26 +52001,30 @@
       "name": "mchehab-zbar",
       "manifest": {
         "name": "mchehab-zbar",
-        "port-version": 3,
+        "port-version": 4,
         "description": "ZBar is an open source software suite for reading bar codes from various sources, including webcams. This fork is actively maintained.",
         "homepage": "https://github.com/mchehab/zbar",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "gettext",
+            "host": true
+          },
           "libiconv"
         ],
         "features": {
           "nls": {
             "description": "Native Language Support",
             "dependencies": [
-              "gettext",
               {
                 "name": "gettext",
                 "host": true,
                 "features": [
                   "tools"
                 ]
-              }
+              },
+              "gettext-libintl"
             ]
           }
         },
@@ -63190,6 +63241,29 @@
       ]
     },
     {
+      "name": "portable-file-dialogs",
+      "manifest": {
+        "name": "portable-file-dialogs",
+        "description": "Portable GUI dialogs library",
+        "homepage": "https://github.com/samhocevar/portable-file-dialogs",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "portable-snippets",
       "manifest": {
         "name": "portable-snippets",
@@ -67624,10 +67698,12 @@
       "name": "qtpositioning",
       "manifest": {
         "name": "qtpositioning",
+        "port-version": 1,
         "description": "Qt Positioning",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
+          "poly2tri",
           {
             "name": "qtbase",
             "default-features": false
@@ -67651,6 +67727,7 @@
         "version": "6.5.0"
       },
       "files": [
+        "devendor-poly2tri.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68776,7 +68853,7 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -72113,7 +72190,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -72180,6 +72257,7 @@
       },
       "files": [
         "deps-and-shared.patch",
+        "fix-fmt-10.patch",
         "fix-headers.patch",
         "fix-ioss-includes.patch",
         "fix-mpi.patch",
@@ -73192,7 +73270,7 @@
         "description": "Implementations of SIMD instruction sets for systems which don't natively support them",
         "homepage": "https://github.com/simd-everywhere/simde",
         "license": "MIT",
-        "version": "0.7.4"
+        "version": "0.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -74458,6 +74536,7 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
+        "port-version": 1,
         "description": "Very fast, header only, C++ logging library",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -74487,8 +74566,10 @@
         "version-semver": "1.11.0"
       },
       "files": [
+        "fmt-10-support.patch",
         "fmt-header.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -80589,6 +80670,7 @@
       "name": "wasmedge",
       "manifest": {
         "name": "wasmedge",
+        "port-version": 1,
         "description": "WasmEdge is a high-performance WebAssembly runtime for edge computing.",
         "homepage": "https://WasmEdge.org",
         "license": "Apache-2.0",
@@ -80640,6 +80722,7 @@
         "version": "0.12.1"
       },
       "files": [
+        "fmt-10.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81073,6 +81156,21 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wmipp",
+      "manifest": {
+        "name": "wmipp",
+        "description": "Streamlined Windows Management Instrumentation (WMI) integration for seamless C++ development",
+        "homepage": "https://github.com/sonodima/wmipp",
+        "license": "MIT",
+        "supports": "windows & !uwp",
+        "version": "1.0.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83312,7 +83410,6 @@
       "name": "zlib-ng",
       "manifest": {
         "name": "zlib-ng",
-        "port-version": 1,
         "description": "zlib replacement with optimizations for 'next generation' systems",
         "homepage": "https://github.com/zlib-ng/zlib-ng",
         "license": "Zlib",
@@ -83322,7 +83419,7 @@
             "host": true
           }
         ],
-        "version": "2.0.6"
+        "version": "2.0.7"
       },
       "files": [
         "portfile.cmake",
