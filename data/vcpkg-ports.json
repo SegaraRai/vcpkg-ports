@@ -1,5 +1,5 @@
 {
-  "version": "2718aa52a31977b792af7e9c2f83eaf4ddcd932d",
+  "version": "78a727b60864afa46c3c73148e6780b02de25ef5",
   "ports": [
     {
       "name": "3fd",
@@ -19766,7 +19766,7 @@
             "host": true
           }
         ],
-        "version": "4.5.1"
+        "version": "4.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -23008,7 +23008,6 @@
       "name": "dpp",
       "manifest": {
         "name": "dpp",
-        "port-version": 1,
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
         "license": "Apache-2.0",
@@ -23028,11 +23027,10 @@
           },
           "zlib"
         ],
-        "version": "10.0.23"
+        "version": "10.0.24"
       },
       "files": [
         "portfile.cmake",
-        "remove-wrong-header.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -26318,7 +26316,7 @@
             "host": true
           }
         ],
-        "version": "23.3.3"
+        "version": "23.5.9"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -26651,7 +26649,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 6,
+        "port-version": 7,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -26743,6 +26741,7 @@
       "files": [
         "boost-1.70.patch",
         "disable-non-underscore-posix-names.patch",
+        "fix-build-with-gcc-13.patch",
         "fix-deps.patch",
         "fix-windows-minmax.patch",
         "portfile.cmake",
@@ -28021,6 +28020,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -34030,7 +34030,13 @@
             "host": true
           }
         ],
-        "version-semver": "0.13.1"
+        "features": {
+          "pp-data-dump": {
+            "description": "Build pp_data_dump.exe tool, to store WIN32 HidD Preparsed Data as file",
+            "supports": "windows"
+          }
+        },
+        "version-semver": "0.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -40928,6 +40934,64 @@
       ]
     },
     {
+      "name": "libeventheader-decode",
+      "manifest": {
+        "name": "libeventheader-decode",
+        "description": "EventHeader tracepoint decoding classes for C++",
+        "homepage": "https://github.com/microsoft/LinuxTracepoints/",
+        "license": "MIT",
+        "supports": "linux | windows",
+        "dependencies": [
+          {
+            "name": "libeventheader-tracepoint",
+            "version>=": "1.0.0"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libeventheader-tracepoint",
+      "manifest": {
+        "name": "libeventheader-tracepoint",
+        "description": "EventHeader-encoded Linux tracepoints for C/C++",
+        "homepage": "https://github.com/microsoft/LinuxTracepoints/",
+        "license": "MIT",
+        "supports": "linux | windows",
+        "dependencies": [
+          {
+            "name": "libtracepoint",
+            "version>=": "1.0.0"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libevhtp",
       "manifest": {
         "name": "libevhtp",
@@ -46332,6 +46396,31 @@
           }
         },
         "version": "2.0.9"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libtracepoint",
+      "manifest": {
+        "name": "libtracepoint",
+        "description": "Linux tracepoints interface for C/C++",
+        "homepage": "https://github.com/microsoft/LinuxTracepoints/",
+        "license": "MIT",
+        "supports": "linux | windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -60398,7 +60487,7 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 18,
+        "port-version": 19,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
         "homepage": "https://www.openscenegraph.com/",
         "license": null,
@@ -60659,13 +60748,13 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 7,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
         "supports": "!(arm | x86 | wasm32)",
         "dependencies": [
           "basisu",
+          "blosc",
           "cfitsio",
           "draco",
           "geos",
@@ -60720,12 +60809,11 @@
             "description": "Build tools"
           }
         },
-        "version": "3.3"
+        "version": "3.4"
       },
       "files": [
         "export-plugins.patch",
         "find-package.patch",
-        "fix-osgearth-config.patch",
         "link-libraries.patch",
         "portfile.cmake",
         "remove-lerc-gltf.patch",
@@ -65334,7 +65422,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65419,6 +65507,8 @@
         "cmake/qt_port_functions.cmake",
         "cmake/qt_port_hashes.cmake",
         "cmake/qt_submodule_installation.cmake",
+        "patches/CVE-2023-32762-qtbase-5.15.diff",
+        "patches/CVE-2023-32763-qtbase-5.15.diff",
         "patches/Qt5BasicConfig.patch",
         "patches/Qt5GuiConfigExtras.patch",
         "patches/Qt5PluginTarget.patch",
@@ -65431,6 +65521,7 @@
         "patches/mysql-configure.patch",
         "patches/mysql_plugin_include.patch",
         "patches/qt_app.patch",
+        "patches/qtbug_96392.patch",
         "patches/static_opengl.patch",
         "patches/windows_prf.patch",
         "patches/winmain_pro.patch",
@@ -66011,6 +66102,7 @@
       "name": "qt5-svg",
       "manifest": {
         "name": "qt5-svg",
+        "port-version": 1,
         "description": "Qt5 SVG Module - provides classes for displaying the contents of SVG files",
         "license": null,
         "dependencies": [
@@ -66022,6 +66114,7 @@
         "version": "5.15.9"
       },
       "files": [
+        "CVE-2023-32573-qtsvg-5.15.diff",
         "portfile.cmake",
         "static_svg_link_fix.patch",
         "vcpkg.json"
@@ -73943,7 +74036,7 @@
             "host": true
           }
         ],
-        "version": "5.7.4.2"
+        "version": "5.7.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -81225,7 +81318,7 @@
         "homepage": "https://github.com/sonodima/wmipp",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version": "1.0.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
