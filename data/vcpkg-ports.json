@@ -1,5 +1,5 @@
 {
-  "version": "c6592ce60ff394049905365865f59e3a4d93d35b",
+  "version": "afbb37cfd648335fd980f6fb7dbc2d0c84c009cf",
   "ports": [
     {
       "name": "3fd",
@@ -270,7 +270,7 @@
       "name": "activemq-cpp",
       "manifest": {
         "name": "activemq-cpp",
-        "port-version": 12,
+        "port-version": 13,
         "description": "Apache ActiveMQ is the most popular and powerful open source messaging and Integration Patterns server.",
         "license": "Apache-2.0",
         "supports": "!(uwp | osx)",
@@ -16107,7 +16107,7 @@
         "homepage": "https://github.com/bshoshany/thread-pool",
         "documentation": "https://github.com/bshoshany/thread-pool/blob/master/README.md",
         "license": "MIT",
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -20143,6 +20143,7 @@
       "name": "cppzmq",
       "manifest": {
         "name": "cppzmq",
+        "port-version": 1,
         "description": "Header-only C++ binding for ZeroMQ",
         "homepage": "https://github.com/zeromq/cppzmq",
         "license": "MIT",
@@ -20159,7 +20160,16 @@
         ],
         "features": {
           "draft": {
-            "description": "Build and install draft"
+            "description": "Build and install draft",
+            "dependencies": [
+              {
+                "name": "zeromq",
+                "default-features": false,
+                "features": [
+                  "draft"
+                ]
+              }
+            ]
           }
         },
         "version": "4.9.0"
@@ -32865,7 +32875,7 @@
             ]
           }
         },
-        "version": "4.10.1"
+        "version": "4.10.3"
       },
       "files": [
         "0001-build.patch",
@@ -48699,12 +48709,16 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
         "supports": "!uwp & !(arm & windows)",
         "dependencies": [
+          {
+            "name": "atlmfc",
+            "platform": "windows & !mingw"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -57634,6 +57648,7 @@
       "name": "opencl",
       "manifest": {
         "name": "opencl",
+        "port-version": 1,
         "description": "C/C++ headers and ICD loader (Installable Client Driver) for OpenCL",
         "homepage": "https://github.com/KhronosGroup/OpenCL-Headers",
         "license": "Apache-2.0",
@@ -64861,7 +64876,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -65009,7 +65024,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -66503,7 +66518,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -66544,7 +66559,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -66580,7 +66595,7 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -66593,7 +66608,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67060,7 +67074,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "GLIB2-static.patch",
@@ -67124,7 +67138,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67147,7 +67161,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67172,7 +67186,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67200,7 +67214,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67233,7 +67247,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67258,7 +67272,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67278,7 +67292,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67311,7 +67325,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67335,7 +67349,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67387,7 +67401,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -67435,7 +67449,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "fix-taglib-search.patch",
@@ -67545,7 +67559,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67584,7 +67598,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67616,7 +67630,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67639,7 +67653,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67724,7 +67738,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "fix_avfoundation_target.patch",
@@ -67751,7 +67765,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67762,7 +67776,6 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
-        "port-version": 1,
         "description": "Qt wrapper for existing OPC UA stacks",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67828,7 +67841,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67839,7 +67852,6 @@
       "name": "qtpositioning",
       "manifest": {
         "name": "qtpositioning",
-        "port-version": 1,
         "description": "Qt Positioning",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -67865,7 +67877,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -67911,7 +67923,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67931,7 +67943,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67984,7 +67996,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68005,7 +68017,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68055,7 +68067,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68094,7 +68106,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68132,7 +68144,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68172,7 +68184,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68192,7 +68204,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68220,7 +68232,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68253,7 +68265,7 @@
             "default-features": false
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68276,7 +68288,7 @@
             ]
           }
         ],
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68287,7 +68299,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
         "description": "Qt Tools",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -68390,7 +68401,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -68427,7 +68438,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68479,7 +68490,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -68515,7 +68526,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68546,7 +68557,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68706,7 +68717,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68740,7 +68751,7 @@
             ]
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -68779,7 +68790,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.5.0"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
