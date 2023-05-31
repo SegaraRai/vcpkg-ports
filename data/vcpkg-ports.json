@@ -1,5 +1,5 @@
 {
-  "version": "1c5a340f6e10985e2d92af174a68dbd15c1fa4e1",
+  "version": "b4ca42fc6d2388aa68fdb9f68ae50f91dbd93250",
   "ports": [
     {
       "name": "3fd",
@@ -3908,6 +3908,7 @@
       "name": "azure-c-shared-utility",
       "manifest": {
         "name": "azure-c-shared-utility",
+        "port-version": 1,
         "description": "Azure C SDKs common code",
         "homepage": "https://github.com/Azure/azure-c-shared-utility",
         "license": "MIT",
@@ -3916,11 +3917,11 @@
           "azure-macro-utils-c",
           {
             "name": "curl",
-            "platform": "linux"
+            "platform": "!windows"
           },
           {
             "name": "openssl",
-            "platform": "linux"
+            "platform": "!windows & !osx"
           },
           "umock-c",
           {
@@ -4855,7 +4856,7 @@
             "host": true
           }
         ],
-        "version": "8.2.2"
+        "version": "8.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -5453,12 +5454,11 @@
       "name": "blend2d",
       "manifest": {
         "name": "blend2d",
-        "port-version": 3,
         "description": "Beta 2D Vector Graphics Powered by a JIT Compiler",
         "homepage": "https://github.com/blend2d/blend2d",
         "documentation": "https://blend2d.com/doc/index.html",
         "license": "Zlib",
-        "supports": "!(arm & windows) & !uwp & !wasm32",
+        "supports": "!uwp & !wasm32",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -5518,7 +5518,7 @@
             ]
           }
         },
-        "version-date": "2022-12-31"
+        "version": "0.10"
       },
       "files": [
         "portfile.cmake",
@@ -18481,7 +18481,7 @@
       "name": "cminpack",
       "manifest": {
         "name": "cminpack",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A C/C++ rewrite of the MINPACK software (originally in FORTRAN) for solving nonlinear equations and nonlinear least squares problems",
         "homepage": "http://devernay.free.fr/hacks/cminpack/",
         "license": null,
@@ -27539,7 +27539,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.0.0"
+        "version-semver": "4.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -36877,7 +36877,7 @@
             "host": true
           }
         ],
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -41533,7 +41533,6 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 3,
         "description": "Git linkable library",
         "homepage": "https://github.com/libgit2/libgit2",
         "supports": "!uwp",
@@ -41623,7 +41622,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.4.2"
+        "version-semver": "1.6.4"
       },
       "files": [
         "fix-configcmake.patch",
@@ -42040,7 +42039,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -42060,7 +42058,7 @@
           },
           "x265"
         ],
-        "version": "1.15.1"
+        "version": "1.16.1"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -42888,7 +42886,6 @@
       "name": "liblsl",
       "manifest": {
         "name": "liblsl",
-        "port-version": 1,
         "description": "C++ lsl library for multi-modal time-synched data transmission over the local network",
         "homepage": "https://github.com/sccn/liblsl",
         "license": "MIT",
@@ -42918,7 +42915,7 @@
             "host": true
           }
         ],
-        "version": "1.16.1"
+        "version": "1.16.2"
       },
       "files": [
         "portfile.cmake",
@@ -46099,7 +46096,7 @@
             ]
           }
         },
-        "version": "1.23.1"
+        "version": "1.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -48381,6 +48378,32 @@
         "0002-fix-compilation-macos.patch",
         "FindCryptoPP.cmake",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "lightningscanner",
+      "manifest": {
+        "name": "lightningscanner",
+        "description": "A lightning-fast memory signature/pattern scanner, capable of scanning gigabytes of data per second.",
+        "homepage": "https://localcc.github.io/LightningScanner/",
+        "license": "MIT",
+        "supports": "!arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -69005,7 +69028,7 @@
             "host": true
           }
         ],
-        "version": "2.9.0"
+        "version": "2.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -71855,7 +71878,7 @@
       "name": "sdl1",
       "manifest": {
         "name": "sdl1",
-        "port-version": 17,
+        "port-version": 18,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "LGPL-2.1-or-later",
@@ -71864,7 +71887,7 @@
       },
       "files": [
         "SDL.vcxproj.in",
-        "SDL1_2017.sln",
+        "SDL1_2017.sln.in",
         "SDLmain.vcxproj.in",
         "export-symbols-only-in-shared-build.patch",
         "fix-linux-build.patch",
@@ -75201,7 +75224,6 @@
       "name": "sqlitecpp",
       "manifest": {
         "name": "sqlitecpp",
-        "port-version": 1,
         "description": "SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper.",
         "homepage": "https://github.com/SRombauts/SQLiteCpp",
         "license": "MIT",
@@ -75233,10 +75255,10 @@
             "description": "Deprecated; no effects"
           }
         },
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "files": [
-        "0001-unofficial-sqlite3-and-sqlcipher.patch",
+        "add_runtime_destination.patch",
         "fix_dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -76352,6 +76374,7 @@
       "name": "tbb",
       "manifest": {
         "name": "tbb",
+        "port-version": 1,
         "description": "Intel's Threading Building Blocks.",
         "homepage": "https://github.com/oneapi-src/oneTBB",
         "license": "Apache-2.0",
@@ -76366,6 +76389,15 @@
             "host": true
           }
         ],
+        "features": {
+          "hwloc": {
+            "description": "Builds TBB with TBBBind support for Hibrid CPUs or NUMA architectures.",
+            "dependencies": [
+              "hwloc"
+            ],
+            "supports": "!static & !osx"
+          }
+        },
         "version": "2021.9.0"
       },
       "files": [
