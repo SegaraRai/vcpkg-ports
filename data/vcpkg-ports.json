@@ -1,5 +1,5 @@
 {
-  "version": "b4ca42fc6d2388aa68fdb9f68ae50f91dbd93250",
+  "version": "e527f179b10208896e983337aac4cfccfd45e3f9",
   "ports": [
     {
       "name": "3fd",
@@ -876,6 +876,7 @@
       "name": "angelscript",
       "manifest": {
         "name": "angelscript",
+        "port-version": 1,
         "description": "The AngelCode Scripting Library, or AngelScript as it is also known, is an extremely flexible cross-platform scripting library designed to allow applications to extend their functionality through external scripts. It has been designed from the beginning to be an easy to use component, both for the application programmer and the script writer.",
         "homepage": "https://angelcode.com/angelscript",
         "license": "Zlib",
@@ -898,6 +899,7 @@
         "version": "2.36.1"
       },
       "files": [
+        "fix-dependency.patch",
         "mark-threads-private.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -19259,17 +19261,15 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
         "dependencies": [
-          "catch",
           "eigen3",
           "fmt",
           "if97",
           "msgpack",
-          "pybind11",
           "rapidjson",
           "refprop-headers",
           {
@@ -19280,6 +19280,7 @@
         "version-semver": "6.4.3"
       },
       "files": [
+        "cmake-project-include.cmake",
         "fix-builderror.patch",
         "fix-dependency.patch",
         "fix-install.patch",
@@ -21899,7 +21900,8 @@
         "name": "dbg-macro",
         "description": "A dbg(...) macro for C++",
         "homepage": "https://github.com/sharkdp/dbg-macro",
-        "version-date": "2021-11-02"
+        "license": "MIT",
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -22675,10 +22677,10 @@
         "supports": "(windows & x64 & !static) | (linux & x64)",
         "dependencies": [
           "ffmpeg",
+          "jsonifier",
           "libsodium",
           "openssl",
           "opus",
-          "simdjson",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22688,7 +22690,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-01-02"
+        "version-date": "2023-05-30"
       },
       "files": [
         "0001-Add-extern-C-to-avcodec.patch",
@@ -24980,7 +24982,6 @@
       "name": "fbthrift",
       "manifest": {
         "name": "fbthrift",
-        "port-version": 3,
         "description": "Facebook's branch of Apache Thrift, including a new C++ server.",
         "homepage": "https://github.com/facebook/fbthrift",
         "license": "Apache-2.0",
@@ -25010,10 +25011,9 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2022.03.21.00"
+        "version-string": "2023.05.15.00"
       },
       "files": [
-        "0001-fix-compatibility-with-boost-1.79.0.patch",
         "0002-fix-dependency.patch",
         "fix-glog.patch",
         "portfile.cmake",
@@ -25952,7 +25952,6 @@
       "name": "fizz",
       "manifest": {
         "name": "fizz",
-        "port-version": 1,
         "description": "a TLS 1.3 implementation by Facebook",
         "homepage": "https://github.com/facebookincubator/fizz",
         "license": "BSD-3-Clause",
@@ -25976,7 +25975,7 @@
           },
           "zstd"
         ],
-        "version-string": "2022.10.31.00"
+        "version-string": "2023.05.15.00"
       },
       "files": [
         "0001-fix-libsodium.patch",
@@ -26664,7 +26663,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 7,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -26751,12 +26749,11 @@
             ]
           }
         },
-        "version-string": "2022.10.31.00"
+        "version-string": "2023.05.15.00"
       },
       "files": [
         "boost-1.70.patch",
         "disable-non-underscore-posix-names.patch",
-        "fix-build-with-gcc-13.patch",
         "fix-deps.patch",
         "fix-windows-minmax.patch",
         "portfile.cmake",
@@ -34776,6 +34773,7 @@
       "name": "if97",
       "manifest": {
         "name": "if97",
+        "port-version": 1,
         "description": "This repository implements the IF97 formulation for the properties of pure water substance.",
         "homepage": "https://github.com/CoolProp/IF97",
         "license": "MIT",
@@ -34783,6 +34781,7 @@
       },
       "files": [
         "portfile.cmake",
+        "relax-encoding.diff",
         "vcpkg.json"
       ]
     },
@@ -38263,6 +38262,49 @@
       },
       "files": [
         "fix_duplicate_symbol.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf5parts",
+      "manifest": {
+        "name": "kf5parts",
+        "description": "Plugin framework for user interface component",
+        "homepage": "https://api.kde.org/frameworks/kparts/html/index.html",
+        "license": "LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kf5config",
+          "kf5coreaddons",
+          "kf5i18n",
+          "kf5iconthemes",
+          "kf5jobwidgets",
+          "kf5kio",
+          "kf5service",
+          "kf5textwidgets",
+          "kf5widgetsaddons",
+          "kf5xmlgui",
+          "qt5-base",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "5.98.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44230,7 +44272,7 @@
             "host": true
           }
         ],
-        "version": "8.13.11"
+        "version": "8.13.13"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -50103,7 +50145,7 @@
             "host": true
           }
         ],
-        "version": "0.8.2"
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -54298,13 +54340,18 @@
       "name": "msgpack",
       "manifest": {
         "name": "msgpack",
+        "port-version": 1,
         "description": "MessagePack is an efficient binary serialization format, which lets you exchange data among multiple languages like JSON, except that it's faster and smaller.",
         "homepage": "https://github.com/msgpack/msgpack-c",
         "license": "BSL-1.0",
         "dependencies": [
+          "boost-assert",
           "boost-fusion",
           "boost-numeric-conversion",
           "boost-optional",
+          "boost-predef",
+          "boost-preprocessor",
+          "boost-utility",
           "boost-variant",
           {
             "name": "vcpkg-cmake",
@@ -54608,7 +54655,14 @@
         "license": "MIT",
         "supports": "!windows",
         "dependencies": [
-          "boost",
+          "boost-context",
+          "boost-date-time",
+          "boost-filesystem",
+          "boost-iostreams",
+          "boost-program-options",
+          "boost-regex",
+          "boost-system",
+          "boost-thread",
           "fizz",
           "fmt",
           "folly",
@@ -54622,9 +54676,10 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-03"
+        "version-date": "2023-05-18"
       },
       "files": [
+        "fix_format.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57671,7 +57726,7 @@
       "name": "opencl",
       "manifest": {
         "name": "opencl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C/C++ headers and ICD loader (Installable Client Driver) for OpenCL",
         "homepage": "https://github.com/KhronosGroup/OpenCL-Headers",
         "license": "Apache-2.0",
@@ -63023,9 +63078,10 @@
       "name": "podofo",
       "manifest": {
         "name": "podofo",
+        "port-version": 1,
         "description": "PoDoFo is a library to work with the PDF file format",
-        "homepage": "https://sourceforge.net/projects/podofo/",
-        "license": "LGPL-2.0-only",
+        "homepage": "https://github.com/podofo/podofo",
+        "license": "LGPL-2.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           "freetype",
@@ -63036,7 +63092,10 @@
             "default-features": false
           },
           "openssl",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -63047,11 +63106,27 @@
           },
           "zlib"
         ],
+        "default-features": [
+          "fontmanager"
+        ],
         "features": {
           "fontconfig": {
-            "description": "Enable font manager support on Unix platforms",
+            "description": "Use Fontconfig",
             "dependencies": [
               "fontconfig"
+            ]
+          },
+          "fontmanager": {
+            "description": "Enable font manager",
+            "dependencies": [
+              {
+                "name": "podofo",
+                "default-features": false,
+                "features": [
+                  "fontconfig"
+                ],
+                "platform": "!windows"
+              }
             ]
           }
         },
@@ -64037,7 +64112,6 @@
       "name": "proxygen",
       "manifest": {
         "name": "proxygen",
-        "port-version": 1,
         "description": "It comprises the core C++ HTTP abstractions used at Facebook.",
         "homepage": "https://github.com/facebook/proxygen",
         "license": "BSD-3-Clause",
@@ -64071,7 +64145,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2022.07.11.00"
+        "version-string": "2023.05.15.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -69882,13 +69956,14 @@
       "name": "refprop-headers",
       "manifest": {
         "name": "refprop-headers",
-        "port-version": 2,
-        "description": "The REFPROP Headers",
+        "description": "Header files for the REFPROP fluid property library",
         "homepage": "https://github.com/CoolProp/REFPROP-headers",
-        "version-date": "2019-04-14"
+        "license": "MIT",
+        "version-date": "2022-12-07"
       },
       "files": [
         "portfile.cmake",
+        "unicode-build.diff",
         "vcpkg.json"
       ]
     },
@@ -70696,7 +70771,7 @@
       "name": "rsocket",
       "manifest": {
         "name": "rsocket",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ implementation of RSocket http://rsocket.io",
         "homepage": "https://github.com/rsocket/rsocket-cpp",
         "dependencies": [
@@ -70728,6 +70803,7 @@
         "fix-cmake-config.patch",
         "fix-find-dependencies.patch",
         "fix-folly.patch",
+        "fix-rsockserver-build-error.patch",
         "portfile.cmake",
         "use-cpp-17.patch",
         "vcpkg.json"
@@ -72663,7 +72739,7 @@
             ]
           }
         },
-        "version": "0.6.2"
+        "version": "0.6.3"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -73792,7 +73868,7 @@
       "name": "sleef",
       "manifest": {
         "name": "sleef",
-        "port-version": 3,
+        "port-version": 4,
         "description": "SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT",
         "homepage": "https://sleef.org/",
         "license": "BSL-1.0",
@@ -78681,11 +78757,20 @@
       "name": "unicorn-lib",
       "manifest": {
         "name": "unicorn-lib",
+        "port-version": 1,
         "description": "Unicode library for C++ by Ross Smith",
         "homepage": "https://github.com/CaptainCrowbar/unicorn-lib",
         "license": "MIT",
+        "supports": "!uwp",
         "dependencies": [
-          "pcre2",
+          {
+            "name": "libiconv",
+            "platform": "!windows"
+          },
+          {
+            "name": "pcre2",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -79329,7 +79414,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.41.0"
+        "version-semver": "20.44.0"
       },
       "files": [
         "portfile.cmake",
@@ -80846,7 +80931,6 @@
       "name": "wangle",
       "manifest": {
         "name": "wangle",
-        "port-version": 1,
         "description": "Wangle is a framework providing a set of common client/server abstractions for building services in a consistent, modular, and composable way.",
         "homepage": "https://github.com/facebook/wangle",
         "license": "Apache-2.0",
@@ -80872,7 +80956,7 @@
             "host": true
           }
         ],
-        "version-string": "2022.03.21.00"
+        "version-string": "2023.05.15.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -82136,7 +82220,7 @@
             "host": true
           }
         ],
-        "version": "6.60"
+        "version": "6.69"
       },
       "files": [
         "portfile.cmake",
@@ -83709,7 +83793,7 @@
         "description": "A lightweight C++20 serialization and RPC library",
         "homepage": "https://github.com/eyalz800/zpp_bits",
         "license": "MIT",
-        "version": "4.4.13"
+        "version": "4.4.17"
       },
       "files": [
         "portfile.cmake",
