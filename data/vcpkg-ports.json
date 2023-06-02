@@ -1,5 +1,5 @@
 {
-  "version": "e527f179b10208896e983337aac4cfccfd45e3f9",
+  "version": "d8e5ba9b4513ee2088c0cf17834e771300d156bd",
   "ports": [
     {
       "name": "3fd",
@@ -5533,9 +5533,10 @@
       "name": "blingfire",
       "manifest": {
         "name": "blingfire",
+        "port-version": 1,
         "description": "BlingFire is a lightning fast Finite State machine and REgular expression manipulation library.",
         "license": "MIT",
-        "supports": "windows & !static & !uwp",
+        "supports": "windows & !static",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -5545,6 +5546,7 @@
         "version": "0.1.8.1"
       },
       "files": [
+        "ninja.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21085,7 +21087,7 @@
             ]
           }
         },
-        "version": "8.0.1"
+        "version": "8.1.2"
       },
       "files": [
         "0002_fix_uwp.patch",
@@ -21099,8 +21101,7 @@
         "mbedtls-ws2_32.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json",
-        "version-major-7-8.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -34646,7 +34647,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -44408,7 +44409,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 3,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -44425,6 +44425,11 @@
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
+          },
+          {
+            "name": "vcpkg-pkgconfig-get-modules",
+            "host": true,
+            "platform": "windows & !mingw"
           }
         ],
         "default-features": [
@@ -44433,28 +44438,77 @@
           "zlib"
         ],
         "features": {
+          "all": {
+            "description": "Build all supported features",
+            "dependencies": [
+              {
+                "name": "libpq",
+                "features": [
+                  "client",
+                  "icu",
+                  "xml",
+                  "xslt",
+                  "zstd"
+                ]
+              },
+              {
+                "name": "libpq",
+                "features": [
+                  "bonjour"
+                ],
+                "platform": "osx"
+              },
+              {
+                "name": "libpq",
+                "features": [
+                  "nls"
+                ],
+                "platform": "!osx"
+              },
+              {
+                "name": "libpq",
+                "features": [
+                  "readline"
+                ],
+                "platform": "!windows"
+              },
+              {
+                "name": "libpq",
+                "features": [
+                  "python"
+                ],
+                "platform": "!android & !mingw"
+              },
+              {
+                "name": "libpq",
+                "features": [
+                  "tcl"
+                ],
+                "platform": "windows & !mingw & !arm"
+              }
+            ]
+          },
           "bonjour": {
-            "description": "Build with Bonjour support (--with-bonjour)",
+            "description": "Build with Bonjour support",
             "supports": "osx"
           },
           "client": {
-            "description": "Build all client tools and libraries (dynamic only?)",
-            "supports": "!(windows & !mingw & static)"
+            "description": "Build all client tools and libraries"
           },
           "icu": {
-            "description": "Build with support for the ICU library (--with-icu)",
+            "description": "Build with support for the ICU library",
             "dependencies": [
               "icu"
             ]
           },
           "lz4": {
-            "description": "Use lz4 (else --without-lz4)",
+            "description": "Use lz4",
             "dependencies": [
               "lz4"
             ]
           },
           "nls": {
-            "description": "Native Language Support (--enable-nls[=LANGUAGES])",
+            "description": "Native Language Support",
             "dependencies": [
               "gettext",
               {
@@ -44462,19 +44516,20 @@
                 "host": true,
                 "features": [
                   "tools"
-                ]
+                ],
+                "platform": "!windows, mingw"
               }
             ],
             "supports": "!osx"
           },
           "openssl": {
-            "description": "support for encrypted client connections and random number generation on platforms that do not have \"/dev/urandom\" (except windows) (--with-openssl)",
+            "description": "support for encrypted client connections and random number generation on platforms that do not have \"/dev/urandom\" (except windows)",
             "dependencies": [
               "openssl"
             ]
           },
           "python": {
-            "description": "build the PL/Python server programming language (dynamic only?) (--with-python)",
+            "description": "build the PL/Python server programming language",
             "dependencies": [
               {
                 "name": "libpq",
@@ -44484,18 +44539,17 @@
                 ]
               },
               "python3"
-            ],
-            "supports": "!(windows & (static | mingw))"
+            ]
           },
           "readline": {
-            "description": "Use readline (else --without-readline)",
+            "description": "Use readline",
             "dependencies": [
               "readline"
             ],
             "supports": "!windows, mingw"
           },
           "tcl": {
-            "description": "build the PL/Tcl procedural language(dynamic only?) (--with-tcl)",
+            "description": "build the PL/Tcl procedural language",
             "dependencies": [
               {
                 "name": "libpq",
@@ -44506,16 +44560,19 @@
               },
               "tcl"
             ],
-            "supports": "!(windows & (static | mingw))"
+            "supports": "windows & !mingw"
           },
           "xml": {
-            "description": "Build with libxml (--with-libxml)",
+            "description": "Build with libxml",
             "dependencies": [
-              "libxml2"
+              {
+                "name": "libxml2",
+                "default-features": false
+              }
             ]
           },
           "xslt": {
-            "description": "Build with libxslt (--with-libxslt)",
+            "description": "Build with libxslt",
             "dependencies": [
               {
                 "name": "libpq",
@@ -44528,48 +44585,39 @@
             ]
           },
           "zlib": {
-            "description": "Use zlib (else --without-zlib)",
+            "description": "Use zlib",
             "dependencies": [
               "zlib"
             ]
           },
           "zstd": {
-            "description": "Use zstd (else --without-zstd)",
+            "description": "Use zstd",
             "dependencies": [
               "zstd"
             ]
           }
         },
-        "version": "15.2"
+        "version": "15.3"
       },
       "files": [
         "Makefile",
-        "config.pl",
+        "build-msvc.cmake",
         "libpq.props.in",
-        "patches/fix-configure.patch",
-        "patches/windows/MSBuildProject-static-crt.patch",
-        "patches/windows/MSBuildProject-static-lib.patch",
-        "patches/windows/MSBuildProject_fix_gendef_perl.patch",
-        "patches/windows/Mkvcbuild-static-lib.patch",
-        "patches/windows/Solution.patch",
-        "patches/windows/Solution_DEBUG.patch",
-        "patches/windows/Solution_RELEASE.patch",
-        "patches/windows/arm.patch",
-        "patches/windows/fix-compile-flag-Zi.patch",
-        "patches/windows/install.patch",
-        "patches/windows/macro-def.patch",
-        "patches/windows/minimize_install.patch",
-        "patches/windows/msgfmt.patch",
-        "patches/windows/openssl-version.patch",
-        "patches/windows/python3_build_DEBUG.patch",
-        "patches/windows/python3_build_RELEASE.patch",
-        "patches/windows/python_lib.patch",
-        "patches/windows/tcl_version.patch",
-        "patches/windows/win_bison_flex.patch",
         "portfile.cmake",
+        "unix/fix-configure.patch",
+        "unix/mingw-install.patch",
+        "unix/no-server-tools.patch",
+        "unix/python.patch",
+        "unix/single-linkage.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json"
+        "vcpkg-libs.props.in",
+        "vcpkg.json",
+        "windows/macro-def.patch",
+        "windows/msbuild.patch",
+        "windows/python_lib.patch",
+        "windows/spin_delay.patch",
+        "windows/win_bison_flex.patch"
       ]
     },
     {
@@ -47986,7 +48034,7 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -59891,7 +59939,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 4,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -59919,7 +59966,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "disable-apps.patch",
@@ -71976,7 +72023,7 @@
       "name": "sdl1-mixer",
       "manifest": {
         "name": "sdl1-mixer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib",
@@ -71993,7 +72040,7 @@
       },
       "files": [
         "SDL_mixer.vcxproj.in",
-        "SDL_mixer_2017.sln",
+        "SDL_mixer_2017.sln.in",
         "mpg123_ssize_t.patch",
         "native_midi.vcxproj.in",
         "playmus.vcxproj.in",
@@ -76231,6 +76278,15 @@
               "gmp"
             ]
           },
+          "llvm": {
+            "description": "Build with LLVM",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false
+              }
+            ]
+          },
           "mpfr": {
             "description": "Build with mpfr",
             "dependencies": [
@@ -76244,7 +76300,7 @@
             ]
           }
         },
-        "version": "0.9.0"
+        "version": "0.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -80362,7 +80418,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -80610,6 +80666,7 @@
         "fix-using-hdf5.patch",
         "iotr.patch",
         "jsoncpp.patch",
+        "missing-include-fixes.patch",
         "pegtl.patch",
         "portfile.cmake",
         "pythonwrapper.patch",
@@ -80759,10 +80816,11 @@
             "host": true
           }
         ],
-        "version": "1.3.243"
+        "version": "1.3.250"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -81350,14 +81408,14 @@
       "name": "winpcap",
       "manifest": {
         "name": "winpcap",
-        "port-version": 9,
+        "port-version": 10,
         "description": "WinPcap is the industry-standard tool for link-layer network access in Windows environments.",
         "homepage": "https://www.winpcap.org",
         "supports": "windows",
         "version": "4.1.3"
       },
       "files": [
-        "Packet.vcxproj",
+        "Packet.vcxproj.in",
         "create_bin.bat",
         "create_lib.patch",
         "fix-create-lib-batch.patch",
@@ -81365,7 +81423,7 @@
         "portfile.cmake",
         "vcpkg.json",
         "wpcap.patch.in",
-        "wpcap.vcxproj"
+        "wpcap.vcxproj.in"
       ]
     },
     {
