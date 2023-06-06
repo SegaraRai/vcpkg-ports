@@ -1,5 +1,5 @@
 {
-  "version": "662dbb50e63af15baa2909b7eac5b1b87e86a0aa",
+  "version": "c48c767286550fc316055f6aa3c381396f19e640",
   "ports": [
     {
       "name": "3fd",
@@ -4026,7 +4026,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.9.0"
+        "version-semver": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -21780,7 +21780,7 @@
             "host": true
           }
         ],
-        "version": "2.88.0"
+        "version": "2.93.1"
       },
       "files": [
         "portfile.cmake",
@@ -21805,7 +21805,7 @@
             "host": true
           }
         ],
-        "version": "3.15.0"
+        "version": "3.17.2"
       },
       "files": [
         "portfile.cmake",
@@ -26331,7 +26331,7 @@
             "host": true
           }
         ],
-        "version": "23.5.9"
+        "version": "23.5.26"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -57644,7 +57644,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1",
@@ -69103,7 +69103,7 @@
       "name": "quickfix",
       "manifest": {
         "name": "quickfix",
-        "port-version": 8,
+        "port-version": 9,
         "description": "QuickFIX is a free and open source implementation of the FIX protocol.",
         "homepage": "https://github.com/quickfix/quickfix",
         "supports": "!uwp & !(osx & arm64)",
@@ -71585,25 +71585,6 @@
         "usage",
         "vcpkg.json",
         "webp.patch"
-      ]
-    },
-    {
-      "name": "sais",
-      "manifest": {
-        "name": "sais",
-        "port-version": 5,
-        "description": "An implementation of the induced sorting algorithm",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "2.4.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
       ]
     },
     {
@@ -75653,6 +75634,7 @@
       "name": "starlink-ast",
       "manifest": {
         "name": "starlink-ast",
+        "port-version": 1,
         "description": "The AST library provides a comprehensive range of facilities for attaching world coordinate systems to astronomical data, for retrieving and interpreting that information and for generating graphical output based on it",
         "homepage": "https://starlink.eao.hawaii.edu/starlink/AST",
         "license": null,
@@ -75788,7 +75770,7 @@
       "name": "stdexec",
       "manifest": {
         "name": "stdexec",
-        "port-version": 1,
+        "port-version": 2,
         "description": "stdexec is an experimental reference implementation of the Senders model of asynchronous programming proposed by P2300 - std::execution for adoption into the C++ Standard.",
         "homepage": "https://github.com/NVIDIA/stdexec",
         "license": "Apache-2.0",
@@ -76504,11 +76486,11 @@
       "name": "tbb",
       "manifest": {
         "name": "tbb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Intel's Threading Building Blocks.",
         "homepage": "https://github.com/oneapi-src/oneTBB",
         "license": "Apache-2.0",
-        "supports": "(windows & !uwp) | linux | osx | ios",
+        "supports": "(windows & !uwp) | linux | osx | ios | android",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -76618,35 +76600,6 @@
         "fix-package-config-file.patch",
         "portfile.cmake",
         "use-ports-for-asio-and-recycle.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "teemo",
-      "manifest": {
-        "name": "teemo",
-        "maintainers": "winsoft666 <winsoft666@outlook.com>",
-        "description": "C++ File Download Library, support Multithreading, Breakpoint Transmission, Speed Limit, Real-time Speed.",
-        "homepage": "https://github.com/winsoft666/teemo",
-        "supports": "!osx & !uwp & !arm",
-        "dependencies": [
-          {
-            "name": "curl",
-            "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.7"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -79149,10 +79102,11 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
-        "supports": "!x86 & !arm",
+        "supports": "!x86 & !arm & !android",
         "dependencies": [
           "boost-assign",
           "boost-crc",
@@ -79215,7 +79169,7 @@
             ]
           }
         },
-        "version": "0.8.5"
+        "version": "0.8.6"
       },
       "files": [
         "CMakeLists.txt",
