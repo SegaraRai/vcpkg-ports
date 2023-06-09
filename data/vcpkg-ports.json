@@ -1,5 +1,5 @@
 {
-  "version": "1e334d770ac71a89d1c36d51019e60dd08b68f76",
+  "version": "638b1588be3a265a9c7ad5b212cef72a1cad336a",
   "ports": [
     {
       "name": "3fd",
@@ -624,7 +624,7 @@
       "name": "allegro5",
       "manifest": {
         "name": "allegro5",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is not a game engine: you are free to design and structure your program as you like.",
         "homepage": "https://github.com/liballeg/allegro5",
         "license": "BSD-3-Clause AND Zlib",
@@ -26299,6 +26299,38 @@
       ]
     },
     {
+      "name": "flashlight-text",
+      "manifest": {
+        "name": "flashlight-text",
+        "description": "Flashlight Text is a library for tokenization, beam search, and text processing.",
+        "homepage": "https://github.com/flashlight/text",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "kenlm": {
+            "description": "Build with KenLM",
+            "dependencies": [
+              "kenlm"
+            ]
+          }
+        },
+        "version": "0.0.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "flat",
       "manifest": {
         "name": "flat",
@@ -35493,6 +35525,7 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
+        "port-version": 1,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -37826,6 +37859,7 @@
       "name": "kf5i18n",
       "manifest": {
         "name": "kf5i18n",
+        "port-version": 1,
         "description": "Advanced internationalization framework",
         "homepage": "https://api.kde.org/frameworks/ki18n/html/index.html",
         "dependencies": [
@@ -43306,17 +43340,20 @@
       "name": "libmicrohttpd",
       "manifest": {
         "name": "libmicrohttpd",
-        "port-version": 1,
         "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application",
         "homepage": "https://www.gnu.org/software/libmicrohttpd/",
-        "supports": "!(arm | uwp)",
-        "dependencies": [
-          {
-            "name": "gettext",
-            "platform": "!windows"
+        "license": "LGPL-2.1-or-later",
+        "supports": "!uwp & !(windows & !mingw & ((static & !staticcrt) | (!static & staticcrt)))",
+        "features": {
+          "https": {
+            "description": "Enable HTTPS protocol support",
+            "dependencies": [
+              "libgnutls"
+            ],
+            "supports": "!windows | mingw"
           }
-        ],
-        "version": "0.9.75"
+        },
+        "version": "0.9.77"
       },
       "files": [
         "portfile.cmake",
@@ -55044,6 +55081,7 @@
       "name": "nanomsg",
       "manifest": {
         "name": "nanomsg",
+        "port-version": 1,
         "description": [
           "A simple high-performance implementation of several \"scalability protocols\".",
           "These scalability protocols are light-weight messaging protocols which can be used to solve a number of very common messaging patterns, such as request/reply, publish/subscribe, surveyor/respondent, and so forth. These protocols can run over a variety of transports such as TCP, UNIX sockets, and even WebSocket."
@@ -55659,7 +55697,7 @@
             "host": true
           }
         ],
-        "version": "1.53.0"
+        "version": "1.54.0"
       },
       "files": [
         "portfile.cmake",
@@ -65569,7 +65607,7 @@
             ]
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65592,7 +65630,7 @@
           "qt5-gamepad",
           "qt5-imageformats"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65610,10 +65648,9 @@
           {
             "name": "qt5-base",
             "default-features": false
-          },
-          "qt5-declarative"
+          }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65633,7 +65670,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65644,7 +65681,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 3,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65714,7 +65750,7 @@
             ]
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -65786,7 +65822,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65805,7 +65841,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65826,7 +65862,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65837,7 +65873,6 @@
       "name": "qt5-declarative",
       "manifest": {
         "name": "qt5-declarative",
-        "port-version": 1,
         "description": "Qt5 Declarative (Quick 2) Module. Includes QtQuick, QtQuickParticles, QtQuickWidgets, QtQml, and QtPacketProtocol.",
         "license": null,
         "dependencies": [
@@ -65869,7 +65904,7 @@
             ]
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65892,7 +65927,7 @@
           "qt5-quickcontrols2",
           "qt5-tools"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65912,7 +65947,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65932,7 +65967,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -65943,7 +65978,6 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
-        "port-version": 1,
         "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
         "license": null,
         "dependencies": [
@@ -65991,7 +66025,7 @@
             ]
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66002,7 +66036,6 @@
       "name": "qt5-location",
       "manifest": {
         "name": "qt5-location",
-        "port-version": 1,
         "description": "Qt5 Location Module - Displays map, navigation, and place content in a QML application.",
         "license": null,
         "dependencies": [
@@ -66015,7 +66048,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "missing-include.patch",
@@ -66036,7 +66069,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66068,7 +66101,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66088,7 +66121,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66107,7 +66140,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66127,7 +66160,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66148,7 +66181,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66169,7 +66202,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66189,7 +66222,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66209,7 +66242,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66229,7 +66262,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66249,7 +66282,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66269,7 +66302,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66288,7 +66321,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66313,7 +66346,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66324,7 +66357,6 @@
       "name": "qt5-svg",
       "manifest": {
         "name": "qt5-svg",
-        "port-version": 1,
         "description": "Qt5 SVG Module - provides classes for displaying the contents of SVG files",
         "license": null,
         "dependencies": [
@@ -66333,7 +66365,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "CVE-2023-32573-qtsvg-5.15.diff",
@@ -66359,7 +66391,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66379,7 +66411,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66390,7 +66422,6 @@
       "name": "qt5-virtualkeyboard",
       "manifest": {
         "name": "qt5-virtualkeyboard",
-        "port-version": 1,
         "description": "Qt5 Virtual Keyboard Module - A framework for implementing different input methods. Supports localized keyboard layouts and custom visual themes",
         "license": null,
         "dependencies": [
@@ -66398,7 +66429,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66418,7 +66449,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66438,7 +66469,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66482,7 +66513,7 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "build_1.patch",
@@ -66509,7 +66540,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66529,7 +66560,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66545,7 +66576,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66574,7 +66605,7 @@
             ]
           }
         },
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "patches/require_quick.patch",
@@ -66596,7 +66627,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66616,7 +66647,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.9"
+        "version": "5.15.10"
       },
       "files": [
         "portfile.cmake",
@@ -66794,6 +66825,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -69980,6 +70012,7 @@
       "name": "redis-plus-plus",
       "manifest": {
         "name": "redis-plus-plus",
+        "port-version": 1,
         "description": "This is a C++ client for Redis. It's based on hiredis, and written in C++ 11",
         "homepage": "https://github.com/sewenew/redis-plus-plus",
         "license": "Apache-2.0",
@@ -79732,7 +79765,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://vcpkg.io/en/docs/maintainers/ports/vcpkg-cmake.html",
         "license": "MIT",
-        "version-date": "2022-12-22"
+        "version-date": "2023-05-04"
       },
       "files": [
         "portfile.cmake",
@@ -81792,6 +81825,7 @@
       "name": "wt",
       "manifest": {
         "name": "wt",
+        "port-version": 1,
         "description": "Wt is a C++ library for developing web applications",
         "homepage": "https://github.com/emweb/wt",
         "license": "GPL-2.0-only",
