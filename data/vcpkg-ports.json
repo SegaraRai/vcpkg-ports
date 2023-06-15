@@ -1,5 +1,5 @@
 {
-  "version": "dcd04502ecb573e0f0480870435a0677678fdec8",
+  "version": "e61fc593761de7e8594357813b7b0ee2922ec291",
   "ports": [
     {
       "name": "3fd",
@@ -679,7 +679,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "0.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -1914,10 +1914,9 @@
       "name": "asio",
       "manifest": {
         "name": "asio",
-        "port-version": 1,
         "description": "Asio is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.",
         "homepage": "https://github.com/chriskohlhoff/asio",
-        "documentation": "https://think-async.com/Asio/asio-1.24.0/doc/",
+        "documentation": "https://think-async.com/Asio/asio-1.28.0/doc/",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -1949,7 +1948,7 @@
             ]
           }
         },
-        "version": "1.24.0"
+        "version": "1.28.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -15903,7 +15902,8 @@
       "name": "braft",
       "manifest": {
         "name": "braft",
-        "description": "Consesus algorithm library",
+        "port-version": 1,
+        "description": "Consensus algorithm library",
         "homepage": "https://github.com/baidu/braft",
         "license": "Apache-2.0",
         "supports": "!windows",
@@ -17707,7 +17707,7 @@
       "name": "chipmunk",
       "manifest": {
         "name": "chipmunk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A fast and lightweight 2D game physics library.",
         "homepage": "https://github.com/slembcke/Chipmunk2D",
         "dependencies": [
@@ -21952,7 +21952,7 @@
       "name": "dbow3",
       "manifest": {
         "name": "dbow3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "DBoW3 is an improved version of the DBow2 library, an open source C++ library for indexing and converting images into a bag-of-word representation.",
         "homepage": "https://github.com/rmsalinas/DBow3",
         "license": "BSD-3-Clause",
@@ -27876,6 +27876,34 @@
       ]
     },
     {
+      "name": "games101-cgl",
+      "manifest": {
+        "name": "games101-cgl",
+        "description": "The package is for Games101's homework8 subproject.",
+        "homepage": "https://github.com/endingly/games101-cgl",
+        "license": "MIT",
+        "dependencies": [
+          "freetype",
+          "glew",
+          "glfw3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "gamma",
       "manifest": {
         "name": "gamma",
@@ -31586,7 +31614,7 @@
       "name": "gppanel",
       "manifest": {
         "name": "gppanel",
-        "port-version": 2,
+        "port-version": 3,
         "description": "gpPanel is chart library for wxWidget. It inheritance from wxPanel and use modified wxMathPlot library at chart engine.",
         "homepage": "https://github.com/woollybah/gppanel",
         "license": "GPL-2.0-or-later WITH WxWindows-exception-3.1",
@@ -31606,6 +31634,7 @@
       "files": [
         "00001-fix-build.patch",
         "CMakeLists.txt",
+        "fix-missing-headers.patch",
         "portfile.cmake",
         "use-complex-header.patch",
         "vcpkg.json"
@@ -33266,7 +33295,7 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -33687,6 +33716,7 @@
       "name": "hareflow",
       "manifest": {
         "name": "hareflow",
+        "port-version": 1,
         "description": "Hareflow: A RabbitMQ C++ stream client.",
         "homepage": "https://github.com/coveooss/hareflow",
         "license": "Apache-2.0",
@@ -33728,6 +33758,7 @@
         "version-semver": "0.1.0"
       },
       "files": [
+        "fix-missing-headers.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33910,13 +33941,13 @@
             "description": "Build examples for Hazelcast C++ client"
           },
           "openssl": {
-            "description": "Build hazelcast C++ client with SSL support",
+            "description": "Build Hazelcast C++ client with SSL support",
             "dependencies": [
               "openssl"
             ]
           }
         },
-        "version": "5.2.0"
+        "version": "5.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -34280,7 +34311,6 @@
       "name": "hiredis",
       "manifest": {
         "name": "hiredis",
-        "port-version": 5,
         "description": "Hiredis is a minimalistic C client library for the Redis database.",
         "homepage": "https://github.com/redis/hiredis",
         "license": "BSD-3-Clause",
@@ -34295,14 +34325,6 @@
           }
         ],
         "features": {
-          "example": {
-            "description": "Build example",
-            "dependencies": [
-              "libevent",
-              "libuv",
-              "pthread"
-            ]
-          },
           "ssl": {
             "description": "Build hiredis_ssl for SSL support",
             "dependencies": [
@@ -34310,11 +34332,12 @@
             ]
           }
         },
-        "version": "1.0.2"
+        "version": "1.1.0"
       },
       "files": [
-        "fix-feature-example.patch",
+        "fix-cmake-conf-install-dir.patch",
         "fix-include-path.patch",
+        "fix-pdb-install.patch",
         "fix-ssize_t.patch",
         "fix-timeval.patch",
         "portfile.cmake",
@@ -40118,7 +40141,7 @@
       "name": "libbf",
       "manifest": {
         "name": "libbf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Bloom filters for C++11.",
         "license": "BSD-3-Clause",
         "supports": "!windows",
@@ -43091,7 +43114,6 @@
       "name": "liblzma",
       "manifest": {
         "name": "liblzma",
-        "port-version": 1,
         "description": "Compression library with an API similar to that of zlib.",
         "homepage": "https://tukaani.org/xz/",
         "license": null,
@@ -43111,7 +43133,7 @@
             "supports": "!windows, mingw"
           }
         },
-        "version-semver": "5.4.1"
+        "version": "5.4.3"
       },
       "files": [
         "add_support_ios.patch",
@@ -48757,7 +48779,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-05-10"
+        "version-date": "2023-06-10"
       },
       "files": [
         "CMakeLists.txt",
@@ -51615,7 +51637,6 @@
       "name": "mapnik",
       "manifest": {
         "name": "mapnik",
-        "port-version": 1,
         "description": "Mapnik is an open source toolkit for developing mapping applications.",
         "homepage": "https://github.com/mapnik/mapnik",
         "license": "LGPL-2.1-only",
@@ -51835,7 +51856,7 @@
             ]
           }
         },
-        "version-date": "2023-01-17"
+        "version-date": "2023-06-12"
       },
       "files": [
         "portfile.cmake",
@@ -51996,7 +52017,7 @@
       "name": "mathgl",
       "manifest": {
         "name": "mathgl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "MathGL is a free library of fast C++ routines for the plotting of the data varied in one or more dimensions",
         "license": "GPL-3.0-only",
         "supports": "!uwp",
@@ -52235,13 +52256,13 @@
       "name": "matplotplusplus",
       "manifest": {
         "name": "matplotplusplus",
-        "port-version": 6,
         "description": "A C++ graphics library for data visualization",
         "homepage": "https://alandefreitas.github.io/matplotplusplus/",
         "license": "MIT",
         "supports": "!uwp & !(windows & arm)",
         "dependencies": [
           "cimg",
+          "nodesoup",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -52298,12 +52319,12 @@
             ]
           }
         },
-        "version-date": "2021-04-11"
+        "version": "1.2.0"
       },
       "files": [
         "fix-dependencies.patch",
-        "install-3rd-libraries.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -53291,6 +53312,7 @@
       "name": "minisat-master-keying",
       "manifest": {
         "name": "minisat-master-keying",
+        "port-version": 1,
         "description": [
           "A minimalistic high-performance SAT solver",
           "This is a modernized, cross-platform, CMake-enabled fork of the original MiniSat."
@@ -55849,6 +55871,7 @@
       "name": "nifly",
       "manifest": {
         "name": "nifly",
+        "port-version": 1,
         "description": "A C++ library for working with the NIF file format",
         "homepage": "https://github.com/ousnius/nifly",
         "supports": "!uwp",
@@ -56196,6 +56219,31 @@
         "CMakeLists.txt",
         "portfile.cmake",
         "unofficial-node-api-headers-config.cmake.in",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "nodesoup",
+      "manifest": {
+        "name": "nodesoup",
+        "description": "Force-directed graph layout with Fruchterman-Reingold",
+        "license": "Unlicense",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-06-12"
+      },
+      "files": [
+        "fix-cmakelists.patch",
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -59967,7 +60015,6 @@
       "name": "openscap",
       "manifest": {
         "name": "openscap",
-        "port-version": 4,
         "description": "The oscap program is a command line tool that allows users to load, scan, validate, edit, and export SCAP documents.",
         "homepage": "https://github.com/OpenSCAP/openscap",
         "license": "LGPL-2.1-or-later",
@@ -59985,32 +60032,19 @@
             "name": "vcpkg-cmake",
             "host": true
           },
+          "xmlsec",
           "zlib"
         ],
         "features": {
-          "docs": {
-            "description": "install docs"
-          },
           "python": {
             "description": "build with python3"
-          },
-          "tests": {
-            "description": "build with tests"
-          },
-          "util": {
-            "description": "build available utils",
-            "dependencies": [
-              {
-                "name": "getopt-win32",
-                "platform": "windows"
-              }
-            ]
           }
         },
-        "version": "1.3.1"
+        "version": "1.3.7"
       },
       "files": [
         "fix-build.patch",
+        "fix-buildflag-and-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -63433,7 +63467,7 @@
             "description": "Implement all virtual table hooking functionality"
           }
         },
-        "version-date": "2023-02-24"
+        "version-date": "2023-05-16"
       },
       "files": [
         "portfile.cmake",
@@ -63495,7 +63529,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -63530,6 +63564,12 @@
                 "name": "cairo",
                 "default-features": false
               }
+            ]
+          },
+          "cms": {
+            "description": "Enable use of LCMS2 as color management system",
+            "dependencies": [
+              "lcms"
             ]
           },
           "curl": {
@@ -73136,7 +73176,7 @@
       "name": "shaderc",
       "manifest": {
         "name": "shaderc",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A collection of tools, libraries and tests for shader compilation.",
         "homepage": "https://github.com/google/shaderc",
         "license": "Apache-2.0",
@@ -73156,14 +73196,13 @@
       },
       "files": [
         "build-version.inc",
+        "cmake-config-export.patch",
+        "cmake-project-include.cmake",
         "disable-update-version.patch",
         "fix-build-type.patch",
-        "fix-export-cmakefiles.patch",
-        "fix-install-shaderc_util.patch",
         "fix-tbuiltinresource-for-glslang-11-12.patch",
-        "glslang/CMakeLists.txt",
         "portfile.cmake",
-        "spirv-tools/CMakeLists.txt",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74125,7 +74164,7 @@
       "name": "sltbench",
       "manifest": {
         "name": "sltbench",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ benchmark tool. Practical, stable and fast performance testing framework.",
         "homepage": "https://github.com/ivafanas/sltbench",
         "dependencies": [
@@ -74436,7 +74475,6 @@
       "name": "soem",
       "manifest": {
         "name": "soem",
-        "port-version": 4,
         "description": "Simple Open Source EtherCAT Master",
         "homepage": "https://github.com/OpenEtherCATsociety/SOEM",
         "supports": "!uwp",
@@ -74450,7 +74488,7 @@
             "platform": "windows"
           }
         ],
-        "version": "1.4.0"
+        "version-date": "2023-06-09"
       },
       "files": [
         "disable-werror.patch",
@@ -75169,6 +75207,7 @@
       "name": "spirv-tools",
       "manifest": {
         "name": "spirv-tools",
+        "port-version": 1,
         "description": "API and commands for processing SPIR-V modules",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Tools",
         "license": "Apache-2.0",
@@ -75183,10 +75222,19 @@
             "host": true
           }
         ],
+        "features": {
+          "tools": {
+            "description": "Build tools."
+          }
+        },
         "version": "2022.4"
       },
       "files": [
+        "cmake-config-dir.diff",
+        "fix-tool-deps.diff",
         "portfile.cmake",
+        "spirv-tools-shared.diff",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -75365,7 +75413,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 3,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -75378,6 +75425,9 @@
             "name": "vcpkg-cmake-config",
             "host": true
           }
+        ],
+        "default-features": [
+          "json1"
         ],
         "features": {
           "dbstat": {
@@ -75429,7 +75479,7 @@
             ]
           }
         },
-        "version": "3.40.1"
+        "version": "3.42.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -76922,7 +76972,6 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
-        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -76957,12 +77006,11 @@
             ]
           }
         },
-        "version": "5.3.0"
+        "version": "5.3.1"
       },
       "files": [
-        "fix-debug-postfix.patch",
         "fix-depend-libarchive.patch",
-        "fix-tools.patch",
+        "fix_static_link_icu.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -77162,7 +77210,6 @@
       "name": "thor",
       "manifest": {
         "name": "thor",
-        "port-version": 6,
         "description": "Extends the multimedia library SFML with higher-level features",
         "homepage": "https://bromeon.ch/libraries/thor/",
         "license": "Zlib",
@@ -77174,7 +77221,7 @@
             "host": true
           }
         ],
-        "version": "2.0"
+        "version-date": "2022-04-16"
       },
       "files": [
         "fix-dependency-sfml.patch",
@@ -78866,7 +78913,7 @@
       "name": "unicorn-lib",
       "manifest": {
         "name": "unicorn-lib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Unicode library for C++ by Ross Smith",
         "homepage": "https://github.com/CaptainCrowbar/unicorn-lib",
         "license": "MIT",
@@ -78894,6 +78941,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-missing-headers.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79228,7 +79276,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
@@ -84078,7 +84126,6 @@
       "name": "zydis",
       "manifest": {
         "name": "zydis",
-        "port-version": 3,
         "description": "Fast and lightweight x86/x86-64 disassembler library.",
         "homepage": "https://zydis.re",
         "license": "MIT",
@@ -84093,10 +84140,9 @@
           },
           "zycore"
         ],
-        "version-semver": "3.2.1"
+        "version-semver": "4.0.0"
       },
       "files": [
-        "fix-arm64-build.patch",
         "portfile.cmake",
         "vcpkg.json",
         "zycore.patch"
