@@ -1,5 +1,5 @@
 {
-  "version": "e61fc593761de7e8594357813b7b0ee2922ec291",
+  "version": "5d2a0a9814db499f6ba2e847ca7ab5912badcdbf",
   "ports": [
     {
       "name": "3fd",
@@ -36,10 +36,11 @@
       "name": "7zip",
       "manifest": {
         "name": "7zip",
+        "port-version": 1,
         "description": "Library for archiving file with a high compression ratio.",
         "homepage": "https://www.7-zip.org",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -1244,10 +1245,11 @@
       "name": "arb",
       "manifest": {
         "name": "arb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "a C library for arbitrary-precision interval arithmetic",
         "homepage": "https://github.com/fredrik-johansson/arb",
         "license": "LGPL-2.1",
+        "supports": "!xbox",
         "dependencies": [
           "flint",
           {
@@ -1914,6 +1916,7 @@
       "name": "asio",
       "manifest": {
         "name": "asio",
+        "port-version": 1,
         "description": "Asio is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.",
         "homepage": "https://github.com/chriskohlhoff/asio",
         "documentation": "https://think-async.com/Asio/asio-1.28.0/doc/",
@@ -1953,6 +1956,7 @@
       "files": [
         "CMakeLists.txt",
         "asio-config.cmake",
+        "fix_coro_compile_error_msvc.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -2094,6 +2098,41 @@
       ]
     },
     {
+      "name": "async-mqtt",
+      "manifest": {
+        "name": "async-mqtt",
+        "description": "Header-only Asynchronous MQTT communication library for C++17 based on Boost.Asio.",
+        "homepage": "https://github.com/redboltz/async_mqtt",
+        "license": "BSL-1.0",
+        "dependencies": [
+          "boost-any",
+          "boost-asio",
+          "boost-assert",
+          "boost-beast",
+          "boost-container",
+          "boost-container-hash",
+          "boost-endian",
+          "boost-log",
+          "boost-multi-index",
+          "boost-numeric-conversion",
+          "boost-system",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "asynch",
       "manifest": {
         "name": "asynch",
@@ -2187,10 +2226,11 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 5,
+        "port-version": 6,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "GPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "gettext",
           {
@@ -2237,10 +2277,11 @@
       "name": "atkmm",
       "manifest": {
         "name": "atkmm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "atkmm is the official C++ interface for the ATK accessibility toolkit library. It may be used, for instance, by user interfaces implemented with gtkmm.",
         "homepage": "https://www.gtkmm.org",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "atk",
           "gettext",
@@ -2304,9 +2345,11 @@
       "name": "aubio",
       "manifest": {
         "name": "aubio",
+        "port-version": 1,
         "description": "Aubio is a tool designed for the extraction of annotations from audio signals. Its features include segmenting a sound file before each of its attacks, performing pitch detection, tapping the beat and producing midi streams from live audio.",
         "homepage": "https://github.com/aubio/aubio",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -2498,11 +2541,11 @@
       "name": "avisynthplus",
       "manifest": {
         "name": "avisynthplus",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An improved version of the AviSynth frameserver, with improved features and developer friendliness",
         "homepage": "https://avs-plus.net/",
         "license": "GPL-2.0",
-        "supports": "!arm & !uwp",
+        "supports": "!arm & !uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -5612,10 +5655,11 @@
       "name": "boinc",
       "manifest": {
         "name": "boinc",
+        "port-version": 1,
         "description": "Open-source software for volunteer computing and grid computing.",
         "homepage": "https://boinc.berkeley.edu/",
         "license": "LGPL-3.0-or-later",
-        "supports": "!(windows & arm) & !uwp",
+        "supports": "!(windows & arm) & !uwp & !xbox",
         "dependencies": [
           "openssl",
           {
@@ -6635,7 +6679,7 @@
       "name": "boost-asio",
       "manifest": {
         "name": "boost-asio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Boost asio module",
         "homepage": "https://github.com/boostorg/asio",
         "license": "BSL-1.0",
@@ -6733,6 +6777,7 @@
         "version": "1.82.0"
       },
       "files": [
+        "fix_coro_compile_error_msvc.patch",
         "portfile.cmake",
         "vcpkg.json",
         "windows_alloca_header.patch"
@@ -16306,9 +16351,11 @@
       "name": "bxzstr",
       "manifest": {
         "name": "bxzstr",
+        "port-version": 1,
         "description": "A C++ header-only ZLib/libBZ2/libLZMA/Zstandard wrapper.",
         "homepage": "https://github.com/tmaklin/bxzstr",
         "license": "MPL-2.0",
+        "supports": "!xbox",
         "dependencies": [
           "bzip2",
           "liblzma",
@@ -16586,9 +16633,11 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
+        "port-version": 1,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "MPL-1.1",
+        "supports": "!xbox",
         "dependencies": [
           "dirent",
           "expat",
@@ -16646,10 +16695,11 @@
       "name": "cairomm",
       "manifest": {
         "name": "cairomm",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A C++ wrapper for the cairo graphics library",
         "homepage": "https://www.cairographics.org",
         "license": "LGPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "cairo",
           "libsigcpp",
@@ -17022,13 +17072,13 @@
       "name": "cctag",
       "manifest": {
         "name": "cctag",
-        "port-version": 3,
+        "port-version": 4,
         "maintainers": "alicevision-team@googlegroups.com",
         "description": "Computer vision library for detecting CCTag markers made up of concentric circles",
         "homepage": "https://github.com/alicevision/CCTag",
         "documentation": "https://cctag.readthedocs.io/",
         "license": "MPL-2.0",
-        "supports": "!(uwp | arm | arm64 | android | x86)",
+        "supports": "!(uwp | arm | arm64 | android | x86 | xbox)",
         "dependencies": [
           "boost-accumulators",
           "boost-algorithm",
@@ -17356,9 +17406,11 @@
       "name": "cgal",
       "manifest": {
         "name": "cgal",
+        "port-version": 1,
         "description": "The Computational Geometry Algorithms Library (CGAL) is a C++ library that aims to provide easy access to efficient and reliable algorithms in computational geometry.",
         "homepage": "https://github.com/CGAL/cgal",
         "license": "GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0",
+        "supports": "!xbox",
         "dependencies": [
           "boost-accumulators",
           "boost-algorithm",
@@ -17754,10 +17806,11 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "ffmpeg",
           {
@@ -20595,10 +20648,11 @@
       "name": "cserialport",
       "manifest": {
         "name": "cserialport",
+        "port-version": 1,
         "description": "C++ lightweight cross-platform serial port library, also support C#, Java, Python, Node.js etc.",
         "homepage": "https://github.com/itas109/CSerialPort",
         "license": "LGPL-3.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -21367,10 +21421,11 @@
       "name": "czmq",
       "manifest": {
         "name": "czmq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High-level C binding for ZeroMQ",
         "homepage": "https://github.com/zeromq/czmq",
         "license": "MPL-2.0",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -22672,10 +22727,11 @@
       "name": "discordcoreapi",
       "manifest": {
         "name": "discordcoreapi",
+        "port-version": 1,
         "description": "A Discord bot library written in C++ using custom asynchronous coroutines.",
         "homepage": "https://discordcoreapi.com",
         "license": "LGPL-2.1-or-later",
-        "supports": "(windows & x64 & !static) | (linux & x64)",
+        "supports": "(windows & x64 & !static & !xbox) | (linux & x64)",
         "dependencies": [
           "ffmpeg",
           "jsonifier",
@@ -24179,11 +24235,11 @@
       "name": "epsilon",
       "manifest": {
         "name": "epsilon",
-        "port-version": 7,
+        "port-version": 8,
         "description": "EPSILON is an Open Source wavelet image compressor, that is aimed on parallel and robust image processing.",
         "homepage": "https://sourceforge.net/projects/epsilon-project/",
         "license": "GPL-2.0-only OR LGPL-2.0-only",
-        "supports": "windows",
+        "supports": "windows & !xbox",
         "dependencies": [
           "libpopt"
         ],
@@ -24390,11 +24446,11 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Image metadata library and tools",
         "homepage": "https://exiv2.org",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "libiconv",
@@ -26427,7 +26483,7 @@
             "host": true
           }
         ],
-        "version": "3.2.3"
+        "version": "3.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -26565,10 +26621,11 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 2,
+        "port-version": 3,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "alsa",
@@ -27080,14 +27137,14 @@
       "name": "freealut",
       "manifest": {
         "name": "freealut",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "FreeALUT is a free implementation of OpenAL's ALUT standard.",
           "ALUT is a set of portable functions which remove the annoying details of getting an audio application started. It is the OpenAL counterpart of what GLUT is for OpenGL. "
         ],
         "homepage": "https://github.com/vancegroup/freealut",
         "license": "LGPL-2.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "openal-soft",
           {
@@ -27287,11 +27344,11 @@
       "name": "freetds",
       "manifest": {
         "name": "freetds",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Implementation of the Tabular Data Stream protocol",
         "homepage": "https://www.freetds.org",
         "license": "GPL-2.0-only",
-        "supports": "windows & !uwp",
+        "supports": "windows & !uwp & !xbox",
         "dependencies": [
           {
             "name": "gperf",
@@ -28506,9 +28563,11 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
+        "port-version": 1,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "gettext",
           "glib",
@@ -28810,10 +28869,11 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A GNU framework to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "GPL-3.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "gettext-libintl"
         ],
@@ -28852,9 +28912,11 @@
       "name": "gettext-libintl",
       "manifest": {
         "name": "gettext-libintl",
+        "port-version": 1,
         "description": "The libintl C library from GNU gettext-runtime.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "libiconv",
@@ -29626,10 +29688,11 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "dirent",
           "gettext",
@@ -29668,10 +29731,11 @@
       "name": "glibmm",
       "manifest": {
         "name": "glibmm",
+        "port-version": 1,
         "description": "This is glibmm, a C++ API for parts of glib that are useful for C++.",
         "homepage": "https://www.gtkmm.org.",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "gettext",
           "glib",
@@ -29835,7 +29899,7 @@
       "name": "glpk",
       "manifest": {
         "name": "glpk",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": "Fabio A. Correa Duran",
         "description": [
           "The GNU Linear Programming Kit (GLPK) solves large-scale linear programming (LP), mixed integer programming (MIP), and related problems.",
@@ -29850,6 +29914,7 @@
         "homepage": "https://www.gnu.org/software/glpk/",
         "documentation": "https://www.gnu.org/software/glpk/#documentation",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "features": {
           "dl": {
             "description": "Enable shared library support",
@@ -29958,11 +30023,11 @@
       "name": "gmime",
       "manifest": {
         "name": "gmime",
-        "port-version": 5,
+        "port-version": 6,
         "description": "GMime is a C/C++ library which may be used for the creation and parsing of messages using the Multipurpose Internet Mail Extension (MIME).",
         "homepage": "https://developer.gnome.org/gmime/",
         "license": "LGPL-2.1-or-later",
-        "supports": "windows",
+        "supports": "windows & !xbox",
         "dependencies": [
           "glib",
           "libiconv",
@@ -30007,10 +30072,11 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 18,
+        "port-version": 19,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "gmp",
@@ -31614,10 +31680,11 @@
       "name": "gppanel",
       "manifest": {
         "name": "gppanel",
-        "port-version": 3,
+        "port-version": 4,
         "description": "gpPanel is chart library for wxWidget. It inheritance from wxPanel and use modified wxMathPlot library at chart engine.",
         "homepage": "https://github.com/woollybah/gppanel",
         "license": "GPL-2.0-or-later WITH WxWindows-exception-3.1",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -31644,11 +31711,11 @@
       "name": "grantlee",
       "manifest": {
         "name": "grantlee",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libraries for text templating with Qt",
         "homepage": "https://github.com/steveire/grantlee",
         "license": "LGPL-2.1-or-later",
-        "supports": "!staticcrt",
+        "supports": "!staticcrt & !xbox",
         "dependencies": [
           "qtdeclarative",
           {
@@ -32032,10 +32099,11 @@
       "name": "gst-rtsp-server",
       "manifest": {
         "name": "gst-rtsp-server",
-        "port-version": 1,
+        "port-version": 2,
         "description": "gst-rtsp-server is a library on top of GStreamer for building an RTSP server",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.1-only",
+        "supports": "!xbox",
         "dependencies": [
           "glib",
           {
@@ -32061,11 +32129,11 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 8,
+        "port-version": 9,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "glib",
           {
@@ -32878,9 +32946,11 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "atk",
           {
@@ -33094,10 +33164,11 @@
       "name": "gtkmm",
       "manifest": {
         "name": "gtkmm",
+        "port-version": 1,
         "description": "gtkmm is the official C++ interface for the popular GUI library GTK+.",
         "homepage": "https://www.gtkmm.org/",
         "license": "LGPL-3.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "cairomm",
           "gdk-pixbuf",
@@ -33280,6 +33351,7 @@
       "name": "gul14",
       "manifest": {
         "name": "gul14",
+        "port-version": 1,
         "description": [
           "General Utility Library for C++14.",
           "GUL14 contains often-used utility functions and types that form the foundation for other libraries and programs.",
@@ -33288,7 +33360,7 @@
         "homepage": "https://github.desy.de/gul-cpp/gul14.git",
         "documentation": "https://gul14.info",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
@@ -34533,11 +34605,11 @@
       "name": "hunspell",
       "manifest": {
         "name": "hunspell",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The most popular spellchecking library.",
         "homepage": "https://github.com/hunspell/hunspell",
         "license": "MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "libiconv"
         ],
@@ -34780,11 +34852,11 @@
       "name": "ideviceinstaller",
       "manifest": {
         "name": "ideviceinstaller",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Manage apps of iOS devices",
         "homepage": "https://libimobiledevice.org/",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm64",
+        "supports": "windows & !arm64 & !xbox",
         "dependencies": [
           "libimobiledevice",
           "libzip"
@@ -34823,9 +34895,11 @@
       "name": "idyntree",
       "manifest": {
         "name": "idyntree",
+        "port-version": 1,
         "description": "Multibody Dynamics Library designed for Free Floating Robots.",
         "homepage": "https://github.com/robotology/idyntree",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "eigen3",
           "libxml2",
@@ -35397,9 +35471,11 @@
       "name": "igraph",
       "manifest": {
         "name": "igraph",
+        "port-version": 1,
         "description": "igraph is a C library for network analysis and graph theory, with an emphasis on efficiency portability and ease of use.",
         "homepage": "https://igraph.org/",
         "license": "GPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "blas",
           "lapack",
@@ -36958,10 +37034,11 @@
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
+        "port-version": 1,
         "description": "A few classes for parsing and serializing json - very rapidly.",
         "homepage": "https://github.com/realtimechris/jsonifier",
         "license": "LGPL-2.1-or-later",
-        "supports": "(windows & x64 & !uwp) | (linux & x64) | (osx & x64)",
+        "supports": "(windows & x64 & !uwp & !xbox) | (linux & x64) | (osx & x64)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -37339,9 +37416,11 @@
       "name": "kf5archive",
       "manifest": {
         "name": "kf5archive",
+        "port-version": 1,
         "description": "File compression",
         "homepage": "https://api.kde.org/frameworks/karchive/html/index.html",
         "license": "LGPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "ecm",
           "qt5-base",
@@ -38782,10 +38861,11 @@
       "name": "kfr",
       "manifest": {
         "name": "kfr",
+        "port-version": 1,
         "description": "Fast, modern C++ DSP framework.",
         "homepage": "https://www.kfr.dev/",
         "license": "GPL-2.0",
-        "supports": "!(arm | linux)",
+        "supports": "!(arm | linux | xbox)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -39393,14 +39473,14 @@
       "name": "lcm",
       "manifest": {
         "name": "lcm",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "Lightweight Communications and Marshalling (LCM)",
           "LCM is a set of libraries and tools for message passing and data marshalling, targeted at real-time systems where high-bandwidth and low latency are critical. It provides a publish/subscribe message passing model and automatic marshalling/unmarshalling code generation with bindings for applications in a variety of programming languages."
         ],
         "homepage": "https://github.com/lcm-proj/lcm",
         "license": "LGPL-2.1-or-later",
-        "supports": "!osx",
+        "supports": "!osx & !xbox",
         "dependencies": [
           "glib",
           {
@@ -39773,9 +39853,11 @@
       "name": "libadwaita",
       "manifest": {
         "name": "libadwaita",
+        "port-version": 1,
         "description": "Building blocks for modern GNOME applications",
         "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "glib",
@@ -39822,10 +39904,11 @@
       "name": "libalkimia",
       "manifest": {
         "name": "libalkimia",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Common functionality for finance applications.",
         "homepage": "https://community.kde.org/Alkimia/libalkimia",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "ecm",
           {
@@ -39880,11 +39963,11 @@
       "name": "libao",
       "manifest": {
         "name": "libao",
-        "port-version": 4,
+        "port-version": 5,
         "description": "libao - A Cross-platform Audio Library",
         "homepage": "https://github.com/xiph/libao",
         "license": "GPL-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -40561,9 +40644,11 @@
       "name": "libcsv",
       "manifest": {
         "name": "libcsv",
+        "port-version": 1,
         "description": "CSV parser and writer library",
         "homepage": "https://github.com/rgamble/libcsv",
         "license": "GPL-2.0-or-later",
+        "supports": "!xbox",
         "version": "3.0.3"
       },
       "files": [
@@ -40625,10 +40710,11 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
+        "supports": "!xbox",
         "dependencies": [
           "libjuice",
           "openssl",
@@ -40726,11 +40812,11 @@
       "name": "libde265",
       "manifest": {
         "name": "libde265",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open h.265 video codec implementation.",
         "homepage": "https://www.libde265.org/",
         "license": "LGPL-3.0-only",
-        "supports": "!uwp & !(arm & windows)",
+        "supports": "!uwp & !xbox & !(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -40858,9 +40944,11 @@
       "name": "libdjinterop",
       "manifest": {
         "name": "libdjinterop",
+        "port-version": 1,
         "description": "C++ library for access to DJ record libraries. Currently only supports Denon Engine Prime databases",
         "homepage": "https://github.com/xsco/libdjinterop",
         "license": "LGPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "sqlite3",
           {
@@ -41402,10 +41490,11 @@
       "name": "libfreenect2",
       "manifest": {
         "name": "libfreenect2",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Open source drivers for the Kinect for Windows v2 device",
         "homepage": "https://github.com/OpenKinect/libfreenect2",
         "license": "GPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "libjpeg-turbo",
           "libusb",
@@ -42192,9 +42281,11 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "gdk-pixbuf",
@@ -42223,10 +42314,11 @@
       "name": "libhsplasma",
       "manifest": {
         "name": "libhsplasma",
+        "port-version": 1,
         "description": "Cross-platform Plasma data and network library",
         "homepage": "https://github.com/H-uru/libhsplasma",
         "license": "GPL-3.0-or-later",
-        "supports": "!(arm | uwp)",
+        "supports": "!(arm | uwp | xbox)",
         "dependencies": [
           "libjpeg-turbo",
           "libpng",
@@ -42618,10 +42710,11 @@
       "name": "libimobiledevice",
       "manifest": {
         "name": "libimobiledevice",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A cross-platform protocol library to communicate with iOS devices",
         "homepage": "http://www.libimobiledevice.org",
         "license": "LGPL-2.1-only",
+        "supports": "!xbox",
         "dependencies": [
           "dirent",
           "getopt",
@@ -42650,10 +42743,10 @@
       "name": "libirecovery",
       "manifest": {
         "name": "libirecovery",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Library and utility to talk to iBoot/iBSS via USB on Mac OS X, Windows, and Linux",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm64 & !static & !staticcrt",
+        "supports": "windows & !arm64 & !static & !staticcrt & !xbox",
         "dependencies": [
           "getopt",
           "libusbmuxd",
@@ -42907,10 +43000,12 @@
       "name": "libleidenalg",
       "manifest": {
         "name": "libleidenalg",
+        "port-version": 1,
         "maintainers": "Andrew Robbins <andrew@robbinsa.me>",
         "description": "Leiden is a general algorithm for methods of community detection in large networks.",
         "homepage": "https://github.com/vtraag/libleidenalg",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "igraph",
@@ -43220,11 +43315,11 @@
       "name": "libmariadb",
       "manifest": {
         "name": "libmariadb",
-        "port-version": 2,
+        "port-version": 3,
         "description": "MariaDB Connector/C is used to connect C/C++ applications to MariaDB and MySQL databases",
         "homepage": "https://github.com/MariaDB/mariadb-connector-c",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -43361,10 +43456,11 @@
       "name": "libmesh",
       "manifest": {
         "name": "libmesh",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The libMesh library provides a framework for the numerical simulation of partial differential equations using arbitrary unstructured discretizations on serial and parallel platforms. A major goal of the library is to provide support for adaptive mesh refinement (AMR) computations in parallel while allowing a research scientist to focus on the physics they are modeling.",
         "homepage": "https://github.com/libMesh/libmesh",
         "license": "LGPL-2.1-only",
+        "supports": "!xbox",
         "version": "1.5.0"
       },
       "files": [
@@ -43377,9 +43473,11 @@
       "name": "libmicrodns",
       "manifest": {
         "name": "libmicrodns",
+        "port-version": 1,
         "description": "Minimal mDNS resolver (and announcer) library",
         "homepage": "https://github.com/videolabs/libmicrodns",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
@@ -43421,11 +43519,11 @@
       "name": "libmikmod",
       "manifest": {
         "name": "libmikmod",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Mikmod is a module player and library supporting many formats, including mod, s3m, it, and xm.",
         "homepage": "https://sourceforge.net/projects/mikmod/",
         "license": "LGPL-2.1-or-later",
-        "supports": "!osx & !uwp",
+        "supports": "!(osx | uwp | xbox)",
         "dependencies": [
           "openal-soft",
           {
@@ -43446,11 +43544,11 @@
       "name": "libmodbus",
       "manifest": {
         "name": "libmodbus",
-        "port-version": 4,
+        "port-version": 5,
         "description": "libmodbus is a free software library to send/receive data with a device which respects the Modbus protocol",
         "homepage": "https://github.com/stephane/libmodbus",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -43684,11 +43782,11 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
-        "supports": "!(windows & x86) & !uwp",
+        "supports": "!(windows & x86) & !uwp & !xbox",
         "dependencies": [
           "boost-algorithm",
           "boost-functional",
@@ -43731,9 +43829,11 @@
       "name": "libnice",
       "manifest": {
         "name": "libnice",
+        "port-version": 1,
         "description": "Libnice is an implementation of the IETF's Interactive Connectivity Establishment (ICE) standard (RFC 5245) and the Session Traversal Utilities for NAT (STUN) standard (RFC 5389).",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
+        "supports": "!xbox",
         "dependencies": [
           "glib",
           {
@@ -43754,10 +43854,11 @@
       "name": "libnice-gst",
       "manifest": {
         "name": "libnice-gst",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Gstreamer Libnice plugins.",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
+        "supports": "!xbox",
         "dependencies": [
           "gstreamer",
           "libnice"
@@ -43941,10 +44042,11 @@
       "name": "libofx",
       "manifest": {
         "name": "libofx",
+        "port-version": 1,
         "description": "OFX banking protocol abstraction library",
         "homepage": "https://github.com/libofx/libofx",
         "license": "GPL-2.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "libopensp",
           {
@@ -44335,11 +44437,11 @@
       "name": "libpff",
       "manifest": {
         "name": "libpff",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library and tools to access the Personal Folder File (PFF) and the Offline Folder File (OFF) format.",
         "homepage": "https://github.com/libyal/libpff",
         "license": "LGPL-3.0-or-later",
-        "supports": "windows & !(static & windows) & !uwp",
+        "supports": "windows & !(static & windows) & !uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -44790,11 +44892,11 @@
       "name": "libproxy",
       "manifest": {
         "name": "libproxy",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libproxy is a library that provides automatic proxy configuration management.",
         "homepage": "https://github.com/libproxy/libproxy",
         "license": "LGPL-2.1-only",
-        "supports": "!(uwp | android)",
+        "supports": "!(uwp | xbox | android)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -44844,10 +44946,11 @@
       "name": "libqcow",
       "manifest": {
         "name": "libqcow",
+        "port-version": 1,
         "description": "Library and tools to access the QEMU Copy-On-Write (QCOW) image format.",
         "homepage": "https://github.com/libyal/libqcow",
         "license": "LGPL-3.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "gettext",
           "openssl",
@@ -44875,9 +44978,11 @@
       "name": "libqglviewer",
       "manifest": {
         "name": "libqglviewer",
+        "port-version": 1,
         "description": "libQGLViewer is an open source C++ library based on Qt that eases the creation of OpenGL 3D viewers.",
         "homepage": "http://libqglviewer.com/",
         "license": "GPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "qtbase",
@@ -44988,10 +45093,11 @@
       "name": "libraw",
       "manifest": {
         "name": "libraw",
+        "port-version": 1,
         "description": "raw image decoder library",
         "homepage": "https://www.libraw.org",
         "license": "LGPL-2.1-only OR CDDL-1.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "jasper",
           "lcms",
@@ -45094,9 +45200,11 @@
       "name": "libredwg",
       "manifest": {
         "name": "libredwg",
+        "port-version": 1,
         "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
         "homepage": "https://www.gnu.org/software/libredwg/",
         "license": "GPL-3.0",
+        "supports": "!xbox",
         "dependencies": [
           "jsmn",
           {
@@ -45298,10 +45406,11 @@
       "name": "libsbml",
       "manifest": {
         "name": "libsbml",
+        "port-version": 1,
         "description": "A library for reading / writing SBML files",
         "homepage": "https://github.com/sbmlteam/libsbml",
         "license": "LGPL-2.1",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -45623,9 +45732,11 @@
       "name": "libsndfile",
       "manifest": {
         "name": "libsndfile",
+        "port-version": 1,
         "description": "A library for reading and writing audio files",
         "homepage": "https://github.com/erikd/libsndfile",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -45938,11 +46049,11 @@
       "name": "libsrt",
       "manifest": {
         "name": "libsrt",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Secure Reliable Transport (SRT) is an open source transport technology that optimizes streaming performance across unpredictable networks, such as the Internet.",
         "homepage": "https://github.com/Haivision/srt",
         "license": "MPL-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "openssl",
           {
@@ -46002,11 +46113,11 @@
       "name": "libssh",
       "manifest": {
         "name": "libssh",
-        "port-version": 3,
+        "port-version": 4,
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
         "homepage": "https://www.libssh.org/",
         "license": "LGPL-2.1-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "libssh",
@@ -46841,10 +46952,11 @@
       "name": "libunistring",
       "manifest": {
         "name": "libunistring",
-        "port-version": 2,
+        "port-version": 3,
         "description": "GNU libunistring provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.",
         "homepage": "https://www.gnu.org/software/libunistring/",
         "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "libiconv"
         ],
@@ -46898,11 +47010,11 @@
       "name": "libusb-win32",
       "manifest": {
         "name": "libusb-win32",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Allows user space applications to access many USB device on Windows.",
         "homepage": "https://sourceforge.net/projects/libusb-win32",
         "license": "LGPL-3.0-only",
-        "supports": "windows & !static",
+        "supports": "windows & !static & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -47957,9 +48069,11 @@
       "name": "libxmp",
       "manifest": {
         "name": "libxmp",
+        "port-version": 1,
         "description": "Libxmp is a library that renders module files to PCM data.",
         "homepage": "https://sourceforge.net/projects/xmp/",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -48404,11 +48518,11 @@
       "name": "libzim",
       "manifest": {
         "name": "libzim",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Libzim is the reference implementation for the ZIM file format. It's a software library to read and write ZIM files on many systems and architectures. More information about the ZIM format and the openZIM project at https://openzim.org/.",
         "homepage": "https://github.com/openzim/libzim",
         "license": "GPL-2.0-or-later",
-        "supports": "!android",
+        "supports": "!android & !xbox",
         "dependencies": [
           "icu",
           "liblzma",
@@ -48622,7 +48736,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -48765,9 +48879,11 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
+        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "openssl",
           {
@@ -51637,9 +51753,11 @@
       "name": "mapnik",
       "manifest": {
         "name": "mapnik",
+        "port-version": 1,
         "description": "Mapnik is an open source toolkit for developing mapping applications.",
         "homepage": "https://github.com/mapnik/mapnik",
         "license": "LGPL-2.1-only",
+        "supports": "!xbox",
         "dependencies": [
           "boost-assign",
           "boost-bimap",
@@ -51868,11 +51986,11 @@
       "name": "marble",
       "manifest": {
         "name": "marble",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Marble KDE library",
         "homepage": "https://marble.kde.org",
         "license": "LGPL-2.1-or-later",
-        "supports": "windows & x64 & !static",
+        "supports": "windows & x64 & !static & !xbox",
         "dependencies": [
           "qt5-base",
           "qt5-quickcontrols",
@@ -52017,10 +52135,10 @@
       "name": "mathgl",
       "manifest": {
         "name": "mathgl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "MathGL is a free library of fast C++ routines for the plotting of the data varied in one or more dimensions",
         "license": "GPL-3.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "getopt",
           {
@@ -52398,11 +52516,11 @@
       "name": "mchehab-zbar",
       "manifest": {
         "name": "mchehab-zbar",
-        "port-version": 4,
+        "port-version": 5,
         "description": "ZBar is an open source software suite for reading bar codes from various sources, including webcams. This fork is actively maintained.",
         "homepage": "https://github.com/mchehab/zbar",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "gettext",
@@ -52461,6 +52579,7 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
+        "port-version": 1,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -52510,6 +52629,7 @@
         "007-plugin-options.patch",
         "008-build-static-llvm.patch",
         "009-include-priority-vendored-llvm.patch",
+        "010-workaround-gcc-bit.patch",
         "portfile.cmake",
         "unofficial-mdl-config.cmake.in",
         "vcpkg.json"
@@ -53940,10 +54060,11 @@
       "name": "moos-core",
       "manifest": {
         "name": "moos-core",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A very light weight, easy to use middleware.",
         "homepage": "https://sites.google.com/site/moossoftware/",
         "license": "GPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -54180,9 +54301,11 @@
       "name": "mpfr",
       "manifest": {
         "name": "mpfr",
+        "port-version": 1,
         "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding",
         "homepage": "https://www.mpfr.org",
         "license": "LGPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "gmp"
         ],
@@ -54200,9 +54323,11 @@
       "name": "mpg123",
       "manifest": {
         "name": "mpg123",
+        "port-version": 1,
         "description": "mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1, 2 and 3 (MPEG 1.0 layer 3 also known as MP3).",
         "homepage": "https://sourceforge.net/projects/mpg123/",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -56335,11 +56460,11 @@
       "name": "nspr",
       "manifest": {
         "name": "nspr",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Netscape portable runtime",
         "homepage": "https://releases.mozilla.org/pub/nspr/",
         "license": "MPL-2.0",
-        "supports": "windows & !(arm | uwp | static)",
+        "supports": "windows & !(arm | uwp | static | xbox)",
         "dependencies": [
           {
             "name": "vcpkg-tool-mozbuild",
@@ -56357,11 +56482,11 @@
       "name": "nss",
       "manifest": {
         "name": "nss",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Network Security Services from Mozilla",
         "homepage": "https://ftp.mozilla.org/pub/security/nss/releases/",
         "license": "MPL-2.0",
-        "supports": "windows & !arm",
+        "supports": "windows & !arm & !xbox",
         "dependencies": [
           "nspr",
           "sqlite3",
@@ -56548,6 +56673,7 @@
       "name": "nuspell",
       "manifest": {
         "name": "nuspell",
+        "port-version": 1,
         "description": [
           "Nuspell is a fast and safe spelling checker software program.",
           "It is designed for languages with rich morphology and complex word compounding.",
@@ -56555,6 +56681,7 @@
         ],
         "homepage": "https://nuspell.github.io/",
         "license": "LGPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "icu",
           {
@@ -57319,10 +57446,11 @@
       "name": "omniorb",
       "manifest": {
         "name": "omniorb",
+        "port-version": 1,
         "description": "omniORB is a robust high performance CORBA ORB for C++",
         "homepage": "https://omniorb.sourceforge.io/",
         "license": "LGPL-2.1-or-later",
-        "supports": "!uwp & !((arm | x86) & windows) & !osx",
+        "supports": "!uwp & !xbox & !((arm | x86) & windows) & !osx",
         "dependencies": [
           "openssl",
           "python3",
@@ -57657,9 +57785,11 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
+        "port-version": 1,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -57704,10 +57834,11 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
+        "port-version": 1,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "alsa",
@@ -57807,11 +57938,11 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1",
-        "supports": "!(uwp | osx | arm)",
+        "supports": "!(uwp | xbox | osx | arm)",
         "dependencies": [
           "fontconfig",
           "freetype",
@@ -59766,10 +59897,11 @@
       "name": "openmama",
       "manifest": {
         "name": "openmama",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenMAMA is a high performance vendor neutral lightweight wrapper that provides a common API interface to different middleware and messaging solutions across a variety of platforms and languages",
         "homepage": "https://github.com/finos/OpenMAMA",
         "license": "LGPL-2.1",
+        "supports": "!xbox",
         "dependencies": [
           "apr",
           "apr-util",
@@ -59847,10 +59979,10 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 7,
+        "port-version": 8,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
         "license": "MPL-2.0-no-copyleft-exception",
-        "supports": "x86 | x64",
+        "supports": "(x86 | x64) & !xbox",
         "dependencies": [
           "cereal",
           {
@@ -59919,9 +60051,11 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
+        "port-version": 1,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "boost-iostreams",
           "boost-program-options",
@@ -60015,9 +60149,11 @@
       "name": "openscap",
       "manifest": {
         "name": "openscap",
+        "port-version": 1,
         "description": "The oscap program is a command line tool that allows users to load, scan, validate, edit, and export SCAP documents.",
         "homepage": "https://github.com/OpenSCAP/openscap",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "curl",
           "glib",
@@ -60053,11 +60189,11 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-or-later",
-        "supports": "native & !(windows & static) & !osx",
+        "supports": "native & !(windows & static) & !xbox & !osx",
         "dependencies": [
           "cairo",
           "gdk-pixbuf",
@@ -60465,10 +60601,11 @@
       "name": "openvdb",
       "manifest": {
         "name": "openvdb",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Sparse volume data structure and tools",
         "homepage": "https://github.com/dreamworksanimation/openvdb",
         "license": "MPL-2.0",
+        "supports": "!xbox",
         "dependencies": [
           "blosc",
           "boost-any",
@@ -60517,10 +60654,11 @@
       "name": "openvpn3",
       "manifest": {
         "name": "openvpn3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "a C++ class library that implements the functionality of an OpenVPN client, and is protocol-compatible with the OpenVPN 2.x branch.",
         "homepage": "https://openvpn.net",
         "license": "AGPL-3.0",
+        "supports": "!xbox",
         "dependencies": [
           "asio",
           "mbedtls",
@@ -61056,10 +61194,11 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
+        "port-version": 1,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
-        "supports": "!(arm | x86 | wasm32)",
+        "supports": "!(arm | x86 | wasm32 | xbox)",
         "dependencies": [
           "basisu",
           "blosc",
@@ -61287,9 +61426,11 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
+        "port-version": 2,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "boost-any",
           "boost-graph",
@@ -61421,9 +61562,11 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
+        "port-version": 1,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "cairo",
@@ -61626,11 +61769,11 @@
       "name": "pangomm",
       "manifest": {
         "name": "pangomm",
-        "port-version": 2,
+        "port-version": 3,
         "description": "pangomm is the official C++ interface for the Pango font layout library. See, for instance, the Pango::Layout class.",
         "homepage": "https://gitlab.gnome.org/GNOME/pangomm",
         "license": "LGPL-2.1-or-later",
-        "supports": "!arm",
+        "supports": "!(arm | xbox)",
         "dependencies": [
           "cairo",
           "cairomm",
@@ -62976,10 +63119,10 @@
       "name": "plib",
       "manifest": {
         "name": "plib",
-        "port-version": 7,
+        "port-version": 8,
         "description": "A suite of portable game libraries",
         "license": "LGPL-2.0-only",
-        "supports": "!osx & !uwp",
+        "supports": "!(osx | uwp | xbox)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -63273,11 +63416,11 @@
       "name": "podofo",
       "manifest": {
         "name": "podofo",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PoDoFo is a library to work with the PDF file format",
         "homepage": "https://github.com/podofo/podofo",
         "license": "LGPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "freetype",
           "libjpeg-turbo",
@@ -63529,11 +63672,11 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "boost-container",
           "boost-move",
@@ -64784,9 +64927,11 @@
       "name": "qcustomplot",
       "manifest": {
         "name": "qcustomplot",
+        "port-version": 1,
         "description": "QCustomPlot is a Qt C++ widget for plotting and data visualization.",
         "homepage": "https://www.qcustomplot.com/",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "qtbase",
@@ -64932,10 +65077,11 @@
       "name": "qscintilla",
       "manifest": {
         "name": "qscintilla",
-        "port-version": 1,
+        "port-version": 2,
         "description": "QScintilla is a port to Qt of the Scintilla editing component. Features syntax highlighting, code-completion and much more (Barebone build without python bindings (missing dependeny PyQt) and without QtDesigner plugin)",
         "homepage": "https://www.riverbankcomputing.com/software/qscintilla",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "qtbase",
@@ -65186,9 +65332,11 @@
       "name": "qt-advanced-docking-system",
       "manifest": {
         "name": "qt-advanced-docking-system",
+        "port-version": 1,
         "description": "Create customizable layouts using an advanced window docking system similar to what is found in many popular IDEs such as Visual Studio",
         "homepage": "https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System",
         "license": "LGPL-2.1-only",
+        "supports": "!xbox",
         "dependencies": [
           "bzip2",
           {
@@ -69183,9 +69331,11 @@
       "name": "quazip",
       "manifest": {
         "name": "quazip",
+        "port-version": 1,
         "description": "Qt/C++ wrapper over minizip",
         "homepage": "https://stachenov.github.io/quazip/",
         "license": "LGPL-2.1-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "qt5compat",
@@ -70263,10 +70413,11 @@
       "name": "restbed",
       "manifest": {
         "name": "restbed",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Corvusoft's Restbed framework brings asynchronous RESTful functionality to C++14 applications.",
         "homepage": "https://github.com/corvusoft/restbed",
         "license": "AGPL-3.0-or-later OR CPL-1.0",
+        "supports": "!xbox",
         "dependencies": [
           "asio",
           {
@@ -71325,10 +71476,11 @@
       "name": "rubberband",
       "manifest": {
         "name": "rubberband",
+        "port-version": 1,
         "description": "A high quality software library for audio time-stretching and pitch-shifting.",
         "homepage": "https://www.breakfastquay.com/rubberband/",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp & !(windows & static)",
+        "supports": "!uwp & !(windows & static) & !xbox",
         "dependencies": [
           {
             "name": "fftw3",
@@ -73292,11 +73444,11 @@
       "name": "shiftmedia-libgnutls",
       "manifest": {
         "name": "shiftmedia-libgnutls",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
         "homepage": "https://github.com/ShiftMediaProject/gnutls",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm & !mingw",
+        "supports": "windows & !arm & !mingw & !xbox",
         "dependencies": [
           "gettext",
           "gmp",
@@ -74853,10 +75005,11 @@
       "name": "spatialite-tools",
       "manifest": {
         "name": "spatialite-tools",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Contains spatialite.exe and other command line tools to work with SpatiaLite databases (import, export, SQL queries)",
         "homepage": "https://www.gaia-gis.it/fossil/spatialite-tools/index",
         "license": "GPL-3.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           "expat",
           "libiconv",
@@ -79252,11 +79405,11 @@
       "name": "usbmuxd",
       "manifest": {
         "name": "usbmuxd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A socket daemon to multiplex connections from and to iOS devices",
         "homepage": "http://www.libimobiledevice.org",
         "license": "LGPL-2.1-only",
-        "supports": "windows & !arm64 & !static",
+        "supports": "windows & !arm64 & !static & !xbox",
         "dependencies": [
           "libimobiledevice",
           "libusb",
@@ -81737,10 +81890,11 @@
       "name": "wolftpm",
       "manifest": {
         "name": "wolftpm",
+        "port-version": 1,
         "description": "TPM library used with wolfSSL library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -81890,10 +82044,11 @@
       "name": "wt",
       "manifest": {
         "name": "wt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Wt is a C++ library for developing web applications",
         "homepage": "https://github.com/emweb/wt",
         "license": "GPL-2.0-only",
+        "supports": "!xbox",
         "dependencies": [
           "boost-algorithm",
           "boost-array",
@@ -82035,10 +82190,11 @@
       "name": "wxchartdir",
       "manifest": {
         "name": "wxchartdir",
-        "port-version": 1,
+        "port-version": 2,
         "description": "wxChartDir provides components for the integration and use of the commercial C++ library ChartDirector, a universal chart component developed by Advanced Software Engineering Ltd, in wxWidgets based applications.",
         "homepage": "https://github.com/utelle/wxchartdir",
         "license": "GPL-3.0-only AND LGPL-3.0 AND wxWindows",
+        "supports": "!xbox",
         "dependencies": [
           "chartdir",
           {
@@ -82088,7 +82244,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -82096,7 +82252,7 @@
         ],
         "homepage": "https://github.com/wxWidgets/wxWidgets",
         "license": "LGPL-2.0-or-later WITH WxWindows-exception-3.1",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "cairo",
@@ -82237,10 +82393,11 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
-        "port-version": 4,
+        "port-version": 5,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
+        "supports": "!xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
@@ -82294,11 +82451,11 @@
       "name": "x265",
       "manifest": {
         "name": "x265",
-        "port-version": 8,
+        "port-version": 9,
         "description": "x265 is a H.265 / HEVC video encoder application library, designed to encode video or images into an H.265 / HEVC encoded bitstream.",
         "homepage": "https://github.com/videolan/x265",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp & !(arm & windows)",
+        "supports": "!uwp & !(arm & windows) & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -82332,11 +82489,11 @@
       "name": "xapian",
       "manifest": {
         "name": "xapian",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Xapian is an Open Source Search Engine Library, released under the GPL v2+. It's written in C++, with bindings to allow use from Perl, Python 2, Python 3, PHP 5, PHP 7, Java, Tcl, C#, Ruby, Lua, Erlang, Node.js and R (so far!)",
         "homepage": "https://xapian.org/",
         "license": "GPL-2.0-or-later",
-        "supports": "(!arm | arm64) & !uwp",
+        "supports": "(!arm | arm64) & !uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake-config",
@@ -82777,9 +82934,11 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
+        "port-version": 1,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
+        "supports": "!xbox",
         "dependencies": [
           "libxml2",
           "openssl",
@@ -83706,11 +83865,11 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "LGPL-3.0-only",
-        "supports": "!uwp",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
