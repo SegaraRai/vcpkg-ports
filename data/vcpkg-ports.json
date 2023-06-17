@@ -1,5 +1,5 @@
 {
-  "version": "5d2a0a9814db499f6ba2e847ca7ab5912badcdbf",
+  "version": "fbc868ee5e12e3e81f464104be246ec06553c274",
   "ports": [
     {
       "name": "3fd",
@@ -2125,7 +2125,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -6877,7 +6877,7 @@
       "name": "boost-atomic",
       "manifest": {
         "name": "boost-atomic",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Boost atomic module",
         "homepage": "https://github.com/boostorg/atomic",
         "license": "BSL-1.0",
@@ -11127,7 +11127,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -18113,7 +18113,7 @@
       "name": "clapack",
       "manifest": {
         "name": "clapack",
-        "port-version": 21,
+        "port-version": 22,
         "description": "CLAPACK (f2c'ed version of LAPACK)",
         "homepage": "https://www.netlib.org/clapack",
         "dependencies": [
@@ -24224,7 +24224,7 @@
             "description": "Use experimental features right away"
           }
         },
-        "version": "3.11.1"
+        "version": "3.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -29557,7 +29557,7 @@
             "host": true
           }
         ],
-        "version": "1.2.3"
+        "version": "1.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -65904,7 +65904,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -65991,6 +65991,8 @@
         "cmake/qt_submodule_installation.cmake",
         "patches/CVE-2023-32762-qtbase-5.15.diff",
         "patches/CVE-2023-32763-qtbase-5.15.diff",
+        "patches/CVE-2023-33285-qtbase-5.15.diff",
+        "patches/CVE-2023-34410-qtbase-5.15.diff",
         "patches/Qt5BasicConfig.patch",
         "patches/Qt5GuiConfigExtras.patch",
         "patches/Qt5PluginTarget.patch",
@@ -69449,7 +69451,7 @@
             "host": true
           }
         ],
-        "version": "2.9.1"
+        "version": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -81143,15 +81145,15 @@
       "name": "vulkan-memory-allocator-hpp",
       "manifest": {
         "name": "vulkan-memory-allocator-hpp",
-        "port-version": 1,
-        "description": "C++ bindings for VulkanMemoryAllocator",
+        "description": "C++ bindings for VulkanMemoryAllocator (Development branch)",
         "homepage": "https://github.com/YaaZ/VulkanMemoryAllocator-Hpp",
         "license": "CC0-1.0",
         "supports": "!uwp & !xbox",
         "dependencies": [
-          "vulkan"
+          "vulkan",
+          "vulkan-memory-allocator"
         ],
-        "version": "3.0.1"
+        "version": "3.0.1.1"
       },
       "files": [
         "portfile.cmake",
