@@ -1,5 +1,5 @@
 {
-  "version": "fbc868ee5e12e3e81f464104be246ec06553c274",
+  "version": "1286cac8751e13bb289061b7e3b89eb4c3f613a2",
   "ports": [
     {
       "name": "3fd",
@@ -909,7 +909,7 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -1706,7 +1706,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -1829,7 +1828,7 @@
             ]
           }
         },
-        "version": "12.0.0"
+        "version": "12.0.1"
       },
       "files": [
         "fix-ci-error.patch",
@@ -2125,7 +2124,7 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -5683,6 +5682,7 @@
       "name": "bond",
       "manifest": {
         "name": "bond",
+        "port-version": 1,
         "description": "Bond is a cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data. Bond is broadly used at Microsoft in high scale services.",
         "homepage": "https://github.com/Microsoft/bond",
         "dependencies": [
@@ -15982,7 +15982,7 @@
       "name": "breakpad",
       "manifest": {
         "name": "breakpad",
-        "port-version": 4,
+        "port-version": 5,
         "description": "a set of client and server components which implement a crash-reporting system.",
         "homepage": "https://github.com/google/breakpad",
         "license": "BSD-3-Clause",
@@ -16973,6 +16973,7 @@
       "name": "catch2",
       "manifest": {
         "name": "catch2",
+        "port-version": 1,
         "description": "A modern, header-only test framework for unit testing.",
         "homepage": "https://github.com/catchorg/Catch2",
         "license": "BSL-1.0",
@@ -17561,7 +17562,7 @@
       "name": "cgns",
       "manifest": {
         "name": "cgns",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The CFD General Notation System (CGNS) provides a standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations.",
         "homepage": "http://cgns.org/",
         "license": "Zlib",
@@ -18884,6 +18885,7 @@
       "name": "coinutils",
       "manifest": {
         "name": "coinutils",
+        "port-version": 1,
         "description": "CoinUtils (Coin-or Utilities) is an open-source collection of classes and functions that are generally useful to more than one COIN-OR project",
         "homepage": "https://www.coin-or.org/",
         "license": "EPL-2.0",
@@ -18891,10 +18893,20 @@
         "dependencies": [
           "bzip2",
           "coin-or-buildtools",
-          "glpk",
           "lapack",
           "zlib"
         ],
+        "features": {
+          "glpk": {
+            "description": "Build with Glpk",
+            "dependencies": [
+              {
+                "name": "glpk",
+                "default-features": false
+              }
+            ]
+          }
+        },
         "version-date": "2023-02-02"
       },
       "files": [
@@ -18908,7 +18920,7 @@
       "name": "collada-dom",
       "manifest": {
         "name": "collada-dom",
-        "port-version": 9,
+        "port-version": 10,
         "description": "The COLLADA Document Object Model (DOM) is an application programming interface (API) that provides a C++ object representation of a COLLADA XML instance document.",
         "homepage": "https://github.com/rdiankov/collada-dom",
         "license": null,
@@ -19123,6 +19135,7 @@
       "name": "concurrencpp",
       "manifest": {
         "name": "concurrencpp",
+        "port-version": 1,
         "description": "concurrencpp is a tasking library for C++ allowing developers to write highly concurrent applications easily and safely by using tasks, executors and coroutines.",
         "homepage": "https://github.com/David-Haim/concurrencpp/",
         "license": "MIT",
@@ -19140,6 +19153,7 @@
       },
       "files": [
         "fix-include-path.patch",
+        "fix-missing-limits.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21754,7 +21768,7 @@
             "host": true
           }
         ],
-        "version": "1.22.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -22418,7 +22432,7 @@
         "dependencies": [
           {
             "name": "directx-headers",
-            "platform": "(windows & !xbox) | linux"
+            "platform": "mingw | linux"
           },
           "directxmath",
           {
@@ -22436,7 +22450,13 @@
         ],
         "features": {
           "dx12": {
-            "description": "Build with DirectX12 support for Windows 10/Windows 11"
+            "description": "Build with DirectX12 support for Windows 10/Windows 11",
+            "dependencies": [
+              {
+                "name": "directx-headers",
+                "platform": "windows & !xbox"
+              }
+            ]
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
@@ -22446,10 +22466,11 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-04-28"
+        "version-date": "2023-06-13"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -22484,7 +22505,6 @@
       "name": "directxtex",
       "manifest": {
         "name": "directxtex",
-        "port-version": 1,
         "description": "DirectXTex texture processing library",
         "homepage": "https://github.com/Microsoft/DirectXTex",
         "documentation": "https://github.com/microsoft/DirectXTex/wiki",
@@ -22493,7 +22513,7 @@
         "dependencies": [
           {
             "name": "directx-headers",
-            "platform": "(windows & !xbox) | linux"
+            "platform": "mingw | linux"
           },
           "directxmath",
           {
@@ -22517,7 +22537,13 @@
             "description": "Build with DirectX11 support"
           },
           "dx12": {
-            "description": "Build with DirectX12 support for Windows 10/Windows 11"
+            "description": "Build with DirectX12 support for Windows 10/Windows 11",
+            "dependencies": [
+              {
+                "name": "directx-headers",
+                "platform": "windows & !xbox"
+              }
+            ]
           },
           "openexr": {
             "description": "Enable OpenEXR support",
@@ -22533,10 +22559,11 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-04-28"
+        "version-date": "2023-06-13"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -22584,10 +22611,11 @@
             ]
           }
         },
-        "version-date": "2023-04-28"
+        "version-date": "2023-06-13"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -22643,15 +22671,16 @@
             "dependencies": [
               {
                 "name": "xaudio2redist",
-                "platform": "!uwp & !arm"
+                "platform": "!uwp & !arm & !xbox"
               }
             ]
           }
         },
-        "version-date": "2023-04-28"
+        "version-date": "2023-06-13"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -22727,13 +22756,11 @@
       "name": "discordcoreapi",
       "manifest": {
         "name": "discordcoreapi",
-        "port-version": 1,
         "description": "A Discord bot library written in C++ using custom asynchronous coroutines.",
         "homepage": "https://discordcoreapi.com",
         "license": "LGPL-2.1-or-later",
-        "supports": "(windows & x64 & !static & !xbox) | (linux & x64)",
+        "supports": "(windows & x64 & !xbox) | (linux & x64)",
         "dependencies": [
-          "ffmpeg",
           "jsonifier",
           "libsodium",
           "openssl",
@@ -22747,10 +22774,9 @@
             "host": true
           }
         ],
-        "version-date": "2023-05-30"
+        "version": "1.40"
       },
       "files": [
-        "0001-Add-extern-C-to-avcodec.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23476,7 +23502,7 @@
       "name": "dxut",
       "manifest": {
         "name": "dxut",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A \"GLUT\"-like framework for Direct3D 11.x Win32 desktop applications",
         "homepage": "https://github.com/Microsoft/DXUT",
         "documentation": "https://github.com/microsoft/DXUT/wiki",
@@ -23508,6 +23534,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -23850,7 +23877,7 @@
       "name": "effects11",
       "manifest": {
         "name": "effects11",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Effects for Direct3D 11 (FX11) is a management runtime for authoring HLSL shaders, render state, and runtime variables together.",
         "homepage": "https://github.com/Microsoft/FX11",
         "documentation": "https://github.com/microsoft/FX11/wiki",
@@ -23875,6 +23902,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -26621,7 +26649,6 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 3,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -26670,7 +26697,7 @@
             ]
           }
         },
-        "version": "2.3.2"
+        "version": "2.3.3"
       },
       "files": [
         "gentables.patch",
@@ -26792,6 +26819,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -26878,13 +26906,14 @@
             ]
           }
         },
-        "version-string": "2023.05.15.00"
+        "version-string": "2023.05.22.00"
       },
       "files": [
         "boost-1.70.patch",
         "disable-non-underscore-posix-names.patch",
         "fix-deps.patch",
         "fix-windows-minmax.patch",
+        "openssl.patch",
         "portfile.cmake",
         "reorder-glog-gflags.patch",
         "vcpkg-cmake-wrapper.cmake",
@@ -31311,6 +31340,18 @@
               }
             ]
           },
+          "support": {
+            "description": "Cloud Support API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "talent": {
             "description": "Cloud Talent Solution API C++ Client Library",
             "dependencies": [
@@ -31504,7 +31545,7 @@
             ]
           }
         },
-        "version": "2.10.0"
+        "version": "2.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -33351,7 +33392,6 @@
       "name": "gul14",
       "manifest": {
         "name": "gul14",
-        "port-version": 1,
         "description": [
           "General Utility Library for C++14.",
           "GUL14 contains often-used utility functions and types that form the foundation for other libraries and programs.",
@@ -33367,7 +33407,7 @@
             "host": true
           }
         ],
-        "version": "2.9.1"
+        "version": "2.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -34814,7 +34854,6 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 5,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -34833,7 +34872,7 @@
             "description": "Build tools"
           }
         },
-        "version": "72.1"
+        "version": "73.1"
       },
       "files": [
         "disable-escapestr-tool.patch",
@@ -35914,6 +35953,31 @@
       ]
     },
     {
+      "name": "indirect-value",
+      "manifest": {
+        "name": "indirect-value",
+        "description": "An indirect value-type for C++",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-06-01"
+      },
+      "files": [
+        "fix-install.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "influxdb-cxx",
       "manifest": {
         "name": "influxdb-cxx",
@@ -36547,9 +36611,10 @@
             ]
           }
         },
-        "version-semver": "11.4.3"
+        "version-semver": "11.4.4"
       },
       "files": [
+        "fix-C2065-of-errorMsg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41202,14 +41267,18 @@
       "name": "libeventheader-decode",
       "manifest": {
         "name": "libeventheader-decode",
-        "description": "EventHeader tracepoint decoding classes for C++",
+        "description": "C++ classes for decoding EventHeader-encoded Linux Tracepoints",
         "homepage": "https://github.com/microsoft/LinuxTracepoints/",
         "license": "MIT",
         "supports": "linux | windows",
         "dependencies": [
           {
             "name": "libeventheader-tracepoint",
-            "version>=": "1.0.0"
+            "version>=": "1.1.0"
+          },
+          {
+            "name": "libtracepoint-decode",
+            "version>=": "1.1.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -41220,7 +41289,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -41231,14 +41300,14 @@
       "name": "libeventheader-tracepoint",
       "manifest": {
         "name": "libeventheader-tracepoint",
-        "description": "EventHeader-encoded Linux tracepoints for C/C++",
+        "description": "C/C++ interface for generating EventHeader-encoded Linux Tracepoints",
         "homepage": "https://github.com/microsoft/LinuxTracepoints/",
         "license": "MIT",
         "supports": "linux | windows",
         "dependencies": [
           {
             "name": "libtracepoint",
-            "version>=": "1.0.0"
+            "version>=": "1.1.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -41249,7 +41318,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -42314,7 +42383,6 @@
       "name": "libhsplasma",
       "manifest": {
         "name": "libhsplasma",
-        "port-version": 1,
         "description": "Cross-platform Plasma data and network library",
         "homepage": "https://github.com/H-uru/libhsplasma",
         "license": "GPL-3.0-or-later",
@@ -42341,7 +42409,7 @@
             ]
           }
         },
-        "version-date": "2022-05-19"
+        "version-date": "2023-05-08"
       },
       "files": [
         "portfile.cmake",
@@ -42763,7 +42831,7 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
         "license": "BSD-3-Clause",
@@ -43854,7 +43922,7 @@
       "name": "libnice-gst",
       "manifest": {
         "name": "libnice-gst",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Gstreamer Libnice plugins.",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -44318,7 +44386,7 @@
       "name": "libosmscout",
       "manifest": {
         "name": "libosmscout",
-        "port-version": 2,
+        "port-version": 4,
         "description": "libosmscout offers applications simple, high-level interfaces for offline location and POI lokup, rendering and routing functionalities based on OpenStreetMap (OSM) data.",
         "homepage": "http://libosmscout.sourceforge.net/",
         "documentation": "http://libosmscout.sourceforge.net/documentation/",
@@ -44350,10 +44418,19 @@
             ]
           },
           "directx": {
-            "description": "Direct2D backend renderer"
+            "description": "Direct2D backend renderer",
+            "supports": "windows"
           },
           "gdi": {
-            "description": "GDI+ backend renderer"
+            "description": "GDI+ backend renderer",
+            "supports": "windows"
+          },
+          "qt5": {
+            "description": "Enable build of Qt5 map drawing backend",
+            "dependencies": [
+              "qt5-base",
+              "qt5-svg"
+            ]
           },
           "svg": {
             "description": "SVG backend renderer",
@@ -44868,9 +44945,9 @@
       "name": "libprotobuf-mutator",
       "manifest": {
         "name": "libprotobuf-mutator",
-        "port-version": 2,
         "description": "Library for structured fuzzing with protobuffers.",
         "dependencies": [
+          "liblzma",
           "protobuf",
           {
             "name": "vcpkg-cmake",
@@ -44879,9 +44956,10 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
-        "version": "1.0"
+        "version": "1.1"
       },
       "files": [
         "portfile.cmake",
@@ -45236,6 +45314,7 @@
       "name": "libressl",
       "manifest": {
         "name": "libressl",
+        "port-version": 1,
         "description": "LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
         "license": "ISC",
         "supports": "!(uwp | arm)",
@@ -46745,7 +46824,7 @@
       "name": "libtracepoint",
       "manifest": {
         "name": "libtracepoint",
-        "description": "Linux tracepoints interface for C/C++",
+        "description": "C/C++ interface for generating Linux Tracepoints",
         "homepage": "https://github.com/microsoft/LinuxTracepoints/",
         "license": "MIT",
         "supports": "linux | windows",
@@ -46759,7 +46838,36 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libtracepoint-control",
+      "manifest": {
+        "name": "libtracepoint-control",
+        "description": "C++ classes for collecting Linux Tracepoints",
+        "homepage": "https://github.com/microsoft/LinuxTracepoints/",
+        "license": "MIT",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "libtracepoint-decode",
+            "version>=": "1.1.0"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -46770,7 +46878,7 @@
       "name": "libtracepoint-decode",
       "manifest": {
         "name": "libtracepoint-decode",
-        "description": "Tracepoint decoding classes for C++",
+        "description": "C++ classes for decoding Linux Tracepoints",
         "homepage": "https://github.com/microsoft/LinuxTracepoints/",
         "license": "MIT",
         "supports": "linux | windows",
@@ -46784,7 +46892,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -46975,6 +47083,7 @@
       "name": "liburing",
       "manifest": {
         "name": "liburing",
+        "port-version": 1,
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
         "license": "MIT OR LGPL-2.1 OR GPL-2.0",
@@ -47927,7 +48036,7 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "license": null,
@@ -47943,6 +48052,7 @@
       },
       "files": [
         "dependencies.diff",
+        "fix-zlib-ver-required.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -48069,7 +48179,6 @@
       "name": "libxmp",
       "manifest": {
         "name": "libxmp",
-        "port-version": 1,
         "description": "Libxmp is a library that renders module files to PCM data.",
         "homepage": "https://sourceforge.net/projects/xmp/",
         "license": "LGPL-2.1-or-later",
@@ -48096,11 +48205,10 @@
             "description": "Enable ProWizard format loaders."
           }
         },
-        "version-date": "2023-04-13"
+        "version": "4.6.0"
       },
       "files": [
         "fix-cmake-config-dir.patch",
-        "fix-uwp-build.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -54212,12 +54320,10 @@
       "name": "mp-units",
       "manifest": {
         "name": "mp-units",
-        "port-version": 1,
         "description": "mp-units - A Units Library for C++",
         "homepage": "https://github.com/mpusz/units",
         "license": "MIT",
         "dependencies": [
-          "fmt",
           "gsl-lite",
           {
             "name": "vcpkg-cmake",
@@ -54228,7 +54334,37 @@
             "host": true
           }
         ],
-        "version-semver": "0.7.0"
+        "default-features": [
+          "default-features"
+        ],
+        "features": {
+          "default-features": {
+            "description": "Platform specific default features",
+            "dependencies": [
+              {
+                "name": "mp-units",
+                "features": [
+                  "install-range-v3",
+                  "use-libfmt"
+                ],
+                "platform": "osx"
+              }
+            ]
+          },
+          "install-range-v3": {
+            "description": "Provide range-v3 for compilers not supporting std::ranges",
+            "dependencies": [
+              "range-v3"
+            ]
+          },
+          "use-libfmt": {
+            "description": "Use libfmt instead of std::format",
+            "dependencies": [
+              "fmt"
+            ]
+          }
+        },
+        "version": "0.8.0"
       },
       "files": [
         "config.patch",
@@ -55038,13 +55174,14 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
-        "port-version": 1,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
         "supports": "!uwp & !(windows & (arm | arm64))",
         "dependencies": [
+          "lz4",
           "openssl",
+          "protobuf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -55052,11 +55189,23 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib",
+          "zstd"
         ],
-        "version": "8.0.30"
+        "features": {
+          "jdbc": {
+            "description": "Legacy JDBC support.",
+            "dependencies": [
+              "libmysql"
+            ],
+            "supports": "static"
+          }
+        },
+        "version": "8.0.32"
       },
       "files": [
+        "dependencies.patch",
         "export-targets.patch",
         "fix-static-build8.patch",
         "mysql-connector-cpp-config.cmake.in",
@@ -55216,7 +55365,7 @@
             "host": true
           }
         ],
-        "version": "1.4.3"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -57874,10 +58023,11 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
+        "port-version": 1,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/xianyi/OpenBLAS",
         "license": "BSD-3-Clause",
-        "supports": "!(arm & uwp)",
+        "supports": "!arm | arm64 | !uwp",
         "dependencies": [
           {
             "name": "openblas",
@@ -57926,7 +58076,6 @@
       },
       "files": [
         "fix-redefinition-function.patch",
-        "fix-uwp-build.patch",
         "install-tools.patch",
         "openblas_common.h",
         "portfile.cmake",
@@ -57938,7 +58087,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1",
@@ -57982,6 +58131,7 @@
       },
       "files": [
         "fix-depend-freetype.patch",
+        "fix-dependence.patch",
         "fix-install-prefix-path.patch",
         "fix-pdb-find.patch",
         "install-include-dir.patch",
@@ -59553,9 +59703,10 @@
             "description": "Build tools"
           }
         },
-        "version": "3.1.7"
+        "version": "3.1.8"
       },
       "files": [
+        "fix-arm64-windows-build.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -60149,7 +60300,7 @@
       "name": "openscap",
       "manifest": {
         "name": "openscap",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The oscap program is a command line tool that allows users to load, scan, validate, edit, and export SCAP documents.",
         "homepage": "https://github.com/OpenSCAP/openscap",
         "license": "LGPL-2.1-or-later",
@@ -60174,6 +60325,15 @@
         "features": {
           "python": {
             "description": "build with python3"
+          },
+          "util": {
+            "description": "build available utils",
+            "dependencies": [
+              {
+                "name": "getopt-win32",
+                "platform": "windows"
+              }
+            ]
           }
         },
         "version": "1.3.7"
@@ -60181,6 +60341,7 @@
       "files": [
         "fix-build.patch",
         "fix-buildflag-and-install.patch",
+        "fix-utils.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60647,6 +60808,191 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "openvino",
+      "manifest": {
+        "name": "openvino",
+        "port-version": 1,
+        "maintainers": "OpenVINO Developers <openvino@intel.com>",
+        "description": [
+          "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
+          "and deploying AI inference. It can be used to develop applications and solutions based ",
+          "on deep learning tasks, such as: emulation of human vision, automatic speech recognition, ",
+          "natural language processing, recommendation systems, etc. It provides high-performance ",
+          "and rich deployment options, from edge to cloud"
+        ],
+        "homepage": "https://github.com/openvinotoolkit/openvino",
+        "documentation": "https://docs.openvino.ai/latest/index.html",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "ade",
+          {
+            "name": "pkgconf",
+            "host": true
+          },
+          "pugixml",
+          {
+            "name": "tbb",
+            "platform": "static | osx",
+            "version>=": "2021.9.0#2"
+          },
+          {
+            "name": "tbb",
+            "features": [
+              "hwloc"
+            ],
+            "platform": "!static & !osx",
+            "version>=": "2021.9.0#2"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          },
+          {
+            "name": "xbyak",
+            "platform": "!(arm | uwp)",
+            "version>=": "6.69"
+          }
+        ],
+        "default-features": [
+          "auto",
+          "auto-batch",
+          "default-features",
+          "hetero",
+          "ir",
+          "onnx",
+          "paddle",
+          "pytorch",
+          "tensorflow",
+          "tensorflow-lite"
+        ],
+        "features": {
+          "auto": {
+            "description": "Enables Auto plugin for inference"
+          },
+          "auto-batch": {
+            "description": "Enables Auto Batch plugin for inference, useful for throughput mode"
+          },
+          "cpu": {
+            "description": "Enables CPU plugin for inference",
+            "supports": "!(windows & arm)"
+          },
+          "default-features": {
+            "description": "Enables all default features",
+            "dependencies": [
+              {
+                "name": "openvino",
+                "features": [
+                  "cpu"
+                ],
+                "platform": "!(windows & arm)"
+              },
+              {
+                "name": "openvino",
+                "features": [
+                  "gpu"
+                ],
+                "platform": "x64 & !(osx | uwp) & !static"
+              }
+            ]
+          },
+          "gpu": {
+            "description": "Enables GPU plugin for inference",
+            "dependencies": [
+              "opencl"
+            ],
+            "supports": "x64 & !(osx | uwp) & !static"
+          },
+          "hetero": {
+            "description": "Enables Hetero plugin for inference"
+          },
+          "ir": {
+            "description": "Enables IR frontend for reading models in OpenVINO IR format"
+          },
+          "onnx": {
+            "description": "Enables ONNX frontend for reading models in ONNX format",
+            "dependencies": [
+              {
+                "name": "onnx",
+                "version>=": "1.13.1"
+              },
+              {
+                "name": "protobuf",
+                "version>=": "3.20.3"
+              },
+              {
+                "name": "protobuf",
+                "host": true,
+                "version>=": "3.20.3"
+              }
+            ]
+          },
+          "paddle": {
+            "description": "Enables PaddlePaddle frontend for reading models in PaddlePaddle format",
+            "dependencies": [
+              {
+                "name": "protobuf",
+                "version>=": "3.20.3"
+              },
+              {
+                "name": "protobuf",
+                "host": true,
+                "version>=": "3.20.3"
+              }
+            ]
+          },
+          "pytorch": {
+            "description": "Enables PyTorch frontend to convert models in PyTorch format"
+          },
+          "tensorflow": {
+            "description": "Enables TensorFlow frontend for reading models in TensorFlow format",
+            "dependencies": [
+              {
+                "name": "protobuf",
+                "version>=": "3.20.3"
+              },
+              {
+                "name": "protobuf",
+                "host": true,
+                "version>=": "3.20.3"
+              },
+              "snappy"
+            ]
+          },
+          "tensorflow-lite": {
+            "description": "Enables TensorFlow Lite frontend for reading models in TensorFlow Lite format",
+            "dependencies": [
+              {
+                "name": "flatbuffers",
+                "version>=": "2.0.6"
+              },
+              {
+                "name": "flatbuffers",
+                "host": true,
+                "version>=": "2.0.6"
+              }
+            ]
+          }
+        },
+        "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
+        "version-date": "2023-06-11"
+      },
+      "files": [
+        "001-disable-tools.patch",
+        "002-typo-in-default-option-value.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -61541,6 +61887,7 @@
         "name": "palsigslot",
         "description": "A header-only, thread safe implementation of signal-slots for C++.",
         "homepage": "https://github.com/palacaze/sigslot",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -61551,7 +61898,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -62406,7 +62753,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -67051,7 +67398,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -69451,7 +69798,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -70240,7 +70587,6 @@
       "name": "redis-plus-plus",
       "manifest": {
         "name": "redis-plus-plus",
-        "port-version": 1,
         "description": "This is a C++ client for Redis. It's based on hiredis, and written in C++ 11",
         "homepage": "https://github.com/sewenew/redis-plus-plus",
         "license": "Apache-2.0",
@@ -70276,9 +70622,21 @@
           },
           "cxx17": {
             "description": "Build redis-plus-plus with cxx 17 standard"
+          },
+          "tls": {
+            "description": "Build with TLS support",
+            "dependencies": [
+              {
+                "name": "hiredis",
+                "default-features": false,
+                "features": [
+                  "ssl"
+                ]
+              }
+            ]
           }
         },
-        "version-semver": "1.3.8"
+        "version-semver": "1.3.9"
       },
       "files": [
         "fix-absolute-path.patch",
@@ -73259,7 +73617,7 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
-        "port-version": 15,
+        "port-version": 16,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/sfml/sfml",
         "license": "Zlib",
@@ -74605,7 +74963,6 @@
       "name": "sockpp",
       "manifest": {
         "name": "sockpp",
-        "port-version": 1,
         "description": "Simple, modern, C++ socket library. This is a fairly low-level C++ wrapper around the Berkeley sockets library using socket, acceptor, and connector classes that are familiar concepts from other languages.",
         "homepage": "https://github.com/fpagliughi/sockpp",
         "license": "BSD-3-Clause",
@@ -74614,14 +74971,16 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.8.1"
       },
       "files": [
         "portfile.cmake",
-        "sockppConfig.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -76682,7 +77041,7 @@
             "host": true
           }
         ],
-        "version": "1.4"
+        "version": "1.5"
       },
       "files": [
         "portfile.cmake",
@@ -77823,9 +78182,10 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.5"
       },
       "files": [
+        "fix-uwp.patch",
         "fixtargets.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -79664,7 +80024,7 @@
         "dependencies": [
           {
             "name": "directx-headers",
-            "platform": "(windows & !xbox) | linux"
+            "platform": "mingw | linux"
           },
           "directxmath",
           {
@@ -79706,11 +80066,12 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2023-04-28"
+        "version-date": "2023-06-13"
       },
       "files": [
         "openexr.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -83401,7 +83762,6 @@
       "name": "yara",
       "manifest": {
         "name": "yara",
-        "port-version": 1,
         "description": "The pattern matching swiss knife",
         "homepage": "https://github.com/VirusTotal/yara",
         "license": "BSD-3-Clause",
@@ -83427,7 +83787,7 @@
             "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
           }
         },
-        "version": "4.3.0"
+        "version": "4.3.2"
       },
       "files": [
         "CMakeLists.txt",
