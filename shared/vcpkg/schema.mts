@@ -94,6 +94,8 @@ const zVcpkgBase = z.object({
   dependencies: z.array(zVcpkgDependency).optional(),
   'default-features': z.array(zVcpkgFeatureName).optional(),
   features: z.record(zVcpkgFeatureName, zVcpkgFeature).optional(),
+  // non-standard fields
+  summary: z.string().optional(),
 });
 
 // https://learn.microsoft.com/vcpkg/reference/vcpkg-json#version
