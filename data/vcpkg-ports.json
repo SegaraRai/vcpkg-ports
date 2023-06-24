@@ -1,5 +1,5 @@
 {
-  "version": "1286cac8751e13bb289061b7e3b89eb4c3f613a2",
+  "version": "288e8bebf4ca67c1f8ebd49366b03650cfd9eb7d",
   "ports": [
     {
       "name": "3fd",
@@ -4790,6 +4790,35 @@
         "include-dir.diff",
         "portfile.cmake",
         "vcpkg.json"
+      ]
+    },
+    {
+      "name": "baresip-libre",
+      "manifest": {
+        "name": "baresip-libre",
+        "description": "Generic library for real-time communications with async IO support",
+        "homepage": "https://github.com/baresip/re",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "3.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json",
+        "wip.patch"
       ]
     },
     {
@@ -37099,10 +37128,9 @@
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
-        "port-version": 1,
         "description": "A few classes for parsing and serializing json - very rapidly.",
         "homepage": "https://github.com/realtimechris/jsonifier",
-        "license": "LGPL-2.1-or-later",
+        "license": "MIT",
         "supports": "(windows & x64 & !uwp & !xbox) | (linux & x64) | (osx & x64)",
         "dependencies": [
           {
@@ -37114,7 +37142,7 @@
             "host": true
           }
         ],
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -57752,7 +57780,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -73438,7 +73466,7 @@
             ]
           }
         },
-        "version": "0.6.3"
+        "version": "0.6.4"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -73617,9 +73645,9 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
-        "port-version": 16,
+        "port-version": 17,
         "description": "Simple and fast multimedia library",
-        "homepage": "https://github.com/sfml/sfml",
+        "homepage": "https://github.com/SFML/SFML",
         "license": "Zlib",
         "dependencies": [
           "freetype",
@@ -73638,10 +73666,9 @@
             "host": true
           }
         ],
-        "version": "2.5.1"
+        "version": "2.6.0"
       },
       "files": [
-        "arm64.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "usage",
@@ -80455,10 +80482,46 @@
       ]
     },
     {
+      "name": "vcpkg-msbuild",
+      "manifest": {
+        "name": "vcpkg-msbuild",
+        "documentation": "https://vcpkg.io/en/docs/README.html",
+        "license": "MIT",
+        "supports": "native & windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-pkgconfig-get-modules",
+            "host": true
+          }
+        ],
+        "features": {
+          "pkg-config": {
+            "description": "Enable pkg-config lookup for msbuild",
+            "dependencies": [
+              "pkgconf"
+            ]
+          }
+        },
+        "version-date": "2023-06-22"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json",
+        "vcpkg_msbuild.props.in",
+        "vcpkg_msbuild.targets.in",
+        "vcpkg_msbuild_install.cmake",
+        "z_vcpkg_msbuild_create_props.cmake"
+      ]
+    },
+    {
       "name": "vcpkg-pkgconfig-get-modules",
       "manifest": {
         "name": "vcpkg-pkgconfig-get-modules",
-        "port-version": 1,
         "documentation": "https://vcpkg.io/en/docs/README.html",
         "license": "MIT",
         "dependencies": [
@@ -80468,10 +80531,9 @@
             "default-features": false
           }
         ],
-        "version-date": "2022-02-10"
+        "version-date": "2023-02-25"
       },
       "files": [
-        "copyright",
         "portfile.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json",
