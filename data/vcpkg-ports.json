@@ -1,5 +1,5 @@
 {
-  "version": "288e8bebf4ca67c1f8ebd49366b03650cfd9eb7d",
+  "version": "a26fc81350ab139c72dfeae07822ce3db3ca7ebb",
   "ports": [
     {
       "name": "3fd",
@@ -22120,7 +22120,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -22186,6 +22186,7 @@
       },
       "files": [
         "dcmtk.patch",
+        "fix-pc-format.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json",
@@ -46303,7 +46304,6 @@
       "name": "libssh2",
       "manifest": {
         "name": "libssh2",
-        "port-version": 4,
         "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
         "homepage": "https://www.libssh2.org",
         "license": "BSD-3-Clause",
@@ -46329,13 +46329,11 @@
             ]
           }
         },
-        "version": "1.10.0"
+        "version": "1.11.0"
       },
       "files": [
-        "0001-Fix-UWP.patch",
-        "0002-fix-macros.patch",
-        "0003-fix-openssl3.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
