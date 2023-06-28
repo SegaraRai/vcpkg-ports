@@ -1,5 +1,5 @@
 {
-  "version": "a26fc81350ab139c72dfeae07822ce3db3ca7ebb",
+  "version": "0d1150cbd2f8b3eb9247c51c9f41efbb3be9454b",
   "ports": [
     {
       "name": "3fd",
@@ -19191,9 +19191,9 @@
       "name": "concurrentqueue",
       "manifest": {
         "name": "concurrentqueue",
-        "port-version": 1,
         "description": "A fast multi-producer, multi-consumer lock-free concurrent queue for C++11",
         "homepage": "https://github.com/cameron314/concurrentqueue",
+        "license": "BSD-2-Clause OR BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -19204,7 +19204,7 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -25018,7 +25018,7 @@
       "name": "fastrtps",
       "manifest": {
         "name": "fastrtps",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Eprosima Fast RTPS is a C++ implementation of the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
         "license": "Apache-2.0",
@@ -26520,6 +26520,30 @@
       },
       "files": [
         "fix-uwp-build.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "flatbush",
+      "manifest": {
+        "name": "flatbush",
+        "description": "A C++11 header-only single file port of Flatbush",
+        "homepage": "https://github.com/chusitoo/flatbush",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.2"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28249,7 +28273,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -28558,6 +28582,7 @@
         "cmake-project-include.cmake",
         "find-link-libraries.patch",
         "fix-gdal-target-interfaces.patch",
+        "gdal-pr-8005.diff",
         "libkml.patch",
         "portfile.cmake",
         "usage",
@@ -30131,7 +30156,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 19,
+        "port-version": 20,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -30158,6 +30183,7 @@
         "arm64-coff.patch",
         "asmflags.patch",
         "cross-tools.patch",
+        "gmp-arm64-asm-fix-5f32dbc41afc.patch",
         "msvc_symbol.patch",
         "portfile.cmake",
         "subdirs.patch",
@@ -32200,7 +32226,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 9,
+        "port-version": 10,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -32489,7 +32515,16 @@
             ]
           },
           "gpl": {
-            "description": "Allow build of plugins that have (A)GPL-licensed dependencies"
+            "description": "Allow build of plugins that have (A)GPL-licensed dependencies",
+            "dependencies": [
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-base"
+                ]
+              }
+            ]
           },
           "jpeg": {
             "description": "Enable support for the JPEG file format",
@@ -32586,6 +32621,13 @@
                 "default-features": false,
                 "features": [
                   "tools"
+                ]
+              },
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-base"
                 ]
               }
             ]
@@ -36224,7 +36266,7 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
         "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
         "license": null,
@@ -41038,7 +41080,6 @@
       "name": "libdjinterop",
       "manifest": {
         "name": "libdjinterop",
-        "port-version": 1,
         "description": "C++ library for access to DJ record libraries. Currently only supports Denon Engine Prime databases",
         "homepage": "https://github.com/xsco/libdjinterop",
         "license": "LGPL-3.0-or-later",
@@ -41055,7 +41096,7 @@
           },
           "zlib"
         ],
-        "version": "0.16.0"
+        "version": "0.19.1"
       },
       "files": [
         "portfile.cmake",
@@ -43879,7 +43920,7 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -43913,6 +43954,7 @@
       "files": [
         "Add-target-include-directories.patch",
         "export-cmake-targets.patch",
+        "fix_dup_symbols.patch",
         "homebrew.patch",
         "ignore-boost-version.patch",
         "portfile.cmake",
@@ -48205,6 +48247,7 @@
       "name": "libxmp",
       "manifest": {
         "name": "libxmp",
+        "port-version": 1,
         "description": "Libxmp is a library that renders module files to PCM data.",
         "homepage": "https://sourceforge.net/projects/xmp/",
         "license": "LGPL-2.1-or-later",
@@ -62930,7 +62973,7 @@
       "name": "pdcurses",
       "manifest": {
         "name": "pdcurses",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Public Domain Curses - a curses library for environments that don't fit the termcap/terminfo model.",
         "homepage": "https://pdcurses.org/",
         "license": null,
@@ -67079,6 +67122,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
+        "port-version": 1,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -67117,12 +67161,10 @@
       "files": [
         "build_1.patch",
         "build_2.patch",
-        "build_3.with_missing_stdbool_include.patch",
         "common.pri.patch",
         "gl.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "workaround-msvc2022-ice.patch",
         "workaround-msvc2022-missing-include-in-chromium-ui-accessability.patch"
       ]
     },
@@ -74977,7 +75019,7 @@
           },
           "websocketpp"
         ],
-        "version-date": "2022-08-19"
+        "version-date": "2023-02-14"
       },
       "files": [
         "portfile.cmake",
@@ -75800,9 +75842,11 @@
             "description": "A sub-set of the Spout SDK for applications using DirectX rather than OpenGL."
           }
         },
-        "version-string": "2.007.009"
+        "version-string": "2.007.010"
       },
       "files": [
+        "fix-dx-keyed.patch",
+        "fix-include-path.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -76320,7 +76364,7 @@
         "name": "stackwalker",
         "description": "StackWalker - Walking the callstack.",
         "license": "BSD-2-Clause",
-        "supports": "windows & !arm & !uwp",
+        "supports": "windows & !uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -76331,10 +76375,9 @@
             "host": true
           }
         ],
-        "version": "1.20"
+        "version-date": "2023-06-24"
       },
       "files": [
-        "fix-build.patch",
         "fix-exports.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -77099,7 +77142,7 @@
       "name": "taglib",
       "manifest": {
         "name": "taglib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "TagLib Audio Meta-Data Library",
         "homepage": "https://taglib.org/",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -77114,6 +77157,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -77874,7 +77918,6 @@
       "name": "tiff",
       "manifest": {
         "name": "tiff",
-        "port-version": 3,
         "description": "A library that supports the manipulation of TIFF image files",
         "homepage": "https://libtiff.gitlab.io/libtiff/",
         "license": null,
@@ -77931,7 +77974,7 @@
             ]
           }
         },
-        "version": "4.5.0"
+        "version": "4.5.1"
       },
       "files": [
         "FindCMath.patch",
@@ -81120,7 +81163,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -81360,7 +81403,6 @@
         "FindHDF5.cmake",
         "FindLZ4.patch",
         "FindLZMA.patch",
-        "Findproj.patch",
         "NoUndefDebug.patch",
         "afxdll.patch",
         "cgns.patch",
@@ -81368,6 +81410,7 @@
         "fix-using-hdf5.patch",
         "iotr.patch",
         "jsoncpp.patch",
+        "libproj.patch",
         "missing-include-fixes.patch",
         "pegtl.patch",
         "portfile.cmake",
@@ -84287,10 +84330,9 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 5,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
-        "license": "LGPL-3.0-only",
+        "license": "MPL-2.0",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -84329,11 +84371,10 @@
             ]
           }
         },
-        "version-date": "2023-01-31"
+        "version-date": "2023-06-20"
       },
       "files": [
         "fix-arm.patch",
-        "include-dir-gnutls.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
