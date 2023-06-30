@@ -1,5 +1,5 @@
 {
-  "version": "a293ce5897b839da7c22fbb2dc07943e3646f58a",
+  "version": "9055f88ba53a99f51e3c733fe9c79703dc23d57d",
   "ports": [
     {
       "name": "3fd",
@@ -200,7 +200,6 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
-        "port-version": 1,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -240,7 +239,7 @@
             ]
           }
         },
-        "version": "7.1.0"
+        "version": "7.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -4796,6 +4795,7 @@
       "name": "baresip-libre",
       "manifest": {
         "name": "baresip-libre",
+        "port-version": 1,
         "description": "Generic library for real-time communications with async IO support",
         "homepage": "https://github.com/baresip/re",
         "license": "BSD-3-Clause",
@@ -4817,6 +4817,7 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "use-c11.patch",
         "vcpkg.json",
         "wip.patch"
       ]
@@ -15906,7 +15907,7 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -19816,7 +19817,7 @@
       "name": "cppfs",
       "manifest": {
         "name": "cppfs",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Cross-platform C++ file system library supporting multiple backends",
         "license": "MIT",
         "supports": "!uwp",
@@ -19843,9 +19844,8 @@
         "version": "1.3.0"
       },
       "files": [
-        "LibCrypto-fix.patch",
-        "cmake-export-fix.patch",
         "portfile.cmake",
+        "ssh-dependencies.diff",
         "vcpkg.json"
       ]
     },
@@ -23210,6 +23210,7 @@
       "name": "drogon",
       "manifest": {
         "name": "drogon",
+        "port-version": 1,
         "description": "A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows",
         "homepage": "https://github.com/an-tao/drogon",
         "documentation": "https://drogon.docsforge.com/master/overview/",
@@ -23303,6 +23304,7 @@
       },
       "files": [
         "drogon_config.patch",
+        "fix_gcc13.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json",
@@ -50100,7 +50102,6 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
-        "port-version": 7,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
         "license": null,
@@ -50124,7 +50125,7 @@
             "supports": "!ios"
           }
         },
-        "version": "5.4.4"
+        "version": "5.4.6"
       },
       "files": [
         "CMakeLists-cpp.txt",
@@ -50647,7 +50648,7 @@
       "name": "magnum",
       "manifest": {
         "name": "magnum",
-        "port-version": 12,
+        "port-version": 13,
         "description": "C++11/C++14 graphics middleware for games and data visualization",
         "homepage": "https://magnum.graphics/",
         "license": null,
@@ -79876,7 +79877,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
@@ -84155,9 +84156,10 @@
             "host": true
           }
         ],
-        "version": "4.11.0"
+        "version": "4.12.2"
       },
       "files": [
+        "fix-cstdint-include.patch",
         "fix-install-path.patch",
         "portfile.cmake",
         "remove-flag-overrides.patch",
@@ -84348,6 +84350,7 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
+        "port-version": 1,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "MPL-2.0",
@@ -84363,13 +84366,23 @@
           }
         ],
         "features": {
+          "curve": {
+            "description": "Enable CURVE security"
+          },
           "draft": {
             "description": "Build and install draft APIs"
           },
           "sodium": {
             "description": "Using libsodium for CURVE security",
             "dependencies": [
-              "libsodium"
+              "libsodium",
+              {
+                "name": "zeromq",
+                "default-features": false,
+                "features": [
+                  "curve"
+                ]
+              }
             ]
           },
           "websockets": {
