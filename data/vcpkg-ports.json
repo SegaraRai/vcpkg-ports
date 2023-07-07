@@ -1,5 +1,5 @@
 {
-  "version": "228987a6fdbd56739a16d47eacf6e79d71a47973",
+  "version": "d1e11918f5c88c1dd364b93e1452fea69bacd479",
   "ports": [
     {
       "name": "3fd",
@@ -314,7 +314,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.4.2"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -20598,8 +20598,7 @@
       "name": "croncpp",
       "manifest": {
         "name": "croncpp",
-        "port-version": 3,
-        "description": "croncpp is a C++17 header-only cross-platform library for handling CRON expressions.",
+        "description": "croncpp is a C++11/14/17 header-only cross-platform library for handling CRON expressions.",
         "homepage": "https://github.com/mariusbancila/croncpp",
         "license": "MIT",
         "dependencies": [
@@ -20612,11 +20611,9 @@
             "host": true
           }
         ],
-        "version-date": "2020-09-04"
+        "version-date": "2023-03-30"
       },
       "files": [
-        "0001-fix-cmake.patch",
-        "no-test.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35675,10 +35672,10 @@
             "host": true
           }
         ],
-        "version": "1.9.1"
+        "version": "1.9.4"
       },
       "files": [
-        "fix-shared-static.patch",
+        "fix-shared-lib.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41317,6 +41314,22 @@
         "version": "1.5.10"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libev",
+      "manifest": {
+        "name": "libev",
+        "description": "libev is a high-performance event loop/event model with lots of features.",
+        "homepage": "http://software.schmorp.de/pkg/libev.html",
+        "license": "BSD-2-Clause OR GPL-2.0-or-later",
+        "supports": "!windows",
+        "version": "4.33"
+      },
+      "files": [
+        "libevConfig.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52271,7 +52284,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-03-02"
+        "version-date": "2023-06-28"
       },
       "files": [
         "portfile.cmake",
@@ -57765,7 +57778,7 @@
             "host": true
           }
         ],
-        "version": "5.1.3"
+        "version": "5.2.1"
       },
       "files": [
         "omniverse-physx-sdk-config.cmake",
@@ -79053,6 +79066,7 @@
       "name": "tree-similarity",
       "manifest": {
         "name": "tree-similarity",
+        "port-version": 1,
         "description": "Tree edit distance (TED) and similarity measurement library, offering multiple algorithm implementation such as APTED and LGM.",
         "homepage": "https://github.com/DatabaseGroup/tree-similarity",
         "license": "MIT",
@@ -80963,6 +80977,7 @@
       "name": "vk-bootstrap",
       "manifest": {
         "name": "vk-bootstrap",
+        "port-version": 1,
         "description": "Vulkan bootstraping library",
         "homepage": "https://github.com/charles-lunarg/vk-bootstrap",
         "license": "MIT",
@@ -80971,16 +80986,14 @@
             "name": "vcpkg-cmake",
             "host": true
           },
-          "vulkan"
+          "vulkan-headers"
         ],
         "version": "0.7"
       },
       "files": [
         "portfile.cmake",
         "vcpkg.json",
-        "vk-bootstrap-config.cmake",
-        "vk-bootstrap-targets-debug.cmake",
-        "vk-bootstrap-targets-release.cmake"
+        "vk-bootstrap-config.cmake"
       ]
     },
     {
@@ -81794,7 +81807,7 @@
       "name": "wampcc",
       "manifest": {
         "name": "wampcc",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Wampcc is C++ library that implements the Web Application Messaging Protocol (WAMP) protocol.",
         "license": "MIT",
         "supports": "!(windows & arm64)",
@@ -81819,6 +81832,7 @@
         "version-date": "2019-09-04"
       },
       "files": [
+        "gcc-11.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
