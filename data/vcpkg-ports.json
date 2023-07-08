@@ -1,5 +1,5 @@
 {
-  "version": "d1e11918f5c88c1dd364b93e1452fea69bacd479",
+  "version": "dafef74af53669ef1cc9015f55e0ce809ead62aa",
   "ports": [
     {
       "name": "3fd",
@@ -3992,6 +3992,41 @@
       ]
     },
     {
+      "name": "azure-core-amqp-cpp",
+      "manifest": {
+        "name": "azure-core-amqp-cpp",
+        "description": [
+          "Microsoft Azure AMQP SDK for C++",
+          "This library provides AMQP functionality to Azure SDK services."
+        ],
+        "homepage": "https://github.com/Azure/azure-sdk-for-cpp/tree/main/sdk/core/azure-core-amqp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "azure-core-cpp",
+            "default-features": false,
+            "version>=": "1.9.0-beta.1"
+          },
+          "azure-uamqp-c",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.0.0-beta.1"
+      },
+      "files": [
+        "00100-fix_dependency.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "azure-core-cpp",
       "manifest": {
         "name": "azure-core-cpp",
@@ -4068,7 +4103,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.10.0"
+        "version-semver": "1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -4138,7 +4173,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.0"
+        "version-semver": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -4903,10 +4938,19 @@
       "name": "bde",
       "manifest": {
         "name": "bde",
-        "port-version": 5,
         "description": "Basic Development Environment - a set of foundational C++ libraries used at Bloomberg.",
-        "supports": "!windows & !arm",
-        "version": "3.2.0.0"
+        "supports": "!windows & !arm & !android & !osx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.117.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -21007,6 +21051,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -21215,8 +21260,8 @@
         "0012-fix-dependency-idn2.patch",
         "0020-fix-pc-file.patch",
         "0022-deduplicate-libs.patch",
-        "0023-fix-find-cares.patch",
         "cmake-project-include.cmake",
+        "dependencies.patch",
         "export-components.patch",
         "mbedtls-ws2_32.patch",
         "portfile.cmake",
@@ -30696,6 +30741,18 @@
               }
             ]
           },
+          "datafusion": {
+            "description": "Cloud Data Fusion API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "datamigration": {
             "description": "Database Migration API C++ Client Library",
             "dependencies": [
@@ -31048,6 +31105,30 @@
               }
             ]
           },
+          "metastore": {
+            "description": "Dataproc Metastore API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "migrationcenter": {
+            "description": "Migration Center API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "monitoring": {
             "description": "Cloud Monitoring API C++ Client Library",
             "dependencies": [
@@ -31074,6 +31155,18 @@
           },
           "networkmanagement": {
             "description": "Network Management API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "networksecurity": {
+            "description": "Secure Web Proxy API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -31182,6 +31275,18 @@
           },
           "pubsub": {
             "description": "The Google Cloud Bigtable C++ client library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "rapidmigrationassessment": {
+            "description": "Rapid Migration Assessment C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -31626,7 +31731,7 @@
             ]
           }
         },
-        "version": "2.12.0"
+        "version": "2.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -35800,7 +35905,6 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
-        "port-version": 1,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -35904,7 +36008,7 @@
             "supports": "windows"
           }
         },
-        "version": "1.89.6"
+        "version": "1.89.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -36007,7 +36111,7 @@
       "name": "implot",
       "manifest": {
         "name": "implot",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Advanced 2D Plotting for Dear ImGui",
         "homepage": "https://github.com/epezent/implot",
         "license": "MIT",
@@ -49114,7 +49218,6 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
-        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
@@ -49130,11 +49233,12 @@
             "host": true
           }
         ],
-        "version-date": "2023-06-10"
+        "version-date": "2023-06-20"
       },
       "files": [
         "CMakeLists.txt",
         "fix-RTSPClient.patch",
+        "fix_operator_overload.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55302,6 +55406,7 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
+        "port-version": 1,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
@@ -71390,6 +71495,7 @@
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/facebook/rocksdb",
         "license": "GPL-2.0-only OR Apache-2.0",
+        "supports": "!uwp & !(arm & !arm64 & android)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -71401,47 +71507,61 @@
           }
         ],
         "default-features": [
+          "liburing",
           "zlib"
         ],
         "features": {
           "bzip2": {
-            "description": "bzip2 support in rocksdb",
+            "description": "build with bzip2",
             "dependencies": [
               "bzip2"
             ]
           },
+          "liburing": {
+            "description": "build with liburing",
+            "dependencies": [
+              {
+                "name": "liburing",
+                "platform": "linux"
+              }
+            ]
+          },
           "lz4": {
-            "description": "lz4 support in rocksdb",
+            "description": "build with lz4",
             "dependencies": [
               "lz4"
             ]
           },
+          "numa": {
+            "description": "build with NUMA policy support",
+            "supports": "linux"
+          },
           "snappy": {
-            "description": "snappy support in rocksdb",
+            "description": "build with SNAPPY",
             "dependencies": [
               "snappy"
             ]
           },
           "tbb": {
-            "description": "tbb support in rocksdb",
+            "description": "build with Threading Building Blocks (TBB)",
             "dependencies": [
               "tbb"
             ]
           },
           "zlib": {
-            "description": "zlib support in rocksdb",
+            "description": "build with zlib",
             "dependencies": [
               "zlib"
             ]
           },
           "zstd": {
-            "description": "zstd support in rocksdb",
+            "description": "build with zstd",
             "dependencies": [
               "zstd"
             ]
           }
         },
-        "version": "8.0.0"
+        "version": "8.3.2"
       },
       "files": [
         "0002-only-build-one-flavor.patch",
@@ -73551,7 +73671,7 @@
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
-        "supports": "osx | (!arm & !uwp)",
+        "supports": "osx | linux | (!arm & !uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
