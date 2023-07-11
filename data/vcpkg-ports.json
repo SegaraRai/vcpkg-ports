@@ -1,5 +1,5 @@
 {
-  "version": "dafef74af53669ef1cc9015f55e0ce809ead62aa",
+  "version": "6b8459636c7ab9f2ccb638697b2ac990e1fd64b1",
   "ports": [
     {
       "name": "3fd",
@@ -5044,7 +5044,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.8.0"
+        "version-semver": "1.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -25239,9 +25239,10 @@
       "name": "fdk-aac",
       "manifest": {
         "name": "fdk-aac",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A standalone Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android. Uses a fork without HE-AAC, HE-AACv2, or xHE-AAC support to avoid patent licensing and GPL compatibility issues when built without the he-aac option.",
         "homepage": "https://gitlab.freedesktop.org/wtaymans/fdk-aac-stripped",
+        "license": "FDK-AAC",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -28911,6 +28912,7 @@
       "name": "geotrans",
       "manifest": {
         "name": "geotrans",
+        "port-version": 1,
         "description": "GEOTRANS is an application that allows you to convert geographic coordinates among a wide variety of coordinate systems, map projections, grids, and datums. GEOTRANS runs in Microsoft Windows and LINUX environments.",
         "homepage": "https://earth-info.nga.mil/GandG/update/index.php?action=home",
         "license": null,
@@ -29160,7 +29162,7 @@
             "host": true
           }
         ],
-        "version": "1.5.12"
+        "version": "1.5.14"
       },
       "files": [
         "portfile.cmake",
@@ -32100,7 +32102,7 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
@@ -35894,7 +35896,7 @@
             "host": true
           }
         ],
-        "version": "3.1.5"
+        "version": "3.1.9"
       },
       "files": [
         "portfile.cmake",
@@ -37319,7 +37321,7 @@
             "host": true
           }
         ],
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -42573,7 +42575,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -42594,7 +42595,7 @@
           },
           "x265"
         ],
-        "version": "1.16.1"
+        "version": "1.16.2"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -54324,12 +54325,11 @@
             ]
           }
         },
-        "version": "3.7.0"
+        "version": "3.7.2"
       },
       "files": [
         "cmake-project-include.cmake",
         "fix-dependencies.patch",
-        "fix-msvc-cxx17.patch",
         "libbsoncxx-config.cmake",
         "libmongocxx-config.cmake",
         "portfile.cmake",
@@ -65337,7 +65337,6 @@
         "license": "BSD-3-Clause",
         "supports": "!(arm & windows)",
         "dependencies": [
-          "python3",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -65347,10 +65346,11 @@
             "host": true
           }
         ],
-        "version": "2.10.3"
+        "version": "2.10.4"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74132,9 +74132,11 @@
       "name": "shiva",
       "manifest": {
         "name": "shiva",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Modern C++ Game Engine",
         "homepage": "https://github.com/Milerius/shiva",
+        "license": "MIT",
+        "supports": "!(static & windows)",
         "dependencies": [
           "boost-dll",
           "boost-filesystem",
@@ -74147,6 +74149,7 @@
           },
           "nlohmann-json",
           "pybind11",
+          "python3",
           "sol2",
           "spdlog",
           {
@@ -74161,7 +74164,7 @@
         "version": "1.0"
       },
       "files": [
-        "no_copy_dll.patch",
+        "find_python_and_no_copy_dll.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75777,7 +75780,6 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
-        "port-version": 1,
         "description": "Very fast, header only, C++ logging library",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -75804,11 +75806,9 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.11.0"
+        "version-semver": "1.12.0"
       },
       "files": [
-        "fmt-10-support.patch",
-        "fmt-header.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -77999,13 +77999,13 @@
       "name": "think-cell-range",
       "manifest": {
         "name": "think-cell-range",
-        "port-version": 2,
         "description": "think-cell's range library",
-        "homepage": "https://github.com/think-cell/range",
+        "homepage": "https://github.com/think-cell/think-cell-library",
+        "license": "BSL-1.0",
         "dependencies": [
           "boost"
         ],
-        "version-string": "498839d"
+        "version": "2023.1"
       },
       "files": [
         "portfile.cmake",
