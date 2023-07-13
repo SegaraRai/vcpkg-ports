@@ -1,5 +1,5 @@
 {
-  "version": "a54b77790d1632394bc16621ef83613dd4480320",
+  "version": "f764ff90b6c90a0964e9aea19b50fc23705ac6ed",
   "ports": [
     {
       "name": "3fd",
@@ -908,7 +908,7 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -4492,7 +4492,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.7.0"
+        "version-semver": "12.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -4532,7 +4532,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.3.2"
+        "version-semver": "12.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -4620,7 +4620,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.6.0"
+        "version-semver": "12.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -4652,7 +4652,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.5.0"
+        "version-semver": "12.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -17837,9 +17837,10 @@
       "name": "chipmunk",
       "manifest": {
         "name": "chipmunk",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A fast and lightweight 2D game physics library.",
         "homepage": "https://github.com/slembcke/Chipmunk2D",
+        "supports": "!(arm & !arm64 & android)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -22786,9 +22787,10 @@
       "name": "dirent",
       "manifest": {
         "name": "dirent",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Dirent is a C/C++ programming interface that allows programmers to retrieve information about files and directories under Linux/UNIX. This project provides Linux compatible Dirent interface for Microsoft Windows.",
         "homepage": "https://github.com/tronkko/dirent",
+        "license": "MIT",
         "version": "1.23.2"
       },
       "files": [
@@ -26180,7 +26182,7 @@
       "name": "flann",
       "manifest": {
         "name": "flann",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Fast Library for Approximate Nearest Neighbors",
         "homepage": "https://github.com/mariusmuja/flann",
         "license": "BSD-3-Clause",
@@ -26214,6 +26216,7 @@
       "files": [
         "fix-build-error.patch",
         "fix-dependency-hdf5.patch",
+        "fix_undefined_pot_t.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34148,7 +34151,7 @@
             ]
           }
         },
-        "version": "7.3.0"
+        "version": "8.0.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -41432,7 +41435,7 @@
       "name": "libev",
       "manifest": {
         "name": "libev",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libev is a high-performance event loop/event model with lots of features.",
         "homepage": "http://software.schmorp.de/pkg/libev.html",
         "license": "BSD-2-Clause OR GPL-2.0-or-later",
@@ -41440,8 +41443,8 @@
         "version": "4.33"
       },
       "files": [
-        "libevConfig.cmake",
         "portfile.cmake",
+        "unofficial-libev-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -47475,7 +47478,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.45.0"
+        "version-semver": "1.46.0"
       },
       "files": [
         "fix-build-type.patch",
@@ -50609,7 +50612,7 @@
             "host": true
           }
         ],
-        "version": "2.3.1"
+        "version": "2.3.8"
       },
       "files": [
         "fix-install.patch",
@@ -55218,6 +55221,7 @@
       "name": "mujoco",
       "manifest": {
         "name": "mujoco",
+        "port-version": 1,
         "description": "Multi-Joint dynamics with Contact.",
         "homepage": "https://mujoco.org",
         "license": "Apache-2.0",
@@ -55496,10 +55500,11 @@
             "host": true
           }
         ],
-        "version": "0.10.2"
+        "version": "0.10.3"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
