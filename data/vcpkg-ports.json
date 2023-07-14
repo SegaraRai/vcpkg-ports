@@ -1,5 +1,5 @@
 {
-  "version": "f764ff90b6c90a0964e9aea19b50fc23705ac6ed",
+  "version": "7771648f32626142222bbd3b91421e53314bee69",
   "ports": [
     {
       "name": "3fd",
@@ -4832,7 +4832,7 @@
       "name": "baresip-libre",
       "manifest": {
         "name": "baresip-libre",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Generic library for real-time communications with async IO support",
         "homepage": "https://github.com/baresip/re",
         "license": "BSD-3-Clause",
@@ -5133,7 +5133,7 @@
       "name": "bext-ut",
       "manifest": {
         "name": "bext-ut",
-        "port-version": 1,
+        "port-version": 2,
         "description": "UT: C++20 μ(micro)/Unit Testing Framework",
         "homepage": "https://boost-ext.github.io/ut/",
         "license": "BSL-1.0",
@@ -5150,9 +5150,7 @@
         "version": "1.1.9"
       },
       "files": [
-        "avoid-cpm.patch",
         "portfile.cmake",
-        "pr-521.patch",
         "vcpkg.json"
       ]
     },
@@ -11203,7 +11201,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -20728,7 +20726,6 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
-        "port-version": 3,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -20747,9 +20744,10 @@
             "description": "Crypto++ with PEM pack"
           }
         },
-        "version": "8.7.0"
+        "version": "8.8.0"
       },
       "files": [
+        "fix-git-branch.patch",
         "patch.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -21053,7 +21051,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": null,
@@ -21251,6 +21249,12 @@
             "description": "SSL support (wolfSSL)",
             "dependencies": [
               "wolfssl"
+            ]
+          },
+          "zstd": {
+            "description": "ZStandard support (zstd)",
+            "dependencies": [
+              "zstd"
             ]
           }
         },
@@ -21877,9 +21881,10 @@
       "name": "date",
       "manifest": {
         "name": "date",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A date and time library based on the C++17 <chrono> header",
         "homepage": "https://github.com/HowardHinnant/date",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -29719,7 +29724,7 @@
             "host": true
           }
         ],
-        "version": "1.2.6"
+        "version": "1.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -45598,9 +45603,10 @@
       "name": "librsvg",
       "manifest": {
         "name": "librsvg",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A small library to render Scalable Vector Graphics (SVG)",
         "homepage": "https://gitlab.gnome.org/GNOME/librsvg",
+        "license": "LGPL-2.0-or-later",
         "dependencies": [
           "cairo",
           "gdk-pixbuf",
@@ -56296,7 +56302,7 @@
             "host": true
           }
         ],
-        "version": "1.54.0"
+        "version": "1.55.0"
       },
       "files": [
         "portfile.cmake",
@@ -62213,10 +62219,10 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
-        "license": "LGPL-2.0-only",
+        "license": "LGPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
           {
@@ -73750,7 +73756,7 @@
             ]
           }
         },
-        "version": "0.6.4"
+        "version": "0.6.5"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -75155,7 +75161,7 @@
             "host": true
           }
         ],
-        "version": "1.5.2"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -75179,7 +75185,7 @@
             "host": true
           }
         ],
-        "version": "5.7.5"
+        "version": "5.8.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -83379,9 +83385,10 @@
       "name": "xcb-proto",
       "manifest": {
         "name": "xcb-proto",
+        "port-version": 1,
         "description": "XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions",
         "homepage": "https://xcb.freedesktop.org/",
-        "license": null,
+        "license": "X11-distribute-modifications-variant",
         "dependencies": [
           "bzip2",
           {
