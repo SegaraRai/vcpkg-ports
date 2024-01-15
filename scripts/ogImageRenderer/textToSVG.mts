@@ -116,7 +116,7 @@ export function textToSVG(
     text,
     pxToUnits(maxWidth, font, fontSize),
     maxLines,
-    layoutCallback || ((text) => font.layout(text)),
+    layoutCallback ?? ((text) => font.layout(text)),
     ellipsis,
     strict
   );

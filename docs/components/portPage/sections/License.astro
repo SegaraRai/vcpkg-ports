@@ -4,7 +4,7 @@ import { toUniqueArray } from '../../../../shared/utils.mjs';
 import LinkExternal from '../../LinkExternal.astro';
 import SectionWrapper from '../SectionWrapper.astro';
 import CodeBlock from '../components/CodeBlock.astro';
-import { SectionProps, defineSection } from '../defineSection.mjs';
+import { type SectionProps, defineSection } from '../defineSection.mjs';
 
 type Props = SectionProps;
 
@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 const foundLicenses = toUniqueArray(
-  (license || '').split(/[()\s]/).map((l) => l.trim())
+  (license ?? '').split(/[()\s]/).map((l) => l.trim())
 )
   .map((l) => licenseInfoMap[l])
   .filter((l) => !!l);
@@ -77,7 +77,7 @@ const licenseText = fileContents.find(([filename]) =>
             <LinkExternal
               href={url}
               set:text={
-                decodeURIComponent(url.match(/[^/]+$/)?.[0] || '') || url
+                decodeURIComponent(url.match(/[^/]+$/)?.[0] ?? '') || url
               }
             />
           </li>

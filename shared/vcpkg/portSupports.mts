@@ -1,8 +1,8 @@
 import jsep from 'jsep';
 import {
   FULL_TRIPLETS,
-  FullSupportTriplet,
-  MinifiedTriplet,
+  type FullSupportTriplet,
+  type MinifiedTriplet,
   minifyTriplets,
 } from './triplets.mjs';
 

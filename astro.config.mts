@@ -68,26 +68,30 @@ export default defineConfig({
       },
     }),
     compress({
-      html: {
-        collapseWhitespace: true,
-        conservativeCollapse: false,
-        decodeEntities: true,
-        removeComments: true,
-        removeRedundantAttributes: true,
-        sortAttributes: true,
-        sortClassName: true,
-        useShortDoctype: true,
-        minifyCSS: true,
-        minifyJS: true,
-        ignoreCustomComments: [
-          // Possible important comments (licenses, CSP placeholder, etc.)
-          /^\s*[!#]/,
-          // Vue comments (even empty comments must be preserved)
-          /^[[\]]*$/,
-        ],
+      HTML: {
+        'html-minifier-terser': {
+          collapseWhitespace: true,
+          conservativeCollapse: false,
+          decodeEntities: true,
+          removeComments: true,
+          removeRedundantAttributes: true,
+          sortAttributes: true,
+          sortClassName: true,
+          useShortDoctype: true,
+          minifyCSS: true,
+          minifyJS: true,
+          ignoreCustomComments: [
+            // Possible important comments (licenses, CSP placeholder, etc.)
+            /^\s*[!#]/,
+            // Vue comments (even empty comments must be preserved)
+            /^[[\]]*$/,
+          ],
+        },
       },
-      svg: {
-        multipass: true,
+      SVG: {
+        svgo: {
+          multipass: true,
+        },
       },
     }),
     postprocess(),

@@ -96,7 +96,7 @@ const { class: classList, lang, nosnippet } = Astro.props;
   const ICON_TIMEOUT = 2000;
 
   const copyAsync = async (button: HTMLElement): Promise<boolean> => {
-    if (!navigator.clipboard) {
+    if (!navigator?.clipboard) {
       return false;
     }
     const code = button.parentElement?.querySelector('code');

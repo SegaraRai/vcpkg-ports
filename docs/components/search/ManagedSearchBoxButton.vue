@@ -1,7 +1,7 @@
 <script lang="ts" setup>
+import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
 import SearchBoxButton from './SearchBoxButton.vue';
 import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
-import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
 
 const show = useGlobalRef('_vpSearchPopup', false);
 

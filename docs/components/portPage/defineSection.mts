@@ -52,7 +52,7 @@ export function defineSection(
                 text: def.title,
               },
             ]),
-        ...(def.headings || []),
+        ...(def.headings ?? []),
       ],
       noHeading: def.noHeading ?? false,
       exists: def.exists ?? true,

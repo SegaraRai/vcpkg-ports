@@ -82,7 +82,7 @@ export function renderMarkdownSubset(
     inlineCodeBlock = true,
     githubIssues = false,
     newline = 'space',
-  } = options || {};
+  } = options ?? {};
   let rootChunk: Chunk = {
     type: 'root',
     chunks: [text],
@@ -139,7 +139,7 @@ export function renderMarkdownSubset(
     rootChunk = applyTransform(rootChunk, (chunk) => {
       const chunks: ChunkOrString[] = [];
       let consumed = 0;
-      for (const result of linkifyInstance.match(chunk) || []) {
+      for (const result of linkifyInstance.match(chunk) ?? []) {
         const { index, lastIndex, url, raw } = result;
         if (index > consumed) {
           chunks.push(chunk.slice(consumed, index));

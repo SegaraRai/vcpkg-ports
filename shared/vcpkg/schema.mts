@@ -6,8 +6,8 @@ import { evalVcpkgSupportsExpr, parseVcpkgSupports } from './portSupports.mjs';
 type DeepReadonly<T> = T extends (infer U)[]
   ? readonly DeepReadonly<U>[]
   : T extends object
-  ? { readonly [K in keyof T]: DeepReadonly<T[K]> }
-  : T;
+    ? { readonly [K in keyof T]: DeepReadonly<T[K]> }
+    : T;
 
 export const zVcpkgPortName = z
   .string()
@@ -49,12 +49,18 @@ export const zVcpkgSupports = z
   );
 export const zVcpkgLicense = z.string().min(1);
 
+export const zVcpkgFeatureItem = z.union([
+  zVcpkgFeatureName,
+  z.object({ name: zVcpkgFeatureName, platform: zVcpkgSupports }),
+]);
+export type VcpkgFeatureItem = DeepReadonly<z.infer<typeof zVcpkgFeatureItem>>;
+
 export const zVcpkgDependencyObject = z
   .object({
     name: zVcpkgPortName,
     host: z.boolean().optional(),
     'default-features': z.boolean().optional(),
-    features: z.array(zVcpkgFeatureName).optional(),
+    features: z.array(zVcpkgFeatureItem).optional(),
     platform: zVcpkgSupports.optional(),
     'version>=': z.string().min(1).optional(),
   })
@@ -74,6 +80,7 @@ export const zVcpkgFeature = z
     description: zVcpkgDescription,
     dependencies: z.array(zVcpkgDependency).optional(),
     supports: zVcpkgSupports.optional(),
+    license: zVcpkgLicense.nullable().optional(),
   })
   .strict();
 export type VcpkgFeature = DeepReadonly<z.infer<typeof zVcpkgFeature>>;
@@ -92,7 +99,7 @@ const zVcpkgBase = z.object({
   license: zVcpkgLicense.nullable().optional(),
   supports: zVcpkgSupports.optional(),
   dependencies: z.array(zVcpkgDependency).optional(),
-  'default-features': z.array(zVcpkgFeatureName).optional(),
+  'default-features': z.array(zVcpkgFeatureItem).optional(),
   features: z.record(zVcpkgFeatureName, zVcpkgFeature).optional(),
   // non-standard fields
   summary: z.string().optional(),

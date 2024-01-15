@@ -6,7 +6,7 @@ import {
   useWindowScroll,
 } from '@vueuse/core';
 import type { MarkdownHeading } from 'astro';
-import { Ref, computed, ref, watchEffect } from 'vue';
+import { type Ref, computed, ref, watchEffect } from 'vue';
 import { OFFSET_FOR_ACTIVE_ANCHOR } from '../constants.mjs';
 
 export function useActiveAnchor(
@@ -29,7 +29,7 @@ export function useActiveAnchor(
       }
       return headings.value.map((h) => ({
         ...h,
-        offset: document.getElementById(h.slug)?.offsetTop || 0,
+        offset: document.getElementById(h.slug)?.offsetTop ?? 0,
       }));
     }
   );

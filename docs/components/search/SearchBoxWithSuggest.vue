@@ -1,14 +1,14 @@
 <script lang="ts" setup>
 import { vOnClickOutside } from '@vueuse/components';
-import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
 import { computedEager, useDebounce, useVModel } from '@vueuse/core';
 import { ref, shallowRef, watch, watchEffect } from 'vue';
-import { getPortPageURL } from '../../constants.mjs';
 import { useSearch } from '../../composables/useSearch.mjs';
 import {
   SEARCH_MAX_RESULTS_FOR_SUGGEST,
   SEARCH_TERM_DEBOUNCE,
+  getPortPageURL,
 } from '../../constants.mjs';
+import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
 import HighlightMatched from './HighlightMatched.vue';
 import SearchBox from './SearchBox.vue';
 import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
@@ -116,7 +116,7 @@ const close = (focus?: boolean): void => {
                 <HighlightMatched
                   :text="result.item.name"
                   :indices="
-                    result.matches?.find((m) => m.key === 'name')?.indices || []
+                    result.matches?.find((m) => m.key === 'name')?.indices ?? []
                   "
                   highlight-class=":uno: font-bold"
                 />

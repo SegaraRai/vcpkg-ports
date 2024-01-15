@@ -1,6 +1,6 @@
 import fsp from 'node:fs/promises';
 import path from 'node:path';
-import { Font, open } from 'fontkit';
+import { type Font, open } from 'fontkit';
 import { OG_FONTS_DIR } from '../constants.mjs';
 import {
   CANVAS_HEIGHT,

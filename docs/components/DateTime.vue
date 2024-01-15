@@ -1,10 +1,15 @@
 <script lang="ts" setup>
-import { Ref, ref, unref } from 'vue';
-import { MaybeRef, useMounted, useTimeAgo, computedEager } from '@vueuse/core';
+import {
+  type MaybeRef,
+  computedEager,
+  useMounted,
+  useTimeAgo,
+} from '@vueuse/core';
+import { type Ref, ref, unref } from 'vue';
 
 const props = defineProps<{
   timestamp: string;
-  long?: boolean | false;
+  long?: boolean;
 }>();
 
 const useTernaryEager = <T, F>(

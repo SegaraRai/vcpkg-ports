@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { computed, nextTick, onMounted, toRef, watchEffect } from 'vue';
-import {
-  SEARCH_MAX_RESULTS_FOR_PAGE,
-  SEARCH_MAX_RESULTS_PER_PAGE,
-  SEARCH_PAGE_PAGE_KEY,
-  SEARCH_PAGE_QUERY_KEY,
-  getSearchPageURL,
-} from '../../constants.mjs';
-import { useSearch } from '../../composables/useSearch.mjs';
 import {
   computedEager,
   useOffsetPagination,
   useUrlSearchParams,
 } from '@vueuse/core';
-import { getPortPageURL } from '../../constants.mjs';
+import { computed, nextTick, onMounted, toRef, watchEffect } from 'vue';
+import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
+import { useSearch } from '../../composables/useSearch.mjs';
+import {
+  SEARCH_MAX_RESULTS_FOR_PAGE,
+  SEARCH_MAX_RESULTS_PER_PAGE,
+  SEARCH_PAGE_PAGE_KEY,
+  SEARCH_PAGE_QUERY_KEY,
+  getPortPageURL,
+  getSearchPageURL,
+} from '../../constants.mjs';
 import { pluralize } from '../portPage/utils/pluralize.mjs';
 import HighlightMatched from './HighlightMatched.vue';
-import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
 
 const qsp = useUrlSearchParams('hash-params', {
   initialValue: {
@@ -164,7 +164,7 @@ onMounted((): (() => void) => {
                     :text="result.item.description"
                     :indices="
                       result.matches?.find((e) => e.key === 'description')
-                        ?.indices || []
+                        ?.indices ?? []
                     "
                     highlight-class=":uno: font-bold"
                   />

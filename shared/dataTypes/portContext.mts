@@ -15,7 +15,7 @@ export interface PortContext {
   readonly files: readonly string[];
   readonly fileContents: readonly (readonly [
     filename: string,
-    content: string
+    content: string,
   ])[];
   readonly inferredCopyrightURLs: readonly string[];
 }

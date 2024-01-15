@@ -10,7 +10,11 @@ import path from 'node:path';
 import { exit } from 'node:process';
 import { ZodError } from 'zod';
 import { getDependencies } from '../../shared/vcpkg/portUtils.mjs';
-import { Vcpkg, parseVcpkgJSON } from '../../shared/vcpkg/schema.mjs';
+import {
+  type Vcpkg,
+  type VcpkgFeatureItem,
+  parseVcpkgJSON,
+} from '../../shared/vcpkg/schema.mjs';
 import { VCPKG_DIR } from '../constants.mjs';
 import { VCPKG_PORT_NAMES } from '../vcpkgInfo.mjs';
 
@@ -30,9 +34,10 @@ for (const portName of VCPKG_PORT_NAMES) {
     }
     // check if default features are valid
     const featureNameSet = new Set<string>(
-      Object.keys(manifest.features || {})
+      Object.keys(manifest.features ?? {})
     );
-    for (const featureName of manifest['default-features'] || []) {
+    for (const feature of manifest['default-features'] ?? []) {
+      const featureName = typeof feature === 'string' ? feature : feature.name;
       if (!featureNameSet.has(featureName)) {
         throw new Error(`default feature ${featureName} does not exist`);
       }
@@ -40,7 +45,9 @@ for (const portName of VCPKG_PORT_NAMES) {
     // add to map
     VCPKG_PORT_MANIFEST_MAP.set(portName, manifest);
   } catch (error) {
-    console.error(`ERROR: failed to validate ${portName}/vcpkg.json`);
+    console.error(
+      `ERROR: failed to validate .vcpkg/ports/${portName}/vcpkg.json`
+    );
     if (error instanceof ZodError) {
       console.error(error.message);
     } else {
@@ -57,7 +64,7 @@ if (numErrors === 0) {
   const checkDependency = (
     dependent: string,
     dependency: string,
-    features: readonly string[] = []
+    features: readonly VcpkgFeatureItem[] = []
   ): void => {
     // check port existence
     const manifest = VCPKG_PORT_MANIFEST_MAP.get(dependency);
@@ -70,7 +77,8 @@ if (numErrors === 0) {
     }
 
     // check feature existence
-    for (const featureName of features) {
+    for (const feature of features) {
+      const featureName = typeof feature === 'string' ? feature : feature.name;
       if (!manifest.features?.[featureName]) {
         console.warn(
           `WARN: feature ${featureName} does not exist in ${dependency} (dependent: ${dependent})`
@@ -87,7 +95,7 @@ if (numErrors === 0) {
     }
     // check feature dependencies
     for (const [featureName, feature] of Object.entries(
-      manifest.features || {}
+      manifest.features ?? {}
     )) {
       for (const dep of getDependencies(feature)) {
         checkDependency(

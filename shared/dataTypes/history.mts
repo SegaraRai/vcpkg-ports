@@ -3,7 +3,7 @@ export type DataHistoryCommitAuthor = readonly [
   name: string,
   emailHash: string,
   /** local part of `<someone>@users.noreply.github.com` */
-  githubUser: string | null
+  githubUser: string | null,
 ];
 
 export interface DataHistoryCommit {

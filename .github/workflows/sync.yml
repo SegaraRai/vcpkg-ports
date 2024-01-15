@@ -33,7 +33,7 @@ jobs:
       deployments: write
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ env.COMMIT_BRANCH }}
           fetch-depth: 1
@@ -43,14 +43,16 @@ jobs:
         with:
           version: 8
 
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: pnpm
 
-      - run: pnpm i --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm i --frozen-lockfile
 
-      - run: pnpm run sync:vcpkg
+      - name: Sync vcpkg
+        run: pnpm run sync:vcpkg
         if: '!inputs.no_sync'
 
       - name: Check for changes
@@ -62,7 +64,7 @@ jobs:
           fi
 
       - name: Commit and push
-        if: "!inputs.no_sync && steps.check_for_changes.outputs.modified == '1'"
+        if: '!inputs.no_sync && steps.check_for_changes.outputs.modified == "1"'
         run: |
           git config --global user.name "$COMMIT_AUTHOR_NAME"
           git config --global user.email "$COMMIT_AUTHOR_EMAIL"
@@ -70,17 +72,19 @@ jobs:
           git commit -m "$COMMIT_MESSAGE"
           git push origin "$COMMIT_BRANCH"
 
-      - run: pnpm run generate:images
+      - name: Generate social media images (OGP)
+        run: pnpm run generate:images
         if: inputs.no_sync || steps.check_for_changes.outputs.modified == '1'
 
-      - run: pnpm run build
+      - name: Build
+        run: pnpm run build
         if: inputs.no_sync || steps.check_for_changes.outputs.modified == '1'
         env:
           VP_ENABLE_EXPIRES_HEADER: 1
 
       - name: Deploy
         if: inputs.no_sync || steps.check_for_changes.outputs.modified == '1'
-        uses: cloudflare/pages-action@1
+        uses: cloudflare/pages-action@v1
         with:
           branch: main
           directory: dist

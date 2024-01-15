@@ -8,7 +8,9 @@ const modifier = ref('Ctrl');
 onMounted((): void => {
   if (
     !import.meta.env.SSR &&
-    /Mac|iPhone|iPod|iPad/i.test(navigator.platform)
+    /Mac|iPhone|iPod|iPad/i.test(
+      navigator?.userAgentData?.platform || navigator?.platform || ''
+    )
   ) {
     modifier.value = '⌘';
   }

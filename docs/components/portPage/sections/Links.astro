@@ -1,7 +1,7 @@
 ---
 import LinkExternal from '../../LinkExternal.astro';
 import SectionWrapper from '../SectionWrapper.astro';
-import { SectionProps, defineSection } from '../defineSection.mjs';
+import { type SectionProps, defineSection } from '../defineSection.mjs';
 
 type Props = SectionProps;
 
@@ -19,8 +19,8 @@ const {
 
 const links = (
   [
-    ['', homepage || ''],
-    ['Documentation', documentation || ''],
+    ['', homepage ?? ''],
+    ['Documentation', documentation ?? ''],
   ] as const
 ).filter(([, url]) => url);
 ---

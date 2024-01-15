@@ -67,7 +67,7 @@ export function textToLines(
 ): string[] {
   const splittedLines: string[][] = text
     .split('\n')
-    .map((line) => line.match(/[^\s-]*[\s-]*/g) || []);
+    .map((line) => line.match(/[^\s-]*[\s-]*/g) ?? []);
   const lines: string[] = [];
   for (const [splittedLineIndex, splittedWords] of splittedLines.entries()) {
     let line = '';
@@ -103,7 +103,7 @@ export function textToLines(
             ...context,
             wordTooLong: true,
           }).slice();
-          line = result.pop() || '';
+          line = result.pop() ?? '';
           lines.push(...result);
           continue;
         }

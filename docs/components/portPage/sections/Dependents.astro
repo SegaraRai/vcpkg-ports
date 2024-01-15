@@ -1,7 +1,7 @@
 ---
 import SectionWrapper from '../SectionWrapper.astro';
-import Dependents from '../components/Dependents.astro';
-import { SectionProps, defineSection } from '../defineSection.mjs';
+import PortDependents from '../components/Dependents.astro';
+import { type SectionProps, defineSection } from '../defineSection.mjs';
 
 type Props = SectionProps;
 
@@ -16,5 +16,5 @@ const {
 ---
 
 <SectionWrapper nosnippet section={section}>
-  <Dependents dependents={normalDependents} />
+  <PortDependents dependents={normalDependents} />
 </SectionWrapper>

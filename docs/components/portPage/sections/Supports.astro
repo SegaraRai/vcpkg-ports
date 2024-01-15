@@ -5,7 +5,7 @@ import { FULL_TRIPLETS } from '../../../../shared/vcpkg/triplets.mjs';
 import SectionWrapper from '../SectionWrapper.astro';
 import HostOnlyBadge from '../components/HostOnlyBadge.astro';
 import SupportedListItem from '../components/SupportedListItem.astro';
-import { SectionProps, defineSection } from '../defineSection.mjs';
+import { type SectionProps, defineSection } from '../defineSection.mjs';
 
 type Props = SectionProps;
 
@@ -20,7 +20,7 @@ const {
 
 const hostOnly = isHostOnlyPort(manifest);
 const { supportedMinified, unsupportedMinified } = getSupports(
-  manifest.supports || '',
+  manifest.supports ?? '',
   FULL_TRIPLETS
 );
 

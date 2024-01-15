@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import SearchBoxWithSuggest from './SearchBoxWithSuggest.vue';
 import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
+import SearchBoxWithSuggest from './SearchBoxWithSuggest.vue';
 
 const searchBoxTerm = useGlobalRef('_vpSearchTerm', '');
 

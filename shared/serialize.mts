@@ -20,12 +20,12 @@ export function serialize(value: any): string {
           `${PLACEHOLDER_ARRAY_END}])#`,
         ]
       : value instanceof Set
-      ? [
-          `${PLACEHOLDER_ARRAY_BEGIN}new Set([#`,
-          ...value.entries(),
-          `${PLACEHOLDER_ARRAY_END}])#`,
-        ]
-      : value
+        ? [
+            `${PLACEHOLDER_ARRAY_BEGIN}new Set([#`,
+            ...value.entries(),
+            `${PLACEHOLDER_ARRAY_END}])#`,
+          ]
+        : value
   );
 
   const result = REGEXPS.reduce(

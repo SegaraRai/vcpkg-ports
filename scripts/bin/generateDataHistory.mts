@@ -32,7 +32,7 @@ function hashEmail(email: string): string {
 }
 
 function getGitHubUserFromEmail(email: string): string | null {
-  return email.match(/^([^@]+)@users\.noreply\.github\.com$/i)?.[1] || null;
+  return email.match(/^([^@]+)@users\.noreply\.github\.com$/i)?.[1] ?? null;
 }
 
 async function gitLog<T extends Readonly<Record<string, string>>>(
@@ -224,7 +224,7 @@ async function generateHistory(
     commits: allCommits
       .filter((commit) => !commit.parent || involvedCommitIdSet.has(commit.oid))
       .map((commit) => transformCommit(commit))
-      .concat(base?.commits || []),
+      .concat(base?.commits ?? []),
   };
 }
 

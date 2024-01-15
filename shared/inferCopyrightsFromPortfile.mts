@@ -18,10 +18,10 @@ const SOURCE_PROVIDERS = {
     args: readonly string[],
     expandVars: (text: string) => string
   ): SourceProvider => {
-    const repo = expandVars(getArg(args, 'REPO') || '');
-    const ref = expandVars(getArg(args, 'REF') || '');
+    const repo = expandVars(getArg(args, 'REPO') ?? '');
+    const ref = expandVars(getArg(args, 'REF') ?? '');
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `https://bitbucket.org/${repo}/src/${ref}/${filenameToURL(
@@ -34,11 +34,12 @@ const SOURCE_PROVIDERS = {
     args: readonly string[],
     expandVars: (text: string) => string
   ): SourceProvider => {
-    const url = expandVars(getArg(args, 'GITHUB_HOST') || 'https://github.com');
-    const repo = expandVars(getArg(args, 'REPO') || '');
-    const ref = expandVars(getArg(args, 'REF') || '');
+    const url =
+      expandVars(getArg(args, 'GITHUB_HOST') ?? '') || 'https://github.com';
+    const repo = expandVars(getArg(args, 'REPO') ?? '');
+    const ref = expandVars(getArg(args, 'REF') ?? '');
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `${url}/${repo}/blob/${ref}/${filenameToURL(filename)}`
@@ -49,11 +50,12 @@ const SOURCE_PROVIDERS = {
     args: readonly string[],
     expandVars: (text: string) => string
   ): SourceProvider => {
-    const url = expandVars(getArg(args, 'GITLAB_URL') || 'https://gitlab.com');
-    const repo = expandVars(getArg(args, 'REPO') || '');
-    const ref = expandVars(getArg(args, 'REF') || '');
+    const url =
+      expandVars(getArg(args, 'GITLAB_URL') ?? '') || 'https://gitlab.com';
+    const repo = expandVars(getArg(args, 'REPO') ?? '');
+    const ref = expandVars(getArg(args, 'REF') ?? '');
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `${url}/${repo}/-/blob/${ref}/${filenameToURL(filename)}`
@@ -67,7 +69,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // there are no generic way to get the file URL from a git repo
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
     };
   },
   vcpkg_from_sourceforge: (
@@ -76,7 +78,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // this points to an archive so we cannot get file URL
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
     };
   },
   vcpkg_extract_source_archive: (
@@ -84,7 +86,7 @@ const SOURCE_PROVIDERS = {
     expandVars: (text: string) => string
   ): SourceProvider => {
     return {
-      varName: expandVars(args[0] || '') || undefined,
+      varName: expandVars(args[0] ?? '') || undefined,
     };
   },
   vcpkg_extract_source_archive_ex: (
@@ -93,7 +95,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // this points to an archive so we cannot get file URL
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') || '') || undefined,
+      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
     };
   },
 } as const;
@@ -257,7 +259,7 @@ export function inferCopyrightsFromPortfile(
               break;
 
             case 'DOWNLOAD': {
-              const url = expandVars(getArg(args, 'URL') || '');
+              const url = expandVars(getArg(args, 'URL') ?? '');
               if (url) {
                 contextFiles.set(file, createURLRef(url));
               }
@@ -265,7 +267,7 @@ export function inferCopyrightsFromPortfile(
             }
 
             case 'WRITE':
-              contextFiles.set(file, expandVars(args[0] || ''));
+              contextFiles.set(file, expandVars(args[0] ?? ''));
               break;
 
             case 'APPEND':
@@ -276,7 +278,7 @@ export function inferCopyrightsFromPortfile(
               break;
 
             case 'RENAME': {
-              const dest = normalizeFilename(expandVars(args[0] || ''));
+              const dest = normalizeFilename(expandVars(args[0] ?? ''));
               if (dest) {
                 contextFiles.set(dest, contextFiles.get(file)!);
                 contextFiles.delete(file);
@@ -287,10 +289,10 @@ export function inferCopyrightsFromPortfile(
             case 'COPY':
             case 'INSTALL': {
               const destDir = normalizeFilename(
-                expandVars(getArg(args, 'DESTINATION') || '')
+                expandVars(getArg(args, 'DESTINATION') ?? '')
               );
               const rename = normalizeFilename(
-                expandVars(getArg(args, 'RENAME') || '')
+                expandVars(getArg(args, 'RENAME') ?? '')
               );
               const destFile =
                 file && destDir
@@ -307,8 +309,8 @@ export function inferCopyrightsFromPortfile(
         }
 
         case 'configure_file': {
-          const src = normalizeFilename(expandVars(command.args[0] || ''));
-          const dest = normalizeFilename(expandVars(command.args[1] || ''));
+          const src = normalizeFilename(expandVars(command.args[0] ?? ''));
+          const dest = normalizeFilename(expandVars(command.args[1] ?? ''));
           if (src && dest) {
             ensureFilePlaceholder(src);
             contextFiles.set(dest, contextFiles.get(src)!);
@@ -317,7 +319,7 @@ export function inferCopyrightsFromPortfile(
         }
 
         case 'vcpkg_install_copyright': {
-          let content = expandVars(getArg(command.args, 'COMMENT') || '');
+          let content = expandVars(getArg(command.args, 'COMMENT') ?? '');
           for (const rawFilename of getArgs(command.args, 'FILE_LIST')) {
             if (content) {
               content += '\n';
@@ -336,9 +338,9 @@ export function inferCopyrightsFromPortfile(
         case 'vcpkg_download_distfile': {
           const varName = expandVars(command.args[0]);
           // though URLS can be a list, we only use the first one
-          const url = expandVars(getArg(command.args, 'URLS') || '');
+          const url = expandVars(getArg(command.args, 'URLS') ?? '');
           const filename = `${allocateSourcePath()}/${normalizeFilename(
-            expandVars(getArg(command.args, 'FILENAME') || 'archive')
+            expandVars(getArg(command.args, 'FILENAME') ?? 'archive')
           )}`;
           if (varName && url && filename) {
             contextVars.set(varName, filename);
@@ -379,7 +381,7 @@ export function inferCopyrightsFromPortfile(
 
   const urls: string[] = [];
   for (const filename of copyrightFiles) {
-    const content = contextFiles.get(filename) || '';
+    const content = contextFiles.get(filename) ?? '';
     if (!content) {
       continue;
     }

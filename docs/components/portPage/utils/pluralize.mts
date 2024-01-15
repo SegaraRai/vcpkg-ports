@@ -18,7 +18,7 @@ export function pluralize(
     | 'result'}`,
   capitalize = false
 ): string {
-  return `${(capitalize ? ['No', 'One'] : ['no', 'one'])[count] || count} ${
+  return `${(capitalize ? ['No', 'One'] : ['no', 'one'])[count] ?? count} ${
     count === 1 ? text : text.replace(/y$/, 'ies').replace(/[^s]$/, '$&s')
   }`;
 }

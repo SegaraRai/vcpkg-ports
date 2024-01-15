@@ -3,8 +3,9 @@ import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
 import { toUniqueArray } from '../../../../shared/utils.mjs';
 import {
   DEPENDENCY_PATH_DELIMITER,
-  VcpkgDependencyObjectEx,
+  type VcpkgDependencyObjectEx,
 } from '../../../../shared/vcpkg/portDependencies.mjs';
+import { getFeatureName } from '../../../../shared/vcpkg/portUtils.mts';
 import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
 import LinkPortPage from '../../LinkPortPage.astro';
 import DetailsWrapper from './DetailsWrapper.astro';
@@ -34,8 +35,8 @@ const featureNames = toUniqueArray(
         ...((dependency['default-features'] !== false &&
           portMap.get(dependency.name)?.manifest['default-features']) ||
           []),
-        ...(dependency.features || []),
-      ]
+        ...(dependency.features ?? []),
+      ].map(getFeatureName)
 ).sort();
 const hasDetails =
   !!dependency.platform ||

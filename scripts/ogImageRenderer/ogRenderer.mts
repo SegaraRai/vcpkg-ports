@@ -1,6 +1,6 @@
 import fsp from 'node:fs/promises';
 import path from 'node:path';
-import { Font, open } from 'fontkit';
+import { type Font, open } from 'fontkit';
 import type { DataPorts } from '../../shared/dataTypes/ports.mjs';
 import {
   getPortVersionText,
@@ -8,10 +8,10 @@ import {
 } from '../../shared/vcpkg/portUtils.mjs';
 import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
 import { DATA_PORTS_FILE, OG_FONTS_DIR } from '../constants.mjs';
-import { FixedPositionSpec, calcPosition } from './positionUtils.mjs';
+import { type FixedPositionSpec, calcPosition } from './positionUtils.mjs';
 import { svgToPNG } from './svgToPNG.mjs';
 import { renderNumber } from './svgUtils.mjs';
-import { SVGWithSize, textToSVG } from './textToSVG.mjs';
+import { type SVGWithSize, textToSVG } from './textToSVG.mjs';
 
 export interface PortFonts {
   readonly BarlowBold: Font;

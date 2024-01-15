@@ -25,7 +25,7 @@ export function createDependentsMap(
         ?.[getIndex(dependency)].push(manifest.name);
     }
     for (const [featureName, feature] of Object.entries(
-      manifest.features || {}
+      manifest.features ?? {}
     )) {
       const name = `${manifest.name}${DEPENDENT_FEATURE_DELIMITER}${featureName}`;
       for (const dependency of getDependencies(feature)) {

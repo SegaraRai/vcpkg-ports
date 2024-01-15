@@ -6,7 +6,6 @@ import {
   useVModel,
 } from '@vueuse/core';
 import { computed, defineAsyncComponent, shallowRef, watchEffect } from 'vue';
-import { getPortPageURL, getSearchPageURL } from '../../constants.mjs';
 import { pickRandom } from '../../../shared/utils.mjs';
 import { useSearch } from '../../composables/useSearch.mjs';
 import {
@@ -14,6 +13,8 @@ import {
   SEARCH_MAX_RESULTS_FOR_POPUP,
   SEARCH_NUM_EXAMPLE_TERMS_SHOWN,
   SEARCH_TERM_DEBOUNCE,
+  getPortPageURL,
+  getSearchPageURL,
 } from '../../constants.mjs';
 import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
 import SearchBox from './SearchBox.vue';

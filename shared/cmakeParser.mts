@@ -5,7 +5,7 @@ import {
   Q01,
   Q0N,
   Q1N,
-  Token,
+  type Token,
   createParser,
   filterRuleTokens,
   stringifyTokens,
@@ -251,7 +251,7 @@ const parse = createParser<TokenType>([
     NT_ESCAPE_ENCODED,
     /^\\[trn]/,
     (tokens: Tokens): Tokens => [
-      { t: '\t', r: '\r', n: '\n' }[stringifyTokens(tokens).slice(1)] || '',
+      { t: '\t', r: '\r', n: '\n' }[stringifyTokens(tokens).slice(1)] ?? '',
     ],
   ],
   [NT_ESCAPE_SEMICOLON, /^\\;/, (): Tokens => [';']],

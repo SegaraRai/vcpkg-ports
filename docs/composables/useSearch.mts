@@ -1,6 +1,6 @@
 import { computedEager } from '@vueuse/core';
-import type Fuse from 'fuse.js';
-import { Ref, computed, shallowRef } from 'vue';
+import type * as Fuse from 'fuse.js';
+import { type Ref, computed, shallowRef } from 'vue';
 import type { DataSearchItem } from '../../shared/dataTypes/searchItem.mjs';
 import { pickRandom } from '../../shared/utils.mjs';
 import { SEARCH_RANDOM_MAX_RESULTS } from '../constants.mjs';

@@ -5,7 +5,7 @@ import headCommit from '../../../virtual/headCommit.mjs';
 import SectionWrapper from '../SectionWrapper.astro';
 import FileList from '../components/FileList.astro';
 import FileListItem from '../components/FileListItem.astro';
-import { SectionProps, defineSection } from '../defineSection.mjs';
+import { type SectionProps, defineSection } from '../defineSection.mjs';
 
 type Props = SectionProps;
 
@@ -31,7 +31,7 @@ const filenames = files.filter((file) => !file.includes('/')).sort();
         <FileListItem
           filename={`${filename}/`}
           href={`${VCPKG_REPO_URL}/tree/${
-            VCPKG_REF_OVERRIDE || headCommit.oid
+            VCPKG_REF_OVERRIDE ?? headCommit.oid
           }/ports/${portName}/${filename}`}
         />
       ))
@@ -41,7 +41,7 @@ const filenames = files.filter((file) => !file.includes('/')).sort();
         <FileListItem
           filename={filename}
           href={`${VCPKG_REPO_URL}/blob/${
-            VCPKG_REF_OVERRIDE || headCommit.oid
+            VCPKG_REF_OVERRIDE ?? headCommit.oid
           }/ports/${portName}/${filename}`}
         />
       ))

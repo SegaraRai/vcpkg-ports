@@ -31,7 +31,7 @@ export type ShortSupportTriplet = Exclude<SupportTriplet, FullSupportTriplet>;
 
 export type MinifiedTriplet = readonly [
   name: SupportTriplet,
-  extracted: readonly FullSupportTriplet[]
+  extracted: readonly FullSupportTriplet[],
 ];
 
 // currently only official triplets are checked

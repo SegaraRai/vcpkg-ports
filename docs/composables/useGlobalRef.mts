@@ -1,4 +1,4 @@
-import { Ref, UnwrapRef, ref } from 'vue';
+import { type Ref, type UnwrapRef, ref } from 'vue';
 
 export function useGlobalRef<T>(
   key: string | symbol,

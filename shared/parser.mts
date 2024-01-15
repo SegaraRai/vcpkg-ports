@@ -24,7 +24,7 @@ export type Expression =
 export type Expressions = Expression | readonly Expression[];
 export type RuleToken<T> = readonly [
   name: RuleName,
-  tokens: readonly Token<T>[]
+  tokens: readonly Token<T>[],
 ];
 export type Token<T> = RuleToken<T> | string | T;
 export type Processor<T> = (
@@ -36,14 +36,14 @@ export type Rule<T> =
   | readonly [
       name: RuleName,
       expressions: Expressions,
-      processor: Processor<T>
+      processor: Processor<T>,
     ];
 export type Syntax<T> = readonly Rule<T>[];
 export type Parser<T> = (input: string) => readonly Token<T>[] | undefined;
 
 type TokensWithLength<T> = readonly [
   tokens: readonly Token<T>[],
-  length: number
+  length: number,
 ];
 
 export function OR(...expressions: readonly Expressions[]): Expression {
@@ -101,8 +101,8 @@ export function stringifyTokens(
       typeof token === 'string'
         ? token
         : isRuleToken(token) && depth !== 0
-        ? stringifyTokens(token[1], depth - 1)
-        : ''
+          ? stringifyTokens(token[1], depth - 1)
+          : ''
     )
     .join('');
 }

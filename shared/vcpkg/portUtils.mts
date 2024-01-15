@@ -4,6 +4,7 @@ import type {
   VcpkgDependency,
   VcpkgDependencyObject,
   VcpkgDescription,
+  VcpkgFeatureItem,
 } from './schema.mjs';
 
 export function isHostOnlyPort(manifest: Vcpkg): boolean {
@@ -35,8 +36,8 @@ export function stringifyPortDescription(
     const joiner = !result
       ? ''
       : index > 1 && !result.endsWith('.') && /^[a-z]/.test(normalized)
-      ? ' '
-      : '\n';
+        ? ' '
+        : '\n';
     result += joiner + normalized;
   }
   return result;
@@ -60,7 +61,7 @@ export function transformPortDependencyToObject(
 export function getDependencies(
   manifest: Pick<Vcpkg, 'dependencies'>
 ): readonly VcpkgDependencyObject[] {
-  return (manifest.dependencies || [])
+  return (manifest.dependencies ?? [])
     .map(transformPortDependencyToObject)
     .sort((a, b) => compareString(a.name, b.name));
 }
@@ -71,4 +72,8 @@ export function isNormalDependency(dependency: VcpkgDependencyObject): boolean {
 
 export function isHostDependency(dependency: VcpkgDependencyObject): boolean {
   return !!dependency.host;
+}
+
+export function getFeatureName(feature: VcpkgFeatureItem): string {
+  return typeof feature === 'string' ? feature : feature.name;
 }

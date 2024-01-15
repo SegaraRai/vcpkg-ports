@@ -2,6 +2,7 @@ import type { DataPortsPort } from '../dataTypes/ports.mjs';
 import { compareString, toUniqueArray } from '../utils.mjs';
 import {
   getDependencies,
+  getFeatureName,
   isHostDependency,
   isNormalDependency,
   transformPortDependencyToObject,
@@ -46,7 +47,7 @@ export function collectTransitiveDependencies(
 
     const newPath = `${path}${DEPENDENCY_PATH_DELIMITER}${dep.name}`;
     const mergedFeats = toUniqueArray([
-      ...(depInfoInMap?.$features || []),
+      ...(depInfoInMap?.$features ?? []),
       ...feats,
     ]);
 
@@ -56,7 +57,7 @@ export function collectTransitiveDependencies(
         `INFO: Dependency ${
           dep.name
         } has required with different features: '${featsInMap.join()}' vs '${featsSpecified.join()}' (default: '${
-          depManifest['default-features']?.join() || ''
+          depManifest['default-features']?.join() ?? ''
         }', dependent: ${newPath})`
       );
     }
@@ -66,7 +67,7 @@ export function collectTransitiveDependencies(
       ...dep,
       $ex: true,
       $dependents: [
-        ...(depInfoInMap?.$dependents || []),
+        ...(depInfoInMap?.$dependents ?? []),
         path.slice(DEPENDENCY_PATH_DELIMITER.length),
       ],
       $features: mergedFeats,
@@ -89,7 +90,7 @@ export function collectTransitiveDependencies(
         );
         continue;
       }
-      const featDeps = featInfo.dependencies || [];
+      const featDeps = featInfo.dependencies ?? [];
       deps.push(...featDeps.map(transformPortDependencyToObject));
     }
 
@@ -106,8 +107,10 @@ export function collectTransitiveDependencies(
       const subFeats = toUniqueArray([
         ...((includeDefaultFeatures && subDepManifest['default-features']) ||
           []),
-        ...(subDep.features || []),
-      ]).sort();
+        ...(subDep.features ?? []),
+      ])
+        .map(getFeatureName)
+        .sort();
       add(subDep, subFeats, newPath);
     }
   };
@@ -145,7 +148,7 @@ export function analyzeDependencies(
   );
   const directDeps: readonly VcpkgDependencyObject[] = onlyFeatures
     ? features.flatMap((featureName) =>
-        getDependencies(manifest.features?.[featureName] || {})
+        getDependencies(manifest.features?.[featureName] ?? {})
       )
     : getDependencies(manifest);
   const directNormalDeps: readonly VcpkgDependencyObject[] =

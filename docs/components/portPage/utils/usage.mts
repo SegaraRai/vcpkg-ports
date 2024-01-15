@@ -70,7 +70,7 @@ export function renderUsage(
         )
           ? 'cpp'
           : 'cmake';
-        codeIndent = line.match(/^\s+/)?.[0] || '';
+        codeIndent = line.match(/^\s+/)?.[0] ?? '';
       }
     }
 
