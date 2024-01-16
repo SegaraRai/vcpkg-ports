@@ -53,10 +53,10 @@ jobs:
 
       - name: Sync vcpkg
         run: pnpm run sync:vcpkg
-        if: '!inputs.no_sync'
+        if: (!inputs.no_sync)
 
       - name: Check for changes
-        if: '!inputs.no_sync'
+        if: (!inputs.no_sync)
         id: check_for_changes
         run: |
           if [ -n "$(git status --porcelain)" ]; then
@@ -64,7 +64,7 @@ jobs:
           fi
 
       - name: Commit and push
-        if: '!inputs.no_sync && steps.check_for_changes.outputs.modified == "1"'
+        if: (!inputs.no_sync) && steps.check_for_changes.outputs.modified == '1'
         run: |
           git config --global user.name "$COMMIT_AUTHOR_NAME"
           git config --global user.email "$COMMIT_AUTHOR_EMAIL"
