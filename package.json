@@ -23,7 +23,7 @@
     "validate:portfiles": "tsx scripts/bin/parsePortfiles.mts",
     "validate:sync": "tsx scripts/bin/checkDataSync.mts",
     "sync:deps": "taze -w major && pnpm i && pnpm up",
-    "sync:vcpkg": "cd .vcpkg && git fetch --depth=200 && git checkout master && git pull --ff-only origin master && cd .. && pnpm run validate:manifests && pnpm run validate:portfiles && pnpm run generate:data",
+    "sync:vcpkg": "cd .vcpkg && git checkout master && git pull --ff-only --depth=200 origin master && cd .. && pnpm run validate:manifests && pnpm run validate:portfiles && pnpm run generate:data",
     "typecheck": "astro check && vue-tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
