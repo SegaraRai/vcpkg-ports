@@ -1,5 +1,5 @@
 {
-  "version": "53bef8994c541b6561884a8395ea35715ece75db",
+  "version": "91b17dd72add5718332e9a2bf55497e2b126b0a0",
   "ports": [
     {
       "name": "3fd",
@@ -1814,6 +1814,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2955,7 +2956,7 @@
             "host": true
           }
         ],
-        "version": "0.7.14"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -17655,7 +17656,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.5.1"
+        "version-semver": "3.5.2"
       },
       "files": [
         "fix-install-path.patch",
@@ -21875,6 +21876,7 @@
       "manifest": {
         "name": "cuda-api-wrappers",
         "description": "header-only library of integrated wrappers around the core parts of NVIDIA's CUDA execution ecosystem",
+        "homepage": "https://github.com/eyalroz/cuda-api-wrappers",
         "license": "BSD-3-Clause",
         "dependencies": [
           "cuda",
@@ -21887,7 +21889,7 @@
             "host": true
           }
         ],
-        "version": "0.6.6"
+        "version": "0.6.7"
       },
       "files": [
         "portfile.cmake",
@@ -21947,6 +21949,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -35199,7 +35202,7 @@
             "host": true
           }
         ],
-        "version": "2.9.2"
+        "version": "2.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -38930,6 +38933,7 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
+        "port-version": 1,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -38978,6 +38982,7 @@
         "version": "4.1.0"
       },
       "files": [
+        "check-for-atomics-support.patch",
         "fix-library-name.patch",
         "no_stdc_check.patch",
         "portfile.cmake",
@@ -43453,7 +43458,6 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
-        "port-version": 1,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -43490,7 +43494,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.19.4"
+        "version-semver": "0.19.5"
       },
       "files": [
         "fix-for-vcpkg.patch",
@@ -46914,7 +46918,7 @@
             "host": true
           }
         ],
-        "version": "2024.1.4"
+        "version": "2024.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -59503,6 +59507,55 @@
       ]
     },
     {
+      "name": "netgen",
+      "manifest": {
+        "name": "netgen",
+        "description": "NETGEN is an automatic 3d tetrahedral mesh generator. It accepts input from constructive solid geometry (CSG) or boundary representation (BRep) from STL file format. The connection to a geometry kernel allows the handling of IGES and STEP files. NETGEN contains modules for mesh optimization and hierarchical mesh refinement.",
+        "homepage": "https://ngsolve.org/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "arm64 | x64",
+        "dependencies": [
+          {
+            "name": "cgns",
+            "default-features": false
+          },
+          {
+            "name": "ffmpeg",
+            "default-features": false,
+            "features": [
+              "avcodec"
+            ]
+          },
+          "libjpeg-turbo",
+          {
+            "name": "opencascade",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "6.2.2307"
+      },
+      "files": [
+        "add_filesystem.patch",
+        "cgns-scoped-enum.patch",
+        "cmake-adjustments.patch",
+        "downstream-fixes.patch",
+        "git-ver.patch",
+        "portfile.cmake",
+        "static-exports.patch",
+        "vcpkg-fix-cgns-link.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "nethost",
       "manifest": {
         "name": "nethost",
@@ -61791,7 +61844,6 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 3,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -61866,13 +61918,12 @@
             ]
           }
         },
-        "version": "7.7.2"
+        "version": "7.8.0"
       },
       "files": [
         "dependencies.patch",
         "drop-bin-letter-d.patch",
         "fix-install-prefix-path.patch",
-        "fix-link-freeimage.patch",
         "fix-pdb-find.patch",
         "install-include-dir.patch",
         "portfile.cmake",
@@ -62701,7 +62752,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 12,
+        "port-version": 13,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -63040,7 +63091,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 14,
+        "port-version": 15,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -68122,7 +68173,7 @@
       "name": "portable-snippets",
       "manifest": {
         "name": "portable-snippets",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Collection of miscellaneous portable C snippets",
         "homepage": "https://github.com/nemequ/portable-snippets",
         "license": null,
@@ -68764,7 +68815,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -76439,7 +76490,7 @@
           }
         ],
         "default-features": [
-          "highest-priority"
+          "highest-priority-codecs"
         ],
         "features": {
           "all": {
@@ -76448,11 +76499,11 @@
               {
                 "name": "sail",
                 "features": [
-                  "high-priority",
-                  "highest-priority",
-                  "low-priority",
-                  "lowest-priority",
-                  "medium-priority"
+                  "high-priority-codecs",
+                  "highest-priority-codecs",
+                  "low-priority-codecs",
+                  "lowest-priority-codecs",
+                  "medium-priority-codecs"
                 ]
               }
             ]
@@ -76472,18 +76523,19 @@
               "giflib"
             ]
           },
-          "high-priority": {
+          "high-priority-codecs": {
             "description": "Enable high priority codecs such as BMP",
             "dependencies": [
               {
                 "name": "sail",
                 "features": [
-                  "bmp"
+                  "bmp",
+                  "svg"
                 ]
               }
             ]
           },
-          "highest-priority": {
+          "highest-priority-codecs": {
             "description": "Enable highest priority codecs such as JPEG or PNG",
             "dependencies": [
               {
@@ -76518,7 +76570,7 @@
               "libjxl"
             ]
           },
-          "low-priority": {
+          "low-priority-codecs": {
             "description": "Enable low priority codecs such as TGA",
             "dependencies": [
               {
@@ -76533,7 +76585,7 @@
               }
             ]
           },
-          "lowest-priority": {
+          "lowest-priority-codecs": {
             "description": "Enable lowest priority codecs such as XBM",
             "dependencies": [
               {
@@ -76545,7 +76597,7 @@
               }
             ]
           },
-          "medium-priority": {
+          "medium-priority-codecs": {
             "description": "Enable medium priority codecs such as AVIF",
             "dependencies": [
               {
@@ -76558,6 +76610,9 @@
                 ]
               }
             ]
+          },
+          "openmp": {
+            "description": "Enable OpenMP support"
           },
           "pcx": {
             "description": "Enable PCX codec"
@@ -76573,6 +76628,12 @@
           },
           "qoi": {
             "description": "Enable QOI codec"
+          },
+          "svg": {
+            "description": "Enable SVG codec",
+            "dependencies": [
+              "nanosvg"
+            ]
           },
           "tga": {
             "description": "Enable TGA codec"
@@ -76596,7 +76657,7 @@
             "description": "Enable XBM codec"
           }
         },
-        "version-semver": "0.9.0"
+        "version-semver": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -80293,7 +80354,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.12.0"
+        "version-semver": "1.13.0"
       },
       "files": [
         "portfile.cmake",
