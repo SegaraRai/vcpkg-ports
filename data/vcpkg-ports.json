@@ -1,5 +1,5 @@
 {
-  "version": "91b17dd72add5718332e9a2bf55497e2b126b0a0",
+  "version": "97dd26728e3856ed1ab62ee74ee3a391d9c81d19",
   "ports": [
     {
       "name": "3fd",
@@ -1814,7 +1814,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -1884,6 +1884,18 @@
               "protobuf"
             ]
           },
+          "flightsql": {
+            "description": "FlightSQL support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "flight"
+                ]
+              }
+            ]
+          },
           "gcs": {
             "description": "GCS support",
             "dependencies": [
@@ -1951,6 +1963,7 @@
         "usage-acero",
         "usage-dataset",
         "usage-flight",
+        "usage-flightsql",
         "usage-parquet",
         "utf8proc.patch",
         "vcpkg.json"
@@ -4942,7 +4955,6 @@
       "name": "azure-security-keyvault-administration-cpp",
       "manifest": {
         "name": "azure-security-keyvault-administration-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Administration SDK for C++",
           "This library provides Azure Key Vault Administration SDK."
@@ -4964,7 +4976,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.0.0-beta.3"
+        "version-semver": "4.0.0-beta.4"
       },
       "files": [
         "portfile.cmake",
@@ -4975,7 +4987,6 @@
       "name": "azure-security-keyvault-certificates-cpp",
       "manifest": {
         "name": "azure-security-keyvault-certificates-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Certificates SDK for C++",
           "This library provides Azure Key Vault Certificates SDK."
@@ -4997,7 +5008,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.2.0"
+        "version-semver": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -5008,7 +5019,6 @@
       "name": "azure-security-keyvault-keys-cpp",
       "manifest": {
         "name": "azure-security-keyvault-keys-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Keys SDK for C++",
           "This library provides Azure Key Vault Keys SDK."
@@ -5030,7 +5040,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.4.0"
+        "version-semver": "4.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -5041,7 +5051,6 @@
       "name": "azure-security-keyvault-secrets-cpp",
       "manifest": {
         "name": "azure-security-keyvault-secrets-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Secrets SDK for C++",
           "This library provides Azure Key Vault Secrets SDK."
@@ -5063,7 +5072,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.2.0"
+        "version-semver": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -23160,7 +23169,6 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 6,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -23222,16 +23230,14 @@
             ]
           }
         },
-        "version": "3.6.7"
+        "version": "3.6.8"
       },
       "files": [
         "dcmtk.patch",
-        "fix-pc-format.patch",
         "fix_link_xml2.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg.json",
-        "windows-patch.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -25537,7 +25543,7 @@
             "host": true
           }
         ],
-        "version": "3.12.2"
+        "version": "3.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -39370,7 +39376,7 @@
             "host": true
           }
         ],
-        "version": "0.171.0"
+        "version": "0.173.2"
       },
       "files": [
         "portfile.cmake",
@@ -43841,7 +43847,7 @@
           },
           "xerces-c"
         ],
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -53940,6 +53946,32 @@
       ]
     },
     {
+      "name": "magma",
+      "manifest": {
+        "name": "magma",
+        "description": "Matrix Algebra on GPU and Multi-core Architectures (MAGMA) is a collection of next-generation linear algebra libraries for heterogeneous computing",
+        "homepage": "https://icl.utk.edu/magma/",
+        "license": null,
+        "dependencies": [
+          "blas",
+          "cuda",
+          "lapack",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "2.7.2"
+      },
+      "files": [
+        "clang-cuda.patch",
+        "disable-openmp-msvc.patch",
+        "no-tests.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "magnum",
       "manifest": {
         "name": "magnum",
@@ -58977,6 +59009,32 @@
         "fix-cmakelists.patch",
         "fix-glad-dependence.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "nanojsonc",
+      "manifest": {
+        "name": "nanojsonc",
+        "maintainers": "Saad Shams",
+        "description": "Event-Driven JSON Parser for C",
+        "homepage": "https://github.com/open-source-patterns/nanojsonc",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -69094,6 +69152,7 @@
       "name": "pulsar-client-cpp",
       "manifest": {
         "name": "pulsar-client-cpp",
+        "port-version": 1,
         "description": "The Apache Pulsar C++ library",
         "homepage": "https://github.com/apache/pulsar-client-cpp",
         "license": "Apache-2.0",
@@ -82656,7 +82715,7 @@
         "description": "ThorVG is a platform-independent portable library for drawing vector-based scenes and animations",
         "homepage": "https://www.thorvg.org",
         "license": "MIT",
-        "supports": "!(arm & uwp)",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
@@ -82665,11 +82724,10 @@
         ],
         "features": {
           "tools": {
-            "description": "Build tools",
-            "supports": "!windows"
+            "description": "Build tools"
           }
         },
-        "version": "0.11.3"
+        "version": "0.12.1"
       },
       "files": [
         "portfile.cmake",
@@ -89839,7 +89897,6 @@
       "name": "zeromq",
       "manifest": {
         "name": "zeromq",
-        "port-version": 1,
         "description": "The ZeroMQ lightweight messaging kernel is a library which extends the standard socket interfaces with features traditionally provided by specialised messaging middleware products",
         "homepage": "https://github.com/zeromq/libzmq",
         "license": "MPL-2.0",
@@ -89891,7 +89948,7 @@
             ]
           }
         },
-        "version-date": "2023-06-20"
+        "version": "4.3.5"
       },
       "files": [
         "fix-arm.patch",
