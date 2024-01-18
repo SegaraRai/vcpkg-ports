@@ -1,33 +1,13 @@
 ---
-import { VCPKG_PORTS_REPO_URL } from '../../constants.mjs';
 import headCommit from '../../virtual/headCommit.mjs';
 import portNames from '../../virtual/portNames.mjs';
 import DateTime from '../DateTime.vue';
-import LinkExternal from '../LinkExternal.astro';
 import LinkVcpkgCommit from '../LinkVcpkgCommit.astro';
 ---
 
 <footer
-  class=":uno: mt-auto flex-none flex lt-sm:flex-col-reverse items-center justify-end gap-x-4 gap-y-2 px-5 py-2 border-t-1 border-[var(--theme-divider)] leading-tight text-[var(--theme-text-light)]"
+  class=":uno: mt-auto flex-none flex lt-sm:flex-col-reverse items-center justify-end gap-x-4 gap-y-2 px-5 py-2 border-t-1 border-[--theme-divider] leading-tight text-[--theme-text-light]"
 >
-  <div class=":uno: flex-none flex gap-x-4" data-nosnippet>
-    <span class=":uno: flex-none" translate="no">&copy; 2024 SegaraRai</span>
-    <span class=":uno: flex-none select-none" translate="no">/</span>
-    <LinkExternal
-      class="link"
-      href={`${VCPKG_PORTS_REPO_URL}/blob/main/LICENSE`}
-      translate={null}
-    >
-      MIT License
-    </LinkExternal>
-  </div>
-  <div
-    class=":uno: flex-none select-none lt-sm:hidden"
-    data-nosnippet
-    translate="no"
-  >
-    /
-  </div>
   <div class=":uno: flex-none flex gap-x-4" data-nosnippet>
     <span class=":uno: flex-none">
       <span translate="no">vcpkg</span>
@@ -36,9 +16,9 @@ import LinkVcpkgCommit from '../LinkVcpkgCommit.astro';
         (<DateTime client:load timestamp={headCommit.committer[0]} />)
       </span>
     </span>
-    <span class=":uno: flex-none select-none lt-sm:hidden" translate="no">
-      /
-    </span>
+    <span
+      class=":uno: flex-none select-none border-l-1 border-[--theme-divider]"
+    ></span>
     <span
       class=":uno: flex-none lt-sm:hidden"
       set:text={`${portNames.length} ports`}
