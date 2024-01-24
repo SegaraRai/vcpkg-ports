@@ -1,5 +1,5 @@
 {
-  "version": "2b681d95e08447fde261b4404fbeab324f7d1e5b",
+  "version": "b2f8426094693faaeb29ec92aaae2ca393f6f0c9",
   "ports": [
     {
       "name": "3fd",
@@ -267,7 +267,7 @@
       "name": "acl",
       "manifest": {
         "name": "acl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Commands for Manipulating POSIX Access Control Lists",
         "homepage": "https://savannah.nongnu.org/projects/acl",
         "license": "LGPL-2.1-or-later",
@@ -275,6 +275,21 @@
         "dependencies": [
           "attr"
         ],
+        "features": {
+          "nls": {
+            "description": "Enable native language support",
+            "dependencies": [
+              {
+                "name": "gettext",
+                "host": true,
+                "features": [
+                  "tools"
+                ]
+              },
+              "gettext-libintl"
+            ]
+          }
+        },
         "version-semver": "2.3.1"
       },
       "files": [
@@ -21776,7 +21791,7 @@
             "host": true
           }
         ],
-        "version": "3.8"
+        "version": "3.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -22944,7 +22959,7 @@
             "host": true
           }
         ],
-        "version": "3.20.1"
+        "version": "3.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -23181,6 +23196,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
+        "port-version": 1,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -23196,6 +23212,9 @@
           }
         ],
         "features": {
+          "external-dict": {
+            "description": "Enable external dictionary"
+          },
           "iconv": {
             "description": "Enable Iconv support",
             "dependencies": [
@@ -23246,6 +23265,7 @@
       },
       "files": [
         "dcmtk.patch",
+        "dictionary_paths.patch",
         "fix_link_xml2.patch",
         "portfile.cmake",
         "usage",
@@ -36989,6 +37009,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
+        "port-version": 1,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -43866,11 +43887,11 @@
           },
           "xerces-c"
         ],
-        "version": "3.0.2"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
-        "prevent_warning_as_errors.diff",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -46944,7 +46965,7 @@
             "host": true
           }
         ],
-        "version": "2024.1.5"
+        "version": "2024.1.6"
       },
       "files": [
         "portfile.cmake",
@@ -55674,6 +55695,7 @@
       "name": "materialx",
       "manifest": {
         "name": "materialx",
+        "port-version": 1,
         "description": "MaterialX is an open standard for the exchange of rich material and look-development content across applications and renderers.",
         "homepage": "https://www.materialx.org/",
         "license": "Apache-2.0",
@@ -55688,6 +55710,20 @@
             "host": true
           }
         ],
+        "features": {
+          "glsl-generator": {
+            "description": "Build the GLSL shader generator back-end."
+          },
+          "mdl-generator": {
+            "description": "Build the MDL shader generator back-end."
+          },
+          "osl-generator": {
+            "description": "Build the OSL shader generator back-end."
+          },
+          "render": {
+            "description": "Build the MaterialX Render library."
+          }
+        },
         "version": "1.38.8"
       },
       "files": [
@@ -61839,6 +61875,32 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "open62541pp",
+      "manifest": {
+        "name": "open62541pp",
+        "description": "C++ wrapper of the open62541 OPC UA library",
+        "homepage": "https://open62541pp.github.io/open62541pp/",
+        "license": "MPL-2.0",
+        "dependencies": [
+          "open62541",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.11.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74023,6 +74085,7 @@
           "boost-algorithm",
           "boost-any",
           "boost-assert",
+          "boost-bimap",
           "boost-bind",
           "boost-config",
           "boost-core",
@@ -74052,7 +74115,7 @@
             "host": true
           }
         ],
-        "version": "1.32"
+        "version": "1.33"
       },
       "files": [
         "portfile.cmake",
@@ -75777,7 +75840,7 @@
             ]
           }
         },
-        "version": "8.9.1"
+        "version": "8.10.0"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -78186,6 +78249,7 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -80861,7 +80925,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -80932,7 +80995,7 @@
             ]
           }
         },
-        "version": "3.43.2"
+        "version": "3.45.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -87641,7 +87704,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-10-28"
+        "version-date": "2024-01-22"
       },
       "files": [
         "portfile.cmake",
