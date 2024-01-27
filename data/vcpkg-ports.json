@@ -1,5 +1,5 @@
 {
-  "version": "0bc50c0394035e6818f59c628087567e588fcbf8",
+  "version": "5786fcb0cb5eb08d1931a230dad9701e7a6c37f0",
   "ports": [
     {
       "name": "3fd",
@@ -11921,6 +11921,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
+        "port-version": 1,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -31382,7 +31383,6 @@
       "name": "glm",
       "manifest": {
         "name": "glm",
-        "port-version": 2,
         "description": "OpenGL Mathematics (GLM)",
         "homepage": "https://glm.g-truc.net",
         "license": "MIT",
@@ -31396,11 +31396,11 @@
             "host": true
           }
         ],
-        "version": "0.9.9.8"
+        "version": "1.0.0"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -31695,7 +31695,7 @@
             "host": true
           }
         ],
-        "version": "22.3.12"
+        "version": "22.3.17"
       },
       "files": [
         "portfile.cmake",
@@ -36463,7 +36463,6 @@
       "name": "highfive",
       "manifest": {
         "name": "highfive",
-        "port-version": 1,
         "description": "HighFive is a modern header-only C++/C++11 friendly interface for libhdf5",
         "homepage": "https://github.com/BlueBrain/HighFive",
         "license": "BSL-1.0",
@@ -36510,7 +36509,7 @@
             ]
           }
         },
-        "version": "2.7.1"
+        "version": "2.9.0"
       },
       "files": [
         "fix-error-C1128.patch",
@@ -36885,7 +36884,7 @@
         "homepage": "https://github.com/open-mpi/hwloc",
         "license": "BSD-2-Clause",
         "supports": "!uwp",
-        "version": "2.9.3"
+        "version": "2.10.0"
       },
       "files": [
         "fix_shared_win_build.patch",
@@ -39355,7 +39354,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -57010,7 +57009,7 @@
         "description": "Audio playback and capture library written in C, in a single source file",
         "homepage": "https://github.com/mackron/miniaudio",
         "license": "Unlicense OR MIT-0",
-        "version": "0.11.19"
+        "version": "0.11.21"
       },
       "files": [
         "portfile.cmake",
@@ -59976,7 +59975,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "export-unofficical-target.patch",
@@ -71844,7 +71843,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -72364,6 +72363,8 @@
         "fix_egl_2.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
+        "patches/0001-CVE-2023-51714-qtbase-6.6.diff",
+        "patches/0002-CVE-2023-51714-qtbase-6.6.diff",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -89399,7 +89400,7 @@
             ]
           }
         },
-        "version": "0.24.7"
+        "version": "0.25.0"
       },
       "files": [
         "fix-find-tbb-and-install-destination.patch",
