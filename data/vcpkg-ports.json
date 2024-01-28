@@ -1,5 +1,5 @@
 {
-  "version": "5786fcb0cb5eb08d1931a230dad9701e7a6c37f0",
+  "version": "7032c5759f823fc8699a5c37d5f7072464ccb9a8",
   "ports": [
     {
       "name": "3fd",
@@ -18973,6 +18973,7 @@
       "name": "cld3",
       "manifest": {
         "name": "cld3",
+        "port-version": 1,
         "description": "Compact Language Detector v3",
         "homepage": "https://github.com/google/cld3",
         "license": "Apache-2.0",
@@ -18981,14 +18982,18 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version": "3.0.14"
       },
       "files": [
-        "cld3Config.cmake.in",
-        "fix-build.patch",
         "portfile.cmake",
+        "unofficial-cld3Config.cmake",
+        "unofficial-export.patch",
         "vcpkg.json"
       ]
     },
@@ -42941,7 +42946,7 @@
             ]
           }
         },
-        "version-semver": "1.0.1"
+        "version-semver": "1.0.3"
       },
       "files": [
         "disable-source-utf8.patch",
@@ -43982,7 +43987,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.4.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -45024,7 +45029,6 @@
       "name": "libgpiod",
       "manifest": {
         "name": "libgpiod",
-        "port-version": 1,
         "description": "C library and tools for interacting with the linux GPIO character device",
         "homepage": "https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git",
         "license": "LGPL-2.1-or-later",
@@ -45040,7 +45044,7 @@
             "description": "Make available cxx bindings"
           }
         },
-        "version": "2.0.2"
+        "version": "2.1"
       },
       "files": [
         "portfile.cmake",
@@ -45881,7 +45885,7 @@
             ]
           }
         },
-        "version": "1.3.1"
+        "version": "1.3.4"
       },
       "files": [
         "fix-for-vcpkg.patch",
@@ -68873,6 +68877,7 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
+        "port-version": 1,
         "description": "Protocol Buffers - Google's data interchange format",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
