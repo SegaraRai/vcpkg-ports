@@ -1,5 +1,5 @@
 {
-  "version": "ac97449f48a36ecd704ac375d969b6e66115e87a",
+  "version": "20584b9d4405af7052769381e5ba85367c35ec92",
   "ports": [
     {
       "name": "3fd",
@@ -5717,6 +5717,7 @@
       "name": "benchmark",
       "manifest": {
         "name": "benchmark",
+        "port-version": 1,
         "description": "A library to support the benchmarking of functions, similar to unit-tests.",
         "homepage": "https://github.com/google/benchmark",
         "license": "Apache-2.0",
@@ -5734,6 +5735,7 @@
         "version-semver": "1.8.3"
       },
       "files": [
+        "fix_qnx.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20375,7 +20377,7 @@
             ]
           }
         },
-        "version": "0.14.3"
+        "version": "0.15.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -26589,7 +26591,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -27276,7 +27277,7 @@
             ]
           }
         },
-        "version": "6.1"
+        "version": "6.1.1"
       },
       "files": [
         "0001-create-lib-libraries.patch",
@@ -45865,6 +45866,7 @@
       "name": "libjuice",
       "manifest": {
         "name": "libjuice",
+        "port-version": 1,
         "description": "The library is a simplified implementation of the Interactive Connectivity Establishment (ICE) protocol in C for POSIX platforms (including Linux and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libjuice",
         "license": "LGPL-2.1-only",
@@ -47016,7 +47018,7 @@
             "host": true
           }
         ],
-        "version": "2024.1.6"
+        "version": "2024.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -48329,7 +48331,6 @@
       "name": "libraw",
       "manifest": {
         "name": "libraw",
-        "port-version": 3,
         "description": "raw image decoder library",
         "homepage": "https://www.libraw.org",
         "license": "LGPL-2.1-only OR CDDL-1.0",
@@ -48366,7 +48367,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.21.1"
+        "version": "0.21.2"
       },
       "files": [
         "dependencies.patch",
@@ -49852,12 +49853,12 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 5,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
         "supports": "(windows & !static) | osx | linux",
         "dependencies": [
+          "blas",
           "cpuinfo",
           "eigen3",
           "flatbuffers",
@@ -49867,26 +49868,24 @@
           },
           "fmt",
           "foxi",
+          "foxi",
           "fp16",
           "gemmlowp",
           "gflags",
           "glog",
+          "lapack",
           "lmdb",
-          {
-            "name": "mpi",
-            "platform": "linux"
-          },
+          "mimalloc",
           "onnx",
           "onnx-optimizer",
-          {
-            "name": "openblas",
-            "platform": "windows"
-          },
+          "opencl",
+          "pocketfft",
           "protobuf",
           {
             "name": "protobuf",
             "host": true
           },
+          "pthreadpool",
           "sleef",
           {
             "name": "vcpkg-cmake",
@@ -49902,9 +49901,24 @@
           }
         ],
         "default-features": [
-          "xnnpack"
+          {
+            "name": "cuda",
+            "platform": "windows & !x86"
+          },
+          "fftw3",
+          "opencv",
+          "xnnpack",
+          "zstd"
         ],
         "features": {
+          "cuda": {
+            "description": "Build with CUDA GPU backend",
+            "dependencies": [
+              "cuda",
+              "cudnn",
+              "magma"
+            ]
+          },
           "dist": {
             "description": "Use distributed with MPI, Gloo, libuv, TensorPipe",
             "dependencies": [
@@ -49913,12 +49927,16 @@
                 "platform": "linux"
               },
               {
-                "name": "libuv",
-                "platform": "windows | osx"
+                "name": "libtorch",
+                "default-features": false,
+                "features": [
+                  "mpi"
+                ],
+                "platform": "linux"
               },
               {
-                "name": "openmpi",
-                "platform": "linux | osx"
+                "name": "libuv",
+                "platform": "windows | osx"
               },
               {
                 "name": "tensorpipe",
@@ -49926,11 +49944,29 @@
               }
             ]
           },
+          "fftw3": {
+            "description": "Build with fftw3",
+            "dependencies": [
+              "fftw3"
+            ]
+          },
           "leveldb": {
             "description": "Build with LevelDB",
             "dependencies": [
               "leveldb",
               "snappy"
+            ]
+          },
+          "llvm": {
+            "description": "Build with LLVM",
+            "dependencies": [
+              "llvm"
+            ]
+          },
+          "mpi": {
+            "description": "Build with MPI",
+            "dependencies": [
+              "mpi"
             ]
           },
           "nnpack": {
@@ -49946,22 +49982,21 @@
               "opencv"
             ]
           },
-          "tbb": {
-            "description": "Build with Intel TBB",
-            "dependencies": [
-              "tbb"
-            ]
-          },
           "vulkan": {
             "description": "Build with Vulkan GPU backend",
             "dependencies": [
-              "vulkan"
-            ],
-            "supports": "!windows"
+              "vulkan",
+              "vulkan-loader",
+              "vulkan-memory-allocator"
+            ]
           },
           "xnnpack": {
             "description": "Build with XNNPack",
             "dependencies": [
+              {
+                "name": "fxdiv",
+                "platform": "!windows"
+              },
               "xnnpack"
             ]
           },
@@ -49972,19 +50007,23 @@
             ]
           }
         },
-        "version": "1.12.1"
+        "version": "2.1.2"
       },
       "files": [
-        "fix-c10-glog.patch",
-        "fix-cmake.patch",
-        "fix-fbgemm-include.patch",
-        "fix-windows.patch",
-        "fix_werror.patch",
-        "missing_include.patch",
+        "clang-cl.patch",
+        "cmake-fixes.patch",
+        "cuda-adjustments.patch",
+        "fix-api-export.patch",
+        "fix-build.patch",
+        "fix-glog.patch",
+        "fix-msvc-ICE.patch",
+        "fix-onnx-case.patch",
+        "fix-sleef.patch",
+        "fxdiv.patch",
+        "kineto.patch",
+        "more-fixes.patch",
         "portfile.cmake",
-        "pytorch-pr-85958.patch",
-        "use-flatbuffers2.patch",
-        "vcpkg-dependencies.cmake",
+        "protoc.patch",
         "vcpkg.json"
       ]
     },
@@ -57344,7 +57383,7 @@
             ]
           }
         },
-        "version": "4.0.2"
+        "version": "4.0.4"
       },
       "files": [
         "fix_find_zstd.patch",
@@ -71848,7 +71887,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71913,9 +71952,16 @@
             "name": "opengl",
             "platform": "!ios"
           },
-          "openssl",
+          {
+            "name": "openssl",
+            "platform": "!ios"
+          },
           "pcre2",
           "png",
+          {
+            "name": "securetransport",
+            "platform": "ios"
+          },
           "sql",
           "sql-psql",
           "sql-sqlite",
@@ -72182,6 +72228,10 @@
                 ]
               }
             ]
+          },
+          "securetransport": {
+            "description": "Enable Secure Transport",
+            "supports": "ios | osx"
           },
           "sql": {
             "description": "Qt Sql",
@@ -82737,6 +82787,7 @@
       "name": "tgui",
       "manifest": {
         "name": "tgui",
+        "port-version": 1,
         "description": "TGUI is an easy to use, cross-platform, C++ GUI for SFML.",
         "homepage": "https://tgui.eu",
         "license": "Zlib",
@@ -82972,6 +83023,7 @@
       "name": "tidy-html5",
       "manifest": {
         "name": "tidy-html5",
+        "port-version": 1,
         "description": "Tidy tidies HTML and XML. It can tidy your documents by itself, and developers can easily integrate its features into even more powerful tools.",
         "homepage": "https://www.html-tidy.org",
         "license": null,
@@ -82986,6 +83038,7 @@
       "files": [
         "debug-postfix.patch",
         "disable-doc.patch",
+        "fix_unsupport_func_uwp.patch",
         "portfile.cmake",
         "static-vs-shared.patch",
         "vcpkg.json"
@@ -87489,6 +87542,7 @@
       "name": "wasmedge",
       "manifest": {
         "name": "wasmedge",
+        "port-version": 1,
         "description": "WasmEdge is a high-performance WebAssembly runtime for edge computing.",
         "homepage": "https://WasmEdge.org",
         "license": "Apache-2.0",
@@ -87540,6 +87594,7 @@
         "version": "0.13.5"
       },
       "files": [
+        "fix_find_zstd.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -88687,7 +88742,7 @@
         "description": "C++ header file library for high-performance SIMD-based sorting algorithms for primitive datatypes",
         "homepage": "https://github.com/intel/x86-simd-sort",
         "license": "BSD-3-Clause",
-        "version": "3.0"
+        "version": "4.0"
       },
       "files": [
         "portfile.cmake",
@@ -89185,7 +89240,7 @@
         "description": "High-efficiency floating-point neural network inference operators for mobile, server, and Web",
         "homepage": "https://github.com/google/XNNPACK",
         "license": "BSD-3-Clause",
-        "supports": "!(arm & windows) & !uwp",
+        "supports": "!(arm & windows) & !uwp & !arm32",
         "dependencies": [
           "cpuinfo",
           "fp16",
@@ -89194,18 +89249,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version-date": "2022-02-17"
+        "version-date": "2022-12-22"
       },
       "files": [
+        "fix-build.patch",
         "portfile.cmake",
-        "use-c-cpp-11.patch",
-        "use-packages.patch",
         "vcpkg.json"
       ]
     },
@@ -90327,13 +90377,12 @@
             "host": true
           }
         ],
-        "version": "1.3"
+        "version": "1.3.1"
       },
       "files": [
         "0001-Prevent-invalid-inclusions-when-HAVE_-is-set-to-0.patch",
-        "0002-skip-building-examples.patch",
-        "0003-build-static-or-shared-not-both.patch",
-        "0004-android-and-mingw-fixes.patch",
+        "0002-build-static-or-shared-not-both.patch",
+        "0003-android-and-mingw-fixes.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
