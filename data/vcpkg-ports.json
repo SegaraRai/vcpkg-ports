@@ -1,5 +1,5 @@
 {
-  "version": "20584b9d4405af7052769381e5ba85367c35ec92",
+  "version": "74b4c2c019d6fd10fef45076042f45796ef71708",
   "ports": [
     {
       "name": "3fd",
@@ -665,18 +665,29 @@
       "manifest": {
         "name": "allegro5",
         "description": "Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is not a game engine: you are free to design and structure your program as you like.",
-        "homepage": "https://github.com/liballeg/allegro5",
+        "homepage": "https://liballeg.org/",
         "license": "BSD-3-Clause AND Zlib",
         "dependencies": [
+          {
+            "name": "alsa",
+            "platform": "linux"
+          },
           "bzip2",
-          "freetype",
+          {
+            "name": "freetype",
+            "default-features": false
+          },
           "libflac",
+          "libjpeg-turbo",
           "libogg",
           "libpng",
           "libtheora",
           "libvorbis",
+          {
+            "name": "libwebp",
+            "default-features": false
+          },
           "openal-soft",
-          "opengl",
           "opus",
           "opusfile",
           "physfs",
@@ -690,7 +701,30 @@
           },
           "zlib"
         ],
-        "version": "5.2.9.0"
+        "default-features": [
+          {
+            "name": "direct3d",
+            "platform": "windows"
+          },
+          {
+            "name": "opengl",
+            "platform": "!(arm & windows) & !uwp & !xbox"
+          }
+        ],
+        "features": {
+          "direct3d": {
+            "description": "Direct3D support",
+            "supports": "windows"
+          },
+          "opengl": {
+            "description": "OpenGL support",
+            "dependencies": [
+              "opengl"
+            ],
+            "supports": "!(arm & windows) & !uwp & !xbox"
+          }
+        },
+        "version": "5.2.9.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -5538,7 +5572,7 @@
           },
           "zlib"
         ],
-        "version": "3.8.0"
+        "version": "3.9.0"
       },
       "files": [
         "fix-static-library-build.patch",
@@ -28967,7 +29001,6 @@
       "name": "freetype",
       "manifest": {
         "name": "freetype",
-        "port-version": 5,
         "description": "A library to render fonts.",
         "homepage": "https://www.freetype.org/",
         "license": "FTL OR GPL-2.0-or-later",
@@ -29016,13 +29049,12 @@
             ]
           }
         },
-        "version": "2.12.1"
+        "version": "2.13.2"
       },
       "files": [
         "0003-Fix-UWP.patch",
         "brotli-static.patch",
         "bzip2.patch",
-        "error-strings.patch",
         "fix-exports.patch",
         "portfile.cmake",
         "usage",
@@ -31189,7 +31221,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -43940,7 +43972,7 @@
           },
           "xerces-c"
         ],
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -46313,6 +46345,7 @@
       "name": "libmad",
       "manifest": {
         "name": "libmad",
+        "port-version": 1,
         "description": "high-quality MPEG audio decoder",
         "homepage": "http://codeberg.org/tenacityteam/libmad",
         "dependencies": [
@@ -61938,7 +61971,6 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
-        "port-version": 2,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
@@ -61976,9 +62008,10 @@
             ]
           }
         },
-        "version": "1.3.8"
+        "version": "1.3.9"
       },
       "files": [
+        "disable-docs.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64755,7 +64788,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -64786,19 +64819,6 @@
           "geneva": {
             "description": "Whether to include the Geneva Exporter from the opentelemetry-cpp-contrib repository"
           },
-          "otlp": {
-            "description": "Whether to include the OpenTelemetry Protocol in the SDK",
-            "dependencies": [
-              {
-                "name": "opentelemetry-cpp",
-                "default-features": false,
-                "features": [
-                  "otlp-grpc",
-                  "otlp-http"
-                ]
-              }
-            ]
-          },
           "otlp-grpc": {
             "description": "Whether to include the OTLP gRPC exporter in the SDK",
             "dependencies": [
@@ -64806,13 +64826,6 @@
               {
                 "name": "grpc",
                 "host": true
-              },
-              {
-                "name": "opentelemetry-cpp",
-                "default-features": false,
-                "features": [
-                  "otlp"
-                ]
               }
             ]
           },
@@ -64820,13 +64833,7 @@
             "description": "Whether to include the OpenTelemetry Protocol over HTTP in the SDK",
             "dependencies": [
               "curl",
-              {
-                "name": "opentelemetry-cpp",
-                "default-features": false,
-                "features": [
-                  "otlp"
-                ]
-              }
+              "protobuf"
             ]
           },
           "prometheus": {
@@ -74927,7 +74934,7 @@
             "host": true
           }
         ],
-        "version": "0.2.3"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -76690,11 +76697,8 @@
         "description": "S2 is a library for spherical geometry that aims to have the same robustness, flexibility, and performance as the very best planar geometry libraries.",
         "homepage": "https://s2geometry.io",
         "license": "Apache-2.0",
-        "supports": "!windows",
         "dependencies": [
           "abseil",
-          "gflags",
-          "glog",
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -76705,10 +76709,9 @@
             "host": true
           }
         ],
-        "version": "0.10.0"
+        "version": "0.11.0"
       },
       "files": [
-        "CMakeLists.txt.patch",
         "Config.cmake.in.patch",
         "portfile.cmake",
         "usage",
@@ -85864,10 +85867,10 @@
       "name": "vcpkg-get-python-packages",
       "manifest": {
         "name": "vcpkg-get-python-packages",
-        "documentation": "https://vcpkg.io/en/docs/README.html",
+        "documentation": "https://learn.microsoft.com/en-us/vcpkg/maintainers/functions/vcpkg_get_python_packages",
         "license": "MIT",
         "supports": "native",
-        "version-date": "2024-01-02"
+        "version-date": "2024-01-24"
       },
       "files": [
         "copyright",
