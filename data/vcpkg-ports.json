@@ -1,5 +1,5 @@
 {
-  "version": "74b4c2c019d6fd10fef45076042f45796ef71708",
+  "version": "c3801cf53c614ffc54c94051d124eba097b057b1",
   "ports": [
     {
       "name": "3fd",
@@ -2267,15 +2267,15 @@
       "name": "assimp",
       "manifest": {
         "name": "assimp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The Open Asset import library",
         "homepage": "https://github.com/assimp/assimp",
         "license": "BSD-3-Clause",
         "dependencies": [
           "draco",
+          "jhasse-poly2tri",
           "kubazip",
           "minizip",
-          "poly2tri",
           "polyclipping",
           "pugixml",
           "rapidjson",
@@ -2342,6 +2342,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "async-simple",
+      "manifest": {
+        "name": "async-simple",
+        "description": "Simple, light-weight and easy-to-use asynchronous components.",
+        "homepage": "https://github.com/alibaba/async_simple",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -2765,10 +2790,6 @@
             ]
           },
           {
-            "name": "pkgconf",
-            "host": true
-          },
-          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -2777,7 +2798,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.1"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
@@ -31884,6 +31905,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -32981,6 +33003,18 @@
           },
           "retail": {
             "description": "Retail API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "rpc": {
+            "description": "RPC API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -37947,7 +37981,7 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -39169,6 +39203,32 @@
       ]
     },
     {
+      "name": "jhasse-poly2tri",
+      "manifest": {
+        "name": "jhasse-poly2tri",
+        "description": "Sweep-line algorithm for constrained Delaunay triangulation",
+        "homepage": "https://github.com/jhasse/poly2tri",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-12-27"
+      },
+      "files": [
+        "cmake.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "jinja2cpplight",
       "manifest": {
         "name": "jinja2cpplight",
@@ -39338,7 +39398,7 @@
             "host": true
           }
         ],
-        "version": "0.3.2"
+        "version": "0.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -45883,7 +45943,7 @@
             "description": "Emulate libjpeg v8 API/ABI (this makes libjpeg-turbo backward-incompatible with libjpeg v6b!)"
           }
         },
-        "version": "3.0.1"
+        "version": "3.0.2"
       },
       "files": [
         "add-options-for-exes-docs-headers.patch",
@@ -53982,7 +54042,7 @@
         "description": "Fast In-Memory Data Compression Algorithm (inline C/C++)",
         "homepage": "https://github.com/avaneev/lzav",
         "license": "MIT",
-        "version": "3.10"
+        "version": "3.13"
       },
       "files": [
         "portfile.cmake",
@@ -55497,7 +55557,7 @@
       "name": "mapnik",
       "manifest": {
         "name": "mapnik",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Mapnik is an open source toolkit for developing mapping applications.",
         "homepage": "https://github.com/mapnik/mapnik",
         "license": "LGPL-2.1-only",
@@ -55620,7 +55680,10 @@
             ]
           },
           "input-raster": {
-            "description": "RASTER input plugin"
+            "description": "RASTER input plugin",
+            "dependencies": [
+              "boost-format"
+            ]
           },
           "input-shape": {
             "description": "SHAPE input plugin"
@@ -64788,7 +64851,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -64797,7 +64860,6 @@
         "license": "Apache-2.0",
         "dependencies": [
           "abseil",
-          "curl",
           "nlohmann-json",
           {
             "name": "vcpkg-cmake",
@@ -67428,7 +67490,7 @@
             "host": true
           }
         ],
-        "version": "0.3.83"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -68093,33 +68155,6 @@
         "disable-gcc5-checks.patch",
         "portfile.cmake",
         "use-external-libs.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "poly2tri",
-      "manifest": {
-        "name": "poly2tri",
-        "port-version": 3,
-        "description": "The Clipper library performs clipping and offsetting for both lines and polygons. All four boolean clipping operations are supported - intersection, union, difference and exclusive-or. Polygons can be of any shape including self-intersecting polygons.",
-        "homepage": "https://github.com/greenm01/poly2tri",
-        "supports": "!uwp",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-date": "2020-07-21"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "fix-sweep-h-codepage.patch",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -69372,7 +69407,7 @@
       "name": "pulsar-client-cpp",
       "manifest": {
         "name": "pulsar-client-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Apache Pulsar C++ library",
         "homepage": "https://github.com/apache/pulsar-client-cpp",
         "license": "Apache-2.0",
@@ -69384,6 +69419,7 @@
           "boost-asio",
           "boost-circular-buffer",
           "boost-date-time",
+          "boost-format",
           "boost-predef",
           "boost-property-tree",
           "boost-random",
@@ -73223,12 +73259,12 @@
       "name": "qtpositioning",
       "manifest": {
         "name": "qtpositioning",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Positioning",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
-          "poly2tri",
+          "jhasse-poly2tri",
           {
             "name": "qtbase",
             "default-features": false
@@ -78821,6 +78857,7 @@
       "name": "shiftmedia-libgpg-error",
       "manifest": {
         "name": "shiftmedia-libgpg-error",
+        "port-version": 1,
         "description": "An unofficial libgpg-error with added native Visual Studio project system",
         "homepage": "https://github.com/ShiftMediaProject/libgpg-error",
         "license": "LGPL-2.1-only",
@@ -79908,6 +79945,30 @@
           }
         },
         "version": "0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "snitch",
+      "manifest": {
+        "name": "snitch",
+        "description": "Lightweight C++20 testing framework.",
+        "homepage": "https://github.com/snitch-org/snitch",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -81177,7 +81238,6 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
-        "port-version": 3,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -81218,7 +81278,7 @@
             ]
           }
         },
-        "version": "0.61"
+        "version": "0.64"
       },
       "files": [
         "ddl2cpp_path.patch",
