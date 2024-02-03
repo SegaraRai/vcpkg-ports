@@ -1,5 +1,5 @@
 {
-  "version": "c3801cf53c614ffc54c94051d124eba097b057b1",
+  "version": "80403036a665cb8fcc1a1b3e17593d20b03b2489",
   "ports": [
     {
       "name": "3fd",
@@ -20396,6 +20396,7 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
+        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -22924,7 +22925,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -31905,7 +31906,6 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
-        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -33109,6 +33109,18 @@
               }
             ]
           },
+          "servicehealth": {
+            "description": "Personalized Service Health API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "servicemanagement": {
             "description": "Service Management API C++ Client Library",
             "dependencies": [
@@ -33436,7 +33448,7 @@
             ]
           }
         },
-        "version": "2.20.0"
+        "version": "2.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -45386,7 +45398,7 @@
           },
           "x265"
         ],
-        "version": "1.17.5"
+        "version": "1.17.6"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -48274,7 +48286,7 @@
       "name": "libqglviewer",
       "manifest": {
         "name": "libqglviewer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libQGLViewer is an open source C++ library based on Qt that eases the creation of OpenGL 3D viewers.",
         "homepage": "http://libqglviewer.com/",
         "license": "GPL-2.0-or-later",
@@ -48287,16 +48299,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
         "version": "2.9.1"
       },
       "files": [
         "Add-compile-definitions.patch",
+        "Fix-error-c2039.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49492,6 +49501,7 @@
       "name": "libsrtp",
       "manifest": {
         "name": "libsrtp",
+        "port-version": 1,
         "description": "This package provides an implementation of the Secure Real-time Transport Protocol (SRTP), the Universal Security Transform (UST), and a supporting cryptographic kernel.",
         "homepage": "https://github.com/cisco/libsrtp/",
         "license": "BSD-3-Clause",
@@ -49505,6 +49515,14 @@
             "host": true
           }
         ],
+        "features": {
+          "openssl": {
+            "description": "Enable OpenSSL support",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
         "version": "2.5.0"
       },
       "files": [
@@ -64339,7 +64357,7 @@
       "name": "openmesh",
       "manifest": {
         "name": "openmesh",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A generic and efficient polygon mesh data structure",
         "homepage": "https://www.graphics.rwth-aachen.de/media/openmesh_static/Daily-Builds/Doc/index.html",
         "license": "BSD-3-Clause",
@@ -64356,9 +64374,8 @@
         "version": "9.0"
       },
       "files": [
+        "fix-library-install-path.patch",
         "portfile.cmake",
-        "usage",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -66734,6 +66751,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
+        "port-version": 1,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -66794,6 +66812,7 @@
           "examples": {
             "description": "Build PCL examples",
             "dependencies": [
+              "boost-format",
               {
                 "name": "pcl",
                 "features": [
@@ -71930,7 +71949,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -72135,6 +72154,19 @@
                 "default-features": false,
                 "features": [
                   "gui"
+                ]
+              }
+            ],
+            "supports": "!windows & !osx"
+          },
+          "gles3": {
+            "description": "OpenGL ES 3.0",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gles2"
                 ]
               }
             ],
