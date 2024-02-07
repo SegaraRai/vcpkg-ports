@@ -1,5 +1,5 @@
 {
-  "version": "710677da49b03885c65c8b5ca43072d4b1acde75",
+  "version": "66b4b34d99ab272fcf21f2bd12b616e371c6bb31",
   "ports": [
     {
       "name": "3fd",
@@ -11992,7 +11992,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -17207,7 +17207,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.25.0"
+        "version-semver": "1.26.0"
       },
       "files": [
         "avoid-docs.patch",
@@ -18881,7 +18881,6 @@
       "name": "clamav",
       "manifest": {
         "name": "clamav",
-        "port-version": 4,
         "description": "ClamAV is an open-source anti-virus toolkit.",
         "homepage": "https://www.clamav.net",
         "supports": "!uwp & !static",
@@ -18903,12 +18902,13 @@
           },
           "zlib"
         ],
-        "version-semver": "0.103.0"
+        "version-semver": "0.103.11"
       },
       "files": [
         "build.patch",
         "cmakefiles.patch",
         "curl.patch",
+        "isnt.patch",
         "mspack.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -18931,7 +18931,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.1.10"
+        "version-semver": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -20548,7 +20548,7 @@
         "name": "cpp-peglib",
         "description": "C++11 header-only PEG (Parsing Expression Grammars) library.",
         "license": "MIT",
-        "version": "1.8.5"
+        "version": "1.8.6"
       },
       "files": [
         "portfile.cmake",
@@ -21130,6 +21130,7 @@
       "name": "cpptrace",
       "manifest": {
         "name": "cpptrace",
+        "port-version": 1,
         "description": "Simple, portable, and self-contained stacktrace library for C++11 and newer",
         "homepage": "https://github.com/jeremy-rifkin/cpptrace",
         "license": "MIT",
@@ -21151,6 +21152,7 @@
         "version": "0.3.1"
       },
       "files": [
+        "libdwarf-0.9.0.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -39383,7 +39385,6 @@
       "name": "json-c",
       "manifest": {
         "name": "json-c",
-        "port-version": 3,
         "description": "A JSON implementation in C",
         "homepage": "https://github.com/json-c/json-c",
         "license": "MIT",
@@ -39397,10 +39398,9 @@
             "host": true
           }
         ],
-        "version-date": "2022-06-26"
+        "version-date": "2023-08-12"
       },
       "files": [
-        "fix-build-with-clang.patch",
         "fix-clang-cl.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -39579,7 +39579,7 @@
             "host": true
           }
         ],
-        "version": "0.173.2"
+        "version": "0.173.4"
       },
       "files": [
         "portfile.cmake",
@@ -42759,7 +42759,6 @@
       "name": "libalkimia",
       "manifest": {
         "name": "libalkimia",
-        "port-version": 2,
         "description": "Common functionality for finance applications.",
         "homepage": "https://community.kde.org/Alkimia/libalkimia",
         "license": "LGPL-2.1-or-later",
@@ -42805,11 +42804,9 @@
             ]
           }
         },
-        "version": "8.1.70"
+        "version": "8.1.72"
       },
       "files": [
-        "dll_names.diff",
-        "fix_explicit_shared_lib.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43987,15 +43984,13 @@
           "zlib",
           "zstd"
         ],
-        "version": "0.8.0"
+        "version": "0.9.1"
       },
       "files": [
         "dependencies.diff",
         "msvc-runtime.diff",
-        "no-suffix.diff",
         "off_t.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -64373,7 +64368,6 @@
       "name": "openmesh",
       "manifest": {
         "name": "openmesh",
-        "port-version": 2,
         "description": "A generic and efficient polygon mesh data structure",
         "homepage": "https://www.graphics.rwth-aachen.de/media/openmesh_static/Daily-Builds/Doc/index.html",
         "license": "BSD-3-Clause",
@@ -64387,11 +64381,13 @@
             "host": true
           }
         ],
-        "version": "9.0"
+        "version": "10.0"
       },
       "files": [
         "fix-library-install-path.patch",
+        "fix-pkgconfig.patch",
         "portfile.cmake",
+        "restore-c++11-compatibility.patch",
         "vcpkg.json"
       ]
     },
@@ -64674,7 +64670,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -64708,19 +64703,15 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
-        "asm-comments.patch",
-        "declspec-align.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
-        "qt-msvc.patch",
         "script-prefix.patch",
         "unix/android-cc.patch",
         "unix/configure",
-        "unix/disable-quicserver.patch",
         "unix/move-openssldir.patch",
         "unix/no-empty-dirs.patch",
         "unix/no-static-libs-for-shared.patch",
@@ -80485,7 +80476,7 @@
       "name": "soxr",
       "manifest": {
         "name": "soxr",
-        "port-version": 7,
+        "port-version": 8,
         "description": "High quality audio resampling",
         "homepage": "https://sourceforge.net/projects/soxr/",
         "dependencies": [
