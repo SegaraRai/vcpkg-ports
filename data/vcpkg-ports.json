@@ -1,5 +1,5 @@
 {
-  "version": "66b4b34d99ab272fcf21f2bd12b616e371c6bb31",
+  "version": "783c0fe1dcdf4616930f336377d65028ffb60f3e",
   "ports": [
     {
       "name": "3fd",
@@ -5047,7 +5047,7 @@
           {
             "name": "azure-core-amqp-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.5"
+            "version>=": "1.0.0-beta.7"
           },
           {
             "name": "vcpkg-cmake",
@@ -5058,7 +5058,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.5"
+        "version-semver": "1.0.0-beta.6"
       },
       "files": [
         "portfile.cmake",
@@ -18290,7 +18290,6 @@
       "name": "cgicc",
       "manifest": {
         "name": "cgicc",
-        "port-version": 7,
         "description": "GNU Cgicc is an ANSI C++ compliant class library that greatly simplifies the creation of CGI applications for the World Wide Web",
         "homepage": "https://www.gnu.org/software/cgicc/",
         "dependencies": [
@@ -18303,7 +18302,7 @@
             "host": true
           }
         ],
-        "version": "3.2.19"
+        "version": "3.2.20"
       },
       "files": [
         "CMakeLists.txt",
@@ -19130,6 +19129,7 @@
         "description": "CLI11 is a command line parser for C++11 and beyond that provides a rich feature set with a simple and intuitive interface.",
         "homepage": "https://github.com/CLIUtils/CLI11",
         "license": "BSD-3-Clause",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -19140,7 +19140,7 @@
             "host": true
           }
         ],
-        "version": "2.3.2"
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -20448,7 +20448,7 @@
             ]
           }
         },
-        "version": "0.15.2"
+        "version": "0.15.3"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -20661,7 +20661,7 @@
             "host": true
           }
         ],
-        "version": "20230000.0"
+        "version": "20240000.2"
       },
       "files": [
         "portfile.cmake",
@@ -22394,7 +22394,7 @@
             "host": true
           }
         ],
-        "version": "1.2.7"
+        "version": "1.2.9"
       },
       "files": [
         "portfile.cmake",
@@ -22537,7 +22537,7 @@
             "description": "Enable Type Discovery support"
           }
         },
-        "version-semver": "0.10.3"
+        "version-semver": "0.10.4"
       },
       "files": [
         "enable-security.patch",
@@ -22551,7 +22551,6 @@
       "name": "cyclonedds-cxx",
       "manifest": {
         "name": "cyclonedds-cxx",
-        "port-version": 1,
         "description": "C++ binding for Eclipse Cyclone DDS",
         "homepage": "https://cyclonedds.io",
         "license": "EPL-2.0",
@@ -22584,7 +22583,7 @@
             ]
           }
         },
-        "version": "0.10.2"
+        "version": "0.10.4"
       },
       "files": [
         "portfile.cmake",
@@ -25248,7 +25247,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.24"
+        "version": "1.25"
       },
       "files": [
         "CMakeLists.txt",
@@ -68565,7 +68564,7 @@
       "name": "portmidi",
       "manifest": {
         "name": "portmidi",
-        "port-version": 2,
+        "port-version": 3,
         "description": "PortMidi is a cross platform (Windows, macOS, Linux, and BSDs which support alsalib) library for interfacing with operating systems' MIDI I/O APIs.",
         "homepage": "https://github.com/PortMidi/portmidi",
         "license": "MIT",
@@ -68573,7 +68572,7 @@
         "dependencies": [
           {
             "name": "alsa",
-            "platform": "!(windows | osx)"
+            "platform": "linux | android | freebsd | openbsd"
           },
           {
             "name": "vcpkg-cmake",
