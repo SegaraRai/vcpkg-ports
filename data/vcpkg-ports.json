@@ -1,5 +1,5 @@
 {
-  "version": "783c0fe1dcdf4616930f336377d65028ffb60f3e",
+  "version": "2c7d2ae88f7abc605cf0cd8fdd6bb2b116214741",
   "ports": [
     {
       "name": "3fd",
@@ -798,7 +798,7 @@
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "1.2.10"
+        "version": "1.2.11"
       },
       "files": [
         "fix-plugin-dir.patch",
@@ -23302,7 +23302,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -23372,6 +23372,7 @@
       "files": [
         "dcmtk.patch",
         "dictionary_paths.patch",
+        "fix_link_tiff.patch",
         "fix_link_xml2.patch",
         "portfile.cmake",
         "usage",
@@ -24372,7 +24373,6 @@
       "name": "draco",
       "manifest": {
         "name": "draco",
-        "port-version": 1,
         "description": " A library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics.",
         "homepage": "https://github.com/google/draco",
         "license": "Apache-2.0",
@@ -24386,7 +24386,7 @@
             "host": true
           }
         ],
-        "version": "1.5.6"
+        "version": "1.5.7"
       },
       "files": [
         "disable-symlinks.patch",
@@ -28059,7 +28059,7 @@
             "host": true
           }
         ],
-        "version": "3.2.10"
+        "version": "3.2.11"
       },
       "files": [
         "portfile.cmake",
@@ -31598,7 +31598,7 @@
       "name": "glpk",
       "manifest": {
         "name": "glpk",
-        "port-version": 2,
+        "port-version": 3,
         "maintainers": "Fabio A. Correa Duran",
         "description": [
           "The GNU Linear Programming Kit (GLPK) solves large-scale linear programming (LP), mixed integer programming (MIP), and related problems.",
@@ -36456,6 +36456,135 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "hello-imgui",
+      "manifest": {
+        "name": "hello-imgui",
+        "description": "Hello ImGui: unleash your creativity in app development and prototyping",
+        "homepage": "https://pthom.github.io/hello_imgui/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "imgui",
+            "features": [
+              "docking-experimental"
+            ]
+          },
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "experimental-dx11-binding": {
+            "description": "Use DirectX11 renderer backend (Windows only, experimental)",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "dx11-binding"
+                ]
+              }
+            ]
+          },
+          "experimental-dx12-binding": {
+            "description": "Use DirectX12 renderer backend (Windows only, experimental)",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "dx12-binding"
+                ]
+              }
+            ]
+          },
+          "experimental-vulkan-binding": {
+            "description": "Use Vulkan renderer backend (Windows/Linux/macOS, experimental)",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "vulkan-binding"
+                ]
+              }
+            ]
+          },
+          "freetype-lunasvg": {
+            "description": "Improve font rendering and use colored fonts with freetype and lunasvg",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "freetype",
+                  "freetype-lunasvg"
+                ]
+              }
+            ]
+          },
+          "glfw-binding": {
+            "description": "Use GLFW platform backend (default)",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "glfw-binding"
+                ]
+              }
+            ]
+          },
+          "metal-binding": {
+            "description": "Use Metal renderer backend (macOS/iOS only)",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "metal-binding"
+                ]
+              }
+            ]
+          },
+          "opengl3-binding": {
+            "description": "Use OpenGL3/ES2 renderer backend (default)",
+            "dependencies": [
+              {
+                "name": "glad",
+                "features": [
+                  "gl-api-43"
+                ]
+              },
+              {
+                "name": "imgui",
+                "features": [
+                  "opengl3-binding"
+                ]
+              }
+            ]
+          },
+          "sdl2-binding": {
+            "description": "Use SDL2 platform backend",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "sdl2-binding"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "1.4.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -41866,6 +41995,7 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
+        "port-version": 1,
         "description": [
           "The Khronos KTX library and tools.",
           "Functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them."
@@ -41887,6 +42017,10 @@
         "features": {
           "tools": {
             "description": "Build tools",
+            "dependencies": [
+              "cxxopts",
+              "fmt"
+            ],
             "supports": "!android"
           },
           "vulkan": {
@@ -41901,6 +42035,7 @@
         "0002-Fix-versioning.patch",
         "0003-mkversion.patch",
         "0004-quirks.patch",
+        "0005-no-vendored-libs.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -48606,7 +48741,7 @@
             "host": true
           }
         ],
-        "version": "4.2.4"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -68432,7 +68567,7 @@
             ]
           }
         },
-        "version": "23.11.0"
+        "version": "24.2.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -77863,7 +77998,6 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 2,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -77880,7 +78014,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "wavpack"
         ],
         "features": {
           "fluidsynth": {
@@ -77914,12 +78049,10 @@
             ]
           }
         },
-        "version": "2.6.3"
+        "version": "2.8.0"
       },
       "files": [
-        "fix-deps-targets.patch",
         "fix-pkg-prefix.patch",
-        "fix-pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
