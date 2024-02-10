@@ -1,5 +1,5 @@
 {
-  "version": "2c7d2ae88f7abc605cf0cd8fdd6bb2b116214741",
+  "version": "1750541031c8b9e0c7793b9cf3a59b95b873ee18",
   "ports": [
     {
       "name": "3fd",
@@ -22078,7 +22078,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -22285,7 +22284,7 @@
             ]
           }
         },
-        "version": "8.5.0"
+        "version": "8.6.0"
       },
       "files": [
         "0002_fix_uwp.patch",
@@ -22293,7 +22292,6 @@
         "0012-fix-dependency-idn2.patch",
         "0020-fix-pc-file.patch",
         "0022-deduplicate-libs.patch",
-        "cmake-config-ios.patch",
         "cmake-config.patch",
         "cmake-project-include.cmake",
         "dependencies.patch",
@@ -26097,22 +26095,16 @@
         "description": "Freeware Advanced Audio (AAC) Decoder",
         "homepage": "https://sourceforge.net/projects/faac/",
         "license": "GPL-2.0-or-later",
-        "supports": "windows",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "features": {
-          "build-decoder": {
-            "description": "Build the embedded decoder executable"
-          }
-        },
-        "version": "2.10.1"
+        "version": "2.11.1"
       },
       "files": [
-        "CMakeLists.txt",
+        "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31460,6 +31452,7 @@
       "name": "glm",
       "manifest": {
         "name": "glm",
+        "port-version": 1,
         "description": "OpenGL Mathematics (GLM)",
         "homepage": "https://glm.g-truc.net",
         "license": "MIT",
@@ -31476,6 +31469,7 @@
         "version": "1.0.0"
       },
       "files": [
+        "disable-werror.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -42592,7 +42586,7 @@
       "name": "lerc",
       "manifest": {
         "name": "lerc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An open-source image or raster format which supports rapid encoding and decoding for any pixel type",
         "homepage": "https://github.com/Esri/lerc",
         "license": "Apache-2.0",
@@ -42610,6 +42604,7 @@
       },
       "files": [
         "create_package.patch",
+        "cxx-linkage-pkgconfig.patch",
         "include_algorithm_for_std_min.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -60013,7 +60008,6 @@
       "name": "netgen",
       "manifest": {
         "name": "netgen",
-        "port-version": 1,
         "description": "NETGEN is an automatic 3d tetrahedral mesh generator. It accepts input from constructive solid geometry (CSG) or boundary representation (BRep) from STL file format. The connection to a geometry kernel allows the handling of IGES and STEP files. NETGEN contains modules for mesh optimization and hierarchical mesh refinement.",
         "homepage": "https://ngsolve.org/",
         "license": "LGPL-2.1-or-later",
@@ -60045,9 +60039,19 @@
           },
           "zlib"
         ],
-        "version": "6.2.2307"
+        "features": {
+          "python": {
+            "description": "Build python bindings",
+            "dependencies": [
+              "pybind11",
+              "python3"
+            ]
+          }
+        },
+        "version": "6.2.2401"
       },
       "files": [
+        "142.diff",
         "add_filesystem.patch",
         "cgns-scoped-enum.patch",
         "cmake-adjustments.patch",
@@ -64227,7 +64231,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 3,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -64355,7 +64358,7 @@
             ]
           }
         },
-        "version": "2.4.14.0"
+        "version": "2.5.8.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -77998,6 +78001,7 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
+        "port-version": 1,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -78033,7 +78037,8 @@
           "libmodplug": {
             "description": "Use libmodplug to play MOD audio format.",
             "dependencies": [
-              "libmodplug"
+              "libmodplug",
+              "libxmp"
             ]
           },
           "mpg123": {
@@ -83280,7 +83285,7 @@
       "name": "tiff",
       "manifest": {
         "name": "tiff",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library that supports the manipulation of TIFF image files",
         "homepage": "https://libtiff.gitlab.io/libtiff/",
         "license": "libtiff",
@@ -83307,6 +83312,19 @@
             "description": "Support JPEG compression in TIFF image files",
             "dependencies": [
               "libjpeg-turbo"
+            ]
+          },
+          "lerc": {
+            "description": "Support LERC compression",
+            "dependencies": [
+              "lerc",
+              {
+                "name": "tiff",
+                "default-features": false,
+                "features": [
+                  "zip"
+                ]
+              }
             ]
           },
           "libdeflate": {
@@ -83355,6 +83373,7 @@
       "files": [
         "FindCMath.patch",
         "portfile.cmake",
+        "requires-lerc.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
         "vcpkg.json"
@@ -85801,7 +85820,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.57.0"
+        "version-semver": "20.59.0"
       },
       "files": [
         "portfile.cmake",
@@ -88731,6 +88750,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
+        "port-version": 1,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
