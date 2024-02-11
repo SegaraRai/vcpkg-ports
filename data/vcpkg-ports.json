@@ -1,5 +1,5 @@
 {
-  "version": "1750541031c8b9e0c7793b9cf3a59b95b873ee18",
+  "version": "345ac44ab8d6a16239d3af55df9608bf725e7a48",
   "ports": [
     {
       "name": "3fd",
@@ -24519,7 +24519,7 @@
             ]
           }
         },
-        "version-semver": "1.9.2"
+        "version-semver": "1.9.3"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -39239,7 +39239,6 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
-        "port-version": 1,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -39285,7 +39284,7 @@
             ]
           }
         },
-        "version": "4.1.0"
+        "version": "4.2.0"
       },
       "files": [
         "check-for-atomics-support.patch",
@@ -50863,6 +50862,36 @@
         "0001-fix-dependencies.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libvhdi",
+      "manifest": {
+        "name": "libvhdi",
+        "description": "Library and tools to access the Virtual Hard Disk (VHD) image format ",
+        "homepage": "https://github.com/libyal/libvhdi",
+        "license": "LGPL-3.0-or-later",
+        "supports": "!uwp",
+        "dependencies": [
+          "gettext",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "20231127"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "Config.cmake.in",
+        "macos_fixes.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -76104,6 +76133,101 @@
       ]
     },
     {
+      "name": "robotraconteur",
+      "manifest": {
+        "name": "robotraconteur",
+        "description": "The Robot Raconteur communication framework core library",
+        "homepage": "http://robotraconteur.com",
+        "license": "Apache-2.0",
+        "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64)) | (osx & (x64 | arm64))",
+        "dependencies": [
+          "boost-algorithm",
+          "boost-array",
+          "boost-asio",
+          "boost-assign",
+          "boost-atomic",
+          "boost-bind",
+          "boost-config",
+          "boost-container",
+          "boost-date-time",
+          "boost-filesystem",
+          "boost-foreach",
+          "boost-format",
+          "boost-function",
+          "boost-interprocess",
+          "boost-intrusive",
+          "boost-lexical-cast",
+          "boost-locale",
+          "boost-program-options",
+          "boost-random",
+          "boost-range",
+          "boost-regex",
+          "boost-scope-exit",
+          "boost-signals2",
+          "boost-smart-ptr",
+          "boost-thread",
+          "boost-tuple",
+          "boost-unordered",
+          "boost-utility",
+          "boost-uuid",
+          {
+            "name": "dbus",
+            "platform": "linux"
+          },
+          {
+            "name": "libusb",
+            "platform": "linux"
+          },
+          {
+            "name": "openssl",
+            "platform": "!windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "robotraconteur-companion",
+      "manifest": {
+        "name": "robotraconteur-companion",
+        "homepage": "https://github.com/robotraconteur/robotraconteur_companion",
+        "license": "Apache-2.0",
+        "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64)) | (osx & (x64 | arm64))",
+        "dependencies": [
+          "eigen3",
+          "robotraconteur",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "yaml-cpp"
+        ],
+        "version-semver": "0.3.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "rocksdb",
       "manifest": {
         "name": "rocksdb",
@@ -84452,11 +84576,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.16"
+        "version-semver": "1.5.17"
       },
       "files": [
         "000-fix-deps.patch",
-        "001-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
