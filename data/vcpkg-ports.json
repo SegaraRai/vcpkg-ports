@@ -1,5 +1,5 @@
 {
-  "version": "345ac44ab8d6a16239d3af55df9608bf725e7a48",
+  "version": "7ba0ba7334c3346e7eee1e049ba85da193a8d821",
   "ports": [
     {
       "name": "3fd",
@@ -2185,7 +2185,7 @@
             ]
           }
         },
-        "version": "2.9.2"
+        "version": "2.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -2531,7 +2531,6 @@
       "name": "atkmm",
       "manifest": {
         "name": "atkmm",
-        "port-version": 2,
         "description": "atkmm is the official C++ interface for the ATK accessibility toolkit library. It may be used, for instance, by user interfaces implemented with gtkmm.",
         "homepage": "https://www.gtkmm.org",
         "license": "LGPL-2.1-or-later",
@@ -2546,7 +2545,7 @@
             "host": true
           }
         ],
-        "version": "2.36.1"
+        "version": "2.36.3"
       },
       "files": [
         "portfile.cmake",
@@ -5786,7 +5785,7 @@
       "name": "benchmark",
       "manifest": {
         "name": "benchmark",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library to support the benchmarking of functions, similar to unit-tests.",
         "homepage": "https://github.com/google/benchmark",
         "license": "Apache-2.0",
@@ -21130,7 +21129,6 @@
       "name": "cpptrace",
       "manifest": {
         "name": "cpptrace",
-        "port-version": 1,
         "description": "Simple, portable, and self-contained stacktrace library for C++11 and newer",
         "homepage": "https://github.com/jeremy-rifkin/cpptrace",
         "license": "MIT",
@@ -21149,10 +21147,9 @@
             "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "0.4.0"
       },
       "files": [
-        "libdwarf-0.9.0.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -24397,6 +24394,32 @@
       ]
     },
     {
+      "name": "drekar-launch-process-cpp",
+      "manifest": {
+        "name": "drekar-launch-process-cpp",
+        "description": "Companion library for drekar-launch for C++",
+        "homepage": "https://github.com/johnwason/drekar-launch-process-cpp",
+        "license": "Apache-2.0",
+        "supports": "(windows & (x86 | x64) & !uwp) | linux | osx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "drlibs",
       "manifest": {
         "name": "drlibs",
@@ -25976,7 +25999,6 @@
       "name": "expat",
       "manifest": {
         "name": "expat",
-        "port-version": 3,
         "description": "XML parser library written in C",
         "homepage": "https://github.com/libexpat/libexpat",
         "license": "MIT",
@@ -25990,7 +26012,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -26354,7 +26376,7 @@
       "manifest": {
         "name": "fastgltf",
         "port-version": 1,
-        "description": "Blazing fast C++17 glTF 2.0 loader powered by SIMD",
+        "description": "A modern C++17 glTF 2.0 library focused on speed, correctness, and usability",
         "homepage": "https://github.com/spnda/fastgltf",
         "license": "MIT",
         "dependencies": [
@@ -26368,10 +26390,9 @@
             "host": true
           }
         ],
-        "version": "0.6.1"
+        "version": "0.7.0"
       },
       "files": [
-        "find_package.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31251,7 +31272,7 @@
             "host": true
           }
         ],
-        "version": "2.0.6"
+        "version": "2.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -31423,7 +31444,6 @@
       "name": "glibmm",
       "manifest": {
         "name": "glibmm",
-        "port-version": 1,
         "description": "This is glibmm, a C++ API for parts of glib that are useful for C++.",
         "homepage": "https://www.gtkmm.org.",
         "license": "LGPL-2.1-or-later",
@@ -31441,7 +31461,7 @@
           },
           "zlib"
         ],
-        "version": "2.76.0"
+        "version": "2.78.1"
       },
       "files": [
         "portfile.cmake",
@@ -38132,7 +38152,6 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
-        "port-version": 4,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -38253,7 +38272,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.90"
+        "version": "1.90.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -38266,6 +38285,7 @@
       "name": "imgui-node-editor",
       "manifest": {
         "name": "imgui-node-editor",
+        "port-version": 1,
         "description": "Node Editor built using Dear ImGui",
         "homepage": "https://github.com/thedmd/imgui-node-editor",
         "license": "MIT",
@@ -38284,6 +38304,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-vec2-math-operators.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43050,7 +43071,7 @@
             ]
           }
         },
-        "version": "3.6.2"
+        "version": "3.7.2"
       },
       "files": [
         "disable-warnings.patch",
@@ -52470,7 +52491,7 @@
             "description": "Support encryption"
           }
         },
-        "version": "7.0-1.10.1"
+        "version": "7.1-1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -62293,7 +62314,7 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -67751,7 +67772,6 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
-        "port-version": 2,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT",
@@ -67762,7 +67782,7 @@
             "host": true
           }
         ],
-        "version": "0.42.2"
+        "version": "0.43.2"
       },
       "files": [
         "fix_clang-cl.patch",
