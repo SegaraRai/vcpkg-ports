@@ -1,5 +1,5 @@
 {
-  "version": "ebd76d12a839d8f8fe6c612548a978b62bbdc69d",
+  "version": "a56d892ac792797d779eae79d3423e0131422628",
   "ports": [
     {
       "name": "3fd",
@@ -2363,6 +2363,7 @@
       "name": "async-simple",
       "manifest": {
         "name": "async-simple",
+        "port-version": 1,
         "description": "Simple, light-weight and easy-to-use asynchronous components.",
         "homepage": "https://github.com/alibaba/async_simple",
         "license": "Apache-2.0",
@@ -23626,7 +23627,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-12-31"
+        "version-date": "2024-02-14"
       },
       "files": [
         "portfile.cmake",
@@ -25802,6 +25803,7 @@
       "name": "etl",
       "manifest": {
         "name": "etl",
+        "port-version": 1,
         "description": "A C++ template library for embedded applications",
         "homepage": "https://www.etlcpp.com",
         "license": "MIT",
@@ -43119,12 +43121,14 @@
       "name": "libassert",
       "manifest": {
         "name": "libassert",
+        "port-version": 1,
         "description": "The most over-engineered and overpowered C++ assertion library.",
         "homepage": "https://github.com/jeremy-rifkin/libassert",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
           "cpptrace",
+          "magic-enum",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -43137,6 +43141,8 @@
         "version": "1.2.2"
       },
       "files": [
+        "include-dir.patch",
+        "magic-enum.patch",
         "portfile.cmake",
         "runtime_destination.patch",
         "vcpkg.json"
@@ -44119,6 +44125,7 @@
       "name": "libdwarf",
       "manifest": {
         "name": "libdwarf",
+        "port-version": 1,
         "description": "A library for reading DWARF2 and later DWARF.",
         "homepage": "https://github.com/davea42/libdwarf-code",
         "license": "LGPL-2.1-only",
@@ -44138,6 +44145,7 @@
       },
       "files": [
         "dependencies.diff",
+        "include-dir.diff",
         "msvc-runtime.diff",
         "off_t.diff",
         "portfile.cmake",
@@ -47284,7 +47292,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.3"
+        "version": "2024.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -69778,7 +69786,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -76782,7 +76790,6 @@
         "description": "Secure Real-Time Media Flow Protocol Library (RTMFP)",
         "homepage": "https://github.com/zenomt/rtmfp-cpp",
         "license": "MIT",
-        "supports": "x64 & !uwp",
         "dependencies": [
           "openssl",
           {
@@ -76794,7 +76801,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0-20230213.18168ec"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -84115,11 +84122,17 @@
       "name": "tinyutf8",
       "manifest": {
         "name": "tinyutf8",
+        "port-version": 1,
         "description": "TINYUTF8 is a library for extremely easy integration of Unicode into an arbitrary C++11 project.",
+        "homepage": "https://github.com/DuffsDevice/tiny-utf8/",
         "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -85248,12 +85261,17 @@
       "name": "units",
       "manifest": {
         "name": "units",
+        "port-version": 1,
         "description": "A compile-time, header-only, dimensional analysis and unit conversion library built on c++14 with no dependencies.",
         "homepage": "https://github.com/nholthaus/units",
         "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
