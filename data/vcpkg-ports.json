@@ -1,5 +1,5 @@
 {
-  "version": "a56d892ac792797d779eae79d3423e0131422628",
+  "version": "4b7e0521fc3b5f5fc2307c36563e07a76e80a517",
   "ports": [
     {
       "name": "3fd",
@@ -5878,8 +5878,14 @@
       "name": "bext-di",
       "manifest": {
         "name": "bext-di",
+        "port-version": 1,
         "description": "C++14 Dependency Injection Library.",
         "homepage": "https://github.com/boost-ext/di",
+        "features": {
+          "extensions": {
+            "description": "Build with extensions included"
+          }
+        },
         "version": "1.3.0"
       },
       "files": [
@@ -22439,7 +22445,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.1.1"
+        "version-semver": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -37492,7 +37498,6 @@
       "name": "ignition-cmake2",
       "manifest": {
         "name": "ignition-cmake2",
-        "port-version": 2,
         "description": "CMake helper functions for building robotic applications",
         "homepage": "https://ignitionrobotics.org/libs/cmake",
         "license": null,
@@ -37502,11 +37507,10 @@
             "host": true
           }
         ],
-        "version": "2.16.0"
+        "version": "2.17.1"
       },
       "files": [
         "add-pkgconfig-and-remove-privatefor-limit.patch",
-        "fix-findogre-pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -73142,16 +73146,22 @@
       "name": "qtkeychain-qt6",
       "manifest": {
         "name": "qtkeychain-qt6",
+        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt6 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "libsecret",
-            "platform": "!(windows | uwp | osx)"
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
           },
           {
             "name": "qttools",
+            "host": true,
             "features": [
               "linguist"
             ]
@@ -85777,7 +85787,6 @@
       "name": "utf8proc",
       "manifest": {
         "name": "utf8proc",
-        "port-version": 1,
         "description": "Clean C library for processing UTF-8 Unicode data.",
         "homepage": "https://github.com/JuliaLang/utf8proc",
         "license": "MIT",
@@ -85791,7 +85800,7 @@
             "host": true
           }
         ],
-        "version": "2.7.0"
+        "version": "2.9.0"
       },
       "files": [
         "export-cmake-targets.patch",
