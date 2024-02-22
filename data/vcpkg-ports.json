@@ -1,5 +1,5 @@
 {
-  "version": "13bde2ff13192e1b2fdd37bd9b475c7665ae6ae5",
+  "version": "e56312cb3d33be09ec550ade6ffbb8dc18d23cfd",
   "ports": [
     {
       "name": "3fd",
@@ -2177,15 +2177,7 @@
             "host": true
           }
         ],
-        "features": {
-          "boost-container": {
-            "description": "Use Boost.Container instead of <memory_resource> (deprecated)",
-            "dependencies": [
-              "boost-container"
-            ]
-          }
-        },
-        "version": "2.9.3"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -23043,7 +23035,7 @@
             "host": true
           }
         ],
-        "version": "2.98.5"
+        "version": "2.101.0"
       },
       "files": [
         "portfile.cmake",
@@ -23068,7 +23060,7 @@
             "host": true
           }
         ],
-        "version": "3.23.0"
+        "version": "3.23.2"
       },
       "files": [
         "portfile.cmake",
@@ -23093,7 +23085,7 @@
             "host": true
           }
         ],
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -25025,6 +25017,7 @@
       "name": "easyloggingpp",
       "manifest": {
         "name": "easyloggingpp",
+        "port-version": 1,
         "description": "Easylogging++ is a single header efficient logging library for C++ applications.",
         "homepage": "https://github.com/abumq/easyloggingpp",
         "license": "MIT",
@@ -25054,7 +25047,9 @@
       "files": [
         "0001_add_cmake_options.patch",
         "0002_fix_build_uwp.patch",
+        "0003_fix_pkgconfig.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -25416,11 +25411,12 @@
       "name": "egl-registry",
       "manifest": {
         "name": "egl-registry",
-        "description": "the EGL API and Extension Registry",
+        "description": "EGL API and Extension Registry",
         "homepage": "https://github.com/KhronosGroup/EGL-Registry",
-        "version-date": "2022-09-20"
+        "version-date": "2024-01-25"
       },
       "files": [
+        "copyright",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26685,6 +26681,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30206,7 +30203,7 @@
             ]
           }
         },
-        "version-semver": "3.8.3"
+        "version-semver": "3.8.4"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -43301,7 +43298,7 @@
             "host": true
           }
         ],
-        "version": "1.25.4"
+        "version": "1.26.0"
       },
       "files": [
         "fix-include-directory.patch",
@@ -44079,7 +44076,7 @@
           },
           "zlib"
         ],
-        "version": "0.20.1"
+        "version": "0.20.2"
       },
       "files": [
         "portfile.cmake",
@@ -46214,7 +46211,6 @@
       "name": "libkeyfinder",
       "manifest": {
         "name": "libkeyfinder",
-        "port-version": 1,
         "description": "Musical key detection for digital audio",
         "homepage": "https://github.com/mixxxdj/libkeyfinder",
         "license": "GPL-3.0-or-later",
@@ -46229,7 +46225,7 @@
             "host": true
           }
         ],
-        "version": "2.2.6"
+        "version": "2.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -47296,7 +47292,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.4"
+        "version": "2024.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -48716,7 +48712,6 @@
       "name": "libredwg",
       "manifest": {
         "name": "libredwg",
-        "port-version": 1,
         "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
         "homepage": "https://www.gnu.org/software/libredwg/",
         "license": "GPL-3.0",
@@ -48737,7 +48732,7 @@
             "description": "Build dwg/dxf manipulation command-line tools"
           }
         },
-        "version": "0.12.5.5178"
+        "version": "0.13.2"
       },
       "files": [
         "fix_arm64_build.patch",
@@ -57974,7 +57969,6 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
-        "port-version": 1,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": null,
@@ -58028,7 +58022,7 @@
             ]
           }
         },
-        "version": "1.25.4"
+        "version": "1.26.0"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -59838,10 +59832,20 @@
       "name": "neargye-semver",
       "manifest": {
         "name": "neargye-semver",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++17 header-only dependency-free versioning library complying with Semantic Versioning 2.0.0",
         "homepage": "https://github.com/Neargye/semver",
         "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "0.3.0"
       },
       "files": [
@@ -64235,15 +64239,16 @@
       "manifest": {
         "name": "opengl-registry",
         "port-version": 1,
-        "description": "the API and Extension registries for the OpenGL family APIs",
+        "description": "OpenGL, OpenGL ES, and OpenGL ES-SC API and Extension Registry",
         "homepage": "https://github.com/KhronosGroup/OpenGL-Registry",
         "supports": "!xbox",
         "dependencies": [
           "egl-registry"
         ],
-        "version-date": "2022-09-29"
+        "version-date": "2024-02-10"
       },
       "files": [
+        "copyright",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65075,7 +65080,6 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 4,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -65132,40 +65136,10 @@
             "description": "Whether to include the Zipkin exporter in the SDK"
           }
         },
-        "version-semver": "1.13.0"
+        "version-semver": "1.14.0"
       },
       "files": [
         "add-missing-find-dependency.patch",
-        "fix-nominmax-problems.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "opentelemetry-fluentd",
-      "manifest": {
-        "name": "opentelemetry-fluentd",
-        "port-version": 2,
-        "description": "mdsd/fluentd exporter for OpenTelemetry C++",
-        "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib/tree/main/exporters",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "curl",
-          "nlohmann-json",
-          "opentelemetry-cpp",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-semver": "2.0.0"
-      },
-      "files": [
-        "fix_include_path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -69458,9 +69432,9 @@
       "name": "ptex",
       "manifest": {
         "name": "ptex",
-        "port-version": 4,
         "description": "Per-Face Texture Mapping for Production Rendering.",
         "homepage": "https://github.com/wdas/ptex",
+        "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -69473,12 +69447,12 @@
           },
           "zlib"
         ],
-        "version": "2.3.2"
+        "version": "2.4.2"
       },
       "files": [
         "fix-build.patch",
-        "fix-config.cmake.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -71000,7 +70974,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71095,6 +71069,7 @@
         "patches/CVE-2023-37369-qtbase-5.15.diff",
         "patches/CVE-2023-38197-qtbase-5.15.diff",
         "patches/CVE-2023-43114-5.15.patch",
+        "patches/CVE-2024-25580-qtbase-5.15.diff",
         "patches/Qt5BasicConfig.patch",
         "patches/Qt5GuiConfigExtras.patch",
         "patches/Qt5PluginTarget.patch",
@@ -72156,7 +72131,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -72702,6 +72677,7 @@
         "installed_dir.patch",
         "patches/0001-CVE-2023-51714-qtbase-6.6.diff",
         "patches/0002-CVE-2023-51714-qtbase-6.6.diff",
+        "patches/CVE-2024-25580-qtbase-6.6.diff",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -78111,7 +78087,6 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
-        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -78150,11 +78125,10 @@
             ]
           }
         },
-        "version": "2.6.3"
+        "version": "2.8.2"
       },
       "files": [
         "fix-findwebp.patch",
-        "fix-pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -78398,7 +78372,6 @@
       "name": "sdl2-ttf",
       "manifest": {
         "name": "sdl2-ttf",
-        "port-version": 1,
         "description": "A library for rendering TrueType fonts with SDL",
         "homepage": "https://www.libsdl.org/projects/SDL_ttf/",
         "license": "Zlib",
@@ -78425,10 +78398,9 @@
             ]
           }
         },
-        "version": "2.20.2"
+        "version": "2.22.0"
       },
       "files": [
-        "fix-pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -81513,7 +81485,7 @@
             ]
           }
         },
-        "version": "3.45.0"
+        "version": "3.45.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -85995,7 +85967,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.59.0"
+        "version-semver": "20.60.0"
       },
       "files": [
         "portfile.cmake",
@@ -86141,7 +86113,7 @@
       "name": "vamp-sdk",
       "manifest": {
         "name": "vamp-sdk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Library for Vamp plugins",
         "homepage": "https://www.vamp-plugins.org/develop.html",
         "license": "MIT",
@@ -88199,7 +88171,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.2088.41"
+        "version": "1.0.2277.86"
       },
       "files": [
         "portfile.cmake",
@@ -88404,7 +88376,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows | uwp",
-        "version": "6.1.0"
+        "version": "6.1.1"
       },
       "files": [
         "portfile.cmake",
