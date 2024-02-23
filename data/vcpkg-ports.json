@@ -1,5 +1,5 @@
 {
-  "version": "e56312cb3d33be09ec550ade6ffbb8dc18d23cfd",
+  "version": "62aa44929954469878eb8fc562af706a8f5615a5",
   "ports": [
     {
       "name": "3fd",
@@ -5933,7 +5933,7 @@
         "description": "Your scalable C++20 one header only State Machine Library with no dependencies",
         "homepage": "https://github.com/boost-ext/sml2",
         "license": "BSL-1.0",
-        "version-date": "2023-09-20"
+        "version-date": "2024-02-02"
       },
       "files": [
         "portfile.cmake",
@@ -6365,12 +6365,12 @@
       "name": "blaze",
       "manifest": {
         "name": "blaze",
+        "port-version": 1,
         "description": "Blaze is an open-source, high-performance C++ math library for dense and sparse arithmetic.",
         "homepage": "https://bitbucket.org/blaze-lib/blaze",
         "license": "BSD-3-Clause",
         "dependencies": [
           "boost-exception",
-          "lapack",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -6380,6 +6380,21 @@
             "host": true
           }
         ],
+        "default-features": [
+          "lapack",
+          "openmp"
+        ],
+        "features": {
+          "lapack": {
+            "description": "LAPACK support",
+            "dependencies": [
+              "lapack"
+            ]
+          },
+          "openmp": {
+            "description": "OpenMP support"
+          }
+        },
         "version": "3.8.2"
       },
       "files": [
@@ -17391,7 +17406,6 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
-        "port-version": 4,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -17437,14 +17451,14 @@
             "supports": "!windows"
           }
         },
-        "version": "1.17.8"
+        "version": "1.18.0"
       },
       "files": [
         "cairo_static_fix.patch",
         "disable-atomic-ops-check.patch",
+        "fix-alloca-undefine.patch",
         "fix-static-missing-lib-msimg32.patch",
         "fix_clang-cl_build.patch",
-        "mingw-dllexport.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -18562,9 +18576,10 @@
       "name": "chipmunk",
       "manifest": {
         "name": "chipmunk",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A fast and lightweight 2D game physics library.",
         "homepage": "https://github.com/slembcke/Chipmunk2D",
+        "license": "MIT",
         "supports": "!(arm & !arm64 & android)",
         "dependencies": [
           {
@@ -18579,6 +18594,7 @@
         "version": "7.0.3"
       },
       "files": [
+        "export-targets.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22393,6 +22409,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cwapi3d",
+      "manifest": {
+        "name": "cwapi3d",
+        "description": "CwAPI3D is the Cadwork 3D plugin architecture in C++.",
+        "homepage": "https://github.com/cwapi3d/cwapi3dcpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "30.10.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -26630,7 +26671,7 @@
       "name": "fdk-aac",
       "manifest": {
         "name": "fdk-aac",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A standalone Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android. Uses a fork without HE-AAC, HE-AACv2, or xHE-AAC support to avoid patent licensing and GPL compatibility issues when built without the he-aac option.",
         "homepage": "https://gitlab.freedesktop.org/wtaymans/fdk-aac-stripped",
         "license": "FDK-AAC",
@@ -26646,7 +26687,8 @@
         ],
         "features": {
           "he-aac": {
-            "description": "Support patent-encumbered HE-AAC, HE-AACv2, and xHE-AAC codec profiles. Do not distribute binaries with this option without the relevant patent licenses if you are in a jurisdiction that recognizes software patents. Might not be compatible with the GPL depending on legal interpretation. Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1501522#c112"
+            "description": "Support patent-encumbered HE-AAC, HE-AACv2, and xHE-AAC codec profiles. Do not distribute binaries with this option without the relevant patent licenses if you are in a jurisdiction that recognizes software patents. Might not be compatible with the GPL depending on legal interpretation. Refer to https://bugzilla.redhat.com/show_bug.cgi?id=1501522#c112",
+            "supports": "!android"
           }
         },
         "version-semver": "2.0.2"
@@ -31278,7 +31320,7 @@
             "host": true
           }
         ],
-        "version": "2.0.9"
+        "version": "2.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -35246,7 +35288,7 @@
       "name": "gts",
       "manifest": {
         "name": "gts",
-        "port-version": 8,
+        "port-version": 9,
         "description": "3D surfaces meshed with interconnected triangles",
         "homepage": "https://gts.sourceforge.net/",
         "license": "LGPL-2.0-or-later",
@@ -35885,7 +35927,6 @@
       "name": "halide",
       "manifest": {
         "name": "halide",
-        "port-version": 1,
         "description": "Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines.",
         "homepage": "https://github.com/halide/Halide",
         "license": "MIT",
@@ -36086,7 +36127,7 @@
             ]
           }
         },
-        "version": "16.0.0"
+        "version": "17.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -36821,7 +36862,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.0.7"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -36944,6 +36985,7 @@
       "name": "hpx",
       "manifest": {
         "name": "hpx",
+        "port-version": 1,
         "description": [
           "The C++ Standards Library for Concurrency and Parallelism",
           "HPX is a C++ Standards Library for Concurrency and Parallelism. It implements all of the corresponding facilities as defined by the C++ Standard. Additionally, in HPX we implement functionalities proposed as part of the ongoing C++ standardization process. We also extend the C++ Standard APIs to the distributed case."
@@ -39933,7 +39975,7 @@
         "dependencies": [
           "picojson"
         ],
-        "version-semver": "0.6.0"
+        "version-semver": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -42596,14 +42638,12 @@
           },
           "zlib"
         ],
-        "version": "1.83.1"
+        "version": "1.84.1"
       },
       "files": [
-        "fix-build-and-pkgconfig.patch",
+        "fix-pc-and-config.patch",
         "portfile.cmake",
-        "private.patch",
-        "vcpkg.json",
-        "webp.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -47292,7 +47332,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.5"
+        "version": "2024.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -48095,7 +48135,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -48284,7 +48323,7 @@
             ]
           }
         },
-        "version": "16.0"
+        "version": "16.2"
       },
       "files": [
         "Makefile",
@@ -48304,7 +48343,6 @@
         "vcpkg.json",
         "windows/macro-def.patch",
         "windows/msbuild.patch",
-        "windows/python_lib.patch",
         "windows/spin_delay.patch",
         "windows/win_bison_flex.patch"
       ]
@@ -48712,6 +48750,7 @@
       "name": "libredwg",
       "manifest": {
         "name": "libredwg",
+        "port-version": 1,
         "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
         "homepage": "https://www.gnu.org/software/libredwg/",
         "license": "GPL-3.0",
@@ -49376,23 +49415,20 @@
       "name": "libsodium",
       "manifest": {
         "name": "libsodium",
+        "port-version": 1,
         "description": "A modern and easy-to-use crypto library",
-        "homepage": "https://github.com/jedisct1/libsodium",
+        "homepage": "https://libsodium.org/",
         "license": "ISC",
         "dependencies": [
           {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
+            "name": "vcpkg-msbuild",
+            "host": true,
+            "platform": "windows & !mingw"
           }
         ],
         "version": "1.0.19"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
         "sodiumConfig.cmake.in",
         "vcpkg.json"
@@ -50370,7 +50406,7 @@
             "description": "build the tools in the tools directory"
           }
         },
-        "version": "2.0.9"
+        "version": "2.0.10"
       },
       "files": [
         "portfile.cmake",
@@ -50648,7 +50684,7 @@
             "host": true
           }
         ],
-        "version": "1.7.2"
+        "version": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -58105,7 +58141,7 @@
             ]
           }
         },
-        "version": "7.12"
+        "version": "7.13"
       },
       "files": [
         "CMakeLists.txt",
@@ -59790,9 +59826,10 @@
             "host": true
           }
         ],
-        "version": "20231027"
+        "version": "20240102"
       },
       "files": [
+        "fix_uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65080,6 +65117,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -65107,7 +65145,16 @@
             "supports": "windows"
           },
           "geneva": {
-            "description": "Whether to include the Geneva Exporter from the opentelemetry-cpp-contrib repository"
+            "description": "Whether to include the Geneva Exporter from the opentelemetry-cpp-contrib repository",
+            "dependencies": [
+              {
+                "name": "opentelemetry-cpp",
+                "features": [
+                  "etw"
+                ],
+                "platform": "windows"
+              }
+            ]
           },
           "otlp-grpc": {
             "description": "Whether to include the OTLP gRPC exporter in the SDK",
@@ -76556,7 +76603,6 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 3,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": "BSD-3-Clause",
@@ -76685,10 +76731,9 @@
             ]
           }
         },
-        "version": "0.21.0"
+        "version": "0.21.4"
       },
       "files": [
-        "fix_autouic.patch",
         "fix_link.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -79799,7 +79844,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 4,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -79859,7 +79903,7 @@
           },
           {
             "name": "harfbuzz",
-            "platform": "!uwp"
+            "platform": "!uwp & !(windows & !static)"
           },
           {
             "name": "icu",
@@ -79870,7 +79914,17 @@
           "dawn": {
             "description": "dawn support for skia",
             "dependencies": [
-              "vulkan-headers"
+              "egl-registry",
+              "opengl-registry",
+              {
+                "name": "skia",
+                "default-features": false,
+                "features": [
+                  "graphite",
+                  "vulkan"
+                ]
+              },
+              "vulkan-utility-libraries"
             ]
           },
           "direct3d": {
@@ -79910,10 +79964,25 @@
             ],
             "supports": "!(windows & arm) & !uwp"
           },
+          "graphite": {
+            "description": "Graphite support",
+            "dependencies": [
+              {
+                "name": "skia",
+                "default-features": false,
+                "features": [
+                  "vulkan"
+                ]
+              }
+            ]
+          },
           "harfbuzz": {
             "description": "Harfbuzz support",
             "dependencies": [
-              "harfbuzz"
+              {
+                "name": "harfbuzz",
+                "default-features": false
+              }
             ]
           },
           "icu": {
@@ -79935,25 +80004,25 @@
             ]
           }
         },
-        "version": "0.38.2"
+        "version": "122"
       },
       "files": [
-        "add-cstdlib.patch",
-        "dawn-dedup-native-proc-gen.patch",
+        "bentleyottmann-build.patch",
         "disable-dev-test.patch",
         "disable-msvc-env-setup.patch",
         "example/CMakeLists.txt",
+        "graphite.patch",
         "portfile.cmake",
-        "skdebug-stdio.patch",
         "skia-functions.cmake",
+        "skia-include-string.patch",
         "skiaConfig.cmake",
         "third-party.gn.in",
         "unofficial-skia-config.cmake",
         "unofficial-skia-targets-details.cmake",
         "unofficial-skia-targets.cmake",
         "usage",
-        "uwp.patch",
-        "vcpkg.json"
+        "vcpkg.json",
+        "vulkan-headers.patch"
       ]
     },
     {
@@ -89019,7 +89088,7 @@
         "description": "The FASTEST QUALITY hash function, random number generators (PRNG) and hash map.",
         "homepage": "https://github.com/wangyi-fudan/wyhash",
         "license": "Unlicense",
-        "version-date": "2023-01-25"
+        "version-date": "2023-12-03"
       },
       "files": [
         "portfile.cmake",
@@ -89375,6 +89444,7 @@
       "name": "xcb-util-errors",
       "manifest": {
         "name": "xcb-util-errors",
+        "port-version": 1,
         "description": "XCB utility library that gives human readable names to error, event, & request codes.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
@@ -89385,7 +89455,6 @@
         "version": "1.0.1"
       },
       "files": [
-        "fix_python.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
