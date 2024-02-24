@@ -1,5 +1,5 @@
 {
-  "version": "62aa44929954469878eb8fc562af706a8f5615a5",
+  "version": "37c3e63a1306562f7f59c4c3c8892ddd50fdf992",
   "ports": [
     {
       "name": "3fd",
@@ -45588,6 +45588,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -45605,9 +45606,20 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "x265"
+          }
         ],
+        "default-features": [
+          "hevc"
+        ],
+        "features": {
+          "hevc": {
+            "description": "HEVC encoding via x265",
+            "dependencies": [
+              "x265"
+            ],
+            "license": "GPL-2.0-or-later"
+          }
+        },
         "version": "1.17.6"
       },
       "files": [
@@ -88445,7 +88457,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows | uwp",
-        "version": "6.1.1"
+        "version": "6.2.0"
       },
       "files": [
         "portfile.cmake",
