@@ -1,5 +1,5 @@
 {
-  "version": "3dd44b931481d7a8e9ba412621fa810232b66289",
+  "version": "3f966cf6a8654a0bc067738bcb95d489e197ad68",
   "ports": [
     {
       "name": "3fd",
@@ -26349,7 +26349,7 @@
             "host": true
           }
         ],
-        "version": "6.0.0"
+        "version": "6.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -26726,7 +26726,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -27235,7 +27235,7 @@
                 "name": "ffmpeg",
                 "default-features": false,
                 "features": [
-                  "nonfree"
+                  "version3"
                 ]
               },
               "openssl"
@@ -28790,7 +28790,7 @@
             "host": true
           }
         ],
-        "version": "0.2.22"
+        "version": "0.2.23"
       },
       "files": [
         "portfile.cmake",
@@ -29308,7 +29308,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.15.30"
+        "version-semver": "0.15.31"
       },
       "files": [
         "portfile.cmake",
@@ -30796,7 +30796,6 @@
       "name": "giflib",
       "manifest": {
         "name": "giflib",
-        "port-version": 3,
         "description": "A library for reading and writing gif images.",
         "homepage": "https://sourceforge.net/projects/giflib/",
         "license": "MIT",
@@ -30806,14 +30805,12 @@
             "host": true
           }
         ],
-        "version": "5.2.1"
+        "version": "5.2.2"
       },
       "files": [
         "CMakeLists.txt",
-        "disable-GifDrawBoxedText8x8-win32.patch",
         "exports.def",
-        "fix-compile-error.patch",
-        "msvc-guard-unistd-h.patch",
+        "msvc.diff",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -31494,6 +31491,68 @@
       ]
     },
     {
+      "name": "glib-networking",
+      "manifest": {
+        "name": "glib-networking",
+        "description": "Network extensions for GLib",
+        "homepage": "https://gitlab.gnome.org/GNOME/glib-networking",
+        "license": "LGPL-2.1-only",
+        "supports": "!uwp",
+        "dependencies": [
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "gnutls",
+            "platform": "linux | mingw"
+          },
+          {
+            "name": "openssl",
+            "platform": "!linux & !mingw"
+          }
+        ],
+        "features": {
+          "environment-proxy": {
+            "description": "support for environment variable proxy configuration"
+          },
+          "gnutls": {
+            "description": "support for GnuTLS networking configuration",
+            "dependencies": [
+              "libgnutls"
+            ],
+            "supports": "!windows | mingw"
+          },
+          "libproxy": {
+            "description": "support for libproxy proxy configuration",
+            "dependencies": [
+              "libproxy"
+            ],
+            "supports": "!(uwp | xbox | android)"
+          },
+          "openssl": {
+            "description": "support for OpenSSL networking configuration",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
+        "version": "2.78.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "glibmm",
       "manifest": {
         "name": "glibmm",
@@ -31525,6 +31584,7 @@
       "name": "glm",
       "manifest": {
         "name": "glm",
+        "port-version": 1,
         "description": "OpenGL Mathematics (GLM)",
         "homepage": "https://glm.g-truc.net",
         "license": "MIT",
@@ -31617,7 +31677,7 @@
       "name": "gloo",
       "manifest": {
         "name": "gloo",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Collective communications library with various primitives for multi-machine training.",
         "homepage": "https://github.com/facebookincubator/gloo",
         "supports": "x64 & linux",
@@ -31655,6 +31715,7 @@
         "version": "20201203"
       },
       "files": [
+        "fix-array.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31930,7 +31991,7 @@
             ]
           }
         },
-        "version": "4.11.1"
+        "version": "4.12.2"
       },
       "files": [
         "fix-install.patch",
@@ -34163,7 +34224,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 7,
+        "port-version": 8,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -34808,6 +34869,19 @@
                 ]
               },
               "soundtouch"
+            ]
+          },
+          "soup": {
+            "description": "Enable support for the soup plugin",
+            "dependencies": [
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-good"
+                ]
+              },
+              "libsoup"
             ]
           },
           "speex": {
@@ -42058,7 +42132,6 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
-        "port-version": 1,
         "description": [
           "The Khronos KTX library and tools.",
           "Functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them."
@@ -42091,7 +42164,7 @@
             "supports": "!emscripten"
           }
         },
-        "version-semver": "4.3.0-beta1"
+        "version-semver": "4.3.1"
       },
       "files": [
         "0001-Use-vcpkg-zstd.patch",
@@ -42099,6 +42172,7 @@
         "0003-mkversion.patch",
         "0004-quirks.patch",
         "0005-no-vendored-libs.patch",
+        "0006-fix-ios-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47366,7 +47440,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.7"
+        "version": "2024.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -48168,6 +48242,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
+        "port-version": 1,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -48401,7 +48476,7 @@
             "host": true
           }
         ],
-        "version": "7.8.1"
+        "version": "7.9.0"
       },
       "files": [
         "config-internal-compiler.h.in",
@@ -48487,6 +48562,53 @@
         "support-windows.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libpsl",
+      "manifest": {
+        "name": "libpsl",
+        "description": "C library for the Public Suffix List",
+        "homepage": "https://rockdaboot.github.io/libpsl",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "libicu",
+            "platform": "windows"
+          },
+          {
+            "name": "libidn2",
+            "platform": "!windows"
+          }
+        ],
+        "features": {
+          "libicu": {
+            "description": "choose libicu as runtime",
+            "dependencies": [
+              "icu"
+            ],
+            "supports": "windows"
+          },
+          "libidn2": {
+            "description": "choose libidn2 as runtime",
+            "dependencies": [
+              "libidn2"
+            ],
+            "supports": "!windows"
+          }
+        },
+        "version": "0.21.5"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -49530,6 +49652,36 @@
       },
       "files": [
         "fix_cmakelists.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libsoup",
+      "manifest": {
+        "name": "libsoup",
+        "description": "HTTP Library for GLib",
+        "homepage": "https://libsoup.org",
+        "license": "LGPL-2.0-or-later",
+        "supports": "!uwp & !xbox",
+        "dependencies": [
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          "glib-networking",
+          "libpsl",
+          "nghttp2",
+          "sqlite3",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "3.4.4"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50747,7 +50899,6 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
-        "port-version": 7,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
@@ -50771,7 +50922,7 @@
             "supports": "linux"
           }
         },
-        "version": "1.0.26.11791"
+        "version": "1.0.27"
       },
       "files": [
         "portfile.cmake",
@@ -60001,7 +60152,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "dependencies": [
@@ -65150,7 +65301,6 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 2,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -65216,7 +65366,7 @@
             "description": "Whether to include the Zipkin exporter in the SDK"
           }
         },
-        "version-semver": "1.14.0"
+        "version-semver": "1.14.2"
       },
       "files": [
         "add-missing-find-dependency.patch",
@@ -71868,6 +72018,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
+        "port-version": 1,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -71877,8 +72028,16 @@
             "platform": "windows"
           },
           {
+            "name": "dbus",
+            "platform": "!windows"
+          },
+          {
             "name": "ffmpeg",
             "default-features": false,
+            "platform": "!windows"
+          },
+          {
+            "name": "icu",
             "platform": "!windows"
           },
           {
@@ -71904,6 +72063,8 @@
         "version": "5.15.12"
       },
       "files": [
+        "0001-Fix-building-with-ICU-68.patch",
+        "0001-Support-ICU-74-in-LazyTextBreakIterator.patch",
         "build_1.patch",
         "build_2.patch",
         "common.pri.patch",
@@ -75881,6 +76042,7 @@
       "name": "rhash",
       "manifest": {
         "name": "rhash",
+        "port-version": 1,
         "description": "C library for computing a wide variety of hash sums",
         "homepage": "https://github.com/rhash/RHash",
         "license": "0BSD",
@@ -84939,6 +85101,21 @@
       ]
     },
     {
+      "name": "try-catcher",
+      "manifest": {
+        "name": "try-catcher",
+        "description": "C++ header uses RAII to try each step of a sequence of operations, catch all exceptions that may occur, and throw a single, composite message when TryCatcher goes out of scope.",
+        "homepage": "https://github.com/daleabarnard/try-catcher",
+        "license": "MIT",
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tsl-hopscotch-map",
       "manifest": {
         "name": "tsl-hopscotch-map",
@@ -85274,7 +85451,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0"
+        "version-semver": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -86707,6 +86884,37 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "velodyne-decoder",
+      "manifest": {
+        "name": "velodyne-decoder",
+        "description": "A decoder library for raw Velodyne data and telemetry info",
+        "homepage": "https://github.com/valgur/velodyne_decoder",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "ms-gsl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "yaml-cpp",
+            "version>=": "0.7"
+          }
+        ],
+        "version": "3.0.0"
+      },
+      "files": [
+        "0001-fix-msvc-flags.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
