@@ -1,5 +1,5 @@
 {
-  "version": "3f966cf6a8654a0bc067738bcb95d489e197ad68",
+  "version": "783130425be526f6b987221a063b16513ae9bed6",
   "ports": [
     {
       "name": "3fd",
@@ -21167,7 +21167,7 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -24227,8 +24227,8 @@
       "name": "docopt",
       "manifest": {
         "name": "docopt",
-        "port-version": 3,
         "description": "Command line arguments parser that will make you smile (C++11 port).",
+        "license": "MIT OR BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -24239,12 +24239,9 @@
             "host": true
           }
         ],
-        "version-date": "2018-11-01"
+        "version-date": "2022-03-15"
       },
       "files": [
-        "001-fix-unresolved-symbol.patch",
-        "002-fix-install-path.patch",
-        "install-one-flavor.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29524,7 +29521,6 @@
       "name": "g3log",
       "manifest": {
         "name": "g3log",
-        "port-version": 1,
         "description": "Asynchronous logger with Dynamic Sinks",
         "homepage": "https://github.com/KjellKod/g3log",
         "license": "Unlicense",
@@ -29539,7 +29535,7 @@
             "host": true
           }
         ],
-        "version": "2.3"
+        "version": "2.4"
       },
       "files": [
         "portfile.cmake",
@@ -31322,7 +31318,7 @@
             "host": true
           }
         ],
-        "version": "2.1.4"
+        "version": "2.1.7"
       },
       "files": [
         "portfile.cmake",
@@ -31909,7 +31905,6 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 21,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -31930,13 +31925,12 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "6.2.1"
+        "version": "6.3.0"
       },
       "files": [
         "arm64-coff.patch",
         "asmflags.patch",
         "cross-tools.patch",
-        "gmp-arm64-asm-fix-5f32dbc41afc.patch",
         "msvc_symbol.patch",
         "portfile.cmake",
         "subdirs.patch",
@@ -43239,7 +43233,7 @@
       "name": "libassert",
       "manifest": {
         "name": "libassert",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The most over-engineered and overpowered C++ assertion library.",
         "homepage": "https://github.com/jeremy-rifkin/libassert",
         "license": "MIT",
@@ -43259,6 +43253,7 @@
         "version": "1.2.2"
       },
       "files": [
+        "cpptrace-0.4.1.patch",
         "include-dir.patch",
         "magic-enum.patch",
         "portfile.cmake",
@@ -43947,6 +43942,7 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
+        "port-version": 1,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -43988,6 +43984,7 @@
       "files": [
         "fix-for-vcpkg.patch",
         "fix_dependency.patch",
+        "fix_srtp.patch",
         "portfile.cmake",
         "uwp-warnings.patch",
         "vcpkg.json"
@@ -45302,7 +45299,6 @@
       "name": "libgnutls",
       "manifest": {
         "name": "libgnutls",
-        "port-version": 1,
         "description": "A secure communications library implementing the SSL, TLS and DTLS protocols.",
         "homepage": "https://www.gnutls.org/",
         "license": null,
@@ -45338,7 +45334,7 @@
             "description": "Enable the OpenSSL compatibility library."
           }
         },
-        "version": "3.8.1"
+        "version": "3.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -51983,7 +51979,6 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -52042,7 +52037,7 @@
             ]
           }
         },
-        "version": "2.11.6"
+        "version": "2.11.7"
       },
       "files": [
         "disable-docs.patch",
@@ -61186,7 +61181,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -72018,7 +72013,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -72071,7 +72066,8 @@
         "gl.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "workaround-msvc2022-missing-include-in-chromium-ui-accessability.patch"
+        "workaround-msvc2022-missing-include-in-chromium-ui-accessability.patch",
+        "workaround-protobuf-issue.patch"
       ]
     },
     {
