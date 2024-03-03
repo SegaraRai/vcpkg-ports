@@ -1,5 +1,5 @@
 {
-  "version": "783130425be526f6b987221a063b16513ae9bed6",
+  "version": "215a2535590f1f63788ac9bd2ed58ad15e6afdff",
   "ports": [
     {
       "name": "3fd",
@@ -17222,7 +17222,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.26.0"
+        "version-semver": "1.27.0"
       },
       "files": [
         "avoid-docs.patch",
@@ -44520,7 +44520,7 @@
         "dependencies": [
           {
             "name": "libtracepoint",
-            "version>=": "1.3.0"
+            "version>=": "1.3.2"
           },
           {
             "name": "vcpkg-cmake",
@@ -44531,7 +44531,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -50612,7 +50612,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -50641,7 +50641,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -64660,7 +64660,6 @@
       "name": "openjpeg",
       "manifest": {
         "name": "openjpeg",
-        "port-version": 1,
         "description": "OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.",
         "homepage": "https://github.com/uclouvain/openjpeg",
         "license": "BSD-2-Clause",
@@ -64675,18 +64674,9 @@
           }
         ],
         "features": {
-          "jp3d": {
-            "description": "(deprecated)"
-          },
           "jpip": {
             "description": "Build optional component jpip",
             "supports": "!uwp"
-          },
-          "jpwl": {
-            "description": "(deprecated)"
-          },
-          "mj2": {
-            "description": "(deprecated)"
           },
           "tools": {
             "description": "(deprecated)",
@@ -64700,18 +64690,19 @@
                 "platform": "!windows"
               },
               "lcms",
+              "libpng",
               "tiff",
               "zlib"
             ]
           }
         },
-        "version": "2.5.0"
+        "version": "2.5.2"
       },
       "files": [
-        "arm.patch",
-        "fix-static.patch",
-        "no-wx.patch",
+        "openjpip-static.diff",
         "portfile.cmake",
+        "third-party.diff",
+        "usage",
         "vcpkg.json"
       ]
     },
