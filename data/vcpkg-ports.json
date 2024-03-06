@@ -1,5 +1,5 @@
 {
-  "version": "215a2535590f1f63788ac9bd2ed58ad15e6afdff",
+  "version": "90542a476c8ef3288039e2443a775e48db279173",
   "ports": [
     {
       "name": "3fd",
@@ -3071,7 +3071,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -5945,9 +5945,8 @@
       "name": "bext-ut",
       "manifest": {
         "name": "bext-ut",
-        "port-version": 2,
-        "description": "UT: C++20 μ(micro)/Unit Testing Framework",
-        "homepage": "https://boost-ext.github.io/ut/",
+        "description": "C++ single header/single module, macro-free μ(micro)/Unit Testing Framework.",
+        "homepage": "https://github.com/boost-ext/ut",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -5959,10 +5958,11 @@
             "host": true
           }
         ],
-        "version": "1.1.9"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -16716,7 +16716,7 @@
       "name": "braft",
       "manifest": {
         "name": "braft",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Consensus algorithm library",
         "homepage": "https://github.com/baidu/braft",
         "license": "Apache-2.0",
@@ -16743,6 +16743,7 @@
         "export-target.patch",
         "fix-build.patch",
         "fix-dependency.patch",
+        "fix-glog.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16850,6 +16851,7 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
+        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/incubator-brpc",
         "license": "Apache-2.0",
@@ -16883,6 +16885,7 @@
       "files": [
         "fix-boost-ptr.patch",
         "fix-build.patch",
+        "fix-glog.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17323,6 +17326,7 @@
       "name": "cachelib",
       "manifest": {
         "name": "cachelib",
+        "port-version": 1,
         "description": "facebook cachelib",
         "homepage": "https://github.com/facebook/CacheLib",
         "license": "Apache-2.0",
@@ -17350,6 +17354,7 @@
       },
       "files": [
         "fix-build.patch",
+        "fix-glog.patch",
         "fmt-10.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -23590,7 +23595,7 @@
             "host": true
           }
         ],
-        "version-semver": "7.1.0"
+        "version-semver": "7.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -24189,6 +24194,31 @@
         "find_blas.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "dlpack",
+      "manifest": {
+        "name": "dlpack",
+        "description": "DLPack is an open in-memory tensor structure for sharing tensors among frameworks",
+        "homepage": "https://github.com/dmlc/dlpack",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.8"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -25922,7 +25952,7 @@
       "name": "evpp",
       "manifest": {
         "name": "evpp",
-        "port-version": 7,
+        "port-version": 8,
         "description": "A modern C++ network library based on libevent for developing high performance network services in TCP/UDP/HTTP protocols.",
         "homepage": "https://github.com/Qihoo360/evpp",
         "license": "BSD-3-Clause",
@@ -25962,6 +25992,7 @@
         "fix-osx-build.patch",
         "fix-rapidjson-1-1.patch",
         "portfile.cmake",
+        "use-cxx14-standard.patch",
         "vcpkg.json"
       ]
     },
@@ -28450,6 +28481,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -28543,6 +28575,7 @@
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-deps.patch",
+        "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
         "openssl.patch",
         "portfile.cmake",
@@ -31634,7 +31667,6 @@
       "name": "glog",
       "manifest": {
         "name": "glog",
-        "port-version": 3,
         "description": "C++ implementation of the Google logging module",
         "homepage": "https://github.com/google/glog",
         "license": "BSD-3-Clause",
@@ -31658,7 +31690,7 @@
             "supports": "linux"
           }
         },
-        "version": "0.6.0"
+        "version": "0.7.0"
       },
       "files": [
         "fix_cplusplus_macro.patch",
@@ -33221,6 +33253,18 @@
               }
             ]
           },
+          "securitycentermanagement": {
+            "description": "Security Center Management API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "servicecontrol": {
             "description": "Service Control API C++ Client Library",
             "dependencies": [
@@ -33584,7 +33628,7 @@
             ]
           }
         },
-        "version": "2.21.0"
+        "version": "2.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -33720,7 +33764,7 @@
             "description": "C++ bindings"
           }
         },
-        "version": "1.22.0"
+        "version": "1.23.2"
       },
       "files": [
         "disable-docs.patch",
@@ -35512,7 +35556,7 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -36740,7 +36784,7 @@
             "host": true
           }
         ],
-        "version": "1.2.4"
+        "version": "1.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -37395,7 +37439,7 @@
             ]
           }
         },
-        "version": "2.0.3"
+        "version": "2.0.5"
       },
       "files": [
         "acl.patch",
@@ -38244,7 +38288,6 @@
       "name": "imath",
       "manifest": {
         "name": "imath",
-        "port-version": 1,
         "description": "Imath is a C++ and Python library of 2D and 3D vector, matrix, and math operations for computer graphics.",
         "homepage": "https://github.com/AcademySoftwareFoundation/Imath",
         "license": "BSD-3-Clause",
@@ -38258,7 +38301,7 @@
             "host": true
           }
         ],
-        "version": "3.1.9"
+        "version": "3.1.11"
       },
       "files": [
         "portfile.cmake",
@@ -38589,7 +38632,6 @@
       "name": "influxdb-cxx",
       "manifest": {
         "name": "influxdb-cxx",
-        "port-version": 1,
         "description": "InfluxDB C++ client library",
         "homepage": "https://github.com/offa/influxdb-cxx",
         "license": "MIT",
@@ -38615,7 +38657,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.7.1"
+        "version": "0.7.2"
       },
       "files": [
         "fix-dllexports.patch",
@@ -38707,7 +38749,7 @@
             "description": "Build the C++ library"
           }
         },
-        "version": "57"
+        "version": "58"
       },
       "files": [
         "portfile.cmake",
@@ -44412,6 +44454,25 @@
       ]
     },
     {
+      "name": "liberasurecode",
+      "manifest": {
+        "name": "liberasurecode",
+        "description": "Erasure Code API library written in C with pluggable Erasure Code backends. Mirror of code maintained at opendev.org.",
+        "homepage": "https://github.com/openstack/liberasurecode",
+        "license": "BSD-2-Clause",
+        "supports": "!android & !windows",
+        "dependencies": [
+          "zlib"
+        ],
+        "version": "1.6.3"
+      },
+      "files": [
+        "fix-build.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libev",
       "manifest": {
         "name": "libev",
@@ -44710,6 +44771,7 @@
       "name": "libflac",
       "manifest": {
         "name": "libflac",
+        "port-version": 1,
         "description": "Library for manipulating FLAC files",
         "homepage": "https://xiph.org/flac/",
         "license": "BSD-3-Clause",
@@ -44728,6 +44790,10 @@
           "asm": {
             "description": "Use any assembly optimization routines",
             "supports": "x86"
+          },
+          "stack-protector": {
+            "description": "Build with stack smashing protection",
+            "supports": "!emscripten"
           }
         },
         "version": "1.4.3"
@@ -44758,6 +44824,33 @@
         "build.patch",
         "configure.ac.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libfork",
+      "manifest": {
+        "name": "libfork",
+        "description": "A bleeding-edge, lock-free, wait-free, continuation-stealing fork-join library built on C++20's coroutines.",
+        "homepage": "https://github.com/conorwilliams/libfork",
+        "license": "MPL-2.0",
+        "dependencies": [
+          "boost-atomic",
+          "hwloc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.7.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -46691,6 +46784,34 @@
       ]
     },
     {
+      "name": "liblzf",
+      "manifest": {
+        "name": "liblzf",
+        "description": "LZF is an extremely fast compression algorithm. It is ideal for applications where you want to save some space but not at the cost of speed.",
+        "homepage": "http://software.schmorp.de/pkg/liblzf.html",
+        "license": "BSD-2-Clause OR GPL-2.0-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.6"
+      },
+      "files": [
+        "0001-add-extern-c.patch",
+        "0002-fix-macro-expansion-ub.patch",
+        "CMakeLists.txt",
+        "liblzf.def",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "liblzma",
       "manifest": {
         "name": "liblzma",
@@ -46730,7 +46851,7 @@
       "name": "libmad",
       "manifest": {
         "name": "libmad",
-        "port-version": 1,
+        "port-version": 2,
         "description": "high-quality MPEG audio decoder",
         "homepage": "http://codeberg.org/tenacityteam/libmad",
         "dependencies": [
@@ -46743,6 +46864,12 @@
             "host": true
           }
         ],
+        "features": {
+          "aso": {
+            "description": "Enable CPU architecture-specific optimizations (x86, ARM and MIPS only)",
+            "supports": "x86 | x64 | arm"
+          }
+        },
         "version": "0.16.4"
       },
       "files": [
@@ -47111,7 +47238,7 @@
       "name": "libmodplug",
       "manifest": {
         "name": "libmodplug",
-        "port-version": 10,
+        "port-version": 11,
         "description": "The ModPlug mod file playing library.",
         "homepage": "https://github.com/Konstanty/libmodplug",
         "license": null,
@@ -50349,6 +50476,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
+        "port-version": 1,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -50511,6 +50639,7 @@
         "cuda-adjustments.patch",
         "fix-api-export.patch",
         "fix-build.patch",
+        "fix-calculate-minloglevel.patch",
         "fix-glog.patch",
         "fix-msvc-ICE.patch",
         "fix-onnx-case.patch",
@@ -64515,6 +64644,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -67149,7 +67279,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -67203,7 +67333,8 @@
           "cuda": {
             "description": "CUDA support for PCL",
             "dependencies": [
-              "cuda"
+              "cuda",
+              "vtk"
             ],
             "supports": "x64"
           },
@@ -67325,6 +67456,7 @@
         "add-gcc-version-check.patch",
         "fix-check-sse.patch",
         "fix-clang-cl.patch",
+        "fix-kinfu.patch",
         "fix-numeric-literals-flag.patch",
         "fix-pcl-exports.patch",
         "install-examples.patch",
@@ -67370,7 +67502,7 @@
       "name": "pcre2",
       "manifest": {
         "name": "pcre2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Regular Expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "https://github.com/PCRE2Project/pcre2",
         "license": "BSD-3-Clause",
@@ -67390,7 +67522,7 @@
         "features": {
           "jit": {
             "description": "Enable support for Just-In-Time compiling regex matchers",
-            "supports": "!emscripten"
+            "supports": "!emscripten & !ios"
           },
           "platform-default-features": {
             "description": "Enable default features",
@@ -67400,7 +67532,7 @@
                 "features": [
                   "jit"
                 ],
-                "platform": "!emscripten"
+                "platform": "!emscripten & !ios"
               }
             ]
           }
@@ -68394,6 +68526,30 @@
       ]
     },
     {
+      "name": "pocketpy",
+      "manifest": {
+        "name": "pocketpy",
+        "description": "pkpy is a lightweight(~15K LOC) Python interpreter for game scripting, built on C++17 with STL.",
+        "homepage": "https://github.com/pocketpy/pocketpy",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "poco",
       "manifest": {
         "name": "poco",
@@ -68467,7 +68623,7 @@
             ]
           }
         },
-        "version": "1.13.0"
+        "version": "1.13.2"
       },
       "files": [
         "0001-static-pcre.patch",
@@ -69980,7 +70136,6 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 5,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -70035,7 +70190,7 @@
             "description": "Deprecated support for the Windows 7 platform -- may be removed at any time."
           }
         },
-        "version": "3.11.5"
+        "version": "3.11.8"
       },
       "files": [
         "0001-only-build-required-projects.patch",
@@ -75768,7 +75923,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -77092,6 +77247,7 @@
       "name": "rubberband",
       "manifest": {
         "name": "rubberband",
+        "port-version": 1,
         "description": "A high quality software library for audio time-stretching and pitch-shifting.",
         "homepage": "https://www.breakfastquay.com/rubberband/",
         "license": "GPL-2.0-or-later",
@@ -77099,12 +77255,12 @@
         "dependencies": [
           {
             "name": "fftw3",
-            "platform": "(arm & windows) | (x86 & windows) | (arm64 & osx)"
+            "platform": "(arm & windows) | (x86 & windows) | (arm64 & osx) | ios | emscripten"
           },
           "libsamplerate",
           {
             "name": "sleef",
-            "platform": "!(arm & windows) & !(x86 & windows) & !(arm64 & osx)"
+            "platform": "!(arm & windows) & !(x86 & windows) & !(arm64 & osx) & !ios & !emscripten"
           },
           {
             "name": "vcpkg-tool-meson",
@@ -77855,6 +78011,8 @@
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
         "dependencies": [
+          "fast-float",
+          "simdutf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -77864,9 +78022,10 @@
             "host": true
           }
         ],
-        "version": "1.1.2"
+        "version": "2.0.2"
       },
       "files": [
+        "fix-SCN_HAS_STD_REGEX_MULTILINE-marco.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79884,7 +80043,7 @@
             "description": "Build the simdutf command line tool for transcoding strings"
           }
         },
-        "version-semver": "3.2.16"
+        "version-semver": "4.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -80962,7 +81121,7 @@
       "name": "soundtouch",
       "manifest": {
         "name": "soundtouch",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SoundTouch is an open-source audio processing library for changing the Tempo, Pitch and Playback Rates of audio streams or audio files.",
         "homepage": "https://www.surina.net/soundtouch",
         "supports": "!uwp",
@@ -80992,6 +81151,7 @@
       },
       "files": [
         "portfile.cmake",
+        "use-o3-emscripten.patch",
         "vcpkg.json"
       ]
     },
@@ -81666,6 +81826,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -81721,6 +81882,9 @@
           },
           "session": {
             "description": "Enable the SESSION extension"
+          },
+          "snapshot": {
+            "description": "Enable the snapshot function"
           },
           "soundex": {
             "description": "Enable the SOUNDEX scalar function"
@@ -82024,7 +82188,7 @@
         "description": "A translator from Intel SSE intrinsics to Arm/Aarch64 NEON implementation",
         "homepage": "https://github.com/DLTcollab/sse2neon",
         "license": "MIT",
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -82839,6 +83003,7 @@
       "name": "taglib",
       "manifest": {
         "name": "taglib",
+        "port-version": 1,
         "description": "TagLib Audio Meta-Data Library",
         "homepage": "https://taglib.org/",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -82857,6 +83022,7 @@
         "version": "2.0"
       },
       "files": [
+        "disable-wchar-t-check-emscripten.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
