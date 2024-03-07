@@ -1,5 +1,5 @@
 {
-  "version": "90542a476c8ef3288039e2443a775e48db279173",
+  "version": "d8160798747ac9953d3374f9473393868d76dfe6",
   "ports": [
     {
       "name": "3fd",
@@ -26452,7 +26452,6 @@
       "name": "fastgltf",
       "manifest": {
         "name": "fastgltf",
-        "port-version": 1,
         "description": "A modern C++17 glTF 2.0 library focused on speed, correctness, and usability",
         "homepage": "https://github.com/spnda/fastgltf",
         "license": "MIT",
@@ -26467,7 +26466,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -39464,7 +39463,7 @@
             ]
           }
         },
-        "version": "4.2.0"
+        "version": "4.2.1"
       },
       "files": [
         "check-for-atomics-support.patch",
@@ -40431,7 +40430,7 @@
             "host": true
           }
         ],
-        "version": "2023.12.1"
+        "version": "2024.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -44771,7 +44770,7 @@
       "name": "libflac",
       "manifest": {
         "name": "libflac",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library for manipulating FLAC files",
         "homepage": "https://xiph.org/flac/",
         "license": "BSD-3-Clause",
@@ -44784,6 +44783,12 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "stack-protector",
+            "platform": "!emscripten"
           }
         ],
         "features": {
@@ -46411,7 +46416,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -46439,6 +46444,7 @@
       },
       "files": [
         "fix-dependencies.patch",
+        "fix_static_suffix.patch",
         "portfile.cmake",
         "trim-shared-build.patch",
         "vcpkg.json"
@@ -46851,7 +46857,7 @@
       "name": "libmad",
       "manifest": {
         "name": "libmad",
-        "port-version": 2,
+        "port-version": 3,
         "description": "high-quality MPEG audio decoder",
         "homepage": "http://codeberg.org/tenacityteam/libmad",
         "dependencies": [
@@ -46862,6 +46868,12 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "aso",
+            "platform": "x86 | x64 | arm"
           }
         ],
         "features": {
@@ -47563,7 +47575,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.8"
+        "version": "2024.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -48214,7 +48226,7 @@
             "host": true
           }
         ],
-        "version": "8.13.29"
+        "version": "8.13.31"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -68870,6 +68882,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
+        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -68985,6 +68998,7 @@
         "cmake-project-include.cmake",
         "export-unofficial-poppler.patch",
         "portfile.cmake",
+        "private-namespace.patch",
         "unofficial-poppler-config.cmake",
         "usage",
         "vcpkg.json"
