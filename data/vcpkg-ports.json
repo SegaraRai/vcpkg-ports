@@ -1,5 +1,5 @@
 {
-  "version": "e38b936343030e167a207ee4eddc3c6086caec56",
+  "version": "0719a71389654b88d827501d88e37e58ea8cbd70",
   "ports": [
     {
       "name": "3fd",
@@ -2189,12 +2189,14 @@
       "name": "asiochan",
       "manifest": {
         "name": "asiochan",
+        "port-version": 1,
         "description": "C++20 coroutine channels for ASIO",
         "homepage": "https://github.com/MiSo1289/asiochan",
         "license": "MIT",
         "version-date": "2022-11-25"
       },
       "files": [
+        "fix-10.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -4609,7 +4611,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-07"
+        "version-date": "2024-03-04"
       },
       "files": [
         "disable-error.patch",
@@ -4882,7 +4884,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-07"
+        "version-date": "2024-03-04"
       },
       "files": [
         "fix-install-location.patch",
@@ -5463,7 +5465,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-07"
+        "version-date": "2024-03-04"
       },
       "files": [
         "portfile.cmake",
@@ -5490,7 +5492,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-07"
+        "version-date": "2024-03-04"
       },
       "files": [
         "package-location-fix-preview.patch",
@@ -5518,7 +5520,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-03"
+        "version-date": "2024-03-04"
       },
       "files": [
         "package-location-fix-preview.patch",
@@ -16716,7 +16718,7 @@
       "name": "braft",
       "manifest": {
         "name": "braft",
-        "port-version": 2,
+        "port-version": 4,
         "description": "Consensus algorithm library",
         "homepage": "https://github.com/baidu/braft",
         "license": "Apache-2.0",
@@ -16851,11 +16853,11 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/incubator-brpc",
         "license": "Apache-2.0",
-        "supports": "!windows & !arm",
+        "supports": "!windows & !(arm & android)",
         "dependencies": [
           "gflags",
           "glog",
@@ -17797,7 +17799,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.5.2"
+        "version-semver": "3.5.3"
       },
       "files": [
         "fix-install-path.patch",
@@ -18477,7 +18479,7 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
@@ -18504,6 +18506,7 @@
       },
       "files": [
         "add-missing-reference.patch",
+        "avoid_msvc_internal_STRINGIZE.patch",
         "no-warning-as-error.props",
         "portfile.cmake",
         "unofficial-chakracore-config.cmake",
@@ -23660,6 +23663,7 @@
       "name": "directxmath",
       "manifest": {
         "name": "directxmath",
+        "port-version": 1,
         "description": "DirectXMath SIMD C++ math library",
         "homepage": "https://github.com/Microsoft/DirectXMath",
         "documentation": "https://docs.microsoft.com/windows/win32/dxmath/directxmath-portal",
@@ -24144,7 +24148,7 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -25157,7 +25161,6 @@
       "name": "ebml",
       "manifest": {
         "name": "ebml",
-        "port-version": 1,
         "description": "A C++ library to parse EBML files",
         "homepage": "https://github.com/Matroska-Org/libebml",
         "dependencies": [
@@ -25170,7 +25173,7 @@
             "host": true
           }
         ],
-        "version": "1.4.4"
+        "version": "1.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -25496,7 +25499,7 @@
       "name": "eigen3",
       "manifest": {
         "name": "eigen3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
         "homepage": "http://eigen.tuxfamily.org",
         "license": "MPL-2.0",
@@ -40454,7 +40457,7 @@
             "host": true
           }
         ],
-        "version": "2024.1.1"
+        "version": "2024.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -41972,7 +41975,6 @@
       "name": "kfr",
       "manifest": {
         "name": "kfr",
-        "port-version": 1,
         "description": "Fast, modern C++ DSP framework.",
         "homepage": "https://www.kfr.dev/",
         "license": "GPL-2.0",
@@ -41980,6 +41982,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -41998,12 +42004,9 @@
           },
           "dft": {
             "description": "Enable DFT and related algorithms."
-          },
-          "dft-np": {
-            "description": "Enable non-power of 2 DFT."
           }
         },
-        "version-semver": "5.0.1"
+        "version-semver": "6.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -42786,7 +42789,6 @@
       "name": "lerc",
       "manifest": {
         "name": "lerc",
-        "port-version": 2,
         "description": "An open-source image or raster format which supports rapid encoding and decoding for any pixel type",
         "homepage": "https://github.com/Esri/lerc",
         "license": "Apache-2.0",
@@ -42800,12 +42802,12 @@
             "host": true
           }
         ],
-        "version": "4.0"
+        "version": "4.0.4"
       },
       "files": [
         "create_package.patch",
         "cxx-linkage-pkgconfig.patch",
-        "include_algorithm_for_std_min.patch",
+        "fix-climits-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43009,7 +43011,7 @@
       "name": "libadwaita",
       "manifest": {
         "name": "libadwaita",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Building blocks for modern GNOME applications",
         "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita",
         "license": "LGPL-2.1-or-later",
@@ -43022,6 +43024,10 @@
           "gtk",
           {
             "name": "sassc",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
@@ -43341,7 +43347,7 @@
           },
           "libgpg-error"
         ],
-        "version": "2.5.6"
+        "version": "2.5.7"
       },
       "files": [
         "cross-tools.patch",
@@ -43399,7 +43405,7 @@
             ]
           }
         },
-        "version-semver": "1.0.3"
+        "version-semver": "1.0.4"
       },
       "files": [
         "disable-source-utf8.patch",
@@ -43648,9 +43654,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "0.10.2"
+        "version": "0.11.0"
       },
       "files": [
         "LibCborConfig.cmake",
@@ -44093,14 +44103,13 @@
       "name": "libdc1394",
       "manifest": {
         "name": "libdc1394",
-        "port-version": 1,
         "description": "libdc1394 is a library that provides a complete high level application programming interface (API) for developers who wish to control IEEE 1394 based cameras that conform to the 1394-based Digital Camera Specifications (also known as the IIDC or DCAM Specifications).",
         "homepage": "https://damien.douxchamps.net/ieee1394/libdc1394",
         "supports": "!windows",
         "dependencies": [
           "libusb"
         ],
-        "version": "2.2.6"
+        "version": "2.2.7"
       },
       "files": [
         "fix-macosx.patch",
@@ -44273,7 +44282,7 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.1.4"
+        "version": "1.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -44782,7 +44791,7 @@
           },
           "zlib"
         ],
-        "version": "1.13.0"
+        "version": "1.14.0"
       },
       "files": [
         "fix_cmakelists.patch",
@@ -44976,7 +44985,7 @@
           "xproto",
           "xtrans"
         ],
-        "version": "1.0.8"
+        "version": "1.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -47147,7 +47156,6 @@
       "name": "libmicrohttpd",
       "manifest": {
         "name": "libmicrohttpd",
-        "port-version": 2,
         "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application",
         "homepage": "https://www.gnu.org/software/libmicrohttpd/",
         "license": "LGPL-2.1-or-later",
@@ -47172,7 +47180,7 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "0.9.77"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -47544,14 +47552,18 @@
       "name": "libnice-gst",
       "manifest": {
         "name": "libnice-gst",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Gstreamer Libnice plugins.",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
         "supports": "!xbox",
         "dependencies": [
           "gstreamer",
-          "libnice"
+          "libnice",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
         ],
         "version": "0.1.21"
       },
@@ -47878,7 +47890,7 @@
           },
           "zlib"
         ],
-        "version": "0.6.12"
+        "version": "0.7.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -48014,6 +48026,26 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "liborigin",
+      "manifest": {
+        "name": "liborigin",
+        "description": "A library for reading OriginLab OPJ project files.",
+        "homepage": "https://sourceforge.net/projects/liborigin/",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "3.0.2"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49064,7 +49096,6 @@
       "name": "libredwg",
       "manifest": {
         "name": "libredwg",
-        "port-version": 1,
         "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
         "homepage": "https://www.gnu.org/software/libredwg/",
         "license": "GPL-3.0",
@@ -49085,7 +49116,7 @@
             "description": "Build dwg/dxf manipulation command-line tools"
           }
         },
-        "version": "0.13.2"
+        "version": "0.13.3"
       },
       "files": [
         "fix_arm64_build.patch",
@@ -49289,11 +49320,10 @@
       "name": "libsass",
       "manifest": {
         "name": "libsass",
-        "port-version": 1,
         "description": "LibSass - Sass compiler written in C++",
         "homepage": "https://github.com/sass/libsass",
         "supports": "!uwp",
-        "version": "3.6.5"
+        "version": "3.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -49435,7 +49465,6 @@
       "name": "libsecret",
       "manifest": {
         "name": "libsecret",
-        "port-version": 2,
         "description": "libsecret is a GObject-based library for accessing the Secret Service API of the freedesktop.org project, a cross-desktop effort to access passwords, tokens and other types of secrets. libsecret provides a convenient wrapper for these methods so consumers do not have to call the low-level DBus methods.",
         "homepage": "https://gitlab.gnome.org/GNOME/libsecret/",
         "license": "LGPL-2.1-or-later",
@@ -49452,7 +49481,7 @@
             "host": true
           }
         ],
-        "version": "0.20.4"
+        "version": "0.21.4"
       },
       "files": [
         "portfile.cmake",
@@ -49463,6 +49492,7 @@
       "name": "libsercomm",
       "manifest": {
         "name": "libsercomm",
+        "port-version": 1,
         "description": "Multiplatform serial communications library",
         "homepage": "https://github.com/ingeniamc/sercomm",
         "license": "MIT",
@@ -49491,6 +49521,7 @@
         "version": "1.3.2"
       },
       "files": [
+        "dev-SER_END_DECL-fix.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50950,7 +50981,7 @@
             "host": true
           }
         ],
-        "version": "5.1"
+        "version": "6.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -51833,10 +51864,17 @@
       "name": "libxcvt",
       "manifest": {
         "name": "libxcvt",
+        "port-version": 1,
         "description": "A library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxcvt",
         "license": null,
         "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
         "version": "0.1.2"
       },
       "files": [
@@ -60869,6 +60907,7 @@
       "name": "nlopt",
       "manifest": {
         "name": "nlopt",
+        "port-version": 1,
         "description": "Library for nonlinear local and global optimization, for functions with and without gradient information.",
         "homepage": "https://github.com/stevengj/nlopt",
         "dependencies": [
@@ -60979,7 +61018,7 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version-semver": "1.6.0"
+        "version-semver": "1.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -65680,7 +65719,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -65831,11 +65869,10 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2023.3.0"
+        "version": "2024.0.0"
       },
       "files": [
         "001-disable-tools.patch",
-        "002-conditional-enabling-of-js-api.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -68075,7 +68112,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -68906,7 +68943,6 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
-        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -69016,7 +69052,7 @@
             ]
           }
         },
-        "version": "24.2.0"
+        "version": "24.3.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -69738,7 +69774,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -79545,7 +79581,7 @@
         "dependencies": [
           "shiftmedia-libgpg-error"
         ],
-        "version": "1.10.1-1"
+        "version": "1.10.3-1"
       },
       "files": [
         "portfile.cmake",
@@ -82629,7 +82665,7 @@
             "host": true
           }
         ],
-        "version": "12"
+        "version": "14"
       },
       "files": [
         "portfile.cmake",
@@ -86762,9 +86798,8 @@
       "name": "vcpkg-gn",
       "manifest": {
         "name": "vcpkg-gn",
-        "port-version": 3,
-        "description": "https://gn.googlesource.com/gn/+/4aa9bdfa05b688c58d3d7d3e496f3f18cbb3d89e",
-        "documentation": "https://vcpkg.io/en/docs/README.html",
+        "description": "GN is a meta-build system that generates build files for Ninja (GN is the build system for Chromium, Fuchsia, and related projects)",
+        "documentation": "https://gn.googlesource.com/gn/+/main/docs/reference.md",
         "license": "MIT",
         "supports": "native",
         "dependencies": [
@@ -86773,15 +86808,14 @@
             "host": true
           }
         ],
-        "version-date": "2021-11-16"
+        "version-date": "2024-02-22"
       },
       "files": [
         "portfile.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json",
         "vcpkg_gn_configure.cmake",
-        "vcpkg_gn_install.cmake",
-        "z_vcpkg_gn_fixup_path.cmake"
+        "vcpkg_gn_install.cmake"
       ]
     },
     {
@@ -86892,12 +86926,11 @@
       "name": "vcpkg-tool-gn",
       "manifest": {
         "name": "vcpkg-tool-gn",
-        "port-version": 1,
         "description": "GN build system",
         "homepage": "https://gn.googlesource.com/gn/",
         "license": null,
         "supports": "native",
-        "version-date": "2022-04-16"
+        "version-date": "2024-02-22"
       },
       "files": [
         "portfile.cmake",
