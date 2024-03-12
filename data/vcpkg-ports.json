@@ -1,5 +1,5 @@
 {
-  "version": "0719a71389654b88d827501d88e37e58ea8cbd70",
+  "version": "34771b62f36be65332087146afd0f762dbea6fac",
   "ports": [
     {
       "name": "3fd",
@@ -2027,7 +2027,7 @@
             ]
           }
         },
-        "version": "15.0.0"
+        "version": "15.0.1"
       },
       "files": [
         "fix-ci-error.patch",
@@ -2584,7 +2584,7 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "license": "MIT",
-        "version": "1.5"
+        "version": "1.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -2806,7 +2806,7 @@
             "host": true
           }
         ],
-        "version": "2.2.1"
+        "version": "2.3.0"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
@@ -26116,7 +26116,7 @@
             "host": true
           }
         ],
-        "version": "2.6.0"
+        "version": "2.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -27500,7 +27500,7 @@
         "description": "FFmpeg version of Nvidia Codec SDK headers.",
         "homepage": "https://github.com/FFmpeg/nv-codec-headers",
         "supports": "linux | (!osx & !uwp & !(arm64 & windows))",
-        "version": "11.1.5.3"
+        "version": "12.1.14.0"
       },
       "files": [
         "LICENSE.txt",
@@ -30376,7 +30376,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -30410,6 +30410,7 @@
         "version": "2.42.10"
       },
       "files": [
+        "fix-static-deps.patch",
         "fix_build_error_windows.patch",
         "loaders-cache.patch",
         "portfile.cmake",
@@ -31507,6 +31508,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -31844,7 +31846,6 @@
       "name": "glslang",
       "manifest": {
         "name": "glslang",
-        "port-version": 1,
         "description": "Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.",
         "homepage": "https://github.com/KhronosGroup/glslang",
         "license": "Apache-2.0 AND BSD-3-Clause AND MIT AND GPL-3.0-or-later",
@@ -31873,10 +31874,9 @@
             "supports": "!ios"
           }
         },
-        "version": "13.1.1"
+        "version": "14.0.0"
       },
       "files": [
-        "cmake.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -32055,7 +32055,7 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "port-version": 7,
+        "port-version": 8,
         "description": "A middleware layer between C libraries (using GObject) and language bindings.",
         "homepage": "https://gi.readthedocs.io/en/latest/",
         "license": null,
@@ -32079,6 +32079,10 @@
           },
           "libffi",
           "python3",
+          {
+            "name": "python3",
+            "host": true
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -36665,6 +36669,7 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
+        "port-version": 1,
         "description": "Hello ImGui: unleash your creativity in app development and prototyping",
         "homepage": "https://pthom.github.io/hello_imgui/",
         "license": "MIT",
@@ -43481,7 +43486,7 @@
             "host": true
           }
         ],
-        "version": "1.26.0"
+        "version": "1.26.1"
       },
       "files": [
         "fix-include-directory.patch",
@@ -45984,7 +45989,7 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 2,
+        "port-version": 3,
         "description": "GNU Unicode text conversion",
         "homepage": "https://www.gnu.org/software/libiconv/",
         "license": null,
@@ -46701,7 +46706,6 @@
       "name": "liblo",
       "manifest": {
         "name": "liblo",
-        "port-version": 4,
         "description": "liblo is an implementation of the Open Sound Control protocol for POSIX systems",
         "homepage": "https://github.com/radarsat1/liblo",
         "dependencies": [
@@ -46714,7 +46718,7 @@
             "host": true
           }
         ],
-        "version": "0.31"
+        "version": "0.32"
       },
       "files": [
         "portfile.cmake",
@@ -46873,7 +46877,7 @@
             "supports": "!windows, mingw"
           }
         },
-        "version": "5.4.4"
+        "version": "5.6.0"
       },
       "files": [
         "add_support_ios.patch",
@@ -47435,7 +47439,6 @@
       "name": "libmupdf",
       "manifest": {
         "name": "libmupdf",
-        "port-version": 1,
         "description": "a lightweight PDF, XPS, and E-book library",
         "homepage": "https://github.com/ArtifexSoftware/mupdf",
         "license": "AGPL-3.0-only",
@@ -47464,7 +47467,7 @@
             ]
           }
         },
-        "version": "1.22.1"
+        "version": "1.23.11"
       },
       "files": [
         "CMakeLists.txt",
@@ -47527,7 +47530,7 @@
       "name": "libnice",
       "manifest": {
         "name": "libnice",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libnice is an implementation of the IETF's Interactive Connectivity Establishment (ICE) standard (RFC 5245) and the Session Traversal Utilities for NAT (STUN) standard (RFC 5389).",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -47539,7 +47542,11 @@
             "host": true,
             "default-features": false
           },
-          "openssl"
+          "openssl",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
         ],
         "version": "0.1.21"
       },
@@ -51028,7 +51035,6 @@
       "name": "libunistring",
       "manifest": {
         "name": "libunistring",
-        "port-version": 3,
         "description": "GNU libunistring provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.",
         "homepage": "https://www.gnu.org/software/libunistring/",
         "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
@@ -51036,7 +51042,7 @@
         "dependencies": [
           "libiconv"
         ],
-        "version": "1.1"
+        "version": "1.2"
       },
       "files": [
         "copyright",
@@ -53343,7 +53349,7 @@
             "host": true
           }
         ],
-        "version": "9.1.3"
+        "version": "9.2.0"
       },
       "files": [
         "fix-usage.patch",
@@ -54423,7 +54429,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -54560,7 +54566,6 @@
       "name": "lunasvg",
       "manifest": {
         "name": "lunasvg",
-        "port-version": 1,
         "description": "lunasvg is a standalone SVG rendering library in C++",
         "homepage": "https://github.com/sammycage/lunasvg",
         "license": "MIT",
@@ -54574,7 +54579,7 @@
             "host": true
           }
         ],
-        "version": "2.3.8"
+        "version": "2.3.9"
       },
       "files": [
         "fix-cmake.patch",
@@ -56432,7 +56437,6 @@
       "name": "marble",
       "manifest": {
         "name": "marble",
-        "port-version": 2,
         "description": "Marble KDE library",
         "homepage": "https://marble.kde.org",
         "license": "LGPL-2.1-or-later",
@@ -56451,7 +56455,7 @@
             "host": true
           }
         ],
-        "version-string": "22.04.0"
+        "version-string": "24.02.0"
       },
       "files": [
         "portfile.cmake",
@@ -56531,7 +56535,6 @@
       "name": "materialx",
       "manifest": {
         "name": "materialx",
-        "port-version": 1,
         "description": "MaterialX is an open standard for the exchange of rich material and look-development content across applications and renderers.",
         "homepage": "https://www.materialx.org/",
         "license": "Apache-2.0",
@@ -56560,7 +56563,7 @@
             "description": "Build the MaterialX Render library."
           }
         },
-        "version": "1.38.8"
+        "version": "1.38.9"
       },
       "files": [
         "portfile.cmake",
@@ -57225,6 +57228,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
+        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
@@ -57956,7 +57960,7 @@
             "host": true
           }
         ],
-        "version": "2.2.5"
+        "version": "2.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -58112,7 +58116,7 @@
             ]
           }
         },
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "fix_find_zstd.patch",
@@ -58439,7 +58443,7 @@
             ]
           }
         },
-        "version": "1.26.0"
+        "version": "1.26.1"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -59484,7 +59488,6 @@
       "name": "mujs",
       "manifest": {
         "name": "mujs",
-        "port-version": 1,
         "description": "An embeddable Javascript interpreter in C",
         "homepage": "https://github.com/ccxvii/mujs",
         "license": "ISC",
@@ -59498,7 +59501,7 @@
             "host": true
           }
         ],
-        "version": "1.3.2"
+        "version": "1.3.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -59956,7 +59959,6 @@
       "name": "nanomsg",
       "manifest": {
         "name": "nanomsg",
-        "port-version": 1,
         "description": [
           "A simple high-performance implementation of several \"scalability protocols\".",
           "These scalability protocols are light-weight messaging protocols which can be used to solve a number of very common messaging patterns, such as request/reply, publish/subscribe, surveyor/respondent, and so forth. These protocols can run over a variety of transports such as TCP, UNIX sockets, and even WebSocket."
@@ -59978,7 +59980,7 @@
             "description": "nanomsg tool (nanocat)"
           }
         },
-        "version-semver": "1.2.0"
+        "version-semver": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -61269,7 +61271,6 @@
       "name": "nss",
       "manifest": {
         "name": "nss",
-        "port-version": 2,
         "description": "Network Security Services from Mozilla",
         "homepage": "https://ftp.mozilla.org/pub/security/nss/releases/",
         "license": "MPL-2.0",
@@ -61286,7 +61287,7 @@
             "host": true
           }
         ],
-        "version": "3.87"
+        "version": "3.98"
       },
       "files": [
         "01-nspr-no-lib-prefix.patch",
@@ -61432,7 +61433,7 @@
         "description": "NUMA support for Linux",
         "homepage": "https://github.com/numactl/numactl",
         "supports": "linux",
-        "version": "2.0.17"
+        "version": "2.0.18"
       },
       "files": [
         "portfile.cmake",
@@ -62505,7 +62506,7 @@
             "host": true
           }
         ],
-        "version": "3.3"
+        "version": "3.4"
       },
       "files": [
         "portfile.cmake",
@@ -64575,13 +64576,13 @@
       "name": "openexr",
       "manifest": {
         "name": "openexr",
-        "port-version": 1,
         "description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications",
         "homepage": "https://www.openexr.com/",
         "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           "imath",
+          "libdeflate",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -64589,18 +64590,16 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "zlib"
+          }
         ],
         "features": {
           "tools": {
             "description": "Build tools"
           }
         },
-        "version": "3.1.8"
+        "version": "3.2.3"
       },
       "files": [
-        "fix-arm64-windows-build.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -66010,7 +66009,6 @@
       "name": "optional-lite",
       "manifest": {
         "name": "optional-lite",
-        "port-version": 1,
         "description": "A C++17-like optional, a nullable object for C++98, C++11 and later in a single-file header-only library",
         "homepage": "https://github.com/martinmoene/optional-lite",
         "dependencies": [
@@ -66023,7 +66021,7 @@
             "host": true
           }
         ],
-        "version": "3.5.0"
+        "version": "3.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -66599,7 +66597,7 @@
             "description": "Build and run the dependency validation tests"
           }
         },
-        "version": "2.2.7"
+        "version": "2.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -76774,7 +76772,7 @@
             ]
           }
         },
-        "version": "8.10.0"
+        "version": "8.11.3"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -79489,7 +79487,7 @@
             "host": true
           }
         ],
-        "version": "2023.7"
+        "version": "2023.8"
       },
       "files": [
         "build-version.inc",
@@ -79497,6 +79495,7 @@
         "cmake-project-include.cmake",
         "disable-update-version.patch",
         "fix-build-type.patch",
+        "fix-python.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -81297,7 +81296,7 @@
             "host": true
           }
         ],
-        "version": "0.10.3"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -83811,6 +83810,7 @@
       "name": "thorvg",
       "manifest": {
         "name": "thorvg",
+        "port-version": 1,
         "description": "ThorVG is a platform-independent portable library for drawing vector-based scenes and animations",
         "homepage": "https://www.thorvg.org",
         "license": "MIT",
@@ -86971,20 +86971,24 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 2,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
         "supports": "native",
-        "version": "0.63"
+        "version": "1.3.2"
       },
       "files": [
+        "adjust-args.patch",
+        "adjust-python-dep.patch",
         "install.cmake",
         "meson-intl.patch",
+        "meson.template.in",
         "portfile.cmake",
         "remove-freebsd-pcfile-specialization.patch",
         "vcpkg-port-config.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "vcpkg_configure_meson.cmake",
+        "vcpkg_install_meson.cmake"
       ]
     },
     {
@@ -87303,7 +87307,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.273"
+        "version": "1.3.279"
       },
       "files": [
         "portfile.cmake",
@@ -87557,6 +87561,7 @@
       "name": "vsg",
       "manifest": {
         "name": "vsg",
+        "port-version": 1,
         "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
         "homepage": "http://www.vulkanscenegraph.org/",
         "license": "MIT",
@@ -88184,6 +88189,7 @@
       "name": "vulkan-sdk-components",
       "manifest": {
         "name": "vulkan-sdk-components",
+        "port-version": 1,
         "description": "Installs packages which are part of the Vulkan SDK.",
         "license": null,
         "supports": "!uwp & !xbox",
@@ -89844,7 +89850,7 @@
       "name": "xcb-proto",
       "manifest": {
         "name": "xcb-proto",
-        "port-version": 1,
+        "port-version": 2,
         "description": "XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions",
         "homepage": "https://xcb.freedesktop.org/",
         "license": "X11-distribute-modifications-variant",
@@ -90346,7 +90352,7 @@
             ]
           }
         },
-        "version": "12.0.0"
+        "version": "12.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -90490,7 +90496,7 @@
             "host": true
           }
         ],
-        "version": "0.7.5"
+        "version": "0.7.7"
       },
       "files": [
         "fix-fixup-cmake.patch",
@@ -90880,7 +90886,7 @@
             "host": true
           }
         ],
-        "version": "4.12.6"
+        "version": "4.13.0"
       },
       "files": [
         "fix-install-path.patch",
