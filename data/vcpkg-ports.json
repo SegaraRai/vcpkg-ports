@@ -1,5 +1,5 @@
 {
-  "version": "34771b62f36be65332087146afd0f762dbea6fac",
+  "version": "72c38122da5759ea515d01946512b2081914ad83",
   "ports": [
     {
       "name": "3fd",
@@ -1347,10 +1347,9 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
-        "fix-config.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -1536,6 +1535,7 @@
       "name": "argh",
       "manifest": {
         "name": "argh",
+        "port-version": 1,
         "description": "Argh! A minimalist argument handler.",
         "homepage": "https://github.com/adishavit/argh",
         "license": "BSD-3-Clause",
@@ -16651,6 +16651,7 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
+        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -16683,6 +16684,7 @@
         "configure-zlib.patch",
         "embed-debug-info.patch",
         "fix_android.patch",
+        "libcxx-winpthread-fixes.patch",
         "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json",
@@ -23624,11 +23626,12 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-14"
+        "version-date": "2024-03-07"
       },
       "files": [
         "directx-dxc-config.cmake.in",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -23651,7 +23654,7 @@
             "host": true
           }
         ],
-        "version": "1.611.0"
+        "version": "1.613.0"
       },
       "files": [
         "portfile.cmake",
@@ -23811,11 +23814,25 @@
               }
             ]
           },
+          "jpeg": {
+            "description": "Add the JPEG auxiliary functions",
+            "dependencies": [
+              "libjpeg-turbo"
+            ],
+            "supports": "linux"
+          },
           "openexr": {
             "description": "Enable OpenEXR support",
             "dependencies": [
               "openexr"
             ]
+          },
+          "png": {
+            "description": "Add the PNG auxiliary functions",
+            "dependencies": [
+              "libpng"
+            ],
+            "supports": "linux"
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
@@ -23823,9 +23840,16 @@
           "tools": {
             "description": "texture command-line tools",
             "supports": "windows & !uwp & !xbox"
+          },
+          "xbox": {
+            "description": "Adds Xbox specific extensions to the library",
+            "dependencies": [
+              "ms-gdkx"
+            ],
+            "supports": "windows & x64 & !uwp & !xbox"
           }
         },
-        "version-date": "2024-02-21"
+        "version-date": "2024-03-06"
       },
       "files": [
         "portfile.cmake",
@@ -26605,6 +26629,36 @@
       ]
     },
     {
+      "name": "faudio",
+      "manifest": {
+        "name": "faudio",
+        "description": "FAudio - accuracy-focused XAudio reimplementation for open platforms",
+        "homepage": "https://fna-xna.github.io/",
+        "license": "Zlib",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "sdl2",
+            "default-features": false,
+            "platform": "!windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-string": "24.03"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "fawdlstty-libfv",
       "manifest": {
         "name": "fawdlstty-libfv",
@@ -29018,17 +29072,12 @@
       "name": "freerdp",
       "manifest": {
         "name": "freerdp",
-        "port-version": 1,
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
-        "supports": "!uwp & !(arm & windows)",
+        "supports": "!uwp",
         "dependencies": [
           "cjson",
-          {
-            "name": "glib",
-            "platform": "!windows"
-          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -29094,16 +29143,18 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.0.0"
+        "version": "3.3.0"
       },
       "files": [
-        "DontInstallSystemRuntimeLibs.patch",
         "cmake-project-include.cmake",
         "dependencies.patch",
         "install-layout.patch",
         "keep-dup-libs.patch",
+        "mingw-tp.patch",
+        "msvc-arm64.patch",
         "portfile.cmake",
         "vcpkg.json",
+        "wf-rdpsnd.patch",
         "wfreerdp-server-cli.patch",
         "windows-linkage.patch"
       ]
@@ -30678,7 +30729,6 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "port-version": 2,
         "description": "A GNU framework to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "GPL-3.0-only",
@@ -30705,7 +30755,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.22.4"
+        "version": "0.22.5"
       },
       "files": [
         "0003-Fix-win-unicode-paths.patch",
@@ -30726,7 +30776,6 @@
       "name": "gettext-libintl",
       "manifest": {
         "name": "gettext-libintl",
-        "port-version": 1,
         "description": "The libintl C library from GNU gettext-runtime.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "LGPL-2.1-or-later",
@@ -30737,7 +30786,7 @@
             "platform": "!linux"
           }
         ],
-        "version": "0.22.4"
+        "version": "0.22.5"
       },
       "files": [
         "0003-Fix-win-unicode-paths.patch",
@@ -34021,7 +34070,6 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
-        "port-version": 2,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
@@ -34031,6 +34079,8 @@
             "name": "cairo",
             "default-features": false
           },
+          "expat",
+          "gdk-pixbuf",
           "getopt",
           "gts",
           {
@@ -34057,7 +34107,7 @@
           },
           "zlib"
         ],
-        "version-semver": "9.0.0"
+        "version-semver": "10.0.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -34067,7 +34117,8 @@
         "portfile.cmake",
         "select-plugins.patch",
         "static-linkage.patch",
-        "vcpkg.json"
+        "vcpkg.json",
+        "webp-install.patch"
       ]
     },
     {
@@ -35527,7 +35578,6 @@
       "name": "guile",
       "manifest": {
         "name": "guile",
-        "port-version": 1,
         "description": "GNU's programming and extension language",
         "homepage": "https://www.gnu.org/software/guile/",
         "documentation": "https://www.gnu.org/software/guile/manual/",
@@ -35543,10 +35593,14 @@
             ]
           },
           "gmp",
+          {
+            "name": "gperf",
+            "host": true
+          },
           "libffi",
           "libunistring"
         ],
-        "version": "3.0.8"
+        "version": "3.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -36045,11 +36099,15 @@
       "name": "h5py-lzf",
       "manifest": {
         "name": "h5py-lzf",
-        "port-version": 3,
-        "description": "The LZF filter is an alternative DEFLATE-style compressor for HDF5 datasets, using the free LZF library by Marc Alexander Lehmann.",
+        "description": "The LZF filter is an alternative DEFLATE-style compressor for HDF5 datasets.",
         "homepage": "https://github.com/h5py/h5py/tree/master/lzf",
+        "license": "BSD-3-Clause",
         "dependencies": [
-          "hdf5",
+          {
+            "name": "hdf5",
+            "default-features": false
+          },
+          "liblzf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -36059,12 +36117,12 @@
             "host": true
           }
         ],
-        "version-date": "2019-12-04"
+        "version-date": "2022-05-24"
       },
       "files": [
-        "0001-disable-H5PLget_plugin-api.patch",
         "CMakeLists.txt",
         "portfile.cmake",
+        "unofficial-h5py-lzf-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -45862,7 +45920,7 @@
             ]
           }
         },
-        "version-date": "2023-05-08"
+        "version-date": "2024-03-07"
       },
       "files": [
         "portfile.cmake",
@@ -46830,6 +46888,7 @@
       "name": "liblzf",
       "manifest": {
         "name": "liblzf",
+        "port-version": 1,
         "description": "LZF is an extremely fast compression algorithm. It is ideal for applications where you want to save some space but not at the cost of speed.",
         "homepage": "http://software.schmorp.de/pkg/liblzf.html",
         "license": "BSD-2-Clause OR GPL-2.0-or-later",
@@ -47107,7 +47166,7 @@
           },
           "zlib"
         ],
-        "version": "23.10"
+        "version": "24.1"
       },
       "files": [
         "dependencies.diff",
@@ -47160,6 +47219,7 @@
       "name": "libmicrohttpd",
       "manifest": {
         "name": "libmicrohttpd",
+        "port-version": 1,
         "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application",
         "homepage": "https://www.gnu.org/software/libmicrohttpd/",
         "license": "LGPL-2.1-or-later",
@@ -47172,7 +47232,7 @@
           {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "features": {
@@ -51097,6 +51157,7 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
+        "port-version": 1,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
@@ -51105,7 +51166,7 @@
           {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "default-features": [
@@ -51404,7 +51465,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -51416,7 +51477,7 @@
           {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "features": {
@@ -58774,7 +58835,7 @@
       "name": "mp3lame",
       "manifest": {
         "name": "mp3lame",
-        "port-version": 11,
+        "port-version": 12,
         "description": "LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.",
         "homepage": "https://sourceforge.net/projects/lame",
         "license": "LGPL-2.0-only",
@@ -58782,7 +58843,7 @@
           {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "version": "3.100"
@@ -59751,7 +59812,7 @@
             "host": true
           }
         ],
-        "version": "0.10.3"
+        "version": "0.10.4"
       },
       "files": [
         "portfile.cmake",
@@ -62387,7 +62448,6 @@
       "name": "ompl",
       "manifest": {
         "name": "ompl",
-        "port-version": 5,
         "description": "The Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms",
         "homepage": "https://ompl.kavrakilab.org/",
         "dependencies": [
@@ -62411,7 +62471,7 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.6.0"
       },
       "files": [
         "0001_Export_targets.patch",
@@ -65595,7 +65655,7 @@
       "name": "openturns",
       "manifest": {
         "name": "openturns",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenTURNS is a scientific C++ and Python library featuring an internal data model and algorithms dedicated to the treatment of uncertainties.",
         "homepage": "http://www.openturns.org",
         "license": null,
@@ -65641,6 +65701,7 @@
         "version": "1.20"
       },
       "files": [
+        "fix-dep.patch",
         "link-gmp.patch",
         "portfile.cmake",
         "reorder-mpc.patch",
@@ -70208,6 +70269,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
+        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -71339,7 +71401,7 @@
             ]
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71366,7 +71428,7 @@
             "host": true
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71386,7 +71448,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71406,7 +71468,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71417,7 +71479,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
         "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71487,7 +71548,7 @@
             ]
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -71504,7 +71565,6 @@
         "cmake/qt_submodule_installation.cmake",
         "patches/0001-CVE-2023-51714-qtbase-5.15.diff",
         "patches/0002-CVE-2023-51714-qtbase-5.15.diff",
-        "patches/CVE-2023-24607-qtbase-5.15.diff",
         "patches/CVE-2023-32762-qtbase-5.15.diff",
         "patches/CVE-2023-32763-qtbase-5.15.diff",
         "patches/CVE-2023-33285-qtbase-5.15.diff",
@@ -71571,7 +71631,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71590,7 +71650,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71611,7 +71671,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71653,7 +71713,7 @@
             ]
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71676,7 +71736,7 @@
           "qt5-quickcontrols2",
           "qt5-tools"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71696,7 +71756,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71716,7 +71776,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71774,7 +71834,7 @@
             ]
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71797,7 +71857,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "missing-include.patch",
@@ -71818,7 +71878,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71850,7 +71910,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71870,7 +71930,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71890,7 +71950,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71910,7 +71970,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71931,7 +71991,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71952,7 +72012,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71972,7 +72032,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -71992,7 +72052,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72012,7 +72072,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72032,7 +72092,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72052,7 +72112,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72071,7 +72131,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72096,7 +72156,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72115,7 +72175,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "CVE-2023-32573-qtsvg-5.15.diff",
@@ -72141,7 +72201,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "fix-pkgconfig-qt5uiplugin-not-found.patch",
@@ -72162,7 +72222,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72180,7 +72240,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72200,7 +72260,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72220,7 +72280,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72231,7 +72291,6 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 2,
         "description": "Qt5 webengine Module;",
         "license": null,
         "supports": "!static",
@@ -72273,10 +72332,9 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
-        "0001-Fix-building-with-ICU-68.patch",
         "0001-Support-ICU-74-in-LazyTextBreakIterator.patch",
         "build_1.patch",
         "build_2.patch",
@@ -72284,7 +72342,6 @@
         "gl.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "workaround-msvc2022-missing-include-in-chromium-ui-accessability.patch",
         "workaround-protobuf-issue.patch"
       ]
     },
@@ -72301,7 +72358,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72321,7 +72378,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72337,7 +72394,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72366,7 +72423,7 @@
             ]
           }
         },
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "patches/require_quick.patch",
@@ -72388,7 +72445,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -72408,7 +72465,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.12"
+        "version": "5.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -76445,6 +76502,7 @@
       "name": "rmlui",
       "manifest": {
         "name": "rmlui",
+        "port-version": 1,
         "maintainers": "Michael R. P. Ragazzon <mikke89@users.noreply.github.com>",
         "description": "RmlUi is the C++ user interface library based on the HTML and CSS standards, designed as a complete solution for any project's interface needs.",
         "homepage": "https://github.com/mikke89/RmlUi",
@@ -76486,6 +76544,7 @@
       "files": [
         "add-robin-hood.patch",
         "portfile.cmake",
+        "remove-std-before-uint.patch",
         "vcpkg.json"
       ]
     },
@@ -78223,7 +78282,7 @@
       "name": "sdformat10",
       "manifest": {
         "name": "sdformat10",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "supports": "!uwp & !(arm & osx)",
@@ -78287,7 +78346,7 @@
       "name": "sdformat6",
       "manifest": {
         "name": "sdformat6",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -78321,7 +78380,7 @@
       "name": "sdformat9",
       "manifest": {
         "name": "sdformat9",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -78355,7 +78414,7 @@
       "name": "sdl1",
       "manifest": {
         "name": "sdl1",
-        "port-version": 19,
+        "port-version": 20,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "LGPL-2.1-or-later",
@@ -78364,7 +78423,7 @@
           {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "version": "1.2.15"
