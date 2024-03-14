@@ -1,5 +1,5 @@
 {
-  "version": "72c38122da5759ea515d01946512b2081914ad83",
+  "version": "4d61c5bb8a9137b6650cfa430dccf45b6262a284",
   "ports": [
     {
       "name": "3fd",
@@ -16855,7 +16855,7 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/incubator-brpc",
         "license": "Apache-2.0",
@@ -18226,7 +18226,6 @@
       "name": "cgal",
       "manifest": {
         "name": "cgal",
-        "port-version": 1,
         "description": "The Computational Geometry Algorithms Library (CGAL) is a C++ library that aims to provide easy access to efficient and reliable algorithms in computational geometry.",
         "homepage": "https://github.com/CGAL/cgal",
         "license": "GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0",
@@ -18303,7 +18302,7 @@
             ]
           }
         },
-        "version": "5.6"
+        "version": "5.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -21317,7 +21316,7 @@
       "name": "cpr",
       "manifest": {
         "name": "cpr",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ Requests is a simple wrapper around libcurl inspired by the excellent Python Requests project.",
         "homepage": "https://github.com/libcpr/cpr",
         "license": "MIT",
@@ -21359,7 +21358,6 @@
         "version-semver": "1.10.5"
       },
       "files": [
-        "001-cpr-config.patch",
         "disable_werror.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -22105,6 +22103,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -22175,6 +22174,23 @@
             "dependencies": [
               "libidn2"
             ]
+          },
+          "ldap": {
+            "description": "LDAP support",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false,
+                "features": [
+                  "non-http"
+                ]
+              },
+              {
+                "name": "openldap",
+                "platform": "!windows"
+              }
+            ],
+            "supports": "!uwp"
           },
           "mbedtls": {
             "description": "SSL support (mbedTLS)",
@@ -22273,17 +22289,16 @@
             "supports": "windows"
           },
           "winldap": {
-            "description": "LDAP support (WinLDAP). This feature does not include LDAPS support.",
+            "description": "Obsolete. Use feature 'ldap' instead.",
             "dependencies": [
               {
                 "name": "curl",
                 "default-features": false,
                 "features": [
-                  "non-http"
+                  "ldap"
                 ]
               }
-            ],
-            "supports": "windows & !uwp"
+            ]
           },
           "winssl": {
             "description": "Legacy name for schannel",
@@ -23657,6 +23672,35 @@
         "version": "1.613.0"
       },
       "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "directx12-agility",
+      "manifest": {
+        "name": "directx12-agility",
+        "description": "DirectX 12 Agility SDK",
+        "homepage": "https://aka.ms/directx12agility",
+        "documentation": "https://devblogs.microsoft.com/directx/gettingstarted-dx12agility/",
+        "license": null,
+        "supports": "windows & !uwp & !xbox",
+        "dependencies": [
+          "directx-headers",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.613.0"
+      },
+      "files": [
+        "directx12-config.cmake.in",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -34070,6 +34114,7 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
+        "port-version": 1,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
@@ -42257,6 +42302,7 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
+        "port-version": 1,
         "description": [
           "The Khronos KTX library and tools.",
           "Functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them."
@@ -42282,7 +42328,7 @@
               "cxxopts",
               "fmt"
             ],
-            "supports": "!android"
+            "supports": "!android & !uwp"
           },
           "vulkan": {
             "description": "Build Vulkan support",
@@ -43875,22 +43921,15 @@
             "host": true
           }
         ],
-        "default-features": [
-          "networking",
-          "ssl"
-        ],
         "features": {
           "networking": {
             "description": "Include networking features.",
             "dependencies": [
               "c-ares"
-            ]
-          },
-          "platform": {
-            "description": "Include linux platform features.",
+            ],
             "supports": "linux"
           },
-          "ssl": {
+          "tls": {
             "description": "Include SSL features.",
             "dependencies": [
               {
@@ -43904,13 +43943,9 @@
             ]
           }
         },
-        "version": "0.10"
+        "version": "0.11.1"
       },
       "files": [
-        "0001-allow-shared-lib.patch",
-        "0002-disable-git-config.patch",
-        "0003-fix-pkgconfig-includedir.patch",
-        "0004-fix-pkgconfig-on-windows.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45110,6 +45145,27 @@
         "portfile.cmake",
         "vcpkg.json",
         "win32.patch"
+      ]
+    },
+    {
+      "name": "libfuse",
+      "manifest": {
+        "name": "libfuse",
+        "description": "The reference implementation of the Linux FUSE (Filesystem in Userspace) interface",
+        "homepage": "https://github.com/libfuse/libfuse",
+        "license": "LGPL-2.1 AND GPL-2.0",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "3.16.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -46512,7 +46568,6 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 2,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -46536,13 +46591,12 @@
             ]
           }
         },
-        "version-semver": "0.8.2"
+        "version-semver": "0.10.2"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix_static_suffix.patch",
+        "fix-tools-build.patch",
         "portfile.cmake",
-        "trim-shared-build.patch",
         "vcpkg.json"
       ]
     },
@@ -48101,6 +48155,7 @@
       "name": "liborigin",
       "manifest": {
         "name": "liborigin",
+        "port-version": 1,
         "description": "A library for reading OriginLab OPJ project files.",
         "homepage": "https://sourceforge.net/projects/liborigin/",
         "license": "GPL-2.0-or-later",
@@ -48113,6 +48168,7 @@
         "version": "3.0.2"
       },
       "files": [
+        "fix-installing-import-library-with-MSVC.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64636,6 +64692,7 @@
       "name": "openexr",
       "manifest": {
         "name": "openexr",
+        "port-version": 1,
         "description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications",
         "homepage": "https://www.openexr.com/",
         "license": "BSD-3-Clause",
@@ -64660,6 +64717,7 @@
         "version": "3.2.3"
       },
       "files": [
+        "fix-cmake-package.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -66222,7 +66280,7 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 22,
+        "port-version": 23,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
         "homepage": "https://www.openscenegraph.com/",
         "license": null,
@@ -66270,14 +66328,6 @@
                   "openexr"
                 ],
                 "platform": "!uwp"
-              },
-              {
-                "name": "osg",
-                "default-features": false,
-                "features": [
-                  "rest-http-device"
-                ],
-                "platform": "!windows"
               },
               {
                 "name": "osg",
@@ -66391,20 +66441,6 @@
               }
             ]
           },
-          "rest-http-device": {
-            "description": "Build RestHttpDevice plugin",
-            "dependencies": [
-              "boost-array",
-              "boost-asio",
-              "boost-bind",
-              "boost-core",
-              "boost-lexical-cast",
-              "boost-logic",
-              "boost-smart-ptr",
-              "boost-tuple"
-            ],
-            "supports": "!windows"
-          },
           "sdl1": {
             "description": "Build SDL 1 plugin, and enable SDL 1 app features",
             "dependencies": [
@@ -66449,7 +66485,6 @@
         "unofficial-export.patch",
         "unofficial-osg-config.cmake",
         "usage",
-        "use-boost-asio.patch",
         "vcpkg.json"
       ]
     },
@@ -67129,7 +67164,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 4,
+        "port-version": 5,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -81958,7 +81993,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -82032,7 +82066,7 @@
             ]
           }
         },
-        "version": "3.45.1"
+        "version": "3.45.2"
       },
       "files": [
         "CMakeLists.txt",
