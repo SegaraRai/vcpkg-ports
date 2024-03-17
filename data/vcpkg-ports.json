@@ -1,5 +1,5 @@
 {
-  "version": "8d3649ba34aab36914ddd897958599aa0a91b08e",
+  "version": "cf4ebef2294e164875ce17d7937f44d3e3ea156e",
   "ports": [
     {
       "name": "3fd",
@@ -29189,19 +29189,15 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "cmake-project-include.cmake",
         "dependencies.patch",
         "install-layout.patch",
         "keep-dup-libs.patch",
-        "mingw-tp.patch",
-        "msvc-arm64.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "wf-rdpsnd.patch",
-        "wfreerdp-server-cli.patch",
         "windows-linkage.patch"
       ]
     },
@@ -53471,6 +53467,30 @@
       ]
     },
     {
+      "name": "llnl-units",
+      "manifest": {
+        "name": "llnl-units",
+        "description": "A run-time C++ library for working with units of measurement and conversions between them and with string representations of units and measurements",
+        "homepage": "https://github.com/LLNL/units",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.9.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "llvm",
       "manifest": {
         "name": "llvm",
@@ -58601,13 +58621,11 @@
             ]
           }
         },
-        "version": "3.9.0"
+        "version": "3.10.1"
       },
       "files": [
         "cmake-project-include.cmake",
         "fix-dependencies.patch",
-        "libbsoncxx-config.cmake",
-        "libmongocxx-config.cmake",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -63217,20 +63235,17 @@
       "name": "opencsg",
       "manifest": {
         "name": "opencsg",
-        "port-version": 4,
         "description": "OpenCSG is a library that does image-based CSG rendering using OpenGL. OpenCSG is written in C++ and supports most modern graphics hardware using Microsoft Windows or the Linux operating system.",
+        "homepage": "https://github.com/floriankirsch/OpenCSG",
+        "license": "GPL-2.0-or-later",
         "dependencies": [
           "glew",
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version": "1.4.2"
+        "version": "1.6.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -68410,6 +68425,19 @@
         "description": "A simple C++ 03/11/etc timer class for ~microsecond-precision cross-platform benchmarking",
         "homepage": "https://www.plflib.org/",
         "version-date": "2019-08-10"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "plf-queue",
+      "manifest": {
+        "name": "plf-queue",
+        "description": "A data container replicating std::queue functionality but with better performance than standard library containers in a queue context. C++98/03/11/14/etc-compatible.",
+        "homepage": "https://plflib.org/queue.htm",
+        "version": "2.2"
       },
       "files": [
         "portfile.cmake",
@@ -78635,6 +78663,7 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
+        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -78686,7 +78715,7 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -78920,6 +78949,7 @@
       "name": "sdl2-ttf",
       "manifest": {
         "name": "sdl2-ttf",
+        "port-version": 1,
         "description": "A library for rendering TrueType fonts with SDL",
         "homepage": "https://www.libsdl.org/projects/SDL_ttf/",
         "license": "Zlib",
@@ -80134,7 +80164,7 @@
         "description": "Implementations of SIMD instruction sets for systems which don't natively support them",
         "homepage": "https://github.com/simd-everywhere/simde",
         "license": "MIT",
-        "version": "0.7.6"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -80508,7 +80538,7 @@
             ]
           }
         },
-        "version": "122"
+        "version": "123"
       },
       "files": [
         "bentleyottmann-build.patch",
@@ -83794,7 +83824,7 @@
       "name": "theia",
       "manifest": {
         "name": "theia",
-        "port-version": 9,
+        "port-version": 10,
         "description": "An open source library for multiview geometry and structure from motion",
         "homepage": "https://github.com/sweeneychris/TheiaSfM",
         "license": "BSD-3-Clause",
@@ -87208,6 +87238,7 @@
       "name": "velodyne-decoder",
       "manifest": {
         "name": "velodyne-decoder",
+        "port-version": 1,
         "description": "A decoder library for raw Velodyne data and telemetry info",
         "homepage": "https://github.com/valgur/velodyne_decoder",
         "license": "BSD-3-Clause",
@@ -87223,7 +87254,7 @@
           },
           {
             "name": "yaml-cpp",
-            "version>=": "0.7"
+            "version>=": "0.7.0"
           }
         ],
         "version": "3.0.0"
@@ -89805,7 +89836,7 @@
       "name": "xaudio2redist",
       "manifest": {
         "name": "xaudio2redist",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Redistributable version of XAudio 2.9 for Windows 7 SP1 or later",
         "homepage": "https://aka.ms/XAudio2Redist",
         "documentation": "https://aka.ms/XAudio2Redist",
@@ -89815,6 +89846,7 @@
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json",
         "xaudio2redist-config.cmake.in"
       ]
@@ -90232,7 +90264,6 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
-        "port-version": 2,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
@@ -90249,7 +90280,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.3"
       },
       "files": [
         "CMakeLists.txt",
