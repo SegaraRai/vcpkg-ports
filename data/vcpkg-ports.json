@@ -1,5 +1,5 @@
 {
-  "version": "cf4ebef2294e164875ce17d7937f44d3e3ea156e",
+  "version": "3850888eb8480abc8f73f84bf618de3b68900572",
   "ports": [
     {
       "name": "3fd",
@@ -171,7 +171,7 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version": "20230802.1"
+        "version": "20240116.1"
       },
       "files": [
         "portfile.cmake",
@@ -794,6 +794,7 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
+        "port-version": 1,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
@@ -2027,7 +2028,7 @@
             ]
           }
         },
-        "version": "15.0.1"
+        "version": "15.0.2"
       },
       "files": [
         "fix-ci-error.patch",
@@ -19073,7 +19074,7 @@
       "name": "cld3",
       "manifest": {
         "name": "cld3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Compact Language Detector v3",
         "homepage": "https://github.com/google/cld3",
         "license": "Apache-2.0",
@@ -19091,6 +19092,7 @@
         "version": "3.0.14"
       },
       "files": [
+        "fix-build.patch",
         "portfile.cmake",
         "unofficial-cld3Config.cmake",
         "unofficial-export.patch",
@@ -21176,9 +21178,10 @@
             "host": true
           }
         ],
-        "version": "0.4.1"
+        "version": "0.5.0"
       },
       "files": [
+        "conversion.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -34181,7 +34184,7 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An RPC library and framework",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -34237,6 +34240,7 @@
         "00012-fix-use-cxx17.patch",
         "00014-pkgconfig-upbdefs.patch",
         "00015-disable-download-archive.patch",
+        "00016_add_header.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "snprintf.patch",
@@ -36449,7 +36453,6 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 3,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -36527,7 +36530,7 @@
             ]
           }
         },
-        "version": "8.3.0"
+        "version": "8.3.1"
       },
       "files": [
         "fix-win32-build.patch",
@@ -37603,7 +37606,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "74.1"
+        "version": "74.2"
       },
       "files": [
         "darwin-rpath.patch",
@@ -43411,8 +43414,7 @@
       "name": "libassert",
       "manifest": {
         "name": "libassert",
-        "port-version": 2,
-        "description": "The most over-engineered and overpowered C++ assertion library.",
+        "description": "The most over-engineered C++ assertion library",
         "homepage": "https://github.com/jeremy-rifkin/libassert",
         "license": "MIT",
         "supports": "!uwp",
@@ -43428,14 +43430,10 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "2.0.0"
       },
       "files": [
-        "cpptrace-0.4.1.patch",
-        "include-dir.patch",
-        "magic-enum.patch",
         "portfile.cmake",
-        "runtime_destination.patch",
         "vcpkg.json"
       ]
     },
@@ -47041,7 +47039,7 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -47063,6 +47061,32 @@
             "platform": "windows | mingw"
           }
         ],
+        "features": {
+          "bzip2": {
+            "description": "Enable bzip2 support",
+            "dependencies": [
+              "bzip2"
+            ]
+          },
+          "lzma": {
+            "description": "Enable lzma support",
+            "dependencies": [
+              "liblzma"
+            ]
+          },
+          "zlib": {
+            "description": "Enable zlib support",
+            "dependencies": [
+              "zlib"
+            ]
+          },
+          "zstd": {
+            "description": "Enable zstd support",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
         "version": "5.45"
       },
       "files": [
@@ -47080,6 +47104,7 @@
         "0013-Check-for-backslash-in-argv-0-on-Windows.patch",
         "0015-MSYS2-Remove-ioctl-call.patch",
         "0016-Fix-file_famagic-function.patch",
+        "0017-Change-bzlib-name-to-match-CMake-output.patch",
         "portfile.cmake",
         "unofficial-libmagic-config.cmake.in",
         "usage",
@@ -62933,7 +62958,7 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/OpenMathLib/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -70735,7 +70760,8 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
-        "description": "Qt",
+        "port-version": 1,
+        "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -71112,7 +71138,8 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
-        "description": "Qt5 Application Framework",
+        "port-version": 1,
+        "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -71471,7 +71498,8 @@
       "name": "qt5-3d",
       "manifest": {
         "name": "qt5-3d",
-        "description": "Qt5 3d Module - Functionality for near-realtime simulation systems with support for 2D and 3D rendering",
+        "port-version": 1,
+        "description": "Qt 3D provides functionality for near-realtime simulation systems with support for 2D and 3D rendering in both Qt C++ and Qt Quick applications.",
         "license": null,
         "dependencies": [
           "assimp",
@@ -71498,7 +71526,8 @@
       "name": "qt5-activeqt",
       "manifest": {
         "name": "qt5-activeqt",
-        "description": "Qt5 ActiveQt Module - ActiveX components",
+        "port-version": 1,
+        "description": "Active Qt is a helper framework that enables the developer to access and use ActiveX controls and COM objects provided by any ActiveX server. It also makes it possible to make the developer's own Qt applications available as COM servers on Windows.",
         "license": null,
         "supports": "windows",
         "dependencies": [
@@ -71518,7 +71547,8 @@
       "name": "qt5-androidextras",
       "manifest": {
         "name": "qt5-androidextras",
-        "description": "Qt5 androidextras Module;",
+        "port-version": 1,
+        "description": "The Qt Android Extras module provided a set of classes and functions that were specific to Android applications written with Qt. This module helped developers to integrate various Android-specific features and services into their Qt applications.",
         "license": null,
         "supports": "android",
         "dependencies": [
@@ -71538,7 +71568,8 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "description": "Qt5 Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
+        "port-version": 1,
+        "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -71661,8 +71692,8 @@
       "name": "qt5-canvas3d",
       "manifest": {
         "name": "qt5-canvas3d",
-        "port-version": 2,
-        "description": "Qt5 Canvas 3d Module;",
+        "port-version": 3,
+        "description": "Qt Canvas3D offers a low level OpenGL-like API that enables you to execute 3D drawing commands from JavaScript.",
         "dependencies": [
           {
             "name": "qt5-base",
@@ -71680,7 +71711,8 @@
       "name": "qt5-charts",
       "manifest": {
         "name": "qt5-charts",
-        "description": "Qt5 Charts Module - UI components for displaying charts, driven by static or dynamic data models",
+        "port-version": 1,
+        "description": "The Qt Charts module provides a set of easy to use chart components.",
         "license": null,
         "dependencies": [
           {
@@ -71701,7 +71733,8 @@
       "name": "qt5-connectivity",
       "manifest": {
         "name": "qt5-connectivity",
-        "description": "Qt5 Connectivity module - Provides access to Bluetooth and NFC hardware",
+        "port-version": 1,
+        "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "license": null,
         "dependencies": [
           {
@@ -71720,7 +71753,8 @@
       "name": "qt5-datavis3d",
       "manifest": {
         "name": "qt5-datavis3d",
-        "description": "Qt5 Data Visualization 3d Module - UI Components for creating 3D data visualizations",
+        "port-version": 1,
+        "description": "The Qt Data Visualization module provides a way to visualize data in 3D as bar, scatter, and surface graphs.",
         "license": null,
         "dependencies": [
           {
@@ -71741,7 +71775,8 @@
       "name": "qt5-declarative",
       "manifest": {
         "name": "qt5-declarative",
-        "description": "Qt5 Declarative (Quick 2) Module. Includes QtQuick, QtQuickParticles, QtQuickWidgets, QtQml, and QtPacketProtocol.",
+        "port-version": 1,
+        "description": "Qt Declarative (Quick 2)",
         "license": null,
         "dependencies": [
           {
@@ -71783,7 +71818,8 @@
       "name": "qt5-doc",
       "manifest": {
         "name": "qt5-doc",
-        "description": "Qt5 doc Module;",
+        "port-version": 1,
+        "description": "The Qt documentation.",
         "license": null,
         "supports": "linux",
         "dependencies": [
@@ -71806,7 +71842,8 @@
       "name": "qt5-gamepad",
       "manifest": {
         "name": "qt5-gamepad",
-        "description": "Qt5 Gamepad Module - Enables Qt applications to support the use of gamepad hardware",
+        "port-version": 1,
+        "description": "Qt Gamepad is an add-on library that enables Qt applications to support the use of gamepad hardware and in some cases remote control equipment.",
         "license": null,
         "dependencies": [
           {
@@ -71826,7 +71863,8 @@
       "name": "qt5-graphicaleffects",
       "manifest": {
         "name": "qt5-graphicaleffects",
-        "description": "Qt5 GraphicalEffects Module.",
+        "port-version": 1,
+        "description": "The Qt Graphical Effects module provides a set of QML types for adding visually impressive and configurable effects to user interfaces.",
         "license": null,
         "dependencies": [
           {
@@ -71846,7 +71884,8 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
-        "description": "Qt5 Image Formats Module - Plugins for additional image formats: TIFF, MNG, TGA, WBMP",
+        "port-version": 1,
+        "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "license": null,
         "dependencies": [
           {
@@ -71904,7 +71943,8 @@
       "name": "qt5-location",
       "manifest": {
         "name": "qt5-location",
-        "description": "Qt5 Location Module - Displays map, navigation, and place content in a QML application.",
+        "port-version": 1,
+        "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "license": null,
         "dependencies": [
           {
@@ -71928,7 +71968,8 @@
       "name": "qt5-macextras",
       "manifest": {
         "name": "qt5-macextras",
-        "description": "Qt5 Mac Extras Module. Provides platform-specific APIs for mac.",
+        "port-version": 1,
+        "description": "Qt Mac Extras provide classes and functions that enable you to use miscellaneous functionality specific to the macOS and iOS operating systems.",
         "license": null,
         "supports": "osx",
         "dependencies": [
@@ -71961,7 +72002,8 @@
       "name": "qt5-mqtt",
       "manifest": {
         "name": "qt5-mqtt",
-        "description": "Qt5 MQTT module.",
+        "port-version": 1,
+        "description": "Qt MQTT enables you to create applications and devices that can communicate over the MQ telemetry transport (MQTT) protocol.",
         "license": null,
         "dependencies": [
           {
@@ -71980,7 +72022,8 @@
       "name": "qt5-multimedia",
       "manifest": {
         "name": "qt5-multimedia",
-        "description": "Qt5 Multimedia Module - Classes and widgets for audio, video, radio and camera functionality",
+        "port-version": 1,
+        "description": "Qt Multimedia is an essential module that provides a rich set of QML types and C++ classes to handle multimedia content. It also provides necessary APIs to access the camera and radio functionality.",
         "license": null,
         "dependencies": [
           {
@@ -72001,7 +72044,8 @@
       "name": "qt5-networkauth",
       "manifest": {
         "name": "qt5-networkauth",
-        "description": "Qt5 Network Authorization Module",
+        "port-version": 1,
+        "description": "Qt Network Authorization provides a set of APIs that enable Qt applications to obtain limited access to online accounts and HTTP services without exposing users' passwords.",
         "license": null,
         "dependencies": [
           {
@@ -72020,7 +72064,8 @@
       "name": "qt5-purchasing",
       "manifest": {
         "name": "qt5-purchasing",
-        "description": "Qt5 Purchasing Module - Enables in-app purchase of products in Qt applications.",
+        "port-version": 1,
+        "description": "Qt Purchasing is an add-on library that enables Qt applications to support in-app purchases. It is a cross-platform library that currently supports purchases made to the Mac App Store on OS X, App Store on iOS, and Google Play on Android.",
         "license": null,
         "dependencies": [
           {
@@ -72040,7 +72085,8 @@
       "name": "qt5-quickcontrols",
       "manifest": {
         "name": "qt5-quickcontrols",
-        "description": "Qt5 QuickControls Module.",
+        "port-version": 1,
+        "description": "The Qt Quick Controls module provides a set of controls that can be used to build complete interfaces in Qt Quick.",
         "license": null,
         "dependencies": [
           {
@@ -72061,7 +72107,8 @@
       "name": "qt5-quickcontrols2",
       "manifest": {
         "name": "qt5-quickcontrols2",
-        "description": "Qt5 QuickControls2 Module.",
+        "port-version": 1,
+        "description": "Qt Quick Controls provides a set of controls that can be used to build complete interfaces in Qt Quick.",
         "license": null,
         "dependencies": [
           {
@@ -72082,7 +72129,8 @@
       "name": "qt5-remoteobjects",
       "manifest": {
         "name": "qt5-remoteobjects",
-        "description": "Qt5 Remoteobjects module - Provides an easy to use mechanism for sharing a QObject's API (Properties/Signals/Slots) between processes or devices.",
+        "port-version": 1,
+        "description": "Qt Remote Objects (QtRO) is an Inter-Process Communication (IPC) module developed for Qt. This module extends Qt's existing functionalities to enable information exchange between processes or computers, easily.",
         "license": null,
         "dependencies": [
           {
@@ -72102,7 +72150,8 @@
       "name": "qt5-script",
       "manifest": {
         "name": "qt5-script",
-        "description": "Qt5 Script Module.",
+        "port-version": 1,
+        "description": "Qt Script provides support for application scripting with ECMAScript.",
         "license": null,
         "dependencies": [
           {
@@ -72122,7 +72171,8 @@
       "name": "qt5-scxml",
       "manifest": {
         "name": "qt5-scxml",
-        "description": "Qt5 SCXML Module - Provides classes and tools for creating state machines from SCXML files and embedding them in applications",
+        "port-version": 1,
+        "description": "The Qt SCXML module provides classes for embedding state machines created from State Chart XML (SCXML) files in Qt applications.",
         "license": null,
         "dependencies": [
           {
@@ -72142,7 +72192,8 @@
       "name": "qt5-sensors",
       "manifest": {
         "name": "qt5-sensors",
-        "description": "Qt5 Sensors module - Provides access to sensor hardware and motion gesture recognition.",
+        "port-version": 1,
+        "description": "The Qt Sensors API provides access to sensor hardware via QML and C++ interfaces. The Qt Sensors API also provides a motion gesture recognition API for devices.",
         "license": null,
         "dependencies": [
           {
@@ -72162,7 +72213,8 @@
       "name": "qt5-serialbus",
       "manifest": {
         "name": "qt5-serialbus",
-        "description": "Qt5 Serialbus Module;",
+        "port-version": 1,
+        "description": "The Qt Serial Bus API provides classes and functions to access the various industrial serial buses and protocols, such as CAN, ModBus, and others.",
         "license": null,
         "dependencies": [
           {
@@ -72201,7 +72253,8 @@
       "name": "qt5-speech",
       "manifest": {
         "name": "qt5-speech",
-        "description": "Qt5 Speech Module",
+        "port-version": 1,
+        "description": "The Qt Speech module enables a Qt application to support accessibility features such as text-to-speech, which is useful for end-users who are visually challenged or cannot access the application for whatever reason.",
         "license": null,
         "dependencies": [
           {
@@ -72226,7 +72279,8 @@
       "name": "qt5-svg",
       "manifest": {
         "name": "qt5-svg",
-        "description": "Qt5 SVG Module - provides classes for displaying the contents of SVG files",
+        "port-version": 1,
+        "description": "Qt SVG provides classes for rendering and displaying SVG drawings in widgets and on other paint devices.",
         "license": null,
         "dependencies": [
           {
@@ -72247,7 +72301,8 @@
       "name": "qt5-tools",
       "manifest": {
         "name": "qt5-tools",
-        "description": "Qt5 Tools Module; Includes deployment tools and helpers, Qt Designer, Assistant, and other applications",
+        "port-version": 1,
+        "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "license": null,
         "dependencies": [
           {
@@ -72272,7 +72327,8 @@
       "name": "qt5-translations",
       "manifest": {
         "name": "qt5-translations",
-        "description": "Qt5 translations module",
+        "port-version": 1,
+        "description": "Qt translations.",
         "license": null,
         "dependencies": [
           {
@@ -72292,7 +72348,8 @@
       "name": "qt5-virtualkeyboard",
       "manifest": {
         "name": "qt5-virtualkeyboard",
-        "description": "Qt5 Virtual Keyboard Module - A framework for implementing different input methods. Supports localized keyboard layouts and custom visual themes",
+        "port-version": 1,
+        "description": "The Qt Virtual Keyboard project provides an input framework and reference keyboard frontend for Qt 5 on Linux Desktop/X11, Windows Desktop, and Boot2Qt targets.",
         "license": null,
         "dependencies": [
           "qt5-multimedia",
@@ -72310,7 +72367,8 @@
       "name": "qt5-wayland",
       "manifest": {
         "name": "qt5-wayland",
-        "description": "Qt5 wayland Module;",
+        "port-version": 1,
+        "description": "QtWayland is a Qt 5 module that wraps the functionality of Wayland.",
         "license": null,
         "supports": "linux",
         "dependencies": [
@@ -72330,7 +72388,8 @@
       "name": "qt5-webchannel",
       "manifest": {
         "name": "qt5-webchannel",
-        "description": "Qt5 Web Channel module - Provides access to QObject or QML objects from HTML clients for seamless integration of Qt applications with HTML/JavaScript clients.",
+        "port-version": 1,
+        "description": "Qt WebChannel enables peer-to-peer communication between a server (QML/C++ application) and a client (HTML/JavaScript or QML application).",
         "license": null,
         "dependencies": [
           {
@@ -72350,7 +72409,8 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "description": "Qt5 webengine Module;",
+        "port-version": 1,
+        "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
         "dependencies": [
@@ -72408,7 +72468,8 @@
       "name": "qt5-webglplugin",
       "manifest": {
         "name": "qt5-webglplugin",
-        "description": "Qt5 Webglplugin Module",
+        "port-version": 1,
+        "description": "The Qt WebGL Plugin module enables Qt applications to be run in web browsers through WebGL streaming.",
         "license": null,
         "dependencies": [
           {
@@ -72428,7 +72489,8 @@
       "name": "qt5-websockets",
       "manifest": {
         "name": "qt5-websockets",
-        "description": "Qt5 Web Sockets Module - provides WebSocket communication compliant with RFC 6455",
+        "port-version": 1,
+        "description": "The Qt WebSockets module provides C++ and QML interfaces that enable Qt applications to act as a server that can process WebSocket requests, or a client that can consume data received from the server, or both.",
         "license": null,
         "dependencies": [
           {
@@ -72448,7 +72510,8 @@
       "name": "qt5-webview",
       "manifest": {
         "name": "qt5-webview",
-        "description": "Qt5 WebView module - Provides a way to display web content in a QML application without necessarily including a full web browser stack by using native APIs where it makes sense.",
+        "port-version": 1,
+        "description": "Qt WebView provides a way to display web content in a QML application without necessarily including a full web browser stack by using native APIs where it makes sense.",
         "license": null,
         "dependencies": [
           "qt5-declarative"
@@ -72464,7 +72527,8 @@
       "name": "qt5-winextras",
       "manifest": {
         "name": "qt5-winextras",
-        "description": "Qt5 Windows Extras Module. Provides platform-specific APIs for Windows.",
+        "port-version": 1,
+        "description": "Qt Windows Extras provide classes and functions that enable you to use miscellaneous Windows-specific functions. For example, you can convert Qt objects to Windows object handles and manipulate DWM glass frames.",
         "license": null,
         "supports": "windows",
         "dependencies": [
@@ -72495,7 +72559,8 @@
       "name": "qt5-x11extras",
       "manifest": {
         "name": "qt5-x11extras",
-        "description": "Qt5 x11extras Module;",
+        "port-version": 1,
+        "description": "Qt X11 Extras enables the Qt programmer to write applications for the Linux/X11 platform.",
         "license": null,
         "supports": "!windows",
         "dependencies": [
@@ -72515,7 +72580,8 @@
       "name": "qt5-xmlpatterns",
       "manifest": {
         "name": "qt5-xmlpatterns",
-        "description": "Qt5 XML Patterns Module - Support for XPath, XQuery, XSLT and XML schema validation",
+        "port-version": 1,
+        "description": "The Qt XML Patterns module provides support for XPath, XQuery, XSLT, and XML Schema validation.",
         "license": null,
         "dependencies": [
           {
@@ -72535,7 +72601,8 @@
       "name": "qt5compat",
       "manifest": {
         "name": "qt5compat",
-        "description": "The module contains unsupported Qt 5 APIs",
+        "port-version": 1,
+        "description": "The Qt 5 Core Compat module contains the Qt 5 Core APIs that were removed in Qt 6. The module facilitates the transition to Qt 6.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -72702,8 +72769,8 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 10,
-        "description": "Qt Application Framework Base Module. Includes Core, GUI, Widgets, Networking, SQL, Concurrent and other essential qt components.",
+        "port-version": 11,
+        "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "!uwp",
@@ -73261,7 +73328,8 @@
       "name": "qtcharts",
       "manifest": {
         "name": "qtcharts",
-        "description": "QtCharts module",
+        "port-version": 1,
+        "description": "The Qt Charts module provides a set of easy-to-use chart components. It uses the Qt Graphics View Framework to integrate charts with modern user interfaces.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73305,7 +73373,8 @@
       "name": "qtcoap",
       "manifest": {
         "name": "qtcoap",
-        "description": "Qt CoAP client module",
+        "port-version": 1,
+        "description": "Qt CoAP implements the client side of CoAP.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73328,7 +73397,8 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
-        "description": "Qt Connectivity",
+        "port-version": 1,
+        "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73353,7 +73423,8 @@
       "name": "qtdatavis3d",
       "manifest": {
         "name": "qtdatavis3d",
-        "description": "Qt 3D data visualization framework",
+        "port-version": 1,
+        "description": "The Qt Data Visualization module enables you to visualize data in 3D as bar, scatter, and surface graphs.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73415,7 +73486,8 @@
       "name": "qtdeviceutilities",
       "manifest": {
         "name": "qtdeviceutilities",
-        "description": "Utils for Boot2Qt",
+        "port-version": 1,
+        "description": "Qt Device Utilities provides functionality that is useful for controlling settings in embedded applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "linux",
@@ -73440,7 +73512,8 @@
       "name": "qtdoc",
       "manifest": {
         "name": "qtdoc",
-        "description": "Qt Documentation",
+        "port-version": 1,
+        "description": "The Qt documentation.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73460,7 +73533,8 @@
       "name": "qtgraphs",
       "manifest": {
         "name": "qtgraphs",
-        "description": "Qt Location",
+        "port-version": 1,
+        "description": "The Qt Graphs module enables you to visualize data in 3D as bar, scatter, and surface graphs.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73493,7 +73567,8 @@
       "name": "qtgrpc",
       "manifest": {
         "name": "qtgrpc",
-        "description": "Qt framework based gRPC clients and services.",
+        "port-version": 1,
+        "description": "The Qt GRPC and Qt Protobuf modules together allow you to define data and messages in proto files, and then use the code generators, which generate client code allowing accessors for fields and gRPC services in the Qt framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73527,7 +73602,8 @@
       "name": "qthttpserver",
       "manifest": {
         "name": "qthttpserver",
-        "description": "Qt Extension: Qt HTTP Server",
+        "port-version": 1,
+        "description": "Qt HTTP Server supports building HTTP server functionality into an application.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73551,7 +73627,8 @@
       "name": "qtimageformats",
       "manifest": {
         "name": "qtimageformats",
-        "description": "Additional Image Format plugins for Qt",
+        "port-version": 1,
+        "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73604,7 +73681,8 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
-        "description": "Qt Interface Framework",
+        "port-version": 1,
+        "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73733,7 +73811,8 @@
       "name": "qtlanguageserver",
       "manifest": {
         "name": "qtlanguageserver",
-        "description": "An implementation of the Language Server Protocol",
+        "port-version": 1,
+        "description": "An implementation of the Language Server Protocol.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73765,7 +73844,8 @@
       "name": "qtlocation",
       "manifest": {
         "name": "qtlocation",
-        "description": "Qt Location",
+        "port-version": 1,
+        "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73836,7 +73916,8 @@
       "name": "qtmqtt",
       "manifest": {
         "name": "qtmqtt",
-        "description": "Qt Module to implement MQTT protocol version 3.1 and 3.1.1 http://mqtt.org/",
+        "port-version": 1,
+        "description": "The Qt MQTT module provides a standard compliant implementation of the MQTT protocol specification.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73859,8 +73940,8 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 1,
-        "description": "Qt Multimedia",
+        "port-version": 2,
+        "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73949,7 +74030,8 @@
       "name": "qtnetworkauth",
       "manifest": {
         "name": "qtnetworkauth",
-        "description": "Qt Network Authenticators; QtOAuth in particular",
+        "port-version": 1,
+        "description": "Qt Network Authorization provides a set of APIs that enable Qt applications to obtain limited access to online accounts and HTTP services without exposing users' passwords.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -73972,8 +74054,8 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
-        "port-version": 1,
-        "description": "Qt wrapper for existing OPC UA stacks",
+        "port-version": 2,
+        "description": "The Qt OPC UA module implements a Qt API to interact with OPC UA on top of a 3rd party OPC UA stack.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74051,8 +74133,8 @@
       "name": "qtpositioning",
       "manifest": {
         "name": "qtpositioning",
-        "port-version": 2,
-        "description": "Qt Positioning",
+        "port-version": 3,
+        "description": "The Qt Positioning API provides positioning information via QML and C++ interfaces.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74090,7 +74172,8 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
-        "description": "A new module and API for defining 3D content in Qt Quick.",
+        "port-version": 1,
+        "description": "Qt Quick 3D provides a high-level API for creating 3D content and 3D user interfaces based on Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74135,7 +74218,8 @@
       "name": "qtquick3dphysics",
       "manifest": {
         "name": "qtquick3dphysics",
-        "description": "Physics engine integration for Qt Quick 3D",
+        "port-version": 1,
+        "description": "Qt Quick 3D Physics provides a high-level API for physics simulation.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74155,7 +74239,8 @@
       "name": "qtquickcontrols2",
       "manifest": {
         "name": "qtquickcontrols2",
-        "description": "Qt Quick Controls 2 (deprecated). Included in qtdeclarative",
+        "port-version": 1,
+        "description": "Qt Quick Controls provides a set of controls that can be used to build complete interfaces in Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74172,7 +74257,8 @@
       "name": "qtquickeffectmaker",
       "manifest": {
         "name": "qtquickeffectmaker",
-        "description": "Qt Quick Effect Maker (QQEM) for creating and editing custom shader effects.",
+        "port-version": 1,
+        "description": "Qt Quick Effect Maker is a tool for creating shader effects for Qt Quick with high productivity and performance.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "native",
@@ -74208,7 +74294,8 @@
       "name": "qtquicktimeline",
       "manifest": {
         "name": "qtquicktimeline",
-        "description": "Module for keyframe-based timeline construction.",
+        "port-version": 1,
+        "description": "The Qt Quick Timeline module enables keyframe-based animations and parameterization.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74229,7 +74316,8 @@
       "name": "qtremoteobjects",
       "manifest": {
         "name": "qtremoteobjects",
-        "description": "Qt distributed object system",
+        "port-version": 1,
+        "description": "Qt Remote Objects (QtRO) is an Inter-Process Communication (IPC) module developed for Qt. This module extends Qt's existing functionalities to enable information exchange between processes or computers, easily.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74279,7 +74367,8 @@
       "name": "qtscxml",
       "manifest": {
         "name": "qtscxml",
-        "description": "SCXML (state machine notation) compiler and related tools",
+        "port-version": 1,
+        "description": "The Qt SCXML module provides functionality to create state machines from SCXML files.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74318,7 +74407,8 @@
       "name": "qtsensors",
       "manifest": {
         "name": "qtsensors",
-        "description": "Qt Sensors",
+        "port-version": 1,
+        "description": "The Qt Sensors API provides access to sensor hardware via QML and C++ interfaces. The Qt Sensors API also provides a motion gesture recognition API for devices.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74356,7 +74446,8 @@
       "name": "qtserialbus",
       "manifest": {
         "name": "qtserialbus",
-        "description": "Support for CAN and potentially other serial buses.",
+        "port-version": 1,
+        "description": "The Qt Serial Bus API provides classes and functions to access the various industrial serial buses and protocols, such as CAN, ModBus, and others.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74396,8 +74487,8 @@
       "name": "qtserialport",
       "manifest": {
         "name": "qtserialport",
-        "port-version": 1,
-        "description": "Qt Serial Port support",
+        "port-version": 2,
+        "description": "Qt Serial Port provides basic functionality for configuration, I/O operations, and getting and setting the control signals of the RS-232 pinouts.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "!ios",
@@ -74418,7 +74509,8 @@
       "name": "qtshadertools",
       "manifest": {
         "name": "qtshadertools",
-        "description": "APIs and tools in this module provide the producer functionality for the shader pipeline that allows Qt Quick to operate on Vulkan, Metal, and Direct3D, in addition to OpenGL.",
+        "port-version": 1,
+        "description": "The Qt Shader Tools module is designed to provide a set of tools and utilities to work with graphics shaders.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74446,7 +74538,8 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
-        "description": "Qt Speech support",
+        "port-version": 1,
+        "description": "The Qt Speech module enables a Qt application to support accessibility features such as text-to-speech, which is useful for end-users who are visually challenged or cannot access the application for whatever reason.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "!(windows & x86)",
@@ -74479,7 +74572,8 @@
       "name": "qtsvg",
       "manifest": {
         "name": "qtsvg",
-        "description": "Qt SVG",
+        "port-version": 1,
+        "description": "Qt SVG provides classes for rendering and displaying SVG drawings in widgets and on other paint devices.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74502,7 +74596,8 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "description": "Qt Tools",
+        "port-version": 1,
+        "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74617,7 +74712,8 @@
       "name": "qttranslations",
       "manifest": {
         "name": "qttranslations",
-        "description": "Qt Translations",
+        "port-version": 1,
+        "description": "Qt translations.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74734,7 +74830,8 @@
       "name": "qtwebchannel",
       "manifest": {
         "name": "qtwebchannel",
-        "description": "Qt WebChannel",
+        "port-version": 1,
+        "description": "Qt WebChannel enables peer-to-peer communication between a server (QML/C++ application) and a client (HTML/JavaScript or QML application).",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74765,8 +74862,8 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 3,
-        "description": "Qt WebEngine",
+        "port-version": 4,
+        "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "supports": "!static & !((x86 | arm) & windows)",
@@ -74935,7 +75032,8 @@
       "name": "qtwebsockets",
       "manifest": {
         "name": "qtwebsockets",
-        "description": "Qt WebSockets",
+        "port-version": 1,
+        "description": "The Qt WebSockets module provides C++ and QML interfaces that enable Qt applications to act as a server that can process WebSocket requests, or a client that can consume data received from the server, or both.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -74969,7 +75067,8 @@
       "name": "qtwebview",
       "manifest": {
         "name": "qtwebview",
-        "description": "Qt Web View",
+        "port-version": 1,
+        "description": "Qt WebView provides a way to display web content in a QML application without necessarily including a full web browser stack by using native APIs where it makes sense.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -75213,7 +75312,7 @@
             "host": true
           }
         ],
-        "version": "3.6.0"
+        "version": "3.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -76781,7 +76880,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0"
+        "version-semver": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -77407,6 +77506,7 @@
       "name": "rttr",
       "manifest": {
         "name": "rttr",
+        "port-version": 1,
         "description": "an easy and intuitive way to use reflection in C++",
         "homepage": "https://github.com/rttrorg/rttr",
         "license": "MIT",
@@ -77427,6 +77527,7 @@
       "files": [
         "Fix-depends.patch",
         "disable-unsupport-header.patch",
+        "disable-werrorr.patch",
         "fix-directory-output.patch",
         "portfile.cmake",
         "remove-owner-read-perms.patch",
@@ -78619,7 +78720,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.30.0"
+        "version": "2.30.1"
       },
       "files": [
         "alsa-dep-fix.patch",
@@ -80175,7 +80276,7 @@
       "name": "simdjson",
       "manifest": {
         "name": "simdjson",
-        "description": "A extremely fast JSON library that can parse gigabytes of JSON per second",
+        "description": "An extremely fast JSON library that can parse gigabytes of JSON per second",
         "homepage": "https://simdjson.org/",
         "license": "Apache-2.0",
         "dependencies": [
@@ -80205,10 +80306,10 @@
             "description": "Link with thread support"
           },
           "utf8-validation": {
-            "description": "Enable UTF8 validation"
+            "description": "Enable UTF-8 validation"
           }
         },
-        "version": "3.6.2"
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
