@@ -1,5 +1,5 @@
 {
-  "version": "3850888eb8480abc8f73f84bf618de3b68900572",
+  "version": "898b728edc5e0d12b50015f9cd18247c4257a3eb",
   "ports": [
     {
       "name": "3fd",
@@ -12010,7 +12010,7 @@
       "name": "boost-modular-build-helper",
       "manifest": {
         "name": "boost-modular-build-helper",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Internal vcpkg port used to build Boost libraries",
         "license": "MIT",
         "dependencies": [
@@ -20407,6 +20407,36 @@
         "clang-16.patch",
         "fix-vs2019.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "correlation-vector-cpp",
+      "manifest": {
+        "name": "correlation-vector-cpp",
+        "description": "CorrelationVector-Cpp provides a reference C++ implementation of the CorrelationVector protocol for tracing and correlation of events through a distributed system.",
+        "homepage": "https://github.com/microsoft/CorrelationVector-Cpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "libuuid",
+            "platform": "!windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0"
+      },
+      "files": [
+        "correlation-vector.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -53169,25 +53199,6 @@
       ]
     },
     {
-      "name": "linenoise-ng",
-      "manifest": {
-        "name": "linenoise-ng",
-        "port-version": 3,
-        "description": "A small, portable GNU readline replacement for Linux, Windows and MacOS which is capable of handling UTF-8 characters.",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version-string": "4754bee2d8eb3"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "linmath",
       "manifest": {
         "name": "linmath",
@@ -60115,6 +60126,7 @@
       "name": "nanomsg",
       "manifest": {
         "name": "nanomsg",
+        "port-version": 1,
         "description": [
           "A simple high-performance implementation of several \"scalability protocols\".",
           "These scalability protocols are light-weight messaging protocols which can be used to solve a number of very common messaging patterns, such as request/reply, publish/subscribe, surveyor/respondent, and so forth. These protocols can run over a variety of transports such as TCP, UNIX sockets, and even WebSocket."
@@ -61427,6 +61439,7 @@
       "name": "nss",
       "manifest": {
         "name": "nss",
+        "port-version": 1,
         "description": "Network Security Services from Mozilla",
         "homepage": "https://ftp.mozilla.org/pub/security/nss/releases/",
         "license": "MPL-2.0",
@@ -61448,6 +61461,7 @@
       "files": [
         "01-nspr-no-lib-prefix.patch",
         "02-gen-debug-info-for-release.patch",
+        "03-use-debug-crt-for-debug.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62272,7 +62286,6 @@
       "name": "ogre",
       "manifest": {
         "name": "ogre",
-        "port-version": 2,
         "description": "3D Object-Oriented Graphics Rendering Engine",
         "homepage": "https://github.com/OGRECave/ogre",
         "license": "MIT",
@@ -62385,7 +62398,7 @@
             ]
           }
         },
-        "version": "14.0.1"
+        "version": "14.2.2"
       },
       "files": [
         "cfg-rel-paths.patch",
@@ -62401,7 +62414,7 @@
       "name": "ogre-next",
       "manifest": {
         "name": "ogre-next",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Ogre Next - scene-oriented, flexible 3D engine written in C++",
         "homepage": "https://github.com/OGRECave/ogre-next",
         "license": "MIT",
@@ -78816,7 +78829,7 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -78833,7 +78846,9 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
+          }
+        ],
+        "default-features": [
           "wavpack"
         ],
         "features": {
@@ -78866,6 +78881,12 @@
             "description": "Use opusfile to play Opus audio format.",
             "dependencies": [
               "opusfile"
+            ]
+          },
+          "wavpack": {
+            "description": "Enable WavPack music.",
+            "dependencies": [
+              "wavpack"
             ]
           }
         },
@@ -80237,6 +80258,7 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
+        "port-version": 1,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -92075,7 +92097,6 @@
       "name": "zziplib",
       "manifest": {
         "name": "zziplib",
-        "port-version": 3,
         "description": "library providing read access on ZIP-archives",
         "homepage": "https://github.com/gdraheim/zziplib",
         "license": "LGPL-2.0-or-later OR MPL-1.1",
@@ -92090,11 +92111,10 @@
           },
           "zlib"
         ],
-        "version": "0.13.72"
+        "version": "0.13.73"
       },
       "files": [
         "cmake-project-include.cmake",
-        "export-targets.patch",
         "no-release-postfix.patch",
         "portfile.cmake",
         "vcpkg.json"
