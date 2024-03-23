@@ -1,5 +1,5 @@
 {
-  "version": "936588e23157b56507069ad664b020881c119e54",
+  "version": "18e8981972c39562ed2e420835255f0465d20916",
   "ports": [
     {
       "name": "3fd",
@@ -354,7 +354,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.7.6"
+        "version": "2.7.7"
       },
       "files": [
         "no-cpm.patch",
@@ -2934,7 +2934,7 @@
             "host": true
           }
         ],
-        "version": "0.7.14"
+        "version": "0.7.16"
       },
       "files": [
         "portfile.cmake",
@@ -3136,7 +3136,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.10.3"
       },
       "files": [
         "portfile.cmake",
@@ -3169,7 +3169,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -3195,7 +3195,7 @@
             "host": true
           }
         ],
-        "version": "0.1.14"
+        "version": "0.1.15"
       },
       "files": [
         "portfile.cmake",
@@ -3260,7 +3260,7 @@
             "host": true
           }
         ],
-        "version": "0.26.1"
+        "version": "0.26.4"
       },
       "files": [
         "no-werror.patch",
@@ -4535,7 +4535,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.255"
+        "version": "1.11.285"
       },
       "files": [
         "fix-aws-root.patch",
@@ -5561,6 +5561,7 @@
       "name": "backward-cpp",
       "manifest": {
         "name": "backward-cpp",
+        "port-version": 1,
         "description": "A beautiful stack trace pretty printer for C++",
         "homepage": "https://github.com/bombela/backward-cpp",
         "supports": "!uwp & !(windows & arm)",
@@ -21208,10 +21209,9 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.5.1"
       },
       "files": [
-        "conversion.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -24960,16 +24960,17 @@
       "name": "dxsdk-d3dx",
       "manifest": {
         "name": "dxsdk-d3dx",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Redistributable package for the legacy DirectX SDK's D3DX9, D3DX10, and/or D3DX11 utility libraries.",
         "homepage": "https://walbourn.github.io/legacy-d3dx-on-nuget/",
         "license": null,
-        "supports": "windows & !arm & !uwp & !xbox & !staticcrt",
+        "supports": "windows & !arm & !uwp & !xbox",
         "version": "9.29.952.8"
       },
       "files": [
         "dxsdk-d3dx-config.cmake.in",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -28645,7 +28646,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29156,6 +29157,7 @@
       "name": "freerdp",
       "manifest": {
         "name": "freerdp",
+        "port-version": 1,
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
@@ -31824,6 +31826,7 @@
       "name": "glog",
       "manifest": {
         "name": "glog",
+        "port-version": 1,
         "description": "C++ implementation of the Google logging module",
         "homepage": "https://github.com/google/glog",
         "license": "BSD-3-Clause",
@@ -31844,6 +31847,9 @@
           },
           "unwind": {
             "description": "Enable libunwind support",
+            "dependencies": [
+              "libunwind"
+            ],
             "supports": "linux"
           }
         },
@@ -31855,6 +31861,7 @@
         "fix_glog_CMAKE_MODULE_PATH.patch",
         "glog_disable_debug_postfix.patch",
         "portfile.cmake",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -32233,6 +32240,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -36488,6 +36496,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -39424,7 +39433,6 @@
       "name": "ixwebsocket",
       "manifest": {
         "name": "ixwebsocket",
-        "port-version": 2,
         "description": "Lightweight WebSocket Client and Server + HTTP Client and Server",
         "homepage": "https://github.com/machinezone/IXWebSocket",
         "license": "BSD-3-Clause",
@@ -39494,10 +39502,9 @@
             ]
           }
         },
-        "version-semver": "11.4.4"
+        "version-semver": "11.4.5"
       },
       "files": [
-        "fix-C2065-of-errorMsg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46599,6 +46606,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
+        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -47361,6 +47369,30 @@
       "files": [
         "portfile.cmake",
         "remove_pdb_install.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libmidi2",
+      "manifest": {
+        "name": "libmidi2",
+        "description": "General purpose Midi 2 library for bytestream conversions and midi-ci",
+        "homepage": "https://github.com/midi2-dev/AM_MIDI2.0Lib",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.7"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -57844,7 +57876,7 @@
       "name": "mimalloc",
       "manifest": {
         "name": "mimalloc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Compact general purpose allocator with excellent performance",
         "homepage": "https://github.com/microsoft/mimalloc",
         "license": "MIT",
@@ -60006,6 +60038,31 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "nanobind",
+      "manifest": {
+        "name": "nanobind",
+        "description": "Tiny and efficient C++/Python bindings",
+        "homepage": "https://nanobind.readthedocs.io/en/latest/",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "python3",
+          "robin-map",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-semver": "1.9.2"
+      },
+      "files": [
+        "find_dependency_python.patch",
+        "move_include_dir.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -72430,13 +72487,13 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
         "dependencies": [
           {
-            "name": "atlmfc",
+            "name": "atl",
             "platform": "windows"
           },
           {
@@ -76835,7 +76892,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.1"
+        "version-semver": "1.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -89317,7 +89374,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.6.6"
+        "version": "5.7.0"
       },
       "files": [
         "portfile.cmake",
