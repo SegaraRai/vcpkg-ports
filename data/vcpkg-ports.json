@@ -1,5 +1,5 @@
 {
-  "version": "18e8981972c39562ed2e420835255f0465d20916",
+  "version": "a34c873a9717a888f58dc05268dea15592c2f0ff",
   "ports": [
     {
       "name": "3fd",
@@ -16653,12 +16653,15 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
-        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
@@ -16679,12 +16682,13 @@
             ]
           }
         },
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "files": [
         "configure",
         "configure-zlib.patch",
         "embed-debug-info.patch",
+        "fix-cmake-usage.patch",
         "fix_android.patch",
         "libcxx-winpthread-fixes.patch",
         "pkgconfig.patch",
