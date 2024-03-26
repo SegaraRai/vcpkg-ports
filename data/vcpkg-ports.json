@@ -1,5 +1,5 @@
 {
-  "version": "a34c873a9717a888f58dc05268dea15592c2f0ff",
+  "version": "9de2e978bdfec6bb7852cc1d6ecf375c923c485c",
   "ports": [
     {
       "name": "3fd",
@@ -132,7 +132,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "correct_cmake_include_directory.patch",
@@ -3169,7 +3169,7 @@
             "host": true
           }
         ],
-        "version": "0.5.2"
+        "version": "0.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -5603,7 +5603,7 @@
           },
           "zlib"
         ],
-        "version": "3.9.0"
+        "version": "3.10.0"
       },
       "files": [
         "fix-static-library-build.patch",
@@ -16944,7 +16944,7 @@
         "homepage": "https://github.com/bshoshany/thread-pool",
         "documentation": "https://github.com/bshoshany/thread-pool/blob/master/README.md",
         "license": "MIT",
-        "version": "4.0.1"
+        "version": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -17965,7 +17965,6 @@
       "name": "cctz",
       "manifest": {
         "name": "cctz",
-        "port-version": 7,
         "description": "two libraries that cooperate with <chrono> to give C++ programmers all the necessary tools for computing with dates, times, and time zones in a simple and correct manner.",
         "homepage": "https://github.com/google/cctz",
         "dependencies": [
@@ -17978,10 +17977,9 @@
             "host": true
           }
         ],
-        "version": "2.3"
+        "version": "2.4"
       },
       "files": [
-        "fix_vs177.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19175,7 +19173,7 @@
             "host": true
           }
         ],
-        "version": "2.4.0"
+        "version": "2.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -19458,7 +19456,6 @@
       "name": "cnats",
       "manifest": {
         "name": "cnats",
-        "port-version": 1,
         "description": "A C client for the NATS messaging system",
         "homepage": "https://github.com/nats-io/nats.c",
         "license": "Apache-2.0",
@@ -19481,7 +19478,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.7.0"
+        "version": "3.8.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -26503,7 +26500,6 @@
       "name": "fast-float",
       "manifest": {
         "name": "fast-float",
-        "port-version": 1,
         "description": "Fast and exact implementation of the C++ from_chars functions for float and double types: 4x faster than strtod",
         "homepage": "https://github.com/fastfloat/fast_float",
         "license": "Apache-2.0 OR BSL-1.0 OR MIT",
@@ -26517,7 +26513,7 @@
             "host": true
           }
         ],
-        "version": "6.1.0"
+        "version": "6.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -40072,8 +40068,8 @@
       "name": "jsoncpp",
       "manifest": {
         "name": "jsoncpp",
-        "port-version": 2,
-        "description": "jsoncpp is an implementation of a JSON reader and writer in C++. JSON (JavaScript Object Notation) is a lightweight data-interchange format that it is easy to parse and redeable for human.",
+        "port-version": 3,
+        "description": "JsonCpp is an implementation of a JSON reader and writer in C++. JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy to parse and human-readable.",
         "homepage": "https://github.com/open-source-parsers/jsoncpp",
         "license": "MIT",
         "dependencies": [
@@ -44287,7 +44283,6 @@
       "name": "libdeflate",
       "manifest": {
         "name": "libdeflate",
-        "port-version": 1,
         "description": "libdeflate is a library for fast, whole-buffer DEFLATE-based compression and decompression.",
         "homepage": "https://github.com/ebiggers/libdeflate",
         "license": "MIT",
@@ -44321,7 +44316,7 @@
             "description": "Support the zlib format"
           }
         },
-        "version": "1.19"
+        "version": "1.20"
       },
       "files": [
         "portfile.cmake",
@@ -50760,7 +50755,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -50928,6 +50923,7 @@
         "fix-msvc-ICE.patch",
         "fix-onnx-case.patch",
         "fix-sleef.patch",
+        "force-cuda-include.patch",
         "fxdiv.patch",
         "kineto.patch",
         "more-fixes.patch",
@@ -52787,7 +52783,6 @@
       "name": "libxt",
       "manifest": {
         "name": "libxt",
-        "port-version": 1,
         "description": "X Toolkit Intrinsics library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxt",
         "license": null,
@@ -52808,7 +52803,7 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.2.1"
+        "version": "1.3.0"
       },
       "files": [
         "add-missing-process-h.patch",
@@ -53571,7 +53566,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -54621,11 +54616,12 @@
       "name": "luasec",
       "manifest": {
         "name": "luasec",
+        "port-version": 1,
         "maintainers": "Stephen Baker <baker.stephen.e@gmail.com>",
         "description": "LuaSec depends on OpenSSL, and integrates with LuaSocket to make it easy to add secure connections to any Lua applications or scripts.",
         "homepage": "https://github.com/brunoos/luasec",
         "license": "MIT",
-        "supports": "!(windows & static)",
+        "supports": "windows & !staticcrt",
         "dependencies": [
           "lua",
           "luasocket",
@@ -54651,10 +54647,10 @@
       "name": "luasocket",
       "manifest": {
         "name": "luasocket",
+        "port-version": 1,
         "description": "LuaSocket is a Lua extension library that is composed by two parts: a C core that provides support for the TCP and UDP transport layers, and a set of Lua modules that add support for functionality commonly needed by applications that deal with the Internet.",
         "homepage": "https://lunarmodules.github.io/luasocket/",
         "license": "MIT",
-        "supports": "windows",
         "dependencies": [
           "lua",
           {
@@ -60486,7 +60482,6 @@
       "name": "neargye-semver",
       "manifest": {
         "name": "neargye-semver",
-        "port-version": 2,
         "description": "C++17 header-only dependency-free versioning library complying with Semantic Versioning 2.0.0",
         "homepage": "https://github.com/Neargye/semver",
         "license": "MIT",
@@ -60500,7 +60495,7 @@
             "host": true
           }
         ],
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -60888,9 +60883,10 @@
             "host": true
           }
         ],
-        "version": "1.59.0"
+        "version": "1.60.0"
       },
       "files": [
+        "no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61505,7 +61501,6 @@
       "name": "nss",
       "manifest": {
         "name": "nss",
-        "port-version": 1,
         "description": "Network Security Services from Mozilla",
         "homepage": "https://ftp.mozilla.org/pub/security/nss/releases/",
         "license": "MPL-2.0",
@@ -61522,7 +61517,7 @@
             "host": true
           }
         ],
-        "version": "3.98"
+        "version": "3.99"
       },
       "files": [
         "01-nspr-no-lib-prefix.patch",
@@ -67245,7 +67240,7 @@
             "host": true
           }
         ],
-        "version": "1.3.11"
+        "version": "1.3.12"
       },
       "files": [
         "portfile.cmake",
@@ -68027,7 +68022,6 @@
       "name": "pe-parse",
       "manifest": {
         "name": "pe-parse",
-        "port-version": 1,
         "description": "pe-parse is a principled, lightweight C/C++ PE parser",
         "homepage": "https://github.com/trailofbits/pe-parse",
         "supports": "!uwp",
@@ -68041,7 +68035,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.1.1"
       },
       "files": [
         "arm64-windows-fix.patch",
@@ -68324,7 +68318,7 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -68403,7 +68397,7 @@
             "host": true
           }
         ],
-        "version": "0.43.2"
+        "version": "0.43.4"
       },
       "files": [
         "fix_clang-cl.patch",
@@ -69597,7 +69591,6 @@
       "name": "presentmon",
       "manifest": {
         "name": "presentmon",
-        "port-version": 2,
         "description": "PresentMon is a tool to capture and analyze ETW events related to swap chain presentation on Windows.",
         "supports": "windows & !uwp",
         "dependencies": [
@@ -69611,7 +69604,7 @@
             "description": "Build tool PresentMon"
           }
         },
-        "version-semver": "1.7.0"
+        "version-semver": "1.10.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -72491,7 +72484,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -72536,6 +72529,7 @@
         "version": "5.15.13"
       },
       "files": [
+        "0001-Fix-jumbo-build-error-due-to-ResolveColor-redefiniti.patch",
         "0001-Support-ICU-74-in-LazyTextBreakIterator.patch",
         "build_1.patch",
         "build_2.patch",
@@ -75394,7 +75388,7 @@
             "host": true
           }
         ],
-        "version": "3.7.0"
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -81134,7 +81128,7 @@
             "host": true
           }
         ],
-        "version": "5.8.1.1"
+        "version": "5.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -84187,7 +84181,7 @@
           },
           "zlib"
         ],
-        "version": "0.19.0"
+        "version": "0.20.0"
       },
       "files": [
         "correct-paths.patch",
@@ -85278,7 +85272,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -85321,6 +85315,9 @@
           },
           "crash-handler": {
             "description": "Enable crash handler"
+          },
+          "fibers": {
+            "description": "Enable fibers support"
           },
           "gui-tools": {
             "description": "Build Tracy GUI tool: `profiler` (aka `Tracy` executable)",
@@ -87995,7 +87992,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 10,
+        "port-version": 11,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
