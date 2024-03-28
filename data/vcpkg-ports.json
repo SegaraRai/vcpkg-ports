@@ -1,5 +1,5 @@
 {
-  "version": "be9eb6694585a8db137872b29fcad3619a5f893a",
+  "version": "3c76dc55f8bd2b7f4824bcd860055094bfbbb9ea",
   "ports": [
     {
       "name": "3fd",
@@ -388,7 +388,6 @@
       "name": "adios2",
       "manifest": {
         "name": "adios2",
-        "port-version": 1,
         "description": "Next generation of ADIOS developed in the Exascale Computing Program",
         "homepage": "https://github.com/ornladios/ADIOS2",
         "license": "Apache-2.0",
@@ -450,13 +449,12 @@
             ]
           }
         },
-        "version": "2.8.3"
+        "version": "2.9.2"
       },
       "files": [
         "portfile.cmake",
         "usage",
-        "vcpkg.json",
-        "zfp-version.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -29685,7 +29683,7 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 4,
+        "port-version": 5,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
         "dependencies": [
@@ -29705,6 +29703,7 @@
         "version-date": "2020-02-07"
       },
       "files": [
+        "csparse.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49176,7 +49175,6 @@
       "name": "librabbitmq",
       "manifest": {
         "name": "librabbitmq",
-        "port-version": 2,
         "description": "A C-language AMQP client library for use with v2.0+ of the RabbitMQ broker.",
         "homepage": "https://github.com/alanxz/rabbitmq-c",
         "license": "MIT",
@@ -49191,10 +49189,9 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.14.0"
       },
       "files": [
-        "fix-link-header-files.patch",
         "fix-uwpwarning.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -65542,7 +65539,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -75421,7 +75418,6 @@
       "name": "quirc",
       "manifest": {
         "name": "quirc",
-        "port-version": 3,
         "description": "quirc is one of the C library available for scanning QR Codes",
         "homepage": "https://github.com/dlbeer/quirc",
         "license": null,
@@ -75435,7 +75431,7 @@
             "host": true
           }
         ],
-        "version": "1.1"
+        "version": "1.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -76250,7 +76246,7 @@
             ]
           }
         },
-        "version-semver": "1.3.10"
+        "version-semver": "1.3.12"
       },
       "files": [
         "fix-absolute-path.patch",
@@ -76535,7 +76531,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -76865,7 +76861,7 @@
             "host": true
           }
         ],
-        "version": "2.0.4"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -77866,7 +77862,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.3.56"
+        "version": "1.4.8"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -77880,7 +77876,7 @@
         "name": "safeint",
         "description": "SafeInt is a class library for C++ that manages integer overflows",
         "homepage": "https://github.com/dcleblanc/SafeInt",
-        "version": "3.0.26"
+        "version": "3.0.28"
       },
       "files": [
         "portfile.cmake",
@@ -79501,7 +79497,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -79518,7 +79513,11 @@
         ],
         "default-features": [
           "backend",
-          "transport"
+          "transport",
+          {
+            "name": "wer",
+            "platform": "windows & !static"
+          }
         ],
         "features": {
           "backend": {
@@ -79552,13 +79551,30 @@
                 "platform": "!windows"
               }
             ]
+          },
+          "wer": {
+            "description": [
+              "Enables the Windows Error Reporting backend.",
+              "Cf.https://github.com/getsentry/sentry-native#compile-time-options"
+            ],
+            "dependencies": [
+              {
+                "name": "sentry-native",
+                "features": [
+                  "backend"
+                ]
+              }
+            ],
+            "supports": "windows & !static"
           }
         },
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "fix-config-cmake.patch",
+        "fix-crashpad-wer.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
