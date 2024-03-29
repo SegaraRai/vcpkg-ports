@@ -1,5 +1,5 @@
 {
-  "version": "3c76dc55f8bd2b7f4824bcd860055094bfbbb9ea",
+  "version": "05d8ab6d5f7a4d7a76b60168959ce850de03425d",
   "ports": [
     {
       "name": "3fd",
@@ -634,8 +634,9 @@
       "name": "aliyun-oss-c-sdk",
       "manifest": {
         "name": "aliyun-oss-c-sdk",
-        "port-version": 3,
         "description": "Alibaba Cloud Object Storage Service (OSS) is a cloud storage service provided by Alibaba Cloud, featuring massive capacity, security, a low cost, and high reliability.",
+        "homepage": "https://github.com/aliyun/aliyun-oss-c-sdk",
+        "license": "MIT",
         "supports": "!(uwp | linux | osx)",
         "dependencies": [
           "apr-util",
@@ -643,13 +644,9 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version": "3.10.0"
+        "version": "3.10.1"
       },
       "files": [
         "patch.patch",
@@ -922,7 +919,7 @@
             "host": true
           }
         ],
-        "version": "4.3.23"
+        "version": "4.3.26"
       },
       "files": [
         "find-openssl.patch",
@@ -2556,6 +2553,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "atliac-minitest",
+      "manifest": {
+        "name": "atliac-minitest",
+        "description": "A C++ unit testing framework that helps write tests alongside the code being tested.",
+        "homepage": "https://github.com/Atliac/minitest",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -60245,7 +60267,6 @@
       "name": "nanopb",
       "manifest": {
         "name": "nanopb",
-        "port-version": 2,
         "description": "A small code-size Protocol Buffers implementation in ANSI C.",
         "homepage": "https://jpa.kapsi.fi/nanopb/",
         "license": "Zlib",
@@ -60270,11 +60291,10 @@
             ]
           }
         },
-        "version-semver": "0.4.7"
+        "version-semver": "0.4.8"
       },
       "files": [
-        "fix-cmakelist-and-pb-header.patch",
-        "fix-install-location.patch",
+        "fix-cmakelist.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -67583,7 +67603,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -67760,13 +67780,13 @@
         "add-gcc-version-check.patch",
         "fix-check-sse.patch",
         "fix-clang-cl.patch",
-        "fix-kinfu.patch",
         "fix-numeric-literals-flag.patch",
-        "fix-pcl-exports.patch",
+        "gh-5926-exports.patch",
+        "gh-5947-kinfu.patch",
+        "gh-5985-inline.patch",
         "install-examples.patch",
-        "no-absolute.patch",
-        "pcl_config.patch",
-        "pcl_utils.patch",
+        "install-layout.patch",
+        "io_ply.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -68858,7 +68878,7 @@
             "host": true
           }
         ],
-        "version": "1.4.2"
+        "version": "1.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -70383,7 +70403,7 @@
             "host": true
           }
         ],
-        "version": "2.11.1"
+        "version": "2.12.0"
       },
       "files": [
         "fix-debug-link.patch",
@@ -70705,7 +70725,7 @@
       "name": "qhull",
       "manifest": {
         "name": "qhull",
-        "port-version": 4,
+        "port-version": 5,
         "description": "computes the convex hull, Delaunay triangulation, Voronoi diagram",
         "homepage": "https://github.com/qhull/qhull",
         "license": null,
@@ -70728,6 +70748,7 @@
       },
       "files": [
         "fix-missing-symbols.patch",
+        "fix-qhullcpp-cpp20-support.patch",
         "include-qhullcpp-shared.patch",
         "noapp.patch",
         "portfile.cmake",
@@ -78395,6 +78416,7 @@
       "name": "scnlib",
       "manifest": {
         "name": "scnlib",
+        "port-version": 1,
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
         "dependencies": [
@@ -78414,6 +78436,7 @@
       "files": [
         "fix-SCN_HAS_STD_REGEX_MULTILINE-marco.patch",
         "portfile.cmake",
+        "remove-simdutf-dependency-version.patch",
         "vcpkg.json"
       ]
     },
@@ -78500,7 +78523,6 @@
       "name": "sdbus-cpp",
       "manifest": {
         "name": "sdbus-cpp",
-        "port-version": 1,
         "description": "High-level C++ D-Bus library for Linux designed to provide easy-to-use yet powerful API in modern C++",
         "homepage": "https://github.com/Kistler-Group/sdbus-cpp",
         "license": "LGPL-2.1",
@@ -78525,10 +78547,9 @@
             ]
           }
         },
-        "version": "1.3.0"
+        "version": "1.5.0"
       },
       "files": [
-        "pic.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -79476,7 +79497,6 @@
       "name": "sentencepiece",
       "manifest": {
         "name": "sentencepiece",
-        "port-version": 1,
         "description": "SentencePiece is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training",
         "license": "Apache-2.0",
         "supports": "static",
@@ -79486,7 +79506,7 @@
             "host": true
           }
         ],
-        "version": "0.1.99"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -79781,7 +79801,6 @@
       "name": "sfsexp",
       "manifest": {
         "name": "sfsexp",
-        "port-version": 1,
         "description": "Small Fast S-Expression Library",
         "homepage": "https://github.com/mjsottile/sfsexp",
         "dependencies": [
@@ -79790,7 +79809,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.4.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -80462,7 +80481,7 @@
             "description": "Build the simdutf command line tool for transcoding strings"
           }
         },
-        "version-semver": "4.0.9"
+        "version-semver": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -80542,7 +80561,7 @@
         "description": "Cross-platform C++ library providing a simple API to read and write INI-style configuration files",
         "homepage": "https://github.com/brofield/simpleini",
         "license": "MIT",
-        "version": "4.19"
+        "version": "4.22"
       },
       "files": [
         "portfile.cmake",
@@ -83111,7 +83130,7 @@
             "description": "stacktrace support for STX"
           }
         },
-        "version": "0.0.3"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -83215,7 +83234,7 @@
             "host": true
           }
         ],
-        "version": "6.0.0"
+        "version": "6.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -83311,7 +83330,7 @@
             ]
           }
         },
-        "version": "0.11.1"
+        "version": "0.11.2"
       },
       "files": [
         "portfile.cmake",
@@ -87229,6 +87248,7 @@
       "name": "vcpkg-qmake",
       "manifest": {
         "name": "vcpkg-qmake",
+        "port-version": 1,
         "documentation": "https://vcpkg.io/en/docs/README.html",
         "license": "MIT",
         "supports": "native",
@@ -87319,7 +87339,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
