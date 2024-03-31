@@ -1,5 +1,5 @@
 {
-  "version": "27dad96edd411b8b64828d49e111bc3bb5edf953",
+  "version": "ce1916404fc6f2b645f419a6d47b7ebafe686582",
   "ports": [
     {
       "name": "3fd",
@@ -1083,7 +1083,7 @@
             "host": true
           }
         ],
-        "version": "0.0.10"
+        "version": "0.0.11"
       },
       "files": [
         "portfile.cmake",
@@ -1107,7 +1107,7 @@
             "host": true
           }
         ],
-        "version": "1.17.2"
+        "version": "1.17.3"
       },
       "files": [
         "portfile.cmake",
@@ -1235,7 +1235,7 @@
             "host": true
           }
         ],
-        "version": "4.1.0"
+        "version": "5.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -21715,9 +21715,9 @@
         "homepage": "https://github.com/CrowCpp/crow",
         "license": "BSD-3-Clause",
         "dependencies": [
+          "asio",
           "boost-algorithm",
           "boost-array",
-          "boost-asio",
           "boost-date-time",
           "boost-functional",
           "boost-lexical-cast",
@@ -21731,7 +21731,7 @@
             "host": true
           }
         ],
-        "version": "1.0-5"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -24857,8 +24857,10 @@
       "name": "duktape",
       "manifest": {
         "name": "duktape",
+        "port-version": 1,
         "description": "Embeddable Javascript engine with a focus on portability and compact footprint.",
         "homepage": "https://github.com/svaarala/duktape",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -24873,9 +24875,8 @@
       },
       "files": [
         "CMakeLists.txt",
-        "duktapeConfig.cmake.in",
+        "duktapeConfig.cmake",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -31791,7 +31792,7 @@
       "name": "glm",
       "manifest": {
         "name": "glm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenGL Mathematics (GLM)",
         "homepage": "https://glm.g-truc.net",
         "license": "MIT",
@@ -38474,7 +38475,7 @@
             "supports": "!android & !ios & !xbox"
           }
         },
-        "version-date": "2024-01-19"
+        "version-date": "2024-02-21"
       },
       "files": [
         "portfile.cmake",
@@ -40262,7 +40263,7 @@
             ]
           }
         },
-        "version": "7.0.10"
+        "version": "7.0.11"
       },
       "files": [
         "0001-build-allow-setting-JUCE_PLUGINHOST_LADSPA.patch",
@@ -47047,7 +47048,7 @@
             "supports": "!windows, mingw"
           }
         },
-        "version": "5.6.0"
+        "version": "5.4.4"
       },
       "files": [
         "add_support_ios.patch",
@@ -50299,7 +50300,6 @@
       "name": "libsrt",
       "manifest": {
         "name": "libsrt",
-        "port-version": 3,
         "description": "Secure Reliable Transport (SRT) is an open source transport technology that optimizes streaming performance across unpredictable networks, such as the Internet.",
         "homepage": "https://github.com/Haivision/srt",
         "license": "MPL-2.0",
@@ -50323,7 +50323,7 @@
             "description": "Builds libsrt executable"
           }
         },
-        "version": "1.5.0"
+        "version": "1.5.3"
       },
       "files": [
         "fix-dependency-install.patch",
@@ -50546,7 +50546,6 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
-        "port-version": 2,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
         "license": "LGPL-2.1+",
@@ -50567,7 +50566,7 @@
           },
           "zstd"
         ],
-        "version": "254"
+        "version": "255"
       },
       "files": [
         "pkgconfig.patch",
@@ -78589,7 +78588,6 @@
       "name": "sdformat13",
       "manifest": {
         "name": "sdformat13",
-        "port-version": 1,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -78609,7 +78607,7 @@
             "host": true
           }
         ],
-        "version": "13.5.0"
+        "version": "13.6.0"
       },
       "files": [
         "cmake-config.patch",
@@ -81747,7 +81745,6 @@
       "name": "spdk",
       "manifest": {
         "name": "spdk",
-        "port-version": 3,
         "description": "Storage Performance Development Kit",
         "supports": "linux",
         "dependencies": [
@@ -81759,7 +81756,7 @@
             "host": true
           }
         ],
-        "version-string": "19.01.1"
+        "version-string": "24.01"
       },
       "files": [
         "CMakeLists.txt",
@@ -82549,7 +82546,6 @@
       "name": "sratom",
       "manifest": {
         "name": "sratom",
-        "port-version": 2,
         "description": "Sratom is a library for serialising LV2 atoms to and from RDF, particularly the Turtle syntax.",
         "homepage": "https://drobilla.net/software/sratom",
         "license": "ISC",
@@ -82566,7 +82562,7 @@
             "host": true
           }
         ],
-        "version": "0.6.4"
+        "version": "0.6.16"
       },
       "files": [
         "CMakeLists.txt",
@@ -83004,6 +83000,21 @@
           }
         ],
         "version": "1.7.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stringzilla",
+      "manifest": {
+        "name": "stringzilla",
+        "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
+        "homepage": "https://github.com/ashvardanian/StringZilla",
+        "license": "Apache-2.0",
+        "supports": "!x86",
+        "version": "3.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -84562,7 +84573,7 @@
         "description": "Lightweight, portable and easy to integrate C directory and file reader",
         "homepage": "https://github.com/cxong/tinydir",
         "license": "BSD-2-Clause",
-        "version": "1.2.5"
+        "version": "1.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -84639,10 +84650,9 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "1.0.8"
       },
       "files": [
-        "fix-uwp.patch",
         "fixtargets.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -84698,7 +84708,7 @@
           "nlohmann-json",
           "stb"
         ],
-        "version": "2.8.20"
+        "version": "2.8.21"
       },
       "files": [
         "portfile.cmake",
