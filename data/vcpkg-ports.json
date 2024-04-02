@@ -1,5 +1,5 @@
 {
-  "version": "ce1916404fc6f2b645f419a6d47b7ebafe686582",
+  "version": "a164ace504d8fe6f50aeec7e235d22b9089ad0d5",
   "ports": [
     {
       "name": "3fd",
@@ -1886,6 +1886,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2026,7 +2027,7 @@
         "version": "15.0.2"
       },
       "files": [
-        "fix-ci-error.patch",
+        "android.patch",
         "msvc-static-name.patch",
         "portfile.cmake",
         "thrift.patch",
@@ -3189,7 +3190,7 @@
             "host": true
           }
         ],
-        "version": "0.5.3"
+        "version": "0.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -21225,7 +21226,7 @@
             "host": true
           }
         ],
-        "version": "0.5.1"
+        "version": "0.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -31072,7 +31073,6 @@
       "name": "gklib",
       "manifest": {
         "name": "gklib",
-        "port-version": 2,
         "description": "General helper libraries for KarypisLab.",
         "homepage": "https://github.com/KarypisLab/GKlib/",
         "license": "Apache-2.0",
@@ -31086,11 +31086,11 @@
             "host": true
           }
         ],
-        "version-date": "2022-07-27"
+        "version-date": "2023-03-27"
       },
       "files": [
+        "android.patch",
         "build-fixes.patch",
-        "fix-mingw.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -36516,7 +36516,6 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -36594,7 +36593,7 @@
             ]
           }
         },
-        "version": "8.3.1"
+        "version": "8.4.0"
       },
       "files": [
         "fix-win32-build.patch",
@@ -39123,6 +39122,26 @@
       },
       "files": [
         "cmake.dep.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "iowa-hills-dsp",
+      "manifest": {
+        "name": "iowa-hills-dsp",
+        "description": "A platform-independent C/C++ library with many DSP (digital signal processing) functions, amongst also FIR and IIR filter design - but also FFT, DFT, Goertzel and Windowing functions.",
+        "homepage": "https://github.com/hayguen/iowahills_dsp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43787,7 +43806,7 @@
       "name": "libcap",
       "manifest": {
         "name": "libcap",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.",
         "homepage": "https://git.kernel.org/pub/scm/libs/libcap/libcap.git",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -47305,7 +47324,7 @@
           },
           "zlib"
         ],
-        "version": "24.1"
+        "version": "24.3"
       },
       "files": [
         "dependencies.diff",
@@ -47577,9 +47596,10 @@
             ]
           }
         },
-        "version": "2.39"
+        "version": "2.40"
       },
       "files": [
+        "hide-private-symbols.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50546,9 +50566,10 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
+        "port-version": 1,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
-        "license": "LGPL-2.1+",
+        "license": null,
         "supports": "linux",
         "dependencies": [
           {
@@ -50569,6 +50590,8 @@
         "version": "255"
       },
       "files": [
+        "disable-warning-nonnull.patch",
+        "only-libsystemd.patch",
         "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -51228,6 +51251,7 @@
       "name": "libunibreak",
       "manifest": {
         "name": "libunibreak",
+        "port-version": 1,
         "description": "an implementation of the line breaking and word breaking algorithms as described in [Unicode Standard Annex 14] 1 and [Unicode Standard Annex 29] 2. Check the project's [home page] 3 for up-to-date information.",
         "homepage": "https://github.com/adah1972/libunibreak",
         "license": "zlib-acknowledgement",
@@ -51241,6 +51265,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix_export.patch",
         "libunibreak-config.cmake.in",
         "portfile.cmake",
         "vcpkg.json"
@@ -66396,7 +66421,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "1.9.3"
+        "version": "2.0.0"
       },
       "files": [
         "fix-cmake.patch",
@@ -69719,69 +69744,6 @@
         "portfile.cmake",
         "remove_toolset_restriction.patch",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "proj4",
-      "manifest": {
-        "name": "proj4",
-        "port-version": 1,
-        "description": "A stub package that pulls in proj. Do not depend on this package.",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "proj",
-            "default-features": false,
-            "version>=": "9.0.0"
-          }
-        ],
-        "default-features": [
-          "net",
-          "tiff"
-        ],
-        "features": {
-          "net": {
-            "description": "Enable network support",
-            "dependencies": [
-              {
-                "name": "proj",
-                "default-features": false,
-                "features": [
-                  "net"
-                ]
-              }
-            ]
-          },
-          "tiff": {
-            "description": "Enable TIFF support to read some grids",
-            "dependencies": [
-              {
-                "name": "proj",
-                "default-features": false,
-                "features": [
-                  "tiff"
-                ]
-              }
-            ]
-          },
-          "tools": {
-            "description": "Build tools",
-            "dependencies": [
-              {
-                "name": "proj",
-                "default-features": false,
-                "features": [
-                  "tools"
-                ]
-              }
-            ]
-          }
-        },
-        "version-semver": "8.9.9"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -77343,11 +77305,9 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 1,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
-        "license": "BSD-3-Clause",
-        "supports": "windows & !static",
+        "license": null,
         "dependencies": [
           "ceres",
           "g2o",
@@ -77357,10 +77317,11 @@
           },
           {
             "name": "pcl",
-            "default-features": false,
-            "features": [
-              "vtk"
-            ]
+            "default-features": false
+          },
+          {
+            "name": "rtabmap-res-tool",
+            "host": true
           },
           "sqlite3",
           {
@@ -77387,7 +77348,8 @@
                 "name": "pcl",
                 "default-features": false,
                 "features": [
-                  "qt"
+                  "qt",
+                  "visualization"
                 ]
               },
               {
@@ -77398,6 +77360,10 @@
                   "opengl",
                   "widgets"
                 ]
+              },
+              {
+                "name": "vtk",
+                "default-features": false
               }
             ]
           },
@@ -77472,12 +77438,38 @@
             ]
           }
         },
-        "version": "0.21.4"
+        "version": "0.21.4.1"
       },
       "files": [
+        "apple.patch",
         "fix_link.patch",
+        "link-keywords.patch",
+        "multi-definition.patch",
         "portfile.cmake",
+        "rtabmap-res-tool.patch",
         "sqlite3.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rtabmap-res-tool",
+      "manifest": {
+        "name": "rtabmap-res-tool",
+        "description": "Real-Time Appearance-Based Mapping, resource generator",
+        "homepage": "https://introlab.github.io/rtabmap/",
+        "license": "BSD-3-Clause",
+        "supports": "native",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.21.4.1"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -84200,7 +84192,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.12.1"
+        "version": "0.12.9"
       },
       "files": [
         "portfile.cmake",
@@ -84922,7 +84914,7 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -85163,7 +85155,6 @@
       "name": "tlx",
       "manifest": {
         "name": "tlx",
-        "port-version": 4,
         "description": "tlx is a collection of C++ helpers and extensions universally needed, but not found in the STL",
         "homepage": "https://github.com/tlx/tlx",
         "dependencies": [
@@ -85176,7 +85167,7 @@
             "host": true
           }
         ],
-        "version": "0.5.20191212"
+        "version": "0.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -85187,7 +85178,6 @@
       "name": "tmx",
       "manifest": {
         "name": "tmx",
-        "port-version": 2,
         "description": "A portable C library to load tiled maps in your games.",
         "license": "BSD-2-Clause",
         "dependencies": [
@@ -85202,7 +85192,7 @@
           },
           "zlib"
         ],
-        "version": "1.2.0"
+        "version": "1.4.0"
       },
       "files": [
         "libxml2.patch",
@@ -85283,7 +85273,7 @@
             "host": true
           }
         ],
-        "version": "3.7.1"
+        "version": "3.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -85437,7 +85427,7 @@
             "host": true
           }
         ],
-        "version": "2.2.2"
+        "version": "2.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -85696,7 +85686,7 @@
             "host": true
           }
         ],
-        "version": "45"
+        "version": "47"
       },
       "files": [
         "portfile.cmake",
@@ -85722,7 +85712,6 @@
       "name": "tsl-hopscotch-map",
       "manifest": {
         "name": "tsl-hopscotch-map",
-        "port-version": 3,
         "description": "C++ implementation of a fast hash map and hash set using hopscotch hashing",
         "dependencies": [
           {
@@ -85730,7 +85719,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -85741,7 +85730,6 @@
       "name": "tsl-ordered-map",
       "manifest": {
         "name": "tsl-ordered-map",
-        "port-version": 3,
         "description": "C++ hash map and hash set which preserve the order of insertion",
         "dependencies": [
           {
@@ -85749,7 +85737,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -86352,7 +86340,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "fix-include-path.patch",
@@ -86724,7 +86712,6 @@
       "name": "uthenticode",
       "manifest": {
         "name": "uthenticode",
-        "port-version": 2,
         "description": "A cross-platform library for verifying Authenticode signatures",
         "homepage": "https://github.com/trailofbits/uthenticode",
         "supports": "!uwp",
@@ -86740,7 +86727,7 @@
             "host": true
           }
         ],
-        "version": "1.0.6"
+        "version": "2.0.1"
       },
       "files": [
         "openssl.patch",
@@ -86848,7 +86835,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.60.0"
+        "version-semver": "20.62.0"
       },
       "files": [
         "portfile.cmake",
@@ -88063,7 +88050,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -88315,6 +88302,7 @@
         "pegtl.patch",
         "portfile.cmake",
         "pythonwrapper.patch",
+        "remove-prefix-changes.patch",
         "usage",
         "vcpkg.json",
         "vtkioss.patch",
@@ -91762,23 +91750,14 @@
           "sctp": {
             "description": "Enable SCTP",
             "dependencies": [
-              "usrsctp",
-              {
-                "name": "zlmediakit",
-                "default-features": false,
-                "features": [
-                  "webrtc"
-                ]
-              }
+              "usrsctp"
             ]
           },
           "webrtc": {
             "description": "Enable WebRTC",
             "dependencies": [
-              "libsrtp",
               {
-                "name": "zlmediakit",
-                "default-features": false,
+                "name": "libsrtp",
                 "features": [
                   "openssl"
                 ]
@@ -91786,7 +91765,7 @@
             ]
           }
         },
-        "version-date": "2023-08-12"
+        "version-date": "2024-03-30"
       },
       "files": [
         "fix-dependency.patch",
