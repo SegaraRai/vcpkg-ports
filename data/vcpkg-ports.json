@@ -1,5 +1,5 @@
 {
-  "version": "a164ace504d8fe6f50aeec7e235d22b9089ad0d5",
+  "version": "1daec834f2095a800631df5d86a7f9075222aebe",
   "ports": [
     {
       "name": "3fd",
@@ -26002,7 +26002,10 @@
           "boost-random",
           "boost-system",
           "boost-thread",
-          "cpprestsdk",
+          {
+            "name": "cpprestsdk",
+            "default-features": false
+          },
           "grpc",
           "openssl",
           "protobuf",
@@ -26015,7 +26018,7 @@
             "host": true
           }
         ],
-        "version": "0.15.3"
+        "version": "0.15.4"
       },
       "files": [
         "portfile.cmake",
@@ -62305,7 +62308,6 @@
       "name": "octomap",
       "manifest": {
         "name": "octomap",
-        "port-version": 1,
         "description": "An Efficient Probabilistic 3D Mapping Framework Based on Octrees",
         "homepage": "https://octomap.github.io/",
         "license": "BSD-3-Clause",
@@ -62320,11 +62322,11 @@
             "host": true
           }
         ],
-        "version": "1.9.8"
+        "version": "1.10.0"
       },
       "files": [
         "001-fix-exported-targets.patch",
-        "fix-compilation.patch",
+        "fix-isnan.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
