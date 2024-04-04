@@ -1,5 +1,5 @@
 {
-  "version": "1daec834f2095a800631df5d86a7f9075222aebe",
+  "version": "c5da4bafbd4f47428dea8bdfec96312950dbbf83",
   "ports": [
     {
       "name": "3fd",
@@ -17251,7 +17251,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.27.0"
+        "version-semver": "1.28.0"
       },
       "files": [
         "avoid-docs.patch",
@@ -28664,7 +28664,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 2,
+        "port-version": 3,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -37446,6 +37446,7 @@
       "name": "hunspell",
       "manifest": {
         "name": "hunspell",
+        "port-version": 1,
         "description": "The most popular spellchecking library.",
         "homepage": "https://github.com/hunspell/hunspell",
         "license": "MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later",
@@ -37469,7 +37470,8 @@
             "supports": "!windows | mingw"
           },
           "tools": {
-            "description": "Build hunspell tools"
+            "description": "Build hunspell tools",
+            "supports": "!windows | mingw"
           }
         },
         "version": "1.7.2"
@@ -38350,7 +38352,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.10"
+        "version": "0.10.11"
       },
       "files": [
         "arith_osx.h",
@@ -43514,7 +43516,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -50040,7 +50042,7 @@
       "name": "libsodium",
       "manifest": {
         "name": "libsodium",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A modern and easy-to-use crypto library",
         "homepage": "https://libsodium.org/",
         "license": "ISC",
@@ -50054,6 +50056,7 @@
         "version": "1.0.19"
       },
       "files": [
+        "arm-neon.diff",
         "portfile.cmake",
         "sodiumConfig.cmake.in",
         "vcpkg.json"
@@ -60867,7 +60870,7 @@
             "host": true
           }
         ],
-        "version": "8.0.0"
+        "version": "8.0.3"
       },
       "files": [
         "0001-nethost-cmakelists.patch",
@@ -69997,7 +70000,7 @@
             "host": true
           }
         ],
-        "version": "2.2.1"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -71094,7 +71097,7 @@
           },
           "zlib"
         ],
-        "version": "4.2.1"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -77901,6 +77904,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
+        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -78086,6 +78090,7 @@
         "version-semver": "0.9.1"
       },
       "files": [
+        "fix-include-directory.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -80615,6 +80620,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
+        "port-version": 1,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -80674,11 +80680,11 @@
           },
           {
             "name": "harfbuzz",
-            "platform": "!uwp & !(windows & !static)"
+            "platform": "!uwp"
           },
           {
             "name": "icu",
-            "platform": "!uwp & !(windows & !static)"
+            "platform": "!uwp"
           }
         ],
         "features": {
@@ -80753,6 +80759,13 @@
               {
                 "name": "harfbuzz",
                 "default-features": false
+              },
+              {
+                "name": "skia",
+                "default-features": false,
+                "features": [
+                  "icu"
+                ]
               }
             ]
           },
@@ -80760,8 +80773,7 @@
             "description": "Use icu.",
             "dependencies": [
               "icu"
-            ],
-            "supports": "!(windows & !static)"
+            ]
           },
           "metal": {
             "description": "Metal support for skia",
@@ -84178,7 +84190,6 @@
       "name": "thorvg",
       "manifest": {
         "name": "thorvg",
-        "port-version": 1,
         "description": "ThorVG is a platform-independent portable library for drawing vector-based scenes and animations",
         "homepage": "https://www.thorvg.org",
         "license": "MIT",
@@ -84194,7 +84205,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.12.9"
+        "version": "0.12.10"
       },
       "files": [
         "portfile.cmake",
@@ -85440,6 +85451,7 @@
       "name": "trantor",
       "manifest": {
         "name": "trantor",
+        "port-version": 1,
         "description": "A non-blocking I/O cross-platform TCP network library, using C++14",
         "homepage": "https://github.com/an-tao/trantor",
         "license": "BSD-2-Clause",
@@ -85459,6 +85471,7 @@
       },
       "files": [
         "000-fix-deps.patch",
+        "001-disable-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -86943,7 +86956,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
