@@ -1,5 +1,5 @@
 {
-  "version": "c5da4bafbd4f47428dea8bdfec96312950dbbf83",
+  "version": "13766fcd1292a973fea53fba731a0fb90c7ee310",
   "ports": [
     {
       "name": "3fd",
@@ -2343,7 +2343,7 @@
             ]
           }
         },
-        "version": "4.0.0"
+        "version": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -20125,7 +20125,7 @@
             ]
           }
         },
-        "version": "3.2.0"
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -23695,7 +23695,7 @@
             "platform": "linux & !static"
           }
         ],
-        "version-date": "2024-03-22"
+        "version-date": "2024-03-29"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -37788,7 +37788,7 @@
             "supports": "!windows"
           }
         },
-        "version": "10.3.0"
+        "version": "12.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -79555,6 +79555,15 @@
               }
             ]
           },
+          "compression": {
+            "description": [
+              "Enables gzip compression support for the transport.",
+              "Cf.https://github.com/getsentry/sentry-native#compile-time-options"
+            ],
+            "dependencies": [
+              "zlib"
+            ]
+          },
           "transport": {
             "description": [
               "Enables the platform-specific network transport.",
@@ -79585,7 +79594,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.1"
+        "version": "0.7.2"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -86241,7 +86250,6 @@
       "name": "unrar",
       "manifest": {
         "name": "unrar",
-        "port-version": 3,
         "description": "rarlab's unrar library",
         "homepage": "https://www.rarlab.com",
         "license": null,
@@ -86253,11 +86261,10 @@
             "platform": "windows"
           }
         ],
-        "version": "6.1.7"
+        "version": "7.0.7"
       },
       "files": [
         "Config.cmake.in",
-        "msbuild-use-default-sma.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -91732,6 +91739,7 @@
       "name": "zlmediakit",
       "manifest": {
         "name": "zlmediakit",
+        "port-version": 1,
         "description": "A high-performance carrier-grade streaming media service framework based on C++11.",
         "homepage": "https://github.com/ZLMediaKit/ZLMediaKit",
         "license": "MIT",
