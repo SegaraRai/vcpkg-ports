@@ -1,5 +1,5 @@
 {
-  "version": "13766fcd1292a973fea53fba731a0fb90c7ee310",
+  "version": "8d8cec243e033d751c82fd16be5b2ff95ab28bb1",
   "ports": [
     {
       "name": "3fd",
@@ -58117,11 +58117,10 @@
       "name": "minio-cpp",
       "manifest": {
         "name": "minio-cpp",
-        "port-version": 1,
         "description": "The MinIO C++ Client SDK provides simple APIs to access any Amazon S3 compatible object storage",
         "homepage": "https://github.com/minio/minio-cpp",
         "license": "Apache-2.0",
-        "supports": "!windows & !uwp",
+        "supports": "!uwp",
         "dependencies": [
           "curlpp",
           {
@@ -58140,9 +58139,10 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
-        "version": "0.1.1"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -80487,7 +80487,7 @@
             "description": "Build the simdutf command line tool for transcoding strings"
           }
         },
-        "version-semver": "5.0.0"
+        "version-semver": "5.2.2"
       },
       "files": [
         "portfile.cmake",
