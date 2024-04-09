@@ -1,5 +1,5 @@
 {
-  "version": "5fa0f075ea51f305b627ecd5e050a363707353ff",
+  "version": "0bc3f04da6cb8ae1dbd5e2051032c596bb03cffa",
   "ports": [
     {
       "name": "3fd",
@@ -1755,6 +1755,7 @@
       "name": "armadillo",
       "manifest": {
         "name": "armadillo",
+        "port-version": 1,
         "description": "Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use",
         "homepage": "https://arma.sourceforge.net/",
         "license": "Apache-2.0",
@@ -6371,18 +6372,28 @@
         "description": "Metapackage for packages which provide BLAS",
         "license": null,
         "dependencies": [
-          "openblas",
+          {
+            "name": "lapack-reference",
+            "features": [
+              "cblas"
+            ],
+            "platform": "!osx & !ios & !uwp & !(windows & arm) & windows & static"
+          },
+          {
+            "name": "openblas",
+            "platform": "!osx & !ios & (uwp | (windows & arm) | !windows | !static)"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2023-03-25"
+        "version-date": "2023-04-14"
       },
       "files": [
-        "CMakeLists.txt",
+        "blas.pc.in",
         "portfile.cmake",
-        "vcpkg-cmake-wrapper.cmake",
+        "vcpkg-cmake-wrapper.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -17832,6 +17843,37 @@
       ]
     },
     {
+      "name": "cblas",
+      "manifest": {
+        "name": "cblas",
+        "description": "Metapackage for packages which provide CBLAS",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "lapack-reference",
+            "features": [
+              "cblas"
+            ],
+            "platform": "!osx & !ios & !uwp & !(windows & arm) & windows & static"
+          },
+          {
+            "name": "openblas",
+            "platform": "!osx & !ios & (uwp | (windows & arm) | !windows | !static)"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2024-03-19"
+      },
+      "files": [
+        "cblas.pc.in",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cccapstone",
       "manifest": {
         "name": "cccapstone",
@@ -18989,9 +19031,10 @@
       "name": "clapack",
       "manifest": {
         "name": "clapack",
-        "port-version": 22,
+        "port-version": 23,
         "description": "CLAPACK (f2c'ed version of LAPACK)",
-        "homepage": "https://www.netlib.org/clapack",
+        "homepage": "https://netlib.org/lapack/",
+        "license": null,
         "dependencies": [
           "blas",
           {
@@ -42603,28 +42646,28 @@
       "name": "lapack",
       "manifest": {
         "name": "lapack",
-        "port-version": 2,
         "description": "Metapackage for packages which provide LAPACK",
         "license": null,
         "dependencies": [
           {
             "name": "clapack",
-            "platform": "(arm & windows) | uwp"
+            "platform": "uwp | (arm & windows)"
           },
           {
             "name": "lapack-reference",
-            "platform": "!((arm & windows) | uwp)"
+            "platform": "!osx & !ios & !uwp & !(arm & windows)"
           },
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2022-02-22"
+        "version-date": "2023-06-10"
       },
       "files": [
-        "CMakeLists.txt",
+        "lapack.pc.in",
         "portfile.cmake",
+        "vcpkg-cmake-wrapper.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -42632,9 +42675,9 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
-        "port-version": 2,
+        "port-version": 3,
         "description": "LAPACK - Linear Algebra PACKage",
-        "homepage": "http://www.netlib.org/lapack/",
+        "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
         "dependencies": [
           {
@@ -42674,7 +42717,8 @@
             "description": "Use external optimized BLAS",
             "dependencies": [
               "blas"
-            ]
+            ],
+            "supports": "!windows | !static"
           }
         },
         "version": "3.11.0"
@@ -42685,7 +42729,7 @@
         "lapacke.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg-cmake-wrapper.cmake",
+        "vcpkg-cmake-wrapper.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -80055,7 +80099,7 @@
       "name": "shogun",
       "manifest": {
         "name": "shogun",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Unified and efficient Machine Learning",
         "homepage": "https://github.com/shogun-toolbox/shogun",
         "dependencies": [
@@ -80064,6 +80108,12 @@
           "curl",
           "dirent",
           "eigen3",
+          {
+            "name": "hdf5",
+            "default-features": false,
+            "platform": "!windows"
+          },
+          "lapack",
           "liblzma",
           "libxml2",
           "lzo",
@@ -80079,6 +80129,10 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
+          {
+            "name": "vcpkg-pkgconfig-get-modules",
+            "host": true
+          },
           "zlib"
         ],
         "version": "6.1.4"
@@ -80088,9 +80142,10 @@
         "cmake.patch",
         "eigen-3.4.patch",
         "fix-ASSERT-not-found.patch",
-        "fix-cblas-path.patch",
         "fix-dirent.patch",
+        "fix_accelerate_detection.patch",
         "portfile.cmake",
+        "remove_cmake_flags.patch",
         "vcpkg.json"
       ]
     },
