@@ -1,5 +1,5 @@
 {
-  "version": "0bc3f04da6cb8ae1dbd5e2051032c596bb03cffa",
+  "version": "1751f9f8c732c2e6f9e81ce56c10e4c4aa265b4a",
   "ports": [
     {
       "name": "3fd",
@@ -148,8 +148,8 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
+        "port-version": 1,
         "description": [
-          "an open-source collection designed to augment the C++ standard library.",
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
           "Abseil is not meant to be a competitor to the standard library; we've just found that many of these utilities serve a purpose within our code base, and we now want to provide those resources to the C++ community as a whole."
@@ -2175,7 +2175,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -5805,8 +5805,8 @@
       "name": "benchmark",
       "manifest": {
         "name": "benchmark",
-        "port-version": 2,
-        "description": "A library to support the benchmarking of functions, similar to unit-tests.",
+        "port-version": 3,
+        "description": "A library to benchmark code snippets, similar to unit tests.",
         "homepage": "https://github.com/google/benchmark",
         "license": "Apache-2.0",
         "supports": "!uwp",
@@ -17363,8 +17363,8 @@
       "name": "cachelib",
       "manifest": {
         "name": "cachelib",
-        "port-version": 1,
-        "description": "facebook cachelib",
+        "port-version": 2,
+        "description": "Pluggable caching engine to build and scale high performance cache services.",
         "homepage": "https://github.com/facebook/CacheLib",
         "license": "Apache-2.0",
         "supports": "linux & x64 & static",
@@ -25882,7 +25882,7 @@
       "name": "enkits",
       "manifest": {
         "name": "enkits",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A permissively licensed C and C++ Task Scheduler for creating parallel programs.",
         "homepage": "https://github.com/dougbinks/enkiTS",
         "license": "Zlib",
@@ -28307,11 +28307,7 @@
       "name": "flatbuffers",
       "manifest": {
         "name": "flatbuffers",
-        "port-version": 1,
-        "description": [
-          "Memory Efficient Serialization Library",
-          "FlatBuffers is an efficient cross platform serialization library for games and other memory constrained apps. It allows you to directly access serialized data without unpacking/parsing it first, while still having great forwards/backwards compatibility."
-        ],
+        "description": "FlatBuffers is a cross platform serialization library architected for maximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.",
         "homepage": "https://google.github.io/flatbuffers/",
         "license": "Apache-2.0",
         "dependencies": [
@@ -28328,7 +28324,7 @@
             "host": true
           }
         ],
-        "version": "23.5.26"
+        "version": "24.3.25"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -28560,7 +28556,7 @@
             ]
           }
         },
-        "version": "2.3.4"
+        "version": "2.3.5"
       },
       "files": [
         "gentables.patch",
@@ -28679,8 +28675,8 @@
       "name": "fmt",
       "manifest": {
         "name": "fmt",
-        "port-version": 1,
-        "description": "Formatting library for C++. It can be used as a safe alternative to printf or as a fast alternative to IOStreams.",
+        "port-version": 2,
+        "description": "{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.",
         "homepage": "https://github.com/fmtlib/fmt",
         "license": "MIT",
         "dependencies": [
@@ -34293,8 +34289,8 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
-        "port-version": 2,
-        "description": "An RPC library and framework",
+        "port-version": 3,
+        "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
         "dependencies": [
@@ -35361,7 +35357,8 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
-        "description": "GoogleTest and GoogleMock testing frameworks",
+        "port-version": 1,
+        "description": "Google Testing and Mocking Framework",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
         "dependencies": [
@@ -39896,6 +39893,7 @@
       "name": "joltphysics",
       "manifest": {
         "name": "joltphysics",
+        "port-version": 1,
         "description": "A multi core friendly rigid body physics and collision detection library suitable for games and VR applications",
         "homepage": "https://github.com/jrouwe/JoltPhysics",
         "license": "MIT",
@@ -40028,7 +40026,7 @@
       "name": "json-schema-validator",
       "manifest": {
         "name": "json-schema-validator",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ library for validating JSON documents based on a JSON Schema. This validator is based on the nlohmann-json library.",
         "homepage": "https://github.com/pboettch/json-schema-validator",
         "license": "MIT",
@@ -40050,7 +40048,6 @@
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -40058,8 +40055,8 @@
       "name": "json-spirit",
       "manifest": {
         "name": "json-spirit",
-        "port-version": 4,
-        "description": "json parser using boost library",
+        "port-version": 5,
+        "description": "A C++ JSON parser/generator implemented with Boost Spirit",
         "dependencies": [
           "boost-config",
           "boost-integer",
@@ -40155,8 +40152,8 @@
       "name": "jsoncpp",
       "manifest": {
         "name": "jsoncpp",
-        "port-version": 3,
-        "description": "JsonCpp is an implementation of a JSON reader and writer in C++. JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy to parse and human-readable.",
+        "port-version": 4,
+        "description": "JsonCpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings. It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.",
         "homepage": "https://github.com/open-source-parsers/jsoncpp",
         "license": "MIT",
         "dependencies": [
@@ -43716,7 +43713,7 @@
             "host": true
           }
         ],
-        "version": "1.26.1"
+        "version": "1.26.2"
       },
       "files": [
         "fix-include-directory.patch",
@@ -58767,7 +58764,7 @@
             ]
           }
         },
-        "version": "1.26.1"
+        "version": "1.26.2"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -60567,7 +60564,7 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Free software emulation of curses in System V Release 4.0, and more",
         "homepage": "https://invisible-island.net/ncurses/announce.html",
         "license": "MIT",
@@ -60999,10 +60996,9 @@
             "host": true
           }
         ],
-        "version": "1.60.0"
+        "version": "1.61.0"
       },
       "files": [
-        "no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -63286,7 +63282,7 @@
             ]
           }
         },
-        "version": "7.8.0"
+        "version": "7.8.1"
       },
       "files": [
         "dependencies.patch",
@@ -65837,6 +65833,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -65897,6 +65894,20 @@
             "dependencies": [
               "prometheus-cpp"
             ]
+          },
+          "user-events": {
+            "description": "Whether to include the User Events Exporter from the opentelemetry-cpp-contrib repository",
+            "dependencies": [
+              "libeventheader-tracepoint",
+              "libtracepoint",
+              {
+                "name": "opentelemetry-cpp",
+                "features": [
+                  "otlp-http"
+                ]
+              }
+            ],
+            "supports": "linux"
           },
           "zipkin": {
             "description": "Whether to include the Zipkin exporter in the SDK"
@@ -69030,7 +69041,7 @@
             ]
           }
         },
-        "version": "1.13.2"
+        "version": "1.13.3"
       },
       "files": [
         "0001-static-pcre.patch",
@@ -69171,7 +69182,7 @@
         "description": "C++17, x86/x64 Hooking Library v2.0",
         "homepage": "https://github.com/stevemk14ebr/PolyHook_2_0",
         "license": "MIT",
-        "supports": "!(arm | uwp | linux | osx)",
+        "supports": "(x86 | x64) & !(uwp | osx)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -69185,16 +69196,21 @@
         ],
         "default-features": [
           "detours",
-          "exception",
+          {
+            "name": "exception",
+            "platform": "windows"
+          },
           "inlinentd",
-          "pe",
+          {
+            "name": "pe",
+            "platform": "windows"
+          },
           "virtuals"
         ],
         "features": {
           "detours": {
             "description": "Implement detour functionality",
             "dependencies": [
-              "asmjit",
               "asmtk"
             ]
           },
@@ -69214,7 +69230,7 @@
             "description": "Implement all virtual table hooking functionality"
           }
         },
-        "version-date": "2023-08-11"
+        "version-date": "2024-02-08"
       },
       "files": [
         "fix-dep.patch",
@@ -69874,8 +69890,8 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 1,
-        "description": "Protocol Buffers - Google's data interchange format",
+        "port-version": 2,
+        "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
         "dependencies": [
@@ -70055,6 +70071,7 @@
       "name": "proxygen",
       "manifest": {
         "name": "proxygen",
+        "port-version": 1,
         "description": "It comprises the core C++ HTTP abstractions used at Facebook.",
         "homepage": "https://github.com/facebook/proxygen",
         "license": "BSD-3-Clause",
@@ -71265,7 +71282,7 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71340,17 +71357,17 @@
                 "name": "qt5",
                 "default-features": false,
                 "features": [
-                  "webengine"
+                  "wayland"
                 ],
-                "platform": "!static"
+                "platform": "linux"
               },
               {
                 "name": "qt5",
                 "default-features": false,
                 "features": [
-                  "wayland"
+                  "webengine"
                 ],
-                "platform": "!windows"
+                "platform": "!static"
               },
               {
                 "name": "qt5-base",
@@ -71392,7 +71409,7 @@
             "dependencies": [
               {
                 "name": "qt5-doc",
-                "platform": "!windows"
+                "platform": "linux"
               }
             ]
           },
@@ -72655,7 +72672,7 @@
       "name": "qt5-winextras",
       "manifest": {
         "name": "qt5-winextras",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Windows Extras provide classes and functions that enable you to use miscellaneous Windows-specific functions. For example, you can convert Qt objects to Windows object handles and manipulate DWM glass frames.",
         "license": null,
         "supports": "windows",
@@ -72668,7 +72685,7 @@
         ],
         "features": {
           "declarative": {
-            "description": "Build Qt.Quick imports",
+            "description": "Build Qt Quick imports",
             "dependencies": [
               "qt5-declarative"
             ]
@@ -72897,7 +72914,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74724,7 +74741,7 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74785,7 +74802,7 @@
             ]
           },
           "qdbus": {
-            "description": "Build qdbusviewer",
+            "description": "Build QDBusViewer",
             "dependencies": [
               {
                 "name": "qtbase",
@@ -74798,7 +74815,7 @@
             ]
           },
           "qdoc": {
-            "description": "Build QDoc.",
+            "description": "Build QDoc",
             "dependencies": [
               {
                 "name": "llvm",
@@ -75659,8 +75676,8 @@
       "name": "range-v3",
       "manifest": {
         "name": "range-v3",
-        "port-version": 1,
-        "description": "Range library for C++11/14/17/20.",
+        "port-version": 2,
+        "description": "Range library for C++14/17/20, basis for C++20's std::ranges",
         "homepage": "https://github.com/ericniebler/range-v3",
         "license": "BSL-1.0 AND MIT AND (NCSA OR MIT)",
         "dependencies": [
@@ -75960,7 +75977,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-07-01"
+        "version-date": "2024-04-01"
       },
       "files": [
         "portfile.cmake",
@@ -80542,7 +80559,7 @@
             "description": "Build the simdutf command line tool for transcoding strings"
           }
         },
-        "version-semver": "5.2.2"
+        "version-semver": "5.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -80684,7 +80701,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -80851,7 +80867,7 @@
             ]
           }
         },
-        "version": "123"
+        "version": "124"
       },
       "files": [
         "bentleyottmann-build.patch",
@@ -81627,9 +81643,9 @@
       "name": "soundtouch",
       "manifest": {
         "name": "soundtouch",
-        "port-version": 3,
         "description": "SoundTouch is an open-source audio processing library for changing the Tempo, Pitch and Playback Rates of audio streams or audio files.",
         "homepage": "https://www.surina.net/soundtouch",
+        "license": "LGPL-2.1-only",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -81650,14 +81666,14 @@
             "description": "Build the soundstretch command line tool"
           },
           "soundtouchdll": {
-            "description": "Build the SoundTouchDLL C wrapper dynamic library"
+            "description": "Build the SoundTouchDLL C wrapper dynamic library",
+            "supports": "!staticcrt"
           }
         },
-        "version": "2.3.2"
+        "version": "2.3.3"
       },
       "files": [
         "portfile.cmake",
-        "use-o3-emscripten.patch",
         "vcpkg.json"
       ]
     },
@@ -81909,7 +81925,8 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
-        "description": "Very fast, header only, C++ logging library",
+        "port-version": 1,
+        "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
         "dependencies": [
@@ -84829,7 +84846,7 @@
             "description": "enable double(64bit) precision"
           }
         },
-        "version": "2.0.0-rc9"
+        "version-string": "2.0.0rc13"
       },
       "files": [
         "portfile.cmake",
