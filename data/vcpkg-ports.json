@@ -1,5 +1,5 @@
 {
-  "version": "1751f9f8c732c2e6f9e81ce56c10e4c4aa265b4a",
+  "version": "1b2372fdd420185c6f516541b81228c55061dca4",
   "ports": [
     {
       "name": "3fd",
@@ -2932,6 +2932,44 @@
       ]
     },
     {
+      "name": "awlib",
+      "manifest": {
+        "name": "awlib",
+        "description": "Cross-platform utility library",
+        "homepage": "https://github.com/absurdworlds/awlib",
+        "license": "LGPL-3.0-or-later",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "graphics": {
+            "description": "Build graphics library",
+            "dependencies": [
+              "glfw3",
+              "libpng"
+            ],
+            "supports": "!uwp"
+          },
+          "hudf": {
+            "description": "Build HuDF support"
+          }
+        },
+        "version-date": "2024-04-06"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "aws-c-auth",
       "manifest": {
         "name": "aws-c-auth",
@@ -5625,7 +5663,7 @@
           },
           "zlib"
         ],
-        "version": "3.10.0"
+        "version": "3.11.0"
       },
       "files": [
         "fix-static-library-build.patch",
@@ -37299,6 +37337,31 @@
       ]
     },
     {
+      "name": "hjson-cpp",
+      "manifest": {
+        "name": "hjson-cpp",
+        "description": "Hjson for C++",
+        "homepage": "https://hjson.github.io",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.4.1"
+      },
+      "files": [
+        "fix-runtime-destination.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "hnswlib",
       "manifest": {
         "name": "hnswlib",
@@ -42672,7 +42735,7 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
-        "port-version": 3,
+        "port-version": 4,
         "description": "LAPACK - Linear Algebra PACKage",
         "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
@@ -84286,7 +84349,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.12.10"
+        "version": "0.13.0"
       },
       "files": [
         "portfile.cmake",
