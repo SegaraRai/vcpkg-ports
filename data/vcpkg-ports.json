@@ -1,5 +1,5 @@
 {
-  "version": "1b2372fdd420185c6f516541b81228c55061dca4",
+  "version": "582a4de14bef91df217f4f49624cf5b2b04bd7ca",
   "ports": [
     {
       "name": "3fd",
@@ -22858,9 +22858,8 @@
       "name": "d3d12-memory-allocator",
       "manifest": {
         "name": "d3d12-memory-allocator",
-        "port-version": 1,
         "description": "Easy to integrate D3d12 memory allocation library from GPUOpen",
-        "homepage": "https://gpuopen.com/gaming-product/d3d12-memory-allocator/",
+        "homepage": "https://gpuopen.com/d3d12-memory-allocator/",
         "license": "MIT",
         "supports": "windows",
         "dependencies": [
@@ -22874,10 +22873,11 @@
             "host": true
           }
         ],
-        "version-date": "2021-05-05"
+        "version": "2.0.1"
       },
       "files": [
-        "CMakeLists.txt",
+        "0001-output-dirs.patch",
+        "0002-Fix-32b-compilation.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29785,7 +29785,7 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 5,
+        "port-version": 6,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
         "dependencies": [
@@ -31609,7 +31609,7 @@
             "host": true
           }
         ],
-        "version": "2.1.7"
+        "version": "2.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -65036,6 +65036,33 @@
       ]
     },
     {
+      "name": "openfx",
+      "manifest": {
+        "name": "openfx",
+        "maintainers": "Reza Alizadeh Majd <r.a.majd@gmail.com>, Behnam Binesh <BehnamBih@gmail.com>",
+        "homepage": "https://github.com/AcademySoftwareFoundation/openfx",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "summary": "OpenFX - An open-source plugin API for visual effects",
+        "version": "1.4"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "opengl",
       "manifest": {
         "name": "opengl",
@@ -65121,7 +65148,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -65253,6 +65280,7 @@
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-dependency-libraw.patch",
         "fix-openexr-dll.patch",
         "fix-openexr-target-missing.patch",
         "fix-openimageio_include_dir.patch",
@@ -70650,6 +70678,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
+        "port-version": 1,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
@@ -70678,6 +70707,12 @@
             "description": "Build with botan",
             "dependencies": [
               "botan"
+            ]
+          },
+          "ossl": {
+            "description": "Build with openssl",
+            "dependencies": [
+              "openssl"
             ]
           }
         },
@@ -70940,6 +70975,7 @@
       "name": "qscintilla",
       "manifest": {
         "name": "qscintilla",
+        "port-version": 1,
         "description": "QScintilla is a port to Qt of the Scintilla editing component. Features syntax highlighting, code-completion and much more (Barebone build without python bindings (missing dependeny PyQt) and without QtDesigner plugin)",
         "homepage": "https://www.riverbankcomputing.com/software/qscintilla",
         "license": "GPL-3.0-or-later",
@@ -70960,6 +70996,7 @@
       "files": [
         "fix-static.patch",
         "portfile.cmake",
+        "unofficial-qscintilla-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -76026,6 +76063,7 @@
       "name": "re2",
       "manifest": {
         "name": "re2",
+        "port-version": 1,
         "description": "RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python. It is a C++ library.",
         "homepage": "https://github.com/google/re2",
         "license": "BSD-3-Clause",
@@ -89760,7 +89798,6 @@
       "name": "wt",
       "manifest": {
         "name": "wt",
-        "port-version": 2,
         "description": "Wt is a C++ library for developing web applications",
         "homepage": "https://github.com/emweb/wt",
         "license": "GPL-2.0-only",
@@ -89874,10 +89911,9 @@
             ]
           }
         },
-        "version": "4.9.1"
+        "version": "4.10.4"
       },
       "files": [
-        "0002-link-glew.patch",
         "0005-XML_file_path.patch",
         "0006-GraphicsMagick.patch",
         "portfile.cmake",
