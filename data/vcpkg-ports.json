@@ -1,5 +1,5 @@
 {
-  "version": "ad3bae57455a3c3ce528fcd47d8e8027d0498add",
+  "version": "b4a3d89125e45bc8f80fb94bef9761d4f4e14fb9",
   "ports": [
     {
       "name": "3fd",
@@ -4701,7 +4701,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.10.0"
+            "version>=": "1.11.3"
           },
           "azure-macro-utils-c",
           "umock-c",
@@ -4714,7 +4714,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.7"
+        "version-semver": "1.0.0-beta.8"
       },
       "files": [
         "portfile.cmake",
@@ -4798,7 +4798,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.11.2"
+        "version-semver": "1.11.3"
       },
       "files": [
         "portfile.cmake",
@@ -4857,11 +4857,15 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.11.0"
+            "version>=": "1.11.3"
           },
           {
             "name": "libxml2",
             "default-features": false,
+            "platform": "!windows"
+          },
+          {
+            "name": "openssl",
             "platform": "!windows"
           },
           {
@@ -4873,9 +4877,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.1"
+        "version-semver": "1.0.0-beta.2"
       },
       "files": [
+        "fix_deps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -5101,7 +5106,7 @@
           {
             "name": "azure-core-amqp-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.7"
+            "version>=": "1.0.0-beta.8"
           },
           {
             "name": "vcpkg-cmake",
@@ -5112,7 +5117,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.6"
+        "version-semver": "1.0.0-beta.7"
       },
       "files": [
         "portfile.cmake",
@@ -17299,7 +17304,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.28.0"
+        "version-semver": "1.28.1"
       },
       "files": [
         "avoid-docs.patch",
@@ -17871,9 +17876,10 @@
             "host": true
           }
         ],
-        "version-semver": "3.5.3"
+        "version-semver": "3.5.4"
       },
       "files": [
+        "fix-arm-build.patch",
         "fix-install-path.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -22233,6 +22239,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -26007,7 +26014,7 @@
             "host": true
           }
         ],
-        "version": "3.13.1"
+        "version": "3.13.2"
       },
       "files": [
         "portfile.cmake",
@@ -30581,7 +30588,7 @@
           },
           "zlib"
         ],
-        "version": "3.0.22"
+        "version": "3.0.23"
       },
       "files": [
         "Fix-Cmake_DIR.patch",
@@ -65348,7 +65355,6 @@
       "name": "openldap",
       "manifest": {
         "name": "openldap",
-        "port-version": 1,
         "description": "OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.",
         "homepage": "https://www.openldap.org/software/",
         "license": "OLDAP-2.8",
@@ -65364,7 +65370,7 @@
             "description": "Enable client tools"
           }
         },
-        "version": "2.5.13"
+        "version": "2.5.17"
       },
       "files": [
         "m4.patch",
@@ -65720,7 +65726,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -65754,9 +65759,10 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.2.1"
+        "version": "3.3.0"
       },
       "files": [
+        "cmake-config.patch",
         "command-line-length.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
@@ -68002,7 +68008,7 @@
       "name": "pcre2",
       "manifest": {
         "name": "pcre2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Regular Expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "https://github.com/PCRE2Project/pcre2",
         "license": "BSD-3-Clause",
@@ -68308,6 +68314,33 @@
         "version": "2.8.3"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "perfetto",
+      "manifest": {
+        "name": "perfetto",
+        "description": "System profiling, app tracing and trace analysis",
+        "homepage": "https://perfetto.dev",
+        "license": "Apache-2.0",
+        "supports": "!uwp & !x86",
+        "dependencies": [
+          "pthreads",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "43.1"
+      },
+      "files": [
+        "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70130,7 +70163,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.6.4"
       },
       "files": [
         "portfile.cmake",
@@ -77475,6 +77508,7 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
+        "port-version": 1,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": null,
@@ -77613,6 +77647,7 @@
       "files": [
         "apple.patch",
         "fix_link.patch",
+        "gklib.patch",
         "link-keywords.patch",
         "multi-definition.patch",
         "portfile.cmake",
@@ -84181,7 +84216,7 @@
           },
           "zlib"
         ],
-        "version": "1.7.2"
+        "version": "1.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -92091,7 +92126,6 @@
       "name": "zstd",
       "manifest": {
         "name": "zstd",
-        "port-version": 2,
         "description": "Zstandard - Fast real-time compression algorithm",
         "homepage": "https://facebook.github.io/zstd/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -92111,10 +92145,11 @@
             "supports": "!uwp & static"
           }
         },
-        "version": "1.5.5"
+        "version": "1.5.6"
       },
       "files": [
         "fix-emscripten-and-clang-cl.patch",
+        "fix-windows-rc-compile.patch",
         "no-static-suffix.patch",
         "portfile.cmake",
         "usage",
