@@ -1,5 +1,5 @@
 {
-  "version": "501cb01e517ee5689577bb01ba8bd1b4c1041a53",
+  "version": "6c87aab05cb2ebd1c9e382167edf3b15a7718e70",
   "ports": [
     {
       "name": "3fd",
@@ -3356,6 +3356,7 @@
       "name": "aws-sdk-cpp",
       "manifest": {
         "name": "aws-sdk-cpp",
+        "port-version": 1,
         "description": "AWS SDK for C++",
         "homepage": "https://github.com/aws/aws-sdk-cpp",
         "license": "Apache-2.0",
@@ -4598,6 +4599,7 @@
       },
       "files": [
         "fix-aws-root.patch",
+        "fix_find_curl.patch",
         "generateFeatures.ps1",
         "lock-curl-http-and-tls-settings.patch",
         "patch-relocatable-rpath.patch",
@@ -18446,7 +18448,6 @@
       "name": "cglm",
       "manifest": {
         "name": "cglm",
-        "port-version": 1,
         "description": "Highly Optimized Graphics Math (glm) for C",
         "homepage": "https://github.com/recp/cglm",
         "license": "MIT",
@@ -18460,7 +18461,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.9.2"
+        "version-semver": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -30620,7 +30621,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -30643,12 +30644,31 @@
           },
           "zlib"
         ],
+        "default-features": [
+          "jpeg",
+          "png",
+          "tiff"
+        ],
         "features": {
           "introspection": {
             "description": "build with introspection",
             "dependencies": [
               "gobject-introspection"
             ]
+          },
+          "jpeg": {
+            "description": "Enable JPEG loader (requires libjpeg)",
+            "dependencies": [
+              "libjpeg-turbo"
+            ],
+            "supports": "!windows"
+          },
+          "png": {
+            "description": "Enable PNG loader (requires libpng)"
+          },
+          "tiff": {
+            "description": "Enable TIFF loader (requires libtiff)",
+            "supports": "!windows"
           }
         },
         "version": "2.42.10"
@@ -36607,6 +36627,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -36644,6 +36665,9 @@
           "directwrite": {
             "description": "Enable DirectWrite support on Windows",
             "supports": "windows"
+          },
+          "experimental-api": {
+            "description": "Enable experimental api"
           },
           "freetype": {
             "description": "Enable FreeType support",
@@ -36690,6 +36714,7 @@
         "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -40765,7 +40790,7 @@
             "host": true
           }
         ],
-        "version": "2024.2.1"
+        "version": "2024.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -42834,9 +42859,9 @@
       "name": "laszip",
       "manifest": {
         "name": "laszip",
-        "port-version": 1,
         "description": "LASzip - free and lossless LiDAR compression",
         "homepage": "https://laszip.org/",
+        "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -42847,9 +42872,11 @@
             "host": true
           }
         ],
-        "version": "3.4.3"
+        "version": "3.4.4"
       },
       "files": [
+        "compiler-options.diff",
+        "format-string.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61007,7 +61034,6 @@
       "name": "nettle",
       "manifest": {
         "name": "nettle",
-        "port-version": 1,
         "description": "Nettle is a low-level cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
         "homepage": "https://git.lysator.liu.se/nettle/nettle",
         "license": null,
@@ -61027,7 +61053,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.8.1"
+        "version": "3.9.1"
       },
       "files": [
         "ccas.patch",
@@ -82263,11 +82289,11 @@
       "name": "spirv-reflect",
       "manifest": {
         "name": "spirv-reflect",
+        "port-version": 1,
         "description": "SPIRV-Reflect is a lightweight library that provides a C/C++ reflection API for SPIR-V shader bytecode in Vulkan applications.",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Reflect",
         "license": "Apache-2.0",
         "dependencies": [
-          "spirv-headers",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -82280,6 +82306,7 @@
         "version": "1.3.280.0"
       },
       "files": [
+        "export-targets.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
