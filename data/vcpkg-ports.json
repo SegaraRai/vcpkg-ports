@@ -1,5 +1,5 @@
 {
-  "version": "9224b3bbd8df24999d85720b1d005dd6f969ade0",
+  "version": "da4b78d35084ec4e9808aa02017028da03b8d2ab",
   "ports": [
     {
       "name": "3fd",
@@ -4649,6 +4649,7 @@
       "name": "azure-c-shared-utility",
       "manifest": {
         "name": "azure-c-shared-utility",
+        "port-version": 1,
         "description": "Azure C SDKs common code",
         "homepage": "https://github.com/Azure/azure-c-shared-utility",
         "license": "MIT",
@@ -4677,12 +4678,10 @@
       },
       "files": [
         "disable-error.patch",
-        "fix-install-location-preview.patch",
         "fix-install-location.patch",
-        "fix-utilityFunctions-conditions-preview.patch",
         "fix-utilityFunctions-conditions.patch",
-        "improve-dependencies-preview.patch",
         "improve-dependencies.patch",
+        "modify-POSIX-c-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -18586,7 +18585,6 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
-        "port-version": 6,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
@@ -18609,10 +18607,9 @@
             "platform": "windows"
           }
         ],
-        "version-date": "2022-11-09"
+        "version-date": "2024-04-20"
       },
       "files": [
-        "add-missing-reference.patch",
         "avoid_msvc_internal_STRINGIZE.patch",
         "no-warning-as-error.props",
         "portfile.cmake",
@@ -23448,7 +23445,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 2,
+        "port-version": 3,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -30621,28 +30618,29 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "gettext-libintl",
           "glib",
           {
             "name": "glib",
             "host": true
           },
-          "libpng",
-          {
-            "name": "tiff",
-            "default-features": false
-          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
-          },
-          "zlib"
+          }
         ],
         "default-features": [
           "jpeg",
@@ -30664,10 +30662,19 @@
             "supports": "!windows"
           },
           "png": {
-            "description": "Enable PNG loader (requires libpng)"
+            "description": "Enable PNG loader (requires libpng)",
+            "dependencies": [
+              "libpng"
+            ]
           },
           "tiff": {
             "description": "Enable TIFF loader (requires libtiff)",
+            "dependencies": [
+              {
+                "name": "tiff",
+                "default-features": false
+              }
+            ],
             "supports": "!windows"
           }
         },
@@ -42447,7 +42454,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-02-04"
+        "version-date": "2024-01-20"
       },
       "files": [
         "portfile.cmake",
@@ -53777,7 +53784,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -54243,6 +54250,7 @@
         "0006-create-destination-mlir-directory.patch",
         "0007-fix-compiler-rt-warnings.patch",
         "0008-add-missing-case.patch",
+        "0009-add-missing-typename.patch",
         "clang_usage",
         "flang_usage",
         "lld_usage",
@@ -88258,7 +88266,6 @@
       "name": "vsg",
       "manifest": {
         "name": "vsg",
-        "port-version": 1,
         "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
         "homepage": "http://www.vulkanscenegraph.org/",
         "license": "MIT",
@@ -88272,9 +88279,13 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "vulkan"
+          "vulkan",
+          {
+            "name": "xcb",
+            "platform": "!(android | windows | osx)"
+          }
         ],
-        "version": "1.0.9"
+        "version": "1.1.2"
       },
       "files": [
         "devendor-glslang.patch",
