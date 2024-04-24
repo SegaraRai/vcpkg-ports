@@ -1,5 +1,5 @@
 {
-  "version": "da4b78d35084ec4e9808aa02017028da03b8d2ab",
+  "version": "8150939b69720adc475461978e07c2d2bf5fb76e",
   "ports": [
     {
       "name": "3fd",
@@ -1887,7 +1887,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2025,7 +2024,7 @@
             ]
           }
         },
-        "version": "15.0.2"
+        "version": "16.0.0"
       },
       "files": [
         "android.patch",
@@ -4810,7 +4809,7 @@
       "name": "azure-core-tracing-opentelemetry-cpp",
       "manifest": {
         "name": "azure-core-tracing-opentelemetry-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Microsoft Azure Core Tracing OpenTelemetry SDK for C++",
           "This library provides support for modern Azure SDK client libraries written in C++ to leverage OpenTelemetry APIs."
@@ -4890,6 +4889,7 @@
       "name": "azure-identity-cpp",
       "manifest": {
         "name": "azure-identity-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Identity SDK for C++",
           "This library provides common authentication-related abstractions for Azure SDK."
@@ -5054,7 +5054,7 @@
       "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
       "manifest": {
         "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Microsoft Azure Messaging Event Hubs Blob Checkpoint Store SDK for C++",
           "This library provides an Azure-Storage-Blobs based implementation of an Azure Messaging Event Hubs SDK Checkpoint Store."
@@ -5129,7 +5129,7 @@
       "name": "azure-security-attestation-cpp",
       "manifest": {
         "name": "azure-security-attestation-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Microsoft Azure Attestation Service SDK for C++",
           "This library provides API access to the Microsoft Azure Attestation service."
@@ -5163,6 +5163,7 @@
       "name": "azure-security-keyvault-administration-cpp",
       "manifest": {
         "name": "azure-security-keyvault-administration-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Administration SDK for C++",
           "This library provides Azure Key Vault Administration SDK."
@@ -5195,6 +5196,7 @@
       "name": "azure-security-keyvault-certificates-cpp",
       "manifest": {
         "name": "azure-security-keyvault-certificates-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Certificates SDK for C++",
           "This library provides Azure Key Vault Certificates SDK."
@@ -5227,6 +5229,7 @@
       "name": "azure-security-keyvault-keys-cpp",
       "manifest": {
         "name": "azure-security-keyvault-keys-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Keys SDK for C++",
           "This library provides Azure Key Vault Keys SDK."
@@ -5259,6 +5262,7 @@
       "name": "azure-security-keyvault-secrets-cpp",
       "manifest": {
         "name": "azure-security-keyvault-secrets-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Secrets SDK for C++",
           "This library provides Azure Key Vault Secrets SDK."
@@ -5291,6 +5295,7 @@
       "name": "azure-storage-blobs-cpp",
       "manifest": {
         "name": "azure-storage-blobs-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Blobs SDK for C++",
           "This library provides Azure Storage Blobs SDK."
@@ -5323,6 +5328,7 @@
       "name": "azure-storage-common-cpp",
       "manifest": {
         "name": "azure-storage-common-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Common Storage SDK for C++",
           "This library provides common Azure Storage-related abstractions for Azure SDK."
@@ -5337,6 +5343,7 @@
           },
           {
             "name": "libxml2",
+            "default-features": false,
             "platform": "!windows"
           },
           {
@@ -5419,6 +5426,7 @@
       "name": "azure-storage-files-datalake-cpp",
       "manifest": {
         "name": "azure-storage-files-datalake-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Files Data Lake SDK for C++",
           "This library provides Azure Storage Files Data Lake SDK."
@@ -5451,6 +5459,7 @@
       "name": "azure-storage-files-shares-cpp",
       "manifest": {
         "name": "azure-storage-files-shares-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Files Shares SDK for C++",
           "This library provides Azure Storage Files Shares SDK."
@@ -5483,6 +5492,7 @@
       "name": "azure-storage-queues-cpp",
       "manifest": {
         "name": "azure-storage-queues-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Queues SDK for C++",
           "This library provides Azure Storage Queues SDK."
@@ -21605,7 +21615,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -21614,6 +21624,7 @@
         "license": "Apache-2.0",
         "supports": "linux | osx | (windows & !uwp)",
         "dependencies": [
+          "curl",
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
@@ -21632,6 +21643,7 @@
       },
       "files": [
         "crashpadConfig.cmake.in",
+        "fix-stdint.patch",
         "portfile.cmake",
         "vcpkg.json",
         "zlib.gn"
@@ -22592,7 +22604,7 @@
             "host": true
           }
         ],
-        "version": "30.10.1"
+        "version": "30.475.1"
       },
       "files": [
         "portfile.cmake",
@@ -44587,7 +44599,7 @@
           },
           "zlib"
         ],
-        "version": "0.20.2"
+        "version": "0.20.3"
       },
       "files": [
         "portfile.cmake",
@@ -52174,7 +52186,7 @@
       "name": "libx11",
       "manifest": {
         "name": "libx11",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The X Window System is a network-transparent window system that was designed at MIT.",
         "homepage": "https://www.x.org/wiki/",
         "license": "MIT",
@@ -52199,6 +52211,7 @@
         "cl.build.patch",
         "dllimport.patch",
         "io_include.patch",
+        "optimize-configure.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json",
@@ -70266,7 +70279,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -80109,7 +80122,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": "MIT",
         "supports": "((x86 & windows) | (x64 & (windows | linux | osx)) | (arm64 & (linux | osx))) & !uwp & !static",
-        "version": "2023.5.1"
+        "version": "2024.1.7"
       },
       "files": [
         "portfile.cmake",
@@ -80776,7 +80789,7 @@
             "description": "Build the simdutf command line tool for transcoding strings"
           }
         },
-        "version-semver": "5.2.3"
+        "version-semver": "5.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -91495,7 +91508,6 @@
       "name": "yomm2",
       "manifest": {
         "name": "yomm2",
-        "port-version": 1,
         "description": "YOMM2 is an implementation of open multi-methods.",
         "homepage": "https://github.com/jll63/yomm2",
         "license": "BSL-1.0",
@@ -91512,7 +91524,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.5.0"
       },
       "files": [
         "fix_install.patch",
