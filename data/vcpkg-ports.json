@@ -1,5 +1,5 @@
 {
-  "version": "8150939b69720adc475461978e07c2d2bf5fb76e",
+  "version": "4002e5f3598cc0d216c395bc0db3de44a2d2ec9b",
   "ports": [
     {
       "name": "3fd",
@@ -206,7 +206,6 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
-        "port-version": 1,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
@@ -255,7 +254,7 @@
             ]
           }
         },
-        "version": "7.1.2"
+        "version": "7.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -827,7 +826,7 @@
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
         "supports": "!osx",
-        "version": "1.4.29"
+        "version": "1.4.33"
       },
       "files": [
         "portfile.cmake",
@@ -1887,6 +1886,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2030,6 +2030,7 @@
         "android.patch",
         "msvc-static-name.patch",
         "portfile.cmake",
+        "remove-dll-suffix.patch",
         "thrift.patch",
         "usage",
         "usage-acero",
@@ -17502,6 +17503,7 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
+        "port-version": 1,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -17510,7 +17512,6 @@
           "dirent",
           "expat",
           "libpng",
-          "lzo",
           "pixman",
           "pthread",
           {
@@ -17542,6 +17543,12 @@
               "glib"
             ]
           },
+          "lzo": {
+            "description": "build with lzo support",
+            "dependencies": [
+              "lzo"
+            ]
+          },
           "x11": {
             "description": "build with x11 support",
             "supports": "!windows"
@@ -17550,6 +17557,7 @@
         "version": "1.18.0"
       },
       "files": [
+        "cairo_add_lzo_feature_option.patch",
         "cairo_static_fix.patch",
         "disable-atomic-ops-check.patch",
         "fix-alloca-undefine.patch",
@@ -22249,7 +22257,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -22351,6 +22359,12 @@
             "description": "SSL support (OpenSSL)",
             "dependencies": [
               "openssl"
+            ]
+          },
+          "psl": {
+            "description": "Use psl support (libpsl)",
+            "dependencies": [
+              "libpsl"
             ]
           },
           "schannel": {
@@ -23457,7 +23471,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 3,
+        "port-version": 4,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -32389,14 +32403,16 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
-        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           "abseil",
-          "openssl",
+          {
+            "name": "openssl",
+            "platform": "!windows"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -32511,6 +32527,18 @@
               }
             ]
           },
+          "apphub": {
+            "description": "App Hub API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "artifactregistry": {
             "description": "Artifact Registry API C++ Client Library",
             "dependencies": [
@@ -32552,6 +32580,18 @@
           },
           "automl": {
             "description": "Cloud AutoML API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "backupdr": {
+            "description": "Backup and DR Service API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -32674,6 +32714,18 @@
           },
           "cloudbuild": {
             "description": "Cloud Build API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "cloudcontrolspartner": {
+            "description": "Cloud Controls Partner API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -33703,6 +33755,18 @@
               }
             ]
           },
+          "storagecontrol": {
+            "description": "Cloud Storage Control API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "storageinsights": {
             "description": "Storage Insights API C++ Client Library",
             "dependencies": [
@@ -33944,7 +34008,7 @@
             ]
           }
         },
-        "version": "2.22.0"
+        "version": "2.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -42787,7 +42851,7 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
-        "port-version": 4,
+        "port-version": 5,
         "description": "LAPACK - Linear Algebra PACKage",
         "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
@@ -42838,6 +42902,7 @@
       "files": [
         "FindLAPACK.cmake",
         "cmake-config.patch",
+        "fix_prefix.patch",
         "lapacke.patch",
         "portfile.cmake",
         "usage",
@@ -48810,6 +48875,7 @@
       "name": "libpng",
       "manifest": {
         "name": "libpng",
+        "port-version": 1,
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
         "homepage": "https://github.com/glennrp/libpng",
         "license": "libpng-2.0",
@@ -54848,12 +54914,12 @@
       "name": "luasec",
       "manifest": {
         "name": "luasec",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": "Stephen Baker <baker.stephen.e@gmail.com>",
         "description": "LuaSec depends on OpenSSL, and integrates with LuaSocket to make it easy to add secure connections to any Lua applications or scripts.",
-        "homepage": "https://github.com/brunoos/luasec",
+        "homepage": "https://github.com/lunarmodules/luasec",
         "license": "MIT",
-        "supports": "windows & !staticcrt",
+        "supports": "!staticcrt",
         "dependencies": [
           "lua",
           "luasocket",
@@ -63297,7 +63363,6 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
-        "port-version": 3,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/OpenMathLib/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -63346,7 +63411,7 @@
             ]
           }
         },
-        "version": "0.3.26"
+        "version": "0.3.27"
       },
       "files": [
         "fix-redefinition-function.patch",
@@ -64605,7 +64670,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 15,
+        "port-version": 16,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -65022,6 +65087,7 @@
         "0020-fix-compat-cuda12.2.patch",
         "0021-static-openvino.patch",
         "0022-fix-supportqnx.patch",
+        "0023-fix-no-flatbuffers.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -65619,7 +65685,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
@@ -65685,6 +65751,7 @@
       },
       "files": [
         "fix-build.patch",
+        "fix_no_zstd.patch",
         "no-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -79613,7 +79680,7 @@
       "name": "seal",
       "manifest": {
         "name": "seal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Microsoft SEAL is an easy-to-use and powerful homomorphic encryption library.",
         "homepage": "https://github.com/microsoft/SEAL",
         "license": "MIT",
@@ -79664,6 +79731,7 @@
         "version": "4.1.1"
       },
       "files": [
+        "fix-hexl.patch",
         "portfile.cmake",
         "shared-zstd.patch",
         "vcpkg.json"
@@ -84517,7 +84585,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.13.0"
+        "version": "0.13.1"
       },
       "files": [
         "portfile.cmake",
