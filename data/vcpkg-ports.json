@@ -1,5 +1,5 @@
 {
-  "version": "4002e5f3598cc0d216c395bc0db3de44a2d2ec9b",
+  "version": "bd5a4e78b1261d8588a4a96511a7ca79e4d2a7fe",
   "ports": [
     {
       "name": "3fd",
@@ -148,7 +148,6 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 1,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -171,7 +170,7 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version": "20240116.1"
+        "version": "20240116.2"
       },
       "files": [
         "portfile.cmake",
@@ -1248,7 +1247,8 @@
         "name": "approval-tests-cpp",
         "description": "Approval Tests allow you to verify a chunk of output (such as a file) in one operation as opposed to writing test assertions for each element.",
         "homepage": "https://github.com/approvals/ApprovalTests.cpp",
-        "version": "10.12.2"
+        "license": "Apache-2.0",
+        "version": "10.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -2148,7 +2148,7 @@
             ]
           }
         },
-        "version": "1.29.0"
+        "version": "1.30.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -17417,7 +17417,6 @@
       "name": "cachelib",
       "manifest": {
         "name": "cachelib",
-        "port-version": 2,
         "description": "Pluggable caching engine to build and scale high performance cache services.",
         "homepage": "https://github.com/facebook/CacheLib",
         "license": "Apache-2.0",
@@ -17426,7 +17425,12 @@
           "fbthrift",
           "fizz",
           "fmt",
-          "folly",
+          {
+            "name": "folly",
+            "features": [
+              "libaio"
+            ]
+          },
           "gflags",
           "glog",
           "gtest",
@@ -17441,12 +17445,11 @@
           },
           "wangle"
         ],
-        "version-string": "2023.05.08.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "fix-build.patch",
         "fix-glog.patch",
-        "fmt-10.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17600,10 +17603,20 @@
         "name": "calceph",
         "description": "C library to access the binary planetary ephemeris files.",
         "homepage": "https://www.imcce.fr/inpop/calceph/",
-        "documentation": "https://www.imcce.fr/content/medias/recherche/equipes/asd/calceph/html/c/index.html",
+        "documentation": "https://calceph.imcce.fr/docs/latest/html/c/index.html",
         "license": "CECILL-2.1 OR CECILL-B OR CECILL-C",
         "supports": "!uwp",
-        "version": "3.5.5"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -21273,7 +21286,7 @@
             "host": true
           }
         ],
-        "version": "1.3.3.14"
+        "version": "1.4.3.16"
       },
       "files": [
         "portfile.cmake",
@@ -26956,7 +26969,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -27953,12 +27966,10 @@
           },
           "zstd"
         ],
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
-        "0001-fix-libsodium.patch",
-        "0002-fix-libevent.patch",
-        "0003-fix-deps.patch",
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28771,7 +28782,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 3,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -28814,6 +28824,10 @@
             "dependencies": [
               "bzip2"
             ]
+          },
+          "libaio": {
+            "description": "Support compile with libaio",
+            "supports": "linux & x64"
           },
           "libsodium": {
             "description": "Support libsodium for cryto",
@@ -28858,7 +28872,7 @@
             ]
           }
         },
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "boost-1.70.patch",
@@ -28867,9 +28881,7 @@
         "fix-deps.patch",
         "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
-        "openssl.patch",
         "portfile.cmake",
-        "reorder-glog-gflags.patch",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -46872,7 +46884,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -60120,7 +60132,7 @@
         "description": "mvfst (Pronounced move fast) is a client and server implementation of IETF QUIC protocol in C++ by Facebook.",
         "homepage": "https://github.com/facebook/mvfst",
         "license": "MIT",
-        "supports": "!windows",
+        "supports": "!(windows & !static)",
         "dependencies": [
           "boost-context",
           "boost-date-time",
@@ -60143,7 +60155,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "portfile.cmake",
@@ -60154,6 +60166,7 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
+        "port-version": 1,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
@@ -60186,6 +60199,7 @@
       "files": [
         "Install-tools.patch",
         "fix-generation.patch",
+        "fix-tools-lnk2005.patch",
         "opengl.patch",
         "portfile.cmake",
         "sdl2-static.patch",
@@ -70357,7 +70371,6 @@
       "name": "proxygen",
       "manifest": {
         "name": "proxygen",
-        "port-version": 1,
         "description": "It comprises the core C++ HTTP abstractions used at Facebook.",
         "homepage": "https://github.com/facebook/proxygen",
         "license": "BSD-3-Clause",
@@ -70392,7 +70405,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -77625,7 +77638,7 @@
       "name": "rsocket",
       "manifest": {
         "name": "rsocket",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C++ implementation of RSocket http://rsocket.io",
         "homepage": "https://github.com/rsocket/rsocket-cpp",
         "dependencies": [
@@ -77658,6 +77671,7 @@
         "fix-find-dependencies.patch",
         "fix-folly.patch",
         "fix-rsockserver-build-error.patch",
+        "fix-yarpl.patch",
         "portfile.cmake",
         "use-cpp-17.patch",
         "vcpkg.json"
@@ -78772,7 +78786,7 @@
       "name": "scnlib",
       "manifest": {
         "name": "scnlib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
         "dependencies": [
@@ -78792,7 +78806,6 @@
       "files": [
         "fix-SCN_HAS_STD_REGEX_MULTILINE-marco.patch",
         "portfile.cmake",
-        "remove-simdutf-dependency-version.patch",
         "vcpkg.json"
       ]
     },
@@ -89254,7 +89267,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.01.01.00"
+        "version-string": "2024.04.15.00"
       },
       "files": [
         "fix-config-cmake.patch",
