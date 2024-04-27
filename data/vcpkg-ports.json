@@ -1,5 +1,5 @@
 {
-  "version": "bd5a4e78b1261d8588a4a96511a7ca79e4d2a7fe",
+  "version": "943c5ef1c8f6b5e6ced092b242c8299caae2ff01",
   "ports": [
     {
       "name": "3fd",
@@ -18616,6 +18616,7 @@
       "name": "chakracore",
       "manifest": {
         "name": "chakracore",
+        "port-version": 7,
         "description": "Core part of the Chakra Javascript engine",
         "homepage": "https://github.com/Microsoft/ChakraCore",
         "license": "MIT",
@@ -18638,7 +18639,7 @@
             "platform": "windows"
           }
         ],
-        "version-date": "2024-04-20"
+        "version-date": "2022-11-09"
       },
       "files": [
         "avoid_msvc_internal_STRINGIZE.patch",
@@ -21981,11 +21982,10 @@
       "name": "ctbignum",
       "manifest": {
         "name": "ctbignum",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This is a header-only template library for fixed-width \"small big-integer\" computations, for use during run-time as well as compile-time.",
         "homepage": "https://github.com/niekbouman/ctbignum",
         "dependencies": [
-          "boost",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -46191,12 +46191,16 @@
       "name": "libhdfs3",
       "manifest": {
         "name": "libhdfs3",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Native Hadoop RPC protocol and HDFS data transfer protocol implementation",
         "homepage": "https://github.com/erikmuttersbach/libhdfs3",
         "supports": "!windows",
         "dependencies": [
-          "boost",
+          "boost-atomic",
+          "boost-chrono",
+          "boost-iostreams",
+          "boost-system",
+          "boost-thread",
           {
             "name": "libuuid",
             "platform": "!windows & !osx"
@@ -62020,17 +62024,19 @@
       "name": "numcpp",
       "manifest": {
         "name": "numcpp",
+        "port-version": 1,
         "description": "C++ implementation of the Python Numpy library",
         "homepage": "https://dpilger26.github.io/NumCpp",
         "license": "MIT",
         "dependencies": [
-          "boost",
           "boost-algorithm",
           "boost-date-time",
           "boost-endian",
           "boost-integer",
+          "boost-log",
           "boost-math",
           "boost-predef",
+          "boost-python",
           "boost-random",
           "boost-type-traits",
           {
@@ -65996,7 +66002,7 @@
       "name": "opensubdiv",
       "manifest": {
         "name": "opensubdiv",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An Open-Source subdivision surface library.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenSubdiv",
         "license": "Apache-2.0",
@@ -66084,6 +66090,7 @@
         "fix-build-type.patch",
         "fix-dependencies.patch",
         "fix-feature-cuda.patch",
+        "fix-notfind-header.patch",
         "fix-version-search.patch",
         "fix_compile-option.patch",
         "portfile.cmake",
@@ -75615,7 +75622,7 @@
             "host": true
           }
         ],
-        "version": "1.33"
+        "version": "1.34"
       },
       "files": [
         "portfile.cmake",
@@ -76227,11 +76234,10 @@
       "name": "rbdl",
       "manifest": {
         "name": "rbdl",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Rigid Body Dynamics Library",
         "homepage": "https://github.com/rbdl/rbdl",
         "dependencies": [
-          "boost",
           "eigen3",
           "lua",
           {
@@ -82362,11 +82368,14 @@
       "name": "spirit-po",
       "manifest": {
         "name": "spirit-po",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A header-only C++ library for localization using GNU gettext po files, based on Boost.Spirit.",
         "homepage": "https://github.com/cbeck88/spirit-po",
         "dependencies": [
-          "boost"
+          "boost-fusion",
+          "boost-optional",
+          "boost-spirit",
+          "boost-variant"
         ],
         "version": "1.1.2"
       },
@@ -83496,7 +83505,7 @@
       "name": "strtk",
       "manifest": {
         "name": "strtk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "robust, optimized and portable string processing algorithms for the C++ language",
         "homepage": "https://github.com/ArashPartow/strtk",
         "license": null,
@@ -83504,7 +83513,12 @@
           "boost": {
             "description": "Request boost libraries",
             "dependencies": [
-              "boost"
+              "boost-algorithm",
+              "boost-lexical-cast",
+              "boost-random",
+              "boost-regex",
+              "boost-spirit",
+              "boost-tokenizer"
             ]
           }
         },
@@ -84527,11 +84541,22 @@
       "name": "think-cell-range",
       "manifest": {
         "name": "think-cell-range",
+        "port-version": 1,
         "description": "think-cell's range library",
         "homepage": "https://github.com/think-cell/think-cell-library",
         "license": "BSL-1.0",
         "dependencies": [
-          "boost"
+          "boost-filesystem",
+          "boost-fusion",
+          "boost-integer",
+          "boost-intrusive",
+          "boost-lexical-cast",
+          "boost-mpl",
+          "boost-multi-index",
+          "boost-predef",
+          "boost-preprocessor",
+          "boost-range",
+          "boost-spirit"
         ],
         "version": "2023.1"
       },
@@ -87290,7 +87315,7 @@
       "name": "v8",
       "manifest": {
         "name": "v8",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Google Chrome's JavaScript engine",
         "homepage": "https://v8.dev",
         "license": "BSD-3-Clause",
