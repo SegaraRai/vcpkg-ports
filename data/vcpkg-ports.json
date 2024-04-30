@@ -1,5 +1,5 @@
 {
-  "version": "943c5ef1c8f6b5e6ced092b242c8299caae2ff01",
+  "version": "142fa5b08b693589889ba5993d3769f4f4de19a6",
   "ports": [
     {
       "name": "3fd",
@@ -821,6 +821,7 @@
       "name": "amd-amf",
       "manifest": {
         "name": "amd-amf",
+        "port-version": 1,
         "description": "AMD Advanced Media Framework headers",
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
@@ -1743,7 +1744,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.1.2"
+        "version-semver": "1.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -1786,7 +1787,6 @@
       "name": "arpack-ng",
       "manifest": {
         "name": "arpack-ng",
-        "port-version": 1,
         "description": "ARPACK-NG is a collection of Fortran77 subroutines designed to solve large scale eigenvalue problems.",
         "homepage": "https://github.com/opencollab/arpack-ng",
         "license": "BSD-3-Clause",
@@ -1807,7 +1807,7 @@
             "platform": "windows"
           }
         ],
-        "version": "3.9.0"
+        "version": "3.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -6056,7 +6056,7 @@
         "dependencies": [
           "boost-asio"
         ],
-        "version": "0.9.7"
+        "version": "0.9.8"
       },
       "files": [
         "portfile.cmake",
@@ -6761,6 +6761,7 @@
       "name": "boost",
       "manifest": {
         "name": "boost",
+        "port-version": 1,
         "description": "Peer-reviewed portable C++ source libraries",
         "homepage": "https://boost.org",
         "license": "BSL-1.0",
@@ -6828,7 +6829,7 @@
           },
           {
             "name": "boost-cobalt",
-            "platform": "!osx & !ios & !android",
+            "platform": "!osx & !ios & !android & !uwp",
             "version>=": "1.84.0"
           },
           {
@@ -6970,10 +6971,15 @@
           },
           {
             "name": "boost-graph",
+            "platform": "!uwp",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-hana",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7401,6 +7407,7 @@
       "name": "boost-accumulators",
       "manifest": {
         "name": "boost-accumulators",
+        "port-version": 1,
         "description": "Boost accumulators module",
         "homepage": "https://github.com/boostorg/accumulators",
         "license": "BSL-1.0",
@@ -7418,6 +7425,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-concept-check",
             "version>=": "1.84.0"
           },
@@ -7431,6 +7442,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7484,10 +7499,6 @@
           {
             "name": "boost-ublas",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -7501,6 +7512,7 @@
       "name": "boost-algorithm",
       "manifest": {
         "name": "boost-algorithm",
+        "port-version": 1,
         "description": "Boost algorithm module",
         "homepage": "https://github.com/boostorg/algorithm",
         "license": "BSL-1.0",
@@ -7515,6 +7527,10 @@
           },
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7535,6 +7551,10 @@
           },
           {
             "name": "boost-function",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7572,10 +7592,6 @@
           {
             "name": "boost-unordered",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -7589,12 +7605,17 @@
       "name": "boost-align",
       "manifest": {
         "name": "boost-align",
+        "port-version": 1,
         "description": "Boost align module",
         "homepage": "https://github.com/boostorg/align",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7606,11 +7627,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-static-assert",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-static-assert",
             "version>=": "1.84.0"
           }
         ],
@@ -7625,6 +7646,7 @@
       "name": "boost-any",
       "manifest": {
         "name": "boost-any",
+        "port-version": 1,
         "description": "Boost any module",
         "homepage": "https://github.com/boostorg/any",
         "license": "BSL-1.0",
@@ -7634,7 +7656,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7643,10 +7673,6 @@
           },
           {
             "name": "boost-type-index",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -7661,12 +7687,17 @@
       "name": "boost-array",
       "manifest": {
         "name": "boost-array",
+        "port-version": 1,
         "description": "Boost array module",
         "homepage": "https://github.com/boostorg/array",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7678,15 +7709,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-static-assert",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -7701,6 +7732,7 @@
       "name": "boost-asio",
       "manifest": {
         "name": "boost-asio",
+        "port-version": 1,
         "description": "Boost asio module",
         "homepage": "https://github.com/boostorg/asio",
         "license": "BSL-1.0",
@@ -7711,6 +7743,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7732,15 +7768,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-system",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -7758,6 +7794,7 @@
         "version": "1.84.0"
       },
       "files": [
+        "opt-dep.diff",
         "portfile.cmake",
         "vcpkg.json",
         "windows_alloca_header.patch"
@@ -7767,16 +7804,21 @@
       "name": "boost-assert",
       "manifest": {
         "name": "boost-assert",
+        "port-version": 1,
         "description": "Boost assert module",
         "homepage": "https://github.com/boostorg/assert",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -7791,6 +7833,7 @@
       "name": "boost-assign",
       "manifest": {
         "name": "boost-assign",
+        "port-version": 1,
         "description": "Boost assign module",
         "homepage": "https://github.com/boostorg/assign",
         "license": "BSL-1.0",
@@ -7800,11 +7843,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7838,10 +7889,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -7855,6 +7902,7 @@
       "name": "boost-atomic",
       "manifest": {
         "name": "boost-atomic",
+        "port-version": 1,
         "description": "Boost atomic module",
         "homepage": "https://github.com/boostorg/atomic",
         "license": "BSL-1.0",
@@ -7868,8 +7916,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7877,8 +7924,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -7894,21 +7940,14 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
+        "fix-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -7917,6 +7956,7 @@
       "name": "boost-beast",
       "manifest": {
         "name": "boost-beast",
+        "port-version": 1,
         "description": "Boost beast module",
         "homepage": "https://github.com/boostorg/beast",
         "license": "BSL-1.0",
@@ -7932,6 +7972,10 @@
           },
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -7952,6 +7996,10 @@
           },
           {
             "name": "boost-endian",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8003,10 +8051,6 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           }
@@ -8022,10 +8066,15 @@
       "name": "boost-bimap",
       "manifest": {
         "name": "boost-bimap",
+        "port-version": 1,
         "description": "Boost bimap module",
         "homepage": "https://github.com/boostorg/bimap",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-concept-check",
             "version>=": "1.84.0"
@@ -8040,6 +8089,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8077,10 +8130,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -8094,10 +8143,15 @@
       "name": "boost-bind",
       "manifest": {
         "name": "boost-bind",
+        "port-version": 1,
         "description": "Boost bind module",
         "homepage": "https://github.com/boostorg/bind",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -8107,7 +8161,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -8122,6 +8176,7 @@
       "name": "boost-build",
       "manifest": {
         "name": "boost-build",
+        "port-version": 1,
         "description": "Boost.Build",
         "homepage": "https://github.com/boostorg/build",
         "license": "BSL-1.0",
@@ -8145,16 +8200,21 @@
       "name": "boost-callable-traits",
       "manifest": {
         "name": "boost-callable-traits",
+        "port-version": 1,
         "description": "Boost callable_traits module",
         "homepage": "https://github.com/boostorg/callable_traits",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -8169,6 +8229,7 @@
       "name": "boost-chrono",
       "manifest": {
         "name": "boost-chrono",
+        "port-version": 1,
         "description": "Boost chrono module",
         "homepage": "https://github.com/boostorg/chrono",
         "license": "BSL-1.0",
@@ -8178,8 +8239,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8191,12 +8251,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-integer",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-integer",
             "version>=": "1.84.0"
           },
           {
@@ -8240,16 +8299,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -8263,12 +8314,17 @@
       "name": "boost-circular-buffer",
       "manifest": {
         "name": "boost-circular-buffer",
+        "port-version": 1,
         "description": "Boost circular_buffer module",
         "homepage": "https://github.com/boostorg/circular_buffer",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8281,6 +8337,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8298,10 +8358,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -8312,25 +8368,66 @@
       ]
     },
     {
+      "name": "boost-cmake",
+      "manifest": {
+        "name": "boost-cmake",
+        "description": "Boost cmake files",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "boost-uninstall",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "vcpkg-boost",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.84.0"
+      },
+      "files": [
+        "CMakeLists.txt.in",
+        "add-optional-deps.diff",
+        "fix-missing-archs.diff",
+        "fix-mpi.diff",
+        "no-prefix.diff",
+        "portfile.cmake",
+        "ref_sha.cmake",
+        "usage",
+        "vcpkg-build.diff",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json",
+        "zstd.diff"
+      ]
+    },
+    {
       "name": "boost-cobalt",
       "manifest": {
         "name": "boost-cobalt",
+        "port-version": 1,
         "description": "Boost cobalt module",
         "homepage": "https://github.com/boostorg/cobalt",
         "license": "BSL-1.0",
-        "supports": "!osx & !ios & !android",
+        "supports": "!osx & !ios & !android & !uwp",
         "dependencies": [
           {
             "name": "boost-asio",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-circular-buffer",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-circular-buffer",
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8346,16 +8443,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-intrusive",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-leaf",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -8381,20 +8477,11 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
-        "b2-options.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -8403,6 +8490,7 @@
       "name": "boost-compat",
       "manifest": {
         "name": "boost-compat",
+        "port-version": 1,
         "description": "Boost compat module",
         "homepage": "https://github.com/boostorg/compat",
         "license": "BSL-1.0",
@@ -8412,15 +8500,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-throw-exception",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-throw-exception",
             "version>=": "1.84.0"
           }
         ],
@@ -8435,16 +8527,21 @@
       "name": "boost-compatibility",
       "manifest": {
         "name": "boost-compatibility",
+        "port-version": 1,
         "description": "Boost compatibility module",
         "homepage": "https://github.com/boostorg/compatibility",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -8459,6 +8556,7 @@
       "name": "boost-compute",
       "manifest": {
         "name": "boost-compute",
+        "port-version": 1,
         "description": "Boost compute module",
         "homepage": "https://github.com/boostorg/compute",
         "license": "BSL-1.0",
@@ -8477,6 +8575,10 @@
           },
           {
             "name": "boost-chrono",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8502,6 +8604,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8571,15 +8677,12 @@
           {
             "name": "boost-uuid",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
       },
       "files": [
+        "opt-filesystem.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -8588,12 +8691,21 @@
       "name": "boost-concept-check",
       "manifest": {
         "name": "boost-concept-check",
+        "port-version": 1,
         "description": "Boost concept_check module",
         "homepage": "https://github.com/boostorg/concept_check",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8606,10 +8718,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -8624,12 +8732,17 @@
       "name": "boost-config",
       "manifest": {
         "name": "boost-config",
+        "port-version": 1,
         "description": "Boost config module",
         "homepage": "https://github.com/boostorg/config",
         "license": "BSL-1.0",
         "dependencies": [
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -8644,6 +8757,7 @@
       "name": "boost-container",
       "manifest": {
         "name": "boost-container",
+        "port-version": 1,
         "description": "Boost container module",
         "homepage": "https://github.com/boostorg/container",
         "license": "BSL-1.0",
@@ -8653,8 +8767,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8662,12 +8775,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-intrusive",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-intrusive",
             "version>=": "1.84.0"
           },
           {
@@ -8677,14 +8789,6 @@
           {
             "name": "boost-static-assert",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -8698,10 +8802,15 @@
       "name": "boost-container-hash",
       "manifest": {
         "name": "boost-container-hash",
+        "port-version": 1,
         "description": "Boost container_hash module",
         "homepage": "https://github.com/boostorg/container_hash",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -8711,11 +8820,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-mp11",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-mp11",
             "version>=": "1.84.0"
           }
         ],
@@ -8730,6 +8839,7 @@
       "name": "boost-context",
       "manifest": {
         "name": "boost-context",
+        "port-version": 1,
         "description": "Boost context module",
         "homepage": "https://github.com/boostorg/context",
         "license": "BSL-1.0",
@@ -8740,8 +8850,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8753,8 +8862,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8772,20 +8880,12 @@
           {
             "name": "boost-smart-ptr",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
-        "b2-options.cmake.in",
+        "marmasm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -8794,6 +8894,7 @@
       "name": "boost-contract",
       "manifest": {
         "name": "boost-contract",
+        "port-version": 1,
         "description": "Boost contract module",
         "homepage": "https://github.com/boostorg/contract",
         "license": "BSL-1.0",
@@ -8807,8 +8908,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -8832,8 +8932,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8871,14 +8970,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -8892,6 +8983,7 @@
       "name": "boost-conversion",
       "manifest": {
         "name": "boost-conversion",
+        "port-version": 1,
         "description": "Boost conversion module",
         "homepage": "https://github.com/boostorg/conversion",
         "license": "BSL-1.0",
@@ -8901,7 +8993,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8910,10 +9010,6 @@
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -8928,10 +9024,15 @@
       "name": "boost-convert",
       "manifest": {
         "name": "boost-convert",
+        "port-version": 1,
         "description": "Boost convert module",
         "homepage": "https://github.com/boostorg/convert",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -8942,6 +9043,10 @@
           },
           {
             "name": "boost-function-types",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -8975,10 +9080,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -8992,6 +9093,7 @@
       "name": "boost-core",
       "manifest": {
         "name": "boost-core",
+        "port-version": 1,
         "description": "Boost core module",
         "homepage": "https://github.com/boostorg/core",
         "license": "BSL-1.0",
@@ -9001,7 +9103,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9010,10 +9120,6 @@
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -9028,6 +9134,7 @@
       "name": "boost-coroutine",
       "manifest": {
         "name": "boost-coroutine",
+        "port-version": 1,
         "description": "Boost coroutine module",
         "homepage": "https://github.com/boostorg/coroutine",
         "license": "BSL-1.0",
@@ -9038,8 +9145,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9060,8 +9166,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9083,14 +9188,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -9104,13 +9201,17 @@
       "name": "boost-coroutine2",
       "manifest": {
         "name": "boost-coroutine2",
+        "port-version": 1,
         "description": "Boost coroutine2 module",
         "homepage": "https://github.com/boostorg/coroutine2",
         "license": "BSL-1.0",
-        "supports": "!emscripten",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9119,11 +9220,10 @@
           },
           {
             "name": "boost-context",
-            "platform": "!uwp & !emscripten",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -9138,6 +9238,7 @@
       "name": "boost-crc",
       "manifest": {
         "name": "boost-crc",
+        "port-version": 1,
         "description": "Boost crc module",
         "homepage": "https://github.com/boostorg/crc",
         "license": "BSL-1.0",
@@ -9147,7 +9248,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9156,10 +9265,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -9174,6 +9279,7 @@
       "name": "boost-date-time",
       "manifest": {
         "name": "boost-date-time",
+        "port-version": 1,
         "description": "Boost date_time module",
         "homepage": "https://github.com/boostorg/date_time",
         "license": "BSL-1.0",
@@ -9187,8 +9293,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9200,16 +9305,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-io",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -9245,16 +9349,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -9268,20 +9364,25 @@
       "name": "boost-describe",
       "manifest": {
         "name": "boost-describe",
+        "port-version": 1,
         "description": "Boost describe module",
         "homepage": "https://github.com/boostorg/describe",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-mp11",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-mp11",
             "version>=": "1.84.0"
           }
         ],
@@ -9296,16 +9397,25 @@
       "name": "boost-detail",
       "manifest": {
         "name": "boost-detail",
+        "port-version": 1,
         "description": "Boost detail module",
         "homepage": "https://github.com/boostorg/detail",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9318,10 +9428,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -9336,12 +9442,17 @@
       "name": "boost-dll",
       "manifest": {
         "name": "boost-dll",
+        "port-version": 1,
         "description": "Boost dll module",
         "homepage": "https://github.com/boostorg/dll",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9354,11 +9465,14 @@
           },
           {
             "name": "boost-filesystem",
-            "platform": "!uwp",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-function",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9394,10 +9508,6 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           }
@@ -9413,12 +9523,17 @@
       "name": "boost-dynamic-bitset",
       "manifest": {
         "name": "boost-dynamic-bitset",
+        "port-version": 1,
         "description": "Boost dynamic_bitset module",
         "homepage": "https://github.com/boostorg/dynamic_bitset",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9431,6 +9546,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9448,10 +9567,6 @@
           {
             "name": "boost-throw-exception",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -9465,16 +9580,21 @@
       "name": "boost-endian",
       "manifest": {
         "name": "boost-endian",
+        "port-version": 1,
         "description": "Boost endian module",
         "homepage": "https://github.com/boostorg/endian",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -9489,6 +9609,7 @@
       "name": "boost-exception",
       "manifest": {
         "name": "boost-exception",
+        "port-version": 1,
         "description": "Boost exception module",
         "homepage": "https://github.com/boostorg/exception",
         "license": "BSL-1.0",
@@ -9498,8 +9619,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9511,8 +9631,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9530,14 +9649,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -9551,6 +9662,7 @@
       "name": "boost-fiber",
       "manifest": {
         "name": "boost-fiber",
+        "port-version": 1,
         "description": "Boost fiber module",
         "homepage": "https://github.com/boostorg/fiber",
         "license": "BSL-1.0",
@@ -9565,8 +9677,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9592,12 +9703,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-intrusive",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-intrusive",
             "version>=": "1.84.0"
           },
           {
@@ -9607,14 +9717,6 @@
           {
             "name": "boost-smart-ptr",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "features": {
@@ -9634,6 +9736,7 @@
       "name": "boost-filesystem",
       "manifest": {
         "name": "boost-filesystem",
+        "port-version": 1,
         "description": "Boost filesystem module",
         "homepage": "https://github.com/boostorg/filesystem",
         "license": "BSL-1.0",
@@ -9648,8 +9751,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9669,16 +9771,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-io",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-iterator",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -9702,16 +9803,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -9725,12 +9818,17 @@
       "name": "boost-flyweight",
       "manifest": {
         "name": "boost-flyweight",
+        "port-version": 1,
         "description": "Boost flyweight module",
         "homepage": "https://github.com/boostorg/flyweight",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -9747,6 +9845,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9780,10 +9882,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -9797,16 +9895,25 @@
       "name": "boost-foreach",
       "manifest": {
         "name": "boost-foreach",
+        "port-version": 1,
         "description": "Boost foreach module",
         "homepage": "https://github.com/boostorg/foreach",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9824,10 +9931,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -9841,6 +9944,7 @@
       "name": "boost-format",
       "manifest": {
         "name": "boost-format",
+        "port-version": 1,
         "description": "Boost format module",
         "homepage": "https://github.com/boostorg/format",
         "license": "BSL-1.0",
@@ -9850,11 +9954,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9872,10 +9984,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -9889,6 +9997,7 @@
       "name": "boost-function",
       "manifest": {
         "name": "boost-function",
+        "port-version": 1,
         "description": "Boost function module",
         "homepage": "https://github.com/boostorg/function",
         "license": "BSL-1.0",
@@ -9902,11 +10011,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -9919,10 +10036,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -9937,10 +10050,15 @@
       "name": "boost-function-types",
       "manifest": {
         "name": "boost-function-types",
+        "port-version": 1,
         "description": "Boost function_types module",
         "homepage": "https://github.com/boostorg/function_types",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -9954,6 +10072,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mpl",
             "version>=": "1.84.0"
           },
@@ -9963,10 +10085,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -9981,10 +10099,15 @@
       "name": "boost-functional",
       "manifest": {
         "name": "boost-functional",
+        "port-version": 1,
         "description": "Boost functional module",
         "homepage": "https://github.com/boostorg/functional",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -9999,6 +10122,10 @@
           },
           {
             "name": "boost-function-types",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10020,10 +10147,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10037,10 +10160,15 @@
       "name": "boost-fusion",
       "manifest": {
         "name": "boost-fusion",
+        "port-version": 1,
         "description": "Boost fusion module",
         "homepage": "https://github.com/boostorg/fusion",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -10059,6 +10187,10 @@
           },
           {
             "name": "boost-functional",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10088,10 +10220,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10105,6 +10233,7 @@
       "name": "boost-geometry",
       "manifest": {
         "name": "boost-geometry",
+        "port-version": 1,
         "description": "Boost geometry module",
         "homepage": "https://github.com/boostorg/geometry",
         "license": "BSL-1.0",
@@ -10123,6 +10252,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10147,6 +10280,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10228,10 +10365,6 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10245,12 +10378,17 @@
       "name": "boost-gil",
       "manifest": {
         "name": "boost-gil",
+        "port-version": 1,
         "description": "Boost gil module",
         "homepage": "https://github.com/boostorg/gil",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10267,6 +10405,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10292,16 +10434,13 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
       },
       "files": [
         "portfile.cmake",
+        "remove-boost-filesystem-dep.diff",
         "vcpkg.json"
       ]
     },
@@ -10309,6 +10448,7 @@
       "name": "boost-graph",
       "manifest": {
         "name": "boost-graph",
+        "port-version": 1,
         "description": "Boost graph module",
         "homepage": "https://github.com/boostorg/graph",
         "license": "BSL-1.0",
@@ -10338,8 +10478,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10375,6 +10514,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
@@ -10388,11 +10531,6 @@
           },
           {
             "name": "boost-math",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -10429,7 +10567,6 @@
           },
           {
             "name": "boost-random",
-            "platform": "!uwp",
             "version>=": "1.84.0"
           },
           {
@@ -10485,16 +10622,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-xpressive",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -10508,6 +10637,7 @@
       "name": "boost-graph-parallel",
       "manifest": {
         "name": "boost-graph-parallel",
+        "port-version": 1,
         "description": "Boost graph_parallel module",
         "homepage": "https://github.com/boostorg/graph_parallel",
         "license": "BSL-1.0",
@@ -10522,8 +10652,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10568,16 +10697,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-iterator",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -10630,15 +10758,7 @@
             "name": "boost-variant",
             "version>=": "1.84.0"
           },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          "mpi",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
+          "mpi"
         ],
         "version": "1.84.0"
       },
@@ -10651,10 +10771,15 @@
       "name": "boost-hana",
       "manifest": {
         "name": "boost-hana",
+        "port-version": 1,
         "description": "Boost hana module",
         "homepage": "https://github.com/boostorg/hana",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -10668,15 +10793,35 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mpl",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-tuple",
             "version>=": "1.84.0"
-          },
+          }
+        ],
+        "version": "1.84.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "boost-headers",
+      "manifest": {
+        "name": "boost-headers",
+        "description": "Boost headers module",
+        "homepage": "https://github.com/boostorg/headers",
+        "license": "BSL-1.0",
+        "dependencies": [
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           }
         ],
@@ -10691,6 +10836,7 @@
       "name": "boost-heap",
       "manifest": {
         "name": "boost-heap",
+        "port-version": 1,
         "description": "Boost heap module",
         "homepage": "https://github.com/boostorg/heap",
         "license": "BSL-1.0",
@@ -10708,6 +10854,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-concept-check",
             "version>=": "1.84.0"
           },
@@ -10717,6 +10867,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10742,10 +10896,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10759,16 +10909,25 @@
       "name": "boost-histogram",
       "manifest": {
         "name": "boost-histogram",
+        "port-version": 1,
         "description": "Boost histogram module",
         "homepage": "https://github.com/boostorg/histogram",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10790,10 +10949,6 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10807,16 +10962,21 @@
       "name": "boost-hof",
       "manifest": {
         "name": "boost-hof",
+        "port-version": 1,
         "description": "Boost hof module",
         "homepage": "https://github.com/boostorg/hof",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -10831,12 +10991,17 @@
       "name": "boost-icl",
       "manifest": {
         "name": "boost-icl",
+        "port-version": 1,
         "description": "Boost icl module",
         "homepage": "https://github.com/boostorg/icl",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10861,6 +11026,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10894,10 +11063,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -10911,6 +11076,7 @@
       "name": "boost-integer",
       "manifest": {
         "name": "boost-integer",
+        "port-version": 1,
         "description": "Boost integer module",
         "homepage": "https://github.com/boostorg/integer",
         "license": "BSL-1.0",
@@ -10920,11 +11086,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10937,10 +11111,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -10955,12 +11125,17 @@
       "name": "boost-interprocess",
       "manifest": {
         "name": "boost-interprocess",
+        "port-version": 1,
         "description": "Boost interprocess module",
         "homepage": "https://github.com/boostorg/interprocess",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -10973,6 +11148,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -10996,10 +11175,6 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           }
@@ -11015,10 +11190,15 @@
       "name": "boost-interval",
       "manifest": {
         "name": "boost-interval",
+        "port-version": 1,
         "description": "Boost interval module",
         "homepage": "https://github.com/boostorg/interval",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -11028,11 +11208,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-logic",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-logic",
             "version>=": "1.84.0"
           }
         ],
@@ -11047,12 +11227,17 @@
       "name": "boost-intrusive",
       "manifest": {
         "name": "boost-intrusive",
+        "port-version": 1,
         "description": "Boost intrusive module",
         "homepage": "https://github.com/boostorg/intrusive",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11064,15 +11249,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-move",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-static-assert",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -11087,16 +11272,21 @@
       "name": "boost-io",
       "manifest": {
         "name": "boost-io",
+        "port-version": 1,
         "description": "Boost io module",
         "homepage": "https://github.com/boostorg/io",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -11111,6 +11301,7 @@
       "name": "boost-iostreams",
       "manifest": {
         "name": "boost-iostreams",
+        "port-version": 1,
         "description": "Boost iostreams module",
         "homepage": "https://github.com/boostorg/iostreams",
         "license": "BSL-1.0",
@@ -11121,8 +11312,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11142,16 +11332,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-iterator",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -11198,14 +11387,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "default-features": [
@@ -11244,7 +11425,8 @@
       },
       "files": [
         "Removeseekpos.patch",
-        "b2-options.cmake",
+        "features.cmake",
+        "fix-zstd.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -11253,12 +11435,17 @@
       "name": "boost-iterator",
       "manifest": {
         "name": "boost-iterator",
+        "port-version": 1,
         "description": "Boost iterator module",
         "homepage": "https://github.com/boostorg/iterator",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11286,6 +11473,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mpl",
             "version>=": "1.84.0"
           },
@@ -11308,10 +11499,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -11325,6 +11512,7 @@
       "name": "boost-json",
       "manifest": {
         "name": "boost-json",
+        "port-version": 1,
         "description": "Boost json module",
         "homepage": "https://github.com/boostorg/json",
         "license": "BSL-1.0",
@@ -11338,8 +11526,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11363,8 +11550,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -11378,14 +11564,6 @@
           {
             "name": "boost-throw-exception",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -11399,12 +11577,17 @@
       "name": "boost-lambda",
       "manifest": {
         "name": "boost-lambda",
+        "port-version": 1,
         "description": "Boost lambda module",
         "homepage": "https://github.com/boostorg/lambda",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11417,6 +11600,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -11442,10 +11629,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -11459,16 +11642,21 @@
       "name": "boost-lambda2",
       "manifest": {
         "name": "boost-lambda2",
+        "port-version": 1,
         "description": "Boost lambda2 module",
         "homepage": "https://github.com/boostorg/lambda2",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -11483,16 +11671,21 @@
       "name": "boost-leaf",
       "manifest": {
         "name": "boost-leaf",
+        "port-version": 1,
         "description": "Boost leaf module",
         "homepage": "https://github.com/boostorg/leaf",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -11507,10 +11700,15 @@
       "name": "boost-lexical-cast",
       "manifest": {
         "name": "boost-lexical-cast",
+        "port-version": 1,
         "description": "Boost lexical_cast module",
         "homepage": "https://github.com/boostorg/lexical_cast",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -11521,6 +11719,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -11538,10 +11740,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -11555,12 +11753,21 @@
       "name": "boost-local-function",
       "manifest": {
         "name": "boost-local-function",
+        "port-version": 1,
         "description": "Boost local_function module",
         "homepage": "https://github.com/boostorg/local_function",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -11586,10 +11793,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -11603,6 +11806,7 @@
       "name": "boost-locale",
       "manifest": {
         "name": "boost-locale",
+        "port-version": 1,
         "description": "Boost locale module",
         "homepage": "https://github.com/boostorg/locale",
         "license": "BSL-1.0",
@@ -11613,8 +11817,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11626,12 +11829,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-iterator",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-iterator",
             "version>=": "1.84.0"
           },
           {
@@ -11647,16 +11849,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "libiconv",
             "platform": "!uwp & !windows & !mingw"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "features": {
@@ -11670,7 +11864,7 @@
         "version": "1.84.0"
       },
       "files": [
-        "b2-options.cmake.in",
+        "features.cmake",
         "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -11680,6 +11874,7 @@
       "name": "boost-lockfree",
       "manifest": {
         "name": "boost-lockfree",
+        "port-version": 1,
         "description": "Boost lockfree module",
         "homepage": "https://github.com/boostorg/lockfree",
         "license": "BSL-1.0",
@@ -11701,11 +11896,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -11743,10 +11946,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -11760,6 +11959,7 @@
       "name": "boost-log",
       "manifest": {
         "name": "boost-log",
+        "port-version": 1,
         "description": "Boost log module",
         "homepage": "https://github.com/boostorg/log",
         "license": "BSL-1.0",
@@ -11782,8 +11982,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11816,6 +12015,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-interprocess",
             "version>=": "1.84.0"
           },
@@ -11829,11 +12032,6 @@
           },
           {
             "name": "boost-iterator",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -11918,20 +12116,12 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-xpressive",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -11945,10 +12135,15 @@
       "name": "boost-logic",
       "manifest": {
         "name": "boost-logic",
+        "port-version": 1,
         "description": "Boost logic module",
         "homepage": "https://github.com/boostorg/logic",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -11958,7 +12153,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -11973,6 +12168,7 @@
       "name": "boost-math",
       "manifest": {
         "name": "boost-math",
+        "port-version": 1,
         "description": "Boost math module",
         "homepage": "https://github.com/boostorg/math",
         "license": "BSL-1.0",
@@ -11982,8 +12178,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -11999,16 +12194,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -12027,19 +12221,13 @@
           {
             "name": "boost-throw-exception",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
+        "build-old-libs.patch",
+        "opt-random.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -12048,12 +12236,21 @@
       "name": "boost-metaparse",
       "manifest": {
         "name": "boost-metaparse",
+        "port-version": 1,
         "description": "Boost metaparse module",
         "homepage": "https://github.com/boostorg/metaparse",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12075,50 +12272,12 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "boost-modular-build-helper",
-      "manifest": {
-        "name": "boost-modular-build-helper",
-        "port-version": 3,
-        "description": "Internal vcpkg port used to build Boost libraries",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "boost-uninstall",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-get-vars",
-            "host": true
-          }
-        ],
-        "version": "1.84.0"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "Jamroot.jam.in",
-        "boost-modular-build.cmake",
-        "nothing.bat",
-        "portfile.cmake",
-        "usage",
-        "user-config.jam.in",
         "vcpkg.json"
       ]
     },
@@ -12126,16 +12285,21 @@
       "name": "boost-move",
       "manifest": {
         "name": "boost-move",
+        "port-version": 1,
         "description": "Boost move module",
         "homepage": "https://github.com/boostorg/move",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -12150,16 +12314,21 @@
       "name": "boost-mp11",
       "manifest": {
         "name": "boost-mp11",
+        "port-version": 1,
         "description": "Boost mp11 module",
         "homepage": "https://github.com/boostorg/mp11",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -12174,6 +12343,7 @@
       "name": "boost-mpi",
       "manifest": {
         "name": "boost-mpi",
+        "port-version": 1,
         "description": "Boost mpi module",
         "homepage": "https://github.com/boostorg/mpi",
         "license": "BSL-1.0",
@@ -12184,8 +12354,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12209,6 +12378,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
@@ -12218,11 +12391,6 @@
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -12257,15 +12425,7 @@
             "name": "boost-utility",
             "version>=": "1.84.0"
           },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          "mpi",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
+          "mpi"
         ],
         "features": {
           "python3": {
@@ -12295,16 +12455,25 @@
       "name": "boost-mpl",
       "manifest": {
         "name": "boost-mpl",
+        "port-version": 1,
         "description": "Boost mpl module",
         "homepage": "https://github.com/boostorg/mpl",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12326,10 +12495,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12343,6 +12508,7 @@
       "name": "boost-msm",
       "manifest": {
         "name": "boost-msm",
+        "port-version": 1,
         "description": "Boost msm module",
         "homepage": "https://github.com/boostorg/msm",
         "license": "BSL-1.0",
@@ -12364,6 +12530,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
@@ -12377,6 +12547,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12414,10 +12588,6 @@
           {
             "name": "boost-typeof",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12431,6 +12601,7 @@
       "name": "boost-multi-array",
       "manifest": {
         "name": "boost-multi-array",
+        "port-version": 1,
         "description": "Boost multi_array module",
         "homepage": "https://github.com/boostorg/multi_array",
         "license": "BSL-1.0",
@@ -12441,6 +12612,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12460,6 +12635,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-iterator",
             "version>=": "1.84.0"
           },
@@ -12474,10 +12653,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12491,6 +12666,7 @@
       "name": "boost-multi-index",
       "manifest": {
         "name": "boost-multi-index",
+        "port-version": 1,
         "description": "Boost multi_index module",
         "homepage": "https://github.com/boostorg/multi_index",
         "license": "BSL-1.0",
@@ -12504,6 +12680,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
@@ -12513,6 +12693,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12558,10 +12742,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12575,6 +12755,7 @@
       "name": "boost-multiprecision",
       "manifest": {
         "name": "boost-multiprecision",
+        "port-version": 1,
         "description": "Boost multiprecision module",
         "homepage": "https://github.com/boostorg/multiprecision",
         "license": "BSL-1.0",
@@ -12584,11 +12765,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12615,16 +12804,13 @@
           {
             "name": "boost-throw-exception",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
       },
       "files": [
         "portfile.cmake",
+        "remove-random.diff",
         "vcpkg.json"
       ]
     },
@@ -12632,6 +12818,7 @@
       "name": "boost-mysql",
       "manifest": {
         "name": "boost-mysql",
+        "port-version": 1,
         "description": "Boost mysql module",
         "homepage": "https://github.com/boostorg/mysql",
         "license": "BSL-1.0",
@@ -12642,6 +12829,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12658,6 +12849,10 @@
           },
           {
             "name": "boost-endian",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12680,10 +12875,7 @@
             "name": "boost-variant2",
             "version>=": "1.84.0"
           },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          }
+          "openssl"
         ],
         "version": "1.84.0"
       },
@@ -12696,13 +12888,13 @@
       "name": "boost-nowide",
       "manifest": {
         "name": "boost-nowide",
+        "port-version": 1,
         "description": "Boost nowide module",
         "homepage": "https://github.com/boostorg/nowide",
         "license": "BSL-1.0",
         "dependencies": [
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12715,17 +12907,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -12739,10 +12922,15 @@
       "name": "boost-numeric-conversion",
       "manifest": {
         "name": "boost-numeric-conversion",
+        "port-version": 1,
         "description": "Boost numeric_conversion module",
         "homepage": "https://github.com/boostorg/numeric_conversion",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -12753,6 +12941,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12770,10 +12962,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12787,6 +12975,7 @@
       "name": "boost-odeint",
       "manifest": {
         "name": "boost-odeint",
+        "port-version": 1,
         "description": "Boost odeint module",
         "homepage": "https://github.com/boostorg/odeint",
         "license": "BSL-1.0",
@@ -12801,6 +12990,10 @@
           },
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12821,6 +13014,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12870,10 +13067,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "features": {
@@ -12890,6 +13083,7 @@
         "version": "1.84.0"
       },
       "files": [
+        "opt-mpi.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -12898,12 +13092,17 @@
       "name": "boost-optional",
       "manifest": {
         "name": "boost-optional",
+        "port-version": 1,
         "description": "Boost optional module",
         "homepage": "https://github.com/boostorg/optional",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -12916,6 +13115,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -12941,10 +13144,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -12958,10 +13157,15 @@
       "name": "boost-outcome",
       "manifest": {
         "name": "boost-outcome",
+        "port-version": 1,
         "description": "Boost outcome module",
         "homepage": "https://github.com/boostorg/outcome",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -12971,15 +13175,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-system",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -12994,10 +13198,15 @@
       "name": "boost-parameter",
       "manifest": {
         "name": "boost-parameter",
+        "port-version": 1,
         "description": "Boost parameter module",
         "homepage": "https://github.com/boostorg/parameter",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -13012,6 +13221,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13037,10 +13250,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13054,13 +13263,22 @@
       "name": "boost-parameter-python",
       "manifest": {
         "name": "boost-parameter-python",
+        "port-version": 1,
         "description": "Boost parameter_python module",
         "homepage": "https://github.com/boostorg/parameter_python",
         "license": "BSL-1.0",
         "supports": "!emscripten",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13077,11 +13295,6 @@
           },
           {
             "name": "boost-python",
-            "platform": "!uwp & !emscripten & !ios & !android",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -13096,16 +13309,21 @@
       "name": "boost-pfr",
       "manifest": {
         "name": "boost-pfr",
+        "port-version": 1,
         "description": "Boost pfr module",
         "homepage": "https://github.com/boostorg/pfr",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -13120,6 +13338,7 @@
       "name": "boost-phoenix",
       "manifest": {
         "name": "boost-phoenix",
+        "port-version": 1,
         "description": "Boost phoenix module",
         "homepage": "https://github.com/boostorg/phoenix",
         "license": "BSL-1.0",
@@ -13130,6 +13349,10 @@
           },
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -13146,6 +13369,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13179,10 +13406,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13196,6 +13419,7 @@
       "name": "boost-poly-collection",
       "manifest": {
         "name": "boost-poly-collection",
+        "port-version": 1,
         "description": "Boost poly_collection module",
         "homepage": "https://github.com/boostorg/poly_collection",
         "license": "BSL-1.0",
@@ -13205,11 +13429,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13231,10 +13463,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13248,16 +13476,21 @@
       "name": "boost-polygon",
       "manifest": {
         "name": "boost-polygon",
+        "port-version": 1,
         "description": "Boost polygon module",
         "homepage": "https://github.com/boostorg/polygon",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -13272,6 +13505,7 @@
       "name": "boost-pool",
       "manifest": {
         "name": "boost-pool",
+        "port-version": 1,
         "description": "Boost pool module",
         "homepage": "https://github.com/boostorg/pool",
         "license": "BSL-1.0",
@@ -13281,7 +13515,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13294,10 +13536,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           },
           {
@@ -13316,16 +13554,21 @@
       "name": "boost-predef",
       "manifest": {
         "name": "boost-predef",
+        "port-version": 1,
         "description": "Boost predef module",
         "homepage": "https://github.com/boostorg/predef",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -13340,16 +13583,21 @@
       "name": "boost-preprocessor",
       "manifest": {
         "name": "boost-preprocessor",
+        "port-version": 1,
         "description": "Boost preprocessor module",
         "homepage": "https://github.com/boostorg/preprocessor",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -13364,6 +13612,7 @@
       "name": "boost-process",
       "manifest": {
         "name": "boost-process",
+        "port-version": 1,
         "description": "Boost process module",
         "homepage": "https://github.com/boostorg/process",
         "license": "BSL-1.0",
@@ -13382,6 +13631,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
@@ -13396,6 +13649,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13439,10 +13696,6 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           }
@@ -13450,6 +13703,7 @@
         "version": "1.84.0"
       },
       "files": [
+        "opt-filesystem.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -13458,6 +13712,7 @@
       "name": "boost-program-options",
       "manifest": {
         "name": "boost-program-options",
+        "port-version": 1,
         "description": "Boost program_options module",
         "homepage": "https://github.com/boostorg/program_options",
         "license": "BSL-1.0",
@@ -13471,8 +13726,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -13492,16 +13746,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-iterator",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -13523,14 +13776,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -13544,6 +13789,7 @@
       "name": "boost-property-map",
       "manifest": {
         "name": "boost-property-map",
+        "port-version": 1,
         "description": "Boost property_map module",
         "homepage": "https://github.com/boostorg/property_map",
         "license": "BSL-1.0",
@@ -13554,6 +13800,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -13570,6 +13820,10 @@
           },
           {
             "name": "boost-function",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13607,10 +13861,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13624,12 +13874,17 @@
       "name": "boost-property-map-parallel",
       "manifest": {
         "name": "boost-property-map-parallel",
+        "port-version": 1,
         "description": "Boost property_map_parallel module",
         "homepage": "https://github.com/boostorg/property_map_parallel",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -13645,8 +13900,11 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mpi",
-            "platform": "!uwp",
             "version>=": "1.84.0"
           },
           {
@@ -13680,10 +13938,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13697,6 +13951,7 @@
       "name": "boost-property-tree",
       "manifest": {
         "name": "boost-property-tree",
+        "port-version": 1,
         "description": "Boost property_tree module",
         "homepage": "https://github.com/boostorg/property_tree",
         "license": "BSL-1.0",
@@ -13714,11 +13969,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13756,10 +14019,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13773,10 +14032,15 @@
       "name": "boost-proto",
       "manifest": {
         "name": "boost-proto",
+        "port-version": 1,
         "description": "Boost proto module",
         "homepage": "https://github.com/boostorg/proto",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -13787,6 +14051,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13816,10 +14084,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13833,6 +14097,7 @@
       "name": "boost-ptr-container",
       "manifest": {
         "name": "boost-ptr-container",
+        "port-version": 1,
         "description": "Boost ptr_container module",
         "homepage": "https://github.com/boostorg/ptr_container",
         "license": "BSL-1.0",
@@ -13850,11 +14115,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -13888,10 +14161,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -13905,6 +14174,7 @@
       "name": "boost-python",
       "manifest": {
         "name": "boost-python",
+        "port-version": 1,
         "description": "Boost python module",
         "homepage": "https://github.com/boostorg/python",
         "license": "BSL-1.0",
@@ -13919,8 +14189,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -13952,6 +14221,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
@@ -13961,11 +14234,6 @@
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -14003,14 +14271,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "default-features": [
@@ -14035,6 +14295,7 @@
       },
       "files": [
         "portfile.cmake",
+        "remove_undef.diff",
         "vcpkg.json"
       ]
     },
@@ -14042,16 +14303,21 @@
       "name": "boost-qvm",
       "manifest": {
         "name": "boost-qvm",
+        "port-version": 1,
         "description": "Boost qvm module",
         "homepage": "https://github.com/boostorg/qvm",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -14066,6 +14332,7 @@
       "name": "boost-random",
       "manifest": {
         "name": "boost-random",
+        "port-version": 1,
         "description": "Boost random module",
         "homepage": "https://github.com/boostorg/random",
         "license": "BSL-1.0",
@@ -14080,8 +14347,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14097,16 +14363,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-io",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -14132,14 +14397,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -14153,6 +14410,7 @@
       "name": "boost-range",
       "manifest": {
         "name": "boost-range",
+        "port-version": 1,
         "description": "Boost range module",
         "homepage": "https://github.com/boostorg/range",
         "license": "BSL-1.0",
@@ -14163,6 +14421,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14187,6 +14449,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14224,10 +14490,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -14241,16 +14503,21 @@
       "name": "boost-ratio",
       "manifest": {
         "name": "boost-ratio",
+        "port-version": 1,
         "description": "Boost ratio module",
         "homepage": "https://github.com/boostorg/ratio",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -14265,6 +14532,7 @@
       "name": "boost-rational",
       "manifest": {
         "name": "boost-rational",
+        "port-version": 1,
         "description": "Boost rational module",
         "homepage": "https://github.com/boostorg/rational",
         "license": "BSL-1.0",
@@ -14274,11 +14542,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14300,10 +14576,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -14317,6 +14589,7 @@
       "name": "boost-redis",
       "manifest": {
         "name": "boost-redis",
+        "port-version": 1,
         "description": "Boost redis module",
         "homepage": "https://github.com/boostorg/redis",
         "license": "BSL-1.0",
@@ -14330,11 +14603,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14347,10 +14628,6 @@
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -14365,6 +14642,7 @@
       "name": "boost-regex",
       "manifest": {
         "name": "boost-regex",
+        "port-version": 1,
         "description": "Boost regex module",
         "homepage": "https://github.com/boostorg/regex",
         "license": "BSL-1.0",
@@ -14374,8 +14652,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14395,12 +14672,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-integer",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-integer",
             "version>=": "1.84.0"
           },
           {
@@ -14426,14 +14702,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "features": {
@@ -14447,7 +14715,8 @@
         "version": "1.84.0"
       },
       "files": [
-        "b2-options.cmake",
+        "compat.diff",
+        "features.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -14456,10 +14725,15 @@
       "name": "boost-safe-numerics",
       "manifest": {
         "name": "boost-safe-numerics",
+        "port-version": 1,
         "description": "Boost safe_numerics module",
         "homepage": "https://github.com/boostorg/safe_numerics",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-concept-check",
             "version>=": "1.84.0"
@@ -14473,6 +14747,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
@@ -14482,10 +14760,6 @@
           },
           {
             "name": "boost-mp11",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -14500,16 +14774,25 @@
       "name": "boost-scope-exit",
       "manifest": {
         "name": "boost-scope-exit",
+        "port-version": 1,
         "description": "Boost scope_exit module",
         "homepage": "https://github.com/boostorg/scope_exit",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-function",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14522,10 +14805,6 @@
           },
           {
             "name": "boost-typeof",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -14540,6 +14819,7 @@
       "name": "boost-serialization",
       "manifest": {
         "name": "boost-serialization",
+        "port-version": 1,
         "description": "Boost serialization module",
         "homepage": "https://github.com/boostorg/serialization",
         "license": "BSL-1.0",
@@ -14553,8 +14833,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14574,6 +14853,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-integer",
             "version>=": "1.84.0"
           },
@@ -14583,11 +14866,6 @@
           },
           {
             "name": "boost-iterator",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -14645,14 +14923,6 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -14666,6 +14936,7 @@
       "name": "boost-signals2",
       "manifest": {
         "name": "boost-signals2",
+        "port-version": 1,
         "description": "Boost signals2 module",
         "homepage": "https://github.com/boostorg/signals2",
         "license": "BSL-1.0",
@@ -14679,6 +14950,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
@@ -14688,6 +14963,10 @@
           },
           {
             "name": "boost-function",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14729,10 +15008,6 @@
           {
             "name": "boost-variant",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -14746,6 +15021,7 @@
       "name": "boost-smart-ptr",
       "manifest": {
         "name": "boost-smart-ptr",
+        "port-version": 1,
         "description": "Boost smart_ptr module",
         "homepage": "https://github.com/boostorg/smart_ptr",
         "license": "BSL-1.0",
@@ -14755,11 +15031,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14777,10 +15061,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -14794,16 +15074,25 @@
       "name": "boost-sort",
       "manifest": {
         "name": "boost-sort",
+        "port-version": 1,
         "description": "Boost sort module",
         "homepage": "https://github.com/boostorg/sort",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14816,10 +15105,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -14834,6 +15119,7 @@
       "name": "boost-spirit",
       "manifest": {
         "name": "boost-spirit",
+        "port-version": 1,
         "description": "Boost spirit module",
         "homepage": "https://github.com/boostorg/spirit",
         "license": "BSL-1.0",
@@ -14844,6 +15130,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14868,6 +15158,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -14953,10 +15247,6 @@
           {
             "name": "boost-variant",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -14970,14 +15260,14 @@
       "name": "boost-stacktrace",
       "manifest": {
         "name": "boost-stacktrace",
+        "port-version": 1,
         "description": "Boost stacktrace module",
         "homepage": "https://github.com/boostorg/stacktrace",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -14993,8 +15283,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15002,21 +15291,15 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
+        "features.cmake",
+        "fix_config-check.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -15025,6 +15308,7 @@
       "name": "boost-statechart",
       "manifest": {
         "name": "boost-statechart",
+        "port-version": 1,
         "description": "Boost statechart module",
         "homepage": "https://github.com/boostorg/statechart",
         "license": "BSL-1.0",
@@ -15035,6 +15319,10 @@
           },
           {
             "name": "boost-bind",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15058,6 +15346,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mpl",
             "version>=": "1.84.0"
           },
@@ -15076,10 +15368,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -15093,16 +15381,21 @@
       "name": "boost-static-assert",
       "manifest": {
         "name": "boost-static-assert",
+        "port-version": 1,
         "description": "Boost static_assert module",
         "homepage": "https://github.com/boostorg/static_assert",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -15117,12 +15410,17 @@
       "name": "boost-static-string",
       "manifest": {
         "name": "boost-static-string",
+        "port-version": 1,
         "description": "Boost static_string module",
         "homepage": "https://github.com/boostorg/static_string",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15138,6 +15436,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-static-assert",
             "version>=": "1.84.0"
           },
@@ -15147,10 +15449,6 @@
           },
           {
             "name": "boost-utility",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -15165,6 +15463,7 @@
       "name": "boost-stl-interfaces",
       "manifest": {
         "name": "boost-stl-interfaces",
+        "port-version": 1,
         "description": "Boost stl_interfaces module",
         "homepage": "https://github.com/boostorg/stl_interfaces",
         "license": "BSL-1.0",
@@ -15174,15 +15473,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-type-traits",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-type-traits",
             "version>=": "1.84.0"
           }
         ],
@@ -15197,6 +15500,7 @@
       "name": "boost-system",
       "manifest": {
         "name": "boost-system",
+        "port-version": 1,
         "description": "Boost system module",
         "homepage": "https://github.com/boostorg/system",
         "license": "BSL-1.0",
@@ -15206,8 +15510,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15215,8 +15518,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15228,21 +15530,14 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
       },
       "files": [
+        "compat.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -15251,6 +15546,7 @@
       "name": "boost-test",
       "manifest": {
         "name": "boost-test",
+        "port-version": 1,
         "description": "Boost test module",
         "homepage": "https://github.com/boostorg/test",
         "license": "BSL-1.0",
@@ -15269,8 +15565,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15294,16 +15589,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-io",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-iterator",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -15337,14 +15631,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -15358,6 +15644,7 @@
       "name": "boost-thread",
       "manifest": {
         "name": "boost-thread",
+        "port-version": 1,
         "description": "Boost thread module",
         "homepage": "https://github.com/boostorg/thread",
         "license": "BSL-1.0",
@@ -15375,12 +15662,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-chrono",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-chrono",
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15416,12 +15702,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-io",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-io",
             "version>=": "1.84.0"
           },
           {
@@ -15469,16 +15754,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -15493,6 +15770,7 @@
       "name": "boost-throw-exception",
       "manifest": {
         "name": "boost-throw-exception",
+        "port-version": 1,
         "description": "Boost throw_exception module",
         "homepage": "https://github.com/boostorg/throw_exception",
         "license": "BSL-1.0",
@@ -15502,11 +15780,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -15521,13 +15803,13 @@
       "name": "boost-timer",
       "manifest": {
         "name": "boost-timer",
+        "port-version": 1,
         "description": "Boost timer module",
         "homepage": "https://github.com/boostorg/timer",
         "license": "BSL-1.0",
         "dependencies": [
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15535,25 +15817,16 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-io",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-io",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-predef",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -15567,6 +15840,7 @@
       "name": "boost-tokenizer",
       "manifest": {
         "name": "boost-tokenizer",
+        "port-version": 1,
         "description": "Boost tokenizer module",
         "homepage": "https://github.com/boostorg/tokenizer",
         "license": "BSL-1.0",
@@ -15576,11 +15850,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15593,10 +15875,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -15611,16 +15889,25 @@
       "name": "boost-tti",
       "manifest": {
         "name": "boost-tti",
+        "port-version": 1,
         "description": "Boost tti module",
         "homepage": "https://github.com/boostorg/tti",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-function-types",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15633,10 +15920,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -15651,10 +15934,15 @@
       "name": "boost-tuple",
       "manifest": {
         "name": "boost-tuple",
+        "port-version": 1,
         "description": "Boost tuple module",
         "homepage": "https://github.com/boostorg/tuple",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -15664,15 +15952,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-static-assert",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -15687,6 +15975,7 @@
       "name": "boost-type-erasure",
       "manifest": {
         "name": "boost-type-erasure",
+        "port-version": 1,
         "description": "Boost type_erasure module",
         "homepage": "https://github.com/boostorg/type_erasure",
         "license": "BSL-1.0",
@@ -15696,8 +15985,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -15713,12 +16001,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-iterator",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-iterator",
             "version>=": "1.84.0"
           },
           {
@@ -15754,16 +16041,8 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-vmd",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -15777,10 +16056,15 @@
       "name": "boost-type-index",
       "manifest": {
         "name": "boost-type-index",
+        "port-version": 1,
         "description": "Boost type_index module",
         "homepage": "https://github.com/boostorg/type_index",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -15794,11 +16078,11 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-throw-exception",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-throw-exception",
             "version>=": "1.84.0"
           }
         ],
@@ -15813,20 +16097,25 @@
       "name": "boost-type-traits",
       "manifest": {
         "name": "boost-type-traits",
+        "port-version": 1,
         "description": "Boost type_traits module",
         "homepage": "https://github.com/boostorg/type_traits",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-static-assert",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-static-assert",
             "version>=": "1.84.0"
           }
         ],
@@ -15841,16 +16130,21 @@
       "name": "boost-typeof",
       "manifest": {
         "name": "boost-typeof",
+        "port-version": 1,
         "description": "Boost typeof module",
         "homepage": "https://github.com/boostorg/typeof",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           }
         ],
@@ -15865,10 +16159,19 @@
       "name": "boost-ublas",
       "manifest": {
         "name": "boost-ublas",
+        "port-version": 1,
         "description": "Boost ublas module",
         "homepage": "https://github.com/boostorg/ublas",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-compute",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-concept-check",
             "version>=": "1.84.0"
@@ -15879,6 +16182,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15916,10 +16223,6 @@
           {
             "name": "boost-typeof",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -15933,6 +16236,7 @@
       "name": "boost-uninstall",
       "manifest": {
         "name": "boost-uninstall",
+        "port-version": 1,
         "description": "Internal vcpkg port used to uninstall Boost",
         "license": "MIT",
         "version": "1.84.0"
@@ -15947,6 +16251,7 @@
       "name": "boost-units",
       "manifest": {
         "name": "boost-units",
+        "port-version": 1,
         "description": "Boost units module",
         "homepage": "https://github.com/boostorg/units",
         "license": "BSL-1.0",
@@ -15956,11 +16261,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -15998,10 +16311,6 @@
           {
             "name": "boost-typeof",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -16015,12 +16324,17 @@
       "name": "boost-unordered",
       "manifest": {
         "name": "boost-unordered",
+        "port-version": 1,
         "description": "Boost unordered module",
         "homepage": "https://github.com/boostorg/unordered",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16036,6 +16350,10 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-mp11",
             "version>=": "1.84.0"
           },
@@ -16045,10 +16363,6 @@
           },
           {
             "name": "boost-throw-exception",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -16063,6 +16377,7 @@
       "name": "boost-url",
       "manifest": {
         "name": "boost-url",
+        "port-version": 1,
         "description": "Boost url module",
         "homepage": "https://github.com/boostorg/url",
         "license": "BSL-1.0",
@@ -16076,8 +16391,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16089,8 +16403,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-modular-build-helper",
-            "host": true,
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -16120,14 +16433,6 @@
           {
             "name": "boost-variant2",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -16141,6 +16446,7 @@
       "name": "boost-utility",
       "manifest": {
         "name": "boost-utility",
+        "port-version": 1,
         "description": "Boost utility module",
         "homepage": "https://github.com/boostorg/utility",
         "license": "BSL-1.0",
@@ -16150,11 +16456,19 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -16172,10 +16486,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -16189,12 +16499,17 @@
       "name": "boost-uuid",
       "manifest": {
         "name": "boost-uuid",
+        "port-version": 1,
         "description": "Boost uuid module",
         "homepage": "https://github.com/boostorg/uuid",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16207,6 +16522,10 @@
           },
           {
             "name": "boost-core",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -16247,10 +16566,6 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
             "name": "boost-winapi",
             "version>=": "1.84.0"
           }
@@ -16258,6 +16573,7 @@
         "version": "1.84.0"
       },
       "files": [
+        "opt-random.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -16266,12 +16582,17 @@
       "name": "boost-variant",
       "manifest": {
         "name": "boost-variant",
+        "port-version": 1,
         "description": "Boost variant module",
         "homepage": "https://github.com/boostorg/variant",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16288,6 +16609,10 @@
           },
           {
             "name": "boost-detail",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -16321,10 +16646,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -16338,6 +16659,7 @@
       "name": "boost-variant2",
       "manifest": {
         "name": "boost-variant2",
+        "port-version": 1,
         "description": "Boost variant2 module",
         "homepage": "https://github.com/boostorg/variant2",
         "license": "BSL-1.0",
@@ -16347,44 +16669,26 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-mp11",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "boost-vcpkg-helpers",
-      "manifest": {
-        "name": "boost-vcpkg-helpers",
-        "description": "Internal vcpkg port used to modularize Boost",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "boost-uninstall",
-            "version>=": "1.84.0"
-          }
-        ],
-        "version": "1.84.0"
-      },
-      "files": [
-        "LICENSE.txt",
-        "boost-modular-headers.cmake",
-        "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -16392,20 +16696,25 @@
       "name": "boost-vmd",
       "manifest": {
         "name": "boost-vmd",
+        "port-version": 1,
         "description": "Boost vmd module",
         "homepage": "https://github.com/boostorg/vmd",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-preprocessor",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-preprocessor",
             "version>=": "1.84.0"
           }
         ],
@@ -16420,6 +16729,7 @@
       "name": "boost-wave",
       "manifest": {
         "name": "boost-wave",
+        "port-version": 1,
         "description": "Boost wave module",
         "homepage": "https://github.com/boostorg/wave",
         "license": "BSL-1.0",
@@ -16430,8 +16740,7 @@
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-build",
-            "host": true,
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16456,16 +16765,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-iterator",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-lexical-cast",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-modular-build-helper",
-            "host": true,
             "version>=": "1.84.0"
           },
           {
@@ -16511,14 +16819,6 @@
           {
             "name": "boost-type-traits",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
           }
         ],
         "version": "1.84.0"
@@ -16532,20 +16832,25 @@
       "name": "boost-winapi",
       "manifest": {
         "name": "boost-winapi",
+        "port-version": 1,
         "description": "Boost winapi module",
         "homepage": "https://github.com/boostorg/winapi",
         "license": "BSL-1.0",
         "dependencies": [
           {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-config",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-predef",
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
-            "name": "boost-vcpkg-helpers",
+            "name": "boost-predef",
             "version>=": "1.84.0"
           }
         ],
@@ -16560,12 +16865,17 @@
       "name": "boost-xpressive",
       "manifest": {
         "name": "boost-xpressive",
+        "port-version": 1,
         "description": "Boost xpressive module",
         "homepage": "https://github.com/boostorg/xpressive",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-cmake",
             "version>=": "1.84.0"
           },
           {
@@ -16586,6 +16896,10 @@
           },
           {
             "name": "boost-fusion",
+            "version>=": "1.84.0"
+          },
+          {
+            "name": "boost-headers",
             "version>=": "1.84.0"
           },
           {
@@ -16651,10 +16965,6 @@
           {
             "name": "boost-utility",
             "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
-            "version>=": "1.84.0"
           }
         ],
         "version": "1.84.0"
@@ -16668,10 +16978,15 @@
       "name": "boost-yap",
       "manifest": {
         "name": "boost-yap",
+        "port-version": 1,
         "description": "Boost yap module",
         "homepage": "https://github.com/boostorg/yap",
         "license": "BSL-1.0",
         "dependencies": [
+          {
+            "name": "boost-cmake",
+            "version>=": "1.84.0"
+          },
           {
             "name": "boost-config",
             "version>=": "1.84.0"
@@ -16681,15 +16996,15 @@
             "version>=": "1.84.0"
           },
           {
+            "name": "boost-headers",
+            "version>=": "1.84.0"
+          },
+          {
             "name": "boost-preprocessor",
             "version>=": "1.84.0"
           },
           {
             "name": "boost-type-index",
-            "version>=": "1.84.0"
-          },
-          {
-            "name": "boost-vcpkg-helpers",
             "version>=": "1.84.0"
           }
         ],
@@ -17445,7 +17760,7 @@
           },
           "wangle"
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "fix-build.patch",
@@ -21637,7 +21952,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -24507,6 +24822,7 @@
       "name": "docopt",
       "manifest": {
         "name": "docopt",
+        "port-version": 1,
         "description": "Command line arguments parser that will make you smile (C++11 port).",
         "license": "MIT OR BSL-1.0",
         "dependencies": [
@@ -26969,7 +27285,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -27966,7 +28282,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "fix-build.patch",
@@ -28872,7 +29188,7 @@
             ]
           }
         },
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "boost-1.70.patch",
@@ -29105,26 +29421,6 @@
       },
       "files": [
         "find-psimd.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "fplus",
-      "manifest": {
-        "name": "fplus",
-        "description": "Functional Programming Library for C++. Write concise and readable C++ code",
-        "homepage": "https://github.com/Dobiasd/FunctionalPlus",
-        "license": "BSL-1.0",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "0.2.23"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29622,12 +29918,13 @@
       "name": "frugally-deep",
       "manifest": {
         "name": "frugally-deep",
+        "port-version": 1,
         "description": "Header-only library for using Keras models in C++.",
         "homepage": "https://github.com/Dobiasd/frugally-deep",
         "license": "MIT",
         "dependencies": [
           "eigen3",
-          "fplus",
+          "functionalplus",
           "nlohmann-json",
           {
             "name": "vcpkg-cmake",
@@ -29749,6 +30046,26 @@
       },
       "files": [
         "disable-testing.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "functionalplus",
+      "manifest": {
+        "name": "functionalplus",
+        "description": "This port is the new fplus port, the old fplus has been removed. Functional Programming Library for C++. Write concise and readable C++ code",
+        "homepage": "https://github.com/Dobiasd/FunctionalPlus",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.2.24"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32415,6 +32732,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -42863,7 +43181,7 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
-        "port-version": 5,
+        "port-version": 6,
         "description": "LAPACK - Linear Algebra PACKage",
         "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
@@ -60159,7 +60477,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "portfile.cmake",
@@ -65705,7 +66023,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
@@ -65771,6 +66089,7 @@
       },
       "files": [
         "fix-build.patch",
+        "fix-static-build.patch",
         "fix_no_zstd.patch",
         "no-absolute-paths.patch",
         "portfile.cmake",
@@ -67671,7 +67990,6 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 5,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -67769,16 +68087,13 @@
             ]
           }
         },
-        "version": "5.11.0"
+        "version": "5.12.0"
       },
       "files": [
-        "53.diff",
         "add-tools-option.patch",
-        "external_vtk.patch",
+        "fix-build.patch",
+        "fix-configure.patch",
         "portfile.cmake",
-        "python_include.patch",
-        "python_wrapper.patch",
-        "qt6-all.patch",
         "removedoublesymbols.patch",
         "vcpkg.json"
       ]
@@ -70412,7 +70727,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -82242,7 +82557,6 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
-        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -82269,7 +82583,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.13.0"
+        "version-semver": "1.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -84623,7 +84937,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.13.1"
+        "version": "0.13.2"
       },
       "files": [
         "portfile.cmake",
@@ -86271,7 +86585,6 @@
       "name": "tvision",
       "manifest": {
         "name": "tvision",
-        "port-version": 1,
         "description": "A modern port of Turbo Vision 2.0, the classical framework for text-based user interfaces.",
         "homepage": "https://github.com/magiblot/tvision",
         "license": "MIT",
@@ -86286,7 +86599,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-08-10"
+        "version-date": "2024-02-28"
       },
       "files": [
         "portfile.cmake",
@@ -87502,6 +87815,21 @@
       ]
     },
     {
+      "name": "vcpkg-boost",
+      "manifest": {
+        "name": "vcpkg-boost",
+        "license": "MIT",
+        "version-date": "2024-04-25"
+      },
+      "files": [
+        "boost-install.cmake",
+        "portfile.cmake",
+        "usage.in",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "vcpkg-cmake",
       "manifest": {
         "name": "vcpkg-cmake",
@@ -88509,7 +88837,6 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 12,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -88518,6 +88845,7 @@
           "eigen3",
           "expat",
           "exprtk",
+          "fast-float",
           "fmt",
           "freetype",
           "glew",
@@ -88675,6 +89003,7 @@
             "description": "Build vtk modules required by paraview",
             "dependencies": [
               "cli11",
+              "openturns",
               {
                 "name": "vtk",
                 "default-features": false,
@@ -88695,11 +89024,7 @@
           "python": {
             "description": "Python functionality for VTK",
             "dependencies": [
-              "python3",
-              {
-                "name": "python3",
-                "host": true
-              }
+              "python3"
             ]
           },
           "qt": {
@@ -88741,10 +89066,11 @@
             ]
           }
         },
-        "version-semver": "9.2.0-pv5.11.0"
+        "version-semver": "9.3.0-pv5.12.0"
       },
       "files": [
-        "9690.diff",
+        "10945.diff",
+        "10972.diff",
         "FindExpat.patch",
         "FindHDF5.cmake",
         "FindLZ4.patch",
@@ -88752,12 +89078,15 @@
         "NoUndefDebug.patch",
         "afxdll.patch",
         "cgns.patch",
+        "devendor_exodusII.patch",
+        "fast-float.patch",
+        "fix-exprtk.patch",
         "fix-gdal.patch",
         "fix-using-hdf5.patch",
         "iotr.patch",
         "jsoncpp.patch",
         "libproj.patch",
-        "missing-include-fixes.patch",
+        "ot-dep.patch",
         "pegtl.patch",
         "portfile.cmake",
         "pythonwrapper.patch",
@@ -88815,7 +89144,6 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
-        "port-version": 2,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
         "license": null,
@@ -88856,9 +89184,10 @@
             ]
           }
         },
-        "version": "1.9.0"
+        "version": "2.1.0"
       },
       "files": [
+        "fix-build.patch",
         "omp.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -89292,7 +89621,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.04.15.00"
+        "version-string": "2024.04.22.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -91630,7 +91959,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
         "fix_install.patch",
