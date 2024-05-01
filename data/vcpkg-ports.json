@@ -1,5 +1,5 @@
 {
-  "version": "142fa5b08b693589889ba5993d3769f4f4de19a6",
+  "version": "c591ac6466a55ef0a05a3d56bb1489ca36e50102",
   "ports": [
     {
       "name": "3fd",
@@ -1194,6 +1194,7 @@
       "name": "aom",
       "manifest": {
         "name": "aom",
+        "port-version": 1,
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
@@ -6709,7 +6710,7 @@
       "name": "bond",
       "manifest": {
         "name": "bond",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Bond is a cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data. Bond is broadly used at Microsoft in high scale services.",
         "homepage": "https://github.com/Microsoft/bond",
         "dependencies": [
@@ -6739,6 +6740,7 @@
       },
       "files": [
         "fix-install-path.patch",
+        "fix-msc-ver.patch",
         "portfile.cmake",
         "skip-grpc-compilation.patch",
         "vcpkg.json"
@@ -21657,7 +21659,7 @@
             "host": true
           }
         ],
-        "version": "0.5.2"
+        "version": "0.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -23854,7 +23856,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -27377,7 +27379,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -40989,7 +40991,7 @@
         "description": "KDAB's algorithm helpers for C++14 and up",
         "homepage": "https://github.com/KDAB/KDAlgorithms",
         "license": "MIT",
-        "version": "1.2"
+        "version": "1.3"
       },
       "files": [
         "portfile.cmake",
@@ -44069,7 +44071,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -45997,7 +45999,6 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 1,
         "description": "A C library implementing the Git core methods with a solid API",
         "homepage": "https://github.com/libgit2/libgit2",
         "license": null,
@@ -46091,7 +46092,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.6.4"
+        "version-semver": "1.8.0"
       },
       "files": [
         "c-standard.diff",
@@ -48423,7 +48424,7 @@
             "host": true
           }
         ],
-        "version": "2024.3.0"
+        "version": "2024.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -48750,7 +48751,7 @@
       "name": "libopnmidi",
       "manifest": {
         "name": "libopnmidi",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libOPNMIDI is a free Software MIDI synthesizer library with OPN2 (YM2612) and OPNA (YM2608) emulation",
         "homepage": "https://github.com/Wohlstand/libOPNMIDI",
         "license": "LGPL-2.1-or-later OR GPL-2.0-or-later OR GPL-3.0-or-later OR MIT",
@@ -48813,6 +48814,7 @@
         "cmake-package-export.patch",
         "disable-wopn2hpp.patch",
         "fix-build-without-sequencer.patch",
+        "fix-c++-standard.patch",
         "fix-pmdwin-emulator-include.patch",
         "portfile.cmake",
         "usage",
@@ -52687,6 +52689,7 @@
       "name": "libxcrypt",
       "manifest": {
         "name": "libxcrypt",
+        "port-version": 1,
         "description": "libxcrypt is a modern library for one-way hashing of passwords. On Linux-based systems, by default libxcrypt will be binary backward compatible with the libcrypt.so.1 shipped as part of the GNU C Library.",
         "homepage": "https://github.com/besser82/libxcrypt",
         "license": "LGPL-2.1-only",
@@ -57881,7 +57884,7 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -59610,7 +59613,7 @@
       "name": "mp3lame",
       "manifest": {
         "name": "mp3lame",
-        "port-version": 12,
+        "port-version": 13,
         "description": "LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.",
         "homepage": "https://sourceforge.net/projects/lame",
         "license": "LGPL-2.0-only",
@@ -60451,6 +60454,7 @@
       "name": "mvfst",
       "manifest": {
         "name": "mvfst",
+        "port-version": 1,
         "description": "mvfst (Pronounced move fast) is a client and server implementation of IETF QUIC protocol in C++ by Facebook.",
         "homepage": "https://github.com/facebook/mvfst",
         "license": "MIT",
@@ -65008,7 +65012,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 16,
+        "port-version": 17,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -65600,7 +65604,7 @@
       "name": "openh264",
       "manifest": {
         "name": "openh264",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.",
         "homepage": "https://www.openh264.org/",
         "supports": "!uwp",
@@ -71018,6 +71022,59 @@
       ]
     },
     {
+      "name": "pulseaudio",
+      "manifest": {
+        "name": "pulseaudio",
+        "description": "PulseAudio is a sound server, originally created to overcome the limitations of the Enlightened Sound Daemon (EsounD)",
+        "homepage": "https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Community/",
+        "license": null,
+        "supports": "!windows & !osx",
+        "dependencies": [
+          {
+            "name": "alsa",
+            "platform": "linux"
+          },
+          {
+            "name": "dbus",
+            "default-features": false
+          },
+          "fftw3",
+          {
+            "name": "glib",
+            "default-features": false
+          },
+          {
+            "name": "gstreamer",
+            "default-features": false
+          },
+          "jack2",
+          "libatomic-ops",
+          "libiconv",
+          {
+            "name": "openssl",
+            "default-features": false
+          },
+          "orc",
+          "sndfile",
+          "soxr",
+          "speex",
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "17.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pulzed-mini",
       "manifest": {
         "name": "pulzed-mini",
@@ -71534,7 +71591,6 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
-        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -71611,6 +71667,7 @@
             "name": "qtmultimedia",
             "default-features": false,
             "features": [
+              "ffmpeg",
               "qml",
               "widgets"
             ]
@@ -71622,15 +71679,6 @@
               "gstreamer"
             ],
             "platform": "!windows"
-          },
-          {
-            "name": "qtmultimedia",
-            "default-features": false,
-            "features": [
-              "ffmpeg",
-              "gstreamer"
-            ],
-            "platform": "windows & !static"
           },
           "qtnetworkauth",
           {
@@ -71753,7 +71801,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -71901,7 +71949,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -73376,7 +73424,6 @@
       "name": "qt5compat",
       "manifest": {
         "name": "qt5compat",
-        "port-version": 1,
         "description": "The Qt 5 Core Compat module contains the Qt 5 Core APIs that were removed in Qt 6. The module facilitates the transition to Qt 6.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -73454,7 +73501,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -73495,7 +73542,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -73531,7 +73578,7 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -73544,7 +73591,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 12,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74067,7 +74113,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "GLIB2-static.patch",
@@ -74083,14 +74129,10 @@
         "env.patch",
         "fix-host-aliasing.patch",
         "fix_cmake_build.patch",
-        "fix_cmake_build_type.patch",
         "fix_egl.patch",
         "fix_egl_2.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
-        "patches/0001-CVE-2023-51714-qtbase-6.6.diff",
-        "patches/0002-CVE-2023-51714-qtbase-6.6.diff",
-        "patches/CVE-2024-25580-qtbase-6.6.diff",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -74103,7 +74145,6 @@
       "name": "qtcharts",
       "manifest": {
         "name": "qtcharts",
-        "port-version": 1,
         "description": "The Qt Charts module provides a set of easy-to-use chart components. It uses the Qt Graphics View Framework to integrate charts with modern user interfaces.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74137,7 +74178,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74148,7 +74189,6 @@
       "name": "qtcoap",
       "manifest": {
         "name": "qtcoap",
-        "port-version": 1,
         "description": "Qt CoAP implements the client side of CoAP.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74161,7 +74201,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74172,7 +74212,6 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
-        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74187,7 +74226,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74198,7 +74237,6 @@
       "name": "qtdatavis3d",
       "manifest": {
         "name": "qtdatavis3d",
-        "port-version": 1,
         "description": "The Qt Data Visualization module enables you to visualize data in 3D as bar, scatter, and surface graphs.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74216,7 +74254,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74250,7 +74288,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74261,7 +74299,6 @@
       "name": "qtdeviceutilities",
       "manifest": {
         "name": "qtdeviceutilities",
-        "port-version": 1,
         "description": "Qt Device Utilities provides functionality that is useful for controlling settings in embedded applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74276,7 +74313,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74287,7 +74324,6 @@
       "name": "qtdoc",
       "manifest": {
         "name": "qtdoc",
-        "port-version": 1,
         "description": "The Qt documentation.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74297,7 +74333,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74308,7 +74344,6 @@
       "name": "qtgraphs",
       "manifest": {
         "name": "qtgraphs",
-        "port-version": 1,
         "description": "The Qt Graphs module enables you to visualize data in 3D as bar, scatter, and surface graphs.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74331,7 +74366,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74342,7 +74377,6 @@
       "name": "qtgrpc",
       "manifest": {
         "name": "qtgrpc",
-        "port-version": 1,
         "description": "The Qt GRPC and Qt Protobuf modules together allow you to define data and messages in proto files, and then use the code generators, which generate client code allowing accessors for fields and gRPC services in the Qt framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74365,7 +74399,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74377,7 +74411,6 @@
       "name": "qthttpserver",
       "manifest": {
         "name": "qthttpserver",
-        "port-version": 1,
         "description": "Qt HTTP Server supports building HTTP server functionality into an application.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74391,7 +74424,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74402,7 +74435,6 @@
       "name": "qtimageformats",
       "manifest": {
         "name": "qtimageformats",
-        "port-version": 1,
         "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74444,7 +74476,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -74456,7 +74488,6 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
-        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74493,7 +74524,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "fix-taglib-search.patch",
@@ -74586,7 +74617,6 @@
       "name": "qtlanguageserver",
       "manifest": {
         "name": "qtlanguageserver",
-        "port-version": 1,
         "description": "An implementation of the Language Server Protocol.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74608,7 +74638,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74619,7 +74649,6 @@
       "name": "qtlocation",
       "manifest": {
         "name": "qtlocation",
-        "port-version": 1,
         "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74648,7 +74677,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74680,7 +74709,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74691,7 +74720,6 @@
       "name": "qtmqtt",
       "manifest": {
         "name": "qtmqtt",
-        "port-version": 1,
         "description": "The Qt MQTT module provides a standard compliant implementation of the MQTT protocol specification.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74704,7 +74732,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74715,7 +74743,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 2,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74735,6 +74762,10 @@
           }
         ],
         "default-features": [
+          {
+            "name": "gstreamer",
+            "platform": "linux"
+          },
           "widgets"
         ],
         "features": {
@@ -74751,9 +74782,16 @@
                   "swresample",
                   "swscale"
                 ]
+              },
+              {
+                "name": "pulseaudio",
+                "platform": "linux"
+              },
+              {
+                "name": "qtdeclarative",
+                "default-features": false
               }
-            ],
-            "supports": "!(windows & static)"
+            ]
           },
           "gstreamer": {
             "description": "Build with gstreamer",
@@ -74766,7 +74804,8 @@
                   "plugins-base"
                 ]
               }
-            ]
+            ],
+            "supports": "linux"
           },
           "qml": {
             "description": "Build QML imports",
@@ -74790,13 +74829,11 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "fix_avfoundation_target.patch",
         "portfile.cmake",
-        "remove_export_macro.patch",
-        "remove_unistd.patch",
         "static_find_modules.patch",
         "vcpkg.json"
       ]
@@ -74805,7 +74842,6 @@
       "name": "qtnetworkauth",
       "manifest": {
         "name": "qtnetworkauth",
-        "port-version": 1,
         "description": "Qt Network Authorization provides a set of APIs that enable Qt applications to obtain limited access to online accounts and HTTP services without exposing users' passwords.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74818,7 +74854,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74829,7 +74865,6 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
-        "port-version": 2,
         "description": "The Qt OPC UA module implements a Qt API to interact with OPC UA on top of a 3rd party OPC UA stack.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74896,7 +74931,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "fix-build.patch",
@@ -74908,7 +74943,6 @@
       "name": "qtpositioning",
       "manifest": {
         "name": "qtpositioning",
-        "port-version": 3,
         "description": "The Qt Positioning API provides positioning information via QML and C++ interfaces.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74935,7 +74969,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -74947,7 +74981,6 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
-        "port-version": 1,
         "description": "Qt Quick 3D provides a high-level API for creating 3D content and 3D user interfaces based on Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74982,7 +75015,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -74993,7 +75026,6 @@
       "name": "qtquick3dphysics",
       "manifest": {
         "name": "qtquick3dphysics",
-        "port-version": 1,
         "description": "Qt Quick 3D Physics provides a high-level API for physics simulation.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75003,7 +75035,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75032,7 +75064,6 @@
       "name": "qtquickeffectmaker",
       "manifest": {
         "name": "qtquickeffectmaker",
-        "port-version": 1,
         "description": "Qt Quick Effect Maker is a tool for creating shader effects for Qt Quick with high productivity and performance.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75058,7 +75089,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75069,7 +75100,6 @@
       "name": "qtquicktimeline",
       "manifest": {
         "name": "qtquicktimeline",
-        "port-version": 1,
         "description": "The Qt Quick Timeline module enables keyframe-based animations and parameterization.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75080,7 +75110,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75091,7 +75121,6 @@
       "name": "qtremoteobjects",
       "manifest": {
         "name": "qtremoteobjects",
-        "port-version": 1,
         "description": "Qt Remote Objects (QtRO) is an Inter-Process Communication (IPC) module developed for Qt. This module extends Qt's existing functionalities to enable information exchange between processes or computers, easily.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75131,7 +75160,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75142,7 +75171,6 @@
       "name": "qtscxml",
       "manifest": {
         "name": "qtscxml",
-        "port-version": 1,
         "description": "The Qt SCXML module provides functionality to create state machines from SCXML files.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75171,7 +75199,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75182,7 +75210,6 @@
       "name": "qtsensors",
       "manifest": {
         "name": "qtsensors",
-        "port-version": 1,
         "description": "The Qt Sensors API provides access to sensor hardware via QML and C++ interfaces. The Qt Sensors API also provides a motion gesture recognition API for devices.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75210,7 +75237,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75221,7 +75248,6 @@
       "name": "qtserialbus",
       "manifest": {
         "name": "qtserialbus",
-        "port-version": 1,
         "description": "The Qt Serial Bus API provides classes and functions to access the various industrial serial buses and protocols, such as CAN, ModBus, and others.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75251,7 +75277,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75262,7 +75288,6 @@
       "name": "qtserialport",
       "manifest": {
         "name": "qtserialport",
-        "port-version": 2,
         "description": "Qt Serial Port provides basic functionality for configuration, I/O operations, and getting and setting the control signals of the RS-232 pinouts.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75273,7 +75298,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75284,7 +75309,6 @@
       "name": "qtshadertools",
       "manifest": {
         "name": "qtshadertools",
-        "port-version": 1,
         "description": "The Qt Shader Tools module is designed to provide a set of tools and utilities to work with graphics shaders.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75302,7 +75326,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75313,7 +75337,6 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
-        "port-version": 1,
         "description": "The Qt Speech module enables a Qt application to support accessibility features such as text-to-speech, which is useful for end-users who are visually challenged or cannot access the application for whatever reason.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75336,7 +75359,7 @@
             "default-features": false
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75347,7 +75370,6 @@
       "name": "qtsvg",
       "manifest": {
         "name": "qtsvg",
-        "port-version": 1,
         "description": "Qt SVG provides classes for rendering and displaying SVG drawings in widgets and on other paint devices.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75360,7 +75382,7 @@
             ]
           }
         ],
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75371,7 +75393,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 2,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75474,7 +75495,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -75487,7 +75508,6 @@
       "name": "qttranslations",
       "manifest": {
         "name": "qttranslations",
-        "port-version": 1,
         "description": "Qt translations.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75512,7 +75532,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75558,7 +75578,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -75594,7 +75614,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75605,7 +75625,6 @@
       "name": "qtwebchannel",
       "manifest": {
         "name": "qtwebchannel",
-        "port-version": 1,
         "description": "Qt WebChannel enables peer-to-peer communication between a server (QML/C++ application) and a client (HTML/JavaScript or QML application).",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75626,7 +75645,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75637,7 +75656,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 5,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75790,11 +75808,10 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "clang-cl.patch",
-        "msvc-template.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75803,7 +75820,6 @@
       "name": "qtwebsockets",
       "manifest": {
         "name": "qtwebsockets",
-        "port-version": 1,
         "description": "The Qt WebSockets module provides C++ and QML interfaces that enable Qt applications to act as a server that can process WebSocket requests, or a client that can consume data received from the server, or both.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75827,7 +75843,7 @@
             ]
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -75838,7 +75854,6 @@
       "name": "qtwebview",
       "manifest": {
         "name": "qtwebview",
-        "port-version": 1,
         "description": "Qt WebView provides a way to display web content in a QML application without necessarily including a full web browser stack by using native APIs where it makes sense.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75867,7 +75882,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.6.1"
+        "version": "6.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -87833,9 +87848,9 @@
       "name": "vcpkg-cmake",
       "manifest": {
         "name": "vcpkg-cmake",
-        "documentation": "https://vcpkg.io/en/docs/maintainers/ports/vcpkg-cmake.html",
+        "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_configure",
         "license": "MIT",
-        "version-date": "2023-05-04"
+        "version-date": "2024-04-18"
       },
       "files": [
         "portfile.cmake",
@@ -88837,6 +88852,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
+        "port-version": 1,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
