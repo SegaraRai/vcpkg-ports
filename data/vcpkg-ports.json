@@ -1,5 +1,5 @@
 {
-  "version": "c591ac6466a55ef0a05a3d56bb1489ca36e50102",
+  "version": "b8a5f242bad27d96572c5836dc649b6a10e728fc",
   "ports": [
     {
       "name": "3fd",
@@ -23856,7 +23856,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": "BSD-3-Clause OR BSD-2-Clause OR libtiff OR MIT OR Zlib OR Libpng",
@@ -23902,7 +23902,10 @@
           "tiff": {
             "description": "Enable TIFF support",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "tools": {
@@ -24015,7 +24018,7 @@
       "name": "devil",
       "manifest": {
         "name": "devil",
-        "port-version": 12,
+        "port-version": 13,
         "description": "A full featured cross-platform image library",
         "homepage": "https://github.com/DentonW/DevIL",
         "supports": "!uwp",
@@ -24071,7 +24074,10 @@
           "tiff": {
             "description": "Use Libtiff for .tif support",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           }
         },
@@ -30975,7 +30981,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -31015,8 +31021,7 @@
             "description": "Enable JPEG loader (requires libjpeg)",
             "dependencies": [
               "libjpeg-turbo"
-            ],
-            "supports": "!windows"
+            ]
           },
           "png": {
             "description": "Enable PNG loader (requires libpng)",
@@ -31031,8 +31036,7 @@
                 "name": "tiff",
                 "default-features": false
               }
-            ],
-            "supports": "!windows"
+            ]
           }
         },
         "version": "2.42.10"
@@ -34615,6 +34619,7 @@
       "name": "graphicsmagick",
       "manifest": {
         "name": "graphicsmagick",
+        "port-version": 1,
         "description": "Image processing library",
         "homepage": "https://sourceforge.net/projects/graphicsmagick/",
         "dependencies": [
@@ -34623,7 +34628,10 @@
           "libjpeg-turbo",
           "libpng",
           "libwebp",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -39842,6 +39850,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
+        "port-version": 1,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -39869,7 +39878,10 @@
             "name": "openjpeg",
             "default-features": false
           },
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -45835,7 +45847,7 @@
       "name": "libgd",
       "manifest": {
         "name": "libgd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Open source code library for the dynamic creation of images by programmers.",
         "homepage": "https://github.com/libgd/libgd",
         "license": "GD",
@@ -45882,7 +45894,10 @@
           "tiff": {
             "description": "Support for TIFF",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "tools": {
@@ -46452,7 +46467,7 @@
       "name": "libgxps",
       "manifest": {
         "name": "libgxps",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libgxps is a GObject based library for handling and rendering XPS documents.",
         "homepage": "https://wiki.gnome.org/Projects/libgxps",
         "dependencies": [
@@ -46463,7 +46478,10 @@
           "libjpeg-turbo",
           "libpng",
           "libxslt",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -52334,6 +52352,7 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
+        "port-version": 1,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -52418,7 +52437,10 @@
                   "mux"
                 ]
               },
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "cwebp": {
@@ -52426,7 +52448,10 @@
             "dependencies": [
               "libjpeg-turbo",
               "libpng",
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "dwebp": {
@@ -52434,7 +52459,10 @@
             "dependencies": [
               "libjpeg-turbo",
               "libpng",
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "extras": {
@@ -52442,7 +52470,10 @@
             "dependencies": [
               "libjpeg-turbo",
               "libpng",
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "gif2webp": {
@@ -52470,7 +52501,10 @@
                   "libwebpmux"
                 ]
               },
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "info": {
@@ -57038,7 +57072,7 @@
       "name": "mapnik",
       "manifest": {
         "name": "mapnik",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Mapnik is an open source toolkit for developing mapping applications.",
         "homepage": "https://github.com/mapnik/mapnik",
         "license": "LGPL-2.1-only",
@@ -57208,7 +57242,10 @@
           "tiff": {
             "description": "add tiff support",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "utility-geometry-to-wkb": {
@@ -64513,7 +64550,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 19,
+        "port-version": 20,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -64645,7 +64682,10 @@
           "tiff": {
             "description": "TIFF support for opencv",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "world": {
@@ -64673,7 +64713,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 13,
+        "port-version": 14,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -64957,7 +64997,10 @@
           "tiff": {
             "description": "TIFF support for opencv",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "vtk": {
@@ -65012,7 +65055,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 17,
+        "port-version": 18,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -65368,7 +65411,10 @@
           "tiff": {
             "description": "TIFF support for opencv",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "vtk": {
@@ -65646,7 +65692,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -65669,7 +65715,10 @@
           "libpng",
           "openexr",
           "robin-map",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -65793,6 +65842,7 @@
       "name": "openjpeg",
       "manifest": {
         "name": "openjpeg",
+        "port-version": 1,
         "description": "OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.",
         "homepage": "https://github.com/uclouvain/openjpeg",
         "license": "BSD-2-Clause",
@@ -65824,7 +65874,10 @@
               },
               "lcms",
               "libpng",
-              "tiff",
+              {
+                "name": "tiff",
+                "default-features": false
+              },
               "zlib"
             ]
           }
@@ -65955,7 +66008,7 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 9,
+        "port-version": 10,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
         "license": "MPL-2.0-no-copyleft-exception",
         "supports": "(x86 | x64 | arm64) & !xbox",
@@ -65976,7 +66029,10 @@
           "libjpeg-turbo",
           "liblemon",
           "libpng",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -66027,7 +66083,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 4,
+        "port-version": 5,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
@@ -66054,7 +66110,10 @@
             ],
             "platform": "!(windows & static)"
           },
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           "vcglib",
           {
             "name": "vcpkg-cmake",
@@ -66182,7 +66241,7 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-or-later",
@@ -66196,7 +66255,10 @@
           "libxml2",
           "openjpeg",
           "sqlite3",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -66751,6 +66813,10 @@
           "ir": {
             "description": "Enables IR frontend for reading models in OpenVINO IR format"
           },
+          "npu": {
+            "description": "NPU Support",
+            "supports": "x64 & !(osx | uwp) & !static"
+          },
           "onnx": {
             "description": "Enables ONNX frontend for reading models in ONNX format",
             "dependencies": [
@@ -66817,7 +66883,7 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2024.0.0"
+        "version": "2024.1.0"
       },
       "files": [
         "001-disable-tools.patch",
@@ -67773,7 +67839,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -67869,7 +67935,10 @@
           "tiff": {
             "description": "Build support for libtiff image input",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "tools": {
@@ -69905,6 +69974,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
+        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -69917,7 +69987,10 @@
           "libjpeg-turbo",
           "libpng",
           "openjpeg",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -72706,7 +72779,7 @@
       "name": "qt5-imageformats",
       "manifest": {
         "name": "qt5-imageformats",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "license": null,
         "dependencies": [
@@ -72736,7 +72809,10 @@
           "tiff": {
             "description": "Enable TIFF support",
             "dependencies": [
-              "tiff",
+              {
+                "name": "tiff",
+                "default-features": false
+              },
               {
                 "name": "vcpkg-pkgconfig-get-modules",
                 "host": true
@@ -74435,6 +74511,7 @@
       "name": "qtimageformats",
       "manifest": {
         "name": "qtimageformats",
+        "port-version": 1,
         "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74466,7 +74543,10 @@
           "tiff": {
             "description": "Use TIFF",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "webp": {
@@ -78613,6 +78693,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
+        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -78779,7 +78860,10 @@
           "tiff": {
             "description": "Enable TIFF codec",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           },
           "wal": {
@@ -79585,7 +79669,7 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -79620,7 +79704,10 @@
           "tiff": {
             "description": "Support for TIFF image format",
             "dependencies": [
-              "tiff"
+              {
+                "name": "tiff",
+                "default-features": false
+              }
             ]
           }
         },
@@ -80160,13 +80247,16 @@
       "name": "selene",
       "manifest": {
         "name": "selene",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A C++17 image representation, processing and I/O library.",
         "homepage": "https://github.com/kmhofmann/selene",
         "dependencies": [
           "libjpeg-turbo",
           "libpng",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -87996,16 +88086,13 @@
       "name": "vcpkg-pkgconfig-get-modules",
       "manifest": {
         "name": "vcpkg-pkgconfig-get-modules",
-        "documentation": "https://vcpkg.io/en/docs/README.html",
+        "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_pkgconfig_get_modules",
         "license": "MIT",
+        "supports": "native",
         "dependencies": [
-          {
-            "name": "pkgconf",
-            "host": true,
-            "default-features": false
-          }
+          "pkgconf"
         ],
-        "version-date": "2023-09-06"
+        "version-date": "2024-04-03"
       },
       "files": [
         "portfile.cmake",
@@ -88852,7 +88939,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -88897,7 +88984,10 @@
             "name": "sqlite3",
             "host": true
           },
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           "utfcpp",
           {
             "name": "vcpkg-cmake",
@@ -89539,7 +89629,7 @@
       "name": "vxl",
       "manifest": {
         "name": "vxl",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A multi-platform collection of C++ software libraries for Computer Vision and Image Understanding.",
         "dependencies": [
           "bzip2",
@@ -89548,7 +89638,10 @@
           "libjpeg-turbo",
           "libpng",
           "shapelib",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -90606,7 +90699,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -90640,7 +90733,10 @@
           "nanosvg",
           "opengl",
           "pcre2",
-          "tiff",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
