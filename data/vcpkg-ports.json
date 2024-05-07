@@ -1,5 +1,5 @@
 {
-  "version": "326d8b43e365352ba3ccadf388d989082fe0f2a6",
+  "version": "28b1cf627c0570b3e094192df2fce31a3a2bc1d3",
   "ports": [
     {
       "name": "3fd",
@@ -2344,7 +2344,7 @@
             ]
           }
         },
-        "version": "5.0.0"
+        "version": "5.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -18225,10 +18225,9 @@
             "host": true
           }
         ],
-        "version-semver": "3.5.4"
+        "version-semver": "3.6.0"
       },
       "files": [
-        "fix-arm-build.patch",
         "fix-install-path.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -21644,7 +21643,7 @@
         "description": "Simple, portable, and self-contained stacktrace library for C++11 and newer",
         "homepage": "https://github.com/jeremy-rifkin/cpptrace",
         "license": "MIT",
-        "supports": "!uwp",
+        "supports": "!(uwp | android)",
         "dependencies": [
           {
             "name": "libdwarf",
@@ -21659,7 +21658,7 @@
             "host": true
           }
         ],
-        "version": "0.5.3"
+        "version": "0.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -22513,7 +22512,7 @@
       "name": "cuda-api-wrappers",
       "manifest": {
         "name": "cuda-api-wrappers",
-        "description": "header-only library of integrated wrappers around the core parts of NVIDIA's CUDA execution ecosystem",
+        "description": "Header-only library of integrated wrappers around the core parts of NVIDIA's CUDA execution ecosystem",
         "homepage": "https://github.com/eyalroz/cuda-api-wrappers",
         "license": "BSD-3-Clause",
         "dependencies": [
@@ -22527,7 +22526,7 @@
             "host": true
           }
         ],
-        "version": "0.6.7"
+        "version": "0.6.9"
       },
       "files": [
         "portfile.cmake",
@@ -22587,7 +22586,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -22617,6 +22616,12 @@
             "description": "c-ares support",
             "dependencies": [
               "c-ares"
+            ]
+          },
+          "gssapi": {
+            "description": "krb5 support",
+            "dependencies": [
+              "krb5"
             ]
           },
           "http2": {
@@ -25187,7 +25192,7 @@
             ]
           }
         },
-        "version-semver": "1.9.3"
+        "version-semver": "1.9.4"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -36284,7 +36289,7 @@
             "host": true
           }
         ],
-        "version": "2.11.0"
+        "version": "2.11.2"
       },
       "files": [
         "portfile.cmake",
@@ -42942,6 +42947,21 @@
         "homepage": "https://github.com/microsoft/krabsetw",
         "supports": "windows & !uwp",
         "version": "4.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "krb5",
+      "manifest": {
+        "name": "krb5",
+        "description": "Network authentication protocol",
+        "homepage": "https://web.mit.edu/kerberos/",
+        "license": "MIT",
+        "supports": "linux",
+        "version": "1.21.2"
       },
       "files": [
         "portfile.cmake",
@@ -51150,7 +51170,7 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
@@ -53243,8 +53263,9 @@
       "name": "libxpm",
       "manifest": {
         "name": "libxpm",
+        "port-version": 1,
         "description": "XPM format pixmap library",
-        "homepage": "https://github.com/freedesktop/libXpm",
+        "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxpm",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
@@ -68530,7 +68551,7 @@
       "name": "pcre",
       "manifest": {
         "name": "pcre",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Perl Compatible Regular Expressions",
         "homepage": "https://www.pcre.org/",
         "license": null,
@@ -77689,7 +77710,7 @@
         "description": "The Robot Raconteur communication framework core library",
         "homepage": "http://robotraconteur.com",
         "license": "Apache-2.0",
-        "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64)) | (osx & (x64 | arm64))",
+        "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64 | arm32)) | (osx & (x64 | arm64))",
         "dependencies": [
           "boost-algorithm",
           "boost-array",
@@ -77741,7 +77762,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.1.1"
+        "version-semver": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -85609,7 +85630,6 @@
       "name": "tinyorm",
       "manifest": {
         "name": "tinyorm",
-        "port-version": 2,
         "maintainers": "Silver Zachara <silver.zachara@gmail.com>",
         "description": "Modern C++ ORM library for Qt framework",
         "homepage": "https://github.com/silverqx/TinyORM",
@@ -85619,10 +85639,7 @@
         "dependencies": [
           {
             "name": "qtbase",
-            "default-features": false,
-            "features": [
-              "sql"
-            ]
+            "default-features": false
           },
           "range-v3",
           "tabulate",
@@ -85641,6 +85658,12 @@
           "tom"
         ],
         "features": {
+          "build-mysql-driver": {
+            "description": "Build TinyDrivers MySQL database driver (provided by TinyDrivers)",
+            "dependencies": [
+              "libmysql"
+            ]
+          },
           "disable-thread-local": {
             "description": "Remove all thread_local storage duration specifiers (disables multi-threading support)"
           },
@@ -85657,7 +85680,7 @@
             "description": "Enable ORM-related source code (without it only the query builder is compiled)"
           },
           "sql-mysql": {
-            "description": "Build Qt SQL Driver for MySQL",
+            "description": "Build Qt SQL MySQL database driver (provided by QtSql)",
             "dependencies": [
               {
                 "name": "qtbase",
@@ -85669,7 +85692,7 @@
             ]
           },
           "sql-psql": {
-            "description": "Build Qt SQL Driver for PostgreSQL",
+            "description": "Build Qt SQL PostgreSQL database driver (provided by QtSql)",
             "dependencies": [
               {
                 "name": "qtbase",
@@ -85681,7 +85704,7 @@
             ]
           },
           "sql-sqlite": {
-            "description": "Build Qt SQL Driver for SQLite",
+            "description": "Build Qt SQL SQLite database driver (provided by QtSql)",
             "dependencies": [
               {
                 "name": "qtbase",
@@ -85711,11 +85734,10 @@
             ]
           }
         },
-        "version-semver": "0.36.5"
+        "version-semver": "0.37.3"
       },
       "files": [
         "portfile.cmake",
-        "suppress-warning-STL4043.patch",
         "vcpkg.json"
       ]
     },
@@ -86284,7 +86306,6 @@
       "name": "trantor",
       "manifest": {
         "name": "trantor",
-        "port-version": 1,
         "description": "A non-blocking I/O cross-platform TCP network library, using C++14",
         "homepage": "https://github.com/an-tao/trantor",
         "license": "BSD-2-Clause",
@@ -86300,7 +86321,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.17"
+        "version-semver": "1.5.18"
       },
       "files": [
         "000-fix-deps.patch",
