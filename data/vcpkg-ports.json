@@ -1,5 +1,5 @@
 {
-  "version": "3dcd8bb40bc2bbedf206e0bf0dc72c26e2aa2ddd",
+  "version": "7ebd64e6bb56c739136ba9a691b0f4440bacb5cd",
   "ports": [
     {
       "name": "3fd",
@@ -5109,7 +5109,7 @@
           {
             "name": "azure-core-amqp-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.8"
+            "version>=": "1.0.0-beta.9"
           },
           {
             "name": "vcpkg-cmake",
@@ -5120,7 +5120,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.7"
+        "version-semver": "1.0.0-beta.8"
       },
       "files": [
         "portfile.cmake",
@@ -20554,7 +20554,7 @@
             ]
           }
         },
-        "version": "4.0.0"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -31600,7 +31600,7 @@
       "name": "gl3w",
       "manifest": {
         "name": "gl3w",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Simple OpenGL core profile loading",
         "homepage": "https://github.com/skaslev/gl3w",
         "dependencies": [
@@ -31615,6 +31615,11 @@
             "host": true
           }
         ],
+        "features": {
+          "ext": {
+            "description": "include the GL Extensions in output header"
+          }
+        },
         "version-date": "2018-05-31"
       },
       "files": [
@@ -32506,7 +32511,7 @@
             "supports": "!ios"
           }
         },
-        "version": "14.0.0"
+        "version": "14.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -48113,7 +48118,7 @@
             "host": true
           }
         ],
-        "version": "0.9"
+        "version": "0.10"
       },
       "files": [
         "portfile.cmake",
@@ -76372,7 +76377,7 @@
             "default-features": false
           }
         ],
-        "version-date": "2023-05-12"
+        "version": "6.3.0"
       },
       "files": [
         "config.patch",
@@ -78408,6 +78413,7 @@
       "name": "rtaudio",
       "manifest": {
         "name": "rtaudio",
+        "port-version": 1,
         "description": "A set of C++ classes that provide a common API for realtime audio input/output across Linux (native ALSA, JACK, PulseAudio and OSS), Macintosh OS X (CoreAudio and JACK), and Windows (DirectSound, ASIO and WASAPI) operating systems.",
         "homepage": "https://github.com/thestk/rtaudio",
         "license": null,
@@ -78436,12 +78442,16 @@
           },
           "pulse": {
             "description": "Build with PulseAudio backend",
+            "dependencies": [
+              "pulseaudio"
+            ],
             "supports": "linux"
           }
         },
         "version": "6.0.1"
       },
       "files": [
+        "fix-pulse.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92007,7 +92017,6 @@
       "name": "yara",
       "manifest": {
         "name": "yara",
-        "port-version": 1,
         "description": "The pattern matching swiss knife",
         "homepage": "https://github.com/VirusTotal/yara",
         "license": "BSD-3-Clause",
@@ -92034,7 +92043,7 @@
             "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
           }
         },
-        "version": "4.3.2"
+        "version": "4.5.0"
       },
       "files": [
         "CMakeLists.txt",
