@@ -43,7 +43,7 @@ watchEffect((): void => {
       @keydown.escape="close"
     >
       <div
-        class=":uno: -z-1 absolute left-0 top-0 w-full h-full bg-[var(--theme-text)] opacity-15"
+        class=":uno: -z-1 absolute left-0 top-0 w-full h-full bg-[--theme-text] opacity-15"
       ></div>
       <div
         class=":uno: w-full h-full mx-auto flex flex-col items-center justify-center"

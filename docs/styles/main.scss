@@ -14,7 +14,7 @@ html {
 body {
   @apply flex;
   @apply flex-col;
-  @apply font-[var(--font-body)];
+  @apply font-[--font-body];
   @apply w-full;
   @apply min-h-full;
   @apply overflow-x-hidden;
@@ -126,24 +126,24 @@ main :not(nav) {
 kbd,
 .code,
 .rendered code {
-  @apply font-[var(--font-mono)];
+  @apply font-[--font-mono];
 
   font-feature-settings: var(--font-feat-mono);
 }
 
 .link,
 .rendered a {
-  @apply text-[var(--theme-text-accent)];
+  @apply text-[--theme-text-accent];
   @apply font-normal;
   @apply transition-colors-200;
 
   & > code {
-    @apply \!bg-[var(--theme-code-inline-bg-link)];
+    @apply \!bg-[--theme-code-inline-bg-link];
   }
 
   &:hover,
   &:focus {
-    @apply color-[var(--theme-text-accent-hover)];
+    @apply color-[--theme-text-accent-hover];
   }
 
   &:focus-visible {
@@ -155,7 +155,7 @@ kbd,
 .code,
 .rendered :not(.code-block, pre) > code {
   @apply text-[0.875em];
-  @apply bg-[var(--theme-code-inline-bg)];
+  @apply bg-[--theme-code-inline-bg];
   @apply px-1;
   @apply py-0.5;
   @apply -my-0.5;
@@ -173,7 +173,7 @@ kbd,
   ul,
   ol,
   summary {
-    @apply text-[var(--theme-text-light)];
+    @apply text-[--theme-text-light];
   }
 
   ul:not(.plain-list) {
@@ -194,7 +194,7 @@ kbd,
   }
 
   ::marker {
-    @apply text-[var(--theme-text-light)];
+    @apply text-[--theme-text-light];
   }
 
   details > summary {
@@ -251,7 +251,7 @@ nav.toc {
   li.header-link {
     @apply transition-colors-200;
     @apply border-l-4px;
-    @apply border-color-[var(--theme-divider)];
+    @apply border-color-[--theme-divider];
 
     padding-inline-start: 1rem;
 
@@ -276,17 +276,17 @@ nav.toc {
     &:hover,
     &:focus,
     &:focus-within {
-      @apply border-color-[var(--theme-text)];
+      @apply border-color-[--theme-text];
     }
 
     &:hover a,
     & a:focus {
-      @apply \!color-[var(--theme-text-accent)];
+      @apply \!color-[--theme-text-accent];
     }
 
     /* Highlight TOC header link matching the current scroll position */
     &.current-header-link {
-      @apply bg-[var(--theme-bg-accent)];
+      @apply bg-[--theme-bg-accent];
 
       /* Indicates the current heading for forced colors users in older browsers */
       outline: 1px solid transparent;
@@ -299,7 +299,7 @@ nav.toc {
     }
 
     &.current-header-link a {
-      @apply color-[var(--theme-text)];
+      @apply color-[--theme-text];
     }
   }
 }

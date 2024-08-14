@@ -14,7 +14,7 @@ const LinkElement = isHome ? 'span' : 'a';
 ---
 
 <header
-  class=":uno: flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-[var(--theme-navbar-bg)] w-full"
+  class=":uno: flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-[--theme-navbar-bg] w-full"
 >
   <SkipToContent />
   <nav
@@ -28,9 +28,9 @@ const LinkElement = isHome ? 'span' : 'a';
       <div class=":uno: flex-none">
         <LinkElement
           class:list={[
-            ':uno: flex items-center select-none color-[var(--theme-text)] leading-tight',
+            ':uno: flex items-center select-none color-[--theme-text] leading-tight',
             !isHome &&
-              ':uno: transition-colors-200 light:hover:color-[var(--theme-text-light)] light:active:color-[var(--theme-text-light)] dark:hover:color-[var(--theme-text-accent)] dark:active:color-[var(--theme-text-accent)]',
+              ':uno: transition-colors-200 light:hover:color-[--theme-text-light] light:active:color-[--theme-text-light] dark:hover:color-[--theme-text-accent] dark:active:color-[--theme-text-accent]',
           ]}
           href={isHome ? undefined : '/'}
           aria-label="Vcpkg Ports"

@@ -104,7 +104,7 @@ const deferFocus = (): void => {
 <template>
   <div
     ref="containerEl"
-    class=":uno: w-full max-h-full px-3 py-4 rounded-2 flex flex-col gap-y-4 bg-[var(--theme-bg)] text-lg"
+    class=":uno: w-full max-h-full px-3 py-4 rounded-2 flex flex-col gap-y-4 bg-[--theme-bg] text-lg"
     @click.stop
     @keydown.escape.prevent.stop="emit('close')"
     v-focus-by-key
@@ -130,7 +130,7 @@ const deferFocus = (): void => {
               <span class=":uno: opacity-80">Example:</span>
               <template v-for="example in exampleTerms" :key="example">
                 <button
-                  class=":uno: text-[var(--theme-text-accent)]"
+                  class=":uno: text-[--theme-text-accent]"
                   translate="no"
                   v-text="example"
                   @click="term = example"
@@ -155,20 +155,18 @@ const deferFocus = (): void => {
         </div>
       </template>
       <template v-else>
-        <ul
-          class=":uno: flex flex-col gap-y-4 mt-2 text-[var(--theme-text-light)]"
-        >
+        <ul class=":uno: flex flex-col gap-y-4 mt-2 text-[--theme-text-light]">
           <template v-for="result in resultsSliced" :key="result.item.name">
             <li class=":uno: block">
               <a
                 :class="[
                   'tabbable',
-                  ':uno: flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-[var(--theme-bg-accent)] focus:bg-[var(--theme-bg-accent)]',
+                  ':uno: flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-[--theme-bg-accent] focus:bg-[--theme-bg-accent]',
                 ]"
                 :href="getPortPageURL(result.item.name)"
               >
                 <div
-                  class=":uno: text-lg font-bold text-[var(--theme-text-accent)]"
+                  class=":uno: text-lg font-bold text-[--theme-text-accent]"
                   translate="no"
                   v-text="result.item.name"
                 />

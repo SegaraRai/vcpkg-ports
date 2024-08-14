@@ -19,7 +19,7 @@ onMounted((): void => {
 
 <template>
   <button
-    class=":uno: select-none w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-1.25 transition-colors text-[var(--theme-text-light)] light:border-black/30 dark:border-white/50 light:hover:border-black/45 dark:hover:border-orange-400/70 light:bg-white/1 dark:bg-white/2 light:hover:bg-white/10 dark:hover:bg-white/5"
+    class=":uno: select-none w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-1.25 transition-colors text-[--theme-text-light] light:border-black/30 dark:border-white/50 light:hover:border-black/45 dark:hover:border-orange-400/70 light:bg-white/1 dark:bg-white/2 light:hover:bg-white/10 dark:hover:bg-white/5"
     aria-label="Search"
     translate="no"
   >
@@ -28,12 +28,12 @@ onMounted((): void => {
     </span>
     <span class=":uno: flex-1"></span>
     <span
-      class=":uno: border border-color-[var(--theme-divider)] rounded-sm px-2 py-1 text-sm leading-none"
+      class=":uno: border border-color-[--theme-divider] rounded-sm px-2 py-1 text-sm leading-none"
     >
       <kbd>/</kbd>
     </span>
     <span
-      class=":uno: border border-color-[var(--theme-divider)] rounded-sm px-2 py-1 text-sm leading-none lt-sm:hidden"
+      class=":uno: border border-color-[--theme-divider] rounded-sm px-2 py-1 text-sm leading-none lt-sm:hidden"
     >
       <kbd v-text="`${modifier} K`" />
     </span>

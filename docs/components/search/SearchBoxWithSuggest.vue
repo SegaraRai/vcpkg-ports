@@ -94,11 +94,11 @@ const close = (focus?: boolean): void => {
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">
       <div
-        class=":uno: z-1 absolute w-full border overflow-auto text-base bg-[var(--theme-bg)] border-[var(--theme-divider)] py-2 rounded-2 leading-tight"
+        class=":uno: z-1 absolute w-full border overflow-auto text-base bg-[--theme-bg] border-[--theme-divider] py-2 rounded-2 leading-tight"
         :class="large ? ':uno: top-14' : ':uno: top-10'"
       >
         <ul
-          class=":uno: flex flex-col text-[var(--theme-text-light)]"
+          class=":uno: flex flex-col text-[--theme-text-light]"
           translate="no"
           v-on-click-outside="() => close(false)"
           @keydown.escape.prevent.stop="close(true)"
@@ -109,7 +109,7 @@ const close = (focus?: boolean): void => {
                 :href="getPortPageURL(result.item.name)"
                 :class="[
                   'tabbable',
-                  ':uno: block pl-12 py-2 color-[var(--theme-text-accent)] hover:bg-[var(--theme-bg-accent)] focus:bg-[var(--theme-bg-accent)] !transition-colors-200 !outline-none',
+                  ':uno: block pl-12 py-2 color-[--theme-text-accent] hover:bg-[--theme-bg-accent] focus:bg-[--theme-bg-accent] !transition-colors-200 !outline-none',
                 ]"
                 tabindex="0"
               >

@@ -108,7 +108,7 @@ onMounted((): (() => void) => {
   <div class=":uno: overflow-auto text-base">
     <template v-if="loading">
       <div
-        class=":uno: flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight text-[var(--theme-text-light)]"
+        class=":uno: flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight text-[--theme-text-light]"
       >
         <div
           aria-label="Loading data"
@@ -129,7 +129,7 @@ onMounted((): (() => void) => {
     </template>
     <template v-else>
       <div
-        class=":uno: mb-8 text-base text-[var(--theme-text-light)]"
+        class=":uno: mb-8 text-base text-[--theme-text-light]"
         v-text="
           `${page > 1 ? `Page ${page} of ` : ''}${pluralize(
             results.length,
@@ -138,9 +138,7 @@ onMounted((): (() => void) => {
           )} for ${term}`
         "
       />
-      <ul
-        class=":uno: flex flex-col gap-y-8 mt-2 text-[var(--theme-text-light)]"
-      >
+      <ul class=":uno: flex flex-col gap-y-8 mt-2 text-[--theme-text-light]">
         <template v-for="result in resultsSliced" :key="result.item.name">
           <li class=":uno: block">
             <div class=":uno: flex flex-col gap-y-1 leading-tight">
@@ -157,7 +155,7 @@ onMounted((): (() => void) => {
               </div>
               <template v-if="result.item.description">
                 <div
-                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[var(--theme-text-light)]"
+                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[--theme-text-light]"
                   :title="result.item.description"
                 >
                   <HighlightMatched
@@ -172,7 +170,7 @@ onMounted((): (() => void) => {
               </template>
               <template v-else>
                 <div
-                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[var(--theme-text-light)] font-italic opacity-80"
+                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[--theme-text-light] font-italic opacity-80"
                 >
                   No description provided
                 </div>
@@ -183,7 +181,7 @@ onMounted((): (() => void) => {
       </ul>
       <template v-if="pageCount > 1">
         <div
-          class=":uno: flex gap-x-4 mt-8 justify-center items-center text-[var(--theme-text-light)]"
+          class=":uno: flex gap-x-4 mt-8 justify-center items-center text-[--theme-text-light]"
         >
           <a
             class="link"
