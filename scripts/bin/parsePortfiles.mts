@@ -12,10 +12,21 @@ import { parseCMake } from '../../shared/cmakeParser.mjs';
 import { VCPKG_DIR } from '../constants.mjs';
 import { VCPKG_PORT_NAMES } from '../vcpkgInfo.mjs';
 
+let numChecked = 0;
 let numErrors = 0;
-const numWarnings = 0;
+
+const filterPortNames = process.argv.slice(2);
 
 for (const portName of VCPKG_PORT_NAMES) {
+  if (
+    filterPortNames.length > 0 &&
+    !filterPortNames.every((name) => portName.includes(name))
+  ) {
+    continue;
+  }
+
+  numChecked++;
+
   try {
     const portfileFilepath = path.join(
       VCPKG_DIR,
@@ -35,8 +46,13 @@ for (const portName of VCPKG_PORT_NAMES) {
   }
 }
 
+if (!numChecked) {
+  console.error('Portfile: No ports found');
+  exit(1);
+}
+
 console.log(
-  `Portfile: Parsed ${VCPKG_PORT_NAMES.length} ports. ${numErrors} error(s) and ${numWarnings} warning(s) found`
+  `Portfile: Parsed ${numChecked} of ${VCPKG_PORT_NAMES.length} ports. ${numErrors} error(s) found`
 );
 
 if (numErrors) {
