@@ -60,6 +60,7 @@ type Tokens = readonly Token<TokenType>[];
 
 const parse = createParser<TokenType>([
   // Source Files
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#source-files
   [NT_FILE, Q0N(NT_FILE_ELEMENT), unwrapTokens],
   [
     NT_FILE_ELEMENT,
@@ -76,6 +77,7 @@ const parse = createParser<TokenType>([
   [NT_SPACE, /^[\t ]+/, () => []],
   [NT_NEWLINE, /^\n/, () => []],
   // Command Invocations
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#command-invocations
   [
     NT_COMMAND_INVOCATION,
     [
@@ -131,8 +133,9 @@ const parse = createParser<TokenType>([
         ...filterRuleTokens(tokens, NT_ARGUMENTS),
       ].flatMap((e) => e[1] as TokenTypeArgument[]),
   ],
-  [NT_SEPARATION, OR(NT_SPACE, NT_LINE_ENDING)],
+  [NT_SEPARATION, OR(NT_BRACKET_COMMENT, NT_SPACE, NT_LINE_ENDING)], // The official site syntax does not include `bracket_comment`, but it is actually needed to support bracket comments in arguments.
   // Command Arguments
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#command-arguments
   [
     NT_ARGUMENT,
     OR(NT_BRACKET_ARGUMENT, NT_QUOTED_ARGUMENT, NT_UNQUOTED_ARGUMENT),
@@ -141,6 +144,7 @@ const parse = createParser<TokenType>([
     ],
   ],
   // Bracket Argument
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#bracket-argument
   [
     NT_BRACKET_ARGUMENT,
     [NT_BRACKET_OPEN, NT_BRACKET_CONTENT, NT_BRACKET_CLOSE],
@@ -168,6 +172,7 @@ const parse = createParser<TokenType>([
   ],
   [NT_BRACKET_CLOSE, /^\]=*\]/, () => []],
   // Quoted Argument
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#quoted-argument
   [
     NT_QUOTED_ARGUMENT,
     ['"', Q0N(NT_QUOTED_ELEMENT), '"'],
@@ -179,6 +184,7 @@ const parse = createParser<TokenType>([
   ],
   [NT_QUOTED_CONTINUATION, ['\\', NT_NEWLINE], () => []],
   // Unquoted Argument
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#unquoted-argument
   [
     NT_UNQUOTED_ARGUMENT,
     OR(
@@ -237,6 +243,7 @@ const parse = createParser<TokenType>([
     },
   ],
   // Escape Sequences
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#escape-sequences
   [
     NT_ESCAPE_SEQUENCE,
     OR(NT_ESCAPE_IDENTITY, NT_ESCAPE_ENCODED, NT_ESCAPE_SEMICOLON),
@@ -256,6 +263,7 @@ const parse = createParser<TokenType>([
   ],
   [NT_ESCAPE_SEMICOLON, /^\\;/, (): Tokens => [';']],
   // Comments
+  // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#comments
   [NT_BRACKET_COMMENT, ['#', NT_BRACKET_ARGUMENT], () => []],
   [NT_LINE_COMMENT, ['#', NOT(NT_BRACKET_ARGUMENT), /^[^\n]*/], () => []],
 ]);
