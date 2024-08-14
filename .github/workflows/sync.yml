@@ -13,11 +13,15 @@ on:
         description: 'Skip sync'
         required: true
         type: boolean
+      no_incremental:
+        description: 'Full sync'
+        required: true
+        type: boolean
 
 env:
   CLOUDFLARE_ACCOUNT_ID: 1a5d304db1c315f0731d67e097a1ee6c
   PAGES_PROJECT_NAME: vcpkg
-  COMMIT_BRANCH: main
+  BASE_BRANCH: main
   COMMIT_AUTHOR_NAME: github-actions
   COMMIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
   COMMIT_MESSAGE: 'sync: update vcpkg'
@@ -35,7 +39,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ env.COMMIT_BRANCH }}
+          ref: ${{ env.BASE_BRANCH }}
           fetch-depth: 1
           submodules: true
 
@@ -51,9 +55,13 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      - name: Sync vcpkg
+      - name: Sync vcpkg (fast)
         run: pnpm run sync:vcpkg
-        if: (!inputs.no_sync)
+        if: (!inputs.no_sync && !inputs.no_incremental)
+
+      - name: Sync vcpkg (full)
+        run: pnpm run sync:vcpkg-full
+        if: (!inputs.no_sync && inputs.no_incremental)
 
       - name: Check for changes
         if: (!inputs.no_sync)
