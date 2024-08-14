@@ -10,11 +10,11 @@ on:
   workflow_dispatch:
     inputs:
       no_sync:
-        description: 'Skip sync'
+        description: "Skip sync"
         required: true
         type: boolean
       no_incremental:
-        description: 'Full sync'
+        description: "Full sync"
         required: true
         type: boolean
 
@@ -24,7 +24,7 @@ env:
   BASE_BRANCH: main
   COMMIT_AUTHOR_NAME: github-actions
   COMMIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
-  COMMIT_MESSAGE: 'sync: update vcpkg'
+  COMMIT_MESSAGE: "sync: update vcpkg"
 
 jobs:
   sync:

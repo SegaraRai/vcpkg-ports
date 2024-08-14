@@ -1,17 +1,17 @@
 ---
-import type { PortContext } from '../../../../shared/dataTypes/portContext.mjs';
-import { analyzeDependencies } from '../../../../shared/vcpkg/portDependencies.mjs';
-import { getSupports } from '../../../../shared/vcpkg/portSupports.mjs';
-import { stringifyPortDescription } from '../../../../shared/vcpkg/portUtils.mjs';
-import { FULL_TRIPLETS } from '../../../../shared/vcpkg/triplets.mjs';
-import { getFeatureSlug } from '../../../constants.mjs';
-import portMap from '../../../virtual/portMap.mjs';
-import SectionWrapper from '../SectionWrapper.astro';
-import DefaultFeatureBadge from '../components/DefaultFeatureBadge.astro';
-import Dependencies from '../components/Dependencies.astro';
-import SupportedListItem from '../components/SupportedListItem.astro';
-import type { SectionSubset } from '../defineSection.mjs';
-import MarkdownSubset from './MarkdownSubset.astro';
+import type { PortContext } from "../../../../shared/dataTypes/portContext.mjs";
+import { analyzeDependencies } from "../../../../shared/vcpkg/portDependencies.mjs";
+import { getSupports } from "../../../../shared/vcpkg/portSupports.mjs";
+import { stringifyPortDescription } from "../../../../shared/vcpkg/portUtils.mjs";
+import { FULL_TRIPLETS } from "../../../../shared/vcpkg/triplets.mjs";
+import { getFeatureSlug } from "../../../constants.mjs";
+import portMap from "../../../virtual/portMap.mjs";
+import SectionWrapper from "../SectionWrapper.astro";
+import DefaultFeatureBadge from "../components/DefaultFeatureBadge.astro";
+import Dependencies from "../components/Dependencies.astro";
+import SupportedListItem from "../components/SupportedListItem.astro";
+import type { SectionSubset } from "../defineSection.mjs";
+import MarkdownSubset from "./MarkdownSubset.astro";
 
 interface Props {
   readonly context: PortContext;
@@ -35,7 +35,7 @@ if (!feature) {
   throw new Error(`Feature ${featureName} not found in manifest`);
 }
 
-const isDefaultFeature = !!manifest['default-features']?.includes(featureName);
+const isDefaultFeature = !!manifest["default-features"]?.includes(featureName);
 
 const {
   directHostDeps,
@@ -74,15 +74,15 @@ const description = stringifyPortDescription(feature.description);
       !!supports && !!feature.supports && (
         <details class="port-feature-supports narrow">
           <summary>
-            <em>Supports:</em>{' '}
+            <em>Supports:</em>{" "}
             <code translate="no" set:text={feature.supports} />
           </summary>
           {!!supports.supportedMinified && !!supports.unsupportedMinified && (
             <div class=":uno: mb-4" translate="no">
               <ul
                 class:list={[
-                  'plain-list',
-                  ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+                  "plain-list",
+                  ":uno: my-2 flex flex-col gap-y-1 leading-tight",
                 ]}
               >
                 {supports.supportedMinified.map((triplet) => (
@@ -91,8 +91,8 @@ const description = stringifyPortDescription(feature.description);
               </ul>
               <ul
                 class:list={[
-                  'plain-list',
-                  ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+                  "plain-list",
+                  ":uno: my-2 flex flex-col gap-y-1 leading-tight",
                 ]}
               >
                 {supports.unsupportedMinified.map((triplet) => (

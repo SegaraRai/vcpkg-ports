@@ -3,32 +3,30 @@ SRC: .vcpkg/*
 OUT: data/vcpkg-history.json, data/vcpkg-version.json
 */
 
-/* eslint-disable no-console */
-
-import { execFile } from 'node:child_process';
-import { createHash } from 'node:crypto';
-import { argv, exit } from 'node:process';
-import { promisify } from 'node:util';
+import { execFile } from "node:child_process";
+import { createHash } from "node:crypto";
+import { argv, exit } from "node:process";
+import { promisify } from "node:util";
 import type {
   DataHistory,
   DataHistoryCommit,
-} from '../../shared/dataTypes/history.mjs';
-import type { DataVersion } from '../../shared/dataTypes/version.mjs';
+} from "../../shared/dataTypes/history.mjs";
+import type { DataVersion } from "../../shared/dataTypes/version.mjs";
 import {
   DATA_HISTORY_FILE,
   DATA_VERSION_FILE,
   VCPKG_DIR,
-} from '../constants.mjs';
-import { GIT_BIN } from '../gitBin.mjs';
-import { tryReadJSON, writeJSON } from '../jsonUtils.mjs';
-import { VCPKG_HEAD_OID, VCPKG_PORT_NAMES } from '../vcpkgInfo.mjs';
+} from "../constants.mjs";
+import { GIT_BIN } from "../gitBin.mjs";
+import { tryReadJSON, writeJSON } from "../jsonUtils.mjs";
+import { VCPKG_HEAD_OID, VCPKG_PORT_NAMES } from "../vcpkgInfo.mjs";
 
 const execFileAsync = promisify(execFile);
 
 function hashEmail(email: string): string {
-  return createHash('md5')
+  return createHash("md5")
     .update(email.normalize().trim().toLowerCase())
-    .digest('hex');
+    .digest("hex");
 }
 
 function getGitHubUserFromEmail(email: string): string | null {
@@ -43,15 +41,15 @@ async function gitLog<T extends Readonly<Record<string, string>>>(
     readonly files: readonly string[];
   })[]
 > {
-  const DELIMITER_SPEC = '%n%n%n%n';
-  const DELIMITER = DELIMITER_SPEC.replaceAll('%n', '\n');
+  const DELIMITER_SPEC = "%n%n%n%n";
+  const DELIMITER = DELIMITER_SPEC.replaceAll("%n", "\n");
 
   const formatSpec = Object.entries(spec)
     .map(([key, value]) => `////${key}=${value}`)
-    .join('%n');
+    .join("%n");
   const args = [
-    'log',
-    '--name-only',
+    "log",
+    "--name-only",
     `--format=${DELIMITER_SPEC}${formatSpec}`,
     range,
   ].filter((v) => v);
@@ -73,7 +71,7 @@ async function gitLog<T extends Readonly<Record<string, string>>>(
     const result: Record<string, string | string[]> = {
       files,
     };
-    for (const line of trimmed.split('\n')) {
+    for (const line of trimmed.split("\n")) {
       const lineTrimmed = line.trim();
       if (!lineTrimmed) {
         continue;
@@ -87,7 +85,7 @@ async function gitLog<T extends Readonly<Record<string, string>>>(
       }
     }
 
-    results.push(result as any);
+    results.push(result as (typeof results)[number]);
   }
 
   return results;
@@ -105,7 +103,7 @@ async function generateHistory(
   if (fromCommitId) {
     console.log(`History: Build history incrementally from ${fromCommitId}`);
   } else {
-    console.log('History: Build history from scratch');
+    console.log("History: Build history from scratch");
   }
 
   const transformCommit = (
@@ -136,36 +134,36 @@ async function generateHistory(
    */
   const allCommits = await gitLog(
     {
-      oid: '%H',
-      parent: '%P',
-      message: '%s',
-      author_email: '%ae',
-      author_name: '%an',
-      author_date: '%aI',
-      committer_email: '%ce',
-      committer_name: '%cn',
-      committer_date: '%cI',
+      oid: "%H",
+      parent: "%P",
+      message: "%s",
+      author_email: "%ae",
+      author_name: "%an",
+      author_date: "%aI",
+      committer_email: "%ce",
+      committer_name: "%cn",
+      committer_date: "%cI",
     },
-    fromCommitId ? `${fromCommitId}^...HEAD` : 'HEAD'
+    fromCommitId ? `${fromCommitId}^...HEAD` : "HEAD"
   );
 
   console.log(`History: Read ${allCommits.length} commit(s)`);
 
   if (allCommits.length === 0) {
-    throw new Error('No commits found');
+    throw new Error("No commits found");
   }
 
   if (allCommits[0].oid !== VCPKG_HEAD_OID) {
-    throw new Error('HEAD oid mismatch');
+    throw new Error("HEAD oid mismatch");
   }
 
   if (fromCommitId) {
     if (allCommits.at(-1)?.oid !== fromCommitId) {
-      throw new Error('Base oid mismatch');
+      throw new Error("Base oid mismatch");
     }
 
     if (allCommits.length === 1) {
-      console.log('History: Nothing changed since last build');
+      console.log("History: Nothing changed since last build");
       return base;
     }
 
@@ -256,13 +254,13 @@ function validateDataHistory(data: DataHistory): void {
     throw new Error(`Validation failed: ${numErrors} errors`);
   }
 
-  console.log('History: Validation passed');
+  console.log("History: Validation passed");
 }
 
 // write vcpkg-history.json
 
-const oldData: DataHistory | undefined = !argv.includes('--no-incremental')
-  ? await tryReadJSON(DATA_HISTORY_FILE)
+const oldData = !argv.includes("--no-incremental")
+  ? ((await tryReadJSON(DATA_HISTORY_FILE)) as DataHistory | undefined)
   : undefined;
 const newData = await generateHistory(oldData);
 
@@ -270,7 +268,7 @@ try {
   validateDataHistory(newData);
 } catch (e) {
   console.error(`History: ${String(e)}`);
-  console.error('History: Try building with --no-incremental');
+  console.error("History: Try building with --no-incremental");
   exit(1);
 }
 
@@ -285,4 +283,4 @@ const versionData: DataVersion = {
 };
 await writeJSON(DATA_VERSION_FILE, versionData);
 
-console.log('History: Done');
+console.log("History: Done");

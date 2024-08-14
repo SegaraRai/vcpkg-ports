@@ -3,20 +3,18 @@ SRC: .vcpkg/*
 OUT: (none)
 */
 
-/* eslint-disable no-console */
-
-import fsp from 'node:fs/promises';
-import path from 'node:path';
-import { exit } from 'node:process';
-import { ZodError } from 'zod';
-import { getDependencies } from '../../shared/vcpkg/portUtils.mjs';
+import fsp from "node:fs/promises";
+import path from "node:path";
+import { exit } from "node:process";
+import { ZodError } from "zod";
+import { getDependencies } from "../../shared/vcpkg/portUtils.mjs";
 import {
   type Vcpkg,
   type VcpkgFeatureItem,
   parseVcpkgJSON,
-} from '../../shared/vcpkg/schema.mjs';
-import { VCPKG_DIR } from '../constants.mjs';
-import { VCPKG_PORT_NAMES } from '../vcpkgInfo.mjs';
+} from "../../shared/vcpkg/schema.mjs";
+import { VCPKG_DIR } from "../constants.mjs";
+import { VCPKG_PORT_NAMES } from "../vcpkgInfo.mjs";
 
 let numChecked = 0;
 let numErrors = 0;
@@ -38,8 +36,8 @@ for (const portName of VCPKG_PORT_NAMES) {
   numChecked++;
 
   try {
-    const jsonFilepath = path.join(VCPKG_DIR, 'ports', portName, 'vcpkg.json');
-    const manifest = parseVcpkgJSON(await fsp.readFile(jsonFilepath, 'utf8'));
+    const jsonFilepath = path.join(VCPKG_DIR, "ports", portName, "vcpkg.json");
+    const manifest = parseVcpkgJSON(await fsp.readFile(jsonFilepath, "utf8"));
     // check name
     if (manifest.name !== portName) {
       throw new Error(`name is not ${portName}`);
@@ -48,8 +46,8 @@ for (const portName of VCPKG_PORT_NAMES) {
     const featureNameSet = new Set<string>(
       Object.keys(manifest.features ?? {})
     );
-    for (const feature of manifest['default-features'] ?? []) {
-      const featureName = typeof feature === 'string' ? feature : feature.name;
+    for (const feature of manifest["default-features"] ?? []) {
+      const featureName = typeof feature === "string" ? feature : feature.name;
       if (!featureNameSet.has(featureName)) {
         throw new Error(`default feature ${featureName} does not exist`);
       }
@@ -78,7 +76,7 @@ if (numChecked !== VCPKG_PORT_NAMES.length) {
   );
 } else if (numErrors !== 0) {
   console.warn(
-    'WARN: Dependency validation is skipped because of errors in port manifests'
+    "WARN: Dependency validation is skipped because of errors in port manifests"
   );
 } else {
   const checkDependency = (
@@ -98,7 +96,7 @@ if (numChecked !== VCPKG_PORT_NAMES.length) {
 
     // check feature existence
     for (const feature of features) {
-      const featureName = typeof feature === 'string' ? feature : feature.name;
+      const featureName = typeof feature === "string" ? feature : feature.name;
       if (!manifest.features?.[featureName]) {
         console.warn(
           `WARN: feature ${featureName} does not exist in ${dependency} (dependent: ${dependent})`
@@ -136,7 +134,7 @@ if (numChecked !== VCPKG_PORT_NAMES.length) {
 }
 
 if (!numChecked) {
-  console.error('Portfile: No ports found');
+  console.error("Portfile: No ports found");
   exit(1);
 }
 

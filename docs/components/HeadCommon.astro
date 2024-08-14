@@ -1,5 +1,5 @@
 ---
-import '../styles/theme.css';
+import "../styles/theme.css";
 ---
 
 <meta charset="utf-8" />
@@ -19,16 +19,17 @@ import '../styles/theme.css';
     `theme-${
       (() => {
         try {
-          const theme = localStorage.getItem('theme');
-          return !theme || theme === 'auto'
-            ? matchMedia('(prefers-color-scheme:dark)').matches
-            : theme === 'dark';
+          const theme = localStorage.getItem("theme");
+          return !theme || theme === "auto"
+            ? matchMedia("(prefers-color-scheme:dark)").matches
+            : theme === "dark";
         } catch {
           // do nothing; returns undefined
+          return;
         }
       })()
-        ? 'dark'
-        : 'light'
+        ? "dark"
+        : "light"
     }`
   );
 </script>

@@ -1,37 +1,37 @@
-import jsep from 'jsep';
+import jsep from "jsep";
 import {
   FULL_TRIPLETS,
   type FullSupportTriplet,
   type MinifiedTriplet,
   minifyTriplets,
-} from './triplets.mjs';
+} from "./triplets.mjs";
 
 // https://learn.microsoft.com/vcpkg/reference/vcpkg-json#platform-expression
 export const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
   // platform
-  'android',
-  'emscripten',
-  'freebsd',
-  'ios',
-  'linux',
-  'mingw',
-  'openbsd',
-  'osx',
-  'uwp',
-  'windows',
-  'xbox', // not documented but used (community?)
+  "android",
+  "emscripten",
+  "freebsd",
+  "ios",
+  "linux",
+  "mingw",
+  "openbsd",
+  "osx",
+  "uwp",
+  "windows",
+  "xbox", // not documented but used (community?)
   // arch
-  'x64',
-  'x86',
-  'arm',
-  'arm32', // not documented but used (community?)
-  'arm64',
-  'wasm32',
+  "x64",
+  "x86",
+  "arm",
+  "arm32", // not documented but used (community?)
+  "arm64",
+  "wasm32",
   // linkage
-  'static',
+  "static",
   // etc.
-  'staticcrt',
-  'native',
+  "staticcrt",
+  "native",
 ] as const;
 
 export const VCPKG_SUPPORTS_VALID_IDENTIFIER_SET: ReadonlySet<string> = new Set(
@@ -44,33 +44,33 @@ export function evalVcpkgSupportsExpr(
 ): boolean {
   const cExpr = expr as
     | jsep.CoreExpression
-    | { type: 'SequenceExpression'; expressions: jsep.Expression[] };
+    | { type: "SequenceExpression"; expressions: jsep.Expression[] };
 
   switch (cExpr.type) {
-    case 'Identifier':
+    case "Identifier":
       if (!VCPKG_SUPPORTS_VALID_IDENTIFIER_SET.has(cExpr.name)) {
         throw new Error(`Invalid identifier: ${cExpr.name}`);
       }
       return truthyValues.includes(cExpr.name);
 
-    case 'UnaryExpression':
+    case "UnaryExpression":
       switch (cExpr.operator) {
-        case '!':
+        case "!":
           return !evalVcpkgSupportsExpr(cExpr.argument, truthyValues);
 
         default:
           throw new Error(`Unknown unary operator: ${cExpr.operator}`);
       }
 
-    case 'BinaryExpression':
+    case "BinaryExpression":
       switch (cExpr.operator) {
-        case '|':
+        case "|":
           return (
             evalVcpkgSupportsExpr(cExpr.left, truthyValues) ||
             evalVcpkgSupportsExpr(cExpr.right, truthyValues)
           );
 
-        case '&':
+        case "&":
           return (
             evalVcpkgSupportsExpr(cExpr.left, truthyValues) &&
             evalVcpkgSupportsExpr(cExpr.right, truthyValues)
@@ -80,13 +80,13 @@ export function evalVcpkgSupportsExpr(
           throw new Error(`Unknown binary operator: ${cExpr.operator}`);
       }
 
-    case 'SequenceExpression':
+    case "SequenceExpression":
       // same as | operator
       return cExpr.expressions.some((e) =>
         evalVcpkgSupportsExpr(e, truthyValues)
       );
 
-    case 'Compound':
+    case "Compound":
       // same as | operator
       return cExpr.body.some((e) => evalVcpkgSupportsExpr(e, truthyValues));
 
@@ -110,10 +110,10 @@ export function getSupports(
   unsupportedMinified: readonly MinifiedTriplet[];
 } {
   const getValuesFromTriplet = (triplet: string): string[] => {
-    const values = triplet.split('-');
-    values.push('native');
-    if (values.includes('arm64')) {
-      values.push('arm');
+    const values = triplet.split("-");
+    values.push("native");
+    if (values.includes("arm64")) {
+      values.push("arm");
     }
     return values;
   };

@@ -1,7 +1,7 @@
 ---
-import type { MarkdownHeading } from 'astro';
-import TableOfContents from '../TableOfContents.vue';
-import MoreMenu from './MoreMenu.astro';
+import type { MarkdownHeading } from "astro";
+import TableOfContents from "../TableOfContents.vue";
+import MoreMenu from "./MoreMenu.astro";
 
 interface Props {
   readonly headings: readonly MarkdownHeading[];
@@ -11,7 +11,7 @@ const { headings } = Astro.props as Props;
 ---
 
 <nav
-  class:list={['toc', ':uno: sticky top-18 w-full']}
+  class:list={["toc", ":uno: sticky top-18 w-full"]}
   aria-labelledby="grid-right"
 >
   <div class=":uno: h-full overflow-auto p-0 pt-[--doc-padding]" data-nosnippet>

@@ -1,14 +1,14 @@
 ---
-import type { PortFrontmatter } from '../../../shared/dataTypes/frontmatter.mjs';
-import { PORT_OG_IMAGE_PATH } from '../../../shared/pageConstants.mjs';
+import type { PortFrontmatter } from "../../../shared/dataTypes/frontmatter.mjs";
+import { PORT_OG_IMAGE_PATH } from "../../../shared/pageConstants.mjs";
 import type {
   ResolvedSection,
   SectionProps,
-} from '../../components/portPage/defineSection.mjs';
-import { getFallbackDescription } from '../../constants.mjs';
-import PortLayout from '../../layouts/PortLayout.astro';
-import portContexts from '../../virtual/portContexts.mjs';
-import portPages from '../../virtual/portPages.mjs';
+} from "../../components/portPage/defineSection.mjs";
+import { getFallbackDescription } from "../../constants.mjs";
+import PortLayout from "../../layouts/PortLayout.astro";
+import portContexts from "../../virtual/portContexts.mjs";
+import portPages from "../../virtual/portPages.mjs";
 
 interface Params {
   readonly port: string;
@@ -19,26 +19,26 @@ export function getStaticPaths(): readonly { readonly params: Params }[] {
 }
 
 const SECTIONS = await Promise.all([
-  import('../../components/portPage/sections/Overview.astro'),
-  import('../../components/portPage/sections/Links.astro'),
-  import('../../components/portPage/sections/Usage.astro'),
-  import('../../components/portPage/sections/License.astro'),
-  import('../../components/portPage/sections/Supports.astro'),
-  import('../../components/portPage/sections/Features.astro'),
-  import('../../components/portPage/sections/Dependencies.astro'),
-  import('../../components/portPage/sections/HostDependencies.astro'),
-  import('../../components/portPage/sections/Dependents.astro'),
-  import('../../components/portPage/sections/HostDependents.astro'),
-  import('../../components/portPage/sections/Contributors.astro'),
-  import('../../components/portPage/sections/Changelog.astro'),
-  import('../../components/portPage/sections/Source.astro'),
+  import("../../components/portPage/sections/Overview.astro"),
+  import("../../components/portPage/sections/Links.astro"),
+  import("../../components/portPage/sections/Usage.astro"),
+  import("../../components/portPage/sections/License.astro"),
+  import("../../components/portPage/sections/Supports.astro"),
+  import("../../components/portPage/sections/Features.astro"),
+  import("../../components/portPage/sections/Dependencies.astro"),
+  import("../../components/portPage/sections/HostDependencies.astro"),
+  import("../../components/portPage/sections/Dependents.astro"),
+  import("../../components/portPage/sections/HostDependents.astro"),
+  import("../../components/portPage/sections/Contributors.astro"),
+  import("../../components/portPage/sections/Changelog.astro"),
+  import("../../components/portPage/sections/Source.astro"),
 ]);
 
 const { port: portName } = Astro.params as unknown as Params;
 
 const context = portContexts.find((manifest) => manifest.name === portName);
 if (!context) {
-  Astro.redirect('/404');
+  Astro.redirect("/404");
   return;
 }
 

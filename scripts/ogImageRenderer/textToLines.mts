@@ -25,7 +25,7 @@ export type OnWordTooLongCallback = (
  * @returns callback to use with `textToLines`
  */
 export function createOnWordTooLongHyphenate(
-  hyphen = '-'
+  hyphen = "-"
 ): OnWordTooLongCallback {
   return (truncated, remaining) => [truncated + hyphen, remaining];
 }
@@ -37,7 +37,7 @@ export function createOnWordTooLongHyphenate(
  * @returns callback to use with `textToLines`
  */
 export function createOnWordTooLongEllipsis(
-  ellipsis = '…'
+  ellipsis = "…"
 ): OnWordTooLongCallback {
   return (truncated) => [truncated + ellipsis];
 }
@@ -48,7 +48,7 @@ export function createOnWordTooLongEllipsis(
  * @returns callback to use with `textToLines`
  */
 export function createOnWordTooLongPlaceWhole(
-  joiner = ''
+  joiner = ""
 ): OnWordTooLongCallback {
   return (truncated, remaining) => [truncated + joiner + remaining];
 }
@@ -66,11 +66,11 @@ export function textToLines(
   onWordTooLong: OnWordTooLongCallback
 ): string[] {
   const splittedLines: string[][] = text
-    .split('\n')
+    .split("\n")
     .map((line) => line.match(/[^\s-]*[\s-]*/g) ?? []);
   const lines: string[] = [];
   for (const [splittedLineIndex, splittedWords] of splittedLines.entries()) {
-    let line = '';
+    let line = "";
     for (const [splittedWordIndex, splittedWord] of splittedWords.entries()) {
       const context: Context = {
         splittedLines,
@@ -87,7 +87,7 @@ export function textToLines(
           // word too long
           // use spread operator to deal with surrogate pairs
           const remaining = [...splittedWord];
-          let truncatedWord = '';
+          let truncatedWord = "";
           while (
             remaining.length &&
             !overflow(truncatedWord + remaining[0], {
@@ -99,18 +99,18 @@ export function textToLines(
             truncatedWord += remaining.shift()!;
           }
           // NOTE: recursive overflow check is currently not supported
-          const result = onWordTooLong(truncatedWord, remaining.join(''), {
+          const result = onWordTooLong(truncatedWord, remaining.join(""), {
             ...context,
             wordTooLong: true,
           }).slice();
-          line = result.pop() ?? '';
+          line = result.pop() ?? "";
           lines.push(...result);
           continue;
         }
 
         // normal overflow
         lines.push(line);
-        line = '';
+        line = "";
       }
       line += splittedWord;
     }
@@ -133,7 +133,7 @@ export function textToLinesWithEllipsis(
   text: string,
   overflow: OverflowCallback,
   maxLines: number,
-  ellipsis = '…',
+  ellipsis = "…",
   strict = false,
   onWordTooLong = createOnWordTooLongEllipsis(ellipsis)
 ): string[] {
@@ -176,7 +176,7 @@ export function textToLinesWithEllipsis(
         // if we're strict, and we're on the last line, and there are NO more lines after this one
         if (
           !memoOverflow(
-            context.splittedLines[context.splittedLineIndex].join(''),
+            context.splittedLines[context.splittedLineIndex].join(""),
             {
               ...context,
               splittedWordIndex: context.splittedWords.length - 1,

@@ -2,14 +2,17 @@
 
 export function replaceTemplates(
   src: string,
-  replacements: Readonly<Record<string, string>>
+  replacements: Readonly<Partial<Record<string, string>>>
 ): string {
-  return src.replace(/#\s*\${#([^}]+)}|\$\{([^#][^}]*)\}/g, (_, p1, p2) => {
-    const key = p1 || p2;
-    const replacement = replacements[key];
-    if (replacement == null) {
-      throw new Error(`No replacement for ${key}`);
+  return src.replace(
+    /#\s*\${#([^}]+)}|\$\{([^#][^}]*)\}/g,
+    (_, p1: string, p2: string) => {
+      const key = p1 || p2;
+      const replacement = replacements[key];
+      if (replacement == null) {
+        throw new Error(`No replacement for ${key}`);
+      }
+      return replacement;
     }
-    return replacement;
-  });
+  );
 }

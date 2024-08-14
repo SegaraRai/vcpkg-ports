@@ -1,5 +1,5 @@
-import { useEventListener } from '@vueuse/core';
-import type { ObjectDirective } from 'vue';
+import { useEventListener } from "@vueuse/core";
+import type { ObjectDirective } from "vue";
 
 declare global {
   interface Navigator {
@@ -10,13 +10,10 @@ declare global {
   }
 }
 
-const STOP_FN_KEY = Symbol('focusByKey.stop');
+const STOP_FN_KEY = Symbol("focusByKey.stop");
 
 function moveFocus(container: HTMLElement, offset: number): void {
-  const tabbableElements = container.querySelectorAll('.tabbable');
-  if (!tabbableElements) {
-    return;
-  }
+  const tabbableElements = container.querySelectorAll(".tabbable");
   const tabbableElementsArray = Array.from(tabbableElements) as HTMLElement[];
   const currentFocusIndex = tabbableElementsArray.findIndex(
     (el): boolean => el === document.activeElement
@@ -29,14 +26,14 @@ function moveFocus(container: HTMLElement, offset: number): void {
     tabbableElementsArray.length;
   const nextFocusElement = tabbableElementsArray[nextFocusIndex];
   setTimeout((): void => {
-    nextFocusElement?.focus();
+    nextFocusElement.focus();
   }, 0);
 }
 
 function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
-  if ((event.target as HTMLElement | null)?.tagName !== 'INPUT') {
+  if ((event.target as HTMLElement | null)?.tagName !== "INPUT") {
     const ctrlOrMeta = /Mac|iPhone|iPod|iPad/i.test(
-      navigator?.userAgentData?.platform || navigator?.platform || ''
+      navigator.userAgentData?.platform || navigator.platform || ""
     )
       ? event.metaKey
       : event.ctrlKey;
@@ -49,13 +46,13 @@ function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
         )) ||
       (ctrlOrMeta && /^[AV]$/i.test(event.key))
     ) {
-      container.querySelector<HTMLElement>('input,textarea')?.focus();
+      container.querySelector<HTMLElement>("input,textarea")?.focus();
       return;
     }
   }
 
   const offset =
-    event.key === 'ArrowUp' ? -1 : event.key === 'ArrowDown' ? 1 : 0;
+    event.key === "ArrowUp" ? -1 : event.key === "ArrowDown" ? 1 : 0;
   if (!offset) {
     return;
   }
@@ -65,11 +62,15 @@ function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
   moveFocus(container, offset);
 }
 
+interface Store {
+  [STOP_FN_KEY]?: () => void;
+}
+
 export const vFocusByKey: ObjectDirective<HTMLElement> = {
   mounted(element): void {
-    (element as any)[STOP_FN_KEY] = useEventListener(
+    (element as Store)[STOP_FN_KEY] = useEventListener(
       element,
-      'keydown',
+      "keydown",
       (event: KeyboardEvent): void => {
         event.stopPropagation();
         moveFocusByKey(element, event);
@@ -77,6 +78,6 @@ export const vFocusByKey: ObjectDirective<HTMLElement> = {
     );
   },
   beforeUnmount(element): void {
-    (element as any)[STOP_FN_KEY]?.();
+    (element as Store)[STOP_FN_KEY]?.();
   },
 };

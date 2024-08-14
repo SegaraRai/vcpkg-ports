@@ -1,18 +1,18 @@
-import { env } from 'node:process';
+import { env } from "node:process";
 import {
   defineConfig,
   presetIcons,
   presetWind,
   transformerCompileClass,
   transformerDirectives,
-} from 'unocss';
+} from "unocss";
 
 export default defineConfig({
   presets: [
     presetWind({
       dark: {
-        dark: '.theme-dark',
-        light: '.theme-light',
+        dark: ".theme-dark",
+        light: ".theme-light",
       },
     }),
     presetIcons({
@@ -22,9 +22,9 @@ export default defineConfig({
   ],
   transformers: [
     transformerCompileClass({
-      classPrefix: 'u_',
+      classPrefix: "u_",
       trigger:
-        env.CI || env.NODE_ENV === 'production' ? ':uno:' : ':uno: :dev:',
+        env.CI || env.NODE_ENV === "production" ? ":uno:" : ":uno: :dev:",
     }),
     transformerDirectives(),
   ],

@@ -1,19 +1,19 @@
 ---
-import { shortenCommitId } from '../../shared/utils.mjs';
-import { VCPKG_REPO_URL } from '../constants.mjs';
+import { shortenCommitId } from "../../shared/utils.mjs";
+import { VCPKG_REPO_URL } from "../constants.mjs";
 
 interface Props {
   readonly class?: any;
   readonly commit: string;
-  readonly type?: 'commit' | 'tree' | undefined;
-  readonly translate?: 'yes' | 'no' | null | undefined;
+  readonly type?: "commit" | "tree" | undefined;
+  readonly translate?: "yes" | "no" | null | undefined;
 }
 
 const {
   class: classList,
   commit,
-  type = 'commit',
-  translate = 'no',
+  type = "commit",
+  translate = "no",
 } = Astro.props;
 const shortCommit = shortenCommitId(commit);
 ---

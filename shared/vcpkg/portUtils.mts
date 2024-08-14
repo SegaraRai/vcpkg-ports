@@ -1,23 +1,30 @@
-import { compareString } from '../utils.mjs';
+import { compareString } from "../utils.mjs";
 import type {
   Vcpkg,
   VcpkgDependency,
   VcpkgDependencyObject,
   VcpkgDescription,
   VcpkgFeatureItem,
-} from './schema.mjs';
+} from "./schema.mjs";
+
+interface VcpkgVersionFields {
+  version?: string;
+  "version-semver"?: string;
+  "version-date"?: string;
+  "version-string"?: string;
+}
 
 export function isHostOnlyPort(manifest: Vcpkg): boolean {
-  return !!manifest.supports?.includes('native');
+  return !!manifest.supports?.includes("native");
 }
 
 export function getPortVersionText(manifest: Vcpkg): string {
   return (
-    (manifest as any).version ||
-    (manifest as any)['version-semver'] ||
-    (manifest as any)['version-date'] ||
-    (manifest as any)['version-string'] ||
-    '(unknown)'
+    (manifest as VcpkgVersionFields).version ||
+    (manifest as VcpkgVersionFields)["version-semver"] ||
+    (manifest as VcpkgVersionFields)["version-date"] ||
+    (manifest as VcpkgVersionFields)["version-string"] ||
+    "(unknown)"
   );
 }
 
@@ -25,19 +32,19 @@ export function stringifyPortDescription(
   description: VcpkgDescription | null | undefined
 ): string {
   if (!description) {
-    return '';
+    return "";
   }
-  if (typeof description === 'string') {
+  if (typeof description === "string") {
     description = [description];
   }
-  let result = '';
+  let result = "";
   for (const [index, chunk] of description.entries()) {
     const normalized = chunk.normalize().trim();
     const joiner = !result
-      ? ''
-      : index > 1 && !result.endsWith('.') && /^[a-z]/.test(normalized)
-        ? ' '
-        : '\n';
+      ? ""
+      : index > 1 && !result.endsWith(".") && /^[a-z]/.test(normalized)
+        ? " "
+        : "\n";
     result += joiner + normalized;
   }
   return result;
@@ -49,17 +56,17 @@ export function getShortPortDescription(
   return stringifyPortDescription(description)
     .split(/\n|\.(?:\s|$)/)[0]
     .trim()
-    .replace(/\.+$/, '');
+    .replace(/\.+$/, "");
 }
 
 export function transformPortDependencyToObject(
   dependency: VcpkgDependency
 ): VcpkgDependencyObject {
-  return typeof dependency === 'string' ? { name: dependency } : dependency;
+  return typeof dependency === "string" ? { name: dependency } : dependency;
 }
 
 export function getDependencies(
-  manifest: Pick<Vcpkg, 'dependencies'>
+  manifest: Pick<Vcpkg, "dependencies">
 ): readonly VcpkgDependencyObject[] {
   return (manifest.dependencies ?? [])
     .map(transformPortDependencyToObject)
@@ -75,5 +82,5 @@ export function isHostDependency(dependency: VcpkgDependencyObject): boolean {
 }
 
 export function getFeatureName(feature: VcpkgFeatureItem): string {
-  return typeof feature === 'string' ? feature : feature.name;
+  return typeof feature === "string" ? feature : feature.name;
 }

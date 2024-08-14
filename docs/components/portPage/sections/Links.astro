@@ -1,12 +1,12 @@
 ---
-import LinkExternal from '../../LinkExternal.astro';
-import SectionWrapper from '../SectionWrapper.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
+import LinkExternal from "../../LinkExternal.astro";
+import SectionWrapper from "../SectionWrapper.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection({
-  title: 'Links',
+  title: "Links",
   noHeading: true,
 });
 
@@ -19,8 +19,8 @@ const {
 
 const links = (
   [
-    ['', homepage ?? ''],
-    ['Documentation', documentation ?? ''],
+    ["", homepage ?? ""],
+    ["Documentation", documentation ?? ""],
   ] as const
 ).filter(([, url]) => url);
 ---
@@ -29,7 +29,7 @@ const links = (
   {
     !!links.length && (
       <ul
-        class:list={['plain-list', ':uno: flex flex-col gap-y-2 leading-tight']}
+        class:list={["plain-list", ":uno: flex flex-col gap-y-2 leading-tight"]}
       >
         {links.map(([label, url]) => (
           <li class=":uno: overflow-hidden text-ellipsis">

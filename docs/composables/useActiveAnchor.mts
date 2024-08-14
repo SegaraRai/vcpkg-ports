@@ -4,10 +4,10 @@ import {
   useEventListener,
   useMounted,
   useWindowScroll,
-} from '@vueuse/core';
-import type { MarkdownHeading } from 'astro';
-import { type Ref, computed, ref, watchEffect } from 'vue';
-import { OFFSET_FOR_ACTIVE_ANCHOR } from '../constants.mjs';
+} from "@vueuse/core";
+import type { MarkdownHeading } from "astro";
+import { type Ref, computed, ref, watchEffect } from "vue";
+import { OFFSET_FOR_ACTIVE_ANCHOR } from "../constants.mjs";
 
 export function useActiveAnchor(
   headings: Readonly<Ref<readonly MarkdownHeading[]>>
@@ -63,7 +63,7 @@ export function useActiveAnchor(
   };
 
   watchEffect(updateActiveAnchor);
-  useEventListener('resize', updateActiveAnchor);
+  useEventListener("resize", updateActiveAnchor);
 
   return activeAnchor;
 }

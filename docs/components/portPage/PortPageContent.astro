@@ -1,9 +1,9 @@
 ---
-import type { MarkdownHeading } from 'astro';
-import type { PortFrontmatter } from '../../../shared/dataTypes/frontmatter.mjs';
-import TableOfContents from '../TableOfContents.vue';
-import MoreMenu from './MoreMenu.astro';
-import PortPageMetadata from './PortPageMetadata.astro';
+import type { MarkdownHeading } from "astro";
+import type { PortFrontmatter } from "../../../shared/dataTypes/frontmatter.mjs";
+import TableOfContents from "../TableOfContents.vue";
+import MoreMenu from "./MoreMenu.astro";
+import PortPageMetadata from "./PortPageMetadata.astro";
 
 interface Props {
   readonly frontmatter: PortFrontmatter;
@@ -16,7 +16,7 @@ const { portName, portVersion } = frontmatter;
 
 <article
   id="article"
-  class:list={['content port-page', ':uno: p-0 w-full h-full flex flex-col']}
+  class:list={["content port-page", ":uno: p-0 w-full h-full flex flex-col"]}
 >
   <section class=":uno: mb-8">
     <h1 id="overview" translate="no">
@@ -27,7 +27,7 @@ const { portName, portVersion } = frontmatter;
       createdAt={frontmatter.createdAt}
       modifiedAt={frontmatter.modifiedAt}
     />
-    <nav class:list={['toc', ':uno: block lg:hidden mt-4 mb-8']}>
+    <nav class:list={["toc", ":uno: block lg:hidden mt-4 mb-8"]}>
       <div data-nosnippet>
         <!-- hydration is disabled as this TOC is not interactive -->
         <TableOfContents headings={headings} />
@@ -36,7 +36,7 @@ const { portName, portVersion } = frontmatter;
     <div class="rendered">
       <slot />
     </div>
-    <nav class:list={['toc', ':uno: block lg:hidden mt-16']}>
+    <nav class:list={["toc", ":uno: block lg:hidden mt-16"]}>
       <div data-nosnippet>
         <MoreMenu />
       </div>

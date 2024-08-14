@@ -1,29 +1,22 @@
 ---
-import { normalizeText } from '../../../../shared/utils.mjs';
-import CodeBlockRaw from './CodeBlockRaw.astro';
-
-const shiki = await import('shiki');
+import { codeToHtml } from "shiki";
+import { normalizeText } from "../../../../shared/utils.mjs";
+import CodeBlockRaw from "./CodeBlockRaw.astro";
 
 interface Props {
   readonly class?: any;
-  readonly lang: string;
+  readonly lang: "cmake" | "cpp" | "plaintext";
   readonly code: string;
   readonly nosnippet?: boolean | undefined;
 }
 
 const { class: classList, lang, code, nosnippet } = Astro.props;
 
-const highlighter = await shiki.getHighlighter({
-  theme: 'monokai',
-  langs: ['cmake', 'cpp'],
-});
-
-const html = highlighter
-  .codeToHtml(normalizeText(code), { lang })
+const html = (await codeToHtml(normalizeText(code), { lang, theme: "monokai" }))
   .trim()
-  .replace(/^<pre[^>]+><code>/, '')
-  .replace('</code></pre>', '')
-  .replace(/[{}]/g, (c) => `&#${c.charCodeAt(0)};`);
+  .replace(/^<pre[^>]+><code>/, "")
+  .replace("</code></pre>", "")
+  .replace(/[{}]/g, (c: string) => `&#${c.charCodeAt(0)};`);
 ---
 
 <CodeBlockRaw class={classList} lang={lang} nosnippet={nosnippet}>

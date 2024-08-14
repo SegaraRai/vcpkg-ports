@@ -1,16 +1,16 @@
 ---
-import { toUniqueArray } from '../../../../shared/utils.mjs';
-import { VCPKG_REF_OVERRIDE, VCPKG_REPO_URL } from '../../../constants.mjs';
-import headCommit from '../../../virtual/headCommit.mjs';
-import SectionWrapper from '../SectionWrapper.astro';
-import FileList from '../components/FileList.astro';
-import FileListItem from '../components/FileListItem.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
+import { toUniqueArray } from "../../../../shared/utils.mjs";
+import { VCPKG_REF_OVERRIDE, VCPKG_REPO_URL } from "../../../constants.mjs";
+import headCommit from "../../../virtual/headCommit.mjs";
+import SectionWrapper from "../SectionWrapper.astro";
+import FileList from "../components/FileList.astro";
+import FileListItem from "../components/FileListItem.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection({
-  title: 'Source',
+  title: "Source",
 });
 
 const {
@@ -19,9 +19,9 @@ const {
 } = Astro.props;
 
 const directories = toUniqueArray(
-  files.filter((file) => file.includes('/')).map((file) => file.split('/')[0])
+  files.filter((file) => file.includes("/")).map((file) => file.split("/")[0])
 ).sort();
-const filenames = files.filter((file) => !file.includes('/')).sort();
+const filenames = files.filter((file) => !file.includes("/")).sort();
 ---
 
 <SectionWrapper section={section}>

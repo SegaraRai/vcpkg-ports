@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { useMounted, useVModel } from '@vueuse/core';
-import { watchEffect } from 'vue';
-import SearchPopup from './SearchPopup.vue';
+import { useMounted, useVModel } from "@vueuse/core";
+import { watchEffect } from "vue";
+import SearchPopup from "./SearchPopup.vue";
 
 const props = defineProps<{
   modelValue: boolean;
@@ -9,12 +9,12 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: boolean): void;
-  (e: 'update:term', value: string): void;
+  (e: "update:modelValue", value: boolean): void;
+  (e: "update:term", value: string): void;
 }>();
 
-const show = useVModel(props, 'modelValue', emit);
-const term = useVModel(props, 'term', emit);
+const show = useVModel(props, "modelValue", emit);
+const term = useVModel(props, "term", emit);
 
 // close dialog
 const close = (): void => {
@@ -28,7 +28,7 @@ watchEffect((): void => {
     return;
   }
 
-  document.body.classList.toggle('no-scroll', mounted.value && show.value);
+  document.body.classList.toggle("no-scroll", mounted.value && show.value);
 });
 </script>
 

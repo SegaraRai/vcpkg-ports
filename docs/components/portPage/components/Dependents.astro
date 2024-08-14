@@ -1,6 +1,6 @@
 ---
-import { DEPENDENT_FEATURE_DELIMITER } from '../../../../shared/vcpkg/portDependents.mjs';
-import LinkPortPage from '../../LinkPortPage.astro';
+import { DEPENDENT_FEATURE_DELIMITER } from "../../../../shared/vcpkg/portDependents.mjs";
+import LinkPortPage from "../../LinkPortPage.astro";
 
 interface Props {
   readonly dependents: readonly string[];
@@ -20,14 +20,14 @@ const parsedDependents = dependents.map((dependent) =>
         <li>
           <LinkPortPage port={portName} />
           {!!featureName && (
-            <span class:list={['dependent-feature', ':uno: opacity-90']}>
-              {'(feature '}
+            <span class:list={["dependent-feature", ":uno: opacity-90"]}>
+              {"(feature "}
               {
                 <LinkPortPage port={portName} feature={featureName}>
                   <code set:text={featureName} />
                 </LinkPortPage>
               }
-              {')'}
+              {")"}
             </span>
           )}
         </li>

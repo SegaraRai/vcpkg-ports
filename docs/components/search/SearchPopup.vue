@@ -4,10 +4,10 @@ import {
   useDebounce,
   useMounted,
   useVModel,
-} from '@vueuse/core';
-import { computed, defineAsyncComponent, shallowRef, watchEffect } from 'vue';
-import { pickRandom } from '../../../shared/utils.mjs';
-import { useSearch } from '../../composables/useSearch.mjs';
+} from "@vueuse/core";
+import { computed, defineAsyncComponent, shallowRef, watchEffect } from "vue";
+import { pickRandom } from "../../../shared/utils.mjs";
+import { useSearch } from "../../composables/useSearch.mjs";
 import {
   SEARCH_EXAMPLE_TERMS,
   SEARCH_MAX_RESULTS_FOR_POPUP,
@@ -15,21 +15,21 @@ import {
   SEARCH_TERM_DEBOUNCE,
   getPortPageURL,
   getSearchPageURL,
-} from '../../constants.mjs';
-import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
-import SearchBox from './SearchBox.vue';
-import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
+} from "../../constants.mjs";
+import { vFocusByKey } from "../../directives/vFocusByKey.mjs";
+import SearchBox from "./SearchBox.vue";
+import ShortcutKeyHandler from "./ShortcutKeyHandler.vue";
 
 const NO_RESULT_ICONS = [
-  defineAsyncComponent(() => import('~icons/line-md/cancel')),
-  defineAsyncComponent(() => import('~icons/line-md/alert-circle')),
-  defineAsyncComponent(() => import('~icons/line-md/construction')),
-  defineAsyncComponent(() => import('~icons/line-md/document')),
-  defineAsyncComponent(() => import('~icons/line-md/email-opened')),
-  defineAsyncComponent(() => import('~icons/line-md/beer')),
-  defineAsyncComponent(() => import('~icons/line-md/emoji-frown')),
-  defineAsyncComponent(() => import('~icons/line-md/emoji-frown-open')),
-  defineAsyncComponent(() => import('~icons/line-md/emoji-neutral')),
+  defineAsyncComponent(() => import("~icons/line-md/cancel")),
+  defineAsyncComponent(() => import("~icons/line-md/alert-circle")),
+  defineAsyncComponent(() => import("~icons/line-md/construction")),
+  defineAsyncComponent(() => import("~icons/line-md/document")),
+  defineAsyncComponent(() => import("~icons/line-md/email-opened")),
+  defineAsyncComponent(() => import("~icons/line-md/beer")),
+  defineAsyncComponent(() => import("~icons/line-md/emoji-frown")),
+  defineAsyncComponent(() => import("~icons/line-md/emoji-frown-open")),
+  defineAsyncComponent(() => import("~icons/line-md/emoji-neutral")),
 ] as const;
 
 const props = defineProps<{
@@ -37,15 +37,15 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
-  (e: 'close'): void;
+  (e: "update:modelValue", value: string): void;
+  (e: "close"): void;
 }>();
 
 const mounted = useMounted();
 
 const searchBoxEl = shallowRef<typeof SearchBox | null>(null);
 
-const term = useVModel(props, 'modelValue', emit);
+const term = useVModel(props, "modelValue", emit);
 
 const termDebounced = useDebounce(term, SEARCH_TERM_DEBOUNCE);
 const { load, loading, results } = useSearch(termDebounced);
@@ -104,16 +104,16 @@ const deferFocus = (): void => {
 <template>
   <div
     ref="containerEl"
+    v-focus-by-key
     class=":uno: w-full max-h-full px-3 py-4 rounded-2 flex flex-col gap-y-4 bg-[--theme-bg] text-lg"
     @click.stop
     @keydown.escape.prevent.stop="emit('close')"
-    v-focus-by-key
   >
     <SearchBox
       ref="searchBoxEl"
+      v-model="term"
       :class="['tabbable', ':uno: py-0.5']"
       wrapper-class=":uno: text-xl"
-      v-model="term"
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.escape.prevent.stop="term ? (term = '') : emit('close')"
@@ -132,8 +132,8 @@ const deferFocus = (): void => {
                 <button
                   class=":uno: text-[--theme-text-accent]"
                   translate="no"
-                  v-text="example"
                   @click="term = example"
+                  v-text="example"
                 />
               </template>
             </div>

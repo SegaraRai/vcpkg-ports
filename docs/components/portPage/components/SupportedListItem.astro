@@ -1,5 +1,5 @@
 ---
-import type { MinifiedTriplet } from '../../../../shared/vcpkg/triplets.mjs';
+import type { MinifiedTriplet } from "../../../../shared/vcpkg/triplets.mjs";
 
 interface Props {
   readonly triplet: MinifiedTriplet;
@@ -10,14 +10,14 @@ const {
   triplet: [name, extracted],
   unsupported,
 } = Astro.props;
-const mark = unsupported ? '❌' : '✅';
-const Tag = unsupported ? 'del' : 'span';
+const mark = unsupported ? "❌" : "✅";
+const Tag = unsupported ? "del" : "span";
 ---
 
 <li>
   {mark}
   <Tag
-    title={extracted.length ? extracted.join(', ') : undefined}
+    title={extracted.length ? extracted.join(", ") : undefined}
     set:text={name}
   />
 </li>

@@ -1,15 +1,15 @@
-import type { DataPortsPort } from '../dataTypes/ports.mjs';
-import { compareString, toUniqueArray } from '../utils.mjs';
+import type { DataPortsPort } from "../dataTypes/ports.mjs";
+import { compareString, toUniqueArray } from "../utils.mjs";
 import {
   getDependencies,
   getFeatureName,
   isHostDependency,
   isNormalDependency,
   transformPortDependencyToObject,
-} from './portUtils.mjs';
-import type { Vcpkg, VcpkgDependencyObject } from './schema.mjs';
+} from "./portUtils.mjs";
+import type { Vcpkg, VcpkgDependencyObject } from "./schema.mjs";
 
-export const DEPENDENCY_PATH_DELIMITER = '/';
+export const DEPENDENCY_PATH_DELIMITER = "/";
 
 export type VcpkgDependencyObjectEx = VcpkgDependencyObject & {
   readonly $ex: true;
@@ -22,7 +22,7 @@ export function collectTransitiveDependencies(
   portMap: ReadonlyMap<string, DataPortsPort>,
   onlyFeatures = false,
   features: readonly string[] = [],
-  filter = (_dependency: VcpkgDependencyObject): boolean => true
+  filter: (dependency: VcpkgDependencyObject) => boolean = () => true
 ): ReadonlyMap<string, VcpkgDependencyObjectEx> {
   const map = new Map<string, VcpkgDependencyObjectEx>();
   const add = (
@@ -40,7 +40,7 @@ export function collectTransitiveDependencies(
 
     const featsInMap = depInfoInMap?.$features;
     const featsSpecified = feats;
-    if (featsInMap?.join('\0') === featsSpecified.join('\0')) {
+    if (featsInMap?.join("\0") === featsSpecified.join("\0")) {
       // dependency already checked with the same features
       return;
     }
@@ -85,6 +85,7 @@ export function collectTransitiveDependencies(
       }
       const featInfo = depManifest.features?.[feat];
       if (!featInfo) {
+        // eslint-disable-next-line no-console
         console.warn(
           `WARN: Feature ${feat} not found in ${dep.name} (dependent: ${newPath})`
         );
@@ -98,14 +99,15 @@ export function collectTransitiveDependencies(
     for (const subDep of deps.filter(filter)) {
       const subDepManifest = portMap.get(subDep.name)?.manifest;
       if (!subDepManifest) {
+        // eslint-disable-next-line no-console
         console.warn(
           `WARN: Port ${subDep.name} not found (dependent: ${newPath})`
         );
         continue;
       }
-      const includeDefaultFeatures = subDep['default-features'] !== false;
+      const includeDefaultFeatures = subDep["default-features"] !== false;
       const subFeats = toUniqueArray([
-        ...((includeDefaultFeatures && subDepManifest['default-features']) ||
+        ...((includeDefaultFeatures && subDepManifest["default-features"]) ||
           []),
         ...(subDep.features ?? []),
       ])
@@ -122,7 +124,7 @@ export function collectTransitiveDependencies(
       $features: [],
     });
   }
-  add({ name: portName }, features, '');
+  add({ name: portName }, features, "");
   map.delete(portName);
   return map;
 }

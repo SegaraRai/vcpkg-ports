@@ -1,16 +1,16 @@
 ---
-import { getSupports } from '../../../../shared/vcpkg/portSupports.mjs';
-import { isHostOnlyPort } from '../../../../shared/vcpkg/portUtils.mjs';
-import { FULL_TRIPLETS } from '../../../../shared/vcpkg/triplets.mjs';
-import SectionWrapper from '../SectionWrapper.astro';
-import HostOnlyBadge from '../components/HostOnlyBadge.astro';
-import SupportedListItem from '../components/SupportedListItem.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
+import { getSupports } from "../../../../shared/vcpkg/portSupports.mjs";
+import { isHostOnlyPort } from "../../../../shared/vcpkg/portUtils.mjs";
+import { FULL_TRIPLETS } from "../../../../shared/vcpkg/triplets.mjs";
+import SectionWrapper from "../SectionWrapper.astro";
+import HostOnlyBadge from "../components/HostOnlyBadge.astro";
+import SupportedListItem from "../components/SupportedListItem.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection({
-  title: 'Supported Platforms',
+  title: "Supported Platforms",
 });
 
 const {
@@ -20,11 +20,11 @@ const {
 
 const hostOnly = isHostOnlyPort(manifest);
 const { supportedMinified, unsupportedMinified } = getSupports(
-  manifest.supports ?? '',
+  manifest.supports ?? "",
   FULL_TRIPLETS
 );
 
-const allSupported = !manifest.supports || manifest.supports === 'native';
+const allSupported = !manifest.supports || manifest.supports === "native";
 ---
 
 <SectionWrapper nosnippet section={section}>
@@ -46,8 +46,8 @@ const allSupported = !manifest.supports || manifest.supports === 'native';
       <>
         <ul
           class:list={[
-            'plain-list',
-            ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+            "plain-list",
+            ":uno: my-2 flex flex-col gap-y-1 leading-tight",
           ]}
           translate="no"
         >
@@ -57,8 +57,8 @@ const allSupported = !manifest.supports || manifest.supports === 'native';
         </ul>
         <ul
           class:list={[
-            'plain-list',
-            ':uno: my-2 flex flex-col gap-y-1 leading-tight',
+            "plain-list",
+            ":uno: my-2 flex flex-col gap-y-1 leading-tight",
           ]}
           translate="no"
         >

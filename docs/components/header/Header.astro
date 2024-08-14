@@ -1,7 +1,7 @@
 ---
-import ManagedSearchBoxButton from '../search/ManagedSearchBoxButton.vue';
-import SkipToContent from './SkipToContent.astro';
-import ThemeToggleButton from './ThemeToggleButton.vue';
+import ManagedSearchBoxButton from "../search/ManagedSearchBoxButton.vue";
+import SkipToContent from "./SkipToContent.astro";
+import ThemeToggleButton from "./ThemeToggleButton.vue";
 
 interface Props {
   readonly hideSearch?: boolean | undefined;
@@ -10,7 +10,7 @@ interface Props {
 
 const { hideSearch, isHome } = Astro.props;
 
-const LinkElement = isHome ? 'span' : 'a';
+const LinkElement = isHome ? "span" : "a";
 ---
 
 <header
@@ -28,19 +28,19 @@ const LinkElement = isHome ? 'span' : 'a';
       <div class=":uno: flex-none">
         <LinkElement
           class:list={[
-            ':uno: flex items-center select-none color-[--theme-text] leading-tight',
+            ":uno: flex items-center select-none color-[--theme-text] leading-tight",
             !isHome &&
-              ':uno: transition-colors-200 light:hover:color-[--theme-text-light] light:active:color-[--theme-text-light] dark:hover:color-[--theme-text-accent] dark:active:color-[--theme-text-accent]',
+              ":uno: transition-colors-200 light:hover:color-[--theme-text-light] light:active:color-[--theme-text-light] dark:hover:color-[--theme-text-accent] dark:active:color-[--theme-text-accent]",
           ]}
-          href={isHome ? undefined : '/'}
+          href={isHome ? undefined : "/"}
           aria-label="Vcpkg Ports"
           translate="no"
         >
           <span class=":uno: flex-none i-noto-package w-42px h-42px"></span>
           <span
             class:list={[
-              ':uno: ml-2 flex-1 text-3xl pb-1',
-              hideSearch ? ':uno: lt-sm:hidden' : ':uno: lt-sm:hidden',
+              ":uno: ml-2 flex-1 text-3xl pb-1",
+              hideSearch ? ":uno: lt-sm:hidden" : ":uno: lt-sm:hidden",
             ]}
           >
             <span class=":uno: font-bold">Vcpkg</span>
@@ -51,8 +51,8 @@ const LinkElement = isHome ? 'span' : 'a';
       <slot />
       <div
         class:list={[
-          ':uno: flex items-center justify-end gap-x-4',
-          hideSearch ? ':uno: flex-none' : ':uno: flex-1 max-w-80',
+          ":uno: flex items-center justify-end gap-x-4",
+          hideSearch ? ":uno: flex-none" : ":uno: flex-1 max-w-80",
         ]}
         data-nosnippet
       >

@@ -1,9 +1,9 @@
 ---
-import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
-import type { VcpkgDependencyObjectEx } from '../../../../shared/vcpkg/portDependencies.mjs';
-import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
-import { pluralize } from '../utils/pluralize.mjs';
-import DependencyList from './DependencyList.astro';
+import type { DataPortsPort } from "../../../../shared/dataTypes/ports.mjs";
+import type { VcpkgDependencyObjectEx } from "../../../../shared/vcpkg/portDependencies.mjs";
+import type { VcpkgDependencyObject } from "../../../../shared/vcpkg/schema.mjs";
+import { pluralize } from "../utils/pluralize.mjs";
+import DependencyList from "./DependencyList.astro";
 
 interface Props {
   readonly dependencies: readonly VcpkgDependencyObject[];
@@ -39,14 +39,14 @@ const {
 {
   transitiveDependencies.length ? (
     <details
-      class:list={narrowDetails ? 'narrow' : []}
+      class:list={narrowDetails ? "narrow" : []}
       open={openTransitiveIfNoDirect && !dependencies.length}
     >
       <summary>
         <em
-          set:text={`${dependencies.length ? 'and ' : ''}${pluralize(
+          set:text={`${dependencies.length ? "and " : ""}${pluralize(
             transitiveDependencies.length,
-            'transitive dependency'
+            "transitive dependency"
           )}:`}
         />
       </summary>

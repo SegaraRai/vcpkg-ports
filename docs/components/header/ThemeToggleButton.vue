@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-import { useDark, useToggle } from '@vueuse/core';
+import { useDark, useToggle } from "@vueuse/core";
 
 const isDark = useDark({
-  storageKey: 'theme',
-  valueDark: 'theme-dark',
-  valueLight: 'theme-light',
+  storageKey: "theme",
+  valueDark: "theme-dark",
+  valueLight: "theme-light",
 });
 const toggleDark = useToggle(isDark);
 </script>

@@ -1,15 +1,15 @@
 ---
-import SectionWrapper from '../SectionWrapper.astro';
-import CodeBlock from '../components/CodeBlock.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
-import { renderUsage } from '../utils/usage.mjs';
+import SectionWrapper from "../SectionWrapper.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
+import { renderUsage } from "../utils/usage.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection((context) =>
-  context.fileContents.find(([filename]) => filename === 'usage')
+  context.fileContents.find(([filename]) => filename === "usage")
     ? {
-        title: 'Usage',
+        title: "Usage",
       }
     : null
 );
@@ -19,14 +19,14 @@ const {
   section,
 } = Astro.props;
 
-const usage = fileContents.find(([filename]) => filename === 'usage')?.[1];
+const usage = fileContents.find(([filename]) => filename === "usage")?.[1];
 const usageChunks = usage ? renderUsage(portName, usage) : [];
 ---
 
 <SectionWrapper section={section}>
   {
     usageChunks.map((chunk) =>
-      chunk.type === 'text' ? (
+      chunk.type === "text" ? (
         // eslint-disable-next-line astro/no-set-html-directive
         <p class=":uno: overflow-hidden text-ellipsis" set:html={chunk.html} />
       ) : (

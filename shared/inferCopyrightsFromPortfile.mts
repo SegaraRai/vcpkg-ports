@@ -1,11 +1,11 @@
-import { parseCMake } from './cmakeParser.mjs';
-import { toUniqueArray } from './utils.mjs';
+import { parseCMake } from "./cmakeParser.mjs";
+import { toUniqueArray } from "./utils.mjs";
 
 function filenameToURL(filename: string): string {
   return normalizeFilename(filename)
-    .split('/')
+    .split("/")
     .map(encodeURIComponent)
-    .join('/');
+    .join("/");
 }
 
 interface SourceProvider {
@@ -18,10 +18,10 @@ const SOURCE_PROVIDERS = {
     args: readonly string[],
     expandVars: (text: string) => string
   ): SourceProvider => {
-    const repo = expandVars(getArg(args, 'REPO') ?? '');
-    const ref = expandVars(getArg(args, 'REF') ?? '');
+    const repo = expandVars(getArg(args, "REPO") ?? "");
+    const ref = expandVars(getArg(args, "REF") ?? "");
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `https://bitbucket.org/${repo}/src/${ref}/${filenameToURL(
@@ -35,11 +35,11 @@ const SOURCE_PROVIDERS = {
     expandVars: (text: string) => string
   ): SourceProvider => {
     const url =
-      expandVars(getArg(args, 'GITHUB_HOST') ?? '') || 'https://github.com';
-    const repo = expandVars(getArg(args, 'REPO') ?? '');
-    const ref = expandVars(getArg(args, 'REF') ?? '');
+      expandVars(getArg(args, "GITHUB_HOST") ?? "") || "https://github.com";
+    const repo = expandVars(getArg(args, "REPO") ?? "");
+    const ref = expandVars(getArg(args, "REF") ?? "");
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `${url}/${repo}/blob/${ref}/${filenameToURL(filename)}`
@@ -51,11 +51,11 @@ const SOURCE_PROVIDERS = {
     expandVars: (text: string) => string
   ): SourceProvider => {
     const url =
-      expandVars(getArg(args, 'GITLAB_URL') ?? '') || 'https://gitlab.com';
-    const repo = expandVars(getArg(args, 'REPO') ?? '');
-    const ref = expandVars(getArg(args, 'REF') ?? '');
+      expandVars(getArg(args, "GITLAB_URL") ?? "") || "https://gitlab.com";
+    const repo = expandVars(getArg(args, "REPO") ?? "");
+    const ref = expandVars(getArg(args, "REF") ?? "");
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
       getURL: (filename: string): string | undefined =>
         repo && ref
           ? `${url}/${repo}/-/blob/${ref}/${filenameToURL(filename)}`
@@ -69,7 +69,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // there are no generic way to get the file URL from a git repo
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
     };
   },
   vcpkg_from_sourceforge: (
@@ -78,7 +78,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // this points to an archive so we cannot get file URL
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
     };
   },
   vcpkg_extract_source_archive: (
@@ -86,7 +86,7 @@ const SOURCE_PROVIDERS = {
     expandVars: (text: string) => string
   ): SourceProvider => {
     return {
-      varName: expandVars(args[0] ?? '') || undefined,
+      varName: expandVars(args[0] ?? "") || undefined,
     };
   },
   vcpkg_extract_source_archive_ex: (
@@ -95,7 +95,7 @@ const SOURCE_PROVIDERS = {
   ): SourceProvider => {
     // this points to an archive so we cannot get file URL
     return {
-      varName: expandVars(getArg(args, 'OUT_SOURCE_PATH') ?? '') || undefined,
+      varName: expandVars(getArg(args, "OUT_SOURCE_PATH") ?? "") || undefined,
     };
   },
 } as const;
@@ -108,12 +108,17 @@ function getArg(args: readonly string[], name: string): string | undefined {
   return args[index + 1];
 }
 
-function getArgs(args: readonly string[], name: string): readonly string[] {
+function getArgs(
+  args: readonly string[],
+  name: string,
+  stop: string[] = []
+): readonly string[] {
   const index = args.indexOf(name);
   if (index === -1) {
     return [];
   }
-  return args.slice(index + 1);
+  const stopIndex = args.findIndex((arg) => stop.includes(arg));
+  return args.slice(index + 1, stopIndex !== -1 ? stopIndex : undefined);
 }
 
 /*
@@ -131,9 +136,9 @@ idioms:
 
 function normalizeFilename(filename: string): string {
   return filename
-    .replaceAll('\\', '/')
-    .replaceAll('/./', '/')
-    .replace(/\/{2,}/g, '/');
+    .replaceAll("\\", "/")
+    .replaceAll("/./", "/")
+    .replace(/\/{2,}/g, "/");
 }
 
 function createURLRef(url: string): string {
@@ -146,49 +151,49 @@ export function inferCopyrightsFromPortfile(
   portfile: string
 ): string[] {
   const contextVars = new Map<string, string>([
-    ['PORT', portName],
-    ['VERSION', portVersion],
-    ['VCPKG_ROOT_DIR', '/virtual/vcpkg_root_dir'],
-    ['CURRENT_BUILDTREES_DIR', '/virtual/current_buildtrees_dir'],
-    ['CURRENT_PACKAGES_DIR', '/virtual/current_packages_dir'],
-    ['CURRENT_PORT_DIR', '/virtual/current_port_dir'],
-    ['CURRENT_HOST_INSTALLED_DIR', '/virtual/current_host_installed_dir'],
-    ['CURRENT_INSTALLED_DIR', '/virtual/current_installed_dir'],
-    ['CMAKE_CURRENT_LIST_DIR', '/virtual/cmake_current_list_dir'],
-    ['PATH', ''],
-    ['TARGET_TRIPLET', 'x64-windows'],
-    ['TRIPLET_SYSTEM_ARCH', 'x64'],
-    ['VCPKG_C_FLAGS', ''],
-    ['VCPKG_C_FLAGS_DEBUG', ''],
-    ['VCPKG_C_FLAGS_RELEASE', ''],
-    ['VCPKG_CXX_FLAGS', ''],
-    ['VCPKG_CXX_FLAGS_DEBUG', ''],
-    ['VCPKG_CXX_FLAGS_RELEASE', ''],
-    ['VCPKG_LINKER_FLAGS', ''],
-    ['VCPKG_LINKER_FLAGS_DEBUG', ''],
-    ['VCPKG_LINKER_FLAGS_RELEASE', ''],
-    ['VCPKG_COMBINED_C_FLAGS_DEBUG', ''],
-    ['VCPKG_COMBINED_C_FLAGS_RELEASE', ''],
-    ['VCPKG_COMBINED_CXX_FLAGS_DEBUG', ''],
-    ['VCPKG_COMBINED_CXX_FLAGS_RELEASE', ''],
-    ['VCPKG_COMBINED_SHARED_LINKER_FLAGS_DEBUG', ''],
-    ['VCPKG_COMBINED_SHARED_LINKER_FLAGS_RELEASE', ''],
-    ['VCPKG_COMBINED_STATIC_LINKER_FLAGS_DEBUG', ''],
-    ['VCPKG_COMBINED_STATIC_LINKER_FLAGS_RELEASE', ''],
-    ['VCPKG_TARGET_ARCHITECTURE', 'x64'],
-    ['VCPKG_HOST_EXECUTABLE_SUFFIX', ''],
-    ['VCPKG_TARGET_EXECUTABLE_SUFFIX', ''],
-    ['VCPKG_TARGET_IMPORT_LIBRARY_PREFIX', ''],
-    ['VCPKG_TARGET_IMPORT_LIBRARY_SUFFIX', ''],
-    ['VCPKG_TARGET_SHARED_LIBRARY_PREFIX', ''],
-    ['VCPKG_TARGET_SHARED_LIBRARY_SUFFIX', ''],
-    ['VCPKG_TARGET_STATIC_LIBRARY_PREFIX', ''],
-    ['VCPKG_TARGET_STATIC_LIBRARY_SUFFIX', ''],
-    ['VCPKG_HEAD_VERSION', ''],
-    ['VCPKG_DETECTED_CMAKE_C_COMPILER', ''],
-    ['VCPKG_PLATFORM_TOOLSET', ''],
-    ['VCPKG_OSX_DEPLOYMENT_TARGET', ''],
-    ['VCPKG_HOST_PATH_SEPARATOR', ';'],
+    ["PORT", portName],
+    ["VERSION", portVersion],
+    ["VCPKG_ROOT_DIR", "/virtual/vcpkg_root_dir"],
+    ["CURRENT_BUILDTREES_DIR", "/virtual/current_buildtrees_dir"],
+    ["CURRENT_PACKAGES_DIR", "/virtual/current_packages_dir"],
+    ["CURRENT_PORT_DIR", "/virtual/current_port_dir"],
+    ["CURRENT_HOST_INSTALLED_DIR", "/virtual/current_host_installed_dir"],
+    ["CURRENT_INSTALLED_DIR", "/virtual/current_installed_dir"],
+    ["CMAKE_CURRENT_LIST_DIR", "/virtual/cmake_current_list_dir"],
+    ["PATH", ""],
+    ["TARGET_TRIPLET", "x64-windows"],
+    ["TRIPLET_SYSTEM_ARCH", "x64"],
+    ["VCPKG_C_FLAGS", ""],
+    ["VCPKG_C_FLAGS_DEBUG", ""],
+    ["VCPKG_C_FLAGS_RELEASE", ""],
+    ["VCPKG_CXX_FLAGS", ""],
+    ["VCPKG_CXX_FLAGS_DEBUG", ""],
+    ["VCPKG_CXX_FLAGS_RELEASE", ""],
+    ["VCPKG_LINKER_FLAGS", ""],
+    ["VCPKG_LINKER_FLAGS_DEBUG", ""],
+    ["VCPKG_LINKER_FLAGS_RELEASE", ""],
+    ["VCPKG_COMBINED_C_FLAGS_DEBUG", ""],
+    ["VCPKG_COMBINED_C_FLAGS_RELEASE", ""],
+    ["VCPKG_COMBINED_CXX_FLAGS_DEBUG", ""],
+    ["VCPKG_COMBINED_CXX_FLAGS_RELEASE", ""],
+    ["VCPKG_COMBINED_SHARED_LINKER_FLAGS_DEBUG", ""],
+    ["VCPKG_COMBINED_SHARED_LINKER_FLAGS_RELEASE", ""],
+    ["VCPKG_COMBINED_STATIC_LINKER_FLAGS_DEBUG", ""],
+    ["VCPKG_COMBINED_STATIC_LINKER_FLAGS_RELEASE", ""],
+    ["VCPKG_TARGET_ARCHITECTURE", "x64"],
+    ["VCPKG_HOST_EXECUTABLE_SUFFIX", ""],
+    ["VCPKG_TARGET_EXECUTABLE_SUFFIX", ""],
+    ["VCPKG_TARGET_IMPORT_LIBRARY_PREFIX", ""],
+    ["VCPKG_TARGET_IMPORT_LIBRARY_SUFFIX", ""],
+    ["VCPKG_TARGET_SHARED_LIBRARY_PREFIX", ""],
+    ["VCPKG_TARGET_SHARED_LIBRARY_SUFFIX", ""],
+    ["VCPKG_TARGET_STATIC_LIBRARY_PREFIX", ""],
+    ["VCPKG_TARGET_STATIC_LIBRARY_SUFFIX", ""],
+    ["VCPKG_HEAD_VERSION", ""],
+    ["VCPKG_DETECTED_CMAKE_C_COMPILER", ""],
+    ["VCPKG_PLATFORM_TOOLSET", ""],
+    ["VCPKG_OSX_DEPLOYMENT_TARGET", ""],
+    ["VCPKG_HOST_PATH_SEPARATOR", ";"],
   ]);
   const contextFiles = new Map<string, string>();
   const contextSourceProviders = new Map<string, SourceProvider>();
@@ -203,7 +208,7 @@ export function inferCopyrightsFromPortfile(
   const expandVarsNoThrow = (str: string): string =>
     str.replace(
       /\${([^}]+)}/g,
-      (all, name): string => contextVars.get(name) ?? all
+      (all, name: string): string => contextVars.get(name) ?? all
     );
 
   const expandVars = (str: string): string => {
@@ -230,103 +235,114 @@ export function inferCopyrightsFromPortfile(
     filename = normalizeFilename(filename);
     if (!contextFiles.has(filename)) {
       const url = noURL ? undefined : getURLFromFilename(filename);
-      contextFiles.set(filename, url ? createURLRef(url) : '');
+      contextFiles.set(filename, url ? createURLRef(url) : "");
     }
+  };
+
+  const readContextFile = (filename: string): string => {
+    const content = contextFiles.get(filename);
+    if (!content) {
+      //console.warn(`File not found: ${filename}`);
+      return "";
+    }
+    return content;
   };
 
   for (const command of parsed) {
     try {
       switch (command.cmd) {
-        case 'set':
+        case "set":
           if (command.args.length === 2) {
             contextVars.set(command.args[0], expandVars(command.args[1]));
           }
           break;
 
-        case 'file': {
+        case "file": {
           const [action, rawFile, ...args] = command.args;
           const file = normalizeFilename(expandVars(rawFile));
-          if (file.endsWith('/')) {
+          if (file.endsWith("/")) {
             break;
           }
 
           // for daw-json-link, which creates `copyright` file in `SOURCE_PATH`
-          ensureFilePlaceholder(file, file.endsWith('/copyright'));
+          ensureFilePlaceholder(file, file.endsWith("/copyright"));
 
           switch (action) {
-            case 'READ':
-              contextVars.set(expandVars(args[0]), contextFiles.get(file)!);
+            case "READ":
+              contextVars.set(expandVars(args[0]), readContextFile(file));
               break;
 
-            case 'DOWNLOAD': {
-              const url = expandVars(getArg(args, 'URL') ?? '');
+            case "DOWNLOAD": {
+              const url = expandVars(getArg(args, "URL") ?? "");
               if (url) {
                 contextFiles.set(file, createURLRef(url));
               }
               break;
             }
 
-            case 'WRITE':
-              contextFiles.set(file, expandVars(args[0] ?? ''));
+            case "WRITE":
+              contextFiles.set(file, expandVars(args[0] ?? ""));
               break;
 
-            case 'APPEND':
+            case "APPEND":
               contextFiles.set(
                 file,
-                contextFiles.get(file)! + expandVars(args[0])
+                readContextFile(file) + expandVars(args[0])
               );
               break;
 
-            case 'RENAME': {
-              const dest = normalizeFilename(expandVars(args[0] ?? ''));
+            case "RENAME": {
+              const dest = normalizeFilename(expandVars(args[0] ?? ""));
               if (dest) {
-                contextFiles.set(dest, contextFiles.get(file)!);
+                contextFiles.set(dest, readContextFile(file));
                 contextFiles.delete(file);
               }
               break;
             }
 
-            case 'COPY':
-            case 'INSTALL': {
+            case "COPY":
+            case "INSTALL": {
               const destDir = normalizeFilename(
-                expandVars(getArg(args, 'DESTINATION') ?? '')
+                expandVars(getArg(args, "DESTINATION") ?? "")
               );
               const rename = normalizeFilename(
-                expandVars(getArg(args, 'RENAME') ?? '')
+                expandVars(getArg(args, "RENAME") ?? "")
               );
               const destFile =
                 file && destDir
                   ? normalizeFilename(
-                      `${destDir}/${rename || file.match(/[^/]+$/)![0]}`
+                      `${destDir}/${rename || (file.match(/[^/]+$/)?.[0] ?? "")}`
                     )
                   : null;
               if (destFile) {
-                contextFiles.set(destFile, contextFiles.get(file)!);
+                contextFiles.set(destFile, readContextFile(file));
               }
             }
           }
           break;
         }
 
-        case 'configure_file': {
-          const src = normalizeFilename(expandVars(command.args[0] ?? ''));
-          const dest = normalizeFilename(expandVars(command.args[1] ?? ''));
+        case "configure_file": {
+          const src = normalizeFilename(expandVars(command.args[0] ?? ""));
+          const dest = normalizeFilename(expandVars(command.args[1] ?? ""));
           if (src && dest) {
             ensureFilePlaceholder(src);
-            contextFiles.set(dest, contextFiles.get(src)!);
+            contextFiles.set(dest, readContextFile(src));
           }
           break;
         }
 
-        case 'vcpkg_install_copyright': {
-          let content = expandVars(getArg(command.args, 'COMMENT') ?? '');
-          for (const rawFilename of getArgs(command.args, 'FILE_LIST')) {
+        case "vcpkg_install_copyright": {
+          let content = expandVars(getArg(command.args, "COMMENT") ?? "");
+          for (const rawFilename of getArgs(command.args, "FILE_LIST", [
+            "COMMENT",
+          ])) {
             if (content) {
-              content += '\n';
+              content += "\n";
             }
             const filename = normalizeFilename(expandVars(rawFilename));
             ensureFilePlaceholder(filename);
-            content += contextFiles.get(filename)!;
+            content += readContextFile(filename);
           }
           contextFiles.set(
             `/virtual/current_packages_dir/share/${portName}/copyright`,
@@ -335,12 +351,12 @@ export function inferCopyrightsFromPortfile(
           break;
         }
 
-        case 'vcpkg_download_distfile': {
+        case "vcpkg_download_distfile": {
           const varName = expandVars(command.args[0]);
           // though URLS can be a list, we only use the first one
-          const url = expandVars(getArg(command.args, 'URLS') ?? '');
+          const url = expandVars(getArg(command.args, "URLS") ?? "");
           const filename = `${allocateSourcePath()}/${normalizeFilename(
-            expandVars(getArg(command.args, 'FILENAME') ?? 'archive')
+            expandVars(getArg(command.args, "FILENAME") ?? "archive")
           )}`;
           if (varName && url && filename) {
             contextVars.set(varName, filename);
@@ -349,17 +365,14 @@ export function inferCopyrightsFromPortfile(
           break;
         }
 
-        case 'vcpkg_from_bitbucket':
-        case 'vcpkg_from_github':
-        case 'vcpkg_from_git':
-        case 'vcpkg_from_gitlab':
-        case 'vcpkg_from_sourceforge':
-        case 'vcpkg_extract_source_archive':
-        case 'vcpkg_extract_source_archive_ex': {
+        case "vcpkg_from_bitbucket":
+        case "vcpkg_from_github":
+        case "vcpkg_from_git":
+        case "vcpkg_from_gitlab":
+        case "vcpkg_from_sourceforge":
+        case "vcpkg_extract_source_archive":
+        case "vcpkg_extract_source_archive_ex": {
           const provider = SOURCE_PROVIDERS[command.cmd];
-          if (!provider) {
-            break;
-          }
           const sourceProvider = provider(command.args, expandVars);
           if (!sourceProvider.varName) {
             break;
@@ -377,11 +390,11 @@ export function inferCopyrightsFromPortfile(
 
   const copyrightFiles = Array.from(contextFiles.keys())
     .sort()
-    .filter((filename) => filename.endsWith('/copyright'));
+    .filter((filename) => filename.endsWith("/copyright"));
 
   const urls: string[] = [];
   for (const filename of copyrightFiles) {
-    const content = contextFiles.get(filename) ?? '';
+    const content = contextFiles.get(filename) ?? "";
     if (!content) {
       continue;
     }

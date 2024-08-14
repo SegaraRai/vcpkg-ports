@@ -1,10 +1,10 @@
 ---
-import HeadingAnchor from '../HeadingAnchor.astro';
-import type { SectionSubset } from './defineSection.mjs';
+import HeadingAnchor from "../HeadingAnchor.astro";
+import type { SectionSubset } from "./defineSection.mjs";
 
 interface Props {
   readonly section: SectionSubset;
-  readonly translate?: 'yes' | 'no' | null | undefined;
+  readonly translate?: "yes" | "no" | null | undefined;
   readonly nosnippet?: boolean | undefined;
 }
 
@@ -16,7 +16,7 @@ const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
   !section.noHeading && (
     <HeadingTag
       id={section.slug}
-      class:list={['has-anchor', ':uno: flex items-center']}
+      class:list={["has-anchor", ":uno: flex items-center"]}
     >
       <HeadingAnchor
         level={section.level}

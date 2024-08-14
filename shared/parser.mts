@@ -1,10 +1,10 @@
-const SYM_S_OR = Symbol('|'); // or
+const SYM_S_OR = Symbol("|"); // or
 
-const SYM_D_Q01 = Symbol('?'); // zero or one
-const SYM_D_Q0N = Symbol('*'); // zero or more
-const SYM_D_Q1N = Symbol('+'); // one or more
-const SYM_D_EQU = Symbol('='); // positive lookahead
-const SYM_D_NEG = Symbol('!'); // negative lookahead
+const SYM_D_Q01 = Symbol("?"); // zero or one
+const SYM_D_Q0N = Symbol("*"); // zero or more
+const SYM_D_Q1N = Symbol("+"); // one or more
+const SYM_D_EQU = Symbol("="); // positive lookahead
+const SYM_D_NEG = Symbol("!"); // negative lookahead
 
 export type Terminal =
   | string
@@ -72,7 +72,7 @@ export function NOT(...expressions: readonly Expressions[]): Expression {
 
 export function isRuleToken<T>(token: Token<T>): token is RuleToken<T> {
   return (
-    Array.isArray(token) && token.length === 2 && typeof token[0] === 'symbol'
+    Array.isArray(token) && token.length === 2 && typeof token[0] === "symbol"
   );
 }
 
@@ -98,13 +98,13 @@ export function stringifyTokens(
 ): string {
   return tokens
     .map((token) =>
-      typeof token === 'string'
+      typeof token === "string"
         ? token
         : isRuleToken(token) && depth !== 0
           ? stringifyTokens(token[1], depth - 1)
-          : ''
+          : ""
     )
-    .join('');
+    .join("");
 }
 
 function isDecorator(value: unknown): value is ExpressionDecorator {
@@ -186,7 +186,7 @@ function parseExpression<T>(
     throw new Error(`invalid expression: ${String(expression)}`);
   }
 
-  if (typeof expression === 'string') {
+  if (typeof expression === "string") {
     return src.startsWith(expression, startIndex)
       ? [[expression], expression.length]
       : undefined;
@@ -197,17 +197,17 @@ function parseExpression<T>(
     return match?.index === 0 ? [[match[0]], match[0].length] : undefined;
   }
 
-  if (typeof expression === 'function') {
+  if (typeof expression === "function") {
     const length = expression(src, startIndex);
     if (!isFinite(length)) {
-      throw new TypeError('invalid length');
+      throw new TypeError("invalid length");
     }
     return length >= 0
       ? [[src.slice(startIndex, startIndex + length)], length]
       : undefined;
   }
 
-  if (typeof expression === 'symbol') {
+  if (typeof expression === "symbol") {
     const subRule = ruleMap.get(expression);
     if (!subRule) {
       throw new Error(`sub rule ${String(expression)} not found`);
@@ -267,12 +267,12 @@ export function createParser<T = never>(
 
   const startRule = ruleMap.get(start ?? syntax[0][0]);
   if (!startRule) {
-    throw new Error('start rule not found');
+    throw new Error("start rule not found");
   }
 
   for (const element of syntax.flat()) {
     if (
-      typeof element !== 'symbol' ||
+      typeof element !== "symbol" ||
       isDecorator(element) ||
       element === SYM_S_OR ||
       ruleMap.has(element)

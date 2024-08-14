@@ -1,31 +1,31 @@
-import { computedEager } from '@vueuse/core';
-import type * as Fuse from 'fuse.js';
-import { type Ref, computed, shallowRef } from 'vue';
-import type { DataSearchItem } from '../../shared/dataTypes/searchItem.mjs';
-import { pickRandom } from '../../shared/utils.mjs';
-import { SEARCH_RANDOM_MAX_RESULTS } from '../constants.mjs';
+import { computedEager } from "@vueuse/core";
+import type * as Fuse from "fuse.js";
+import { type Ref, computed, shallowRef } from "vue";
+import type { DataSearchItem } from "../../shared/dataTypes/searchItem.mjs";
+import { pickRandom } from "../../shared/utils.mjs";
+import { SEARCH_RANDOM_MAX_RESULTS } from "../constants.mjs";
 
 async function createFuseAsync(nameOnly: boolean) {
   const [{ default: Fuse }, { default: searchItems }] = await Promise.all([
-    import('fuse.js'),
-    import('../virtual/searchItems.mjs'),
+    import("fuse.js"),
+    import("../virtual/searchItems.mjs"),
   ]);
 
   const fuse = new Fuse(searchItems, {
     keys: [
       {
-        name: 'name',
+        name: "name",
         weight: 1,
       },
       ...(nameOnly
         ? []
         : [
             {
-              name: 'description',
+              name: "description",
               weight: 0.75,
             },
             {
-              name: 'url',
+              name: "url",
               weight: 0.25,
             },
           ]),
@@ -81,8 +81,10 @@ export function useSearch(
 ) {
   const fuse = shallowRef<FuseInstance | undefined>();
   if (eager) {
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
     loadFuse(nameOnly);
   }
+  // eslint-disable-next-line @typescript-eslint/no-floating-promises
   gFusePromiseMap.get(nameOnly)?.then((f): void => {
     fuse.value = f;
   });
@@ -99,7 +101,7 @@ export function useSearch(
       }
       if (import.meta.env.SSR) {
         // eslint-disable-next-line no-console
-        console.info('Skip loading fuse.js in SSR/SSG');
+        console.info("Skip loading fuse.js in SSR/SSG");
         return;
       }
       fuse.value = await loadFuse(nameOnly);

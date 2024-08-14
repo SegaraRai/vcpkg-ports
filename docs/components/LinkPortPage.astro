@@ -1,14 +1,14 @@
 ---
-import { getPortPageURL } from '../constants.mjs';
+import { getPortPageURL } from "../constants.mjs";
 
 interface Props {
   readonly class?: any;
   readonly port: string;
   readonly feature?: string | undefined;
-  readonly translate?: 'yes' | 'no' | null | undefined;
+  readonly translate?: "yes" | "no" | null | undefined;
 }
 
-const { class: classList, port, feature, translate = 'no' } = Astro.props;
+const { class: classList, port, feature, translate = "no" } = Astro.props;
 const href = getPortPageURL(port, feature);
 ---
 

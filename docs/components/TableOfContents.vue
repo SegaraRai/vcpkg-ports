@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import type { MarkdownHeading } from 'astro';
-import { computed } from 'vue';
-import { useActiveAnchor } from '../composables/useActiveAnchor.mjs';
+import type { MarkdownHeading } from "astro";
+import { computed } from "vue";
+import { useActiveAnchor } from "../composables/useActiveAnchor.mjs";
 
 const props = defineProps<{
   headings: readonly MarkdownHeading[];
@@ -16,7 +16,7 @@ const activeAnchor = useActiveAnchor(headings2);
 
 <template>
   <h2 class="heading">On this page</h2>
-  <ul class="plain-list" ref="{toc}">
+  <ul class="plain-list">
     <template v-for="heading in headings2" :key="heading.slug">
       <li
         class="header-link"

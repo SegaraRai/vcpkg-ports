@@ -1,9 +1,9 @@
-import type { DataPortsPort } from '../dataTypes/ports.mjs';
-import { toUniqueArray } from '../utils.mjs';
-import { getDependencies, isNormalDependency } from './portUtils.mjs';
-import type { VcpkgDependencyObject } from './schema.mjs';
+import type { DataPortsPort } from "../dataTypes/ports.mjs";
+import { toUniqueArray } from "../utils.mjs";
+import { getDependencies, isNormalDependency } from "./portUtils.mjs";
+import type { VcpkgDependencyObject } from "./schema.mjs";
 
-export const DEPENDENT_FEATURE_DELIMITER = '#';
+export const DEPENDENT_FEATURE_DELIMITER = "#";
 
 export function createDependentsMap(
   portMap: ReadonlyMap<string, DataPortsPort>

@@ -1,4 +1,4 @@
-import type { Vcpkg } from '../vcpkg/schema.mjs';
+import type { Vcpkg } from "../vcpkg/schema.mjs";
 
 export interface DataPortsPort {
   readonly name: string;

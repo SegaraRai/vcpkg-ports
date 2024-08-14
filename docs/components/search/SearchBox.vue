@@ -1,44 +1,45 @@
 <script lang="ts" setup>
-import { computedEager, useFocus, useVModel } from '@vueuse/core';
-import { defineComponent, onMounted, shallowRef } from 'vue';
-import IconSearch from '~icons/line-md/search';
+import { computedEager, useFocus, useVModel } from "@vueuse/core";
+import { defineComponent, onMounted, shallowRef } from "vue";
+import IconSearch from "~icons/line-md/search";
 
 const props = defineProps<{
   modelValue: string;
   focused?: boolean;
   loading?: boolean;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   wrapperClass?: any;
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
-  (e: 'focus', value: FocusEvent): void;
+  (e: "update:modelValue", value: string): void;
+  (e: "focus", value: FocusEvent): void;
 }>();
 
-const modelValue = useVModel(props, 'modelValue', emit);
+const modelValue = useVModel(props, "modelValue", emit);
 
 const inputEl = shallowRef<HTMLInputElement | null>(null);
-const { focused } = useFocus(inputEl);
+const { focused: inputFocused } = useFocus(inputEl);
 
 const wrapperClassEx = computedEager((): string =>
-  focused.value
-    ? ':uno: light:border-orange-500/70 light:bg-black/1 dark:border-orange-400/70 dark:bg-white/5'
-    : ':uno: light:border-black/20 light:hover:border-orange-500/70 light:bg-black/0 light:hover:bg-black/1 dark:border-white/50 dark:hover:border-orange-400/70 dark:bg-white/2 dark:hover:bg-white/5'
+  inputFocused.value
+    ? ":uno: light:border-orange-500/70 light:bg-black/1 dark:border-orange-400/70 dark:bg-white/5"
+    : ":uno: light:border-black/20 light:hover:border-orange-500/70 light:bg-black/0 light:hover:bg-black/1 dark:border-white/50 dark:hover:border-orange-400/70 dark:bg-white/2 dark:hover:bg-white/5"
 );
 
 defineExpose({
   blur: (): void => {
-    focused.value = false;
+    inputFocused.value = false;
   },
   focus: (): void => {
-    focused.value = true;
+    inputFocused.value = true;
   },
 });
 
 onMounted((): void => {
   if (props.focused) {
     setTimeout((): void => {
-      focused.value = true;
+      inputFocused.value = true;
     }, 0);
   }
 });
@@ -59,11 +60,11 @@ export default defineComponent({
       <IconSearch />
     </span>
     <input
+      ref="inputEl"
+      v-model="modelValue"
       class=":uno: flex-1 block w-full h-full !bg-transparent !outline-none"
       type="search"
       aria-label="Search"
-      ref="inputEl"
-      v-model="modelValue"
       v-bind="$attrs"
     />
     <span

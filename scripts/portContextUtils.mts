@@ -1,19 +1,19 @@
-import fsp from 'node:fs/promises';
-import path from 'node:path';
-import { asyncMap } from '../shared/asyncUtils.mjs';
-import type { DataHistory } from '../shared/dataTypes/history.mjs';
-import type { DataPortOGIndex } from '../shared/dataTypes/ogIndex.mjs';
-import type { PortContext } from '../shared/dataTypes/portContext.mjs';
-import type { DataPorts, DataPortsPort } from '../shared/dataTypes/ports.mjs';
-import { inferCopyrightsFromPortfile } from '../shared/inferCopyrightsFromPortfile.mjs';
-import { isFileIncludedInPortContext } from '../shared/utils.mjs';
-import { createDependentsMap } from '../shared/vcpkg/portDependents.mjs';
+import fsp from "node:fs/promises";
+import path from "node:path";
+import { asyncMap } from "../shared/asyncUtils.mjs";
+import type { DataHistory } from "../shared/dataTypes/history.mjs";
+import type { DataPortOGIndex } from "../shared/dataTypes/ogIndex.mjs";
+import type { PortContext } from "../shared/dataTypes/portContext.mjs";
+import type { DataPorts, DataPortsPort } from "../shared/dataTypes/ports.mjs";
+import { inferCopyrightsFromPortfile } from "../shared/inferCopyrightsFromPortfile.mjs";
+import { isFileIncludedInPortContext } from "../shared/utils.mjs";
+import { createDependentsMap } from "../shared/vcpkg/portDependents.mjs";
 import {
   getPortVersionText,
   getShortPortDescription,
   stringifyPortDescription,
-} from '../shared/vcpkg/portUtils.mjs';
-import { CONCURRENCY, VCPKG_DIR } from './constants.mjs';
+} from "../shared/vcpkg/portUtils.mjs";
+import { CONCURRENCY, VCPKG_DIR } from "./constants.mjs";
 
 export function createPortContexts(
   { ports }: DataPorts,
@@ -53,8 +53,8 @@ export function createPortContexts(
     }
     const version = getPortVersionText(manifest);
     const portfile = await fsp.readFile(
-      path.join(VCPKG_DIR, 'ports', name, 'portfile.cmake'),
-      'utf-8'
+      path.join(VCPKG_DIR, "ports", name, "portfile.cmake"),
+      "utf-8"
     );
     const inferredCopyrightURLs = inferCopyrightsFromPortfile(
       name,
@@ -80,8 +80,8 @@ export function createPortContexts(
           .map(async (filename) => [
             filename,
             await fsp.readFile(
-              path.join(VCPKG_DIR, 'ports', name, filename),
-              'utf-8'
+              path.join(VCPKG_DIR, "ports", name, filename),
+              "utf-8"
             ),
           ])
       ),

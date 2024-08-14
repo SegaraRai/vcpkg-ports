@@ -1,6 +1,6 @@
-import type { Font, GlyphRun } from 'fontkit';
-import { renderNumber } from './svgUtils.mjs';
-import { textToLinesWithEllipsis } from './textToLines.mjs';
+import type { Font, GlyphRun } from "fontkit";
+import { renderNumber } from "./svgUtils.mjs";
+import { textToLinesWithEllipsis } from "./textToLines.mjs";
 
 export interface SVGWithSize {
   readonly svg: string;
@@ -25,7 +25,7 @@ export function textToGlyphRuns(
   maxWidth: number,
   maxLines: number,
   layoutCallback: (text: string) => GlyphRun,
-  ellipsis = '…',
+  ellipsis = "…",
   strict = false
 ): GlyphRun[] {
   return textToLinesWithEllipsis(
@@ -92,7 +92,7 @@ export function glyphRunsToSVG(
   return {
     svg: `<g transform="scale(${renderNumber(scale)},${renderNumber(
       scale
-    )})">\n${svgLines.join('\n')}\n</g>`,
+    )})">\n${svgLines.join("\n")}\n</g>`,
     width,
     height,
   };
@@ -105,13 +105,13 @@ export function textToSVG(
   maxWidth: number,
   maxLines: number,
   lineHeight: number,
-  alignment: 'left' | 'center' | 'right' = 'left',
+  alignment: "left" | "center" | "right" = "left",
   layoutCallback?: (text: string) => GlyphRun,
-  ellipsis = '…',
+  ellipsis = "…",
   strict = false
 ): SVGWithSize {
   const offsetScale =
-    alignment === 'right' ? 1 : alignment === 'center' ? 0.5 : 0;
+    alignment === "right" ? 1 : alignment === "center" ? 0.5 : 0;
   const glyphRuns = textToGlyphRuns(
     text,
     pxToUnits(maxWidth, font, fontSize),
@@ -130,6 +130,6 @@ export function textToSVG(
   return {
     ...result,
     width:
-      alignment === 'center' ? Math.max(result.width, maxWidth) : result.width,
+      alignment === "center" ? Math.max(result.width, maxWidth) : result.width,
   };
 }

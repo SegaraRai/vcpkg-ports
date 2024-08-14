@@ -1,20 +1,20 @@
 ---
-import type { MarkdownHeading } from 'astro';
-import type { PortFrontmatter } from '../../shared/dataTypes/frontmatter.mjs';
-import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
-import HeadCommon from '../components/HeadCommon.astro';
-import HeadSEO from '../components/HeadSEO.astro';
-import Footer from '../components/footer/Footer.astro';
-import Header from '../components/header/Header.astro';
-import PortPageContent from '../components/portPage/PortPageContent.astro';
-import RightSidebar from '../components/portPage/RightSidebar.astro';
-import ManagedSearch from '../components/search/ManagedSearch.vue';
-import { SITE_LANGUAGE_KEBAB, formatPageTitle } from '../constants.mjs';
+import type { MarkdownHeading } from "astro";
+import type { PortFrontmatter } from "../../shared/dataTypes/frontmatter.mjs";
+import type { Vcpkg } from "../../shared/vcpkg/schema.mjs";
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import Footer from "../components/footer/Footer.astro";
+import Header from "../components/header/Header.astro";
+import PortPageContent from "../components/portPage/PortPageContent.astro";
+import RightSidebar from "../components/portPage/RightSidebar.astro";
+import ManagedSearch from "../components/search/ManagedSearch.vue";
+import { SITE_LANGUAGE_KEBAB, formatPageTitle } from "../constants.mjs";
 
-import '../styles/main.scss';
+import "../styles/main.scss";
 
 // HACK: make CSS utils recognized by UnoCSS
-import '../components/search/SearchOverlay.vue';
+import "../components/search/SearchOverlay.vue";
 
 interface Props {
   readonly frontmatter: PortFrontmatter;
@@ -25,7 +25,7 @@ interface Props {
 
 const { frontmatter, headings, ogImage, portManifest } = Astro.props as Props;
 const canonicalURL = new URL(
-  Astro.url.pathname.replace(/\.html?$/, ''),
+  Astro.url.pathname.replace(/\.html?$/, ""),
   Astro.site
 );
 const formattedTitle = formatPageTitle(frontmatter.title);

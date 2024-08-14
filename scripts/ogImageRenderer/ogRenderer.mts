@@ -1,17 +1,17 @@
-import fsp from 'node:fs/promises';
-import path from 'node:path';
-import { type Font, open } from 'fontkit';
-import type { DataPorts } from '../../shared/dataTypes/ports.mjs';
+import { type Font, open } from "fontkit";
+import fsp from "node:fs/promises";
+import path from "node:path";
+import type { DataPorts } from "../../shared/dataTypes/ports.mjs";
 import {
   getPortVersionText,
   getShortPortDescription,
-} from '../../shared/vcpkg/portUtils.mjs';
-import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
-import { DATA_PORTS_FILE, OG_FONTS_DIR } from '../constants.mjs';
-import { type FixedPositionSpec, calcPosition } from './positionUtils.mjs';
-import { svgToPNG } from './svgToPNG.mjs';
-import { renderNumber } from './svgUtils.mjs';
-import { type SVGWithSize, textToSVG } from './textToSVG.mjs';
+} from "../../shared/vcpkg/portUtils.mjs";
+import type { Vcpkg } from "../../shared/vcpkg/schema.mjs";
+import { DATA_PORTS_FILE, OG_FONTS_DIR } from "../constants.mjs";
+import { type FixedPositionSpec, calcPosition } from "./positionUtils.mjs";
+import { svgToPNG } from "./svgToPNG.mjs";
+import { renderNumber } from "./svgUtils.mjs";
+import { type SVGWithSize, textToSVG } from "./textToSVG.mjs";
 
 export interface PortFonts {
   readonly BarlowBold: Font;
@@ -30,7 +30,7 @@ interface FontSpec {
   readonly lineHeight: number;
   readonly maxWidth: number;
   readonly maxLines: number;
-  readonly alignment?: 'left' | 'center' | 'right' | undefined;
+  readonly alignment?: "left" | "center" | "right" | undefined;
   readonly features?: readonly string[] | undefined;
   readonly strictOverflow?: boolean;
 }
@@ -45,18 +45,18 @@ export const CANVAS_WIDTH = 1200;
 export const CANVAS_HEIGHT = 630;
 export const RASTERIZE_SCALE = 1.2;
 
-const FONT_FEATURES_TITLE = ['kern', 'liga', 'calt', 'pnum'] as const;
-const FONT_FEATURES_VERSION = ['kern', 'liga', 'calt', 'tnum'] as const;
+const FONT_FEATURES_TITLE = ["kern", "liga", "calt", "pnum"] as const;
+const FONT_FEATURES_VERSION = ["kern", "liga", "calt", "tnum"] as const;
 const FONT_FEATURES_BODY = FONT_FEATURES_TITLE;
 const FONT_FEATURES_LOGO = FONT_FEATURES_BODY;
-const BG_COLOR = '#fafdfe';
-const BG_ACCENT_COLOR = '#fc971c';
+const BG_COLOR = "#fafdfe";
+const BG_ACCENT_COLOR = "#fc971c";
 const TEXT_LEFT = 60;
 const TEXT_BOX_WIDTH = CANVAS_WIDTH - TEXT_LEFT * 2;
 const TEXT_STRICT_OVERFLOW = false;
-const TEXT_SPEC_TITLE: TextSpecFlow = {
-  color: '#121212',
-  font: 'PTRootUIMedium',
+const TEXT_SPEC_TITLE = {
+  color: "#121212",
+  font: "PTRootUIMedium",
   fontSize: 90,
   lineHeight: 0.8,
   maxWidth: TEXT_BOX_WIDTH,
@@ -64,10 +64,10 @@ const TEXT_SPEC_TITLE: TextSpecFlow = {
   paddingTop: 40,
   features: FONT_FEATURES_TITLE,
   strictOverflow: TEXT_STRICT_OVERFLOW,
-};
-const TEXT_SPEC_VERSION: TextSpecFlow = {
-  color: '#565656',
-  font: 'RobotoRegular',
+} as const satisfies TextSpecFlow;
+const TEXT_SPEC_VERSION = {
+  color: "#565656",
+  font: "RobotoRegular",
   fontSize: 50,
   lineHeight: 0.9,
   maxWidth: TEXT_BOX_WIDTH,
@@ -75,10 +75,10 @@ const TEXT_SPEC_VERSION: TextSpecFlow = {
   paddingTop: 15,
   features: FONT_FEATURES_VERSION,
   strictOverflow: TEXT_STRICT_OVERFLOW,
-};
-const TEXT_SPEC_DESCRIPTION: TextSpecFlow = {
-  color: '#272727',
-  font: 'RobotoMedium',
+} as const satisfies TextSpecFlow;
+const TEXT_SPEC_DESCRIPTION = {
+  color: "#272727",
+  font: "RobotoMedium",
   fontSize: 60,
   lineHeight: 1.1,
   maxWidth: TEXT_BOX_WIDTH,
@@ -86,35 +86,35 @@ const TEXT_SPEC_DESCRIPTION: TextSpecFlow = {
   paddingTop: 40,
   features: FONT_FEATURES_BODY,
   strictOverflow: TEXT_STRICT_OVERFLOW,
-};
-const TEXT_SPEC_VCPKG: TextSpecFixed = {
+} as const satisfies TextSpecFlow;
+const TEXT_SPEC_VCPKG = {
   color: BG_COLOR,
-  font: 'BarlowBold',
+  font: "BarlowBold",
   fontSize: 50,
   lineHeight: 1,
   maxWidth: TEXT_BOX_WIDTH,
   maxLines: 1,
-  alignment: 'right', // actually `alignment` does not matter for single line fixed position text
+  alignment: "right", // actually `alignment` does not matter for single line fixed position text
   right: TEXT_LEFT,
   bottom: 50,
   features: FONT_FEATURES_LOGO,
   strictOverflow: TEXT_STRICT_OVERFLOW,
-};
+} as const satisfies TextSpecFixed;
 const TEXT_MAX_BOTTOM =
   CANVAS_HEIGHT -
-  TEXT_SPEC_VCPKG.bottom! * 2 -
+  TEXT_SPEC_VCPKG.bottom * 2 -
   TEXT_SPEC_VCPKG.fontSize * TEXT_SPEC_VCPKG.lineHeight;
 const SVG_PREPENDS = [
   `<rect width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" fill="${BG_COLOR}" />`,
   `<rect width="${CANVAS_WIDTH}" height="${TEXT_SPEC_VCPKG.fontSize + 20}" y="${
     CANVAS_HEIGHT -
-    (TEXT_SPEC_VCPKG.bottom! - 10) -
+    (TEXT_SPEC_VCPKG.bottom - 10) -
     (TEXT_SPEC_VCPKG.fontSize + 20)
   }" fill="${BG_ACCENT_COLOR}" />`,
 ];
 
 function loadFont(filename: string): Promise<Font> {
-  return open(path.join(OG_FONTS_DIR, filename));
+  return open(path.join(OG_FONTS_DIR, filename)) as Promise<Font>;
 }
 
 function specAndTextToSVG(
@@ -133,7 +133,7 @@ function specAndTextToSVG(
     spec.lineHeight,
     spec.alignment,
     (text) => font.layout(text, features),
-    '…',
+    "…",
     spec.strictOverflow
   );
 }
@@ -145,8 +145,8 @@ function createSVGLine(
   spec: FontSpec
 ): string {
   return `<g transform="translate(${renderNumber(x)},${renderNumber(y)})"${
-    spec.color ? ` fill="${spec.color}"` : ''
-  }${spec.opacity != null ? ` opacity="${spec.opacity}"` : ''}>\n${svg}\n</g>`;
+    spec.color ? ` fill="${spec.color}"` : ""
+  }${spec.opacity != null ? ` opacity="${spec.opacity}"` : ""}>\n${svg}\n</g>`;
 }
 
 export function createPortSVG(manifest: Vcpkg, portFonts: PortFonts): string {
@@ -156,7 +156,7 @@ export function createPortSVG(manifest: Vcpkg, portFonts: PortFonts): string {
 
   const svgLines: string[] = [...SVG_PREPENDS];
 
-  for (const [text, spec] of [['Vcpkg Ports', TEXT_SPEC_VCPKG]] as const) {
+  for (const [text, spec] of [["Vcpkg Ports", TEXT_SPEC_VCPKG]] as const) {
     const { width, height, svg } = specAndTextToSVG(text, spec, portFonts);
     const { x, y } = calcPosition(
       spec,
@@ -194,7 +194,7 @@ export function createPortSVG(manifest: Vcpkg, portFonts: PortFonts): string {
   }
 
   return `<svg viewBox="0 0 ${CANVAS_WIDTH} ${CANVAS_HEIGHT}" width="${CANVAS_WIDTH}" height="${CANVAS_HEIGHT}" xmlns="http://www.w3.org/2000/svg">\n${svgLines.join(
-    '\n'
+    "\n"
   )}\n</svg>`;
 }
 
@@ -206,15 +206,15 @@ export interface PortImageRenderer {
 
 export function createPortImageRenderer(): PortImageRenderer {
   const dataPromise = (async () => {
-    const ports: DataPorts = JSON.parse(
-      await fsp.readFile(DATA_PORTS_FILE, 'utf-8')
-    );
+    const ports = JSON.parse(
+      await fsp.readFile(DATA_PORTS_FILE, "utf-8")
+    ) as DataPorts;
     const portMap = new Map(ports.ports.map((e) => [e.name, e]));
     const fonts: PortFonts = {
-      BarlowBold: await loadFont('Barlow-Bold.ttf'),
-      PTRootUIMedium: await loadFont('pt-root-ui_medium.ttf'),
-      RobotoMedium: await loadFont('Roboto-Medium.ttf'),
-      RobotoRegular: await loadFont('Roboto-Regular.ttf'),
+      BarlowBold: await loadFont("Barlow-Bold.ttf"),
+      PTRootUIMedium: await loadFont("pt-root-ui_medium.ttf"),
+      RobotoMedium: await loadFont("Roboto-Medium.ttf"),
+      RobotoRegular: await loadFont("Roboto-Regular.ttf"),
     };
     return {
       ports,

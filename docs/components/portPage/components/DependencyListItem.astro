@@ -1,15 +1,15 @@
 ---
-import type { DataPortsPort } from '../../../../shared/dataTypes/ports.mjs';
-import { toUniqueArray } from '../../../../shared/utils.mjs';
+import type { DataPortsPort } from "../../../../shared/dataTypes/ports.mjs";
+import { toUniqueArray } from "../../../../shared/utils.mjs";
 import {
   DEPENDENCY_PATH_DELIMITER,
   type VcpkgDependencyObjectEx,
-} from '../../../../shared/vcpkg/portDependencies.mjs';
-import { getFeatureName } from '../../../../shared/vcpkg/portUtils.mts';
-import type { VcpkgDependencyObject } from '../../../../shared/vcpkg/schema.mjs';
-import LinkPortPage from '../../LinkPortPage.astro';
-import DetailsWrapper from './DetailsWrapper.astro';
-import WarningBadge from './WarningBadge.astro';
+} from "../../../../shared/vcpkg/portDependencies.mjs";
+import { getFeatureName } from "../../../../shared/vcpkg/portUtils.mts";
+import type { VcpkgDependencyObject } from "../../../../shared/vcpkg/schema.mjs";
+import LinkPortPage from "../../LinkPortPage.astro";
+import DetailsWrapper from "./DetailsWrapper.astro";
+import WarningBadge from "./WarningBadge.astro";
 
 interface Props {
   readonly dependency: VcpkgDependencyObject | VcpkgDependencyObjectEx;
@@ -20,7 +20,7 @@ const { dependency, portMap } = Astro.props;
 
 const exists = portMap.has(dependency.name);
 const dependents =
-  '$ex' in dependency
+  "$ex" in dependency
     ? toUniqueArray(
         dependency.$dependents.map(
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -29,18 +29,18 @@ const dependents =
       ).sort()
     : [];
 const featureNames = toUniqueArray(
-  '$ex' in dependency
+  "$ex" in dependency
     ? dependency.$features
     : [
-        ...((dependency['default-features'] !== false &&
-          portMap.get(dependency.name)?.manifest['default-features']) ||
+        ...((dependency["default-features"] !== false &&
+          portMap.get(dependency.name)?.manifest["default-features"]) ||
           []),
         ...(dependency.features ?? []),
       ].map(getFeatureName)
 ).sort();
 const hasDetails =
   !!dependency.platform ||
-  dependency['default-features'] === false ||
+  dependency["default-features"] === false ||
   !!dependency.features;
 ---
 
@@ -57,21 +57,21 @@ const hasDetails =
       )
     }
     {
-      !!dependency['version>='] && (
-        <code translate="no" set:text={`>= v${dependency['version>=']}`} />
+      !!dependency["version>="] && (
+        <code translate="no" set:text={`>= v${dependency["version>="]}`} />
       )
     }
     {
       !!dependents.length && (
-        <span class:list={['dependency-dependent', ':uno: opacity-90']}>
-          {'(by '}
+        <span class:list={["dependency-dependent", ":uno: opacity-90"]}>
+          {"(by "}
           {dependents.map((d, i) => (
             <>
-              {!!i && ', '}
+              {!!i && ", "}
               <LinkPortPage port={d} />
             </>
           ))}
-          {')'}
+          {")"}
         </span>
       )
     }
@@ -86,15 +86,15 @@ const hasDetails =
           )
         }
         {
-          (dependency['default-features'] === false ||
+          (dependency["default-features"] === false ||
             !!dependency.features) && (
             <>
-              {'Features: '}
+              {"Features: "}
               {featureNames.length ? (
                 <span translate="no">
                   {featureNames.map((featureName, i) => (
                     <>
-                      {!!i && ', '}
+                      {!!i && ", "}
                       <code translate="no" set:text={featureName} />
                     </>
                   ))}

@@ -10,15 +10,15 @@
 export function pluralize(
   count: number,
   text: `${string}${
-    | 'commit'
-    | 'dependency'
-    | 'dependent'
-    | 'item'
-    | 'port'
-    | 'result'}`,
+    | "commit"
+    | "dependency"
+    | "dependent"
+    | "item"
+    | "port"
+    | "result"}`,
   capitalize = false
 ): string {
-  return `${(capitalize ? ['No', 'One'] : ['no', 'one'])[count] ?? count} ${
-    count === 1 ? text : text.replace(/y$/, 'ies').replace(/[^s]$/, '$&s')
+  return `${(capitalize ? ["No", "One"] : ["no", "one"])[count] ?? count} ${
+    count === 1 ? text : text.replace(/y$/, "ies").replace(/[^s]$/, "$&s")
   }`;
 }

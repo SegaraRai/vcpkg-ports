@@ -1,16 +1,16 @@
-import sitemap from '@astrojs/sitemap';
-import vue from '@astrojs/vue';
-import { defineConfig } from 'astro/config';
-import compress from 'astro-compress';
-import unoCSS from 'unocss/astro';
-import icons from 'unplugin-icons/vite';
-import { CSP_HEADER_VALUE, DATA_HISTORY_FILE } from './scripts/constants.mjs';
-import { readJSON } from './scripts/jsonUtils.mjs';
-import copyOGImages from './scripts/plugins/copyOGImages.mjs';
-import postprocess from './scripts/plugins/postprocess.mjs';
-import virtualDataLoader from './scripts/plugins/virtualDataLoader.mjs';
-import type { DataHistory } from './shared/dataTypes/history.mjs';
-import { filenameToPortName } from './shared/pageConstants.mjs';
+import sitemap from "@astrojs/sitemap";
+import vue from "@astrojs/vue";
+import compress from "astro-compress";
+import { defineConfig } from "astro/config";
+import unoCSS from "unocss/astro";
+import icons from "unplugin-icons/vite";
+import { CSP_HEADER_VALUE, DATA_HISTORY_FILE } from "./scripts/constants.mjs";
+import { readJSON } from "./scripts/jsonUtils.mjs";
+import copyOGImages from "./scripts/plugins/copyOGImages.mjs";
+import postprocess from "./scripts/plugins/postprocess.mjs";
+import virtualDataLoader from "./scripts/plugins/virtualDataLoader.mjs";
+import type { DataHistory } from "./shared/dataTypes/history.mjs";
+import { filenameToPortName } from "./shared/pageConstants.mjs";
 
 async function createDataForSitemap() {
   const history = (await readJSON(DATA_HISTORY_FILE)) as DataHistory;
@@ -28,24 +28,24 @@ const sitemapDataPromise = createDataForSitemap();
 
 export default defineConfig({
   build: {
-    assets: 'assets',
-    format: 'file',
+    assets: "assets",
+    format: "file",
   },
   server: {
     headers: {
-      'Content-Security-Policy': CSP_HEADER_VALUE,
+      "Content-Security-Policy": CSP_HEADER_VALUE,
     },
   },
-  srcDir: 'docs',
+  srcDir: "docs",
   site: `https://vcpkg.roundtrip.dev/`,
-  trailingSlash: 'never', // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
+  trailingSlash: "never", // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
   integrations: [
     unoCSS({
       injectReset: true,
     }),
     vue(),
     sitemap({
-      changefreq: 'daily' as any,
+      changefreq: "daily",
       priority: 1,
       serialize: async (item) => {
         const { commitMap, portCommitsMap } = await sitemapDataPromise;
@@ -57,9 +57,10 @@ export default defineConfig({
             throw new Error(`No commits found for ${portName}`);
           }
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          const commit = commitMap.get(commits.at(-1)!);
+          const commitHash = commits.at(-1)!;
+          const commit = commitMap.get(commitHash);
           if (!commit) {
-            throw new Error(`No commit found for ${commits.at(-1)}`);
+            throw new Error(`No commit found for ${commitHash}`);
           }
           item.lastmod = commit.committer[0];
           item.priority = 0.5;
@@ -69,7 +70,7 @@ export default defineConfig({
     }),
     compress({
       HTML: {
-        'html-minifier-terser': {
+        "html-minifier-terser": {
           collapseWhitespace: true,
           conservativeCollapse: false,
           decodeEntities: true,
@@ -99,19 +100,19 @@ export default defineConfig({
   ],
   vite: {
     build: {
-      minify: 'esbuild',
+      minify: "esbuild",
       rollupOptions: {
         output: {
-          assetFileNames: 'assets/[hash][extname]',
-          chunkFileNames: 'assets/[hash].js',
-          entryFileNames: 'assets/[hash].js',
+          assetFileNames: "assets/[hash][extname]",
+          chunkFileNames: "assets/[hash].js",
+          entryFileNames: "assets/[hash].js",
         },
       },
     },
     plugins: [
       icons({
         // we import icons from vue components, not from astro components
-        compiler: 'vue3',
+        compiler: "vue3",
       }),
       virtualDataLoader(),
     ],

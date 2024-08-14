@@ -1,13 +1,13 @@
 ---
-import MainLayout from '../layouts/MainLayout.astro';
+import MainLayout from "../layouts/MainLayout.astro";
 
-const dataFilenames = Object.keys(import.meta.glob('./data/*.json.*'))
+const dataFilenames = Object.keys(import.meta.glob("./data/*.json.*"))
   .map((filename) =>
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     filename
-      .split('/')
+      .split("/")
       .pop()!
-      .replace(/\.[^.]+$/, '')
+      .replace(/\.[^.]+$/, "")
   )
   .sort();
 ---
@@ -19,7 +19,7 @@ const dataFilenames = Object.keys(import.meta.glob('./data/*.json.*'))
       We provide following data API:
     </p>
     <ul
-      class:list={['plain-list', ':uno: flex flex-col gap-y-1.5 leading-tight']}
+      class:list={["plain-list", ":uno: flex flex-col gap-y-1.5 leading-tight"]}
       translate="no"
     >
       {

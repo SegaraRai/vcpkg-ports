@@ -2,18 +2,18 @@
 import {
   CHANGELOG_COLLAPSE_THRESHOLD,
   CHANGELOG_NON_COLLAPSE_ITEMS,
-} from '../../../constants.mjs';
-import commitMap from '../../../virtual/commitMap.mjs';
-import SectionWrapper from '../SectionWrapper.astro';
-import ChangelogList from '../components/ChangelogList.astro';
-import ChangelogListItem from '../components/ChangelogListItem.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
-import { pluralize } from '../utils/pluralize.mjs';
+} from "../../../constants.mjs";
+import commitMap from "../../../virtual/commitMap.mjs";
+import SectionWrapper from "../SectionWrapper.astro";
+import ChangelogList from "../components/ChangelogList.astro";
+import ChangelogListItem from "../components/ChangelogListItem.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
+import { pluralize } from "../utils/pluralize.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection({
-  title: 'Changelog',
+  title: "Changelog",
 });
 
 const {
@@ -46,7 +46,7 @@ const nonCollapsed =
 const collapsed = items.slice(nonCollapsed.length);
 
 const moreText = collapsed.length
-  ? `and ${pluralize(collapsed.length, 'more commit')}:`
+  ? `and ${pluralize(collapsed.length, "more commit")}:`
   : undefined;
 ---
 

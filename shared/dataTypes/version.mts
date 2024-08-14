@@ -1,4 +1,4 @@
-import type { DataHistoryCommit } from './history.mjs';
+import type { DataHistoryCommit } from "./history.mjs";
 
 export interface DataVersion {
   readonly version: string;

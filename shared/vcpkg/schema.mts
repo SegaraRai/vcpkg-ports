@@ -1,7 +1,7 @@
 // Run `pnpm run validate:manifests` to check if ports under .vcpkg are schema compliant
 
-import { z } from 'zod';
-import { evalVcpkgSupportsExpr, parseVcpkgSupports } from './portSupports.mjs';
+import { z } from "zod";
+import { evalVcpkgSupportsExpr, parseVcpkgSupports } from "./portSupports.mjs";
 
 type DeepReadonly<T> = T extends (infer U)[]
   ? readonly DeepReadonly<U>[]
@@ -22,7 +22,7 @@ export const zVcpkgURL = z
   .min(1)
   .transform((v) => (/^[^.:/]+\./.test(v) ? `https://${v}` : v))
   .refine((v) => /^https?:\/\//.test(v), {
-    message: 'URL must start with http:// or https://',
+    message: "URL must start with http:// or https://",
   });
 // NOTE: empty string and empty array are allowed
 export const zVcpkgDescription = z.union([z.string(), z.array(z.string())]);
@@ -35,7 +35,7 @@ export const zVcpkgSupports = z
     (v: string): boolean => {
       try {
         return (
-          typeof evalVcpkgSupportsExpr(parseVcpkgSupports(v), []) === 'boolean'
+          typeof evalVcpkgSupportsExpr(parseVcpkgSupports(v), []) === "boolean"
         );
       } catch {
         return false;
@@ -59,10 +59,10 @@ export const zVcpkgDependencyObject = z
   .object({
     name: zVcpkgPortName,
     host: z.boolean().optional(),
-    'default-features': z.boolean().optional(),
+    "default-features": z.boolean().optional(),
     features: z.array(zVcpkgFeatureItem).optional(),
     platform: zVcpkgSupports.optional(),
-    'version>=': z.string().min(1).optional(),
+    "version>=": z.string().min(1).optional(),
   })
   .strict();
 export type VcpkgDependencyObject = DeepReadonly<
@@ -89,7 +89,7 @@ export type VcpkgFeature = DeepReadonly<z.infer<typeof zVcpkgFeature>>;
 // https://learn.microsoft.com/vcpkg/reference/vcpkg-json
 const zVcpkgBase = z.object({
   name: zVcpkgPortName,
-  'port-version': z.number().int().min(0).optional(),
+  "port-version": z.number().int().min(0).optional(),
   maintainers: z
     .union([z.string().min(1), z.array(z.string().min(1))])
     .optional(),
@@ -99,7 +99,7 @@ const zVcpkgBase = z.object({
   license: zVcpkgLicense.nullable().optional(),
   supports: zVcpkgSupports.optional(),
   dependencies: z.array(zVcpkgDependency).optional(),
-  'default-features': z.array(zVcpkgFeatureItem).optional(),
+  "default-features": z.array(zVcpkgFeatureItem).optional(),
   features: z.record(zVcpkgFeatureName, zVcpkgFeature).optional(),
   // non-standard fields
   summary: z.string().optional(),
@@ -121,7 +121,7 @@ export const zVcpkg = z.union([
     .strict(),
   zVcpkgBase
     .extend({
-      'version-semver': z
+      "version-semver": z
         .string()
         .min(1)
         .regex(
@@ -131,7 +131,7 @@ export const zVcpkg = z.union([
     .strict(),
   zVcpkgBase
     .extend({
-      'version-date': z
+      "version-date": z
         .string()
         .min(1)
         .regex(/^\d{4}-\d{2}-\d{2}(\.(0|[1-9]\d*))*$/),
@@ -139,7 +139,7 @@ export const zVcpkg = z.union([
     .strict(),
   zVcpkgBase
     .extend({
-      'version-string': z
+      "version-string": z
         .string()
         .min(1)
         // NOTE: though version-string allows any string, we check if it does not contain dangerous characters
@@ -151,6 +151,8 @@ export type Vcpkg = DeepReadonly<z.infer<typeof zVcpkg>>;
 
 export function parseVcpkgJSON(json: string): Vcpkg {
   return zVcpkg.parse(
-    JSON.parse(json, (key, value) => (key.startsWith('$') ? undefined : value))
+    JSON.parse(json, (key, value): unknown =>
+      key.startsWith("$") ? undefined : value
+    )
   );
 }

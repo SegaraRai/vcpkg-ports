@@ -4,8 +4,8 @@ import {
   computedEager,
   useMounted,
   useTimeAgo,
-} from '@vueuse/core';
-import { type Ref, ref, unref } from 'vue';
+} from "@vueuse/core";
+import { type Ref, ref, unref } from "vue";
 
 const props = defineProps<{
   timestamp: string;
@@ -30,12 +30,12 @@ const timeAgo = useTimeAgo(timestamp);
 const text = useTernaryEager(
   mounted,
   timeAgo,
-  computedEager((): string => timestamp.value.replace(/T.+/, ''))
+  computedEager((): string => timestamp.value.replace(/T.+/, ""))
 );
 const textLong = useTernaryEager(
   computedEager((): boolean => mounted.value && !!props.long),
   computedEager((): string => `(${localTime.value})`),
-  ref('')
+  ref("")
 );
 const title = useTernaryEager(mounted, localTime, timestamp);
 </script>

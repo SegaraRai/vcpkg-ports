@@ -1,15 +1,15 @@
 ---
-import HeadCommon from '../components/HeadCommon.astro';
-import HeadSEO from '../components/HeadSEO.astro';
-import Footer from '../components/footer/Footer.astro';
-import Header from '../components/header/Header.astro';
-import ManagedSearch from '../components/search/ManagedSearch.vue';
-import { SITE_LANGUAGE_KEBAB, formatPageTitle } from '../constants.mjs';
+import HeadCommon from "../components/HeadCommon.astro";
+import HeadSEO from "../components/HeadSEO.astro";
+import Footer from "../components/footer/Footer.astro";
+import Header from "../components/header/Header.astro";
+import ManagedSearch from "../components/search/ManagedSearch.vue";
+import { SITE_LANGUAGE_KEBAB, formatPageTitle } from "../constants.mjs";
 
-import '../styles/main.scss';
+import "../styles/main.scss";
 
 // HACK: make CSS utils recognized by UnoCSS
-import '../components/search/SearchOverlay.vue';
+import "../components/search/SearchOverlay.vue";
 
 interface Props {
   readonly title?: string | undefined;
@@ -23,15 +23,15 @@ interface Props {
 const { title, description, fixedHeight, hideSearch, is404, isHome } =
   Astro.props as Props;
 const canonicalURL = !is404
-  ? new URL(Astro.url.pathname.replace(/\.html?$/, ''), Astro.site)
+  ? new URL(Astro.url.pathname.replace(/\.html?$/, ""), Astro.site)
   : undefined;
 const formattedTitle = formatPageTitle(title);
 ---
 
 <html
   class:list={[
-    'HTML_ROOT_CLASS_PLACEHOLDER',
-    fixedHeight ? 'fixed-height' : 'stable-scrollbar-gutter',
+    "HTML_ROOT_CLASS_PLACEHOLDER",
+    fixedHeight ? "fixed-height" : "stable-scrollbar-gutter",
   ]}
   dir="ltr"
   lang={SITE_LANGUAGE_KEBAB}

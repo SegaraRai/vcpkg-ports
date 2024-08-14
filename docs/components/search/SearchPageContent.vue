@@ -3,10 +3,10 @@ import {
   computedEager,
   useOffsetPagination,
   useUrlSearchParams,
-} from '@vueuse/core';
-import { computed, nextTick, onMounted, toRef, watchEffect } from 'vue';
-import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
-import { useSearch } from '../../composables/useSearch.mjs';
+} from "@vueuse/core";
+import { computed, nextTick, onMounted, toRef, watchEffect } from "vue";
+import { useGlobalRef } from "../../composables/useGlobalRef.mjs";
+import { useSearch } from "../../composables/useSearch.mjs";
 import {
   SEARCH_MAX_RESULTS_FOR_PAGE,
   SEARCH_MAX_RESULTS_PER_PAGE,
@@ -14,13 +14,13 @@ import {
   SEARCH_PAGE_QUERY_KEY,
   getPortPageURL,
   getSearchPageURL,
-} from '../../constants.mjs';
-import { pluralize } from '../portPage/utils/pluralize.mjs';
-import HighlightMatched from './HighlightMatched.vue';
+} from "../../constants.mjs";
+import { pluralize } from "../portPage/utils/pluralize.mjs";
+import HighlightMatched from "./HighlightMatched.vue";
 
-const qsp = useUrlSearchParams('hash-params', {
+const qsp = useUrlSearchParams("hash-params", {
   initialValue: {
-    [SEARCH_PAGE_QUERY_KEY]: '',
+    [SEARCH_PAGE_QUERY_KEY]: "",
     [SEARCH_PAGE_PAGE_KEY]: null as null | string,
   },
 });
@@ -33,11 +33,11 @@ const page = computed({
 
 onMounted((): void => {
   if (!term.value) {
-    location.replace('/');
+    location.replace("/");
   }
 });
 
-const searchBoxTerm = useGlobalRef('_vpSearchTerm', '');
+const searchBoxTerm = useGlobalRef("_vpSearchTerm", "");
 watchEffect((): void => {
   searchBoxTerm.value = term.value;
 });
@@ -96,9 +96,11 @@ const search = (newTerm: string): void => {
 };
 
 onMounted((): (() => void) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (window as any)._vpSearch = search;
 
   return (): void => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     delete (window as any)._vpSearch;
   };
 });

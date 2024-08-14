@@ -1,16 +1,16 @@
 ---
-import HeadingAnchor from '../components/HeadingAnchor.astro';
-import LinkPortPage from '../components/LinkPortPage.astro';
-import MainLayout from '../layouts/MainLayout.astro';
-import portNames from '../virtual/portNames.mjs';
+import HeadingAnchor from "../components/HeadingAnchor.astro";
+import LinkPortPage from "../components/LinkPortPage.astro";
+import MainLayout from "../layouts/MainLayout.astro";
+import portNames from "../virtual/portNames.mjs";
 
-const categories = [...'#ABCDEFGHJIJKLMNOPQRSTUVWXYZ'].map((letter) => {
+const categories = [..."#ABCDEFGHJIJKLMNOPQRSTUVWXYZ"].map((letter) => {
   return {
-    slug: letter.toLowerCase().replace('#', 'num'),
+    slug: letter.toLowerCase().replace("#", "num"),
     title: letter,
     letter,
     portNames: portNames.filter(
-      letter === '#'
+      letter === "#"
         ? (portName) => /^[^a-z]/i.test(portName)
         : (portName) => portName.toUpperCase().startsWith(letter)
     ),
@@ -27,15 +27,15 @@ const categories = [...'#ABCDEFGHJIJKLMNOPQRSTUVWXYZ'].map((letter) => {
           <>
             <h2
               id={slug}
-              class:list={['has-anchor', ':uno: !mt-0 mb-2 font-bold !text-xl']}
+              class:list={["has-anchor", ":uno: !mt-0 mb-2 font-bold !text-xl"]}
             >
               <HeadingAnchor level="2" slug={slug} text={title} />
               {title}
             </h2>
             <ol
               class:list={[
-                'plain-list',
-                ':uno: mb-8 leading-tight flex flex-col gap-y-2',
+                "plain-list",
+                ":uno: mb-8 leading-tight flex flex-col gap-y-2",
               ]}
             >
               {portNames.map((portName) => (

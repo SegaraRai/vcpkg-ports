@@ -1,6 +1,6 @@
-import LinkifyIt from 'linkify-it';
-import { VCPKG_REPO_URL } from '../../../constants.mjs';
-import { escapeAll, renderExternalLink } from './htmlUtils.mjs';
+import LinkifyIt from "linkify-it";
+import { VCPKG_REPO_URL } from "../../../constants.mjs";
+import { escapeAll, renderExternalLink } from "./htmlUtils.mjs";
 
 function replaceAndTransform<T>(
   text: string,
@@ -26,7 +26,7 @@ function applyTransform<T extends Chunk>(
   return {
     ...chunk,
     chunks: chunk.chunks.flatMap((subChunk) =>
-      typeof subChunk === 'string'
+      typeof subChunk === "string"
         ? transformer(subChunk)
         : applyTransform(subChunk, transformer)
     ),
@@ -47,12 +47,12 @@ function renderChunk(
   chunk: ChunkOrString,
   stringTransformer: (text: string) => string
 ): string {
-  return typeof chunk === 'string'
+  return typeof chunk === "string"
     ? stringTransformer(chunk)
     : chunk.render(
         chunk.chunks
           .map((subChunk) => renderChunk(subChunk, stringTransformer))
-          .join('')
+          .join("")
       );
 }
 
@@ -60,7 +60,7 @@ export interface RenderMarkdownSubsetOptions {
   readonly linkify?: boolean | undefined;
   readonly inlineCodeBlock?: boolean | undefined;
   readonly githubIssues?: boolean | undefined;
-  readonly newline?: 'break' | 'space' | undefined;
+  readonly newline?: "break" | "space" | undefined;
 }
 
 /**
@@ -81,21 +81,21 @@ export function renderMarkdownSubset(
     linkify = true,
     inlineCodeBlock = true,
     githubIssues = false,
-    newline = 'space',
+    newline = "space",
   } = options ?? {};
   let rootChunk: Chunk = {
-    type: 'root',
+    type: "root",
     chunks: [text],
     render: (text) => text,
   };
   if (inlineCodeBlock) {
     const unwrapInlineCodeBlock = (text: string): string =>
-      text.startsWith('``') ? text.slice(2, -2) : text.slice(1, -1);
+      text.startsWith("``") ? text.slice(2, -2) : text.slice(1, -1);
     rootChunk = applyTransformRegExp(
       rootChunk,
       /(?<![A-Za-z\d])(`[^`]+`|``.+?``)/,
       (chunk) => ({
-        type: 'inlineCodeBlock',
+        type: "inlineCodeBlock",
         chunks: [], // empty chunks means no further processing
         render: () =>
           `<code translate="no">${escapeAll(
@@ -109,7 +109,7 @@ export function renderMarkdownSubset(
       rootChunk,
       /(?<![A-Za-z\d&/])(#\d+)\b/,
       (chunk) => ({
-        type: 'githubIssueLink',
+        type: "githubIssueLink",
         chunks: [], // empty chunks means no further processing
         render: () =>
           renderExternalLink(`${VCPKG_REPO_URL}/pull/${chunk.slice(1)}`, chunk),
@@ -123,7 +123,7 @@ export function renderMarkdownSubset(
       rootChunk,
       /<(https?:\/\/[^>]+)>/,
       (chunk) => ({
-        type: 'explicitLink',
+        type: "explicitLink",
         chunks: [], // empty chunks means no further processing
         render: () => renderExternalLink(chunk, chunk),
       })
@@ -135,7 +135,7 @@ export function renderMarkdownSubset(
       fuzzyLink: false,
     });
     // only allow http:// and https:// links
-    linkifyInstance.add('ftp:', null).add('//', null).add('mailto:', null);
+    linkifyInstance.add("ftp:", null).add("//", null).add("mailto:", null);
     rootChunk = applyTransform(rootChunk, (chunk) => {
       const chunks: ChunkOrString[] = [];
       let consumed = 0;
@@ -145,7 +145,7 @@ export function renderMarkdownSubset(
           chunks.push(chunk.slice(consumed, index));
         }
         chunks.push({
-          type: 'linkifyLink',
+          type: "linkifyLink",
           chunks: [], // empty chunks means no further processing
           render: () => renderExternalLink(url, raw),
         });
@@ -158,8 +158,8 @@ export function renderMarkdownSubset(
     });
   }
   return renderChunk(rootChunk, (text) =>
-    escapeAll(text, newline === 'break', true)
-      .replaceAll('\n', '<br />')
-      .replaceAll('&#10;', '<br />')
+    escapeAll(text, newline === "break", true)
+      .replaceAll("\n", "<br />")
+      .replaceAll("&#10;", "<br />")
   );
 }

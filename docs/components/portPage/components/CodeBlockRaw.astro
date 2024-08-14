@@ -10,9 +10,9 @@ const { class: classList, lang, nosnippet } = Astro.props;
 
 <div
   class:list={[
-    ':uno: relative !whitespace-normal overflow-hidden !p-0 bg-[#35312b] dark:bg-[#16130d] rounded-2 text-sm',
+    ":uno: relative !whitespace-normal overflow-hidden !p-0 bg-[#35312b] dark:bg-[#16130d] rounded-2 text-sm",
     `code-block language-${lang}`,
-    classList || '',
+    classList || "",
   ]}
   data-nosnippet={nosnippet || undefined}
 >
@@ -21,31 +21,31 @@ const { class: classList, lang, nosnippet } = Astro.props;
     tabindex="0"><code class=":uno: block w-full h-full" translate="no"><slot /></code></pre>
   <button
     class:list={[
-      ':uno: absolute top-2 right-6 select-none transition-all-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded',
-      'copy',
+      ":uno: absolute top-2 right-6 select-none transition-all-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded",
+      "copy",
     ]}
     title="Copy Code"
   >
     <span
       class:list={[
-        ':uno: opacity-0 block w-full h-full transition-opacity-250 relative',
-        'icon',
+        ":uno: opacity-0 block w-full h-full transition-opacity-250 relative",
+        "icon",
       ]}
       data-mode="initial"
     >
-      <span class:list={[':uno: i-mdi-clipboard-text-outline', 'icon-initial']}
+      <span class:list={[":uno: i-mdi-clipboard-text-outline", "icon-initial"]}
       ></span>
-      <span class:list={[':uno: i-mdi-clipboard-check-outline', 'icon-copied']}
+      <span class:list={[":uno: i-mdi-clipboard-check-outline", "icon-copied"]}
       ></span>
-      <span class:list={[':uno: i-mdi-clipboard-remove-outline', 'icon-failed']}
+      <span class:list={[":uno: i-mdi-clipboard-remove-outline", "icon-failed"]}
       ></span>
     </span>
     {
-      lang !== 'plaintext' && (
+      lang !== "plaintext" && (
         <span
           class:list={[
-            ':uno: block absolute top-0 right-1 pointer-events-none transition-opacity-250',
-            'lang',
+            ":uno: block absolute top-0 right-1 pointer-events-none transition-opacity-250",
+            "lang",
           ]}
           translate="no"
           set:text={lang}
@@ -85,9 +85,9 @@ const { class: classList, lang, nosnippet } = Astro.props;
     @apply left-0;
   }
 
-  div.code-block > .copy > .icon[data-mode='initial'] > .icon-initial,
-  div.code-block > .copy > .icon[data-mode='copied'] > .icon-copied,
-  div.code-block > .copy > .icon[data-mode='failed'] > .icon-failed {
+  div.code-block > .copy > .icon[data-mode="initial"] > .icon-initial,
+  div.code-block > .copy > .icon[data-mode="copied"] > .icon-copied,
+  div.code-block > .copy > .icon[data-mode="failed"] > .icon-failed {
     @apply opacity-100;
   }
 </style>
@@ -99,13 +99,13 @@ const { class: classList, lang, nosnippet } = Astro.props;
     if (!navigator?.clipboard) {
       return false;
     }
-    const code = button.parentElement?.querySelector('code');
+    const code = button.parentElement?.querySelector("code");
     if (!code) {
       return false;
     }
     try {
       // eslint-disable-next-line unicorn/prefer-dom-node-text-content
-      await navigator.clipboard.writeText(code.innerText.trim() + '\n');
+      await navigator.clipboard.writeText(code.innerText.trim() + "\n");
     } catch {
       return false;
     }
@@ -114,24 +114,24 @@ const { class: classList, lang, nosnippet } = Astro.props;
 
   const handleCopy = (button: HTMLElement): void => {
     copyAsync(button).then((result): void => {
-      const icon = button.querySelector<HTMLElement>('.icon');
+      const icon = button.querySelector<HTMLElement>(".icon");
       if (!icon) {
         return;
       }
-      icon.dataset.mode = result ? 'copied' : 'failed';
+      icon.dataset.mode = result ? "copied" : "failed";
       if ((icon as any)._timer != null) {
         clearTimeout((icon as any)._timer);
       }
       (icon as any)._timer = setTimeout((): void => {
-        icon.dataset.mode = 'initial';
+        icon.dataset.mode = "initial";
       }, ICON_TIMEOUT);
     });
   };
 
   const copyButtons = document.querySelectorAll<HTMLButtonElement>(
-    'div.code-block>button.copy'
+    "div.code-block>button.copy"
   );
   for (const button of copyButtons) {
-    button.addEventListener('click', (): void => handleCopy(button));
+    button.addEventListener("click", (): void => handleCopy(button));
   }
 </script>

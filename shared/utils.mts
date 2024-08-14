@@ -15,7 +15,7 @@ export function shortenCommitId(oid: string): string {
 }
 
 export function normalizeText(str: string): string {
-  return str.normalize().replace(/\r\n?|[\v\f\u0085\u2028\u2029]/g, '\n');
+  return str.normalize().replace(/\r\n?|[\v\f\u0085\u2028\u2029]/g, "\n");
 }
 
 export function getContributorAvatarURL(
@@ -23,23 +23,23 @@ export function getContributorAvatarURL(
   githubUser: string | null,
   size: number,
   gravatarStyle:
-    | 'mp'
-    | 'identicon'
-    | 'monsterid'
-    | 'wavatar'
-    | 'retro'
-    | 'robohash'
-    | 'blank' = 'retro'
+    | "mp"
+    | "identicon"
+    | "monsterid"
+    | "wavatar"
+    | "retro"
+    | "robohash"
+    | "blank" = "retro"
 ): string {
   const match = githubUser?.match(/^(?:(\d+)\+)?([A-Za-z\d-]+)$/);
   // GitHub
   if (
     // noreply@github.com
-    emailHash === '9181eb84f9c35729a3bad740fb7f9d93' ||
+    emailHash === "9181eb84f9c35729a3bad740fb7f9d93" ||
     // GitHub Actions
-    match?.[1] === '41898282' ||
-    match?.[2] === 'github-actions' ||
-    match?.[2] === 'github-actions[bot]'
+    match?.[1] === "41898282" ||
+    match?.[2] === "github-actions" ||
+    match?.[2] === "github-actions[bot]"
   ) {
     return `https://avatars.githubusercontent.com/in/15368?s=${size}&v=4`;
   }

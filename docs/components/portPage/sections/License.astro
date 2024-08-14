@@ -1,15 +1,15 @@
 ---
-import licenseInfoMap from 'spdx-license-list';
-import { toUniqueArray } from '../../../../shared/utils.mjs';
-import LinkExternal from '../../LinkExternal.astro';
-import SectionWrapper from '../SectionWrapper.astro';
-import CodeBlock from '../components/CodeBlock.astro';
-import { type SectionProps, defineSection } from '../defineSection.mjs';
+import licenseInfoMap from "spdx-license-list";
+import { toUniqueArray } from "../../../../shared/utils.mjs";
+import LinkExternal from "../../LinkExternal.astro";
+import SectionWrapper from "../SectionWrapper.astro";
+import CodeBlock from "../components/CodeBlock.astro";
+import { type SectionProps, defineSection } from "../defineSection.mjs";
 
 type Props = SectionProps;
 
 export const getSection = defineSection({
-  title: 'License',
+  title: "License",
 });
 
 const {
@@ -22,7 +22,7 @@ const {
 } = Astro.props;
 
 const foundLicenses = toUniqueArray(
-  (license ?? '').split(/[()\s]/).map((l) => l.trim())
+  (license ?? "").split(/[()\s]/).map((l) => l.trim())
 )
   .map((l) => licenseInfoMap[l])
   .filter((l) => !!l);
@@ -37,7 +37,7 @@ const licenseText = fileContents.find(([filename]) =>
       license ? (
         <code translate="no" set:text={license} />
       ) : (
-        <em set:text={license === null ? 'Unspecified' : 'Unknown'} />
+        <em set:text={license === null ? "Unspecified" : "Unknown"} />
       )
     }
   </p>
@@ -46,8 +46,8 @@ const licenseText = fileContents.find(([filename]) =>
     !!foundLicenses.length && (
       <ul
         class:list={[
-          'plain-list',
-          ':uno: my-4 flex flex-col gap-y-2 leading-tight',
+          "plain-list",
+          ":uno: my-4 flex flex-col gap-y-2 leading-tight",
         ]}
       >
         {foundLicenses.map((license) => (
@@ -67,8 +67,8 @@ const licenseText = fileContents.find(([filename]) =>
     !!inferredCopyrightURLs.length && (
       <ul
         class:list={[
-          'plain-list',
-          ':uno: my-4 flex flex-col gap-y-2 leading-tight',
+          "plain-list",
+          ":uno: my-4 flex flex-col gap-y-2 leading-tight",
         ]}
       >
         {inferredCopyrightURLs.map((url) => (
@@ -77,7 +77,7 @@ const licenseText = fileContents.find(([filename]) =>
             <LinkExternal
               href={url}
               set:text={
-                decodeURIComponent(url.match(/[^/]+$/)?.[0] ?? '') || url
+                decodeURIComponent(url.match(/[^/]+$/)?.[0] ?? "") || url
               }
             />
           </li>

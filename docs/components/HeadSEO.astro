@@ -1,13 +1,13 @@
 ---
-import type { TechArticle } from 'schema-dts';
-import type { Vcpkg } from '../../shared/vcpkg/schema.mjs';
+import type { TechArticle } from "schema-dts";
+import type { Vcpkg } from "../../shared/vcpkg/schema.mjs";
 import {
   DEFAULT_OG_IMAGE_URL,
   SITE_DESCRIPTION,
   SITE_LANGUAGE_SNAKE,
   SITE_TITLE,
   formatPageTitle,
-} from '../constants.mjs';
+} from "../constants.mjs";
 
 interface Props {
   readonly canonicalURL: URL;
@@ -31,7 +31,7 @@ const strJSONLD =
   jsonLD &&
   JSON.stringify(jsonLD).replace(
     /[<>&]/g,
-    (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, '0')}`
+    (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`
   );
 ---
 
@@ -40,7 +40,7 @@ const strJSONLD =
 
 <!-- OpenGraph Tags -->
 <meta property="og:title" content={formattedTitle} />
-<meta property="og:type" content={isHome ? 'website' : 'article'} />
+<meta property="og:type" content={isHome ? "website" : "article"} />
 <meta property="og:url" content={canonicalURL} />
 <meta property="og:locale" content={SITE_LANGUAGE_SNAKE} />
 <meta property="og:image" content={canonicalImageSrc} />
@@ -59,5 +59,7 @@ const strJSONLD =
 
 {
   // eslint-disable-next-line astro/no-set-html-directive
-  strJSONLD && <script type="application/ld+json" set:html={strJSONLD} />
+  strJSONLD && (
+    <script is:inline type="application/ld+json" set:html={strJSONLD} />
+  )
 }

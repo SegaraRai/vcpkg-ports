@@ -1,15 +1,15 @@
 <script lang="ts" setup>
-import { defineAsyncComponent, ref, watchEffect } from 'vue';
-import { useGlobalRef } from '../../composables/useGlobalRef.mjs';
+import { defineAsyncComponent, ref, watchEffect } from "vue";
+import { useGlobalRef } from "../../composables/useGlobalRef.mjs";
 
-const component = defineAsyncComponent(() => import('./SearchOverlay.vue'));
+const component = defineAsyncComponent(() => import("./SearchOverlay.vue"));
 
-const show = useGlobalRef('_vpSearchPopup', false);
-const term = useGlobalRef('_vpSearchTerm', '');
+const show = useGlobalRef("_vpSearchPopup", false);
+const term = useGlobalRef("_vpSearchTerm", "");
 
 watchEffect((): void => {
   if (!show.value) {
-    term.value = '';
+    term.value = "";
   }
 });
 

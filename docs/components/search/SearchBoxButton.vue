@@ -1,18 +1,18 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import IconSearch from '~icons/line-md/search';
+import { onMounted, ref } from "vue";
+import IconSearch from "~icons/line-md/search";
 
 // meta key detect
 // https://github.com/vuejs/vitepress/blob/v1.0.0-alpha.29/src/client/theme-default/components/VPNavBarSearch.vue#L24-L27
-const modifier = ref('Ctrl');
+const modifier = ref("Ctrl");
 onMounted((): void => {
   if (
     !import.meta.env.SSR &&
     /Mac|iPhone|iPod|iPad/i.test(
-      navigator?.userAgentData?.platform || navigator?.platform || ''
+      navigator?.userAgentData?.platform || navigator?.platform || ""
     )
   ) {
-    modifier.value = '⌘';
+    modifier.value = "⌘";
   }
 });
 </script>

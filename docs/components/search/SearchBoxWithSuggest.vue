@@ -1,17 +1,17 @@
 <script lang="ts" setup>
-import { vOnClickOutside } from '@vueuse/components';
-import { computedEager, useDebounce, useVModel } from '@vueuse/core';
-import { ref, shallowRef, watch, watchEffect } from 'vue';
-import { useSearch } from '../../composables/useSearch.mjs';
+import { vOnClickOutside } from "@vueuse/components";
+import { computedEager, useDebounce, useVModel } from "@vueuse/core";
+import { ref, shallowRef, watch, watchEffect } from "vue";
+import { useSearch } from "../../composables/useSearch.mjs";
 import {
   SEARCH_MAX_RESULTS_FOR_SUGGEST,
   SEARCH_TERM_DEBOUNCE,
   getPortPageURL,
-} from '../../constants.mjs';
-import { vFocusByKey } from '../../directives/vFocusByKey.mjs';
-import HighlightMatched from './HighlightMatched.vue';
-import SearchBox from './SearchBox.vue';
-import ShortcutKeyHandler from './ShortcutKeyHandler.vue';
+} from "../../constants.mjs";
+import { vFocusByKey } from "../../directives/vFocusByKey.mjs";
+import HighlightMatched from "./HighlightMatched.vue";
+import SearchBox from "./SearchBox.vue";
+import ShortcutKeyHandler from "./ShortcutKeyHandler.vue";
 
 const props = defineProps<{
   modelValue: string;
@@ -19,11 +19,10 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
-  (e: 'update:modelValue', value: string): void;
-  (e: 'search', value: string): void;
+  (e: "update:modelValue" | "search", value: string): void;
 }>();
 
-const term = useVModel(props, 'modelValue', emit);
+const term = useVModel(props, "modelValue", emit);
 const show = ref(false);
 
 const termDebounced = useDebounce(term, SEARCH_TERM_DEBOUNCE);
@@ -52,7 +51,11 @@ const resultsSliced = computedEager(() =>
 const searchBoxEl = shallowRef<typeof SearchBox | null>(null);
 const deferFocus = (focus = true): void => {
   setTimeout((): void => {
-    focus ? searchBoxEl.value?.focus() : searchBoxEl.value?.blur();
+    if (focus) {
+      searchBoxEl.value?.focus();
+    } else {
+      searchBoxEl.value?.blur();
+    }
   }, 0);
 };
 
@@ -72,18 +75,18 @@ const close = (focus?: boolean): void => {
 
 <template>
   <div
+    v-focus-by-key
     class=":uno: relative w-full max-h-full rounded-2 flex flex-col gap-y-4"
     :class="large && ':uno: text-xl'"
-    v-focus-by-key
   >
     <SearchBox
       ref="searchBoxEl"
+      v-model="term"
       :class="[
         'tabbable tabbable-skip',
         ':uno: w-full',
         large && ':uno: py-0.5',
       ]"
-      v-model="term"
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.arrow-down="deferShow"
@@ -98,9 +101,9 @@ const close = (focus?: boolean): void => {
         :class="large ? ':uno: top-14' : ':uno: top-10'"
       >
         <ul
+          v-on-click-outside="() => close(false)"
           class=":uno: flex flex-col text-[--theme-text-light]"
           translate="no"
-          v-on-click-outside="() => close(false)"
           @keydown.escape.prevent.stop="close(true)"
         >
           <template v-for="result in resultsSliced" :key="result.item.name">

@@ -1,6 +1,6 @@
-import type { MarkdownHeading } from 'astro';
-import type { PortContext } from '../../../shared/dataTypes/portContext.mjs';
-import { slugify } from '../../constants.mjs';
+import type { MarkdownHeading } from "astro";
+import type { PortContext } from "../../../shared/dataTypes/portContext.mjs";
+import { slugify } from "../../constants.mjs";
 
 export interface SectionProps {
   readonly context: PortContext;
@@ -22,7 +22,7 @@ export interface ResolvedSection extends Required<SectionDefinition> {
 
 export type SectionSubset = Pick<
   ResolvedSection,
-  'title' | 'slug' | 'level' | 'noHeading'
+  "title" | "slug" | "level" | "noHeading"
 >;
 
 export function defineSection(
@@ -32,7 +32,7 @@ export function defineSection(
 ): (context: PortContext) => ResolvedSection | undefined {
   return (context) => {
     const def =
-      typeof definition === 'function' ? definition(context) : definition;
+      typeof definition === "function" ? definition(context) : definition;
     if (!def) {
       return;
     }

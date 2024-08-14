@@ -3,19 +3,17 @@ SRC: .vcpkg/*
 OUT: (none)
 */
 
-/* eslint-disable no-console */
-
-import path from 'node:path';
-import { exit } from 'node:process';
+import path from "node:path";
+import { exit } from "node:process";
 import {
   DATA_HISTORY_FILE,
   DATA_PORTS_FILE,
   DATA_PORT_OG_INDEX_FILE,
   DATA_VERSION_FILE,
   PROJECT_DIR,
-} from '../constants.mjs';
-import { tryReadJSON } from '../jsonUtils.mjs';
-import { VCPKG_HEAD_OID } from '../vcpkgInfo.mjs';
+} from "../constants.mjs";
+import { tryReadJSON } from "../jsonUtils.mjs";
+import { VCPKG_HEAD_OID } from "../vcpkgInfo.mjs";
 
 const FILES = [
   [DATA_PORTS_FILE, true],
@@ -28,7 +26,7 @@ let numErrors = 0;
 
 for (const [filepath, mandatory] of FILES) {
   const filename = path.relative(PROJECT_DIR, filepath);
-  const data = await tryReadJSON(filepath);
+  const data = (await tryReadJSON(filepath)) as { version: string } | undefined;
   if (!data) {
     if (mandatory) {
       console.error(`ERROR: ${filename} does not exist`);
