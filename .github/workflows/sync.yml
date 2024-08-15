@@ -78,7 +78,7 @@ jobs:
           git config --global user.email "$COMMIT_AUTHOR_EMAIL"
           git add .
           git commit -m "$COMMIT_MESSAGE"
-          git push origin "$COMMIT_BRANCH"
+          git push origin "$BASE_BRANCH"
 
       - name: Generate social media images (OGP)
         run: pnpm run generate:images
