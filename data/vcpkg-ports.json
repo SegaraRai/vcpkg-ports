@@ -1,5 +1,5 @@
 {
-  "version": "9a6da16845eca8d6ed70be416c1acbd206894c7f",
+  "version": "73964f854d0d6424f335e9515b61b3a2dad5e15b",
   "ports": [
     {
       "name": "3fd",
@@ -1194,7 +1194,6 @@
       "name": "aom",
       "manifest": {
         "name": "aom",
-        "port-version": 1,
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
@@ -1208,12 +1207,12 @@
             "host": true
           }
         ],
-        "version-semver": "3.8.1"
+        "version-semver": "3.9.1"
       },
       "files": [
-        "aom-install.diff",
         "aom-rename-static.diff",
         "aom-uninitialized-pointer.diff",
+        "export-config.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17745,7 +17744,7 @@
       "name": "bzip2",
       "manifest": {
         "name": "bzip2",
-        "port-version": 5,
+        "port-version": 6,
         "description": "bzip2 is a freely available, patent free, high-quality data compressor. It typically compresses files to within 10% to 15% of the best available techniques (the PPM family of statistical compressors), whilst being around twice as fast at compression and six times faster at decompression.",
         "homepage": "https://sourceware.org/bzip2/",
         "documentation": "https://sourceware.org/bzip2/docs.html",
@@ -18382,7 +18381,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.6.0"
+        "version-semver": "3.7.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -20516,10 +20515,9 @@
             ]
           }
         },
-        "version": "3.9.1"
+        "version": "3.10"
       },
       "files": [
-        "fix-link-glog.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -22810,6 +22808,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -27287,7 +27286,7 @@
             "host": true
           }
         ],
-        "version": "6.1.1"
+        "version": "6.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -29065,7 +29064,6 @@
       "name": "flecs",
       "manifest": {
         "name": "flecs",
-        "port-version": 1,
         "description": "A fast entity component system (ECS) for C & C++",
         "homepage": "https://github.com/SanderMertens/flecs",
         "documentation": "https://www.flecs.dev/flecs/",
@@ -29080,7 +29078,7 @@
             "host": true
           }
         ],
-        "version": "4.0.0"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -32329,7 +32327,7 @@
             "host": true
           }
         ],
-        "version": "2.9.2"
+        "version": "3.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -32802,7 +32800,6 @@
       "name": "glslang",
       "manifest": {
         "name": "glslang",
-        "port-version": 1,
         "description": "Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.",
         "homepage": "https://github.com/KhronosGroup/glslang",
         "license": "Apache-2.0 AND BSD-3-Clause AND MIT AND GPL-3.0-or-later",
@@ -32831,7 +32828,7 @@
             "supports": "!ios"
           }
         },
-        "version": "14.2.0"
+        "version": "14.3.0"
       },
       "files": [
         "0001-Fix-glslangValidator-installation.patch",
@@ -39589,21 +39586,6 @@
       },
       "files": [
         "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ilmbase",
-      "manifest": {
-        "name": "ilmbase",
-        "description": "Obsolete, use port imath instead",
-        "dependencies": [
-          "imath"
-        ],
-        "version": "3"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49178,7 +49160,7 @@
         "description": "A cross-platform base for native Nickvision applications.",
         "homepage": "https://github.com/NickvisionApps/libnick",
         "documentation": "https://github.com/NickvisionApps/libnick/tree/main/docs",
-        "license": "GPL-3.0",
+        "license": "GPL-3.0-only",
         "supports": "windows | linux | osx",
         "dependencies": [
           "curl",
@@ -49210,7 +49192,7 @@
             "host": true
           }
         ],
-        "version": "2024.8.1"
+        "version": "2024.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -56336,7 +56318,7 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -72393,7 +72375,7 @@
             "host": true
           }
         ],
-        "version": "2.13.1"
+        "version": "2.13.4"
       },
       "files": [
         "portfile.cmake",
@@ -78054,7 +78036,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-06-01"
+        "version-date": "2024-07-02"
       },
       "files": [
         "portfile.cmake",
@@ -80528,7 +80510,7 @@
             "platform": "windows"
           }
         ],
-        "version": "5.5.0"
+        "version": "5.5.1"
       },
       "files": [
         "0001-static-lib.patch",
@@ -80953,7 +80935,6 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -81018,7 +80999,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.30.5"
+        "version": "2.30.6"
       },
       "files": [
         "alsa-dep-fix.patch",
@@ -84425,7 +84406,7 @@
             "host": true
           }
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -84448,7 +84429,7 @@
             "host": true
           }
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -84459,7 +84440,6 @@
       "name": "spirv-reflect",
       "manifest": {
         "name": "spirv-reflect",
-        "port-version": 1,
         "description": "SPIRV-Reflect is a lightweight library that provides a C/C++ reflection API for SPIR-V shader bytecode in Vulkan applications.",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Reflect",
         "license": "Apache-2.0",
@@ -84473,7 +84453,7 @@
             "host": true
           }
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "export-targets.patch",
@@ -84504,7 +84484,7 @@
             "description": "Build tools."
           }
         },
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -84692,7 +84672,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -84769,7 +84748,7 @@
             ]
           }
         },
-        "version": "3.46.0"
+        "version": "3.46.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -90485,7 +90464,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -91188,7 +91167,7 @@
             "host": true
           }
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -91233,7 +91212,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -91333,10 +91312,11 @@
             ]
           }
         },
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "LICENSE.txt",
+        "get-vulkan-sdk-components-info.ps1",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -91362,7 +91342,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "fix-parallel-config.patch",
@@ -91388,7 +91368,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
@@ -91420,7 +91400,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.3.280.0"
+        "version": "1.3.290.0"
       },
       "files": [
         "portfile.cmake",
