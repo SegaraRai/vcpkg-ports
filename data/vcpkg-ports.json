@@ -1,5 +1,5 @@
 {
-  "version": "2f210a9c13fcf2b0c36b1f2187366feec37e3390",
+  "version": "a993be073c6baea8674117f3eaed6e2d2486aaae",
   "ports": [
     {
       "name": "3fd",
@@ -87,7 +87,6 @@
       "name": "ableton-link",
       "manifest": {
         "name": "ableton-link",
-        "port-version": 1,
         "description": "Ableton Link, a technology that synchronizes musical beat, tempo, and phase across multiple applications running on one or more devices.",
         "homepage": "https://www.ableton.com/en/link/",
         "documentation": "http://ableton.github.io/link/",
@@ -132,7 +131,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.1.1"
+        "version": "3.1.2"
       },
       "files": [
         "correct_cmake_include_directory.patch",
@@ -17531,22 +17530,19 @@
       "name": "buck-yeh-bux",
       "manifest": {
         "name": "buck-yeh-bux",
-        "port-version": 2,
         "description": "A supplemental C++ library with functionalities not directly supported from Modern C++ standard.",
         "homepage": "https://github.com/buck-yeh/bux",
         "license": "MIT",
-        "supports": "!(arm | uwp | osx | linux)",
+        "supports": "!(android | linux | osx | uwp)",
         "dependencies": [
-          "fmt",
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "1.6.8"
+        "version": "1.7.0"
       },
       "files": [
-        "fix-build-error-with-fmt11.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17555,21 +17551,19 @@
       "name": "buck-yeh-bux-mariadb-client",
       "manifest": {
         "name": "buck-yeh-bux-mariadb-client",
-        "port-version": 1,
         "description": "Loose-coupled throw-on-error C++20 wrapper classes and utilities over mysql/mariadb Connector/C API",
         "homepage": "https://github.com/buck-yeh/bux-mariadb-client",
         "license": "MIT",
-        "supports": "!(arm | uwp | osx | linux)",
+        "supports": "!(android | linux | osx | uwp)",
         "dependencies": [
           "buck-yeh-bux",
-          "fmt",
           "libmariadb",
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -19770,6 +19764,7 @@
       "name": "cli11",
       "manifest": {
         "name": "cli11",
+        "port-version": 1,
         "description": "CLI11 is a command line parser for C++11 and beyond that provides a rich feature set with a simple and intuitive interface.",
         "homepage": "https://github.com/CLIUtils/CLI11",
         "license": "BSD-3-Clause",
@@ -22179,16 +22174,20 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
         ],
         "homepage": "https://chromium.googlesource.com/crashpad/crashpad/+/master/README.md",
         "license": "Apache-2.0",
-        "supports": "linux | osx | (windows & !uwp)",
+        "supports": "android | linux | osx | (windows & !uwp)",
         "dependencies": [
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false,
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
@@ -22209,6 +22208,7 @@
         "crashpadConfig.cmake.in",
         "fix-linux.patch",
         "fix-std-20.patch",
+        "ndk-toolchain.diff",
         "portfile.cmake",
         "vcpkg.json",
         "zlib.gn"
@@ -23824,7 +23824,6 @@
       "name": "dav1d",
       "manifest": {
         "name": "dav1d",
-        "port-version": 1,
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
         "license": "BSD-2-Clause",
@@ -23835,7 +23834,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -27686,7 +27685,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -38209,7 +38208,7 @@
             ]
           }
         },
-        "version": "2.9.0"
+        "version": "2.10.0"
       },
       "files": [
         "fix-error-C1128.patch",
@@ -41060,7 +41059,6 @@
       "name": "joltphysics",
       "manifest": {
         "name": "joltphysics",
-        "port-version": 1,
         "description": "A multi core friendly rigid body physics and collision detection library suitable for games and VR applications",
         "homepage": "https://github.com/jrouwe/JoltPhysics",
         "license": "MIT",
@@ -41074,13 +41072,10 @@
             "host": true
           }
         ],
-        "version": "5.0.0"
+        "version": "5.1.0"
       },
       "files": [
-        "fix-export.diff",
         "portfile.cmake",
-        "unofficial-joltphysics-config.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -41308,7 +41303,7 @@
             "host": true
           }
         ],
-        "version": "0.176.0"
+        "version": "0.177.0"
       },
       "files": [
         "portfile.cmake",
@@ -45210,19 +45205,25 @@
       "name": "libcerf",
       "manifest": {
         "name": "libcerf",
-        "port-version": 4,
         "description": "A self-contained numeric library that provides an efficient and accurate implementation of complex error functions, along with Dawson, Faddeeva, and Voigt functions.",
         "homepage": "https://jugit.fz-juelich.de/mlz/libcerf",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.13"
+        "version": "2.4"
       },
       "files": [
-        "001-fix-static-build.patch",
+        "begin-end-decls.diff",
+        "cxx-flags.diff",
+        "fix-source.diff",
+        "install-dirs.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46965,7 +46966,6 @@
       "name": "libgnutls",
       "manifest": {
         "name": "libgnutls",
-        "port-version": 1,
         "description": "A secure communications library implementing the SSL, TLS and DTLS protocols.",
         "homepage": "https://www.gnutls.org/",
         "license": null,
@@ -46996,11 +46996,11 @@
             "description": "Enable the OpenSSL compatibility library."
           }
         },
-        "version": "3.8.5"
+        "version": "3.8.7.1"
       },
       "files": [
         "ccasflags.patch",
-        "link-zlib.patch",
+        "compression-libs.diff",
         "portfile.cmake",
         "use-gmp-pkgconfig.patch",
         "vcpkg.json"
@@ -49206,7 +49206,7 @@
             "host": true
           }
         ],
-        "version": "2024.8.2"
+        "version": "2024.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -50248,7 +50248,7 @@
             ]
           }
         },
-        "version": "16.3"
+        "version": "16.4"
       },
       "files": [
         "Makefile",
@@ -59440,7 +59440,7 @@
       "name": "microsoft-signalr",
       "manifest": {
         "name": "microsoft-signalr",
-        "port-version": 9,
+        "port-version": 10,
         "description": "C++ Client for ASP.NET Core SignalR.",
         "homepage": "https://github.com/aspnet/SignalR-Client-Cpp",
         "dependencies": [
@@ -80949,6 +80949,7 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -81019,6 +81020,7 @@
         "alsa-dep-fix.patch",
         "cxx-linkage-pkgconfig.diff",
         "deps.patch",
+        "poll-fix.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -85396,7 +85398,7 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -87839,7 +87841,7 @@
             "host": true
           }
         ],
-        "version": "4.0.0"
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -91171,6 +91173,7 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
+        "port-version": 1,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0 OR MIT",
