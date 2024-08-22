@@ -1,5 +1,5 @@
 {
-  "version": "2145fbe4f0a08de4547f391de47d88c18a01f1ba",
+  "version": "bb002e69deb36c00e9ce21810f69eff349a833f7",
   "ports": [
     {
       "name": "3fd",
@@ -15413,7 +15413,7 @@
       "name": "boost-stacktrace",
       "manifest": {
         "name": "boost-stacktrace",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Boost stacktrace module",
         "homepage": "https://www.boost.org/libs/stacktrace",
         "license": "BSL-1.0",
@@ -15452,6 +15452,32 @@
             "version>=": "1.85.0"
           }
         ],
+        "default-features": [
+          {
+            "name": "backtrace",
+            "platform": "!windows"
+          },
+          {
+            "name": "windbg",
+            "platform": "windows"
+          }
+        ],
+        "features": {
+          "backtrace": {
+            "description": "Use boost_stacktrace_backtrace",
+            "dependencies": [
+              {
+                "name": "libbacktrace",
+                "platform": "!windows"
+              }
+            ],
+            "supports": "!windows"
+          },
+          "windbg": {
+            "description": "Use boost_stacktrace_windbg",
+            "supports": "windows"
+          }
+        },
         "version": "1.85.0"
       },
       "files": [
@@ -26892,11 +26918,10 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
-        "port-version": 1,
         "description": "Image metadata library and tools",
         "homepage": "https://exiv2.org",
         "license": "GPL-2.0-or-later",
-        "supports": "!uwp & !xbox",
+        "supports": "!xbox",
         "dependencies": [
           "inih",
           {
@@ -26922,20 +26947,19 @@
           "nls": {
             "description": "Build native language support",
             "dependencies": [
-              "gettext",
               {
                 "name": "gettext",
                 "host": true,
                 "features": [
                   "tools"
                 ]
-              }
+              },
+              "gettext-libintl"
             ]
           },
           "png": {
             "description": "Build with png support",
             "dependencies": [
-              "libpng",
               "zlib"
             ]
           },
@@ -26949,18 +26973,11 @@
             ]
           }
         },
-        "version": "0.28.1"
+        "version": "0.28.3"
       },
       "files": [
-        "dont-find-python.patch",
-        "fix-brotli.patch",
-        "fix-expat.patch",
-        "fix-find_expat.patch",
-        "fix-inih.patch",
-        "ios.patch",
+        "dependencies.diff",
         "portfile.cmake",
-        "usage",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -27685,7 +27702,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -27714,6 +27731,13 @@
           "all": {
             "description": "Build with all allowed dependencies selected that are compatible with the lgpl license",
             "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "sdl2"
+                ]
+              },
               {
                 "name": "ffmpeg",
                 "default-features": false,
@@ -27751,14 +27775,6 @@
                   "alsa"
                 ],
                 "platform": "linux"
-              },
-              {
-                "name": "ffmpeg",
-                "default-features": false,
-                "features": [
-                  "sdl2"
-                ],
-                "platform": "!osx"
               },
               {
                 "name": "ffmpeg",
@@ -44277,6 +44293,33 @@
       ]
     },
     {
+      "name": "level-zero",
+      "manifest": {
+        "name": "level-zero",
+        "description": "oneAPI Level Zero Specification Headers and Loader.",
+        "homepage": "https://github.com/oneapi-src/level-zero",
+        "license": "MIT",
+        "supports": "x64 & !static & (linux | (windows & !uwp))",
+        "dependencies": [
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.17.28"
+      },
+      "files": [
+        "001-patch-install-rules.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "leveldb",
       "manifest": {
         "name": "leveldb",
@@ -45822,10 +45865,9 @@
       "name": "libdwarf",
       "manifest": {
         "name": "libdwarf",
-        "port-version": 1,
         "description": "A library for reading DWARF2 and later DWARF.",
         "homepage": "https://github.com/davea42/libdwarf-code",
-        "license": "LGPL-2.1-only",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -45838,10 +45880,11 @@
           "zlib",
           "zstd"
         ],
-        "version": "0.9.1"
+        "version": "0.10.1"
       },
       "files": [
         "dependencies.diff",
+        "dwarfdump-conf.diff",
         "include-dir.diff",
         "msvc-runtime.diff",
         "off_t.diff",
@@ -55650,7 +55693,7 @@
             "host": true
           }
         ],
-        "version": "2.6"
+        "version": "3.0"
       },
       "files": [
         "portfile.cmake",
@@ -80583,7 +80626,7 @@
             "description": "windowless version - lite version"
           }
         },
-        "version": "5.0.3.0"
+        "version": "5.0.3.14"
       },
       "files": [
         "portfile.cmake",
@@ -86707,7 +86750,6 @@
       "name": "thorvg",
       "manifest": {
         "name": "thorvg",
-        "port-version": 1,
         "description": "ThorVG is a platform-independent portable library for drawing vector-based scenes and animations",
         "homepage": "https://www.thorvg.org",
         "license": "MIT",
@@ -86723,11 +86765,10 @@
             "description": "Build tools"
           }
         },
-        "version": "0.14.3"
+        "version": "0.14.6"
       },
       "files": [
         "portfile.cmake",
-        "revert-mutex.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -90124,6 +90165,32 @@
       "files": [
         "fix_osx.patch",
         "include.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "via-httplib",
+      "manifest": {
+        "name": "via-httplib",
+        "description": "C++ HTTP Library",
+        "homepage": "https://github.com/kenba/via-httplib",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "boost-asio",
+          "json-spirit",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.9.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
