@@ -1,5 +1,5 @@
 {
-  "version": "bb002e69deb36c00e9ce21810f69eff349a833f7",
+  "version": "fb544875b93bffebe96c6f720000003234cfba08",
   "ports": [
     {
       "name": "3fd",
@@ -29147,6 +29147,7 @@
       "name": "fltk",
       "manifest": {
         "name": "fltk",
+        "port-version": 1,
         "description": "FLTK (pronounced fulltick) is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows, and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL and its built-in GLUT emulation.",
         "homepage": "https://www.fltk.org/",
         "license": null,
@@ -29193,6 +29194,7 @@
       "files": [
         "config-path.patch",
         "dependencies.patch",
+        "fix-build-executable.patch",
         "fix-system-link.patch",
         "include.patch",
         "math-h-polyfill.patch",
@@ -41329,7 +41331,7 @@
       "name": "jsoncpp",
       "manifest": {
         "name": "jsoncpp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "JsonCpp is a C++ library that allows manipulating JSON values, including serialization and deserialization to and from strings. It can also preserve existing comment in unserialization/serialization steps, making it a convenient format to store user input files.",
         "homepage": "https://github.com/open-source-parsers/jsoncpp",
         "license": "MIT",
@@ -41346,6 +41348,7 @@
         "version": "1.9.5"
       },
       "files": [
+        "cmake-target.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45572,6 +45575,7 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
+        "port-version": 1,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -59775,7 +59779,7 @@
           },
           "zlib"
         ],
-        "version": "0.2.0"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -60430,7 +60434,7 @@
             ]
           }
         },
-        "version": "7.14"
+        "version": "7.15"
       },
       "files": [
         "CMakeLists.txt",
@@ -64070,6 +64074,43 @@
       },
       "files": [
         "fix-DisableWC4191.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "octave",
+      "manifest": {
+        "name": "octave",
+        "description": "High-level interpreted language, primarily intended for numerical computations.",
+        "homepage": "https://octave.org/",
+        "license": "GPL-3.0-or-later",
+        "supports": "!arm",
+        "dependencies": [
+          "blas",
+          {
+            "name": "curl",
+            "default-features": false
+          },
+          "fftw3",
+          "lapack",
+          "opengl",
+          "pcre2",
+          "qhull",
+          "readline",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "9.2.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83360,6 +83401,9 @@
           }
         ],
         "features": {
+          "openmp": {
+            "description": "Enable OpenMP based parallelism."
+          },
           "pcl": {
             "description": "Enable interfacing with PointCloud Library.",
             "dependencies": [
@@ -83373,10 +83417,11 @@
             ]
           }
         },
-        "version": "0.1.2"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
+        "preprocessor_portability.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -86501,6 +86546,30 @@
       ]
     },
     {
+      "name": "tevclient",
+      "manifest": {
+        "name": "tevclient",
+        "description": "C++ client library for communicating to the tev image viewer",
+        "homepage": "https://github.com/westlicht/tevclient",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2023-12-04"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tfhe",
       "manifest": {
         "name": "tfhe",
@@ -89165,7 +89234,7 @@
       "name": "usrsctp",
       "manifest": {
         "name": "usrsctp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A userland SCTP stack supporting FreeBSD, Linux, Mac OS X and Windows.",
         "homepage": "https://github.com/sctplab/usrsctp",
         "license": "BSD-3-Clause",
@@ -89183,6 +89252,7 @@
       },
       "files": [
         "fix_export.patch",
+        "mingw.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90741,7 +90811,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": "BSD-3-Clause",
@@ -90924,6 +90994,7 @@
                 "name": "vtk",
                 "default-features": false,
                 "features": [
+                  "seacas",
                   "vtkm"
                 ]
               },
