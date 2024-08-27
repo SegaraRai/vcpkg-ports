@@ -1,5 +1,5 @@
 {
-  "version": "3508985146f1b1d248c67ead13f8f54be5b4f5da",
+  "version": "509f71e53f45e46c13fa7935d2f6a45803580c07",
   "ports": [
     {
       "name": "3fd",
@@ -22774,7 +22774,7 @@
             "host": true
           }
         ],
-        "version": "0.6.9"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -23103,6 +23103,32 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curlcpp",
+      "manifest": {
+        "name": "curlcpp",
+        "description": "An object oriented C++ wrapper for CURL (libcurl)",
+        "homepage": "https://josephp91.github.io/curlcpp/",
+        "license": "MIT",
+        "dependencies": [
+          "curl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.1"
+      },
+      "files": [
+        "fix-cmake.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -33117,6 +33143,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -33372,6 +33399,19 @@
                 "default-features": false,
                 "features": [
                   "grpc-common"
+                ]
+              }
+            ]
+          },
+          "bigquerycontrol": {
+            "description": "Cloud BigQuery Control API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common",
+                  "rest-common"
                 ]
               }
             ]
@@ -33821,19 +33861,6 @@
                 "default-features": false,
                 "features": [
                   "grpc-common"
-                ]
-              }
-            ]
-          },
-          "experimental-bigquerycontrol": {
-            "description": "Cloud BigQuery Control API C++ Client Library",
-            "dependencies": [
-              {
-                "name": "google-cloud-cpp",
-                "default-features": false,
-                "features": [
-                  "grpc-common",
-                  "rest-common"
                 ]
               }
             ]
@@ -45201,7 +45228,6 @@
       "name": "libcap",
       "manifest": {
         "name": "libcap",
-        "port-version": 5,
         "description": "A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.",
         "homepage": "https://sites.google.com/site/fullycapable/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -45212,7 +45238,7 @@
             "host": true
           }
         ],
-        "version": "2.69"
+        "version": "2.70"
       },
       "files": [
         "configure",
@@ -45913,7 +45939,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "0.10.1"
+        "version": "0.11.0"
       },
       "files": [
         "dependencies.diff",
@@ -47306,7 +47332,7 @@
       "name": "libgxps",
       "manifest": {
         "name": "libgxps",
-        "port-version": 3,
+        "port-version": 4,
         "description": "libgxps is a GObject based library for handling and rendering XPS documents.",
         "homepage": "https://wiki.gnome.org/Projects/libgxps",
         "dependencies": [
@@ -51964,24 +51990,18 @@
       "name": "libstemmer",
       "manifest": {
         "name": "libstemmer",
-        "port-version": 8,
         "description": "Snowball is a small string processing language designed for creating stemming algorithms for use in Information Retrieval",
-        "homepage": "https://snowball.tartarus.org/",
+        "homepage": "https://snowballstem.org/",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version": "2017-9"
+        "version": "2021.2.2.0"
       },
       "files": [
         "CMakeLists.txt",
-        "LICENSE",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52839,12 +52859,11 @@
       "name": "liburing",
       "manifest": {
         "name": "liburing",
-        "port-version": 1,
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR (GPL-2.0 WITH Linux-syscall-note))",
         "supports": "linux",
-        "version": "2.6"
+        "version": "2.7"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -56456,7 +56475,7 @@
             "host": true
           }
         ],
-        "version": "2.4.0"
+        "version": "2.4.1"
       },
       "files": [
         "fix-cmake.patch",
@@ -67419,11 +67438,16 @@
       "name": "openscap",
       "manifest": {
         "name": "openscap",
+        "port-version": 1,
         "description": "The oscap program is a command line tool that allows users to load, scan, validate, edit, and export SCAP documents.",
         "homepage": "https://github.com/OpenSCAP/openscap",
         "license": "LGPL-2.1-or-later",
         "supports": "!xbox",
         "dependencies": [
+          {
+            "name": "acl",
+            "platform": "linux"
+          },
           "curl",
           "glib",
           "libpopt",
@@ -67459,6 +67483,7 @@
       "files": [
         "fix-build.patch",
         "fix-buildflag-and-install.patch",
+        "fix-dependencies.patch",
         "fix-utils.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -72526,7 +72551,7 @@
             "host": true
           }
         ],
-        "version": "2.13.4"
+        "version": "2.13.5"
       },
       "files": [
         "portfile.cmake",
@@ -79149,7 +79174,7 @@
             "host": true
           }
         ],
-        "version": "4.0.0"
+        "version": "4.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -82945,7 +82970,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "5.3.4"
+        "version-semver": "5.4.15"
       },
       "files": [
         "portfile.cmake",
