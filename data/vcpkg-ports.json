@@ -1,5 +1,5 @@
 {
-  "version": "509f71e53f45e46c13fa7935d2f6a45803580c07",
+  "version": "b6fcbeaa7f8f7729d625ba808f4bce7432b05072",
   "ports": [
     {
       "name": "3fd",
@@ -21905,7 +21905,7 @@
             "host": true
           }
         ],
-        "version": "0.6.3"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -32385,7 +32385,7 @@
             "host": true
           }
         ],
-        "version": "3.2.5"
+        "version": "3.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -44984,7 +44984,7 @@
       "name": "libavif",
       "manifest": {
         "name": "libavif",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library for encoding and decoding AVIF files",
         "homepage": "https://github.com/AOMediaCodec/libavif",
         "license": "BSD-2-Clause AND Apache-2.0",
@@ -54506,7 +54506,6 @@
       "name": "libyuv",
       "manifest": {
         "name": "libyuv",
-        "port-version": 1,
         "description": "libyuv is an open source project that includes YUV scaling and conversion functionality",
         "homepage": "https://chromium.googlesource.com/libyuv/libyuv",
         "license": null,
@@ -54525,14 +54524,13 @@
             "host": true
           }
         ],
-        "version": "1857"
+        "version": "1895"
       },
       "files": [
-        "fix-cmakelists.patch",
+        "cmake.diff",
         "libyuv-config.cmake",
         "portfile.cmake",
         "usage",
-        "usage-msvc",
         "vcpkg.json"
       ]
     },
@@ -61913,7 +61911,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -62530,8 +62528,12 @@
         "description": "A simple asynchronous network library",
         "homepage": "https://github.com/index1207/netcpp",
         "license": "MIT",
-        "supports": "windows",
+        "supports": "windows | linux",
         "dependencies": [
+          {
+            "name": "liburing",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -62539,12 +62541,12 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "winsock2"
+          }
         ],
-        "version": "0.3.4"
+        "version": "0.4.1"
       },
       "files": [
+        "pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69587,7 +69589,7 @@
       "name": "pcapplusplus",
       "manifest": {
         "name": "pcapplusplus",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PcapPlusPlus is a multi-platform C++ library for capturing, parsing and crafting of network packets",
         "homepage": "https://github.com/seladb/PcapPlusPlus",
         "license": null,
@@ -69612,6 +69614,7 @@
         "version": "23.9"
       },
       "files": [
+        "0001-warn-STL4043-for-v23.09.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82882,7 +82885,7 @@
             "host": true
           }
         ],
-        "version": "6.1.139"
+        "version": "6.1.140"
       },
       "files": [
         "SimdConfig.cmake",
@@ -92151,7 +92154,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-01-22"
+        "version": "1.0.240803.1"
       },
       "files": [
         "portfile.cmake",
