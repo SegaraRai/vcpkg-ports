@@ -1,5 +1,5 @@
 {
-  "version": "b6fcbeaa7f8f7729d625ba808f4bce7432b05072",
+  "version": "f5ec6f30ff70f04f841436a0f36600bdbabfcfbf",
   "ports": [
     {
       "name": "3fd",
@@ -79070,7 +79070,6 @@
       "name": "rmlui",
       "manifest": {
         "name": "rmlui",
-        "port-version": 1,
         "maintainers": "Michael R. P. Ragazzon <mikke89@users.noreply.github.com>",
         "description": "RmlUi is the C++ user interface library based on the HTML and CSS standards, designed as a complete solution for any project's interface needs.",
         "homepage": "https://github.com/mikke89/RmlUi",
@@ -79107,12 +79106,13 @@
             ]
           }
         },
-        "version": "5.1"
+        "version": "6.0"
       },
       "files": [
         "add-robin-hood.patch",
         "portfile.cmake",
-        "remove-std-before-uint.patch",
+        "skip-custom-find-modules.patch",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -88169,9 +88169,12 @@
           },
           "on-demand": {
             "description": "Enable on-demand profiling"
+          },
+          "verbose": {
+            "description": "Enables verbose logging"
           }
         },
-        "version": "0.11.0"
+        "version": "0.11.1"
       },
       "files": [
         "build-tools.patch",
