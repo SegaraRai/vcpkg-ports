@@ -1,5 +1,5 @@
 {
-  "version": "f5ec6f30ff70f04f841436a0f36600bdbabfcfbf",
+  "version": "f0c8848cde589649bca3ab3649668540403786ce",
   "ports": [
     {
       "name": "3fd",
@@ -27637,7 +27637,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -28647,7 +28647,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "fix-build.patch",
@@ -29483,6 +29483,7 @@
           "boost-thread",
           "boost-variant",
           "double-conversion",
+          "fast-float",
           "fmt",
           "gflags",
           "glog",
@@ -29558,7 +29559,7 @@
             ]
           }
         },
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -38731,6 +38732,31 @@
       "files": [
         "0005-autotools-subdirs.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "hwinfo",
+      "manifest": {
+        "name": "hwinfo",
+        "description": "hwinfo provides an easy-to-use and modern C++ API for retrieving hardware information of your systems components such as CPU, RAM, GPU, Disks, Mainboard, ...",
+        "homepage": "https://github.com/lfreist/hwinfo",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -49781,6 +49807,7 @@
       "name": "libosip2",
       "manifest": {
         "name": "libosip2",
+        "port-version": 1,
         "description": "oSIP is an LGPL implementation of SIP. It's stable, portable, flexible and compliant! -may be more-! It is used mostly with eXosip2 stack (GPL) which provides simpler API for User-Agent implementation.",
         "homepage": "https://www.gnu.org/software/osip/",
         "supports": "!(windows & arm) & !uwp",
@@ -55875,7 +55902,7 @@
       "name": "loguru",
       "manifest": {
         "name": "loguru",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A lightweight and flexible C++ logging library",
         "homepage": "https://github.com/emilk/loguru",
         "dependencies": [
@@ -55899,9 +55926,7 @@
         "version": "2.1.0"
       },
       "files": [
-        "CMakeLists.txt",
         "copyright",
-        "loguruConfig.cmake.in",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55940,6 +55965,7 @@
       "name": "ls-qpack",
       "manifest": {
         "name": "ls-qpack",
+        "port-version": 1,
         "description": "QPACK compression library for use with HTTP/3",
         "homepage": "https://github.com/litespeedtech/ls-qpack",
         "license": "MIT",
@@ -55949,13 +55975,17 @@
             "name": "vcpkg-cmake",
             "host": true
           },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
           "xxhash"
         ],
         "version": "2.5.4"
       },
       "files": [
+        "cmake-export.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json",
         "xxhash.patch"
       ]
@@ -61634,7 +61664,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "portfile.cmake",
@@ -62842,7 +62872,7 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -62870,6 +62900,12 @@
               }
             ]
           },
+          "libressl": {
+            "description": "Compile with libressl",
+            "dependencies": [
+              "libressl"
+            ]
+          },
           "wolfssl": {
             "description": "Compile with wolfssl",
             "dependencies": [
@@ -62886,6 +62922,7 @@
       },
       "files": [
         "export-unofficical-target.patch",
+        "openssl_required.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -64158,22 +64195,22 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
+        "port-version": 1,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "license": "GPL-3.0-or-later",
         "supports": "!arm",
         "dependencies": [
           "blas",
-          {
-            "name": "curl",
-            "default-features": false
-          },
           "fftw3",
+          "glpk",
           "lapack",
+          "libsndfile",
           "opengl",
           "pcre2",
-          "qhull",
+          "portaudio",
           "readline",
+          "sundials",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -64891,11 +64928,19 @@
           }
         ],
         "default-features": [
-          "openssl"
+          "methodcalls",
+          "subscriptions",
+          "subscriptions-events"
         ],
         "features": {
           "amalgamation": {
             "description": "Concatenate the library to a single file open62541.h/.c"
+          },
+          "diagnostics": {
+            "description": "Enable diagnostics information exposed by the server"
+          },
+          "discovery": {
+            "description": "Enable Discovery Service (LDS)"
           },
           "historizing": {
             "description": "Enable basic support for historical access (client and server)"
@@ -64906,14 +64951,23 @@
               "mbedtls"
             ]
           },
+          "methodcalls": {
+            "description": "Enable the Method service set"
+          },
           "openssl": {
             "description": "Enable encryption support (uses OpenSSL)",
             "dependencies": [
               "openssl"
             ]
+          },
+          "subscriptions": {
+            "description": "Enable subscriptions support"
+          },
+          "subscriptions-events": {
+            "description": "Enable event monitoring"
           }
         },
-        "version": "1.3.10"
+        "version": "1.3.12"
       },
       "files": [
         "portfile.cmake",
@@ -72177,7 +72231,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -77965,7 +78019,7 @@
             "host": true
           }
         ],
-        "version": "8.82"
+        "version": "8.83"
       },
       "files": [
         "portfile.cmake",
@@ -80901,7 +80955,7 @@
       "name": "sdformat10",
       "manifest": {
         "name": "sdformat10",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "supports": "!uwp & !(arm & osx)",
@@ -80964,7 +81018,7 @@
       "name": "sdformat6",
       "manifest": {
         "name": "sdformat6",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -80998,7 +81052,7 @@
       "name": "sdformat9",
       "manifest": {
         "name": "sdformat9",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -81114,16 +81168,11 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
         "dependencies": [
-          {
-            "name": "dbus",
-            "default-features": false,
-            "platform": "linux"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -81134,6 +81183,10 @@
           }
         ],
         "default-features": [
+          {
+            "name": "dbus",
+            "platform": "linux"
+          },
           {
             "name": "ibus",
             "platform": "linux"
@@ -81153,6 +81206,16 @@
             "dependencies": [
               {
                 "name": "alsa",
+                "platform": "linux"
+              }
+            ]
+          },
+          "dbus": {
+            "description": "Build with D-Bus support",
+            "dependencies": [
+              {
+                "name": "dbus",
+                "default-features": false,
                 "platform": "linux"
               }
             ]
@@ -81978,7 +82041,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.8"
+        "version": "0.7.9"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -91824,7 +91887,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.08.19.00"
+        "version-string": "2024.08.26.00"
       },
       "files": [
         "fix-config-cmake.patch",
