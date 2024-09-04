@@ -1,5 +1,5 @@
 {
-  "version": "0f88ecb8528605f91980b90a2c5bad88e3cb565f",
+  "version": "4e08971f3ddc13018ca858a692efe92d3b6b9fce",
   "ports": [
     {
       "name": "3fd",
@@ -980,7 +980,6 @@
       "name": "angelscript",
       "manifest": {
         "name": "angelscript",
-        "port-version": 1,
         "description": "The AngelCode Scripting Library, or AngelScript as it is also known, is an extremely flexible cross-platform scripting library designed to allow applications to extend their functionality through external scripts. It has been designed from the beginning to be an easy to use component, both for the application programmer and the script writer.",
         "homepage": "https://angelcode.com/angelscript",
         "license": "Zlib",
@@ -1000,7 +999,7 @@
             "description": "Installs all addons for use in compiling scripts addons"
           }
         },
-        "version": "2.36.1"
+        "version": "2.37.0"
       },
       "files": [
         "fix-dependency.patch",
@@ -1259,7 +1258,6 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
-        "port-version": 1,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
@@ -1281,12 +1279,12 @@
             "description": "Install non-standard files required for building Apache httpd"
           }
         },
-        "version": "1.7.4"
+        "version": "1.7.5"
       },
       "files": [
-        "fix-configcmake.patch",
         "portfile.cmake",
         "unglue.patch",
+        "unofficial-apr-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -2999,6 +2997,7 @@
           "boost-program-options",
           "boost-random",
           "boost-tuple",
+          "fmt",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -3017,10 +3016,11 @@
             ]
           }
         },
-        "version": "1.11.3"
+        "version": "1.12.0"
       },
       "files": [
         "fix-cmake.patch",
+        "fix-fmt.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -17811,7 +17811,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.33.0"
+        "version-semver": "1.33.1"
       },
       "files": [
         "avoid-docs.patch",
@@ -19406,7 +19406,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.4.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -19531,7 +19531,7 @@
             "description": "Enable building the cJSON_Utils library"
           }
         },
-        "version": "1.7.17"
+        "version": "1.7.18"
       },
       "files": [
         "portfile.cmake",
@@ -19897,7 +19897,6 @@
       "name": "clipper2",
       "manifest": {
         "name": "clipper2",
-        "port-version": 1,
         "description": "Polygon Clipping and Offsetting",
         "homepage": "http://www.angusj.com/clipper2",
         "license": "BSL-1.0",
@@ -19905,9 +19904,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -21167,7 +21170,7 @@
             ]
           }
         },
-        "version": "0.16.2"
+        "version": "0.17.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22534,7 +22537,7 @@
             "host": true
           }
         ],
-        "version": "1.3.3"
+        "version": "1.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -29633,7 +29636,6 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 2,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -29647,7 +29649,10 @@
             "name": "gperf",
             "host": true
           },
-          "libiconv",
+          {
+            "name": "libiconv",
+            "platform": "!windows"
+          },
           {
             "name": "libuuid",
             "platform": "!windows & !osx & !mingw"
@@ -29658,10 +29663,9 @@
             "host": true
           }
         ],
-        "version": "2.14.2"
+        "version": "2.15.0"
       },
       "files": [
-        "fix-preprocessor-clang-cl.patch",
         "libgetopt.patch",
         "no-etc-symlinks.patch",
         "portfile.cmake",
@@ -30120,7 +30124,6 @@
       "name": "freetype",
       "manifest": {
         "name": "freetype",
-        "port-version": 1,
         "description": "A library to render fonts.",
         "homepage": "https://www.freetype.org/",
         "license": "FTL OR GPL-2.0-or-later",
@@ -30172,7 +30175,7 @@
             ]
           }
         },
-        "version": "2.13.2"
+        "version": "2.13.3"
       },
       "files": [
         "0003-Fix-UWP.patch",
@@ -30259,6 +30262,7 @@
       "manifest": {
         "name": "fribidi",
         "description": "GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi)",
+        "homepage": "https://www.gnu.org/software/fribidi",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "dependencies": [
@@ -30271,7 +30275,7 @@
             "host": true
           }
         ],
-        "version": "1.0.13"
+        "version": "1.0.15"
       },
       "files": [
         "meson-crosscompile.patch",
@@ -30296,7 +30300,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -30360,7 +30364,7 @@
       "name": "ftgl",
       "manifest": {
         "name": "ftgl",
-        "port-version": 1,
+        "port-version": 5,
         "description": [
           "FTGL is a free open source library to enable developers to use arbitrary fonts in their OpenGL (www.opengl.org) applications.",
           "Unlike other OpenGL font libraries FTGL uses standard font file formats so doesn't need a preprocessing step to convert the high quality font data into a lesser quality, proprietary format.",
@@ -30369,7 +30373,10 @@
         "homepage": "https://github.com/frankheckenbach/ftgl",
         "license": "MIT",
         "dependencies": [
-          "freetype",
+          {
+            "name": "freetype",
+            "default-features": false
+          },
           "opengl",
           {
             "name": "vcpkg-cmake",
@@ -30380,11 +30387,14 @@
             "host": true
           }
         ],
-        "version-date": "2022-05-18"
+        "version": "2.4.0"
       },
       "files": [
-        "01_disable_doxygen.patch",
         "02_enable-cpp11-std.patch",
+        "fix-cmake.diff",
+        "fix-gl-flags.diff",
+        "freetype-usage.diff",
+        "install-pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -36716,7 +36726,6 @@
       "name": "gtsam",
       "manifest": {
         "name": "gtsam",
-        "port-version": 2,
         "description": "GTSAM is a library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.",
         "homepage": "https://github.com/borglab/gtsam",
         "license": "BSD-3-Clause",
@@ -36746,7 +36755,7 @@
             "host": true
           }
         ],
-        "version-string": "4.2a9"
+        "version": "4.2.0"
       },
       "files": [
         "build-fixes.patch",
@@ -39998,6 +40007,7 @@
       "name": "imguizmo",
       "manifest": {
         "name": "imguizmo",
+        "port-version": 1,
         "description": "Immediate mode 3D gizmo for scene editing and other controls based on Dear ImGui",
         "homepage": "https://github.com/CedricGuillemet/ImGuizmo",
         "license": "MIT",
@@ -41950,7 +41960,7 @@
             "description": "Pretty printer support for kerbal"
           }
         },
-        "version": "2024.7.1"
+        "version": "2024.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -47616,7 +47626,6 @@
       "name": "libice",
       "manifest": {
         "name": "libice",
-        "port-version": 1,
         "description": "Inter-Client Exchange Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libice",
         "license": "MIT-open-group",
@@ -47627,7 +47636,7 @@
           "xproto",
           "xtrans"
         ],
-        "version": "1.0.10"
+        "version": "1.1.1"
       },
       "files": [
         "fix_build.patch",
@@ -47787,7 +47796,7 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
         "license": null,
@@ -53028,6 +53037,7 @@
       "name": "libuv",
       "manifest": {
         "name": "libuv",
+        "port-version": 1,
         "description": "libuv is a multi-platform support library with a focus on asynchronous I/O.",
         "homepage": "https://github.com/libuv/libuv",
         "license": "BSD-3-Clause",
@@ -53047,6 +53057,7 @@
       "files": [
         "fix-build-type.patch",
         "portfile.cmake",
+        "ssize_t.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -54521,6 +54532,7 @@
       "name": "libyuv",
       "manifest": {
         "name": "libyuv",
+        "port-version": 1,
         "description": "libyuv is an open source project that includes YUV scaling and conversion functionality",
         "homepage": "https://chromium.googlesource.com/libyuv/libyuv",
         "license": null,
@@ -54539,6 +54551,12 @@
             "host": true
           }
         ],
+        "features": {
+          "tools": {
+            "description": "build command line tool",
+            "supports": "!android & !ios & !xbox & !wasm32"
+          }
+        },
         "version": "1895"
       },
       "files": [
@@ -55953,7 +55971,7 @@
       "name": "ls-qpack",
       "manifest": {
         "name": "ls-qpack",
-        "port-version": 2,
+        "port-version": 3,
         "description": "QPACK compression library for use with HTTP/3",
         "homepage": "https://github.com/litespeedtech/ls-qpack",
         "license": "MIT",
@@ -60897,7 +60915,6 @@
       "name": "mpg123",
       "manifest": {
         "name": "mpg123",
-        "port-version": 4,
         "description": "mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1, 2 and 3 (MPEG 1.0 layer 3 also known as MP3).",
         "homepage": "https://sourceforge.net/projects/mpg123/",
         "license": "LGPL-2.1-or-later",
@@ -60920,13 +60937,10 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "1.31.3"
+        "version": "1.32.7"
       },
       "files": [
-        "fix-checktypesize.patch",
-        "fix-m1-build.patch",
-        "fix-modulejack.patch",
-        "fix-modules-cmake-cflags.patch",
+        "have-fpu.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61315,6 +61329,34 @@
       ]
     },
     {
+      "name": "msh3",
+      "manifest": {
+        "name": "msh3",
+        "description": "Minimal HTTP/3 library",
+        "homepage": "https://github.com/nibanks/msh3",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "ls-qpack",
+          "msquic",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.0"
+      },
+      "files": [
+        "dependencies_fix.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "msinttypes",
       "manifest": {
         "name": "msinttypes",
@@ -61381,6 +61423,7 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
+        "port-version": 2,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -61398,6 +61441,7 @@
         "version": "2.3.5"
       },
       "files": [
+        "all_headers.patch",
         "fix-comparing-system-processor-with-win32.patch",
         "fix-install.patch",
         "fix-uwp-crt.patch",
@@ -62812,12 +62856,18 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.5.0"
       },
       "files": [
+        "fix-include-usage.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -62860,7 +62910,6 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
-        "port-version": 3,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -62906,13 +62955,11 @@
             ]
           }
         },
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
-        "export-unofficical-target.patch",
         "openssl_required.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -65097,6 +65144,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
+        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -65176,6 +65224,7 @@
       "files": [
         "dependencies.patch",
         "drop-bin-letter-d.patch",
+        "fix-freetype.diff",
         "fix-install-prefix-path.patch",
         "fix-pdb-find.patch",
         "install-include-dir.patch",
@@ -68217,13 +68266,13 @@
       "name": "openvpn3",
       "manifest": {
         "name": "openvpn3",
-        "port-version": 2,
         "description": "a C++ class library that implements the functionality of an OpenVPN client, and is protocol-compatible with the OpenVPN 2.x branch.",
         "homepage": "https://openvpn.net",
-        "license": "AGPL-3.0",
-        "supports": "!xbox",
+        "license": "AGPL-3.0-only",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "asio",
+          "lz4",
           "mbedtls",
           {
             "name": "tap-windows6",
@@ -68238,11 +68287,14 @@
             "host": true
           }
         ],
-        "version": "3.7.0"
+        "version": "3.10"
       },
       "files": [
-        "CMakeLists.txt",
+        "dependencies.diff",
+        "mbedtls-compat.diff",
+        "only-library.diff",
         "portfile.cmake",
+        "unofficial-openvpnConfig.cmake",
         "vcpkg.json"
       ]
     },
@@ -79112,6 +79164,7 @@
       "name": "rmlui",
       "manifest": {
         "name": "rmlui",
+        "port-version": 1,
         "maintainers": "Michael R. P. Ragazzon <mikke89@users.noreply.github.com>",
         "description": "RmlUi is the C++ user interface library based on the HTML and CSS standards, designed as a complete solution for any project's interface needs.",
         "homepage": "https://github.com/mikke89/RmlUi",
@@ -79145,6 +79198,12 @@
             "description": "Build Lua bindings",
             "dependencies": [
               "lua"
+            ]
+          },
+          "svg": {
+            "description": "Enable plugin for SVG images",
+            "dependencies": [
+              "lunasvg"
             ]
           }
         },
@@ -80603,10 +80662,14 @@
       "name": "sassc",
       "manifest": {
         "name": "sassc",
+        "port-version": 1,
         "description": "SassC is a wrapper around libsass (http://github.com/sass/libsass) used to generate a useful command-line application that can be installed and packaged for several operating systems.",
         "homepage": "https://github.com/sass/sassc",
         "dependencies": [
-          "getopt",
+          {
+            "name": "getopt",
+            "platform": "windows & !mingw"
+          },
           "libsass"
         ],
         "version": "3.6.2"
@@ -82481,7 +82544,7 @@
       "name": "shiftmedia-libgnutls",
       "manifest": {
         "name": "shiftmedia-libgnutls",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
         "homepage": "https://github.com/ShiftMediaProject/gnutls",
         "license": "LGPL-2.1-only",
@@ -82507,6 +82570,7 @@
       "files": [
         "external-libtasn1.patch",
         "fix-warnings.patch",
+        "mkdir.patch",
         "pkgconfig.patch",
         "portfile.cmake",
         "ssize_t_already_define.patch",
@@ -82996,7 +83060,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "3.10.0"
+        "version": "3.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -83465,7 +83529,7 @@
       "name": "slikenet",
       "manifest": {
         "name": "slikenet",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SLikeNetT is an Open Source/Free Software cross-platform network engine written in C++ and specifially designed for games (and applications which have comparable requirements on a network engine like games) building upon the discontinued RakNet network engine which had more than 13 years of active development.",
         "homepage": "https://github.com/SLikeSoft/SLikeNet",
         "supports": "!uwp",
@@ -83483,6 +83547,7 @@
         "version-date": "2021-06-07"
       },
       "files": [
+        "fix-emscripten.patch",
         "fix-install.patch",
         "portfile.cmake",
         "slikenet-config.cmake",
@@ -88140,6 +88205,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
+        "port-version": 1,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -95173,7 +95239,6 @@
       "name": "zug",
       "manifest": {
         "name": "zug",
-        "port-version": 1,
         "description": "Transducers for C++",
         "homepage": "https://sinusoid.es/zug/",
         "dependencies": [
@@ -95191,7 +95256,7 @@
             "description": "Build documentation"
           }
         },
-        "version-date": "2021-04-23"
+        "version-date": "2024-04-26"
       },
       "files": [
         "portfile.cmake",
@@ -95252,7 +95317,6 @@
       "name": "zyre",
       "manifest": {
         "name": "zyre",
-        "port-version": 5,
         "description": "An open-source framework for proximity-based peer-to-peer applications",
         "homepage": "https://github.com/zeromq/zyre",
         "dependencies": [
@@ -95266,7 +95330,7 @@
             "host": true
           }
         ],
-        "version-date": "2019-07-07"
+        "version-date": "2024-04-10"
       },
       "files": [
         "Config.cmake.in",
