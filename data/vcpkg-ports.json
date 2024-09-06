@@ -1,5 +1,5 @@
 {
-  "version": "c04c073ddb43aa1397a3c535eec3470011b0cd4e",
+  "version": "110c50d4700794d87d95138cd8c1b3bbfee9bab5",
   "ports": [
     {
       "name": "3fd",
@@ -2421,7 +2421,7 @@
             ]
           }
         },
-        "version": "8.0.1"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -5805,7 +5805,7 @@
           },
           "zlib"
         ],
-        "version": "3.14.0"
+        "version": "3.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -8506,7 +8506,7 @@
       "name": "boost-cmake",
       "manifest": {
         "name": "boost-cmake",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Boost CMake support infrastructure",
         "homepage": "https://github.com/boostorg/cmake",
         "license": "BSL-1.0",
@@ -27747,7 +27747,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29481,6 +29481,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29581,6 +29582,7 @@
       "files": [
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
+        "fix-character-in-folder.patch",
         "fix-deps.patch",
         "fix-fmt11-cmake.patch",
         "fix-unistd-include.patch",
@@ -32481,6 +32483,7 @@
       "name": "glfw3",
       "manifest": {
         "name": "glfw3",
+        "port-version": 1,
         "description": "GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.",
         "homepage": "https://github.com/glfw/glfw",
         "license": "Zlib",
@@ -32506,6 +32509,7 @@
         "version": "3.4"
       },
       "files": [
+        "glfw3Config.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44491,6 +44495,31 @@
       ]
     },
     {
+      "name": "lfreist-hwinfo",
+      "manifest": {
+        "name": "lfreist-hwinfo",
+        "description": "hwinfo provides an easy-to-use and modern C++ API for retrieving hardware information of your systems components such as CPU, RAM, GPU, Disks, Mainboard, ...",
+        "homepage": "https://github.com/lfreist/hwinfo",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2024-09-01"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "lib3mf",
       "manifest": {
         "name": "lib3mf",
@@ -49302,13 +49331,13 @@
         "license": "GPL-3.0-only",
         "supports": "windows | linux | osx",
         "dependencies": [
+          "boost-json",
           "curl",
           "gettext-libintl",
           {
             "name": "glib",
             "platform": "linux | osx"
           },
-          "jsoncpp",
           {
             "name": "libsecret",
             "platform": "linux"
@@ -49331,7 +49360,7 @@
             "host": true
           }
         ],
-        "version": "2024.8.3"
+        "version": "2024.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -61423,7 +61452,6 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
-        "port-version": 2,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -61438,7 +61466,7 @@
             "host": true
           }
         ],
-        "version": "2.3.5"
+        "version": "2.3.6"
       },
       "files": [
         "all_headers.patch",
@@ -79278,7 +79306,7 @@
             "host": true
           }
         ],
-        "version": "4.1.1"
+        "version": "4.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -82410,7 +82438,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": "MIT",
         "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2024.1.33"
+        "version": "2024.10"
       },
       "files": [
         "portfile.cmake",
