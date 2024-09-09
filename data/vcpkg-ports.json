@@ -1,5 +1,5 @@
 {
-  "version": "68d349964cb4e8da561fd849d9491e6ba11c5681",
+  "version": "eba7c6a894fce24146af4fdf161fef8e90dd6be3",
   "ports": [
     {
       "name": "3fd",
@@ -2809,9 +2809,10 @@
         "homepage": "https://github.com/linux-audit/audit-userspace",
         "license": "GPL-2.0-or-later OR LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "4.0.1"
+        "version": "4.0.2"
       },
       "files": [
+        "fix-multiple-def.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -5096,7 +5097,7 @@
       "name": "azure-kinect-sensor-sdk",
       "manifest": {
         "name": "azure-kinect-sensor-sdk",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Azure Kinect SDK is a cross platform (Linux and Windows) user mode SDK to read data from your Azure Kinect device.",
         "homepage": "https://github.com/microsoft/Azure-Kinect-Sensor-SDK",
         "supports": "linux | windows",
@@ -5152,6 +5153,7 @@
         "fix-builds.patch",
         "fix-calibration-c.patch",
         "fix-dependency-imgui.patch",
+        "fix-header.patch",
         "fix-linux.patch",
         "k4adeploy.ps1",
         "portfile.cmake",
@@ -6144,6 +6146,32 @@
         "version": "2.0.0"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bext-text",
+      "manifest": {
+        "name": "bext-text",
+        "description": "What a c++ standard Unicode library might look like.",
+        "homepage": "https://tzlaine.github.io/text/doc/html/index.html",
+        "license": "BSL-1.0",
+        "dependencies": [
+          "boost",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2024-01-19"
+      },
+      "files": [
+        "fix-boost-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20220,7 +20248,6 @@
       "name": "coin",
       "manifest": {
         "name": "coin",
-        "port-version": 3,
         "description": "A high-level 3D visualization library with Open Inventor 2.1 API",
         "homepage": "https://github.com/coin3d/coin",
         "license": "BSD-3-Clause",
@@ -20290,7 +20317,7 @@
             ]
           }
         },
-        "version": "4.0.2"
+        "version": "4.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -22203,7 +22230,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -22235,6 +22262,8 @@
       },
       "files": [
         "crashpadConfig.cmake.in",
+        "fix-lib-name-conflict-1.patch",
+        "fix-lib-name-conflict.patch",
         "fix-linux.patch",
         "fix-std-20.patch",
         "ndk-toolchain.diff",
@@ -22428,6 +22457,7 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
+        "port-version": 1,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -22449,6 +22479,7 @@
         "version": "8.9.0"
       },
       "files": [
+        "cryptopp.patch",
         "patch.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -27167,10 +27198,11 @@
       "name": "faiss",
       "manifest": {
         "name": "faiss",
+        "port-version": 1,
         "description": "Faiss is a library for efficient similarity search and clustering of dense vectors.",
         "homepage": "https://github.com/facebookresearch/faiss",
         "license": "MIT",
-        "supports": "!uwp & !osx & !x86",
+        "supports": "!uwp & !osx & !x86 & !(arm64 & windows)",
         "dependencies": [
           "lapack",
           "openblas",
@@ -27640,7 +27672,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -28664,7 +28696,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "fix-build.patch",
@@ -29481,7 +29513,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29577,12 +29608,11 @@
             ]
           }
         },
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
-        "fix-character-in-folder.patch",
         "fix-deps.patch",
         "fix-fmt11-cmake.patch",
         "fix-unistd-include.patch",
@@ -45974,6 +46004,21 @@
       ]
     },
     {
+      "name": "libdvdcss",
+      "manifest": {
+        "name": "libdvdcss",
+        "description": "Accessing DVDs like a block device library",
+        "homepage": "https://www.videolan.org/developers/libdvdcss.html",
+        "license": "GPL-2.0-or-later",
+        "supports": "!uwp & !xbox",
+        "version-semver": "1.4.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libdwarf",
       "manifest": {
         "name": "libdwarf",
@@ -52372,7 +52417,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -52381,6 +52426,7 @@
           "blas",
           "cpuinfo",
           "eigen3",
+          "fftw3",
           "flatbuffers",
           {
             "name": "flatbuffers",
@@ -52418,16 +52464,15 @@
           {
             "name": "vcpkg-get-python-packages",
             "host": true
-          }
+          },
+          "xnnpack"
         ],
         "default-features": [
           {
             "name": "cuda",
             "platform": "windows & !x86"
           },
-          "fftw3",
           "opencv",
-          "xnnpack",
           "zstd"
         ],
         "features": {
@@ -52463,12 +52508,6 @@
                 "name": "tensorpipe",
                 "platform": "linux | osx"
               }
-            ]
-          },
-          "fftw3": {
-            "description": "Build with fftw3",
-            "dependencies": [
-              "fftw3"
             ]
           },
           "leveldb": {
@@ -52509,16 +52548,6 @@
               "vulkan",
               "vulkan-loader",
               "vulkan-memory-allocator"
-            ]
-          },
-          "xnnpack": {
-            "description": "Build with XNNPack",
-            "dependencies": [
-              {
-                "name": "fxdiv",
-                "platform": "!windows"
-              },
-              "xnnpack"
             ]
           },
           "zstd": {
@@ -52912,6 +52941,7 @@
       "name": "liburing",
       "manifest": {
         "name": "liburing",
+        "port-version": 1,
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR (GPL-2.0 WITH Linux-syscall-note))",
@@ -53028,6 +53058,33 @@
         "005_fix_tools_msvc.patch",
         "CMakeLists.txt",
         "exports.def",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libusbp",
+      "manifest": {
+        "name": "libusbp",
+        "description": "The Pololu USB Library (also known as libusbp) is a cross-platform C library for accessing USB devices.",
+        "homepage": "https://github.com/pololu/libusbp",
+        "license": "MIT",
+        "supports": "!android & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.1"
+      },
+      "files": [
+        "Config.cmake.in",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -58974,9 +59031,8 @@
       "manifest": {
         "name": "mbedtls",
         "description": "An open source, portable, easy to use, readable and flexible SSL library",
-        "homepage": "https://github.com/ARMmbed/mbedtls",
-        "license": "Apache-2.0",
-        "supports": "!uwp",
+        "homepage": "https://www.trustedfirmware.org/projects/mbed-tls/",
+        "license": "Apache-2.0 OR GPL-2.0-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -58998,11 +59054,12 @@
             ]
           }
         },
-        "version": "2.28.8"
+        "version": "3.6.1"
       },
       "files": [
         "enable-pthread.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -59067,6 +59124,32 @@
       "files": [
         "0001-fix-_POSIX_C_SOURCE.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "md4c",
+      "manifest": {
+        "name": "md4c",
+        "description": "MD4C is a C library providing a Markdown parser.",
+        "homepage": "https://github.com/mity/md4c",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.5.2"
+      },
+      "files": [
+        "cmake.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -61724,7 +61807,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "portfile.cmake",
@@ -63947,8 +64030,10 @@
       "name": "oatpp-mbedtls",
       "manifest": {
         "name": "oatpp-mbedtls",
+        "port-version": 1,
         "description": "Oat++ Mbed TLS submodule providing secure server and client connection providers.",
-        "homepage": "https://github.com/oatpp/oatpp-mbedtls",
+        "homepage": "https://oatpp.io/docs/modules/oatpp-mbedtls/",
+        "license": "Apache-2.0",
         "dependencies": [
           "mbedtls",
           "oatpp",
@@ -63965,6 +64050,7 @@
       },
       "files": [
         "find-mbedtls.patch",
+        "mbedtls-3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -67451,7 +67537,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 5,
+        "port-version": 6,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
@@ -67520,6 +67606,7 @@
       },
       "files": [
         "fix-build.patch",
+        "fix-lib-name-conflict.patch",
         "fix-static-build.patch",
         "fix_no_zstd.patch",
         "no-absolute-paths.patch",
@@ -67651,7 +67738,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -67685,7 +67771,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.3.1"
+        "version": "3.3.2"
       },
       "files": [
         "asm-armcap.patch",
@@ -68294,6 +68380,7 @@
       "name": "openvpn3",
       "manifest": {
         "name": "openvpn3",
+        "port-version": 1,
         "description": "a C++ class library that implements the functionality of an OpenVPN client, and is protocol-compatible with the OpenVPN 2.x branch.",
         "homepage": "https://openvpn.net",
         "license": "AGPL-3.0-only",
@@ -68466,7 +68553,7 @@
             "description": "Builds the library with avx2 instruction set"
           }
         },
-        "version": "1.5.1"
+        "version": "1.5.2"
       },
       "files": [
         "fix-pkgconfig-version.patch",
@@ -71907,7 +71994,7 @@
       "name": "proj",
       "manifest": {
         "name": "proj",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PROJ library for cartographic projections",
         "homepage": "https://proj.org/",
         "license": "MIT",
@@ -72299,7 +72386,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -73924,7 +74011,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -73951,7 +74038,7 @@
             "host": true
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -73971,7 +74058,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -73991,7 +74078,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74002,7 +74089,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74083,7 +74169,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -74100,10 +74186,6 @@
         "cmake/qt_submodule_installation.cmake",
         "patches/0001-CVE-2023-51714-qtbase-5.15.diff",
         "patches/0002-CVE-2023-51714-qtbase-5.15.diff",
-        "patches/CVE-2023-32763-qtbase-5.15.diff",
-        "patches/CVE-2023-34410-qtbase-5.15.diff",
-        "patches/CVE-2023-37369-qtbase-5.15.diff",
-        "patches/CVE-2023-38197-qtbase-5.15.diff",
         "patches/CVE-2023-43114-5.15.patch",
         "patches/CVE-2024-25580-qtbase-5.15.diff",
         "patches/CVE-2024-39936-qtbase-5.15.patch",
@@ -74165,7 +74247,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74184,7 +74266,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74205,7 +74287,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74247,7 +74329,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74276,7 +74358,7 @@
             ]
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74296,7 +74378,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74316,7 +74398,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74377,7 +74459,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74388,7 +74470,6 @@
       "name": "qt5-location",
       "manifest": {
         "name": "qt5-location",
-        "port-version": 1,
         "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "license": null,
         "dependencies": [
@@ -74401,7 +74482,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "disable-enum-warning.patch",
@@ -74423,7 +74504,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74455,7 +74536,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74475,7 +74556,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74495,7 +74576,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "patches/CVE-2024-36048-qtnetworkauth-5.15.diff",
@@ -74516,7 +74597,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74537,7 +74618,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74558,7 +74639,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74578,7 +74659,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74598,7 +74679,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74618,7 +74699,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74638,7 +74719,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74658,7 +74739,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74677,7 +74758,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74702,7 +74783,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74721,7 +74802,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74760,7 +74841,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "fix-pkgconfig-qt5uiplugin-not-found.patch",
@@ -74782,7 +74863,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74800,7 +74881,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74820,7 +74901,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74840,7 +74921,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74851,7 +74932,6 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -74893,7 +74973,7 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "0001-Fix-jumbo-build-error-due-to-ResolveColor-redefiniti.patch",
@@ -74920,7 +75000,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74940,7 +75020,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74956,7 +75036,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -74985,7 +75065,7 @@
             ]
           }
         },
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "patches/require_quick.patch",
@@ -75007,7 +75087,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -75027,7 +75107,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.14"
+        "version": "5.15.15"
       },
       "files": [
         "portfile.cmake",
@@ -76234,7 +76314,7 @@
             ]
           }
         },
-        "version": "0.14.1"
+        "version": "0.14.3"
       },
       "files": [
         "portfile.cmake",
@@ -76245,7 +76325,6 @@
       "name": "qtkeychain-qt6",
       "manifest": {
         "name": "qtkeychain-qt6",
-        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt6 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
@@ -76274,7 +76353,7 @@
             "host": true
           }
         ],
-        "version": "0.14.1"
+        "version": "0.14.3"
       },
       "files": [
         "portfile.cmake",
@@ -79249,29 +79328,17 @@
       "name": "rmqcpp",
       "manifest": {
         "name": "rmqcpp",
+        "port-version": 1,
         "description": "rmqcpp - A C++ library for RabbitMQ.",
         "dependencies": [
           {
             "name": "bde",
-            "host": true,
             "version>=": "3.123.0.0"
           },
-          {
-            "name": "boost-asio",
-            "host": true
-          },
-          {
-            "name": "boost-iostreams",
-            "host": true
-          },
-          {
-            "name": "gtest",
-            "host": true
-          },
-          {
-            "name": "openssl",
-            "host": true
-          },
+          "boost-asio",
+          "boost-iostreams",
+          "gtest",
+          "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -79284,6 +79351,7 @@
         "version": "1.0.0"
       },
       "files": [
+        "disable-tests-and-examples.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -83424,11 +83492,10 @@
             ]
           }
         },
-        "version": "127"
+        "version": "129"
       },
       "files": [
         "bentleyottmann-build.patch",
-        "disable-dev-test.patch",
         "disable-msvc-env-setup.patch",
         "example/CMakeLists.txt",
         "graphite.patch",
@@ -83814,7 +83881,7 @@
             "host": true
           }
         ],
-        "version": "1.2.4"
+        "version": "1.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -87459,7 +87526,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-02-15"
+        "version-date": "2024-09-03"
       },
       "files": [
         "portfile.cmake",
@@ -91969,7 +92036,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.08.26.00"
+        "version-string": "2024.09.02.00"
       },
       "files": [
         "fix-config-cmake.patch",
