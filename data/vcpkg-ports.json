@@ -1,5 +1,5 @@
 {
-  "version": "eba7c6a894fce24146af4fdf161fef8e90dd6be3",
+  "version": "b810d1cdd47bfe729a5c78aa1e5b16dfa30da873",
   "ports": [
     {
       "name": "3fd",
@@ -1258,6 +1258,7 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
+        "port-version": 1,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
@@ -1285,6 +1286,7 @@
         "portfile.cmake",
         "unglue.patch",
         "unofficial-apr-config.cmake",
+        "usage-cmake",
         "vcpkg.json"
       ]
     },
@@ -6004,7 +6006,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.8.5"
+        "version-semver": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -6800,6 +6802,20 @@
         "portfile.cmake",
         "update-blpapi-lib-include-dir.patch",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bluescarni-tanuki",
+      "manifest": {
+        "name": "bluescarni-tanuki",
+        "description": "A type-erasure toolkit for C++20.",
+        "homepage": "https://github.com/bluescarni/tanuki",
+        "license": "MPL-2.0",
+        "version-date": "2024-08-17"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -18640,6 +18656,25 @@
       ]
     },
     {
+      "name": "cddlib",
+      "manifest": {
+        "name": "cddlib",
+        "description": "C implementation of the Double Description Method",
+        "homepage": "https://github.com/cddlib/cddlib",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "gmp"
+        ],
+        "version-string": "0.94m"
+      },
+      "files": [
+        "0001-disable-doc-target.patch",
+        "0002-disable-dd-log.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cdt",
       "manifest": {
         "name": "cdt",
@@ -24531,7 +24566,7 @@
         "homepage": "https://devblogs.microsoft.com/directx/",
         "documentation": "https://devblogs.microsoft.com/directx/gettingstarted-dx12agility/",
         "license": "MIT",
-        "supports": "(windows & !xbox) | linux",
+        "supports": "(windows & !arm32 & !xbox) | linux",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -24542,7 +24577,7 @@
             "host": true
           }
         ],
-        "version": "1.614.0"
+        "version": "1.614.1"
       },
       "files": [
         "portfile.cmake",
@@ -25556,7 +25591,7 @@
             ]
           }
         },
-        "version-semver": "1.9.6"
+        "version-semver": "1.9.7"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -25564,7 +25599,6 @@
         "0003-deps-redis.patch",
         "0004-drogon-ctl.patch",
         "0005-drogon-cross-compile.patch",
-        "0006-log.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -27047,7 +27081,6 @@
       "name": "expat",
       "manifest": {
         "name": "expat",
-        "port-version": 1,
         "description": "XML parser library written in C",
         "homepage": "https://github.com/libexpat/libexpat",
         "license": "MIT",
@@ -27061,7 +27094,7 @@
             "host": true
           }
         ],
-        "version": "2.6.2"
+        "version": "2.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -29368,7 +29401,7 @@
             ]
           }
         },
-        "version": "2.3.5"
+        "version": "2.3.6"
       },
       "files": [
         "gentables.patch",
@@ -33072,6 +33105,7 @@
       "name": "gmsh",
       "manifest": {
         "name": "gmsh",
+        "port-version": 1,
         "description": "Gmsh is an open source 3D finite element mesh generator with a built-in CAD engine and post-processor.",
         "homepage": "https://gmsh.info",
         "license": "LGPL-2.0-or-later",
@@ -33080,6 +33114,10 @@
           "blas",
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -33202,7 +33240,6 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
-        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -33964,6 +34001,18 @@
           },
           "gkebackup": {
             "description": "Backup for GKE API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "gkeconnect": {
+            "description": "GKE Connect Gateway API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -34967,7 +35016,7 @@
             ]
           }
         },
-        "version": "2.28.0"
+        "version": "2.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -45456,25 +45505,14 @@
       "name": "libconfuse",
       "manifest": {
         "name": "libconfuse",
-        "port-version": 4,
         "description": "Small configuration file parser library for C",
-        "homepage": "https://github.com/martinh/libconfuse",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-date": "2019-07-14"
+        "homepage": "https://github.com/libconfuse/libconfuse",
+        "license": "ISC",
+        "version": "3.3"
       },
       "files": [
-        "CMakeLists.txt",
-        "config.h.in",
         "portfile.cmake",
+        "unofficial-libconfuse-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -49405,7 +49443,7 @@
             "host": true
           }
         ],
-        "version": "2024.9.1"
+        "version": "2024.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -55167,7 +55205,7 @@
             "description": "Have LLFIO use SG14 `status_code` (proposed `std::error`) instead of `std::error_code`."
           }
         },
-        "version-date": "2023-11-06"
+        "version-date": "2024-09-05"
       },
       "files": [
         "portfile.cmake",
@@ -59704,7 +59742,7 @@
       "name": "microsoft-signalr",
       "manifest": {
         "name": "microsoft-signalr",
-        "port-version": 11,
+        "port-version": 12,
         "description": "C++ Client for ASP.NET Core SignalR.",
         "homepage": "https://github.com/aspnet/SignalR-Client-Cpp",
         "dependencies": [
@@ -59744,6 +59782,7 @@
       },
       "files": [
         "find-msgpack.patch",
+        "fix-miss-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60589,6 +60628,7 @@
       "name": "mongo-cxx-driver",
       "manifest": {
         "name": "mongo-cxx-driver",
+        "port-version": 1,
         "description": "MongoDB C++ Driver.",
         "homepage": "https://github.com/mongodb/mongo-cxx-driver",
         "license": "Apache-2.0",
@@ -64865,6 +64905,7 @@
       "name": "onednn",
       "manifest": {
         "name": "onednn",
+        "port-version": 1,
         "description": "oneAPI Deep Neural Network Library (oneDNN)",
         "homepage": "https://github.com/oneapi-src/oneDNN",
         "license": "Apache-2.0",
@@ -67738,6 +67779,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -69081,7 +69123,7 @@
             "description": "Build and run the dependency validation tests"
           }
         },
-        "version": "2.2.8"
+        "version": "2.2.9"
       },
       "files": [
         "portfile.cmake",
@@ -72341,7 +72383,7 @@
             "host": true
           }
         ],
-        "version": "2.4.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -77871,7 +77913,7 @@
             "host": true
           }
         ],
-        "version": "6.1.2"
+        "version": "7.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -81315,7 +81357,6 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -81389,13 +81430,12 @@
             "supports": "!windows"
           }
         },
-        "version": "2.30.6"
+        "version": "2.30.7"
       },
       "files": [
         "alsa-dep-fix.patch",
         "cxx-linkage-pkgconfig.diff",
         "deps.patch",
-        "poll-fix.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -81912,7 +81952,6 @@
       "name": "seal",
       "manifest": {
         "name": "seal",
-        "port-version": 2,
         "description": "Microsoft SEAL is an easy-to-use and powerful homomorphic encryption library.",
         "homepage": "https://github.com/microsoft/SEAL",
         "license": "MIT",
@@ -81960,7 +81999,7 @@
             ]
           }
         },
-        "version": "4.1.1"
+        "version": "4.1.2"
       },
       "files": [
         "fix-hexl.patch",
@@ -82506,7 +82545,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": "MIT",
         "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2024.10"
+        "version": "2024.11"
       },
       "files": [
         "portfile.cmake",
@@ -85593,7 +85632,7 @@
         "description": "public domain header-only libraries",
         "homepage": "https://github.com/nothings/stb",
         "license": "MIT OR CC-PDDC",
-        "version-date": "2023-04-11"
+        "version-date": "2024-07-29"
       },
       "files": [
         "FindStb.cmake",
@@ -88433,7 +88472,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.20"
+        "version-semver": "1.5.21"
       },
       "files": [
         "000-fix-deps.patch",
