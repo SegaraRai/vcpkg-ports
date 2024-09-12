@@ -1,5 +1,5 @@
 {
-  "version": "b810d1cdd47bfe729a5c78aa1e5b16dfa30da873",
+  "version": "b8a9371ae5a920b021132f443cc5658e82ac7551",
   "ports": [
     {
       "name": "3fd",
@@ -22903,7 +22903,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23158,7 +23157,7 @@
             ]
           }
         },
-        "version": "8.9.1"
+        "version": "8.10.0"
       },
       "files": [
         "0005_remove_imp_suffix.patch",
@@ -23168,7 +23167,6 @@
         "cmake-project-include.cmake",
         "dependencies.patch",
         "export-components.patch",
-        "gnutls.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -23179,6 +23177,7 @@
       "name": "curlcpp",
       "manifest": {
         "name": "curlcpp",
+        "port-version": 1,
         "description": "An object oriented C++ wrapper for CURL (libcurl)",
         "homepage": "https://josephp91.github.io/curlcpp/",
         "license": "MIT",
@@ -23197,6 +23196,7 @@
       },
       "files": [
         "fix-cmake.patch",
+        "obsolete-curlopt.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23205,7 +23205,7 @@
       "name": "curlpp",
       "manifest": {
         "name": "curlpp",
-        "port-version": 9,
+        "port-version": 10,
         "description": "C++ wrapper around libcURL",
         "homepage": "https://github.com/jpbarrette/curlpp",
         "license": "MIT",
@@ -23228,6 +23228,7 @@
       "files": [
         "fix-cmake.patch",
         "fix-findzliberror.patch",
+        "obsolete-curlopt.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62756,10 +62757,9 @@
             "host": true
           }
         ],
-        "version": "0.4.1"
+        "version": "0.5.0"
       },
       "files": [
-        "pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -86830,6 +86830,7 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
+        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -86875,6 +86876,7 @@
         "fix-share-build.patch",
         "fix_static_link_icu.patch",
         "portfile.cmake",
+        "target-curl.diff",
         "vcpkg.json"
       ]
     },
