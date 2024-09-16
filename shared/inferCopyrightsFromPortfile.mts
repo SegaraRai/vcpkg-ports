@@ -226,8 +226,11 @@ export function inferCopyrightsFromPortfile(
   const getURLFromFilename = (filename: string): string | undefined => {
     filename = normalizeFilename(filename);
     const match = filename.match(/^(\/virtual\/source_path_\d+)\/(.+)$/);
-    const provider = match && contextSourceProviders.get(match[1]);
-    const url = provider && provider.getURL?.(match[2]);
+    if (!match) {
+      return;
+    }
+    const provider = contextSourceProviders.get(match[1]);
+    const url = provider?.getURL?.(match[2]);
     return url || undefined;
   };
 
