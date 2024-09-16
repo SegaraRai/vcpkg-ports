@@ -26,6 +26,7 @@ export const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
   "arm",
   "arm32", // not documented but used (community?)
   "arm64",
+  "arm64ec", // not documented but used (community?)
   "wasm32",
   // linkage
   "static",
