@@ -1,5 +1,5 @@
 {
-  "version": "86fba13068f1e8111e7d885de2aef11378435139",
+  "version": "b6fbec73508cec8b950627e1ab8a3a6f582912c6",
   "ports": [
     {
       "name": "3fd",
@@ -6312,7 +6312,7 @@
             "supports": "native"
           }
         },
-        "version": "1.128.8786-480"
+        "version": "1.128.8786-481"
       },
       "files": [
         "portfile.cmake",
@@ -17639,7 +17639,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -21261,7 +21261,7 @@
             ]
           }
         },
-        "version": "0.17.0"
+        "version": "0.18.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -21999,7 +21999,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -27427,7 +27427,7 @@
             "host": true
           }
         ],
-        "version": "6.1.4"
+        "version": "6.1.6"
       },
       "files": [
         "portfile.cmake",
@@ -35672,7 +35672,6 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 8,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -36509,7 +36508,7 @@
             ]
           }
         },
-        "version": "1.22.5"
+        "version": "1.24.7"
       },
       "files": [
         "base-must-be-enabled.patch",
@@ -41197,6 +41196,29 @@
       ]
     },
     {
+      "name": "jigson",
+      "manifest": {
+        "name": "jigson",
+        "description": "A simple C++ library designed to facilitate easy mapping from json content to a class model.",
+        "homepage": "https://github.com/JoshuaSledden/Jigson",
+        "license": "MIT",
+        "dependencies": [
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.1.2"
+      },
+      "files": [
+        "jigson-config.cmake.in",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "jinja2cpplight",
       "manifest": {
         "name": "jinja2cpplight",
@@ -45026,7 +45048,7 @@
             ]
           }
         },
-        "version": "3.7.4"
+        "version": "3.7.5"
       },
       "files": [
         "disable-warnings.patch",
@@ -45089,7 +45111,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -47612,7 +47634,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 2,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -47644,7 +47665,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.17.6"
+        "version": "1.18.2"
       },
       "files": [
         "gdk-pixbuf.patch",
@@ -48202,7 +48223,6 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
-        "port-version": 1,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
         "license": "BSD-3-Clause",
@@ -48224,7 +48244,7 @@
             "description": "Emulate libjpeg v8 API/ABI (this makes libjpeg-turbo backward-incompatible with libjpeg v6b!)"
           }
         },
-        "version": "3.0.3"
+        "version": "3.0.4"
       },
       "files": [
         "add-options-for-exes-docs-headers.patch",
@@ -48273,7 +48293,6 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 4,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -48297,11 +48316,10 @@
             ]
           }
         },
-        "version-semver": "0.10.2"
+        "version-semver": "0.11.0"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-tools-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50193,7 +50211,7 @@
             "host": true
           }
         ],
-        "version": "8.13.31"
+        "version": "8.13.45"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -60945,6 +60963,7 @@
         "homepage": "https://github.com/mpusz/units",
         "license": "MIT",
         "dependencies": [
+          "fmt",
           "gsl-lite",
           {
             "name": "vcpkg-cmake",
@@ -60955,30 +60974,7 @@
             "host": true
           }
         ],
-        "default-features": [
-          "default-features"
-        ],
-        "features": {
-          "default-features": {
-            "description": "Platform specific default features",
-            "dependencies": [
-              {
-                "name": "mp-units",
-                "features": [
-                  "use-libfmt"
-                ],
-                "platform": "osx"
-              }
-            ]
-          },
-          "use-libfmt": {
-            "description": "Use libfmt instead of std::format",
-            "dependencies": [
-              "fmt"
-            ]
-          }
-        },
-        "version": "2.2.0"
+        "version": "2.2.1"
       },
       "files": [
         "config.patch",
@@ -65098,7 +65094,7 @@
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
         "supports": "windows & !x86 & !uwp & !static & !arm",
-        "version": "1.16.3"
+        "version": "1.19.2"
       },
       "files": [
         "portfile.cmake",
@@ -72853,7 +72849,7 @@
             "host": true
           }
         ],
-        "version": "2.13.5"
+        "version": "2.13.6"
       },
       "files": [
         "portfile.cmake",
@@ -83271,7 +83267,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "5.4.15"
+        "version-semver": "5.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -83365,7 +83361,7 @@
         "description": "Fastest similarity-measures and distance functions on the Wild West – vectors, strings, short molecules, and even DNA sequences. All with a pinch of SIMD for both x86 and ARM.",
         "homepage": "https://github.com/ashvardanian/SimSIMD",
         "license": "Apache-2.0",
-        "version": "1.4.0"
+        "version": "5.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -87217,7 +87213,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.14.6"
+        "version": "0.14.10"
       },
       "files": [
         "portfile.cmake",
@@ -92701,7 +92697,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-2.0-or-later",
@@ -92721,6 +92717,9 @@
           }
         ],
         "features": {
+          "asio": {
+            "description": "Enable asio support"
+          },
           "dtls": {
             "description": "DTLS support"
           },
@@ -93361,7 +93360,7 @@
         "description": "C++ header file library for high-performance SIMD-based sorting algorithms for primitive datatypes",
         "homepage": "https://github.com/intel/x86-simd-sort",
         "license": "BSD-3-Clause",
-        "version": "4.0"
+        "version": "5.0"
       },
       "files": [
         "portfile.cmake",
@@ -94316,7 +94315,7 @@
             "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
           }
         },
-        "version": "4.5.1"
+        "version": "4.5.2"
       },
       "files": [
         "CMakeLists.txt",
