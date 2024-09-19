@@ -1,5 +1,5 @@
 {
-  "version": "dd3adcf020e69077e83e92a0a293ceca734f6288",
+  "version": "fc358711d78c5dcb8f240daea628ecfee60fb164",
   "ports": [
     {
       "name": "3fd",
@@ -6591,7 +6591,7 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.5.4"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -18041,7 +18041,7 @@
             "host": true
           }
         ],
-        "version": "0.19.6"
+        "version": "1.0.1"
       },
       "files": [
         "fix_cxx17.patch",
@@ -78181,7 +78181,7 @@
       "name": "range-v3",
       "manifest": {
         "name": "range-v3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Range library for C++14/17/20, basis for C++20's std::ranges",
         "homepage": "https://github.com/ericniebler/range-v3",
         "license": "BSL-1.0 AND MIT AND (NCSA OR MIT)",
@@ -83359,6 +83359,7 @@
       "name": "simsimd",
       "manifest": {
         "name": "simsimd",
+        "port-version": 1,
         "description": "Fastest similarity-measures and distance functions on the Wild West – vectors, strings, short molecules, and even DNA sequences. All with a pinch of SIMD for both x86 and ARM.",
         "homepage": "https://github.com/ashvardanian/SimSIMD",
         "license": "Apache-2.0",
@@ -86560,7 +86561,7 @@
       "name": "tcl",
       "manifest": {
         "name": "tcl",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Tcl provides a powerful platform for creating integration applications that tie together diverse applications, protocols, devices, and frameworks. When paired with the Tk toolkit, Tcl provides the fastest and most powerful way to create GUI applications that run on PCs, Unix, and Mac OS X. Tcl can also be used for a variety of web-related tasks and for creating powerful command languages for applications.",
         "homepage": "https://github.com/tcltk/tcl",
         "supports": "!android & !(windows & arm) & !uwp",
@@ -87303,7 +87304,7 @@
       "name": "tiff",
       "manifest": {
         "name": "tiff",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A library that supports the manipulation of TIFF image files",
         "homepage": "https://libtiff.gitlab.io/libtiff/",
         "license": "libtiff",
@@ -87391,6 +87392,7 @@
       "files": [
         "FindCMath.patch",
         "portfile.cmake",
+        "prefer-config.diff",
         "requires-lerc.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -89306,6 +89308,36 @@
       },
       "files": [
         "Config.cmake.in",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "upa-url",
+      "manifest": {
+        "name": "upa-url",
+        "description": "An implementation of the WHATWG URL Standard in C++",
+        "homepage": "https://github.com/upa-url/upa",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cxx11": {
+            "description": "Compile library with C++11 (for use in C++11 and C++14 projects)"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "files": [
+        "cxx-standard.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92575,7 +92607,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows | uwp",
-        "version": "6.2.0"
+        "version": "6.3.0"
       },
       "files": [
         "portfile.cmake",
