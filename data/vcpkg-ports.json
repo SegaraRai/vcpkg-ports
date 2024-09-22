@@ -1,5 +1,5 @@
 {
-  "version": "e85eecfb39341bd8a76952b33b606a083cdeab1c",
+  "version": "98aa6396292d57e737a6ef999d4225ca488859d5",
   "ports": [
     {
       "name": "3fd",
@@ -27403,7 +27403,17 @@
         "description": "Fast function to parse strings into double (binary64) floating-point values, enforces the RFC 7159 (JSON standard) grammar: 4x faster than strtod",
         "homepage": "https://github.com/lemire/fast_double_parser",
         "license": "Apache-2.0",
-        "version": "0.7.0"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
