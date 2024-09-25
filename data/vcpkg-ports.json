@@ -1,5 +1,5 @@
 {
-  "version": "f176b58f35a75f9f8f54099cd9df97d2e2793a2e",
+  "version": "d07689ef165f033de5c0710e4f67c193a85373e1",
   "ports": [
     {
       "name": "3fd",
@@ -2329,7 +2329,7 @@
           },
           "zlib"
         ],
-        "version": "5.4.2"
+        "version": "5.4.3"
       },
       "files": [
         "build_fixes.patch",
@@ -3325,7 +3325,7 @@
             "host": true
           }
         ],
-        "version": "0.10.5"
+        "version": "0.10.6"
       },
       "files": [
         "portfile.cmake",
@@ -3358,7 +3358,7 @@
             "host": true
           }
         ],
-        "version": "0.6.5"
+        "version": "0.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -4757,7 +4757,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.405"
+        "version": "1.11.410"
       },
       "files": [
         "find-dependency.patch",
@@ -6396,6 +6396,40 @@
         "0001_fix_uwp.patch",
         "CMakeLists.txt",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bit7z",
+      "manifest": {
+        "name": "bit7z",
+        "description": "A C++ static library offering a clean and simple interface to the 7-zip shared libraries.",
+        "homepage": "https://github.com/rikyoz/bit7z",
+        "license": "MPL-2.0",
+        "dependencies": [
+          "7zip",
+          "ghc-filesystem",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "regex-matching": {
+            "description": "Enables the support for extracting files matching regular expressions"
+          }
+        },
+        "version": "4.0.8"
+      },
+      "files": [
+        "fix_dependency.patch",
+        "fix_install.patch",
+        "portfile.cmake",
+        "unofficial-bit7z-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -27652,7 +27686,7 @@
             "host": true
           }
         ],
-        "version-string": "24.06"
+        "version-string": "24.09"
       },
       "files": [
         "portfile.cmake",
@@ -29559,6 +29593,7 @@
       "name": "fmt",
       "manifest": {
         "name": "fmt",
+        "port-version": 1,
         "description": "{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.",
         "homepage": "https://github.com/fmtlib/fmt",
         "license": "MIT",
@@ -29575,6 +29610,7 @@
         "version": "11.0.2"
       },
       "files": [
+        "fix-pass-utf-8-only-if-the-compiler-is-MSVC-at-build.patch",
         "fix-write-batch.patch",
         "portfile.cmake",
         "usage",
@@ -29585,6 +29621,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29686,7 +29723,7 @@
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-deps.patch",
-        "fix-fmt11-cmake.patch",
+        "fix-fmt-patch-for-old-cmake.patch",
         "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
         "portfile.cmake",
@@ -41507,7 +41544,7 @@
       "name": "json5-parser",
       "manifest": {
         "name": "json5-parser",
-        "port-version": 6,
+        "port-version": 7,
         "description": "An enhancement of the JSON Spirit C++ library to understand json5.",
         "homepage": "https://github.com/Caltech-IPAC/json5_parser",
         "dependencies": [
@@ -52028,7 +52065,7 @@
       "name": "libsrt",
       "manifest": {
         "name": "libsrt",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Secure Reliable Transport (SRT) is an open source transport technology that optimizes streaming performance across unpredictable networks, such as the Internet.",
         "homepage": "https://github.com/Haivision/srt",
         "license": "MPL-2.0",
@@ -52056,6 +52093,7 @@
       },
       "files": [
         "fix-static.patch",
+        "fix-tool.patch",
         "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -52526,7 +52564,7 @@
         "name": "libtommath",
         "description": "LibTomMath is a free open source portable number theoretic multiple-precision integer library written entirely in C.",
         "homepage": "https://www.libtom.net/LibTomMath/",
-        "version": "1.2.1"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -55201,7 +55239,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-06-26"
+        "version-date": "2024-09-20"
       },
       "files": [
         "CMakeLists.txt",
@@ -56971,6 +57009,7 @@
       "name": "magma",
       "manifest": {
         "name": "magma",
+        "port-version": 1,
         "description": "Matrix Algebra on GPU and Multi-core Architectures (MAGMA) is a collection of next-generation linear algebra libraries for heterogeneous computing",
         "homepage": "https://icl.utk.edu/magma/",
         "license": null,
@@ -56988,6 +57027,7 @@
       "files": [
         "clang-cuda.patch",
         "disable-openmp-msvc.patch",
+        "fix-min-max.patch",
         "no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -69624,7 +69664,7 @@
             "host": true
           }
         ],
-        "version": "1.3.12"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -82292,7 +82332,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.9"
+        "version": "0.7.10"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -85120,7 +85160,7 @@
             "description": "sqlite3 executable"
           }
         },
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "CMakeLists.txt",
