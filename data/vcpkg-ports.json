@@ -1,5 +1,5 @@
 {
-  "version": "d07689ef165f033de5c0710e4f67c193a85373e1",
+  "version": "3d89599850c8168fa4b560367b06c1be52645b20",
   "ports": [
     {
       "name": "3fd",
@@ -867,11 +867,10 @@
       "name": "ampl-asl",
       "manifest": {
         "name": "ampl-asl",
-        "port-version": 3,
         "description": "AMPL Solver Library",
         "homepage": "https://github.com/ampl/asl",
-        "license": null,
-        "supports": "!uwp & !(osx & arm64)",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -882,13 +881,10 @@
             "host": true
           }
         ],
-        "version-date": "2020-11-11"
+        "version-date": "2024-02-01"
       },
       "files": [
-        "copyright",
-        "fix-crt-linkage.patch",
-        "install-extra-headers.patch",
-        "install-targets.patch",
+        "0006-disable-generate-arith-h.diff",
         "portfile.cmake",
         "vcpkg.json",
         "workaround-msvc-optimizer-ice.patch"
@@ -898,7 +894,7 @@
       "name": "ampl-mp",
       "manifest": {
         "name": "ampl-mp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "An open-source library for mathematical programming",
         "homepage": "https://github.com/ampl/mp",
         "supports": "!uwp",
@@ -920,6 +916,7 @@
         "version-date": "2020-11-11"
       },
       "files": [
+        "0007-unofficial-export.cmake",
         "disable-matlab-mex.patch",
         "fix-arm-build.patch",
         "fix-build.patch",
@@ -25094,7 +25091,7 @@
             "host": true
           }
         ],
-        "version-string": "3.0.0a"
+        "version-string": "3.0.0d"
       },
       "files": [
         "blocktags",
@@ -26952,7 +26949,6 @@
       "name": "etl",
       "manifest": {
         "name": "etl",
-        "port-version": 1,
         "description": "A C++ template library for embedded applications",
         "homepage": "https://www.etlcpp.com",
         "license": "MIT",
@@ -26966,7 +26962,7 @@
             "host": true
           }
         ],
-        "version": "20.38.10"
+        "version": "20.39.4"
       },
       "files": [
         "portfile.cmake",
@@ -31116,7 +31112,7 @@
             "host": true
           }
         ],
-        "version": "1.17.0"
+        "version": "1.18.0"
       },
       "files": [
         "portfile.cmake",
@@ -32683,14 +32679,22 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "dirent",
-          "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
+          "gettext-libintl",
           "libffi",
           "libiconv",
           "pcre2",
@@ -53389,6 +53393,29 @@
         "CMakeLists.txt",
         "Config.cmake.in",
         "macos_fixes.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libvmaf",
+      "manifest": {
+        "name": "libvmaf",
+        "description": "libvmaf is a library developed by Netflix to compute the VMAF (Video Multi-Method Assessment Fusion) metric.",
+        "homepage": "https://github.com/Netflix/vmaf",
+        "license": "BSD-2-Clause-Patent",
+        "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "3.0.0"
+      },
+      "files": [
+        "android-off_t.patch",
+        "no-tools.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -85366,6 +85393,7 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
+        "port-version": 1,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -85410,7 +85438,7 @@
       },
       "files": [
         "ddl2cpp_path.patch",
-        "fix_link_sqlite3.patch",
+        "dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90528,7 +90556,7 @@
         "dependencies": [
           "vcpkg-cmake-get-vars"
         ],
-        "version": "1.5.1"
+        "version": "1.5.2"
       },
       "files": [
         "adjust-args.patch",
