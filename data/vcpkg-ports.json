@@ -1,5 +1,5 @@
 {
-  "version": "3d89599850c8168fa4b560367b06c1be52645b20",
+  "version": "0affe8710a4a5b26328e909fe1ad7146df39d108",
   "ports": [
     {
       "name": "3fd",
@@ -5469,7 +5469,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.7.0"
+            "version>=": "12.8.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5480,7 +5480,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.12.0"
+        "version-semver": "12.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -5501,7 +5501,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.12.0"
+            "version>=": "1.13.0"
           },
           {
             "name": "libxml2",
@@ -5521,7 +5521,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.7.0"
+        "version-semver": "12.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -5598,7 +5598,7 @@
           {
             "name": "azure-storage-blobs-cpp",
             "default-features": false,
-            "version>=": "12.12.0"
+            "version>=": "12.13.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5609,7 +5609,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.11.0"
+        "version-semver": "12.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -5630,7 +5630,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.7.0"
+            "version>=": "12.8.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5641,7 +5641,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.10.0"
+        "version-semver": "12.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -5662,7 +5662,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.7.0"
+            "version>=": "12.8.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5673,7 +5673,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.3.0"
+        "version-semver": "12.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -20137,6 +20137,7 @@
         "name": "cmark",
         "description": "CommonMark parsing and rendering library",
         "homepage": "https://github.com/commonmark/cmark",
+        "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -20153,7 +20154,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "0.30.3"
+        "version-semver": "0.31.1"
       },
       "files": [
         "add-feature-tools.patch",
@@ -25908,7 +25909,6 @@
       "name": "dxut",
       "manifest": {
         "name": "dxut",
-        "port-version": 3,
         "description": "A \"GLUT\"-like framework for Direct3D 11.x Win32 desktop applications",
         "homepage": "https://github.com/Microsoft/DXUT",
         "documentation": "https://github.com/microsoft/DXUT/wiki",
@@ -25936,7 +25936,7 @@
             "description": "Build Spectre-mitigated library"
           }
         },
-        "version": "11.31"
+        "version": "11.32"
       },
       "files": [
         "portfile.cmake",
@@ -27774,7 +27774,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -28798,7 +28798,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "fix-build.patch",
@@ -29617,7 +29617,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29713,7 +29712,7 @@
             ]
           }
         },
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -39827,7 +39826,7 @@
             "host": true
           }
         ],
-        "version": "1.9.4"
+        "version": "1.9.5"
       },
       "files": [
         "fix-shared-lib.patch",
@@ -49129,7 +49128,7 @@
             "host": true
           }
         ],
-        "version": "0.11"
+        "version": "0.12"
       },
       "files": [
         "portfile.cmake",
@@ -49418,6 +49417,33 @@
         "CMakeLists.txt",
         "dont-generate-extract-3rd-party-things.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libmysofa",
+      "manifest": {
+        "name": "libmysofa",
+        "description": "Reader for AES SOFA files to get better HRTFs (Head-Relative Transfer Functions)",
+        "homepage": "https://github.com/hoene/libmysofa",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "1.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "use-vcpkg-zlib.patch",
         "vcpkg.json"
       ]
     },
@@ -61975,7 +62001,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "portfile.cmake",
@@ -72559,7 +72585,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -92253,7 +92279,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.16.00"
+        "version-string": "2024.09.23.00"
       },
       "files": [
         "fix-config-cmake.patch",
