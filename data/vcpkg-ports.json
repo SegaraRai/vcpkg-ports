@@ -1,5 +1,5 @@
 {
-  "version": "76d153790caf0592fce8fc4484aa6db18c7d00d4",
+  "version": "c82f74667287d3dc386bce81e44964370c91a289",
   "ports": [
     {
       "name": "3fd",
@@ -350,7 +350,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.9.1"
+        "version": "2.9.2"
       },
       "files": [
         "no-cpm.patch",
@@ -958,7 +958,6 @@
       "name": "anari",
       "manifest": {
         "name": "anari",
-        "port-version": 1,
         "description": "Cross-Platform 3D Rendering Engine API.",
         "homepage": "https://www.khronos.org/anari",
         "license": "Apache-2.0",
@@ -974,7 +973,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -1850,7 +1849,7 @@
       "name": "arrayfire",
       "manifest": {
         "name": "arrayfire",
-        "port-version": 6,
+        "port-version": 7,
         "description": "ArrayFire is a general-purpose library that simplifies the process of developing software that targets parallel and massively-parallel architectures including CPUs, GPUs, and other hardware acceleration devices.",
         "homepage": "https://github.com/arrayfire/arrayfire",
         "license": "BSD-3-Clause",
@@ -1909,6 +1908,7 @@
         "Fix-constexpr-error-with-vs2019-with-half.patch",
         "build.patch",
         "fix-dependency-clfft.patch",
+        "fix-miss-header-file.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17673,7 +17673,7 @@
             "host": true
           }
         ],
-        "version": "1.8.0"
+        "version": "1.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -24562,7 +24562,7 @@
             "host": true
           }
         ],
-        "version-semver": "7.2.0"
+        "version-semver": "7.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -27518,6 +27518,39 @@
       ]
     },
     {
+      "name": "fastdds",
+      "manifest": {
+        "name": "fastdds",
+        "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
+        "homepage": "https://www.eprosima.com/",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "asio",
+          "fastcdr",
+          "foonathan-memory",
+          "openssl",
+          "tinyxml2",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.0.1"
+      },
+      "files": [
+        "disable-symlink.patch",
+        "fix-find-package-asio.patch",
+        "pdb-file.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "fastfeat",
       "manifest": {
         "name": "fastfeat",
@@ -27624,38 +27657,6 @@
         "version-date": "2021-11-22"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "fastrtps",
-      "manifest": {
-        "name": "fastrtps",
-        "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
-        "homepage": "https://www.eprosima.com/",
-        "license": "Apache-2.0",
-        "supports": "!uwp",
-        "dependencies": [
-          "asio",
-          "fastcdr",
-          "foonathan-memory",
-          "openssl",
-          "tinyxml2",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.14.0"
-      },
-      "files": [
-        "disable-symlink.patch",
-        "fix-find-package-asio.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29618,10 +29619,11 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
-        "supports": "(windows & x64 & !uwp) | (!windows & (x64 | arm64))",
+        "supports": "(windows & x64 & !uwp & !mingw) | (!windows & (x64 | arm64))",
         "dependencies": [
           "boost-chrono",
           "boost-context",
@@ -29773,6 +29775,7 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
+        "port-version": 1,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -29803,6 +29806,7 @@
         "version": "2.15.0"
       },
       "files": [
+        "fix-wasm-shared-memory-atomics.patch",
         "libgetopt.patch",
         "no-etc-symlinks.patch",
         "portfile.cmake",
@@ -32917,7 +32921,6 @@
       "name": "gloo",
       "manifest": {
         "name": "gloo",
-        "port-version": 3,
         "description": "Collective communications library with various primitives for multi-machine training.",
         "homepage": "https://github.com/facebookincubator/gloo",
         "supports": "x64 & linux",
@@ -32952,10 +32955,9 @@
             ]
           }
         },
-        "version": "20201203"
+        "version": "20240626"
       },
       "files": [
-        "fix-array.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33307,7 +33309,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "4.3"
       },
       "files": [
         "packagable.patch",
@@ -37882,7 +37884,7 @@
             ]
           }
         },
-        "version": "9.0.0"
+        "version": "10.0.1"
       },
       "files": [
         "fix-win32-build.patch",
@@ -44588,10 +44590,9 @@
             "host": true
           }
         ],
-        "version": "1.17.28"
+        "version": "1.17.45"
       },
       "files": [
-        "001-patch-install-rules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45769,6 +45770,36 @@
       ]
     },
     {
+      "name": "libcred",
+      "manifest": {
+        "name": "libcred",
+        "description": "a cross-platform credentials helper library",
+        "homepage": "https://github.com/mamba-org/libcred",
+        "license": "MIT",
+        "supports": "!osx & !uwp & !arm & !(windows & staticcrt) & !android",
+        "dependencies": [
+          {
+            "name": "glib",
+            "platform": "linux"
+          },
+          {
+            "name": "libsecret",
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "disable_tests.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libcroco",
       "manifest": {
         "name": "libcroco",
@@ -46105,7 +46136,7 @@
           },
           "zlib"
         ],
-        "version": "0.21.0"
+        "version": "0.22.1"
       },
       "files": [
         "portfile.cmake",
@@ -48898,12 +48929,19 @@
       "name": "libmariadb",
       "manifest": {
         "name": "libmariadb",
-        "port-version": 4,
         "description": "MariaDB Connector/C is used to connect C/C++ applications to MariaDB and MySQL databases",
-        "homepage": "https://github.com/MariaDB/mariadb-connector-c",
+        "homepage": "https://github.com/mariadb-corporation/mariadb-connector-c",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
+          {
+            "name": "libmariadb",
+            "default-features": false,
+            "features": [
+              "iconv"
+            ],
+            "platform": "windows"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -48921,11 +48959,11 @@
           "iconv": {
             "description": "Enables character set conversion",
             "dependencies": [
-              "libiconv"
+              {
+                "name": "libiconv",
+                "platform": "!windows"
+              }
             ]
-          },
-          "mariadbclient": {
-            "description": "Build the static mariadbclient library"
           },
           "openssl": {
             "description": "SSL support (OpenSSL)",
@@ -48935,7 +48973,7 @@
           },
           "schannel": {
             "description": "SSL support (Secure Channel)",
-            "supports": "windows | mingw"
+            "supports": "windows"
           },
           "ssl": {
             "description": "Default SSL backend",
@@ -48946,7 +48984,7 @@
                 "features": [
                   "schannel"
                 ],
-                "platform": "windows | mingw"
+                "platform": "windows"
               },
               {
                 "name": "libmariadb",
@@ -48954,12 +48992,9 @@
                 "features": [
                   "openssl"
                 ],
-                "platform": "!windows & !mingw"
+                "platform": "!windows"
               }
             ]
-          },
-          "zlib": {
-            "description": "Obsolete. zlib is always used. This feature is left for compatibility."
           },
           "zstd": {
             "description": "Build zstd compression plugin.",
@@ -48968,19 +49003,18 @@
             ]
           }
         },
-        "version-semver": "3.3.1"
+        "version-semver": "3.4.1"
       },
       "files": [
-        "disable-test-build.patch",
-        "fix-CMakeLists.patch",
-        "fix-InstallPath.patch",
-        "fix-iconv.patch",
-        "fix-openssl.patch",
-        "md.patch",
-        "pkgconfig.patch",
+        "cmake-export.diff",
+        "compiler-flags.diff",
+        "dependencies.diff",
+        "disable-mariadb_config.diff",
+        "library-linkage.diff",
+        "no-abs-path.diff",
         "portfile.cmake",
-        "vcpkg.json",
-        "zstd.patch"
+        "ushort-check.diff",
+        "vcpkg.json"
       ]
     },
     {
@@ -53114,6 +53148,7 @@
       "name": "libunwind",
       "manifest": {
         "name": "libunwind",
+        "port-version": 1,
         "description": "Unix libray for portable stack unwinding",
         "homepage": "https://www.nongnu.org/libunwind",
         "license": "MIT",
@@ -54855,7 +54890,7 @@
             "supports": "!android & !ios & !xbox & !wasm32"
           }
         },
-        "version": "1895"
+        "version": "1896"
       },
       "files": [
         "cmake.diff",
@@ -56269,7 +56304,6 @@
       "name": "ls-qpack",
       "manifest": {
         "name": "ls-qpack",
-        "port-version": 3,
         "description": "QPACK compression library for use with HTTP/3",
         "homepage": "https://github.com/litespeedtech/ls-qpack",
         "license": "MIT",
@@ -56285,13 +56319,11 @@
           },
           "xxhash"
         ],
-        "version": "2.5.4"
+        "version": "2.5.5"
       },
       "files": [
-        "cmake-export.patch",
         "portfile.cmake",
-        "vcpkg.json",
-        "xxhash.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -61638,6 +61670,7 @@
       "name": "msh3",
       "manifest": {
         "name": "msh3",
+        "port-version": 1,
         "description": "Minimal HTTP/3 library",
         "homepage": "https://github.com/nibanks/msh3",
         "license": "MIT",
@@ -61732,7 +61765,7 @@
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
-        "supports": "!(static & staticcrt)",
+        "supports": "!((static & staticcrt) | uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -61743,7 +61776,7 @@
             "host": true
           }
         ],
-        "version": "2.4.4"
+        "version": "2.4.5"
       },
       "files": [
         "all_headers.patch",
@@ -68421,7 +68454,7 @@
         "homepage": "https://github.com/openvinotoolkit/openvino",
         "documentation": "https://docs.openvino.ai/latest/index.html",
         "license": "Apache-2.0",
-        "supports": "!uwp & !x86",
+        "supports": "!uwp & !x86 & !(android & arm32)",
         "dependencies": [
           {
             "name": "pkgconf",
@@ -68564,11 +68597,10 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2024.3.0"
+        "version": "2024.4.0"
       },
       "files": [
         "001-disable-tools.patch",
-        "002-fix-onnx-codegen.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69950,7 +69982,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-11-13"
+        "version-date": "2023-10-31"
       },
       "files": [
         "fix-cmake-files-path.patch",
@@ -73030,48 +73062,35 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
         "supports": "!uwp & !mingw",
         "dependencies": [
           {
-            "name": "bzip2",
-            "platform": "!(windows & static)"
-          },
-          "expat",
-          {
             "name": "gettext",
             "platform": "osx"
-          },
-          {
-            "name": "libffi",
-            "platform": "!(windows & static)"
           },
           {
             "name": "libiconv",
             "platform": "osx"
           },
           {
-            "name": "liblzma",
-            "platform": "!(windows & static)"
-          },
-          {
             "name": "libuuid",
             "platform": "!osx & !windows"
           },
           {
-            "name": "openssl",
-            "platform": "!(windows & static)"
+            "name": "python3",
+            "host": true,
+            "default-features": false
           },
           {
             "name": "python3",
-            "host": true
-          },
-          {
-            "name": "sqlite3",
-            "platform": "!(windows & static)"
+            "features": [
+              "extensions"
+            ],
+            "platform": "!windows"
           },
           {
             "name": "vcpkg-get-python",
@@ -73084,9 +73103,49 @@
           },
           "zlib"
         ],
+        "default-features": [
+          {
+            "name": "extensions",
+            "platform": "!(staticcrt & windows)"
+          }
+        ],
         "features": {
           "deprecated-win7-support": {
             "description": "Deprecated support for the Windows 7 platform -- may be removed at any time."
+          },
+          "extensions": {
+            "description": "Allow the build and usage of python extensions. On windows this requires python to be a dynamic library!",
+            "dependencies": [
+              {
+                "name": "bzip2",
+                "default-features": false
+              },
+              {
+                "name": "expat",
+                "default-features": false
+              },
+              {
+                "name": "libffi",
+                "default-features": false
+              },
+              {
+                "name": "liblzma",
+                "default-features": false
+              },
+              {
+                "name": "openssl",
+                "default-features": false
+              },
+              {
+                "name": "sqlite3",
+                "default-features": false
+              }
+            ],
+            "supports": "!(staticcrt & windows)"
+          },
+          "readline": {
+            "description": "Build with readline. Requires system readline to be installed",
+            "supports": "!windows"
           }
         },
         "version": "3.11.8"
@@ -73109,6 +73168,7 @@
         "0016-undup-ffi-symbols.patch",
         "0017-fix-win.patch",
         "0018-fix-sysconfig-include.patch",
+        "0019-fix-ssl-linkage.patch",
         "openssl.props.in",
         "portfile.cmake",
         "python_vcpkg.props.in",
@@ -90361,7 +90421,7 @@
         "name": "vcpkg-get-python",
         "license": "MIT",
         "supports": "native",
-        "version-date": "2024-06-08"
+        "version-date": "2024-06-22"
       },
       "files": [
         "portfile.cmake",
@@ -92380,7 +92440,6 @@
       "name": "wavpack",
       "manifest": {
         "name": "wavpack",
-        "port-version": 2,
         "description": "WavPack encode/decode library, command-line programs, and several plugins",
         "homepage": "https://github.com/dbry/WavPack",
         "license": "BSD-3-Clause",
@@ -92395,9 +92454,11 @@
             "host": true
           }
         ],
-        "version": "5.6.0"
+        "version": "5.7.0"
       },
       "files": [
+        "CMakeLists-patch.diff",
+        "config-patch.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92797,7 +92858,7 @@
         "homepage": "https://github.com/sonodima/wmipp",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -94726,7 +94787,7 @@
             "host": true
           }
         ],
-        "version": "4.13.0"
+        "version": "4.13.2"
       },
       "files": [
         "fix-install-path.patch",
@@ -95192,7 +95253,6 @@
       "name": "zlmediakit",
       "manifest": {
         "name": "zlmediakit",
-        "port-version": 3,
         "description": "A high-performance carrier-grade streaming media service framework based on C++11.",
         "homepage": "https://github.com/ZLMediaKit/ZLMediaKit",
         "license": "MIT",
@@ -95241,11 +95301,10 @@
             ]
           }
         },
-        "version-date": "2024-03-30"
+        "version-date": "2024-09-29"
       },
       "files": [
-        "fix-android-build.patch",
-        "fix-core.patch",
+        "fix-android.patch",
         "fix-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
