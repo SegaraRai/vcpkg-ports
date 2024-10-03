@@ -1,5 +1,5 @@
 {
-  "version": "f0f811770e0538fcb295a1750c0a5e0de5131d29",
+  "version": "86a181505ac6460f98496a79abdee6a0f49905ec",
   "ports": [
     {
       "name": "3fd",
@@ -4755,7 +4755,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.410"
+        "version": "1.11.415"
       },
       "files": [
         "find-dependency.patch",
@@ -18085,27 +18085,6 @@
       ]
     },
     {
-      "name": "caffe2",
-      "manifest": {
-        "name": "caffe2",
-        "port-version": 8,
-        "description": "Caffe2 is a lightweight, modular, and scalable deep learning framework.",
-        "homepage": "https://github.com/caffe2/caffe2",
-        "license": "Apache-2.0",
-        "dependencies": [
-          {
-            "name": "libtorch",
-            "default-features": false
-          }
-        ],
-        "version": "0.8.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "cairo",
       "manifest": {
         "name": "cairo",
@@ -23948,7 +23927,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -24144,6 +24123,12 @@
               "glslang"
             ]
           },
+          "utils-pipeline-manager-slang": {
+            "description": "Build with Slang",
+            "dependencies": [
+              "shader-slang"
+            ]
+          },
           "utils-pipeline-manager-spirv-validation": {
             "description": "Build with SPIR-V validation",
             "dependencies": [
@@ -24154,7 +24139,7 @@
             "description": "The Task-Graph Daxa utility"
           }
         },
-        "version": "2.0.0"
+        "version": "3.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -27776,7 +27761,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -28800,7 +28785,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "fix-build.patch",
@@ -29619,7 +29604,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29715,7 +29699,7 @@
             ]
           }
         },
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -45285,8 +45269,10 @@
       "name": "libbacktrace",
       "manifest": {
         "name": "libbacktrace",
+        "port-version": 1,
         "description": "The libbacktrace library may be linked into a program or library and used to produce symbolic backtraces.",
         "homepage": "https://github.com/ianlancetaylor/libbacktrace",
+        "license": "BSD-3-Clause",
         "supports": "!windows",
         "version-date": "2023-11-30"
       },
@@ -49536,7 +49522,6 @@
       "name": "libnice",
       "manifest": {
         "name": "libnice",
-        "port-version": 2,
         "description": "Libnice is an implementation of the IETF's Interactive Connectivity Establishment (ICE) standard (RFC 5245) and the Session Traversal Utilities for NAT (STUN) standard (RFC 5389).",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -49554,7 +49539,7 @@
             "host": true
           }
         ],
-        "version": "0.1.21"
+        "version": "0.1.22"
       },
       "files": [
         "portfile.cmake",
@@ -49565,7 +49550,6 @@
       "name": "libnice-gst",
       "manifest": {
         "name": "libnice-gst",
-        "port-version": 4,
         "description": "Gstreamer Libnice plugins.",
         "homepage": "https://nice.freedesktop.org",
         "license": "LGPL-2.1-only AND MPL-1.1",
@@ -49578,7 +49562,7 @@
             "host": true
           }
         ],
-        "version": "0.1.21"
+        "version": "0.1.22"
       },
       "files": [
         "portfile.cmake",
@@ -51076,12 +51060,11 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.21.2"
+        "version": "0.21.3"
       },
       "files": [
         "dependencies.patch",
         "fix-install.patch",
-        "install-interface.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -55328,7 +55311,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-20"
+        "version-date": "2024-09-29"
       },
       "files": [
         "CMakeLists.txt",
@@ -61762,6 +61745,7 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
+        "port-version": 1,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -62034,7 +62018,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "portfile.cmake",
@@ -65371,7 +65355,7 @@
             "host": true
           }
         ],
-        "version": "0.14.0"
+        "version": "0.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -72617,7 +72601,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -79753,7 +79737,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.2"
+        "version-semver": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -80497,6 +80481,31 @@
       ]
     },
     {
+      "name": "ruckig",
+      "manifest": {
+        "name": "ruckig",
+        "description": "Ruckig generates trajectories on-the-fly, allowing robots and machines to react instantaneously to sensor input.",
+        "homepage": "https://ruckig.com/",
+        "license": "MIT",
+        "dependencies": [
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.14.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "rxcpp",
       "manifest": {
         "name": "rxcpp",
@@ -80709,7 +80718,6 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
-        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -80895,7 +80903,7 @@
             "description": "Enable XBM codec"
           }
         },
-        "version-semver": "0.9.5"
+        "version-semver": "0.9.6"
       },
       "files": [
         "fix-include-directory.patch",
@@ -85453,7 +85461,7 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -87438,7 +87446,7 @@
       "name": "tidy-html5",
       "manifest": {
         "name": "tidy-html5",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Tidy tidies HTML and XML. It can tidy your documents by itself, and developers can easily integrate its features into even more powerful tools.",
         "homepage": "https://www.html-tidy.org",
         "license": null,
@@ -87446,11 +87454,16 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version": "5.8.0"
       },
       "files": [
+        "cmake_find_package_support.patch",
         "debug-postfix.patch",
         "disable-doc.patch",
         "fix_unsupport_func_uwp.patch",
@@ -92313,7 +92326,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.23.00"
+        "version-string": "2024.09.30.00"
       },
       "files": [
         "fix-config-cmake.patch",
