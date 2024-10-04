@@ -1,5 +1,5 @@
 {
-  "version": "86a181505ac6460f98496a79abdee6a0f49905ec",
+  "version": "52fc0d8c1e2cbd12c9907284566f5c17e5ef0d12",
   "ports": [
     {
       "name": "3fd",
@@ -6913,7 +6913,6 @@
       "name": "bond",
       "manifest": {
         "name": "bond",
-        "port-version": 4,
         "description": "Bond is a cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data. Bond is broadly used at Microsoft in high scale services.",
         "homepage": "https://github.com/Microsoft/bond",
         "dependencies": [
@@ -6931,11 +6930,10 @@
             "host": true
           }
         ],
-        "version": "11.0.1"
+        "version": "13.0.1"
       },
       "files": [
         "fix-install-path.patch",
-        "fix-msc-ver.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -15520,7 +15518,7 @@
       "name": "boost-stacktrace",
       "manifest": {
         "name": "boost-stacktrace",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Boost stacktrace module",
         "homepage": "https://www.boost.org/libs/stacktrace",
         "license": "BSL-1.0",
@@ -17321,7 +17319,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-10-13"
+        "version-date": "2024-09-13"
       },
       "files": [
         "0001-static-gtest.patch",
@@ -54304,10 +54302,10 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 2,
+        "port-version": 1,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
-        "license": null,
+        "license": "BSD-2-Clause",
         "dependencies": [
           "minizip",
           {
@@ -54316,11 +54314,10 @@
           },
           "zlib"
         ],
-        "version": "1.1.5"
+        "version": "1.1.8"
       },
       "files": [
         "dependencies.diff",
-        "fix-zlib-ver-required.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -54515,17 +54512,12 @@
       "name": "libxpm",
       "manifest": {
         "name": "libxpm",
-        "port-version": 1,
         "description": "XPM format pixmap library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxpm",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
           "libx11",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
           "xorg-macros",
           "xproto"
         ],
@@ -54539,17 +54531,19 @@
                 "features": [
                   "tools"
                 ]
-              }
+              },
+              "gettext-libintl"
             ]
           }
         },
-        "version": "3.5.16"
+        "version": "3.5.17"
       },
       "files": [
         "fix-dependency-gettext.patch",
         "portfile.cmake",
         "remove_strings_h.patch",
         "strcasecmp.patch",
+        "subdirs.diff",
         "tools.patch",
         "vcpkg.json"
       ]
@@ -90392,7 +90386,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-12-31"
+        "version-date": "2024-09-22"
       },
       "files": [
         "cmake_get_vars/CMakeLists.txt",
