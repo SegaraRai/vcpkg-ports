@@ -1,5 +1,5 @@
 {
-  "version": "2ddc10c8afa00a762a69f21f6427849fe906ede0",
+  "version": "797ae22b76f0e78c3aeb03d625722a0cbfe9f52e",
   "ports": [
     {
       "name": "3fd",
@@ -531,7 +531,7 @@
             "host": true
           }
         ],
-        "version": "0.5.1"
+        "version": "0.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -618,10 +618,9 @@
             ]
           }
         },
-        "version": "1.8.6"
+        "version": "1.8.7"
       },
       "files": [
-        "fix-runtime-destination.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -804,7 +803,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -3322,7 +3321,7 @@
             "host": true
           }
         ],
-        "version": "0.10.6"
+        "version": "0.10.7"
       },
       "files": [
         "portfile.cmake",
@@ -4754,7 +4753,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.415"
+        "version": "1.11.420"
       },
       "files": [
         "find-dependency.patch",
@@ -5079,7 +5078,7 @@
             "platform": "windows & !uwp"
           }
         ],
-        "version-semver": "1.9.0"
+        "version-semver": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -18967,7 +18966,6 @@
       "name": "cgal",
       "manifest": {
         "name": "cgal",
-        "port-version": 1,
         "description": "The Computational Geometry Algorithms Library (CGAL) is a C++ library that aims to provide easy access to efficient and reliable algorithms in computational geometry.",
         "homepage": "https://github.com/CGAL/cgal",
         "license": "GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0",
@@ -19033,24 +19031,22 @@
             "description": "Qt GUI support for CGAL",
             "dependencies": [
               "eigen3",
-              "qt5-3d",
               {
-                "name": "qt5-base",
+                "name": "qtbase",
                 "default-features": false
               },
-              "qt5-script",
-              "qt5-svg",
-              "qt5-xmlpatterns"
+              "qtdeclarative",
+              "qtsvg"
             ]
           }
         },
-        "version": "5.6.1"
+        "version": "6.0"
       },
       "files": [
+        "PR-8523__CGAL_CGAL-protect_against_macro_free-GF.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg.json",
-        "x86_windows.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -46043,7 +46039,7 @@
             "description": "Support the zlib format"
           }
         },
-        "version": "1.21"
+        "version": "1.22"
       },
       "files": [
         "portfile.cmake",
@@ -61094,7 +61090,7 @@
             "host": true
           }
         ],
-        "version": "2.2.1"
+        "version": "2.3.0"
       },
       "files": [
         "config.patch",
@@ -63165,7 +63161,6 @@
       "name": "nghttp3",
       "manifest": {
         "name": "nghttp3",
-        "port-version": 1,
         "description": "Implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C",
         "homepage": "https://github.com/ngtcp2/nghttp3",
         "license": "MIT",
@@ -63179,10 +63174,9 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
-        "fix-include-usage.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67356,6 +67350,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -73747,7 +73742,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -73895,7 +73890,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -75438,7 +75433,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -75479,7 +75474,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -75515,7 +75510,7 @@
             "platform": "!windows"
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -75528,7 +75523,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 3,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76091,7 +76085,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "GLIB2-static.patch",
@@ -76106,6 +76100,7 @@
         "dont_force_cmakecache_latest.patch",
         "env.patch",
         "fix-host-aliasing.patch",
+        "fix-link-lib-discovery.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -76157,7 +76152,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76180,7 +76175,7 @@
             ]
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76191,7 +76186,6 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
-        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76213,7 +76207,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76241,7 +76235,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76276,10 +76270,9 @@
           },
           "qtsvg"
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
-        "7c94c7a.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -76302,7 +76295,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76322,7 +76315,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76355,7 +76348,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76388,7 +76381,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76413,7 +76406,7 @@
             ]
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76468,7 +76461,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -76516,7 +76509,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76628,7 +76621,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76667,7 +76660,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76699,7 +76692,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76722,7 +76715,7 @@
             ]
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76819,7 +76812,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "fix_avfoundation_target.patch",
@@ -76845,7 +76838,7 @@
             ]
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -76927,7 +76920,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "fix-build.patch",
@@ -76965,7 +76958,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -77011,7 +77004,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77031,7 +77024,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77085,7 +77078,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77106,7 +77099,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77156,7 +77149,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77195,7 +77188,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77206,7 +77199,6 @@
       "name": "qtsensors",
       "manifest": {
         "name": "qtsensors",
-        "port-version": 1,
         "description": "The Qt Sensors API provides access to sensor hardware via QML and C++ interfaces. The Qt Sensors API also provides a motion gesture recognition API for devices.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77239,7 +77231,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77279,7 +77271,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77300,7 +77292,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77328,7 +77320,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77361,7 +77353,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77384,7 +77376,7 @@
             ]
           }
         ],
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77395,7 +77387,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77510,7 +77501,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -77547,7 +77538,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77593,7 +77584,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -77629,7 +77620,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77640,7 +77631,6 @@
       "name": "qtwebchannel",
       "manifest": {
         "name": "qtwebchannel",
-        "port-version": 1,
         "description": "Qt WebChannel enables peer-to-peer communication between a server (QML/C++ application) and a client (HTML/JavaScript or QML application).",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77661,7 +77651,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77824,10 +77814,9 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
-        "add-include-string.patch",
         "clang-cl.patch",
         "fix-error2275-2672.patch",
         "portfile.cmake",
@@ -77861,7 +77850,7 @@
             ]
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77900,7 +77889,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.7.2"
+        "version": "6.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -82578,6 +82567,7 @@
       "name": "sese",
       "manifest": {
         "name": "sese",
+        "port-version": 1,
         "description": "A cross-platform framework for basic components.",
         "homepage": "https://github.com/libsese/sese",
         "license": "Apache-2.0",
@@ -82648,7 +82638,6 @@
         "version": "2.3.0"
       },
       "files": [
-        "001-msvc-pdbs.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -86656,7 +86645,7 @@
             "host": true
           }
         ],
-        "version": "3.7.0"
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -87244,7 +87233,7 @@
       "name": "theia",
       "manifest": {
         "name": "theia",
-        "port-version": 10,
+        "port-version": 11,
         "description": "An open source library for multiview geometry and structure from motion",
         "homepage": "https://github.com/sweeneychris/TheiaSfM",
         "license": "BSD-3-Clause",
@@ -93644,7 +93633,7 @@
             "host": true
           }
         ],
-        "version": "7.6"
+        "version": "7.7"
       },
       "files": [
         "portfile.cmake",
