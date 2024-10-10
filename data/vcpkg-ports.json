@@ -1,5 +1,5 @@
 {
-  "version": "797ae22b76f0e78c3aeb03d625722a0cbfe9f52e",
+  "version": "c45ac46dcc16dd588daa029f7ce5bcacc5d7645b",
   "ports": [
     {
       "name": "3fd",
@@ -252,7 +252,7 @@
             ]
           }
         },
-        "version": "8.0.0"
+        "version": "8.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -5049,6 +5049,7 @@
       "name": "azure-identity-cpp",
       "manifest": {
         "name": "azure-identity-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Identity SDK for C++",
           "This library provides common authentication-related abstractions for Azure SDK."
@@ -5059,7 +5060,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.9.0"
+            "version>=": "1.14.0"
           },
           {
             "name": "openssl",
@@ -32667,7 +32668,6 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 4,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -32705,9 +32705,10 @@
             "supports": "linux"
           }
         },
-        "version": "2.78.4"
+        "version": "2.80.0"
       },
       "files": [
+        "0005-pr-4133-4143-avoid-package-packaging.patch",
         "libintl.patch",
         "portfile.cmake",
         "use-libiconv-on-windows.patch",
@@ -48786,15 +48787,14 @@
             "description": "Build tools"
           }
         },
-        "version": "5.6.2"
+        "version": "5.6.3"
       },
       "files": [
         "build-tools.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json",
-        "win_output_name.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -51197,8 +51197,13 @@
       "name": "libressl",
       "manifest": {
         "name": "libressl",
-        "port-version": 1,
-        "description": "LibreSSL is a version of the TLS/crypto stack forked from OpenSSL in 2014, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
+        "port-version": 2,
+        "description": [
+          "LibreSSL is a TLS/crypto stack.",
+          "It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
+          "LibreSSL provides much of the OpenSSL 1.1 API. Incompatibilities between the projects exist and are unavoidable since both evolve with different goals and priorities."
+        ],
+        "homepage": "https://www.libressl.org",
         "license": "ISC",
         "dependencies": [
           {
@@ -51219,7 +51224,9 @@
       },
       "files": [
         "0002-suppress-msvc-warnings.patch",
+        "pkgconfig.diff",
         "portfile.cmake",
+        "vcpkg-cmake-wrapper.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -60810,7 +60817,6 @@
       "name": "mongo-cxx-driver",
       "manifest": {
         "name": "mongo-cxx-driver",
-        "port-version": 1,
         "description": "MongoDB C++ Driver.",
         "homepage": "https://github.com/mongodb/mongo-cxx-driver",
         "license": "Apache-2.0",
@@ -60839,7 +60845,7 @@
             ]
           }
         },
-        "version": "3.10.2"
+        "version": "3.11.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -93289,7 +93295,6 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 3,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -93394,7 +93399,7 @@
             ]
           }
         },
-        "version": "3.2.5"
+        "version": "3.2.6"
       },
       "files": [
         "example/CMakeLists.txt",
