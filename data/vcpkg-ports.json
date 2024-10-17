@@ -1,5 +1,5 @@
 {
-  "version": "9b44f143bd2d68a21e99301778d15b0eb4629235",
+  "version": "b171feebd4f8b7943b56356f9ec1d4dbe44ab82f",
   "ports": [
     {
       "name": "3fd",
@@ -296,10 +296,10 @@
       "name": "activemq-cpp",
       "manifest": {
         "name": "activemq-cpp",
-        "port-version": 16,
+        "port-version": 17,
         "description": "Apache ActiveMQ is the most popular and powerful open source messaging and Integration Patterns server.",
         "license": "Apache-2.0",
-        "supports": "!(uwp | osx)",
+        "supports": "(windows & !uwp & (x86 | x64)) | (!windows & !osx)",
         "dependencies": [
           "apr",
           {
@@ -1283,12 +1283,17 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !mingw",
         "dependencies": [
+          {
+            "name": "apr",
+            "host": true,
+            "platform": "windows"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true,
@@ -1308,6 +1313,7 @@
         "version": "1.7.5"
       },
       "files": [
+        "0100-add-host-tools-dir.diff",
         "portfile.cmake",
         "unglue.patch",
         "unofficial-apr-config.cmake",
@@ -4875,6 +4881,7 @@
       "name": "azure-core-amqp-cpp",
       "manifest": {
         "name": "azure-core-amqp-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure AMQP SDK for C++",
           "This library provides AMQP functionality to Azure SDK services."
@@ -4904,6 +4911,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -4911,6 +4919,7 @@
       "name": "azure-core-cpp",
       "manifest": {
         "name": "azure-core-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Core SDK for C++",
           "This library provides shared primitives, abstractions, and helpers for modern Azure SDK client libraries written in the C++."
@@ -4988,6 +4997,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -4996,7 +5006,7 @@
       "name": "azure-core-tracing-opentelemetry-cpp",
       "manifest": {
         "name": "azure-core-tracing-opentelemetry-cpp",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "Microsoft Azure Core Tracing OpenTelemetry SDK for C++",
           "This library provides support for modern Azure SDK client libraries written in C++ to leverage OpenTelemetry APIs."
@@ -5027,6 +5037,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5035,6 +5046,7 @@
       "name": "azure-data-tables-cpp",
       "manifest": {
         "name": "azure-data-tables-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Data Tables SDK for C++",
           "This library provides Azure Data Tables SDK."
@@ -5069,6 +5081,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5076,7 +5089,7 @@
       "name": "azure-identity-cpp",
       "manifest": {
         "name": "azure-identity-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Microsoft Azure Identity SDK for C++",
           "This library provides common authentication-related abstractions for Azure SDK."
@@ -5110,6 +5123,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5247,7 +5261,7 @@
       "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
       "manifest": {
         "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "Microsoft Azure Messaging Event Hubs Blob Checkpoint Store SDK for C++",
           "This library provides an Azure-Storage-Blobs based implementation of an Azure Messaging Event Hubs SDK Checkpoint Store."
@@ -5283,6 +5297,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5291,7 +5306,7 @@
       "name": "azure-messaging-eventhubs-cpp",
       "manifest": {
         "name": "azure-messaging-eventhubs-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Microsoft Azure Messaging Event Hubs SDK for C++",
           "This library provides Azure Messaging Event Hubs SDK."
@@ -5317,6 +5332,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5325,7 +5341,7 @@
       "name": "azure-security-attestation-cpp",
       "manifest": {
         "name": "azure-security-attestation-cpp",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "Microsoft Azure Attestation Service SDK for C++",
           "This library provides API access to the Microsoft Azure Attestation service."
@@ -5353,6 +5369,7 @@
       "files": [
         "context_syntax.patch",
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5361,6 +5378,7 @@
       "name": "azure-security-keyvault-administration-cpp",
       "manifest": {
         "name": "azure-security-keyvault-administration-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Key Vault Administration SDK for C++",
           "This library provides Azure Key Vault Administration SDK."
@@ -5386,6 +5404,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5393,7 +5412,7 @@
       "name": "azure-security-keyvault-certificates-cpp",
       "manifest": {
         "name": "azure-security-keyvault-certificates-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Microsoft Azure Key Vault Certificates SDK for C++",
           "This library provides Azure Key Vault Certificates SDK."
@@ -5419,6 +5438,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5427,7 +5447,7 @@
       "name": "azure-security-keyvault-keys-cpp",
       "manifest": {
         "name": "azure-security-keyvault-keys-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Microsoft Azure Key Vault Keys SDK for C++",
           "This library provides Azure Key Vault Keys SDK."
@@ -5453,6 +5473,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5461,7 +5482,7 @@
       "name": "azure-security-keyvault-secrets-cpp",
       "manifest": {
         "name": "azure-security-keyvault-secrets-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Microsoft Azure Key Vault Secrets SDK for C++",
           "This library provides Azure Key Vault Secrets SDK."
@@ -5487,6 +5508,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "useragent.patch",
         "vcpkg.json"
       ]
@@ -5495,6 +5517,7 @@
       "name": "azure-storage-blobs-cpp",
       "manifest": {
         "name": "azure-storage-blobs-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Blobs SDK for C++",
           "This library provides Azure Storage Blobs SDK."
@@ -5520,6 +5543,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5527,6 +5551,7 @@
       "name": "azure-storage-common-cpp",
       "manifest": {
         "name": "azure-storage-common-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Common Storage SDK for C++",
           "This library provides common Azure Storage-related abstractions for Azure SDK."
@@ -5561,6 +5586,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5624,6 +5650,7 @@
       "name": "azure-storage-files-datalake-cpp",
       "manifest": {
         "name": "azure-storage-files-datalake-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Files Data Lake SDK for C++",
           "This library provides Azure Storage Files Data Lake SDK."
@@ -5649,6 +5676,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5656,6 +5684,7 @@
       "name": "azure-storage-files-shares-cpp",
       "manifest": {
         "name": "azure-storage-files-shares-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Files Shares SDK for C++",
           "This library provides Azure Storage Files Shares SDK."
@@ -5681,6 +5710,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5688,6 +5718,7 @@
       "name": "azure-storage-queues-cpp",
       "manifest": {
         "name": "azure-storage-queues-cpp",
+        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Queues SDK for C++",
           "This library provides Azure Storage Queues SDK."
@@ -5713,6 +5744,7 @@
       },
       "files": [
         "portfile.cmake",
+        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -24698,11 +24730,11 @@
       "name": "directxmath",
       "manifest": {
         "name": "directxmath",
-        "port-version": 1,
         "description": "DirectXMath SIMD C++ math library",
         "homepage": "https://github.com/Microsoft/DirectXMath",
         "documentation": "https://docs.microsoft.com/windows/win32/dxmath/directxmath-portal",
         "license": "MIT",
+        "supports": "!arm32",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -24713,7 +24745,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-02-14"
+        "version-date": "2024-10-15"
       },
       "files": [
         "portfile.cmake",
@@ -25087,7 +25119,7 @@
             "host": true
           }
         ],
-        "version": "2.0.6"
+        "version": "2.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -27792,7 +27824,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
         "0002-fix-dependency.patch",
@@ -28816,7 +28848,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
         "fix-build.patch",
@@ -29730,13 +29762,12 @@
             ]
           }
         },
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-deps.patch",
-        "fix-fmt-patch-for-old-cmake.patch",
         "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
         "portfile.cmake",
@@ -31476,13 +31507,13 @@
         "name": "gdcm",
         "description": "Grassroots DICOM library",
         "homepage": "https://github.com/malaterre/GDCM",
-        "license": "BSD-3-Clause",
-        "supports": "!uwp & !(windows & arm)",
+        "license": null,
+        "supports": "!uwp",
         "dependencies": [
           "expat",
           {
-            "name": "getopt",
-            "platform": "windows & !mingw"
+            "name": "libiconv",
+            "platform": "!windows"
           },
           "openjpeg",
           {
@@ -31495,14 +31526,14 @@
           },
           "zlib"
         ],
-        "version": "3.0.23"
+        "version": "3.0.24"
       },
       "files": [
-        "Fix-Cmake_DIR.patch",
-        "fix-dependence-getopt.patch",
-        "fix-share-path.patch",
+        "copyright.diff",
+        "include-no-namespace.diff",
+        "no-absolute-paths.diff",
         "portfile.cmake",
-        "use-openjpeg-config.patch",
+        "prefer-config.diff",
         "vcpkg.json"
       ]
     },
@@ -41474,7 +41505,7 @@
             "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "0.3.2"
       },
       "files": [
         "fix-config.patch",
@@ -41647,7 +41678,7 @@
             "host": true
           }
         ],
-        "version": "0.9.96"
+        "version": "0.9.97"
       },
       "files": [
         "portfile.cmake",
@@ -45228,7 +45259,6 @@
       "name": "libavif",
       "manifest": {
         "name": "libavif",
-        "port-version": 2,
         "description": "Library for encoding and decoding AVIF files",
         "homepage": "https://github.com/AOMediaCodec/libavif",
         "license": "BSD-2-Clause AND Apache-2.0",
@@ -45257,11 +45287,10 @@
             ]
           }
         },
-        "version-semver": "1.0.4"
+        "version-semver": "1.1.1"
       },
       "files": [
         "disable-source-utf8.patch",
-        "find-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46315,6 +46344,21 @@
           }
         ],
         "version": "1.2.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libedit",
+      "manifest": {
+        "name": "libedit",
+        "description": "A command line editor library that provides generic line editing, history, and tokenization functions, similar to those found in GNU Readline.",
+        "homepage": "https://thrysoee.dk/editline/",
+        "license": "BSD-4-Clause-UC",
+        "supports": "(!windows | mingw) & !android",
+        "version-date": "2024-08-08"
       },
       "files": [
         "portfile.cmake",
@@ -49447,7 +49491,7 @@
             ]
           }
         },
-        "version": "1.23.11"
+        "version": "1.24.10"
       },
       "files": [
         "CMakeLists.txt",
@@ -51327,6 +51371,22 @@
         "hide_netstackdump.patch",
         "librtmp.def",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "librtpi",
+      "manifest": {
+        "name": "librtpi",
+        "description": "The Real-Time Priority Inheritance Library (librtpi) is intended to bridge the gap between the glibc pthread implementation and a functionally correct priority inheritance for pthread locking primitives, such as pthread_mutex and pthread_condvar.",
+        "homepage": "https://gitlab.com/linux-rt/librtpi",
+        "license": "LGPL-2.1-only",
+        "supports": "linux",
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-librtpi-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -62028,9 +62088,10 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
+        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70630,7 +70691,7 @@
             "host": true
           }
         ],
-        "version": "47.0"
+        "version": "48.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -72042,6 +72103,31 @@
       ]
     },
     {
+      "name": "poselib",
+      "manifest": {
+        "name": "poselib",
+        "description": "Minimal solvers for calibrated camera pose estimation",
+        "homepage": "https://github.com/PoseLib/PoseLib",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ppconsul",
       "manifest": {
         "name": "ppconsul",
@@ -72606,7 +72692,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -83608,7 +83694,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -88850,9 +88936,10 @@
       "name": "triangle",
       "manifest": {
         "name": "triangle",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A Two-Dimensional Quality Mesh Generator and Delaunay Triangulator.",
         "homepage": "http://www.cs.cmu.edu/~quake/triangle.html",
+        "license": null,
         "supports": "!uwp",
         "dependencies": [
           {
@@ -88864,6 +88951,11 @@
             "host": true
           }
         ],
+        "features": {
+          "tool": {
+            "description": "Build the command line tool."
+          }
+        },
         "version": "1.6"
       },
       "files": [
@@ -88871,6 +88963,8 @@
         "enable_64bit_architecture.patch",
         "exports.def",
         "portfile.cmake",
+        "triangleConfig.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -92315,7 +92409,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.09.30.00"
+        "version-string": "2024.10.07.00"
       },
       "files": [
         "fix-config-cmake.patch",
