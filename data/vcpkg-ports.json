@@ -1,5 +1,5 @@
 {
-  "version": "3a747a4fc9210d87bb40e0d9b8a3588f046c914d",
+  "version": "edc84ff66e6262a9f7565c28eb76577aeab9c5aa",
   "ports": [
     {
       "name": "3fd",
@@ -2209,7 +2209,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -2507,7 +2507,6 @@
       "name": "asyncplusplus",
       "manifest": {
         "name": "asyncplusplus",
-        "port-version": 2,
         "description": "Async++ is a lightweight concurrency framework for C++11",
         "license": "MIT",
         "supports": "!uwp",
@@ -2521,7 +2520,7 @@
             "host": true
           }
         ],
-        "version": "1.1"
+        "version": "1.2"
       },
       "files": [
         "portfile.cmake",
@@ -21461,7 +21460,7 @@
       "name": "cppfs",
       "manifest": {
         "name": "cppfs",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Cross-platform C++ file system library supporting multiple backends",
         "license": "MIT",
         "supports": "!uwp",
@@ -22804,6 +22803,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -27617,14 +27617,14 @@
             "host": true
           },
           "wangle",
+          "xxhash",
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
-        "0002-fix-dependency.patch",
-        "fix-glog.patch",
+        "fix-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28644,7 +28644,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
         "fix-build.patch",
@@ -29316,7 +29316,7 @@
             ]
           }
         },
-        "version": "2.3.6"
+        "version": "2.3.7"
       },
       "files": [
         "gentables.patch",
@@ -29558,7 +29558,7 @@
             ]
           }
         },
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -29969,7 +29969,6 @@
       "name": "freerdp",
       "manifest": {
         "name": "freerdp",
-        "port-version": 3,
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
@@ -30041,17 +30040,15 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.4.0"
+        "version": "3.8.0"
       },
       "files": [
         "cmake-project-include.cmake",
         "dependencies.patch",
         "install-layout.patch",
-        "keep-dup-libs.patch",
         "portfile.cmake",
         "vcpkg.json",
-        "windows-linkage.patch",
-        "winpr_strerror.patch"
+        "windows-linkage.patch"
       ]
     },
     {
@@ -46512,7 +46509,7 @@
           },
           "zlib"
         ],
-        "version": "1.14.0"
+        "version": "1.15.0"
       },
       "files": [
         "fix_cmakelists.patch",
@@ -52104,7 +52101,6 @@
       "name": "libssh2",
       "manifest": {
         "name": "libssh2",
-        "port-version": 2,
         "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
         "homepage": "https://www.libssh2.org",
         "license": "BSD-3-Clause",
@@ -52144,7 +52140,7 @@
             ]
           }
         },
-        "version": "1.11.0"
+        "version": "1.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -54289,18 +54285,21 @@
       "name": "libxmlpp",
       "manifest": {
         "name": "libxmlpp",
-        "port-version": 3,
-        "description": "a C++ wrapper for the libxml XML parser library.",
-        "supports": "!(windows & static)",
+        "description": "A C++ wrapper for the libxml XML parser library.",
+        "homepage": "https://libxmlplusplus.github.io/libxmlplusplus/",
+        "license": "LGPL-2.1-or-later",
         "dependencies": [
           "glibmm",
-          "libxml2",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
-        "version": "5.0.0"
+        "version": "5.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -59929,6 +59928,30 @@
       ]
     },
     {
+      "name": "mimicpp",
+      "manifest": {
+        "name": "mimicpp",
+        "description": "mimic++, a modern and (mostly) macro free mocking framework.",
+        "homepage": "https://github.com/DNKpp/mimicpp",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "minc",
       "manifest": {
         "name": "minc",
@@ -61872,10 +61895,9 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
-        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72372,7 +72394,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -83322,7 +83344,7 @@
             "host": true
           }
         ],
-        "version": "5.4.4"
+        "version": "5.7.3"
       },
       "files": [
         "export-target.patch",
@@ -85047,7 +85069,6 @@
       "name": "sqlite-orm",
       "manifest": {
         "name": "sqlite-orm",
-        "port-version": 2,
         "description": "SQLite ORM light header only library for modern C++",
         "homepage": "https://github.com/fnc12/sqlite_orm",
         "license": "AGPL-3.0-or-later OR MIT",
@@ -85073,11 +85094,10 @@
             ]
           }
         },
-        "version": "1.8.2"
+        "version": "1.9"
       },
       "files": [
         "fix-dependency.patch",
-        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92085,7 +92105,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.07.00"
+        "version-string": "2024.10.14.00"
       },
       "files": [
         "fix-config-cmake.patch",
