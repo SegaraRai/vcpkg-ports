@@ -1,5 +1,5 @@
 {
-  "version": "41626fd77bf42f29e8f7e43dc1f2f05780588cde",
+  "version": "cff6ed45719c0162fa7065fdac90506a0add812c",
   "ports": [
     {
       "name": "3fd",
@@ -654,7 +654,7 @@
       "name": "aliyun-oss-cpp-sdk",
       "manifest": {
         "name": "aliyun-oss-cpp-sdk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Alibaba Cloud Object Storage Service (OSS) is a cloud storage service provided by Alibaba Cloud, featuring massive capacity, security, a low cost, and high reliability.",
         "homepage": "https://github.com/aliyun/aliyun-oss-cpp-sdk",
         "license": "Apache-2.0",
@@ -2870,8 +2870,10 @@
       "name": "aurora-au",
       "manifest": {
         "name": "aurora-au",
+        "port-version": 1,
         "description": "A C++14-compatible physical units library with no dependencies and a single-file delivery option. Emphasis on safety, accessibility, performance, and developer experience.",
         "homepage": "https://github.com/aurora-opensource/au",
+        "documentation": "https://aurora-opensource.github.io/au/main/",
         "license": "Apache-2.0",
         "supports": "!osx",
         "dependencies": [
@@ -17949,7 +17951,6 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
-        "port-version": 1,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -17972,45 +17973,44 @@
         ],
         "features": {
           "fontconfig": {
-            "description": "build with fontconfig",
+            "description": "Build with fontconfig",
             "dependencies": [
               "fontconfig"
             ]
           },
           "freetype": {
-            "description": "use the freetype font backend",
+            "description": "Use the freetype font backend",
             "dependencies": [
-              "freetype"
+              {
+                "name": "freetype",
+                "default-features": false
+              }
             ]
           },
           "gobject": {
-            "description": "build gobject module",
+            "description": "Build the gobject module",
             "dependencies": [
               "glib"
             ]
           },
           "lzo": {
-            "description": "build with lzo support",
+            "description": "Build with lzo support",
             "dependencies": [
               "lzo"
             ]
           },
           "x11": {
-            "description": "build with x11 support",
+            "description": "Build with X11 support",
             "supports": "!windows"
           }
         },
-        "version": "1.18.0"
+        "version": "1.18.2"
       },
       "files": [
         "cairo_add_lzo_feature_option.patch",
-        "cairo_static_fix.patch",
-        "disable-atomic-ops-check.patch",
-        "fix-alloca-undefine.patch",
-        "fix-static-missing-lib-msimg32.patch",
         "fix_clang-cl_build.patch",
+        "msvc-convenience.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -26239,7 +26239,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.26"
+        "version": "1.27"
       },
       "files": [
         "CMakeLists.txt",
@@ -26420,6 +26420,7 @@
       "name": "elements",
       "manifest": {
         "name": "elements",
+        "port-version": 1,
         "description": "Elements is a lightweight, fine-grained, resolution independent, modular GUI library.",
         "homepage": "https://cycfi.github.io/elements",
         "license": "MIT",
@@ -26428,7 +26429,7 @@
           "cairo",
           {
             "name": "gtk3",
-            "platform": "linux"
+            "platform": "!osx & !windows"
           },
           {
             "name": "vcpkg-cmake",
@@ -27759,7 +27760,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -55280,7 +55281,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-29"
+        "version-date": "2024-10-24"
       },
       "files": [
         "CMakeLists.txt",
@@ -68054,6 +68055,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -68145,6 +68147,7 @@
       },
       "files": [
         "add-missing-find-dependency.patch",
+        "cmake-quirks.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81194,7 +81197,7 @@
           },
           "zlib"
         ],
-        "version": "7.0.3"
+        "version": "7.0.5"
       },
       "files": [
         "fix-build.patch",
@@ -91645,6 +91648,7 @@
       "name": "vtk-dicom",
       "manifest": {
         "name": "vtk-dicom",
+        "port-version": 1,
         "description": "DICOM for VTK",
         "homepage": "https://github.com/dgobbi/vtk-dicom",
         "license": "BSD-3-Clause",
