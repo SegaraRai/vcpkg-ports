@@ -1,5 +1,5 @@
 {
-  "version": "cff6ed45719c0162fa7065fdac90506a0add812c",
+  "version": "e60236ee051183f1122066bee8c54a0b47c43a60",
   "ports": [
     {
       "name": "3fd",
@@ -22829,7 +22829,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -45055,7 +45055,7 @@
             "host": true
           }
         ],
-        "version": "2.1.1"
+        "version": "2.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -54373,12 +54373,15 @@
       "name": "libxmlmm",
       "manifest": {
         "name": "libxmlmm",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Libxmlmm is a C++ wrapper for libxml 2.0 that only relies on standard C++ and libxml2.",
         "homepage": "https://github.com/rioki/libxmlmm",
         "license": "MIT",
         "dependencies": [
-          "libxml2",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -55266,6 +55269,7 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
+        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
@@ -78684,7 +78688,7 @@
       "name": "readline-win32",
       "manifest": {
         "name": "readline-win32",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Implementation of readline for Windows Desktop",
         "homepage": "https://github.com/xiaozhuai/readline-win32",
         "license": "GPL-2.0",
@@ -82814,6 +82818,7 @@
       "name": "shiftmedia-libgnutls",
       "manifest": {
         "name": "shiftmedia-libgnutls",
+        "port-version": 1,
         "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
         "homepage": "https://github.com/ShiftMediaProject/gnutls",
         "license": "LGPL-2.1-only",
@@ -82821,7 +82826,6 @@
         "dependencies": [
           "gettext",
           "gmp",
-          "libidn2",
           "libtasn1",
           "nettle",
           {
@@ -85297,7 +85301,7 @@
             ]
           }
         },
-        "version": "3.46.1"
+        "version": "3.47.0"
       },
       "files": [
         "CMakeLists.txt",
