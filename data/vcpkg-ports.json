@@ -1,5 +1,5 @@
 {
-  "version": "ea189a0a823a17dca94f6af61d09429f2f45502c",
+  "version": "bb1ca2757bca8f8e372a4deb35943828e3b0d155",
   "ports": [
     {
       "name": "3fd",
@@ -2059,7 +2059,7 @@
             ]
           }
         },
-        "version": "17.0.0"
+        "version": "18.0.0"
       },
       "files": [
         "android.patch",
@@ -2150,8 +2150,8 @@
       "manifest": {
         "name": "asio",
         "description": "Asio is a cross-platform C++ library for network and low-level I/O programming that provides developers with a consistent asynchronous model using a modern C++ approach.",
-        "homepage": "https://github.com/chriskohlhoff/asio",
-        "documentation": "https://think-async.com/Asio/asio-1.28.0/doc/",
+        "homepage": "https://think-async.com/Asio/",
+        "documentation": "https://think-async.com/Asio/Documentation.html",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -2183,7 +2183,7 @@
             ]
           }
         },
-        "version": "1.31.0"
+        "version": "1.32.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -17536,7 +17536,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -26725,7 +26725,7 @@
             "host": true
           }
         ],
-        "version": "3.13.2"
+        "version": "3.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -27170,7 +27170,6 @@
       "name": "faiss",
       "manifest": {
         "name": "faiss",
-        "port-version": 1,
         "description": "Faiss is a library for efficient similarity search and clustering of dense vectors.",
         "homepage": "https://github.com/facebookresearch/faiss",
         "license": "MIT",
@@ -27192,10 +27191,11 @@
             "description": "Whether to enable GPU support",
             "dependencies": [
               "cuda"
-            ]
+            ],
+            "supports": "!uwp & !osx & !x86 & !windows"
           }
         },
-        "version": "1.7.4"
+        "version": "1.8.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -29537,6 +29537,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29561,6 +29562,11 @@
           "gflags",
           "glog",
           "libevent",
+          "liblzma",
+          {
+            "name": "libunwind",
+            "platform": "linux"
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -29638,6 +29644,7 @@
         "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-deps.patch",
+        "fix-libunwind.patch",
         "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
         "portfile.cmake",
@@ -30724,6 +30731,23 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gameinput",
+      "manifest": {
+        "name": "gameinput",
+        "description": "GameInput",
+        "homepage": "https://aka.ms/gameinput",
+        "license": null,
+        "supports": "windows & x64 & !uwp",
+        "version": "0.2303.22621.3038"
+      },
+      "files": [
+        "gameinput-config.cmake.in",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -33047,6 +33071,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
+        "port-version": 1,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -35156,7 +35181,7 @@
             "host": true
           }
         ],
-        "version": "0.0.4"
+        "version": "0.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -40199,6 +40224,7 @@
       "name": "influxdb-cxx",
       "manifest": {
         "name": "influxdb-cxx",
+        "port-version": 1,
         "description": "InfluxDB C++ client library",
         "homepage": "https://github.com/offa/influxdb-cxx",
         "license": "MIT",
@@ -40227,6 +40253,7 @@
         "version": "0.7.2"
       },
       "files": [
+        "268.patch",
         "fix-dllexports.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -44191,7 +44218,6 @@
       "name": "launch-darkly-server",
       "manifest": {
         "name": "launch-darkly-server",
-        "port-version": 2,
         "description": "LaunchDarkly server-side SDK for C/C++",
         "homepage": "https://github.com/launchdarkly/c-server-sdk",
         "license": "Apache-2.0",
@@ -44208,13 +44234,11 @@
             "host": true
           }
         ],
-        "version": "2.8.6"
+        "version": "2.9.3"
       },
       "files": [
         "FixStrictPrototypes.patch",
         "findPCRE.patch",
-        "fix-confilct-with-openssl.patch",
-        "fix-depend-clib.patch",
         "launch-darkly-server-config.cmake",
         "portfile.cmake",
         "removeWarningAsError.patch",
@@ -44922,6 +44946,7 @@
       "name": "libarchive",
       "manifest": {
         "name": "libarchive",
+        "port-version": 1,
         "description": "Library for reading and writing streaming archives",
         "homepage": "https://www.libarchive.org",
         "license": null,
@@ -53104,11 +53129,14 @@
       "name": "libunwind",
       "manifest": {
         "name": "libunwind",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Unix libray for portable stack unwinding",
         "homepage": "https://www.nongnu.org/libunwind",
         "license": "MIT",
         "supports": "linux",
+        "dependencies": [
+          "liblzma"
+        ],
         "version": "1.8.1"
       },
       "files": [
@@ -58797,6 +58825,7 @@
       "name": "materialx",
       "manifest": {
         "name": "materialx",
+        "port-version": 1,
         "description": "MaterialX is an open standard for the exchange of rich material and look-development content across applications and renderers.",
         "homepage": "https://www.materialx.org/",
         "license": "Apache-2.0",
@@ -59360,24 +59389,18 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
-        "port-version": 5,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
-        "supports": "!arm & !x86 & !staticcrt",
+        "supports": "!x86 & !(windows & (staticcrt | arm | uwp)) & !(osx & arm) & !android",
         "dependencies": [
           "boost-algorithm",
-          "boost-any",
-          "boost-bind",
           "boost-core",
-          "boost-function",
+          "boost-dynamic-bitset",
           "boost-functional",
-          "boost-smart-ptr",
+          "boost-intrusive",
           "boost-tokenizer",
           "boost-unordered",
-          "boost-uuid",
-          "freeimage",
-          "opengl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -59391,29 +59414,27 @@
           "dds": {
             "description": "Build image plugin for DDS"
           },
-          "freeimage": {
-            "description": "Build image plugin for various image formats using Freeimage",
+          "openimageio": {
+            "description": "Build image plugin for various image formats using OpenImageIO",
             "dependencies": [
-              "freeimage"
+              {
+                "name": "openimageio",
+                "features": [
+                  "gif",
+                  "openjpeg",
+                  "webp"
+                ]
+              }
             ]
           }
         },
-        "version": "2021.1.2"
+        "version": "2024.0.4"
       },
       "files": [
-        "001-freeimage-from-vcpkg.patch",
-        "002-install-rules.patch",
-        "003-freeimage-disable-faxg3.patch",
-        "004-missing-std-includes.patch",
-        "005-missing-link-windows-crypt-libraries.patch",
-        "006-guard-nonexisting-targets.patch",
-        "007-plugin-options.patch",
         "008-build-static-llvm.patch",
-        "009-include-priority-vendored-llvm.patch",
-        "010-workaround-gcc-bit.patch",
-        "011-fix-python.patch",
+        "012-remove-wrong-llvm-cxx-standard.patch",
         "portfile.cmake",
-        "unofficial-mdl-config.cmake.in",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -60011,6 +60032,7 @@
       "name": "mimalloc",
       "manifest": {
         "name": "mimalloc",
+        "port-version": 1,
         "description": "Compact general purpose allocator with excellent performance",
         "homepage": "https://github.com/microsoft/mimalloc",
         "license": "MIT",
@@ -60041,6 +60063,7 @@
       "files": [
         "add_ref_to_page_malloc_zero.patch",
         "fix-cmake.patch",
+        "fix-param.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -60064,7 +60087,7 @@
             "host": true
           }
         ],
-        "version": "3"
+        "version": "4"
       },
       "files": [
         "portfile.cmake",
@@ -62231,11 +62254,9 @@
             "host": true
           }
         ],
-        "version-semver": "1.9.2"
+        "version-semver": "2.2.0"
       },
       "files": [
-        "find_dependency_python.patch",
-        "move_include_dir.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67897,7 +67918,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -67931,7 +67951,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.3.2"
+        "version": "3.4.0"
       },
       "files": [
         "asm-armcap.patch",
@@ -69967,7 +69987,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -70142,6 +70162,7 @@
         "version": "1.14.1"
       },
       "files": [
+        "0012-msvc-optimizer-workaround.patch",
         "6053.diff",
         "6990a3b0d7dd3c1ca04a1a473cc172a937418060.diff",
         "add-gcc-version-check.patch",
@@ -73141,10 +73162,9 @@
       "name": "qcoro",
       "manifest": {
         "name": "qcoro",
-        "port-version": 1,
         "description": "Coroutine support for Qt",
-        "homepage": "https://www.github.com/danvratil/qcoro",
-        "documentation": "https://qcoro.dvratil.cz",
+        "homepage": "https://github.com/qcoro/qcoro",
+        "documentation": "https://qcoro.dev/",
         "license": "MIT",
         "dependencies": [
           {
@@ -73236,7 +73256,7 @@
             ]
           }
         },
-        "version": "0.10.0"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -78033,7 +78053,7 @@
             "host": true
           }
         ],
-        "version": "7.3.0"
+        "version": "7.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -79045,16 +79065,18 @@
       "name": "rest-rpc",
       "manifest": {
         "name": "rest-rpc",
+        "port-version": 1,
         "description": "c++11, high performance, cross platform, easy to use rpc framework",
         "homepage": "https://github.com/qicosmos/rest_rpc",
         "dependencies": [
-          "asio"
+          "asio",
+          "msgpack"
         ],
         "version": "0.12"
       },
       "files": [
         "portfile.cmake",
-        "usage",
+        "unofficial-rest-rpc-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -82367,7 +82389,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.10"
+        "version": "0.7.11"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -88980,11 +89002,10 @@
       "name": "turbobase64",
       "manifest": {
         "name": "turbobase64",
-        "port-version": 3,
         "description": "Fastest Base64 SIMD/Neon library",
         "homepage": "https://github.com/powturbo/Turbo-Base64",
         "license": "GPL-3.0-only",
-        "supports": "!windows",
+        "supports": "!android & !(windows & arm)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -88995,10 +89016,9 @@
             "host": true
           }
         ],
-        "version-date": "2020-01-12"
+        "version": "2023.8"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94014,12 +94034,13 @@
             "host": true
           }
         ],
-        "version": "1.3.5"
+        "version": "1.3.6"
       },
       "files": [
         "CMakeLists.txt",
         "pkgconfig_fixes.patch",
         "portfile.cmake",
+        "unofficial-xmlsec-config.cmake",
         "usage",
         "vcpkg.json",
         "xmlsec-config.cmake"
