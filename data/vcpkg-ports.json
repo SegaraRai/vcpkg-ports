@@ -1,5 +1,5 @@
 {
-  "version": "bb1ca2757bca8f8e372a4deb35943828e3b0d155",
+  "version": "d221c5d2cbadf35ceb266cbb95750a940b103b65",
   "ports": [
     {
       "name": "3fd",
@@ -18922,10 +18922,9 @@
             ]
           }
         },
-        "version": "6.0"
+        "version": "6.0.1"
       },
       "files": [
-        "PR-8523__CGAL_CGAL-protect_against_macro_free-GF.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -25345,7 +25344,7 @@
           },
           "zlib"
         ],
-        "version": "10.0.33"
+        "version": "10.0.34"
       },
       "files": [
         "portfile.cmake",
@@ -27654,7 +27653,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28718,7 +28717,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "fix-build.patch",
@@ -29537,7 +29536,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29638,7 +29636,7 @@
             ]
           }
         },
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -48512,7 +48510,6 @@
       "name": "libleidenalg",
       "manifest": {
         "name": "libleidenalg",
-        "port-version": 1,
         "maintainers": "Andrew Robbins <andrew@robbinsa.me>",
         "description": "Leiden is a general algorithm for methods of community detection in large networks.",
         "homepage": "https://github.com/vtraag/libleidenalg",
@@ -48532,7 +48529,7 @@
             "host": true
           }
         ],
-        "version": "0.10.0"
+        "version": "0.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -62037,7 +62034,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "portfile.cmake",
@@ -62048,7 +62045,7 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
@@ -62083,6 +62080,7 @@
         "fix-generation.patch",
         "fix-tools-lnk2005.patch",
         "opengl.patch",
+        "platform-lib-static.patch",
         "portfile.cmake",
         "sdl2-static.patch",
         "vcpkg.json"
@@ -72537,7 +72535,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -82706,7 +82704,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": "MIT",
         "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2024.11"
+        "version": "2024.14.3"
       },
       "files": [
         "portfile.cmake",
@@ -85247,6 +85245,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -85315,6 +85314,12 @@
           "tool": {
             "description": "Build sqlite3 executable",
             "supports": "!uwp"
+          },
+          "unicode": {
+            "description": "Enable unicode support",
+            "dependencies": [
+              "icu"
+            ]
           },
           "zlib": {
             "description": "Build sqlite3 command line tool with zlib support; has no effect on the library itself",
@@ -86055,7 +86060,7 @@
             "host": true
           }
         ],
-        "version": "14"
+        "version": "15"
       },
       "files": [
         "portfile.cmake",
@@ -87985,7 +87990,7 @@
             ]
           }
         },
-        "version-semver": "0.37.3"
+        "version-semver": "0.38.1"
       },
       "files": [
         "portfile.cmake",
@@ -92274,7 +92279,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.14.00"
+        "version-string": "2024.10.21.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -92889,7 +92894,6 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 3,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-2.0-or-later",
@@ -92922,10 +92926,9 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.7.2"
+        "version": "5.7.4"
       },
       "files": [
-        "increase-max-alt-names.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
