@@ -1,5 +1,5 @@
 {
-  "version": "d221c5d2cbadf35ceb266cbb95750a940b103b65",
+  "version": "4f746bc66438fce2b900c3ba6094a483b871b045",
   "ports": [
     {
       "name": "3fd",
@@ -5916,6 +5916,45 @@
       ]
     },
     {
+      "name": "bark",
+      "manifest": {
+        "name": "bark",
+        "description": "A modern, low latency datadog client for C++",
+        "homepage": "https://github.com/twig-energy/bark",
+        "license": "MIT",
+        "supports": "!(uwp | osx)",
+        "dependencies": [
+          "asio",
+          "fmt",
+          "mpmcqueue",
+          "spscqueue",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "test": {
+            "description": "Dependencies for testing",
+            "dependencies": [
+              "benchmark",
+              "doctest"
+            ]
+          }
+        },
+        "version-semver": "0.3.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "basisu",
       "manifest": {
         "name": "basisu",
@@ -6380,7 +6419,7 @@
             "supports": "native"
           }
         },
-        "version": "1.128.8786-481"
+        "version": "1.128.8808-482"
       },
       "files": [
         "portfile.cmake",
@@ -22034,7 +22073,6 @@
       "name": "cpr",
       "manifest": {
         "name": "cpr",
-        "port-version": 2,
         "description": "C++ Requests is a simple wrapper around libcurl inspired by the excellent Python Requests project.",
         "homepage": "https://github.com/libcpr/cpr",
         "license": "MIT",
@@ -22073,7 +22111,7 @@
             ]
           }
         },
-        "version-semver": "1.10.5"
+        "version-semver": "1.11.0"
       },
       "files": [
         "disable_werror.patch",
@@ -26611,7 +26649,6 @@
       "name": "enet",
       "manifest": {
         "name": "enet",
-        "port-version": 2,
         "description": "Reliable UDP networking library",
         "homepage": "https://github.com/lsalzman/enet",
         "dependencies": [
@@ -26624,10 +26661,10 @@
             "host": true
           }
         ],
-        "version": "1.3.17"
+        "version": "1.3.18"
       },
       "files": [
-        "CMakeLists.txt",
+        "fix-export.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27097,7 +27134,7 @@
             "host": true
           }
         ],
-        "version": "1.5.7"
+        "version": "1.5.11"
       },
       "files": [
         "portfile.cmake",
@@ -27465,7 +27502,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -27653,7 +27690,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28717,7 +28754,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "fix-build.patch",
@@ -29389,7 +29426,7 @@
             ]
           }
         },
-        "version": "2.3.7"
+        "version": "2.4.0"
       },
       "files": [
         "gentables.patch",
@@ -29636,7 +29673,7 @@
             ]
           }
         },
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -36533,7 +36570,6 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -36623,7 +36659,7 @@
             ]
           }
         },
-        "version": "4.14.0"
+        "version": "4.16.3"
       },
       "files": [
         "0001-build.patch",
@@ -45388,9 +45424,13 @@
           {
             "name": "libcap",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
           }
         ],
-        "version": "2.70"
+        "version": "2.71"
       },
       "files": [
         "configure",
@@ -62034,7 +62074,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "portfile.cmake",
@@ -62045,7 +62085,7 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
@@ -62063,11 +62103,17 @@
           }
         ],
         "features": {
+          "obsolete": {
+            "description": "Keep obsolete functions."
+          },
           "opengl": {
             "description": "Use OpenGL render system.",
             "dependencies": [
               "opengl"
             ]
+          },
+          "plugins": {
+            "description": "Build MyGUI plugins."
           },
           "tools": {
             "description": "Install MyGUI tools."
@@ -65296,7 +65342,7 @@
             "description": "Enable event monitoring"
           }
         },
-        "version": "1.3.12"
+        "version": "1.3.14"
       },
       "files": [
         "portfile.cmake",
@@ -70771,7 +70817,7 @@
             "host": true
           }
         ],
-        "version": "1.2.5"
+        "version": "1.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -72535,7 +72581,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -79449,6 +79495,31 @@
       ]
     },
     {
+      "name": "rlottie",
+      "manifest": {
+        "name": "rlottie",
+        "description": "A platform independent standalone library that plays Lottie Animation.",
+        "homepage": "https://github.com/Samsung/rlottie",
+        "dependencies": [
+          "rapidjson",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2024-08-26"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json",
+        "vcpkg.patch"
+      ]
+    },
+    {
       "name": "rmlui",
       "manifest": {
         "name": "rmlui",
@@ -82512,7 +82583,7 @@
       "name": "sese",
       "manifest": {
         "name": "sese",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A cross-platform framework for basic components.",
         "homepage": "https://github.com/libsese/sese",
         "license": "Apache-2.0",
@@ -82647,17 +82718,11 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
+        "port-version": 1,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/SFML/SFML",
         "license": "Zlib",
         "dependencies": [
-          "freetype",
-          "libflac",
-          "libogg",
-          "libvorbis",
-          "openal-soft",
-          "opengl",
-          "stb",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -82667,6 +82732,49 @@
             "host": true
           }
         ],
+        "default-features": [
+          "audio",
+          "graphics",
+          "network",
+          "window"
+        ],
+        "features": {
+          "audio": {
+            "description": "Use sfml-audio library",
+            "dependencies": [
+              "libflac",
+              "libogg",
+              "libvorbis",
+              "openal-soft"
+            ]
+          },
+          "graphics": {
+            "description": "Use sfml-graphics library",
+            "dependencies": [
+              {
+                "name": "freetype",
+                "default-features": false
+              },
+              {
+                "name": "sfml",
+                "default-features": false,
+                "features": [
+                  "window"
+                ]
+              },
+              "stb"
+            ]
+          },
+          "network": {
+            "description": "Use sfml-network library"
+          },
+          "window": {
+            "description": "Use sfml-window library",
+            "dependencies": [
+              "opengl"
+            ]
+          }
+        },
         "version": "2.6.1"
       },
       "files": [
@@ -85245,7 +85353,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -91084,9 +91192,10 @@
             ]
           }
         },
-        "version": "1.2.9.0"
+        "version": "1.2.10.1"
       },
       "files": [
+        "fix-install.patch",
         "fix-tool-build.patch",
         "fix_miss_file.patch",
         "portfile.cmake",
@@ -92279,7 +92388,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.21.00"
+        "version-string": "2024.10.28.00"
       },
       "files": [
         "fix-config-cmake.patch",
