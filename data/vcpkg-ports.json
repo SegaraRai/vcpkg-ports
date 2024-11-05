@@ -1,5 +1,5 @@
 {
-  "version": "4f746bc66438fce2b900c3ba6094a483b871b045",
+  "version": "2a3138723698306f4261632c92dc782f586167e3",
   "ports": [
     {
       "name": "3fd",
@@ -8472,6 +8472,7 @@
       "name": "boost-build",
       "manifest": {
         "name": "boost-build",
+        "port-version": 1,
         "description": "Boost.Build",
         "homepage": "https://github.com/boostorg/build",
         "license": "BSL-1.0",
@@ -17820,7 +17821,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.34.1"
+        "version-semver": "1.34.2"
       },
       "files": [
         "avoid-docs.patch",
@@ -24666,7 +24667,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2024-09-04"
+        "version-date": "2024-10-28"
       },
       "files": [
         "portfile.cmake",
@@ -24780,9 +24781,10 @@
             "supports": "windows & x64 & !uwp & !xbox"
           }
         },
-        "version-date": "2024-09-04"
+        "version-date": "2024-10-28"
       },
       "files": [
+        "FixStdByteAndCMake.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -24809,6 +24811,13 @@
           }
         ],
         "features": {
+          "gameinput": {
+            "description": "Build using GameInput API for input processing",
+            "dependencies": [
+              "gameinput"
+            ],
+            "supports": "windows & x64 & !uwp"
+          },
           "spectre": {
             "description": "Build Spectre-mitigated library"
           },
@@ -24829,7 +24838,7 @@
             ]
           }
         },
-        "version-date": "2024-09-04"
+        "version-date": "2024-10-28"
       },
       "files": [
         "portfile.cmake",
@@ -24874,6 +24883,13 @@
           "xaudio2-9"
         ],
         "features": {
+          "gameinput": {
+            "description": "Build using GameInput API for input processing",
+            "dependencies": [
+              "gameinput"
+            ],
+            "supports": "windows & x64 & !uwp"
+          },
           "spectre": {
             "description": "Build Spectre-mitigated library"
           },
@@ -24891,7 +24907,7 @@
             ]
           }
         },
-        "version-date": "2024-09-04"
+        "version-date": "2024-10-28"
       },
       "files": [
         "portfile.cmake",
@@ -27796,9 +27812,8 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 7,
         "description": [
-          "a library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
+          "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
         ],
         "homepage": "https://ffmpeg.org",
@@ -28509,7 +28524,7 @@
             ]
           }
         },
-        "version": "7.0.2"
+        "version": "7.1"
       },
       "files": [
         "0001-create-lib-libraries.patch",
@@ -28518,7 +28533,6 @@
         "0004-dependencies.patch",
         "0005-fix-nasm.patch",
         "0007-fix-lib-naming.patch",
-        "0012-Fix-ssl-110-detection.patch",
         "0013-define-WINVER.patch",
         "0020-fix-aarch64-libswscale.patch",
         "0024-fix-osx-host-c11.patch",
@@ -35202,6 +35216,7 @@
       "name": "gpgmm",
       "manifest": {
         "name": "gpgmm",
+        "port-version": 1,
         "description": "GPGMM is a General-Purpose GPU Memory Management library. It provides a common set of GPU memory routines optimized for GPUs. The library helps developers manage video memory by implementing the necessary functionality across components based on Vulkan or D3D12",
         "homepage": "https://github.com/intel/GPGMM/",
         "license": "Apache-2.0",
@@ -37480,7 +37495,6 @@
       "name": "halide",
       "manifest": {
         "name": "halide",
-        "port-version": 1,
         "description": "Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines.",
         "homepage": "https://github.com/halide/Halide",
         "license": "MIT",
@@ -37681,7 +37695,7 @@
             ]
           }
         },
-        "version": "17.0.1"
+        "version": "18.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -79984,6 +79998,7 @@
       "name": "rsm-bsa",
       "manifest": {
         "name": "rsm-bsa",
+        "port-version": 1,
         "description": "A C++ library for working with the Bethesda archive file format",
         "homepage": "https://github.com/Ryan-rsm-McKenzie/bsa",
         "documentation": "https://ryan-rsm-mckenzie.github.io/bsa/",
@@ -80016,6 +80031,7 @@
         "version-semver": "4.1.0"
       },
       "files": [
+        "DirectXTexUint8Byte.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90065,9 +90081,10 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2024-09-04"
+        "version-date": "2024-10-29"
       },
       "files": [
+        "FixCMake.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
