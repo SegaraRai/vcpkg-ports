@@ -1,5 +1,5 @@
 {
-  "version": "7fd612ee1c57192d49028ed6a922e5e8bdb257f3",
+  "version": "6046e48163a26252f7a8f4aa036cbdd9eb793c20",
   "ports": [
     {
       "name": "3fd",
@@ -1792,7 +1792,6 @@
       "name": "armadillo",
       "manifest": {
         "name": "armadillo",
-        "port-version": 2,
         "description": "Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use",
         "homepage": "https://arma.sourceforge.net/",
         "license": "Apache-2.0",
@@ -1808,7 +1807,7 @@
             "host": true
           }
         ],
-        "version": "12.8.4"
+        "version": "14.0.3"
       },
       "files": [
         "cmake-config.patch",
@@ -5908,7 +5907,7 @@
           },
           "zlib"
         ],
-        "version": "3.15.0"
+        "version": "3.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -23917,7 +23916,7 @@
             "host": true
           }
         ],
-        "version": "3.24.0"
+        "version": "3.29.2"
       },
       "files": [
         "portfile.cmake",
@@ -27654,9 +27653,10 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
+        "fix-annotation.patch",
         "fix-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -28716,7 +28716,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
         "fix-build.patch",
@@ -29635,7 +29635,7 @@
             ]
           }
         },
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -37816,7 +37816,7 @@
             ]
           }
         },
-        "version": "10.0.1"
+        "version": "10.1.0"
       },
       "files": [
         "fix-win32-build.patch",
@@ -39734,7 +39734,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.13"
+        "version": "0.10.15"
       },
       "files": [
         "arith_osx.h",
@@ -45262,7 +45262,7 @@
             "host": true
           }
         ],
-        "version": "1.28.1"
+        "version": "1.29.0"
       },
       "files": [
         "fix-include-directory.patch",
@@ -49250,7 +49250,7 @@
       "name": "libmodplug",
       "manifest": {
         "name": "libmodplug",
-        "port-version": 13,
+        "port-version": 14,
         "description": "The ModPlug mod file playing library.",
         "homepage": "https://github.com/Konstanty/libmodplug",
         "license": null,
@@ -60782,7 +60782,7 @@
             "host": true
           }
         ],
-        "version-string": "2023.03.07"
+        "version-string": "2024.07.03"
       },
       "files": [
         "CMakeLists.txt",
@@ -60864,7 +60864,7 @@
             ]
           }
         },
-        "version": "1.28.1"
+        "version": "1.29.0"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -61653,7 +61653,7 @@
             ]
           }
         },
-        "version": "6.1.1"
+        "version": "7.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -62077,7 +62077,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
         "portfile.cmake",
@@ -62359,7 +62359,7 @@
             "host": true
           }
         ],
-        "version": "1.6.1"
+        "version": "1.6.2"
       },
       "files": [
         "portfile.cmake",
@@ -72838,7 +72838,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -80026,7 +80026,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.3"
+        "version-semver": "1.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -81537,7 +81537,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -82376,6 +82376,77 @@
       ]
     },
     {
+      "name": "sdl3",
+      "manifest": {
+        "name": "sdl3",
+        "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
+        "homepage": "https://www.libsdl.org",
+        "license": "Zlib",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "dbus",
+            "default-features": false,
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "ibus",
+            "platform": "linux"
+          },
+          {
+            "name": "wayland",
+            "platform": "linux"
+          },
+          {
+            "name": "x11",
+            "platform": "linux"
+          }
+        ],
+        "features": {
+          "alsa": {
+            "description": "Support for alsa audio",
+            "dependencies": [
+              {
+                "name": "alsa",
+                "platform": "linux"
+              }
+            ]
+          },
+          "ibus": {
+            "description": "Build with ibus IME support",
+            "supports": "linux"
+          },
+          "vulkan": {
+            "description": "Vulkan functionality for SDL"
+          },
+          "wayland": {
+            "description": "Build with Wayland support",
+            "supports": "linux"
+          },
+          "x11": {
+            "description": "Build with X11 support",
+            "supports": "!windows"
+          }
+        },
+        "version": "3.1.6-preview"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "seacas",
       "manifest": {
         "name": "seacas",
@@ -82746,7 +82817,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.11"
+        "version": "0.7.12"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -88743,10 +88814,9 @@
           },
           "zlib"
         ],
-        "version": "1.4.0"
+        "version": "1.10.0"
       },
       "files": [
-        "libxml2.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92677,7 +92747,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.10.28.00"
+        "version-string": "2024.11.04.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -93169,7 +93239,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows | uwp",
-        "version": "6.3.0"
+        "version": "6.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -95211,7 +95281,6 @@
       "name": "zeroc-ice",
       "manifest": {
         "name": "zeroc-ice",
-        "port-version": 4,
         "maintainers": "Benjamin Oldenburg <benjamin.oldenburg@ordis.co.th>",
         "description": "Comprehensive RPC framework with support for C++, CSharp, Java, JavaScript, Python and more.",
         "homepage": "https://github.com/zeroc-ice/ice",
@@ -95359,11 +95428,10 @@
             "supports": "!(windows & static)"
           }
         },
-        "version": "3.7.9"
+        "version": "3.7.10"
       },
       "files": [
         "change_to_mt.ps1",
-        "fix-missing-functional.patch",
         "mcppd_fix.patch",
         "no-werror.patch",
         "portfile.cmake",
@@ -95689,7 +95757,7 @@
       "manifest": {
         "name": "zoe",
         "maintainers": "winsoft666 <winsoft666@outlook.com>",
-        "description": "C++ File Download Library, support Multithreading, Breakpoint Transmission, Speed Limit, Real-time Speed.",
+        "description": "C++ File Download Library.",
         "homepage": "https://github.com/winsoft666/zoe",
         "supports": "!osx & !uwp & !arm & !android",
         "dependencies": [
@@ -95706,7 +95774,7 @@
             "host": true
           }
         ],
-        "version": "3.2"
+        "version": "3.3"
       },
       "files": [
         "portfile.cmake",
