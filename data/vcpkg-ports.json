@@ -1,5 +1,5 @@
 {
-  "version": "813a241fb83adad503a391facaa6aa634631accc",
+  "version": "a54c4ba3aef5fe56cf11192f4476aaf057876551",
   "ports": [
     {
       "name": "3fd",
@@ -654,13 +654,16 @@
       "name": "aliyun-oss-cpp-sdk",
       "manifest": {
         "name": "aliyun-oss-cpp-sdk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Alibaba Cloud Object Storage Service (OSS) is a cloud storage service provided by Alibaba Cloud, featuring massive capacity, security, a low cost, and high reliability.",
         "homepage": "https://github.com/aliyun/aliyun-oss-cpp-sdk",
         "license": "Apache-2.0",
         "supports": "linux | osx | android",
         "dependencies": [
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -677,6 +680,7 @@
         "0001-dependency-and-targets.patch",
         "0002-unofficial-export.cmake",
         "0003-suppress-fmt-warning.patch",
+        "disable-werror.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -685,6 +689,7 @@
       "name": "allegro5",
       "manifest": {
         "name": "allegro5",
+        "port-version": 1,
         "description": "Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is not a game engine: you are free to design and structure your program as you like.",
         "homepage": "https://liballeg.org/",
         "license": "BSD-3-Clause AND Zlib",
@@ -746,7 +751,7 @@
             "supports": "!(arm & windows) & !uwp & !xbox"
           }
         },
-        "version": "5.2.9.2"
+        "version": "5.2.9.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -18140,6 +18145,7 @@
       "name": "capnproto",
       "manifest": {
         "name": "capnproto",
+        "port-version": 1,
         "description": "Data interchange format and capability-based RPC system",
         "homepage": "https://capnproto.org/",
         "license": "MIT",
@@ -18166,7 +18172,6 @@
         "version": "1.0.2"
       },
       "files": [
-        "disable-C-20-co-routines.patch",
         "portfile.cmake",
         "undef-KJ_USE_EPOLL-for-ANDROID_PLATFORM-23.patch",
         "vcpkg.json"
@@ -19807,7 +19812,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -22870,7 +22875,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23081,7 +23085,7 @@
             "supports": "!uwp"
           },
           "websockets": {
-            "description": "WebSocket support (experimental)"
+            "description": "WebSocket support"
           },
           "winidn": {
             "description": "WinIDN support",
@@ -23125,7 +23129,7 @@
             ]
           }
         },
-        "version": "8.10.1"
+        "version": "8.11.0"
       },
       "files": [
         "0005_remove_imp_suffix.patch",
@@ -23136,6 +23140,7 @@
         "dependencies.patch",
         "export-components.patch",
         "portfile.cmake",
+        "redact-input-vars.diff",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -23889,7 +23894,7 @@
             "host": true
           }
         ],
-        "version": "2.106.0"
+        "version": "2.114.1"
       },
       "files": [
         "portfile.cmake",
@@ -24276,6 +24281,20 @@
         "port-version": 1,
         "description": "Decimal data type support, for COBOL-like fixed-point operations on currency values.",
         "version": "1.18"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "delaunator-cpp",
+      "manifest": {
+        "name": "delaunator-cpp",
+        "description": "A really fast C++ library for Delaunay triangulation of 2D points",
+        "homepage": "https://github.com/abellgithub/delaunator-cpp",
+        "license": "MIT",
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -27494,7 +27513,6 @@
       "name": "fastlz",
       "manifest": {
         "name": "fastlz",
-        "port-version": 2,
         "description": "A lightning-fast lossless compression library",
         "homepage": "https://github.com/ariya/FastLZ",
         "dependencies": [
@@ -27503,7 +27521,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-05-10"
+        "version-date": "2024-08-02"
       },
       "files": [
         "CMakeLists.txt",
@@ -27758,6 +27776,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29201,7 +29220,7 @@
             "host": true
           }
         ],
-        "version": "4.0.2"
+        "version": "4.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -29411,11 +29430,10 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-25"
+        "version": "0.4.0"
       },
       "files": [
         "portfile.cmake",
-        "targets-fixup.patch",
         "vcpkg.json"
       ]
     },
@@ -31058,7 +31076,6 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31383,7 +31400,7 @@
             ]
           }
         },
-        "version-semver": "3.9.3"
+        "version-semver": "3.10.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33114,7 +33131,6 @@
       "name": "gmsh",
       "manifest": {
         "name": "gmsh",
-        "port-version": 1,
         "description": "Gmsh is an open source 3D finite element mesh generator with a built-in CAD engine and post-processor.",
         "homepage": "https://gmsh.info",
         "license": "LGPL-2.0-or-later",
@@ -33162,7 +33178,7 @@
             ]
           }
         },
-        "version": "4.12.2"
+        "version": "4.13.1"
       },
       "files": [
         "fix-install.patch",
@@ -34360,6 +34376,18 @@
               }
             ]
           },
+          "parallelstore": {
+            "description": "Cloud Parallel Store API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "policysimulator": {
             "description": "Policy Simulator API C++ Client Library",
             "dependencies": [
@@ -35025,7 +35053,7 @@
             ]
           }
         },
-        "version": "2.30.0"
+        "version": "2.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49044,7 +49072,7 @@
           },
           "zlib"
         ],
-        "version": "24.6"
+        "version": "24.11"
       },
       "files": [
         "dependencies.diff",
@@ -53550,7 +53578,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -56217,7 +56245,6 @@
       "name": "log4cxx",
       "manifest": {
         "name": "log4cxx",
-        "port-version": 1,
         "description": "Apache log4cxx is a logging framework for C++ patterned after Apache log4j, which uses Apache Portable Runtime for most platform-specific code and should be usable on any platform supported by APR",
         "homepage": "https://logging.apache.org/log4cxx",
         "license": "Apache-2.0",
@@ -56252,7 +56279,7 @@
             ]
           }
         },
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "fix-find-package.patch",
@@ -66874,6 +66901,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -66911,6 +66939,13 @@
               {
                 "name": "hdf5",
                 "platform": "!uwp & !(windows & (arm | arm64)) & !ios"
+              },
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "calib3d"
+                ]
               },
               {
                 "name": "tesseract",
@@ -68628,7 +68663,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -68642,10 +68677,6 @@
         "license": "Apache-2.0",
         "supports": "!uwp & !x86 & !(android & arm32)",
         "dependencies": [
-          {
-            "name": "pkgconf",
-            "host": true
-          },
           "pugixml",
           {
             "name": "tbb",
@@ -82377,9 +82408,10 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
-        "license": "Zlib",
+        "license": "Zlib AND MIT AND Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -82933,6 +82965,29 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "serf",
+      "manifest": {
+        "name": "serf",
+        "description": "The serf library is a high performance C-based HTTP client library built upon the Apache Portable Runtime (APR) library. It is permissively licensed under the Apache License, v2.",
+        "homepage": "https://serf.apache.org/",
+        "license": "Apache-2.0",
+        "supports": "!uwp & !staticcrt & !arm",
+        "dependencies": [
+          "apr",
+          "apr-util",
+          "openssl",
+          "zlib"
+        ],
+        "version": "1.3.10"
+      },
+      "files": [
+        "portfile.cmake",
+        "serf-fix-expat.patch",
+        "serf-use-debug-libs.patch",
         "vcpkg.json"
       ]
     },
@@ -85289,7 +85344,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.14.1"
+        "version-semver": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -86424,7 +86479,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -90468,7 +90523,7 @@
           "usockets",
           "zlib"
         ],
-        "version-semver": "20.67.0"
+        "version-semver": "20.70.0"
       },
       "files": [
         "portfile.cmake",
