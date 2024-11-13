@@ -1,5 +1,5 @@
 {
-  "version": "a54c4ba3aef5fe56cf11192f4476aaf057876551",
+  "version": "89f00b3b8611028566a5264afce725cdfdfddbb4",
   "ports": [
     {
       "name": "3fd",
@@ -21264,6 +21264,31 @@
       ]
     },
     {
+      "name": "cpp-kana",
+      "manifest": {
+        "name": "cpp-kana",
+        "description": "A lightweight library for converting Japanese kana to romaji and vice versa.",
+        "homepage": "https://github.com/wolfgitpr/cpp-kana",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cpp-netlib",
       "manifest": {
         "name": "cpp-netlib",
@@ -21307,6 +21332,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cpp-pinyin",
+      "manifest": {
+        "name": "cpp-pinyin",
+        "description": "A lightweight Chinese/Cantonese to Pinyin library.",
+        "homepage": "https://github.com/wolfgitpr/cpp-pinyin",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -22875,6 +22925,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -27533,7 +27584,6 @@
       "name": "fastor",
       "manifest": {
         "name": "fastor",
-        "port-version": 1,
         "description": "a high performance tensor library for modern C++",
         "homepage": "https://github.com/romeric/Fastor",
         "dependencies": [
@@ -27546,7 +27596,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-11-22"
+        "version": "0.6.4"
       },
       "files": [
         "portfile.cmake",
@@ -56771,6 +56821,36 @@
       ]
     },
     {
+      "name": "luau",
+      "manifest": {
+        "name": "luau",
+        "description": "A fast, small, safe, gradually typed embeddable scripting language derived from Lua",
+        "homepage": "https://github.com/luau-lang/luau",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tool": {
+            "description": "Builds luau executable"
+          }
+        },
+        "version": "0.651"
+      },
+      "files": [
+        "cmake-config-export.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "luminoengine",
       "manifest": {
         "name": "luminoengine",
@@ -61184,7 +61264,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.4.0"
       },
       "files": [
         "config.patch",
@@ -64742,7 +64822,6 @@
       "name": "ogre",
       "manifest": {
         "name": "ogre",
-        "port-version": 1,
         "description": "3D Object-Oriented Graphics Rendering Engine",
         "homepage": "https://github.com/OGRECave/ogre",
         "license": "MIT",
@@ -64855,7 +64934,7 @@
             ]
           }
         },
-        "version": "14.2.2"
+        "version": "14.3.1"
       },
       "files": [
         "cfg-rel-paths.patch",
@@ -66397,7 +66476,7 @@
             ]
           }
         },
-        "version": "4.9.0"
+        "version": "4.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -66409,7 +66488,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 21,
+        "port-version": 22,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -66538,6 +66617,7 @@
         "0007-fix-config.patch",
         "0019-fix-openexr.patch",
         "0020-missing-include.patch",
+        "0021-pkgconfig-suffix.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -66901,7 +66981,6 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -67408,7 +67487,7 @@
             "description": "Compile to a single package support for opencv"
           }
         },
-        "version": "4.9.0"
+        "version": "4.10.0"
       },
       "files": [
         "0001-disable-downloading.patch",
@@ -67424,12 +67503,12 @@
         "0011-remove-python2.patch",
         "0012-fix-zlib.patch",
         "0013-contrib-fix-ogre.patch",
-        "0014-fix-supportqnx.patch",
+        "0014-fix-cmake-in-list.patch",
         "0015-fix-freetype.patch",
         "0016-contrib-fix-freetype.patch",
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
-        "0019-fix-cmake-in-list.patch",
+        "0019-opencl-kernel.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -69452,6 +69531,7 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
+        "port-version": 1,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "http://otl.sourceforge.net/",
         "license": "ISC",
@@ -95206,7 +95286,7 @@
             "host": true
           }
         ],
-        "version": "1.5.2"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
