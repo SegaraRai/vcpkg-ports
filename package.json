@@ -24,7 +24,7 @@
     "validate:sync": "tsx scripts/bin/checkDataSync.mts",
     "sync:deps": "taze -w major && pnpm i && pnpm up",
     "sync:vcpkg": "cd .vcpkg && git checkout master && git pull --ff-only --depth=200 origin master && cd .. && pnpm run validate:manifests && pnpm run validate:portfiles && pnpm run generate:data",
-    "sync:vcpkg-full": "cd .vcpkg && git checkout master && git reset --hard && git pull --ff-only origin master && cd .. && pnpm run validate:manifests && pnpm run validate:portfiles && pnpm run generate:data --no-incremental",
+    "sync:vcpkg-full": "cd .vcpkg && git checkout master && git reset --hard && git pull --ff-only --unshallow origin master && cd .. && pnpm run validate:manifests && pnpm run validate:portfiles && pnpm run generate:data --no-incremental",
     "typecheck": "astro check && vue-tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
