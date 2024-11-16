@@ -1,5 +1,5 @@
 {
-  "version": "89f00b3b8611028566a5264afce725cdfdfddbb4",
+  "version": "b2cb0da531c2f1f740045bfe7c4dac59f0b2b69c",
   "ports": [
     {
       "name": "3fd",
@@ -1491,7 +1491,7 @@
       "name": "arcus",
       "manifest": {
         "name": "arcus",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This library contains C++ bindings for creating a socket in a thread and using this socket to send and receive messages based on the Protocol Buffers library.",
         "homepage": "https://github.com/Ultimaker/libArcus",
         "supports": "!uwp",
@@ -5556,7 +5556,6 @@
       "name": "azure-storage-common-cpp",
       "manifest": {
         "name": "azure-storage-common-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Common Storage SDK for C++",
           "This library provides common Azure Storage-related abstractions for Azure SDK."
@@ -5567,7 +5566,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.13.0"
+            "version>=": "1.14.1"
           },
           {
             "name": "libxml2",
@@ -5587,11 +5586,10 @@
             "host": true
           }
         ],
-        "version-semver": "12.8.0"
+        "version-semver": "12.9.0"
       },
       "files": [
         "portfile.cmake",
-        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -5689,7 +5687,6 @@
       "name": "azure-storage-files-shares-cpp",
       "manifest": {
         "name": "azure-storage-files-shares-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Files Shares SDK for C++",
           "This library provides Azure Storage Files Shares SDK."
@@ -5700,7 +5697,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.8.0"
+            "version>=": "12.9.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5711,11 +5708,10 @@
             "host": true
           }
         ],
-        "version-semver": "12.11.0"
+        "version-semver": "12.12.0"
       },
       "files": [
         "portfile.cmake",
-        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -6550,11 +6546,14 @@
       "name": "bitmagic",
       "manifest": {
         "name": "bitmagic",
+        "port-version": 1,
         "description": "Algorithms and tools for Algebra of Sets for information retrieval, indexing of databases, scientific algorithms, ranking, clustering, unsupervised machine learning and signal processing.",
         "homepage": "http://bitmagic.io",
+        "license": "Apache-2.0",
         "version": "7.13.4"
       },
       "files": [
+        "fix-clang.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17249,7 +17248,6 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
-        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -17279,10 +17277,10 @@
             ]
           }
         },
-        "version": "3.5.0"
+        "version": "3.6.1"
       },
       "files": [
-        "add-include-string.patch",
+        "0009-fix-regression-f2bf049-85491b3.patch",
         "configure",
         "configure-zlib.patch",
         "embed-debug-info.patch",
@@ -17488,14 +17486,12 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.11.0"
       },
       "files": [
         "fix-build.patch",
-        "fix-compilation-error.patch",
         "fix-warnings.patch",
         "portfile.cmake",
-        "protobuf.patch",
         "vcpkg.json"
       ]
     },
@@ -29601,6 +29597,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -30956,7 +30953,7 @@
         "name": "gaussianlib",
         "description": "Basic linear algebra C++ library for 2D and 3D applications",
         "homepage": "https://github.com/LukasBanana/GaussianLib",
-        "version-date": "2023-02-17"
+        "version-date": "2024-11-03"
       },
       "files": [
         "portfile.cmake",
@@ -35189,38 +35186,40 @@
       "name": "gperftools",
       "manifest": {
         "name": "gperftools",
-        "port-version": 2,
-        "description": "A set of tools for performance profiling and memory checking",
+        "description": "A high-performance multi-threaded malloc() implementation, plus some performance analysis tools.",
         "homepage": "https://github.com/gperftools/gperftools",
-        "supports": "!(arm & windows) & !uwp & !android",
+        "license": "BSD-3-Clause",
+        "supports": "((x86 | x64) & windows & !uwp) | !windows | mingw",
         "dependencies": [
           {
-            "name": "libunwind",
-            "platform": "linux"
-          },
-          {
             "name": "vcpkg-cmake",
-            "host": true,
-            "platform": "windows"
+            "host": true
           }
         ],
         "features": {
+          "libunwind": {
+            "description": "Support libunwind for stack traces",
+            "dependencies": [
+              "libunwind"
+            ]
+          },
           "override": {
-            "description": "Override allocators",
+            "description": "Override Windows allocators",
             "supports": "windows & staticcrt"
           },
           "tools": {
-            "description": "Build gperftools CLI tools",
-            "supports": "windows"
+            "description": "Install tools"
           }
         },
-        "version": "2.10"
+        "version": "2.16"
       },
       "files": [
-        "CMakeLists.txt",
+        "cmake-project-include.cmake",
+        "install.diff",
         "libunwind.diff",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "win32-override.diff"
       ]
     },
     {
@@ -35518,7 +35517,6 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
-        "port-version": 1,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -35542,7 +35540,7 @@
             "host": true
           },
           "re2",
-          "upb",
+          "utf8-range",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35559,18 +35557,19 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.60.0"
+        "version-semver": "1.65.5"
       },
       "files": [
         "00001-fix-uwp.patch",
         "00002-static-linking-in-linux.patch",
-        "00003-undef-base64-macro.patch",
         "00004-link-gdi32-on-windows.patch",
         "00005-fix-uwp-error.patch",
+        "00006-utf8-range.patch",
         "00009-use-system-upb.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
-        "00017-abseil.patch",
+        "00017-fix-NAN-on-Win11.patch",
+        "00018-fix-windows-event-engine.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -35671,7 +35670,7 @@
             "host": true
           }
         ],
-        "version": "0.41.0"
+        "version": "0.42.0"
       },
       "files": [
         "portfile.cmake",
@@ -38027,7 +38026,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 2,
+        "port-version": 3,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -38065,7 +38064,7 @@
           "szip": {
             "description": "Build with szip",
             "dependencies": [
-              "szip"
+              "libaec"
             ]
           },
           "threadsafe": {
@@ -38098,7 +38097,6 @@
         "hdf5_config.patch",
         "pkgconfig-requires.patch",
         "portfile.cmake",
-        "szip.patch",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json"
@@ -40769,6 +40767,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
+        "port-version": 1,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -40776,10 +40775,6 @@
           "double-conversion",
           "eigen3",
           "expat",
-          {
-            "name": "fftw3",
-            "default-features": false
-          },
           "gdcm",
           {
             "name": "hdf5",
@@ -40788,7 +40783,6 @@
               "cpp"
             ]
           },
-          "icu",
           "libjpeg-turbo",
           "libpng",
           "minc",
@@ -40808,6 +40802,7 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
+          "vxl",
           "zlib"
         ],
         "features": {
@@ -40828,6 +40823,17 @@
             "description": "Use CUDA FFTW",
             "dependencies": [
               "cuda"
+            ]
+          },
+          "fftw": {
+            "description": "Enable the FFTW backend",
+            "dependencies": [
+              {
+                "name": "fftw3",
+                "features": [
+                  "threads"
+                ]
+              }
             ]
           },
           "opencl": {
@@ -40851,11 +40857,17 @@
           "python": {
             "description": "Python functionality for ITK",
             "dependencies": [
-              "python3"
+              "python3",
+              {
+                "name": "vcpkg-tool-castxml",
+                "host": true
+              }
             ]
           },
           "rtk": {
-            "description": "Build RTK Module"
+            "description": "Build RTK Module",
+            "supports": "!x86",
+            "license": null
           },
           "tbb": {
             "description": "Build TBB Module",
@@ -40888,15 +40900,13 @@
         "version": "5.4.0"
       },
       "files": [
+        "dependencies.diff",
         "dont-build-gtest.patch",
-        "double-conversion.patch",
-        "opencl.patch",
+        "fftw.diff",
         "openjpeg.patch",
-        "openjpeg2.patch",
         "portfile.cmake",
-        "rtk/Add-missing-include-for-Cuda.patch",
-        "rtk/already_defined.patch",
-        "rtk/unresolved.patch",
+        "rtk/cmp0153.diff",
+        "rtk/getopt-win32.diff",
         "use-the-lrintf-intrinsic.patch",
         "var_libraries.patch",
         "vcpkg.json",
@@ -44879,6 +44889,32 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libaec",
+      "manifest": {
+        "name": "libaec",
+        "description": "Adaptive Entropy Coding library",
+        "homepage": "https://gitlab.dkrz.de/k202009/libaec",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.3"
+      },
+      "files": [
+        "cmake-config.patch",
+        "portfile.cmake",
+        "static-shared.patch",
         "vcpkg.json"
       ]
     },
@@ -49686,7 +49722,7 @@
             "host": true
           }
         ],
-        "version": "2024.10.0"
+        "version": "2024.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -50473,7 +50509,6 @@
       "name": "libpng",
       "manifest": {
         "name": "libpng",
-        "port-version": 3,
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
         "homepage": "https://github.com/glennrp/libpng",
         "license": "libpng-2.0",
@@ -50496,15 +50531,20 @@
         "features": {
           "apng": {
             "description": "This is backward compatible with the regular libpng, both in library usage and format"
+          },
+          "tools": {
+            "description": "Build the libpng tools",
+            "supports": "!android & !ios"
           }
         },
-        "version": "1.6.43"
+        "version": "1.6.44"
       },
       "files": [
         "cmake.patch",
-        "fix-export-targets.patch",
         "fix-msa-support-for-mips.patch",
+        "fix-tools-static.patch",
         "libm.patch",
+        "libpng-config.cmake",
         "pkgconfig.patch",
         "portfile.cmake",
         "usage",
@@ -51274,7 +51314,6 @@
       "name": "libressl",
       "manifest": {
         "name": "libressl",
-        "port-version": 2,
         "description": [
           "LibreSSL is a TLS/crypto stack.",
           "It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
@@ -51297,10 +51336,9 @@
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "3.9.2"
+        "version": "4.0.0"
       },
       "files": [
-        "0002-suppress-msvc-warnings.patch",
         "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -51395,15 +51433,13 @@
       "name": "librtpi",
       "manifest": {
         "name": "librtpi",
-        "port-version": 1,
         "description": "The Real-Time Priority Inheritance Library (librtpi) is intended to bridge the gap between the glibc pthread implementation and a functionally correct priority inheritance for pthread locking primitives, such as pthread_mutex and pthread_condvar.",
         "homepage": "https://gitlab.com/linux-rt/librtpi",
         "license": "LGPL-2.1-only",
         "supports": "linux",
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
-        "condition_variable-fix-wait_until-predicate-evaluation.patch",
         "portfile.cmake",
         "unofficial-librtpi-config.cmake",
         "vcpkg.json"
@@ -57132,9 +57168,8 @@
       "name": "lzokay",
       "manifest": {
         "name": "lzokay",
-        "port-version": 2,
         "description": "lzokay – MIT licensed C++ implementation of LZO compression/decompression algorithm",
-        "homepage": "https://github.com/jackoalan/lzokay",
+        "homepage": "https://github.com/AxioDL/lzokay",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -57145,7 +57180,7 @@
             "host": true
           }
         ],
-        "version-date": "2020-07-30"
+        "version-date": "2023-10-22"
       },
       "files": [
         "portfile.cmake",
@@ -59221,6 +59256,7 @@
       "name": "matio",
       "manifest": {
         "name": "matio",
+        "port-version": 1,
         "description": "MATLAB MAT File I/O Library",
         "homepage": "https://github.com/tbeu/matio",
         "license": "BSD-2-Clause",
@@ -59231,15 +59267,15 @@
           }
         ],
         "default-features": [
-          "hdf5",
+          "mat73",
           "zlib"
         ],
         "features": {
           "extended-sparse": {
             "description": "Enable extended sparse matrix data types not supported in MATLAB"
           },
-          "hdf5": {
-            "description": "Check for HDF5 library",
+          "mat73": {
+            "description": "Enable support for version 7.3 MAT files using the HDF5 library",
             "dependencies": [
               {
                 "name": "hdf5",
@@ -59250,18 +59286,6 @@
                 "default-features": false,
                 "features": [
                   "zlib"
-                ]
-              }
-            ]
-          },
-          "mat73": {
-            "description": "Enable support for version 7.3 MAT files",
-            "dependencies": [
-              {
-                "name": "matio",
-                "default-features": false,
-                "features": [
-                  "hdf5"
                 ]
               }
             ]
@@ -61249,8 +61273,9 @@
       "name": "mp-units",
       "manifest": {
         "name": "mp-units",
-        "description": "mp-units - A Units Library for C++",
-        "homepage": "https://github.com/mpusz/units",
+        "port-version": 1,
+        "description": "The quantities and units library for C++",
+        "homepage": "https://mpusz.github.io/mp-units",
         "license": "MIT",
         "dependencies": [
           "fmt",
@@ -68727,11 +68752,10 @@
             ]
           }
         },
-        "version": "11.0.0"
+        "version": "12.0.0"
       },
       "files": [
         "fix_cmake.patch",
-        "fix_nanovdb.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -68742,7 +68766,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 2,
+        "port-version": 3,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -68898,6 +68922,7 @@
       "files": [
         "001-disable-tools.patch",
         "002-fix-onnx.patch",
+        "003-protobuf.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69531,11 +69556,10 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
-        "port-version": 1,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "http://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.476"
+        "version": "4.0.478"
       },
       "files": [
         "portfile.cmake",
@@ -72725,7 +72749,6 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 1,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -72753,7 +72776,7 @@
             ]
           }
         },
-        "version": "4.25.1"
+        "version": "5.26.1"
       },
       "files": [
         "fix-arm64-msvc.patch",
@@ -78493,7 +78516,7 @@
             "host": true
           }
         ],
-        "version": "7.4.0"
+        "version": "7.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -79232,7 +79255,6 @@
       "name": "realsense2",
       "manifest": {
         "name": "realsense2",
-        "port-version": 3,
         "description": "Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300).",
         "homepage": "https://github.com/IntelRealSense/librealsense",
         "license": "Apache-2.0",
@@ -79242,6 +79264,7 @@
             "name": "libusb",
             "platform": "!windows"
           },
+          "nlohmann-json",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -79262,10 +79285,11 @@
             "description": "Build Intel® RealSense™ tools"
           }
         },
-        "version": "2.54.2"
+        "version": "2.56.2"
       },
       "files": [
-        "fix-osx.patch",
+        "fix-android-prefix-path.patch",
+        "fix-nlohmann_json.patch",
         "fix_openni2.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -83210,7 +83234,6 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
-        "port-version": 1,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/SFML/SFML",
         "license": "Zlib",
@@ -83267,9 +83290,10 @@
             ]
           }
         },
-        "version": "2.6.1"
+        "version": "2.6.2"
       },
       "files": [
+        "fix-dep-openal.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "usage",
@@ -86184,6 +86208,7 @@
       "name": "srpc",
       "manifest": {
         "name": "srpc",
+        "port-version": 1,
         "description": "RPC based on Sogou C++ Workflow",
         "homepage": "https://github.com/sogou/srpc",
         "dependencies": [
@@ -86999,34 +87024,6 @@
       ]
     },
     {
-      "name": "szip",
-      "manifest": {
-        "name": "szip",
-        "port-version": 12,
-        "description": "Szip compression software, providing lossless compression of scientific data",
-        "homepage": "https://support.hdfgroup.org/ftp/lib-external/szip",
-        "license": null,
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.1.1"
-      },
-      "files": [
-        "fix-linkage-config.patch",
-        "mingw-lib-names.patch",
-        "portfile.cmake",
-        "szip.pc.in",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "tabulate",
       "manifest": {
         "name": "tabulate",
@@ -87571,7 +87568,6 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
-        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -87610,11 +87606,10 @@
             ]
           }
         },
-        "version": "5.4.1"
+        "version": "5.5.0"
       },
       "files": [
         "fix-link-include-path.patch",
-        "fix-share-build.patch",
         "fix_static_link_icu.patch",
         "portfile.cmake",
         "target-curl.diff",
@@ -87910,7 +87905,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.14.10"
+        "version": "0.15.3"
       },
       "files": [
         "portfile.cmake",
@@ -88873,7 +88868,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-05-02"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -89076,6 +89071,30 @@
         "fix-android-fileapi.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tomsolver",
+      "manifest": {
+        "name": "tomsolver",
+        "description": "Simplest, Well-tested, Non-linear equations solver library.",
+        "homepage": "https://github.com/tomwillow/tomsolver",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -90067,45 +90086,6 @@
       ]
     },
     {
-      "name": "upb",
-      "manifest": {
-        "name": "upb",
-        "port-version": 1,
-        "description": "μpb (often written 'upb') is a small protobuf implementation written in C.",
-        "homepage": "https://github.com/protocolbuffers/protobuf",
-        "license": "BSD-2-Clause",
-        "dependencies": [
-          "utf8-range",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "codegen": {
-            "description": "Build code generator machinery",
-            "dependencies": [
-              "abseil",
-              "protobuf"
-            ],
-            "supports": "!uwp"
-          }
-        },
-        "version": "4.25.1"
-      },
-      "files": [
-        "fix-NAN-on-Win11.patch",
-        "fix-cmake.patch",
-        "portfile.cmake",
-        "upb-config-vcpkg-tools.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "urdfdom",
       "manifest": {
         "name": "urdfdom",
@@ -90229,17 +90209,7 @@
         "license": null,
         "supports": "!x86 & !arm & !android",
         "dependencies": [
-          "boost-assign",
-          "boost-crc",
-          "boost-date-time",
-          "boost-filesystem",
-          "boost-format",
-          "boost-multi-index",
-          "boost-program-options",
-          "boost-regex",
-          "boost-system",
-          "boost-variant",
-          "boost-vmd",
+          "opensubdiv",
           "tbb",
           {
             "name": "vcpkg-cmake",
@@ -90251,10 +90221,66 @@
           },
           "zlib"
         ],
-        "version": "24.5"
+        "features": {
+          "materialx": {
+            "description": "Enable MaterialX support",
+            "dependencies": [
+              {
+                "name": "materialx",
+                "features": [
+                  "glsl-generator",
+                  "render"
+                ]
+              }
+            ]
+          },
+          "metal": {
+            "description": "Enable Metal based components",
+            "supports": "osx"
+          },
+          "openimageio": {
+            "description": "Build OpenImageIO plugin",
+            "dependencies": [
+              "openimageio"
+            ]
+          },
+          "vulkan": {
+            "description": "Enable Vulkan based components",
+            "dependencies": [
+              "opengl",
+              {
+                "name": "opensubdiv",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
+              },
+              "shaderc",
+              "spirv-reflect",
+              "vulkan",
+              "vulkan-memory-allocator"
+            ]
+          }
+        },
+        "version": "24.8"
       },
       "files": [
-        "fix_build-location.patch",
+        "001-fix_rename_find_package_to_find_dependency.patch",
+        "002-vcpkg_find_tbb.patch",
+        "003-vcpkg_find_opensubdiv.patch",
+        "004-vcpkg_find_openimageio.patch",
+        "005-vcpkg_find_shaderc.patch",
+        "006-vcpkg_find_spirv-reflect.patch",
+        "007-vcpkg_find_vma.patch",
+        "008-fix_cmake_package.patch",
+        "009-fix_cmake_hgi_interop.patch",
+        "010-fix_missing_find_dependency_vulkan.patch",
+        "011-fix_clang8_compiler_error.patch",
+        "012-vcpkg_install_folder_conventions.patch",
+        "013-cmake_export_plugin_as_modules.patch",
+        "014-MaterialX_v1.38-39.patch",
+        "015-fix_missing_find_dependency_opengl.patch",
+        "016-TBB-2022.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90368,7 +90394,7 @@
             "host": true
           }
         ],
-        "version": "4.25.1"
+        "version": "5.26.1"
       },
       "files": [
         "fix-cmake.patch",
@@ -91080,6 +91106,21 @@
       ]
     },
     {
+      "name": "vcpkg-tool-castxml",
+      "manifest": {
+        "name": "vcpkg-tool-castxml",
+        "description": "CastXML is a C-family abstract syntax tree XML output tool.",
+        "homepage": "https://github.com/CastXML/CastXML",
+        "license": "Apache-2.0",
+        "supports": "native",
+        "version": "0.6.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "vcpkg-tool-gn",
       "manifest": {
         "name": "vcpkg-tool-gn",
@@ -91268,7 +91309,7 @@
             "host": true
           }
         ],
-        "version": "1.2"
+        "version": "1.4"
       },
       "files": [
         "portfile.cmake",
@@ -91684,7 +91725,7 @@
             ]
           }
         },
-        "version": "1.2.10.1"
+        "version": "1.2.10.2"
       },
       "files": [
         "fix-install.patch",
@@ -95892,7 +95933,7 @@
         "maintainers": "winsoft666 <winsoft666@outlook.com>",
         "description": "C++ File Download Library.",
         "homepage": "https://github.com/winsoft666/zoe",
-        "supports": "!osx & !uwp & !arm & !android",
+        "supports": "!uwp & !android",
         "dependencies": [
           {
             "name": "curl",
@@ -95907,7 +95948,7 @@
             "host": true
           }
         ],
-        "version": "3.3"
+        "version": "3.5"
       },
       "files": [
         "portfile.cmake",
