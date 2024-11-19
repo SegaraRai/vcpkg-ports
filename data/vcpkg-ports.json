@@ -1,5 +1,5 @@
 {
-  "version": "435a9415ca61939ee0382f703009c440a8eae273",
+  "version": "84a143e4caf6b70db57f28d04c41df4a85c480fa",
   "ports": [
     {
       "name": "3fd",
@@ -25622,7 +25622,7 @@
             ]
           }
         },
-        "version-semver": "1.9.7"
+        "version-semver": "1.9.8"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -53763,6 +53763,7 @@
       "name": "libwebm",
       "manifest": {
         "name": "libwebm",
+        "port-version": 1,
         "description": "WebM File Parser",
         "homepage": "https://github.com/webmproject/libwebm",
         "license": "BSD-3-Clause",
@@ -53780,6 +53781,7 @@
       },
       "files": [
         "Fix-cmake.patch",
+        "fix-export-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -89287,7 +89289,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.21"
+        "version-semver": "1.5.22"
       },
       "files": [
         "000-fix-deps.patch",
@@ -91970,6 +91972,43 @@
       "files": [
         "portfile.cmake",
         "require-features.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vst3sdk",
+      "manifest": {
+        "name": "vst3sdk",
+        "description": "Virtual Studio Technology (VST) is an audio plug-in software interface that facilitates the integration of software synthesizers and effects in digital audio workstations (DAW)",
+        "homepage": "https://steinbergmedia.github.io/vst3_dev_portal/pages/Technical+Documentation/API+Documentation/Index.html",
+        "license": "GPL-3.0-only",
+        "supports": "!android & !uwp & !(arm64 & windows) & !staticcrt",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "audiounit-wrapper": {
+            "description": "Include AudioUnit wrappers for macOS",
+            "supports": "osx"
+          },
+          "hosting-examples": {
+            "description": "Build examples for VST3 host applications"
+          },
+          "plugin-examples": {
+            "description": "Build examples for VST3 plugins"
+          }
+        },
+        "version-string": "v3.7.12_build_20"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
