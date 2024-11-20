@@ -1,5 +1,5 @@
 {
-  "version": "84a143e4caf6b70db57f28d04c41df4a85c480fa",
+  "version": "0857a4b08c14030bbe41e80accb2b1fddb047a74",
   "ports": [
     {
       "name": "3fd",
@@ -823,12 +823,11 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
-        "port-version": 2,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "1.2.11"
+        "version": "1.2.13"
       },
       "files": [
         "fix-plugin-dir.patch",
@@ -19204,11 +19203,11 @@
       "name": "chartdir",
       "manifest": {
         "name": "chartdir",
-        "port-version": 7,
+        "port-version": 8,
         "description": "ChartDirector is a powerful chart component for creating professional looking charts for web and windows applications.",
         "homepage": "https://www.advsofteng.com/",
         "license": null,
-        "supports": "!(arm & windows) & !uwp",
+        "supports": "(windows & !uwp & (x86 | x64)) | osx | linux",
         "version": "7.0.0"
       },
       "files": [
@@ -21988,7 +21987,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -27125,7 +27124,7 @@
             "host": true
           }
         ],
-        "version": "2.6.3"
+        "version": "2.6.4"
       },
       "files": [
         "portfile.cmake",
@@ -27744,7 +27743,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "fix-annotation.patch",
@@ -28808,7 +28807,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "fix-build.patch",
@@ -29626,7 +29625,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29727,7 +29725,7 @@
             ]
           }
         },
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -30099,8 +30097,9 @@
       "name": "freeopcua",
       "manifest": {
         "name": "freeopcua",
-        "port-version": 7,
+        "port-version": 8,
         "description": "OPC-UA server and client library written in C++ and with a lot of code auto-generated from xml specification using python.",
+        "supports": "!android",
         "dependencies": [
           "boost-asio",
           "boost-date-time",
@@ -30123,11 +30122,9 @@
         "version": "20190125"
       },
       "files": [
-        "boost-1.70.patch",
+        "boost-compatibility.patch",
         "cmakelists_fixes.patch",
         "fix-std-headers.patch",
-        "improve_compatibility_with_recent_boost.patch",
-        "include_asio_first.patch",
         "portfile.cmake",
         "serverObj.patch",
         "uri_facade_win.patch",
@@ -31152,6 +31149,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31484,6 +31482,7 @@
         "fix-gdal-target-interfaces.patch",
         "libkml.patch",
         "portfile.cmake",
+        "remove-machine-flag.patch",
         "target-is-valid.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -39807,6 +39806,7 @@
       "name": "igraph",
       "manifest": {
         "name": "igraph",
+        "port-version": 1,
         "description": "igraph is a C library for network analysis and graph theory, with an emphasis on efficiency portability and ease of use.",
         "homepage": "https://igraph.org/",
         "license": "GPL-2.0-or-later",
@@ -39843,6 +39843,7 @@
         "arith_osx.h",
         "arith_win32.h",
         "arith_win64.h",
+        "constant-nan.patch",
         "glpk-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -42022,7 +42023,7 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -42033,9 +42034,13 @@
       "name": "kddockwidgets",
       "manifest": {
         "name": "kddockwidgets",
+        "port-version": 1,
         "description": "KDAB's Dock Widget Framework for Qt",
         "homepage": "https://www.kdab.com/development-resources/qt-tools/kddockwidgets/",
+        "license": "GPL-2.0-only OR GPL-3.0-only",
         "dependencies": [
+          "kdbindings",
+          "nlohmann-json",
           {
             "name": "qtbase",
             "default-features": false,
@@ -42055,6 +42060,7 @@
         "version": "2.1.0"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47305,6 +47311,7 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
+        "port-version": 1,
         "description": "A C library implementing the Git core methods with a solid API",
         "homepage": "https://github.com/libgit2/libgit2",
         "license": null,
@@ -47404,6 +47411,7 @@
         "c-standard.diff",
         "cli-include-dirs.diff",
         "dependencies.diff",
+        "fix-arm64-windows.patch",
         "mingw-winhttp.diff",
         "portfile.cmake",
         "unofficial-config-export.diff",
@@ -49751,7 +49759,7 @@
             "host": true
           }
         ],
-        "version": "2024.11.0"
+        "version": "2024.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -51343,6 +51351,7 @@
       "name": "libressl",
       "manifest": {
         "name": "libressl",
+        "port-version": 1,
         "description": [
           "LibreSSL is a TLS/crypto stack.",
           "It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
@@ -51478,7 +51487,7 @@
       "name": "librttopo",
       "manifest": {
         "name": "librttopo",
-        "port-version": 8,
+        "port-version": 9,
         "description": "The RT Topology Library exposes an API to create and manage standard (ISO 13249 aka SQL/MM) topologies using user-provided data stores.",
         "homepage": "https://git.osgeo.org/gitea/rttopo/librttopo",
         "license": "GPL-2.0-or-later",
@@ -51488,6 +51497,7 @@
         "version": "1.1.0"
       },
       "files": [
+        "constant-nan.patch",
         "fix-makefiles.patch",
         "fix-pc-file.patch",
         "geos-config.patch",
@@ -57248,7 +57258,6 @@
       "name": "magic-enum",
       "manifest": {
         "name": "magic-enum",
-        "port-version": 1,
         "description": "Header-only C++17 library provides static reflection for enums, work with any enum type without any macro or boilerplate code.",
         "homepage": "https://github.com/Neargye/magic_enum",
         "license": "MIT",
@@ -57262,7 +57271,7 @@
             "host": true
           }
         ],
-        "version": "0.9.6"
+        "version": "0.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -58519,10 +58528,9 @@
             "host": true
           }
         ],
-        "version": "0.23.0"
+        "version": "0.24.0"
       },
       "files": [
-        "fix-library-type-and-remove-boost-test-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62238,7 +62246,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "portfile.cmake",
@@ -65516,7 +65524,7 @@
       "manifest": {
         "name": "open62541pp",
         "description": "C++ wrapper of the open62541 OPC UA library",
-        "homepage": "https://open62541pp.github.io/open62541pp/",
+        "homepage": "https://open62541pp.github.io",
         "license": "MPL-2.0",
         "dependencies": [
           "open62541",
@@ -65529,7 +65537,7 @@
             "host": true
           }
         ],
-        "version": "0.15.0"
+        "version": "0.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -73001,7 +73009,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -78866,7 +78874,7 @@
             "host": true
           }
         ],
-        "version": "3.0.5"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -78986,7 +78994,6 @@
       "name": "raylib",
       "manifest": {
         "name": "raylib",
-        "port-version": 2,
         "description": "A simple and easy-to-use library to enjoy videogames programming",
         "homepage": "https://github.com/raysan5/raylib",
         "license": "Zlib",
@@ -79021,7 +79028,7 @@
             "description": "Build raylib with audio module"
           }
         },
-        "version": "5.0"
+        "version": "5.5"
       },
       "files": [
         "android.diff",
@@ -82543,7 +82550,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -82882,10 +82889,13 @@
       "name": "sentencepiece",
       "manifest": {
         "name": "sentencepiece",
+        "port-version": 1,
         "description": "SentencePiece is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training",
+        "homepage": "https://github.com/google/sentencepiece",
         "license": "Apache-2.0",
-        "supports": "static",
         "dependencies": [
+          "abseil",
+          "protobuf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -82894,7 +82904,11 @@
         "version": "0.2.0"
       },
       "files": [
+        "abseil.diff",
+        "cxxflags.diff",
+        "linkage.diff",
         "portfile.cmake",
+        "protobuf.diff",
         "vcpkg.json"
       ]
     },
@@ -82982,7 +82996,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.12"
+        "version": "0.7.13"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -85453,6 +85467,7 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
+        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -85482,6 +85497,7 @@
         "version-semver": "1.15.0"
       },
       "files": [
+        "fix-msvc-utf8.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -92989,7 +93005,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.04.00"
+        "version-string": "2024.11.11.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -93604,6 +93620,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
+        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-2.0-or-later",
