@@ -1,5 +1,5 @@
 {
-  "version": "0857a4b08c14030bbe41e80accb2b1fddb047a74",
+  "version": "834977918592e4f5d5ec5fe48ba338c608faf9f9",
   "ports": [
     {
       "name": "3fd",
@@ -17587,29 +17587,6 @@
       ]
     },
     {
-      "name": "buck-yeh-bux-mariadb-client",
-      "manifest": {
-        "name": "buck-yeh-bux-mariadb-client",
-        "description": "Loose-coupled throw-on-error C++20 wrapper classes and utilities over mysql/mariadb Connector/C API",
-        "homepage": "https://github.com/buck-yeh/bux-mariadb-client",
-        "license": "MIT",
-        "supports": "!(android | linux | osx | uwp)",
-        "dependencies": [
-          "buck-yeh-bux",
-          "libmariadb",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "1.0.4"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "buck-yeh-bux-sqlite",
       "manifest": {
         "name": "buck-yeh-bux-sqlite",
@@ -22674,6 +22651,20 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cthash",
+      "manifest": {
+        "name": "cthash",
+        "description": "constexpr implementation of SHA-2 and SHA-3 family of hashes",
+        "homepage": "https://github.com/hanickadot/cthash",
+        "license": "Apache-2.0",
+        "version-date": "2024-11-16"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50863,6 +50854,7 @@
       "name": "libprotobuf-mutator",
       "manifest": {
         "name": "libprotobuf-mutator",
+        "port-version": 1,
         "description": "Library for structured fuzzing with protobuffers.",
         "dependencies": [
           "liblzma",
@@ -50882,7 +50874,8 @@
       "files": [
         "portfile.cmake",
         "protobuf-cmake.patch",
-        "vcpkg.json"
+        "vcpkg.json",
+        "werror.patch"
       ]
     },
     {
@@ -59930,7 +59923,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.21"
+        "version": "0.22"
       },
       "files": [
         "portfile.cmake",
@@ -67787,7 +67780,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -67808,6 +67800,7 @@
           "fmt",
           "libjpeg-turbo",
           "libpng",
+          "opencolorio",
           "openexr",
           "robin-map",
           {
@@ -67918,12 +67911,10 @@
             ]
           }
         },
-        "version": "2.5.16.0"
+        "version": "3.0.0.3"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-dependency-libraw.patch",
-        "fix-openexr-dll.patch",
         "fix-openexr-target-missing.patch",
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
@@ -68805,7 +68796,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 3,
+        "port-version": 4,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -72815,11 +72806,12 @@
             ]
           }
         },
-        "version": "5.26.1"
+        "version": "5.28.3"
       },
       "files": [
         "fix-arm64-msvc.patch",
         "fix-default-proto-file-path.patch",
+        "fix-install-dirs.patch",
         "fix-static-build.patch",
         "fix-utf8-range.patch",
         "portfile.cmake",
@@ -87821,7 +87813,7 @@
       "name": "theia",
       "manifest": {
         "name": "theia",
-        "port-version": 11,
+        "port-version": 12,
         "description": "An open source library for multiview geometry and structure from motion",
         "homepage": "https://github.com/sweeneychris/TheiaSfM",
         "license": "BSD-3-Clause",
@@ -87862,6 +87854,7 @@
         "eigen-3.4.patch",
         "fix-external-dependencies.patch",
         "fix-external-dependencies2.patch",
+        "fix-last-openimageio.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
