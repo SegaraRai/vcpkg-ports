@@ -1,5 +1,5 @@
 {
-  "version": "834977918592e4f5d5ec5fe48ba338c608faf9f9",
+  "version": "199ea6e76a7091d7afdda4fde82a694a31632e90",
   "ports": [
     {
       "name": "3fd",
@@ -20585,7 +20585,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.0.0"
+        "version": "5.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -20640,7 +20640,7 @@
             "host": true
           }
         ],
-        "version-semver": "6.3.3"
+        "version-semver": "6.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -20760,7 +20760,7 @@
             ]
           }
         },
-        "version": "4.0.3"
+        "version": "4.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -27734,10 +27734,9 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
-        "fix-annotation.patch",
         "fix-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -28798,7 +28797,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
         "fix-build.patch",
@@ -29716,7 +29715,7 @@
             ]
           }
         },
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
         "disable-non-underscore-posix-names.patch",
@@ -32559,7 +32558,7 @@
             "host": true
           }
         ],
-        "version": "3.6.1"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -35753,6 +35752,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
+        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -38191,6 +38191,7 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
+        "port-version": 1,
         "description": "Hello ImGui: unleash your creativity in app development and prototyping",
         "homepage": "https://pthom.github.io/hello_imgui/",
         "license": "MIT",
@@ -38314,6 +38315,7 @@
         "fix-upw.patch",
         "portfile.cmake",
         "usage",
+        "use-new-imguiimagebutton.patch",
         "vcpkg.json"
       ]
     },
@@ -40130,7 +40132,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.0"
+        "version": "1.91.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -40143,7 +40145,7 @@
       "name": "imgui-node-editor",
       "manifest": {
         "name": "imgui-node-editor",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Node Editor built using Dear ImGui",
         "homepage": "https://github.com/thedmd/imgui-node-editor",
         "license": "MIT",
@@ -40164,6 +40166,7 @@
         "CMakeLists.txt",
         "fix-vec2-math-operators.patch",
         "portfile.cmake",
+        "remove-getkeyindex.patch",
         "vcpkg.json"
       ]
     },
@@ -40171,6 +40174,7 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
+        "port-version": 1,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
@@ -40191,6 +40195,8 @@
       },
       "files": [
         "0001-fix_find_package.patch",
+        "0002-clean-deprecated-api.patch",
+        "0003-use-explicit-id.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -49197,6 +49203,44 @@
       ]
     },
     {
+      "name": "libmem",
+      "manifest": {
+        "name": "libmem",
+        "description": "Advanced Game Hacking Library for C, Modern C++, Rust and Python (Windows/Linux/FreeBSD) (Process/Memory Hacking) (Hooking/Detouring) (Cross Platform) (x86/x64/ARM/ARM64) (DLL/SO Injection) (Internal/External) (Assembler/Disassembler)",
+        "homepage": "https://github.com/rdbo/libmem",
+        "license": "AGPL-3.0-only",
+        "supports": "!uwp & !xbox & !osx & !arm & !android & !ios",
+        "dependencies": [
+          "capstone",
+          "keystone",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-pkgconfig-get-modules",
+            "host": true
+          }
+        ],
+        "version": "5.0.2"
+      },
+      "files": [
+        "0001-CMakeLists.patch",
+        "libmem-config.cmake.in",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libmesh",
       "manifest": {
         "name": "libmesh",
@@ -49572,7 +49616,7 @@
             ]
           }
         },
-        "version": "1.24.10"
+        "version": "1.24.11"
       },
       "files": [
         "CMakeLists.txt",
@@ -51135,7 +51179,7 @@
             "host": true
           }
         ],
-        "version": "0.14.0"
+        "version": "0.15.0"
       },
       "files": [
         "fix-uwpwarning.patch",
@@ -53315,12 +53359,11 @@
       "name": "liburing",
       "manifest": {
         "name": "liburing",
-        "port-version": 1,
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR (GPL-2.0 WITH Linux-syscall-note))",
         "supports": "linux",
-        "version": "2.7"
+        "version": "2.8"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -55465,7 +55508,6 @@
       "name": "live555",
       "manifest": {
         "name": "live555",
-        "port-version": 1,
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
         "license": "GPL-3.0-or-later",
@@ -55481,7 +55523,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-10-24"
+        "version-date": "2024-10-31"
       },
       "files": [
         "CMakeLists.txt",
@@ -55725,7 +55767,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -55913,6 +55955,9 @@
             "dependencies": [
               "zstd"
             ]
+          },
+          "export-symbols": {
+            "description": "Export symbols for plugins."
           },
           "flang": {
             "description": "Include Fortran front end.",
@@ -60200,36 +60245,6 @@
       ]
     },
     {
-      "name": "milerius-sfml-imgui",
-      "manifest": {
-        "name": "milerius-sfml-imgui",
-        "port-version": 6,
-        "description": "imgui dll for sfml usage",
-        "homepage": "https://github.com/Milerius/imgui-sfml-shared",
-        "license": "MIT",
-        "dependencies": [
-          "imgui",
-          "sfml",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "1.1"
-      },
-      "files": [
-        "FixFindPackageIssue.patch",
-        "cpp11.patch",
-        "fix-imgui-dependency.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "mimalloc",
       "manifest": {
         "name": "mimalloc",
@@ -61105,7 +61120,7 @@
             ]
           }
         },
-        "version": "7.15"
+        "version": "7.16"
       },
       "files": [
         "CMakeLists.txt",
@@ -62239,7 +62254,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
         "portfile.cmake",
@@ -63501,10 +63516,9 @@
             ]
           }
         },
-        "version": "1.8.1"
+        "version": "1.9.0"
       },
       "files": [
-        "openssl_required.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -67038,6 +67052,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -67566,6 +67581,7 @@
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
         "0019-opencl-kernel.patch",
+        "0020-miss-openexr.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -67780,23 +67796,11 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
         "dependencies": [
-          "boost-algorithm",
-          "boost-asio",
-          "boost-config",
-          "boost-filesystem",
-          "boost-foreach",
-          "boost-random",
-          "boost-regex",
-          "boost-smart-ptr",
-          "boost-stacktrace",
-          "boost-static-assert",
-          "boost-system",
-          "boost-thread",
-          "boost-type-traits",
           "fmt",
           "libjpeg-turbo",
           "libpng",
@@ -73001,7 +73005,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -74181,7 +74185,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -74329,7 +74333,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -75874,7 +75878,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -75915,7 +75919,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -75929,6 +75933,7 @@
         "description": "Qt component for application lifecycle management",
         "homepage": "https://www.qt.io/",
         "license": null,
+        "supports": "!(windows & x86)",
         "dependencies": [
           "libarchive",
           "libyaml",
@@ -75939,19 +75944,23 @@
           },
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
           },
           {
             "name": "qtdeclarative",
             "default-features": false
           },
+          "qthttpserver",
           {
             "name": "qtwayland",
             "default-features": false,
             "platform": "!windows"
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -75964,7 +75973,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76527,7 +76535,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "GLIB2-static.patch",
@@ -76543,6 +76551,7 @@
         "env.patch",
         "fix-host-aliasing.patch",
         "fix-link-lib-discovery.patch",
+        "fix-missing-symbol.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -76550,7 +76559,6 @@
         "harfbuzz.patch",
         "installed_dir.patch",
         "portfile.cmake",
-        "qmake-arm64.patch",
         "qmake.debug.bat",
         "qt.conf.in",
         "qtpaths.debug.bat",
@@ -76595,7 +76603,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76618,7 +76626,7 @@
             ]
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76650,7 +76658,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76678,7 +76686,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76713,7 +76721,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76738,7 +76746,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76758,7 +76766,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76791,7 +76799,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76824,7 +76832,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76849,7 +76857,7 @@
             ]
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -76904,7 +76912,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -76952,7 +76960,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77064,7 +77072,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77103,7 +77111,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77135,7 +77143,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77158,7 +77166,7 @@
             ]
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77255,9 +77263,10 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
+        "ffmpeg-compile-def.patch",
         "fix_avfoundation_target.patch",
         "portfile.cmake",
         "remove-static-ssl-stub.patch",
@@ -77281,7 +77290,7 @@
             ]
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77363,7 +77372,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "fix-build.patch",
@@ -77401,7 +77410,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -77447,7 +77456,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77467,7 +77476,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77521,7 +77530,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77542,7 +77551,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77592,7 +77601,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77631,7 +77640,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77674,7 +77683,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77714,7 +77723,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77735,7 +77744,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77763,7 +77772,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77796,7 +77805,7 @@
             "default-features": false
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77819,7 +77828,7 @@
             ]
           }
         ],
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -77944,7 +77953,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -77981,7 +77990,7 @@
             "description": "Platform-dependent default features"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -78027,7 +78036,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -78063,7 +78072,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -78094,7 +78103,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -78257,9 +78266,10 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
+        "blink-include-fixes.patch",
         "clang-cl.patch",
         "fix-error2275-2672.patch",
         "portfile.cmake",
@@ -78293,7 +78303,7 @@
             ]
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -78332,7 +78342,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.7.3"
+        "version": "6.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -81814,7 +81824,7 @@
             ]
           }
         },
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -82988,7 +82998,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.13"
+        "version": "0.7.15"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -87607,6 +87617,7 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
+        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -92998,7 +93009,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.11.00"
+        "version-string": "2024.11.18.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -93580,6 +93591,31 @@
       "files": [
         "0001-unofficial-brotli.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wolf-midi",
+      "manifest": {
+        "name": "wolf-midi",
+        "description": "A lightweight MIDI file read-write library.",
+        "homepage": "https://github.com/wolfgitpr/wolf-midi",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
