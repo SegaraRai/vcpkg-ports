@@ -1,5 +1,5 @@
 {
-  "version": "852e42db9f6d9757f92f5b5eca3f3486d753f11f",
+  "version": "65d5e1300da19ef007978a8c347680cc3e19c44f",
   "ports": [
     {
       "name": "3fd",
@@ -20682,7 +20682,7 @@
       "name": "concurrencpp",
       "manifest": {
         "name": "concurrencpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "concurrencpp is a tasking library for C++ allowing developers to write highly concurrent applications easily and safely by using tasks, executors and coroutines.",
         "homepage": "https://github.com/David-Haim/concurrencpp/",
         "license": "MIT",
@@ -20699,6 +20699,7 @@
         "version": "0.1.7"
       },
       "files": [
+        "add-include-chrono.patch",
         "add-include-string.patch",
         "fix-include-path.patch",
         "portfile.cmake",
@@ -23935,7 +23936,7 @@
             "host": true
           }
         ],
-        "version": "1.4.3"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -39108,6 +39109,7 @@
       "name": "iceoryx",
       "manifest": {
         "name": "iceoryx",
+        "port-version": 1,
         "description": "True zero-copy inter-process-communication",
         "homepage": "https://iceoryx.io",
         "license": "Apache-2.0",
@@ -39145,6 +39147,7 @@
       },
       "files": [
         "acl.patch",
+        "add-include-chrono.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -59121,7 +59124,7 @@
       "name": "materialx",
       "manifest": {
         "name": "materialx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "MaterialX is an open standard for the exchange of rich material and look-development content across applications and renderers.",
         "homepage": "https://www.materialx.org/",
         "license": "Apache-2.0",
@@ -63961,7 +63964,7 @@
       "name": "nrf-ble-driver",
       "manifest": {
         "name": "nrf-ble-driver",
-        "port-version": 1,
+        "port-version": 2,
         "description": "BLE driver is a library for Bluetooth Low Energy communication using Nordic Semiconductor development kits.",
         "homepage": "https://github.com/NordicSemiconductor/pc-ble-driver",
         "license": "BSD-3-Clause",
@@ -63983,6 +63986,7 @@
       },
       "files": [
         "001-arm64-support.patch",
+        "add-include-chrono.patch",
         "gcc-11.2.0-compilation.patch",
         "portfile.cmake",
         "support-arm64-osx.diff",
@@ -64046,6 +64050,7 @@
       "name": "nsync",
       "manifest": {
         "name": "nsync",
+        "port-version": 1,
         "description": "nsync is a C library that exports various synchronization primitives, such as mutexes",
         "homepage": "https://github.com/google/nsync",
         "license": "Apache-2.0",
@@ -64062,6 +64067,7 @@
         "version": "1.29.2"
       },
       "files": [
+        "add-include-chrono.patch",
         "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -64907,6 +64913,7 @@
       "name": "ogdf",
       "manifest": {
         "name": "ogdf",
+        "port-version": 1,
         "description": "Open Graph Drawing Framework",
         "homepage": "https://github.com/ogdf/ogdf",
         "license": null,
@@ -64924,6 +64931,7 @@
         "version-date": "2022-06-30"
       },
       "files": [
+        "add-include-chrono.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65625,11 +65633,9 @@
             "supports": "linux"
           }
         },
-        "version": "1.24.0"
+        "version": "1.24.1"
       },
       "files": [
-        "187ed2df39ab1f5ea92b97d4d3e0894da87e297b.patch",
-        "96f62e37e9ae015ee104e568cb57ea0d8964a84b.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -68681,7 +68687,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2024-06-17"
+        "version-date": "2024-11-14"
       },
       "files": [
         "portfile.cmake",
@@ -74020,6 +74026,7 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
+        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -74105,7 +74112,10 @@
             "name": "qtmultimedia",
             "default-features": false,
             "features": [
-              "gstreamer"
+              {
+                "name": "gstreamer",
+                "platform": "linux"
+              }
             ],
             "platform": "!windows"
           },
@@ -76011,7 +76021,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77222,6 +77232,7 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
+        "port-version": 1,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77467,10 +77478,12 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
+        "port-version": 1,
         "description": "Qt Quick 3D provides a high-level API for creating 3D content and 3D user interfaces based on Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
+          "meshoptimizer",
           {
             "name": "qtbase",
             "default-features": false,
@@ -77504,6 +77517,7 @@
         "version": "6.8.0"
       },
       "files": [
+        "0001-devendor-meshoptimizer.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79521,6 +79535,39 @@
       ]
     },
     {
+      "name": "reflectcpp",
+      "manifest": {
+        "name": "reflectcpp",
+        "description": "A C++ library for serialization and deserialization using reflection.",
+        "homepage": "https://github.com/getml/reflect-cpp/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "ctre",
+            "version>=": "3.9.0"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "yyjson",
+            "version>=": "0.9.0"
+          }
+        ],
+        "version": "0.13.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "refprop-headers",
       "manifest": {
         "name": "refprop-headers",
@@ -79754,7 +79801,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-02-09"
+        "version-date": "2024-01-09"
       },
       "files": [
         "portfile.cmake",
