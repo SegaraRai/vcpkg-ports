@@ -1,5 +1,5 @@
 {
-  "version": "cd124b84feb0c02a24a2d90981e8358fdee0e077",
+  "version": "d746769f0debc8a2beb7fd87c9f709b348a3555e",
   "ports": [
     {
       "name": "3fd",
@@ -1147,6 +1147,7 @@
       "name": "antlr4",
       "manifest": {
         "name": "antlr4",
+        "port-version": 1,
         "description": "ANother Tool for Language Recognition",
         "homepage": "https://www.antlr.org",
         "license": "BSD-3-Clause",
@@ -1168,6 +1169,7 @@
         "version": "4.13.2"
       },
       "files": [
+        "add-include-chrono.patch",
         "portfile.cmake",
         "set-export-macro-define-as-private.patch",
         "vcpkg.json"
@@ -3005,6 +3007,7 @@
       "name": "avisynthplus",
       "manifest": {
         "name": "avisynthplus",
+        "port-version": 1,
         "description": "An improved version of the AviSynth frameserver, with improved features and developer friendliness",
         "homepage": "https://avs-plus.net/",
         "license": "GPL-2.0",
@@ -3018,6 +3021,7 @@
         "version": "3.7.3"
       },
       "files": [
+        "add-include-chrono.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17455,6 +17459,7 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
+        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/brpc",
         "license": "Apache-2.0",
@@ -25720,7 +25725,7 @@
       "name": "duilib",
       "manifest": {
         "name": "duilib",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Duilib is a free open source DirectUI interface library under Windows. It is widely accepted by major Internet companies due to its simple and easy to expand design and stable and efficient implementation. It is widely used in IM, video client, stock market software, navigation software, and mobile phone assistive software. Duilib is still evolving, and will continue to improve in many aspects such as documentation, examples, animations, and rendering engines.",
         "homepage": "https://github.com/duilib/duilib",
         "supports": "windows & !uwp",
@@ -31171,7 +31176,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -33190,7 +33195,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -33219,6 +33224,7 @@
         "cross-tools.patch",
         "msvc_symbol.patch",
         "portfile.cmake",
+        "remove_compiler_info.patch",
         "subdirs.patch",
         "usage",
         "vcpkg.json"
@@ -35607,7 +35613,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.68.0"
+        "version-semver": "1.68.1"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -39380,7 +39386,7 @@
       "name": "ignition-common1",
       "manifest": {
         "name": "ignition-common1",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Deprecated: Use ignition-common3. Common libraries for robotics applications",
         "license": null,
         "supports": "windows",
@@ -39415,6 +39421,7 @@
         "version": "1.1.1"
       },
       "files": [
+        "add-include-chrono.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42145,7 +42152,7 @@
             "host": true
           }
         ],
-        "version": "1.5.3"
+        "version": "1.6.0"
       },
       "files": [
         "no-kea-config-script.diff",
@@ -55810,7 +55817,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0",
@@ -56289,6 +56296,7 @@
         "75711.patch",
         "79694.patch",
         "82407.patch",
+        "add-include-chrono.patch",
         "clang_usage",
         "flang_usage",
         "lld_usage",
@@ -58992,6 +59000,7 @@
       "name": "marble",
       "manifest": {
         "name": "marble",
+        "port-version": 1,
         "description": "Marble KDE library",
         "homepage": "https://marble.kde.org",
         "license": "LGPL-2.1-or-later",
@@ -62359,7 +62368,6 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
-        "port-version": 2,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
@@ -62388,7 +62396,7 @@
             "supports": "static"
           }
         },
-        "version": "8.0.32"
+        "version": "9.1.0"
       },
       "files": [
         "dependencies.patch",
@@ -65211,7 +65219,7 @@
       "name": "ompl",
       "manifest": {
         "name": "ompl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms",
         "homepage": "https://ompl.kavrakilab.org/",
         "dependencies": [
@@ -65241,6 +65249,7 @@
         "0001_Export_targets.patch",
         "0002_Fix_config.patch",
         "0003_fix_dep.patch",
+        "0004_include_chrono.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65249,7 +65258,7 @@
       "name": "omplapp",
       "manifest": {
         "name": "omplapp",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Use OMPL for reading meshes and performing collision checking",
         "homepage": "https://ompl.kavrakilab.org/",
         "license": null,
@@ -65307,6 +65316,7 @@
         "version": "1.5.1"
       },
       "files": [
+        "add-include-chrono.patch",
         "fix_boost_static_link.patch",
         "fix_dependency.patch",
         "portfile.cmake",
@@ -68584,7 +68594,6 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -68672,10 +68681,9 @@
             "description": "Whether to include the Zipkin exporter in the SDK"
           }
         },
-        "version-semver": "1.17.0"
+        "version-semver": "1.18.0"
       },
       "files": [
-        "add-missing-find-dependency.patch",
         "cmake-quirks.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -68850,7 +68858,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 4,
+        "port-version": 5,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -69007,6 +69015,7 @@
         "001-disable-tools.patch",
         "002-fix-onnx.patch",
         "003-protobuf.patch",
+        "add-include-chrono.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69640,6 +69649,7 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
+        "port-version": 1,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "http://otl.sourceforge.net/",
         "license": "ISC",
@@ -72720,7 +72730,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.5.0"
+        "version": "9.5.1"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -72862,10 +72872,9 @@
             ]
           }
         },
-        "version": "5.28.3"
+        "version": "5.29.0"
       },
       "files": [
-        "fix-arm64-msvc.patch",
         "fix-default-proto-file-path.patch",
         "fix-install-dirs.patch",
         "fix-static-build.patch",
@@ -73012,7 +73021,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -73508,6 +73517,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
+        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -78688,7 +78698,7 @@
       "name": "qwtw",
       "manifest": {
         "name": "qwtw",
-        "port-version": 3,
+        "port-version": 4,
         "description": "qwt-based 2D plotting library",
         "homepage": "https://github.com/ig-or/qwtw",
         "supports": "windows & x64 & !static",
@@ -78709,15 +78719,12 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
         "version": "3.1.0"
       },
       "files": [
+        "add-include-chrono.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79355,6 +79362,7 @@
       "name": "realsense2",
       "manifest": {
         "name": "realsense2",
+        "port-version": 1,
         "description": "Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300).",
         "homepage": "https://github.com/IntelRealSense/librealsense",
         "license": "Apache-2.0",
@@ -79388,6 +79396,7 @@
         "version": "2.56.2"
       },
       "files": [
+        "add-include-chrono.patch",
         "fix-android-prefix-path.patch",
         "fix-nlohmann_json.patch",
         "fix_openni2.patch",
@@ -79830,7 +79839,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -83603,7 +83612,7 @@
       "name": "shiftmedia-libgnutls",
       "manifest": {
         "name": "shiftmedia-libgnutls",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
         "homepage": "https://github.com/ShiftMediaProject/gnutls",
         "license": "LGPL-2.1-only",
@@ -93071,7 +93080,7 @@
       "name": "wampcc",
       "manifest": {
         "name": "wampcc",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Wampcc is C++ library that implements the Web Application Messaging Protocol (WAMP) protocol.",
         "license": "MIT",
         "supports": "!(windows & arm64)",
@@ -93096,6 +93105,7 @@
         "version-date": "2019-09-04"
       },
       "files": [
+        "add-include-chrono.patch",
         "gcc-11.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -95059,7 +95069,7 @@
       "name": "xqilla",
       "manifest": {
         "name": "xqilla",
-        "port-version": 3,
+        "port-version": 4,
         "description": "XQuery and XPath 2 library",
         "homepage": "http://xqilla.sourceforge.net/HomePage",
         "license": "Apache-2.0",
@@ -96146,6 +96156,7 @@
       "name": "zlmediakit",
       "manifest": {
         "name": "zlmediakit",
+        "port-version": 1,
         "description": "A high-performance carrier-grade streaming media service framework based on C++11.",
         "homepage": "https://github.com/ZLMediaKit/ZLMediaKit",
         "license": "MIT",
@@ -96197,6 +96208,7 @@
         "version-date": "2024-09-29"
       },
       "files": [
+        "add-include-chrono.patch",
         "fix-android.patch",
         "fix-dependency.patch",
         "portfile.cmake",
