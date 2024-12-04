@@ -1,5 +1,5 @@
 {
-  "version": "d746769f0debc8a2beb7fd87c9f709b348a3555e",
+  "version": "a02df3dc73e133c6f020aa6ff2bc17e4907668fe",
   "ports": [
     {
       "name": "3fd",
@@ -2066,20 +2066,21 @@
             ]
           }
         },
-        "version": "18.0.0"
+        "version": "18.1.0"
       },
       "files": [
-        "android.patch",
-        "msvc-static-name.patch",
+        "0001-msvc-static-name.patch",
+        "0002-thrift.patch",
+        "0003-utf8proc.patch",
+        "0004-android-musl.patch",
+        "0005-android-datetime.patch",
         "portfile.cmake",
-        "thrift.patch",
         "usage",
         "usage-acero",
         "usage-dataset",
         "usage-flight",
         "usage-flightsql",
         "usage-parquet",
-        "utf8proc.patch",
         "vcpkg.json"
       ]
     },
@@ -24676,9 +24677,10 @@
             "host": true
           }
         ],
-        "version-date": "2024-10-15"
+        "version-date": "2024-12-02"
       },
       "files": [
+        "include-path-fix.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -26102,7 +26104,7 @@
       "name": "easyhook",
       "manifest": {
         "name": "easyhook",
-        "port-version": 8,
+        "port-version": 9,
         "description": "This project supports extending (hooking) unmanaged code (APIs) with pure managed ones, from within a fully managed environment on 32- or 64-bit Windows Vista x64, Windows Server 2008 x64, Windows 7, Windows 8.1, and Windows 10.",
         "homepage": "https://github.com/EasyHook/EasyHook",
         "supports": "windows & !static & !uwp & (x86 | x64)",
@@ -29506,7 +29508,7 @@
             ]
           }
         },
-        "version": "2.4.0"
+        "version": "2.4.1"
       },
       "files": [
         "gentables.patch",
@@ -72945,7 +72947,7 @@
             "host": true
           }
         ],
-        "version": "2.2.1"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
