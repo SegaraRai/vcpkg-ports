@@ -1,5 +1,5 @@
 {
-  "version": "a345bbdc68cdfda65603e24413b21afb28f110fb",
+  "version": "13c226fc46306fa6090db14317a7786099274a3a",
   "ports": [
     {
       "name": "3fd",
@@ -41,7 +41,6 @@
       "name": "7zip",
       "manifest": {
         "name": "7zip",
-        "port-version": 1,
         "description": "Library for archiving file with a high compression ratio.",
         "homepage": "https://www.7-zip.org",
         "license": "LGPL-2.1-or-later",
@@ -56,7 +55,7 @@
             "host": true
           }
         ],
-        "version-string": "24.08"
+        "version-string": "24.09"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -3490,7 +3489,7 @@
             "host": true
           }
         ],
-        "version": "0.28.3"
+        "version": "0.29.6"
       },
       "files": [
         "no-werror.patch",
@@ -4798,7 +4797,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.428"
+        "version": "1.11.460"
       },
       "files": [
         "find-dependency.patch",
@@ -25051,7 +25050,6 @@
       "name": "discordcoreapi",
       "manifest": {
         "name": "discordcoreapi",
-        "port-version": 1,
         "description": "A Discord bot library written in C++ using custom asynchronous coroutines.",
         "homepage": "https://discordcoreapi.com",
         "license": "MIT",
@@ -25070,7 +25068,7 @@
             "host": true
           }
         ],
-        "version": "2.0.7"
+        "version": "2.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -41723,7 +41721,6 @@
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
-        "port-version": 1,
         "description": "A few classes for parsing and serializing json - very rapidly.",
         "homepage": "https://github.com/realtimechris/jsonifier",
         "license": "MIT",
@@ -41734,7 +41731,7 @@
             "host": true
           }
         ],
-        "version": "0.9.97"
+        "version": "0.9.98"
       },
       "files": [
         "portfile.cmake",
@@ -71586,7 +71583,6 @@
       "name": "plibsys",
       "manifest": {
         "name": "plibsys",
-        "port-version": 7,
         "description": "Highly portable C system library: threads and synchronization, sockets, IPC, data structures and more.",
         "homepage": "https://github.com/saprykin/plibsys",
         "supports": "!uwp",
@@ -71594,15 +71590,17 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "0.0.4"
+        "version": "0.0.5"
       },
       "files": [
         "fix_configuration.patch",
         "portfile.cmake",
-        "usage",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -79583,10 +79581,66 @@
           },
           {
             "name": "yyjson",
-            "version>=": "0.9.0"
+            "version>=": "0.10.0"
           }
         ],
-        "version": "0.13.0"
+        "features": {
+          "bson": {
+            "description": "Support for the BSON format",
+            "dependencies": [
+              {
+                "name": "libbson",
+                "version>=": "1.25.1"
+              }
+            ]
+          },
+          "flexbuffers": {
+            "description": "Support for the flexbuffers format (part of flatbuffers)",
+            "dependencies": [
+              {
+                "name": "flatbuffers",
+                "version>=": "23.5.26#1"
+              }
+            ]
+          },
+          "msgpack": {
+            "description": "Support for the msgpack format",
+            "dependencies": [
+              {
+                "name": "msgpack-c",
+                "version>=": "6.0.0"
+              }
+            ]
+          },
+          "ubjson": {
+            "description": "Support for the UBJSON format",
+            "dependencies": [
+              {
+                "name": "jsoncons",
+                "version>=": "0.176.0"
+              }
+            ]
+          },
+          "xml": {
+            "description": "Support for the XML format",
+            "dependencies": [
+              {
+                "name": "pugixml",
+                "version>=": "1.14"
+              }
+            ]
+          },
+          "yaml": {
+            "description": "Support for the YAML format",
+            "dependencies": [
+              {
+                "name": "yaml-cpp",
+                "version>=": "0.8.0#1"
+              }
+            ]
+          }
+        },
+        "version": "0.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -90209,7 +90263,7 @@
             "host": true
           }
         ],
-        "version": "4.4.0"
+        "version": "4.5.0"
       },
       "files": [
         "portfile.cmake",
