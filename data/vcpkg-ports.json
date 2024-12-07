@@ -1,5 +1,5 @@
 {
-  "version": "13c226fc46306fa6090db14317a7786099274a3a",
+  "version": "20a72ce99b12dd0ebfea5d39f32681bd68b19d03",
   "ports": [
     {
       "name": "3fd",
@@ -252,7 +252,7 @@
             ]
           }
         },
-        "version": "8.0.1"
+        "version": "8.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -3056,6 +3056,7 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
+        "port-version": 2,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
@@ -3095,6 +3096,7 @@
       "files": [
         "fix-cmake.patch",
         "fix-fmt.patch",
+        "fix-std32_t.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -6752,10 +6754,9 @@
       "name": "blas",
       "manifest": {
         "name": "blas",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Metapackage for packages which provide BLAS",
         "license": null,
-        "supports": "!(android & arm32) & !(android & x64)",
         "dependencies": [
           {
             "name": "lapack-reference",
@@ -18101,7 +18102,7 @@
             "host": true
           }
         ],
-        "version": "4.0.1"
+        "version": "4.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -22177,7 +22178,7 @@
             ]
           }
         },
-        "version-semver": "1.11.0"
+        "version-semver": "1.11.1"
       },
       "files": [
         "disable_werror.patch",
@@ -27773,7 +27774,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28836,7 +28837,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
         "fix-build.patch",
@@ -29754,11 +29755,11 @@
             ]
           }
         },
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
-        "disable-non-underscore-posix-names.patch",
         "disable-uninitialized-resize-on-new-stl.patch",
+        "fix-absolute-dir.patch",
         "fix-deps.patch",
         "fix-libunwind.patch",
         "fix-unistd-include.patch",
@@ -35158,7 +35159,7 @@
             ]
           }
         },
-        "version": "2.31.0"
+        "version": "2.32.0"
       },
       "files": [
         "portfile.cmake",
@@ -46796,10 +46797,10 @@
       "name": "libfabric",
       "manifest": {
         "name": "libfabric",
-        "port-version": 2,
-        "description": "The OpenFabrics Interfaces Working Group (OFIWG) and the Libfabric open-source community are pleased to announce the release of version v1.6.2 of libfabric. See NEWS.md for the list of features and enhancements that have been added since the last release.",
-        "homepage": "https://github.com/ofiwg/libfabric",
-        "supports": "windows & !uwp & x64 & !static",
+        "description": "Libfabric, aka Open Fabrics Interfaces (OFI), defines a communication API for high-performance parallel and distributed applications.",
+        "homepage": "https://ofiwg.github.io/libfabric/",
+        "license": "BSD-2-Clause OR GPL-2.0-only",
+        "supports": "freebsd | linux | osx | (windows & x64 & !mingw & !uwp & !(static & staticcrt))",
         "dependencies": [
           {
             "name": "networkdirect-sdk",
@@ -46811,10 +46812,9 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "1.13.2"
+        "version-semver": "1.22.0"
       },
       "files": [
-        "add_additional_includes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46991,10 +46991,10 @@
       "name": "libfreenect2",
       "manifest": {
         "name": "libfreenect2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open source drivers for the Kinect for Windows v2 device",
         "homepage": "https://github.com/OpenKinect/libfreenect2",
-        "license": "GPL-2.0-only",
+        "license": "GPL-2.0-only OR Apache-2.0",
         "supports": "!xbox",
         "dependencies": [
           "libjpeg-turbo",
@@ -62310,7 +62310,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
         "portfile.cmake",
@@ -62372,6 +62372,7 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
+        "port-version": 1,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
@@ -65661,18 +65662,14 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
+        "port-version": 1,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/OpenMathLib/OpenBLAS",
         "license": "BSD-3-Clause",
-        "supports": "!arm | arm64 | !uwp",
         "dependencies": [
           {
             "name": "openblas",
             "host": true
-          },
-          {
-            "name": "pthread",
-            "platform": "!windows & !uwp"
           },
           {
             "name": "vcpkg-cmake",
@@ -65689,7 +65686,10 @@
             "supports": "!windows | mingw"
           },
           "simplethread": {
-            "description": "Use simple thread",
+            "description": [
+              "Use simple thread safety for level3 functions",
+              "Alternative to serialization of concurrent access to parallelized level3 functions."
+            ],
             "dependencies": [
               {
                 "name": "openblas",
@@ -65700,11 +65700,11 @@
             ]
           },
           "threads": {
-            "description": "Use a threading backend",
+            "description": "Enable multi-threading",
             "dependencies": [
               {
-                "name": "pthread",
-                "platform": "!windows & !uwp"
+                "name": "pthreads",
+                "platform": "!windows"
               }
             ]
           }
@@ -65712,13 +65712,15 @@
         "version": "0.3.28"
       },
       "files": [
-        "fix-redefinition-function.patch",
-        "gcc14.patch",
-        "install-tools.patch",
+        "arm32-asm-function.diff",
+        "cmake-project-include.cmake",
+        "disable-testing.diff",
+        "getarch.diff",
         "openblas_common.h",
         "portfile.cmake",
-        "uwp.patch",
-        "vcpkg.json"
+        "system-check-msvc.diff",
+        "vcpkg.json",
+        "win32-uwp.diff"
       ]
     },
     {
@@ -67861,7 +67863,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -67909,6 +67910,12 @@
             "description": "Enable giflib support for openimageio",
             "dependencies": [
               "giflib"
+            ]
+          },
+          "jpegxl": {
+            "description": "Enable JPEG XL codec",
+            "dependencies": [
+              "libjxl"
             ]
           },
           "libheif": {
@@ -67980,7 +67987,7 @@
             ]
           }
         },
-        "version": "3.0.0.3"
+        "version": "3.0.1.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -71315,7 +71322,7 @@
             "host": true
           }
         ],
-        "version": "1.2.6"
+        "version": "1.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -72887,7 +72894,7 @@
             ]
           }
         },
-        "version": "5.29.0"
+        "version": "5.29.1"
       },
       "files": [
         "fix-default-proto-file-path.patch",
@@ -73081,7 +73088,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -93219,7 +93226,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.11.18.00"
+        "version-string": "2024.12.02.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -93417,7 +93424,7 @@
         "description": "World Coordinate System (WCS) (Library)",
         "homepage": "https://www.atnf.csiro.au/people/mcalabre/WCS/",
         "supports": "!windows",
-        "version": "8.2.1"
+        "version": "8.4"
       },
       "files": [
         "portfile.cmake",
