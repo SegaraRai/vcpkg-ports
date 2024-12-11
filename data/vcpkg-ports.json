@@ -1,5 +1,5 @@
 {
-  "version": "96b5ced82828ecaf67e6010a892c98d3e96ed1c2",
+  "version": "b7601ed37e1e1ce11a4f61b4b94a23e39d465f1d",
   "ports": [
     {
       "name": "3fd",
@@ -35617,7 +35617,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.68.1"
+        "version-semver": "1.68.2"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -37566,7 +37566,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-05-24"
+        "version": "3.12.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -39889,7 +39889,8 @@
       "name": "iir1",
       "manifest": {
         "name": "iir1",
-        "description": "Realtime C++ filter library",
+        "port-version": 1,
+        "description": "An infinite impulse response (IIR) filter library for realtime processing. It implements Butterworth, RBJ, Chebychev filters.",
         "homepage": "https://github.com/berndporr/iir1",
         "license": "MIT",
         "supports": "!uwp",
@@ -61550,6 +61551,7 @@
       "name": "mpg123",
       "manifest": {
         "name": "mpg123",
+        "port-version": 1,
         "description": "mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1, 2 and 3 (MPEG 1.0 layer 3 also known as MP3).",
         "homepage": "https://sourceforge.net/projects/mpg123/",
         "license": "LGPL-2.1-or-later",
@@ -61575,7 +61577,9 @@
         "version": "1.32.9"
       },
       "files": [
+        "fix-dllexport.diff",
         "have-fpu.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
