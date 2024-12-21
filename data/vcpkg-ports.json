@@ -1,5 +1,5 @@
 {
-  "version": "6de717b75b8326f6d004984f14ae5bbbd86c928d",
+  "version": "4fcf123fe53c63db265b5841a5aeff06cec375a1",
   "ports": [
     {
       "name": "3fd",
@@ -1228,6 +1228,7 @@
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -1238,7 +1239,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.9.1"
+        "version-semver": "3.11.0"
       },
       "files": [
         "aom-rename-static.diff",
@@ -17587,11 +17588,11 @@
       "manifest": {
         "name": "bshoshany-thread-pool",
         "maintainers": "Barak Shoshany <baraksh@gmail.com>",
-        "description": "BS::thread_pool: a fast, lightweight, and easy-to-use C++17 thread pool library",
+        "description": "BS::thread_pool: a fast, lightweight, modern, and easy-to-use C++17 / C++20 / C++23 thread pool library",
         "homepage": "https://github.com/bshoshany/thread-pool",
         "documentation": "https://github.com/bshoshany/thread-pool/blob/master/README.md",
         "license": "MIT",
-        "version": "4.1.0"
+        "version": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -18322,31 +18323,6 @@
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "casadi",
-      "manifest": {
-        "name": "casadi",
-        "description": "CasADi is a symbolic framework for numeric optimization implementing automatic differentiation in forward and reverse modes on sparse matrix-valued computational graphs. It supports self-contained C-code generation and interfaces state-of-the-art codes such as SUNDIALS, IPOPT etc. It can be used from C++, Python or Matlab/Octave.",
-        "homepage": "http://casadi.org",
-        "license": "LGPL-3.0-only",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "3.6.7"
-      },
-      "files": [
-        "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -30768,7 +30744,6 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 1,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
         "dependencies": [
@@ -30785,7 +30760,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-06"
+        "version-date": "2024-12-14"
       },
       "files": [
         "fix-absolute.patch",
@@ -31065,7 +31040,6 @@
       "name": "gazebo",
       "manifest": {
         "name": "gazebo",
-        "port-version": 5,
         "description": "Open source robotics simulator.",
         "homepage": "http://gazebosim.org",
         "license": "Apache-2.0",
@@ -31100,6 +31074,7 @@
             "host": true
           },
           "protobuf",
+          "qt5",
           "qwt",
           "sdformat9",
           "tbb",
@@ -31187,11 +31162,10 @@
             ]
           }
         },
-        "version-date": "2022-01-20"
+        "version": "11.15.1"
       },
       "files": [
         "0001-Fix-deps.patch",
-        "fix-tbb.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33158,7 +33132,7 @@
             "supports": "!ios"
           }
         },
-        "version": "15.0.0"
+        "version": "15.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -41824,19 +41798,25 @@
       "name": "juce",
       "manifest": {
         "name": "juce",
+        "port-version": 1,
         "description": "Open-source cross-platform C++ application framework for desktop and mobile applications, including VST, VST3, AU, AUv3, AAX and LV2 audio plug-ins and plug-in hosts",
         "homepage": "https://juce.com",
         "license": null,
-        "supports": "!android & !uwp & !(windows & arm)",
+        "supports": "!uwp",
         "dependencies": [
           {
-            "name": "alsa",
-            "platform": "linux"
+            "name": "juce",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "juceaide"
+            ]
           },
           {
-            "name": "juce",
-            "host": true
+            "name": "oboe",
+            "platform": "android"
           },
+          "opengl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -41847,55 +41827,129 @@
           }
         ],
         "default-features": [
-          "curl",
-          "freetype",
-          "jack",
-          "opengl",
-          "xcursor",
-          "xinerama",
-          "xrandr",
-          "xrender"
+          {
+            "name": "alsa",
+            "platform": "linux"
+          },
+          {
+            "name": "curl",
+            "platform": "freebsd | linux | openbsd"
+          },
+          {
+            "name": "fontconfig",
+            "platform": "freebsd | linux | openbsd"
+          },
+          {
+            "name": "xcursor",
+            "platform": "linux"
+          },
+          {
+            "name": "xinerama",
+            "platform": "linux"
+          },
+          {
+            "name": "xrandr",
+            "platform": "linux"
+          },
+          {
+            "name": "xrender",
+            "platform": "linux"
+          }
         ],
         "features": {
-          "curl": {
-            "description": "Enable CURL support",
+          "alsa": {
+            "description": "Enable ALSA support",
             "dependencies": [
-              "curl"
+              "alsa"
             ]
           },
+          "curl": {
+            "description": "Use CURL for network support",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              }
+            ],
+            "supports": "freebsd | linux | openbsd"
+          },
           "extras": {
-            "description": "Enable JUCE Extras such as Projucer, AudioPluginHost, BinaryBuilder."
+            "description": "Enable JUCE extras such as Projucer, AudioPluginHost, BinaryBuilder.",
+            "dependencies": [
+              {
+                "name": "juce",
+                "default-features": false,
+                "features": [
+                  "freetype"
+                ]
+              },
+              {
+                "name": "juce",
+                "default-features": false,
+                "features": [
+                  "alsa"
+                ],
+                "platform": "linux"
+              },
+              {
+                "name": "juce",
+                "default-features": false,
+                "features": [
+                  "curl"
+                ],
+                "platform": "freebsd | linux | openbsd"
+              }
+            ]
+          },
+          "fontconfig": {
+            "description": "Enable Fontconfig support",
+            "dependencies": [
+              "fontconfig",
+              {
+                "name": "juce",
+                "default-features": false,
+                "features": [
+                  "freetype"
+                ]
+              }
+            ]
           },
           "freetype": {
             "description": "Enable FreeType support",
             "dependencies": [
-              {
-                "name": "fontconfig",
-                "platform": "linux"
-              },
               "freetype"
             ]
           },
           "jack": {
             "description": "Enable JACK audio support",
             "dependencies": [
-              {
-                "name": "jack2",
-                "platform": "linux"
-              }
+              "jack2"
             ]
+          },
+          "juceaide": {
+            "description": "Build the juceaide tool",
+            "dependencies": [
+              {
+                "name": "juce",
+                "default-features": false,
+                "features": [
+                  "freetype"
+                ]
+              }
+            ],
+            "supports": "native"
           },
           "ladspa": {
             "description": "Enable LADSPA plugin host support."
           },
-          "opengl": {
-            "description": "Enable OpenGL support",
-            "dependencies": [
-              "opengl"
-            ]
-          },
           "web-browser": {
-            "description": "Enable WebBrowser support"
+            "description": "Enable WebBrowser support",
+            "dependencies": [
+              {
+                "name": "webview2",
+                "platform": "windows"
+              }
+            ]
           },
           "xcursor": {
             "description": "Enable XCursor support"
@@ -41903,28 +41957,19 @@
           "xinerama": {
             "description": "Enable Xinerama support",
             "dependencies": [
-              {
-                "name": "libxinerama",
-                "platform": "linux"
-              }
+              "libxinerama"
             ]
           },
           "xrandr": {
             "description": "Enable XRandR support",
             "dependencies": [
-              {
-                "name": "libxrandr",
-                "platform": "linux"
-              }
+              "libxrandr"
             ]
           },
           "xrender": {
             "description": "Enable XRender support",
             "dependencies": [
-              {
-                "name": "libxrender",
-                "platform": "linux"
-              }
+              "libxrender"
             ]
           }
         },
@@ -41932,11 +41977,16 @@
       },
       "files": [
         "0001-build-allow-setting-JUCE_PLUGINHOST_LADSPA.patch",
-        "0002-build-linux-find_packages.patch",
-        "0003-build-forward-vcpkg-toolchain.patch",
         "0004-install-paths.patch",
+        "devendor-oboe.diff",
+        "gcc-has-builtin.diff",
+        "install-extras.diff",
+        "juceaide.diff",
+        "missing-modules.diff",
         "portfile.cmake",
+        "prefer-cmake.diff",
         "usage",
+        "vcpkg-compile-definitions.diff",
         "vcpkg.json"
       ]
     },
@@ -61352,20 +61402,7 @@
             "host": true
           }
         ],
-        "features": {
-          "boost": {
-            "description": [
-              "Enables the Boost C++17 polyfill for bsoncxx.",
-              "Warning: This feature changes the ABI."
-            ],
-            "dependencies": [
-              "boost-optional",
-              "boost-smart-ptr",
-              "boost-utility"
-            ]
-          }
-        },
-        "version": "3.11.0"
+        "version": "4.0.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -69508,6 +69545,31 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "orange-math",
+      "manifest": {
+        "name": "orange-math",
+        "description": "General purpose math library",
+        "homepage": "https://github.com/orange-cpp/omath",
+        "license": "MIT",
+        "supports": "windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -91855,7 +91917,6 @@
       "name": "vincentlaucsb-csv-parser",
       "manifest": {
         "name": "vincentlaucsb-csv-parser",
-        "port-version": 1,
         "description": "A modern C++ library for reading, writing, and analyzing CSV (and similar) files.",
         "homepage": "https://github.com/vincentlaucsb/csv-parser",
         "license": "MIT",
@@ -91873,7 +91934,7 @@
             "host": true
           }
         ],
-        "version": "2.2.3"
+        "version": "2.3.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -95346,7 +95407,6 @@
       "name": "xsimd",
       "manifest": {
         "name": "xsimd",
-        "port-version": 1,
         "description": "Modern, portable C++ wrappers for SIMD intrinsics",
         "homepage": "https://github.com/xtensor-stack/xsimd",
         "license": "BSD-3-Clause",
@@ -95368,7 +95428,7 @@
             ]
           }
         },
-        "version": "13.0.0"
+        "version": "13.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -95620,7 +95680,7 @@
             "host": true
           }
         ],
-        "version": "0.3.10"
+        "version": "0.3.11"
       },
       "files": [
         "portfile.cmake",
