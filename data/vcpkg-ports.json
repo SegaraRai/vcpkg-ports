@@ -1,5 +1,5 @@
 {
-  "version": "f06267da58f3c06b3a1aff9cbf5c2906e595ebc9",
+  "version": "80d54ff62d528339c626a6fbc3489a7f25956ade",
   "ports": [
     {
       "name": "3fd",
@@ -618,7 +618,7 @@
             ]
           }
         },
-        "version": "1.8.7"
+        "version": "1.8.8"
       },
       "files": [
         "portfile.cmake",
@@ -688,7 +688,6 @@
       "name": "allegro5",
       "manifest": {
         "name": "allegro5",
-        "port-version": 1,
         "description": "Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is not a game engine: you are free to design and structure your program as you like.",
         "homepage": "https://liballeg.org/",
         "license": "BSD-3-Clause AND Zlib",
@@ -750,7 +749,7 @@
             "supports": "!(arm & windows) & !uwp & !xbox"
           }
         },
-        "version": "5.2.9.1"
+        "version": "5.2.10.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -2879,7 +2878,6 @@
       "name": "aurora-au",
       "manifest": {
         "name": "aurora-au",
-        "port-version": 1,
         "description": "A C++14-compatible physical units library with no dependencies and a single-file delivery option. Emphasis on safety, accessibility, performance, and developer experience.",
         "homepage": "https://github.com/aurora-opensource/au",
         "documentation": "https://aurora-opensource.github.io/au/main/",
@@ -2895,10 +2893,10 @@
             "host": true
           }
         ],
-        "version-semver": "0.3.5"
+        "version-semver": "0.4.0"
       },
       "files": [
-        "disable-googletest.patch",
+        "fix-usage.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -4849,7 +4847,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.467"
+        "version": "1.11.471"
       },
       "files": [
         "find-dependency.patch",
@@ -6078,7 +6076,7 @@
             "host": true
           }
         ],
-        "version": "2.1.5"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -6585,7 +6583,7 @@
             "description": "Enables the support for extracting files matching regular expressions"
           }
         },
-        "version": "4.0.8"
+        "version": "4.0.9"
       },
       "files": [
         "fix_dependency.patch",
@@ -17647,17 +17645,19 @@
         "description": "Modern C++ wrapper classes and utilities of the original sqlite3 API",
         "homepage": "https://github.com/buck-yeh/bux-sqlite",
         "license": "MIT",
-        "supports": "!(arm | uwp | osx | linux)",
+        "supports": "!(android | linux | osx | uwp)",
         "dependencies": [
           "buck-yeh-bux",
-          "fmt",
-          "sqlite3",
+          {
+            "name": "sqlite3",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -18191,7 +18191,6 @@
       "name": "capnproto",
       "manifest": {
         "name": "capnproto",
-        "port-version": 2,
         "description": "Data interchange format and capability-based RPC system",
         "homepage": "https://capnproto.org/",
         "license": "MIT",
@@ -18215,7 +18214,7 @@
             ]
           }
         },
-        "version": "1.0.2"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -20320,6 +20319,7 @@
       "name": "coin-or-cbc",
       "manifest": {
         "name": "coin-or-cbc",
+        "port-version": 1,
         "description": "Cbc (Coin-or branch and cut) is an open-source mixed integer linear programming solver written in C++.",
         "homepage": "https://github.com/coin-or/Cbc",
         "license": "EPL-2.0",
@@ -20327,7 +20327,11 @@
           "coin-or-cgl",
           "coin-or-clp",
           "coin-or-osi",
-          "coinutils"
+          "coinutils",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-date": "2024-06-04"
       },
@@ -21319,7 +21323,7 @@
         "name": "cpp-peglib",
         "description": "C++11 header-only PEG (Parsing Expression Grammars) library.",
         "license": "MIT",
-        "version": "1.9.0"
+        "version": "1.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -21437,7 +21441,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -21996,7 +22000,7 @@
             "host": true
           }
         ],
-        "version": "0.7.3"
+        "version": "0.7.4"
       },
       "files": [
         "portfile.cmake",
@@ -22885,7 +22889,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -24368,7 +24372,6 @@
       "name": "deniskovalchuk-libftp",
       "manifest": {
         "name": "deniskovalchuk-libftp",
-        "port-version": 1,
         "maintainers": "Denis Kovalchuk <denis.kovalchuk.main@gmail.com>",
         "description": "A cross-platform FTP/FTPS client library based on Boost.Asio.",
         "homepage": "https://github.com/deniskovalchuk/libftp",
@@ -24387,7 +24390,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -25242,7 +25245,7 @@
             "host": true
           }
         ],
-        "version": "0.8"
+        "version": "1.0"
       },
       "files": [
         "portfile.cmake",
@@ -27598,7 +27601,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-07-05"
+        "version-date": "2024-12-05"
       },
       "files": [
         "portfile.cmake",
@@ -27764,7 +27767,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28829,7 +28832,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "fix-build.patch",
@@ -29747,7 +29750,7 @@
             ]
           }
         },
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -32621,7 +32624,7 @@
             "host": true
           }
         ],
-        "version": "4.2.0"
+        "version": "4.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -37137,7 +37140,7 @@
             "host": true
           }
         ],
-        "version": "0.12.2"
+        "version": "0.12.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -40011,7 +40014,7 @@
             "supports": "!android & !ios & !xbox & !wasm32"
           }
         },
-        "version-date": "2024-08-05"
+        "version-date": "2024-12-02"
       },
       "files": [
         "portfile.cmake",
@@ -40200,7 +40203,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.5"
+        "version": "1.91.6"
       },
       "files": [
         "CMakeLists.txt",
@@ -41012,7 +41015,7 @@
       "name": "itpp",
       "manifest": {
         "name": "itpp",
-        "port-version": 11,
+        "port-version": 12,
         "description": "IT++ is a C++ library of mathematical, signal processing and communication classes and functions. Its main use is in simulation of communication systems and for performing research in the area of communications.",
         "homepage": "http://itpp.sourceforge.net",
         "dependencies": [
@@ -41024,6 +41027,7 @@
         "version-semver": "4.3.1"
       },
       "files": [
+        "fix-build.patch",
         "fix-linux.patch",
         "fix-uwp.patch",
         "msvc2013.patch",
@@ -41325,10 +41329,16 @@
       "name": "jemalloc",
       "manifest": {
         "name": "jemalloc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support",
         "homepage": "https://jemalloc.net/",
         "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "5.3.0"
       },
       "files": [
@@ -44306,7 +44316,7 @@
         "name": "kubazip",
         "description": "A portable, simple zip library written in C",
         "homepage": "https://github.com/kuba--/zip",
-        "license": "Unlicense",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -44317,7 +44327,7 @@
             "host": true
           }
         ],
-        "version": "0.2.6"
+        "version": "0.3.3"
       },
       "files": [
         "fix_targets.patch",
@@ -44838,7 +44848,6 @@
       "name": "leptonica",
       "manifest": {
         "name": "leptonica",
-        "port-version": 1,
         "description": "An open source library containing software that is broadly useful for image processing and image analysis applications",
         "homepage": "https://github.com/DanBloomberg/leptonica",
         "license": null,
@@ -44865,7 +44874,7 @@
           },
           "zlib"
         ],
-        "version": "1.84.1"
+        "version": "1.85.0"
       },
       "files": [
         "fix-pc-and-config.patch",
@@ -48451,13 +48460,17 @@
       "name": "libidn2",
       "manifest": {
         "name": "libidn2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GNU Libidn is an implementation of the Stringprep, Punycode and IDNA 2003 specifications. Libidn's purpose is to encode and decode internationalized domain names.",
         "homepage": "https://www.gnu.org/software/libidn/",
         "license": null,
         "dependencies": [
           "libiconv",
-          "libunistring"
+          "libunistring",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "features": {
           "nls": {
@@ -54572,10 +54585,9 @@
             "host": true
           }
         ],
-        "version": "0.99.8"
+        "version": "0.99.9"
       },
       "files": [
-        "fix-pugixml-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -56828,7 +56840,6 @@
         "description": "QPACK compression library for use with HTTP/3",
         "homepage": "https://github.com/litespeedtech/ls-qpack",
         "license": "MIT",
-        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -56840,9 +56851,13 @@
           },
           "xxhash"
         ],
-        "version": "2.5.5"
+        "version": "2.6.0"
       },
       "files": [
+        "cmake-config.diff",
+        "emscripten.diff",
+        "mingw.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60109,6 +60124,20 @@
       ]
     },
     {
+      "name": "meekrosoft-fff",
+      "manifest": {
+        "name": "meekrosoft-fff",
+        "description": "A testing micro framework for creating function test doubles",
+        "homepage": "https://github.com/meekrosoft/fff",
+        "license": "MIT",
+        "version": "1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "memorymodule",
       "manifest": {
         "name": "memorymodule",
@@ -60632,7 +60661,7 @@
             "host": true
           }
         ],
-        "version": "4"
+        "version": "5"
       },
       "files": [
         "portfile.cmake",
@@ -61096,7 +61125,7 @@
           "ensmallen",
           "stb"
         ],
-        "version": "4.5.0"
+        "version": "4.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -62485,7 +62514,12 @@
             "host": true
           }
         ],
-        "version": "2.3.4"
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP for multithreading"
+          }
+        },
+        "version": "2.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -62575,7 +62609,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "portfile.cmake",
@@ -62930,7 +62964,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -63013,7 +63047,7 @@
         "name": "nanoprintf",
         "description": "A tiny embeddable printf replacement written in C99",
         "homepage": "https://github.com/charlesnicholson/nanoprintf",
-        "version": "0.3.4"
+        "version": "0.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -64656,7 +64690,7 @@
             "host": true
           }
         ],
-        "version": "0.3"
+        "version": "0.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -73390,7 +73424,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -76363,6 +76397,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76953,6 +76988,7 @@
         "fix_egl_2.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
+        "macdeployqt-symlinks.patch",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -79789,7 +79825,7 @@
             "host": true
           }
         ],
-        "version": "6.0.0"
+        "version": "7.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -87181,8 +87217,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "supports": "!x86",
-        "version": "3.10.5"
+        "version": "3.11.2"
       },
       "files": [
         "portfile.cmake",
@@ -88830,7 +88865,7 @@
             "host": true
           }
         ],
-        "version": "1.0.8"
+        "version": "1.0.9"
       },
       "files": [
         "fixtargets.patch",
@@ -91488,6 +91523,36 @@
       ]
     },
     {
+      "name": "vcpkg-make",
+      "manifest": {
+        "name": "vcpkg-make",
+        "documentation": "https://vcpkg.io/en/docs/maintainers/ports/vcpkg-make.html",
+        "license": "MIT",
+        "supports": "native",
+        "dependencies": [
+          {
+            "name": "pkgconf",
+            "host": true,
+            "platform": "windows"
+          },
+          "vcpkg-cmake-get-vars"
+        ],
+        "version-date": "2023-05-15"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json",
+        "vcpkg_make.cmake",
+        "vcpkg_make_common.cmake",
+        "vcpkg_make_configure.cmake",
+        "vcpkg_make_install.cmake",
+        "vcpkg_scripts.cmake",
+        "wrappers/cl_cpp_wrapper",
+        "wrappers/windres-rc"
+      ]
+    },
+    {
       "name": "vcpkg-msbuild",
       "manifest": {
         "name": "vcpkg-msbuild",
@@ -91660,7 +91725,7 @@
         "dependencies": [
           "vcpkg-cmake-get-vars"
         ],
-        "version": "1.6.0"
+        "version": "1.6.1"
       },
       "files": [
         "adjust-args.patch",
@@ -93445,7 +93510,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.12.09.00"
+        "version-string": "2024.12.16.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -94659,13 +94724,14 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
+        "port-version": 1,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
           {
-            "name": "vcpkg-cmake-get-vars",
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -95892,7 +95958,7 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.2.1"
       },
       "files": [
         "disable_tests.patch",
