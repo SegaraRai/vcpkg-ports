@@ -41,6 +41,7 @@ export const NT_ESCAPE_ENCODED = Symbol("escape_encoded");
 export const NT_ESCAPE_SEMICOLON = Symbol("escape_semicolon");
 export const NT_BRACKET_COMMENT = Symbol("bracket_comment");
 export const NT_LINE_COMMENT = Symbol("line_comment");
+export const NT_BOM = Symbol("bom");
 
 interface TokenTypeIdentifier {
   readonly type: "identifier";
@@ -61,7 +62,7 @@ type Tokens = readonly Token<TokenType>[];
 const parse = createParser<TokenType>([
   // Source Files
   // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#source-files
-  [NT_FILE, Q0N(NT_FILE_ELEMENT), unwrapTokens],
+  [NT_FILE, [Q0N(NT_BOM), Q0N(NT_FILE_ELEMENT)], unwrapTokens],
   [
     NT_FILE_ELEMENT,
     OR(
@@ -266,6 +267,8 @@ const parse = createParser<TokenType>([
   // https://cmake.org/cmake/help/latest/manual/cmake-language.7.html#comments
   [NT_BRACKET_COMMENT, ["#", NT_BRACKET_ARGUMENT], () => []],
   [NT_LINE_COMMENT, ["#", NOT(NT_BRACKET_ARGUMENT), /^[^\n]*/], () => []],
+  //
+  [NT_BOM, "\uFEFF", () => []],
 ]);
 
 export interface CMakeCommand {
