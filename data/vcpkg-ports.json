@@ -1,5 +1,5 @@
 {
-  "version": "1faad557cd7435901d7eac7b0b7f38e3e865701c",
+  "version": "93570a28ecdf49d3d9676cec8aa0cc72935d43db",
   "ports": [
     {
       "name": "3fd",
@@ -17682,7 +17682,7 @@
       "name": "bullet3",
       "manifest": {
         "name": "bullet3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Bullet Physics is a professional collision detection, rigid body, and soft body dynamics library",
         "homepage": "https://github.com/bulletphysics/bullet3",
         "license": "Zlib",
@@ -17701,10 +17701,17 @@
             "description": "Use float64 doubles for bullet3"
           },
           "extras": {
-            "description": "Build the extras"
+            "description": "Build selected extras",
+            "dependencies": [
+              "tinyxml2"
+            ]
           },
           "multithreading": {
             "description": "Multithreading functionality for bullet3"
+          },
+          "opencl": {
+            "description": "Build Bullet3OpenCL_clew library",
+            "supports": "!uwp"
           },
           "rtti": {
             "description": "Enable RTTI on windows"
@@ -17713,8 +17720,11 @@
         "version": "3.25"
       },
       "files": [
-        "cmake-fix.patch",
+        "cmake-config-export.diff",
+        "cmake-version.diff",
+        "opencl.diff",
         "portfile.cmake",
+        "tinyxml2.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -17889,7 +17899,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.34.3"
+        "version-semver": "1.34.4"
       },
       "files": [
         "avoid-docs.patch",
@@ -24040,7 +24050,6 @@
       "name": "daxa",
       "manifest": {
         "name": "daxa",
-        "port-version": 1,
         "description": "Daxa C++ Vulkan Abstraction",
         "homepage": "https://github.com/Ipotrick/Daxa",
         "license": "MIT",
@@ -24096,10 +24105,9 @@
             "description": "The Task-Graph Daxa utility"
           }
         },
-        "version": "3.0.2"
+        "version": "3.0.3"
       },
       "files": [
-        "fix-std-sort.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26517,7 +26525,7 @@
       "name": "eigen3",
       "manifest": {
         "name": "eigen3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
         "homepage": "http://eigen.tuxfamily.org",
         "license": "MPL-2.0",
@@ -26537,6 +26545,7 @@
         "fix-vectorized-reductions-half.patch",
         "portfile.cmake",
         "remove_configure_checks.patch",
+        "update-warning-suppression-to-latest.patch",
         "vcpkg.json"
       ]
     },
@@ -49953,11 +49962,12 @@
             ]
           }
         },
-        "version": "1.24.11"
+        "version": "1.25.2"
       },
       "files": [
         "CMakeLists.txt",
         "dont-generate-extract-3rd-party-things.patch",
+        "fix-NAN-on-Win11.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52280,7 +52290,19 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-11"
+        "features": {
+          "krb5": {
+            "description": "SMB2/3 with krb5 support",
+            "dependencies": [
+              {
+                "name": "krb5",
+                "platform": "linux"
+              }
+            ],
+            "supports": "linux | ios"
+          }
+        },
+        "version": "6.2"
       },
       "files": [
         "portfile.cmake",
@@ -56209,10 +56231,10 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 WITH LLVM-exception",
         "supports": "!uwp & !(arm & windows)",
         "dependencies": [
           {
@@ -65843,6 +65865,7 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
+        "port-version": 1,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
@@ -73374,7 +73397,7 @@
             ]
           }
         },
-        "version": "5.29.1"
+        "version": "5.29.2"
       },
       "files": [
         "fix-default-proto-file-path.patch",
@@ -94077,9 +94100,10 @@
             "host": true
           }
         ],
-        "version": "0.4.5"
+        "version": "0.4.6"
       },
       "files": [
+        "fix-include-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
