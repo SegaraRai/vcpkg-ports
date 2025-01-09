@@ -1,5 +1,5 @@
 {
-  "version": "93570a28ecdf49d3d9676cec8aa0cc72935d43db",
+  "version": "a3a2cda955a08aff87c2d9f6b72fb955ecfabd49",
   "ports": [
     {
       "name": "3fd",
@@ -18424,7 +18424,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.7.1"
+        "version-semver": "3.8.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -27787,7 +27787,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28852,7 +28852,7 @@
           },
           "zstd"
         ],
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "fix-build.patch",
@@ -29770,7 +29770,7 @@
             ]
           }
         },
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -45713,12 +45713,11 @@
       "name": "libbacktrace",
       "manifest": {
         "name": "libbacktrace",
-        "port-version": 1,
         "description": "The libbacktrace library may be linked into a program or library and used to produce symbolic backtraces.",
         "homepage": "https://github.com/ianlancetaylor/libbacktrace",
         "license": "BSD-3-Clause",
         "supports": "!windows",
-        "version-date": "2023-11-30"
+        "version-date": "2024-11-30"
       },
       "files": [
         "portfile.cmake",
@@ -45763,7 +45762,7 @@
             "host": true
           }
         ],
-        "version": "1.29.1"
+        "version": "1.29.2"
       },
       "files": [
         "fix-include-directory.patch",
@@ -48793,6 +48792,7 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
+        "port-version": 1,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
         "license": "BSD-3-Clause",
@@ -51707,12 +51707,17 @@
       "name": "libremidi",
       "manifest": {
         "name": "libremidi",
+        "port-version": 1,
         "description": "A modern C++ MIDI real-time & file I/O library",
         "homepage": "https://github.com/jcelerier/libremidi",
         "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "alsa",
+            "platform": "linux"
+          },
+          {
+            "name": "readerwriterqueue",
             "platform": "linux"
           },
           {
@@ -61502,7 +61507,6 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
-        "port-version": 1,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": null,
@@ -61547,7 +61551,7 @@
             ]
           }
         },
-        "version": "1.29.1"
+        "version": "1.29.2"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -62774,7 +62778,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "portfile.cmake",
@@ -63071,7 +63075,7 @@
             "host": true
           }
         ],
-        "version": "1.6.2"
+        "version": "1.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -66385,9 +66389,10 @@
             "host": true
           }
         ],
-        "version-string": "v2024.05.08"
+        "version": "2024.10.24"
       },
       "files": [
+        "001-remove-extra-install-rules.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -67598,7 +67603,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 2,
+        "port-version": 3,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -68927,6 +68932,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -68967,6 +68973,7 @@
         "cmake-config.patch",
         "command-line-length.patch",
         "install-pc-files.cmake",
+        "mkbuildinf.diff",
         "openssl.pc.in",
         "portfile.cmake",
         "script-prefix.patch",
@@ -69353,7 +69360,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 5,
+        "port-version": 6,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -69510,6 +69517,7 @@
         "001-disable-tools.patch",
         "002-fix-onnx.patch",
         "003-protobuf.patch",
+        "004-opencl-v2024.10.24.patch",
         "add-include-chrono.patch",
         "portfile.cmake",
         "usage",
@@ -71596,7 +71604,7 @@
             "host": true
           }
         ],
-        "version": "48.1"
+        "version": "49.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -73591,7 +73599,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -80930,6 +80938,7 @@
       "name": "rocksdb",
       "manifest": {
         "name": "rocksdb",
+        "port-version": 1,
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/facebook/rocksdb",
         "license": "GPL-2.0-only OR Apache-2.0",
@@ -80972,6 +80981,12 @@
           },
           "numa": {
             "description": "build with NUMA policy support",
+            "dependencies": [
+              {
+                "name": "numactl",
+                "platform": "linux"
+              }
+            ],
             "supports": "linux"
           },
           "snappy": {
@@ -81469,15 +81484,15 @@
       "name": "rtlsdr",
       "manifest": {
         "name": "rtlsdr",
-        "port-version": 4,
         "description": "rtl-sdr is a library that turns your Realtek RTL2832 based DVB dongle into a SDR receiver",
         "homepage": "https://osmocom.org/projects/rtl-sdr",
-        "supports": "windows & (x86 | x64)",
+        "license": "GPL-2.0-or-later",
+        "supports": "!uwp",
         "dependencies": [
           "libusb",
           {
             "name": "pthreads",
-            "platform": "windows"
+            "platform": "windows & !mingw"
           },
           {
             "name": "vcpkg-cmake",
@@ -81488,13 +81503,20 @@
             "host": true
           }
         ],
-        "version-date": "2020-04-16"
+        "features": {
+          "tools": {
+            "description": "Build tools",
+            "supports": "!android"
+          }
+        },
+        "version": "2.0.2"
       },
       "files": [
-        "Compile-with-msvc.patch",
-        "Findlibusb.cmake",
-        "fix-version.patch",
+        "dependencies.diff",
+        "library-linkage.diff",
         "portfile.cmake",
+        "tools.diff",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -92596,6 +92618,7 @@
       "name": "vsgxchange",
       "manifest": {
         "name": "vsgxchange",
+        "port-version": 1,
         "description": "Utility library for converting 3rd party images, models and fonts formats to/from VulkanSceneGraph.",
         "homepage": "https://github.com/vsg-dev/vsgXchange",
         "license": "MIT",
@@ -92620,19 +92643,28 @@
           "curl": {
             "description": "Enable support for reading image and model files from http:// and https://",
             "dependencies": [
-              "curl"
+              {
+                "name": "curl",
+                "default-features": false
+              }
             ]
           },
           "freetype": {
             "description": "Enable support for reading fonts as vsg::Font via Freetype",
             "dependencies": [
-              "freetype"
+              {
+                "name": "freetype",
+                "default-features": false
+              }
             ]
           },
           "gdal": {
             "description": "Enable support for reading geospatial data formats as vsg::Data via GDAL",
             "dependencies": [
-              "gdal"
+              {
+                "name": "gdal",
+                "default-features": false
+              }
             ]
           },
           "openexr": {
@@ -92646,7 +92678,6 @@
       },
       "files": [
         "portfile.cmake",
-        "require-features.patch",
         "vcpkg.json"
       ]
     },
@@ -93668,7 +93699,7 @@
             "host": true
           }
         ],
-        "version-string": "2024.12.30.00"
+        "version-string": "2025.01.06.00"
       },
       "files": [
         "fix-config-cmake.patch",
