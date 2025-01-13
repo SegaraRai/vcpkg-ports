@@ -1,5 +1,5 @@
 {
-  "version": "401edd4e93917851f003f88c0fed03d20eba47bc",
+  "version": "d7112d1a4fb50410d3639f5f586972591d848beb",
   "ports": [
     {
       "name": "3fd",
@@ -59475,6 +59475,20 @@
       ]
     },
     {
+      "name": "marchingcubecpp",
+      "manifest": {
+        "name": "marchingcubecpp",
+        "description": "Marching cube implementation.",
+        "homepage": "https://github.com/aparis69/MarchingCubeCpp",
+        "license": "MIT",
+        "version-date": "2023-09-11"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "mariadb-connector-cpp",
       "manifest": {
         "name": "mariadb-connector-cpp",
@@ -80087,7 +80101,7 @@
       "name": "reflectcpp",
       "manifest": {
         "name": "reflectcpp",
-        "description": "A C++ library for serialization and deserialization using reflection.",
+        "description": "A C++ library for serialization and deserialization using reflection. Supports JSON, Avro, BSON, Cap'n Proto, CBOR, flexbuffers, msgpack, TOML, UBJSON, XML, YAML.",
         "homepage": "https://github.com/getml/reflect-cpp/",
         "license": "MIT",
         "dependencies": [
@@ -80115,6 +80129,24 @@
               {
                 "name": "libbson",
                 "version>=": "1.25.1"
+              }
+            ]
+          },
+          "capnproto": {
+            "description": "Support for the Cap'n Proto format",
+            "dependencies": [
+              {
+                "name": "capnproto",
+                "version>=": "1.0.2#1"
+              }
+            ]
+          },
+          "cbor": {
+            "description": "Support for the CBOR format",
+            "dependencies": [
+              {
+                "name": "jsoncons",
+                "version>=": "0.176.0"
               }
             ]
           },
@@ -80164,7 +80196,7 @@
             ]
           }
         },
-        "version": "0.16.0"
+        "version": "0.17.0"
       },
       "files": [
         "portfile.cmake",
