@@ -10,6 +10,7 @@ import { type Ref, ref, unref } from "vue";
 const props = defineProps<{
   timestamp: string;
   long?: boolean;
+  itemProp?: "datePublished" | "dateModified";
 }>();
 
 const useTernaryEager = <T, F>(
@@ -45,6 +46,8 @@ const title = useTernaryEager(mounted, localTime, timestamp);
     :class="[':uno: whitespace-nowrap']"
     :dateTime="timestamp"
     :title="title"
+    :itemprop="props.itemProp"
+    :content="props.itemProp ? timestamp : undefined"
     v-text="text"
   />
   <template v-if="textLong">

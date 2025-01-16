@@ -9,8 +9,13 @@ interface Props {
 const { createdAt, modifiedAt } = Astro.props;
 
 const items = [
-  ["Created", createdAt, ""],
-  ["Updated", modifiedAt, ":uno: light:text-green-600 dark:text-green-400"],
+  ["Created", createdAt, "datePublished", ""],
+  [
+    "Updated",
+    modifiedAt,
+    "dateModified",
+    ":uno: light:text-green-600 dark:text-green-400",
+  ],
 ] as const;
 ---
 
@@ -18,14 +23,14 @@ const items = [
   class=":uno: flex flex-col my-4 py-1 leading-tight gap-y-1.5 text-[--theme-text-light]"
 >
   {
-    items.map(([label, datetime, extraClass]) => (
+    items.map(([label, datetime, itemProp, extraClass]) => (
       <div
         class:list={[":uno: flex gap-x-4 items-center", extraClass]}
         data-nosnippet
       >
         <dt class=":uno: flex-none w-24 opacity-60" set:text={label} />
         <dd class=":uno: flex-1">
-          <DateTime client:load timestamp={datetime} long />
+          <DateTime client:load timestamp={datetime} itemProp={itemProp} long />
         </dd>
       </div>
     ))
