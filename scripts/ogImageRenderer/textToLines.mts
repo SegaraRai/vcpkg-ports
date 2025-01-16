@@ -1,8 +1,8 @@
 export interface Context {
-  readonly splittedLines: readonly (readonly string[])[];
-  readonly splittedLineIndex: number;
-  readonly splittedWords: readonly string[];
-  readonly splittedWordIndex: number;
+  readonly splitLines: readonly (readonly string[])[];
+  readonly splitLineIndex: number;
+  readonly splitWords: readonly string[];
+  readonly splitWordIndex: number;
   readonly renderedLines: readonly string[];
   readonly currentLine: string;
   readonly currentLineIndex: number;
@@ -65,28 +65,28 @@ export function textToLines(
   overflow: OverflowCallback,
   onWordTooLong: OnWordTooLongCallback
 ): string[] {
-  const splittedLines: string[][] = text
+  const splitLines: string[][] = text
     .split("\n")
     .map((line) => line.match(/[^\s-]*[\s-]*/g) ?? []);
   const lines: string[] = [];
-  for (const [splittedLineIndex, splittedWords] of splittedLines.entries()) {
+  for (const [splitLineIndex, splitWords] of splitLines.entries()) {
     let line = "";
-    for (const [splittedWordIndex, splittedWord] of splittedWords.entries()) {
+    for (const [splitWordIndex, splitWord] of splitWords.entries()) {
       const context: Context = {
-        splittedLines,
-        splittedLineIndex,
-        splittedWords,
-        splittedWordIndex,
+        splitLines,
+        splitLineIndex,
+        splitWords,
+        splitWordIndex,
         renderedLines: lines,
         currentLine: line,
         currentLineIndex: lines.length,
         wordTooLong: false,
       };
-      if (overflow(line + splittedWord, context)) {
+      if (overflow(line + splitWord, context)) {
         if (!line) {
           // word too long
           // use spread operator to deal with surrogate pairs
-          const remaining = [...splittedWord];
+          const remaining = splitWord.split("");
           let truncatedWord = "";
           while (
             remaining.length &&
@@ -112,7 +112,7 @@ export function textToLines(
         lines.push(line);
         line = "";
       }
-      line += splittedWord;
+      line += splitWord;
     }
     lines.push(line);
   }
@@ -166,22 +166,16 @@ export function textToLinesWithEllipsis(
       } else if (context.currentLineIndex !== maxLines - 1) {
         // if we're strict, and we're NOT on the last line, we don't account for ellipsis
         accountForEllipsis = false;
-      } else if (
-        context.splittedLineIndex !==
-        context.splittedLines.length - 1
-      ) {
+      } else if (context.splitLineIndex !== context.splitLines.length - 1) {
         // if we're strict, and we're on the last line, and there are more lines after this one, we account for ellipsis
         accountForEllipsis = true;
       } else {
         // if we're strict, and we're on the last line, and there are NO more lines after this one
         if (
-          !memoOverflow(
-            context.splittedLines[context.splittedLineIndex].join(""),
-            {
-              ...context,
-              splittedWordIndex: context.splittedWords.length - 1,
-            }
-          )
+          !memoOverflow(context.splitLines[context.splitLineIndex].join(""), {
+            ...context,
+            splitWordIndex: context.splitWords.length - 1,
+          })
         ) {
           // if the whole line fits, we can return false, meaning there are no overflows
           return false;

@@ -92,7 +92,7 @@ const close = (focus?: boolean): void => {
       @keydown.arrow-down="deferShow"
       @keydown.arrow-up="deferShow"
       @keydown.escape.stop="term ? (term = '') : close(show)"
-      @keydown.enter.stop="close(false), emit('search', term)"
+      @keydown.enter.stop="(close(false), emit('search', term))"
     />
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">

@@ -36,6 +36,7 @@ export default ts.config(
   },
   {
     rules: {
+      "@typescript-eslint/no-base-to-string": "off", // Causes max stack size exceeded error
       "@typescript-eslint/restrict-template-expressions": [
         "error",
         {
@@ -52,6 +53,6 @@ export default ts.config(
     },
   },
   {
-    ignores: ["dist", ".vcpkg"],
+    ignores: ["dist", "node_modules", ".astro", ".vcpkg"],
   }
 );

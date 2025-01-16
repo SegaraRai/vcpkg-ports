@@ -1,6 +1,5 @@
+import type { APIRoute } from "astro";
 import data from '../../virtual/dataVcpkgHistory.mjs';
 import { toResponse } from './_utils.mjs';
 
-const response = toResponse(data);
-
-export const get = () => ({ ...response });
+export const GET: APIRoute = () => toResponse(data);

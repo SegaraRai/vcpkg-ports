@@ -1,5 +1,5 @@
 import type { AstroConfig, AstroIntegration } from "astro";
-import Critters from "critters";
+import Beasties from "beasties";
 import fg from "fast-glob";
 import { createHash } from "node:crypto";
 import fsp from "node:fs/promises";
@@ -31,7 +31,7 @@ function extractScripts(content: string, set: Set<string>): void {
 async function processHTML(
   filename: string,
   outDir: string,
-  critters: Critters
+  beasties: Beasties
 ): Promise<void> {
   const filepath = path.join(outDir, filename);
 
@@ -43,7 +43,7 @@ async function processHTML(
     "HTML_ROOT_CLASS_P_BEGIN theme-dark theme-light HTML_ROOT_CLASS_P_END"
   );
 
-  content = await critters.process(content);
+  content = await beasties.process(content);
 
   // remove theme classes
   content = content.replaceAll(
@@ -114,7 +114,7 @@ export default function postprocess(): AstroIntegration {
           replacements
         );
 
-        const critters = new Critters({
+        const beasties = new Beasties({
           path: outDir,
           logLevel: "warn",
           external: true,
@@ -124,7 +124,7 @@ export default function postprocess(): AstroIntegration {
         });
 
         const cache = new Map<string, Promise<string>>();
-        critters.readFile = (filename): Promise<string> => {
+        beasties.readFile = (filename): Promise<string> => {
           let promise = cache.get(filename);
           if (!promise) {
             promise = fsp.readFile(filename, "utf-8").then((code): string =>
@@ -142,7 +142,7 @@ export default function postprocess(): AstroIntegration {
         // process HTML files
         await asyncForeach(
           htmlFilenames,
-          (filename) => processHTML(filename, outDir, critters),
+          (filename) => processHTML(filename, outDir, beasties),
           CONCURRENCY
         );
 

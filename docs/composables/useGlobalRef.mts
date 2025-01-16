@@ -13,7 +13,7 @@ export function useGlobalRef<T>(
   initialValue?: T
 ): Ref<UnwrapRef<T> | undefined> {
   if (import.meta.env.SSR) {
-    return ref(initialValue);
+    return ref(initialValue) as Ref<UnwrapRef<T> | undefined>;
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return

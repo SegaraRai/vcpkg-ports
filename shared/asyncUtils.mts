@@ -21,7 +21,7 @@ export function asyncMap<T, U>(
             numRunning--;
             next();
           },
-          (err): void => {
+          (err: unknown): void => {
             if (!rejected) {
               rejected = true;
               // eslint-disable-next-line @typescript-eslint/prefer-promise-reject-errors
