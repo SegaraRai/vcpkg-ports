@@ -1,5 +1,5 @@
 {
-  "version": "d7112d1a4fb50410d3639f5f586972591d848beb",
+  "version": "7894bc9fa303eb77d42e3a8b01dc5af59d57feea",
   "ports": [
     {
       "name": "3fd",
@@ -2927,9 +2927,8 @@
       "name": "autodock-vina",
       "manifest": {
         "name": "autodock-vina",
-        "port-version": 3,
         "description": "AutoDock Vina is one of the fastest and most widely used open-source docking engines.",
-        "homepage": "http://vina.scripps.edu/",
+        "homepage": "https://vina.scripps.edu/",
         "dependencies": [
           "boost-algorithm",
           "boost-array",
@@ -2955,12 +2954,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.5"
+        "version-semver": "1.2.6"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-compatibility-with-boost-1.83.patch",
-        "fix-compatibility-with-boost-1.85.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -6673,90 +6670,6 @@
       ]
     },
     {
-      "name": "bitserializer-cpprestjson",
-      "manifest": {
-        "name": "bitserializer-cpprestjson",
-        "port-version": 1,
-        "description": "Deprecated alias for bitserializer-cpprestjson",
-        "dependencies": [
-          {
-            "name": "bitserializer",
-            "features": [
-              "cpprestjson-archive"
-            ]
-          }
-        ],
-        "version-string": "alias"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "bitserializer-pugixml",
-      "manifest": {
-        "name": "bitserializer-pugixml",
-        "port-version": 1,
-        "description": "Deprecated alias for bitserializer-pugixml",
-        "dependencies": [
-          {
-            "name": "bitserializer",
-            "features": [
-              "pugixml-archive"
-            ]
-          }
-        ],
-        "version-string": "alias"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "bitserializer-rapidjson",
-      "manifest": {
-        "name": "bitserializer-rapidjson",
-        "port-version": 1,
-        "description": "Deprecated alias for bitserializer-rapidjson",
-        "dependencies": [
-          {
-            "name": "bitserializer",
-            "features": [
-              "rapidjson-archive"
-            ]
-          }
-        ],
-        "version-string": "alias"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "bitserializer-rapidyaml",
-      "manifest": {
-        "name": "bitserializer-rapidyaml",
-        "port-version": 3,
-        "description": "Deprecated alias for bitserializer-rapidyaml",
-        "dependencies": [
-          {
-            "name": "bitserializer",
-            "features": [
-              "rapidyaml-archive"
-            ]
-          }
-        ],
-        "version-string": "alias"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "bitsery",
       "manifest": {
         "name": "bitsery",
@@ -10364,6 +10277,7 @@
       "name": "boost-function",
       "manifest": {
         "name": "boost-function",
+        "port-version": 1,
         "description": "Boost function module",
         "homepage": "https://www.boost.org/libs/function",
         "license": "BSL-1.0",
@@ -10394,6 +10308,10 @@
           },
           {
             "name": "boost-throw-exception",
+            "version>=": "1.86.0"
+          },
+          {
+            "name": "boost-type-traits",
             "version>=": "1.86.0"
           }
         ],
@@ -20141,12 +20059,12 @@
             "supports": "!windows"
           }
         },
-        "version": "3.8.2"
+        "version": "3.9.2"
       },
       "files": [
         "fix-sodium-dep.patch",
         "fix_install_path.patch",
-        "lowercase_ws2_32.patch",
+        "fix_test_backtrace_warning.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22246,6 +22164,7 @@
       "name": "cpuid",
       "manifest": {
         "name": "cpuid",
+        "port-version": 1,
         "description": "Provides CPU identification for the x86 (and x86_64)",
         "homepage": "https://github.com/anrieff/libcpuid",
         "license": "MIT",
@@ -23834,10 +23753,10 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 3,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
+        "supports": "!x86",
         "dependencies": [
           "assimp",
           "boost-algorithm",
@@ -23857,6 +23776,7 @@
           "octomap",
           "ode",
           "opengl",
+          "osg",
           "tinyxml2",
           "urdfdom",
           {
@@ -23868,11 +23788,10 @@
             "host": true
           }
         ],
-        "version": "6.12.2"
+        "version": "6.15.0"
       },
       "files": [
         "disable_unit_tests_examples_and_tutorials.patch",
-        "fix-pc-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29339,7 +29258,7 @@
             "host": true
           }
         ],
-        "version": "4.0.3"
+        "version": "4.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -38021,7 +37940,7 @@
             ]
           }
         },
-        "version": "10.1.0"
+        "version": "10.2.0"
       },
       "files": [
         "fix-win32-build.patch",
@@ -45003,7 +44922,7 @@
             "host": true
           }
         ],
-        "version": "1.20.0"
+        "version": "1.20.1"
       },
       "files": [
         "portfile.cmake",
@@ -45617,13 +45536,18 @@
             "name": "libassuan",
             "host": true
           },
-          "libgpg-error"
+          "libgpg-error",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
-        "version": "2.5.7"
+        "version": "3.0.1"
       },
       "files": [
         "cross-tools.patch",
         "portfile.cmake",
+        "upstream-69069bc.diff",
         "vcpkg.json"
       ]
     },
@@ -46331,7 +46255,7 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -47488,16 +47412,15 @@
           },
           "libgpg-error",
           {
-            "name": "vcpkg-cmake-get-vars",
+            "name": "vcpkg-make",
             "host": true
           }
         ],
-        "version": "1.10.2"
+        "version": "1.11.0"
       },
       "files": [
         "cross-tools.patch",
         "portfile.cmake",
-        "upstream-fa21ddc1.patch",
         "vcpkg.json"
       ]
     },
@@ -48045,20 +47968,22 @@
       "name": "libgwenhywfar",
       "manifest": {
         "name": "libgwenhywfar",
-        "port-version": 5,
         "description": "A helper library for networking and security applications and libraries",
         "homepage": "https://www.aquamaniac.de/rdm/",
-        "supports": "!windows & !(osx & arm64)",
+        "supports": "!windows | mingw",
         "dependencies": [
-          "libgcrypt",
           {
-            "name": "libgnutls",
-            "features": [
-              "openssl"
-            ]
+            "name": "gettext",
+            "host": true
           },
+          "libgcrypt",
+          "libgnutls",
           {
             "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -48068,7 +47993,7 @@
         ],
         "features": {
           "cpp": {
-            "description": "C++ bindings"
+            "description": "A C++ binding for the C module GWEN_GUI"
           },
           "libxml2": {
             "description": "Enables libXML2-depending functionality",
@@ -48079,6 +48004,13 @@
               }
             ]
           },
+          "openssl": {
+            "description": "OpenSSL support in gct-tool",
+            "dependencies": [
+              "openssl"
+            ],
+            "supports": "!arm64"
+          },
           "qt5": {
             "description": "Qt bindings",
             "dependencies": [
@@ -48086,16 +48018,17 @@
                 "name": "qt5-base",
                 "default-features": false
               }
-            ]
-          },
-          "tools": {
-            "description": "Some helper tools provided by Gwenhywfar and useful for applications using it"
+            ],
+            "supports": "!(osx & static)"
           }
         },
-        "version-semver": "5.6.0"
+        "version-semver": "5.12.0"
       },
       "files": [
+        "control-openssl.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
+        "static-link-order.diff",
         "vcpkg.json"
       ]
     },
@@ -48854,11 +48787,10 @@
             ]
           }
         },
-        "version": "1.5.4"
+        "version": "1.5.8"
       },
       "files": [
         "dependencies.diff",
-        "library-linkage.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50562,6 +50494,32 @@
       ]
     },
     {
+      "name": "liboqs",
+      "manifest": {
+        "name": "liboqs",
+        "description": "open source C library for quantum-safe cryptographic algorithms.",
+        "homepage": "https://openquantumsafe.org/",
+        "license": "MIT",
+        "supports": "!uwp & !(windows & static)",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.12.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "liborigin",
       "manifest": {
         "name": "liborigin",
@@ -50928,7 +50886,7 @@
       "manifest": {
         "name": "libpng",
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
-        "homepage": "https://github.com/glennrp/libpng",
+        "homepage": "https://github.com/pnggroup/libpng",
         "license": "libpng-2.0",
         "dependencies": [
           {
@@ -50955,15 +50913,11 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.44"
+        "version": "1.6.45"
       },
       "files": [
         "cmake.patch",
-        "fix-msa-support-for-mips.patch",
-        "fix-tools-static.patch",
-        "libm.patch",
         "libpng-config.cmake",
-        "pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -51830,7 +51784,6 @@
       "name": "librtmp",
       "manifest": {
         "name": "librtmp",
-        "port-version": 4,
         "description": "RTMPDump Real-Time Messaging Protocol API",
         "homepage": "https://rtmpdump.mplayerhq.hu",
         "dependencies": [
@@ -51841,17 +51794,16 @@
           },
           "zlib"
         ],
-        "version-date": "2019-11-11"
+        "version-date": "2024-03-01"
       },
       "files": [
         "CMakeLists.txt",
-        "dh.patch",
         "fix_strncasecmp.patch",
-        "handshake.patch",
-        "hashswf.patch",
         "hide_netstackdump.patch",
         "librtmp.def",
+        "pkgconfig.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -53198,7 +53150,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -53341,6 +53293,7 @@
         "version": "2.1.2"
       },
       "files": [
+        "add-include-chrono.patch",
         "clang-cl.patch",
         "cmake-fixes.patch",
         "cuda-adjustments.patch",
@@ -56077,7 +56030,7 @@
             "description": "Have LLFIO use SG14 `status_code` (proposed `std::error`) instead of `std::error_code`."
           }
         },
-        "version-date": "2024-09-05"
+        "version-date": "2025-01-13"
       },
       "files": [
         "portfile.cmake",
@@ -57618,6 +57571,30 @@
       },
       "files": [
         "lv2-config.cmake",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "lwlog",
+      "manifest": {
+        "name": "lwlog",
+        "description": "Very fast synchronous and asynchronous C++17 logging library",
+        "homepage": "https://github.com/ChristianPanov/lwlog",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60827,7 +60804,7 @@
             "host": true
           }
         ],
-        "version": "5"
+        "version": "6"
       },
       "files": [
         "portfile.cmake",
@@ -61087,7 +61064,7 @@
             "host": true
           }
         ],
-        "version": "2.3.7"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -61788,13 +61765,12 @@
             "host": true
           }
         ],
-        "version": "2.0.18"
+        "version": "2.0.20"
       },
       "files": [
         "0003-add-find_package-libwebsockets.patch",
         "0004-support-static-build.patch",
         "0005-websocket-shared-lib-name.patch",
-        "0006-pthreads-for-windows.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -63534,7 +63510,7 @@
       "name": "neon2sse",
       "manifest": {
         "name": "neon2sse",
-        "description": "Open standard for machine learning interoperability",
+        "description": "The platform independent header allowing to compile any C/C++ code containing ARM NEON intrinsic functions for x86 target systems using SIMD up to AVX2 intrinsic functions",
         "homepage": "https://github.com/intel/ARM_NEON_2_x86_SSE",
         "dependencies": [
           {
@@ -63546,7 +63522,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-09-16"
+        "version-date": "2024-11-24"
       },
       "files": [
         "portfile.cmake",
@@ -64276,7 +64252,7 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version-semver": "1.9.0"
+        "version-semver": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -65881,7 +65857,6 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
-        "port-version": 1,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
@@ -65913,10 +65888,11 @@
             ]
           }
         },
-        "version-semver": "1.16.2"
+        "version-semver": "1.17.0"
       },
       "files": [
         "fix-cmakelists.patch",
+        "fix-cxx_standard.patch",
         "fix-dependency-protobuf.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -66145,7 +66121,7 @@
             "supports": "linux"
           }
         },
-        "version": "1.24.1"
+        "version": "1.24.2"
       },
       "files": [
         "portfile.cmake",
@@ -69372,7 +69348,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 6,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -69406,7 +69381,7 @@
           {
             "name": "xbyak",
             "platform": "!(arm | uwp)",
-            "version>=": "6.69"
+            "version>=": "6.73"
           }
         ],
         "default-features": [
@@ -69422,6 +69397,10 @@
           },
           "hetero",
           "ir",
+          {
+            "name": "npu",
+            "platform": "x64 & !(osx | uwp)"
+          },
           "onnx",
           "paddle",
           "pytorch",
@@ -69454,15 +69433,18 @@
             "description": "Enables IR frontend for reading models in OpenVINO IR format"
           },
           "npu": {
-            "description": "NPU Support",
-            "supports": "x64 & !(osx | uwp) & !static"
+            "description": "Enables NPU plugin for inference",
+            "dependencies": [
+              "level-zero"
+            ],
+            "supports": "x64 & !(osx | uwp)"
           },
           "onnx": {
             "description": "Enables ONNX frontend for reading models in ONNX format",
             "dependencies": [
               {
                 "name": "onnx",
-                "version>=": "1.13.1"
+                "version>=": "1.16.2"
               },
               {
                 "name": "protobuf",
@@ -69523,14 +69505,10 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2024.4.0"
+        "version": "2024.5.0"
       },
       "files": [
         "001-disable-tools.patch",
-        "002-fix-onnx.patch",
-        "003-protobuf.patch",
-        "004-opencl-v2024.10.24.patch",
-        "add-include-chrono.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -72381,6 +72359,7 @@
       "name": "poco",
       "manifest": {
         "name": "poco",
+        "port-version": 1,
         "description": "Modern, powerful open source C++ class libraries for building network and internet-based applications that run on desktop, server, mobile and embedded systems.",
         "homepage": "https://github.com/pocoproject/poco",
         "license": "BSL-1.0",
@@ -73835,7 +73814,7 @@
             "host": true
           }
         ],
-        "version": "1.14"
+        "version": "1.15"
       },
       "files": [
         "portfile.cmake",
@@ -76227,6 +76206,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
+        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -79425,7 +79405,7 @@
       "name": "range-v3-vs2015",
       "manifest": {
         "name": "range-v3-vs2015",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Range library for C++11/14/17.",
         "homepage": "https://github.com/Microsoft/Range-V3-VS2015",
         "version": "20151130-vcpkg5"
@@ -79546,12 +79526,13 @@
       "name": "rapidxml",
       "manifest": {
         "name": "rapidxml",
-        "port-version": 6,
+        "port-version": 7,
         "description": "RapidXml is an attempt to create the fastest XML parser possible, while retaining useability, portability and reasonable W3C compatibility.",
         "homepage": "https://sourceforge.net/projects/rapidxml",
         "version": "1.13"
       },
       "files": [
+        "0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82161,6 +82142,7 @@
       "name": "salome-configuration",
       "manifest": {
         "name": "salome-configuration",
+        "port-version": 1,
         "description": "Configuration files and other utilities for SALOME platform",
         "homepage": "https://www.salome-platform.org",
         "license": "LGPL-2.1-or-later",
@@ -82214,6 +82196,7 @@
       "name": "salome-medcoupling",
       "manifest": {
         "name": "salome-medcoupling",
+        "port-version": 1,
         "description": "salome-medcoupling is a part of SALOME platform to manipulate meshes and fields in memory, and use salome-med format for files.",
         "homepage": "https://www.salome-platform.org",
         "license": "GPL-2.0-or-later",
@@ -82320,7 +82303,6 @@
       "name": "sbp",
       "manifest": {
         "name": "sbp",
-        "port-version": 1,
         "description": "Swift Navigation Binary Protocol (SBP) is a binary protocol for communicating GNSS data used by Piksi devices.",
         "homepage": "https://github.com/swift-nav/libsbp",
         "documentation": "https://support.swiftnav.com/support/solutions/articles/44001850782-swift-binary-protocol",
@@ -82335,7 +82317,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.4.10"
+        "version-semver": "6.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -83348,7 +83330,6 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 2,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -83408,7 +83389,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.1.6-preview"
+        "version": "3.1.8-preview"
       },
       "files": [
         "portfile.cmake",
@@ -83420,7 +83401,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
-        "port-version": 7,
+        "port-version": 8,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -83462,10 +83443,7 @@
             "dependencies": [
               {
                 "name": "matio",
-                "default-features": false,
-                "features": [
-                  "hdf5"
-                ]
+                "default-features": false
               }
             ]
           },
@@ -83794,7 +83772,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.17"
+        "version": "0.7.18"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -85567,7 +85545,7 @@
             "host": true
           }
         ],
-        "version": "5.8.3"
+        "version": "5.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -88018,6 +87996,7 @@
       "name": "tbb",
       "manifest": {
         "name": "tbb",
+        "port-version": 1,
         "description": "Intel's Threading Building Blocks.",
         "homepage": "https://github.com/oneapi-src/oneTBB",
         "license": "Apache-2.0",
@@ -88050,6 +88029,7 @@
         "version": "2022.0.0"
       },
       "files": [
+        "fix-lang.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -91778,7 +91758,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-12-27"
+        "version-date": "2025-01-13"
       },
       "files": [
         "portfile.cmake",
@@ -94979,6 +94959,7 @@
       "name": "x-plane",
       "manifest": {
         "name": "x-plane",
+        "port-version": 1,
         "description": "The X-Plane Plugin SDK",
         "homepage": "https://developer.x-plane.com/sdk/",
         "license": null,
