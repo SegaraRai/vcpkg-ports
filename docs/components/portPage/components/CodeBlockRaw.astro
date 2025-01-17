@@ -85,11 +85,13 @@ const { class: classList, lang, nosnippet } = Astro.props;
     @apply left-0;
   }
 
+  /*! beasties:include start */
   div.code-block > .copy > .icon[data-mode="initial"] > .icon-initial,
   div.code-block > .copy > .icon[data-mode="copied"] > .icon-copied,
   div.code-block > .copy > .icon[data-mode="failed"] > .icon-failed {
     @apply opacity-100;
   }
+  /*! beasties:include end */
 </style>
 
 <script>
@@ -112,26 +114,32 @@ const { class: classList, lang, nosnippet } = Astro.props;
     return true;
   };
 
-  const handleCopy = (button: HTMLElement): void => {
-    copyAsync(button).then((result): void => {
-      const icon = button.querySelector<HTMLElement>(".icon");
-      if (!icon) {
-        return;
-      }
-      icon.dataset.mode = result ? "copied" : "failed";
-      if ((icon as any)._timer != null) {
-        clearTimeout((icon as any)._timer);
-      }
-      (icon as any)._timer = setTimeout((): void => {
-        icon.dataset.mode = "initial";
-      }, ICON_TIMEOUT);
-    });
+  const createCopyHandler = (button: HTMLElement): (() => void) => {
+    const icon = button.querySelector<HTMLElement>(".icon");
+    let timer: ReturnType<typeof setTimeout> | null = null;
+
+    return (): void => {
+      copyAsync(button).then((result): void => {
+        if (!icon) {
+          return;
+        }
+
+        icon.dataset.mode = result ? "copied" : "failed";
+        if (timer != null) {
+          clearTimeout(timer);
+        }
+        timer = setTimeout((): void => {
+          icon.dataset.mode = "initial";
+          timer = null;
+        }, ICON_TIMEOUT);
+      });
+    };
   };
 
   const copyButtons = document.querySelectorAll<HTMLButtonElement>(
     "div.code-block>button.copy"
   );
   for (const button of copyButtons) {
-    button.addEventListener("click", (): void => handleCopy(button));
+    button.addEventListener("click", createCopyHandler(button));
   }
 </script>

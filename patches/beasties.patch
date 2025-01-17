@@ -1,0 +1,30 @@
+diff --git a/dist/index.cjs b/dist/index.cjs
+index dced5077c89f25d980283b97f999459eab7b474f..8e224bcfe574014cb8083355b10a2aa393c6a2e8 100644
+--- a/dist/index.cjs
++++ b/dist/index.cjs
+@@ -783,8 +783,8 @@ class Beasties {
+       ast,
+       markOnly((rule) => {
+         if (rule.type === "comment") {
+-          const beastiesComment = rule.text.match(/^(?<!! )beasties:(.*)/);
+-          const command = beastiesComment && beastiesComment[1];
++          const beastiesComment = rule.text.trim().match(/^(!\s*)?beasties:(.*)/);
++          const command = beastiesComment?.[2];
+           if (command) {
+             switch (command) {
+               case "include":
+diff --git a/dist/index.mjs b/dist/index.mjs
+index 4d31c006b735cc8b9359e16ba6b1493ce1c07214..9a8c23ed881fa32d1b7dfdf0d86b89f34c949fbf 100644
+--- a/dist/index.mjs
++++ b/dist/index.mjs
+@@ -774,8 +774,8 @@ class Beasties {
+       ast,
+       markOnly((rule) => {
+         if (rule.type === "comment") {
+-          const beastiesComment = rule.text.match(/^(?<!! )beasties:(.*)/);
+-          const command = beastiesComment && beastiesComment[1];
++          const beastiesComment = rule.text.trim().match(/^(!\s*)?beasties:(.*)/);
++          const command = beastiesComment?.[2];
+           if (command) {
+             switch (command) {
+               case "include":
