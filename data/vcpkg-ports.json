@@ -1,5 +1,5 @@
 {
-  "version": "cf035d9916a0a23042b41fcae7ee0386d245af08",
+  "version": "c7961da7380ecdb92242c9dbc8ee1bca2105e335",
   "ports": [
     {
       "name": "3fd",
@@ -2069,7 +2069,7 @@
             ]
           }
         },
-        "version": "18.1.0"
+        "version": "19.0.0"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -2077,6 +2077,7 @@
         "0003-utf8proc.patch",
         "0004-android-musl.patch",
         "0005-android-datetime.patch",
+        "0006-cmake-msvcruntime.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -5958,7 +5959,7 @@
           },
           "zlib"
         ],
-        "version": "3.18.0"
+        "version": "3.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -20736,6 +20737,7 @@
       "name": "conjure-enum",
       "manifest": {
         "name": "conjure-enum",
+        "port-version": 1,
         "description": "Lightweight header-only C++20 enum and typename reflection.",
         "homepage": "https://github.com/fix8mt/conjure_enum",
         "license": "MIT",
@@ -27706,7 +27708,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28771,7 +28773,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "fix-build.patch",
@@ -29689,7 +29691,7 @@
             ]
           }
         },
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30333,7 +30335,6 @@
       "name": "freetype-gl",
       "manifest": {
         "name": "freetype-gl",
-        "port-version": 3,
         "description": "OpenGL text using one vertex buffer, one texture and FreeType",
         "homepage": "https://github.com/rougier/freetype-gl",
         "dependencies": [
@@ -30364,7 +30365,7 @@
             ]
           }
         },
-        "version-date": "2022-01-17"
+        "version": "1.0"
       },
       "files": [
         "0001-Link-to-dependencies-also-for-static-build.patch",
@@ -32836,7 +32837,7 @@
           },
           "zlib"
         ],
-        "version": "2.78.1"
+        "version": "2.80.1"
       },
       "files": [
         "portfile.cmake",
@@ -35146,7 +35147,7 @@
             ]
           }
         },
-        "version": "2.33.0"
+        "version": "2.34.0"
       },
       "files": [
         "portfile.cmake",
@@ -40163,7 +40164,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.6"
+        "version": "1.91.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -41509,11 +41510,9 @@
             "host": true
           }
         ],
-        "version-date": "2023-08-12"
+        "version": "0.18-20240915"
       },
       "files": [
-        "fix-clang-cl.patch",
-        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44922,7 +44921,7 @@
             "host": true
           }
         ],
-        "version": "1.20.1"
+        "version": "1.20.2"
       },
       "files": [
         "portfile.cmake",
@@ -46255,7 +46254,6 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
-        "port-version": 2,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -46292,11 +46290,10 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.21.2"
+        "version-semver": "0.22.4"
       },
       "files": [
         "dependencies.diff",
-        "library-linkage.diff",
         "portfile.cmake",
         "uwp-warnings.patch",
         "vcpkg.json"
@@ -47593,7 +47590,6 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 1,
         "description": "A C library implementing the Git core methods with a solid API",
         "homepage": "https://github.com/libgit2/libgit2",
         "license": null,
@@ -47687,19 +47683,14 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.8.0"
+        "version-semver": "1.9.0"
       },
       "files": [
         "c-standard.diff",
         "cli-include-dirs.diff",
         "dependencies.diff",
-        "fix-arm64-windows.patch",
         "mingw-winhttp.diff",
         "portfile.cmake",
-        "unofficial-config-export.diff",
-        "unofficial-git2-config.cmake",
-        "unofficial-libgit2-config.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -53875,7 +53866,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.49.2"
+        "version-semver": "1.50.0"
       },
       "files": [
         "fix-build-type.patch",
@@ -59053,10 +59044,11 @@
             "host": true
           }
         ],
-        "version-date": "2023-07-17"
+        "version": "0.0.5"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -60020,7 +60012,7 @@
             ]
           }
         },
-        "version": "3.6.1"
+        "version": "3.6.2"
       },
       "files": [
         "enable-pthread.patch",
@@ -62766,7 +62758,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "portfile.cmake",
@@ -66079,7 +66071,7 @@
             "host": true
           }
         ],
-        "version": "0.16.0"
+        "version": "0.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -68984,11 +68976,11 @@
       "name": "opensubdiv",
       "manifest": {
         "name": "opensubdiv",
-        "port-version": 2,
+        "port-version": 3,
         "description": "An Open-Source subdivision surface library.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenSubdiv",
         "license": "Apache-2.0",
-        "supports": "!arm & !uwp",
+        "supports": "!(arm & android) & !uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -69799,10 +69791,9 @@
           "zlib",
           "zstd"
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
-        "fix-cmake.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -69830,6 +69821,34 @@
       "files": [
         "export-include-dir.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "oscpack",
+      "manifest": {
+        "name": "oscpack",
+        "description": "A simple C++ Open Sound Control (OSC) packet manipulation library",
+        "homepage": "http://www.rossbencina.com/code/oscpack",
+        "license": null,
+        "supports": "!(windows & !static)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.0"
+      },
+      "files": [
+        "add-cmake-install-target.patch",
+        "link-ws2_32-and-winmm.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -70485,7 +70504,7 @@
             ]
           }
         },
-        "version": "1.54.0"
+        "version": "1.56.1"
       },
       "files": [
         "portfile.cmake",
@@ -72359,7 +72378,7 @@
       "name": "poco",
       "manifest": {
         "name": "poco",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Modern, powerful open source C++ class libraries for building network and internet-based applications that run on desktop, server, mobile and embedded systems.",
         "homepage": "https://github.com/pocoproject/poco",
         "license": "BSL-1.0",
@@ -72436,6 +72455,7 @@
         "0005-fix-error-c3861.patch",
         "0007-find-pcre2.patch",
         "0008-fix-mingw-compilation.patch",
+        "0009-remove-libatomic-dependency.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -73590,7 +73610,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -73825,7 +73845,6 @@
       "name": "pulsar-client-cpp",
       "manifest": {
         "name": "pulsar-client-cpp",
-        "port-version": 1,
         "description": "The Apache Pulsar C++ library",
         "homepage": "https://github.com/apache/pulsar-client-cpp",
         "license": "Apache-2.0",
@@ -73871,7 +73890,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "3.5.1"
+        "version": "3.7.0"
       },
       "files": [
         "disable-warnings.patch",
@@ -79160,7 +79179,7 @@
             "host": true
           }
         ],
-        "version": "7.5.0"
+        "version": "8.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -83398,6 +83417,60 @@
       ]
     },
     {
+      "name": "sdl3-image",
+      "manifest": {
+        "name": "sdl3-image",
+        "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
+        "homepage": "https://github.com/libsdl-org/SDL_image",
+        "license": "Zlib",
+        "dependencies": [
+          "libpng",
+          {
+            "name": "sdl3",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "libjpeg-turbo": {
+            "description": "Support for JPEG image format",
+            "dependencies": [
+              "libjpeg-turbo"
+            ]
+          },
+          "libwebp": {
+            "description": "Support for WEBP image format.",
+            "dependencies": [
+              "libwebp"
+            ]
+          },
+          "tiff": {
+            "description": "Support for TIFF image format",
+            "dependencies": [
+              {
+                "name": "tiff",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "3.1.0"
+      },
+      "files": [
+        "cmake-sdl3.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "seacas",
       "manifest": {
         "name": "seacas",
@@ -86756,7 +86829,7 @@
             ]
           }
         },
-        "version": "3.47.2"
+        "version": "3.48.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -93739,7 +93812,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.06.00"
+        "version-string": "2025.01.13.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -94619,7 +94692,6 @@
       "name": "wt",
       "manifest": {
         "name": "wt",
-        "port-version": 1,
         "description": "Wt is a C++ library for developing web applications",
         "homepage": "https://github.com/emweb/wt",
         "license": "GPL-2.0-only",
@@ -94733,12 +94805,11 @@
             ]
           }
         },
-        "version": "4.10.4"
+        "version": "4.11.2"
       },
       "files": [
         "0005-XML_file_path.patch",
         "0006-GraphicsMagick.patch",
-        "fix-compatibility-with-boost-1.85.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94959,7 +95030,6 @@
       "name": "x-plane",
       "manifest": {
         "name": "x-plane",
-        "port-version": 1,
         "description": "The X-Plane Plugin SDK",
         "homepage": "https://developer.x-plane.com/sdk/",
         "license": null,
@@ -94974,7 +95044,7 @@
             "host": true
           }
         ],
-        "version": "4.0.1"
+        "version": "4.1.1"
       },
       "files": [
         "CMakeLists.txt",
