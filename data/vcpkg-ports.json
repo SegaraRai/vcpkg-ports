@@ -1,5 +1,5 @@
 {
-  "version": "117512d870c0f260f4914b6b4bb006b9054b06eb",
+  "version": "57629cd105d8262ea3030e9c54c83a977d47af18",
   "ports": [
     {
       "name": "3fd",
@@ -375,7 +375,7 @@
             "host": true
           }
         ],
-        "version-string": "0.1.2d"
+        "version-string": "0.1.2e"
       },
       "files": [
         "portfile.cmake",
@@ -474,9 +474,9 @@
       "name": "air-ctl",
       "manifest": {
         "name": "air-ctl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C template container library",
-        "homepage": "https://github.com/inie0722/CTL",
+        "homepage": "https://github.com/inie0722/air-ctl",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -491,6 +491,7 @@
         "version": "1.1.2"
       },
       "files": [
+        "fix-resize-error.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -643,7 +644,7 @@
             "host": true
           }
         ],
-        "version": "3.10.1"
+        "version": "3.11.2"
       },
       "files": [
         "patch.patch",
@@ -979,9 +980,10 @@
             "host": true
           }
         ],
-        "version": "0.10.0"
+        "version": "0.12.1"
       },
       "files": [
+        "anari-lib-maybe-static-lib.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17557,14 +17559,14 @@
         "description": "A supplemental C++ library with functionalities not directly supported from Modern C++ standard.",
         "homepage": "https://github.com/buck-yeh/bux",
         "license": "MIT",
-        "supports": "!(android | linux | osx | uwp)",
+        "supports": "!(android | linux | uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "1.10.2"
+        "version": "1.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -22894,6 +22896,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23029,6 +23032,12 @@
               "libpsl"
             ]
           },
+          "rtmp": {
+            "description": "RTMP support",
+            "dependencies": [
+              "librtmp"
+            ]
+          },
           "schannel": {
             "description": "SSL support (Secure Channel)",
             "dependencies": [
@@ -23159,6 +23168,7 @@
         "dependencies.patch",
         "export-components.patch",
         "portfile.cmake",
+        "rtmp.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -23755,6 +23765,7 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
+        "port-version": 1,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
@@ -26847,7 +26858,7 @@
       "name": "etcd-cpp-apiv3",
       "manifest": {
         "name": "etcd-cpp-apiv3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The etcd-cpp-apiv3 is a C++ API for etcd's v3 client API, i.e., ETCDCTL_API=3.",
         "homepage": "https://github.com/etcd-cpp-apiv3/etcd-cpp-apiv3",
         "license": "BSD-3-Clause",
@@ -26856,10 +26867,6 @@
           "boost-random",
           "boost-system",
           "boost-thread",
-          {
-            "name": "cpprestsdk",
-            "default-features": false
-          },
           "grpc",
           "openssl",
           "protobuf",
@@ -26872,6 +26879,20 @@
             "host": true
           }
         ],
+        "default-features": [
+          "async"
+        ],
+        "features": {
+          "async": {
+            "description": "Enable async features supported by cpprestsdk.",
+            "dependencies": [
+              {
+                "name": "cpprestsdk",
+                "default-features": false
+              }
+            ]
+          }
+        },
         "version": "0.15.4"
       },
       "files": [
@@ -31151,7 +31172,6 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 2,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31476,7 +31496,7 @@
             ]
           }
         },
-        "version-semver": "3.10.0"
+        "version-semver": "3.10.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -31484,7 +31504,6 @@
         "fix-gdal-target-interfaces.patch",
         "libkml.patch",
         "portfile.cmake",
-        "remove-machine-flag.patch",
         "target-is-valid.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -39080,7 +39099,6 @@
       "name": "hypre",
       "manifest": {
         "name": "hypre",
-        "port-version": 1,
         "description": "Parallel solvers for sparse linear systems featuring multigrid methods",
         "homepage": "https://computation.llnl.gov/projects/hypre-scalable-linear-solvers-multigrid-methods",
         "dependencies": [
@@ -39096,7 +39114,7 @@
             "host": true
           }
         ],
-        "version": "2.29.0"
+        "version": "2.32.0"
       },
       "files": [
         "portfile.cmake",
@@ -41745,6 +41763,7 @@
       "name": "jsonnet",
       "manifest": {
         "name": "jsonnet",
+        "port-version": 1,
         "description": "Jsonnet - The data templating language",
         "homepage": "https://github.com/google/jsonnet",
         "license": "Apache-2.0",
@@ -49478,6 +49497,7 @@
       "name": "libmem",
       "manifest": {
         "name": "libmem",
+        "port-version": 1,
         "description": "Advanced Game Hacking Library for C, Modern C++, Rust and Python (Windows/Linux/FreeBSD) (Process/Memory Hacking) (Hooking/Detouring) (Cross Platform) (x86/x64/ARM/ARM64) (DLL/SO Injection) (Internal/External) (Assembler/Disassembler)",
         "homepage": "https://github.com/rdbo/libmem",
         "license": "AGPL-3.0-only",
@@ -49485,6 +49505,10 @@
         "dependencies": [
           "capstone",
           "keystone",
+          {
+            "name": "llvm",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -52921,6 +52945,7 @@
       "name": "libtar",
       "manifest": {
         "name": "libtar",
+        "port-version": 1,
         "description": "libtar - C library for manipulating tar files",
         "homepage": "https://repo.or.cz/libtar.git",
         "supports": "!windows",
@@ -57239,7 +57264,7 @@
       "name": "luajit",
       "manifest": {
         "name": "luajit",
-        "port-version": 5,
+        "port-version": 6,
         "description": "LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.",
         "homepage": "https://github.com/LuaJIT/LuaJIT",
         "license": "MIT",
@@ -61990,7 +62015,7 @@
       "name": "mpi",
       "manifest": {
         "name": "mpi",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. The standard defines the syntax and semantics of a core of library routines useful to a wide range of users writing portable message-passing programs in C, C++, and Fortran. There are several well-tested and efficient implementations of MPI, many of which are open-source or in the public domain.",
         "license": null,
         "supports": "!uwp",
@@ -65990,6 +66015,7 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
+        "port-version": 1,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
@@ -66030,6 +66056,9 @@
           },
           "methodcalls": {
             "description": "Enable the Method service set"
+          },
+          "multithreading": {
+            "description": "Enable multi threading support"
           },
           "openssl": {
             "description": "Enable encryption support (uses OpenSSL)",
@@ -68623,14 +68652,14 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
-        "port-version": 1,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
         "supports": "!(windows | uwp)",
-        "version": "4.1.6"
+        "version": "4.1.7"
       },
       "files": [
         "keep_isystem.patch",
+        "mpi-wrapper.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70701,7 +70730,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -79034,7 +79063,7 @@
             "host": true
           }
         ],
-        "version": "1.36"
+        "version": "1.37"
       },
       "files": [
         "portfile.cmake",
@@ -81799,7 +81828,6 @@
       "name": "ryml",
       "manifest": {
         "name": "ryml",
-        "port-version": 1,
         "description": "Rapid YAML library",
         "homepage": "https://github.com/biojppm/rapidyaml",
         "license": "MIT",
@@ -81828,7 +81856,7 @@
             "description": "Enable ryml's default implementation of callbacks: allocate(), free(), error()"
           }
         },
-        "version": "0.5.0"
+        "version": "0.7.2"
       },
       "files": [
         "cmake-fix.patch",
@@ -82183,7 +82211,7 @@
       "name": "salome-med-fichier",
       "manifest": {
         "name": "salome-med-fichier",
-        "port-version": 1,
+        "port-version": 2,
         "description": "med-fichier provides a low level C API for fine-grained access to the structure of MED files (.med)",
         "homepage": "https://www.salome-platform.org",
         "license": "LGPL-3.0-or-later",
@@ -83408,7 +83436,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.1.8-preview"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -83845,7 +83873,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.18"
+        "version": "0.7.19"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -84900,11 +84928,16 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
+        "port-version": 1,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
         "license": "MIT",
         "supports": "!android & !uwp",
         "dependencies": [
+          {
+            "name": "dbus",
+            "platform": "linux"
+          },
           "fmt",
           {
             "name": "vcpkg-cmake",
@@ -85003,7 +85036,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -85182,6 +85215,7 @@
         "skia-functions.cmake",
         "skia-include-string.patch",
         "skiaConfig.cmake",
+        "skparagraph-dllexport.patch",
         "third-party.gn.in",
         "unofficial-skia-config.cmake",
         "unofficial-skia-targets-details.cmake",
@@ -86056,7 +86090,7 @@
       "name": "spaceland",
       "manifest": {
         "name": "spaceland",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Spaceland Lib (sl) is a suite for geometric computation, specifically adapted to OpenGL.",
         "dependencies": [
           {
@@ -89172,7 +89206,6 @@
       "name": "tinyfiledialogs",
       "manifest": {
         "name": "tinyfiledialogs",
-        "port-version": 4,
         "description": "Highly portable and cross-platform dialogs for native inputbox, passwordbox, colorpicker and more",
         "homepage": "https://sourceforge.net/projects/tinyfiledialogs/",
         "supports": "!uwp",
@@ -89186,7 +89219,7 @@
             "host": true
           }
         ],
-        "version": "3.8.8"
+        "version": "3.18.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -91030,10 +91063,11 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/USD",
         "license": null,
-        "supports": "!x86 & !arm & !android",
+        "supports": "!x86 & !(arm & windows) & !android",
         "dependencies": [
           "opensubdiv",
           "tbb",
@@ -95127,7 +95161,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.6"
+        "version": "4.1"
       },
       "files": [
         "compiler-target.diff",
