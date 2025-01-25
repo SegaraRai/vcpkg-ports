@@ -1,5 +1,5 @@
 {
-  "version": "57629cd105d8262ea3030e9c54c83a977d47af18",
+  "version": "4a9af5e5efcb24d0c8fcdf82dacf3b2b780b99f8",
   "ports": [
     {
       "name": "3fd",
@@ -23921,7 +23921,7 @@
             "host": true
           }
         ],
-        "version": "2.114.1"
+        "version": "2.118.0"
       },
       "files": [
         "portfile.cmake",
@@ -31172,6 +31172,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31209,7 +31210,33 @@
           "zlib"
         ],
         "default-features": [
-          "default-features"
+          "gif",
+          {
+            "name": "hdf5",
+            "platform": "!uwp"
+          },
+          "iconv",
+          "libkml",
+          {
+            "name": "libspatialite",
+            "platform": "!uwp"
+          },
+          "libxml2",
+          "lzma",
+          {
+            "name": "netcdf",
+            "platform": "!uwp & !(windows & arm64) & !android & !ios"
+          },
+          "openjpeg",
+          "openssl",
+          "pcre2",
+          {
+            "name": "postgresql",
+            "platform": "!uwp"
+          },
+          "recommended-features",
+          "webp",
+          "zstd"
         ],
         "features": {
           "archive": {
@@ -31239,46 +31266,6 @@
               {
                 "name": "curl",
                 "default-features": false
-              }
-            ]
-          },
-          "default-features": {
-            "description": "Default set of features, including recommended features",
-            "dependencies": [
-              {
-                "name": "gdal",
-                "default-features": false,
-                "features": [
-                  "gif",
-                  "iconv",
-                  "libkml",
-                  "libxml2",
-                  "lzma",
-                  "openjpeg",
-                  "openssl",
-                  "pcre2",
-                  "recommended-features",
-                  "webp",
-                  "zstd"
-                ]
-              },
-              {
-                "name": "gdal",
-                "default-features": false,
-                "features": [
-                  "libspatialite",
-                  "postgresql"
-                ],
-                "platform": "!uwp"
-              },
-              {
-                "name": "gdal",
-                "default-features": false,
-                "features": [
-                  "hdf5",
-                  "netcdf"
-                ],
-                "platform": "!uwp & !(windows & arm64) & !android & !ios"
               }
             ]
           },
@@ -31364,7 +31351,10 @@
           "libxml2": {
             "description": "Use LibXML2 library",
             "dependencies": [
-              "libxml2"
+              {
+                "name": "libxml2",
+                "default-features": false
+              }
             ]
           },
           "lzma": {
@@ -31462,17 +31452,6 @@
                 "name": "sqlite3",
                 "features": [
                   "rtree"
-                ]
-              }
-            ]
-          },
-          "supported-default-features": {
-            "description": "This feature is an alias for default-features. It is retained for compatibility.",
-            "dependencies": [
-              {
-                "name": "gdal",
-                "features": [
-                  "default-features"
                 ]
               }
             ]
@@ -38095,7 +38074,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 3,
+        "port-version": 4,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -40846,7 +40825,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -40924,13 +40903,7 @@
           "opencv": {
             "description": "Build ITKVideoBridgeOpenCV module.",
             "dependencies": [
-              {
-                "name": "opencv",
-                "default-features": false,
-                "features": [
-                  "default-features"
-                ]
-              }
+              "opencv"
             ]
           },
           "python": {
@@ -41210,6 +41183,7 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
+        "port-version": 1,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -41225,22 +41199,12 @@
           }
         ],
         "default-features": [
-          "default-features"
+          {
+            "name": "opengl",
+            "platform": "!(windows & arm) & !uwp & !ios"
+          }
         ],
         "features": {
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "jasper",
-                "default-features": false,
-                "features": [
-                  "opengl"
-                ],
-                "platform": "!(windows & arm) & !uwp & !ios"
-              }
-            ]
-          },
           "opengl": {
             "description": "Enable the use of the OpenGL/GLUT Library",
             "dependencies": [
@@ -60330,7 +60294,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
@@ -60348,30 +60312,14 @@
           "zstd"
         ],
         "default-features": [
-          "default-features"
+          "gles1",
+          "gles2",
+          {
+            "name": "llvm",
+            "platform": "x64"
+          }
         ],
         "features": {
-          "default-features": {
-            "description": "Platform dependent default features",
-            "dependencies": [
-              {
-                "name": "mesa",
-                "default-features": false,
-                "features": [
-                  "gles1",
-                  "gles2"
-                ]
-              },
-              {
-                "name": "mesa",
-                "default-features": false,
-                "features": [
-                  "llvm"
-                ],
-                "platform": "x64"
-              }
-            ]
-          },
           "egl": {
             "description": "Build support for EGL platform",
             "dependencies": [
@@ -66505,6 +66453,7 @@
       "name": "opencv",
       "manifest": {
         "name": "opencv",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -66513,9 +66462,6 @@
             "name": "opencv4",
             "default-features": false
           }
-        ],
-        "default-features": [
-          "default-features"
         ],
         "features": {
           "ade": {
@@ -66586,18 +66532,6 @@
                 "default-features": false,
                 "features": [
                   "dc1394"
-                ]
-              }
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "default-features"
                 ]
               }
             ]
@@ -67119,7 +67053,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 22,
+        "port-version": 23,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -67136,36 +67070,20 @@
           "zlib"
         ],
         "default-features": [
-          "default-features"
+          "eigen",
+          "jpeg",
+          {
+            "name": "msmf",
+            "platform": "windows & !mingw"
+          },
+          "png",
+          "tiff"
         ],
         "features": {
           "dc1394": {
             "description": "Dc1394 support for opencv",
             "dependencies": [
               "libdc1394"
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "opencv2",
-                "default-features": false,
-                "features": [
-                  "eigen",
-                  "jpeg",
-                  "png",
-                  "tiff"
-                ]
-              },
-              {
-                "name": "opencv2",
-                "default-features": false,
-                "features": [
-                  "msmf"
-                ],
-                "platform": "windows & !mingw"
-              }
             ]
           },
           "eigen": {
@@ -67258,7 +67176,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 17,
+        "port-version": 18,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -67278,7 +67196,11 @@
           "zlib"
         ],
         "default-features": [
-          "default-features"
+          "jpeg",
+          "png",
+          "quirc",
+          "tiff",
+          "webp"
         ],
         "features": {
           "bgsegm": {
@@ -67309,22 +67231,6 @@
             "description": "Dc1394 support for opencv",
             "dependencies": [
               "libdc1394"
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "opencv3",
-                "default-features": false,
-                "features": [
-                  "jpeg",
-                  "png",
-                  "quirc",
-                  "tiff",
-                  "webp"
-                ]
-              }
             ]
           },
           "dnn": {
@@ -67612,7 +67518,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 3,
+        "port-version": 4,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -67632,7 +67538,36 @@
           "zlib"
         ],
         "default-features": [
-          "default-features"
+          "calib3d",
+          {
+            "name": "dnn",
+            "platform": "!android"
+          },
+          {
+            "name": "dshow",
+            "platform": "windows & !uwp"
+          },
+          "fs",
+          {
+            "name": "gapi",
+            "platform": "!uwp"
+          },
+          {
+            "name": "gtk",
+            "platform": "linux"
+          },
+          "highgui",
+          "intrinsics",
+          "jpeg",
+          "png",
+          "quirc",
+          "thread",
+          "tiff",
+          "webp",
+          {
+            "name": "win32ui",
+            "platform": "windows & !uwp"
+          }
         ],
         "features": {
           "ade": {
@@ -67697,60 +67632,6 @@
             "description": "Dc1394 support for opencv",
             "dependencies": [
               "libdc1394"
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "calib3d",
-                  "fs",
-                  "highgui",
-                  "intrinsics",
-                  "jpeg",
-                  "png",
-                  "quirc",
-                  "thread",
-                  "tiff",
-                  "webp"
-                ]
-              },
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "gtk"
-                ],
-                "platform": "linux"
-              },
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "gapi"
-                ],
-                "platform": "!uwp"
-              },
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "dnn"
-                ],
-                "platform": "!android"
-              },
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "dshow",
-                  "win32ui"
-                ],
-                "platform": "windows & !uwp"
-              }
             ]
           },
           "dnn": {
@@ -69885,7 +69766,7 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 25,
+        "port-version": 26,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
         "homepage": "https://www.openscenegraph.com/",
         "license": null,
@@ -69912,8 +69793,19 @@
           "zlib"
         ],
         "default-features": [
-          "default-features",
+          {
+            "name": "fontconfig",
+            "platform": "!android & !ios & !uwp"
+          },
           "freetype",
+          {
+            "name": "nvtt",
+            "platform": "!x86 & !(windows & arm64) & !uwp"
+          },
+          {
+            "name": "openexr",
+            "platform": "!uwp"
+          },
           "plugins"
         ],
         "features": {
@@ -69921,35 +69813,6 @@
             "description": "Support for Collada (.dae) files",
             "dependencies": [
               "collada-dom"
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "osg",
-                "default-features": false,
-                "features": [
-                  "openexr"
-                ],
-                "platform": "!uwp"
-              },
-              {
-                "name": "osg",
-                "default-features": false,
-                "features": [
-                  "fontconfig"
-                ],
-                "platform": "!android & !ios & !uwp"
-              },
-              {
-                "name": "osg",
-                "default-features": false,
-                "features": [
-                  "nvtt"
-                ],
-                "platform": "!x86 & !(windows & arm64) & !uwp"
-              }
             ]
           },
           "docs": {
@@ -70127,6 +69990,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
+        "port-version": 1,
         "description": "osgEarth - Dynamic map generation toolkit for OpenSceneGraph Copyright 2021 Pelican Mapping.",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
@@ -70161,26 +70025,16 @@
           }
         ],
         "default-features": [
-          "default-features"
+          {
+            "name": "blend2d",
+            "platform": "!(arm & windows) & !uwp & !wasm32"
+          }
         ],
         "features": {
           "blend2d": {
             "description": "Enable Blend2D support",
             "dependencies": [
               "blend2d"
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "osgearth",
-                "default-features": false,
-                "features": [
-                  "blend2d"
-                ],
-                "platform": "!(arm & windows) & !uwp & !wasm32"
-              }
             ]
           },
           "tools": {
@@ -73594,7 +73448,7 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -76440,6 +76294,7 @@
       "name": "qt5compat",
       "manifest": {
         "name": "qt5compat",
+        "port-version": 1,
         "description": "The Qt 5 Core Compat module contains the Qt 5 Core APIs that were removed in Qt 6. The module facilitates the transition to Qt 6.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76452,7 +76307,6 @@
         "default-features": [
           "big-codecs",
           "codecs",
-          "default-features",
           "qml",
           "textcodec"
         ],
@@ -76480,9 +76334,6 @@
                 ]
               }
             ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features"
           },
           "iconv": {
             "description": "Provides internationalization on Unix.",
@@ -76612,7 +76463,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76673,16 +76524,35 @@
           "zlib"
         ],
         "default-features": [
+          {
+            "name": "appstore-compliant",
+            "platform": "uwp"
+          },
           "brotli",
           "concurrent",
           {
             "name": "dbus",
             "platform": "!(static & windows)"
           },
-          "default-features",
           "dnslookup",
           "doubleconversion",
+          {
+            "name": "egl",
+            "platform": "linux"
+          },
+          {
+            "name": "egl",
+            "platform": "android"
+          },
+          {
+            "name": "fontconfig",
+            "platform": "linux"
+          },
           "freetype",
+          {
+            "name": "gles2",
+            "platform": "android"
+          },
           "gui",
           "harfbuzz",
           "icu",
@@ -76708,6 +76578,18 @@
           "testlib",
           "thread",
           "widgets",
+          {
+            "name": "xcb",
+            "platform": "linux"
+          },
+          {
+            "name": "xcb-xlib",
+            "platform": "linux"
+          },
+          {
+            "name": "xrender",
+            "platform": "linux"
+          },
           "zstd"
         ],
         "features": {
@@ -76764,40 +76646,6 @@
                 "features": [
                   "thread"
                 ]
-              }
-            ]
-          },
-          "default-features": {
-            "description": "Platform-dependent default features",
-            "dependencies": [
-              {
-                "name": "qtbase",
-                "default-features": false,
-                "features": [
-                  "appstore-compliant"
-                ],
-                "platform": "uwp"
-              },
-              {
-                "name": "qtbase",
-                "default-features": false,
-                "features": [
-                  "egl",
-                  "fontconfig",
-                  "xcb",
-                  "xcb-xlib",
-                  "xrender"
-                ],
-                "platform": "linux"
-              },
-              {
-                "name": "qtbase",
-                "default-features": false,
-                "features": [
-                  "egl",
-                  "gles2"
-                ],
-                "platform": "android"
               }
             ]
           },
@@ -77514,6 +77362,7 @@
       "name": "qtimageformats",
       "manifest": {
         "name": "qtimageformats",
+        "port-version": 1,
         "description": "The Qt Image Formats add-on module provides optional support for other image file formats.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77527,15 +77376,11 @@
           }
         ],
         "default-features": [
-          "default-features",
           "jasper",
           "tiff",
           "webp"
         ],
         "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          },
           "jasper": {
             "description": "Use jasper",
             "dependencies": [
@@ -77949,6 +77794,7 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
+        "port-version": 1,
         "description": "The Qt OPC UA module implements a Qt API to interact with OPC UA on top of a 3rd party OPC UA stack.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77967,15 +77813,11 @@
           }
         ],
         "default-features": [
-          "default-features",
           "gds",
           "ns0idnames",
           "open62541"
         ],
         "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          },
           "gds": {
             "description": "Support for global discovery server"
           },
@@ -78344,6 +78186,7 @@
       "name": "qtserialbus",
       "manifest": {
         "name": "qtserialbus",
+        "port-version": 1,
         "description": "The Qt Serial Bus API provides classes and functions to access the various industrial serial buses and protocols, such as CAN, ModBus, and others.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78365,14 +78208,6 @@
             "default-features": false
           }
         ],
-        "default-features": [
-          "default-features"
-        ],
-        "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          }
-        },
         "version": "6.8.1"
       },
       "files": [
@@ -78616,6 +78451,7 @@
       "name": "qttranslations",
       "manifest": {
         "name": "qttranslations",
+        "port-version": 1,
         "description": "Qt translations.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78632,14 +78468,6 @@
             ]
           }
         ],
-        "default-features": [
-          "default-features"
-        ],
-        "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          }
-        },
         "version": "6.8.1"
       },
       "files": [
@@ -78651,6 +78479,7 @@
       "name": "qtvirtualkeyboard",
       "manifest": {
         "name": "qtvirtualkeyboard",
+        "port-version": 1,
         "description": "The Qt Virtual Keyboard project provides an input framework and reference keyboard frontend for Qt 6 on Linux Desktop/X11, Windows Desktop, and Boot2Qt targets.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78672,13 +78501,9 @@
           }
         ],
         "default-features": [
-          "default-features",
           "hunspell"
         ],
         "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          },
           "hunspell": {
             "description": "Use hunspell",
             "dependencies": [
@@ -78764,6 +78589,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78881,13 +78707,7 @@
             "platform": "!windows"
           }
         ],
-        "default-features": [
-          "default-features"
-        ],
         "features": {
-          "default-features": {
-            "description": "Platform-dependent default features"
-          },
           "geolocation": {
             "description": "Build with Geolocation",
             "dependencies": [
@@ -88366,7 +88186,7 @@
       "name": "tensorflow-common",
       "manifest": {
         "name": "tensorflow-common",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This meta package holds common files for the C [tensorflow] and the C++ [tensorflow-cc] API version of TensorFlow but is not installable on its own.",
         "homepage": "https://github.com/tensorflow/tensorflow",
         "license": "Apache-2.0",
@@ -92869,7 +92689,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -93086,6 +92906,9 @@
               }
             ]
           },
+          "openmp": {
+            "description": "Use openmp multithreading parallel implementation"
+          },
           "openvr": {
             "description": "OpenVR functionality for VTK",
             "dependencies": [
@@ -93185,6 +93008,12 @@
               "sqlite3"
             ]
           },
+          "tbb": {
+            "description": "Use TBB multithreading parallel implementation",
+            "dependencies": [
+              "tbb"
+            ]
+          },
           "utf8": {
             "description": "Enables vtk reader/writer with utf-8 path support",
             "dependencies": [
@@ -93218,6 +93047,7 @@
         "fast-float.patch",
         "fix-exprtk.patch",
         "fix-gdal.patch",
+        "fix-tbbsmptool.patch",
         "fix-using-hdf5.patch",
         "hdf5helper.patch",
         "iotr.patch",
