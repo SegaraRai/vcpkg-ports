@@ -1,5 +1,5 @@
 {
-  "version": "4a9af5e5efcb24d0c8fcdf82dacf3b2b780b99f8",
+  "version": "57c08a3223a1ec03c3a31986ee38d32e90b6039c",
   "ports": [
     {
       "name": "3fd",
@@ -29612,6 +29612,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29649,9 +29650,7 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
-        ],
-        "default-features": [
+          },
           "zlib"
         ],
         "features": {
@@ -29697,12 +29696,6 @@
             "description": "Support Snappy for compression",
             "dependencies": [
               "snappy"
-            ]
-          },
-          "zlib": {
-            "description": "Support zlib for compression",
-            "dependencies": [
-              "zlib"
             ]
           },
           "zstd": {
@@ -46478,7 +46471,7 @@
           },
           "zlib"
         ],
-        "version": "0.22.1"
+        "version": "0.24.2"
       },
       "files": [
         "portfile.cmake",
@@ -57465,7 +57458,7 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -65245,10 +65238,12 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
+        "port-version": 1,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
+        "documentation": "https://docs.octave.org/latest/",
         "license": "GPL-3.0-or-later",
-        "supports": "!arm",
+        "supports": "!windows | mingw",
         "dependencies": [
           "blas",
           "fftw3",
@@ -65257,23 +65252,14 @@
           "libsndfile",
           "opengl",
           "pcre2",
-          "portaudio",
           "readline",
-          "sundials",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
           "zlib"
         ],
         "version": "9.3.0"
       },
       "files": [
         "portfile.cmake",
+        "run-mk-ops.diff",
         "vcpkg.json"
       ]
     },
@@ -86335,7 +86321,7 @@
             "host": true
           }
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -86346,7 +86332,6 @@
       "name": "spirv-headers",
       "manifest": {
         "name": "spirv-headers",
-        "port-version": 1,
         "description": "Machine-readable files for the SPIR-V Registry",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Headers",
         "dependencies": [
@@ -86359,7 +86344,7 @@
             "host": true
           }
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -86383,7 +86368,7 @@
             "host": true
           }
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "export-targets.patch",
@@ -86414,7 +86399,7 @@
             "description": "Build tools."
           }
         },
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -91676,6 +91661,7 @@
       "name": "vcpkg-make",
       "manifest": {
         "name": "vcpkg-make",
+        "port-version": 1,
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_make_configure",
         "license": null,
         "supports": "native",
@@ -92453,7 +92439,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.296"
+        "version": "1.4.304"
       },
       "files": [
         "portfile.cmake",
@@ -92652,6 +92638,7 @@
       "name": "vst3sdk",
       "manifest": {
         "name": "vst3sdk",
+        "port-version": 1,
         "description": "Virtual Studio Technology (VST) is an audio plug-in software interface that facilitates the integration of software synthesizers and effects in digital audio workstations (DAW)",
         "homepage": "https://steinbergmedia.github.io/vst3_dev_portal/pages/Technical+Documentation/API+Documentation/Index.html",
         "license": "GPL-3.0-only",
@@ -93212,7 +93199,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -93238,7 +93225,7 @@
             "host": true
           }
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -93283,7 +93270,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -93383,7 +93370,7 @@
             ]
           }
         },
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "LICENSE.txt",
@@ -93413,10 +93400,9 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
-        "fix-parallel-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -93439,7 +93425,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
@@ -93471,7 +93457,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.3.296.0"
+        "version": "1.4.304.0"
       },
       "files": [
         "portfile.cmake",
