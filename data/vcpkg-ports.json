@@ -1,5 +1,5 @@
 {
-  "version": "57c08a3223a1ec03c3a31986ee38d32e90b6039c",
+  "version": "ab42fb3032acd29dd12cea7897f85025526a60e6",
   "ports": [
     {
       "name": "3fd",
@@ -940,7 +940,6 @@
         "description": "AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker",
         "homepage": "https://github.com/CopernicaMarketingSoftware/AMQP-CPP",
         "license": "Apache-2.0",
-        "supports": "!uwp",
         "dependencies": [
           "openssl",
           {
@@ -952,10 +951,9 @@
             "host": true
           }
         ],
-        "version": "4.3.26"
+        "version": "4.3.27"
       },
       "files": [
-        "find-openssl.patch",
         "fix-max_min_macros.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -1934,6 +1932,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2080,6 +2079,7 @@
         "0004-android-musl.patch",
         "0005-android-datetime.patch",
         "0006-cmake-msvcruntime.patch",
+        "0007-fix-path.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -2606,7 +2606,7 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 8,
+        "port-version": 9,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "LGPL-2.0-or-later",
@@ -18686,6 +18686,7 @@
       "name": "ceres",
       "manifest": {
         "name": "ceres",
+        "port-version": 1,
         "description": "non-linear optimization package",
         "homepage": "https://github.com/ceres-solver/ceres-solver",
         "license": "Apache-2.0",
@@ -18734,9 +18735,12 @@
                 ]
               },
               {
-                "name": "suitesparse",
-                "default-features": false
-              }
+                "name": "suitesparse-cholmod",
+                "features": [
+                  "matrixops"
+                ]
+              },
+              "suitesparse-spqr"
             ]
           },
           "tools": {
@@ -20435,6 +20439,7 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
+        "port-version": 1,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -23957,8 +23962,9 @@
       "name": "daw-utf-range",
       "manifest": {
         "name": "daw-utf-range",
+        "port-version": 1,
         "description": "Header-only utf8 string range used by daw-json-link. Includes a constexpr/noexcept modified version of utfcpp.",
-        "homepage": "https://github.com/beached/header_libraries",
+        "homepage": "https://github.com/beached/utf_range",
         "license": "BSL-1.0",
         "dependencies": [
           "daw-header-libraries",
@@ -27729,7 +27735,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28794,7 +28800,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "fix-build.patch",
@@ -29466,7 +29472,7 @@
             ]
           }
         },
-        "version": "2.4.2"
+        "version": "2.4.3"
       },
       "files": [
         "gentables.patch",
@@ -29612,7 +29618,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29705,7 +29710,7 @@
             ]
           }
         },
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30701,14 +30706,15 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 2,
+        "port-version": 3,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
         "dependencies": [
           "ceres",
           "eigen3",
           "lapack",
-          "suitesparse",
+          "suitesparse-cholmod",
+          "suitesparse-cxsparse",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -31522,7 +31528,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -32564,7 +32570,7 @@
             "host": true
           }
         ],
-        "version": "4.2.3"
+        "version": "4.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -33274,11 +33280,11 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A middleware layer between C libraries (using GObject) and language bindings.",
         "homepage": "https://gi.readthedocs.io/en/latest/",
         "license": null,
-        "supports": "!static & native",
+        "supports": "!static & (native | (windows & x86))",
         "dependencies": [
           {
             "name": "cairo",
@@ -33294,13 +33300,15 @@
           },
           {
             "name": "gobject-introspection",
-            "host": true
+            "host": true,
+            "platform": "!(windows & x86)"
           },
           "libffi",
           "python3",
           {
             "name": "python3",
-            "host": true
+            "host": true,
+            "platform": "!(windows & x86)"
           },
           {
             "name": "vcpkg-tool-meson",
@@ -33315,7 +33323,6 @@
         "0003-fix-paths.patch",
         "fix-pkgconfig.patch",
         "portfile.cmake",
-        "python.patch",
         "vcpkg.json"
       ]
     },
@@ -35376,7 +35383,7 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
@@ -35397,14 +35404,7 @@
           "introspection": {
             "description": "build with introspection",
             "dependencies": [
-              {
-                "name": "gobject-introspection",
-                "host": true
-              },
-              {
-                "name": "gobject-introspection",
-                "platform": "windows & x86"
-              }
+              "gobject-introspection"
             ]
           }
         },
@@ -36663,6 +36663,7 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -36735,6 +36736,7 @@
                   "introspection"
                 ]
               },
+              "gobject-introspection",
               {
                 "name": "graphene",
                 "default-features": false,
@@ -36765,7 +36767,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -36842,6 +36844,7 @@
                   "introspection"
                 ]
               },
+              "gobject-introspection",
               {
                 "name": "pango",
                 "default-features": false,
@@ -37848,6 +37851,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -40806,7 +40810,7 @@
             "host": true
           }
         ],
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "Config.cmake.in",
@@ -46471,7 +46475,7 @@
           },
           "zlib"
         ],
-        "version": "0.24.2"
+        "version": "0.24.3"
       },
       "files": [
         "portfile.cmake",
@@ -50324,7 +50328,7 @@
           },
           "zlib"
         ],
-        "version": "0.7.10"
+        "version": "0.7.13"
       },
       "files": [
         "CMakeLists.txt",
@@ -55172,6 +55176,7 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
+        "port-version": 1,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -55210,6 +55215,15 @@
           },
           "python": {
             "description": "Builds with python support",
+            "dependencies": [
+              {
+                "name": "libxslt",
+                "default-features": false,
+                "features": [
+                  "profiler"
+                ]
+              }
+            ],
             "supports": "!windows"
           },
           "thread": {
@@ -56018,6 +56032,7 @@
       "name": "llgi",
       "manifest": {
         "name": "llgi",
+        "port-version": 1,
         "homepage": "https://github.com/altseed/LLGI",
         "license": null,
         "supports": "!(uwp | android)",
@@ -62429,7 +62444,7 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -62467,6 +62482,7 @@
         "fix-comparing-system-processor-with-win32.patch",
         "fix-install.patch",
         "fix-uwp-crt.patch",
+        "no-werror.patch",
         "portfile.cmake",
         "uwp-link-libs.diff",
         "vcpkg.json"
@@ -62724,7 +62740,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "portfile.cmake",
@@ -65949,7 +65965,7 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
-        "port-version": 1,
+        "port-version": 2,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
@@ -65974,13 +65990,29 @@
             "description": "Concatenate the library to a single file open62541.h/.c"
           },
           "diagnostics": {
-            "description": "Enable diagnostics information exposed by the server"
+            "description": "Enable diagnostics information exposed by the server",
+            "dependencies": [
+              {
+                "name": "open62541",
+                "features": [
+                  "subscriptions-events"
+                ]
+              }
+            ]
           },
           "discovery": {
             "description": "Enable Discovery Service (LDS)"
           },
           "historizing": {
-            "description": "Enable basic support for historical access (client and server)"
+            "description": "Enable basic support for historical access (client and server)",
+            "dependencies": [
+              {
+                "name": "open62541",
+                "features": [
+                  "subscriptions-events"
+                ]
+              }
+            ]
           },
           "mbedtls": {
             "description": "Enable encryption support (uses MbedTLS)",
@@ -65992,7 +66024,15 @@
             "description": "Enable the Method service set"
           },
           "multithreading": {
-            "description": "Enable multi threading support"
+            "description": "Enable multi threading support",
+            "dependencies": [
+              {
+                "name": "open62541",
+                "features": [
+                  "methodcalls"
+                ]
+              }
+            ]
           },
           "openssl": {
             "description": "Enable encryption support (uses OpenSSL)",
@@ -66004,7 +66044,15 @@
             "description": "Enable subscriptions support"
           },
           "subscriptions-events": {
-            "description": "Enable event monitoring"
+            "description": "Enable event monitoring",
+            "dependencies": [
+              {
+                "name": "open62541",
+                "features": [
+                  "subscriptions"
+                ]
+              }
+            ]
           }
         },
         "version": "1.3.15"
@@ -70327,6 +70375,7 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
+        "port-version": 1,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-or-later",
@@ -70364,8 +70413,10 @@
           "introspection": {
             "description": "build with introspection",
             "dependencies": [
+              "gobject-introspection",
               {
                 "name": "harfbuzz",
+                "default-features": false,
                 "features": [
                   "introspection"
                 ]
@@ -72811,11 +72862,16 @@
       "name": "portaudio",
       "manifest": {
         "name": "portaudio",
-        "port-version": 5,
+        "port-version": 6,
         "description": "PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.",
         "homepage": "http://www.portaudio.com",
+        "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "jack2",
+            "platform": "!ios & !osx & !windows"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -72828,8 +72884,7 @@
         "version": "19.7"
       },
       "files": [
-        "fix-library-can-not-be-found.patch",
-        "framework_link.patch",
+        "jack.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73150,6 +73205,47 @@
         "portfile.cmake",
         "remove_toolset_restriction.patch",
         "sqlite.diff",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "projectm",
+      "manifest": {
+        "name": "projectm",
+        "description": "The projectM Music Visualizer. A cross-platform, OpenGL-based reimplementation of Milkdrop as a reusable library.",
+        "homepage": "https://github.com/projectM-visualizer/projectm",
+        "license": "LGPL-2.1-only AND MIT AND MIT-0",
+        "dependencies": [
+          {
+            "name": "glew",
+            "platform": "windows"
+          },
+          "glm",
+          "opengl",
+          "projectm-eval",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "boost-filesystem": {
+            "description": "Use boost::filesystem instead of std::filesystem to target toolchains and platforms without C++17 support",
+            "dependencies": [
+              "boost-filesystem"
+            ]
+          }
+        },
+        "version": "4.1.4"
+      },
+      "files": [
+        "macos-pkgconfig.patch",
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -73479,7 +73575,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -79355,7 +79451,7 @@
       "name": "rapidjson",
       "manifest": {
         "name": "rapidjson",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API <http://rapidjson.org/>",
         "homepage": "http://rapidjson.org/",
         "license": "MIT",
@@ -82291,6 +82387,7 @@
       "name": "scnlib",
       "manifest": {
         "name": "scnlib",
+        "port-version": 1,
         "description": "scnlib is a modern C++ library for replacing scanf and std::istream",
         "homepage": "https://scnlib.dev/",
         "license": "Apache-2.0",
@@ -82309,6 +82406,7 @@
       },
       "files": [
         "portfile.cmake",
+        "scnlib-pr-136.patch",
         "vcpkg.json"
       ]
     },
@@ -82456,10 +82554,9 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-06"
+        "version-date": "2025-01-25"
       },
       "files": [
-        "add_export.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84050,7 +84147,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": null,
         "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2024.15.2"
+        "version": "2025.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -84683,7 +84780,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "5.6.0"
+        "version-semver": "6.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -86042,6 +86139,7 @@
       "name": "spdk",
       "manifest": {
         "name": "spdk",
+        "port-version": 1,
         "description": "Storage Performance Development Kit",
         "supports": "linux",
         "dependencies": [
@@ -86730,7 +86828,7 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -86776,6 +86874,7 @@
       "files": [
         "ddl2cpp_path.patch",
         "dependencies.diff",
+        "fix-miss-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -87540,12 +87639,119 @@
       "name": "suitesparse",
       "manifest": {
         "name": "suitesparse",
-        "port-version": 2,
-        "description": "A suite of sparse matrix algorithms. Also provides libcxsparse.",
-        "homepage": "http://suitesparse.com",
+        "description": "A suite of sparse matrix algorithms",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": null,
         "dependencies": [
-          "lapack",
-          "metis",
+          "suitesparse-amd",
+          "suitesparse-btf",
+          "suitesparse-camd",
+          "suitesparse-ccolamd",
+          "suitesparse-cholmod",
+          "suitesparse-colamd",
+          "suitesparse-config",
+          "suitesparse-cxsparse",
+          "suitesparse-graphblas",
+          "suitesparse-klu",
+          "suitesparse-lagraph",
+          "suitesparse-ldl",
+          "suitesparse-spex"
+        ],
+        "features": {
+          "cuda": {
+            "description": "Enable CUDA support for the current compute architecture of this machine",
+            "dependencies": [
+              {
+                "name": "suitesparse-cholmod",
+                "features": [
+                  "cuda"
+                ]
+              },
+              {
+                "name": "suitesparse-spqr",
+                "features": [
+                  "cuda"
+                ]
+              }
+            ]
+          },
+          "gpl": {
+            "description": "Enable GPL-licensed packages",
+            "dependencies": [
+              {
+                "name": "suitesparse-cholmod",
+                "features": [
+                  "matrixops",
+                  "modify",
+                  "supernodal"
+                ]
+              },
+              "suitesparse-mongoose",
+              "suitesparse-paru",
+              "suitesparse-rbio",
+              "suitesparse-spqr",
+              "suitesparse-umfpack"
+            ]
+          },
+          "openmp": {
+            "description": "Enable OpenMP support for SuiteSparse libraries",
+            "dependencies": [
+              {
+                "name": "suitesparse-cholmod",
+                "features": [
+                  "openmp"
+                ]
+              },
+              {
+                "name": "suitesparse-config",
+                "features": [
+                  "openmp"
+                ]
+              },
+              {
+                "name": "suitesparse-graphblas",
+                "features": [
+                  "openmp"
+                ]
+              },
+              {
+                "name": "suitesparse-lagraph",
+                "features": [
+                  "openmp"
+                ]
+              },
+              {
+                "name": "suitesparse-paru",
+                "features": [
+                  "openmp"
+                ],
+                "platform": "!windows"
+              },
+              {
+                "name": "suitesparse-spex",
+                "features": [
+                  "openmp"
+                ]
+              }
+            ]
+          }
+        },
+        "version-semver": "7.8.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-amd",
+      "manifest": {
+        "name": "suitesparse-amd",
+        "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "suitesparse-config",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -87555,13 +87761,593 @@
             "host": true
           }
         ],
-        "version-semver": "5.8.0"
+        "version-semver": "3.3.3"
       },
       "files": [
-        "FindCXSparse.cmake",
-        "build_fixes.patch",
         "portfile.cmake",
-        "vcpkg-cmake-wrapper_cxsparse.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-btf",
+      "manifest": {
+        "name": "suitesparse-btf",
+        "description": "BTF: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "2.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-camd",
+      "manifest": {
+        "name": "suitesparse-camd",
+        "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "3.3.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-ccolamd",
+      "manifest": {
+        "name": "suitesparse-ccolamd",
+        "description": "CCOLAMD: Routines for constrained column approximate minimum degree ordering algorithm in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "3.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-cholmod",
+      "manifest": {
+        "name": "suitesparse-cholmod",
+        "description": "CHOLMOD: Routines for factorizing sparse symmetric positive definite matrices in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "LGPL-2.1-or-later AND Apache-2.0",
+        "dependencies": [
+          "suitesparse-amd",
+          "suitesparse-camd",
+          "suitesparse-ccolamd",
+          "suitesparse-colamd",
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "partition"
+        ],
+        "features": {
+          "cuda": {
+            "description": "Enable CUDA support for the current compute architecture of this machine",
+            "dependencies": [
+              "cuda",
+              {
+                "name": "suitesparse-cholmod",
+                "features": [
+                  "matrixops"
+                ]
+              }
+            ],
+            "supports": "!(windows & static)",
+            "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0"
+          },
+          "matrixops": {
+            "description": "Build MatrixOps module",
+            "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0"
+          },
+          "modify": {
+            "description": "Build Modify module",
+            "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0"
+          },
+          "openmp": {
+            "description": "Enable OpenMP support",
+            "dependencies": [
+              {
+                "name": "suitesparse-config",
+                "features": [
+                  "openmp"
+                ]
+              }
+            ]
+          },
+          "partition": {
+            "description": "Build Partition module"
+          },
+          "supernodal": {
+            "description": "Build SuperNodal module",
+            "dependencies": [
+              "lapack"
+            ],
+            "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0"
+          }
+        },
+        "version-semver": "5.3.0"
+      },
+      "files": [
+        "001-dont-override-cuda-architectures.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-colamd",
+      "manifest": {
+        "name": "suitesparse-colamd",
+        "description": "COLAMD: Routines for column approximate minimum degree ordering algorithm in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "3.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-config",
+      "manifest": {
+        "name": "suitesparse-config",
+        "description": "Configuration for SuiteSparse libraries",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "blas",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support (in SuiteSparse_config only)"
+          }
+        },
+        "version-semver": "7.8.3"
+      },
+      "files": [
+        "SuiteSparseBLAS.cmake",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-cxsparse",
+      "manifest": {
+        "name": "suitesparse-cxsparse",
+        "description": "CXSparse: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "4.4.1"
+      },
+      "files": [
+        "001-detect-complex-support.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-graphblas",
+      "manifest": {
+        "name": "suitesparse-graphblas",
+        "description": "SuiteSparse:GraphBLAS: graph algorithms in the language of linear algebra",
+        "homepage": "https://people.engr.tamu.edu/davis/GraphBLAS.html",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support"
+          },
+          "precompiled": {
+            "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
+          }
+        },
+        "version-semver": "9.3.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-klu",
+      "manifest": {
+        "name": "suitesparse-klu",
+        "description": "KLU: Routines for solving sparse linear systems of equations in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "suitesparse-amd",
+          "suitesparse-btf",
+          "suitesparse-colamd",
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cholmod": {
+            "description": "Build example user-ordering function using CHOLMOD",
+            "dependencies": [
+              "suitesparse-cholmod"
+            ]
+          }
+        },
+        "version-semver": "2.3.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-lagraph",
+      "manifest": {
+        "name": "suitesparse-lagraph",
+        "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
+        "homepage": "https://lagraph.readthedocs.io/en/latest/",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          "suitesparse-graphblas",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support",
+            "dependencies": [
+              {
+                "name": "suitesparse-graphblas",
+                "features": [
+                  "openmp"
+                ]
+              }
+            ]
+          }
+        },
+        "version-semver": "1.1.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-ldl",
+      "manifest": {
+        "name": "suitesparse-ldl",
+        "description": "LDL: A sparse LDL' factorization and solve package in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "suitesparse-amd",
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "3.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-mongoose",
+      "manifest": {
+        "name": "suitesparse-mongoose",
+        "description": "Mongoose: Graph partitioning library in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-3.0-only",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
+            "description": "Build suitesparse_mongoose CLI tool"
+          }
+        },
+        "version-semver": "3.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-paru",
+      "manifest": {
+        "name": "suitesparse-paru",
+        "description": "ParU: Routines for solving sparse linear system via parallel multifrontal LU factorization algorithms in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-3.0-or-later",
+        "dependencies": [
+          "suitesparse-cholmod",
+          "suitesparse-config",
+          "suitesparse-umfpack",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support",
+            "dependencies": [
+              {
+                "name": "suitesparse-config",
+                "features": [
+                  "openmp"
+                ]
+              }
+            ],
+            "supports": "!windows"
+          }
+        },
+        "version-semver": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-rbio",
+      "manifest": {
+        "name": "suitesparse-rbio",
+        "description": "RBio: routines for reading/writing sparse matrices in Rutherford/Boeing format in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "4.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-spex",
+      "manifest": {
+        "name": "suitesparse-spex",
+        "description": "SPEX: Software package for SParse EXact algebra in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-2.0-or-later OR LGPL-3.0-or-later",
+        "dependencies": [
+          "gmp",
+          "mpfr",
+          "suitesparse-amd",
+          "suitesparse-colamd",
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support",
+            "dependencies": [
+              {
+                "name": "suitesparse-config",
+                "features": [
+                  "openmp"
+                ]
+              }
+            ]
+          }
+        },
+        "version-semver": "3.2.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-spqr",
+      "manifest": {
+        "name": "suitesparse-spqr",
+        "description": "SPQR: Multithreaded, multifrontal, rank-revealing sparse QR factorization method in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "lapack",
+          {
+            "name": "suitesparse-cholmod",
+            "features": [
+              "supernodal"
+            ]
+          },
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cuda": {
+            "description": "Enable CUDA support for the current compute architecture of this machine",
+            "dependencies": [
+              "cuda"
+            ]
+          }
+        },
+        "version-semver": "4.3.4"
+      },
+      "files": [
+        "001-dont-override-cuda-architectures.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "suitesparse-umfpack",
+      "manifest": {
+        "name": "suitesparse-umfpack",
+        "description": "UMFPACK: Routines solving sparse linear systems via LU factorization in SuiteSparse",
+        "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "suitesparse-amd",
+          "suitesparse-config",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "cholmod"
+        ],
+        "features": {
+          "cholmod": {
+            "description": "Use CHOLMOD",
+            "dependencies": [
+              "suitesparse-cholmod"
+            ]
+          }
+        },
+        "version-semver": "6.3.5"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -93662,7 +94448,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.13.00"
+        "version-string": "2025.01.20.00"
       },
       "files": [
         "fix-config-cmake.patch",
