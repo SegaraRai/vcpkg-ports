@@ -1,5 +1,5 @@
 {
-  "version": "73ee328162aa172b49e7990f99db07778b644281",
+  "version": "e9c53cd6c198a5c16c2e249ae67f5a73aab84b17",
   "ports": [
     {
       "name": "3fd",
@@ -1789,7 +1789,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.1.3"
+        "version-semver": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -2285,7 +2285,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-06-28"
+        "version-date": "2025-01-22"
       },
       "files": [
         "portfile.cmake",
@@ -3107,6 +3107,7 @@
       "name": "awlib",
       "manifest": {
         "name": "awlib",
+        "port-version": 1,
         "description": "Cross-platform utility library",
         "homepage": "https://github.com/absurdworlds/awlib",
         "license": "LGPL-3.0-or-later",
@@ -3137,6 +3138,7 @@
         "version-date": "2024-04-06"
       },
       "files": [
+        "fix-mac-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -6828,7 +6830,7 @@
             "supports": "!arm32"
           }
         },
-        "version-date": "2024-07-08"
+        "version-date": "2024-11-23"
       },
       "files": [
         "portfile.cmake",
@@ -21149,7 +21151,7 @@
             ]
           }
         },
-        "version": "0.18.3"
+        "version": "0.18.5"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22248,7 +22250,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -25948,7 +25950,6 @@
       "name": "eabase",
       "manifest": {
         "name": "eabase",
-        "port-version": 3,
         "description": "Electronic Arts Base. EABase is a small set of header files that define platform-independent data types and macros.",
         "homepage": "https://github.com/electronicarts/EABase",
         "dependencies": [
@@ -25961,7 +25962,7 @@
             "host": true
           }
         ],
-        "version-string": "2.09.12"
+        "version-date": "2024-08-18"
       },
       "files": [
         "EABaseConfig.cmake.in",
@@ -27735,7 +27736,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28800,7 +28801,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "fix-build.patch",
@@ -29710,7 +29711,7 @@
             ]
           }
         },
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -35595,7 +35596,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.68.2"
+        "version-semver": "1.70.0"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -35605,8 +35606,6 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
-        "00017-fix-NAN-on-Win11.patch",
-        "00018-fix-windows-event-engine.patch",
         "00019-protobuf-generate-with-import-path-correction.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
@@ -36767,7 +36766,6 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -36856,7 +36854,7 @@
             "supports": "!windows | !static"
           }
         },
-        "version": "3.24.38"
+        "version": "3.24.43"
       },
       "files": [
         "0001-build.patch",
@@ -44989,7 +44987,13 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "features": {
+          "perf": {
+            "description": "Enables support for rdtsc",
+            "supports": "!arm"
+          }
+        },
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -46680,11 +46684,10 @@
       "name": "libebur128",
       "manifest": {
         "name": "libebur128",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library implementing the EBU R128 audio loudness standard",
         "homepage": "https://github.com/jiixyj/libebur128",
         "license": "MIT",
-        "supports": "!(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -46694,6 +46697,7 @@
         "version": "1.2.6"
       },
       "files": [
+        "0001-remove-warning-message.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49838,6 +49842,36 @@
       ]
     },
     {
+      "name": "libmultisense",
+      "manifest": {
+        "name": "libmultisense",
+        "description": "A C++ library for interfacing with the MultiSense S family of sensors from Carnegie Robotics.",
+        "homepage": "https://github.com/carnegierobotics/LibMultiSense",
+        "supports": "linux | (windows & !static)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "utilities": {
+            "description": "Build MultiSense utility applications."
+          }
+        },
+        "version": "6.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libmupdf",
       "manifest": {
         "name": "libmupdf",
@@ -50570,7 +50604,6 @@
       "name": "libosmium",
       "manifest": {
         "name": "libosmium",
-        "port-version": 1,
         "description": "A fast and flexible C++ library for working with OpenStreetMap data",
         "homepage": "https://osmcode.org/libosmium/",
         "license": "BSL-1.0",
@@ -50587,7 +50620,7 @@
           },
           "zlib"
         ],
-        "version-semver": "2.20.0"
+        "version-semver": "2.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -53114,12 +53147,28 @@
       "name": "libtommath",
       "manifest": {
         "name": "libtommath",
+        "port-version": 1,
         "description": "LibTomMath is a free open source portable number theoretic multiple-precision integer library written entirely in C.",
         "homepage": "https://www.libtom.net/LibTomMath/",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.3.0"
       },
       "files": [
+        "bcrypt.patch",
+        "has-set-double.patch",
+        "import-lib.patch",
+        "msvc-dce.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -53356,7 +53405,7 @@
             "description": "build the tools in the tools directory"
           }
         },
-        "version": "2.0.10"
+        "version": "2.0.11"
       },
       "files": [
         "portfile.cmake",
@@ -60109,7 +60158,6 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
-        "port-version": 1,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -60149,12 +60197,9 @@
             ]
           }
         },
-        "version": "2024.0.4"
+        "version": "2024.1"
       },
       "files": [
-        "008-build-static-llvm.patch",
-        "012-remove-wrong-llvm-cxx-standard.patch",
-        "013-openimageio-3.0.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -62543,7 +62588,6 @@
       "name": "mujoco",
       "manifest": {
         "name": "mujoco",
-        "port-version": 1,
         "description": "Multi-Joint dynamics with Contact.",
         "homepage": "https://mujoco.org",
         "license": "Apache-2.0",
@@ -62557,7 +62601,9 @@
           },
           "glfw3",
           "lodepng",
+          "marchingcubecpp",
           "qhull",
+          "sdflib",
           "tinyobjloader",
           "tinyxml2",
           {
@@ -62569,10 +62615,11 @@
             "host": true
           }
         ],
-        "version": "2.3.2"
+        "version": "3.2.7"
       },
       "files": [
         "fix_dependencies.patch",
+        "mesh.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -62740,7 +62787,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "portfile.cmake",
@@ -65824,18 +65871,14 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
+        "port-version": 1,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
-        "supports": "!uwp",
         "dependencies": [
           "protobuf",
           {
             "name": "protobuf",
-            "host": true
-          },
-          {
-            "name": "python3",
             "host": true
           },
           {
@@ -65847,14 +65890,6 @@
             "host": true
           }
         ],
-        "features": {
-          "pybind11": {
-            "description": "Build Python binaries",
-            "dependencies": [
-              "pybind11"
-            ]
-          }
-        },
         "version-semver": "1.17.0"
       },
       "files": [
@@ -65869,6 +65904,7 @@
       "name": "onnx-optimizer",
       "manifest": {
         "name": "onnx-optimizer",
+        "port-version": 1,
         "description": "Actively maintained ONNX Optimizer",
         "homepage": "https://github.com/onnx/optimizer",
         "license": "Apache-2.0",
@@ -65883,19 +65919,6 @@
             "host": true
           }
         ],
-        "features": {
-          "pybind11": {
-            "description": "Build Python binaries",
-            "dependencies": [
-              {
-                "name": "onnx",
-                "features": [
-                  "pybind11"
-                ]
-              }
-            ]
-          }
-        },
         "version-semver": "0.3.19"
       },
       "files": [
@@ -68418,7 +68441,6 @@
       "name": "openjpeg",
       "manifest": {
         "name": "openjpeg",
-        "port-version": 1,
         "description": "OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.",
         "homepage": "https://github.com/uclouvain/openjpeg",
         "license": "BSD-2-Clause",
@@ -68458,10 +68480,9 @@
             ]
           }
         },
-        "version": "2.5.2"
+        "version": "2.5.3"
       },
       "files": [
-        "openjpip-static.diff",
         "portfile.cmake",
         "third-party.diff",
         "usage",
@@ -70282,7 +70303,6 @@
       "name": "paho-mqtt",
       "manifest": {
         "name": "paho-mqtt",
-        "port-version": 1,
         "description": "Paho project provides open-source client implementations of MQTT and MQTT-SN messaging protocols aimed at new, existing, and emerging applications for the Internet of Things",
         "homepage": "https://github.com/eclipse/paho.mqtt.c",
         "license": "EPL-2.0",
@@ -70301,7 +70321,7 @@
             "host": true
           }
         ],
-        "version": "1.3.13"
+        "version": "1.3.14"
       },
       "files": [
         "fix-ODR-libuuid-linux.patch",
@@ -70314,7 +70334,6 @@
       "name": "paho-mqttpp3",
       "manifest": {
         "name": "paho-mqttpp3",
-        "port-version": 1,
         "description": "Paho project provides open-source C++ wrapper for Paho C library",
         "homepage": "https://github.com/eclipse/paho.mqtt.cpp",
         "license": "EPL-1.0",
@@ -70340,7 +70359,7 @@
             ]
           }
         },
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -73575,7 +73594,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -74471,7 +74490,7 @@
         "description": "Single Header Quite Fast QOI(Quite OK Image Format) Implementation written in C++20",
         "homepage": "https://github.com/wx257osn2/qoixx",
         "license": "MIT",
-        "version-date": "2022-12-07"
+        "version": "0.1.7"
       },
       "files": [
         "portfile.cmake",
@@ -74801,7 +74820,7 @@
           },
           "zlib"
         ],
-        "version": "4.3.1"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -76190,7 +76209,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -76239,6 +76258,7 @@
         "0001-Support-ICU-74-in-LazyTextBreakIterator.patch",
         "build_1.patch",
         "common.pri.patch",
+        "fix-spellcheck-buildflags.patch",
         "gl.patch",
         "portfile.cmake",
         "vcpkg.json",
@@ -79110,7 +79130,7 @@
             "host": true
           }
         ],
-        "version": "8.0.0"
+        "version": "8.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -83355,7 +83375,6 @@
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
         "dependencies": [
-          "libpng",
           {
             "name": "sdl3",
             "default-features": false
@@ -83370,16 +83389,16 @@
           }
         ],
         "features": {
-          "libjpeg-turbo": {
+          "jpeg": {
             "description": "Support for JPEG image format",
             "dependencies": [
               "libjpeg-turbo"
             ]
           },
-          "libwebp": {
-            "description": "Support for WEBP image format.",
+          "png": {
+            "description": "Support for PNG image format",
             "dependencies": [
-              "libwebp"
+              "libpng"
             ]
           },
           "tiff": {
@@ -83390,12 +83409,19 @@
                 "default-features": false
               }
             ]
+          },
+          "webp": {
+            "description": "Support for WEBP image format.",
+            "dependencies": [
+              "libwebp"
+            ]
           }
         },
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
-        "cmake-sdl3.patch",
+        "dependencies.diff",
+        "pkgconfig-libname.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -84721,7 +84747,7 @@
         "name": "simdjson",
         "description": "An extremely fast JSON library that can parse gigabytes of JSON per second",
         "homepage": "https://simdjson.org/",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 OR MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -84752,7 +84778,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "3.10.1"
+        "version": "3.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -89330,7 +89356,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.15.6"
+        "version": "0.15.9"
       },
       "files": [
         "portfile.cmake",
@@ -90468,7 +90494,7 @@
             "host": true
           }
         ],
-        "version": "4.2.0"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -94448,7 +94474,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.01.20.00"
+        "version-string": "2025.01.27.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -94942,6 +94968,24 @@
         "vcpkg.json",
         "wpcap.patch.in",
         "wpcap.vcxproj.in"
+      ]
+    },
+    {
+      "name": "winpixevent",
+      "manifest": {
+        "name": "winpixevent",
+        "description": "Allows applications to be instrumented with marker events, for use with Microsoft PIX.",
+        "homepage": "https://devblogs.microsoft.com/pix/",
+        "documentation": "https://devblogs.microsoft.com/pix/documentation/",
+        "license": "MIT",
+        "supports": "windows & (x64 | arm64) & !staticcrt & !xbox",
+        "version": "1.0.240308001"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json",
+        "winpixevent-config.cmake.in"
       ]
     },
     {
