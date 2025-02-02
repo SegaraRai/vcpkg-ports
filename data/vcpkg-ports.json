@@ -1,5 +1,5 @@
 {
-  "version": "f9701294aebc79cfe1c409c34a1fe4f37fee3473",
+  "version": "0ca64b4e1c70fa6d9f53b369b8f3f0843797c20c",
   "ports": [
     {
       "name": "3fd",
@@ -1655,7 +1655,7 @@
             "host": true
           }
         ],
-        "version": "3.1"
+        "version": "3.2"
       },
       "files": [
         "portfile.cmake",
@@ -3178,15 +3178,13 @@
       "name": "aws-c-cal",
       "manifest": {
         "name": "aws-c-cal",
+        "port-version": 1,
         "description": "C99 wrapper for cryptography primitives.",
         "homepage": "https://github.com/awslabs/aws-c-cal",
         "license": "Apache-2.0",
         "dependencies": [
           "aws-c-common",
-          {
-            "name": "openssl",
-            "platform": "!windows & !osx"
-          },
+          "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -18982,7 +18980,10 @@
         ],
         "default-features": [
           "hdf5",
-          "lfsselector"
+          {
+            "name": "lfs",
+            "platform": "!osx"
+          }
         ],
         "features": {
           "fortran": {
@@ -18993,10 +18994,7 @@
             "dependencies": [
               {
                 "name": "hdf5",
-                "default-features": false,
-                "features": [
-                  "tools"
-                ]
+                "default-features": false
               }
             ]
           },
@@ -19006,22 +19004,16 @@
           "lfs": {
             "description": "Enable LFS support"
           },
-          "lfsselector": {
-            "description": "Selector for LFS",
+          "mpi": {
+            "description": "Enable MPI support",
             "dependencies": [
               {
                 "name": "cgns",
                 "default-features": false,
                 "features": [
-                  "lfs"
-                ],
-                "platform": "!osx"
-              }
-            ]
-          },
-          "mpi": {
-            "description": "Enable MPI support",
-            "dependencies": [
+                  "hdf5"
+                ]
+              },
               {
                 "name": "hdf5",
                 "default-features": false,
@@ -19033,18 +19025,17 @@
           },
           "tests": {
             "description": "Build tests"
-          },
-          "tools": {
-            "description": "No effects, preserved for upgrade compatibility"
           }
         },
-        "version-semver": "4.4.0"
+        "version-semver": "4.5.0"
       },
       "files": [
         "cgnsconfig.h",
         "hdf5.patch",
+        "install-lib-linkage.diff",
         "linux_lfs.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -26003,13 +25994,12 @@
             "host": true
           }
         ],
-        "version": "3.21.12"
+        "version": "3.21.23"
       },
       "files": [
         "0001-fix-cmake-install.patch",
         "0002-fix-error-C2338.patch",
         "EASTLConfig.cmake.in",
-        "Fix-error-C2338.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27428,7 +27418,7 @@
             "host": true
           }
         ],
-        "version": "6.1.6"
+        "version": "7.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -35384,11 +35374,10 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
-        "supports": "!(arm & windows)",
         "dependencies": [
           "gettext",
           "glib",
@@ -36662,11 +36651,11 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
-        "supports": "!xbox",
+        "supports": "!xbox & !(arm64 & windows)",
         "dependencies": [
           "atk",
           {
@@ -40156,7 +40145,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.7"
+        "version": "1.91.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -49413,6 +49402,7 @@
         "name": "libmaxminddb",
         "description": "C library for the MaxMind DB file format",
         "homepage": "https://github.com/maxmind/libmaxminddb",
+        "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -49423,7 +49413,7 @@
             "host": true
           }
         ],
-        "version": "1.11.0"
+        "version": "1.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -55522,7 +55512,7 @@
       "name": "libzip",
       "manifest": {
         "name": "libzip",
-        "description": "A library for reading, creating, and modifying zip archives.",
+        "description": "A C library for reading, creating, and modifying zip archives.",
         "homepage": "https://github.com/nih-at/libzip",
         "license": "BSD-3-Clause",
         "dependencies": [
@@ -55607,7 +55597,7 @@
             ]
           }
         },
-        "version": "1.10.1"
+        "version": "1.11.3"
       },
       "files": [
         "fix-dependency.patch",
@@ -70983,7 +70973,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -73499,10 +73489,9 @@
             "host": true
           }
         ],
-        "version-semver": "1.7.1"
+        "version-semver": "1.8.0"
       },
       "files": [
-        "fix-no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79433,7 +79422,7 @@
       "name": "rapidfuzz",
       "manifest": {
         "name": "rapidfuzz",
-        "description": "Rapid fuzzy string matching library for C++17 using the Levenshtein Distance.",
+        "description": "Rapid fuzzy string matching library for C++ using the Levenshtein Distance.",
         "homepage": "https://github.com/maxbachmann/rapidfuzz-cpp",
         "license": "MIT",
         "dependencies": [
@@ -79446,7 +79435,7 @@
             "host": true
           }
         ],
-        "version": "3.1.1"
+        "version": "3.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -81844,6 +81833,7 @@
       "name": "s2n",
       "manifest": {
         "name": "s2n",
+        "port-version": 1,
         "description": "C99 implementation of the TLS/SSL protocols.",
         "homepage": "https://github.com/aws/s2n-tls",
         "license": "Apache-2.0",
@@ -81868,6 +81858,7 @@
       },
       "files": [
         "fix-cmake-target-path.patch",
+        "openssl.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83802,7 +83793,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.7.19"
+        "version": "0.7.20"
       },
       "files": [
         "fix-crashpad-wer.patch",
