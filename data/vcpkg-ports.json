@@ -1,5 +1,5 @@
 {
-  "version": "bea476a80218a581bcb5318595849520217c825e",
+  "version": "a0f974c66a1c56e974d37b5707e312742aead974",
   "ports": [
     {
       "name": "3fd",
@@ -17807,6 +17807,7 @@
       "name": "c-ares",
       "manifest": {
         "name": "c-ares",
+        "port-version": 1,
         "description": "A C library for asynchronous DNS requests",
         "homepage": "https://github.com/c-ares/c-ares",
         "license": "MIT-CMU",
@@ -22894,7 +22895,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23159,14 +23160,12 @@
       },
       "files": [
         "0005_remove_imp_suffix.patch",
-        "0020-fix-pc-file.patch",
-        "0022-deduplicate-libs.patch",
         "cmake-config.patch",
         "cmake-project-include.cmake",
         "dependencies.patch",
         "export-components.patch",
+        "pkgconfig-curl-config.patch",
         "portfile.cmake",
-        "rtmp.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -35141,7 +35140,7 @@
             ]
           }
         },
-        "version": "2.34.0"
+        "version": "2.35.0"
       },
       "files": [
         "portfile.cmake",
@@ -48107,7 +48106,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -48131,12 +48130,37 @@
           "hevc"
         ],
         "features": {
+          "aom": {
+            "description": "AVIF decoding and encoding via aom",
+            "dependencies": [
+              "aom"
+            ],
+            "license": "BSD-2-Clause"
+          },
           "hevc": {
             "description": "HEVC encoding via x265",
             "dependencies": [
               "x265"
             ],
             "license": "GPL-2.0-or-later"
+          },
+          "iso23001-17": {
+            "description": "Support for ISO23001-17 (uncompressed) codec",
+            "license": "LGPL-3.0-only"
+          },
+          "jpeg": {
+            "description": "JPEG decoding and encoding via libjpeg-turbo",
+            "dependencies": [
+              "libjpeg-turbo"
+            ],
+            "license": "BSD-3-Clause"
+          },
+          "openjpeg": {
+            "description": "JPEG-2000 decoding and encoding via OpenJPEG",
+            "dependencies": [
+              "openjpeg"
+            ],
+            "license": "BSD-2-Clause"
           }
         },
         "version": "1.19.5"
@@ -49243,6 +49267,7 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
+        "port-version": 1,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -51793,6 +51818,7 @@
       "name": "librtmp",
       "manifest": {
         "name": "librtmp",
+        "port-version": 1,
         "description": "RTMPDump Real-Time Messaging Protocol API",
         "homepage": "https://rtmpdump.mplayerhq.hu",
         "dependencies": [
@@ -52780,6 +52806,7 @@
       "name": "libssh2",
       "manifest": {
         "name": "libssh2",
+        "port-version": 1,
         "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
         "homepage": "https://www.libssh2.org",
         "license": "BSD-3-Clause",
@@ -52822,6 +52849,7 @@
         "version": "1.11.1"
       },
       "files": [
+        "pkgconfig.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -63025,7 +63053,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.2.0"
+        "version-semver": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -69138,7 +69166,7 @@
             "description": "Whether to include the Zipkin exporter in the SDK"
           }
         },
-        "version-semver": "1.18.0"
+        "version-semver": "1.19.0"
       },
       "files": [
         "cmake-quirks.diff",
@@ -69316,6 +69344,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
+        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -80321,7 +80350,6 @@
       "name": "restc-cpp",
       "manifest": {
         "name": "restc-cpp",
-        "port-version": 4,
         "description": "Modern C++ REST Client library",
         "homepage": "https://github.com/jgaa/restc-cpp",
         "license": "MIT",
@@ -80332,6 +80360,7 @@
           "boost-coroutine",
           "boost-date-time",
           "boost-filesystem",
+          "boost-log",
           "boost-program-options",
           "boost-system",
           "boost-uuid",
@@ -80350,12 +80379,6 @@
           "zlib"
         ],
         "features": {
-          "boost-log": {
-            "description": "Use boost-log for logging.",
-            "dependencies": [
-              "boost-log"
-            ]
-          },
           "openssl": {
             "description": "OpenSSL support.",
             "dependencies": [
@@ -80372,7 +80395,7 @@
             ]
           }
         },
-        "version-semver": "0.10.0"
+        "version-semver": "1.0.0"
       },
       "files": [
         "0001-exclude-cmake-external-projects.patch",
@@ -86731,7 +86754,7 @@
             ]
           }
         },
-        "version": "1.9"
+        "version": "1.9.1"
       },
       "files": [
         "fix-dependency.patch",
@@ -95994,7 +96017,7 @@
             "host": true
           }
         ],
-        "version": "7.7"
+        "version": "7.23"
       },
       "files": [
         "portfile.cmake",
