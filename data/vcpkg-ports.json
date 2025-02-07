@@ -1,5 +1,5 @@
 {
-  "version": "a0f974c66a1c56e974d37b5707e312742aead974",
+  "version": "3426a5e955f029ab0088ef6656fda06552bd2699",
   "ports": [
     {
       "name": "3fd",
@@ -5913,6 +5913,30 @@
         "portfile.cmake",
         "vcpkg.json",
         "windows-fix.patch"
+      ]
+    },
+    {
+      "name": "babl",
+      "manifest": {
+        "name": "babl",
+        "description": "Pixel format conversion library.",
+        "homepage": "https://gegl.org/babl/",
+        "license": "LGPL-3.0-or-later",
+        "supports": "!windows | mingw",
+        "dependencies": [
+          "glib",
+          "lcms",
+          "librsvg",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "0.1.110"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -22895,7 +22919,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23156,7 +23179,7 @@
             ]
           }
         },
-        "version": "8.11.1"
+        "version": "8.12.0"
       },
       "files": [
         "0005_remove_imp_suffix.patch",
@@ -87171,7 +87194,6 @@
       "name": "starlink-ast",
       "manifest": {
         "name": "starlink-ast",
-        "port-version": 1,
         "description": "The AST library provides a comprehensive range of facilities for attaching world coordinate systems to astronomical data, for retrieving and interpreting that information and for generating graphical output based on it",
         "homepage": "https://starlink.eao.hawaii.edu/starlink/AST",
         "license": null,
@@ -87192,10 +87214,11 @@
             ]
           }
         },
-        "version": "9.2.10"
+        "version": "9.2.12"
       },
       "files": [
         "cminpack.diff",
+        "install-errors.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
