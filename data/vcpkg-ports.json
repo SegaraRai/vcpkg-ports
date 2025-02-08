@@ -1,5 +1,5 @@
 {
-  "version": "3426a5e955f029ab0088ef6656fda06552bd2699",
+  "version": "7e21420f775f72ae938bdeb5e6068f722088f06a",
   "ports": [
     {
       "name": "3fd",
@@ -171,7 +171,7 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version": "20240722.0"
+        "version": "20250127.0"
       },
       "files": [
         "portfile.cmake",
@@ -6502,7 +6502,7 @@
             "supports": "native"
           }
         },
-        "version": "1.128.8808-482"
+        "version": "1.129.8866-491"
       },
       "files": [
         "portfile.cmake",
@@ -27170,14 +27170,12 @@
       "name": "exprtk",
       "manifest": {
         "name": "exprtk",
-        "port-version": 2,
         "description": "Simple to use, easy to integrate and extremely efficient run-time C++ mathematical expression parser and evaluation engine.",
         "homepage": "https://www.partow.net/programming/exprtk/index.html",
         "license": "MIT",
-        "version-date": "2022-01-01"
+        "version": "0.0.3"
       },
       "files": [
-        "copyright",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35787,7 +35785,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 3,
+        "port-version": 4,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -65351,7 +65349,7 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "documentation": "https://docs.octave.org/latest/",
@@ -65368,9 +65366,129 @@
           "readline",
           "zlib"
         ],
+        "features": {
+          "amd": {
+            "description": "suitesparse-amd support",
+            "dependencies": [
+              {
+                "name": "suitesparse-amd",
+                "default-features": false
+              }
+            ]
+          },
+          "bz2": {
+            "description": "bzip2 support",
+            "dependencies": [
+              {
+                "name": "bzip2",
+                "default-features": false
+              }
+            ]
+          },
+          "camd": {
+            "description": "suitesparse-camd support",
+            "dependencies": [
+              {
+                "name": "suitesparse-camd",
+                "default-features": false
+              }
+            ]
+          },
+          "ccolamd": {
+            "description": "suitesparse-ccolamd support",
+            "dependencies": [
+              {
+                "name": "suitesparse-ccolamd",
+                "default-features": false
+              }
+            ]
+          },
+          "cholmod": {
+            "description": "suitesparse-cholmod support",
+            "dependencies": [
+              {
+                "name": "suitesparse-cholmod",
+                "default-features": false
+              }
+            ]
+          },
+          "colamd": {
+            "description": "suitesparse-colamd support",
+            "dependencies": [
+              {
+                "name": "suitesparse-colamd",
+                "default-features": false
+              }
+            ]
+          },
+          "cxsparse": {
+            "description": "suitesparse-cxsparse support",
+            "dependencies": [
+              {
+                "name": "suitesparse-cxsparse",
+                "default-features": false
+              }
+            ]
+          },
+          "fltk": {
+            "description": "fltk support",
+            "dependencies": [
+              {
+                "name": "fltk",
+                "default-features": false
+              }
+            ]
+          },
+          "fontconfig": {
+            "description": "fontconfig support",
+            "dependencies": [
+              {
+                "name": "fontconfig",
+                "default-features": false
+              }
+            ]
+          },
+          "freetype": {
+            "description": "freetype support",
+            "dependencies": [
+              {
+                "name": "freetype",
+                "default-features": false
+              }
+            ]
+          },
+          "hdf5": {
+            "description": "hdf5 support",
+            "dependencies": [
+              {
+                "name": "hdf5",
+                "default-features": false
+              }
+            ]
+          },
+          "klu": {
+            "description": "suitesparse-klu support",
+            "dependencies": [
+              {
+                "name": "suitesparse-klu",
+                "default-features": false
+              }
+            ]
+          },
+          "umfpack": {
+            "description": "suitesparse-umfpack support",
+            "dependencies": [
+              {
+                "name": "suitesparse-umfpack",
+                "default-features": false
+              }
+            ]
+          }
+        },
         "version": "9.3.0"
       },
       "files": [
+        "dep_pc_names.patch",
         "portfile.cmake",
         "run-mk-ops.diff",
         "vcpkg.json"
@@ -65909,7 +66027,7 @@
             "description": "Disable POSIX API"
           }
         },
-        "version": "6.9.9"
+        "version": "6.9.10"
       },
       "files": [
         "fix-uwp.patch",
