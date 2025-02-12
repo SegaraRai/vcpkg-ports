@@ -1,5 +1,5 @@
 {
-  "version": "74ec888e385d189b42d6b398d0bbaa6f1b1d3b0e",
+  "version": "13388373bbac915ad23c14ddbbeb833672fd4741",
   "ports": [
     {
       "name": "3fd",
@@ -18296,6 +18296,36 @@
       ]
     },
     {
+      "name": "casadi",
+      "manifest": {
+        "name": "casadi",
+        "port-version": 1,
+        "description": "CasADi is a symbolic framework for numeric optimization implementing automatic differentiation in forward and reverse modes on sparse matrix-valued computational graphs. It supports self-contained C-code generation and interfaces state-of-the-art codes such as SUNDIALS, IPOPT etc. It can be used from C++, Python or Matlab/Octave.",
+        "homepage": "https://web.casadi.org",
+        "license": "LGPL-3.0-only",
+        "supports": "!static & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.6.7"
+      },
+      "files": [
+        "disable_fortran.patch",
+        "namespace.cmake",
+        "portfile.cmake",
+        "relocatable.patch",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "casclib",
       "manifest": {
         "name": "casclib",
@@ -19561,7 +19591,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.2"
+        "version-semver": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -20457,7 +20487,7 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
-        "port-version": 1,
+        "port-version": 2,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -20537,6 +20567,7 @@
         "version": "3.11.1"
       },
       "files": [
+        "no-glu.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -21167,7 +21198,7 @@
             ]
           }
         },
-        "version": "0.18.6"
+        "version": "0.18.7"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22266,7 +22297,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -22284,6 +22315,7 @@
             "name": "vcpkg-cmake-get-vars",
             "host": true
           },
+          "vcpkg-get-python-packages",
           {
             "name": "vcpkg-gn",
             "host": true
@@ -26506,6 +26538,33 @@
       ]
     },
     {
+      "name": "eipscanner",
+      "manifest": {
+        "name": "eipscanner",
+        "description": "Free implementation of EtherNet/IP in C++ ",
+        "homepage": "https://eipscanner.readthedocs.io",
+        "license": "MIT",
+        "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.0"
+      },
+      "files": [
+        "package.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "elements",
       "manifest": {
         "name": "elements",
@@ -27431,6 +27490,7 @@
       "name": "fast-float",
       "manifest": {
         "name": "fast-float",
+        "port-version": 1,
         "description": "Fast and exact implementation of the C++ from_chars functions for float and double types: 4x faster than strtod",
         "homepage": "https://github.com/fastfloat/fast_float",
         "license": "Apache-2.0 OR BSL-1.0 OR MIT",
@@ -32587,7 +32647,7 @@
             "host": true
           }
         ],
-        "version": "4.4.0"
+        "version": "4.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -32629,7 +32689,7 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
         "supports": "!android",
@@ -35786,7 +35846,6 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 4,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -36623,10 +36682,9 @@
             ]
           }
         },
-        "version": "1.24.7"
+        "version": "1.24.12"
       },
       "files": [
-        "base-must-be-enabled.patch",
         "fix-bz2-windows-debug-dependency.patch",
         "fix-clang-cl-bad.patch",
         "fix-clang-cl-base.patch",
@@ -36638,9 +36696,7 @@
         "gstreamer-disable-no-unused.patch",
         "no-downloads.patch",
         "plugin-base-disable-no-unused.patch",
-        "plugins-base-x11.patch",
         "portfile.cmake",
-        "remove_x264_define.patch",
         "srtp_fix.patch",
         "vcpkg.json"
       ]
@@ -40043,6 +40099,7 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
+        "port-version": 1,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -40092,8 +40149,8 @@
               "freetype"
             ]
           },
-          "freetype-lunasvg": {
-            "description": "Add support to render OpenType SVG fonts using LunaSVG",
+          "freetype-svg": {
+            "description": "Add support to render OpenType SVG fonts",
             "dependencies": [
               {
                 "name": "imgui",
@@ -40101,7 +40158,7 @@
                   "freetype"
                 ]
               },
-              "lunasvg"
+              "plutosvg"
             ]
           },
           "glfw-binding": {
@@ -41680,7 +41737,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -41766,7 +41823,7 @@
       "name": "juce",
       "manifest": {
         "name": "juce",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open-source cross-platform C++ application framework for desktop and mobile applications, including VST, VST3, AU, AUv3, AAX and LV2 audio plug-ins and plug-in hosts",
         "homepage": "https://juce.com",
         "license": null,
@@ -41946,6 +42003,7 @@
       "files": [
         "0001-build-allow-setting-JUCE_PLUGINHOST_LADSPA.patch",
         "0004-install-paths.patch",
+        "avoid-macos-15-deprecations.patch",
         "devendor-oboe.diff",
         "gcc-has-builtin.diff",
         "install-extras.diff",
@@ -46741,7 +46799,7 @@
       "name": "libenvpp",
       "manifest": {
         "name": "libenvpp",
-        "description": "A modern C++ library for type-safe environment variable parsing ",
+        "description": "A modern C++ library for type-safe environment variable parsing",
         "homepage": "https://github.com/ph3at/libenvpp",
         "license": "Apache-2.0",
         "supports": "!uwp",
@@ -46756,11 +46814,10 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.5.1"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50969,7 +51026,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.45"
+        "version": "1.6.46"
       },
       "files": [
         "cmake.patch",
@@ -52164,6 +52221,40 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libshout",
+      "manifest": {
+        "name": "libshout",
+        "description": "A library for communicating with and sending data to an Icecast server.",
+        "homepage": "https://gitlab.xiph.org/xiph/icecast-libshout",
+        "license": "LGPL-2.0-or-later",
+        "supports": "!windows",
+        "dependencies": [
+          "libogg",
+          "libtheora",
+          "libvorbis",
+          "openssl",
+          "pthread",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "features": {
+          "speex": {
+            "description": "Enable support for Speex codec",
+            "dependencies": [
+              "speex"
+            ]
+          }
+        },
+        "version": "2.4.6"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -54911,7 +55002,6 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 1,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "license": "BSD-2-Clause",
@@ -54923,7 +55013,7 @@
           },
           "zlib"
         ],
-        "version": "1.1.9"
+        "version": "1.2.0"
       },
       "files": [
         "dependencies.diff",
@@ -55900,7 +55990,6 @@
       "name": "lilv",
       "manifest": {
         "name": "lilv",
-        "port-version": 1,
         "description": "Lilv is a C library for simple use of LV2 plugins in applications.",
         "homepage": "https://drobilla.net/software/lilv",
         "license": "ISC",
@@ -55925,7 +56014,7 @@
             "supports": "!windows"
           }
         },
-        "version": "0.24.24"
+        "version": "0.24.26"
       },
       "files": [
         "portfile.cmake",
@@ -57471,7 +57560,7 @@
             "description": "Builds luau executable"
           }
         },
-        "version": "0.651"
+        "version": "0.660"
       },
       "files": [
         "cmake-config-export.patch",
@@ -57589,6 +57678,7 @@
         "homepage": "https://github.com/sammycage/lunasvg",
         "license": "MIT",
         "dependencies": [
+          "plutovg",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -57598,10 +57688,9 @@
             "host": true
           }
         ],
-        "version": "2.4.1"
+        "version": "3.1.1"
       },
       "files": [
-        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62541,7 +62630,7 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -62575,6 +62664,7 @@
         "version": "2.4.7"
       },
       "files": [
+        "avoid-w-invalid-unevaluated-string.patch",
         "exports-for-msh3.diff",
         "fix-comparing-system-processor-with-win32.patch",
         "fix-install.patch",
@@ -64753,7 +64843,6 @@
       "name": "numcpp",
       "manifest": {
         "name": "numcpp",
-        "port-version": 2,
         "description": "C++ implementation of the Python Numpy library",
         "homepage": "https://dpilger26.github.io/NumCpp",
         "license": "MIT",
@@ -64791,7 +64880,7 @@
             ]
           }
         },
-        "version": "2.12.1"
+        "version": "2.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -69061,7 +69150,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -69489,7 +69578,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -69647,10 +69735,9 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2024.6.0"
+        "version": "2025.0.0"
       },
       "files": [
-        "001-disable-tools.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -72365,6 +72452,56 @@
       ]
     },
     {
+      "name": "plutosvg",
+      "manifest": {
+        "name": "plutosvg",
+        "description": "Tiny SVG rendering library in C",
+        "homepage": "https://github.com/sammycage/plutosvg",
+        "license": "MIT",
+        "dependencies": [
+          "plutovg",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.4"
+      },
+      "files": [
+        "find-package-plutovg.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "plutovg",
+      "manifest": {
+        "name": "plutovg",
+        "description": " Tiny 2D vector graphics library in C",
+        "homepage": "https://github.com/sammycage/plutovg",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.12"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pmdk",
       "manifest": {
         "name": "pmdk",
@@ -73336,7 +73473,7 @@
             "description": "Build tool PresentMon"
           }
         },
-        "version-semver": "2.1.1"
+        "version-semver": "2.3.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -76748,6 +76885,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -83159,7 +83297,6 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 3,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -83220,7 +83357,7 @@
             ]
           }
         },
-        "version": "2.8.0"
+        "version": "2.8.1"
       },
       "files": [
         "fix-pkg-prefix.patch",
@@ -84077,7 +84214,7 @@
             "host": true
           }
         ],
-        "version": "0.32.2"
+        "version": "0.32.4"
       },
       "files": [
         "portfile.cmake",
@@ -85110,7 +85247,7 @@
             "host": true
           }
         ],
-        "version": "5.7.3"
+        "version": "6.0.0"
       },
       "files": [
         "export-target.patch",
@@ -85393,7 +85530,7 @@
             "host": true
           }
         ],
-        "version": "3.7"
+        "version": "3.8"
       },
       "files": [
         "portfile.cmake",
@@ -85404,11 +85541,11 @@
       "name": "sleepy-discord",
       "manifest": {
         "name": "sleepy-discord",
-        "port-version": 2,
         "description": "C++ library for the Discord chat client",
         "homepage": "https://yourwaifu.dev/sleepy-discord/",
         "dependencies": [
           "boost-asio",
+          "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -85419,8 +85556,7 @@
           }
         ],
         "default-features": [
-          "cpr",
-          "websocketpp"
+          "cpr"
         ],
         "features": {
           "compression": {
@@ -85441,16 +85577,9 @@
               "libsodium",
               "opus"
             ]
-          },
-          "websocketpp": {
-            "description": "Use Websocketpp for handling WebSockets",
-            "dependencies": [
-              "boost-random",
-              "websocketpp"
-            ]
           }
         },
-        "version-date": "2022-02-05"
+        "version-date": "2025-02-08"
       },
       "files": [
         "fix-messing-header.patch",
@@ -86133,7 +86262,7 @@
           },
           "zix"
         ],
-        "version": "0.16.16"
+        "version": "0.16.18"
       },
       "files": [
         "portfile.cmake",
@@ -86984,7 +87113,7 @@
             ]
           }
         },
-        "version": "3.48.0"
+        "version": "3.49.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -87199,7 +87328,6 @@
       "name": "sratom",
       "manifest": {
         "name": "sratom",
-        "port-version": 1,
         "description": "Sratom is a library for serialising LV2 atoms to and from RDF, particularly the Turtle syntax.",
         "homepage": "https://drobilla.net/software/sratom",
         "license": "ISC",
@@ -87212,7 +87340,7 @@
             "host": true
           }
         ],
-        "version": "0.6.16"
+        "version": "0.6.18"
       },
       "files": [
         "portfile.cmake",
@@ -89987,7 +90115,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-03"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -91907,9 +92035,8 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
-        "homepage": "https://github.com/PixarAnimationStudios/USD",
+        "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
         "supports": "!x86 & !(arm & windows) & !android",
         "dependencies": [
@@ -91966,14 +92093,13 @@
             ]
           }
         },
-        "version": "24.11"
+        "version": "25.2"
       },
       "files": [
         "001-fix_rename_find_package_to_find_dependency.patch",
         "002-vcpkg_find_tbb.patch",
         "003-fix-dep.patch",
         "004-fix_cmake_package.patch",
-        "005-MaterialX_v1.38-39.patch",
         "007-fix_cmake_hgi_interop.patch",
         "008-fix_clang8_compiler_error.patch",
         "009-vcpkg_install_folder_conventions.patch",
@@ -92001,7 +92127,7 @@
             "host": true
           }
         ],
-        "version": "2.3.2"
+        "version": "2.17.2"
       },
       "files": [
         "portfile.cmake",
@@ -96155,7 +96281,7 @@
             "host": true
           }
         ],
-        "version": "7.23"
+        "version": "7.23.1"
       },
       "files": [
         "portfile.cmake",
@@ -97710,7 +97836,6 @@
       "name": "zix",
       "manifest": {
         "name": "zix",
-        "port-version": 1,
         "description": "Zix is a lightweight C library of portability wrappers and data structures.",
         "homepage": "https://github.com/drobilla/zix",
         "supports": "!uwp",
@@ -97720,7 +97845,7 @@
             "host": true
           }
         ],
-        "version": "0.4.2"
+        "version": "0.6.2"
       },
       "files": [
         "portfile.cmake",
