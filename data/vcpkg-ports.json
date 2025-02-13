@@ -1,5 +1,5 @@
 {
-  "version": "13388373bbac915ad23c14ddbbeb833672fd4741",
+  "version": "be1ae8e5c5bc79aac1b8f593f5554aee1cfde54f",
   "ports": [
     {
       "name": "3fd",
@@ -25694,6 +25694,63 @@
       ]
     },
     {
+      "name": "duckdb",
+      "manifest": {
+        "name": "duckdb",
+        "description": "High-performance in-process analytical database system",
+        "homepage": "https://duckdb.org",
+        "license": "MIT",
+        "supports": "!(uwp | android | (windows & arm64))",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "autocomplete": {
+            "description": "Statically link the autocomplete extension into DuckDB"
+          },
+          "httpfs": {
+            "description": "Statically link the httpfs extension into DuckDB",
+            "dependencies": [
+              "openssl"
+            ]
+          },
+          "icu": {
+            "description": "Statically link the icu extension into DuckDB",
+            "dependencies": [
+              {
+                "name": "icu",
+                "default-features": false
+              }
+            ]
+          },
+          "json": {
+            "description": "Statically link the json extension into DuckDB"
+          },
+          "tpcds": {
+            "description": "Statically link the tpcds extension into DuckDB"
+          },
+          "tpch": {
+            "description": "Statically link the tpch extension into DuckDB"
+          }
+        },
+        "version": "1.2.0"
+      },
+      "files": [
+        "bigobj.patch",
+        "portfile.cmake",
+        "unvendor_icu_and_find_dependency.patch",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "duckx",
       "manifest": {
         "name": "duckx",
@@ -41585,6 +41642,31 @@
           }
         ],
         "version": "0.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "json-glib",
+      "manifest": {
+        "name": "json-glib",
+        "description": "Implements a full JSON parser and generator using GLib and GObject, and integrates JSON with GLib data types.",
+        "homepage": "https://wiki.gnome.org/Projects/JsonGlib",
+        "license": "LGPL-2.1-or-later AND CC0-1.0 AND MIT",
+        "dependencies": [
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "1.10.6"
       },
       "files": [
         "portfile.cmake",
