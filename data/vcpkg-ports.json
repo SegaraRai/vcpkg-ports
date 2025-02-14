@@ -1,5 +1,5 @@
 {
-  "version": "be1ae8e5c5bc79aac1b8f593f5554aee1cfde54f",
+  "version": "05bd9f6f9f8d7d1d506e6eba5a6f005928954196",
   "ports": [
     {
       "name": "3fd",
@@ -27634,10 +27634,9 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.1.2"
       },
       "files": [
-        "disable-symlink.patch",
         "fix-find-package-asio.patch",
         "pdb-file.patch",
         "portfile.cmake",
@@ -27869,7 +27868,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "fix-deps.patch",
@@ -28934,7 +28933,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "fix-build.patch",
@@ -29844,7 +29843,7 @@
             ]
           }
         },
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30626,7 +30625,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.16.0"
+        "version-semver": "0.16.3"
       },
       "files": [
         "portfile.cmake",
@@ -33490,6 +33489,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -35282,6 +35282,7 @@
         "version": "2.35.0"
       },
       "files": [
+        "fix-googleapis-download.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -40156,7 +40157,7 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -40215,7 +40216,12 @@
                   "freetype"
                 ]
               },
-              "plutosvg"
+              {
+                "name": "plutosvg",
+                "features": [
+                  "freetype"
+                ]
+              }
             ]
           },
           "glfw-binding": {
@@ -47733,6 +47739,7 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
+        "port-version": 1,
         "description": "A C library implementing the Git core methods with a solid API",
         "homepage": "https://github.com/libgit2/libgit2",
         "license": null,
@@ -47832,6 +47839,8 @@
         "c-standard.diff",
         "cli-include-dirs.diff",
         "dependencies.diff",
+        "fix-comment.diff",
+        "fix-include-path.diff",
         "mingw-winhttp.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -51379,7 +51388,7 @@
             "host": true
           }
         ],
-        "version": "7.9.2"
+        "version": "7.10.0"
       },
       "files": [
         "config-internal-compiler.h.in",
@@ -57745,7 +57754,7 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -63011,7 +63020,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "portfile.cmake",
@@ -64497,7 +64506,7 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version-semver": "1.10.0"
+        "version-semver": "1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -69232,7 +69241,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -69266,14 +69274,12 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.4.0"
+        "version": "3.4.1"
       },
       "files": [
-        "asm-armcap.patch",
         "cmake-config.patch",
         "command-line-length.patch",
         "install-pc-files.cmake",
-        "mkbuildinf.diff",
         "openssl.pc.in",
         "portfile.cmake",
         "script-prefix.patch",
@@ -69881,7 +69887,6 @@
       "name": "openxr-loader",
       "manifest": {
         "name": "openxr-loader",
-        "port-version": 1,
         "description": "A royalty-free, open standard that provides high-performance access to Augmented Reality (AR) and Virtual Reality (VR)—collectively known as XR—platforms and devices",
         "homepage": "https://github.com/KhronosGroup/OpenXR-SDK",
         "license": "Apache-2.0",
@@ -69914,7 +69919,7 @@
             "supports": "!(arm & windows) & !uwp"
           }
         },
-        "version": "1.0.34"
+        "version": "1.1.45"
       },
       "files": [
         "fix-openxr-sdk-jsoncpp.patch",
@@ -72537,6 +72542,7 @@
       "name": "plutosvg",
       "manifest": {
         "name": "plutosvg",
+        "port-version": 1,
         "description": "Tiny SVG rendering library in C",
         "homepage": "https://github.com/sammycage/plutosvg",
         "license": "MIT",
@@ -72551,6 +72557,14 @@
             "host": true
           }
         ],
+        "features": {
+          "freetype": {
+            "description": "Enable Freetype integration",
+            "dependencies": [
+              "freetype"
+            ]
+          }
+        },
         "version": "0.0.4"
       },
       "files": [
@@ -73804,7 +73818,7 @@
             ]
           }
         },
-        "version": "5.29.2"
+        "version": "5.29.3"
       },
       "files": [
         "fix-default-proto-file-path.patch",
@@ -73997,7 +74011,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -74448,7 +74462,6 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -74534,7 +74547,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.11.10"
+        "version": "3.11.11"
       },
       "files": [
         "0001-only-build-required-projects.patch",
@@ -74570,7 +74583,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
@@ -80706,6 +80719,7 @@
       "name": "restc-cpp",
       "manifest": {
         "name": "restc-cpp",
+        "port-version": 1,
         "description": "Modern C++ REST Client library",
         "homepage": "https://github.com/jgaa/restc-cpp",
         "license": "MIT",
@@ -80754,8 +80768,6 @@
         "version-semver": "1.0.0"
       },
       "files": [
-        "0001-exclude-cmake-external-projects.patch",
-        "boost-1.86-fix.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -86848,7 +86860,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -86871,7 +86883,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -86895,7 +86907,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "export-targets.patch",
@@ -86926,7 +86938,7 @@
             "description": "Build tools."
           }
         },
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -92300,7 +92312,7 @@
             "host": true
           }
         ],
-        "version": "5.29.1"
+        "version": "5.29.3"
       },
       "files": [
         "fix-cmake.patch",
@@ -92340,7 +92352,7 @@
             "host": true
           }
         ],
-        "version": "2.9.0"
+        "version": "2.10.0"
       },
       "files": [
         "export-cmake-targets.patch",
@@ -92841,7 +92853,7 @@
         "name": "vcpkg-get-python",
         "license": "MIT",
         "supports": "native",
-        "version-date": "2024-06-22"
+        "version-date": "2025-02-09"
       },
       "files": [
         "portfile.cmake",
@@ -93700,7 +93712,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94460,7 +94472,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94486,7 +94498,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94531,7 +94543,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94631,7 +94643,7 @@
             ]
           }
         },
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "LICENSE.txt",
@@ -94661,7 +94673,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94686,7 +94698,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94718,7 +94730,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.0"
+        "version": "1.4.304.1"
       },
       "files": [
         "portfile.cmake",
@@ -94923,7 +94935,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.02.03.00"
+        "version-string": "2025.02.10.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -95334,6 +95346,32 @@
         "version": "1.0.240803.1"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wildcards",
+      "manifest": {
+        "name": "wildcards",
+        "description": "A simple C++ header-only template library implementing matching using wildcards",
+        "homepage": "https://github.com/zemasoft/wildcards",
+        "license": "BSL-1.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.0"
+      },
+      "files": [
+        "install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -97025,7 +97063,7 @@
           },
           "xtensor"
         ],
-        "version": "0.20.0"
+        "version": "0.21.0"
       },
       "files": [
         "portfile.cmake",
