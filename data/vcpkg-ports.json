@@ -1,5 +1,5 @@
 {
-  "version": "05bd9f6f9f8d7d1d506e6eba5a6f005928954196",
+  "version": "d5ec528843d29e3a52d745a64b469f810b2cedbf",
   "ports": [
     {
       "name": "3fd",
@@ -2471,7 +2471,7 @@
             ]
           }
         },
-        "version": "9.0.2"
+        "version": "10.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -17286,7 +17286,7 @@
             ]
           }
         },
-        "version": "3.6.1"
+        "version": "3.7.1"
       },
       "files": [
         "0009-fix-regression-f2bf049-85491b3.patch",
@@ -22951,7 +22951,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23212,7 +23211,7 @@
             ]
           }
         },
-        "version": "8.12.0"
+        "version": "8.12.1"
       },
       "files": [
         "0005_remove_imp_suffix.patch",
@@ -29370,7 +29369,7 @@
             "host": true
           }
         ],
-        "version": "24.12.23"
+        "version": "25.1.21"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -29433,6 +29432,7 @@
       "name": "flint",
       "manifest": {
         "name": "flint",
+        "port-version": 1,
         "description": "Fast Library for Number Theory",
         "homepage": "https://www.flintlib.org/",
         "supports": "!uwp",
@@ -32086,6 +32086,33 @@
         "gettimeofday.c",
         "gettimeofday.def",
         "gettimeofday.h",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gexiv2",
+      "manifest": {
+        "name": "gexiv2",
+        "description": "A GObject-based Exiv2 wrapper.",
+        "homepage": "https://gitlab.gnome.org/GNOME/gexiv2/",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          "exiv2",
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "0.14.3"
+      },
+      "files": [
+        "msvc_def.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35729,7 +35756,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.70.0"
+        "version-semver": "1.70.1"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -35739,7 +35766,6 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
-        "00019-protobuf-generate-with-import-path-correction.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -37978,7 +38004,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 1,
+        "port-version": 2,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -38066,6 +38092,7 @@
         "version": "10.2.0"
       },
       "files": [
+        "fix-build-ffmpeg-failed.patch",
         "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
@@ -40711,7 +40738,7 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
         "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
         "license": null,
@@ -41427,8 +41454,10 @@
       "name": "jhasse-poly2tri",
       "manifest": {
         "name": "jhasse-poly2tri",
+        "port-version": 1,
         "description": "Sweep-line algorithm for constrained Delaunay triangulation",
         "homepage": "https://github.com/jhasse/poly2tri",
+        "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -44119,8 +44148,8 @@
         "name": "kfr",
         "description": "Fast, modern C++ DSP framework.",
         "homepage": "https://www.kfr.dev/",
-        "license": "GPL-2.0",
-        "supports": "!(arm | linux | xbox)",
+        "license": null,
+        "supports": "!(arm64 & windows) & !xbox",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -44148,7 +44177,7 @@
             "description": "Enable DFT and related algorithms."
           }
         },
-        "version-semver": "6.0.2"
+        "version-semver": "6.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -45834,7 +45863,7 @@
             "host": true
           }
         ],
-        "version": "1.29.2"
+        "version": "1.30.0"
       },
       "files": [
         "fix-include-directory.patch",
@@ -47141,7 +47170,6 @@
       "name": "libexif",
       "manifest": {
         "name": "libexif",
-        "port-version": 3,
         "description": "a library for parsing, editing, and saving EXIF data",
         "homepage": "https://libexif.github.io/",
         "license": "LGPL-2.1-or-later",
@@ -47171,7 +47199,7 @@
             ]
           }
         },
-        "version": "0.6.24"
+        "version": "0.6.25"
       },
       "files": [
         "fix-ssize.patch",
@@ -61791,7 +61819,7 @@
             ]
           }
         },
-        "version": "1.29.2"
+        "version": "1.30.0"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -64449,7 +64477,7 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -64836,7 +64864,6 @@
       "name": "ntf-core",
       "manifest": {
         "name": "ntf-core",
-        "port-version": 1,
         "description": "The Network Transport Framework: Core Libraries",
         "license": "Apache-2.0",
         "dependencies": [
@@ -64850,7 +64877,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.5.4"
       },
       "files": [
         "dont-use-lib64.patch",
@@ -70616,6 +70643,32 @@
       ]
     },
     {
+      "name": "p-ranav-glob",
+      "manifest": {
+        "name": "p-ranav-glob",
+        "description": "Glob for C++17 ",
+        "homepage": "https://github.com/p-ranav/glob",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove_cpm.patch",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
@@ -71724,7 +71777,7 @@
             ]
           }
         },
-        "version": "2.8.3"
+        "version": "2.8.4"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -71778,7 +71831,7 @@
             "host": true
           }
         ],
-        "version": "2.8.3"
+        "version": "2.8.4"
       },
       "files": [
         "namespace-nl.diff",
@@ -73865,7 +73918,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.5.0"
+        "version-semver": "1.5.1"
       },
       "files": [
         "fix-crt-linkage.patch",
@@ -79100,10 +79153,11 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
-        "supports": "!static & !((x86 | arm) & windows)",
+        "supports": "!static & ((!x86 & !arm & native) | !windows)",
         "dependencies": [
           {
             "name": "ffmpeg",
@@ -79538,7 +79592,7 @@
             "host": true
           }
         ],
-        "version": "8.1.0"
+        "version": "8.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -79854,7 +79908,7 @@
             "host": true
           }
         ],
-        "version": "3.3.1"
+        "version": "3.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -84598,7 +84652,7 @@
         "homepage": "https://github.com/shader-slang/slang",
         "license": null,
         "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2025.3.1"
+        "version": "2025.5"
       },
       "files": [
         "portfile.cmake",
@@ -89171,7 +89225,7 @@
       "name": "tbb",
       "manifest": {
         "name": "tbb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Intel's Threading Building Blocks.",
         "homepage": "https://github.com/oneapi-src/oneTBB",
         "license": "Apache-2.0",
@@ -89204,6 +89258,7 @@
         "version": "2022.0.0"
       },
       "files": [
+        "fix-gcc-without-gas.patch",
         "fix-lang.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -96197,6 +96252,7 @@
       "name": "x-plane",
       "manifest": {
         "name": "x-plane",
+        "port-version": 1,
         "description": "The X-Plane Plugin SDK",
         "homepage": "https://developer.x-plane.com/sdk/",
         "license": null,
