@@ -1,5 +1,5 @@
 {
-  "version": "1d0f0a396cf00af25fbcb5550917c25ac64aa240",
+  "version": "b7a701cb475805c27e29ddf635a3b16c37ba51fb",
   "ports": [
     {
       "name": "3fd",
@@ -1385,7 +1385,7 @@
             "host": true
           }
         ],
-        "version": "3.4.2"
+        "version": "3.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -1932,7 +1932,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2070,7 +2069,7 @@
             ]
           }
         },
-        "version": "19.0.0"
+        "version": "19.0.1"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -2080,6 +2079,7 @@
         "0005-android-datetime.patch",
         "0006-cmake-msvcruntime.patch",
         "0007-fix-path.patch",
+        "0008-arrow-parquet-size-statistics-include.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -5919,19 +5919,25 @@
       "name": "babl",
       "manifest": {
         "name": "babl",
-        "description": "Pixel format conversion library.",
+        "port-version": 2,
+        "description": "A pixel encoding and color space conversion engine.",
         "homepage": "https://gegl.org/babl/",
         "license": "LGPL-3.0-or-later",
         "supports": "!windows | mingw",
         "dependencies": [
-          "glib",
-          "lcms",
-          "librsvg",
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
+        "features": {
+          "cmyk-icc": {
+            "description": "Support CMYK ICC profiles.",
+            "dependencies": [
+              "lcms"
+            ]
+          }
+        },
         "version": "0.1.110"
       },
       "files": [
@@ -5985,7 +5991,7 @@
           },
           "zlib"
         ],
-        "version": "3.19.0"
+        "version": "3.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -6736,7 +6742,7 @@
             "host": true
           }
         ],
-        "version": "1.5.4"
+        "version": "1.6.0"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -17742,7 +17748,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -21198,7 +21204,7 @@
             ]
           }
         },
-        "version": "0.18.7"
+        "version": "0.19.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22903,7 +22909,7 @@
       "name": "cudnn",
       "manifest": {
         "name": "cudnn",
-        "port-version": 14,
+        "port-version": 15,
         "description": "NVIDIA's cuDNN deep neural network acceleration library.",
         "homepage": "https://developer.nvidia.com/cudnn",
         "license": null,
@@ -23998,7 +24004,7 @@
             "host": true
           }
         ],
-        "version": "3.29.2"
+        "version": "3.30.2"
       },
       "files": [
         "portfile.cmake",
@@ -24661,6 +24667,7 @@
       "name": "directxmath",
       "manifest": {
         "name": "directxmath",
+        "port-version": 1,
         "description": "DirectXMath SIMD C++ math library",
         "homepage": "https://github.com/Microsoft/DirectXMath",
         "documentation": "https://docs.microsoft.com/windows/win32/dxmath/directxmath-portal",
@@ -26935,28 +26942,6 @@
       "files": [
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "epsilon",
-      "manifest": {
-        "name": "epsilon",
-        "port-version": 8,
-        "description": "EPSILON is an Open Source wavelet image compressor, that is aimed on parallel and robust image processing.",
-        "homepage": "https://sourceforge.net/projects/epsilon-project/",
-        "license": "GPL-2.0-only OR LGPL-2.0-only",
-        "supports": "windows & !xbox",
-        "dependencies": [
-          "libpopt"
-        ],
-        "version": "0.9.2"
-      },
-      "files": [
-        "0001-VS2015-provides-snprintf.patch",
-        "0002-Add-CFLAGS-for-CRT-selection-and-warning-supression.patch",
-        "0003-Fix-build-error.patch",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -31304,7 +31289,6 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31607,7 +31591,7 @@
             ]
           }
         },
-        "version-semver": "3.10.1"
+        "version-semver": "3.10.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -32037,7 +32021,7 @@
       "name": "gettext-libintl",
       "manifest": {
         "name": "gettext-libintl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The libintl C library from GNU gettext-runtime.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "LGPL-2.1-or-later",
@@ -32048,9 +32032,8 @@
             "platform": "!linux"
           },
           {
-            "name": "vcpkg-cmake",
-            "host": true,
-            "platform": "linux"
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "version": "0.22.5"
@@ -32094,6 +32077,7 @@
       "name": "gexiv2",
       "manifest": {
         "name": "gexiv2",
+        "port-version": 1,
         "description": "A GObject-based Exiv2 wrapper.",
         "homepage": "https://gitlab.gnome.org/GNOME/gexiv2/",
         "license": "GPL-2.0-or-later",
@@ -32730,7 +32714,7 @@
             "host": true
           }
         ],
-        "version": "4.4.1"
+        "version": "4.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -39303,7 +39287,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -39314,6 +39298,10 @@
             "features": [
               "tools"
             ]
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "features": {
@@ -39325,6 +39313,7 @@
         "version": "74.2"
       },
       "files": [
+        "cleanup_msvc.patch",
         "darwin-rpath.patch",
         "disable-escapestr-tool.patch",
         "disable-static-prefix.patch",
@@ -46232,7 +46221,7 @@
             ]
           }
         },
-        "version": "0.12.1"
+        "version": "0.14.1"
       },
       "files": [
         "portfile.cmake",
@@ -48526,18 +48515,15 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 5,
         "description": "GNU Unicode text conversion",
         "homepage": "https://www.gnu.org/software/libiconv/",
         "license": null,
-        "version": "1.17"
+        "version": "1.18"
       },
       "files": [
         "0002-Config-for-MSVC.patch",
         "0003-Add-export.patch",
         "0004-ModuleFileName.patch",
-        "0005-iOS-missing-symbol-fix.patch",
-        "clang-fortify.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -50126,7 +50112,7 @@
             ]
           }
         },
-        "version": "1.25.2"
+        "version": "1.25.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -51013,6 +50999,7 @@
       "manifest": {
         "name": "libphonenumber",
         "description": "Google's common Java, C++ and JavaScript library for parsing, formatting, and validating international phone numbers.",
+        "homepage": "https://github.com/google/libphonenumber",
         "license": "Apache-2.0",
         "dependencies": [
           "abseil",
@@ -51031,7 +51018,7 @@
             "host": true
           }
         ],
-        "version": "8.13.45"
+        "version": "8.13.55"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -57807,7 +57794,7 @@
             "host": true
           }
         ],
-        "version": "3.1.1"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -61887,7 +61874,7 @@
             ]
           }
         },
-        "version": "7.16"
+        "version": "7.17"
       },
       "files": [
         "CMakeLists.txt",
@@ -61994,6 +61981,45 @@
           }
         ],
         "version": "10.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "morphologica",
+      "manifest": {
+        "name": "morphologica",
+        "description": "C++ header-only graphing and data visualization with Modern OpenGL",
+        "homepage": "https://github.com/ABRG-Models/morphologica",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "armadillo",
+          {
+            "name": "egl",
+            "platform": "linux"
+          },
+          {
+            "name": "freeglut",
+            "platform": "linux"
+          },
+          "freetype",
+          "glfw3",
+          "hdf5",
+          "nlohmann-json",
+          "opengl",
+          "rapidxml",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -72968,9 +72994,10 @@
       "name": "polyclipping",
       "manifest": {
         "name": "polyclipping",
-        "port-version": 12,
+        "port-version": 13,
         "description": "The Clipper library performs clipping and offsetting for both lines and polygons. All four boolean clipping operations are supported - intersection, union, difference and exclusive-or. Polygons can be of any shape including self-intersecting polygons.",
         "homepage": "https://sourceforge.net/projects/polyclipping/",
+        "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -79922,7 +79949,7 @@
         "description": "Very fast, high quality, platform independent hashing algorithm.",
         "homepage": "https://github.com/Nicoshev/rapidhash",
         "license": "BSD-2-Clause",
-        "version-date": "2024-06-08"
+        "version": "1.0"
       },
       "files": [
         "portfile.cmake",
@@ -82608,7 +82635,7 @@
       "name": "salome-med-fichier",
       "manifest": {
         "name": "salome-med-fichier",
-        "port-version": 2,
+        "port-version": 3,
         "description": "med-fichier provides a low level C API for fine-grained access to the structure of MED files (.med)",
         "homepage": "https://www.salome-platform.org",
         "license": "LGPL-3.0-or-later",
@@ -83686,7 +83713,6 @@
       "name": "sdl2-ttf",
       "manifest": {
         "name": "sdl2-ttf",
-        "port-version": 1,
         "description": "A library for rendering TrueType fonts with SDL",
         "homepage": "https://www.libsdl.org/projects/SDL_ttf/",
         "license": "Zlib",
@@ -83713,7 +83739,7 @@
             ]
           }
         },
-        "version": "2.22.0"
+        "version": "2.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -85257,7 +85283,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "3.12.0"
+        "version": "3.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -85444,7 +85470,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 3,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -85611,7 +85636,7 @@
             ]
           }
         },
-        "version": "129"
+        "version": "134"
       },
       "files": [
         "bentleyottmann-build.patch",
@@ -89751,6 +89776,7 @@
       "name": "tgui",
       "manifest": {
         "name": "tgui",
+        "port-version": 1,
         "description": "TGUI is an easy to use, cross-platform, C++ GUI for SFML.",
         "homepage": "https://tgui.eu",
         "license": "Zlib",
@@ -89783,7 +89809,13 @@
           "sfml": {
             "description": "Build the SFML backend",
             "dependencies": [
-              "sfml"
+              {
+                "name": "sfml",
+                "default-features": false,
+                "features": [
+                  "graphics"
+                ]
+              }
             ]
           },
           "tool": {
@@ -91081,7 +91113,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -92975,7 +93007,6 @@
       "name": "vcpkg-make",
       "manifest": {
         "name": "vcpkg-make",
-        "port-version": 1,
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_make_configure",
         "license": null,
         "supports": "native",
@@ -92985,7 +93016,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-01-13"
+        "version-date": "2025-02-08"
       },
       "files": [
         "portfile.cmake",
@@ -96457,7 +96488,7 @@
             "host": true
           }
         ],
-        "version": "7.23.1"
+        "version": "7.24"
       },
       "files": [
         "portfile.cmake",
@@ -97316,10 +97347,11 @@
       "name": "yaml-cpp",
       "manifest": {
         "name": "yaml-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.",
         "homepage": "https://github.com/jbeder/yaml-cpp",
         "documentation": "https://codedocs.xyz/jbeder/yaml-cpp/index.html",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -97622,7 +97654,7 @@
             "host": true
           }
         ],
-        "version": "4.13.3"
+        "version": "4.14.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -98278,7 +98310,7 @@
         "description": "Tiny cross-platform webview library for C/C++/Golang.",
         "homepage": "https://github.com/webview/webview",
         "license": "MIT",
-        "version-date": "2023-04-15"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
