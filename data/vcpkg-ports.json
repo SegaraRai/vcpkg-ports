@@ -1,5 +1,5 @@
 {
-  "version": "b7a701cb475805c27e29ddf635a3b16c37ba51fb",
+  "version": "99c9bc8b94f80cdb5caf9614d9d197d270e0b32e",
   "ports": [
     {
       "name": "3fd",
@@ -331,7 +331,7 @@
         "name": "ada-url",
         "description": "WHATWG-compliant and fast URL parser written in modern C++",
         "homepage": "https://ada-url.com/",
-        "license": "MIT",
+        "license": "MIT OR Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -352,7 +352,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.9.2"
+        "version": "3.1.0"
       },
       "files": [
         "no-cpm.patch",
@@ -22006,7 +22006,7 @@
             "host": true
           }
         ],
-        "version": "0.7.5"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -23823,7 +23823,7 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
@@ -23848,6 +23848,7 @@
           "ode",
           "opengl",
           "osg",
+          "spdlog",
           "tinyxml2",
           "urdfdom",
           {
@@ -23979,7 +23980,7 @@
             "host": true
           }
         ],
-        "version": "2.118.0"
+        "version": "2.123.2"
       },
       "files": [
         "portfile.cmake",
@@ -25654,7 +25655,7 @@
             ]
           }
         },
-        "version-semver": "1.9.9"
+        "version-semver": "1.9.10"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -31123,140 +31124,6 @@
         "version-date": "2024-11-03"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gazebo",
-      "manifest": {
-        "name": "gazebo",
-        "description": "Open source robotics simulator.",
-        "homepage": "http://gazebosim.org",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "boost-asio",
-          "boost-date-time",
-          "boost-filesystem",
-          "boost-format",
-          "boost-interprocess",
-          "boost-iostreams",
-          "boost-program-options",
-          "boost-property-tree",
-          "boost-regex",
-          "boost-system",
-          "boost-thread",
-          "boost-uuid",
-          "ccd",
-          {
-            "name": "hdf5",
-            "features": [
-              "cpp"
-            ]
-          },
-          "ignition-common3",
-          "ignition-fuel-tools4",
-          "ignition-math6",
-          "ignition-msgs5",
-          "ignition-transport8",
-          "ogre",
-          {
-            "name": "pkgconf",
-            "host": true
-          },
-          "protobuf",
-          "qt5",
-          "qwt",
-          "sdformat9",
-          "tbb",
-          "tiny-process-library",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "default-features": [
-          "bullet",
-          "dart",
-          "ffmpeg",
-          "gdal",
-          "graphviz",
-          "gts",
-          "libusb",
-          "openal",
-          "simbody"
-        ],
-        "features": {
-          "bullet": {
-            "description": "Use the bullet physics engine",
-            "dependencies": [
-              "bullet3"
-            ]
-          },
-          "dart": {
-            "description": "Use the dart physics engine",
-            "dependencies": [
-              "dartsim"
-            ]
-          },
-          "ffmpeg": {
-            "description": "Enable audio-video capabilities",
-            "dependencies": [
-              {
-                "name": "ffmpeg",
-                "features": [
-                  "avcodec",
-                  "avformat",
-                  "swscale"
-                ]
-              }
-            ]
-          },
-          "gdal": {
-            "description": "Enable digital elevation terrains support",
-            "dependencies": [
-              "gdal"
-            ]
-          },
-          "graphviz": {
-            "description": "Enable model editor's schematic view",
-            "dependencies": [
-              "graphviz"
-            ]
-          },
-          "gts": {
-            "description": "Enable CSG support",
-            "dependencies": [
-              "gts"
-            ]
-          },
-          "libusb": {
-            "description": "Enable USB peripheral support",
-            "dependencies": [
-              "libusb"
-            ]
-          },
-          "openal": {
-            "description": "Enable audio support",
-            "dependencies": [
-              "openal-soft"
-            ]
-          },
-          "simbody": {
-            "description": "Use the simbody physics engine",
-            "dependencies": [
-              "simbody"
-            ]
-          }
-        },
-        "version": "11.15.1"
-      },
-      "files": [
-        "0001-Fix-deps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -39464,233 +39331,6 @@
       ]
     },
     {
-      "name": "ignition-cmake0",
-      "manifest": {
-        "name": "ignition-cmake0",
-        "port-version": 4,
-        "description": "CMake helper functions for building robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/cmake",
-        "license": null,
-        "dependencies": [
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "0.6.2"
-      },
-      "files": [
-        "do-not-compile-gtest.patch",
-        "fix-find-ign-curl.patch",
-        "portfile.cmake",
-        "support-arm64.patch",
-        "usage",
-        "uuid-do-not-require-pkg-config.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-cmake2",
-      "manifest": {
-        "name": "ignition-cmake2",
-        "description": "CMake helper functions for building robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/cmake",
-        "license": null,
-        "dependencies": [
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "2.17.1"
-      },
-      "files": [
-        "add-pkgconfig-and-remove-privatefor-limit.patch",
-        "portfile.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-common1",
-      "manifest": {
-        "name": "ignition-common1",
-        "port-version": 5,
-        "description": "Deprecated: Use ignition-common3. Common libraries for robotics applications",
-        "license": null,
-        "supports": "windows",
-        "dependencies": [
-          {
-            "name": "dlfcn-win32",
-            "platform": "windows | uwp"
-          },
-          {
-            "name": "ffmpeg",
-            "platform": "!windows & !uwp"
-          },
-          {
-            "name": "freeimage",
-            "platform": "!windows & !uwp"
-          },
-          {
-            "name": "gts",
-            "platform": "!windows & !uwp"
-          },
-          "ignition-cmake0",
-          "ignition-math4",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          {
-            "name": "tinyxml2",
-            "platform": "!windows & !uwp"
-          }
-        ],
-        "version": "1.1.1"
-      },
-      "files": [
-        "add-include-chrono.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-common3",
-      "manifest": {
-        "name": "ignition-common3",
-        "description": "Common libraries for robotics applications",
-        "homepage": "https://ignitionrobotics.org/libs/common",
-        "license": null,
-        "dependencies": [
-          {
-            "name": "dlfcn-win32",
-            "platform": "windows | uwp"
-          },
-          "ffmpeg",
-          "freeimage",
-          "gts",
-          "ignition-cmake2",
-          "ignition-math6",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          {
-            "name": "libuuid",
-            "platform": "!windows & !uwp & !osx"
-          },
-          "tinyxml2"
-        ],
-        "version": "3.16.0"
-      },
-      "files": [
-        "fix-dependencies.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-fuel-tools1",
-      "manifest": {
-        "name": "ignition-fuel-tools1",
-        "port-version": 4,
-        "description": "Tools for using fuel API to download robot models",
-        "license": null,
-        "dependencies": [
-          "curl",
-          "ignition-cmake0",
-          "ignition-common1",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "jsoncpp",
-          "libyaml",
-          "libzip"
-        ],
-        "version": "1.2.0"
-      },
-      "files": [
-        "link-correct-yaml-target.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-fuel-tools4",
-      "manifest": {
-        "name": "ignition-fuel-tools4",
-        "port-version": 2,
-        "description": "Tools for using fuel API to download robot models",
-        "homepage": "https://ignitionrobotics.org/libs/fuel_tools",
-        "license": null,
-        "dependencies": [
-          "curl",
-          "ignition-cmake2",
-          "ignition-common3",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "ignition-msgs5",
-          "jsoncpp",
-          "libyaml",
-          "libzip",
-          "tinyxml2"
-        ],
-        "version": "4.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-math4",
-      "manifest": {
-        "name": "ignition-math4",
-        "port-version": 3,
-        "description": "Math API for robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/math",
-        "license": null,
-        "dependencies": [
-          "ignition-cmake0",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "4.0.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-math6",
-      "manifest": {
-        "name": "ignition-math6",
-        "description": "Math API for robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/math",
-        "license": null,
-        "dependencies": [
-          "eigen3",
-          "ignition-cmake2",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "6.14.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "ignition-modularscripts",
       "manifest": {
         "name": "ignition-modularscripts",
@@ -39712,254 +39352,6 @@
       "files": [
         "portfile.cmake",
         "vcpkg-port-config.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-msgs1",
-      "manifest": {
-        "name": "ignition-msgs1",
-        "port-version": 7,
-        "description": "Middleware protobuf messages for robotics",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "ignition-cmake0",
-          "ignition-math4",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "protobuf"
-        ],
-        "version": "1.0.0"
-      },
-      "files": [
-        "fix-Add_std_string.patch",
-        "fix-protobuf-static-link-order.patch",
-        "fix-protobuf-version.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-msgs5",
-      "manifest": {
-        "name": "ignition-msgs5",
-        "port-version": 7,
-        "description": "Middleware protobuf messages for robotics",
-        "license": "Apache-2.0",
-        "supports": "!(arm | uwp)",
-        "dependencies": [
-          "ignition-cmake2",
-          "ignition-math6",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "protobuf",
-          "tinyxml2"
-        ],
-        "version": "5.3.0"
-      },
-      "files": [
-        "01-protobuf.patch",
-        "02-Add_std_string.patch",
-        "03-protobuf-version.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-msgs6",
-      "manifest": {
-        "name": "ignition-msgs6",
-        "port-version": 6,
-        "description": "Middleware protobuf messages for robotics",
-        "license": "Apache-2.0",
-        "supports": "!(arm | uwp)",
-        "dependencies": [
-          "ignition-cmake2",
-          "ignition-math6",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "protobuf",
-          "tinyxml2"
-        ],
-        "version": "6.0.0"
-      },
-      "files": [
-        "01-Add_std_string.patch",
-        "02-protobuf-version.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-plugin1",
-      "manifest": {
-        "name": "ignition-plugin1",
-        "description": "Library for registering plugin libraries and dynamically loading them at runtime",
-        "homepage": "https://ignitionrobotics.org/libs/plugin",
-        "license": null,
-        "dependencies": [
-          {
-            "name": "dlfcn-win32",
-            "platform": "windows | uwp"
-          },
-          "ignition-cmake2",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "1.4.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-tools",
-      "manifest": {
-        "name": "ignition-tools",
-        "port-version": 1,
-        "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
-        "homepage": "https://gazebosim.org",
-        "license": "Apache-2.0",
-        "supports": "!(arm & windows) & !uwp",
-        "dependencies": [
-          "backward-cpp",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "1.5.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-transport4",
-      "manifest": {
-        "name": "ignition-transport4",
-        "port-version": 7,
-        "description": "Transport middleware for robotics",
-        "license": null,
-        "dependencies": [
-          "cppzmq",
-          "ignition-cmake0",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "ignition-msgs1",
-          {
-            "name": "libuuid",
-            "platform": "!windows & !uwp & !osx"
-          },
-          "protobuf",
-          "zeromq"
-        ],
-        "version": "4.0.0"
-      },
-      "files": [
-        "fix-protobuf.patch",
-        "portfile.cmake",
-        "uuid-osx.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-transport8",
-      "manifest": {
-        "name": "ignition-transport8",
-        "port-version": 5,
-        "description": "Transport middleware for robotics",
-        "license": null,
-        "dependencies": [
-          "cppzmq",
-          "ignition-cmake2",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "ignition-msgs5",
-          {
-            "name": "libuuid",
-            "platform": "!windows & !uwp & !osx"
-          },
-          "protobuf",
-          "sqlite3",
-          "zeromq"
-        ],
-        "version": "8.1.0"
-      },
-      "files": [
-        "fix-protobuf.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-transport9",
-      "manifest": {
-        "name": "ignition-transport9",
-        "port-version": 5,
-        "description": "Transport middleware for robotics",
-        "license": null,
-        "dependencies": [
-          "cppzmq",
-          "ignition-cmake2",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "ignition-msgs6",
-          {
-            "name": "libuuid",
-            "platform": "!windows & !uwp & !osx"
-          },
-          "protobuf",
-          "sqlite3",
-          "zeromq"
-        ],
-        "version": "9.0.0"
-      },
-      "files": [
-        "fix-protobuf.patch",
-        "portfile.cmake",
-        "uuid-osx.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ignition-utils1",
-      "manifest": {
-        "name": "ignition-utils1",
-        "description": "Ignition Utils, a component of Ignition Robotics, provides general purpose classes and functions designed for robotic applications.",
-        "homepage": "https://gazebosim.org",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "ignition-cmake2",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          }
-        ],
-        "version": "1.5.1"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -40452,6 +39844,32 @@
           }
         ],
         "version": "0.16"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "implot3d",
+      "manifest": {
+        "name": "implot3d",
+        "description": "Immediate Mode 3D Plotting",
+        "homepage": "https://github.com/brenocq/implot3d",
+        "license": "MIT",
+        "dependencies": [
+          "imgui",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -68680,7 +68098,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -74046,7 +73464,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -80461,6 +79879,33 @@
       ]
     },
     {
+      "name": "red0124-ssp",
+      "manifest": {
+        "name": "red0124-ssp",
+        "description": "A header only CSV parser which is fast and versatile with modern C++ API.",
+        "homepage": "https://github.com/red0124/ssp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "fast-float",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.8.0"
+      },
+      "files": [
+        "no-fetchcontent.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "redis-plus-plus",
       "manifest": {
         "name": "redis-plus-plus",
@@ -82576,7 +82021,7 @@
             "description": "Enable XBM codec"
           }
         },
-        "version-semver": "0.9.6"
+        "version-semver": "0.9.8"
       },
       "files": [
         "fix-include-directory.patch",
@@ -83084,36 +82529,6 @@
       ]
     },
     {
-      "name": "sdformat10",
-      "manifest": {
-        "name": "sdformat10",
-        "port-version": 5,
-        "description": "Simulation Description Format (SDF) parser and description files.",
-        "homepage": "http://sdformat.org/",
-        "supports": "!uwp & !(arm & osx)",
-        "dependencies": [
-          "ignition-math6",
-          "tinyxml2",
-          "urdfdom",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "10.0.0"
-      },
-      "files": [
-        "fix-quote.patch",
-        "no-absolute.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "sdformat13",
       "manifest": {
         "name": "sdformat13",
@@ -83143,74 +82558,6 @@
         "fix-find-urdfdom.patch",
         "no-absolute.patch",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sdformat6",
-      "manifest": {
-        "name": "sdformat6",
-        "port-version": 8,
-        "description": "Simulation Description Format (SDF) parser and description files.",
-        "homepage": "http://sdformat.org/",
-        "license": "Apache-2.0",
-        "supports": "!(arm | uwp)",
-        "dependencies": [
-          "boost-any",
-          "boost-variant",
-          "ignition-math4",
-          "tinyxml",
-          "urdfdom",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "6.2.0"
-      },
-      "files": [
-        "disable-test.patch",
-        "disable-unneeded-include-findboost.patch",
-        "fix-dependency-urdfdom.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sdformat9",
-      "manifest": {
-        "name": "sdformat9",
-        "port-version": 3,
-        "description": "Simulation Description Format (SDF) parser and description files.",
-        "homepage": "http://sdformat.org/",
-        "license": "Apache-2.0",
-        "supports": "!uwp & !(arm & osx)",
-        "dependencies": [
-          "ignition-math6",
-          "tinyxml",
-          "urdfdom",
-          "urdfdom-headers",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "9.8.0"
-      },
-      "files": [
-        "fix-dependency-urdfdom.patch",
-        "fix-quote.patch",
-        "no-absolute.patch",
-        "portfile.cmake",
-        "use-external-tinyxml-windows.patch",
         "vcpkg.json"
       ]
     },
@@ -83373,7 +82720,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.30.12"
+        "version": "2.32.0"
       },
       "files": [
         "alsa-dep-fix.patch",
@@ -87286,7 +86633,7 @@
             ]
           }
         },
-        "version": "3.49.0"
+        "version": "3.49.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -91246,7 +90593,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.22"
+        "version-semver": "1.5.23"
       },
       "files": [
         "000-fix-deps.patch",
@@ -96058,7 +95405,7 @@
             ]
           }
         },
-        "version": "4.11.2"
+        "version": "4.11.3"
       },
       "files": [
         "0005-XML_file_path.patch",
