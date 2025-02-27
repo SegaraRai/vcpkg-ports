@@ -1,5 +1,5 @@
 {
-  "version": "b69712e331604d988093981007360257c362c81f",
+  "version": "23b33f5a010e3d67132fa3c34ab6cd0009bb9296",
   "ports": [
     {
       "name": "3fd",
@@ -352,7 +352,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "no-cpm.patch",
@@ -2337,7 +2337,7 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -6094,7 +6094,7 @@
       "name": "bcg729",
       "manifest": {
         "name": "bcg729",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Bcg729 is an open source implementation of the ITU G.729 Annex A and B codec.",
         "homepage": "https://github.com/BelledonneCommunications/bcg729",
         "dependencies": [
@@ -19942,7 +19942,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -35486,6 +35486,21 @@
       ]
     },
     {
+      "name": "graaf",
+      "manifest": {
+        "name": "graaf",
+        "description": "A general-purpose lightweight C++ graph library",
+        "homepage": "https://bobluppes.github.io/graaf/",
+        "license": "MIT",
+        "version": "1.1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "grantlee",
       "manifest": {
         "name": "grantlee",
@@ -35618,7 +35633,7 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
@@ -35667,7 +35682,8 @@
         "select-plugins.patch",
         "static-linkage.patch",
         "vcpkg.json",
-        "webp-install.patch"
+        "webp-install.patch",
+        "workaround-insufficiently-ugly-wchar-h.patch"
       ]
     },
     {
@@ -39861,7 +39877,6 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
-        "port-version": 1,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
@@ -39878,12 +39893,10 @@
             "host": true
           }
         ],
-        "version": "2.6"
+        "version": "3.0"
       },
       "files": [
         "0001-fix_find_package.patch",
-        "0002-clean-deprecated-api.patch",
-        "0003-use-explicit-id.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -43950,6 +43963,7 @@
       "name": "ktx",
       "manifest": {
         "name": "ktx",
+        "port-version": 1,
         "description": [
           "The Khronos KTX library and tools.",
           "Functions for writing and reading KTX files, and instantiating OpenGL®, OpenGL ES™️ and Vulkan® textures from them."
@@ -44362,7 +44376,7 @@
       "name": "lcm",
       "manifest": {
         "name": "lcm",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "Lightweight Communications and Marshalling (LCM)",
           "LCM is a set of libraries and tools for message passing and data marshalling, targeted at real-time systems where high-bandwidth and low latency are critical. It provides a publish/subscribe message passing model and automatic marshalling/unmarshalling code generation with bindings for applications in a variety of programming languages."
@@ -44384,6 +44398,7 @@
         "version": "1.4.0"
       },
       "files": [
+        "avoid-fake-stdint-h.patch",
         "disable-docs.patch",
         "fix-build-error.patch",
         "glib.link.patch",
@@ -49877,7 +49892,7 @@
             "host": true
           }
         ],
-        "version": "2025.1.0"
+        "version": "2025.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -69045,6 +69060,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -69089,6 +69105,13 @@
               },
               "opentelemetry-cpp-contrib-version"
             ]
+          },
+          "opentracing": {
+            "description": "Whether to include the Opentracing shim",
+            "dependencies": [
+              "opentracing"
+            ],
+            "supports": "!uwp & static"
           },
           "otlp-grpc": {
             "description": "Whether to include the OTLP gRPC exporter in the SDK",
@@ -69136,6 +69159,7 @@
       },
       "files": [
         "cmake-quirks.diff",
+        "fix-target_link.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72126,7 +72150,7 @@
       "name": "plplot",
       "manifest": {
         "name": "plplot",
-        "port-version": 2,
+        "port-version": 3,
         "description": "PLplot is a cross-platform software package for creating scientific plots whose (UTF-8) plot symbols and text are limited in practice only by what Unicode-aware system fonts are installed on a user's computer.",
         "homepage": "http://plplot.org/",
         "license": null,
@@ -72171,6 +72195,7 @@
         "version-semver": "5.15.0"
       },
       "files": [
+        "fix-pc-absolute.patch",
         "install-interface-include-directories.patch",
         "portfile.cmake",
         "subdirs.patch",
@@ -84150,9 +84175,9 @@
       "name": "sfgui",
       "manifest": {
         "name": "sfgui",
-        "port-version": 6,
-        "description": "simple and fast graphical user interface library",
+        "description": "Simple and Fast Graphical User Interface Library",
         "homepage": "https://github.com/TankOs/SFGUI",
+        "license": "Zlib",
         "dependencies": [
           "sfml",
           {
@@ -84164,11 +84189,9 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "1.0.0"
       },
       "files": [
-        "001-fix-corefoundation-link.patch",
-        "002-add-limits-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84203,7 +84226,7 @@
               "libflac",
               "libogg",
               "libvorbis",
-              "openal-soft"
+              "miniaudio"
             ]
           },
           "graphics": {
@@ -84233,11 +84256,11 @@
             ]
           }
         },
-        "version": "2.6.2"
+        "version": "3.0.0"
       },
       "files": [
-        "fix-dep-openal.patch",
-        "fix-dependencies.patch",
+        "01-fix-findudev-module.patch",
+        "02-fix-dependency-resolve.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -91888,6 +91911,7 @@
       "name": "usearch",
       "manifest": {
         "name": "usearch",
+        "port-version": 1,
         "description": "Fastest Search & Clustering engine × for Vectors & Strings",
         "homepage": "https://github.com/unum-cloud/usearch",
         "license": "Apache-2.0",
@@ -91901,10 +91925,31 @@
             "host": true
           }
         ],
+        "features": {
+          "fp16": {
+            "description": "Use software emulation for half-precision types",
+            "dependencies": [
+              "fp16"
+            ]
+          },
+          "jemalloc": {
+            "description": "Use JeMalloc for faster memory allocations",
+            "dependencies": [
+              "jemalloc"
+            ]
+          },
+          "simsimd": {
+            "description": "Use SimSIMD hardware-accelerated metrics",
+            "dependencies": [
+              "simsimd"
+            ]
+          }
+        },
         "version": "2.17.2"
       },
       "files": [
         "portfile.cmake",
+        "use-vcpkg-ports.patch",
         "vcpkg.json"
       ]
     },
@@ -95466,7 +95511,7 @@
       "name": "wpilib",
       "manifest": {
         "name": "wpilib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "WPILib is the software library package for the FIRST Robotics Competition. The core install includes wpiutil, a common utilies library, and ntcore, the base NetworkTables library.",
         "homepage": "https://github.com/wpilibsuite/allwpilib",
         "license": null,
@@ -95511,6 +95556,7 @@
       },
       "files": [
         "fix-build-error-with-fmt11.patch",
+        "fix-fmt.patch",
         "fix-usage.patch",
         "missing-find_dependency.patch",
         "no-werror.patch",
@@ -97939,7 +97985,7 @@
             "supports": "!uwp & static"
           }
         },
-        "version": "1.5.6"
+        "version": "1.5.7"
       },
       "files": [
         "fix-emscripten-and-clang-cl.patch",
