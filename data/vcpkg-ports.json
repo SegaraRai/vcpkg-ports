@@ -1,5 +1,5 @@
 {
-  "version": "418da99d5a6baef99fe3f2fd69ba561f8bb1fd54",
+  "version": "300239058e33420acd153135b3f6e6b187828992",
   "ports": [
     {
       "name": "3fd",
@@ -329,7 +329,6 @@
       "name": "ada-url",
       "manifest": {
         "name": "ada-url",
-        "port-version": 1,
         "description": "WHATWG-compliant and fast URL parser written in modern C++",
         "homepage": "https://ada-url.com/",
         "license": "MIT OR Apache-2.0",
@@ -353,7 +352,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.1.1"
+        "version": "3.1.3"
       },
       "files": [
         "no-cpm.patch",
@@ -1865,7 +1864,7 @@
       "name": "arrayfire",
       "manifest": {
         "name": "arrayfire",
-        "port-version": 7,
+        "port-version": 8,
         "description": "ArrayFire is a general-purpose library that simplifies the process of developing software that targets parallel and massively-parallel architectures including CPUs, GPUs, and other hardware acceleration devices.",
         "homepage": "https://github.com/arrayfire/arrayfire",
         "license": "BSD-3-Clause",
@@ -1898,7 +1897,6 @@
           "cuda": {
             "description": "ArrayFire CUDA backend. This feature only supports dynamic because dependency cudnn is dynamic only.",
             "dependencies": [
-              "cub",
               "cuda",
               "cudnn"
             ]
@@ -2225,7 +2223,7 @@
             "host": true
           }
         ],
-        "version": "3.4.1"
+        "version": "3.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -2338,7 +2336,7 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -5064,7 +5062,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.14.1"
+        "version-semver": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -17390,7 +17388,6 @@
       "name": "breakpad",
       "manifest": {
         "name": "breakpad",
-        "port-version": 2,
         "description": "a set of client and server components which implement a crash-reporting system.",
         "homepage": "https://github.com/google/breakpad",
         "license": "BSD-3-Clause",
@@ -17420,12 +17417,11 @@
             "supports": "linux"
           }
         },
-        "version-date": "2023-06-01"
+        "version-date": "2024-02-16"
       },
       "files": [
         "CMakeLists.txt",
         "add-algorithm-1.patch",
-        "add-algorithm.patch",
         "check_getcontext.cc",
         "portfile.cmake",
         "unofficial-breakpadConfig.cmake",
@@ -19811,7 +19807,6 @@
       "name": "cli11",
       "manifest": {
         "name": "cli11",
-        "port-version": 1,
         "description": "CLI11 is a command line parser for C++11 and beyond that provides a rich feature set with a simple and intuitive interface.",
         "homepage": "https://github.com/CLIUtils/CLI11",
         "license": "BSD-3-Clause",
@@ -19826,7 +19821,7 @@
             "host": true
           }
         ],
-        "version": "2.4.2"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -20137,12 +20132,11 @@
             "supports": "!windows"
           }
         },
-        "version": "3.9.2"
+        "version": "3.10.0"
       },
       "files": [
         "fix-sodium-dep.patch",
         "fix_install_path.patch",
-        "fix_test_backtrace_warning.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20194,9 +20188,8 @@
       "name": "cocoyaxi",
       "manifest": {
         "name": "cocoyaxi",
-        "port-version": 1,
         "description": "A go-style coroutine library in C++11 and more",
-        "homepage": "https://github.com/idealvin/cocoyaxi",
+        "homepage": "https://github.com/idealvin/coost/",
         "license": "MIT",
         "supports": "!uwp & !(arm & windows)",
         "dependencies": [
@@ -20229,11 +20222,9 @@
             ]
           }
         },
-        "version": "3.0.0"
+        "version-date": "2024-09-04"
       },
       "files": [
-        "fix-event-destruct.patch",
-        "install-dll.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20510,7 +20501,7 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
-        "port-version": 2,
+        "port-version": 3,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -20590,6 +20581,7 @@
         "version": "3.11.1"
       },
       "files": [
+        "fix-flann.patch",
         "no-glu.diff",
         "portfile.cmake",
         "usage",
@@ -21652,9 +21644,9 @@
       "name": "cppitertools",
       "manifest": {
         "name": "cppitertools",
-        "port-version": 3,
         "description": "Range-based for loop add-ons inspired by the Python builtins and itertools library",
         "homepage": "https://github.com/ryanhaining/cppitertools",
+        "license": "BSD-2-Clause",
         "dependencies": [
           "boost-optional",
           {
@@ -21666,7 +21658,7 @@
             "host": true
           }
         ],
-        "version": "2.1"
+        "version": "2.2"
       },
       "files": [
         "portfile.cmake",
@@ -22758,33 +22750,6 @@
       "files": [
         "portfile.cmake",
         "prepare_for_build.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "cub",
-      "manifest": {
-        "name": "cub",
-        "description": "CUB is a flexible library of cooperative threadblock primitives and other utilities for CUDA kernel programming",
-        "homepage": "https://github.com/NVIDIA/cub",
-        "license": "BSD-3-Clause",
-        "dependencies": [
-          "cuda",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.1.0"
-      },
-      "files": [
-        "fix-usage.patch",
-        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -24213,7 +24178,6 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 5,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -24253,7 +24217,7 @@
             ]
           }
         },
-        "version": "1.15.8"
+        "version": "1.16.2"
       },
       "files": [
         "cmake.dep.patch",
@@ -24261,6 +24225,7 @@
         "libsystemd.patch",
         "pkgconfig.patch",
         "portfile.cmake",
+        "remove-path.patch",
         "vcpkg.json"
       ]
     },
@@ -25365,6 +25330,7 @@
       "name": "double-conversion",
       "manifest": {
         "name": "double-conversion",
+        "port-version": 1,
         "description": "Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.",
         "homepage": "https://github.com/google/double-conversion",
         "dependencies": [
@@ -25471,7 +25437,7 @@
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
         "license": "Apache-2.0",
-        "supports": "(windows & !static & !uwp) | linux | osx",
+        "supports": "(windows & !uwp) | linux | osx",
         "dependencies": [
           "nlohmann-json",
           "openssl",
@@ -25486,9 +25452,10 @@
           },
           "zlib"
         ],
-        "version": "10.0.35"
+        "version": "10.1.0"
       },
       "files": [
+        "include.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -27124,7 +27091,6 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
-        "port-version": 2,
         "description": "Image metadata library and tools",
         "homepage": "https://exiv2.org",
         "license": "GPL-2.0-or-later",
@@ -27180,7 +27146,7 @@
             ]
           }
         },
-        "version": "0.28.3"
+        "version": "0.28.5"
       },
       "files": [
         "dependencies.diff",
@@ -27824,7 +27790,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "fix-deps.patch",
@@ -27932,7 +27898,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -28645,7 +28610,7 @@
             ]
           }
         },
-        "version": "7.1"
+        "version": "7.1.1"
       },
       "files": [
         "0001-create-lib-libraries.patch",
@@ -28890,7 +28855,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "fix-build.patch",
@@ -28921,7 +28886,6 @@
       "name": "flann",
       "manifest": {
         "name": "flann",
-        "port-version": 7,
         "description": "Fast Library for Approximate Nearest Neighbors",
         "homepage": "https://github.com/mariusmuja/flann",
         "license": "BSD-3-Clause",
@@ -28950,12 +28914,11 @@
             ]
           }
         },
-        "version-date": "2019-04-07"
+        "version-date": "2022-10-28"
       },
       "files": [
-        "fix-build-error.patch",
+        "fix-dep-lz4.patch",
         "fix-dependency-hdf5.patch",
-        "fix_undefined_pot_t.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29111,7 +29074,7 @@
       "name": "flashlight-cuda",
       "manifest": {
         "name": "flashlight-cuda",
-        "port-version": 6,
+        "port-version": 7,
         "description": "A C++ standalone library for machine learning. CUDA backend.",
         "homepage": "https://github.com/facebookresearch/flashlight",
         "license": "MIT",
@@ -29183,7 +29146,6 @@
           "lib": {
             "description": "flashlight libraries",
             "dependencies": [
-              "cub",
               "cuda",
               "fftw3",
               "intel-mkl",
@@ -29799,7 +29761,7 @@
             ]
           }
         },
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30104,7 +30066,6 @@
       "name": "freeglut",
       "manifest": {
         "name": "freeglut",
-        "port-version": 3,
         "description": "A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library.",
         "homepage": "https://sourceforge.net/projects/freeglut/",
         "license": null,
@@ -30120,13 +30081,11 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.6.0"
       },
       "files": [
         "android.patch",
         "fix-debug-macro.patch",
-        "gles.patch",
-        "no_x64_enforcement.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -32541,7 +32500,7 @@
             "host": true
           }
         ],
-        "version": "4.4.2"
+        "version": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -33328,7 +33287,7 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -37098,15 +37057,14 @@
             "host": true
           }
         ],
-        "version": "3.4.1"
+        "version": "4.1.1"
       },
       "files": [
         "dependencies.patch",
+        "ffempg_depends_interface.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg.json",
-        "vcpkg/GTS.cmake",
-        "vcpkg/TINYXML2.cmake"
+        "vcpkg.json"
       ]
     },
     {
@@ -37143,9 +37101,9 @@
           "ffmpeg",
           "freeimage",
           "gdal",
-          "gts",
           "gz-cmake",
           "gz-math",
+          "gz-utils",
           {
             "name": "ignition-modularscripts",
             "host": true
@@ -37161,10 +37119,11 @@
           },
           "tinyxml2"
         ],
-        "version": "5.4.1"
+        "version": "6.0.2"
       },
       "files": [
         "003-include-chrono.patch",
+        "detect_tinyxml.patch",
         "gz_remotery_vis.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -37209,7 +37168,7 @@
           "libzip",
           "tinyxml2"
         ],
-        "version": "8.1.0"
+        "version": "10.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -37267,7 +37226,7 @@
           "sdformat",
           "tinyxml2"
         ],
-        "version": "7.2.1"
+        "version": "9.0.0"
       },
       "files": [
         "dependencies.patch",
@@ -37309,7 +37268,7 @@
             "host": true
           }
         ],
-        "version": "7.3.0"
+        "version": "8.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -37351,9 +37310,10 @@
           "protobuf",
           "tinyxml2"
         ],
-        "version": "9.5.0"
+        "version": "11.0.2"
       },
       "files": [
+        "move_bin_to_tools.patch",
         "portfile.cmake",
         "remove_ruby.patch",
         "vcpkg.json"
@@ -37399,7 +37359,7 @@
           },
           "sdformat"
         ],
-        "version": "6.5.1"
+        "version": "8.0.0"
       },
       "files": [
         "dependencies.patch",
@@ -37445,7 +37405,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -37497,7 +37457,7 @@
           },
           "opengl"
         ],
-        "version": "7.4.1"
+        "version": "9.0.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -37544,7 +37504,7 @@
           "protobuf",
           "sdformat"
         ],
-        "version": "7.3.0"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -37584,7 +37544,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -37632,7 +37592,7 @@
           "sqlite3",
           "zeromq"
         ],
-        "version": "12.2.1"
+        "version": "14.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -37669,9 +37629,10 @@
           {
             "name": "ignition-modularscripts",
             "host": true
-          }
+          },
+          "spdlog"
         ],
-        "version": "2.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -38065,7 +38026,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 2,
+        "port-version": 3,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -38383,6 +38344,7 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
+        "port-version": 1,
         "description": "Hello ImGui: unleash your creativity in app development and prototyping",
         "homepage": "https://pthom.github.io/hello_imgui/",
         "license": "MIT",
@@ -38437,14 +38399,14 @@
               }
             ]
           },
-          "freetype-lunasvg": {
-            "description": "Improve font rendering and use colored fonts with freetype and lunasvg",
+          "freetype-plutosvg": {
+            "description": "Improve font rendering and use colored fonts with freetype and plutosvg",
             "dependencies": [
               {
                 "name": "imgui",
                 "features": [
                   "freetype",
-                  "freetype-lunasvg"
+                  "freetype-svg"
                 ]
               }
             ]
@@ -38484,17 +38446,6 @@
                 "name": "imgui",
                 "features": [
                   "opengl3-binding"
-                ]
-              }
-            ]
-          },
-          "sdl2-binding": {
-            "description": "Use SDL2 platform backend",
-            "dependencies": [
-              {
-                "name": "imgui",
-                "features": [
-                  "sdl2-binding"
                 ]
               }
             ]
@@ -38687,7 +38638,7 @@
           },
           "zlib"
         ],
-        "version": "1.7.2"
+        "version": "1.9.0"
       },
       "files": [
         "fix-compiler.patch",
@@ -39914,6 +39865,7 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
+        "port-version": 1,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
@@ -41456,7 +41408,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -46842,6 +46794,7 @@
       "name": "libffi",
       "manifest": {
         "name": "libffi",
+        "port-version": 1,
         "description": "Portable, high level programming interface to various calling conventions",
         "homepage": "https://github.com/libffi/libffi",
         "license": "MIT",
@@ -49929,7 +49882,7 @@
             "host": true
           }
         ],
-        "version": "2025.2.0"
+        "version": "2025.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -53031,7 +52984,7 @@
       "name": "libtommath",
       "manifest": {
         "name": "libtommath",
-        "port-version": 1,
+        "port-version": 2,
         "description": "LibTomMath is a free open source portable number theoretic multiple-precision integer library written entirely in C.",
         "homepage": "https://www.libtom.net/LibTomMath/",
         "dependencies": [
@@ -55819,6 +55772,27 @@
       ]
     },
     {
+      "name": "liquid-dsp",
+      "manifest": {
+        "name": "liquid-dsp",
+        "description": "Digital signal processing library for software-defined radios.",
+        "homepage": "https://liquidsdr.org/",
+        "license": "MIT",
+        "supports": "linux | osx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.7.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "litehtml",
       "manifest": {
         "name": "litehtml",
@@ -56799,7 +56773,7 @@
       "name": "loguru",
       "manifest": {
         "name": "loguru",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A lightweight and flexible C++ logging library",
         "homepage": "https://github.com/emilk/loguru",
         "dependencies": [
@@ -56818,6 +56792,9 @@
             "dependencies": [
               "fmt"
             ]
+          },
+          "stream": {
+            "description": "Build with support for stream style logging"
           }
         },
         "version": "2.1.0"
@@ -59743,7 +59720,6 @@
       "name": "matio",
       "manifest": {
         "name": "matio",
-        "port-version": 1,
         "description": "MATLAB MAT File I/O Library",
         "homepage": "https://github.com/tbeu/matio",
         "license": "BSD-2-Clause",
@@ -59787,7 +59763,7 @@
             ]
           }
         },
-        "version": "1.5.27"
+        "version": "1.5.28"
       },
       "files": [
         "fix-dependencies.patch",
@@ -62662,7 +62638,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "portfile.cmake",
@@ -62744,7 +62720,7 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
@@ -66123,7 +66099,6 @@
       "name": "openblas",
       "manifest": {
         "name": "openblas",
-        "port-version": 1,
         "description": "OpenBLAS is an optimized BLAS library based on GotoBLAS2 1.13 BSD version.",
         "homepage": "https://github.com/OpenMathLib/OpenBLAS",
         "license": "BSD-3-Clause",
@@ -66170,10 +66145,9 @@
             ]
           }
         },
-        "version": "0.3.28"
+        "version": "0.3.29"
       },
       "files": [
-        "arm32-asm-function.diff",
         "cmake-project-include.cmake",
         "disable-testing.diff",
         "getarch.diff",
@@ -70116,7 +70090,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "http://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.480"
+        "version": "4.0.481"
       },
       "files": [
         "portfile.cmake",
@@ -70602,10 +70576,11 @@
       "name": "pangomm",
       "manifest": {
         "name": "pangomm",
+        "port-version": 1,
         "description": "pangomm is the official C++ interface for the Pango font layout library. See, for instance, the Pango::Layout class.",
         "homepage": "https://gitlab.gnome.org/GNOME/pangomm",
         "license": "LGPL-2.1-or-later",
-        "supports": "!(arm | xbox)",
+        "supports": "!xbox",
         "dependencies": [
           "cairo",
           "cairomm",
@@ -70681,7 +70656,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 3,
+        "port-version": 4,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -71855,10 +71830,9 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
-        "port-version": 1,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
-        "license": "MIT",
+        "license": "MIT AND BSD-2-Clause",
         "dependencies": [
           "libpng",
           {
@@ -71866,10 +71840,9 @@
             "host": true
           }
         ],
-        "version": "0.43.4"
+        "version": "0.44.2"
       },
       "files": [
-        "fix_clang-cl.patch",
         "missing_intrin_include.patch",
         "no-host-cpu-checks.patch",
         "portfile.cmake",
@@ -72230,7 +72203,7 @@
             "host": true
           }
         ],
-        "version": "0.0.12"
+        "version": "0.0.13"
       },
       "files": [
         "portfile.cmake",
@@ -73650,7 +73623,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -73850,7 +73823,7 @@
             "platform": "windows"
           }
         ],
-        "version": "0.6.5"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -74525,7 +74498,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -79557,7 +79530,6 @@
       "name": "rapidjson",
       "manifest": {
         "name": "rapidjson",
-        "port-version": 2,
         "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API <http://rapidjson.org/>",
         "homepage": "http://rapidjson.org/",
         "license": "MIT",
@@ -79571,7 +79543,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-07-17"
+        "version-date": "2025-02-26"
       },
       "files": [
         "portfile.cmake",
@@ -82015,6 +81987,32 @@
       ]
     },
     {
+      "name": "safetyhook",
+      "manifest": {
+        "name": "safetyhook",
+        "description": "C++23 procedure hooking library.",
+        "homepage": "https://github.com/cursey/safetyhook",
+        "license": "BSL-1.0",
+        "supports": "(windows | linux) & !arm & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zydis"
+        ],
+        "version-semver": "0.6.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sail",
       "manifest": {
         "name": "sail",
@@ -82722,7 +82720,7 @@
           "gz-math",
           "gz-tools",
           "gz-utils",
-          "tinyxml",
+          "tinyxml2",
           "urdfdom",
           {
             "name": "vcpkg-cmake",
@@ -82733,11 +82731,10 @@
             "host": true
           }
         ],
-        "version": "13.6.0"
+        "version": "15.1.1"
       },
       "files": [
         "cmake-config.patch",
-        "fix-find-urdfdom.patch",
         "no-absolute.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -83007,7 +83004,7 @@
             ]
           }
         },
-        "version": "2.8.4"
+        "version": "2.8.8"
       },
       "files": [
         "fix-findwebp.patch",
@@ -83407,7 +83404,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.6"
+        "version": "3.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -83465,7 +83462,7 @@
             ]
           }
         },
-        "version": "3.2.0"
+        "version": "3.2.4"
       },
       "files": [
         "dependencies.diff",
@@ -84787,7 +84784,7 @@
             "host": true
           }
         ],
-        "version": "6.1.142"
+        "version": "6.1.147"
       },
       "files": [
         "SimdConfig.cmake",
@@ -85034,6 +85031,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
+        "port-version": 1,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -85444,9 +85442,20 @@
         "features": {
           "hierarchical": {
             "description": "Enable hierarchical state machine support"
+          },
+          "init-transition": {
+            "description": "Enable state machine initial transition feature",
+            "dependencies": [
+              {
+                "name": "smf",
+                "features": [
+                  "hierarchical"
+                ]
+              }
+            ]
           }
         },
-        "version": "0.1.1"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -87563,7 +87572,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "3.12.1"
+        "version": "3.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -89313,7 +89322,6 @@
       "name": "tgui",
       "manifest": {
         "name": "tgui",
-        "port-version": 1,
         "description": "TGUI is an easy to use, cross-platform, C++ GUI for SFML.",
         "homepage": "https://tgui.eu",
         "license": "Zlib",
@@ -89332,6 +89340,12 @@
           "sfml"
         ],
         "features": {
+          "raylib": {
+            "description": "Build the RAYLIB backend",
+            "dependencies": [
+              "raylib"
+            ]
+          },
           "sdl2": {
             "description": "Build the SDL backend",
             "dependencies": [
@@ -89341,6 +89355,17 @@
               },
               "sdl2",
               "sdl2-ttf"
+            ]
+          },
+          "sdl3": {
+            "description": "Build the SDL3 backend",
+            "dependencies": [
+              {
+                "name": "opengl",
+                "platform": "!android & !ios"
+              },
+              "sdl3",
+              "sdl3-ttf"
             ]
           },
           "sfml": {
@@ -89359,7 +89384,7 @@
             "description": "Build GUI builder"
           }
         },
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "files": [
         "devendor-stb.patch",
@@ -90998,7 +91023,7 @@
             ]
           }
         },
-        "version-date": "2023-08-16"
+        "version-date": "2025-02-15"
       },
       "files": [
         "fix_bin_path.patch",
@@ -93375,7 +93400,7 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -93407,6 +93432,7 @@
       "files": [
         "cmake_remove_bin_targets.patch",
         "fix-build-error-with-fmt11.patch",
+        "fix-rapidjson-target.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -94588,7 +94614,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.02.24.00"
+        "version-string": "2025.03.03.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -95851,7 +95877,7 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
-        "port-version": 1,
+        "port-version": 2,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
