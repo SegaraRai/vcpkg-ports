@@ -1,5 +1,5 @@
 {
-  "version": "300239058e33420acd153135b3f6e6b187828992",
+  "version": "e40d24cb149dd138e7c11d490834fa2c81298b32",
   "ports": [
     {
       "name": "3fd",
@@ -33287,7 +33287,6 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
-        "port-version": 2,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
@@ -34412,6 +34411,18 @@
               }
             ]
           },
+          "parametermanager": {
+            "description": "Cloud Parameter Manager API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "policysimulator": {
             "description": "Policy Simulator API C++ Client Library",
             "dependencies": [
@@ -35077,7 +35088,7 @@
             ]
           }
         },
-        "version": "2.35.0"
+        "version": "2.36.0"
       },
       "files": [
         "fix-googleapis-download.patch",
@@ -47239,7 +47250,6 @@
       "name": "libgeotiff",
       "manifest": {
         "name": "libgeotiff",
-        "port-version": 1,
         "description": "Libgeotiff is an open source library on top of libtiff for reading and writing GeoTIFF information tags.",
         "homepage": "https://github.com/OSGeo/libgeotiff",
         "license": "MIT",
@@ -47272,7 +47282,7 @@
             ]
           }
         },
-        "version": "1.7.3"
+        "version": "1.7.4"
       },
       "files": [
         "cmakelists.patch",
@@ -49882,7 +49892,7 @@
             "host": true
           }
         ],
-        "version": "2025.3.1"
+        "version": "2025.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -50609,7 +50619,7 @@
             "host": true
           }
         ],
-        "version": "8.13.55"
+        "version": "9.0.0"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -61982,6 +61992,33 @@
       ]
     },
     {
+      "name": "ms-gdk",
+      "manifest": {
+        "name": "ms-gdk",
+        "description": "Microsoft Game Development Kit (GDK)",
+        "homepage": "https://aka.ms/gdkx",
+        "documentation": "https://aka.ms/gamedevdocs",
+        "license": null,
+        "supports": "windows & x64 & !uwp & !xbox & !staticcrt",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2410.1.1897"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ms-gdkx",
       "manifest": {
         "name": "ms-gdkx",
@@ -62339,7 +62376,6 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
-        "port-version": 3,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -62370,7 +62406,7 @@
             "license": "Apache-2.0"
           }
         },
-        "version": "2.4.7"
+        "version": "2.4.8"
       },
       "files": [
         "avoid-w-invalid-unevaluated-string.patch",
@@ -63783,7 +63819,7 @@
             "host": true
           }
         ],
-        "version": "1.64.0"
+        "version": "1.65.0"
       },
       "files": [
         "portfile.cmake",
@@ -66423,10 +66459,12 @@
       "name": "openctm",
       "manifest": {
         "name": "openctm",
+        "port-version": 1,
         "description": "OpenCTM — the Open Compressed Triangle Mesh file format — is a file format, a software library and a tool set for compression of 3D triangle meshes.",
         "homepage": "http://openctm.sourceforge.net/",
         "license": "Zlib",
         "dependencies": [
+          "7zip",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -66441,6 +66479,7 @@
       "files": [
         "CMakeLists.txt",
         "portfile.cmake",
+        "use-7zip.patch",
         "vcpkg.json"
       ]
     },
@@ -84857,6 +84896,7 @@
         "name": "simdutf",
         "description": "Unicode validation and transcoding at billions of characters per second",
         "homepage": "https://github.com/simdutf/simdutf",
+        "license": "Apache-2.0 OR MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -84872,7 +84912,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "6.1.1"
+        "version-semver": "6.3.1"
       },
       "files": [
         "portfile.cmake",
