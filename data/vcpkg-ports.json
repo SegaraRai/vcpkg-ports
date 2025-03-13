@@ -1,5 +1,5 @@
 {
-  "version": "c14d62387153eaa2d720113542dbde2e9754ee71",
+  "version": "cf72b50294a4aa13e607a0c7b40280b933801698",
   "ports": [
     {
       "name": "3fd",
@@ -978,7 +978,7 @@
             "host": true
           }
         ],
-        "version": "0.12.1"
+        "version": "0.13.1"
       },
       "files": [
         "anari-lib-maybe-static-lib.patch",
@@ -1458,6 +1458,56 @@
       "files": [
         "fix-c2398.patch",
         "fix-find-seal.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "aravis",
+      "manifest": {
+        "name": "aravis",
+        "description": " A vision library for genicam based cameras.",
+        "homepage": "https://github.com/AravisProject/aravis",
+        "license": "LGPL-2.0-or-later",
+        "dependencies": [
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          "libxml2",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          },
+          "zlib"
+        ],
+        "default-features": [
+          "usb"
+        ],
+        "features": {
+          "fast-heartbeat": {
+            "description": "Enable faster heartbeat rate"
+          },
+          "introspection": {
+            "description": "Build introspection data",
+            "dependencies": [
+              "gobject-introspection"
+            ]
+          },
+          "packet-socket": {
+            "description": "Enable packet socket support"
+          },
+          "usb": {
+            "description": "Enable USB support",
+            "dependencies": [
+              "libusb"
+            ]
+          }
+        },
+        "version": "0.8.34"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -2086,6 +2136,69 @@
         "usage-flight",
         "usage-flightsql",
         "usage-parquet",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arrow-adbc",
+      "manifest": {
+        "name": "arrow-adbc",
+        "description": "Apache Arrow ADBC: Database Connectivity API for Arrow-based data systems",
+        "homepage": "https://arrow.apache.org/adbc/",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "arrow",
+            "default-features": false,
+            "features": [
+              "dataset",
+              "parquet"
+            ]
+          },
+          "fmt",
+          "nanoarrow",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "bigquery": {
+            "description": "Enable bigquery support",
+            "supports": "!windows"
+          },
+          "flightsql": {
+            "description": "Enable flightsql support",
+            "supports": "!windows"
+          },
+          "postgresql": {
+            "description": "Enable PostgreSQL support",
+            "dependencies": [
+              "libpq"
+            ]
+          },
+          "snowflake": {
+            "description": "Enable snowflake support",
+            "supports": "!windows"
+          },
+          "sqlite": {
+            "description": "Enable SQLite support",
+            "dependencies": [
+              "sqlite3"
+            ]
+          }
+        },
+        "version": "16"
+      },
+      "files": [
+        "fix_static_build.patch",
+        "fix_windows_build.patch",
+        "portfile.cmake",
+        "unvendor.patch",
         "vcpkg.json"
       ]
     },
@@ -5646,7 +5759,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.9.0"
+        "version-semver": "12.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -5758,7 +5871,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.9.0"
+            "version>=": "12.10.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -5769,7 +5882,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.12.0"
+        "version-semver": "12.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -7077,6 +7190,7 @@
       "name": "boost",
       "manifest": {
         "name": "boost",
+        "port-version": 1,
         "description": "Peer-reviewed portable C++ source libraries",
         "homepage": "https://boost.org",
         "license": "BSL-1.0",
@@ -7147,17 +7261,8 @@
             "version>=": "1.87.0"
           },
           {
-            "name": "boost-cobalt",
-            "platform": "!uwp",
-            "version>=": "1.87.0"
-          },
-          {
             "name": "boost-compat",
             "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-compatibility",
-            "version>=": "1.86.0"
           },
           {
             "name": "boost-compute",
@@ -7712,7 +7817,7 @@
               {
                 "name": "boost-cobalt",
                 "platform": "!osx & !ios & !android & !uwp",
-                "version>=": "1.86.0"
+                "version>=": "1.87.0"
               }
             ]
           },
@@ -8065,6 +8170,7 @@
       "name": "boost-asio",
       "manifest": {
         "name": "boost-asio",
+        "port-version": 1,
         "description": "Boost asio module",
         "homepage": "https://www.boost.org/libs/asio",
         "license": "BSL-1.0",
@@ -8088,11 +8194,6 @@
           {
             "name": "boost-context",
             "platform": "!uwp & !emscripten",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-coroutine",
-            "platform": "!(arm & windows) & !uwp & !emscripten",
             "version>=": "1.87.0"
           },
           {
@@ -8231,6 +8332,7 @@
       "name": "boost-atomic",
       "manifest": {
         "name": "boost-atomic",
+        "port-version": 1,
         "description": "Boost atomic module",
         "homepage": "https://www.boost.org/libs/atomic",
         "license": "BSL-1.0",
@@ -8770,6 +8872,7 @@
       "name": "boost-cobalt",
       "manifest": {
         "name": "boost-cobalt",
+        "port-version": 1,
         "description": "Boost cobalt module",
         "homepage": "https://www.boost.org/libs/cobalt",
         "license": "BSL-1.0",
@@ -8921,6 +9024,7 @@
       "name": "boost-compute",
       "manifest": {
         "name": "boost-compute",
+        "port-version": 1,
         "description": "Boost compute module",
         "homepage": "https://www.boost.org/libs/compute",
         "license": "BSL-1.0",
@@ -8935,6 +9039,10 @@
           },
           {
             "name": "boost-assert",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-atomic",
             "version>=": "1.87.0"
           },
           {
@@ -9196,6 +9304,7 @@
       "name": "boost-context",
       "manifest": {
         "name": "boost-context",
+        "port-version": 1,
         "description": "Boost context module",
         "homepage": "https://www.boost.org/libs/context",
         "license": "BSL-1.0",
@@ -10146,6 +10255,7 @@
       "name": "boost-flyweight",
       "manifest": {
         "name": "boost-flyweight",
+        "port-version": 1,
         "description": "Boost flyweight module",
         "homepage": "https://www.boost.org/libs/flyweight",
         "license": "BSL-1.0",
@@ -10208,6 +10318,10 @@
           },
           {
             "name": "boost-type-traits",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-unordered",
             "version>=": "1.87.0"
           }
         ],
@@ -11439,6 +11553,7 @@
       "name": "boost-interprocess",
       "manifest": {
         "name": "boost-interprocess",
+        "port-version": 1,
         "description": "Boost interprocess module",
         "homepage": "https://www.boost.org/libs/interprocess",
         "license": "BSL-1.0",
@@ -11460,10 +11575,6 @@
             "version>=": "1.87.0"
           },
           {
-            "name": "boost-core",
-            "version>=": "1.87.0"
-          },
-          {
             "name": "boost-headers",
             "version>=": "1.87.0"
           },
@@ -11473,14 +11584,6 @@
           },
           {
             "name": "boost-move",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-static-assert",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-type-traits",
             "version>=": "1.87.0"
           },
           {
@@ -11806,6 +11909,7 @@
       "name": "boost-json",
       "manifest": {
         "name": "boost-json",
+        "port-version": 1,
         "description": "Boost json module",
         "homepage": "https://www.boost.org/libs/json",
         "license": "BSL-1.0",
@@ -11998,6 +12102,7 @@
       "name": "boost-lexical-cast",
       "manifest": {
         "name": "boost-lexical-cast",
+        "port-version": 1,
         "description": "Boost lexical_cast module",
         "homepage": "https://www.boost.org/libs/lexical_cast",
         "license": "BSL-1.0",
@@ -12020,10 +12125,6 @@
           },
           {
             "name": "boost-headers",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-integer",
             "version>=": "1.87.0"
           },
           {
@@ -12164,16 +12265,13 @@
       "name": "boost-lockfree",
       "manifest": {
         "name": "boost-lockfree",
+        "port-version": 1,
         "description": "Boost lockfree module",
         "homepage": "https://www.boost.org/libs/lockfree",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-align",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-array",
             "version>=": "1.87.0"
           },
           {
@@ -12201,18 +12299,6 @@
             "version>=": "1.87.0"
           },
           {
-            "name": "boost-integer",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-iterator",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-mpl",
-            "version>=": "1.87.0"
-          },
-          {
             "name": "boost-parameter",
             "version>=": "1.87.0"
           },
@@ -12225,15 +12311,11 @@
             "version>=": "1.87.0"
           },
           {
-            "name": "boost-tuple",
+            "name": "boost-throw-exception",
             "version>=": "1.87.0"
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-utility",
             "version>=": "1.87.0"
           }
         ],
@@ -13102,6 +13184,7 @@
       "name": "boost-mysql",
       "manifest": {
         "name": "boost-mysql",
+        "port-version": 1,
         "description": "Boost mysql module",
         "homepage": "https://www.boost.org/libs/mysql",
         "license": "BSL-1.0",
@@ -13120,6 +13203,10 @@
           },
           {
             "name": "boost-cmake",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-compat",
             "version>=": "1.87.0"
           },
           {
@@ -13369,6 +13456,7 @@
       "name": "boost-optional",
       "manifest": {
         "name": "boost-optional",
+        "port-version": 1,
         "description": "Boost optional module",
         "homepage": "https://www.boost.org/libs/optional",
         "license": "BSL-1.0",
@@ -13390,23 +13478,7 @@
             "version>=": "1.87.0"
           },
           {
-            "name": "boost-detail",
-            "version>=": "1.87.0"
-          },
-          {
             "name": "boost-headers",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-move",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-predef",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-static-assert",
             "version>=": "1.87.0"
           },
           {
@@ -13415,10 +13487,6 @@
           },
           {
             "name": "boost-type-traits",
-            "version>=": "1.87.0"
-          },
-          {
-            "name": "boost-utility",
             "version>=": "1.87.0"
           }
         ],
@@ -13585,12 +13653,17 @@
       "name": "boost-parser",
       "manifest": {
         "name": "boost-parser",
+        "port-version": 1,
         "description": "Boost parser module",
         "homepage": "https://www.boost.org/libs/parser",
         "license": "BSL-1.0",
         "dependencies": [
           {
             "name": "boost-assert",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-charconv",
             "version>=": "1.87.0"
           },
           {
@@ -13921,6 +13994,7 @@
       "name": "boost-process",
       "manifest": {
         "name": "boost-process",
+        "port-version": 1,
         "description": "Boost process module",
         "homepage": "https://www.boost.org/libs/process",
         "license": "BSL-1.0",
@@ -14920,6 +14994,7 @@
       "name": "boost-regex",
       "manifest": {
         "name": "boost-regex",
+        "port-version": 1,
         "description": "Boost regex module",
         "homepage": "https://www.boost.org/libs/regex",
         "license": "BSL-1.0",
@@ -14933,7 +15008,19 @@
             "version>=": "1.87.0"
           },
           {
+            "name": "boost-concept-check",
+            "version>=": "1.87.0"
+          },
+          {
             "name": "boost-config",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-container-hash",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-core",
             "version>=": "1.87.0"
           },
           {
@@ -14941,11 +15028,31 @@
             "version>=": "1.87.0"
           },
           {
+            "name": "boost-integer",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-mpl",
+            "version>=": "1.87.0"
+          },
+          {
             "name": "boost-predef",
             "version>=": "1.87.0"
           },
           {
+            "name": "boost-smart-ptr",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-static-assert",
+            "version>=": "1.87.0"
+          },
+          {
             "name": "boost-throw-exception",
+            "version>=": "1.87.0"
+          },
+          {
+            "name": "boost-type-traits",
             "version>=": "1.87.0"
           }
         ],
@@ -16603,6 +16710,7 @@
       "name": "boost-unordered",
       "manifest": {
         "name": "boost-unordered",
+        "port-version": 1,
         "description": "Boost unordered module",
         "homepage": "https://www.boost.org/libs/unordered",
         "license": "BSL-1.0",
@@ -21994,7 +22102,6 @@
       "name": "cpputest",
       "manifest": {
         "name": "cpputest",
-        "port-version": 3,
         "description": "CppUTest unit testing and mocking framework for C/C++.",
         "homepage": "https://github.com/cpputest/cpputest",
         "license": "BSD-3-Clause",
@@ -22008,10 +22115,9 @@
             "host": true
           }
         ],
-        "version": "2019-9-16"
+        "version": "4.0"
       },
       "files": [
-        "fix-arm-build-error.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24180,6 +24286,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
+        "port-version": 1,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -24216,7 +24323,8 @@
             "description": "Build with X11 autolaunch support",
             "dependencies": [
               "libx11"
-            ]
+            ],
+            "supports": "!windows"
           }
         },
         "version": "1.16.2"
@@ -24564,6 +24672,7 @@
       "name": "directx-dxc",
       "manifest": {
         "name": "directx-dxc",
+        "port-version": 1,
         "description": "DirectX Shader Compiler (LLVM/Clang)",
         "homepage": "https://github.com/microsoft/DirectXShaderCompiler",
         "documentation": "https://github.com/microsoft/DirectXShaderCompiler/wiki",
@@ -25436,6 +25545,7 @@
       "name": "dpp",
       "manifest": {
         "name": "dpp",
+        "port-version": 1,
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
         "license": "Apache-2.0",
@@ -25733,10 +25843,11 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "bigobj.patch",
+        "httpfs.patch",
         "portfile.cmake",
         "unvendor_icu_and_find_dependency.patch",
         "usage",
@@ -29324,6 +29435,31 @@
       ]
     },
     {
+      "name": "flatcc",
+      "manifest": {
+        "name": "flatcc",
+        "description": "FlatBuffers Compiler and Library in C for C",
+        "homepage": "https://github.com/dvidelabs/flatcc",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.1"
+      },
+      "files": [
+        "fix_install_dir.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "flecs",
       "manifest": {
         "name": "flecs",
@@ -31367,6 +31503,41 @@
       ]
     },
     {
+      "name": "gdbm",
+      "manifest": {
+        "name": "gdbm",
+        "description": "GDBM is a library of database functions that use extensible hashing and works similar to the standard UNIX dbm.",
+        "homepage": "https://www.gnu.org.ua/software/gdbm/gdbm.html",
+        "license": "GPL-3.0-only",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "features": {
+          "libgdbm-compat": {
+            "description": "Build and install libgdbm_compat, a compatibility layer which provides UNIX-like dbm and ndbm interfaces."
+          },
+          "memory-mapped-io": {
+            "description": "Enable the use of mmap(2) for I/O optimizations."
+          },
+          "readline": {
+            "description": "Enable GNU Readline support.",
+            "dependencies": [
+              "readline"
+            ]
+          }
+        },
+        "version": "1.24"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "gdcm",
       "manifest": {
         "name": "gdcm",
@@ -31916,6 +32087,62 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ggml",
+      "manifest": {
+        "name": "ggml",
+        "description": "Tensor library for machine learning",
+        "homepage": "https://github.com/ggml-org/ggml",
+        "license": "MIT",
+        "supports": "!(windows & arm) & !uwp & !android",
+        "dependencies": [
+          "blas",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cuda": {
+            "description": "Enable CUDA support",
+            "dependencies": [
+              "cuda"
+            ]
+          },
+          "metal": {
+            "description": "Enable Metal support",
+            "supports": "osx"
+          },
+          "opencl": {
+            "description": "Enable OpenCL support",
+            "dependencies": [
+              "opencl"
+            ]
+          },
+          "openmp": {
+            "description": "Enable OpenMP support",
+            "supports": "!osx"
+          },
+          "vulkan": {
+            "description": "Enable Vulkan support",
+            "dependencies": [
+              "vulkan-sdk-components"
+            ],
+            "supports": "!x86"
+          }
+        },
+        "version-date": "2025-02-12"
+      },
+      "files": [
+        "0001-fix-cmakelists.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -38357,8 +38584,11 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
-        "port-version": 1,
-        "description": "Hello ImGui: unleash your creativity in app development and prototyping",
+        "port-version": 2,
+        "description": [
+          "Hello ImGui: unleash your creativity in app development and prototyping",
+          "Note that at least on renderer backend and at least one platform backend must be chosen."
+        ],
         "homepage": "https://pthom.github.io/hello_imgui/",
         "license": "MIT",
         "dependencies": [
@@ -38368,6 +38598,7 @@
               "docking-experimental"
             ]
           },
+          "nlohmann-json",
           "stb",
           {
             "name": "vcpkg-cmake",
@@ -38412,18 +38643,6 @@
               }
             ]
           },
-          "freetype-plutosvg": {
-            "description": "Improve font rendering and use colored fonts with freetype and plutosvg",
-            "dependencies": [
-              {
-                "name": "imgui",
-                "features": [
-                  "freetype",
-                  "freetype-svg"
-                ]
-              }
-            ]
-          },
           "glfw-binding": {
             "description": "Use GLFW platform backend (default)",
             "dependencies": [
@@ -38462,11 +38681,24 @@
                 ]
               }
             ]
+          },
+          "test-engine": {
+            "description": "Build test engine",
+            "dependencies": [
+              {
+                "name": "imgui",
+                "features": [
+                  "test-engine"
+                ]
+              }
+            ]
           }
         },
         "version": "1.6.0"
       },
       "files": [
+        "cmake-config.diff",
+        "imgui-test-engine.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -38578,8 +38810,9 @@
       "name": "highfive",
       "manifest": {
         "name": "highfive",
+        "port-version": 1,
         "description": "HighFive is a modern header-only C++/C++11 friendly interface for libhdf5",
-        "homepage": "https://github.com/BlueBrain/HighFive",
+        "homepage": "https://github.com/highfive-devs/highfive",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -39221,6 +39454,31 @@
           }
         ],
         "version": "2.32.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "icecream-cpp",
+      "manifest": {
+        "name": "icecream-cpp",
+        "description": "A little (single header) library to help with the print debugging in C++11 and forward.",
+        "homepage": "https://github.com/renatoGarcia/icecream-cpp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -50132,7 +50390,7 @@
       "name": "libogg",
       "manifest": {
         "name": "libogg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Ogg is a multimedia container format, and the native file and stream format for the Xiph.org multimedia codecs.",
         "homepage": "https://www.xiph.org/ogg",
         "license": "BSD-3-Clause",
@@ -55856,6 +56114,33 @@
         "CMakeLists.txt",
         "fix-RTSPClient.patch",
         "fix_operator_overload.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "llama-cpp",
+      "manifest": {
+        "name": "llama-cpp",
+        "description": "LLM inference in C/C++",
+        "homepage": "https://github.com/ggml-org/llama.cpp",
+        "license": "MIT",
+        "supports": "!android",
+        "dependencies": [
+          "ggml",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4743"
+      },
+      "files": [
+        "0001-external-ggml.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62041,7 +62326,6 @@
       "name": "ms-gltf",
       "manifest": {
         "name": "ms-gltf",
-        "port-version": 2,
         "description": "glTF-SDK is a C++ Software Development Kit for glTF",
         "homepage": "https://github.com/microsoft/glTF-SDK",
         "license": "MIT",
@@ -62068,7 +62352,7 @@
             ]
           }
         },
-        "version-date": "2022-06-28"
+        "version-date": "2024-09-05"
       },
       "files": [
         "fix-install.patch",
@@ -62889,6 +63173,34 @@
         "version": "2.0.1"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "nanoarrow",
+      "manifest": {
+        "name": "nanoarrow",
+        "description": "Helpers for Arrow C Data & Arrow C Stream interfaces",
+        "homepage": "https://arrow.apache.org/nanoarrow",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "flatcc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "0.6.0"
+      },
+      "files": [
+        "fix_install_dir.patch",
+        "no_werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66489,7 +66801,7 @@
       "name": "opencv",
       "manifest": {
         "name": "opencv",
-        "port-version": 2,
+        "port-version": 3,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -66508,6 +66820,18 @@
                 "default-features": false,
                 "features": [
                   "ade"
+                ]
+              }
+            ]
+          },
+          "aravis": {
+            "description": "aravis",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "aravis"
                 ]
               }
             ]
@@ -67555,7 +67879,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 5,
+        "port-version": 6,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -67619,6 +67943,15 @@
             "description": "graph api",
             "dependencies": [
               "ade"
+            ]
+          },
+          "aravis": {
+            "description": "aravis",
+            "dependencies": [
+              {
+                "name": "aravis",
+                "default-features": false
+              }
             ]
           },
           "calib3d": {
@@ -70474,6 +70807,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
+        "port-version": 1,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -71258,7 +71592,7 @@
             ]
           }
         },
-        "version": "10.43"
+        "version": "10.45"
       },
       "files": [
         "fix-cmake.patch",
@@ -72389,6 +72723,7 @@
       "name": "poco",
       "manifest": {
         "name": "poco",
+        "port-version": 1,
         "description": "Modern, powerful open source C++ class libraries for building network and internet-based applications that run on desktop, server, mobile and embedded systems.",
         "homepage": "https://github.com/pocoproject/poco",
         "license": "BSL-1.0",
@@ -83004,6 +83339,7 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
+        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -83023,6 +83359,12 @@
           }
         ],
         "features": {
+          "avif": {
+            "description": "Support for AVIF image format",
+            "dependencies": [
+              "libavif"
+            ]
+          },
           "libjpeg-turbo": {
             "description": "Support for JPEG image format",
             "dependencies": [
@@ -84215,6 +84557,7 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
+        "port-version": 1,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/SFML/SFML",
         "license": "Zlib",
@@ -94204,6 +94547,7 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
+        "port-version": 1,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0 OR MIT",
@@ -94221,6 +94565,7 @@
         "version": "1.4.304.1"
       },
       "files": [
+        "fix-headers.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -96496,7 +96841,7 @@
             "host": true
           }
         ],
-        "version": "1.3.6"
+        "version": "1.3.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -96942,7 +97287,7 @@
             "host": true
           }
         ],
-        "version": "0.3.11"
+        "version": "0.4.0"
       },
       "files": [
         "portfile.cmake",
