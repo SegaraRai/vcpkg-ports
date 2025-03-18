@@ -1,5 +1,5 @@
 {
-  "version": "782ccc18d8b819cdef6794a6c03eb3d9f7cd04aa",
+  "version": "043abf2fa419c288d594a6b96b98a811457bd9b5",
   "ports": [
     {
       "name": "3fd",
@@ -1113,7 +1113,7 @@
             "host": true
           }
         ],
-        "version": "0.0.11"
+        "version": "0.0.12"
       },
       "files": [
         "portfile.cmake",
@@ -27607,7 +27607,6 @@
       "name": "fast-float",
       "manifest": {
         "name": "fast-float",
-        "port-version": 1,
         "description": "Fast and exact implementation of the C++ from_chars functions for float and double types: 4x faster than strtod",
         "homepage": "https://github.com/fastfloat/fast_float",
         "license": "Apache-2.0 OR BSL-1.0 OR MIT",
@@ -27621,7 +27620,7 @@
             "host": true
           }
         ],
-        "version": "8.0.0"
+        "version": "8.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -29688,7 +29687,7 @@
             ]
           }
         },
-        "version": "2.4.3"
+        "version": "2.4.4"
       },
       "files": [
         "gentables.patch",
@@ -31959,7 +31958,7 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A GNU framework to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "GPL-3.0-only",
@@ -31989,6 +31988,7 @@
         "version": "0.22.5"
       },
       "files": [
+        "0001-xgettext-Fix-some-test-failures-on-MSVC.patch",
         "0003-Fix-win-unicode-paths.patch",
         "assume-modern-darwin.patch",
         "bashify.cmake",
@@ -40350,7 +40350,6 @@
       "name": "influxdb-cxx",
       "manifest": {
         "name": "influxdb-cxx",
-        "port-version": 1,
         "description": "InfluxDB C++ client library",
         "homepage": "https://github.com/offa/influxdb-cxx",
         "license": "MIT",
@@ -40376,10 +40375,9 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.7.2"
+        "version": "0.7.4"
       },
       "files": [
-        "268.patch",
         "fix-dllexports.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -41406,7 +41404,6 @@
       "name": "joltphysics",
       "manifest": {
         "name": "joltphysics",
-        "port-version": 1,
         "description": "A multi core friendly rigid body physics and collision detection library suitable for games and VR applications",
         "homepage": "https://github.com/jrouwe/JoltPhysics",
         "license": "MIT",
@@ -41431,7 +41428,7 @@
             "description": "Enable C++ RTTI"
           }
         },
-        "version": "5.2.0"
+        "version": "5.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -45469,6 +45466,61 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libaribcaption",
+      "manifest": {
+        "name": "libaribcaption",
+        "description": "Portable ARIB STD-B24 caption decoder/renderer",
+        "homepage": "https://github.com/xqq/libaribcaption",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "renderer"
+        ],
+        "features": {
+          "gdi": {
+            "description": "Enable Win32 GDI font provider",
+            "dependencies": [
+              {
+                "name": "libaribcaption",
+                "default-features": false,
+                "features": [
+                  "renderer"
+                ]
+              }
+            ],
+            "supports": "windows"
+          },
+          "renderer": {
+            "description": "Build with renderer enabled",
+            "dependencies": [
+              {
+                "name": "fontconfig",
+                "platform": "linux"
+              },
+              {
+                "name": "freetype",
+                "platform": "android | linux"
+              }
+            ]
+          }
+        },
+        "version": "1.1.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -57583,7 +57635,7 @@
             "description": "Builds luau executable"
           }
         },
-        "version": "0.660"
+        "version": "0.665"
       },
       "files": [
         "cmake-config-export.patch",
@@ -57711,7 +57763,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -63311,7 +63363,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -71313,9 +71365,8 @@
       "name": "pcg",
       "manifest": {
         "name": "pcg",
-        "port-version": 2,
         "description": "Permuted Congruential Generator",
-        "version-date": "2021-04-06"
+        "version-date": "2022-04-09"
       },
       "files": [
         "portfile.cmake",
@@ -73629,7 +73680,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.5.1"
+        "version": "9.6.0"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -80586,6 +80637,15 @@
               }
             ]
           },
+          "toml": {
+            "description": "Support for the TOML format",
+            "dependencies": [
+              {
+                "name": "toml11",
+                "version>=": "4.2.0"
+              }
+            ]
+          },
           "ubjson": {
             "description": "Support for the UBJSON format",
             "dependencies": [
@@ -80614,7 +80674,7 @@
             ]
           }
         },
-        "version": "0.17.0"
+        "version": "0.18.0"
       },
       "files": [
         "portfile.cmake",
@@ -81180,8 +81240,10 @@
       "name": "rmqcpp",
       "manifest": {
         "name": "rmqcpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "rmqcpp - A C++ library for RabbitMQ.",
+        "homepage": "https://github.com/bloomberg/rmqcpp",
+        "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "bde",
@@ -81204,6 +81266,7 @@
       },
       "files": [
         "disable-tests-and-examples.patch",
+        "new-boost.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -85422,7 +85485,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -85642,11 +85705,16 @@
       "name": "sleef",
       "manifest": {
         "name": "sleef",
+        "port-version": 1,
         "description": "SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT",
         "homepage": "https://sleef.org/",
         "license": "BSL-1.0",
-        "supports": "!uwp & !(arm & windows) & !(arm64 & osx)",
+        "supports": "!(arm & windows)",
         "dependencies": [
+          {
+            "name": "sleef",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -85659,6 +85727,7 @@
         "version": "3.8"
       },
       "files": [
+        "0001-Add-missing-exe-suffix-for-host-executables.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -89847,7 +89916,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.15.9"
+        "version": "0.15.11"
       },
       "files": [
         "portfile.cmake",
@@ -90180,7 +90249,6 @@
       "name": "tinycbor",
       "manifest": {
         "name": "tinycbor",
-        "port-version": 1,
         "description": "Concise Binary Object Representation (CBOR) Library",
         "homepage": "https://github.com/intel/tinycbor",
         "license": "MIT",
@@ -90190,7 +90258,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.6.0"
+        "version-semver": "0.6.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -92716,7 +92784,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -93980,7 +94048,7 @@
       "name": "vst3sdk",
       "manifest": {
         "name": "vst3sdk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Virtual Studio Technology (VST) is an audio plug-in software interface that facilitates the integration of software synthesizers and effects in digital audio workstations (DAW)",
         "homepage": "https://steinbergmedia.github.io/vst3_dev_portal/pages/Technical+Documentation/API+Documentation/Index.html",
         "license": "GPL-3.0-only",
@@ -95217,7 +95285,6 @@
       "name": "webthing-cpp",
       "manifest": {
         "name": "webthing-cpp",
-        "port-version": 1,
         "description": "Webthing-CPP is a modern CPP/C++17 implementation of the WebThings API.",
         "homepage": "https://github.com/bw-hro/webthing-cpp",
         "license": "MIT",
@@ -95244,10 +95311,9 @@
             ]
           }
         },
-        "version": "1.0.5"
+        "version": "1.2.0"
       },
       "files": [
-        "dependencies.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
