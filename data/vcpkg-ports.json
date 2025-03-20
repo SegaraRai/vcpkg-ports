@@ -1,5 +1,5 @@
 {
-  "version": "478939b61bfc6aa9faf4ab18b5e2495f18ac1fea",
+  "version": "b02e341c927f16d991edbd915d8ea43eac52096c",
   "ports": [
     {
       "name": "3fd",
@@ -21350,7 +21350,7 @@
             ]
           }
         },
-        "version": "0.19.0"
+        "version": "0.20.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -25827,6 +25827,7 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
+        "port-version": 1,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": "MIT",
@@ -25876,6 +25877,7 @@
         "bigobj.patch",
         "httpfs.patch",
         "portfile.cmake",
+        "t-external-icu.patch",
         "unvendor_icu_and_find_dependency.patch",
         "usage",
         "vcpkg.json"
@@ -28037,6 +28039,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29428,7 +29431,7 @@
             "host": true
           }
         ],
-        "version": "25.1.21"
+        "version": "25.2.10"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -29503,7 +29506,7 @@
             "host": true
           }
         ],
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -33531,7 +33534,7 @@
             "host": true
           }
         ],
-        "version": "4.3"
+        "version": "4.4"
       },
       "files": [
         "packagable.patch",
@@ -35405,7 +35408,7 @@
       "name": "gperf",
       "manifest": {
         "name": "gperf",
-        "port-version": 6,
+        "port-version": 7,
         "description": "GNU perfect hash function generator",
         "homepage": "https://www.gnu.org/software/gperf/",
         "dependencies": [
@@ -35775,7 +35778,12 @@
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
         "dependencies": [
-          "abseil",
+          {
+            "name": "abseil",
+            "features": [
+              "cxx17"
+            ]
+          },
           {
             "name": "c-ares",
             "platform": "!uwp"
@@ -35811,7 +35819,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "1.70.1"
+        "version-semver": "1.71.0"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -38612,7 +38620,7 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Hello ImGui: unleash your creativity in app development and prototyping",
           "Note that at least on renderer backend and at least one platform backend must be chosen."
@@ -38728,6 +38736,7 @@
         "cmake-config.diff",
         "imgui-test-engine.diff",
         "portfile.cmake",
+        "support-imgui-1_91_9.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -39976,7 +39985,6 @@
       "name": "imgui",
       "manifest": {
         "name": "imgui",
-        "port-version": 4,
         "description": "Bloat-free Immediate Mode Graphical User interface for C++ with minimal dependencies.",
         "homepage": "https://github.com/ocornut/imgui",
         "license": "MIT",
@@ -40122,7 +40130,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.8"
+        "version": "1.91.9"
       },
       "files": [
         "CMakeLists.txt",
@@ -45067,7 +45075,7 @@
           },
           "zlib"
         ],
-        "version": "2.3.2"
+        "version": "2.4.1"
       },
       "files": [
         "lib3mf_vcpkg.patch",
@@ -45918,7 +45926,6 @@
       "name": "libcbor",
       "manifest": {
         "name": "libcbor",
-        "port-version": 1,
         "description": "libcbor is a C library for parsing and generating CBOR, the general-purpose schema-less binary data format",
         "homepage": "https://github.com/PJK/libcbor",
         "license": "MIT",
@@ -45932,10 +45939,9 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.12.0"
       },
       "files": [
-        "cmake-config.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -54718,12 +54724,17 @@
       "name": "libxcrypt",
       "manifest": {
         "name": "libxcrypt",
-        "port-version": 2,
         "description": "libxcrypt is a modern library for one-way hashing of passwords. On Linux-based systems, by default libxcrypt will be binary backward compatible with the libcrypt.so.1 shipped as part of the GNU C Library.",
         "homepage": "https://github.com/besser82/libxcrypt",
-        "license": "LGPL-2.1-only",
+        "license": null,
         "supports": "linux",
-        "version": "4.4.36"
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "4.4.38"
       },
       "files": [
         "portfile.cmake",
@@ -57749,6 +57760,7 @@
       "name": "lunasvg",
       "manifest": {
         "name": "lunasvg",
+        "port-version": 1,
         "description": "lunasvg is a standalone SVG rendering library in C++",
         "homepage": "https://github.com/sammycage/lunasvg",
         "license": "MIT",
@@ -57766,6 +57778,7 @@
         "version": "3.2.1"
       },
       "files": [
+        "fix-plutovg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72589,6 +72602,7 @@
       "name": "plutosvg",
       "manifest": {
         "name": "plutosvg",
+        "port-version": 1,
         "description": "Tiny SVG rendering library in C",
         "homepage": "https://github.com/sammycage/plutosvg",
         "license": "MIT",
@@ -72614,6 +72628,7 @@
         "version": "0.0.6"
       },
       "files": [
+        "fix-plutovg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72622,7 +72637,7 @@
       "name": "plutovg",
       "manifest": {
         "name": "plutovg",
-        "description": " Tiny 2D vector graphics library in C",
+        "description": "Tiny 2D vector graphics library in C",
         "homepage": "https://github.com/sammycage/plutovg",
         "license": "MIT",
         "dependencies": [
@@ -72635,7 +72650,7 @@
             "host": true
           }
         ],
-        "version": "0.0.13"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -73736,7 +73751,6 @@
       "name": "projectm-eval",
       "manifest": {
         "name": "projectm-eval",
-        "port-version": 1,
         "description": "The projectM Expression Evaluation Library. A portable drop-in replacement of Milkdrop's \"ns-eel2\" expression parser for use in Milkdrop, projectM and other applications.",
         "homepage": "https://github.com/projectM-visualizer/projectm-eval",
         "license": "MIT",
@@ -73750,7 +73764,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -83291,6 +83305,7 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -83370,6 +83385,7 @@
         "alsa-dep-fix.patch",
         "cxx-linkage-pkgconfig.diff",
         "deps.patch",
+        "fix-pipewire.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -89783,6 +89799,7 @@
       "name": "tgui",
       "manifest": {
         "name": "tgui",
+        "port-version": 1,
         "description": "TGUI is an easy to use, cross-platform, C++ GUI for SFML.",
         "homepage": "https://tgui.eu",
         "license": "Zlib",
@@ -90787,7 +90804,7 @@
             "host": true
           }
         ],
-        "version-semver": "10.1.0"
+        "version-semver": "11.0.0"
       },
       "files": [
         "0001-fix-do-not-force-export-the-symbols-when-building-st.patch",
