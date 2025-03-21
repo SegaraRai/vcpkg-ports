@@ -1,5 +1,5 @@
 {
-  "version": "b02e341c927f16d991edbd915d8ea43eac52096c",
+  "version": "a7d06b3a72d5ec48353bacb84152bd027ee9999b",
   "ports": [
     {
       "name": "3fd",
@@ -2336,7 +2336,7 @@
             "host": true
           }
         ],
-        "version": "3.4.2"
+        "version": "3.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -18263,6 +18263,7 @@
       "name": "calceph",
       "manifest": {
         "name": "calceph",
+        "port-version": 1,
         "description": "C library to access the binary planetary ephemeris files.",
         "homepage": "https://www.imcce.fr/inpop/calceph/",
         "documentation": "https://calceph.imcce.fr/docs/latest/html/c/index.html",
@@ -18281,6 +18282,7 @@
         "version": "4.0.4"
       },
       "files": [
+        "disable-gnu-source.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27064,7 +27066,7 @@
             "host": true
           }
         ],
-        "version": "3.14.0"
+        "version": "3.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -30576,6 +30578,7 @@
       "name": "freexl",
       "manifest": {
         "name": "freexl",
+        "port-version": 1,
         "description": "FreeXL is an open source library to extract valid data from within an Excel (.xls) spreadsheet",
         "homepage": "https://www.gaia-gis.it/gaia-sins/freexl-sources",
         "license": "MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later",
@@ -30587,6 +30590,7 @@
         "version": "2.0.0"
       },
       "files": [
+        "android-builtin-iconv.diff",
         "dependencies.patch",
         "portfile.cmake",
         "subdirs.patch",
@@ -30857,6 +30861,38 @@
       "files": [
         "no-werror.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "fxaudio",
+      "manifest": {
+        "name": "fxaudio",
+        "description": "An easy to use audio processing library",
+        "homepage": "https://github.com/EnzoMassyle/AudioFX",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "fftw3",
+            "features": [
+              "threads"
+            ]
+          },
+          "libsndfile",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -46360,7 +46396,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.22.4"
+        "version-semver": "0.22.6"
       },
       "files": [
         "dependencies.diff",
@@ -48417,9 +48453,20 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "description": "GNU Unicode text conversion",
+        "port-version": 1,
+        "description": [
+          "iconv() text conversion.",
+          "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
+        ],
         "homepage": "https://www.gnu.org/software/libiconv/",
         "license": null,
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true,
+            "platform": "android"
+          }
+        ],
         "version": "1.18"
       },
       "files": [
@@ -50216,7 +50263,7 @@
             "host": true
           }
         ],
-        "version": "2025.3.3"
+        "version": "2025.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -52681,7 +52728,7 @@
       "name": "libspatialite",
       "manifest": {
         "name": "libspatialite",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.",
         "homepage": "https://www.gaia-gis.it/fossil/libspatialite/index",
         "license": null,
@@ -52732,6 +52779,7 @@
         "version": "5.1.0"
       },
       "files": [
+        "android-builtin-iconv.diff",
         "fix-linux-configure.patch",
         "fix-makefiles.patch",
         "fix-mingw.patch",
@@ -52893,6 +52941,7 @@
       "name": "libssh",
       "manifest": {
         "name": "libssh",
+        "port-version": 1,
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
         "homepage": "https://www.libssh.org/",
         "license": "LGPL-2.1-only",
@@ -52941,6 +52990,7 @@
         "0001-export-pkgconfig-file.patch",
         "0003-no-source-write.patch",
         "0004-file-permissions-constants.patch",
+        "android-glob-tilde.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -53240,7 +53290,7 @@
       "name": "libtheora",
       "manifest": {
         "name": "libtheora",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Theora is a free and open video compression format from the Xiph.org Foundation.",
         "homepage": "https://github.com/xiph/theora",
         "license": null,
@@ -71407,7 +71457,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -72522,7 +72572,7 @@
       "name": "plplot",
       "manifest": {
         "name": "plplot",
-        "port-version": 4,
+        "port-version": 5,
         "description": "PLplot is a cross-platform software package for creating scientific plots whose (UTF-8) plot symbols and text are limited in practice only by what Unicode-aware system fonts are installed on a user's computer.",
         "homepage": "https://plplot.sourceforge.net/",
         "license": null,
@@ -72532,6 +72582,10 @@
             "default-features": false
           },
           "pango",
+          {
+            "name": "plplot",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -72567,8 +72621,12 @@
         "version-semver": "5.15.0"
       },
       "files": [
+        "cmake-config.diff",
         "fix-pc-absolute.patch",
+        "host-tool.cmake",
         "install-interface-include-directories.patch",
+        "pkg_config_link_flags.diff",
+        "pkgconfig-template.diff",
         "portfile.cmake",
         "subdirs.patch",
         "usage",
@@ -78058,6 +78116,7 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
+        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -81303,7 +81362,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "4.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -83223,7 +83282,7 @@
       "name": "sdl1",
       "manifest": {
         "name": "sdl1",
-        "port-version": 20,
+        "port-version": 21,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "LGPL-2.1-or-later",
@@ -84368,7 +84427,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -86215,7 +86274,7 @@
       "name": "sockpp",
       "manifest": {
         "name": "sockpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Simple, modern, C++ socket library. This is a fairly low-level C++ wrapper around the Berkeley sockets library using socket, acceptor, and connector classes that are familiar concepts from other languages.",
         "homepage": "https://github.com/fpagliughi/sockpp",
         "license": "BSD-3-Clause",
@@ -86233,6 +86292,7 @@
         "version": "1.0.0"
       },
       "files": [
+        "android-strerror_r.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -88653,6 +88713,7 @@
       "name": "suitesparse-lagraph",
       "manifest": {
         "name": "suitesparse-lagraph",
+        "port-version": 1,
         "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
         "homepage": "https://lagraph.readthedocs.io/en/latest/",
         "license": "BSD-2-Clause",
@@ -91391,14 +91452,14 @@
       "name": "treehopper",
       "manifest": {
         "name": "treehopper",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Treehopper connects the physical world to your computer, tablet, or smartphone.",
         "homepage": "https://treehopper.io",
-        "supports": "!staticcrt & !uwp",
+        "supports": "!uwp & !(static & staticcrt)",
         "dependencies": [
           {
             "name": "libusb",
-            "platform": "linux"
+            "platform": "android | linux"
           },
           {
             "name": "vcpkg-cmake",
@@ -95684,7 +95745,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "Config.cmake.in",
