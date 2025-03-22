@@ -1,5 +1,5 @@
 {
-  "version": "a7d06b3a72d5ec48353bacb84152bd027ee9999b",
+  "version": "57f42c11b101c1a999bbeaf941fe12752c6de399",
   "ports": [
     {
       "name": "3fd",
@@ -6888,7 +6888,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -28999,7 +28999,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "fix-build.patch",
@@ -29930,7 +29930,7 @@
             ]
           }
         },
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30235,6 +30235,7 @@
       "name": "freeglut",
       "manifest": {
         "name": "freeglut",
+        "port-version": 1,
         "description": "A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library.",
         "homepage": "https://sourceforge.net/projects/freeglut/",
         "license": null,
@@ -30254,6 +30255,7 @@
       },
       "files": [
         "android.patch",
+        "cmake-version.patch",
         "fix-debug-macro.patch",
         "portfile.cmake",
         "usage",
@@ -52728,7 +52730,7 @@
       "name": "libspatialite",
       "manifest": {
         "name": "libspatialite",
-        "port-version": 3,
+        "port-version": 4,
         "description": "SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.",
         "homepage": "https://www.gaia-gis.it/fossil/libspatialite/index",
         "license": null,
@@ -53233,9 +53235,9 @@
             ]
           },
           "sdl": {
-            "description": "Support for SDL2 windows and events with the libtcod context.",
+            "description": "Support for SDL windows and events with the libtcod context.",
             "dependencies": [
-              "sdl2"
+              "sdl3"
             ]
           },
           "threads": {
@@ -53254,7 +53256,7 @@
             ]
           }
         },
-        "version": "1.24.0"
+        "version-semver": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -63081,7 +63083,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "portfile.cmake",
@@ -69690,6 +69692,7 @@
       "name": "openvdb",
       "manifest": {
         "name": "openvdb",
+        "port-version": 1,
         "description": "Sparse volume data structure and tools",
         "homepage": "https://github.com/dreamworksanimation/openvdb",
         "license": "MPL-2.0",
@@ -69731,6 +69734,17 @@
             "description": "A lightweight GPU friendly version of VDB initially targeting rendering applications",
             "dependencies": [
               "cuda"
+            ]
+          },
+          "nanovdb-tools": {
+            "description": "NanoVDB tools: print, validate, and convert.",
+            "dependencies": [
+              {
+                "name": "openvdb",
+                "features": [
+                  "nanovdb"
+                ]
+              }
             ]
           },
           "tools": {
@@ -74128,7 +74142,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -74485,7 +74499,7 @@
         "description": "INI file reader and writer",
         "homepage": "https://github.com/pulzed/mINI",
         "license": "MIT",
-        "version": "0.9.14"
+        "version": "0.9.17"
       },
       "files": [
         "portfile.cmake",
@@ -92189,7 +92203,7 @@
             "description": "Compile library with C++11 (for use in C++11 and C++14 projects)"
           }
         },
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "cxx-standard.patch",
@@ -95154,7 +95168,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "fix-config-cmake.patch",
