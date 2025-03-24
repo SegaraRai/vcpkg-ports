@@ -1,5 +1,5 @@
 {
-  "version": "670f6dddaafc59c5dfe0587a130d59a35c48ea38",
+  "version": "a76b33254af4092ff45f08ec5adcd9fd06468b43",
   "ports": [
     {
       "name": "3fd",
@@ -691,6 +691,7 @@
       "name": "allegro5",
       "manifest": {
         "name": "allegro5",
+        "port-version": 1,
         "description": "Allegro is a cross-platform library mainly aimed at video game and multimedia programming. It handles common, low-level tasks such as creating windows, accepting user input, loading data, drawing images, playing sounds, etc. and generally abstracting away the underlying platform. However, Allegro is not a game engine: you are free to design and structure your program as you like.",
         "homepage": "https://liballeg.org/",
         "license": "BSD-3-Clause AND Zlib",
@@ -755,11 +756,13 @@
         "version": "5.2.10.0"
       },
       "files": [
+        "android-glext-prototypes.diff",
         "cmake-project-include.cmake",
         "do-not-copy-pdbs-to-lib.patch",
         "minimp3-fix.patch",
         "msvc-arm64-atomic.patch",
         "portfile.cmake",
+        "skip-android-aar.diff",
         "vcpkg.json"
       ]
     },
@@ -25574,11 +25577,10 @@
       "name": "dpp",
       "manifest": {
         "name": "dpp",
-        "port-version": 1,
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
         "license": "Apache-2.0",
-        "supports": "(windows & !uwp) | linux | osx",
+        "supports": "(windows & !static & !uwp) | linux | osx",
         "dependencies": [
           "nlohmann-json",
           "openssl",
@@ -25593,7 +25595,7 @@
           },
           "zlib"
         ],
-        "version": "10.1.0"
+        "version": "10.1.2"
       },
       "files": [
         "include.patch",
@@ -29838,6 +29840,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -29936,6 +29939,7 @@
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-absolute-dir.patch",
         "fix-deps.patch",
+        "fix-has-include.patch",
         "fix-libunwind.patch",
         "fix-unistd-include.patch",
         "fix-windows-minmax.patch",
@@ -53933,9 +53937,10 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR (GPL-2.0 WITH Linux-syscall-note))",
         "supports": "linux",
-        "version": "2.8"
+        "version": "2.9"
       },
       "files": [
+        "add-basic-support.patch",
         "disable-tests-and-examples.patch",
         "fix-configure.patch",
         "portfile.cmake",
