@@ -1,5 +1,5 @@
 {
-  "version": "a76b33254af4092ff45f08ec5adcd9fd06468b43",
+  "version": "5e61fbe0fe032db1c1342a206c4a11d8ce3723bf",
   "ports": [
     {
       "name": "3fd",
@@ -1539,6 +1539,32 @@
       },
       "files": [
         "fix-build-error.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arcticdb-sparrow",
+      "manifest": {
+        "name": "arcticdb-sparrow",
+        "description": "C++20 idiomatic APIs for the Apache Arrow Columnar Format",
+        "homepage": "https://github.com/man-group/sparrow",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "date",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.5.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -7007,7 +7033,7 @@
             "supports": "!arm32"
           }
         },
-        "version-date": "2024-11-23"
+        "version-date": "2025-03-08"
       },
       "files": [
         "portfile.cmake",
@@ -18131,11 +18157,10 @@
           },
           "wangle"
         ],
-        "version-string": "2024.07.15.00"
+        "version-string": "2025.03.17.00"
       },
       "files": [
         "fix-build.patch",
-        "fix-fmt.patch",
         "fix-glog.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -21319,6 +21344,7 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
+        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -21352,6 +21378,12 @@
             "description": "Enables gzip compression support using zlib",
             "dependencies": [
               "zlib"
+            ]
+          },
+          "zstd": {
+            "description": "Enables zstd support",
+            "dependencies": [
+              "zstd"
             ]
           }
         },
@@ -25831,7 +25863,7 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": "MIT",
@@ -25849,6 +25881,13 @@
         "features": {
           "autocomplete": {
             "description": "Statically link the autocomplete extension into DuckDB"
+          },
+          "excel": {
+            "description": "Statically link the excel extension into DuckDB",
+            "dependencies": [
+              "expat",
+              "minizip-ng"
+            ]
           },
           "httpfs": {
             "description": "Statically link the httpfs extension into DuckDB",
@@ -25879,7 +25918,8 @@
       },
       "files": [
         "bigobj.patch",
-        "httpfs.patch",
+        "excel-libname.patch",
+        "extensions.patch",
         "portfile.cmake",
         "t-external-icu.patch",
         "unvendor_icu_and_find_dependency.patch",
@@ -32802,7 +32842,7 @@
             "host": true
           }
         ],
-        "version": "5.0.0"
+        "version": "5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -37366,8 +37406,9 @@
       "name": "gz-cmake",
       "manifest": {
         "name": "gz-cmake",
+        "port-version": 1,
         "description": "CMake helper functions for building robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/cmake",
+        "homepage": "https://gazebosim.org/libs/cmake/",
         "license": null,
         "dependencies": [
           {
@@ -37378,8 +37419,11 @@
         "version": "4.1.1"
       },
       "files": [
-        "dependencies.patch",
-        "ffempg_depends_interface.patch",
+        "find-modules.diff",
+        "gz-find-package.diff",
+        "gz-import-target.diff",
+        "lock-dependencies.diff",
+        "pkg-check-modules.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -37407,8 +37451,9 @@
       "name": "gz-common",
       "manifest": {
         "name": "gz-common",
+        "port-version": 1,
         "description": "Common libraries for robotics applications",
-        "homepage": "https://ignitionrobotics.org/libs/common",
+        "homepage": "https://gazebosim.org/libs/common/",
         "license": "Apache-2.0",
         "dependencies": [
           "assimp",
@@ -37416,9 +37461,21 @@
             "name": "dlfcn-win32",
             "platform": "windows | uwp"
           },
-          "ffmpeg",
+          {
+            "name": "ffmpeg",
+            "default-features": false,
+            "features": [
+              "avcodec",
+              "avdevice",
+              "avformat",
+              "swscale"
+            ]
+          },
           "freeimage",
-          "gdal",
+          {
+            "name": "gdal",
+            "default-features": false
+          },
           "gz-cmake",
           "gz-math",
           "gz-utils",
@@ -37430,20 +37487,16 @@
             "name": "libuuid",
             "platform": "!windows & !osx"
           },
-          {
-            "name": "pkgconf",
-            "host": true,
-            "default-features": false
-          },
           "tinyxml2"
         ],
         "version": "6.0.2"
       },
       "files": [
         "003-include-chrono.patch",
-        "detect_tinyxml.patch",
+        "gz-utils3-log.diff",
         "gz_remotery_vis.patch",
         "portfile.cmake",
+        "pthread.diff",
         "vcpkg.json"
       ]
     },
@@ -37659,6 +37712,7 @@
       "name": "gz-physics",
       "manifest": {
         "name": "gz-physics",
+        "port-version": 1,
         "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
         "homepage": "https://gazebosim.org/libs/physics",
         "license": "Apache-2.0",
@@ -38839,9 +38893,20 @@
       "name": "hfsm2",
       "manifest": {
         "name": "hfsm2",
-        "description": "Header-only heriarchical FSM framework in C++14, with fully statically-defined structure (no dynamic allocations), built with variadic templates.",
+        "description": "Header-only heriarchical FSM framework in C++11, with fully statically-defined structure (no dynamic allocations), built with variadic templates.",
         "homepage": "https://github.com/andrew-gresyk/HFSM2",
-        "version": "1.10.1"
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -45435,7 +45500,6 @@
       "name": "libarchive",
       "manifest": {
         "name": "libarchive",
-        "port-version": 2,
         "description": "Library for reading and writing streaming archives",
         "homepage": "https://www.libarchive.org",
         "license": null,
@@ -45506,7 +45570,7 @@
             ]
           }
         },
-        "version": "3.7.7"
+        "version": "3.7.8"
       },
       "files": [
         "disable-warnings.patch",
@@ -49614,7 +49678,7 @@
           },
           "zlib"
         ],
-        "version": "24.12"
+        "version": "25.3"
       },
       "files": [
         "dependencies.diff",
@@ -50267,9 +50331,13 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          },
+          {
+            "name": "wintoast",
+            "platform": "windows"
           }
         ],
-        "version": "2025.3.4"
+        "version": "2025.3.6"
       },
       "files": [
         "portfile.cmake",
@@ -51807,7 +51875,7 @@
             ]
           }
         },
-        "version": "2.6.0"
+        "version": "2.8.0"
       },
       "files": [
         "lz4.patch",
@@ -61114,7 +61182,7 @@
       "name": "minhook",
       "manifest": {
         "name": "minhook",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Minimalistic x86/x64 API Hooking Library for Windows.",
         "homepage": "https://github.com/TsudaKageyu/minhook",
         "license": "BSD-2-Clause",
@@ -61132,6 +61200,7 @@
         "version": "1.3.3"
       },
       "files": [
+        "fix-cmake-version.patch",
         "fix-usage.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -66888,7 +66957,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.8.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -70852,7 +70921,7 @@
             ]
           }
         },
-        "version": "1.5.0"
+        "version": "1.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -70947,7 +71016,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -71037,9 +71106,6 @@
             "dependencies": [
               "realsense2"
             ]
-          },
-          "test": {
-            "description": "Build Tests"
           },
           "tiff": {
             "description": "Build support for libtiff image input",
@@ -74102,7 +74168,7 @@
             "host": true
           }
         ],
-        "version": "3.2.1"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -75564,6 +75630,7 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
+        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -75656,6 +75723,7 @@
                 "features": [
                   "icu",
                   "mysqlplugin",
+                  "openssl",
                   "postgresqlplugin"
                 ]
               }
@@ -75990,6 +76058,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
+        "port-version": 1,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -76016,7 +76085,6 @@
             "name": "opengl",
             "platform": "!windows"
           },
-          "openssl",
           {
             "name": "pcre2",
             "default-features": false
@@ -76038,6 +76106,9 @@
           "zlib",
           "zstd"
         ],
+        "default-features": [
+          "openssl"
+        ],
         "features": {
           "icu": {
             "description": "Enable ICU support",
@@ -76055,6 +76126,12 @@
             "description": "Build the sql plugin for connecting to mysql databases",
             "dependencies": [
               "libmysql"
+            ]
+          },
+          "openssl": {
+            "description": "Build with OpenSSL support",
+            "dependencies": [
+              "openssl"
             ]
           },
           "postgresqlplugin": {
@@ -76829,7 +76906,7 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -76853,7 +76930,10 @@
           },
           {
             "name": "qt5-base",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "openssl"
+            ]
           },
           "qt5-declarative",
           "qt5-location",
@@ -80006,7 +80086,7 @@
             "host": true
           }
         ],
-        "version": "8.84"
+        "version": "8.85"
       },
       "files": [
         "portfile.cmake",
@@ -84928,6 +85008,40 @@
       ]
     },
     {
+      "name": "shared-mime-info",
+      "manifest": {
+        "name": "shared-mime-info",
+        "description": "Shared MIME information from Freedesktop.org",
+        "homepage": "https://gitlab.freedesktop.org/xdg/shared-mime-info",
+        "license": "GPL-2.0-or-later",
+        "dependencies": [
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "libxml2",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "2.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "shiftmedia-libgcrypt",
       "manifest": {
         "name": "shiftmedia-libgcrypt",
@@ -86857,6 +86971,7 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
+        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -97383,6 +97498,7 @@
         "name": "xxhash",
         "description": "Extremely fast hash algorithm",
         "homepage": "https://github.com/Cyan4973/xxHash",
+        "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -97398,7 +97514,7 @@
             "description": "Build the xxhsum binary"
           }
         },
-        "version": "0.8.2"
+        "version": "0.8.3"
       },
       "files": [
         "portfile.cmake",
