@@ -1,5 +1,5 @@
 {
-  "version": "5e61fbe0fe032db1c1342a206c4a11d8ce3723bf",
+  "version": "21816e0df975ab3ba13ab75263c4deeb080ef681",
   "ports": [
     {
       "name": "3fd",
@@ -26118,6 +26118,38 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "dxcam-cpp",
+      "manifest": {
+        "name": "dxcam-cpp",
+        "maintainers": "Fidel Yin <fidel.yin@hotmail.com>",
+        "description": "A high performance screen capturing library for Windows rewriting DXcam in C++.",
+        "homepage": "https://github.com/Fidelxyz/DXCam-CPP",
+        "documentation": "https://dxcam-cpp.readthedocs.io/en/latest/",
+        "license": "MIT",
+        "supports": "windows & !uwp",
+        "dependencies": [
+          {
+            "name": "opencv4",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.2.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -68771,12 +68803,13 @@
       "name": "openh264",
       "manifest": {
         "name": "openh264",
+        "port-version": 1,
         "description": "OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.",
         "homepage": "https://www.openh264.org/",
         "license": "BSD-2-Clause",
         "dependencies": [
           {
-            "name": "vcpkg-cmake",
+            "name": "vcpkg-cmake-get-vars",
             "host": true
           },
           {
@@ -85535,7 +85568,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "6.3.1"
+        "version-semver": "6.4.0"
       },
       "files": [
         "portfile.cmake",
