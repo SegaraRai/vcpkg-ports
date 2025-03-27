@@ -1,5 +1,5 @@
 {
-  "version": "21816e0df975ab3ba13ab75263c4deeb080ef681",
+  "version": "d172727ef04337ef0021640302a9a3a91ad17414",
   "ports": [
     {
       "name": "3fd",
@@ -6166,7 +6166,7 @@
           },
           "zlib"
         ],
-        "version": "3.20.0"
+        "version": "3.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -6406,7 +6406,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.9.1"
+        "version-semver": "1.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -18157,7 +18157,7 @@
           },
           "wangle"
         ],
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "fix-build.patch",
@@ -28007,9 +28007,10 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.03.10.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
+        "fix-bigobj.patch",
         "fix-deps.patch",
         "fix-test.patch",
         "portfile.cmake",
@@ -29073,7 +29074,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "fix-build.patch",
@@ -29912,7 +29913,6 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -30005,7 +30005,7 @@
             ]
           }
         },
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30834,7 +30834,7 @@
             "host": true
           }
         ],
-        "version-semver": "5.0.0"
+        "version-semver": "6.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -36966,6 +36966,7 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
+        "port-version": 1,
         "description": "Google Testing and Mocking Framework",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -36979,6 +36980,11 @@
             "host": true
           }
         ],
+        "features": {
+          "cxx17": {
+            "description": "Enable compiler C++17."
+          }
+        },
         "version-semver": "1.16.0"
       },
       "files": [
@@ -39060,11 +39066,12 @@
           },
           "zlib"
         ],
-        "version": "1.9.0"
+        "version": "1.10.0"
       },
       "files": [
-        "fix-compiler.patch",
+        "fix-cuda.patch",
         "fix-hconfig-path.patch",
+        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -63189,7 +63196,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "portfile.cmake",
@@ -72476,7 +72483,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -74246,7 +74253,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -95321,7 +95328,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.03.17.00"
+        "version-string": "2025.03.24.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -95698,7 +95705,7 @@
             "host": true
           }
         ],
-        "version": "1.0.240803.1"
+        "version": "1.0.250325.1"
       },
       "files": [
         "portfile.cmake",
