@@ -1,5 +1,5 @@
 {
-  "version": "c63619856b89f0af4d77ba2049396039e4985418",
+  "version": "7354f1c8a0a276072e8d73d7eb6df6ca0ce8ccb1",
   "ports": [
     {
       "name": "3fd",
@@ -24896,7 +24896,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2024-10-28"
+        "version-date": "2025-03-24"
       },
       "files": [
         "portfile.cmake",
@@ -24960,11 +24960,15 @@
           }
         ],
         "default-features": [
-          "dx11"
+          {
+            "name": "dx11",
+            "platform": "windows & !xbox"
+          }
         ],
         "features": {
           "dx11": {
-            "description": "Build with DirectX11 support"
+            "description": "Build with DirectX11 support",
+            "supports": "windows & !xbox"
           },
           "dx12": {
             "description": "Build with DirectX12 support for Windows 10/Windows 11",
@@ -25010,13 +25014,13 @@
             "supports": "windows & x64 & !uwp & !xbox"
           }
         },
-        "version-date": "2024-10-28"
+        "version-date": "2025-03-24"
       },
       "files": [
-        "FixStdByteAndCMake.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
+        "vcpkg.json",
+        "xboxusage"
       ]
     },
     {
@@ -27389,7 +27393,7 @@
             "host": true
           }
         ],
-        "version": "2.6.4"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -32874,7 +32878,7 @@
             "host": true
           }
         ],
-        "version": "5.0.1"
+        "version": "5.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -47059,6 +47063,27 @@
       ]
     },
     {
+      "name": "libevdev",
+      "manifest": {
+        "name": "libevdev",
+        "description": "Wrapper library for evdev devices",
+        "homepage": "https://www.freedesktop.org/wiki/Software/libevdev",
+        "license": "MIT",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "1.13.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libevent",
       "manifest": {
         "name": "libevent",
@@ -49565,7 +49590,7 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
-        "port-version": 1,
+        "port-version": 2,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -57347,10 +57372,9 @@
             ]
           }
         },
-        "version": "1.3.1"
+        "version": "1.4.0"
       },
       "files": [
-        "fix-find-package.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61031,7 +61055,7 @@
       "name": "mfx-dispatch",
       "manifest": {
         "name": "mfx-dispatch",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Open source Intel media sdk dispatcher",
         "homepage": "https://github.com/lu-zero/mfx_dispatch",
         "license": "BSD-3-Clause",
@@ -77360,7 +77384,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77762,6 +77786,12 @@
             "description": "Enable Secure Transport",
             "supports": "ios | osx"
           },
+          "shared-mime-info": {
+            "description": "Use GPL licensed shared-mime-info port from freedesktop.org",
+            "dependencies": [
+              "shared-mime-info"
+            ]
+          },
           "sql": {
             "description": "Qt Sql",
             "dependencies": [
@@ -77953,6 +77983,7 @@
         "qmake.debug.bat",
         "qt.conf.in",
         "qtpaths.debug.bat",
+        "use-shared-mime-info.patch",
         "vcpkg.json",
         "windeployqt.debug.bat"
       ]
@@ -86313,10 +86344,9 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.2.2"
       },
       "files": [
-        "fix_clang-cl_build.patch",
         "no-werror.patch",
         "pkgconfig.diff",
         "portfile.cmake",
@@ -92954,10 +92984,9 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2024-10-29"
+        "version-date": "2025-03-26"
       },
       "files": [
-        "FixCMake.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
