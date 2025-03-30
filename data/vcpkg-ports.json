@@ -1,5 +1,5 @@
 {
-  "version": "7354f1c8a0a276072e8d73d7eb6df6ca0ce8ccb1",
+  "version": "acd5bba5aac8b6573b5f6f463dc0341ac0ee6fa4",
   "ports": [
     {
       "name": "3fd",
@@ -49755,6 +49755,36 @@
       ]
     },
     {
+      "name": "libmatio-cpp",
+      "manifest": {
+        "name": "libmatio-cpp",
+        "description": "matio-cpp is a C++ wrapper for the matio library, automatically dealing with memory allocation and deallocation. It can be used for reading and writing binary MATLAB .mat files from C++, without the need to access or rely on MATLAB's own shared libraries.",
+        "homepage": "https://github.com/ami-iit/matio-cpp",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          "eigen3",
+          "matio",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "visit-struct"
+        ],
+        "version": "0.3.0"
+      },
+      "files": [
+        "fix-dependencies.patch",
+        "matioCppConfig.cmake.in",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libmaxminddb",
       "manifest": {
         "name": "libmaxminddb",
@@ -65788,7 +65818,7 @@
             "platform": "windows"
           }
         ],
-        "version": "4.7.6"
+        "version": "4.7.7"
       },
       "files": [
         "fix-DisableWC4191.patch",
@@ -86669,7 +86699,7 @@
       "name": "sol2",
       "manifest": {
         "name": "sol2",
-        "description": "Sol v2.0 - a C++ <-> Lua API wrapper with advanced features and top notch performance - is here, and it's great",
+        "description": "Sol3 (sol2 v3.0) - a C++ <-> Lua API wrapper with advanced features and top notch performance",
         "homepage": "https://github.com/ThePhD/sol2",
         "license": "MIT",
         "dependencies": [
@@ -86682,7 +86712,7 @@
             "host": true
           }
         ],
-        "version": "3.3.1"
+        "version": "3.5.0"
       },
       "files": [
         "header-only.patch",
