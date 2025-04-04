@@ -1,5 +1,5 @@
 {
-  "version": "db1ddd074bd51bf01baf4c4672b82de9680835ca",
+  "version": "9b75e789ece3f942159b8500584e35aafe3979ff",
   "ports": [
     {
       "name": "3fd",
@@ -321,6 +321,31 @@
         "activemq-cppConfig.cmake",
         "fix-crt-linkage-dyn.patch",
         "fix-crt-linkage.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ada-idna",
+      "manifest": {
+        "name": "ada-idna",
+        "description": "C++ library implementing the to_ascii and to_unicode functions from the Unicode Technical Standard.",
+        "homepage": "https://github.com/ada-url/idna",
+        "license": "Apache-2.0 AND MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.3.2"
+      },
+      "files": [
+        "install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -1562,7 +1587,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -6481,7 +6506,6 @@
       "name": "bext-di",
       "manifest": {
         "name": "bext-di",
-        "port-version": 1,
         "description": "C++14 Dependency Injection Library.",
         "homepage": "https://github.com/boost-ext/di",
         "features": {
@@ -6489,7 +6513,7 @@
             "description": "Build with extensions included"
           }
         },
-        "version": "1.3.0"
+        "version": "1.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -22124,7 +22148,7 @@
             "host": true
           }
         ],
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -23307,10 +23331,9 @@
             ]
           }
         },
-        "version": "8.12.1"
+        "version": "8.13.0"
       },
       "files": [
-        "0005_remove_imp_suffix.patch",
         "cmake-config.patch",
         "cmake-project-include.cmake",
         "dependencies.patch",
@@ -27392,7 +27415,7 @@
             "host": true
           }
         ],
-        "version": "2.7.0"
+        "version": "2.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -30785,7 +30808,7 @@
       "name": "ftgl",
       "manifest": {
         "name": "ftgl",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "FTGL is a free open source library to enable developers to use arbitrary fonts in their OpenGL (www.opengl.org) applications.",
           "Unlike other OpenGL font libraries FTGL uses standard font file formats so doesn't need a preprocessing step to convert the high quality font data into a lesser quality, proprietary format.",
@@ -31333,6 +31356,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31404,6 +31428,15 @@
             "dependencies": [
               {
                 "name": "libarchive",
+                "default-features": false
+              }
+            ]
+          },
+          "arrow": {
+            "description": "Enable arrow support",
+            "dependencies": [
+              {
+                "name": "arrow",
                 "default-features": false
               }
             ]
@@ -31548,6 +31581,25 @@
             "description": "Use OpenSSL library",
             "dependencies": [
               "openssl"
+            ]
+          },
+          "parquet": {
+            "description": "Enable parquet reading support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "parquet"
+                ]
+              },
+              {
+                "name": "gdal",
+                "default-features": false,
+                "features": [
+                  "arrow"
+                ]
+              }
             ]
           },
           "pcre2": {
@@ -51272,7 +51324,7 @@
             "host": true
           }
         ],
-        "version": "9.0.0"
+        "version": "9.0.2"
       },
       "files": [
         "fix-find-protobuf.patch",
@@ -53535,7 +53587,7 @@
             ]
           }
         },
-        "version-semver": "2.0.0"
+        "version-semver": "2.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -54361,7 +54413,7 @@
       "name": "libuuid",
       "manifest": {
         "name": "libuuid",
-        "port-version": 14,
+        "port-version": 15,
         "description": "Universally unique id library",
         "homepage": "https://sourceforge.net/projects/libuuid",
         "license": "BSD-3-Clause",
@@ -55392,7 +55444,7 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -55408,7 +55460,6 @@
         ],
         "default-features": [
           "iconv",
-          "lzma",
           "zlib"
         ],
         "features": {
@@ -55732,7 +55783,7 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -55752,6 +55803,7 @@
           }
         ],
         "default-features": [
+          "profiler",
           "thread"
         ],
         "features": {
@@ -69875,7 +69927,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-02-03"
+        "version-date": "2025-04-02"
       },
       "files": [
         "portfile.cmake",
@@ -80007,7 +80059,7 @@
             "host": true
           }
         ],
-        "version": "8.2.0"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -81492,6 +81544,40 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ripper37-libbase",
+      "manifest": {
+        "name": "ripper37-libbase",
+        "description": "Standalone reimplementation of //base module from Chromium",
+        "homepage": "https://github.com/RippeR37/libbase",
+        "documentation": "https://ripper37.github.io/libbase",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "glog",
+            "features": [
+              "customprefix"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "01_fix_output_lib_name_conflict.patch",
+        "02_remove_unneeded_find_dependency_calls.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -83559,6 +83645,7 @@
       "name": "sdformat",
       "manifest": {
         "name": "sdformat",
+        "port-version": 1,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -83692,7 +83779,6 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -83728,10 +83814,7 @@
           "alsa": {
             "description": "Support for alsa audio",
             "dependencies": [
-              {
-                "name": "alsa",
-                "platform": "linux"
-              }
+              "alsa"
             ]
           },
           "dbus": {
@@ -83766,13 +83849,12 @@
             "supports": "!windows"
           }
         },
-        "version": "2.32.2"
+        "version": "2.32.4"
       },
       "files": [
         "alsa-dep-fix.patch",
         "cxx-linkage-pkgconfig.diff",
         "deps.patch",
-        "fix-pipewire.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -97585,7 +97667,7 @@
             ]
           }
         },
-        "version": "0.25.0"
+        "version": "0.26.0"
       },
       "files": [
         "fix-find-tbb-and-install-destination.patch",
