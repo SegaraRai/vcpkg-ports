@@ -1,5 +1,5 @@
 {
-  "version": "9b75e789ece3f942159b8500584e35aafe3979ff",
+  "version": "c026da0e824e29d36eab263f0150deadd36f40d9",
   "ports": [
     {
       "name": "3fd",
@@ -67256,7 +67256,6 @@
       "name": "opencv",
       "manifest": {
         "name": "opencv",
-        "port-version": 3,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -67543,18 +67542,6 @@
               }
             ]
           },
-          "jasper": {
-            "description": "JPEG 2000 support for opencv (deprecated)",
-            "dependencies": [
-              {
-                "name": "opencv4",
-                "default-features": false,
-                "features": [
-                  "jasper"
-                ]
-              }
-            ]
-          },
           "jpeg": {
             "description": "JPEG support for opencv",
             "dependencies": [
@@ -67563,6 +67550,18 @@
                 "default-features": false,
                 "features": [
                   "jpeg"
+                ]
+              }
+            ]
+          },
+          "jpegxl": {
+            "description": "JPEGXL support for opencv",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "jpegxl"
                 ]
               }
             ]
@@ -67856,7 +67855,7 @@
             ]
           }
         },
-        "version": "4.10.0"
+        "version": "4.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -68334,7 +68333,6 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 6,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -68595,16 +68593,16 @@
             "description": "Enable Intel Integrated Performance Primitives",
             "supports": "(osx & x64) | (windows & (x64 | x86)) | (linux & (x64 | x86))"
           },
-          "jasper": {
-            "description": "JPEG 2000 support for opencv (deprecated)",
-            "dependencies": [
-              "jasper"
-            ]
-          },
           "jpeg": {
             "description": "JPEG support for opencv",
             "dependencies": [
               "libjpeg-turbo"
+            ]
+          },
+          "jpegxl": {
+            "description": "JPEGXL support for opencv",
+            "dependencies": [
+              "libjxl"
             ]
           },
           "msmf": {
@@ -68618,7 +68616,8 @@
             "description": "Enable opencl support",
             "dependencies": [
               "opencl"
-            ]
+            ],
+            "supports": "!osx"
           },
           "openexr": {
             "description": "OpenEXR support for opencv",
@@ -68630,7 +68629,8 @@
             "description": "opengl support for opencv",
             "dependencies": [
               "opengl"
-            ]
+            ],
+            "supports": "!osx"
           },
           "openjpeg": {
             "description": "JPEG 2000 support for opencv",
@@ -68833,7 +68833,7 @@
             "description": "Compile to a single package support for opencv"
           }
         },
-        "version": "4.10.0"
+        "version": "4.11.0"
       },
       "files": [
         "0001-disable-downloading.patch",
@@ -68847,7 +68847,7 @@
         "0009-fix-protobuf.patch",
         "0010-fix-uwp-tiff-imgcodecs.patch",
         "0011-remove-python2.patch",
-        "0012-fix-zlib.patch",
+        "0012-miss-openexr.patch",
         "0013-contrib-fix-ogre.patch",
         "0014-fix-cmake-in-list.patch",
         "0015-fix-freetype.patch",
@@ -68855,7 +68855,6 @@
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
         "0019-opencl-kernel.patch",
-        "0020-miss-openexr.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -91874,6 +91873,47 @@
         "pkgconfig.diff",
         "portfile.cmake",
         "unofficial-cmake.diff",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tree-sitter-c",
+      "manifest": {
+        "name": "tree-sitter-c",
+        "description": "C grammar for tree-sitter",
+        "homepage": "https://github.com/tree-sitter/tree-sitter-c",
+        "license": "MIT",
+        "dependencies": [
+          "tree-sitter",
+          {
+            "name": "tree-sitter-cli",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.23.5"
+      },
+      "files": [
+        "pkgconfig.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tree-sitter-cli",
+      "manifest": {
+        "name": "tree-sitter-cli",
+        "description": "Tree-sitter is a parser generator tool and an incremental parsing library. This port installs the CLI executable.",
+        "homepage": "https://github.com/tree-sitter/tree-sitter",
+        "license": null,
+        "supports": "native",
+        "version": "0.25.3"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
