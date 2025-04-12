@@ -7,7 +7,7 @@ import {
 } from "./triplets.mjs";
 
 // https://learn.microsoft.com/vcpkg/reference/vcpkg-json#platform-expression
-export const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
+const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
   // platform
   "android",
   "emscripten",
@@ -35,7 +35,7 @@ export const VCPKG_SUPPORTS_VALID_IDENTIFIERS = [
   "native",
 ] as const;
 
-export const VCPKG_SUPPORTS_VALID_IDENTIFIER_SET: ReadonlySet<string> = new Set(
+const VCPKG_SUPPORTS_VALID_IDENTIFIER_SET: ReadonlySet<string> = new Set(
   VCPKG_SUPPORTS_VALID_IDENTIFIERS
 );
 
@@ -50,7 +50,7 @@ export function evalVcpkgSupportsExpr(
   switch (cExpr.type) {
     case "Identifier":
       if (!VCPKG_SUPPORTS_VALID_IDENTIFIER_SET.has(cExpr.name)) {
-        throw new Error(`Invalid identifier: ${cExpr.name}`);
+        console.warn(`Unknown identifier "${cExpr.name}" in vcpkg supports`);
       }
       return truthyValues.includes(cExpr.name);
 
