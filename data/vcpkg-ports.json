@@ -1,5 +1,5 @@
 {
-  "version": "711466ff1cfc1239e93bf8010503eb161671be4b",
+  "version": "05e7272c8dd64ff0e37a3ab40697e7e6d1e48df1",
   "ports": [
     {
       "name": "3fd",
@@ -66968,7 +66968,7 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
-        "port-version": 2,
+        "port-version": 3,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
@@ -66989,9 +66989,6 @@
           "subscriptions-events"
         ],
         "features": {
-          "amalgamation": {
-            "description": "Concatenate the library to a single file open62541.h/.c"
-          },
           "diagnostics": {
             "description": "Enable diagnostics information exposed by the server",
             "dependencies": [
@@ -70160,7 +70157,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-04-02"
+        "version-date": "2025-04-15"
       },
       "files": [
         "portfile.cmake",
@@ -79173,6 +79170,7 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
+        "port-version": 1,
         "description": "The Qt OPC UA module implements a Qt API to interact with OPC UA on top of a 3rd party OPC UA stack.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -79213,7 +79211,6 @@
                 "name": "open62541",
                 "default-features": false,
                 "features": [
-                  "amalgamation",
                   "historizing",
                   "openssl"
                 ]
@@ -81391,8 +81388,8 @@
             "description": "Support for the TOML format",
             "dependencies": [
               {
-                "name": "toml11",
-                "version>=": "4.2.0"
+                "name": "tomlplusplus",
+                "version>=": "3.4.0#1"
               }
             ]
           },
@@ -81424,7 +81421,7 @@
             ]
           }
         },
-        "version": "0.18.0"
+        "version": "0.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -81912,11 +81909,34 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "default-features": [
+          "net",
+          {
+            "name": "win",
+            "platform": "windows"
+          }
+        ],
+        "features": {
+          "net": {
+            "description": "Networking module",
+            "dependencies": [
+              "curl"
+            ]
+          },
+          "win": {
+            "description": "Integration module for WinAPI",
+            "supports": "windows"
+          },
+          "wx": {
+            "description": "Integration module for wxWidgets",
+            "dependencies": [
+              "wxwidgets"
+            ]
+          }
+        },
+        "version": "1.1.0"
       },
       "files": [
-        "01_fix_output_lib_name_conflict.patch",
-        "02_remove_unneeded_find_dependency_calls.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -86207,7 +86227,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "6.4.2"
+        "version-semver": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -97759,9 +97779,10 @@
       "name": "xlnt",
       "manifest": {
         "name": "xlnt",
-        "description": "Cross-platform user-friendly xlsx library for C++11 (and above)",
+        "description": "Cross-platform user-friendly xlsx (Microsoft Excel®) library for C++11 (and above)",
         "homepage": "https://github.com/xlnt-community/xlnt",
-        "license": "MIT OR BSD-3-Clause OR BSD-2-Clause OR LGPL-3.0-only OR BSL-1.0",
+        "documentation": "https://xlnt-community.gitbook.io/xlnt",
+        "license": "MIT AND BSD-3-Clause AND BSD-2-Clause",
         "dependencies": [
           "fast-float",
           "fmt",
@@ -97775,7 +97796,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.6.1"
       },
       "files": [
         "fix-configure-dependencies.patch",
