@@ -1,5 +1,5 @@
 {
-  "version": "73fbcf784ba23819d2c80aa2f6f2219805ae66c5",
+  "version": "095a29ce59608465032c3747307dd0009b3e089c",
   "ports": [
     {
       "name": "3fd",
@@ -26109,7 +26109,6 @@
       "name": "duilib",
       "manifest": {
         "name": "duilib",
-        "port-version": 6,
         "description": "Duilib is a free open source DirectUI interface library under Windows. It is widely accepted by major Internet companies due to its simple and easy to expand design and stable and efficient implementation. It is widely used in IM, video client, stock market software, navigation software, and mobile phone assistive software. Duilib is still evolving, and will continue to improve in many aspects such as documentation, examples, animations, and rendering engines.",
         "homepage": "https://github.com/duilib/duilib",
         "supports": "windows & !uwp",
@@ -26117,16 +26116,18 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-date": "2019-04-28"
+        "version-date": "2024-12-23"
       },
       "files": [
         "enable-static.patch",
-        "enable-unicode-for-vcpkg.patch",
         "fix-arm-build.patch",
         "fix-encoding.patch",
-        "fix-post-build-errors.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -39234,7 +39235,7 @@
             "host": true
           }
         ],
-        "version": "2.6.1"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -48437,6 +48438,10 @@
           {
             "name": "libgpg-error",
             "host": true
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "features": {
@@ -48454,7 +48459,7 @@
             ]
           }
         },
-        "version": "1.51"
+        "version": "1.54"
       },
       "files": [
         "android.diff",
@@ -54495,7 +54500,6 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
-        "port-version": 2,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
@@ -54519,7 +54523,7 @@
             "supports": "linux"
           }
         },
-        "version": "1.0.27"
+        "version": "1.0.28"
       },
       "files": [
         "portfile.cmake",
@@ -64886,7 +64890,7 @@
             "host": true
           }
         ],
-        "version": "1.8.0"
+        "version": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -69842,21 +69846,30 @@
       "name": "openscap",
       "manifest": {
         "name": "openscap",
-        "port-version": 1,
-        "description": "The oscap program is a command line tool that allows users to load, scan, validate, edit, and export SCAP documents.",
-        "homepage": "https://github.com/OpenSCAP/openscap",
+        "description": "OpenSCAP represents both a library and a command line tool which can be used to parse and evaluate each component of the SCAP standard.",
+        "homepage": "https://www.open-scap.org/tools/openscap-base/",
         "license": "LGPL-2.1-or-later",
-        "supports": "!xbox",
+        "supports": "(linux | windows) & !(static & staticcrt)",
         "dependencies": [
           {
             "name": "acl",
             "platform": "linux"
           },
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false
+          },
           "glib",
           "libpopt",
-          "libxml2",
-          "libxslt",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
+          {
+            "name": "libxslt",
+            "default-features": false
+          },
+          "libyaml",
           "libzip",
           "openssl",
           "pcre",
@@ -69866,30 +69879,60 @@
             "host": true
           },
           "xmlsec",
-          "zlib"
+          {
+            "name": "zlib",
+            "platform": "windows"
+          }
         ],
         "features": {
+          "crypto": {
+            "description": "Build with crypto support",
+            "dependencies": [
+              {
+                "name": "libgcrypt",
+                "platform": "!windows | mingw"
+              },
+              {
+                "name": "shiftmedia-libgcrypt",
+                "platform": "windows & !mingw"
+              }
+            ]
+          },
           "python": {
-            "description": "build with python3"
+            "description": "Build Python SWIG bindings",
+            "dependencies": [
+              {
+                "name": "openscap",
+                "features": [
+                  "crypto"
+                ]
+              },
+              "python3"
+            ]
           },
           "util": {
-            "description": "build available utils",
+            "description": "Build the oscap utility",
             "dependencies": [
               {
                 "name": "getopt-win32",
                 "platform": "windows"
+              },
+              {
+                "name": "openscap",
+                "features": [
+                  "crypto"
+                ]
               }
             ]
           }
         },
-        "version": "1.4.0"
+        "version": "1.4.2"
       },
       "files": [
-        "fix-build.patch",
-        "fix-buildflag-and-install.patch",
-        "fix-dependencies.patch",
-        "fix-utils.patch",
+        "dependencies.diff",
+        "install-dirs.diff",
         "portfile.cmake",
+        "python-win32.diff",
         "vcpkg.json"
       ]
     },
@@ -80414,7 +80457,7 @@
             "host": true
           }
         ],
-        "version": "9.0.1"
+        "version": "9.0.2"
       },
       "files": [
         "portfile.cmake",
