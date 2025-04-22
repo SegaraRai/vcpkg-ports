@@ -1,5 +1,5 @@
 {
-  "version": "0d5cae153065957df7f382de7c1549ccc88027e5",
+  "version": "d6995a0cf3cafda5e9e52749fad075dd62bfd90c",
   "ports": [
     {
       "name": "3fd",
@@ -19522,12 +19522,21 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
+        "port-version": 1,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "ffmpeg",
+          {
+            "name": "ffmpeg",
+            "default-features": false,
+            "features": [
+              "avcodec",
+              "avformat",
+              "swresample"
+            ]
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -19536,6 +19545,8 @@
         "version": "1.5.1"
       },
       "files": [
+        "pkgconfig-cxx-linkage.diff",
+        "pkgconfig-dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51355,7 +51366,7 @@
           },
           "zlib"
         ],
-        "version-semver": "2.21.0"
+        "version-semver": "2.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -53462,6 +53473,7 @@
       "name": "libsrtp",
       "manifest": {
         "name": "libsrtp",
+        "port-version": 1,
         "description": "This package provides an implementation of the Secure Real-time Transport Protocol (SRTP), the Universal Security Transform (UST), and a supporting cryptographic kernel.",
         "homepage": "https://github.com/cisco/libsrtp/",
         "license": "BSD-3-Clause",
@@ -53486,6 +53498,7 @@
         "version": "2.7.0"
       },
       "files": [
+        "cmake-config.diff",
         "cmake-project-include.cmake",
         "fix-runtime-destination.patch",
         "portfile.cmake",
@@ -58254,10 +58267,11 @@
         ],
         "features": {
           "tool": {
-            "description": "Builds luau executable"
+            "description": "Builds luau executable",
+            "supports": "!uwp"
           }
         },
-        "version": "0.669"
+        "version": "0.670"
       },
       "files": [
         "cmake-config-export.patch",
@@ -75650,7 +75664,7 @@
             "host": true
           }
         ],
-        "version": "1.8.0"
+        "version": "1.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -83387,7 +83401,7 @@
           },
           "zydis"
         ],
-        "version-semver": "0.6.5"
+        "version-semver": "0.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -84861,6 +84875,7 @@
         "description": "A library for rendering TrueType fonts with SDL",
         "homepage": "https://www.libsdl.org/projects/SDL_ttf/",
         "license": "Zlib",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "freetype",
@@ -84893,9 +84908,10 @@
             ]
           }
         },
-        "version": "3.1.0"
+        "version": "3.2.2"
       },
       "files": [
+        "fix-findplutosvg.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -92056,7 +92072,7 @@
             "host": true
           }
         ],
-        "version": "4.3.0"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -93097,9 +93113,9 @@
       "name": "unqlite",
       "manifest": {
         "name": "unqlite",
-        "port-version": 2,
+        "port-version": 3,
         "description": "An embedded NoSQL, transactional database engine",
-        "homepage": "https://unqlite.org/",
+        "homepage": "https://unqlite.symisc.net/",
         "license": "BSD-2-Clause",
         "dependencies": [
           {
@@ -96761,7 +96777,7 @@
       "name": "woff2",
       "manifest": {
         "name": "woff2",
-        "port-version": 4,
+        "port-version": 5,
         "description": "font compression reference code",
         "dependencies": [
           "brotli",
@@ -96774,6 +96790,7 @@
       },
       "files": [
         "0001-unofficial-brotli.patch",
+        "0002-stdint-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99208,7 +99225,6 @@
       "name": "zlib-ng",
       "manifest": {
         "name": "zlib-ng",
-        "port-version": 1,
         "description": "zlib replacement with optimizations for 'next generation' systems",
         "homepage": "https://github.com/zlib-ng/zlib-ng",
         "license": "Zlib",
@@ -99222,7 +99238,7 @@
             "host": true
           }
         ],
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "portfile.cmake",
