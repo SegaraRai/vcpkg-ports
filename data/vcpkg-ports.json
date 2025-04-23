@@ -1,5 +1,5 @@
 {
-  "version": "d6995a0cf3cafda5e9e52749fad075dd62bfd90c",
+  "version": "2a23c57541e6969a3c0d5120f378b53038b6f1a6",
   "ports": [
     {
       "name": "3fd",
@@ -25182,7 +25182,7 @@
       "name": "directxtk",
       "manifest": {
         "name": "directxtk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A collection of helper classes for writing DirectX 11.x code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK",
         "documentation": "https://github.com/microsoft/DirectXTK/wiki",
@@ -25230,6 +25230,7 @@
         "version-date": "2025-03-20"
       },
       "files": [
+        "GameInput-Connect.patch",
         "XAudio2Redist-ARM64.patch",
         "portfile.cmake",
         "usage",
@@ -25240,7 +25241,7 @@
       "name": "directxtk12",
       "manifest": {
         "name": "directxtk12",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A collection of helper classes for writing DirectX 12 code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK12",
         "documentation": "https://github.com/microsoft/DirectXTK12/wiki",
@@ -25301,6 +25302,7 @@
         "version-date": "2025-03-20"
       },
       "files": [
+        "GameInput-Connect.patch",
         "XAudio2Redist-ARM64.patch",
         "portfile.cmake",
         "usage",
@@ -26120,6 +26122,7 @@
       "name": "duilib",
       "manifest": {
         "name": "duilib",
+        "port-version": 1,
         "description": "Duilib is a free open source DirectUI interface library under Windows. It is widely accepted by major Internet companies due to its simple and easy to expand design and stable and efficient implementation. It is widely used in IM, video client, stock market software, navigation software, and mobile phone assistive software. Duilib is still evolving, and will continue to improve in many aspects such as documentation, examples, animations, and rendering engines.",
         "homepage": "https://github.com/duilib/duilib",
         "supports": "windows & !uwp",
@@ -26139,6 +26142,7 @@
         "enable-static.patch",
         "fix-arm-build.patch",
         "fix-encoding.patch",
+        "fix-include-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31332,7 +31336,7 @@
         "homepage": "https://aka.ms/gameinput",
         "license": null,
         "supports": "windows & x64 & !uwp",
-        "version": "1.0.26100.3987"
+        "version": "1.2.26100.4782"
       },
       "files": [
         "gameinput-config.cmake.in",
@@ -52368,7 +52372,7 @@
             ]
           }
         },
-        "version": "2.8.0"
+        "version": "2.10.0"
       },
       "files": [
         "lz4.patch",
@@ -58619,7 +58623,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.5.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -72688,7 +72692,7 @@
             "host": true
           }
         ],
-        "version": "49.0"
+        "version": "50.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -82038,7 +82042,7 @@
             ]
           }
         },
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -82136,13 +82140,13 @@
       "name": "rmlui",
       "manifest": {
         "name": "rmlui",
-        "port-version": 1,
         "maintainers": "Michael R. P. Ragazzon <mikke89@users.noreply.github.com>",
         "description": "RmlUi is the C++ user interface library based on the HTML and CSS standards, designed as a complete solution for any project's interface needs.",
         "homepage": "https://github.com/mikke89/RmlUi",
         "documentation": "https://mikke89.github.io/RmlUiDoc/",
         "license": "MIT",
         "dependencies": [
+          "itlib",
           "robin-hood-hashing",
           {
             "name": "vcpkg-cmake",
@@ -82166,6 +82170,12 @@
               }
             ]
           },
+          "lottie": {
+            "description": "Enable plugin for lottie animations",
+            "dependencies": [
+              "rlottie"
+            ]
+          },
           "lua": {
             "description": "Build Lua bindings",
             "dependencies": [
@@ -82179,10 +82189,10 @@
             ]
           }
         },
-        "version": "6.0"
+        "version": "6.1"
       },
       "files": [
-        "add-robin-hood.patch",
+        "add-itlib-and-robin-hood.patch",
         "portfile.cmake",
         "skip-custom-find-modules.patch",
         "usage",
@@ -96246,7 +96256,7 @@
         "description": "WavPack encode/decode library, command-line programs, and several plugins",
         "homepage": "https://github.com/dbry/WavPack",
         "license": "BSD-3-Clause",
-        "supports": "!(windows & arm)",
+        "supports": "!android",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -96257,11 +96267,9 @@
             "host": true
           }
         ],
-        "version": "5.7.0"
+        "version": "5.8.1"
       },
       "files": [
-        "CMakeLists-patch.diff",
-        "config-patch.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
