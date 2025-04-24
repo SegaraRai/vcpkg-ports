@@ -1,5 +1,5 @@
 {
-  "version": "2a23c57541e6969a3c0d5120f378b53038b6f1a6",
+  "version": "acd65983f2e668c0bc44a117575e6073681fa8e3",
   "ports": [
     {
       "name": "3fd",
@@ -1587,7 +1587,7 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -28282,7 +28282,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -46978,6 +46978,29 @@
       ]
     },
     {
+      "name": "libdicom",
+      "manifest": {
+        "name": "libdicom",
+        "description": "libdicom is a C library and a set of command-line tools for reading DICOM WSI files",
+        "homepage": "https://github.com/ImagingDataCommons/libdicom",
+        "documentation": "https://libdicom.readthedocs.io/en/latest/",
+        "license": "MIT",
+        "supports": "!android & !uwp & !(arm64 & windows)",
+        "dependencies": [
+          "uthash",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "1.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libdisasm",
       "manifest": {
         "name": "libdisasm",
@@ -61916,7 +61939,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -73018,6 +73041,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
+        "port-version": 1,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -84423,6 +84447,7 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
+        "port-version": 1,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -84475,6 +84500,9 @@
             "dependencies": [
               "opusfile"
             ]
+          },
+          "timidity": {
+            "description": "Use Timidity to play MIDI audio format."
           },
           "wavpack": {
             "description": "Enable WavPack music.",
@@ -96253,10 +96281,10 @@
       "name": "wavpack",
       "manifest": {
         "name": "wavpack",
+        "port-version": 1,
         "description": "WavPack encode/decode library, command-line programs, and several plugins",
         "homepage": "https://github.com/dbry/WavPack",
         "license": "BSD-3-Clause",
-        "supports": "!android",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -96270,6 +96298,7 @@
         "version": "5.8.1"
       },
       "files": [
+        "enable-asm.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99766,12 +99795,13 @@
           },
           "zlib"
         ],
-        "version": "0.13.78"
+        "version": "0.13.79"
       },
       "files": [
         "cmake-project-include.cmake",
         "no-release-postfix.patch",
         "portfile.cmake",
+        "revert-pkgconfig-path.patch",
         "vcpkg.json"
       ]
     }
