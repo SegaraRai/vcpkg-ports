@@ -1,5 +1,5 @@
 {
-  "version": "0b8ccfa4876a0eff7e61d8cc99e65fd0ad0bc917",
+  "version": "6760f636e7bcd0dd034c5c0906f6174009465c29",
   "ports": [
     {
       "name": "3fd",
@@ -171,7 +171,7 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version": "20250127.0"
+        "version": "20250127.1"
       },
       "files": [
         "portfile.cmake",
@@ -852,12 +852,11 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
-        "port-version": 1,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "1.2.13"
+        "version": "1.2.14"
       },
       "files": [
         "fix-plugin-dir.patch",
@@ -1919,7 +1918,7 @@
             "host": true
           }
         ],
-        "version": "14.2.2"
+        "version": "14.4.1"
       },
       "files": [
         "cmake-config.patch",
@@ -6410,11 +6409,12 @@
             "host": true
           }
         ],
-        "version": "4.6.2"
+        "version": "4.7.0"
       },
       "files": [
         "fix-x86_build.patch",
         "portfile.cmake",
+        "remove-source-charset.diff",
         "vcpkg.json"
       ]
     },
@@ -30233,7 +30233,7 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -39946,6 +39946,33 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "iausofa",
+      "manifest": {
+        "name": "iausofa",
+        "description": "This is C version of IAU sofa software.",
+        "homepage": "https://iausofa.org",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "20231011"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "LICENSE",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -53228,10 +53255,9 @@
       "name": "libsoundio",
       "manifest": {
         "name": "libsoundio",
-        "port-version": 7,
         "description": "libsoundio is C library providing cross-platform audio input and output.",
         "homepage": "http://libsound.io/",
-        "supports": "!uwp",
+        "supports": "!uwp & !(arm64 & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -53256,7 +53282,7 @@
             "description": "PulseAudio backend for libsoundio"
           }
         },
-        "version": "2.0.0"
+        "version": "2.0.1-7"
       },
       "files": [
         "fix_cmakelists.patch",
@@ -55234,7 +55260,6 @@
       "name": "libwebsockets",
       "manifest": {
         "name": "libwebsockets",
-        "port-version": 1,
         "description": "Libwebsockets is a lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions as client or server.",
         "homepage": "https://github.com/warmcat/libwebsockets",
         "supports": "!uwp",
@@ -55255,7 +55280,7 @@
           },
           "zlib"
         ],
-        "version-semver": "4.3.3"
+        "version-semver": "4.3.5"
       },
       "files": [
         "export-include-path.patch",
@@ -83886,7 +83911,7 @@
         "name": "scintilla",
         "description": "A free source code editing component for Win32, GTK+, and OS X",
         "homepage": "https://www.scintilla.org/",
-        "supports": "!(uwp | linux | osx)",
+        "supports": "windows & !uwp & !mingw",
         "dependencies": [
           {
             "name": "vcpkg-msbuild",
@@ -83894,7 +83919,7 @@
             "platform": "windows"
           }
         ],
-        "version": "5.5.1"
+        "version": "5.5.6"
       },
       "files": [
         "0001-static-lib.patch",
@@ -85766,7 +85791,7 @@
             "host": true
           }
         ],
-        "version": "2023.8"
+        "version": "2025.2"
       },
       "files": [
         "build-version.inc",
@@ -85774,7 +85799,6 @@
         "cmake-project-include.cmake",
         "disable-update-version.patch",
         "fix-build-type.patch",
-        "fix-python.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
