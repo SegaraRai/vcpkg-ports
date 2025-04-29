@@ -1,5 +1,5 @@
 {
-  "version": "96d5fb3de135b86d7222c53f2352ca92827a156b",
+  "version": "b66385232ea2d1b04a15a17351841312f5c6e390",
   "ports": [
     {
       "name": "3fd",
@@ -2923,7 +2923,7 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "license": "MIT",
-        "version": "1.6.5"
+        "version": "1.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -31941,7 +31941,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -54744,7 +54744,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.50.0"
+        "version-semver": "1.51.0"
       },
       "files": [
         "fix-build-type.patch",
@@ -58313,7 +58313,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.670"
+        "version": "0.671"
       },
       "files": [
         "cmake-config-export.patch",
@@ -65793,11 +65793,11 @@
       "name": "nvtt",
       "manifest": {
         "name": "nvtt",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Texture processing tools with support for Direct3D 10 and 11 formats.",
         "homepage": "https://github.com/castano/nvidia-texture-tools",
         "license": "MIT",
-        "supports": "!uwp & !arm",
+        "supports": "!android & !uwp & !arm",
         "dependencies": [
           "libsquish",
           {
@@ -70994,7 +70994,7 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 26,
+        "port-version": 27,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
         "homepage": "https://www.openscenegraph.com/",
         "license": null,
@@ -71028,7 +71028,7 @@
           "freetype",
           {
             "name": "nvtt",
-            "platform": "!x86 & !(windows & arm64) & !uwp"
+            "platform": "x64 & (linux | osx | windows) & !uwp"
           },
           {
             "name": "openexr",
@@ -71062,7 +71062,8 @@
                 ]
               },
               "sdl2"
-            ]
+            ],
+            "supports": "!android"
           },
           "fontconfig": {
             "description": "Enable Fontconfig support for osgText",
@@ -71164,12 +71165,14 @@
                   "plugins"
                 ]
               }
-            ]
+            ],
+            "supports": "!android"
           }
         },
         "version": "3.6.5"
       },
       "files": [
+        "android.diff",
         "collada.patch",
         "fix-error-c3861.patch",
         "fix-min-max-macro.patch",
@@ -96924,6 +96927,9 @@
           "asio": {
             "description": "Enable asio support"
           },
+          "curve25519-blinding": {
+            "description": "Enables callback to provide TLS keys for debugging"
+          },
           "dtls": {
             "description": "DTLS support"
           },
@@ -96934,7 +96940,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.7.6"
+        "version": "5.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -96960,7 +96966,7 @@
           },
           "wolfssl"
         ],
-        "version": "3.4.0"
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
