@@ -1,5 +1,5 @@
 {
-  "version": "b66385232ea2d1b04a15a17351841312f5c6e390",
+  "version": "e9d0d6fe71ec440a6a7906f92f941a181b937556",
   "ports": [
     {
       "name": "3fd",
@@ -6801,7 +6801,6 @@
       "name": "bit7z",
       "manifest": {
         "name": "bit7z",
-        "port-version": 1,
         "description": "A C++ static library offering a clean and simple interface to the 7-zip shared libraries.",
         "homepage": "https://github.com/rikyoz/bit7z",
         "license": "MPL-2.0",
@@ -6822,7 +6821,7 @@
             "description": "Enables the support for extracting files matching regular expressions"
           }
         },
-        "version": "4.0.9"
+        "version": "4.0.10"
       },
       "files": [
         "fix_compile_options.patch",
@@ -18216,7 +18215,7 @@
           },
           "wangle"
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "fix-build.patch",
@@ -25659,7 +25658,7 @@
             "host": true
           }
         ],
-        "version": "2.4.11"
+        "version": "2.4.12"
       },
       "files": [
         "portfile.cmake",
@@ -28173,10 +28172,11 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "fix-deps.patch",
+        "fix-oss.patch",
         "fix-test.patch",
         "folly-has-liburing.diff",
         "portfile.cmake",
@@ -29240,7 +29240,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "fix-build.patch",
@@ -30082,7 +30082,7 @@
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
-        "supports": "(windows & x64 & !uwp & !mingw) | (!windows & (x64 | arm64))",
+        "supports": "(windows & x64 & !uwp & !mingw) | (!windows & !android & (x64 | arm64))",
         "dependencies": [
           "boost-chrono",
           "boost-context",
@@ -30176,7 +30176,7 @@
             ]
           }
         },
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -42903,7 +42903,7 @@
             "host": true
           }
         ],
-        "version": "1.6.1"
+        "version": "1.6.2"
       },
       "files": [
         "no-kea-config-script.diff",
@@ -51609,7 +51609,7 @@
             "host": true
           }
         ],
-        "version": "9.0.3"
+        "version": "9.0.4"
       },
       "files": [
         "disable-werror.patch",
@@ -63701,7 +63701,7 @@
         "description": "mvfst (Pronounced move fast) is a client and server implementation of IETF QUIC protocol in C++ by Facebook.",
         "homepage": "https://github.com/facebook/mvfst",
         "license": "MIT",
-        "supports": "!(windows & !static)",
+        "supports": "!windows | static",
         "dependencies": [
           "boost-context",
           "boost-date-time",
@@ -63724,7 +63724,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "portfile.cmake",
@@ -74840,7 +74840,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -77985,6 +77985,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78177,7 +78178,8 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
-                  "network"
+                  "network",
+                  "thread"
                 ]
               }
             ]
@@ -81098,7 +81100,17 @@
         "name": "readerwriterqueue",
         "description": "A single-producer, single-consumer lock-free queue",
         "homepage": "https://github.com/cameron314/readerwriterqueue",
-        "version-semver": "1.0.6"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -96198,7 +96210,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.14.00"
+        "version-string": "2025.04.21.00"
       },
       "files": [
         "fix-config-cmake.patch",
