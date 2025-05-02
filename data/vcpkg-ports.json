@@ -1,5 +1,5 @@
 {
-  "version": "5a874b05fb981e2643fd0c1c9ad63e19dfe76b27",
+  "version": "61c70ce627a2a4ffff809f887e4188ff39ce0a14",
   "ports": [
     {
       "name": "3fd",
@@ -377,7 +377,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.2.2"
+        "version": "3.2.4"
       },
       "files": [
         "no-cpm.patch",
@@ -6196,7 +6196,7 @@
           },
           "zlib"
         ],
-        "version": "3.21.0"
+        "version": "3.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -17550,7 +17550,6 @@
       "name": "box2d",
       "manifest": {
         "name": "box2d",
-        "port-version": 3,
         "description": "An open source C++ engine for simulating rigid bodies in 2D",
         "homepage": "https://box2d.org",
         "supports": "!uwp",
@@ -17564,10 +17563,11 @@
             "host": true
           }
         ],
-        "version-semver": "2.4.1"
+        "version-semver": "3.1.0"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -18216,11 +18216,12 @@
           },
           "wangle"
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "fix-build.patch",
         "fix-glog.patch",
+        "fix-oss.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21054,7 +21055,7 @@
             ]
           }
         },
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -27937,10 +27938,12 @@
             "host": true
           }
         ],
-        "version": "3.2.1"
+        "version": "3.2.2"
       },
       "files": [
+        "disable-werror.patch",
         "fix-find-package-asio.patch",
+        "include-cstdint.patch",
         "pdb-file.patch",
         "portfile.cmake",
         "usage",
@@ -28173,11 +28176,10 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "fix-deps.patch",
-        "fix-oss.patch",
         "fix-test.patch",
         "folly-has-liburing.diff",
         "portfile.cmake",
@@ -29241,7 +29243,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "fix-build.patch",
@@ -30177,7 +30179,7 @@
             ]
           }
         },
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -30914,7 +30916,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.18.0"
+        "version-semver": "0.18.1"
       },
       "files": [
         "portfile.cmake",
@@ -30998,7 +31000,7 @@
             "host": true
           }
         ],
-        "version-semver": "6.0.2"
+        "version-semver": "6.1.8"
       },
       "files": [
         "portfile.cmake",
@@ -33096,7 +33098,7 @@
             "host": true
           }
         ],
-        "version": "5.1.0"
+        "version": "5.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -46158,7 +46160,6 @@
       "name": "libavif",
       "manifest": {
         "name": "libavif",
-        "port-version": 1,
         "description": "Library for encoding and decoding AVIF files",
         "homepage": "https://github.com/AOMediaCodec/libavif",
         "license": "BSD-2-Clause AND Apache-2.0",
@@ -46187,7 +46188,7 @@
             ]
           }
         },
-        "version-semver": "1.1.1"
+        "version-semver": "1.2.1"
       },
       "files": [
         "dependencies.diff",
@@ -46535,7 +46536,6 @@
       "name": "libconfig",
       "manifest": {
         "name": "libconfig",
-        "port-version": 5,
         "description": "C/C++ library for processing configuration files",
         "homepage": "https://github.com/hyperrealm/libconfig",
         "dependencies": [
@@ -46548,10 +46548,10 @@
             "host": true
           }
         ],
-        "version": "1.7.3"
+        "version": "1.8"
       },
       "files": [
-        "libconfig++-cmake-export.diff",
+        "include-stdint.patch",
         "portfile.cmake",
         "static-build.diff",
         "vcpkg.json"
@@ -61087,7 +61087,7 @@
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
-        "supports": "!x86 & !(windows & (staticcrt | arm | uwp)) & !(osx & arm) & !android",
+        "supports": "!x86 & !(windows & (arm | uwp)) & !(osx & arm) & !android",
         "dependencies": [
           "boost-algorithm",
           "boost-core",
@@ -61123,7 +61123,7 @@
             ]
           }
         },
-        "version": "2024.1"
+        "version": "2024.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -63725,7 +63725,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "portfile.cmake",
@@ -66281,6 +66281,7 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
+        "port-version": 1,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "documentation": "https://docs.octave.org/latest/",
@@ -66303,6 +66304,15 @@
             "dependencies": [
               {
                 "name": "suitesparse-amd",
+                "default-features": false
+              }
+            ]
+          },
+          "arpack": {
+            "description": "arpack support",
+            "dependencies": [
+              {
+                "name": "arpack-ng",
                 "default-features": false
               }
             ]
@@ -66402,6 +66412,24 @@
             "dependencies": [
               {
                 "name": "suitesparse-klu",
+                "default-features": false
+              }
+            ]
+          },
+          "portaudio": {
+            "description": "portaudio support",
+            "dependencies": [
+              {
+                "name": "portaudio",
+                "default-features": false
+              }
+            ]
+          },
+          "spqr": {
+            "description": "suitesparse-spqr support",
+            "dependencies": [
+              {
+                "name": "suitesparse-spqr",
                 "default-features": false
               }
             ]
@@ -74841,7 +74869,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -93040,7 +93068,7 @@
             "host": true
           }
         ],
-        "version": "2.1.1"
+        "version": "2.1.3"
       },
       "files": [
         "fix-build.patch",
@@ -94202,7 +94230,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-04-10"
+        "version-date": "2025-04-25"
       },
       "files": [
         "portfile.cmake",
@@ -96211,7 +96239,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.21.00"
+        "version-string": "2025.04.28.00"
       },
       "files": [
         "fix-config-cmake.patch",
