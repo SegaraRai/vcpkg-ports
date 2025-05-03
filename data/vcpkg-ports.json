@@ -1,5 +1,5 @@
 {
-  "version": "61c70ce627a2a4ffff809f887e4188ff39ce0a14",
+  "version": "41c447cc210dc39aa85d4a5f58b4a1b9e573b3dc",
   "ports": [
     {
       "name": "3fd",
@@ -33344,6 +33344,7 @@
       "name": "glibmm",
       "manifest": {
         "name": "glibmm",
+        "port-version": 1,
         "description": "This is glibmm, a C++ API for parts of glib that are useful for C++.",
         "homepage": "https://www.gtkmm.org.",
         "license": "LGPL-2.1-or-later",
@@ -33353,7 +33354,7 @@
           "glib",
           "libffi",
           "libiconv",
-          "libsigcpp-3",
+          "libsigcpp",
           "pcre",
           {
             "name": "vcpkg-tool-meson",
@@ -36239,6 +36240,7 @@
       "name": "gsl",
       "manifest": {
         "name": "gsl",
+        "port-version": 1,
         "description": "The GNU Scientific Library is a numerical library for C and C++ programmers",
         "homepage": "https://www.gnu.org/software/gsl/",
         "license": "GPL-3.0-or-later",
@@ -37203,7 +37205,6 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
-        "port-version": 1,
         "description": "Google Testing and Mocking Framework",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -37222,7 +37223,7 @@
             "description": "Enable compiler C++17."
           }
         },
-        "version-semver": "1.16.0"
+        "version-semver": "1.17.0"
       },
       "files": [
         "001-fix-UWP-death-test.patch",
@@ -50224,7 +50225,7 @@
           },
           "zlib"
         ],
-        "version": "25.3"
+        "version": "25.4"
       },
       "files": [
         "dependencies.diff",
@@ -50621,7 +50622,6 @@
         "name": "libmultisense",
         "description": "A C++ library for interfacing with the MultiSense S family of sensors from Carnegie Robotics.",
         "homepage": "https://github.com/carnegierobotics/LibMultiSense",
-        "supports": "linux | (windows & !static)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -50633,13 +50633,30 @@
           }
         ],
         "features": {
+          "json-serialization": {
+            "description": "Build JSON type serialization helpers.",
+            "dependencies": [
+              {
+                "name": "nlohmann-json",
+                "version>=": "3.10.2"
+              }
+            ]
+          },
+          "opencv": {
+            "description": "Build OpenCV helpers.",
+            "dependencies": [
+              "opencv"
+            ]
+          },
           "utilities": {
             "description": "Build MultiSense utility applications."
           }
         },
-        "version": "6.1.0"
+        "version": "7.1.0"
       },
       "files": [
+        "fix-find-package-config-file.patch",
+        "fix-missing-algorithm.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -52963,7 +52980,7 @@
       "name": "libsigcpp",
       "manifest": {
         "name": "libsigcpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Typesafe callback framework for C++",
         "homepage": "https://libsigcplusplus.github.io/libsigcplusplus/",
         "license": "LGPL-3.0-or-later",
@@ -52983,6 +53000,7 @@
         "disable_tests_enable_static_build.patch",
         "fix-shared-windows-build.patch",
         "fix_include_path.patch",
+        "fix_version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82566,7 +82584,7 @@
             ]
           }
         },
-        "version": "10.1.3"
+        "version": "10.2.1"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -86436,7 +86454,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "6.5.0"
+        "version-semver": "7.0.0"
       },
       "files": [
         "portfile.cmake",
