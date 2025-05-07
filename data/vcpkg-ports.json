@@ -1,5 +1,5 @@
 {
-  "version": "d8ad13c401b30c2836d00b8923c9127f05f591c7",
+  "version": "bf1ca0b08452bf9ecea957ed38453384d31cab5e",
   "ports": [
     {
       "name": "3fd",
@@ -2924,7 +2924,7 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "license": "MIT",
-        "version": "1.6.6"
+        "version": "1.6.9"
       },
       "files": [
         "portfile.cmake",
@@ -6851,7 +6851,7 @@
       "name": "bitserializer",
       "manifest": {
         "name": "bitserializer",
-        "description": "C++ 17 library for serialization to JSON, XML, YAML, CSV, MsgPack",
+        "description": "Multi-format serialization library (JSON, XML, YAML, CSV, MsgPack)",
         "homepage": "https://github.com/PavelKisliak/BitSerializer",
         "license": "MIT",
         "dependencies": [
@@ -6865,12 +6865,6 @@
           }
         ],
         "features": {
-          "cpprestjson-archive": {
-            "description": "Module for support JSON (implementation based on the CppRestSDK library)",
-            "dependencies": [
-              "cpprestsdk"
-            ]
-          },
           "csv-archive": {
             "description": "Module for support CSV"
           },
@@ -6896,7 +6890,7 @@
             ]
           }
         },
-        "version": "0.75"
+        "version": "0.80"
       },
       "files": [
         "portfile.cmake",
@@ -17832,7 +17826,7 @@
             "host": true
           }
         ],
-        "version": "1.12.3"
+        "version": "1.12.4"
       },
       "files": [
         "portfile.cmake",
@@ -21461,7 +21455,6 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
-        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -21504,7 +21497,7 @@
             ]
           }
         },
-        "version": "0.20.0"
+        "version": "0.20.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22450,7 +22443,7 @@
             "description": "list_cpu_features command line tool"
           }
         },
-        "version": "0.9.0"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -33098,7 +33091,7 @@
             "host": true
           }
         ],
-        "version": "5.1.1"
+        "version": "5.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -41381,7 +41374,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -46952,7 +46945,7 @@
             "host": true
           }
         ],
-        "version": "1.0.15"
+        "version": "1.0.16"
       },
       "files": [
         "fix-interface-include.patch",
@@ -47101,7 +47094,7 @@
           },
           "zlib"
         ],
-        "version": "0.24.3"
+        "version": "0.26.1"
       },
       "files": [
         "portfile.cmake",
@@ -52524,7 +52517,6 @@
       "name": "libressl",
       "manifest": {
         "name": "libressl",
-        "port-version": 1,
         "description": [
           "LibreSSL is a TLS/crypto stack.",
           "It was forked from OpenSSL in 2014 by the OpenBSD project, with goals of modernizing the codebase, improving security, and applying best practice development processes.",
@@ -52547,7 +52539,7 @@
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "4.0.0"
+        "version": "4.1.0"
       },
       "files": [
         "pkgconfig.diff",
@@ -58332,7 +58324,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.671"
+        "version": "0.672"
       },
       "files": [
         "cmake-config-export.patch",
@@ -61726,7 +61718,6 @@
       "name": "minc",
       "manifest": {
         "name": "minc",
-        "port-version": 3,
         "description": "MINC - Medical Image NetCDF or MINC isn't netCDF",
         "homepage": "https://github.com/BIC-MNI/libminc",
         "license": null,
@@ -61757,13 +61748,14 @@
             ]
           }
         },
-        "version-string": "2.4.03"
+        "version": "2.4.6"
       },
       "files": [
+        "avoid-try-run.diff",
         "build.patch",
-        "config.patch",
-        "fix-dependency-hdf5.patch",
+        "cmake-config.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -64588,7 +64580,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "dependencies": [
@@ -72977,7 +72969,7 @@
         "description": "PicoSHA2 - a header-file-only C++ SHA256 hash generator",
         "homepage": "https://github.com/okdshin/PicoSHA2",
         "license": "MIT",
-        "version-date": "2022-08-08"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -84425,7 +84417,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.32.4"
+        "version": "2.32.6"
       },
       "files": [
         "alsa-dep-fix.patch",
@@ -90372,7 +90364,7 @@
       "name": "taskflow",
       "manifest": {
         "name": "taskflow",
-        "description": "Fast Parallel Tasking Programming Library using Modern C++",
+        "description": "A General-purpose Task-parallel Programming System using Modern C++",
         "homepage": "https://github.com/taskflow/taskflow",
         "license": "MIT",
         "dependencies": [
@@ -90385,7 +90377,7 @@
             "host": true
           }
         ],
-        "version": "3.9.0"
+        "version": "3.10.0"
       },
       "files": [
         "portfile.cmake",
