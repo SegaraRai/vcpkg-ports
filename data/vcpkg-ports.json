@@ -1,5 +1,5 @@
 {
-  "version": "bf1ca0b08452bf9ecea957ed38453384d31cab5e",
+  "version": "38d9cf0bd45404cd25aeb03f79bcb0af256de343",
   "ports": [
     {
       "name": "3fd",
@@ -3194,11 +3194,10 @@
             "host": true
           }
         ],
-        "version": "2.6.0"
+        "version": "2.7.1"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
-        "fix-pkgconfig-location.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -17544,6 +17543,7 @@
       "name": "box2d",
       "manifest": {
         "name": "box2d",
+        "port-version": 1,
         "description": "An open source C++ engine for simulating rigid bodies in 2D",
         "homepage": "https://box2d.org",
         "supports": "!uwp",
@@ -17560,6 +17560,8 @@
         "version-semver": "3.1.0"
       },
       "files": [
+        "crt-linkage.diff",
+        "libm.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -24941,7 +24943,7 @@
             "host": true
           }
         ],
-        "version": "1.615.0"
+        "version": "1.615.1"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -29929,7 +29931,7 @@
             ]
           }
         },
-        "version": "2.4.5"
+        "version": "2.4.6"
       },
       "files": [
         "gentables.patch",
@@ -37198,6 +37200,7 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
+        "port-version": 1,
         "description": "Google Testing and Mocking Framework",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -45720,6 +45723,7 @@
       "name": "libaec",
       "manifest": {
         "name": "libaec",
+        "port-version": 1,
         "description": "Adaptive Entropy Coding library",
         "homepage": "https://gitlab.dkrz.de/k202009/libaec",
         "license": "BSD-2-Clause",
@@ -45739,6 +45743,7 @@
         "cmake-config.patch",
         "portfile.cmake",
         "static-shared.patch",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -46318,6 +46323,53 @@
       },
       "files": [
         "fix-libusb.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libcamera",
+      "manifest": {
+        "name": "libcamera",
+        "description": "A complex camera support library for Linux, Android, and ChromeOS",
+        "homepage": "https://git.libcamera.org/libcamera/libcamera.git/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "linux",
+        "dependencies": [
+          "glib",
+          "gstreamer",
+          "libgnutls",
+          "libunwind",
+          "libyaml",
+          "libyuv",
+          {
+            "name": "openssl",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "features": {
+          "tracing": {
+            "description": "Enable tracing",
+            "dependencies": [
+              "liblttng-ust"
+            ]
+          }
+        },
+        "version": "0.5.0"
+      },
+      "files": [
+        "fix-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -48776,7 +48828,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 3,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -48833,10 +48884,9 @@
             "license": "BSD-2-Clause"
           }
         },
-        "version": "1.19.5"
+        "version": "1.19.8"
       },
       "files": [
-        "fix-gcc8.patch",
         "gdk-pixbuf.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -49510,6 +49560,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
+        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -49536,6 +49587,7 @@
         "version-semver": "0.11.1"
       },
       "files": [
+        "avoid-exe-linker-flags.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -49880,6 +49932,28 @@
       ]
     },
     {
+      "name": "liblttng-ust",
+      "manifest": {
+        "name": "liblttng-ust",
+        "description": "LTTng-UST, the Linux Trace Toolkit Next Generation Userspace Tracer, is port of the low-overhead tracing capabilities of the LTTng kernel tracer to user-space. The library 'liblttng-ust' enables tracing of applications and libraries.",
+        "homepage": "https://lttng.org/",
+        "license": "LGPL-2.1-only",
+        "supports": "linux",
+        "dependencies": [
+          "liburcu",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "2.14.0-rc1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "liblzf",
       "manifest": {
         "name": "liblzf",
@@ -50130,9 +50204,10 @@
             ]
           }
         },
-        "version-semver": "3.4.1"
+        "version-semver": "3.4.5"
       },
       "files": [
+        "android-patch.diff",
         "cmake-export.diff",
         "compiler-flags.diff",
         "dependencies.diff",
@@ -50140,7 +50215,6 @@
         "library-linkage.diff",
         "no-abs-path.diff",
         "portfile.cmake",
-        "ushort-check.diff",
         "vcpkg.json"
       ]
     },
@@ -54552,6 +54626,28 @@
       },
       "files": [
         "liblzma.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "liburcu",
+      "manifest": {
+        "name": "liburcu",
+        "description": "liburcu is a LGPLv2.1 userspace RCU (read-copy-update) library. This data synchronization library provides read-side access which scales linearly with the number of cores.",
+        "homepage": "https://liburcu.org/",
+        "license": null,
+        "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "0.15.2"
+      },
+      "files": [
+        "fix-assert-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62123,7 +62219,7 @@
             ]
           }
         },
-        "version": "4.0.9"
+        "version": "4.0.10"
       },
       "files": [
         "dependencies.diff",
@@ -65735,7 +65831,7 @@
             ]
           }
         },
-        "version": "2.14.0"
+        "version": "2.14.1"
       },
       "files": [
         "portfile.cmake",
@@ -67244,6 +67340,7 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
+        "port-version": 1,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later",
@@ -67257,6 +67354,7 @@
             "name": "cppwinrt",
             "platform": "uwp"
           },
+          "fmt",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -67268,18 +67366,24 @@
         ],
         "features": {
           "pipewire": {
-            "description": "Native support for Pipewire",
+            "description": "Enable PipeWire backend",
             "dependencies": [
               "pipewire"
-            ],
-            "supports": "linux"
+            ]
+          },
+          "pulseaudio": {
+            "description": "Enable PulseAudio backend",
+            "dependencies": [
+              "pulseaudio"
+            ]
           }
         },
         "version": "1.24.3"
       },
       "files": [
+        "devendor-fmt.diff",
+        "pkgconfig-cxx.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -75179,11 +75283,11 @@
       "name": "pulseaudio",
       "manifest": {
         "name": "pulseaudio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "PulseAudio is a sound server, originally created to overcome the limitations of the Enlightened Sound Daemon (EsounD)",
         "homepage": "https://www.freedesktop.org/wiki/Software/PulseAudio/Documentation/User/Community/",
         "license": null,
-        "supports": "!windows & !osx",
+        "supports": "!android & !osx & !windows",
         "dependencies": [
           {
             "name": "alsa",
@@ -75196,10 +75300,6 @@
           "fftw3",
           {
             "name": "glib",
-            "default-features": false
-          },
-          {
-            "name": "gstreamer",
             "default-features": false
           },
           "jack2",
@@ -75216,7 +75316,6 @@
             "name": "openssl",
             "default-features": false
           },
-          "orc",
           "soxr",
           "speex",
           {
@@ -75228,6 +75327,20 @@
             "host": true
           }
         ],
+        "features": {
+          "gstreamer": {
+            "description": [
+              "Use GStreamer media-related functionality.",
+              "This feauture may cause dependency cycles with other libs used by gstreamer."
+            ],
+            "dependencies": [
+              {
+                "name": "gstreamer",
+                "default-features": false
+              }
+            ]
+          }
+        },
         "version": "17.0"
       },
       "files": [
@@ -76741,7 +76854,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84914,7 +85027,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.10"
+        "version": "3.2.12"
       },
       "files": [
         "portfile.cmake",
@@ -86363,7 +86476,7 @@
             "host": true
           }
         ],
-        "version": "6.1.148"
+        "version": "6.1.149"
       },
       "files": [
         "SimdConfig.cmake",
@@ -98575,7 +98688,7 @@
       "name": "yaml-cpp",
       "manifest": {
         "name": "yaml-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "yaml-cpp is a YAML parser and emitter in C++ matching the YAML 1.2 spec.",
         "homepage": "https://github.com/jbeder/yaml-cpp",
         "documentation": "https://codedocs.xyz/jbeder/yaml-cpp/index.html",
@@ -98595,7 +98708,8 @@
       "files": [
         "portfile.cmake",
         "vcpkg.json",
-        "yaml-cpp-pr-1212.patch"
+        "yaml-cpp-pr-1212.patch",
+        "yaml-cpp-pr-1310.patch"
       ]
     },
     {
