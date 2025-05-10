@@ -1,5 +1,5 @@
 {
-  "version": "b8970ecfc803f93e1b95d81ada1de7ea3a51fc8b",
+  "version": "3e5b8de5f6ebe844bee9d9eba0aed35c652e3c9c",
   "ports": [
     {
       "name": "3fd",
@@ -1494,6 +1494,7 @@
       "name": "aravis",
       "manifest": {
         "name": "aravis",
+        "port-version": 1,
         "description": " A vision library for genicam based cameras.",
         "homepage": "https://github.com/AravisProject/aravis",
         "license": "LGPL-2.0-or-later",
@@ -1521,7 +1522,8 @@
             "description": "Build introspection data",
             "dependencies": [
               "gobject-introspection"
-            ]
+            ],
+            "supports": "!static"
           },
           "packet-socket": {
             "description": "Enable packet socket support"
@@ -2797,13 +2799,12 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 9,
+        "port-version": 10,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "LGPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "gettext",
           {
             "name": "gettext",
             "host": true,
@@ -2812,6 +2813,7 @@
               "tools"
             ]
           },
+          "gettext-libintl",
           "glib",
           {
             "name": "glib",
@@ -2824,10 +2826,11 @@
         ],
         "features": {
           "introspection": {
-            "description": "build with introspection",
+            "description": "Build with introspection",
             "dependencies": [
               "gobject-introspection"
-            ]
+            ],
+            "supports": "!static"
           }
         },
         "version": "2.38.0"
@@ -18234,7 +18237,7 @@
           },
           "wangle"
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "fix-build.patch",
@@ -28087,7 +28090,7 @@
         "supports": "!uwp",
         "dependencies": [
           {
-            "name": "sdl2",
+            "name": "sdl3",
             "default-features": false,
             "platform": "!windows"
           },
@@ -28100,7 +28103,7 @@
             "host": true
           }
         ],
-        "version-string": "24.09"
+        "version-string": "25.04"
       },
       "files": [
         "portfile.cmake",
@@ -28193,7 +28196,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "fix-deps.patch",
@@ -29260,7 +29263,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "fix-build.patch",
@@ -30200,7 +30203,7 @@
             ]
           }
         },
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -31965,7 +31968,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -31974,6 +31977,7 @@
           {
             "name": "gettext",
             "host": true,
+            "default-features": false,
             "features": [
               "tools"
             ]
@@ -31996,10 +32000,11 @@
         ],
         "features": {
           "introspection": {
-            "description": "build with introspection",
+            "description": "Build with introspection",
             "dependencies": [
               "gobject-introspection"
-            ]
+            ],
+            "supports": "!static"
           },
           "jpeg": {
             "description": "Enable JPEG loader (requires libjpeg)",
@@ -33829,52 +33834,46 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "description": "A middleware layer between C libraries (using GObject) and language bindings.",
+        "port-version": 1,
+        "description": [
+          "A middleware layer between C libraries (using GObject) and language bindings.",
+          "Building (with) gobject-introspection is based on dynamic library linkage. Static builds of the core feature set are supported only for CI purposes.",
+          "The g-ir-scanner program runs executables for the target system. This limits actual cross-build support to targets supported by the host CPU."
+        ],
         "homepage": "https://gi.readthedocs.io/en/latest/",
         "license": null,
-        "supports": "!static & (native | (windows & x86))",
+        "supports": "!(static & staticcrt)",
         "dependencies": [
-          {
-            "name": "cairo",
-            "default-features": false,
-            "features": [
-              "gobject"
-            ]
-          },
           "glib",
-          {
-            "name": "glib",
-            "host": true
-          },
-          {
-            "name": "gobject-introspection",
-            "host": true,
-            "platform": "!(windows & x86)"
-          },
           "libffi",
           "python3",
-          {
-            "name": "python3",
-            "host": true,
-            "platform": "!(windows & x86)"
-          },
-          {
-            "name": "vcpkg-get-python-packages",
-            "host": true
-          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
+        "features": {
+          "cairo": {
+            "description": "Install introspection data for cairo.",
+            "dependencies": [
+              {
+                "name": "cairo",
+                "default-features": false,
+                "features": [
+                  "gobject"
+                ]
+              }
+            ],
+            "supports": "!static"
+          }
+        },
         "version": "1.82.0"
       },
       "files": [
         "0001-g-ir-tool-template.in.patch",
-        "0002-cross-build.patch",
-        "0003-fix-paths.patch",
         "0004-fastcall.patch",
         "portfile.cmake",
+        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -35963,12 +35962,20 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
         "dependencies": [
-          "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
+          "gettext-libintl",
           "glib",
           {
             "name": "glib",
@@ -35984,7 +35991,8 @@
             "description": "build with introspection",
             "dependencies": [
               "gobject-introspection"
-            ]
+            ],
+            "supports": "!static"
           }
         },
         "version": "1.10.8"
@@ -36303,7 +36311,7 @@
             "host": true
           }
         ],
-        "version": "0.42.0"
+        "version": "0.43.0"
       },
       "files": [
         "portfile.cmake",
@@ -37260,11 +37268,11 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
-        "supports": "!xbox & !(arm64 & windows)",
+        "supports": "!android & !xbox & !(arm64 & windows)",
         "dependencies": [
           "atk",
           {
@@ -37317,7 +37325,7 @@
         ],
         "features": {
           "introspection": {
-            "description": "build with introspection",
+            "description": "Build with introspection",
             "dependencies": [
               {
                 "name": "atk",
@@ -37348,7 +37356,8 @@
                   "introspection"
                 ]
               }
-            ]
+            ],
+            "supports": "!static"
           }
         },
         "version": "4.16.3"
@@ -37364,9 +37373,11 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
+        "supports": "!android",
         "dependencies": [
           {
             "name": "at-spi2-atk",
@@ -37393,7 +37404,6 @@
             "name": "gdk-pixbuf",
             "host": true
           },
-          "gettext",
           {
             "name": "gettext",
             "host": true,
@@ -37402,6 +37412,7 @@
               "tools"
             ]
           },
+          "gettext-libintl",
           "glib",
           {
             "name": "glib",
@@ -37416,18 +37427,10 @@
         ],
         "features": {
           "introspection": {
-            "description": "build with introspection",
+            "description": "Build with introspection",
             "dependencies": [
               {
                 "name": "atk",
-                "default-features": false,
-                "features": [
-                  "introspection"
-                ]
-              },
-              {
-                "name": "gdk-pixbuf",
-                "host": true,
                 "default-features": false,
                 "features": [
                   "introspection"
@@ -37449,7 +37452,7 @@
                 ]
               }
             ],
-            "supports": "!windows | !static"
+            "supports": "!static"
           }
         },
         "version": "3.24.43"
@@ -38754,16 +38757,12 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 3,
+        "port-version": 4,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
         "supports": "!uwp",
         "dependencies": [
-          {
-            "name": "gettext",
-            "platform": "osx"
-          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -38834,9 +38833,16 @@
           "introspection": {
             "description": "build with introspection",
             "dependencies": [
-              "glib",
-              "gobject-introspection"
-            ]
+              "gobject-introspection",
+              {
+                "name": "harfbuzz",
+                "default-features": false,
+                "features": [
+                  "glib"
+                ]
+              }
+            ],
+            "supports": "!static"
           }
         },
         "version": "10.2.0"
@@ -51747,7 +51753,7 @@
             "host": true
           }
         ],
-        "version": "9.0.4"
+        "version": "9.0.5"
       },
       "files": [
         "disable-werror.patch",
@@ -63892,7 +63898,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "portfile.cmake",
@@ -71786,7 +71792,7 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-or-later",
@@ -71801,7 +71807,15 @@
           "fontconfig",
           "freetype",
           "fribidi",
-          "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
+          "gettext-libintl",
           "glib",
           {
             "name": "glib",
@@ -71822,7 +71836,7 @@
         ],
         "features": {
           "introspection": {
-            "description": "build with introspection",
+            "description": "Build with introspection",
             "dependencies": [
               "gobject-introspection",
               {
@@ -71832,7 +71846,8 @@
                   "introspection"
                 ]
               }
-            ]
+            ],
+            "supports": "!static"
           }
         },
         "version": "1.56.1"
@@ -74924,7 +74939,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -75044,7 +75059,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -94989,7 +95004,8 @@
       "manifest": {
         "name": "vladimirshaleev-ipaddress",
         "description": "A library for working and manipulating IPv4/IPv6 addresses and networks in modern C++.",
-        "homepage": "https://vladimirshaleev.github.io/ipaddress/",
+        "homepage": "https://github.com/VladimirShaleev/ipaddress",
+        "documentation": "https://vladimirshaleev.github.io/ipaddress/",
         "license": "MIT",
         "dependencies": [
           {
@@ -95001,7 +95017,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -96423,7 +96439,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.04.28.00"
+        "version-string": "2025.05.05.00"
       },
       "files": [
         "fix-config-cmake.patch",
