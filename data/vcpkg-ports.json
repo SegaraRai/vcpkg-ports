@@ -1,5 +1,5 @@
 {
-  "version": "ca846b21276c9a3171074ac8d2b4f6516894a7d0",
+  "version": "a974a0a2065457eff982554127637cade92c358e",
   "ports": [
     {
       "name": "3fd",
@@ -6246,6 +6246,20 @@
       ]
     },
     {
+      "name": "barkeep",
+      "manifest": {
+        "name": "barkeep",
+        "description": "Small C++ header to display async animations, counters, progress bars, and status messages",
+        "homepage": "https://github.com/oir/barkeep",
+        "license": "Apache-2.0",
+        "version": "0.1.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "basisu",
       "manifest": {
         "name": "basisu",
@@ -6439,7 +6453,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.9.2"
+        "version-semver": "1.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -31024,7 +31038,7 @@
             "host": true
           }
         ],
-        "version-semver": "6.1.8"
+        "version-semver": "6.1.9"
       },
       "files": [
         "portfile.cmake",
@@ -37679,6 +37693,32 @@
       ]
     },
     {
+      "name": "gul17",
+      "manifest": {
+        "name": "gul17",
+        "description": [
+          "General Utility Library for C++17.",
+          "GUL17 contains often-used utility functions and types that form the foundation for other libraries and programs.",
+          "It provides basic functionality that is not available in the C++17 standard library, including some backports from later versions of the standard."
+        ],
+        "homepage": "https://github.com/gul-cpp/gul17",
+        "documentation": "https://gul-cpp.github.io/gul17/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!uwp & !xbox",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "25.4.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "gumbo",
       "manifest": {
         "name": "gumbo",
@@ -38932,7 +38972,6 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 4,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -38965,7 +39004,8 @@
             "description": "parallel support for HDF5",
             "dependencies": [
               "mpi"
-            ]
+            ],
+            "supports": "!staticcrt"
           },
           "szip": {
             "description": "Build with szip",
@@ -38996,12 +39036,11 @@
             ]
           }
         },
-        "version": "1.14.4.3"
+        "version": "1.14.6"
       },
       "files": [
-        "add-_Float16-type-on-aarch64.patch",
         "hdf5_config.patch",
-        "pkgconfig-requires.patch",
+        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-port-config.cmake",
@@ -47097,7 +47136,7 @@
             "description": "Support the zlib format"
           }
         },
-        "version": "1.23"
+        "version": "1.24"
       },
       "files": [
         "portfile.cmake",
@@ -58481,7 +58520,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.672"
+        "version": "0.673"
       },
       "files": [
         "cmake-config-export.patch",
@@ -60113,7 +60152,7 @@
             "host": true
           }
         ],
-        "version": "0.24.0"
+        "version": "0.25.1"
       },
       "files": [
         "portfile.cmake",
@@ -86646,6 +86685,7 @@
       "name": "simonbrunel-qtpromise",
       "manifest": {
         "name": "simonbrunel-qtpromise",
+        "port-version": 1,
         "maintainers": "Simon Brunel",
         "description": "Promises/A+ implementation for Qt/C++",
         "homepage": "https://qtpromise.netlify.app/",
@@ -88103,7 +88143,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "1.15.2"
+        "version-semver": "1.15.3"
       },
       "files": [
         "portfile.cmake",
