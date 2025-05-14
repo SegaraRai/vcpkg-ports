@@ -1,5 +1,5 @@
 {
-  "version": "a974a0a2065457eff982554127637cade92c358e",
+  "version": "dbe35ceb30c688bf72e952ab23778e009a578f18",
   "ports": [
     {
       "name": "3fd",
@@ -1589,7 +1589,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -18251,12 +18251,11 @@
           },
           "wangle"
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "fix-build.patch",
         "fix-glog.patch",
-        "fix-oss.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20205,7 +20204,7 @@
             "host": true
           }
         ],
-        "version": "1.5.2"
+        "version": "1.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -28210,7 +28209,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "fix-deps.patch",
@@ -29277,7 +29276,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "fix-build.patch",
@@ -30217,7 +30216,7 @@
             ]
           }
         },
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -41448,7 +41447,6 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 3,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -41572,12 +41570,13 @@
             ]
           }
         },
-        "version": "5.4.0"
+        "version": "5.4.3"
       },
       "files": [
         "dependencies.diff",
         "dont-build-gtest.patch",
         "fftw.diff",
+        "msvc-static-crt.diff",
         "openjpeg.patch",
         "portfile.cmake",
         "rtk/cmp0153.diff",
@@ -42369,7 +42368,6 @@
       "name": "jsonnet",
       "manifest": {
         "name": "jsonnet",
-        "port-version": 1,
         "description": "Jsonnet - The data templating language",
         "homepage": "https://github.com/google/jsonnet",
         "license": "Apache-2.0",
@@ -42381,10 +42379,9 @@
             "host": true
           }
         ],
-        "version": "0.20.0"
+        "version": "0.21.0"
       },
       "files": [
-        "0003-use-upstream-nlohmann-json.patch",
         "0004-incorporate-md5.patch",
         "0005-use-upstream-rapidyaml.patch",
         "0006-use-cxx17.patch",
@@ -43388,11 +43385,15 @@
       "name": "kf5coreaddons",
       "manifest": {
         "name": "kf5coreaddons",
+        "port-version": 1,
         "description": "Addons to QtCore",
         "homepage": "https://api.kde.org/frameworks/kcoreaddons/html/index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46281,7 +46282,7 @@
             ]
           }
         },
-        "version-semver": "1.2.1"
+        "version-semver": "1.3.0"
       },
       "files": [
         "dependencies.diff",
@@ -61903,7 +61904,7 @@
             "host": true
           }
         ],
-        "version": "6"
+        "version": "7"
       },
       "files": [
         "portfile.cmake",
@@ -63083,7 +63084,7 @@
         "dependencies": [
           "gmp"
         ],
-        "version": "4.2.1"
+        "version": "4.2.2"
       },
       "files": [
         "dll.patch",
@@ -63937,7 +63938,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "portfile.cmake",
@@ -68920,6 +68921,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -70552,7 +70554,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-04-15"
+        "version-date": "2025-05-12"
       },
       "files": [
         "portfile.cmake",
@@ -75098,7 +75100,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -81145,6 +81147,31 @@
         "version-date": "2025-02-26"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rapidobj",
+      "manifest": {
+        "name": "rapidobj",
+        "description": "A fast, header-only, C++17 library for parsing Wavefront .obj files",
+        "license": "MIT",
+        "supports": "!android & !linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1"
+      },
+      "files": [
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -88647,7 +88674,7 @@
             ]
           }
         },
-        "version": "3.49.1"
+        "version": "3.49.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -92706,7 +92733,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.25.3"
+        "version-semver": "0.25.4"
       },
       "files": [
         "pkgconfig.diff",
@@ -96479,7 +96506,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.05.00"
+        "version-string": "2025.05.12.00"
       },
       "files": [
         "fix-config-cmake.patch",
