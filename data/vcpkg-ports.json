@@ -1,5 +1,5 @@
 {
-  "version": "dbe35ceb30c688bf72e952ab23778e009a578f18",
+  "version": "2c7705e70dcfb70e5f726459c3e399bd780bc1fc",
   "ports": [
     {
       "name": "3fd",
@@ -22483,7 +22483,7 @@
             "description": "list_cpu_features command line tool"
           }
         },
-        "version": "0.10.0"
+        "version": "0.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -23938,11 +23938,10 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "3.0.1"
       },
       "files": [
-        "0001-output-dirs.patch",
-        "0002-Fix-32b-compilation.patch",
+        "0001-build-options.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27092,7 +27091,7 @@
         "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
         "homepage": "https://sourceware.org/elfutils/",
         "license": null,
-        "supports": "!windows",
+        "supports": "linux",
         "dependencies": [
           "bzip2",
           "liblzma",
@@ -27106,7 +27105,8 @@
               {
                 "name": "curl",
                 "default-features": false
-              }
+              },
+              "json-c"
             ]
           },
           "nls": {
@@ -27124,7 +27124,7 @@
             ]
           }
         },
-        "version": "0.192"
+        "version": "0.193"
       },
       "files": [
         "disable-werror.diff",
@@ -29077,7 +29077,7 @@
       "name": "fftw3",
       "manifest": {
         "name": "fftw3",
-        "port-version": 9,
+        "port-version": 10,
         "description": "FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).",
         "homepage": "https://www.fftw.org/",
         "license": "GPL-2.0-or-later",
@@ -29099,6 +29099,10 @@
           "avx2": {
             "description": "Builds part of the library with avx2, fma, avx, sse2, sse",
             "supports": "!arm"
+          },
+          "neon": {
+            "description": "Builds part of the library with neon",
+            "supports": "(linux | android) & arm"
           },
           "openmp": {
             "description": "Builds openmp enabled lib"
@@ -29124,6 +29128,7 @@
         "fix-openmp.patch",
         "fix-wrong-version.patch",
         "install-subtargets.patch",
+        "neon.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31614,7 +31619,7 @@
           "lzma",
           {
             "name": "netcdf",
-            "platform": "!uwp & !(windows & arm64) & !android & !ios"
+            "platform": "!android & !ios & !(windows & arm64) & !uwp"
           },
           "openjpeg",
           "openssl",
@@ -31656,7 +31661,8 @@
             "description": "Enable cfitsio support",
             "dependencies": [
               "cfitsio"
-            ]
+            ],
+            "supports": "!(android & arm32)"
           },
           "curl": {
             "description": "Enable CURL network support",
@@ -31873,9 +31879,6 @@
               }
             ]
           },
-          "system-libraries": {
-            "description": "This feature does nothing. It is retained for compatibility."
-          },
           "tools": {
             "description": "Builds gdal and ogr executables"
           },
@@ -31892,7 +31895,7 @@
             ]
           }
         },
-        "version-semver": "3.10.3"
+        "version-semver": "3.11.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -36156,6 +36159,7 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
+        "port-version": 1,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -36211,6 +36215,7 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
+        "00017-add-src-upb.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -37791,7 +37796,7 @@
       "name": "gz-common",
       "manifest": {
         "name": "gz-common",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Common libraries for robotics applications",
         "homepage": "https://gazebosim.org/libs/common/",
         "license": "Apache-2.0",
@@ -37833,6 +37838,7 @@
       },
       "files": [
         "003-include-chrono.patch",
+        "gdal-3.11.diff",
         "gz-utils3-log.diff",
         "gz_remotery_vis.patch",
         "portfile.cmake",
@@ -46426,11 +46432,13 @@
       "name": "libcamera",
       "manifest": {
         "name": "libcamera",
+        "port-version": 1,
         "description": "A complex camera support library for Linux, Android, and ChromeOS",
         "homepage": "https://git.libcamera.org/libcamera/libcamera.git/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
         "dependencies": [
+          "elfutils",
           "glib",
           "gstreamer",
           "libgnutls",
@@ -50874,6 +50882,7 @@
       "name": "libmypaint",
       "manifest": {
         "name": "libmypaint",
+        "port-version": 1,
         "description": "Brush library used by MyPaint",
         "homepage": "https://mypaint.org",
         "license": "ISC",
@@ -51060,13 +51069,9 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          {
-            "name": "wintoast",
-            "platform": "windows"
           }
         ],
-        "version": "2025.3.6"
+        "version": "2025.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -51908,7 +51913,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.46"
+        "version": "1.6.47"
       },
       "files": [
         "cmake.patch",
@@ -60221,7 +60226,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -64636,7 +64641,7 @@
             ]
           }
         },
-        "version": "20241226"
+        "version": "20250503"
       },
       "files": [
         "portfile.cmake",
@@ -71472,7 +71477,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 1,
+        "port-version": 2,
         "description": "osgEarth - 3D Maps for OpenSceneGraph / C++14",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
@@ -72698,9 +72703,11 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
+        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
+        "supports": "!(static & staticcrt)",
         "dependencies": [
           {
             "name": "curl",
@@ -72813,6 +72820,7 @@
         "dependencies.diff",
         "external-dimbuilder.diff",
         "find-library-suffix.diff",
+        "gdal-3.11.diff",
         "no-rpath.patch",
         "portfile.cmake",
         "usage",
@@ -93381,6 +93389,33 @@
       ]
     },
     {
+      "name": "unimail-cpp-sdk",
+      "manifest": {
+        "name": "unimail-cpp-sdk",
+        "description": "This is a cpp SDK for Unimail. Quickly integrate into your project.",
+        "homepage": "https://github.com/unimails/unimail-cpp-sdk",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "nlohmann-json",
+          "restclient-cpp",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "units",
       "manifest": {
         "name": "units",
@@ -93444,6 +93479,33 @@
       "files": [
         "portfile.cmake",
         "unixodbcConfig.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "unleash-client-cpp",
+      "manifest": {
+        "name": "unleash-client-cpp",
+        "description": "C++ client SDK for Unleash, an open-source feature flag management service.",
+        "homepage": "https://github.com/aruizs/unleash-client-cpp",
+        "license": "MIT",
+        "dependencies": [
+          "cpr",
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.0"
+      },
+      "files": [
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -96139,7 +96201,7 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -96876,6 +96938,27 @@
         "description": "A library for Study Group 14 of Working Group 21 (C++)",
         "homepage": "https://github.com/WG21-SG14/SG14",
         "version-date": "2019-08-13"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wiiuse",
+      "manifest": {
+        "name": "wiiuse",
+        "description": "WiiUse \"feature complete\" cross-platform Wii Remote access library",
+        "homepage": "https://github.com/wiiuse/wiiuse",
+        "license": "GPL-3.0-only",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.15.6"
       },
       "files": [
         "portfile.cmake",
