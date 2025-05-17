@@ -1,5 +1,5 @@
 {
-  "version": "9dd12f8d791f6fa4e396adbebc714d51cbee2143",
+  "version": "f26ec398c25c4980f33a50391f00a75f7ad62ef7",
   "ports": [
     {
       "name": "3fd",
@@ -1340,7 +1340,6 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
-        "port-version": 2,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
@@ -1367,7 +1366,7 @@
             "description": "Install non-standard files required for building Apache httpd"
           }
         },
-        "version": "1.7.5"
+        "version": "1.7.6"
       },
       "files": [
         "0100-add-host-tools-dir.diff",
@@ -27998,6 +27997,7 @@
       "name": "fastdds",
       "manifest": {
         "name": "fastdds",
+        "port-version": 1,
         "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
         "license": "Apache-2.0",
@@ -30422,7 +30422,6 @@
       "name": "foonathan-memory",
       "manifest": {
         "name": "foonathan-memory",
-        "port-version": 2,
         "description": "STL compatible C++ memory allocator library",
         "homepage": "https://foonathan.net/doc/memory/",
         "license": "Zlib",
@@ -30444,10 +30443,11 @@
             "description": "Build foonathan memory tool"
           }
         },
-        "version": "0.7.3"
+        "version": "0.7.4"
       },
       "files": [
-        "fix-foonathan-memory-include-install-dir.patch",
+        "config-debug.diff",
+        "config_impl.hpp",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -54278,7 +54278,7 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 11,
+        "port-version": 12,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
@@ -54329,10 +54329,6 @@
           "xnnpack"
         ],
         "default-features": [
-          {
-            "name": "cuda",
-            "platform": "windows & !x86"
-          },
           "opencv",
           "zstd"
         ],
@@ -64737,11 +64733,17 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Free software emulation of curses in System V Release 4.0, and more",
         "homepage": "https://invisible-island.net/ncurses/announce.html",
         "license": "MIT",
         "supports": "!windows | mingw",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          }
+        ],
         "version": "6.4"
       },
       "files": [
@@ -72479,10 +72481,9 @@
             "platform": "windows"
           }
         ],
-        "version": "24.9"
+        "version": "25.5"
       },
       "files": [
-        "0001-warn-STL4043-for-v23.09.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73727,7 +73728,6 @@
       "name": "plutosvg",
       "manifest": {
         "name": "plutosvg",
-        "port-version": 1,
         "description": "Tiny SVG rendering library in C",
         "homepage": "https://github.com/sammycage/plutosvg",
         "license": "MIT",
@@ -73746,14 +73746,16 @@
           "freetype": {
             "description": "Enable Freetype integration",
             "dependencies": [
-              "freetype"
+              {
+                "name": "freetype",
+                "default-features": false
+              }
             ]
           }
         },
-        "version": "0.0.6"
+        "version": "0.0.7"
       },
       "files": [
-        "fix-plutovg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73775,7 +73777,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -85332,8 +85334,9 @@
       "name": "sdl3-ttf",
       "manifest": {
         "name": "sdl3-ttf",
+        "port-version": 1,
         "description": "A library for rendering TrueType fonts with SDL",
-        "homepage": "https://www.libsdl.org/projects/SDL_ttf/",
+        "homepage": "https://github.com/libsdl-org/SDL_ttf",
         "license": "Zlib",
         "supports": "!uwp",
         "dependencies": [
@@ -85371,7 +85374,7 @@
         "version": "3.2.2"
       },
       "files": [
-        "fix-findplutosvg.patch",
+        "link-sdl3.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
