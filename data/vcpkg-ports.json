@@ -1,5 +1,5 @@
 {
-  "version": "f26ec398c25c4980f33a50391f00a75f7ad62ef7",
+  "version": "d9ccd77bb554e67137f3f754a2e2f11f4188c82c",
   "ports": [
     {
       "name": "3fd",
@@ -25631,7 +25631,7 @@
             ]
           }
         },
-        "version": "19.24.6"
+        "version": "19.24.9"
       },
       "files": [
         "find_blas.patch",
@@ -27997,7 +27997,7 @@
       "name": "fastdds",
       "manifest": {
         "name": "fastdds",
-        "port-version": 1,
+        "port-version": 2,
         "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
         "license": "Apache-2.0",
@@ -28006,6 +28006,7 @@
           "asio",
           "fastcdr",
           "foonathan-memory",
+          "nlohmann-json",
           "openssl",
           "tinyxml2",
           {
@@ -28021,7 +28022,7 @@
       },
       "files": [
         "disable-werror.patch",
-        "fix-find-package-asio.patch",
+        "fix-deps.patch",
         "include-cstdint.patch",
         "pdb-file.patch",
         "portfile.cmake",
@@ -33186,7 +33187,7 @@
             "host": true
           }
         ],
-        "version": "5.2.0"
+        "version": "5.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -36409,7 +36410,6 @@
       "name": "gst-rtsp-server",
       "manifest": {
         "name": "gst-rtsp-server",
-        "port-version": 2,
         "description": "gst-rtsp-server is a library on top of GStreamer for building an RTSP server",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.1-only",
@@ -36428,7 +36428,7 @@
             "host": true
           }
         ],
-        "version": "1.20.5"
+        "version": "1.26.1"
       },
       "files": [
         "portfile.cmake",
@@ -36439,7 +36439,6 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -37303,7 +37302,7 @@
             ]
           }
         },
-        "version": "1.24.12"
+        "version": "1.26.1"
       },
       "files": [
         "duplicate-unused.diff",
@@ -41798,7 +41797,7 @@
             ]
           }
         },
-        "version-semver": "11.4.5"
+        "version-semver": "11.4.6"
       },
       "files": [
         "portfile.cmake",
@@ -49384,7 +49383,6 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 2,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
         "license": null,
@@ -49468,7 +49466,7 @@
             ]
           }
         },
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "files": [
         "dependencies.patch",
@@ -50650,21 +50648,19 @@
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
+            "name": "vcpkg-make",
             "host": true
           }
         ],
-        "version": "3.1.10"
+        "version": "3.1.11"
       },
       "files": [
-        "CMakeLists.txt",
-        "config.h.cmake",
-        "fix-static-linkage.patch",
+        "cflags.diff",
+        "libmodbusConfig.cmake",
+        "library-linkage.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
+        "ssize_t.diff",
         "vcpkg.json"
       ]
     },
@@ -51139,7 +51135,7 @@
             "host": true
           }
         ],
-        "version": "2025.5.2"
+        "version": "2025.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -51883,7 +51879,6 @@
       "name": "libplist",
       "manifest": {
         "name": "libplist",
-        "port-version": 1,
         "description": "A library to handle Apple Property List format in binary or XML",
         "homepage": "https://libimobiledevice.org/",
         "license": "LGPL-2.1-or-later",
@@ -51903,13 +51898,10 @@
             "supports": "!android & !ios & !xbox"
           }
         },
-        "version-date": "2023-06-15"
+        "version": "2.7.0"
       },
       "files": [
         "001_fix_static_build.patch",
-        "002_fix_api.patch",
-        "003_fix_msvc.patch",
-        "004_fix_tools_msvc.patch",
         "CMakeLists.txt",
         "portfile.cmake",
         "usage",
@@ -52430,11 +52422,14 @@
       "name": "libqglviewer",
       "manifest": {
         "name": "libqglviewer",
-        "port-version": 3,
-        "description": "libQGLViewer is an open source C++ library based on Qt that eases the creation of OpenGL 3D viewers.",
-        "homepage": "http://libqglviewer.com/",
+        "port-version": 4,
+        "description": [
+          "libQGLViewer is an open source C++ library based on Qt that eases the creation of OpenGL 3D viewers.",
+          "Attention: Last upstream activity in December 2022."
+        ],
+        "homepage": "https://github.com/GillesDebunne/libQGLViewer",
         "license": "GPL-2.0-or-later",
-        "supports": "!xbox",
+        "supports": "!android & !xbox",
         "dependencies": [
           "opengl",
           {
@@ -60306,7 +60301,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -62452,7 +62447,7 @@
           "ensmallen",
           "stb"
         ],
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -69711,7 +69706,7 @@
       "name": "openh264",
       "manifest": {
         "name": "openh264",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.",
         "homepage": "https://www.openh264.org/",
         "license": "BSD-2-Clause",
@@ -69728,6 +69723,7 @@
         "version": "2.6.0"
       },
       "files": [
+        "add-openbsd-and-freebsd-to-meson.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -77062,7 +77058,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77098,7 +77094,6 @@
             "host": true,
             "default-features": false
           },
-          "sqlite3",
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
@@ -77142,6 +77137,12 @@
             "description": "Build the sql plugin for connecting to postgresql databases",
             "dependencies": [
               "libpq"
+            ]
+          },
+          "sqlite3plugin": {
+            "description": "Build the sql plugin for connecting to sqlite3 databases",
+            "dependencies": [
+              "sqlite3"
             ]
           },
           "vulkan": {
@@ -77834,6 +77835,7 @@
       "name": "qt5-tools",
       "manifest": {
         "name": "qt5-tools",
+        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "license": null,
         "dependencies": [
@@ -77843,7 +77845,10 @@
           },
           {
             "name": "qt5-base",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "sqlite3plugin"
+            ]
           },
           "qt5-declarative"
         ],
@@ -85262,7 +85267,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.12"
+        "version": "3.2.14"
       },
       "files": [
         "portfile.cmake",
