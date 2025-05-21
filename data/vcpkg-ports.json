@@ -1,11 +1,11 @@
 {
-  "version": "d9ccd77bb554e67137f3f754a2e2f11f4188c82c",
+  "version": "d43918b9143e24ffb56917daacd9126ad03014d6",
   "ports": [
     {
       "name": "3fd",
       "manifest": {
         "name": "3fd",
-        "port-version": 4,
+        "port-version": 5,
         "description": "C++ Framework For Fast Development",
         "supports": "windows & !static & !arm64",
         "dependencies": [
@@ -19,6 +19,11 @@
           },
           {
             "name": "poco",
+            "default-features": false,
+            "features": [
+              "data",
+              "odbc"
+            ],
             "platform": "windows"
           },
           "rapidxml",
@@ -6467,7 +6472,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.9.3"
+        "version-semver": "1.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -39404,7 +39409,6 @@
       "name": "hidapi",
       "manifest": {
         "name": "hidapi",
-        "port-version": 1,
         "description": "A Simple library for communicating with USB and Bluetooth HID devices on Linux, Mac and Windows.",
         "homepage": "https://github.com/libusb/hidapi",
         "license": "BSD-3-Clause-Clear",
@@ -39429,7 +39433,7 @@
             "supports": "windows"
           }
         },
-        "version-semver": "0.14.0"
+        "version-semver": "0.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -56347,7 +56351,6 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
-        "port-version": 2,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -56405,7 +56408,7 @@
             "description": "Build the utilities"
           }
         },
-        "version": "1.1.42"
+        "version": "1.1.43"
       },
       "files": [
         "fix-gcrypt-deps.patch",
@@ -58601,7 +58604,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.673"
+        "version": "0.674"
       },
       "files": [
         "cmake-config-export.patch",
@@ -73918,15 +73921,13 @@
       "name": "poco",
       "manifest": {
         "name": "poco",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Modern, powerful open source C++ class libraries for building network and internet-based applications that run on desktop, server, mobile and embedded systems.",
         "homepage": "https://github.com/pocoproject/poco",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
-          "expat",
           "pcre2",
-          "sqlite3",
           "utf8proc",
           {
             "name": "vcpkg-cmake",
@@ -73939,23 +73940,106 @@
           "zlib"
         ],
         "features": {
+          "activerecord": {
+            "description": "Simple and lightweight object-relational mapping (ORM) framework built on top of the POCO Data",
+            "dependencies": [
+              "expat",
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              }
+            ]
+          },
+          "activerecord-compiler": {
+            "description": "Compiler for Simple and lightweight object-relational mapping (ORM) framework built on top of the POCO Data",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "util",
+                  "xml"
+                ]
+              }
+            ]
+          },
+          "cpp-parser": {
+            "description": "POCO C++ parser"
+          },
           "crypto": {
             "description": "Crypto support",
             "dependencies": [
               "openssl"
             ]
           },
+          "data": {
+            "description": "Database abstraction layer for POCO"
+          },
+          "encodings": {
+            "description": "Encodings support for POCO"
+          },
+          "encodings-compiler": {
+            "description": "Compiler for encodings support for POCO"
+          },
+          "json": {
+            "description": "JSON support for POCO"
+          },
+          "jwt": {
+            "description": "JWT support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "crypto",
+                  "json"
+                ]
+              }
+            ]
+          },
           "mariadb": {
             "description": "MariaDB support for POCO",
             "dependencies": [
-              "libmariadb"
+              "libmariadb",
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              }
+            ]
+          },
+          "mongodb": {
+            "description": "MongoDB support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "net"
+                ]
+              }
             ]
           },
           "mysql": {
             "description": "Mysql support for POCO",
             "dependencies": [
-              "libmysql"
+              "libmysql",
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              }
             ]
+          },
+          "net": {
+            "description": "Network support for POCO"
           },
           "netssl": {
             "description": [
@@ -73967,7 +74051,54 @@
                 "name": "poco",
                 "default-features": false,
                 "features": [
-                  "crypto"
+                  "crypto",
+                  "net",
+                  "util"
+                ]
+              }
+            ]
+          },
+          "odbc": {
+            "description": "ODBC support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              },
+              {
+                "name": "unixodbc",
+                "platform": "osx | linux"
+              }
+            ],
+            "supports": "windows | osx | linux"
+          },
+          "pagecompiler": {
+            "description": "Command line tool that translates HTML files into C++ code",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "net",
+                  "util",
+                  "xml"
+                ]
+              }
+            ]
+          },
+          "pagecompiler-file2page": {
+            "description": "Command line tool that translates HTML files into C++ code",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "net",
+                  "util",
+                  "xml"
                 ]
               }
             ]
@@ -73975,14 +74106,107 @@
           "pdf": {
             "description": "Haru support for POCO",
             "dependencies": [
-              "libharu"
+              "libharu",
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "util",
+                  "xml"
+                ]
+              }
+            ]
+          },
+          "pocodoc": {
+            "description": "POCO documentation generator",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "cpp-parser",
+                  "data",
+                  "sqlite",
+                  "util",
+                  "xml"
+                ]
+              }
             ]
           },
           "postgresql": {
             "description": "PostgreSQL support for POCO",
             "dependencies": [
-              "libpqxx"
+              "libpqxx",
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              }
             ]
+          },
+          "prometheus": {
+            "description": "Prometheus support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "net"
+                ]
+              }
+            ]
+          },
+          "redis": {
+            "description": "Redis support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "net"
+                ]
+              }
+            ]
+          },
+          "sevenzip": {
+            "description": "Support for parsing and creating 7Zip files"
+          },
+          "sqlite": {
+            "description": "SQLite support for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "data"
+                ]
+              },
+              "sqlite3"
+            ]
+          },
+          "util": {
+            "description": "Utility support library for POCO",
+            "dependencies": [
+              {
+                "name": "poco",
+                "default-features": false,
+                "features": [
+                  "json",
+                  "xml"
+                ]
+              }
+            ]
+          },
+          "xml": {
+            "description": "XML support for POCO",
+            "dependencies": [
+              "expat"
+            ]
+          },
+          "zip": {
+            "description": "Support for parsing and creating Zip files"
           }
         },
         "version": "1.14.1"
@@ -73995,6 +74219,7 @@
         "0005-fix-error-c3861.patch",
         "0007-find-pcre2.patch",
         "0008-fix-mingw-compilation.patch",
+        "0009-fix-zip-to-xml-dependency.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
