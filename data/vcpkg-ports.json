@@ -1,5 +1,5 @@
 {
-  "version": "d43918b9143e24ffb56917daacd9126ad03014d6",
+  "version": "4091a2e994992b7d68ea8794bf8dca4084c2b665",
   "ports": [
     {
       "name": "3fd",
@@ -52233,8 +52233,11 @@
       "name": "libpqxx",
       "manifest": {
         "name": "libpqxx",
-        "description": "The official C++ client API for PostgreSQL",
-        "homepage": "https://www.postgresql.org/",
+        "description": [
+          "The official* C++ client API for PostgreSQL.",
+          "*) NB https://pqxx.org/libpqxx/faq/"
+        ],
+        "homepage": "https://pqxx.org/libpqxx/",
         "license": "BSD-3-Clause",
         "dependencies": [
           {
@@ -52250,12 +52253,11 @@
             "host": true
           }
         ],
-        "version": "7.10.0"
+        "version": "7.10.1"
       },
       "files": [
-        "config-internal-compiler.h.in",
-        "config-public-compiler.h.in",
         "fix_build_with_vs2017.patch",
+        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -80710,6 +80712,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80862,6 +80865,7 @@
         "blink-include-fixes.patch",
         "clang-cl.patch",
         "fix-error2275-2672.patch",
+        "nested-name-fix.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
