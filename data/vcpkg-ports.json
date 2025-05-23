@@ -1,5 +1,5 @@
 {
-  "version": "4091a2e994992b7d68ea8794bf8dca4084c2b665",
+  "version": "294f76666c3000630d828703e675814c05a4fd43",
   "ports": [
     {
       "name": "3fd",
@@ -18270,7 +18270,7 @@
           },
           "wangle"
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "fix-build.patch",
@@ -23096,7 +23096,7 @@
             "host": true
           }
         ],
-        "version": "3.9.0"
+        "version": "3.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -28261,7 +28261,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "fix-deps.patch",
@@ -29333,7 +29333,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "fix-build.patch",
@@ -30273,7 +30273,7 @@
             ]
           }
         },
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
@@ -31010,7 +31010,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.18.1"
+        "version-semver": "0.18.2"
       },
       "files": [
         "portfile.cmake",
@@ -33363,7 +33363,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.83.4"
+        "version": "2.84.1"
       },
       "files": [
         "libintl.patch",
@@ -55207,7 +55207,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -56014,7 +56014,6 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 2,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -56072,7 +56071,7 @@
             ]
           }
         },
-        "version": "2.13.5"
+        "version": "2.13.8"
       },
       "files": [
         "disable-docs.patch",
@@ -58720,7 +58719,6 @@
       "name": "lunasvg",
       "manifest": {
         "name": "lunasvg",
-        "port-version": 1,
         "description": "lunasvg is a standalone SVG rendering library in C++",
         "homepage": "https://github.com/sammycage/lunasvg",
         "license": "MIT",
@@ -58735,10 +58733,9 @@
             "host": true
           }
         ],
-        "version": "3.2.1"
+        "version": "3.3.0"
       },
       "files": [
-        "fix-plutovg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62793,7 +62790,7 @@
             ]
           }
         },
-        "version": "7.17"
+        "version": "7.18"
       },
       "files": [
         "CMakeLists.txt",
@@ -64024,7 +64021,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "portfile.cmake",
@@ -75420,7 +75417,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -78583,7 +78580,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78613,7 +78610,8 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "cups"
+              "cups",
+              "thread"
             ],
             "platform": "osx"
           },
@@ -78621,9 +78619,10 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
+              "concurrent",
               "thread"
             ],
-            "platform": "osx"
+            "platform": "android"
           },
           {
             "name": "qtbase",
@@ -78652,7 +78651,7 @@
           "concurrent",
           {
             "name": "dbus",
-            "platform": "!(static & windows)"
+            "platform": "!(static & windows) & !android"
           },
           "dnslookup",
           "doubleconversion",
@@ -78793,7 +78792,7 @@
             "dependencies": [
               "egl"
             ],
-            "supports": "linux"
+            "supports": "android | linux"
           },
           "fontconfig": {
             "description": "Use fontconfig",
@@ -78803,10 +78802,12 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
+                  "freetype",
                   "gui"
                 ]
               }
-            ]
+            ],
+            "supports": "!osx & !windows"
           },
           "framework": {
             "description": "MAC framework build",
@@ -78888,6 +78889,16 @@
                   "opengl"
                 ],
                 "platform": "osx"
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "egl",
+                  "gles2",
+                  "opengl"
+                ],
+                "platform": "android"
               },
               {
                 "name": "qtbase",
@@ -82933,7 +82944,7 @@
             "host": true
           }
         ],
-        "version": "4.3.1"
+        "version": "4.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -87035,7 +87046,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.0.0"
+        "version-semver": "7.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -89070,7 +89081,6 @@
       "name": "sqlpp11",
       "manifest": {
         "name": "sqlpp11",
-        "port-version": 3,
         "description": "A type safe embedded domain specific language for SQL queries and results in C++.",
         "homepage": "https://github.com/rbock/sqlpp11",
         "license": "BSD-2-Clause",
@@ -89111,7 +89121,7 @@
             ]
           }
         },
-        "version": "0.64"
+        "version": "0.65"
       },
       "files": [
         "ddl2cpp_path.patch",
@@ -94959,8 +94969,7 @@
       "name": "vcpkg-qmake",
       "manifest": {
         "name": "vcpkg-qmake",
-        "port-version": 3,
-        "documentation": "https://vcpkg.io/en/docs/README.html",
+        "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_qmake_configure",
         "license": "MIT",
         "supports": "native",
         "dependencies": [
@@ -94974,7 +94983,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-03-22"
+        "version-date": "2025-05-19"
       },
       "files": [
         "portfile.cmake",
@@ -96894,7 +96903,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.12.00"
+        "version-string": "2025.05.19.00"
       },
       "files": [
         "fix-config-cmake.patch",
@@ -97612,7 +97621,7 @@
           },
           "wolfssl"
         ],
-        "version": "1.19.0"
+        "version": "1.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -97684,7 +97693,7 @@
           },
           "wolfssl"
         ],
-        "version": "3.8.0"
+        "version": "3.9.1"
       },
       "files": [
         "portfile.cmake",
