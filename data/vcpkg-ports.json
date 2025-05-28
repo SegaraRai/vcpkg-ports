@@ -1,5 +1,5 @@
 {
-  "version": "8f54ef5453e7e76ff01e15988bf243e7247c5eb5",
+  "version": "46a8b3026c637b91b6e5442e37275eed79449150",
   "ports": [
     {
       "name": "3fd",
@@ -19730,6 +19730,25 @@
       ]
     },
     {
+      "name": "cinatra",
+      "manifest": {
+        "name": "cinatra",
+        "description": "Cinatra is a high performance HTTP framework with modern C++ features.",
+        "homepage": "https://github.com/qicosmos/cinatra",
+        "license": "MIT",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          "asio",
+          "tanakh-cmdline"
+        ],
+        "version": "0.9.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cista",
       "manifest": {
         "name": "cista",
@@ -24328,7 +24347,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -24777,7 +24796,7 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -27448,7 +27467,7 @@
             "host": true
           }
         ],
-        "version": "20.40.0"
+        "version": "20.41.0"
       },
       "files": [
         "portfile.cmake",
@@ -32657,7 +32676,7 @@
       "name": "giflib",
       "manifest": {
         "name": "giflib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing gif images.",
         "homepage": "https://sourceforge.net/projects/giflib/",
         "license": "MIT",
@@ -36369,8 +36388,10 @@
       "name": "gsl-lite",
       "manifest": {
         "name": "gsl-lite",
-        "description": "A single-file header-only implementation of ISO C++ Guidelines Support Library (GSL) for C++98, C++11 and later.",
+        "description": "ISO C++ Core Guidelines Library implementation for C++98, C++11 up",
         "homepage": "https://github.com/gsl-lite/gsl-lite/",
+        "documentation": "https://gsl-lite.github.io/gsl-lite/",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -36381,10 +36402,11 @@
             "host": true
           }
         ],
-        "version": "0.43.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -43150,7 +43172,7 @@
             "description": "Pretty printer support for kerbal"
           }
         },
-        "version": "2024.11.1"
+        "version": "2025.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -52014,7 +52036,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -52116,15 +52138,14 @@
           "nls": {
             "description": "Native Language Support",
             "dependencies": [
-              "gettext",
               {
                 "name": "gettext",
                 "host": true,
                 "features": [
                   "tools"
-                ],
-                "platform": "!windows, mingw"
-              }
+                ]
+              },
+              "gettext-libintl"
             ],
             "supports": "!osx"
           },
@@ -54784,7 +54805,6 @@
       "name": "libunwind",
       "manifest": {
         "name": "libunwind",
-        "port-version": 3,
         "description": "Unix libray for portable stack unwinding",
         "homepage": "https://www.nongnu.org/libunwind",
         "license": "MIT",
@@ -54792,7 +54812,7 @@
         "dependencies": [
           "liblzma"
         ],
-        "version": "1.8.1"
+        "version": "1.8.2"
       },
       "files": [
         "liblzma.diff",
@@ -65250,7 +65270,7 @@
             "host": true
           }
         ],
-        "version": "1.9.0"
+        "version": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -65342,7 +65362,7 @@
             ]
           }
         },
-        "version": "1.12.0"
+        "version": "1.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -67520,7 +67540,7 @@
             "host": true
           }
         ],
-        "version": "0.18.0"
+        "version": "0.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -81130,7 +81150,7 @@
             "host": true
           }
         ],
-        "version": "9.0.2"
+        "version": "9.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -88614,6 +88634,31 @@
       ]
     },
     {
+      "name": "spimpl",
+      "manifest": {
+        "name": "spimpl",
+        "description": "A single-header C++ library for PIMPLs without having to implement any special member functions.",
+        "homepage": "https://github.com/oliora/samples",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2025-01-23"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-spimpl-config.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "spine-runtimes",
       "manifest": {
         "name": "spine-runtimes",
@@ -90903,6 +90948,20 @@
       ]
     },
     {
+      "name": "tanakh-cmdline",
+      "manifest": {
+        "name": "tanakh-cmdline",
+        "description": "A simple, header-only command line parser for C++.",
+        "homepage": "https://github.com/tanakh/cmdline",
+        "license": "BSD-3-Clause",
+        "version-date": "2014-02-04"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "taocpp-json",
       "manifest": {
         "name": "taocpp-json",
@@ -91156,17 +91215,19 @@
       "name": "telnetpp",
       "manifest": {
         "name": "telnetpp",
-        "description": "Telnet++ is an implementation of the Telnet Session Layer protocol using C++17",
+        "description": "A C++ library for interacting with Telnet streams",
         "homepage": "https://github.com/KazDragon/telnetpp",
+        "documentation": "https://kazdragon.github.io/telnetpp/",
+        "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
           "boost-algorithm",
           "boost-container",
           "boost-exception",
           "boost-range",
+          "boost-scope-exit",
           "boost-signals2",
           "boost-variant",
-          "gsl-lite",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91187,7 +91248,7 @@
             ]
           }
         },
-        "version": "3.1.0"
+        "version": "4.0.0"
       },
       "files": [
         "fix-install-paths-v3.patch",
@@ -91642,7 +91703,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.15.12"
+        "version": "0.15.13"
       },
       "files": [
         "portfile.cmake",
@@ -92153,7 +92214,7 @@
           "nlohmann-json",
           "stb"
         ],
-        "version": "2.9.4"
+        "version": "2.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -93103,7 +93164,7 @@
             "host": true
           }
         ],
-        "version": "0.23.5"
+        "version": "0.24.1"
       },
       "files": [
         "pkgconfig.diff",
