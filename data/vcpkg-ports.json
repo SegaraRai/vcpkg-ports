@@ -1,5 +1,5 @@
 {
-  "version": "46a8b3026c637b91b6e5442e37275eed79449150",
+  "version": "3425f537d2f01c761d2d2cff59a7577eb4f568c0",
   "ports": [
     {
       "name": "3fd",
@@ -7101,6 +7101,32 @@
           }
         },
         "version-date": "2025-03-08"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "blickfeld-qb2",
+      "manifest": {
+        "name": "blickfeld-qb2",
+        "description": "Client library to communicate securely with Qb2 LiDAR devices of Blickfeld GmbH.",
+        "homepage": "https://github.com/Blickfeld/blickfeld-qb2",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "grpc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -18310,7 +18336,7 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -18361,6 +18387,15 @@
           },
           "x11": {
             "description": "Build with X11 support",
+            "dependencies": [
+              {
+                "name": "cairo",
+                "default-features": false,
+                "features": [
+                  "fontconfig"
+                ]
+              }
+            ],
             "supports": "!windows"
           }
         },
@@ -23749,7 +23784,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.2.1"
+        "version-semver": "3.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -33211,7 +33246,7 @@
             "host": true
           }
         ],
-        "version": "5.2.1"
+        "version": "5.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -33382,7 +33417,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.84.1"
+        "version": "2.84.2"
       },
       "files": [
         "libintl.patch",
@@ -41287,6 +41322,30 @@
       ]
     },
     {
+      "name": "intx",
+      "manifest": {
+        "name": "intx",
+        "description": "Extended precision integer C++ library ",
+        "homepage": "https://github.com/chfast/intx",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.13.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "io2d",
       "manifest": {
         "name": "io2d",
@@ -46314,12 +46373,11 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.0.2"
       },
       "files": [
         "cross-tools.patch",
         "portfile.cmake",
-        "upstream-69069bc.diff",
         "vcpkg.json"
       ]
     },
@@ -62468,7 +62526,7 @@
           "ensmallen",
           "stb"
         ],
-        "version": "4.6.1"
+        "version": "4.6.2"
       },
       "files": [
         "portfile.cmake",
@@ -67159,30 +67217,17 @@
       "name": "ompl",
       "manifest": {
         "name": "ompl",
-        "port-version": 4,
         "description": "The Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms",
         "homepage": "https://ompl.kavrakilab.org/",
         "supports": "!(static & staticcrt) | (windows & !mingw)",
         "dependencies": [
-          "boost-algorithm",
-          "boost-assert",
-          "boost-concept-check",
-          "boost-config",
-          "boost-container-hash",
-          "boost-dynamic-bitset",
           "boost-filesystem",
-          "boost-foreach",
           "boost-graph",
           "boost-math",
           "boost-odeint",
           "boost-program-options",
-          "boost-property-map",
-          "boost-range",
           "boost-serialization",
-          "boost-smart-ptr",
           "boost-system",
-          "boost-thread",
-          "boost-type-traits",
           "eigen3",
           {
             "name": "vcpkg-cmake",
@@ -67193,13 +67238,10 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
-        "0001_Export_targets.patch",
-        "0002_Fix_config.patch",
-        "0003_disable-pkgconfig.patch",
-        "0004_include_chrono.patch",
+        "0001-disable-pkgconfig.patch",
         "FindPython.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -67240,14 +67282,11 @@
             ]
           }
         },
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
-        "boost-program-options.diff",
-        "export-targets.diff",
-        "omplapp-dependencies.cmake",
+        "0001-use-external-libs.patch",
         "portfile.cmake",
-        "reuse-ompl.diff",
         "vcpkg.json"
       ]
     },
@@ -89112,7 +89151,7 @@
             "description": "Deprecated; no effects"
           }
         },
-        "version": "3.3.2"
+        "version": "3.3.3"
       },
       "files": [
         "add_runtime_destination.patch",
@@ -91413,7 +91452,6 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
-        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -91452,7 +91490,7 @@
             ]
           }
         },
-        "version": "5.5.0"
+        "version": "5.5.1"
       },
       "files": [
         "fix-link-include-path.patch",
@@ -92406,6 +92444,31 @@
           }
         ],
         "version": "2.3.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tinyproto",
+      "manifest": {
+        "name": "tinyproto",
+        "description": "Tiny Software Protocol for communication over UART, SPI, etc",
+        "homepage": "https://github.com/lexus2k/tinyproto",
+        "license": "GPL-3.0-or-later",
+        "supports": "!osx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0-dc7a6c2"
       },
       "files": [
         "portfile.cmake",
