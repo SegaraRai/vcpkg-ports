@@ -1,5 +1,5 @@
 {
-  "version": "3425f537d2f01c761d2d2cff59a7577eb4f568c0",
+  "version": "a9eee3b18df395dbb8be71a31bd78ea441056e42",
   "ports": [
     {
       "name": "3fd",
@@ -18336,7 +18336,6 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
-        "port-version": 2,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -18399,11 +18398,9 @@
             "supports": "!windows"
           }
         },
-        "version": "1.18.2"
+        "version": "1.18.4"
       },
       "files": [
-        "cairo_add_lzo_feature_option.patch",
-        "dw-extra.patch",
         "fix_clang-cl_build.patch",
         "msvc-convenience.diff",
         "portfile.cmake",
@@ -23303,7 +23300,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23553,19 +23549,6 @@
               }
             ]
           },
-          "winssl": {
-            "description": "Legacy name for schannel",
-            "dependencies": [
-              {
-                "name": "curl",
-                "default-features": false,
-                "features": [
-                  "schannel"
-                ]
-              }
-            ],
-            "supports": "windows & !uwp"
-          },
           "wolfssl": {
             "description": "SSL support (wolfSSL)",
             "dependencies": [
@@ -23579,13 +23562,11 @@
             ]
           }
         },
-        "version": "8.13.0"
+        "version": "8.14.0"
       },
       "files": [
-        "cmake-config.patch",
         "cmake-project-include.cmake",
         "dependencies.patch",
-        "export-components.patch",
         "pkgconfig-curl-config.patch",
         "portfile.cmake",
         "usage",
@@ -52094,7 +52075,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -52282,7 +52262,7 @@
             ]
           }
         },
-        "version": "16.4"
+        "version": "16.9"
       },
       "files": [
         "Makefile",
@@ -52292,7 +52272,6 @@
         "portfile.cmake",
         "unix/fix-configure.patch",
         "unix/installdirs.patch",
-        "unix/mac-15.4.patch",
         "unix/mingw-install.patch",
         "unix/no-server-tools.patch",
         "unix/python.patch",
@@ -52304,6 +52283,7 @@
         "windows/macro-def.patch",
         "windows/msbuild.patch",
         "windows/spin_delay.patch",
+        "windows/tcl-9.0-alpha.patch",
         "windows/win_bison_flex.patch"
       ]
     },
@@ -92468,7 +92448,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0-dc7a6c2"
+        "version-date": "2025-05-26"
       },
       "files": [
         "portfile.cmake",
@@ -97398,6 +97378,32 @@
         "version-date": "2019-08-13"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "whisper-cpp",
+      "manifest": {
+        "name": "whisper-cpp",
+        "description": "Port of OpenAI's Whisper model in C/C++",
+        "homepage": "https://github.com/ggml-org/whisper.cpp",
+        "license": "MIT",
+        "dependencies": [
+          "ggml",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.7.5"
+      },
+      "files": [
+        "0001-ggml-alias.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
