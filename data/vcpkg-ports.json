@@ -1,5 +1,5 @@
 {
-  "version": "a9eee3b18df395dbb8be71a31bd78ea441056e42",
+  "version": "654410ee8e11f0610c11a4a49a8827a84be5e187",
   "ports": [
     {
       "name": "3fd",
@@ -1865,7 +1865,7 @@
             "host": true
           }
         ],
-        "version-string": "3.2.2.f25c624"
+        "version-string": "3.3.0.116da6c"
       },
       "files": [
         "Fix-dependence-getopt.patch",
@@ -19357,8 +19357,9 @@
       "name": "cgns",
       "manifest": {
         "name": "cgns",
+        "port-version": 1,
         "description": "The CFD General Notation System (CGNS) provides a standard for recording and recovering computer data associated with the numerical solution of fluid dynamics equations.",
-        "homepage": "http://cgns.org/",
+        "homepage": "https://cgns.org/",
         "license": "Zlib",
         "dependencies": [
           {
@@ -19686,8 +19687,9 @@
       "name": "chronoengine",
       "manifest": {
         "name": "chronoengine",
+        "port-version": 1,
         "description": "Multi-physics Simulation Engine.",
-        "homepage": "http://projectchrono.org/",
+        "homepage": "https://projectchrono.org/",
         "license": "BSD-3-Clause",
         "supports": "(windows & x64 & !static & !uwp) | linux | osx",
         "dependencies": [
@@ -27483,7 +27485,7 @@
             "host": true
           }
         ],
-        "version": "20.41.0"
+        "version": "20.41.2"
       },
       "files": [
         "portfile.cmake",
@@ -27959,7 +27961,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -41742,9 +41744,9 @@
       "name": "itpp",
       "manifest": {
         "name": "itpp",
-        "port-version": 12,
+        "port-version": 13,
         "description": "IT++ is a C++ library of mathematical, signal processing and communication classes and functions. Its main use is in simulation of communication systems and for performing research in the area of communications.",
-        "homepage": "http://itpp.sourceforge.net",
+        "homepage": "https://itpp.sourceforge.net",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -50256,9 +50258,9 @@
       "name": "libmad",
       "manifest": {
         "name": "libmad",
-        "port-version": 3,
+        "port-version": 4,
         "description": "high-quality MPEG audio decoder",
-        "homepage": "http://codeberg.org/tenacityteam/libmad",
+        "homepage": "https://codeberg.org/tenacityteam/libmad",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -51491,9 +51493,9 @@
       "name": "libopensp",
       "manifest": {
         "name": "libopensp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "SGML parser algorithm",
-        "homepage": "http://openjade.sourceforge.net",
+        "homepage": "https://openjade.sourceforge.net",
         "license": "MIT",
         "dependencies": [
           {
@@ -51749,10 +51751,10 @@
       "name": "libosmscout",
       "manifest": {
         "name": "libosmscout",
-        "port-version": 5,
+        "port-version": 6,
         "description": "libosmscout offers applications simple, high-level interfaces for offline location and POI lokup, rendering and routing functionalities based on OpenStreetMap (OSM) data.",
-        "homepage": "http://libosmscout.sourceforge.net/",
-        "documentation": "http://libosmscout.sourceforge.net/documentation/",
+        "homepage": "https://libosmscout.sourceforge.net/",
+        "documentation": "https://libosmscout.sourceforge.net/documentation/",
         "supports": "!uwp & !arm & !arm64 & !static & !wasm32 & !emscripten",
         "dependencies": [
           "libiconv",
@@ -58662,7 +58664,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.674"
+        "version": "0.675"
       },
       "files": [
         "cmake-config-export.patch",
@@ -63200,8 +63202,9 @@
       "name": "mpc",
       "manifest": {
         "name": "mpc",
+        "port-version": 1,
         "description": "GNU MPC is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
-        "homepage": "http://www.multiprecision.org/mpc/",
+        "homepage": "https://www.multiprecision.org/mpc/",
         "dependencies": [
           "gmp",
           "mpfr"
@@ -67945,9 +67948,9 @@
       "name": "openctm",
       "manifest": {
         "name": "openctm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenCTM — the Open Compressed Triangle Mesh file format — is a file format, a software library and a tool set for compression of 3D triangle meshes.",
-        "homepage": "http://openctm.sourceforge.net/",
+        "homepage": "https://openctm.sourceforge.net/",
         "license": "Zlib",
         "dependencies": [
           "7zip",
@@ -69991,25 +69994,33 @@
       "name": "openldap",
       "manifest": {
         "name": "openldap",
-        "description": "OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol. When using the cyrus-sasl feature on Linux, you need to install the libsasl2-dev development package.",
+        "description": "OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.",
         "homepage": "https://www.openldap.org/software/",
         "license": "OLDAP-2.8",
         "supports": "!windows, (mingw & !x86)",
         "dependencies": [
-          "openssl"
+          "openssl",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "features": {
           "cyrus-sasl": {
-            "description": "with Cyrus SASL support"
+            "description": "Enable Cyrus SASL support",
+            "dependencies": [
+              "cyrus-sasl"
+            ]
           },
           "tools": {
             "description": "Enable client tools"
           }
         },
-        "version": "2.5.18"
+        "version": "2.6.10"
       },
       "files": [
-        "m4.patch",
+        "android.diff",
+        "cyrus-sasl.diff",
         "openssl.patch",
         "portfile.cmake",
         "subdirs.patch",
@@ -71677,8 +71688,9 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
+        "port-version": 1,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
-        "homepage": "http://otl.sourceforge.net/",
+        "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
         "version": "4.0.481"
       },
@@ -74744,9 +74756,9 @@
       "name": "portaudio",
       "manifest": {
         "name": "portaudio",
-        "port-version": 6,
+        "port-version": 7,
         "description": "PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.",
-        "homepage": "http://www.portaudio.com",
+        "homepage": "https://www.portaudio.com",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
@@ -81500,7 +81512,7 @@
         "description": "Very fast, high quality, platform independent hashing algorithm.",
         "homepage": "https://github.com/Nicoshev/rapidhash",
         "license": "BSD-2-Clause",
-        "version": "2.2"
+        "version": "3"
       },
       "files": [
         "portfile.cmake",
@@ -86348,6 +86360,26 @@
       ]
     },
     {
+      "name": "sfl",
+      "manifest": {
+        "name": "sfl",
+        "description": "header-only C++11 library that offers several new or less-known containers",
+        "homepage": "https://github.com/slavenf/sfl-library",
+        "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.9.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sfml",
       "manifest": {
         "name": "sfml",
@@ -87084,7 +87116,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.1.0"
+        "version-semver": "7.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -91733,9 +91765,9 @@
       "name": "threadpool",
       "manifest": {
         "name": "threadpool",
-        "port-version": 3,
+        "port-version": 4,
         "description": "threadpool is a cross-platform C++ thread pool library. It provides a convenient way for dispatching asynchronous tasks and can be easily customized. threadpool is based on the high-quality Boost source libraries.",
-        "homepage": "http://threadpool.sourceforge.net/",
+        "homepage": "https://threadpool.sourceforge.net/",
         "dependencies": [
           "boost-thread"
         ],
@@ -99402,7 +99434,6 @@
       "name": "yara",
       "manifest": {
         "name": "yara",
-        "port-version": 1,
         "description": "The pattern matching swiss knife",
         "homepage": "https://github.com/VirusTotal/yara",
         "license": "BSD-3-Clause",
@@ -99429,7 +99460,7 @@
             "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
           }
         },
-        "version": "4.5.2"
+        "version": "4.5.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -100003,8 +100034,9 @@
       "name": "zimpl",
       "manifest": {
         "name": "zimpl",
+        "port-version": 1,
         "description": "Zuse Institut Mathematical Programming Language",
-        "homepage": "http://zimpl.zib.de/",
+        "homepage": "https://zimpl.zib.de/",
         "license": "LGPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
