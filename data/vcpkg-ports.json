@@ -1,5 +1,5 @@
 {
-  "version": "181f538ff191c5e936278018152ae658c457a23c",
+  "version": "3421943bfdef53a1d16404e98b5b487112c59df2",
   "ports": [
     {
       "name": "3fd",
@@ -1848,14 +1848,11 @@
       "name": "argtable3",
       "manifest": {
         "name": "argtable3",
+        "port-version": 1,
         "description": "A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options",
         "homepage": "https://www.argtable.org/",
-        "license": "BSD-2-Clause-NetBSD AND TCL",
+        "license": "BSD-3-Clause AND TCL",
         "dependencies": [
-          {
-            "name": "getopt",
-            "platform": "windows & !mingw"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -1868,7 +1865,6 @@
         "version-string": "3.3.0.116da6c"
       },
       "files": [
-        "Fix-dependence-getopt.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -2558,7 +2554,7 @@
           },
           "zlib"
         ],
-        "version": "5.4.3"
+        "version": "6.0.1"
       },
       "files": [
         "build_fixes.patch",
@@ -23754,7 +23750,8 @@
       "name": "cxxopts",
       "manifest": {
         "name": "cxxopts",
-        "description": "This is a lightweight C++ option parser library, supporting the standard GNU style syntax for options",
+        "port-version": 1,
+        "description": "A lightweight C++ option parser library, supporting the standard GNU style syntax for options",
         "homepage": "https://github.com/jarro2783/cxxopts",
         "license": "MIT",
         "dependencies": [
@@ -24326,10 +24323,10 @@
             "dependencies": [
               "curl"
             ],
-            "supports": "!uwp"
+            "supports": "!uwp & !android"
           }
         },
-        "version": "3.0.3"
+        "version": "3.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -25672,7 +25669,7 @@
             ]
           }
         },
-        "version": "19.24.9"
+        "version": "20.0"
       },
       "files": [
         "find_blas.patch",
@@ -28009,7 +28006,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.2.6"
+        "version-semver": "2.3.0"
       },
       "files": [
         "pdb-file.patch",
@@ -30442,7 +30439,6 @@
         "description": "C++ parsing DSL",
         "homepage": "https://github.com/foonathan/lexy",
         "license": "BSL-1.0",
-        "supports": "x64 | arm64",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -30453,7 +30449,7 @@
             "host": true
           }
         ],
-        "version": "2022.12.1"
+        "version": "2025.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -32595,9 +32591,8 @@
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
-        "supports": "!(windows & arm) & !uwp & !android",
+        "supports": "!(windows & arm) & !uwp",
         "dependencies": [
-          "blas",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -32608,11 +32603,19 @@
           }
         ],
         "features": {
+          "blas": {
+            "description": "Enable BLAS support",
+            "dependencies": [
+              "blas",
+              "cblas"
+            ]
+          },
           "cuda": {
             "description": "Enable CUDA support",
             "dependencies": [
               "cuda"
-            ]
+            ],
+            "supports": "!(windows & staticcrt)"
           },
           "metal": {
             "description": "Enable Metal support",
@@ -32622,7 +32625,8 @@
             "description": "Enable OpenCL support",
             "dependencies": [
               "opencl"
-            ]
+            ],
+            "supports": "!arm32"
           },
           "openmp": {
             "description": "Enable OpenMP support",
@@ -32631,17 +32635,30 @@
           "vulkan": {
             "description": "Enable Vulkan support",
             "dependencies": [
-              "vulkan-sdk-components"
-            ],
-            "supports": "!x86"
+              {
+                "name": "ggml",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "vulkan"
+                ]
+              },
+              {
+                "name": "shaderc",
+                "host": true
+              },
+              "vulkan"
+            ]
           }
         },
-        "version-date": "2025-02-12"
+        "version-date": "2025-05-13"
       },
       "files": [
-        "0001-fix-cmakelists.patch",
+        "cmake-config.diff",
         "portfile.cmake",
-        "vcpkg.json"
+        "relax-link-options.diff",
+        "vcpkg.json",
+        "vulkan-shaders-gen.diff"
       ]
     },
     {
@@ -33228,7 +33245,7 @@
             "host": true
           }
         ],
-        "version": "5.3.0"
+        "version": "5.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -39436,7 +39453,7 @@
             "host": true
           }
         ],
-        "version": "2.7.0"
+        "version": "2.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -54231,7 +54248,6 @@
       "name": "libtheora",
       "manifest": {
         "name": "libtheora",
-        "port-version": 8,
         "description": "Theora is a free and open video compression format from the Xiph.org Foundation.",
         "homepage": "https://github.com/xiph/theora",
         "license": null,
@@ -54246,10 +54262,9 @@
             "host": true
           }
         ],
-        "version-string": "1.2.0alpha1-20170719"
+        "version": "1.2.0"
       },
       "files": [
-        "0001-fix-uwp.patch",
         "CMakeLists.txt",
         "libtheora.def",
         "portfile.cmake",
@@ -57201,10 +57216,10 @@
       "name": "llama-cpp",
       "manifest": {
         "name": "llama-cpp",
+        "port-version": 1,
         "description": "LLM inference in C/C++",
         "homepage": "https://github.com/ggml-org/llama.cpp",
         "license": "MIT",
-        "supports": "!android",
         "dependencies": [
           "ggml",
           {
@@ -65310,7 +65325,7 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -65610,7 +65625,7 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version-semver": "1.10.1"
+        "version": "1.11"
       },
       "files": [
         "portfile.cmake",
@@ -66632,7 +66647,7 @@
             "platform": "windows"
           }
         ],
-        "version": "4.7.7"
+        "version": "4.8.0"
       },
       "files": [
         "fix-DisableWC4191.patch",
@@ -73536,7 +73551,7 @@
         "name": "plf-colony",
         "description": "An unordered C++ data container providing fast iteration/insertion/erasure while maintaining pointer/iterator validity to non-erased elements regardless of insertions/erasures.",
         "homepage": "https://plflib.org/colony.htm",
-        "version": "7.41"
+        "version": "7.5.25"
       },
       "files": [
         "portfile.cmake",
@@ -75091,7 +75106,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.6.0"
+        "version": "9.6.1"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -82977,6 +82992,26 @@
       ]
     },
     {
+      "name": "rnnoise",
+      "manifest": {
+        "name": "rnnoise",
+        "description": "Recurrent neural network for audio noise reduction",
+        "license": "BSD-3-Clause AND CC0-1.0",
+        "supports": "!windows & !arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "roaring",
       "manifest": {
         "name": "roaring",
@@ -82993,7 +83028,7 @@
             "host": true
           }
         ],
-        "version": "4.3.2"
+        "version": "4.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -93211,7 +93246,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.25.4"
+        "version-semver": "0.25.5"
       },
       "files": [
         "pkgconfig.diff",
@@ -97417,6 +97452,7 @@
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
+        "port-version": 1,
         "description": "Port of OpenAI's Whisper model in C/C++",
         "homepage": "https://github.com/ggml-org/whisper.cpp",
         "license": "MIT",
@@ -97434,7 +97470,6 @@
         "version": "1.7.5"
       },
       "files": [
-        "0001-ggml-alias.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -100705,13 +100740,12 @@
           },
           "zlib"
         ],
-        "version": "0.13.79"
+        "version": "0.13.80"
       },
       "files": [
         "cmake-project-include.cmake",
         "no-release-postfix.patch",
         "portfile.cmake",
-        "revert-pkgconfig-path.patch",
         "vcpkg.json"
       ]
     }
