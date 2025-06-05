@@ -1,5 +1,5 @@
 {
-  "version": "3421943bfdef53a1d16404e98b5b487112c59df2",
+  "version": "bfed87b1938fbd406b9eef28c281b6219c889ae1",
   "ports": [
     {
       "name": "3fd",
@@ -18432,7 +18432,6 @@
       "name": "calceph",
       "manifest": {
         "name": "calceph",
-        "port-version": 1,
         "description": "C library to access the binary planetary ephemeris files.",
         "homepage": "https://www.imcce.fr/inpop/calceph/",
         "documentation": "https://calceph.imcce.fr/docs/latest/html/c/index.html",
@@ -18448,7 +18447,7 @@
             "host": true
           }
         ],
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "disable-gnu-source.diff",
@@ -39465,6 +39464,7 @@
       "name": "hidapi",
       "manifest": {
         "name": "hidapi",
+        "port-version": 1,
         "description": "A Simple library for communicating with USB and Bluetooth HID devices on Linux, Mac and Windows.",
         "homepage": "https://github.com/libusb/hidapi",
         "license": "BSD-3-Clause-Clear",
@@ -54902,12 +54902,11 @@
         "name": "liburing",
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
-        "license": "(MIT OR LGPL-2.1) AND (MIT OR (GPL-2.0 WITH Linux-syscall-note))",
+        "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.9"
+        "version": "2.10"
       },
       "files": [
-        "add-basic-support.patch",
         "disable-tests-and-examples.patch",
         "fix-configure.patch",
         "portfile.cmake",
@@ -58678,7 +58677,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.675"
+        "version": "0.676"
       },
       "files": [
         "cmake-config-export.patch",
@@ -62406,6 +62405,7 @@
       "name": "minizip-ng",
       "manifest": {
         "name": "minizip-ng",
+        "port-version": 1,
         "description": "minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux.",
         "homepage": "https://github.com/zlib-ng/minizip-ng",
         "license": "Zlib",
@@ -74297,6 +74297,9 @@
         "license": "LGPL-2.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
+          "date",
+          "fast-float",
+          "fmt",
           "freetype",
           "libjpeg-turbo",
           "libpng",
@@ -74309,6 +74312,8 @@
             "name": "tiff",
             "default-features": false
           },
+          "utf8proc",
+          "utfcpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -74343,10 +74348,10 @@
             ]
           }
         },
-        "version": "0.10.4"
+        "version": "1.0.0"
       },
       "files": [
-        "fix-interface-include.patch",
+        "dependencies.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
