@@ -1,5 +1,5 @@
 {
-  "version": "2d1eb6affae7b2ef01c0312514d7218113dd5d25",
+  "version": "640e297f1b67c4eb5a71d202a6a19355645676b5",
   "ports": [
     {
       "name": "3fd",
@@ -3093,10 +3093,9 @@
         "homepage": "https://github.com/linux-audit/audit-userspace",
         "license": "GPL-2.0-or-later OR LGPL-2.1-or-later",
         "supports": "linux",
-        "version": "4.0.2"
+        "version": "4.0.5"
       },
       "files": [
-        "fix-multiple-def.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27430,11 +27429,11 @@
       ]
     },
     {
-      "name": "ereignis",
+      "name": "eraser",
       "manifest": {
-        "name": "ereignis",
-        "description": "A thread-safe C++17 Event Library",
-        "homepage": "https://github.com/Soundux/ereignis",
+        "name": "eraser",
+        "description": "A C++20 type-erasure library that supports user defined interfaces",
+        "homepage": "https://github.com/Curve/eraser",
         "license": "MIT",
         "dependencies": [
           {
@@ -27442,7 +27441,27 @@
             "host": true
           }
         ],
-        "version": "2.3"
+        "version": "2.2.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ereignis",
+      "manifest": {
+        "name": "ereignis",
+        "description": "A thread-safe C++17 Event Library",
+        "homepage": "https://github.com/Curve/ereignis",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "4.3"
       },
       "files": [
         "portfile.cmake",
@@ -27479,7 +27498,7 @@
             "host": true
           }
         ],
-        "version": "20.41.5"
+        "version": "20.41.6"
       },
       "files": [
         "portfile.cmake",
@@ -46710,6 +46729,7 @@
       "name": "libcap",
       "manifest": {
         "name": "libcap",
+        "port-version": 1,
         "description": "A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.",
         "homepage": "https://sites.google.com/site/fullycapable/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -46721,6 +46741,10 @@
           },
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -48006,12 +48030,17 @@
       "name": "libffi",
       "manifest": {
         "name": "libffi",
+        "port-version": 1,
         "description": "Portable, high level programming interface to various calling conventions",
         "homepage": "https://github.com/libffi/libffi",
         "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -54916,11 +54945,17 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
+        "port-version": 1,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          },
           {
             "name": "vcpkg-msbuild",
             "host": true,
@@ -54943,7 +54978,6 @@
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -57212,6 +57246,23 @@
       ]
     },
     {
+      "name": "livepp",
+      "manifest": {
+        "name": "livepp",
+        "description": "Hot-reload for C & C++ transforms workflows and decreases iteration times.",
+        "homepage": "https://liveplusplus.tech/",
+        "license": null,
+        "supports": "windows",
+        "version-semver": "2.9.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-liveppConfig.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "llama-cpp",
       "manifest": {
         "name": "llama-cpp",
@@ -58013,8 +58064,9 @@
       "name": "lockpp",
       "manifest": {
         "name": "lockpp",
+        "port-version": 1,
         "description": "A C++17 Library that provides mutex protected objects",
-        "homepage": "https://github.com/Soundux/lockpp",
+        "homepage": "https://github.com/Curve/lockpp",
         "license": "MIT",
         "dependencies": [
           {
@@ -67789,14 +67841,13 @@
             ]
           }
         },
-        "version": "7.9.0"
+        "version": "7.9.1"
       },
       "files": [
+        "csf-redifinition.patch",
         "dependencies.patch",
         "drop-bin-letter-d.patch",
-        "file-filter-regex.patch",
         "fix-install-prefix-path.patch",
-        "fix-pdb-find.patch",
         "install-include-dir.patch",
         "portfile.cmake",
         "remove-vcpkg-enabling.patch",
@@ -74544,6 +74595,26 @@
       ]
     },
     {
+      "name": "poolparty",
+      "manifest": {
+        "name": "poolparty",
+        "description": "A C++20 thread-pool library",
+        "homepage": "https://github.com/Curve/poolparty",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "3.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "poolstl",
       "manifest": {
         "name": "poolstl",
@@ -75992,18 +76063,19 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
+        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
         "supports": "!uwp & !mingw",
         "dependencies": [
           {
-            "name": "gettext",
-            "platform": "osx"
+            "name": "gettext-libintl",
+            "platform": "!windows"
           },
           {
             "name": "libiconv",
-            "platform": "osx"
+            "platform": "!windows"
           },
           {
             "name": "libuuid",
@@ -76024,6 +76096,11 @@
           {
             "name": "vcpkg-get-python",
             "host": true
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           },
           {
             "name": "vcpkg-msbuild",
@@ -82060,6 +82137,26 @@
       ]
     },
     {
+      "name": "rebind",
+      "manifest": {
+        "name": "rebind",
+        "description": "A C++23 reflection library for aggregates and enums",
+        "homepage": "https://github.com/Curve/rebind",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "5.2.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "recast",
       "manifest": {
         "name": "recast",
@@ -84590,29 +84687,25 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 1,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
-        "supports": "!uwp",
+        "supports": "!android & !uwp",
         "dependencies": [
           "boost-callable-traits",
           "boost-preprocessor",
+          "eraser",
           "ereignis",
           "flagpp",
           "fmt",
           "glaze",
+          {
+            "name": "gtk",
+            "platform": "linux"
+          },
           "lockpp",
-          "nlohmann-json",
-          {
-            "name": "qtwebchannel",
-            "platform": "!windows"
-          },
-          {
-            "name": "qtwebengine",
-            "platform": "!windows"
-          },
-          "tl-expected",
+          "poolparty",
+          "rebind",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -84622,11 +84715,10 @@
             "platform": "windows"
           }
         ],
-        "version": "2.3.0"
+        "version": "6.0.1"
       },
       "files": [
-        "fix-build-error-with-fmt11.patch",
-        "fix_findpkg.patch",
+        "0001-use-local-packages.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92556,7 +92648,6 @@
         "description": "Tiny Software Protocol for communication over UART, SPI, etc",
         "homepage": "https://github.com/lexus2k/tinyproto",
         "license": "GPL-3.0-or-later",
-        "supports": "!osx",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -92567,7 +92658,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-05-26"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -94391,7 +94482,7 @@
             ]
           }
         },
-        "version": "2.17.6"
+        "version": "2.17.11"
       },
       "files": [
         "portfile.cmake",
@@ -95023,9 +95114,10 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-22"
+        "version-date": "2025-05-29"
       },
       "files": [
+        "cmake-get-vars.cmake.in",
         "cmake_get_vars/CMakeLists.txt",
         "portfile.cmake",
         "vcpkg-port-config.cmake",
@@ -95115,7 +95207,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-04-25"
+        "version-date": "2025-05-22"
       },
       "files": [
         "portfile.cmake",
@@ -95901,6 +95993,30 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "voro",
+      "manifest": {
+        "name": "voro",
+        "description": "Voro++: a three-dimensional Voronoi cell library in C++.",
+        "homepage": "https://math.lbl.gov/voro++/",
+        "license": "BSD-3-Clause-LBNL",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2024-09-11"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -97430,7 +97546,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.2277.86"
+        "version": "1.0.3240.44"
       },
       "files": [
         "portfile.cmake",
