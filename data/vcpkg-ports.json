@@ -1,5 +1,5 @@
 {
-  "version": "640e297f1b67c4eb5a71d202a6a19355645676b5",
+  "version": "189fcdcb953b871d206ffada6db047496fc3f496",
   "ports": [
     {
       "name": "3fd",
@@ -2554,7 +2554,7 @@
           },
           "zlib"
         ],
-        "version": "6.0.1"
+        "version": "6.0.2"
       },
       "files": [
         "build_fixes.patch",
@@ -22666,7 +22666,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 7,
+        "port-version": 8,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -22684,7 +22684,10 @@
             "name": "vcpkg-cmake-get-vars",
             "host": true
           },
-          "vcpkg-get-python-packages",
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          },
           {
             "name": "vcpkg-gn",
             "host": true
@@ -23710,7 +23713,7 @@
             "host": true
           }
         ],
-        "version": "30.475.1"
+        "version": "32.219.1"
       },
       "files": [
         "portfile.cmake",
@@ -34379,6 +34382,18 @@
             ],
             "supports": "!windows"
           },
+          "chronicle": {
+            "description": "Chronicle API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "cloudbuild": {
             "description": "Cloud Build API C++ Client Library",
             "dependencies": [
@@ -34646,6 +34661,18 @@
               }
             ]
           },
+          "devicestreaming": {
+            "description": "Device Streaming API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "dialogflow-cx": {
             "description": "Cloud Dialogflow CX API C++ Client Library",
             "dependencies": [
@@ -34768,6 +34795,18 @@
           },
           "filestore": {
             "description": "Cloud Filestore API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
+          "financialservices": {
+            "description": "Financial Services API C++ Client Library",
             "dependencies": [
               {
                 "name": "google-cloud-cpp",
@@ -35581,6 +35620,18 @@
               }
             ]
           },
+          "storagebatchoperations": {
+            "description": "Cloud Storage Batch Operations API C++ Client Library",
+            "dependencies": [
+              {
+                "name": "google-cloud-cpp",
+                "default-features": false,
+                "features": [
+                  "grpc-common"
+                ]
+              }
+            ]
+          },
           "storagecontrol": {
             "description": "Cloud Storage Control API C++ Client Library",
             "dependencies": [
@@ -35846,7 +35897,7 @@
             ]
           }
         },
-        "version": "2.36.0"
+        "version": "2.37.0"
       },
       "files": [
         "fix-googleapis-download.patch",
@@ -39592,12 +39643,9 @@
           },
           "zlib"
         ],
-        "version": "1.10.0"
+        "version": "1.11.0"
       },
       "files": [
-        "fix-cuda.patch",
-        "fix-hconfig-path.patch",
-        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -40478,7 +40526,6 @@
       "name": "igraph",
       "manifest": {
         "name": "igraph",
-        "port-version": 1,
         "description": "igraph is a C library for network analysis and graph theory, with an emphasis on efficiency portability and ease of use.",
         "homepage": "https://igraph.org/",
         "license": "GPL-2.0-or-later",
@@ -40509,7 +40556,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.15"
+        "version": "0.10.16"
       },
       "files": [
         "arith_osx.h",
@@ -54985,22 +55032,17 @@
       "name": "libusb-win32",
       "manifest": {
         "name": "libusb-win32",
-        "port-version": 10,
         "description": "Allows user space applications to access many USB device on Windows.",
-        "homepage": "https://sourceforge.net/projects/libusb-win32",
+        "homepage": "https://github.com/mcuee/libusb-win32",
         "license": "LGPL-3.0-only",
-        "supports": "windows & !static & !xbox",
+        "supports": "windows & !uwp & !xbox & !(static & staticcrt)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
-        "version": "1.2.6.0"
+        "version": "1.4.0.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -55312,7 +55354,6 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 5,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -55335,13 +55376,11 @@
             "description": "enable this option while building for real-time encoding"
           }
         },
-        "version": "1.13.1"
+        "version": "1.15.2"
       },
       "files": [
-        "0002-Fix-nasm-debug-format-flag.patch",
         "0003-add-uwp-v142-and-v143-support.patch",
         "0004-remove-library-suffixes.patch",
-        "0005-fix-arm64-build.patch",
         "portfile.cmake",
         "unofficial-libvpx-config.cmake.in",
         "vcpkg.json",
@@ -67411,7 +67450,7 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
@@ -70776,7 +70815,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-05-12"
+        "version-date": "2025-05-21"
       },
       "files": [
         "portfile.cmake",
@@ -85736,7 +85775,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.14"
+        "version": "3.2.16"
       },
       "files": [
         "portfile.cmake",
@@ -95207,7 +95246,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-05-22"
+        "version-date": "2025-06-10"
       },
       "files": [
         "portfile.cmake",
