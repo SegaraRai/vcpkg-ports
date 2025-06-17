@@ -1,5 +1,5 @@
 {
-  "version": "ef7dbf94b9198bc58f45951adcf1f041fcbc5ea0",
+  "version": "16c71a39e5a0fc0bdb3fad03beef8f38ee00ee3b",
   "ports": [
     {
       "name": "3fd",
@@ -22546,11 +22546,10 @@
             ]
           }
         },
-        "version-semver": "1.11.2"
+        "version-semver": "1.12.0"
       },
       "files": [
         "disable_werror.patch",
-        "fix-static-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27501,7 +27500,7 @@
             "host": true
           }
         ],
-        "version": "20.41.6"
+        "version": "20.41.7"
       },
       "files": [
         "portfile.cmake",
@@ -31393,7 +31392,7 @@
             "host": true
           }
         ],
-        "version": "2.4"
+        "version": "2.6"
       },
       "files": [
         "portfile.cmake",
@@ -47002,9 +47001,10 @@
             ]
           }
         },
-        "version": "0.14.1"
+        "version": "0.15.0"
       },
       "files": [
+        "add-experimental-library.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57284,13 +57284,16 @@
       "name": "livepp",
       "manifest": {
         "name": "livepp",
+        "port-version": 1,
         "description": "Hot-reload for C & C++ transforms workflows and decreases iteration times.",
         "homepage": "https://liveplusplus.tech/",
+        "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
         "version-semver": "2.9.2"
       },
       "files": [
+        "global_preferences.json",
         "portfile.cmake",
         "unofficial-liveppConfig.cmake",
         "usage",
@@ -58764,7 +58767,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.677"
+        "version": "0.678"
       },
       "files": [
         "cmake-config-export.patch",
@@ -69758,7 +69761,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.3.2"
+        "version": "3.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -69865,7 +69868,7 @@
       "name": "openh264",
       "manifest": {
         "name": "openh264",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.",
         "homepage": "https://www.openh264.org/",
         "license": "BSD-2-Clause",
@@ -75597,7 +75600,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -76626,10 +76629,10 @@
       "name": "qpid-proton",
       "manifest": {
         "name": "qpid-proton",
-        "port-version": 2,
         "description": "Qpid Proton is a high-performance, lightweight messaging library.",
         "homepage": "https://github.com/apache/qpid-proton",
         "license": "Apache-2.0",
+        "supports": "!(static & staticcrt) & !uwp",
         "dependencies": [
           "jsoncpp",
           {
@@ -76649,9 +76652,10 @@
             "host": true
           }
         ],
-        "version": "0.38.0"
+        "version": "0.40.0"
       },
       "files": [
+        "early-cxx.diff",
         "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
