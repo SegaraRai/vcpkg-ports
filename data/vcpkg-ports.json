@@ -1,5 +1,5 @@
 {
-  "version": "16c71a39e5a0fc0bdb3fad03beef8f38ee00ee3b",
+  "version": "47313591da1d14a8a9b209f4bee39d29acc39b31",
   "ports": [
     {
       "name": "3fd",
@@ -5445,26 +5445,40 @@
       ]
     },
     {
+      "name": "azure-kinect-depth-engine",
+      "manifest": {
+        "name": "azure-kinect-depth-engine",
+        "description": "The depth engine converts raw sensor data into a normalized depth map. It contains closed-source proprietary code.",
+        "homepage": "https://github.com/microsoft/Azure-Kinect-Sensor-SDK/blob/develop/docs/depthengine.md",
+        "license": null,
+        "supports": "(linux & (x64 | arm64)) | (windows & (x64 | x86))",
+        "version": "1.4.2"
+      },
+      "files": [
+        "k4adeploy.ps1",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "azure-kinect-sensor-sdk",
       "manifest": {
         "name": "azure-kinect-sensor-sdk",
-        "port-version": 8,
         "description": "Azure Kinect SDK is a cross platform (Linux and Windows) user mode SDK to read data from your Azure Kinect device.",
         "homepage": "https://github.com/microsoft/Azure-Kinect-Sensor-SDK",
-        "supports": "linux | windows",
+        "license": "MIT",
+        "supports": "(linux | windows) & !(static & staticcrt)",
         "dependencies": [
           "azure-c-shared-utility",
+          "azure-kinect-depth-engine",
           "cjson",
           "ebml",
-          "glfw3",
-          "gtest",
-          "imgui",
           "libjpeg-turbo",
           "libsoundio",
           "libusb",
           {
             "name": "libuvc",
-            "platform": "linux"
+            "platform": "!windows"
           },
           "libyuv",
           "matroska",
@@ -5479,14 +5493,11 @@
           }
         ],
         "features": {
-          "docs": {
-            "description": "Build K4A doxygen documentation."
-          },
           "tool": {
             "description": "Build tools.",
             "dependencies": [
               "gl3w",
-              "glew",
+              "glfw3",
               {
                 "name": "imgui",
                 "features": [
@@ -5497,16 +5508,14 @@
             ]
           }
         },
-        "version": "1.4.1"
+        "version": "1.4.2"
       },
       "files": [
         "fix-build-imgui.patch",
         "fix-builds.patch",
         "fix-calibration-c.patch",
-        "fix-dependency-imgui.patch",
         "fix-header.patch",
         "fix-linux.patch",
-        "k4adeploy.ps1",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33398,6 +33407,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -51272,10 +51282,6 @@
           },
           "maddy",
           {
-            "name": "openssl",
-            "platform": "linux | osx"
-          },
-          {
             "name": "sqlcipher",
             "platform": "windows"
           },
@@ -51288,7 +51294,7 @@
             "host": true
           }
         ],
-        "version": "2025.5.3"
+        "version": "2025.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -53689,7 +53695,7 @@
             "description": "PulseAudio backend for libsoundio"
           }
         },
-        "version": "2.0.1-7"
+        "version": "2.0.1.7"
       },
       "files": [
         "fix_cmakelists.patch",
@@ -55223,7 +55229,7 @@
             "host": true
           }
         ],
-        "version": "0.61.0"
+        "version": "0.63.0"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -58339,13 +58345,9 @@
           },
           "xxhash"
         ],
-        "version": "2.6.0"
+        "version": "2.6.2"
       },
       "files": [
-        "cmake-config.diff",
-        "emscripten.diff",
-        "mingw.diff",
-        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -58870,9 +58872,10 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
+        "disable-qtdeploy.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61878,9 +61881,10 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.23"
+        "version": "0.24"
       },
       "files": [
+        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65405,7 +65409,7 @@
             "host": true
           }
         ],
-        "version": "1.65.0"
+        "version": "1.66.0"
       },
       "files": [
         "portfile.cmake",
@@ -89003,7 +89007,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -89026,7 +89030,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -89050,7 +89054,7 @@
             "host": true
           }
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "export-targets.patch",
@@ -89078,10 +89082,11 @@
         ],
         "features": {
           "tools": {
-            "description": "Build tools."
+            "description": "Build tools.",
+            "supports": "!android & !ios"
           }
         },
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -96045,7 +96050,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -96819,6 +96824,7 @@
         "description": "Layer providing Vulkan features when native support is unavailable",
         "homepage": "https://github.com/KhronosGroup/Vulkan-ExtensionLayer",
         "license": "Apache-2.0",
+        "supports": "!static",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -96831,7 +96837,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -96843,7 +96849,6 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
-        "port-version": 1,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0 OR MIT",
@@ -96858,10 +96863,9 @@
             "host": true
           }
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
-        "fix-headers.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -96904,7 +96908,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -97005,7 +97009,7 @@
             ]
           }
         },
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "LICENSE.txt",
@@ -97035,7 +97039,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -97060,7 +97064,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
@@ -97092,7 +97096,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.304.1"
+        "version": "1.4.309.0"
       },
       "files": [
         "portfile.cmake",
