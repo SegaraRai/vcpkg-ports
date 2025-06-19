@@ -1,5 +1,5 @@
 {
-  "version": "47313591da1d14a8a9b209f4bee39d29acc39b31",
+  "version": "f2bf7d935af722c0cd8219c1f6e30d5ae3d666f2",
   "ports": [
     {
       "name": "3fd",
@@ -18516,7 +18516,7 @@
             ]
           }
         },
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -21570,6 +21570,26 @@
       ]
     },
     {
+      "name": "cpp-channel",
+      "manifest": {
+        "name": "cpp-channel",
+        "description": "C++11 thread-safe container for sharing data between threads (synchronized queue)",
+        "homepage": "https://github.com/andreiavrammsd/cpp-channel",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.3.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cpp-exiftool",
       "manifest": {
         "name": "cpp-exiftool",
@@ -22379,7 +22399,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -33273,7 +33293,15 @@
             "host": true
           }
         ],
-        "version": "5.4.1"
+        "features": {
+          "ssl": {
+            "description": "Enable SSL/TLS support for HTTPS servers",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
+        "version": "5.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -36049,7 +36077,7 @@
             "description": "C++ bindings"
           }
         },
-        "version": "1.23.2"
+        "version": "1.24.3"
       },
       "files": [
         "disable-docs.patch",
@@ -41272,7 +41300,7 @@
         "description": "Simple header-only C++ ini parser and generator",
         "homepage": "https://github.com/mcmtroffaes/inipp",
         "license": "MIT",
-        "version": "1.0.12"
+        "version": "1.0.13"
       },
       "files": [
         "portfile.cmake",
@@ -48448,7 +48476,7 @@
             "host": true
           }
         ],
-        "version": "1.11.0"
+        "version": "1.11.1"
       },
       "files": [
         "cross-tools.patch",
@@ -48905,7 +48933,7 @@
             ]
           }
         },
-        "version": "1.54"
+        "version": "1.55"
       },
       "files": [
         "android.diff",
@@ -52132,7 +52160,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.47"
+        "version": "1.6.48"
       },
       "files": [
         "cmake.patch",
@@ -54981,7 +55009,7 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.10"
+        "version": "2.11"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -64364,6 +64392,31 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mzying2001-sw",
+      "manifest": {
+        "name": "mzying2001-sw",
+        "description": "A C++ GUI framework for building Windows desktop applications.",
+        "homepage": "https://github.com/Mzying2001/sw",
+        "license": "MIT",
+        "supports": "windows & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.2"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -87356,7 +87409,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.3.0"
+        "version-semver": "7.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -91115,6 +91168,31 @@
           }
         },
         "version": "0.11.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "syscalls-cpp",
+      "manifest": {
+        "name": "syscalls-cpp",
+        "description": "A modern C++20 header-only library for advanced direct system call invocation.",
+        "homepage": "https://github.com/sapdragon/syscalls-cpp",
+        "license": "MIT",
+        "supports": "windows & (x64 | x86)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
