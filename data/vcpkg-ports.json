@@ -1,5 +1,5 @@
 {
-  "version": "f2bf7d935af722c0cd8219c1f6e30d5ae3d666f2",
+  "version": "f6729a3ac3bfdefc999aa8e3664f8014370886b8",
   "ports": [
     {
       "name": "3fd",
@@ -51322,7 +51322,7 @@
             "host": true
           }
         ],
-        "version": "2025.6.3"
+        "version": "2025.6.5"
       },
       "files": [
         "portfile.cmake",
@@ -51560,7 +51560,6 @@
       "name": "libogg",
       "manifest": {
         "name": "libogg",
-        "port-version": 2,
         "description": "Ogg is a multimedia container format, and the native file and stream format for the Xiph.org multimedia codecs.",
         "homepage": "https://www.xiph.org/ogg",
         "license": "BSD-3-Clause",
@@ -51574,7 +51573,7 @@
             "host": true
           }
         ],
-        "version": "1.3.5"
+        "version": "1.3.6"
       },
       "files": [
         "portfile.cmake",
@@ -56824,7 +56823,6 @@
       "name": "libzip",
       "manifest": {
         "name": "libzip",
-        "port-version": 1,
         "description": "A C library for reading, creating, and modifying zip archives.",
         "homepage": "https://github.com/nih-at/libzip",
         "license": "BSD-3-Clause",
@@ -56850,28 +56848,9 @@
               "bzip2"
             ]
           },
-          "commoncrypto": {
-            "description": "AES (encryption) support using Apple's Common Crypto API"
-          },
           "default-aes": {
-            "description": "Use default AES",
+            "description": "AES (encryption) support using a default backend",
             "dependencies": [
-              {
-                "name": "libzip",
-                "default-features": false,
-                "features": [
-                  "commoncrypto"
-                ],
-                "platform": "osx"
-              },
-              {
-                "name": "libzip",
-                "default-features": false,
-                "features": [
-                  "wincrypto"
-                ],
-                "platform": "windows"
-              },
               {
                 "name": "libzip",
                 "default-features": false,
@@ -56900,9 +56879,6 @@
               "openssl"
             ]
           },
-          "wincrypto": {
-            "description": "AES (encryption) support using Windows Crypto API"
-          },
           "zstd": {
             "description": "Support Zstandard-compressed zip archives",
             "dependencies": [
@@ -56910,11 +56886,11 @@
             ]
           }
         },
-        "version": "1.11.3"
+        "version": "1.11.4"
       },
       "files": [
-        "fix-dependency.patch",
-        "initialize-have_dos_time.patch",
+        "config-vars.diff",
+        "dependencies.diff",
         "portfile.cmake",
         "use-requires.patch",
         "vcpkg.json"
@@ -74991,7 +74967,6 @@
       "name": "portmidi",
       "manifest": {
         "name": "portmidi",
-        "port-version": 3,
         "description": "PortMidi is a cross platform (Windows, macOS, Linux, and BSDs which support alsalib) library for interfacing with operating systems' MIDI I/O APIs.",
         "homepage": "https://github.com/PortMidi/portmidi",
         "license": "MIT",
@@ -75010,12 +74985,10 @@
             "host": true
           }
         ],
-        "version": "2.0.4"
+        "version": "2.0.6"
       },
       "files": [
-        "framework_link.patch",
         "portfile.cmake",
-        "search-for-threads-in-config.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -94515,7 +94488,6 @@
         "license": null,
         "supports": "!x86 & !(arm & windows) & !android",
         "dependencies": [
-          "opensubdiv",
           "tbb",
           {
             "name": "vcpkg-cmake",
@@ -94528,6 +94500,22 @@
           "zlib"
         ],
         "features": {
+          "imaging": {
+            "description": "Enable the imaging components",
+            "dependencies": [
+              "opengl",
+              {
+                "name": "opensubdiv",
+                "default-features": false,
+                "features": [
+                  {
+                    "name": "opengl",
+                    "platform": "!osx & !ios"
+                  }
+                ]
+              }
+            ]
+          },
           "materialx": {
             "description": "Enable MaterialX support",
             "dependencies": [
@@ -94539,10 +94527,6 @@
                 ]
               }
             ]
-          },
-          "metal": {
-            "description": "Enable Metal based components",
-            "supports": "osx"
           },
           "openimageio": {
             "description": "Build OpenImageIO plugin",
@@ -94564,23 +94548,22 @@
               "shaderc",
               "spirv-reflect",
               "vulkan",
-              "vulkan-memory-allocator"
-            ]
+              "vulkan-memory-allocator",
+              "vulkan-utility-libraries"
+            ],
+            "supports": "!ios"
           }
         },
-        "version": "25.2"
+        "version": "25.5.1"
       },
       "files": [
-        "001-fix_rename_find_package_to_find_dependency.patch",
-        "002-vcpkg_find_tbb.patch",
         "003-fix-dep.patch",
         "004-fix_cmake_package.patch",
         "007-fix_cmake_hgi_interop.patch",
         "008-fix_clang8_compiler_error.patch",
         "009-vcpkg_install_folder_conventions.patch",
         "010-cmake_export_plugin_as_modules.patch",
-        "011-TBB-2022.patch",
-        "012-fix-find-vulkan.patch",
+        "013-openimageio-3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
