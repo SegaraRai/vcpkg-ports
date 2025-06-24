@@ -1,5 +1,5 @@
 {
-  "version": "0cf34c184ce990471435b5b9c92edcf7424930b1",
+  "version": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a",
   "ports": [
     {
       "name": "3fd",
@@ -3394,7 +3394,6 @@
       "name": "aws-c-cal",
       "manifest": {
         "name": "aws-c-cal",
-        "port-version": 1,
         "description": "C99 wrapper for cryptography primitives.",
         "homepage": "https://github.com/awslabs/aws-c-cal",
         "license": "Apache-2.0",
@@ -3413,7 +3412,7 @@
             "host": true
           }
         ],
-        "version": "0.8.8"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -3439,7 +3438,7 @@
             "host": true
           }
         ],
-        "version": "0.12.2"
+        "version": "0.12.3"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -3520,7 +3519,7 @@
             "host": true
           }
         ],
-        "version": "0.9.5"
+        "version": "0.10.2"
       },
       "files": [
         "portfile.cmake",
@@ -3550,7 +3549,7 @@
             "host": true
           }
         ],
-        "version": "0.17.0"
+        "version": "0.20.1"
       },
       "files": [
         "portfile.cmake",
@@ -3580,7 +3579,7 @@
             "host": true
           }
         ],
-        "version": "0.12.2"
+        "version": "0.13.2"
       },
       "files": [
         "portfile.cmake",
@@ -3612,7 +3611,7 @@
             "host": true
           }
         ],
-        "version": "0.7.13"
+        "version": "0.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -3637,7 +3636,7 @@
             "host": true
           }
         ],
-        "version": "0.2.3"
+        "version": "0.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -3662,7 +3661,7 @@
             "host": true
           }
         ],
-        "version": "0.2.4"
+        "version": "0.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -3700,7 +3699,7 @@
             "host": true
           }
         ],
-        "version": "0.31.1"
+        "version": "0.32.9"
       },
       "files": [
         "no-werror.patch",
@@ -3794,6 +3793,9 @@
           },
           "acm-pca": {
             "description": "C++ SDK for the AWS acm-pca service"
+          },
+          "aiops": {
+            "description": "C++ SDK for the AWS aiops service"
           },
           "amp": {
             "description": "C++ SDK for the AWS amp service"
@@ -4224,6 +4226,9 @@
           "evidently": {
             "description": "C++ SDK for the AWS evidently service"
           },
+          "evs": {
+            "description": "C++ SDK for the AWS evs service"
+          },
           "finspace": {
             "description": "C++ SDK for the AWS finspace service"
           },
@@ -4579,6 +4584,9 @@
           "monitoring": {
             "description": "C++ SDK for the AWS monitoring service"
           },
+          "mpa": {
+            "description": "C++ SDK for the AWS mpa service"
+          },
           "mq": {
             "description": "C++ SDK for the AWS mq service"
           },
@@ -4695,9 +4703,6 @@
           },
           "pricing": {
             "description": "C++ SDK for the AWS pricing service"
-          },
-          "privatenetworks": {
-            "description": "C++ SDK for the AWS privatenetworks service"
           },
           "proton": {
             "description": "C++ SDK for the AWS proton service"
@@ -4928,6 +4933,9 @@
           "ssm-contacts": {
             "description": "C++ SDK for the AWS ssm-contacts service"
           },
+          "ssm-guiconnect": {
+            "description": "C++ SDK for the AWS ssm-guiconnect service"
+          },
           "ssm-incidents": {
             "description": "C++ SDK for the AWS ssm-incidents service"
           },
@@ -5073,9 +5081,10 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.534"
+        "version": "1.11.591"
       },
       "files": [
+        "configure-binary-dir.patch",
         "find-dependency.patch",
         "fix-aws-root.patch",
         "fix_find_curl.patch",
@@ -28274,7 +28283,7 @@
             "host": true
           }
         ],
-        "version-string": "25.04"
+        "version-string": "25.06"
       },
       "files": [
         "portfile.cmake",
@@ -33326,7 +33335,7 @@
             ]
           }
         },
-        "version": "5.5.0"
+        "version": "5.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -58801,7 +58810,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.678"
+        "version": "0.679"
       },
       "files": [
         "cmake-config-export.patch",
@@ -64417,7 +64426,7 @@
             "host": true
           }
         ],
-        "version": "0.0.2"
+        "version": "0.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -73022,7 +73031,6 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -73132,7 +73140,7 @@
             ]
           }
         },
-        "version": "2.8.4"
+        "version": "2.9.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -73140,8 +73148,10 @@
         "external-dimbuilder.diff",
         "find-library-suffix.diff",
         "gdal-3.11.diff",
+        "h3api.h",
         "no-rpath.patch",
         "portfile.cmake",
+        "spz-zlib.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -73187,7 +73197,7 @@
             "host": true
           }
         ],
-        "version": "2.8.4"
+        "version": "2.9.0"
       },
       "files": [
         "namespace-nl.diff",
@@ -74517,7 +74527,7 @@
             ]
           }
         },
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "dependencies.diff",
@@ -74638,7 +74648,7 @@
             "description": "Implement all virtual table hooking functionality"
           }
         },
-        "version-date": "2024-06-03"
+        "version-date": "2025-06-21"
       },
       "files": [
         "portfile.cmake",
@@ -84398,7 +84408,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.5.15"
+        "version": "1.5.21"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -97491,7 +97501,7 @@
       "name": "wavpack",
       "manifest": {
         "name": "wavpack",
-        "port-version": 1,
+        "port-version": 2,
         "description": "WavPack encode/decode library, command-line programs, and several plugins",
         "homepage": "https://github.com/dbry/WavPack",
         "license": "BSD-3-Clause",
@@ -100477,7 +100487,7 @@
       "name": "zkpp",
       "manifest": {
         "name": "zkpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A ZooKeeper client for C++.",
         "homepage": "https://github.com/tgockel/zookeeper-cpp",
         "supports": "!windows",
@@ -100645,7 +100655,6 @@
       "name": "zookeeper",
       "manifest": {
         "name": "zookeeper",
-        "port-version": 1,
         "description": "ZooKeeper C bindings",
         "homepage": "https://github.com/apache/zookeeper",
         "license": "BSD-3-Clause",
@@ -100659,19 +100668,24 @@
             "host": true
           }
         ],
-        "default-features": [
-          "sync"
-        ],
         "features": {
+          "openssl": {
+            "description": "Enable OpenSSL support",
+            "dependencies": [
+              "openssl"
+            ]
+          },
           "sync": {
             "description": "ZooKeeper with the sync API"
           }
         },
-        "version": "3.5.6"
+        "version": "3.8.4"
       },
       "files": [
         "cmake.patch",
         "portfile.cmake",
+        "unofficial-zookeeperConfig.cmake",
+        "usage",
         "vcpkg.json",
         "win32.patch"
       ]
