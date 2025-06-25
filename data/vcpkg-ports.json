@@ -1,5 +1,5 @@
 {
-  "version": "2e58bb35ff7a3a037920d959ce20cb4d8c22319a",
+  "version": "f75c836a67777a86a2c1116a28b179827f028b66",
   "ports": [
     {
       "name": "3fd",
@@ -22522,21 +22522,7 @@
           },
           "zeromq"
         ],
-        "features": {
-          "draft": {
-            "description": "Build and install draft",
-            "dependencies": [
-              {
-                "name": "zeromq",
-                "default-features": false,
-                "features": [
-                  "draft"
-                ]
-              }
-            ]
-          }
-        },
-        "version": "4.10.0"
+        "version": "4.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -22825,6 +22811,26 @@
       },
       "files": [
         "fix_clang-cl.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "crcpp",
+      "manifest": {
+        "name": "crcpp",
+        "description": "Easy to use and fast C++ CRC library.",
+        "homepage": "https://github.com/d-bahr/CRCpp",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.2.1.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31733,6 +31739,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -32069,6 +32076,7 @@
         "fix-gdal-target-interfaces.patch",
         "libkml.patch",
         "portfile.cmake",
+        "sqlite3.diff",
         "target-is-valid.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -40392,7 +40400,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -40403,6 +40411,10 @@
             "features": [
               "tools"
             ]
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
           },
           {
             "name": "vcpkg-make",
@@ -56225,6 +56237,7 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
+        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -56285,6 +56298,7 @@
         "version": "2.13.8"
       },
       "files": [
+        "cxx-for-icu.diff",
         "disable-docs.patch",
         "fix_cmakelist.patch",
         "fix_ios_compilation.patch",
@@ -56563,6 +56577,7 @@
       "name": "libxslt",
       "manifest": {
         "name": "libxslt",
+        "port-version": 1,
         "description": "Libxslt is a XSLT library implemented in C for XSLT 1.0 and most of EXSLT",
         "homepage": "https://github.com/GNOME/libxslt",
         "license": null,
@@ -56609,7 +56624,8 @@
                 "features": [
                   "profiler"
                 ]
-              }
+              },
+              "python3"
             ],
             "supports": "!windows"
           },
@@ -56623,6 +56639,7 @@
         "version": "1.1.43"
       },
       "files": [
+        "cxx-for-libxml2-icu.diff",
         "fix-gcrypt-deps.patch",
         "libexslt-pkgconfig.patch",
         "msvc-no-suffix.patch",
@@ -76173,7 +76190,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -76252,6 +76269,11 @@
               {
                 "name": "sqlite3",
                 "default-features": false
+              },
+              {
+                "name": "vcpkg-pkgconfig-get-modules",
+                "host": true,
+                "platform": "windows & !mingw"
               }
             ],
             "supports": "!(staticcrt & windows)"
@@ -77585,7 +77607,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77669,7 +77691,10 @@
           "sqlite3plugin": {
             "description": "Build the sql plugin for connecting to sqlite3 databases",
             "dependencies": [
-              "sqlite3"
+              {
+                "name": "sqlite3",
+                "default-features": false
+              }
             ]
           },
           "vulkan": {
@@ -89337,6 +89362,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -89430,6 +89456,7 @@
         "sqlite3-vcpkg-config.h.in",
         "sqlite3.pc.in",
         "usage",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -99289,6 +99316,7 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
+        "port-version": 1,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
@@ -101008,6 +101036,7 @@
       "name": "zydis",
       "manifest": {
         "name": "zydis",
+        "port-version": 1,
         "description": "Fast and lightweight x86/x86-64 disassembler library.",
         "homepage": "https://zydis.re",
         "license": "MIT",
@@ -101022,6 +101051,11 @@
           },
           "zycore"
         ],
+        "features": {
+          "tools": {
+            "description": "Builds zydis executables"
+          }
+        },
         "version-semver": "4.1.1"
       },
       "files": [
