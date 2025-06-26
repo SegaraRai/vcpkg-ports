@@ -1,5 +1,5 @@
 {
-  "version": "f75c836a67777a86a2c1116a28b179827f028b66",
+  "version": "3f8078010e5ec665602f564df755e41479aafd73",
   "ports": [
     {
       "name": "3fd",
@@ -1848,7 +1848,6 @@
       "name": "argtable3",
       "manifest": {
         "name": "argtable3",
-        "port-version": 1,
         "description": "A single-file, ANSI C, command-line parsing library that parses GNU-style command-line options",
         "homepage": "https://www.argtable.org/",
         "license": "BSD-3-Clause AND TCL",
@@ -1862,7 +1861,7 @@
             "host": true
           }
         ],
-        "version-string": "3.3.0.116da6c"
+        "version": "3.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -31408,9 +31407,10 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 3,
+        "port-version": 4,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
+        "supports": "!uwp",
         "dependencies": [
           "ceres",
           "eigen3",
@@ -36647,6 +36647,7 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
+        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -36695,6 +36696,20 @@
               }
             ],
             "supports": "linux"
+          },
+          "amd-amf": {
+            "description": "Enable support for the AMD AMF plugins",
+            "dependencies": [
+              "amd-amf",
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-bad"
+                ]
+              }
+            ],
+            "supports": "windows"
           },
           "aom": {
             "description": "Enable support for the Alliance for Open Media (AOM) AV1 encoder and decoder",
@@ -47608,7 +47623,6 @@
       "name": "libdshowcapture",
       "manifest": {
         "name": "libdshowcapture",
-        "port-version": 4,
         "description": "Free and Open Source C++11 Library for capturing DirectShow video/audio devices on windows.",
         "supports": "windows & !uwp",
         "dependencies": [
@@ -47617,9 +47631,10 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version-date": "2025-02-08"
       },
       "files": [
+        "fix_build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78908,7 +78923,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -79070,6 +79085,15 @@
           },
           "cups": {
             "description": "Provides support for the Common Unix Printing System.",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "widgets"
+                ]
+              }
+            ],
             "supports": "linux | osx"
           },
           "dbus": {
@@ -79118,7 +79142,14 @@
           "egl": {
             "description": "EGL",
             "dependencies": [
-              "egl"
+              "egl",
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "opengl"
+                ]
+              }
             ],
             "supports": "android | linux"
           },
@@ -79417,6 +79448,13 @@
           "vulkan": {
             "description": "Enable Vulkan support",
             "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
+              },
               "vulkan"
             ]
           },
@@ -79439,7 +79477,7 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
-                  "concurrent",
+                  "thread",
                   "xkbcommon-x11",
                   "xlib"
                 ]
@@ -79474,7 +79512,16 @@
             ]
           },
           "xlib": {
-            "description": "XLib"
+            "description": "XLib",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
+              }
+            ]
           },
           "xrender": {
             "description": "XRender for native painting",
@@ -79483,7 +79530,8 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
-                  "xcb"
+                  "fontconfig",
+                  "xcb-xlib"
                 ]
               }
             ]
@@ -84474,7 +84522,7 @@
           },
           "zydis"
         ],
-        "version-semver": "0.6.6"
+        "version-semver": "0.6.7"
       },
       "files": [
         "portfile.cmake",
@@ -86377,7 +86425,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.9.0"
+        "version": "0.9.1"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -86642,7 +86690,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -87122,6 +87170,23 @@
         "homepage": "https://signalsmith-audio.co.uk/code/dsp/",
         "license": "MIT",
         "version-semver": "1.6.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "signalsmith-stretch",
+      "manifest": {
+        "name": "signalsmith-stretch",
+        "description": "C++ polyphonic pitch/time library",
+        "homepage": "https://signalsmith-audio.co.uk/code/stretch/",
+        "license": "MIT",
+        "dependencies": [
+          "signalsmith-dsp"
+        ],
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -89265,11 +89330,11 @@
       "name": "sqlcipher",
       "manifest": {
         "name": "sqlcipher",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SQLCipher extends the SQLite database library to add security enhancements that make it more suitable for encrypted local data storage.",
         "homepage": "https://www.zetetic.net/sqlcipher",
         "license": null,
-        "supports": "windows & !uwp & !static",
+        "supports": "windows & !uwp",
         "dependencies": [
           "openssl",
           "tcl",
