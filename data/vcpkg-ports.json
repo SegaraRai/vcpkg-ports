@@ -1,5 +1,5 @@
 {
-  "version": "7066011e27c97dbcfff739be2b69b592a41fc74a",
+  "version": "0cb95c860ea83aafc1b24350510b30dec535989a",
   "ports": [
     {
       "name": "3fd",
@@ -22907,6 +22907,28 @@
       ]
     },
     {
+      "name": "crossdb",
+      "manifest": {
+        "name": "crossdb",
+        "description": "Ultra High-performance Lightweight Embedded and Server OLTP RDBMS",
+        "homepage": "https://github.com/crossdb-org/crossdb",
+        "license": "MPL-2.0",
+        "supports": "(!windows | mingw) & !android",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.14.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "crossguid",
       "manifest": {
         "name": "crossguid",
@@ -39115,7 +39137,6 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 4,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -39203,10 +39224,9 @@
             "supports": "!static"
           }
         },
-        "version": "10.2.0"
+        "version": "11.2.0"
       },
       "files": [
-        "fix-build-ffmpeg-failed.patch",
         "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
@@ -47365,7 +47385,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.23.0"
+        "version-semver": "0.23.1"
       },
       "files": [
         "dependencies.diff",
@@ -50013,7 +50033,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -50034,7 +50054,8 @@
               "libjpeg-turbo",
               "libpng",
               "zlib"
-            ]
+            ],
+            "supports": "!uwp"
           }
         },
         "version-semver": "0.11.1"
@@ -50042,6 +50063,7 @@
       "files": [
         "avoid-exe-linker-flags.patch",
         "fix-dependencies.patch",
+        "msvc-remove-libm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55538,7 +55560,6 @@
       "name": "libwebm",
       "manifest": {
         "name": "libwebm",
-        "port-version": 1,
         "description": "WebM File Parser",
         "homepage": "https://github.com/webmproject/libwebm",
         "license": "BSD-3-Clause",
@@ -55552,7 +55573,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0.31"
+        "version": "1.0.0.32"
       },
       "files": [
         "Fix-cmake.patch",
@@ -81531,7 +81552,7 @@
             "host": true
           }
         ],
-        "version": "10.0.0"
+        "version": "10.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -87534,7 +87555,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.3.1"
+        "version-semver": "7.3.2"
       },
       "files": [
         "portfile.cmake",
