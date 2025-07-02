@@ -1,5 +1,5 @@
 {
-  "version": "a7ef72790b3f4a6c1f940503e418f71380ac94a7",
+  "version": "f0fb3ddba5135b80982668de39dbaa139c00d281",
   "ports": [
     {
       "name": "3fd",
@@ -80038,6 +80038,7 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
+        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -90081,6 +90082,27 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stc",
+      "manifest": {
+        "name": "stc",
+        "description": "A modern, user friendly, generic, type-safe and fast C99 container library.",
+        "homepage": "https://github.com/stclib/STC",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "5.0"
+      },
+      "files": [
+        "add-pkg-conf.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
