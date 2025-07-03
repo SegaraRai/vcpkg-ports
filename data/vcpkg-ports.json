@@ -1,5 +1,5 @@
 {
-  "version": "f0fb3ddba5135b80982668de39dbaa139c00d281",
+  "version": "772170438c9a2fd90198d71c7c66b52c675ae844",
   "ports": [
     {
       "name": "3fd",
@@ -19765,7 +19765,7 @@
             "host": true
           }
         ],
-        "version": "3.5.2"
+        "version": "3.5.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -31785,7 +31785,6 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -31968,7 +31967,10 @@
           "libspatialite": {
             "description": "Create or update SpatiaLite databases using libspatialite",
             "dependencies": [
-              "libspatialite"
+              {
+                "name": "libspatialite",
+                "default-features": false
+              }
             ]
           },
           "libxml2": {
@@ -32114,7 +32116,7 @@
             ]
           }
         },
-        "version-semver": "3.11.0"
+        "version-semver": "3.11.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -45344,7 +45346,7 @@
             "host": true
           }
         ],
-        "version": "0.3.4"
+        "version": "0.3.5"
       },
       "files": [
         "fix-name-conflict.diff",
@@ -61608,7 +61610,7 @@
             ]
           }
         },
-        "version": "3.6.2"
+        "version": "3.6.4"
       },
       "files": [
         "enable-pthread.patch",
@@ -63104,6 +63106,7 @@
       "name": "mongoose",
       "manifest": {
         "name": "mongoose",
+        "port-version": 1,
         "description": "Embedded web server / embedded networking library",
         "homepage": "https://cesanta.com/",
         "license": null,
@@ -63119,6 +63122,9 @@
           }
         ],
         "features": {
+          "pack": {
+            "description": "Build pack for embedding read-only filesystems"
+          },
           "ssl": {
             "description": "Build with openssl",
             "dependencies": [
@@ -64838,7 +64844,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -73471,7 +73477,7 @@
             "host": true
           }
         ],
-        "version": "50.1"
+        "version": "51.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -75547,7 +75553,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
