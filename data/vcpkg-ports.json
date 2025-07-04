@@ -1,5 +1,5 @@
 {
-  "version": "772170438c9a2fd90198d71c7c66b52c675ae844",
+  "version": "ca8588722b0a50c5dc51d6c817fa40babbdedeae",
   "ports": [
     {
       "name": "3fd",
@@ -56298,7 +56298,6 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 1,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "documentation": "https://libxlsxwriter.github.io",
@@ -56326,7 +56325,7 @@
             ]
           }
         },
-        "version": "1.2.2"
+        "version": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -70761,7 +70760,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -70795,7 +70793,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.5.0"
+        "version": "3.5.1"
       },
       "files": [
         "cmake-config.patch",
@@ -87183,61 +87181,6 @@
         "outdir.patch",
         "portfile.cmake",
         "runtime.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "shogun",
-      "manifest": {
-        "name": "shogun",
-        "port-version": 1,
-        "description": "Unified and efficient Machine Learning",
-        "homepage": "https://github.com/shogun-toolbox/shogun",
-        "dependencies": [
-          "blas",
-          "bzip2",
-          "curl",
-          "eigen3",
-          {
-            "name": "hdf5",
-            "default-features": false,
-            "platform": "!windows"
-          },
-          "lapack",
-          "liblzma",
-          "libxml2",
-          "lzo",
-          "nlopt",
-          "protobuf",
-          "rapidjson",
-          "rxcpp",
-          "snappy",
-          "spdlog",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          {
-            "name": "vcpkg-pkgconfig-get-modules",
-            "host": true
-          },
-          "zlib"
-        ],
-        "version-date": "2023-12-19"
-      },
-      "files": [
-        "cmake.patch",
-        "eigen-3.4.patch",
-        "fix-ASSERT-not-found.patch",
-        "fix-build-error-with-fmt11.patch",
-        "fmt.patch",
-        "portfile.cmake",
-        "remove-bitsery.patch",
-        "syntax.patch",
         "vcpkg.json"
       ]
     },
