@@ -1,5 +1,5 @@
 {
-  "version": "9e8416f15d93fa9347e3291bd8c128dd44200ba5",
+  "version": "b35194bce64fed3c48646cb32467e7725453c840",
   "ports": [
     {
       "name": "3fd",
@@ -28013,6 +28013,30 @@
       ]
     },
     {
+      "name": "faker-cxx",
+      "manifest": {
+        "name": "faker-cxx",
+        "description": "C++ Faker library for generating fake (but realistic) data.",
+        "homepage": "https://cieslarmichal.github.io/faker-cxx/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "fameta-counter",
       "manifest": {
         "name": "fameta-counter",
@@ -39723,7 +39747,6 @@
       "name": "highfive",
       "manifest": {
         "name": "highfive",
-        "port-version": 1,
         "description": "HighFive is a modern header-only C++/C++11 friendly interface for libhdf5",
         "homepage": "https://github.com/highfive-devs/highfive",
         "license": "BSL-1.0",
@@ -39743,7 +39766,7 @@
         ],
         "features": {
           "boost": {
-            "description": "Enables Boost support",
+            "description": "Enable testing Boost features",
             "dependencies": [
               "boost-multi-array",
               "boost-serialization",
@@ -39752,28 +39775,27 @@
             ]
           },
           "eigen3": {
-            "description": "Enable Eigen testing",
+            "description": "Enable testing Eigen",
             "dependencies": [
               "eigen3"
             ]
           },
-          "tests": {
-            "description": "Build unit tests",
+          "opencv": {
+            "description": "Enable testing OpenCV",
             "dependencies": [
-              "catch2"
+              "opencv"
             ]
           },
           "xtensor": {
-            "description": "Enable xtensor testing",
+            "description": "Enable testing xtensor",
             "dependencies": [
               "xtensor"
             ]
           }
         },
-        "version": "2.10.1"
+        "version": "3.0.0"
       },
       "files": [
-        "fix-error-C1128.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -52212,7 +52234,7 @@
             "host": true
           }
         ],
-        "version": "9.0.6"
+        "version": "9.0.8"
       },
       "files": [
         "disable-werror.patch",
@@ -73485,7 +73507,7 @@
             "host": true
           }
         ],
-        "version": "51.1"
+        "version": "51.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -90234,12 +90256,38 @@
       "name": "stlab",
       "manifest": {
         "name": "stlab",
-        "port-version": 2,
         "description": [
           "stlab is the ongoing work of what was Adobe Software Technology Lab.",
           "The Concurrency library provides futures and channels, high level constructs for implementing algorithms that eases the use of multiple CPU cores while minimizing contention. This library solves several problems of the C++11 and C++17 TS futures."
         ],
         "homepage": "https://github.com/stlab/libraries",
+        "license": "BSL-1.0",
+        "dependencies": [
+          "stlab-copy-on-write",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.1"
+      },
+      "files": [
+        "cross-build.patch",
+        "devendoring.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stlab-copy-on-write",
+      "manifest": {
+        "name": "stlab-copy-on-write",
+        "description": "stlab copy-on-write library",
+        "homepage": "https://github.com/stlab/copy-on-write",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -90251,22 +90299,10 @@
             "host": true
           }
         ],
-        "default-features": [
-          "cpp17shims"
-        ],
-        "features": {
-          "cpp17shims": {
-            "description": "Support C++11/14 by polyfilling stlab's use of `optional` and `variant` with boost. On by default.",
-            "dependencies": [
-              "boost-optional",
-              "boost-variant"
-            ]
-          }
-        },
-        "version": "1.7.1"
+        "version": "1.0.3"
       },
       "files": [
-        "cross-build.patch",
+        "disable-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
