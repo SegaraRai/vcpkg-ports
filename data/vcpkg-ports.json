@@ -1,5 +1,5 @@
 {
-  "version": "bffcbb75f71553824aa948a7e7b4f798662a6fa7",
+  "version": "c6f09fc73ebfbfddd769f8fac9f33f95304c77e5",
   "ports": [
     {
       "name": "3fd",
@@ -95486,6 +95486,38 @@
       "files": [
         "CMakeLists.txt",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vanillapdf",
+      "manifest": {
+        "name": "vanillapdf",
+        "description": "Vanilla.PDF is a cross-platform SDK for creating and modifying PDF documents.",
+        "homepage": "https://github.com/vanillapdf/vanillapdf",
+        "documentation": "https://vanillapdf.github.io/vanillapdf",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "libjpeg-turbo",
+          "nlohmann-json",
+          "openjpeg",
+          "openssl",
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "2.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
