@@ -1,5 +1,5 @@
 {
-  "version": "c6f09fc73ebfbfddd769f8fac9f33f95304c77e5",
+  "version": "f33cc491c85a7d643c5ab6da1667c1458e6d7abf",
   "ports": [
     {
       "name": "3fd",
@@ -18551,7 +18551,6 @@
       "name": "capstone",
       "manifest": {
         "name": "capstone",
-        "port-version": 1,
         "description": "Multi-architecture disassembly framework",
         "homepage": "https://github.com/capstone-engine/capstone",
         "license": "BSD-3-Clause",
@@ -18621,10 +18620,11 @@
             "description": "Capstone disassembly support for XCore"
           }
         },
-        "version": "5.0.3"
+        "version": "5.0.6"
       },
       "files": [
         "001-silence-windows-crt-secure-warnings.patch",
+        "002-force-exportname-capstone.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50043,7 +50043,7 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://github.com/libjpeg-turbo/libjpeg-turbo",
         "license": "BSD-3-Clause",
@@ -50063,6 +50063,9 @@
           },
           "jpeg8": {
             "description": "Emulate libjpeg v8 API/ABI (this makes libjpeg-turbo backward-incompatible with libjpeg v6b!)"
+          },
+          "tools": {
+            "description": "Build executables"
           }
         },
         "version": "3.1.0"
@@ -57489,13 +57492,12 @@
       "name": "livepp",
       "manifest": {
         "name": "livepp",
-        "port-version": 1,
         "description": "Hot-reload for C & C++ transforms workflows and decreases iteration times.",
         "homepage": "https://liveplusplus.tech/",
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.9.2"
+        "version-semver": "2.9.3"
       },
       "files": [
         "global_preferences.json",
@@ -66213,6 +66215,7 @@
       "name": "nspr",
       "manifest": {
         "name": "nspr",
+        "port-version": 1,
         "description": "Netscape portable runtime",
         "homepage": "https://releases.mozilla.org/pub/nspr/",
         "license": "MPL-2.0",
@@ -66235,6 +66238,7 @@
         "nsinstall-windows.diff",
         "parallel.diff",
         "portfile.cmake",
+        "unexport-ldflags.diff",
         "vcpkg.json"
       ]
     },
@@ -73859,7 +73863,6 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
-        "port-version": 1,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -73870,7 +73873,7 @@
             "host": true
           }
         ],
-        "version": "2.4.3"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -86480,6 +86483,30 @@
       ]
     },
     {
+      "name": "sebsjames-maths",
+      "manifest": {
+        "name": "sebsjames-maths",
+        "description": "C++20 code for scalar, vector and complex maths.",
+        "homepage": "https://github.com/sebsjames/maths",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "secp256k1",
       "manifest": {
         "name": "secp256k1",
@@ -86990,7 +87017,7 @@
             "host": true
           }
         ],
-        "version": "1.9.2"
+        "version": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -87565,7 +87592,7 @@
             ]
           }
         },
-        "version-semver": "1.8.3"
+        "version-semver": "1.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -87621,7 +87648,7 @@
             "host": true
           }
         ],
-        "version": "6.1.150"
+        "version": "6.2.151"
       },
       "files": [
         "SimdConfig.cmake",
@@ -91410,6 +91437,34 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "superglu",
+      "manifest": {
+        "name": "superglu",
+        "description": "SGI GLU with miscellaneous fixes",
+        "homepage": "https://github.com/coin3d/superglu",
+        "license": "SGI-B-1.1",
+        "supports": "windows & !uwp",
+        "dependencies": [
+          "opengl-registry",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.3.3"
+      },
+      "files": [
+        "change-output-name.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
