@@ -1,5 +1,5 @@
 {
-  "version": "f33cc491c85a7d643c5ab6da1667c1458e6d7abf",
+  "version": "96fd599859beaed2ae891a2b2982746f28611b07",
   "ports": [
     {
       "name": "3fd",
@@ -154,7 +154,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -6172,7 +6172,6 @@
       "name": "babl",
       "manifest": {
         "name": "babl",
-        "port-version": 2,
         "description": "A pixel encoding and color space conversion engine.",
         "homepage": "https://gegl.org/babl/",
         "license": "LGPL-3.0-or-later",
@@ -6189,9 +6188,15 @@
             "dependencies": [
               "lcms"
             ]
+          },
+          "introspection": {
+            "description": "Enable introspection",
+            "dependencies": [
+              "gobject-introspection"
+            ]
           }
         },
-        "version": "0.1.110"
+        "version": "0.1.114"
       },
       "files": [
         "portfile.cmake",
@@ -26013,10 +26018,9 @@
           },
           "zlib"
         ],
-        "version": "10.1.2"
+        "version": "10.1.3"
       },
       "files": [
-        "include.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -32338,7 +32342,7 @@
             "host": true
           }
         ],
-        "version": "0.4.54"
+        "version": "0.4.62"
       },
       "files": [
         "disable_tests.patch",
@@ -38647,6 +38651,7 @@
       "name": "gz-sim",
       "manifest": {
         "name": "gz-sim",
+        "port-version": 1,
         "description": "Gazebo Sim is an open source robotics simulator.",
         "homepage": "https://gazebosim.org/libs/sim",
         "license": "Apache-2.0",
@@ -38672,7 +38677,7 @@
         "version": "9.0.0"
       },
       "files": [
-        "cxx_flags.patch",
+        "cmake-project-include.cmake",
         "dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -40753,7 +40758,6 @@
       "name": "iir1",
       "manifest": {
         "name": "iir1",
-        "port-version": 1,
         "description": "An infinite impulse response (IIR) filter library for realtime processing. It implements Butterworth, RBJ, Chebychev filters.",
         "homepage": "https://github.com/berndporr/iir1",
         "license": "MIT",
@@ -40768,7 +40772,7 @@
             "host": true
           }
         ],
-        "version": "1.9.5"
+        "version": "1.10.0"
       },
       "files": [
         "fix-shared-lib.patch",
@@ -43016,13 +43020,11 @@
       "name": "jwt-cpp",
       "manifest": {
         "name": "jwt-cpp",
-        "port-version": 1,
         "description": "A header only library for creating and validating json web tokens in c++",
         "homepage": "https://github.com/Thalhammer/jwt-cpp",
         "license": "MIT",
         "dependencies": [
           "openssl",
-          "picojson",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -43032,10 +43034,18 @@
             "host": true
           }
         ],
-        "version-semver": "0.7.0"
+        "features": {
+          "picojson": {
+            "description": "Use picojson for JSON handling",
+            "dependencies": [
+              "picojson"
+            ]
+          }
+        },
+        "version-semver": "0.7.1"
       },
       "files": [
-        "external-json.diff",
+        "picojson_from_vcpkg.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46446,7 +46456,6 @@
       "name": "libarchive",
       "manifest": {
         "name": "libarchive",
-        "port-version": 1,
         "description": "Library for reading and writing streaming archives",
         "homepage": "https://www.libarchive.org",
         "license": null,
@@ -46461,9 +46470,9 @@
         "default-features": [
           "bzip2",
           "crypto",
-          "libxml2",
           "lz4",
           "lzma",
+          "xar",
           "zstd"
         ],
         "features": {
@@ -46486,12 +46495,6 @@
               }
             ]
           },
-          "libxml2": {
-            "description": "Libxml2 support",
-            "dependencies": [
-              "libxml2"
-            ]
-          },
           "lz4": {
             "description": "Lz4 support",
             "dependencies": [
@@ -46510,6 +46513,16 @@
               "lzo"
             ]
           },
+          "xar": {
+            "description": "Xar support",
+            "dependencies": [
+              {
+                "name": "libxml2",
+                "default-features": false,
+                "platform": "!windows | mingw"
+              }
+            ]
+          },
           "zstd": {
             "description": "Zstd support",
             "dependencies": [
@@ -46517,13 +46530,10 @@
             ]
           }
         },
-        "version": "3.7.8"
+        "version": "3.8.1"
       },
       "files": [
-        "disable-warnings.patch",
         "fix-buildsystem.patch",
-        "fix-cmake-version.patch",
-        "fix-cpu-set.patch",
         "fix-deps.patch",
         "portfile.cmake",
         "usage",
@@ -49378,7 +49388,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 1,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -49410,7 +49419,7 @@
             "dependencies": [
               "gdk-pixbuf"
             ],
-            "supports": "!windows"
+            "supports": "!windows | mingw"
           },
           "hevc": {
             "description": "HEVC encoding via x265",
@@ -49420,7 +49429,10 @@
             "license": "GPL-2.0-or-later"
           },
           "iso23001-17": {
-            "description": "Support for ISO23001-17 (uncompressed) codec",
+            "description": "Support for ISO23001-17 (uncompressed) codec (experimental)",
+            "dependencies": [
+              "zlib"
+            ],
             "license": "LGPL-3.0-only"
           },
           "jpeg": {
@@ -49438,9 +49450,12 @@
             "license": "BSD-2-Clause"
           }
         },
-        "version": "1.19.8"
+        "version": "1.20.1"
       },
       "files": [
+        "cmake-project-include.cmake",
+        "cxx-linkage-pkgconfig.diff",
+        "find-modules.diff",
         "gdk-pixbuf.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -58970,7 +58985,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.680"
+        "version": "0.681"
       },
       "files": [
         "cmake-config-export.patch",
@@ -74961,14 +74976,12 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
-        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "boost-container",
-          "boost-move",
           "freetype",
           "libiconv",
           "libjpeg-turbo",
@@ -74985,7 +74998,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
         "default-features": [
           "font-configuration",
@@ -75060,21 +75074,18 @@
             "dependencies": [
               {
                 "name": "qtbase",
-                "default-features": false
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
               }
             ]
           },
-          "splash": {
-            "description": "The splash backend is always enabled. This option is kept for compatibility."
-          },
           "zlib": {
-            "description": "zlib for poppler",
-            "dependencies": [
-              "zlib"
-            ]
+            "description": "Use zlib to uncompress flate streams (not totally safe)."
           }
         },
-        "version": "24.3.0"
+        "version": "25.7.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -92517,7 +92528,6 @@
       "name": "thrift",
       "manifest": {
         "name": "thrift",
-        "port-version": 1,
         "description": "Apache Thrift is a software project spanning a variety of programming languages and use cases. Our goal is to make reliable, performant communication and data serialization across languages as efficient and seamless as possible.",
         "homepage": "https://github.com/apache/thrift",
         "license": "Apache-2.0",
@@ -92527,6 +92537,7 @@
           "boost-range",
           "boost-scope-exit",
           "boost-smart-ptr",
+          "boost-uuid",
           "libevent",
           "openssl",
           {
@@ -92539,10 +92550,10 @@
           },
           "zlib"
         ],
-        "version": "0.20.0"
+        "version": "0.22.0"
       },
       "files": [
-        "correct-paths.patch",
+        "fix_missing_quotes_in_config_and_bin_path.patch",
         "pc-suffix.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -96049,7 +96060,7 @@
       "name": "vcpkg-tool-nodejs",
       "manifest": {
         "name": "vcpkg-tool-nodejs",
-        "port-version": 1,
+        "port-version": 2,
         "supports": "native",
         "version-semver": "16.18.0"
       },
