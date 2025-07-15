@@ -1,5 +1,5 @@
 {
-  "version": "09b8d93e613ba1c0309cf3ab358242d33af634dc",
+  "version": "30f771d4acf01bc7773d5c602443e7f839844a15",
   "ports": [
     {
       "name": "3fd",
@@ -229,12 +229,17 @@
       "name": "ace",
       "manifest": {
         "name": "ace",
+        "port-version": 1,
         "maintainers": "Johnny Willemsen <jwillemsen@remedy.nl>",
         "description": "The ADAPTIVE Communication Environment",
         "homepage": "https://github.com/DOCGroup/ACE_TAO",
         "license": "DOC",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
           {
             "name": "vcpkg-msbuild",
             "host": true,
@@ -1029,7 +1034,7 @@
             "host": true
           }
         ],
-        "version": "0.13.1"
+        "version": "0.14.1"
       },
       "files": [
         "anari-lib-maybe-static-lib.patch",
@@ -5300,7 +5305,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.15.0"
+        "version-semver": "1.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -5402,7 +5407,7 @@
           {
             "name": "azure-core-cpp",
             "default-features": false,
-            "version>=": "1.14.0"
+            "version>=": "1.16.0"
           },
           {
             "name": "openssl",
@@ -5421,7 +5426,7 @@
             "platform": "windows & !uwp"
           }
         ],
-        "version-semver": "1.11.0"
+        "version-semver": "1.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -19825,12 +19830,15 @@
       "name": "cinatra",
       "manifest": {
         "name": "cinatra",
+        "port-version": 1,
         "description": "Cinatra is a high performance HTTP framework with modern C++ features.",
         "homepage": "https://github.com/qicosmos/cinatra",
         "license": "MIT",
         "supports": "!uwp & !android",
         "dependencies": [
           "asio",
+          "async-simple",
+          "iguana",
           "tanakh-cmdline"
         ],
         "version": "0.9.5"
@@ -20734,6 +20742,13 @@
               "simage"
             ]
           },
+          "superglu": {
+            "description": "Use SuperGLU (SGI GLU fork with fixes) instead of system GLU",
+            "dependencies": [
+              "superglu"
+            ],
+            "supports": "windows"
+          },
           "zlib": {
             "description": "Use zlib for reading/writing compressed files",
             "dependencies": [
@@ -20741,7 +20756,7 @@
             ]
           }
         },
-        "version": "4.0.3"
+        "version": "4.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -21049,7 +21064,7 @@
         "description": "Just another header-only C++17 CSV parser.",
         "homepage": "https://github.com/furfurylic/commata",
         "license": "Unlicense",
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -21679,6 +21694,7 @@
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
+        "supports": "!x86 & !arm",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -21718,7 +21734,7 @@
             ]
           }
         },
-        "version": "0.22.0"
+        "version": "0.23.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -21910,7 +21926,7 @@
             "host": true
           }
         ],
-        "version": "1.16.0"
+        "version": "1.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -23386,7 +23402,7 @@
       "name": "cudnn",
       "manifest": {
         "name": "cudnn",
-        "port-version": 15,
+        "port-version": 16,
         "description": "NVIDIA's cuDNN deep neural network acceleration library.",
         "homepage": "https://developer.nvidia.com/cudnn",
         "license": null,
@@ -24299,7 +24315,7 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
@@ -24402,6 +24418,7 @@
         "version": "6.15.0"
       },
       "files": [
+        "add-cassert.patch",
         "dependencies.diff",
         "devendor-lodepng.diff",
         "disable_unit_tests_examples_and_tutorials.patch",
@@ -25746,7 +25763,7 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -26225,7 +26242,7 @@
             ]
           }
         },
-        "version-semver": "1.9.10"
+        "version-semver": "1.9.11"
       },
       "files": [
         "0001-vcpkg.patch",
@@ -27655,7 +27672,7 @@
             "host": true
           }
         ],
-        "version": "20.41.7"
+        "version": "20.42.1"
       },
       "files": [
         "portfile.cmake",
@@ -28233,7 +28250,6 @@
       "name": "fastdds",
       "manifest": {
         "name": "fastdds",
-        "port-version": 2,
         "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
         "license": "Apache-2.0",
@@ -28254,7 +28270,7 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.3.0"
       },
       "files": [
         "disable-werror.patch",
@@ -28305,7 +28321,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -30023,7 +30039,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -31518,9 +31534,10 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 4,
+        "port-version": 5,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
+        "license": null,
         "supports": "!uwp",
         "dependencies": [
           "ceres",
@@ -31548,7 +31565,7 @@
         "version-date": "2024-12-14"
       },
       "files": [
-        "0003-dependency-spdlog.diff",
+        "dependencies.diff",
         "fix-absolute.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -32181,7 +32198,7 @@
             ]
           }
         },
-        "version-semver": "3.11.1"
+        "version-semver": "3.11.3"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -40776,6 +40793,23 @@
       ]
     },
     {
+      "name": "iguana",
+      "manifest": {
+        "name": "iguana",
+        "description": "Header-only C++ serialization library used by Cinatra.",
+        "homepage": "https://github.com/qicosmos/iguana",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "protobuf"
+        ],
+        "version": "1.0.9"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "iir1",
       "manifest": {
         "name": "iir1",
@@ -45321,7 +45355,7 @@
       "name": "krb5",
       "manifest": {
         "name": "krb5",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Kerberos is a network authentication protocol.",
           "It is designed to provide strong authentication for client/server applications by using secret-key cryptography.",
@@ -49409,6 +49443,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -49479,6 +49514,7 @@
         "find-modules.diff",
         "gdk-pixbuf.patch",
         "portfile.cmake",
+        "symbol-exports.diff",
         "vcpkg.json"
       ]
     },
@@ -59028,7 +59064,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.681"
+        "version": "0.682"
       },
       "files": [
         "cmake-config-export.patch",
@@ -59229,6 +59265,7 @@
         "description": "Very fast synchronous and asynchronous C++17 logging library",
         "homepage": "https://github.com/ChristianPanov/lwlog",
         "license": "MIT",
+        "supports": "!android & !(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -59239,7 +59276,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -61230,6 +61267,35 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "matajoh-libnpy",
+      "manifest": {
+        "name": "matajoh-libnpy",
+        "description": "Multi-platform C++ library for reading and writing NPY and NPZ files, with an additional .NET interface",
+        "homepage": "https://github.com/matajoh/libnpy",
+        "license": "MIT",
+        "dependencies": [
+          "miniz",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.5.3"
+      },
+      "files": [
+        "fix-install.patch",
+        "fix-miniz.patch",
+        "fix-npy-config.patch",
+        "fix-zip-wrapper.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -63428,7 +63494,7 @@
             "host": true
           }
         ],
-        "version": "2.0.20"
+        "version": "2.0.22"
       },
       "files": [
         "0003-add-find_package-libwebsockets.patch",
@@ -64894,7 +64960,7 @@
       "name": "nanogui",
       "manifest": {
         "name": "nanogui",
-        "port-version": 5,
+        "port-version": 6,
         "description": "NanoGUI is a minimalistic cross-platform widget library for OpenGL 3.x or higher.",
         "homepage": "https://github.com/wjakob/nanogui",
         "license": "BSD-3-Clause",
@@ -64919,6 +64985,7 @@
       "files": [
         "fix-cmakelists.patch",
         "fix-glad-dependence.patch",
+        "fix-release-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65025,7 +65092,7 @@
         "name": "nanoprintf",
         "description": "A tiny embeddable printf replacement written in C99",
         "homepage": "https://github.com/charlesnicholson/nanoprintf",
-        "version": "0.5.3"
+        "version": "0.5.5"
       },
       "files": [
         "portfile.cmake",
@@ -66537,7 +66604,7 @@
             ]
           }
         },
-        "version": "2.14.1"
+        "version": "2.14.2"
       },
       "files": [
         "portfile.cmake",
@@ -70843,15 +70910,15 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
-        "port-version": 4,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-or-later",
-        "supports": "native & !(windows & static) & !xbox & !osx",
+        "supports": "!xbox",
         "dependencies": [
           "cairo",
           "gdk-pixbuf",
           "glib",
+          "libdicom",
           "libjpeg-turbo",
           "libpng",
           "libxml2",
@@ -70859,7 +70926,10 @@
           "sqlite3",
           {
             "name": "tiff",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "jpeg"
+            ]
           },
           {
             "name": "vcpkg-tool-meson",
@@ -70867,12 +70937,12 @@
           },
           "zlib"
         ],
-        "version": "3.4.1"
+        "version": "4.0.0"
       },
       "files": [
         "fix-win-build.patch",
         "portfile.cmake",
-        "remove-w-flags.patch",
+        "slidetool-unicode.patch",
         "vcpkg.json"
       ]
     },
@@ -73037,7 +73107,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -73099,6 +73169,7 @@
             "description": "Build PCL examples",
             "dependencies": [
               "boost-format",
+              "cjson",
               {
                 "name": "pcl",
                 "features": [
@@ -73212,6 +73283,7 @@
         "version": "1.15.0"
       },
       "files": [
+        "add-cassert.patch",
         "add-chrono-includes.patch",
         "add-gcc-version-check.patch",
         "fix-check-sse.patch",
@@ -73220,6 +73292,7 @@
         "install-examples.patch",
         "install-layout.patch",
         "portfile.cmake",
+        "rollback-1092d70.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -75148,6 +75221,31 @@
         "private-namespace.patch",
         "unofficial-poppler-config.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "poppler-data",
+      "manifest": {
+        "name": "poppler-data",
+        "port-version": 1,
+        "description": "This package consists of encoding files for use with poppler.",
+        "homepage": "https://poppler.freedesktop.org",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.4.12"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -77087,6 +77185,7 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
+        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77263,13 +77362,17 @@
           },
           {
             "name": "qtwebengine",
+            "default-features": false
+          },
+          {
+            "name": "qtwebengine",
             "default-features": false,
             "features": [
               "geolocation",
               "spellchecker",
               "webchannel"
             ],
-            "platform": "!static & !(windows & arm)"
+            "platform": "(linux | osx | (windows & x64)) & !static"
           },
           {
             "name": "qtwebsockets",
@@ -81388,122 +81491,24 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 1,
-        "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
+        "port-version": 2,
+        "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
-        "supports": "!static & ((!x86 & !arm & native) | !windows)",
         "dependencies": [
           {
-            "name": "ffmpeg",
-            "platform": "!windows"
-          },
-          {
-            "name": "fontconfig",
-            "platform": "!windows"
-          },
-          {
-            "name": "freetype",
-            "platform": "!windows"
-          },
-          {
-            "name": "glib",
-            "platform": "!windows"
-          },
-          {
-            "name": "gperf",
-            "host": true
-          },
-          {
-            "name": "harfbuzz",
-            "platform": "!windows"
-          },
-          {
-            "name": "icu",
-            "platform": "!windows"
-          },
-          {
-            "name": "libevent",
-            "platform": "!windows"
-          },
-          {
-            "name": "libjpeg-turbo",
-            "platform": "!windows"
-          },
-          {
-            "name": "libpng",
-            "platform": "!windows"
-          },
-          {
-            "name": "libvpx",
-            "platform": "!windows"
-          },
-          {
-            "name": "libwebp",
-            "platform": "!windows"
-          },
-          {
-            "name": "libxml2",
-            "default-features": false,
-            "features": [
-              "icu"
-            ],
-            "platform": "!windows"
-          },
-          {
-            "name": "minizip",
-            "platform": "!windows"
-          },
-          "opengl",
-          {
-            "name": "opus",
-            "platform": "!windows"
-          },
-          {
-            "name": "protobuf",
-            "platform": "!windows"
-          },
-          {
             "name": "qtbase",
-            "default-features": false,
-            "features": [
-              "gui",
-              "network",
-              "widgets"
-            ]
-          },
-          {
-            "name": "qtdeclarative",
             "default-features": false
+          }
+        ],
+        "default-features": [
+          {
+            "name": "pdf",
+            "platform": "android | ios | (linux & !x86) | osx | (windows & x64 & !static)"
           },
           {
-            "name": "qttools",
-            "default-features": false
-          },
-          {
-            "name": "qtwebengine",
-            "host": true,
-            "default-features": false
-          },
-          {
-            "name": "re2",
-            "platform": "!windows"
-          },
-          {
-            "name": "snappy",
-            "platform": "!windows"
-          },
-          {
-            "name": "vcpkg-get-python-packages",
-            "host": true
-          },
-          {
-            "name": "vcpkg-tool-nodejs",
-            "host": true
-          },
-          {
-            "name": "zlib",
-            "platform": "!windows"
+            "name": "webengine",
+            "platform": "!static & ((linux & !x86) | osx | (windows & x64))"
           }
         ],
         "features": {
@@ -81513,14 +81518,168 @@
               {
                 "name": "qtlocation",
                 "default-features": false
+              },
+              {
+                "name": "qtwebengine",
+                "default-features": false,
+                "features": [
+                  "webengine"
+                ]
               }
             ]
           },
+          "pdf": {
+            "description": "The Qt PDF module contains classes and functions for rendering PDF documents.",
+            "dependencies": [
+              {
+                "name": "freetype",
+                "platform": "!windows"
+              },
+              {
+                "name": "glib",
+                "platform": "!windows"
+              },
+              {
+                "name": "gperf",
+                "host": true
+              },
+              {
+                "name": "harfbuzz",
+                "platform": "!windows"
+              },
+              {
+                "name": "icu",
+                "platform": "!ios & !osx & !windows"
+              },
+              {
+                "name": "lcms",
+                "platform": "!windows"
+              },
+              {
+                "name": "libjpeg-turbo",
+                "platform": "!windows"
+              },
+              {
+                "name": "libpng",
+                "platform": "!windows"
+              },
+              {
+                "name": "libwebp",
+                "platform": "!windows"
+              },
+              {
+                "name": "libxml2",
+                "default-features": false,
+                "features": [
+                  "icu"
+                ],
+                "platform": "!windows"
+              },
+              {
+                "name": "libxslt",
+                "default-features": false,
+                "platform": "!windows"
+              },
+              {
+                "name": "minizip",
+                "platform": "!windows"
+              },
+              {
+                "name": "nss",
+                "platform": "android | linux"
+              },
+              "opengl",
+              {
+                "name": "openjpeg",
+                "platform": "!windows"
+              },
+              {
+                "name": "opus",
+                "platform": "!windows"
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui",
+                  "network",
+                  "widgets"
+                ]
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "harfbuzz",
+                  "jpeg",
+                  "png"
+                ],
+                "platform": "linux"
+              },
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              },
+              {
+                "name": "qttools",
+                "default-features": false
+              },
+              {
+                "name": "qtwebengine",
+                "host": true,
+                "default-features": false
+              },
+              {
+                "name": "re2",
+                "platform": "!windows"
+              },
+              {
+                "name": "snappy",
+                "platform": "!windows"
+              },
+              {
+                "name": "tiff",
+                "default-features": false,
+                "platform": "!windows"
+              },
+              {
+                "name": "vcpkg-get-python-packages",
+                "host": true
+              },
+              {
+                "name": "vcpkg-tool-nodejs",
+                "host": true
+              },
+              {
+                "name": "zlib",
+                "platform": "!windows"
+              }
+            ],
+            "supports": "android | ios | linux | osx | (windows & x64 & !static)"
+          },
           "proprietary-codecs": {
-            "description": "Enables the use of proprietary codecs such as h.264/h.265 and MP3."
+            "description": "Enables the use of proprietary codecs such as h.264/h.265 and MP3.",
+            "dependencies": [
+              {
+                "name": "qtwebengine",
+                "default-features": false,
+                "features": [
+                  "webengine"
+                ]
+              }
+            ]
           },
           "spellchecker": {
-            "description": "Provides a spellchecker"
+            "description": "Provides a spellchecker",
+            "dependencies": [
+              {
+                "name": "qtwebengine",
+                "default-features": false,
+                "features": [
+                  "webengine"
+                ]
+              }
+            ]
           },
           "webchannel": {
             "description": "Provides QtWebChannel integration",
@@ -81531,8 +81690,40 @@
                 "features": [
                   "qml"
                 ]
+              },
+              {
+                "name": "qtwebengine",
+                "default-features": false,
+                "features": [
+                  "webengine"
+                ]
               }
             ]
+          },
+          "webengine": {
+            "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
+            "dependencies": [
+              {
+                "name": "dbus",
+                "default-features": false
+              },
+              {
+                "name": "ffmpeg",
+                "platform": "!windows"
+              },
+              {
+                "name": "opus",
+                "platform": "!windows"
+              },
+              {
+                "name": "qtwebengine",
+                "default-features": false,
+                "features": [
+                  "pdf"
+                ]
+              }
+            ],
+            "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
         "version": "6.8.3"
@@ -81540,9 +81731,16 @@
       "files": [
         "blink-include-fixes.patch",
         "clang-cl.patch",
+        "cross-build.diff",
+        "disable-host-pkgconfig.diff",
         "fix-error2275-2672.patch",
         "nested-name-fix.patch",
+        "osx-sdk-info.diff",
+        "pdf-system-libjpeg.diff",
+        "pdf-system-libpng.diff",
+        "pkg-config.diff",
         "portfile.cmake",
+        "rpath.diff",
         "vcpkg.json"
       ]
     },
@@ -82399,7 +82597,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-07-02"
+        "version-date": "2025-06-26"
       },
       "files": [
         "portfile.cmake",
@@ -83903,7 +84101,7 @@
             ]
           }
         },
-        "version": "10.2.1"
+        "version": "10.4.2"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -87082,7 +87280,7 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -87093,10 +87291,10 @@
       "name": "sfml",
       "manifest": {
         "name": "sfml",
-        "port-version": 1,
         "description": "Simple and fast multimedia library",
         "homepage": "https://github.com/SFML/SFML",
         "license": "Zlib",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -87150,11 +87348,12 @@
             ]
           }
         },
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
-        "01-fix-findudev-module.patch",
-        "02-fix-dependency-resolve.patch",
+        "01-fix-dependency-resolve.patch",
+        "02-fix-pkgconfig.patch",
+        "03-fix-android-install-path.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -90601,7 +90800,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "3.12.4"
+        "version": "3.12.5"
       },
       "files": [
         "portfile.cmake",
@@ -93474,7 +93673,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -93931,7 +94130,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.23"
+        "version-semver": "1.5.24"
       },
       "files": [
         "000-fix-deps.patch",
@@ -94807,7 +95006,6 @@
       "name": "unqlite",
       "manifest": {
         "name": "unqlite",
-        "port-version": 3,
         "description": "An embedded NoSQL, transactional database engine",
         "homepage": "https://unqlite.symisc.net/",
         "license": "BSD-2-Clause",
@@ -94817,10 +95015,16 @@
             "host": true
           }
         ],
-        "version": "1.1.9"
+        "features": {
+          "threads": {
+            "description": "Compile with thread safety support"
+          }
+        },
+        "version-date": "2025-04-29"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -96688,7 +96892,7 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -96719,8 +96923,9 @@
       },
       "files": [
         "cmake_remove_bin_targets.patch",
+        "fix-android-build.patch",
         "fix-build-error-with-fmt11.patch",
-        "fix-rapidjson-target.patch",
+        "fix-external-libraries.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -98558,7 +98763,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "files": [
         "Config.cmake.in",
@@ -100047,7 +100252,7 @@
             ]
           }
         },
-        "version": "0.26.0"
+        "version": "0.27.0"
       },
       "files": [
         "fix-find-tbb-and-install-destination.patch",
