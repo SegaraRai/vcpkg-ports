@@ -1,5 +1,5 @@
 {
-  "version": "30f771d4acf01bc7773d5c602443e7f839844a15",
+  "version": "fe6f380a0509f2a53054aee83613efcb53ba8da2",
   "ports": [
     {
       "name": "3fd",
@@ -2299,6 +2299,26 @@
       },
       "files": [
         "disable-cppcheck.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arun11299-cpp-subprocess",
+      "manifest": {
+        "name": "arun11299-cpp-subprocess",
+        "description": "Subprocessing with modern C++ ",
+        "homepage": "https://github.com/arun11299/cpp-subprocess",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "2.1"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27960,6 +27980,70 @@
       ]
     },
     {
+      "name": "f3d",
+      "manifest": {
+        "name": "f3d",
+        "description": "A fast and minimalist 3D viewer",
+        "homepage": "https://f3d.app",
+        "license": "BSD-3-Clause",
+        "supports": "!(windows & (arm | uwp))",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vtk",
+            "default-features": false,
+            "features": [
+              "opengl",
+              "seacas"
+            ]
+          }
+        ],
+        "features": {
+          "alembic": {
+            "description": "alembic plugin",
+            "dependencies": [
+              "alembic"
+            ]
+          },
+          "application": {
+            "description": "build the application"
+          },
+          "assimp": {
+            "description": "assimp plugin",
+            "dependencies": [
+              "assimp"
+            ]
+          },
+          "draco": {
+            "description": "draco plugin",
+            "dependencies": [
+              "draco"
+            ]
+          },
+          "exr": {
+            "description": "support for OpenEXR images",
+            "dependencies": [
+              "openexr"
+            ]
+          }
+        },
+        "version": "3.2.0"
+      },
+      "files": [
+        "fix-install.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "faad2",
       "manifest": {
         "name": "faad2",
@@ -51239,10 +51323,10 @@
       "name": "libmpeg2",
       "manifest": {
         "name": "libmpeg2",
-        "port-version": 3,
+        "port-version": 4,
         "description": "a free MPEG-2 video stream decoder",
         "homepage": "http://libmpeg2.sourceforge.net/",
-        "supports": "!(linux | osx | uwp)",
+        "supports": "!(linux | osx | uwp | android)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
