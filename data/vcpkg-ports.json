@@ -1,5 +1,5 @@
 {
-  "version": "fe6f380a0509f2a53054aee83613efcb53ba8da2",
+  "version": "f368f080f98de39abef2bcd13bbd93af3006bab1",
   "ports": [
     {
       "name": "3fd",
@@ -33556,7 +33556,7 @@
             ]
           }
         },
-        "version": "5.5.2"
+        "version": "5.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -70401,7 +70401,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -70503,7 +70502,8 @@
             "dependencies": [
               "pybind11",
               "python3"
-            ]
+            ],
+            "supports": "!android"
           },
           "tools": {
             "description": "Build openimageio tools"
@@ -70522,7 +70522,8 @@
                 "name": "qtbase",
                 "default-features": false
               }
-            ]
+            ],
+            "supports": "!android"
           },
           "webp": {
             "description": "Enable libwebp support for openimageio",
@@ -70531,7 +70532,7 @@
             ]
           }
         },
-        "version": "3.0.1.0"
+        "version": "3.0.8.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -71704,6 +71705,7 @@
       "name": "openxr-loader",
       "manifest": {
         "name": "openxr-loader",
+        "port-version": 1,
         "description": "A royalty-free, open standard that provides high-performance access to Augmented Reality (AR) and Virtual Reality (VR)—collectively known as XR—platforms and devices",
         "homepage": "https://github.com/KhronosGroup/OpenXR-SDK",
         "license": "Apache-2.0",
@@ -74450,7 +74452,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -77669,7 +77671,6 @@
       "name": "qt5",
       "manifest": {
         "name": "qt5",
-        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78019,7 +78020,7 @@
             ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78046,7 +78047,7 @@
             "host": true
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78066,7 +78067,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78086,7 +78087,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78097,7 +78098,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 5,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -78116,8 +78116,21 @@
             "name": "fontconfig",
             "platform": "!windows"
           },
-          "freetype",
-          "harfbuzz",
+          {
+            "name": "freetype",
+            "default-features": false,
+            "features": [
+              "png",
+              "zlib"
+            ]
+          },
+          {
+            "name": "harfbuzz",
+            "default-features": false,
+            "features": [
+              "freetype"
+            ]
+          },
           "libjpeg-turbo",
           "libpng",
           {
@@ -78141,13 +78154,16 @@
             "name": "vcpkg-pkgconfig-get-modules",
             "host": true
           },
-          "zlib",
-          "zstd"
+          "zlib"
         ],
         "default-features": [
           "openssl"
         ],
         "features": {
+          "cups": {
+            "description": "Provides support for the Common Unix Printing System",
+            "supports": "linux | osx"
+          },
           "icu": {
             "description": "Enable ICU support",
             "dependencies": [
@@ -78163,7 +78179,14 @@
           "mysqlplugin": {
             "description": "Build the sql plugin for connecting to mysql databases",
             "dependencies": [
-              "libmysql"
+              "libmysql",
+              {
+                "name": "qt5-base",
+                "default-features": false,
+                "features": [
+                  "zstd"
+                ]
+              }
             ]
           },
           "openssl": {
@@ -78192,9 +78215,15 @@
             "dependencies": [
               "vulkan"
             ]
+          },
+          "zstd": {
+            "description": "Zstandard support",
+            "dependencies": [
+              "zstd"
+            ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -78209,17 +78238,16 @@
         "cmake/qt_port_functions.cmake",
         "cmake/qt_port_hashes.cmake",
         "cmake/qt_submodule_installation.cmake",
-        "patches/0001-CVE-2023-51714-qtbase-5.15.diff",
-        "patches/0002-CVE-2023-51714-qtbase-5.15.diff",
-        "patches/CVE-2024-25580-qtbase-5.15.diff",
         "patches/CVE-2024-39936-qtbase-5.15.patch",
+        "patches/CVE-2025-30348-qtbase-5.15.diff",
+        "patches/CVE-2025-4211-qtbase-5.15.diff",
+        "patches/CVE-2025-5455-qtbase-5.15.patch",
         "patches/Qt5BasicConfig.patch",
         "patches/Qt5GuiConfigExtras.patch",
         "patches/Qt5PluginTarget.patch",
         "patches/create_cmake.patch",
         "patches/egl.patch",
         "patches/fix_angle.patch",
-        "patches/gui_configure.patch",
         "patches/mingw9.patch",
         "patches/mysql-configure.patch",
         "patches/mysql_plugin_include.patch",
@@ -78228,6 +78256,7 @@
         "patches/qt_app.patch",
         "patches/qtbug_96392.patch",
         "patches/static_opengl.patch",
+        "patches/vulkan-windows.diff",
         "patches/windows_prf.patch",
         "patches/winmain_pro.patch",
         "patches/xlib.patch",
@@ -78269,7 +78298,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78288,7 +78317,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78309,7 +78338,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78351,7 +78380,7 @@
             ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78380,7 +78409,7 @@
             ]
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78400,7 +78429,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78420,7 +78449,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78481,7 +78510,7 @@
             ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78504,7 +78533,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "disable-enum-warning.patch",
@@ -78526,7 +78555,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78558,7 +78587,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78578,7 +78607,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78597,10 +78626,9 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
-        "patches/CVE-2024-36048-qtnetworkauth-5.15.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78618,7 +78646,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78660,7 +78688,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78681,7 +78709,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78722,7 +78750,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78742,7 +78770,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78762,7 +78790,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78782,7 +78810,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78802,7 +78830,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78821,7 +78849,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78846,7 +78874,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78865,7 +78893,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78877,7 +78905,6 @@
       "name": "qt5-tools",
       "manifest": {
         "name": "qt5-tools",
-        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "license": null,
         "dependencies": [
@@ -78908,7 +78935,7 @@
             ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "fix-pkgconfig-qt5uiplugin-not-found.patch",
@@ -78930,7 +78957,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78948,7 +78975,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78968,7 +78995,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78988,7 +79015,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -78999,7 +79026,6 @@
       "name": "qt5-webengine",
       "manifest": {
         "name": "qt5-webengine",
-        "port-version": 3,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "license": null,
         "supports": "!static",
@@ -79044,11 +79070,10 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "0001-Fix-jumbo-build-error-due-to-ResolveColor-redefiniti.patch",
-        "0001-Support-ICU-74-in-LazyTextBreakIterator.patch",
         "build_1.patch",
         "common.pri.patch",
         "fix-spellcheck-buildflags.patch",
@@ -79071,7 +79096,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -79091,7 +79116,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -79107,7 +79132,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -79136,7 +79161,7 @@
             ]
           }
         },
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "patches/require_quick.patch",
@@ -79158,7 +79183,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -79178,7 +79203,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.16"
+        "version": "5.15.17"
       },
       "files": [
         "portfile.cmake",
@@ -80900,6 +80925,7 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
+        "port-version": 1,
         "description": "Qt Quick 3D provides a high-level API for creating 3D content and 3D user interfaces based on Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80939,6 +80965,7 @@
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
+        "android-openxr-vulkan.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82870,7 +82897,6 @@
       "name": "realsense2",
       "manifest": {
         "name": "realsense2",
-        "port-version": 2,
         "description": "Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300).",
         "homepage": "https://github.com/IntelRealSense/librealsense",
         "license": "Apache-2.0",
@@ -82880,7 +82906,17 @@
             "name": "libusb",
             "platform": "!windows"
           },
+          "lz4",
           "nlohmann-json",
+          {
+            "name": "realsense2",
+            "default-features": false,
+            "features": [
+              "rs-usb-backend"
+            ],
+            "platform": "android | osx"
+          },
+          "stb",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -82895,20 +82931,35 @@
             "description": "Build Intel® RealSense™ OpenNI2 driver",
             "dependencies": [
               "openni2"
-            ]
+            ],
+            "supports": "!static"
+          },
+          "rs-usb-backend": {
+            "description": "Use RS USB backend",
+            "dependencies": [
+              "libusb"
+            ],
+            "supports": "!windows"
           },
           "tools": {
-            "description": "Build Intel® RealSense™ tools"
+            "description": "Build Intel® RealSense™ tools",
+            "supports": "!android"
           }
         },
-        "version": "2.56.2"
+        "version": "2.56.3"
       },
       "files": [
         "add-include-chrono.patch",
-        "fix-android-prefix-path.patch",
-        "fix-nlohmann_json.patch",
+        "android-config.diff",
+        "build.diff",
+        "devendor-lz4.diff",
+        "devendor-nlohmann-json.diff",
+        "devendor-stb.diff",
         "fix_openni2.patch",
+        "libusb.diff",
         "portfile.cmake",
+        "usage",
+        "using-firmware.diff",
         "vcpkg.json"
       ]
     },
@@ -84433,7 +84484,7 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": null,
@@ -88085,7 +88136,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.3.2"
+        "version-semver": "7.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -94294,7 +94345,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.25.6"
+        "version-semver": "0.25.8"
       },
       "files": [
         "portfile.cmake",
