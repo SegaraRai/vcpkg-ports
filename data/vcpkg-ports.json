@@ -1,5 +1,5 @@
 {
-  "version": "f368f080f98de39abef2bcd13bbd93af3006bab1",
+  "version": "4002e3abc6d3e468c73d2d9777a7dd96af5dc224",
   "ports": [
     {
       "name": "3fd",
@@ -2704,7 +2704,7 @@
             ]
           }
         },
-        "version": "10.1.0"
+        "version": "10.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -23627,10 +23627,6 @@
             ],
             "supports": "windows & !uwp"
           },
-          "sectransp": {
-            "description": "SSL support (sectransp)",
-            "supports": "osx | ios"
-          },
           "ssh": {
             "description": "SSH support via libssh2",
             "dependencies": [
@@ -23658,14 +23654,6 @@
                 "name": "curl",
                 "default-features": false,
                 "features": [
-                  "sectransp"
-                ],
-                "platform": "osx | ios"
-              },
-              {
-                "name": "curl",
-                "default-features": false,
-                "features": [
                   "schannel"
                 ],
                 "platform": "(windows & !uwp) | mingw"
@@ -23676,7 +23664,7 @@
                 "features": [
                   "openssl"
                 ],
-                "platform": "(uwp | !windows) & !(osx | ios) & !mingw"
+                "platform": "(uwp | !windows) & !mingw"
               }
             ]
           },
@@ -23732,7 +23720,7 @@
             ]
           }
         },
-        "version": "8.14.1"
+        "version": "8.15.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -64626,6 +64614,7 @@
       "name": "mxml",
       "manifest": {
         "name": "mxml",
+        "port-version": 1,
         "description": "A tiny xml parsing library",
         "homepage": "https://github.com/michaelrsweet/mxml",
         "license": "Apache-2.0",
@@ -82694,6 +82683,7 @@
       "name": "re2",
       "manifest": {
         "name": "re2",
+        "port-version": 1,
         "description": "RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python. It is a C++ library.",
         "homepage": "https://github.com/google/re2",
         "license": "BSD-3-Clause",
@@ -95464,14 +95454,14 @@
       "name": "usockets",
       "manifest": {
         "name": "usockets",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Miniscule cross-platform eventing, networking & crypto for async applications",
         "homepage": "https://github.com/uNetworking/uSockets",
         "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "libuv",
-            "platform": "windows"
+            "platform": "windows | android"
           },
           {
             "name": "vcpkg-cmake",
@@ -98998,6 +98988,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
+        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-2.0-or-later",
