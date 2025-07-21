@@ -1,5 +1,5 @@
 {
-  "version": "b91c3336aee7f32412508f7dd351ae2cabdb8819",
+  "version": "4887ad6d1414f74cb7cb8d1e527fb46adb4e9ace",
   "ports": [
     {
       "name": "3fd",
@@ -405,7 +405,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.2.5"
+        "version": "3.2.6"
       },
       "files": [
         "no-cpm.patch",
@@ -1616,10 +1616,11 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
+        "sparrow-e317ef5-Fix clang android 18 compilation.patch",
         "vcpkg.json"
       ]
     },
@@ -1891,6 +1892,35 @@
           }
         ],
         "version": "0.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "argus",
+      "manifest": {
+        "name": "argus",
+        "description": "Argus is a cross-platform modern feature-rich command-line argument parser for C",
+        "homepage": "https://github.com/lucocozz/argus",
+        "license": "MIT",
+        "supports": "!(windows & static) & !(windows & x86)",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "features": {
+          "regex": {
+            "description": "Enable regex validation support using PCRE2",
+            "dependencies": [
+              "pcre2"
+            ]
+          }
+        },
+        "version": "0.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -7313,7 +7343,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "2.19.0"
+        "version": "2.19.1"
       },
       "files": [
         "portfile.cmake",
@@ -21754,7 +21784,7 @@
             ]
           }
         },
-        "version": "0.23.0"
+        "version": "0.23.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -25588,7 +25618,7 @@
         "description": "Dirent is a C/C++ programming interface that allows programmers to retrieve information about files and directories under Linux/UNIX. This project provides Linux compatible Dirent interface for Microsoft Windows.",
         "homepage": "https://github.com/tronkko/dirent",
         "license": "MIT",
-        "version": "1.25"
+        "version": "1.26"
       },
       "files": [
         "portfile.cmake",
@@ -31436,7 +31466,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.2.4"
+        "version-semver": "4.2.5"
       },
       "files": [
         "disable-testing.patch",
@@ -33544,7 +33574,7 @@
             ]
           }
         },
-        "version": "5.5.3"
+        "version": "5.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -46267,7 +46297,7 @@
         "name": "lfreist-hwinfo",
         "description": "hwinfo provides an easy-to-use and modern C++ API for retrieving hardware information of your systems components such as CPU, RAM, GPU, Disks, Mainboard, ...",
         "homepage": "https://github.com/lfreist/hwinfo",
-        "supports": "!uwp",
+        "supports": "!(uwp | android)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -46278,7 +46308,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-09-01"
+        "version-date": "2025-07-10"
       },
       "files": [
         "portfile.cmake",
@@ -51640,7 +51670,7 @@
         "supports": "windows | linux | osx",
         "dependencies": [
           "boost-json",
-          "curl",
+          "cpr",
           "gettext-libintl",
           {
             "name": "glib",
@@ -51664,7 +51694,7 @@
             "host": true
           }
         ],
-        "version": "2025.6.5"
+        "version": "2025.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -52390,7 +52420,7 @@
             "host": true
           }
         ],
-        "version": "9.0.8"
+        "version": "9.0.9"
       },
       "files": [
         "disable-werror.patch",
@@ -60842,9 +60872,10 @@
             "host": true
           }
         ],
-        "version": "3.1.1"
+        "version": "3.2.0"
       },
       "files": [
+        "fix-size_t.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -85174,7 +85205,7 @@
           },
           "zydis"
         ],
-        "version-semver": "0.6.7"
+        "version-semver": "0.6.9"
       },
       "files": [
         "portfile.cmake",
@@ -86573,7 +86604,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.16"
+        "version": "3.2.18"
       },
       "files": [
         "portfile.cmake",
@@ -90131,7 +90162,7 @@
             ]
           }
         },
-        "version": "3.50.2"
+        "version": "3.50.3"
       },
       "files": [
         "CMakeLists.txt",
