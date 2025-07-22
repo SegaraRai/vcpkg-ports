@@ -1,5 +1,5 @@
 {
-  "version": "4887ad6d1414f74cb7cb8d1e527fb46adb4e9ace",
+  "version": "b2012a0b9df97aafde760c422223c6a4254d34c7",
   "ports": [
     {
       "name": "3fd",
@@ -25359,7 +25359,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2025-03-24"
+        "version-date": "2025-07-10"
       },
       "files": [
         "portfile.cmake",
@@ -25477,7 +25477,7 @@
             "supports": "windows & x64 & !uwp & !xbox"
           }
         },
-        "version-date": "2025-03-24"
+        "version-date": "2025-07-10"
       },
       "files": [
         "portfile.cmake",
@@ -25972,7 +25972,6 @@
       "name": "double-conversion",
       "manifest": {
         "name": "double-conversion",
-        "port-version": 1,
         "description": "Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.",
         "homepage": "https://github.com/google/double-conversion",
         "dependencies": [
@@ -25985,7 +25984,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -62172,6 +62171,30 @@
       ]
     },
     {
+      "name": "meojson",
+      "manifest": {
+        "name": "meojson",
+        "description": "Next-gen C++ JSON/JSON5 Serialization Engine | Zero Dependency | Header-Only | Unleash JSON Potential",
+        "homepage": "https://github.com/MistEO/meojson",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "mesa",
       "manifest": {
         "name": "mesa",
@@ -66854,7 +66877,6 @@
       "name": "oatpp",
       "manifest": {
         "name": "oatpp",
-        "port-version": 2,
         "description": "Modern web framework.",
         "homepage": "https://github.com/oatpp/oatpp",
         "license": "Apache-2.0",
@@ -66868,7 +66890,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "fix-target.patch",
@@ -70746,9 +70768,9 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
-        "license": "MPL-2.0-no-copyleft-exception",
+        "license": null,
         "supports": "(x86 | x64 | arm64) & !xbox",
         "dependencies": [
           "cereal",
@@ -70783,7 +70805,7 @@
         ],
         "features": {
           "opencv": {
-            "description": "opencv support for openmvg",
+            "description": "Build opencv+openMVG samples programs",
             "dependencies": [
               {
                 "name": "opencv",
@@ -70794,10 +70816,10 @@
             ]
           },
           "openmp": {
-            "description": "openmp support for openmvg"
+            "description": "OpenMP support"
           },
           "software": {
-            "description": "build openMVG tools",
+            "description": "Build openMVG tools",
             "dependencies": [
               "qt5-base",
               "qt5-svg"
@@ -70809,6 +70831,7 @@
       "files": [
         "0001-eigen_3.4.0.patch",
         "build_fixes.patch",
+        "fast-c-language.diff",
         "no-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -71317,10 +71340,9 @@
             ]
           }
         },
-        "version-semver": "1.21.0"
+        "version-semver": "1.22.0"
       },
       "files": [
-        "cmake-quirks.diff",
         "fix-target_link.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -76826,6 +76848,31 @@
         "0002-fix-build-error.patch",
         "0003-Define-NOMINMAX-for-botan-plugin-with-MSVC.patch",
         "mk-ca-bundle.pl",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "qcbor",
+      "manifest": {
+        "name": "qcbor",
+        "description": "Comprehensive, powerful, commercial-quality CBOR encoder/ decoder that is still suited for small devices.",
+        "homepage": "https://github.com/laurencelundblade/QCBOR",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.5.3"
+      },
+      "files": [
+        "install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90024,6 +90071,52 @@
       ]
     },
     {
+      "name": "sqlgen",
+      "manifest": {
+        "name": "sqlgen",
+        "description": "sqlgen is an ORM and SQL query generator for C++-20, similar to Python's SQLAlchemy/SQLModel or Rust's Diesel.",
+        "homepage": "https://github.com/getml/sqlgen/",
+        "license": "MIT",
+        "dependencies": [
+          "reflectcpp",
+          {
+            "name": "sqlite3",
+            "features": [
+              "math"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "postgres": {
+            "description": "Enable PostgreSQL support",
+            "dependencies": [
+              "libpq"
+            ]
+          },
+          "tests": {
+            "description": "Build the tests",
+            "dependencies": [
+              "gtest"
+            ]
+          }
+        },
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sqlite-modern-cpp",
       "manifest": {
         "name": "sqlite-modern-cpp",
@@ -95759,7 +95852,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2025-03-26"
+        "version-date": "2025-07-10"
       },
       "files": [
         "portfile.cmake",
@@ -96836,7 +96929,7 @@
       "name": "vlfeat",
       "manifest": {
         "name": "vlfeat",
-        "port-version": 4,
+        "port-version": 5,
         "description": "An open library of computer vision algorithms",
         "homepage": "https://www.vlfeat.org",
         "dependencies": [
