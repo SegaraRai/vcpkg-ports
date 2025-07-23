@@ -1,5 +1,5 @@
 {
-  "version": "b2012a0b9df97aafde760c422223c6a4254d34c7",
+  "version": "7bc2cb97d8410e34f6733642ae954bf5a253a6b5",
   "ports": [
     {
       "name": "3fd",
@@ -2997,7 +2997,7 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "license": "MIT",
-        "version": "1.6.9"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -27709,7 +27709,7 @@
             "host": true
           }
         ],
-        "version": "20.42.1"
+        "version": "20.42.2"
       },
       "files": [
         "portfile.cmake",
@@ -33707,7 +33707,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -39850,7 +39850,7 @@
             "host": true
           }
         ],
-        "version": "2.7.1"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -47776,12 +47776,16 @@
       "name": "libdicom",
       "manifest": {
         "name": "libdicom",
+        "port-version": 1,
         "description": "libdicom is a C library and a set of command-line tools for reading DICOM WSI files",
         "homepage": "https://github.com/ImagingDataCommons/libdicom",
         "documentation": "https://libdicom.readthedocs.io/en/latest/",
         "license": "MIT",
-        "supports": "!android & !uwp & !(arm64 & windows)",
         "dependencies": [
+          {
+            "name": "libdicom",
+            "host": true
+          },
           "uthash",
           {
             "name": "vcpkg-tool-meson",
@@ -47791,6 +47795,7 @@
         "version": "1.2.0"
       },
       "files": [
+        "cross-build.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -48009,7 +48014,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "dependencies.diff",
@@ -59171,7 +59176,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.682"
+        "version": "0.683"
       },
       "files": [
         "cmake-config-export.patch",
@@ -61313,7 +61318,7 @@
             "description": "Enables command-line tools"
           }
         },
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
       "files": [
         "enable-debug.patch",
@@ -67147,7 +67152,6 @@
       "name": "oatpp-swagger",
       "manifest": {
         "name": "oatpp-swagger",
-        "port-version": 1,
         "description": "Oat++ OpenApi (Swagger) UI submodule.",
         "homepage": "https://github.com/oatpp/oatpp-swagger",
         "license": "Apache-2.0",
@@ -67162,7 +67166,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -71044,20 +71048,37 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
+        "port-version": 2,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
-        "license": "LGPL-2.1-or-later",
+        "license": "LGPL-2.1-only",
         "supports": "!xbox",
         "dependencies": [
-          "cairo",
-          "gdk-pixbuf",
+          {
+            "name": "cairo",
+            "default-features": false
+          },
+          {
+            "name": "gdk-pixbuf",
+            "default-features": false
+          },
           "glib",
           "libdicom",
           "libjpeg-turbo",
           "libpng",
-          "libxml2",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
           "openjpeg",
-          "sqlite3",
+          {
+            "name": "openslide",
+            "host": true
+          },
+          {
+            "name": "sqlite3",
+            "default-features": false
+          },
           {
             "name": "tiff",
             "default-features": false,
@@ -71074,6 +71095,7 @@
         "version": "4.0.0"
       },
       "files": [
+        "cross-build.diff",
         "fix-win-build.patch",
         "portfile.cmake",
         "slidetool-unicode.patch",
@@ -76598,7 +76620,10 @@
         "license": "BSD-3-Clause",
         "supports": "!(arm & windows)",
         "dependencies": [
-          "python3",
+          {
+            "name": "python3",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -76608,7 +76633,7 @@
             "host": true
           }
         ],
-        "version": "2.13.6"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -99628,7 +99653,7 @@
             ]
           }
         },
-        "version": "3.2.7"
+        "version": "3.2.8.1"
       },
       "files": [
         "example/CMakeLists.txt",
@@ -99868,7 +99893,7 @@
             "host": true
           }
         ],
-        "version": "7.27"
+        "version": "7.28"
       },
       "files": [
         "portfile.cmake",
