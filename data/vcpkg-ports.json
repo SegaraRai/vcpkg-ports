@@ -1,5 +1,5 @@
 {
-  "version": "7bc2cb97d8410e34f6733642ae954bf5a253a6b5",
+  "version": "c0f2272fa7934cf52d33b098f24a7757b14ff15e",
   "ports": [
     {
       "name": "3fd",
@@ -5884,7 +5884,6 @@
       "name": "azure-storage-blobs-cpp",
       "manifest": {
         "name": "azure-storage-blobs-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Blobs SDK for C++",
           "This library provides Azure Storage Blobs SDK."
@@ -5906,11 +5905,10 @@
             "host": true
           }
         ],
-        "version-semver": "12.13.0"
+        "version-semver": "12.14.0"
       },
       "files": [
         "portfile.cmake",
-        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -6071,7 +6069,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.13.0"
+        "version-semver": "12.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -20730,10 +20728,11 @@
       "name": "coin",
       "manifest": {
         "name": "coin",
+        "port-version": 1,
         "description": "A high-level 3D visualization library with Open Inventor 2.1 API",
         "homepage": "https://github.com/coin3d/coin",
         "license": "BSD-3-Clause",
-        "supports": "!arm & !android & !uwp",
+        "supports": "!android & !uwp",
         "dependencies": [
           "boost-assert",
           "boost-config",
@@ -21326,11 +21325,10 @@
       "name": "conjure-enum",
       "manifest": {
         "name": "conjure-enum",
-        "port-version": 1,
         "description": "Lightweight header-only C++20 enum and typename reflection.",
         "homepage": "https://github.com/fix8mt/conjure_enum",
         "license": "MIT",
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -42002,7 +42000,7 @@
             "host": true
           }
         ],
-        "version": "3.5.2"
+        "version": "3.5.3"
       },
       "files": [
         "Config.cmake.in",
@@ -53287,17 +53285,13 @@
       "name": "libremidi",
       "manifest": {
         "name": "libremidi",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A modern C++ MIDI real-time & file I/O library",
         "homepage": "https://github.com/jcelerier/libremidi",
         "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "alsa",
-            "platform": "linux"
-          },
-          {
-            "name": "readerwriterqueue",
             "platform": "linux"
           },
           {
@@ -63957,7 +63951,7 @@
             "host": true
           }
         ],
-        "version-semver": "13.2.1"
+        "version-semver": "13.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -69711,7 +69705,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 1,
+        "port-version": 2,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -70234,6 +70228,7 @@
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
         "0019-opencl-kernel.patch",
+        "0020-fix-narrow-filesystem.diff",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -71048,7 +71043,7 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-only",
@@ -71060,7 +71055,10 @@
           },
           {
             "name": "gdk-pixbuf",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "others"
+            ]
           },
           "glib",
           "libdicom",
@@ -91966,7 +91964,7 @@
       "manifest": {
         "name": "sundials",
         "description": "SUNDIALS (SUite of Nonlinear and DIfferential/ALgebraic equation Solvers)",
-        "homepage": "https://computation.llnl.gov/projects/sundials",
+        "homepage": "https://computing.llnl.gov/projects/sundials",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -91977,7 +91975,7 @@
             "host": true
           }
         ],
-        "version-semver": "7.1.1"
+        "version-semver": "7.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -97400,7 +97398,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -97766,6 +97764,7 @@
         "libproj.patch",
         "no-libharu-for-ioexport.patch",
         "no-libproj-for-netcdf.patch",
+        "octree.patch",
         "opencascade-7.8.0.patch",
         "pegtl.patch",
         "portfile.cmake",
