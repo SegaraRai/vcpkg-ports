@@ -1,5 +1,5 @@
 {
-  "version": "c0f2272fa7934cf52d33b098f24a7757b14ff15e",
+  "version": "1e7a3163f4d38cda066c6cff47d8d1c910711415",
   "ports": [
     {
       "name": "3fd",
@@ -26515,7 +26515,6 @@
       "name": "dv-processing",
       "manifest": {
         "name": "dv-processing",
-        "port-version": 3,
         "description": "Generic algorithms for event cameras. (C++20 required.)",
         "homepage": "https://gitlab.com/inivation/dv/dv-processing",
         "license": "Apache-2.0",
@@ -26539,7 +26538,7 @@
           "cli11",
           "eigen3",
           "fmt",
-          "libcaer",
+          "libusb",
           "lz4",
           {
             "name": "opencv4",
@@ -26562,10 +26561,9 @@
             "description": "Build CLI utilities"
           }
         },
-        "version": "1.7.9"
+        "version": "2.0.1"
       },
       "files": [
-        "cmake-project-include.cmake",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -46992,7 +46990,6 @@
       "name": "libcaer",
       "manifest": {
         "name": "libcaer",
-        "port-version": 2,
         "description": "Minimal C library to access, configure and get data from neuromorphic sensors and processors.",
         "homepage": "https://gitlab.com/inivation/dv/libcaer",
         "license": "BSD-2-Clause AND Apache-2.0",
@@ -47028,10 +47025,9 @@
             ]
           }
         },
-        "version": "3.3.15"
+        "version": "3.3.17"
       },
       "files": [
-        "fix-libusb.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70448,6 +70444,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -70549,8 +70546,7 @@
             "dependencies": [
               "pybind11",
               "python3"
-            ],
-            "supports": "!android"
+            ]
           },
           "tools": {
             "description": "Build openimageio tools"
@@ -76613,10 +76609,11 @@
       "name": "pybind11",
       "manifest": {
         "name": "pybind11",
+        "port-version": 1,
         "description": "pybind11 is a lightweight header-only library that exposes C++ types in Python and vice versa, mainly to create Python bindings of existing C++ code",
         "homepage": "https://github.com/pybind/pybind11",
+        "documentation": "https://pybind11.readthedocs.io/",
         "license": "BSD-3-Clause",
-        "supports": "!(arm & windows)",
         "dependencies": [
           {
             "name": "python3",
@@ -76634,6 +76631,7 @@
         "version": "3.0.0"
       },
       "files": [
+        "android.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -76699,7 +76697,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -82099,10 +82097,11 @@
       "name": "quarter",
       "manifest": {
         "name": "quarter",
+        "port-version": 1,
         "description": "Coin3D GUI binding for Qt",
         "homepage": "https://coin3d.github.io/quarter/",
         "license": "BSD-3-Clause",
-        "supports": "!arm & !android & !uwp",
+        "supports": "!android & !uwp",
         "dependencies": [
           "coin",
           {
@@ -83223,7 +83222,7 @@
             ]
           }
         },
-        "version-semver": "1.3.14"
+        "version-semver": "1.3.15"
       },
       "files": [
         "fix-absolute-path.patch",
@@ -90053,7 +90052,7 @@
       "name": "sqlcipher",
       "manifest": {
         "name": "sqlcipher",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SQLCipher extends the SQLite database library to add security enhancements that make it more suitable for encrypted local data storage.",
         "homepage": "https://www.zetetic.net/sqlcipher",
         "license": null,
@@ -93030,7 +93029,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.15.13"
+        "version": "0.15.14"
       },
       "files": [
         "portfile.cmake",
@@ -96139,6 +96138,30 @@
           }
         ],
         "version": "2.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vbs-enclave-tooling-codegen",
+      "manifest": {
+        "name": "vbs-enclave-tooling-codegen",
+        "description": "Supports code generation for VBS enclaves.",
+        "homepage": "https://github.com/microsoft/vbsEnclaveTooling",
+        "license": "MIT",
+        "supports": "(windows & arm64) | (windows & x64)",
+        "dependencies": [
+          "flatbuffers",
+          "ms-gsl",
+          {
+            "name": "vcpkg-msbuild",
+            "host": true
+          },
+          "wil"
+        ],
+        "version": "0.0.2-prerelease"
       },
       "files": [
         "portfile.cmake",
@@ -100265,7 +100288,7 @@
             "host": true
           }
         ],
-        "version": "0.2.34"
+        "version": "0.2.35"
       },
       "files": [
         "fix-dependencies.patch",
