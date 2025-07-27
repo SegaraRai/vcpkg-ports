@@ -1,5 +1,5 @@
 {
-  "version": "dd3097e305afa53f7b4312371f62058d2e665320",
+  "version": "f2e1c41da38c71be74ef48684666991929b45418",
   "ports": [
     {
       "name": "3fd",
@@ -22544,7 +22544,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -66030,7 +66030,7 @@
             ]
           }
         },
-        "version": "1.13.0"
+        "version": "1.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -79517,7 +79517,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80003,9 +80003,12 @@
                 "features": [
                   "sql"
                 ]
+              },
+              {
+                "name": "unixodbc",
+                "platform": "!windows"
               }
-            ],
-            "supports": "windows"
+            ]
           },
           "sql-psql": {
             "description": "Enable SQL Driver psql",
@@ -97421,7 +97424,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -97545,6 +97548,9 @@
             "dependencies": [
               "cuda"
             ]
+          },
+          "debugleaks": {
+            "description": "Enables vtk debug leaks detection"
           },
           "gdal": {
             "description": "Support GDAL compilation",
@@ -99165,10 +99171,9 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
-        "license": "GPL-2.0-or-later",
+        "license": "GPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -99201,7 +99206,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.8.0"
+        "version": "5.8.2"
       },
       "files": [
         "portfile.cmake",
