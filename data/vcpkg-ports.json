@@ -1,5 +1,5 @@
 {
-  "version": "e140b1fde236eb682b0d47f905e65008a191800f",
+  "version": "64799097883edd3c2f24f5aea6290ffdfc794697",
   "ports": [
     {
       "name": "3fd",
@@ -405,7 +405,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.2.6"
+        "version": "3.2.7"
       },
       "files": [
         "no-cpm.patch",
@@ -1340,6 +1340,43 @@
         "homepage": "https://github.com/approvals/ApprovalTests.cpp",
         "license": "Apache-2.0",
         "version": "10.13.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "appstream-glib",
+      "manifest": {
+        "name": "appstream-glib",
+        "description": "Provides GObjects and helper methods to make it easy to read and write AppStream metadata.",
+        "homepage": "https://github.com/hughsie/appstream-glib/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!windows | mingw",
+        "dependencies": [
+          "curl",
+          "fontconfig",
+          "freetype",
+          "gdk-pixbuf",
+          "glib",
+          {
+            "name": "gperf",
+            "host": true
+          },
+          "gtk3",
+          "json-glib",
+          "libarchive",
+          {
+            "name": "libuuid",
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "0.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -7397,10 +7434,11 @@
             "host": true
           }
         ],
-        "version": "8.0.4"
+        "version": "8.2.5"
       },
       "files": [
         "CMakeLists.txt",
+        "fix-android-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20733,7 +20771,7 @@
       "name": "coin",
       "manifest": {
         "name": "coin",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A high-level 3D visualization library with Open Inventor 2.1 API",
         "homepage": "https://github.com/coin3d/coin",
         "license": "BSD-3-Clause",
@@ -20745,6 +20783,7 @@
           "boost-math",
           "boost-smart-ptr",
           "boost-static-assert",
+          "expat",
           "opengl-registry",
           {
             "name": "vcpkg-cmake",
@@ -20813,6 +20852,8 @@
         "version": "4.0.4"
       },
       "files": [
+        "expat.diff",
+        "openal.diff",
         "portfile.cmake",
         "remove-default-config.patch",
         "vcpkg.json"
@@ -27200,7 +27241,7 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -31887,7 +31928,6 @@
         "description": "A genetic algorithms library in C++ for single- and multi-objective optimization.",
         "homepage": "https://github.com/KRM7/gapp",
         "license": "MIT",
-        "supports": "(windows | linux) & !arm",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -31898,7 +31938,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -32913,7 +32953,7 @@
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
-        "supports": "!(windows & arm) & !uwp",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -32973,10 +33013,13 @@
             ]
           }
         },
-        "version-date": "2025-05-13"
+        "version-date": "2025-07-23"
       },
       "files": [
+        "android-vulkan.diff",
+        "blas.diff",
         "cmake-config.diff",
+        "fix-32bit.diff",
         "portfile.cmake",
         "relax-link-options.diff",
         "vcpkg.json",
@@ -39417,9 +39460,10 @@
             "supports": "!static"
           }
         },
-        "version": "11.2.0"
+        "version": "11.3.3"
       },
       "files": [
+        "add-parameter-name.patch",
         "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
@@ -41569,7 +41613,7 @@
             "description": "Build the C++ library"
           }
         },
-        "version": "59"
+        "version": "61"
       },
       "files": [
         "portfile.cmake",
@@ -51033,7 +51077,7 @@
           },
           "zlib"
         ],
-        "version": "25.4"
+        "version": "25.7"
       },
       "files": [
         "dependencies.diff",
@@ -51697,7 +51741,7 @@
             "host": true
           }
         ],
-        "version": "2025.7.3"
+        "version": "2025.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -55612,6 +55656,49 @@
       ]
     },
     {
+      "name": "libva",
+      "manifest": {
+        "name": "libva",
+        "description": "Libva is an implementation for VA-API (Video Acceleration API)",
+        "homepage": "https://github.com/intel/libva",
+        "license": "MIT",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "features": {
+          "glx": {
+            "description": "Build with GLX support",
+            "dependencies": [
+              {
+                "name": "libva",
+                "features": [
+                  "x11"
+                ]
+              }
+            ],
+            "supports": "linux"
+          },
+          "wayland": {
+            "description": "Build with Wayland support",
+            "supports": "linux"
+          },
+          "x11": {
+            "description": "Build with X11 support",
+            "supports": "linux"
+          }
+        },
+        "version": "2.22.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libvault",
       "manifest": {
         "name": "libvault",
@@ -57712,7 +57799,6 @@
       "name": "llama-cpp",
       "manifest": {
         "name": "llama-cpp",
-        "port-version": 1,
         "description": "LLM inference in C/C++",
         "homepage": "https://github.com/ggml-org/llama.cpp",
         "license": "MIT",
@@ -57727,10 +57813,24 @@
             "host": true
           }
         ],
-        "version": "4743"
+        "features": {
+          "download": {
+            "description": "Support downloading a model from an URL",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              }
+            ]
+          },
+          "tools": {
+            "description": "Build tools"
+          }
+        },
+        "version": "5975"
       },
       "files": [
-        "0001-external-ggml.patch",
+        "cmake-config.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60802,7 +60902,7 @@
             "host": true
           }
         ],
-        "version": "0.25.1"
+        "version": "0.25.3"
       },
       "files": [
         "portfile.cmake",
@@ -70295,7 +70395,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.3.4"
+        "version": "3.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -98799,7 +98899,6 @@
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
-        "port-version": 1,
         "description": "Port of OpenAI's Whisper model in C/C++",
         "homepage": "https://github.com/ggml-org/whisper.cpp",
         "license": "MIT",
@@ -98814,9 +98913,10 @@
             "host": true
           }
         ],
-        "version": "1.7.5"
+        "version": "1.7.6"
       },
       "files": [
+        "cmake-config.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -100775,7 +100875,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.5.3"
       },
       "files": [
         "portfile.cmake",
