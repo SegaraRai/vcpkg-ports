@@ -1,5 +1,5 @@
 {
-  "version": "ca3258ea22d052238eebb80a4ef1a2458f552ac0",
+  "version": "cb2c7a5b73e123db44dad447e2b0c2263cc5c4fb",
   "ports": [
     {
       "name": "3fd",
@@ -5520,7 +5520,7 @@
             "platform": "windows & !uwp"
           }
         ],
-        "version-semver": "1.12.0"
+        "version-semver": "1.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -6385,7 +6385,7 @@
             ]
           }
         },
-        "version-semver": "0.3.0"
+        "version-semver": "0.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -21783,10 +21783,11 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
+        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
-        "supports": "!x86 & !arm",
+        "supports": "!x86 & !arm32",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -30547,7 +30548,6 @@
       "name": "fmt",
       "manifest": {
         "name": "fmt",
-        "port-version": 1,
         "description": "{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.",
         "homepage": "https://github.com/fmtlib/fmt",
         "license": "MIT",
@@ -30561,11 +30561,9 @@
             "host": true
           }
         ],
-        "version": "11.0.2"
+        "version": "11.2.0"
       },
       "files": [
-        "fix-pass-utf-8-only-if-the-compiler-is-MSVC-at-build.patch",
-        "fix-write-batch.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -30919,7 +30917,7 @@
       "name": "fp16",
       "manifest": {
         "name": "fp16",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Header-only library for conversion to/from half-precision floating point formats",
         "homepage": "https://github.com/Maratyszcza/FP16",
         "dependencies": [
@@ -30932,7 +30930,7 @@
         "version-date": "2021-02-21"
       },
       "files": [
-        "find-psimd.patch",
+        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -31666,7 +31664,7 @@
       "name": "fxdiv",
       "manifest": {
         "name": "fxdiv",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C99/C++ header-only library for division via fixed-point multiplication by inverse",
         "homepage": "https://github.com/Maratyszcza/FXdiv",
         "dependencies": [
@@ -31678,6 +31676,7 @@
         "version-date": "2021-02-21"
       },
       "files": [
+        "add-cmake-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33625,7 +33624,7 @@
             ]
           }
         },
-        "version": "5.5.4"
+        "version": "5.5.5"
       },
       "files": [
         "portfile.cmake",
@@ -40224,14 +40223,13 @@
       "name": "hpx",
       "manifest": {
         "name": "hpx",
-        "port-version": 1,
         "description": [
           "The C++ Standards Library for Concurrency and Parallelism",
           "HPX is a C++ Standards Library for Concurrency and Parallelism. It implements all of the corresponding facilities as defined by the C++ Standard. Additionally, in HPX we implement functionalities proposed as part of the ongoing C++ standardization process. We also extend the C++ Standard APIs to the distributed case."
         ],
         "homepage": "https://github.com/STEllAR-GROUP/hpx",
         "license": "BSL-1.0",
-        "supports": "!(windows & x86)",
+        "supports": "!(windows & arm64) & !(windows & staticcrt)",
         "dependencies": [
           "asio",
           "boost-accumulators",
@@ -40283,7 +40281,8 @@
             "description": "Build with CUDA support",
             "dependencies": [
               "cuda"
-            ]
+            ],
+            "supports": "!linux & !(windows & arm)"
           },
           "mpi": {
             "description": "Build with MPI parcelport",
@@ -40304,7 +40303,7 @@
             ]
           }
         },
-        "version": "1.10.0"
+        "version": "1.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -42434,7 +42433,6 @@
       "name": "jasper",
       "manifest": {
         "name": "jasper",
-        "port-version": 2,
         "description": "Open source implementation of the JPEG-2000 Part-1 standard",
         "homepage": "https://github.com/jasper-software/jasper",
         "license": null,
@@ -42449,7 +42447,7 @@
             "host": true
           }
         ],
-        "version": "4.2.4"
+        "version": "4.2.7"
       },
       "files": [
         "check-for-atomics-support.patch",
@@ -64515,11 +64513,11 @@
       "name": "msmpi",
       "manifest": {
         "name": "msmpi",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Microsoft MPI (MS-MPI) is a Microsoft implementation of the Message Passing Interface standard for developing and running parallel applications on the Windows platform.",
         "homepage": "https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi",
         "license": "MIT",
-        "supports": "windows & !uwp",
+        "supports": "windows & !uwp & (x64 | x86)",
         "version": "10.1.12498"
       },
       "files": [
@@ -66968,7 +66966,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -67464,7 +67462,6 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
-        "port-version": 1,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "documentation": "https://docs.octave.org/latest/",
@@ -67627,12 +67624,11 @@
             ]
           }
         },
-        "version": "9.4.0"
+        "version": "10.2.0"
       },
       "files": [
-        "dep_pc_names.patch",
+        "add_other_linkage_flags.patch",
         "portfile.cmake",
-        "run-mk-ops.diff",
         "vcpkg.json"
       ]
     },
@@ -68700,7 +68696,7 @@
       "name": "opencolorio",
       "manifest": {
         "name": "opencolorio",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation. OCIO provides a straightforward and consistent user experience across all supporting applications while allowing for sophisticated back-end configuration options suitable for high-end production usage. OCIO is compatible with the Academy Color Encoding Specification (ACES) and is LUT-format agnostic, supporting many popular formats.",
         "homepage": "https://opencolorio.org/",
         "license": "BSD-3-Clause",
@@ -68708,7 +68704,13 @@
         "dependencies": [
           "expat",
           "imath",
-          "minizip-ng",
+          {
+            "name": "minizip-ng",
+            "default-features": false,
+            "features": [
+              "zlib"
+            ]
+          },
           "pystring",
           {
             "name": "vcpkg-cmake",
@@ -76423,7 +76425,7 @@
       "name": "psimd",
       "manifest": {
         "name": "psimd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Portable 128-bit SIMD intrinsics",
         "homepage": "https://github.com/Maratyszcza/psimd",
         "dependencies": [
@@ -76435,6 +76437,7 @@
         "version-date": "2021-02-21"
       },
       "files": [
+        "add-cmake-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -76531,6 +76534,7 @@
       "name": "pthreadpool",
       "manifest": {
         "name": "pthreadpool",
+        "port-version": 1,
         "description": "Portable (POSIX/Windows/Emscripten) thread pool for C/C++",
         "homepage": "https://github.com/Maratyszcza/pthreadpool",
         "dependencies": [
@@ -86400,7 +86404,7 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -86852,7 +86856,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.18"
+        "version": "3.2.20"
       },
       "files": [
         "portfile.cmake",
@@ -90325,6 +90329,12 @@
           }
         ],
         "features": {
+          "mariadb": {
+            "description": "Enable MySQL/MariaDB support",
+            "dependencies": [
+              "libmariadb"
+            ]
+          },
           "postgres": {
             "description": "Enable PostgreSQL support",
             "dependencies": [
@@ -90338,7 +90348,7 @@
             ]
           }
         },
-        "version": "0.1.0"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -91133,7 +91143,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "cross-build.patch",
@@ -91822,8 +91832,12 @@
         "name": "suitesparse-graphblas",
         "description": "SuiteSparse:GraphBLAS: graph algorithms in the language of linear algebra",
         "homepage": "https://people.engr.tamu.edu/davis/GraphBLAS.html",
-        "license": "Apache-2.0",
+        "license": null,
         "dependencies": [
+          {
+            "name": "suitesparse-graphblas",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91841,9 +91855,10 @@
             "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
           }
         },
-        "version-semver": "9.3.1"
+        "version-semver": "10.1.1"
       },
       "files": [
+        "crossbuild.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
