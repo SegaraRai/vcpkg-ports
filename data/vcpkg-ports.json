@@ -1,5 +1,5 @@
 {
-  "version": "cb2c7a5b73e123db44dad447e2b0c2263cc5c4fb",
+  "version": "4fea4b5ff05c28111e6c5eda0996b7feb7241317",
   "ports": [
     {
       "name": "3fd",
@@ -27814,10 +27814,10 @@
       "name": "evpp",
       "manifest": {
         "name": "evpp",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A modern C++ network library based on libevent for developing high performance network services in TCP/UDP/HTTP protocols.",
         "homepage": "https://github.com/Qihoo360/evpp",
-        "license": "BSD-3-Clause",
+        "license": null,
         "dependencies": [
           {
             "name": "boost-lockfree",
@@ -27849,12 +27849,11 @@
       "files": [
         "Add-static-shared-handling.patch",
         "Export-unofficial-target.patch",
-        "compile-features.patch",
-        "fix-linux-build.patch",
+        "basic-fixes.diff",
+        "dependencies.diff",
         "fix-osx-build.patch",
         "fix-rapidjson-1-1.patch",
         "portfile.cmake",
-        "use-cxx14-standard.patch",
         "vcpkg.json"
       ]
     },
@@ -30917,13 +30916,17 @@
       "name": "fp16",
       "manifest": {
         "name": "fp16",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Header-only library for conversion to/from half-precision floating point formats",
         "homepage": "https://github.com/Maratyszcza/FP16",
         "dependencies": [
           "psimd",
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -31664,12 +31667,16 @@
       "name": "fxdiv",
       "manifest": {
         "name": "fxdiv",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C99/C++ header-only library for division via fixed-point multiplication by inverse",
         "homepage": "https://github.com/Maratyszcza/FXdiv",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -38586,7 +38593,6 @@
       "name": "gz-msgs",
       "manifest": {
         "name": "gz-msgs",
-        "port-version": 2,
         "description": "Protobuf messages and functions for robot applications",
         "license": "Apache-2.0",
         "supports": "!uwp",
@@ -38608,7 +38614,7 @@
           },
           "tinyxml2"
         ],
-        "version": "11.0.2"
+        "version": "11.1.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -38919,7 +38925,6 @@
       "name": "gz-transport",
       "manifest": {
         "name": "gz-transport",
-        "port-version": 1,
         "description": "Transport middleware for robotics",
         "license": null,
         "dependencies": [
@@ -38939,10 +38944,9 @@
           "sqlite3",
           "zeromq"
         ],
-        "version": "14.0.0"
+        "version": "14.1.0"
       },
       "files": [
-        "nanoseconds.diff",
         "portfile.cmake",
         "uuid-osx.patch",
         "vcpkg.json"
@@ -47709,6 +47713,33 @@
       ]
     },
     {
+      "name": "libczi",
+      "manifest": {
+        "name": "libczi",
+        "description": "library to read and write CZI files.",
+        "homepage": "https://github.com/ZEISS/libczi",
+        "license": null,
+        "supports": "!android",
+        "dependencies": [
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zstd"
+        ],
+        "version": "0.66.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
@@ -48604,7 +48635,7 @@
             "host": true
           }
         ],
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "dll-bindir.diff",
@@ -48619,7 +48650,6 @@
       "name": "libfido2",
       "manifest": {
         "name": "libfido2",
-        "port-version": 1,
         "description": "Provides library functionality to communicate with a FIDO device over USB, and to verify attestation and assertion signatures.",
         "homepage": "https://developers.yubico.com/libfido2/",
         "license": "BSD-2-Clause",
@@ -48633,7 +48663,7 @@
           },
           "zlib"
         ],
-        "version": "1.15.0"
+        "version": "1.16.0"
       },
       "files": [
         "dependencies.diff",
@@ -49666,7 +49696,6 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
-        "port-version": 1,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -49729,7 +49758,7 @@
             "license": "BSD-2-Clause"
           }
         },
-        "version": "1.20.1"
+        "version": "1.20.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -52932,7 +52961,6 @@
       "name": "libprotobuf-mutator",
       "manifest": {
         "name": "libprotobuf-mutator",
-        "port-version": 1,
         "description": "Library for structured fuzzing with protobuffers.",
         "dependencies": [
           "liblzma",
@@ -52947,13 +52975,11 @@
           },
           "zlib"
         ],
-        "version": "1.3"
+        "version": "1.5"
       },
       "files": [
         "portfile.cmake",
-        "protobuf-cmake.patch",
-        "vcpkg.json",
-        "werror.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -56004,7 +56030,6 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
-        "port-version": 1,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -56212,7 +56237,7 @@
             ]
           }
         },
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
         "0002-cmake-config.patch",
@@ -66444,7 +66469,7 @@
       "name": "nnpack",
       "manifest": {
         "name": "nnpack",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Acceleration package for neural networks on multi-core CPUs",
         "homepage": "https://github.com/Maratyszcza/NNPACK",
         "license": "BSD-2-Clause",
@@ -66457,6 +66482,10 @@
           "pthreadpool",
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -68696,7 +68725,6 @@
       "name": "opencolorio",
       "manifest": {
         "name": "opencolorio",
-        "port-version": 4,
         "description": "OpenColorIO (OCIO) is a complete color management solution geared towards motion picture production with an emphasis on visual effects and computer animation. OCIO provides a straightforward and consistent user experience across all supporting applications while allowing for sophisticated back-end configuration options suitable for high-end production usage. OCIO is compatible with the Academy Color Encoding Specification (ACES) and is LUT-format agnostic, supporting many popular formats.",
         "homepage": "https://opencolorio.org/",
         "license": "BSD-3-Clause",
@@ -68713,6 +68741,10 @@
           },
           "pystring",
           {
+            "name": "sse2neon",
+            "platform": "arm"
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -68726,20 +68758,23 @@
           "tools": {
             "description": "Installs tools",
             "dependencies": [
-              "glew",
+              {
+                "name": "glew",
+                "platform": "!ios & !osx"
+              },
               "lcms",
-              "openexr"
+              "openexr",
+              "opengl"
             ]
           }
         },
-        "version-semver": "2.2.1"
+        "version-semver": "2.4.2"
       },
       "files": [
-        "fix-del-install-file.patch",
-        "fix-dependency.patch",
-        "fix-func-param.patch",
-        "fix-pkgconfig.patch",
+        "dependencies.diff",
+        "glew-no-glu.diff",
         "portfile.cmake",
+        "pystring.diff",
         "vcpkg.json"
       ]
     },
@@ -70618,7 +70653,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -70757,6 +70792,7 @@
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
         "imath-version-guard.patch",
+        "libheif-1_20_2.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -71213,7 +71249,7 @@
       "name": "openslide",
       "manifest": {
         "name": "openslide",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenSlide is a C library for reading whole slide image files (also known as virtual slides). It provides a consistent and simple API for reading files from multiple vendors.",
         "homepage": "https://openslide.org/",
         "license": "LGPL-2.1-only",
@@ -71267,7 +71303,8 @@
         "fix-win-build.patch",
         "portfile.cmake",
         "slidetool-unicode.patch",
-        "vcpkg.json"
+        "vcpkg.json",
+        "windows-dll-name.patch"
       ]
     },
     {
@@ -76190,7 +76227,6 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 1,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -76218,7 +76254,7 @@
             ]
           }
         },
-        "version": "5.29.3"
+        "version": "5.29.5"
       },
       "files": [
         "fix-default-proto-file-path.patch",
@@ -76425,7 +76461,7 @@
       "name": "psimd",
       "manifest": {
         "name": "psimd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Portable 128-bit SIMD intrinsics",
         "homepage": "https://github.com/Maratyszcza/psimd",
         "dependencies": [
@@ -76534,7 +76570,7 @@
       "name": "pthreadpool",
       "manifest": {
         "name": "pthreadpool",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable (POSIX/Windows/Emscripten) thread pool for C/C++",
         "homepage": "https://github.com/Maratyszcza/pthreadpool",
         "dependencies": [
@@ -82270,7 +82306,7 @@
             "host": true
           }
         ],
-        "version": "1.38"
+        "version": "1.39"
       },
       "files": [
         "portfile.cmake",
@@ -82974,7 +83010,6 @@
       "name": "re2",
       "manifest": {
         "name": "re2",
-        "port-version": 1,
         "description": "RE2 is a fast, safe, thread-friendly alternative to backtracking regular expression engines like those used in PCRE, Perl, and Python. It is a C++ library.",
         "homepage": "https://github.com/google/re2",
         "license": "BSD-3-Clause",
@@ -82989,7 +83024,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-06-26"
+        "version-date": "2025-08-05"
       },
       "files": [
         "portfile.cmake",
@@ -83525,7 +83560,7 @@
             "dependencies": [
               {
                 "name": "pugixml",
-                "version>=": "1.14"
+                "version>=": "1.15"
               }
             ]
           },
@@ -83539,7 +83574,7 @@
             ]
           }
         },
-        "version": "0.19.0"
+        "version": "0.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -95908,7 +95943,7 @@
             "host": true
           }
         ],
-        "version": "5.29.3"
+        "version": "5.29.5"
       },
       "files": [
         "fix-cmake.patch",
