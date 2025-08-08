@@ -1,5 +1,5 @@
 {
-  "version": "4fea4b5ff05c28111e6c5eda0996b7feb7241317",
+  "version": "f993fc42532591aeb07328bbe0add868b0629d0f",
   "ports": [
     {
       "name": "3fd",
@@ -154,7 +154,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -3550,7 +3550,7 @@
             "host": true
           }
         ],
-        "version": "0.12.3"
+        "version": "0.12.4"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -8957,6 +8957,7 @@
       "name": "boost-charconv",
       "manifest": {
         "name": "boost-charconv",
+        "port-version": 1,
         "description": "Boost charconv module",
         "homepage": "https://www.boost.org/libs/charconv",
         "license": "BSL-1.0",
@@ -12463,6 +12464,7 @@
       "name": "boost-locale",
       "manifest": {
         "name": "boost-locale",
+        "port-version": 1,
         "description": "Boost locale module",
         "homepage": "https://www.boost.org/libs/locale",
         "license": "BSL-1.0",
@@ -18308,6 +18310,7 @@
       "name": "c-ares",
       "manifest": {
         "name": "c-ares",
+        "port-version": 1,
         "description": "A C library for asynchronous DNS requests",
         "homepage": "https://github.com/c-ares/c-ares",
         "license": "MIT-CMU",
@@ -18321,6 +18324,11 @@
             "host": true
           }
         ],
+        "features": {
+          "tool": {
+            "description": "Builds c-ares executables"
+          }
+        },
         "version-semver": "1.34.5"
       },
       "files": [
@@ -19233,7 +19241,7 @@
       "name": "ceres",
       "manifest": {
         "name": "ceres",
-        "port-version": 3,
+        "port-version": 4,
         "description": "non-linear optimization package",
         "homepage": "https://github.com/ceres-solver/ceres-solver",
         "license": "Apache-2.0",
@@ -42451,7 +42459,7 @@
             "host": true
           }
         ],
-        "version": "4.2.7"
+        "version": "4.2.8"
       },
       "files": [
         "check-for-atomics-support.patch",
@@ -54514,7 +54522,6 @@
       "name": "libssh",
       "manifest": {
         "name": "libssh",
-        "port-version": 1,
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
         "homepage": "https://www.libssh.org/",
         "license": "LGPL-2.1-only",
@@ -54557,7 +54564,7 @@
             ]
           }
         },
-        "version": "0.10.6"
+        "version": "0.11.2"
       },
       "files": [
         "0001-export-pkgconfig-file.patch",
@@ -67491,6 +67498,7 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
+        "port-version": 1,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "documentation": "https://docs.octave.org/latest/",
@@ -67603,6 +67611,31 @@
             "dependencies": [
               {
                 "name": "freetype",
+                "default-features": false
+              }
+            ]
+          },
+          "gui": {
+            "description": "build with gui support",
+            "dependencies": [
+              {
+                "name": "freeglut",
+                "platform": "linux"
+              },
+              {
+                "name": "octave",
+                "default-features": false,
+                "features": [
+                  "fontconfig",
+                  "freetype"
+                ]
+              },
+              {
+                "name": "qt5-base",
+                "default-features": false
+              },
+              {
+                "name": "qt5-tools",
                 "default-features": false
               }
             ]
@@ -70653,7 +70686,6 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -70784,7 +70816,7 @@
             ]
           }
         },
-        "version": "3.0.8.0"
+        "version": "3.0.9.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -71887,6 +71919,14 @@
             "description": "Enables TensorFlow frontend for reading models in TensorFlow format",
             "dependencies": [
               {
+                "name": "openvino",
+                "default-features": false,
+                "features": [
+                  "pytorch"
+                ],
+                "platform": "linux & static"
+              },
+              {
                 "name": "protobuf",
                 "version>=": "3.21.2"
               },
@@ -71909,15 +71949,23 @@
                 "name": "flatbuffers",
                 "host": true,
                 "version>=": "2.0.6"
+              },
+              {
+                "name": "openvino",
+                "default-features": false,
+                "features": [
+                  "pytorch"
+                ],
+                "platform": "linux & static"
               }
             ]
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2025.1.0"
+        "version": "2025.2.0"
       },
       "files": [
-        "ambient-onednn-fix.patch",
+        "onednn_gpu_includes.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -76227,6 +76275,7 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
+        "port-version": 1,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -76259,6 +76308,7 @@
       "files": [
         "fix-default-proto-file-path.patch",
         "fix-install-dirs.patch",
+        "fix-mingw-tail-call.patch",
         "fix-static-build.patch",
         "fix-utf8-range.patch",
         "portfile.cmake",
