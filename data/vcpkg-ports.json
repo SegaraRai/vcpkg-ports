@@ -1,5 +1,5 @@
 {
-  "version": "f993fc42532591aeb07328bbe0add868b0629d0f",
+  "version": "e546e446832021a1a2b5b93c2c5d9e7604bc6f98",
   "ports": [
     {
       "name": "3fd",
@@ -1862,7 +1862,7 @@
       "name": "argtable2",
       "manifest": {
         "name": "argtable2",
-        "port-version": 10,
+        "port-version": 11,
         "description": "Argtable is an ANSI C library for parsing GNU style command line options with a minimum of fuss.",
         "homepage": "http://argtable.sourceforge.net",
         "license": "LGPL-2.0-only",
@@ -1884,6 +1884,7 @@
         "0002-include-correct-headers.patch",
         "0003-add-dependence-getopt.patch",
         "portfile.cmake",
+        "undef-eoverflow.diff",
         "vcpkg.json"
       ]
     },
@@ -3661,7 +3662,7 @@
             "host": true
           }
         ],
-        "version": "0.20.1"
+        "version": "0.21.2"
       },
       "files": [
         "portfile.cmake",
@@ -36579,21 +36580,18 @@
             "default-features": false
           },
           {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
+            "name": "vcpkg-make",
             "host": true
           },
           "zlib"
         ],
-        "version": "1.3.43"
+        "version": "1.3.45"
       },
       "files": [
-        "CMakeLists.txt",
+        "dirnet.patch",
         "disable_graphicsmagick_modules.patch",
         "dynamic_bzip2.patch",
+        "fix-png.patch",
         "magick_types.h",
         "portfile.cmake",
         "vcpkg.json"
@@ -41811,45 +41809,6 @@
         "version": "0.13.0"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "io2d",
-      "manifest": {
-        "name": "io2d",
-        "port-version": 5,
-        "description": "a lightweight, cross platform drawing library",
-        "dependencies": [
-          {
-            "name": "cairo",
-            "features": [
-              "x11"
-            ],
-            "platform": "linux"
-          },
-          {
-            "name": "cairo",
-            "platform": "!osx"
-          },
-          {
-            "name": "graphicsmagick",
-            "platform": "!osx"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-date": "2020-09-14"
-      },
-      "files": [
-        "cmake.dep.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64899,7 +64858,7 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
@@ -64924,13 +64883,15 @@
             "description": "Use OpenGL render system.",
             "dependencies": [
               "opengl"
-            ]
+            ],
+            "supports": "!android"
           },
           "plugins": {
             "description": "Build MyGUI plugins."
           },
           "tools": {
-            "description": "Install MyGUI tools."
+            "description": "Install MyGUI tools.",
+            "supports": "!android"
           }
         },
         "version": "3.4.3"
@@ -71343,6 +71304,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -87469,7 +87431,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.9.1"
+        "version": "0.10.0"
       },
       "files": [
         "fix-crashpad-wer.patch",
@@ -96658,7 +96620,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-02-22"
+        "version-date": "2025-08-05"
       },
       "files": [
         "portfile.cmake",
@@ -96820,7 +96782,7 @@
         "homepage": "https://gn.googlesource.com/gn/",
         "license": null,
         "supports": "native",
-        "version-date": "2025-01-27"
+        "version-date": "2025-08-05"
       },
       "files": [
         "portfile.cmake",
