@@ -1,5 +1,5 @@
 {
-  "version": "d30fdf55cfca16e12bc3ad99cbc615997014b61b",
+  "version": "a038c0e2ab35cde4f144dac1745014817d38b6fa",
   "ports": [
     {
       "name": "3fd",
@@ -3692,7 +3692,7 @@
             "host": true
           }
         ],
-        "version": "0.13.2"
+        "version": "0.13.3"
       },
       "files": [
         "portfile.cmake",
@@ -18901,7 +18901,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.9.0"
+        "version-semver": "3.9.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -21792,7 +21792,6 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
-        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -21836,10 +21835,11 @@
             ]
           }
         },
-        "version": "0.24.0"
+        "version": "0.25.0"
       },
       "files": [
         "fix-find-brotli.patch",
+        "fix-system-version.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -23552,6 +23552,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23584,7 +23585,7 @@
             ]
           },
           "gnutls": {
-            "description": "SSL support (gnutls)",
+            "description": "TLS support (gnutls)",
             "dependencies": [
               {
                 "name": "libgnutls",
@@ -23620,6 +23621,26 @@
                 ]
               },
               "nghttp2"
+            ]
+          },
+          "http3": {
+            "description": "HTTP3 support with ngtcp2 on openssl",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false,
+                "features": [
+                  "openssl"
+                ]
+              },
+              "nghttp3",
+              {
+                "name": "ngtcp2",
+                "default-features": false,
+                "features": [
+                  "openssl"
+                ]
+              }
             ]
           },
           "httpsrr": {
@@ -23670,16 +23691,16 @@
             "supports": "!uwp"
           },
           "mbedtls": {
-            "description": "SSL support (mbedTLS)",
+            "description": "TLS support (mbedTLS)",
             "dependencies": [
               "mbedtls"
             ]
           },
           "non-http": {
-            "description": "Enables protocols beyond HTTP/HTTPS/HTTP2"
+            "description": "Enables protocols beyond HTTP/HTTPS/HTTP2/HTTP3"
           },
           "openssl": {
-            "description": "SSL support (OpenSSL)",
+            "description": "TLS support (OpenSSL)",
             "dependencies": [
               "openssl"
             ]
@@ -23695,19 +23716,6 @@
             "dependencies": [
               "librtmp"
             ]
-          },
-          "schannel": {
-            "description": "SSL support (Secure Channel)",
-            "dependencies": [
-              {
-                "name": "curl",
-                "default-features": false,
-                "features": [
-                  "sspi"
-                ]
-              }
-            ],
-            "supports": "windows & !uwp"
           },
           "ssh": {
             "description": "SSH support via libssh2",
@@ -23730,13 +23738,13 @@
             ]
           },
           "ssl": {
-            "description": "Default SSL backend",
+            "description": "Default SSL / TLS implementation.",
             "dependencies": [
               {
                 "name": "curl",
                 "default-features": false,
                 "features": [
-                  "schannel"
+                  "sspi"
                 ],
                 "platform": "(windows & !uwp) | mingw"
               },
@@ -23764,7 +23772,7 @@
           },
           "sspi": {
             "description": "SSPI support",
-            "supports": "windows & !uwp"
+            "supports": "(windows & !uwp) | mingw"
           },
           "tool": {
             "description": "Builds curl executable",
@@ -26048,6 +26056,7 @@
       "name": "dp-thread-pool",
       "manifest": {
         "name": "dp-thread-pool",
+        "port-version": 1,
         "maintainers": "Paul Tsouchlos <developer.paul.123@gmail.com>",
         "description": "dp::thread_pool - fast, lightweight C++20 thread pool.",
         "homepage": "https://github.com/DeveloperPaul123/thread-pool",
@@ -26065,6 +26074,7 @@
         "version": "0.7.0"
       },
       "files": [
+        "include.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -36567,12 +36577,16 @@
       "name": "graphicsmagick",
       "manifest": {
         "name": "graphicsmagick",
+        "port-version": 1,
         "description": "Image processing library",
         "homepage": "http://www.graphicsmagick.org/",
         "license": "MIT",
         "dependencies": [
           "bzip2",
-          "freetype",
+          {
+            "name": "freetype",
+            "default-features": false
+          },
           "libjpeg-turbo",
           "libpng",
           "libwebp",
@@ -36589,11 +36603,8 @@
         "version": "1.3.45"
       },
       "files": [
-        "dirnet.patch",
-        "disable_graphicsmagick_modules.patch",
-        "dynamic_bzip2.patch",
-        "fix-png.patch",
-        "magick_types.h",
+        "dependencies.diff",
+        "magick-types.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41099,7 +41110,7 @@
             "host": true
           }
         ],
-        "version": "3.1.12"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -43528,6 +43539,7 @@
       "name": "kdstatemachineeditor",
       "manifest": {
         "name": "kdstatemachineeditor",
+        "port-version": 1,
         "description": "KDStateMachineEditor is a library for visualizing and editing state charts.",
         "homepage": "https://github.com/KDAB/KDStateMachineEditor",
         "license": "LGPL-2.1-only",
@@ -43558,6 +43570,7 @@
       },
       "files": [
         "portfile.cmake",
+        "qt6.9.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -52354,11 +52367,11 @@
       "name": "libosmscout",
       "manifest": {
         "name": "libosmscout",
-        "port-version": 6,
+        "port-version": 7,
         "description": "libosmscout offers applications simple, high-level interfaces for offline location and POI lokup, rendering and routing functionalities based on OpenStreetMap (OSM) data.",
         "homepage": "https://libosmscout.sourceforge.net/",
         "documentation": "https://libosmscout.sourceforge.net/documentation/",
-        "supports": "!uwp & !arm & !arm64 & !static & !wasm32 & !emscripten",
+        "supports": "!uwp & !(windows & arm) & !android & !(windows & static) & !wasm32 & !emscripten",
         "dependencies": [
           "libiconv",
           "liblzma",
@@ -52412,6 +52425,7 @@
         "version": "1.1.1"
       },
       "files": [
+        "fix-libxml2.patch",
         "portfile.cmake",
         "protobuf-linkage.patch",
         "vcpkg.json"
@@ -53455,6 +53469,7 @@
       "name": "librsvg",
       "manifest": {
         "name": "librsvg",
+        "port-version": 1,
         "description": "A small library to render Scalable Vector Graphics (SVG)",
         "homepage": "https://gitlab.gnome.org/GNOME/librsvg",
         "license": "LGPL-2.0-or-later",
@@ -56706,7 +56721,6 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -56746,7 +56760,16 @@
             ]
           },
           "legacy": {
-            "description": "Add deprecated APIs for compatibility"
+            "description": "Add deprecated APIs for compatibility",
+            "dependencies": [
+              {
+                "name": "libxml2",
+                "default-features": false,
+                "features": [
+                  "zlib"
+                ]
+              }
+            ]
           },
           "lzma": {
             "description": "Use LZMA",
@@ -56764,7 +56787,7 @@
             ]
           }
         },
-        "version": "2.13.8"
+        "version": "2.14.5"
       },
       "files": [
         "cxx-for-icu.diff",
@@ -59330,7 +59353,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.685"
+        "version": "0.686"
       },
       "files": [
         "cmake-config-export.patch",
@@ -63768,30 +63791,32 @@
       "name": "mosquitto",
       "manifest": {
         "name": "mosquitto",
+        "port-version": 1,
         "description": "Mosquitto is an open source message broker that implements the MQ Telemetry Transport protocol versions 3.1 and 3.1.1, MQTT provides a lightweight method of carrying out messaging using a publish/subscribe model, This makes it suitable for machine to machine messaging such as with low power sensors or mobile devices such as phones, embedded computers or microcontrollers like the Arduino",
         "homepage": "https://mosquitto.org/",
         "license": "EPL-2.0",
-        "supports": "!android",
+        "supports": "!uwp",
         "dependencies": [
-          "c-ares",
-          "libwebsockets",
           "openssl",
           "pthreads",
           "uthash",
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "version": "2.0.22"
       },
       "files": [
-        "0003-add-find_package-libwebsockets.patch",
-        "0004-support-static-build.patch",
-        "0005-websocket-shared-lib-name.patch",
+        "linkage-and-export.diff",
+        "mosquitto-config.cmake",
         "portfile.cmake",
+        "unofficial-mosquitto-config.cmake",
         "usage",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -64993,7 +65018,7 @@
       "name": "mysvac-jsonlib",
       "manifest": {
         "name": "mysvac-jsonlib",
-        "description": "A lightweight and efficient C++17 JSON library.",
+        "description": "A lightweight and efficient C++20 JSON library.",
         "homepage": "https://github.com/Mysvac/cpp-jsonlib",
         "license": "MIT",
         "dependencies": [
@@ -65006,7 +65031,7 @@
             "host": true
           }
         ],
-        "version": "2.1.1"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -65032,7 +65057,7 @@
             "host": true
           }
         ],
-        "version": "0.0.3"
+        "version": "0.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -66089,6 +66114,7 @@
       "name": "nghttp3",
       "manifest": {
         "name": "nghttp3",
+        "port-version": 1,
         "description": "Implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C",
         "homepage": "https://github.com/ngtcp2/nghttp3",
         "license": "MIT",
@@ -66149,6 +66175,7 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
+        "port-version": 1,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -68287,12 +68314,18 @@
       "name": "open62541",
       "manifest": {
         "name": "open62541",
-        "port-version": 3,
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
         "license": "MPL-2.0",
         "supports": "!xbox",
         "dependencies": [
+          {
+            "name": "open62541",
+            "default-features": false,
+            "features": [
+              "methodcalls"
+            ]
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -68320,7 +68353,15 @@
             ]
           },
           "discovery": {
-            "description": "Enable Discovery Service (LDS)"
+            "description": "Enable Discovery Service (LDS)",
+            "dependencies": [
+              {
+                "name": "open62541",
+                "features": [
+                  "methodcalls"
+                ]
+              }
+            ]
           },
           "historizing": {
             "description": "Enable basic support for historical access (client and server)",
@@ -68336,7 +68377,14 @@
           "mbedtls": {
             "description": "Enable encryption support (uses MbedTLS)",
             "dependencies": [
-              "mbedtls"
+              "mbedtls",
+              {
+                "name": "open62541",
+                "default-features": false,
+                "features": [
+                  "methodcalls"
+                ]
+              }
             ]
           },
           "methodcalls": {
@@ -68347,6 +68395,7 @@
             "dependencies": [
               {
                 "name": "open62541",
+                "default-features": false,
                 "features": [
                   "methodcalls"
                 ]
@@ -68356,6 +68405,13 @@
           "openssl": {
             "description": "Enable encryption support (uses OpenSSL)",
             "dependencies": [
+              {
+                "name": "open62541",
+                "default-features": false,
+                "features": [
+                  "methodcalls"
+                ]
+              },
               "openssl"
             ]
           },
@@ -68374,11 +68430,10 @@
             ]
           }
         },
-        "version": "1.3.15"
+        "version": "1.4.12"
       },
       "files": [
-        "android-librt.diff",
-        "clang-sanitizer.diff",
+        "android.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -69905,7 +69960,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 3,
+        "port-version": 4,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -70069,7 +70124,8 @@
             ]
           },
           "dshow": {
-            "description": "Enable DirectShow"
+            "description": "Enable DirectShow",
+            "supports": "windows"
           },
           "eigen": {
             "description": "Eigen support for opencv",
@@ -70429,6 +70485,7 @@
         "0018-contrib-fix-tesseract.patch",
         "0019-opencl-kernel.patch",
         "0020-fix-narrow-filesystem.diff",
+        "0021-fix-qt-gen-def.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -70778,7 +70835,7 @@
             ]
           }
         },
-        "version": "3.0.9.0"
+        "version": "3.0.9.1"
       },
       "files": [
         "fix-dependencies.patch",
@@ -70786,7 +70843,6 @@
         "fix-openimageio_include_dir.patch",
         "fix-static-ffmpeg.patch",
         "imath-version-guard.patch",
-        "libheif-1_20_2.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -71305,7 +71361,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -71339,7 +71394,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "cmake-config.patch",
@@ -72597,11 +72652,10 @@
       "name": "otl",
       "manifest": {
         "name": "otl",
-        "port-version": 1,
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.481"
+        "version": "4.0.487"
       },
       "files": [
         "portfile.cmake",
@@ -74423,7 +74477,6 @@
       "name": "platform-folders",
       "manifest": {
         "name": "platform-folders",
-        "port-version": 1,
         "description": "A C++ library to look for special directories like \"My Documents\" and \"%APPDATA%\"",
         "homepage": "https://github.com/sago007/PlatformFolders",
         "license": "MIT",
@@ -74437,7 +74490,7 @@
             "host": true
           }
         ],
-        "version": "4.2.0"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -77594,7 +77647,6 @@
       "name": "qt",
       "manifest": {
         "name": "qt",
-        "port-version": 1,
         "description": "A cross-platform application and UI framework.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -77834,7 +77886,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -77976,14 +78028,22 @@
                 "name": "qt3d",
                 "default-features": false,
                 "features": [
+                  "render",
                   "rhi"
+                ]
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "vulkan"
                 ]
               },
               "vulkan"
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -79612,7 +79672,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -79653,7 +79713,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -79735,7 +79795,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -79748,7 +79808,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 5,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80003,6 +80062,13 @@
               {
                 "name": "freetype",
                 "default-features": false
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
               }
             ]
           },
@@ -80063,13 +80129,6 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
-                  "freetype"
-                ]
-              },
-              {
-                "name": "qtbase",
-                "default-features": false,
-                "features": [
                   "opengl"
                 ],
                 "platform": "osx"
@@ -80079,6 +80138,7 @@
                 "default-features": false,
                 "features": [
                   "egl",
+                  "freetype",
                   "gles2",
                   "opengl"
                 ],
@@ -80215,7 +80275,6 @@
           "sql-oci": {
             "description": "Enable SQL Driver Oracle OCI",
             "dependencies": [
-              "ocilib",
               {
                 "name": "qtbase",
                 "default-features": false,
@@ -80371,7 +80430,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "GLIB2-static.patch",
@@ -80387,6 +80446,7 @@
         "env.patch",
         "fix-host-aliasing.patch",
         "fix-link-lib-discovery.patch",
+        "fix-missing-include.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -80394,6 +80454,7 @@
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
+        "moltenvk.patch",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -80440,7 +80501,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80463,7 +80524,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80495,7 +80556,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80523,7 +80584,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80558,7 +80619,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80583,7 +80644,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80603,7 +80664,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80636,7 +80697,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80669,7 +80730,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80694,7 +80755,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80745,7 +80806,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -80757,7 +80818,6 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
-        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80794,7 +80854,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80906,7 +80966,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80945,7 +81005,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80977,7 +81037,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81000,7 +81060,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81058,6 +81118,14 @@
               {
                 "name": "qtdeclarative",
                 "default-features": false
+              },
+              {
+                "name": "qtmultimedia",
+                "default-features": false,
+                "features": [
+                  "qml"
+                ],
+                "platform": "linux"
               }
             ]
           },
@@ -81098,7 +81166,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "ffmpeg-compile-def.patch",
@@ -81125,7 +81193,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81136,7 +81204,6 @@
       "name": "qtopcua",
       "manifest": {
         "name": "qtopcua",
-        "port-version": 1,
         "description": "The Qt OPC UA module implements a Qt API to interact with OPC UA on top of a 3rd party OPC UA stack.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -81203,7 +81270,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "fix-build.patch",
@@ -81241,7 +81308,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -81253,7 +81320,6 @@
       "name": "qtquick3d",
       "manifest": {
         "name": "qtquick3d",
-        "port-version": 1,
         "description": "Qt Quick 3D provides a high-level API for creating 3D content and 3D user interfaces based on Qt Quick.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -81289,7 +81355,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -81311,7 +81377,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81365,7 +81431,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81386,7 +81452,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81436,7 +81502,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81475,7 +81541,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81518,7 +81584,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81550,7 +81616,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81571,7 +81637,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81599,7 +81665,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81632,7 +81698,7 @@
             "default-features": false
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81655,7 +81721,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81761,7 +81827,8 @@
                   "enable-rtti"
                 ]
               }
-            ]
+            ],
+            "supports": "!android"
           },
           "qml": {
             "description": "Build QML imports",
@@ -81781,7 +81848,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -81810,7 +81877,7 @@
             ]
           }
         ],
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81852,7 +81919,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -81888,7 +81955,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81919,7 +81986,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -81930,8 +81997,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 2,
-        "description": "Qt modules for rendering web and PDF content.",
+        "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
         "dependencies": [
@@ -82165,10 +82231,9 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
-        "blink-include-fixes.patch",
         "clang-cl.patch",
         "cross-build.diff",
         "disable-host-pkgconfig.diff",
@@ -82210,7 +82275,7 @@
             ]
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -82243,13 +82308,16 @@
             "dependencies": [
               {
                 "name": "qtwebengine",
-                "default-features": false
+                "default-features": false,
+                "features": [
+                  "webengine"
+                ]
               }
             ],
             "supports": "!static"
           }
         },
-        "version": "6.8.3"
+        "version": "6.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -88463,7 +88531,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.3.4"
+        "version-semver": "7.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -91342,7 +91410,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "3.12.5"
+        "version": "3.12.6"
       },
       "files": [
         "portfile.cmake",
