@@ -1,5 +1,5 @@
 {
-  "version": "a038c0e2ab35cde4f144dac1745014817d38b6fa",
+  "version": "b61e5146d2e883945beda481ca4ab42fd3c287f5",
   "ports": [
     {
       "name": "3fd",
@@ -1101,7 +1101,6 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
-        "port-version": 10,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -1110,18 +1109,6 @@
         "license": "BSD-3-Clause",
         "dependencies": [
           "egl-registry",
-          {
-            "name": "libx11",
-            "platform": "linux"
-          },
-          {
-            "name": "libxext",
-            "platform": "linux"
-          },
-          {
-            "name": "libxi",
-            "platform": "linux"
-          },
           "opengl-registry",
           {
             "name": "vcpkg-cmake",
@@ -1131,20 +1118,35 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          },
           "zlib"
         ],
-        "version-string": "chromium_5414"
+        "features": {
+          "metal": {
+            "description": "Metal support for angle",
+            "supports": "osx | ios"
+          }
+        },
+        "version-string": "chromium_7258"
       },
       "files": [
+        "001-fix-builder-error.patch",
         "001-fix-uwp.patch",
         "002-fix-builder-error.patch",
         "003-fix-mingw.patch",
+        "ANGLEShaderProgramVersion.h.in",
         "angle_commit.h.in",
         "cmake-buildsystem/CMakeLists.txt",
         "cmake-buildsystem/PlatformLinux.cmake",
         "cmake-buildsystem/PlatformMac.cmake",
         "cmake-buildsystem/PlatformWin.cmake",
+        "cmake-buildsystem/cmake/DetectSSE2.cmake",
         "cmake-buildsystem/cmake/WebKitCommon-minimal.cmake",
+        "cmake-buildsystem/cmake/WebKitCompilerFlags-minimal.cmake",
+        "cmake-buildsystem/cmake/WebKitMacros-minimal.cmake",
         "cmake-buildsystem/linux.cmake",
         "portfile.cmake",
         "unofficial-angle-config.cmake",
@@ -3604,7 +3606,7 @@
             "host": true
           }
         ],
-        "version": "0.5.4"
+        "version": "0.5.6"
       },
       "files": [
         "portfile.cmake",
@@ -3724,7 +3726,7 @@
             "host": true
           }
         ],
-        "version": "0.8.2"
+        "version": "0.8.7"
       },
       "files": [
         "portfile.cmake",
@@ -3812,7 +3814,7 @@
             "host": true
           }
         ],
-        "version": "0.32.9"
+        "version": "0.33.5"
       },
       "files": [
         "no-werror.patch",
@@ -21298,6 +21300,7 @@
       "name": "concurrentqueue",
       "manifest": {
         "name": "concurrentqueue",
+        "port-version": 1,
         "description": "A fast multi-producer, multi-consumer lock-free concurrent queue for C++11",
         "homepage": "https://github.com/cameron314/concurrentqueue",
         "license": "BSD-2-Clause OR BSL-1.0",
@@ -21314,9 +21317,8 @@
         "version": "1.0.4"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
-        "unofficial-concurrentqueue-config.in.cmake",
+        "unofficial-concurrentqueue-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -24292,6 +24294,33 @@
         "version-string": "may2021"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "dacap-clip",
+      "manifest": {
+        "name": "dacap-clip",
+        "description": "Cross-platform C++ library to copy/paste clipboard content.",
+        "homepage": "https://github.com/dacap/clip",
+        "license": "MIT",
+        "supports": "!android & !uwp",
+        "dependencies": [
+          "libpng",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.10.0"
+      },
+      "files": [
+        "fix-install-header-and-force-static-compilation.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27393,6 +27422,7 @@
       "name": "elfio",
       "manifest": {
         "name": "elfio",
+        "port-version": 1,
         "description": "A header-only C++ library intended for reading and generating files in the ELF binary format.",
         "homepage": "https://github.com/serge1/ELFIO",
         "license": "MIT",
@@ -27461,6 +27491,31 @@
         "portfile.cmake",
         "rpath-link.diff",
         "static-tools.diff",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "eljonny-testcpp",
+      "manifest": {
+        "name": "eljonny-testcpp",
+        "description": "A simple C++ test framework with no dependencies other than C++11 STL.",
+        "homepage": "https://github.com/eljonny/TestCPP",
+        "license": "Unlicense",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.3.0-beta.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -27632,13 +27687,12 @@
       "name": "ensmallen",
       "manifest": {
         "name": "ensmallen",
+        "port-version": 1,
         "description": "A header-only C++ library for mathematical optimization",
         "homepage": "http://ensmallen.org/",
         "license": "BSD-3-Clause",
         "dependencies": [
           "armadillo",
-          "blas",
-          "lapack",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -27648,6 +27702,17 @@
             "host": true
           }
         ],
+        "default-features": [
+          {
+            "name": "openmp",
+            "platform": "!osx"
+          }
+        ],
+        "features": {
+          "openmp": {
+            "description": "Enable OpenMP support"
+          }
+        },
         "version-semver": "2.21.1"
       },
       "files": [
@@ -41849,9 +41914,10 @@
       "name": "irrlicht",
       "manifest": {
         "name": "irrlicht",
+        "port-version": 1,
         "description": "The Irrlicht Engine is an open source realtime 3D engine written in C++. It is cross-platform, using D3D, OpenGL and its own software renderers.",
         "homepage": "http://irrlicht.sourceforge.net",
-        "supports": "!(arm | uwp)",
+        "supports": "!(android | uwp)",
         "dependencies": [
           "bzip2",
           "libjpeg-turbo",
@@ -48929,15 +48995,15 @@
         "name": "libfuse",
         "description": "The reference implementation of the Linux FUSE (Filesystem in Userspace) interface",
         "homepage": "https://github.com/libfuse/libfuse",
-        "license": "LGPL-2.1 AND GPL-2.0",
-        "supports": "linux",
+        "license": "LGPL-2.1-only AND GPL-2.0-only",
+        "supports": "linux | freebsd",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
-        "version": "3.16.2"
+        "version": "3.17.3"
       },
       "files": [
         "portfile.cmake",
@@ -52367,15 +52433,18 @@
       "name": "libosmscout",
       "manifest": {
         "name": "libosmscout",
-        "port-version": 7,
+        "port-version": 8,
         "description": "libosmscout offers applications simple, high-level interfaces for offline location and POI lokup, rendering and routing functionalities based on OpenStreetMap (OSM) data.",
         "homepage": "https://libosmscout.sourceforge.net/",
         "documentation": "https://libosmscout.sourceforge.net/documentation/",
-        "supports": "!uwp & !(windows & arm) & !android & !(windows & static) & !wasm32 & !emscripten",
+        "supports": "!uwp",
         "dependencies": [
           "libiconv",
           "liblzma",
-          "libxml2",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
           "protobuf",
           {
             "name": "vcpkg-cmake",
@@ -52391,9 +52460,18 @@
           "cairo": {
             "description": "Cairo backend renderer",
             "dependencies": [
-              "cairo",
-              "freetype",
-              "harfbuzz",
+              {
+                "name": "cairo",
+                "default-features": false
+              },
+              {
+                "name": "freetype",
+                "default-features": false
+              },
+              {
+                "name": "harfbuzz",
+                "default-features": false
+              },
               "libpng",
               "pango"
             ]
@@ -52416,16 +52494,27 @@
           "svg": {
             "description": "SVG backend renderer",
             "dependencies": [
-              "freetype",
-              "harfbuzz",
+              {
+                "name": "freetype",
+                "default-features": false
+              },
+              {
+                "name": "harfbuzz",
+                "default-features": false
+              },
               "pango"
             ]
+          },
+          "tools": {
+            "description": "Install tools"
           }
         },
         "version": "1.1.1"
       },
       "files": [
         "fix-libxml2.patch",
+        "msvc-arm.diff",
+        "msvc-static.diff",
         "portfile.cmake",
         "protobuf-linkage.patch",
         "vcpkg.json"
@@ -65744,10 +65833,11 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 6,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
+        "license": null,
         "dependencies": [
+          "tinyxml2",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -65755,20 +65845,23 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
         "default-features": [
           "dap",
           {
-            "name": "hdf5",
-            "platform": "!uwp & !(arm64 & windows)"
+            "name": "nczarr",
+            "platform": "!uwp"
           },
-          "nczarr",
-          "netcdf-4"
+          {
+            "name": "netcdf-4",
+            "platform": "!uwp"
+          }
         ],
         "features": {
           "dap": {
-            "description": "Build with DAP remote access client support",
+            "description": "DAP remote access client support",
             "dependencies": [
               {
                 "name": "curl",
@@ -65776,31 +65869,8 @@
               }
             ]
           },
-          "hdf5": {
-            "description": "Build with HDF5 support",
-            "dependencies": [
-              {
-                "name": "hdf5",
-                "default-features": false,
-                "features": [
-                  "zlib"
-                ]
-              },
-              {
-                "name": "netcdf-c",
-                "default-features": false,
-                "features": [
-                  "netcdf-4"
-                ]
-              },
-              {
-                "name": "vcpkg-pkgconfig-get-modules",
-                "host": true
-              }
-            ]
-          },
           "nczarr": {
-            "description": "Build with NCZarr cloud storage access support",
+            "description": "NCZarr cloud storage access support",
             "dependencies": [
               {
                 "name": "curl",
@@ -65816,7 +65886,7 @@
             ]
           },
           "nczarr-zip": {
-            "description": "Build with NCZarr ZIP support",
+            "description": "NCZarr ZIP support",
             "dependencies": [
               {
                 "name": "libzip",
@@ -65832,23 +65902,66 @@
             ]
           },
           "netcdf-4": {
-            "description": "Build with netCDF-4 support"
+            "description": "netCDF-4 support",
+            "dependencies": [
+              {
+                "name": "hdf5",
+                "default-features": false,
+                "features": [
+                  "zlib"
+                ]
+              }
+            ]
+          },
+          "plugins": {
+            "description": "Enable plugin support",
+            "dependencies": [
+              {
+                "name": "bzip2",
+                "default-features": false
+              },
+              "zlib"
+            ],
+            "supports": "!static & !uwp"
+          },
+          "szip": {
+            "description": "Szip compression plugin",
+            "dependencies": [
+              "libaec",
+              {
+                "name": "netcdf-c",
+                "default-features": false,
+                "features": [
+                  "plugins"
+                ]
+              }
+            ]
           },
           "tools": {
             "description": "Build utilities"
+          },
+          "zstd": {
+            "description": "Zstandard compression plugin",
+            "dependencies": [
+              {
+                "name": "netcdf-c",
+                "default-features": false,
+                "features": [
+                  "plugins"
+                ]
+              },
+              "zstd"
+            ]
           }
         },
-        "version": "4.8.1"
+        "version": "4.9.3"
       },
       "files": [
-        "fix-dependency-libmath.patch",
-        "fix-dependency-libzip.patch",
-        "fix-dependency-mpi.patch",
-        "fix-dependency-zlib.patch",
-        "fix-linkage-error.patch",
-        "fix-manpage-msys.patch",
+        "dependencies.diff",
         "fix-pkgconfig.patch",
+        "mremap.diff",
         "no-install-deps.patch",
+        "plugin-install-dir.diff",
         "portfile.cmake",
         "use_targets.patch",
         "vcpkg.json"
@@ -67568,6 +67681,15 @@
               }
             ]
           },
+          "curl": {
+            "description": "curl support",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              }
+            ]
+          },
           "cxsparse": {
             "description": "suitesparse-cxsparse support",
             "dependencies": [
@@ -67600,6 +67722,15 @@
             "dependencies": [
               {
                 "name": "freetype",
+                "default-features": false
+              }
+            ]
+          },
+          "graphicsmagick": {
+            "description": "graphicsmagick support",
+            "dependencies": [
+              {
+                "name": "graphicsmagick",
                 "default-features": false
               }
             ]
@@ -67656,6 +67787,12 @@
               }
             ]
           },
+          "qhull": {
+            "description": "qhull support",
+            "dependencies": [
+              "qhull"
+            ]
+          },
           "spqr": {
             "description": "suitesparse-spqr support",
             "dependencies": [
@@ -67680,6 +67817,7 @@
       "files": [
         "add_other_linkage_flags.patch",
         "portfile.cmake",
+        "qhull.patch",
         "vcpkg.json"
       ]
     },
@@ -72242,7 +72380,8 @@
         ],
         "features": {
           "avx2": {
-            "description": "Omath will use AVX2 to boost performance"
+            "description": "Omath will use AVX2 to boost performance",
+            "supports": "!arm"
           },
           "imgui": {
             "description": "Omath will define method to convert omath types to imgui types",
@@ -72251,7 +72390,7 @@
             ]
           }
         },
-        "version": "3.0.3"
+        "version": "3.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -74642,7 +74781,7 @@
             "host": true
           }
         ],
-        "version": "1.1.10"
+        "version": "1.1.11"
       },
       "files": [
         "portfile.cmake",
@@ -82521,6 +82660,31 @@
       ]
     },
     {
+      "name": "quickjs-ng",
+      "manifest": {
+        "name": "quickjs-ng",
+        "description": "QuickJS, the Next Generation: a mighty JavaScript engine. A small and embeddable JavaScript engine supporting the latest ECMAScript specification.",
+        "homepage": "https://github.com/quickjs-ng/quickjs",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.10.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "quill",
       "manifest": {
         "name": "quill",
@@ -86581,7 +86745,7 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -87094,7 +87258,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
-        "port-version": 8,
+        "port-version": 9,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -87117,7 +87281,7 @@
             "name": "netcdf-c",
             "default-features": false,
             "features": [
-              "hdf5"
+              "netcdf-4"
             ]
           },
           {
@@ -87175,6 +87339,7 @@
         "fix-ioss-includes.patch",
         "fix-mpi.patch",
         "fix_tpl_libs.patch",
+        "netcdf-c.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -87916,8 +88081,14 @@
         "description": "Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is based on years of collaboration between researchers at NVIDIA, Carnegie Mellon University, and Stanford.",
         "homepage": "https://github.com/shader-slang/slang",
         "license": null,
-        "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp",
-        "version": "2025.5"
+        "supports": "(arm64 | x64) & (linux | osx | windows) & !uwp & !(static & staticcrt)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2025.14.3"
       },
       "files": [
         "portfile.cmake",
@@ -97758,7 +97929,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -97964,7 +98135,7 @@
                 "name": "netcdf-c",
                 "default-features": false,
                 "features": [
-                  "hdf5"
+                  "netcdf-4"
                 ]
               }
             ]
