@@ -1,5 +1,5 @@
 {
-  "version": "b61e5146d2e883945beda481ca4ab42fd3c287f5",
+  "version": "44a1e4eca5211434b5fefcc25a69bba246c3f861",
   "ports": [
     {
       "name": "3fd",
@@ -26469,15 +26469,11 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.2.2"
+        "version": "1.3.2"
       },
       "files": [
-        "bigobj.patch",
-        "excel-libname.patch",
         "extensions.patch",
         "portfile.cmake",
-        "t-external-icu.patch",
-        "unvendor_icu_and_find_dependency.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -59845,7 +59841,7 @@
       "name": "magma",
       "manifest": {
         "name": "magma",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Matrix Algebra on GPU and Multi-core Architectures (MAGMA) is a collection of next-generation linear algebra libraries for heterogeneous computing",
         "homepage": "https://icl.utk.edu/magma/",
         "license": null,
@@ -71659,6 +71655,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -71709,6 +71706,13 @@
             "dependencies": [
               "opentracing"
             ]
+          },
+          "otlp-file": {
+            "description": "Whether to include the OpenTelemetry Protocol to File exporter in the SDK",
+            "dependencies": [
+              "protobuf"
+            ],
+            "supports": "!uwp"
           },
           "otlp-grpc": {
             "description": "Whether to include the OTLP gRPC exporter in the SDK",
@@ -96395,6 +96399,7 @@
       "name": "uvw",
       "manifest": {
         "name": "uvw",
+        "port-version": 1,
         "description": "A compilable static library, event based, tiny and easy to use libuv wrapper in modern C++.",
         "homepage": "https://github.com/skypjack/uvw",
         "license": "MIT",
