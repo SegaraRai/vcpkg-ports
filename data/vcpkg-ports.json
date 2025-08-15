@@ -1,5 +1,5 @@
 {
-  "version": "44a1e4eca5211434b5fefcc25a69bba246c3f861",
+  "version": "dcf6516bc3c7a763c68a2d0a1d850150223c693a",
   "ports": [
     {
       "name": "3fd",
@@ -7384,14 +7384,33 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
+          }
+        ],
+        "default-features": [
           "zlib",
           "zstd"
         ],
-        "version": "2.19.1"
+        "features": {
+          "zlib": {
+            "description": "Support zlib compression",
+            "dependencies": [
+              "zlib"
+            ]
+          },
+          "zstd": {
+            "description": "Support zstd compression",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "2.20.0"
       },
       "files": [
+        "cmake-deps.patch",
+        "configure-binary-dir.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -18304,6 +18323,38 @@
         "CMakeLists.txt",
         "bzip2.pc.in",
         "fix-import-export-macros.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bzip3",
+      "manifest": {
+        "name": "bzip3",
+        "description": "A better and stronger spiritual successor to BZip2.",
+        "homepage": "https://github.com/kspalaiologos/bzip3/",
+        "license": "LGPL-3.0-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
+            "description": "Build bzip3 applications",
+            "supports": "!windows"
+          }
+        },
+        "version": "1.5.3"
+      },
+      "files": [
+        "disable-man.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -40028,7 +40079,7 @@
       "name": "highfive",
       "manifest": {
         "name": "highfive",
-        "description": "HighFive is a modern header-only C++/C++11 friendly interface for libhdf5",
+        "description": "HighFive is a modern, user-friendly, header-only, C++14 interface for libhdf5.",
         "homepage": "https://github.com/highfive-devs/highfive",
         "license": "BSL-1.0",
         "dependencies": [
@@ -40074,7 +40125,7 @@
             ]
           }
         },
-        "version": "3.0.0"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -46443,7 +46494,7 @@
             "supports": "!arm"
           }
         },
-        "version": "2.4.0"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -52630,10 +52681,11 @@
             "host": true
           }
         ],
-        "version": "9.0.10"
+        "version": "9.0.11"
       },
       "files": [
         "disable-werror.patch",
+        "enable-cpp17.patch",
         "fix-find-protobuf.patch",
         "fix-icui18n-lib-name.patch",
         "fix-re2-identifiers.patch",
@@ -54344,7 +54396,7 @@
       "manifest": {
         "name": "libspatialindex",
         "description": "C++ implementation of R*-tree, an MVR-tree and a TPR-tree with C API.",
-        "homepage": "http://libspatialindex.github.com",
+        "homepage": "https://libspatialindex.org/",
         "license": "MIT",
         "dependencies": [
           {
@@ -54357,7 +54409,7 @@
           },
           "zlib"
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -65455,7 +65507,6 @@
       "name": "nanopb",
       "manifest": {
         "name": "nanopb",
-        "port-version": 1,
         "description": "A small code-size Protocol Buffers implementation in ANSI C.",
         "homepage": "https://jpa.kapsi.fi/nanopb/",
         "license": "Zlib",
@@ -65480,7 +65531,7 @@
             ]
           }
         },
-        "version-semver": "0.4.9"
+        "version": "0.4.9.1"
       },
       "files": [
         "fix-cmakelist.patch",
@@ -86128,6 +86179,31 @@
       ]
     },
     {
+      "name": "sbgecom",
+      "manifest": {
+        "name": "sbgecom",
+        "description": "C library used to communicate with SBG Systems IMU, AHRS and INS",
+        "homepage": "https://github.com/SBG-Systems/sbgECom",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "5.3.2276"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sbp",
       "manifest": {
         "name": "sbp",
@@ -95677,7 +95753,6 @@
       "name": "units",
       "manifest": {
         "name": "units",
-        "port-version": 1,
         "description": "A compile-time, header-only, dimensional analysis and unit conversion library built on c++14 with no dependencies.",
         "homepage": "https://github.com/nholthaus/units",
         "license": "MIT",
@@ -95691,7 +95766,7 @@
             "host": true
           }
         ],
-        "version": "2.3.3"
+        "version": "2.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -99742,11 +99817,12 @@
           },
           "wolfssl"
         ],
-        "version": "3.9.1"
+        "version": "3.9.2"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "wolftpm_pr430.diff"
       ]
     },
     {
@@ -101283,7 +101359,7 @@
             "host": true
           }
         ],
-        "version": "0.5.3"
+        "version": "0.5.4"
       },
       "files": [
         "portfile.cmake",
