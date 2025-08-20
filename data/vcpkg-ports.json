@@ -1,5 +1,5 @@
 {
-  "version": "ee0973d8090e4e3e452244bb50d34c25fe907dc2",
+  "version": "9e7bfb1bcd1fa2e6e0755c4076441360b9c9ded7",
   "ports": [
     {
       "name": "3fd",
@@ -281,9 +281,10 @@
             ]
           }
         },
-        "version": "8.0.3"
+        "version": "8.0.4"
       },
       "files": [
+        "p2453.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29812,6 +29813,31 @@
       ]
     },
     {
+      "name": "fixed-math",
+      "manifest": {
+        "name": "fixed-math",
+        "description": "A High-Performance C++23, C++17 Library for Fixed-Point 48.16 Arithmetic",
+        "homepage": "https://github.com/arturbac/fixed_math",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.2.0"
+      },
+      "files": [
+        "disable-cpm.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "fixed-string",
       "manifest": {
         "name": "fixed-string",
@@ -47807,10 +47833,10 @@
       "name": "libczi",
       "manifest": {
         "name": "libczi",
+        "port-version": 1,
         "description": "library to read and write CZI files.",
         "homepage": "https://github.com/ZEISS/libczi",
         "license": null,
-        "supports": "!android",
         "dependencies": [
           "eigen3",
           {
@@ -47823,7 +47849,28 @@
           },
           "zstd"
         ],
-        "version": "0.66.5"
+        "features": {
+          "azureblobstore": {
+            "description": "Azure Blob Storage support",
+            "dependencies": [
+              "azure-identity-cpp",
+              "azure-storage-blobs-cpp"
+            ]
+          },
+          "curl": {
+            "description": "cURL support",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false,
+                "features": [
+                  "ssl"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "0.66.6"
       },
       "files": [
         "portfile.cmake",
@@ -58938,6 +58985,7 @@
       "name": "log4cxx",
       "manifest": {
         "name": "log4cxx",
+        "port-version": 1,
         "description": "Apache log4cxx is a logging framework for C++ patterned after Apache log4j, which uses Apache Portable Runtime for most platform-specific code and should be usable on any platform supported by APR",
         "homepage": "https://logging.apache.org/log4cxx",
         "license": "Apache-2.0",
@@ -58961,6 +59009,9 @@
             "dependencies": [
               "fmt"
             ]
+          },
+          "mprfa": {
+            "description": "Synchronizes rollover when multiple process log to the same file"
           },
           "qt": {
             "description": "Allow QString values in the LOG4CXX_WARN, LOG4CXX_INFO, LOG4CXX_DEBUG etc. macros",
@@ -64315,7 +64366,7 @@
             "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2504.1.4046"
+        "version": "2504.2.4061"
       },
       "files": [
         "pfusage",
@@ -65789,7 +65840,7 @@
             "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "1.0.0-rc"
       },
       "files": [
         "portfile.cmake",
@@ -66516,6 +66567,7 @@
       "name": "nlohmann-json",
       "manifest": {
         "name": "nlohmann-json",
+        "port-version": 1,
         "description": "JSON for Modern C++",
         "homepage": "https://github.com/nlohmann/json",
         "license": "MIT",
@@ -66537,6 +66589,7 @@
         "version-semver": "3.12.0"
       },
       "files": [
+        "fix-4742_std_optional.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -76717,7 +76770,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -101392,6 +101445,7 @@
       "name": "yalantinglibs",
       "manifest": {
         "name": "yalantinglibs",
+        "port-version": 1,
         "description": "A Collection of C++20 libraries, include struct_pack, struct_json, struct_xml, struct_yaml, struct_pb, easylog, coro_rpc, coro_http and async_simple",
         "homepage": "https://github.com/alibaba/yalantinglibs",
         "license": "Apache-2.0",
@@ -101410,6 +101464,10 @@
             "version>=": "1.2.0"
           },
           {
+            "name": "iguana",
+            "version>=": "1.0.9"
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -101423,6 +101481,7 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "use-external-iguana.patch",
         "vcpkg.json"
       ]
     },
