@@ -1,5 +1,5 @@
 {
-  "version": "9e7bfb1bcd1fa2e6e0755c4076441360b9c9ded7",
+  "version": "6ecbbbdf31cba47aafa7cf6189b1e73e10ac61f8",
   "ports": [
     {
       "name": "3fd",
@@ -1345,6 +1345,45 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "appstream",
+      "manifest": {
+        "name": "appstream",
+        "description": "Tools and libraries to work with AppStream metadata",
+        "homepage": "https://www.freedesktop.org/software/appstream/docs",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "curl",
+          {
+            "name": "gettext",
+            "host": true
+          },
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "gperf",
+            "host": true
+          },
+          "libxml2",
+          "libxmlb",
+          "libyaml",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          },
+          "zstd"
+        ],
+        "version": "1.0.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-uneeded-directories.patch",
         "vcpkg.json"
       ]
     },
@@ -2782,7 +2821,7 @@
             ]
           }
         },
-        "version": "10.2.0"
+        "version": "10.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -3664,7 +3703,7 @@
             "host": true
           }
         ],
-        "version": "0.21.2"
+        "version": "0.21.3"
       },
       "files": [
         "portfile.cmake",
@@ -6562,12 +6601,14 @@
       "name": "behaviortree-cpp",
       "manifest": {
         "name": "behaviortree-cpp",
+        "port-version": 1,
         "description": "Behavior Trees Library in C++.",
         "homepage": "https://www.behaviortree.dev",
         "supports": "!uwp",
         "dependencies": [
           "boost-coroutine2",
           "cppzmq",
+          "foonathan-lexy",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -6580,9 +6621,11 @@
         "version": "4.7.0"
       },
       "files": [
+        "fix-dependencies.patch",
         "fix-x86_build.patch",
         "portfile.cmake",
         "remove-source-charset.diff",
+        "use-external-lexy.patch",
         "vcpkg.json"
       ]
     },
@@ -7404,10 +7447,9 @@
             ]
           }
         },
-        "version": "2.21.0"
+        "version": "2.21.1"
       },
       "files": [
-        "config-typo.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -27882,7 +27924,7 @@
             "host": true
           }
         ],
-        "version": "20.42.2"
+        "version": "20.43.0"
       },
       "files": [
         "portfile.cmake",
@@ -32807,7 +32849,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.5"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -51734,11 +51776,13 @@
             "description": "Build MultiSense utility applications."
           }
         },
-        "version": "7.1.0"
+        "version": "7.2.0"
       },
       "files": [
-        "fix-find-package-config-file.patch",
-        "fix-missing-algorithm.patch",
+        "0000-platform-specific-links.patch",
+        "0001-find-public-api-dependencies.patch",
+        "0002-disable-error-on-warning.patch",
+        "0003-utilities-cc-unreachable-code.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -58985,7 +59029,6 @@
       "name": "log4cxx",
       "manifest": {
         "name": "log4cxx",
-        "port-version": 1,
         "description": "Apache log4cxx is a logging framework for C++ patterned after Apache log4j, which uses Apache Portable Runtime for most platform-specific code and should be usable on any platform supported by APR",
         "homepage": "https://logging.apache.org/log4cxx",
         "license": "Apache-2.0",
@@ -59023,7 +59066,7 @@
             ]
           }
         },
-        "version": "1.4.0"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -101776,7 +101819,7 @@
             ]
           }
         },
-        "version": "0.11.1"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
