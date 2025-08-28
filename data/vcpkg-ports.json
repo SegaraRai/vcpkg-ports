@@ -1,5 +1,5 @@
 {
-  "version": "6603e6392c5a1474ce2d7d0574eb774ab43a3236",
+  "version": "120deac3062162151622ca4860575a33844ba10b",
   "ports": [
     {
       "name": "3fd",
@@ -154,7 +154,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -197,6 +197,7 @@
         "version": "20250127.1"
       },
       "files": [
+        "001-mingw-dll.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -281,10 +282,9 @@
             ]
           }
         },
-        "version": "8.0.4"
+        "version": "8.0.5"
       },
       "files": [
-        "p2453.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -1352,14 +1352,21 @@
       "name": "appstream",
       "manifest": {
         "name": "appstream",
+        "port-version": 1,
         "description": "Tools and libraries to work with AppStream metadata",
         "homepage": "https://www.freedesktop.org/software/appstream/docs",
         "license": "LGPL-2.1-or-later",
         "dependencies": [
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false
+          },
           {
             "name": "gettext",
-            "host": true
+            "host": true,
+            "features": [
+              "tools"
+            ]
           },
           "glib",
           {
@@ -1370,7 +1377,10 @@
             "name": "gperf",
             "host": true
           },
-          "libxml2",
+          {
+            "name": "libxml2",
+            "default-features": false
+          },
           "libxmlb",
           "libyaml",
           {
@@ -2821,7 +2831,7 @@
             ]
           }
         },
-        "version": "10.2.1"
+        "version": "10.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -3703,7 +3713,7 @@
             "host": true
           }
         ],
-        "version": "0.21.3"
+        "version": "0.21.4"
       },
       "files": [
         "portfile.cmake",
@@ -27424,7 +27434,6 @@
       "name": "eigen3",
       "manifest": {
         "name": "eigen3",
-        "port-version": 5,
         "description": "C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
         "homepage": "http://eigen.tuxfamily.org",
         "license": "MPL-2.0",
@@ -27438,13 +27447,10 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.4.1-250818"
       },
       "files": [
-        "fix-vectorized-reductions-half.patch",
         "portfile.cmake",
-        "remove_configure_checks.patch",
-        "update-warning-suppression-to-latest.patch",
         "vcpkg.json"
       ]
     },
@@ -49528,6 +49534,10 @@
           "libtasn1",
           "libunistring",
           "nettle",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib"
         ],
         "features": {
@@ -49548,11 +49558,10 @@
             "description": "Enable the OpenSSL compatibility library."
           }
         },
-        "version": "3.8.7.1"
+        "version": "3.8.10"
       },
       "files": [
         "ccasflags.patch",
-        "compression-libs.diff",
         "portfile.cmake",
         "use-gmp-pkgconfig.patch",
         "vcpkg.json"
@@ -52019,7 +52028,7 @@
             "host": true
           }
         ],
-        "version": "2025.7.6"
+        "version": "2025.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -55726,7 +55735,7 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.11"
+        "version": "2.12"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -56237,6 +56246,7 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
+        "port-version": 1,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -56269,7 +56279,10 @@
         "default-features": [
           "libwebpmux",
           "nearlossless",
-          "simd"
+          {
+            "name": "simd",
+            "platform": "!emscripten"
+          }
         ],
         "features": {
           "all": {
@@ -59581,7 +59594,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.687"
+        "version": "0.688"
       },
       "files": [
         "cmake-config-export.patch",
@@ -65285,7 +65298,7 @@
             "host": true
           }
         ],
-        "version": "0.0.4"
+        "version": "0.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -66455,7 +66468,6 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
-        "port-version": 1,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -66501,7 +66513,7 @@
             ]
           }
         },
-        "version": "1.14.0"
+        "version": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -83203,7 +83215,7 @@
             "host": true
           }
         ],
-        "version": "8.85"
+        "version": "8.88"
       },
       "files": [
         "portfile.cmake",
@@ -83478,7 +83490,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-08-05"
+        "version-date": "2025-08-12"
       },
       "files": [
         "portfile.cmake",
@@ -84888,7 +84900,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.5"
+        "version-semver": "1.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -88936,7 +88948,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.3.6"
+        "version-semver": "7.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -96336,7 +96348,7 @@
             ]
           }
         },
-        "version": "2.17.11"
+        "version": "2.19.9"
       },
       "files": [
         "portfile.cmake",
@@ -96628,7 +96640,6 @@
       "name": "uvw",
       "manifest": {
         "name": "uvw",
-        "port-version": 1,
         "description": "A compilable static library, event based, tiny and easy to use libuv wrapper in modern C++.",
         "homepage": "https://github.com/skypjack/uvw",
         "license": "MIT",
@@ -96643,7 +96654,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.4.0"
       },
       "files": [
         "fix-find-libuv.patch",
@@ -101465,7 +101476,7 @@
       "name": "yajl",
       "manifest": {
         "name": "yajl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Yet Another JSON Library",
         "homepage": "https://github.com/lloyd/yajl",
         "license": "ISC",
