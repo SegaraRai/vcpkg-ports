@@ -1,5 +1,5 @@
 {
-  "version": "ae1529e98a05e2a58aa66a9995197f4037fa0590",
+  "version": "b1b19307e2d2ec1eefbdb7ea069de7d4bcd31f01",
   "ports": [
     {
       "name": "3fd",
@@ -46,7 +46,6 @@
       "name": "7zip",
       "manifest": {
         "name": "7zip",
-        "port-version": 1,
         "description": "Library for archiving file with a high compression ratio.",
         "homepage": "https://www.7-zip.org",
         "license": "LGPL-2.1-or-later",
@@ -61,13 +60,14 @@
             "host": true
           }
         ],
-        "version-string": "24.09"
+        "version": "25.1"
       },
       "files": [
         "7zip-config.cmake.in",
         "CMakeLists.txt",
         "fix_timespec_get_broken_on_android.patch",
         "portfile.cmake",
+        "sort-asm.diff",
         "vcpkg.json"
       ]
     },
@@ -1101,6 +1101,7 @@
       "name": "angle",
       "manifest": {
         "name": "angle",
+        "port-version": 1,
         "description": [
           "A conformant OpenGL ES implementation for Windows, Mac and Linux.",
           "The goal of ANGLE is to allow users of multiple operating systems to seamlessly run WebGL and other OpenGL ES content by translating OpenGL ES API calls to one of the hardware-supported APIs available for that platform. ANGLE currently provides translation from OpenGL ES 2.0 and 3.0 to desktop OpenGL, OpenGL ES, Direct3D 9, and Direct3D 11. Support for translation from OpenGL ES to Vulkan is underway, and future plans include compute shader support (ES 3.1) and MacOS support."
@@ -1528,7 +1529,7 @@
             "host": true
           }
         ],
-        "version": "3.4.4"
+        "version": "3.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -3284,7 +3285,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.4.1"
+        "version-semver": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -6053,7 +6054,7 @@
       "name": "azure-storage-cpp",
       "manifest": {
         "name": "azure-storage-cpp",
-        "port-version": 7,
+        "port-version": 8,
         "description": [
           "[legacy] Microsoft Azure Storage Client SDK for C++",
           "A client library for working with Microsoft Azure storage services including blobs, files, tables, and queues. This client library enables working with the Microsoft Azure storage services which include the blob service for storing binary and text data, the file service for storing binary and text data, the table service for storing structured non-relational data, and the queue service for storing messages that may be accessed by a client."
@@ -6078,10 +6079,6 @@
             "default-features": false
           },
           {
-            "name": "gettext",
-            "platform": "osx"
-          },
-          {
             "name": "libuuid",
             "platform": "!windows & !uwp & !osx"
           },
@@ -6101,6 +6098,7 @@
         "version": "7.5.0"
       },
       "files": [
+        "cmake.diff",
         "fix-asio-error.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -28939,7 +28937,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29000,6 +28998,7 @@
                   "theora",
                   "vorbis",
                   "vpx",
+                  "vulkan",
                   "webp",
                   "xml2",
                   "zlib"
@@ -29618,6 +29617,12 @@
               "libvpx"
             ]
           },
+          "vulkan": {
+            "description": "H.264, HEVC and AV1 de/encoding via Vulkan",
+            "dependencies": [
+              "vulkan-headers"
+            ]
+          },
           "webp": {
             "description": "WebP encoding via libwebp",
             "dependencies": [
@@ -29679,6 +29684,7 @@
         "0041-add-const-for-opengl-definition.patch",
         "0042-fix-arm64-linux.patch",
         "0043-fix-miss-head.patch",
+        "0044-fix-vulkan-debug-callback-abi.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
@@ -32882,7 +32888,7 @@
             "host": true
           }
         ],
-        "version": "3.13.1"
+        "version": "3.14.0"
       },
       "files": [
         "fix-exported-config.patch",
@@ -52780,7 +52786,7 @@
             "host": true
           }
         ],
-        "version": "9.0.11"
+        "version": "9.0.13"
       },
       "files": [
         "disable-werror.patch",
@@ -56961,6 +56967,7 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
+        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -56979,10 +56986,6 @@
           "zlib"
         ],
         "features": {
-          "ftp": {
-            "description": "Add the FTP support",
-            "supports": "!uwp"
-          },
           "http": {
             "description": "Add the HTTP support",
             "supports": "!uwp"
@@ -57032,6 +57035,7 @@
       "files": [
         "cxx-for-icu.diff",
         "disable-docs.patch",
+        "disable-xml2-config.diff",
         "fix_cmakelist.patch",
         "fix_ios_compilation.patch",
         "portfile.cmake",
@@ -59999,10 +60003,9 @@
       "name": "magma",
       "manifest": {
         "name": "magma",
-        "port-version": 2,
         "description": "Matrix Algebra on GPU and Multi-core Architectures (MAGMA) is a collection of next-generation linear algebra libraries for heterogeneous computing",
         "homepage": "https://icl.utk.edu/magma/",
-        "license": null,
+        "license": "BSD-3-Clause",
         "dependencies": [
           "blas",
           "cuda",
@@ -60012,12 +60015,12 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.9.0"
       },
       "files": [
         "clang-cuda.patch",
         "disable-openmp-msvc.patch",
-        "fix-min-max.patch",
+        "fix-cmake4.patch",
         "no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -63828,7 +63831,6 @@
       "name": "mongoose",
       "manifest": {
         "name": "mongoose",
-        "port-version": 1,
         "description": "Embedded web server / embedded networking library",
         "homepage": "https://cesanta.com/",
         "license": null,
@@ -63854,7 +63856,7 @@
             ]
           }
         },
-        "version": "7.18"
+        "version": "7.19"
       },
       "files": [
         "CMakeLists.txt",
@@ -69176,7 +69178,7 @@
       "name": "openctm",
       "manifest": {
         "name": "openctm",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenCTM — the Open Compressed Triangle Mesh file format — is a file format, a software library and a tool set for compression of 3D triangle meshes.",
         "homepage": "https://openctm.sourceforge.net/",
         "license": "Zlib",
@@ -73033,6 +73035,7 @@
       "name": "outcome",
       "manifest": {
         "name": "outcome",
+        "port-version": 1,
         "maintainers": [
           "Niall Douglas <s_github@nedprod.com>",
           "Henrik Gaßmann <henrik@gassmann.onl>"
@@ -74159,7 +74162,7 @@
             ]
           }
         },
-        "version": "10.45"
+        "version": "10.46"
       },
       "files": [
         "fix-cmake.patch",
@@ -74804,6 +74807,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
+        "port-version": 1,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -75678,7 +75682,7 @@
             ]
           }
         },
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "dependencies.diff",
@@ -85932,7 +85936,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.5.21"
+        "version": "1.5.25"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -86169,7 +86173,7 @@
             "description": "Enable XBM codec"
           }
         },
-        "version-semver": "0.9.8"
+        "version-semver": "0.9.9"
       },
       "files": [
         "fix-include-directory.patch",
@@ -97169,7 +97173,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-07-09"
+        "version-date": "2025-08-21"
       },
       "files": [
         "portfile.cmake",
@@ -97356,17 +97360,17 @@
         "dependencies": [
           "vcpkg-cmake-get-vars"
         ],
-        "version": "1.8.2"
+        "version": "1.9.0"
       },
       "files": [
         "adjust-args.patch",
         "adjust-python-dep.patch",
-        "fix-libcpp-enable-assertions.patch",
         "install.cmake",
+        "meson-56879d5.diff",
         "meson-intl.patch",
         "meson.template.in",
         "portfile.cmake",
-        "remove-freebsd-pcfile-specialization.patch",
+        "remove-pkgconfig-specialization.patch",
         "vcpkg-port-config.cmake",
         "vcpkg.json",
         "vcpkg_configure_meson.cmake",
