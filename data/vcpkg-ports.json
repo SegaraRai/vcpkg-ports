@@ -1,5 +1,5 @@
 {
-  "version": "b1b19307e2d2ec1eefbdb7ea069de7d4bcd31f01",
+  "version": "ca519a073d26c1d3919ef1e7ba1bc9ca438c8eff",
   "ports": [
     {
       "name": "3fd",
@@ -370,7 +370,15 @@
             "host": true
           }
         ],
-        "version": "0.3.3"
+        "features": {
+          "simdutf": {
+            "description": "Whether to use SIMDUTF for unicode transcoding",
+            "dependencies": [
+              "simdutf"
+            ]
+          }
+        },
+        "version": "0.3.4"
       },
       "files": [
         "install.patch",
@@ -1705,11 +1713,10 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
-        "sparrow-e317ef5-Fix clang android 18 compilation.patch",
         "vcpkg.json"
       ]
     },
@@ -2832,7 +2839,7 @@
             ]
           }
         },
-        "version": "10.2.3"
+        "version": "10.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -7179,20 +7186,13 @@
       "name": "blas",
       "manifest": {
         "name": "blas",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Metapackage for packages which provide BLAS",
         "license": null,
         "dependencies": [
           {
-            "name": "lapack-reference",
-            "features": [
-              "cblas"
-            ],
-            "platform": "!osx & !ios & !uwp & !(windows & arm) & windows & static & !mingw"
-          },
-          {
             "name": "openblas",
-            "platform": "!osx & !ios & (uwp | (windows & arm) | !windows | !static | mingw)"
+            "platform": "!osx & !ios"
           },
           {
             "name": "vcpkg-cmake",
@@ -20020,7 +20020,7 @@
             "host": true
           }
         ],
-        "version": "3.5.5"
+        "version": "3.6.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -21939,7 +21939,7 @@
             ]
           }
         },
-        "version": "0.25.0"
+        "version": "0.26.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -21977,7 +21977,6 @@
       "name": "cpp-jwt",
       "manifest": {
         "name": "cpp-jwt",
-        "port-version": 1,
         "description": "JSON Web Token library for C++",
         "homepage": "https://github.com/arun11299/cpp-jwt",
         "license": "MIT",
@@ -21993,7 +21992,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-08-27"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -22409,7 +22408,7 @@
             "host": true
           }
         ],
-        "version": "2.2"
+        "version": "2.3"
       },
       "files": [
         "portfile.cmake",
@@ -22908,7 +22907,6 @@
       "name": "cpuid",
       "manifest": {
         "name": "cpuid",
-        "port-version": 1,
         "description": "Provides CPU identification for the x86 (and x86_64)",
         "homepage": "https://github.com/anrieff/libcpuid",
         "license": "MIT",
@@ -22923,11 +22921,10 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.8.1"
       },
       "files": [
         "fix-LNK2019.patch",
-        "fix-MSVC-warning.patch",
         "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -26357,7 +26354,7 @@
         "description": "Single-file audio decoding libraries for C/C++",
         "homepage": "https://github.com/mackron/dr_libs",
         "license": "Unlicense OR MIT-0",
-        "version-date": "2023-08-16"
+        "version-date": "2025-07-23"
       },
       "files": [
         "portfile.cmake",
@@ -28095,7 +28092,7 @@
             ]
           }
         },
-        "version": "0.28.5"
+        "version": "0.28.7"
       },
       "files": [
         "dependencies.diff",
@@ -37478,6 +37475,19 @@
               }
             ]
           },
+          "hls": {
+            "description": "Enable HTTP Live Streaming plugin",
+            "dependencies": [
+              {
+                "name": "gstreamer",
+                "default-features": false,
+                "features": [
+                  "plugins-bad"
+                ]
+              },
+              "openssl"
+            ]
+          },
           "jpeg": {
             "description": "Enable support for the JPEG file format",
             "dependencies": [
@@ -38023,7 +38033,7 @@
             ]
           }
         },
-        "version": "1.26.4"
+        "version": "1.26.5"
       },
       "files": [
         "duplicate-unused.diff",
@@ -43063,7 +43073,7 @@
       "name": "json11",
       "manifest": {
         "name": "json11",
-        "port-version": 6,
+        "port-version": 7,
         "description": "json11 is a tiny JSON library for C++11, providing JSON parsing and serialization.",
         "dependencies": [
           {
@@ -43075,6 +43085,7 @@
       },
       "files": [
         "destination.patch",
+        "fix-gcc15-build.patch",
         "json11-config.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -45751,7 +45762,6 @@
       "name": "krb5",
       "manifest": {
         "name": "krb5",
-        "port-version": 3,
         "description": [
           "Kerberos is a network authentication protocol.",
           "It is designed to provide strong authentication for client/server applications by using secret-key cryptography.",
@@ -45767,7 +45777,7 @@
             "host": true
           }
         ],
-        "version": "1.21.3"
+        "version": "1.22.1"
       },
       "files": [
         "define-des-zeroblock.diff",
@@ -45861,11 +45871,10 @@
       "name": "kubernetes",
       "manifest": {
         "name": "kubernetes",
-        "port-version": 1,
         "description": "Kubernetes C client",
         "homepage": "https://github.com/kubernetes-client/c/",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!windows | mingw",
         "dependencies": [
           "curl",
           "libwebsockets",
@@ -45880,10 +45889,11 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version": "0.13.0"
       },
       "files": [
         "001-fix-destination.patch",
+        "002-disable-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46000,18 +46010,18 @@
       "name": "lapack",
       "manifest": {
         "name": "lapack",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Metapackage for packages which provide LAPACK",
         "license": null,
         "supports": "!android",
         "dependencies": [
           {
             "name": "clapack",
-            "platform": "uwp | (arm & windows)"
+            "platform": "!osx & !ios & (uwp | (arm & windows) | (static & windows & !mingw))"
           },
           {
             "name": "lapack-reference",
-            "platform": "!osx & !ios & !uwp & !(arm & windows)"
+            "platform": "!osx & !ios & (!uwp & !(arm & windows) & !(static & windows & !mingw))"
           },
           {
             "name": "vcpkg-cmake",
@@ -47504,7 +47514,7 @@
             "host": true
           }
         ],
-        "version": "0.12.0"
+        "version": "0.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -52035,7 +52045,7 @@
             "host": true
           }
         ],
-        "version": "2025.8.0"
+        "version": "2025.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -56481,7 +56491,8 @@
       "manifest": {
         "name": "libwebsockets",
         "description": "Libwebsockets is a lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions as client or server.",
-        "homepage": "https://github.com/warmcat/libwebsockets",
+        "homepage": "https://libwebsockets.org/",
+        "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -56500,7 +56511,7 @@
           },
           "zlib"
         ],
-        "version-semver": "4.3.5"
+        "version-semver": "4.4.1"
       },
       "files": [
         "export-include-path.patch",
@@ -57059,7 +57070,7 @@
             "host": true
           }
         ],
-        "version": "0.3.22"
+        "version": "0.3.23"
       },
       "files": [
         "portfile.cmake",
@@ -57537,7 +57548,6 @@
       "name": "libyuv",
       "manifest": {
         "name": "libyuv",
-        "port-version": 1,
         "description": "libyuv is an open source project that includes YUV scaling and conversion functionality",
         "homepage": "https://chromium.googlesource.com/libyuv/libyuv",
         "license": null,
@@ -57562,7 +57572,7 @@
             "supports": "!android & !ios & !xbox & !wasm32"
           }
         },
-        "version": "1896"
+        "version": "1916"
       },
       "files": [
         "cmake.diff",
@@ -59600,7 +59610,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.688"
+        "version": "0.689"
       },
       "files": [
         "cmake-config-export.patch",
@@ -61298,7 +61308,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "fix-size_t.patch",
@@ -66400,7 +66410,7 @@
             "host": true
           }
         ],
-        "version": "1.66.0"
+        "version": "1.67.0"
       },
       "files": [
         "portfile.cmake",
@@ -66517,7 +66527,7 @@
             ]
           }
         },
-        "version": "1.15.0"
+        "version": "1.15.1"
       },
       "files": [
         "portfile.cmake",
@@ -69070,6 +69080,7 @@
       "name": "opencl",
       "manifest": {
         "name": "opencl",
+        "port-version": 1,
         "description": "OpenCL SDK",
         "homepage": "https://github.com/KhronosGroup/OpenCL-SDK",
         "license": "Apache-2.0 AND (MIT OR WTFPL)",
@@ -69088,6 +69099,7 @@
       },
       "files": [
         "001-remove-extra-install-rules.patch",
+        "icd-loader-pkgconfig.diff",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -73904,7 +73916,6 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
-        "port-version": 3,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -73929,6 +73940,7 @@
           "eigen3",
           "flann",
           "libpng",
+          "nanoflann",
           "qhull",
           {
             "name": "vcpkg-cmake",
@@ -74077,19 +74089,15 @@
             ]
           }
         },
-        "version": "1.15.0"
+        "version": "1.15.1"
       },
       "files": [
-        "add-cassert.patch",
-        "add-chrono-includes.patch",
-        "add-gcc-version-check.patch",
         "fix-check-sse.patch",
         "fix-clang-cl.patch",
         "fix-numeric-literals-flag.patch",
         "install-examples.patch",
         "install-layout.patch",
         "portfile.cmake",
-        "rollback-1092d70.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -74206,6 +74214,7 @@
             "name": "pdal-dimbuilder",
             "host": true
           },
+          "rapidxml",
           "utfcpp",
           {
             "name": "vcpkg-cmake",
@@ -74292,7 +74301,7 @@
             ]
           }
         },
-        "version": "2.9.1"
+        "version": "2.9.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -74303,6 +74312,7 @@
         "h3api.h",
         "no-rpath.patch",
         "portfile.cmake",
+        "rapidxml.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -74348,7 +74358,7 @@
             "host": true
           }
         ],
-        "version": "2.9.1"
+        "version": "2.9.2"
       },
       "files": [
         "namespace-nl.diff",
@@ -83332,13 +83342,14 @@
       "name": "rapidxml",
       "manifest": {
         "name": "rapidxml",
-        "port-version": 7,
+        "port-version": 8,
         "description": "RapidXml is an attempt to create the fastest XML parser possible, while retaining useability, portability and reasonable W3C compatibility.",
         "homepage": "https://sourceforge.net/projects/rapidxml",
         "version": "1.13"
       },
       "files": [
         "0001-fix-for-a-bug-in-gcc-that-won-t-let-rapidxml-compile.patch",
+        "msvc-alloc_func.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -85041,6 +85052,24 @@
         "0001-fix-dependencies.patch",
         "0002-fix-android.patch",
         "0003-include_cstdint.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rp-ntuples",
+      "manifest": {
+        "name": "rp-ntuples",
+        "description": "A C++ ntuple library for structured data storage and processing",
+        "homepage": "https://github.com/RPeschke/ntuples",
+        "license": "MIT",
+        "dependencies": [
+          "vcpkg-cmake",
+          "vcpkg-cmake-config"
+        ],
+        "version": "0.1.2"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -86904,7 +86933,7 @@
             "supports": "!windows"
           }
         },
-        "version": "2.32.8"
+        "version": "2.32.10"
       },
       "files": [
         "alsa-dep-fix.patch",
@@ -87401,7 +87430,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.20"
+        "version": "3.2.22"
       },
       "files": [
         "portfile.cmake",
@@ -88878,7 +88907,7 @@
             "host": true
           }
         ],
-        "version": "6.2.152"
+        "version": "6.2.153"
       },
       "files": [
         "SimdConfig.cmake",
@@ -91383,7 +91412,7 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -91834,7 +91863,7 @@
             "host": true
           }
         ],
-        "version": "3.8"
+        "version": "3.9"
       },
       "files": [
         "portfile.cmake",
@@ -94283,7 +94312,7 @@
             "host": true
           }
         ],
-        "version": "1.0.9"
+        "version": "1.0.12"
       },
       "files": [
         "fixtargets.patch",
@@ -94750,7 +94779,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -98219,7 +98248,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 10,
+        "port-version": 11,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -98237,6 +98266,7 @@
               "zlib"
             ]
           },
+          "gl2ps",
           "glew",
           {
             "name": "hdf5",
@@ -98274,6 +98304,11 @@
             "host": true
           },
           "verdict",
+          {
+            "name": "vtk-compile-tools",
+            "host": true,
+            "platform": "!native"
+          },
           "zlib"
         ],
         "default-features": [
@@ -98431,13 +98466,7 @@
             ]
           },
           "opengl": {
-            "description": "All opengl related modules",
-            "dependencies": [
-              {
-                "name": "vtk",
-                "default-features": false
-              }
-            ]
+            "description": "All opengl related modules"
           },
           "openmp": {
             "description": "Use openmp multithreading parallel implementation"
@@ -98479,13 +98508,6 @@
               {
                 "name": "proj",
                 "default-features": false
-              },
-              {
-                "name": "vtk",
-                "default-features": false,
-                "features": [
-                  "sql"
-                ]
               }
             ]
           },
@@ -98548,13 +98570,7 @@
             ]
           },
           "utf8": {
-            "description": "Enables vtk reader/writer with utf-8 path support",
-            "dependencies": [
-              {
-                "name": "vtk",
-                "default-features": false
-              }
-            ]
+            "description": "Enables vtk reader/writer with utf-8 path support"
           },
           "vtkm": {
             "description": "Build with vtk-m accelerator and module.",
@@ -98598,6 +98614,31 @@
         "vcpkg.json",
         "vtkioss.patch",
         "vtkm.patch"
+      ]
+    },
+    {
+      "name": "vtk-compile-tools",
+      "manifest": {
+        "name": "vtk-compile-tools",
+        "description": "Tools needed for crosscompiling VTK",
+        "homepage": "https://github.com/Kitware/VTK",
+        "license": null,
+        "supports": "native",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "9.3.0-pv5.12.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
