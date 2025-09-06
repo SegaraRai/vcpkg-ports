@@ -1,5 +1,5 @@
 {
-  "version": "a67ae9b9f7afc153767a5c33607266252ff9d088",
+  "version": "4acadb7d732e662bbf130c4849be6d3a0aa6f6b9",
   "ports": [
     {
       "name": "3fd",
@@ -19208,7 +19208,7 @@
             "host": true
           }
         ],
-        "version": "2.4"
+        "version": "2.5"
       },
       "files": [
         "portfile.cmake",
@@ -24265,7 +24265,7 @@
       "name": "cyrus-sasl",
       "manifest": {
         "name": "cyrus-sasl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.",
         "homepage": "https://github.com/cyrusimap/cyrus-sasl",
         "license": null,
@@ -24279,6 +24279,7 @@
       },
       "files": [
         "configure.diff",
+        "fix-gcc14-time-includes.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33844,7 +33845,7 @@
             ]
           }
         },
-        "version": "5.6.1"
+        "version": "5.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -49610,6 +49611,30 @@
       "files": [
         "Add-target-include-directory.patch",
         "cmake.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libgossip",
+      "manifest": {
+        "name": "libgossip",
+        "description": "A C++17 implementation of the Gossip protocol, designed for decentralized distributed systems.",
+        "homepage": "https://github.com/caomengxuan666/libgossip",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0.2"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72336,7 +72361,7 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2025.2.0"
+        "version": "2025.3.0"
       },
       "files": [
         "onednn_gpu_includes.patch",
