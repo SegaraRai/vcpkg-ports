@@ -1,5 +1,5 @@
 {
-  "version": "912567f6fdd1883e07b070dcc0aa67cec072042a",
+  "version": "7e19f3c64cb636ee21f41bfe8558a6dfaae6236f",
   "ports": [
     {
       "name": "3fd",
@@ -3721,7 +3721,7 @@
             "host": true
           }
         ],
-        "version": "0.21.4"
+        "version": "0.21.5"
       },
       "files": [
         "portfile.cmake",
@@ -18315,7 +18315,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "1.2.2"
+        "version": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -19556,16 +19556,13 @@
       "name": "cgicc",
       "manifest": {
         "name": "cgicc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GNU Cgicc is an ANSI C++ compliant class library that greatly simplifies the creation of CGI applications for the World Wide Web",
         "homepage": "https://www.gnu.org/software/cgicc/",
+        "license": "LGPL-2.1-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -20556,7 +20553,7 @@
       "name": "clockutils",
       "manifest": {
         "name": "clockutils",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A lightweight c++ library for commonly needed tasks. Optimized for simplicity and speed.",
         "homepage": "https://github.com/ClockworkOrigins/clockUtils",
         "license": "MIT",
@@ -20570,6 +20567,7 @@
       },
       "files": [
         "add-missing-thread-header.patch",
+        "cmake4.patch",
         "fix-warningC4643.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -23650,7 +23648,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -23908,7 +23905,7 @@
             ]
           }
         },
-        "version": "8.15.0"
+        "version": "8.16.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -27189,6 +27186,7 @@
       "name": "ecm",
       "manifest": {
         "name": "ecm",
+        "port-version": 1,
         "description": "Extra CMake Modules (ECM), extra modules and scripts for CMake",
         "homepage": "https://github.com/KDE/extra-cmake-modules",
         "dependencies": [
@@ -27204,6 +27202,7 @@
         "version": "6.7.0"
       },
       "files": [
+        "fix-wrong-version.patch",
         "fix_generateqmltypes.patch",
         "portfile.cmake",
         "usage",
@@ -32568,6 +32567,7 @@
       "name": "gdbm",
       "manifest": {
         "name": "gdbm",
+        "port-version": 1,
         "description": "GDBM is a library of database functions that use extensible hashing and works similar to the standard UNIX dbm.",
         "homepage": "https://www.gnu.org.ua/software/gdbm/gdbm.html",
         "license": "GPL-3.0-only",
@@ -37022,17 +37022,13 @@
       "name": "gsl",
       "manifest": {
         "name": "gsl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The GNU Scientific Library is a numerical library for C and C++ programmers",
         "homepage": "https://www.gnu.org/software/gsl/",
         "license": "GPL-3.0-or-later",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -38413,6 +38409,7 @@
       "name": "guile",
       "manifest": {
         "name": "guile",
+        "port-version": 1,
         "description": "GNU's programming and extension language",
         "homepage": "https://www.gnu.org/software/guile/",
         "documentation": "https://www.gnu.org/software/guile/manual/",
@@ -43175,6 +43172,7 @@
       "name": "jsonnet",
       "manifest": {
         "name": "jsonnet",
+        "port-version": 1,
         "description": "Jsonnet - The data templating language",
         "homepage": "https://github.com/google/jsonnet",
         "license": "Apache-2.0",
@@ -46318,6 +46316,7 @@
       "name": "lemon-parser-generator",
       "manifest": {
         "name": "lemon-parser-generator",
+        "port-version": 1,
         "description": "The Lemon program is an LALR(1) parser generator. It takes a context free grammar and converts it into a subroutine that will parse a file using that grammar.",
         "homepage": "https://www.hwaci.com/sw/lemon/index.html",
         "license": "blessing",
@@ -48692,7 +48691,7 @@
       "name": "libevhtp",
       "manifest": {
         "name": "libevhtp",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Libevhtp was created as a replacement API for Libevent's current HTTP API.",
         "homepage": "https://github.com/criticalstack/libevhtp",
         "supports": "!windows",
@@ -48733,6 +48732,7 @@
         "version": "1.2.18"
       },
       "files": [
+        "fix-cmake4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49453,6 +49453,7 @@
       "name": "libgme",
       "manifest": {
         "name": "libgme",
+        "port-version": 1,
         "description": "Video game music file emulation/playback library",
         "homepage": "https://bitbucket.org/mpyne/game-music-emu/wiki/Home",
         "license": "LGPL-2.1-or-later OR GPL-2.0-or-later",
@@ -49515,6 +49516,7 @@
         "version": "0.6.3"
       },
       "files": [
+        "cmake4.patch",
         "disable-player-and-demo.patch",
         "disable-static-zlib-hack.patch",
         "portfile.cmake",
@@ -50751,7 +50753,7 @@
       "name": "liblas",
       "manifest": {
         "name": "liblas",
-        "port-version": 15,
+        "port-version": 16,
         "description": "A C/C++ library for reading and writing the very common LAS LiDAR format.",
         "license": null,
         "supports": "!arm & !staticcrt",
@@ -50789,6 +50791,7 @@
       "files": [
         "fix-boost-headers.patch",
         "fix-cmake-config.patch",
+        "fix-cmake4.patch",
         "fix-crosscompiling.diff",
         "force-cpp11.patch",
         "misc-fixes.patch",
@@ -50853,7 +50856,7 @@
       "name": "liblemon",
       "manifest": {
         "name": "liblemon",
-        "port-version": 9,
+        "port-version": 10,
         "description": "Library for Efficient Modeling and Optimization in Networks",
         "homepage": "https://lemon.cs.elte.hu/trac/lemon",
         "supports": "!uwp",
@@ -50871,6 +50874,7 @@
       },
       "files": [
         "fix-cmake.patch",
+        "fix-cmake4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50879,7 +50883,6 @@
       "name": "liblinear",
       "manifest": {
         "name": "liblinear",
-        "port-version": 1,
         "description": "A Library for Large Linear Classification",
         "homepage": "https://github.com/cjlin1/liblinear",
         "supports": "!uwp",
@@ -50893,7 +50896,7 @@
             "host": true
           }
         ],
-        "version": "243"
+        "version": "249"
       },
       "files": [
         "CMakeLists.txt",
@@ -58423,7 +58426,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0 WITH LLVM-exception",
@@ -58904,6 +58907,7 @@
         "82407.patch",
         "add-include-chrono.patch",
         "clang_usage",
+        "cmake4.patch",
         "flang_usage",
         "lld_usage",
         "llvm_usage",
@@ -64261,9 +64265,10 @@
       "name": "mpc",
       "manifest": {
         "name": "mpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GNU MPC is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
         "homepage": "https://www.multiprecision.org/mpc/",
+        "license": "LGPL-3.0-or-later",
         "dependencies": [
           "gmp",
           "mpfr"
@@ -64847,6 +64852,7 @@
       "name": "msquic",
       "manifest": {
         "name": "msquic",
+        "port-version": 1,
         "description": "Cross-platform, C implementation of the IETF QUIC protocol",
         "homepage": "https://github.com/microsoft/msquic",
         "license": "MIT",
@@ -64881,6 +64887,7 @@
       },
       "files": [
         "avoid-w-invalid-unevaluated-string.patch",
+        "cmake4.patch",
         "exports-for-msh3.diff",
         "fix-comparing-system-processor-with-win32.patch",
         "fix-install.patch",
@@ -65577,7 +65584,7 @@
       "name": "nanogui",
       "manifest": {
         "name": "nanogui",
-        "port-version": 6,
+        "port-version": 7,
         "description": "NanoGUI is a minimalistic cross-platform widget library for OpenGL 3.x or higher.",
         "homepage": "https://github.com/wjakob/nanogui",
         "license": "BSD-3-Clause",
@@ -65600,6 +65607,7 @@
         "version-date": "2019-09-23"
       },
       "files": [
+        "cmake4.patch",
         "fix-cmakelists.patch",
         "fix-glad-dependence.patch",
         "fix-release-build.patch",
@@ -66656,7 +66664,6 @@
       "name": "nlohmann-fifo-map",
       "manifest": {
         "name": "nlohmann-fifo-map",
-        "port-version": 3,
         "description": "a FIFO-ordered associative container for C++",
         "homepage": "https://github.com/nlohmann/fifo_map",
         "dependencies": [
@@ -66669,7 +66676,7 @@
             "host": true
           }
         ],
-        "version-string": "2018.05.07"
+        "version": "1.0.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -68147,6 +68154,7 @@
       "name": "ogre",
       "manifest": {
         "name": "ogre",
+        "port-version": 1,
         "description": "3D Object-Oriented Graphics Rendering Engine",
         "homepage": "https://github.com/OGRECave/ogre",
         "license": "MIT",
@@ -68263,6 +68271,7 @@
       },
       "files": [
         "cfg-rel-paths.patch",
+        "cmake4.patch",
         "fix-dependencies.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -68356,7 +68365,7 @@
       "name": "ois",
       "manifest": {
         "name": "ois",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross Platform Object Oriented Input Lib System. Meant to be very robust and compatible with many systems and operating systems.",
         "homepage": "https://wgois.github.io/OIS/",
         "license": "Zlib",
@@ -68371,6 +68380,7 @@
       },
       "files": [
         "0001_install_pkgconfig_win32.patch",
+        "0002-fix-cmake4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -69847,7 +69857,7 @@
       "name": "opencv2",
       "manifest": {
         "name": "opencv2",
-        "port-version": 24,
+        "port-version": 25,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -69955,6 +69965,8 @@
         "0007-fix-openexr.patch",
         "0008-missing-include.patch",
         "0009-pkgconfig-suffix.patch",
+        "0010-fix-cmake4.patch",
+        "0011-msvc-compile-fix.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -71361,9 +71373,10 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
+        "port-version": 1,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
-        "supports": "!(windows | uwp)",
+        "supports": "!windows",
         "version": "4.1.7"
       },
       "files": [
@@ -73054,7 +73067,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.487"
+        "version": "4.0.490"
       },
       "files": [
         "portfile.cmake",
@@ -73065,7 +73078,7 @@
       "name": "outcome",
       "manifest": {
         "name": "outcome",
-        "port-version": 1,
+        "port-version": 2,
         "maintainers": [
           "Niall Douglas <s_github@nedprod.com>",
           "Henrik Gaßmann <henrik@gassmann.onl>"
@@ -73125,6 +73138,7 @@
         "version": "2.2.12"
       },
       "files": [
+        "files-do-not-exist.patch",
         "fix-status-code-path.patch",
         "portfile.cmake",
         "usage",
@@ -73408,7 +73422,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -73539,6 +73553,7 @@
         "version": "0.9.3"
       },
       "files": [
+        "avoid-vlas.diff",
         "devendor-palsigslot.patch",
         "portfile.cmake",
         "usage",
@@ -74652,6 +74667,7 @@
       "name": "physx",
       "manifest": {
         "name": "physx",
+        "port-version": 1,
         "description": "The NVIDIA PhysX SDK is a scalable multi-platform physics solution supporting a wide range of devices, from smartphones to high-end multicore CPUs and GPUs. This is the latest NVIDIA official version of the PhysX engine which also directly integrates into Omniverse. This port is NOT officially supported by NVIDIA.",
         "homepage": "https://github.com/NVIDIA-Omniverse/PhysX",
         "license": "BSD-3-Clause",
@@ -77510,7 +77526,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "dependencies": [
@@ -77554,6 +77570,7 @@
         "0001-fix-path-for-vcpkg.patch",
         "0002-fix-build-error.patch",
         "0003-Define-NOMINMAX-for-botan-plugin-with-MSVC.patch",
+        "0004-fix-cmake4.patch",
         "mk-ca-bundle.pl",
         "portfile.cmake",
         "vcpkg.json"
@@ -84832,7 +84849,7 @@
             "host": true
           }
         ],
-        "version": "4.3.10"
+        "version": "4.3.11"
       },
       "files": [
         "portfile.cmake",
@@ -86260,7 +86277,7 @@
       "name": "salome-configuration",
       "manifest": {
         "name": "salome-configuration",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Configuration files and other utilities for SALOME platform",
         "homepage": "https://www.salome-platform.org",
         "license": "LGPL-2.1-or-later",
@@ -86274,6 +86291,7 @@
         "version": "9.10.0"
       },
       "files": [
+        "cmake-4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -87343,7 +87361,7 @@
       "name": "sdl2pp",
       "manifest": {
         "name": "sdl2pp",
-        "port-version": 11,
+        "port-version": 12,
         "description": "C++11 bindings/wrapper for SDL2",
         "homepage": "https://sdl2pp.amdmi3.ru",
         "license": "Zlib",
@@ -87893,6 +87911,7 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -87983,6 +88002,7 @@
         "version": "0.10.0"
       },
       "files": [
+        "fix-cmake4.patch",
         "fix-crashpad-wer.patch",
         "fix-usage-runtime.patch",
         "portfile.cmake",
@@ -90201,6 +90221,35 @@
       ]
     },
     {
+      "name": "sourcemeta-blaze",
+      "manifest": {
+        "name": "sourcemeta-blaze",
+        "description": "The ultra high-performance C++ JSON Schema validator, providing validation in the nano-second range along with perfect compliance scores. Supports Draft 4, Draft 6, Draft 7, 2019-09 and 2020-12. For both servers and embedded devices",
+        "homepage": "https://blaze.sourcemeta.com",
+        "license": "BSD-3-Clause",
+        "supports": "!arm",
+        "dependencies": [
+          "boost-regex",
+          "libyaml",
+          "uriparser",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "use_vcpkg_libs.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "soxr",
       "manifest": {
         "name": "soxr",
@@ -90235,7 +90284,7 @@
       "name": "spaceland",
       "manifest": {
         "name": "spaceland",
-        "port-version": 10,
+        "port-version": 11,
         "description": "Spaceland Lib (sl) is a suite for geometric computation, specifically adapted to OpenGL.",
         "dependencies": [
           {
@@ -90247,6 +90296,7 @@
         "version": "7.8.2"
       },
       "files": [
+        "fix-cmake4.patch",
         "include_functional.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -95115,7 +95165,7 @@
       "name": "torch-th",
       "manifest": {
         "name": "torch-th",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Torch's TH library",
         "homepage": "https://github.com/torch/torch7",
         "license": "BSD-3-Clause",
@@ -95130,6 +95180,7 @@
       "files": [
         "debug.patch",
         "fix-arm64-osx-config.patch",
+        "fix-cmake4.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -98713,6 +98764,7 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
+        "port-version": 1,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
         "license": null,
@@ -98757,9 +98809,12 @@
       },
       "files": [
         "fix-build.patch",
+        "fix-macos-15-6.patch",
         "omp.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "vtkm-macos-fix-commit-48e385af319543800398656645327243a29babfb.patch",
+        "vtkm-macos-fix-pr-3272.patch"
       ]
     },
     {
@@ -100678,6 +100733,7 @@
       "name": "x265",
       "manifest": {
         "name": "x265",
+        "port-version": 1,
         "description": "x265 is a H.265 / HEVC video encoder application library, designed to encode video or images into an H.265 / HEVC encoded bitstream.",
         "homepage": "https://bitbucket.org/multicoreware/x265_git/",
         "license": "GPL-2.0-or-later",
@@ -100699,6 +100755,7 @@
       "files": [
         "compiler-target.diff",
         "disable-install-pdb.patch",
+        "fix-cmake-4.patch",
         "linkage.diff",
         "neon.diff",
         "pkgconfig.diff",
@@ -102391,7 +102448,7 @@
       "name": "zkpp",
       "manifest": {
         "name": "zkpp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A ZooKeeper client for C++.",
         "homepage": "https://github.com/tgockel/zookeeper-cpp",
         "supports": "!windows",
