@@ -1,5 +1,5 @@
 {
-  "version": "7e19f3c64cb636ee21f41bfe8558a6dfaae6236f",
+  "version": "7213cf8135c329c37c7e2778e40774489a0583a8",
   "ports": [
     {
       "name": "3fd",
@@ -6911,7 +6911,10 @@
         "license": "BSD-2-Clause AND CC0-1.0",
         "dependencies": [
           "libsquish",
+          "lodepng",
+          "mgnlibs",
           "miniz",
+          "stb",
           "tinyexr",
           {
             "name": "vcpkg-cmake",
@@ -6935,12 +6938,24 @@
           },
           "tools": {
             "description": "Shader, Texture and Geometry compilers for bgfx.",
-            "supports": "native"
+            "dependencies": [
+              "cgltf",
+              {
+                "name": "glslang",
+                "features": [
+                  "opt"
+                ]
+              },
+              "meshoptimizer",
+              "spirv-cross",
+              "spirv-tools"
+            ]
           }
         },
-        "version": "1.129.8866-491"
+        "version": "1.129.8930-495"
       },
       "files": [
+        "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg-inject-packages.cmake",
         "vcpkg.json"
