@@ -1,5 +1,5 @@
 {
-  "version": "6f24dbf7cfbde18ad6ff8bef054fbf0d3d7efef0",
+  "version": "cb1fb4d21dcb517ceaaee6f4b1f4733dfbd72119",
   "ports": [
     {
       "name": "3fd",
@@ -3663,7 +3663,7 @@
             "host": true
           }
         ],
-        "version": "0.5.6"
+        "version": "0.5.7"
       },
       "files": [
         "portfile.cmake",
@@ -7471,7 +7471,7 @@
             ]
           }
         },
-        "version": "2.21.1"
+        "version": "2.21.2"
       },
       "files": [
         "portfile.cmake",
@@ -7513,6 +7513,7 @@
       "name": "boinc",
       "manifest": {
         "name": "boinc",
+        "port-version": 1,
         "description": "Open-source software for volunteer computing and grid computing.",
         "homepage": "https://boinc.berkeley.edu/",
         "license": "LGPL-3.0-or-later",
@@ -7533,6 +7534,7 @@
       "files": [
         "CMakeLists.txt",
         "fix-android-build.patch",
+        "fix-mingw-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -18590,6 +18592,37 @@
       ]
     },
     {
+      "name": "cadons-ctus",
+      "manifest": {
+        "name": "cadons-ctus",
+        "description": "Library implementing the tus protocol for resumable uploads",
+        "homepage": "https://github.com/Cadons/ctus",
+        "license": "MIT",
+        "dependencies": [
+          "boost-lexical-cast",
+          "boost-uuid",
+          "curl",
+          "fmt",
+          "glog",
+          "libzippp",
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "caf",
       "manifest": {
         "name": "caf",
@@ -27949,7 +27982,7 @@
             "host": true
           }
         ],
-        "version": "20.43.1"
+        "version": "20.43.4"
       },
       "files": [
         "portfile.cmake",
@@ -33841,7 +33874,7 @@
             ]
           }
         },
-        "version": "5.7.0"
+        "version": "5.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -41864,7 +41897,7 @@
             "description": "Build the C++ library"
           }
         },
-        "version": "61"
+        "version": "62"
       },
       "files": [
         "portfile.cmake",
@@ -47267,27 +47300,6 @@
       ]
     },
     {
-      "name": "libbf",
-      "manifest": {
-        "name": "libbf",
-        "port-version": 4,
-        "description": "Bloom filters for C++11.",
-        "license": "BSD-3-Clause",
-        "supports": "!windows",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "1.0.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "libbson",
       "manifest": {
         "name": "libbson",
@@ -50761,7 +50773,7 @@
       "name": "libkml",
       "manifest": {
         "name": "libkml",
-        "port-version": 13,
+        "port-version": 14,
         "description": "Reference implementation of OGC KML 2.2",
         "homepage": "https://github.com/libkml/libkml",
         "license": "BSD-3-Clause",
@@ -50784,6 +50796,7 @@
       },
       "files": [
         "add-target-include-directories.patch",
+        "fix-cmake-min-version.patch",
         "fix-mingw.patch",
         "fix-minizip.patch",
         "patch_empty_literal_on_vc.patch",
@@ -55115,7 +55128,7 @@
             ]
           }
         },
-        "version-semver": "2.1.1"
+        "version-semver": "2.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -57032,7 +57045,6 @@
       "name": "libxml2",
       "manifest": {
         "name": "libxml2",
-        "port-version": 1,
         "description": "Libxml2 is the XML C parser and toolkit developed for the Gnome project (but usable outside of the Gnome platform).",
         "homepage": "https://gitlab.gnome.org/GNOME/libxml2/-/wikis/home",
         "license": "MIT",
@@ -57095,7 +57107,7 @@
             ]
           }
         },
-        "version": "2.14.5"
+        "version": "2.14.6"
       },
       "files": [
         "cxx-for-icu.diff",
@@ -57869,12 +57881,9 @@
         "default-features": [
           "art",
           "dex",
-          "elf",
           "enable-json",
           "logging",
-          "macho",
           "oat",
-          "pe",
           "vdex"
         ],
         "features": {
@@ -57886,9 +57895,6 @@
           },
           "dex": {
             "description": "Build LIEF with DEX module"
-          },
-          "elf": {
-            "description": "Build LIEF with ELF module"
           },
           "enable-json": {
             "description": "Enable JSON-related APIs",
@@ -57905,14 +57911,8 @@
           "logging-debug": {
             "description": "Enable debug logging"
           },
-          "macho": {
-            "description": "Build LIEF with MachO module"
-          },
           "oat": {
             "description": "Build LIEF with OAT module"
-          },
-          "pe": {
-            "description": "Build LIEF with PE module"
           },
           "use-ccache": {
             "description": "Use ccache to speed up compilation"
@@ -57921,7 +57921,7 @@
             "description": "Build LIEF with VDEX module"
           }
         },
-        "version-semver": "0.16.1"
+        "version-semver": "0.17.0"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -63231,7 +63231,7 @@
         "description": "Audio playback and capture library written in C, in a single source file",
         "homepage": "https://github.com/mackron/miniaudio",
         "license": "Unlicense OR MIT-0",
-        "version": "0.11.22"
+        "version": "0.11.23"
       },
       "files": [
         "portfile.cmake",
@@ -64504,7 +64504,6 @@
       "name": "ms-gdk",
       "manifest": {
         "name": "ms-gdk",
-        "port-version": 1,
         "description": "Microsoft Game Development Kit (GDK)",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
@@ -64529,7 +64528,7 @@
             "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2504.2.4061"
+        "version": "2504.3.4084"
       },
       "files": [
         "pfusage",
@@ -72680,7 +72679,7 @@
             ]
           }
         },
-        "version": "3.5.1"
+        "version": "3.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -76601,7 +76600,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.6.2"
+        "version": "9.7.0"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -77442,7 +77441,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -77807,7 +77806,7 @@
       "name": "qhull",
       "manifest": {
         "name": "qhull",
-        "port-version": 5,
+        "port-version": 6,
         "description": "computes the convex hull, Delaunay triangulation, Voronoi diagram",
         "homepage": "https://github.com/qhull/qhull",
         "license": null,
@@ -84068,13 +84067,13 @@
       "name": "reflectcpp",
       "manifest": {
         "name": "reflectcpp",
-        "description": "A C++ library for serialization and deserialization using reflection. Supports JSON, Avro, BSON, Cap'n Proto, CBOR, flexbuffers, msgpack, TOML, UBJSON, XML, YAML.",
+        "description": "A C++ library for serialization and deserialization using reflection. Supports JSON, Avro, BSON, Cap'n Proto, CBOR, CSV, flexbuffers, msgpack, parquet, TOML, UBJSON, XML, YAML.",
         "homepage": "https://github.com/getml/reflect-cpp/",
         "license": "MIT",
         "dependencies": [
           {
             "name": "ctre",
-            "version>=": "3.9.0"
+            "version>=": "3.10.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -84113,7 +84112,19 @@
             "dependencies": [
               {
                 "name": "jsoncons",
-                "version>=": "0.176.0"
+                "version>=": "1.4.0"
+              }
+            ]
+          },
+          "csv": {
+            "description": "Enable CSV support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "features": [
+                  "csv"
+                ],
+                "version>=": "21.0.0"
               }
             ]
           },
@@ -84135,6 +84146,18 @@
               }
             ]
           },
+          "parquet": {
+            "description": "Enable parquet support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "features": [
+                  "parquet"
+                ],
+                "version>=": "21.0.0"
+              }
+            ]
+          },
           "toml": {
             "description": "Support for the TOML format",
             "dependencies": [
@@ -84149,7 +84172,7 @@
             "dependencies": [
               {
                 "name": "jsoncons",
-                "version>=": "0.176.0"
+                "version>=": "1.4.0"
               }
             ]
           },
@@ -84172,7 +84195,7 @@
             ]
           }
         },
-        "version": "0.20.0"
+        "version": "0.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -89086,7 +89109,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "3.13.0"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -97363,7 +97386,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-08-21"
+        "version-date": "2025-09-14"
       },
       "files": [
         "portfile.cmake",
@@ -97790,7 +97813,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.4.2"
       },
       "files": [
         "fix_osx.patch",
@@ -101353,7 +101376,7 @@
             "host": true
           }
         ],
-        "version": "0.2.35"
+        "version": "0.2.36"
       },
       "files": [
         "fix-dependencies.patch",
