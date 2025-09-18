@@ -1,5 +1,5 @@
 {
-  "version": "cb1fb4d21dcb517ceaaee6f4b1f4733dfbd72119",
+  "version": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
   "ports": [
     {
       "name": "3fd",
@@ -34527,7 +34527,6 @@
       "name": "gmsh",
       "manifest": {
         "name": "gmsh",
-        "port-version": 1,
         "description": "Gmsh is an open source 3D finite element mesh generator with a built-in CAD engine and post-processor.",
         "homepage": "https://gmsh.info",
         "license": "LGPL-2.0-or-later",
@@ -34575,12 +34574,13 @@
             ]
           }
         },
-        "version": "4.13.1"
+        "version": "4.14.0"
       },
       "files": [
-        "fix-install.patch",
+        "installdirs.diff",
         "linking-and-naming.diff",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -56239,6 +56239,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
+        "port-version": 1,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -62862,10 +62863,9 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.24"
+        "version": "0.25"
       },
       "files": [
-        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66505,7 +66505,7 @@
             "host": true
           }
         ],
-        "version": "1.67.0"
+        "version": "1.67.1"
       },
       "files": [
         "portfile.cmake",
