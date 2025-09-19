@@ -1,5 +1,5 @@
 {
-  "version": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
+  "version": "9824d05f8d9548720ba3331f4baba3e2d6c1693b",
   "ports": [
     {
       "name": "3fd",
@@ -1713,7 +1713,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -43189,7 +43189,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -45591,7 +45591,7 @@
             "description": "Enable DFT and related algorithms."
           }
         },
-        "version-semver": "6.3.0"
+        "version-semver": "6.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -59668,7 +59668,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.690"
+        "version": "0.691"
       },
       "files": [
         "cmake-config-export.patch",
@@ -71803,7 +71803,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.5.2"
+        "version": "3.5.3"
       },
       "files": [
         "cmake-config.patch",
@@ -92060,7 +92060,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.0.7"
+        "version": "4.0.11"
       },
       "files": [
         "portfile.cmake",
@@ -99873,7 +99873,7 @@
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Port of OpenAI's Whisper model in C/C++",
         "homepage": "https://github.com/ggml-org/whisper.cpp",
         "license": "MIT",
@@ -99888,6 +99888,45 @@
             "host": true
           }
         ],
+        "features": {
+          "cuda": {
+            "description": "Enable CUDA support for GPU acceleration",
+            "dependencies": [
+              "cuda",
+              {
+                "name": "ggml",
+                "features": [
+                  "cuda"
+                ]
+              }
+            ]
+          },
+          "metal": {
+            "description": "Enable Metal support for GPU acceleration on macOS",
+            "dependencies": [
+              {
+                "name": "ggml",
+                "features": [
+                  "metal"
+                ]
+              }
+            ],
+            "supports": "osx"
+          },
+          "vulkan": {
+            "description": "Enable Vulkan support for GPU acceleration",
+            "dependencies": [
+              {
+                "name": "ggml",
+                "features": [
+                  "vulkan"
+                ]
+              },
+              "vulkan",
+              "vulkan-headers"
+            ]
+          }
+        },
         "version": "1.7.6"
       },
       "files": [
