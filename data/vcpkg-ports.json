@@ -1,5 +1,5 @@
 {
-  "version": "9824d05f8d9548720ba3331f4baba3e2d6c1693b",
+  "version": "29ff5b8131d0c6c8fcb8fbaef35992f0d507cd7c",
   "ports": [
     {
       "name": "3fd",
@@ -3871,7 +3871,7 @@
             "host": true
           }
         ],
-        "version": "0.34.1"
+        "version": "0.34.4"
       },
       "files": [
         "no-werror.patch",
@@ -22978,7 +22978,6 @@
       "name": "cpuinfo",
       "manifest": {
         "name": "cpuinfo",
-        "port-version": 3,
         "description": "CPU INFOrmation library (x86/x86-64/ARM/ARM64, Linux/Windows/Android/macOS/iOS)",
         "homepage": "https://github.com/pytorch/cpuinfo",
         "license": "BSD-2-Clause",
@@ -22994,14 +22993,19 @@
           }
         ],
         "features": {
+          "clog": {
+            "description": "Build clog support",
+            "supports": "!uwp"
+          },
           "tools": {
             "description": "Build cpuinfo command-line tools",
             "supports": "!uwp"
           }
         },
-        "version-date": "2022-07-19"
+        "version-date": "2025-07-25"
       },
       "files": [
+        "add-clog-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28172,7 +28176,7 @@
             "host": true
           }
         ],
-        "version": "2.7.1"
+        "version": "2.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -28821,6 +28825,7 @@
       "name": "fbgemm",
       "manifest": {
         "name": "fbgemm",
+        "port-version": 1,
         "description": "FB (Facebook) + GEMM (General Matrix-Matrix Multiplication)",
         "homepage": "https://code.fb.com/ml-applications/fbgemm/",
         "license": "BSD-3-Clause",
@@ -55269,16 +55274,19 @@
       "name": "libtorch",
       "manifest": {
         "name": "libtorch",
-        "port-version": 12,
         "description": "Tensors and Dynamic neural networks in Python with strong GPU acceleration",
         "homepage": "https://pytorch.org/",
         "license": null,
         "supports": "(windows & !static) | osx | linux",
         "dependencies": [
           "blas",
+          "cpp-httplib",
           "cpuinfo",
           "eigen3",
-          "fftw3",
+          {
+            "name": "fbgemm",
+            "platform": "x64"
+          },
           "flatbuffers",
           {
             "name": "flatbuffers",
@@ -55286,14 +55294,12 @@
           },
           "fmt",
           "foxi",
-          "foxi",
           "fp16",
           "gemmlowp",
-          "gflags",
-          "glog",
           "lapack",
           "lmdb",
           "mimalloc",
+          "nlohmann-json",
           "onnx",
           "onnx-optimizer",
           "opencl",
@@ -55304,6 +55310,7 @@
             "host": true
           },
           "pthreadpool",
+          "pybind11",
           "sleef",
           {
             "name": "vcpkg-cmake",
@@ -55320,6 +55327,8 @@
           "xnnpack"
         ],
         "default-features": [
+          "gflags",
+          "glog",
           "opencv",
           "zstd"
         ],
@@ -55329,9 +55338,28 @@
             "dependencies": [
               "cuda",
               "cudnn",
+              {
+                "name": "gloo",
+                "features": [
+                  "cuda"
+                ],
+                "platform": "linux"
+              },
               "magma",
-              "nvidia-cutlass"
-            ]
+              {
+                "name": "nccl",
+                "platform": "linux"
+              },
+              "nvidia-cutlass",
+              {
+                "name": "tensorpipe",
+                "features": [
+                  "cuda"
+                ],
+                "platform": "linux"
+              }
+            ],
+            "supports": "(windows & x64 & !staticcrt) | (linux & x64)"
           },
           "dist": {
             "description": "Use distributed with MPI, Gloo, libuv, TensorPipe",
@@ -55354,15 +55382,21 @@
               },
               {
                 "name": "tensorpipe",
-                "platform": "linux | osx"
+                "platform": "linux"
               }
+            ],
+            "supports": "linux | windows"
+          },
+          "gflags": {
+            "description": "Build with gflags",
+            "dependencies": [
+              "gflags"
             ]
           },
-          "leveldb": {
-            "description": "Build with LevelDB",
+          "glog": {
+            "description": "Build with glog",
             "dependencies": [
-              "leveldb",
-              "snappy"
+              "glog"
             ]
           },
           "llvm": {
@@ -55393,6 +55427,10 @@
           "vulkan": {
             "description": "Build with Vulkan GPU backend",
             "dependencies": [
+              {
+                "name": "shaderc",
+                "host": true
+              },
               "vulkan",
               "vulkan-loader",
               "vulkan-memory-allocator"
@@ -55405,28 +55443,17 @@
             ]
           }
         },
-        "version": "2.1.2"
+        "version": "2.7.1"
       },
       "files": [
-        "add-include-chrono.patch",
-        "clang-cl.patch",
-        "cmake-fixes.patch",
-        "cuda-adjustments.patch",
-        "fix-api-export.patch",
-        "fix-aten-cutlass.patch",
-        "fix-build-error-with-fmt11.patch",
-        "fix-build.patch",
-        "fix-calculate-minloglevel.patch",
+        "fix-cmake.patch",
+        "fix-dist-cuda.patch",
         "fix-glog.patch",
-        "fix-msvc-ICE.patch",
-        "fix-sleef.patch",
-        "force-cuda-include.patch",
-        "fxdiv.patch",
+        "fix-osx.patch",
+        "fix-pytorch-pr-156630.patch",
+        "fix-vulkan.patch",
         "kineto.patch",
-        "more-fixes.patch",
-        "no-abs-path.patch",
         "portfile.cmake",
-        "protoc.patch",
         "vcpkg.json"
       ]
     },
@@ -56086,7 +56113,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.22.0"
+        "version": "2.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -56239,7 +56266,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -56267,6 +56294,7 @@
       "files": [
         "0003-add-uwp-v142-and-v143-support.patch",
         "0004-remove-library-suffixes.patch",
+        "0005-dont-expect-gnu-diff.patch",
         "portfile.cmake",
         "unofficial-libvpx-config.cmake.in",
         "vcpkg.json",
@@ -63063,6 +63091,38 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "microsoft-windows-devices-midi2",
+      "manifest": {
+        "name": "microsoft-windows-devices-midi2",
+        "maintainers": "Pete Brown pmbrown@microsoft.com",
+        "description": "Application SDK for using Windows MIDI Services (MIDI 1.0 and MIDI 2.0) from C++ apps. Microsoft.Windows.Devices.Midi2",
+        "homepage": "https://aka.ms/midi",
+        "license": "MIT",
+        "supports": "windows & (arm64 | arm64ec | x64)",
+        "dependencies": [
+          {
+            "name": "cppwinrt",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.13-preview.13.192"
+      },
+      "files": [
+        "microsoft-windows-devices-midi2-config.cmake",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -77939,13 +77999,18 @@
       "name": "qnnpack",
       "manifest": {
         "name": "qnnpack",
-        "port-version": 3,
+        "port-version": 5,
         "description": "Quantized Neural Network PACKage - mobile-optimized implementation of quantized neural network operators",
         "homepage": "https://github.com/pytorch/QNNPACK",
         "license": "BSD-3-Clause",
         "supports": "!windows",
         "dependencies": [
-          "cpuinfo",
+          {
+            "name": "cpuinfo",
+            "features": [
+              "clog"
+            ]
+          },
           "fp16",
           "fxdiv",
           "psimd",
@@ -84312,7 +84377,7 @@
             "host": true
           }
         ],
-        "version": "0.24.1"
+        "version": "0.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -88012,7 +88077,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -88100,7 +88164,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.10.0"
+        "version": "0.11.0"
       },
       "files": [
         "fix-cmake4.patch",
@@ -101468,19 +101532,32 @@
         "license": "BSD-3-Clause",
         "supports": "!(arm & windows) & !uwp & !arm32",
         "dependencies": [
-          "cpuinfo",
+          {
+            "name": "cpuinfo",
+            "features": [
+              "clog"
+            ]
+          },
           "fp16",
           "fxdiv",
+          {
+            "name": "kleidiai",
+            "platform": "arm64"
+          },
           "pthreadpool",
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-date": "2022-12-22"
+        "version-date": "2024-08-20"
       },
       "files": [
-        "fix-build.patch",
+        "fix-cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
