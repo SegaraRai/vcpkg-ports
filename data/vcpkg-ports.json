@@ -1,5 +1,5 @@
 {
-  "version": "29ff5b8131d0c6c8fcb8fbaef35992f0d507cd7c",
+  "version": "378d71bd945df7be820759d0fea48c97c459e116",
   "ports": [
     {
       "name": "3fd",
@@ -3610,7 +3610,7 @@
             "host": true
           }
         ],
-        "version": "0.12.4"
+        "version": "0.12.5"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -6905,6 +6905,7 @@
       "name": "bgfx",
       "manifest": {
         "name": "bgfx",
+        "port-version": 1,
         "maintainers": "Sandy Carter <bwrsandman@users.noreply.github.com>",
         "description": "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library.",
         "homepage": "https://bkaradzic.github.io/bgfx/overview.html",
@@ -6958,7 +6959,6 @@
       "files": [
         "fix-dependencies.patch",
         "portfile.cmake",
-        "vcpkg-inject-packages.cmake",
         "vcpkg.json"
       ]
     },
@@ -24464,7 +24464,7 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.11"
       },
       "files": [
         "fix-install-header-and-force-static-compilation.patch",
@@ -26601,7 +26601,14 @@
           "httpfs": {
             "description": "Statically link the httpfs extension into DuckDB",
             "dependencies": [
+              "curl",
               "openssl"
+            ]
+          },
+          "iceberg": {
+            "description": "Statically link the iceberg extension into DuckDB",
+            "dependencies": [
+              "roaring"
             ]
           },
           "icu": {
@@ -26623,7 +26630,7 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.3.2"
+        "version": "1.4.0"
       },
       "files": [
         "extensions.patch",
@@ -28573,7 +28580,7 @@
             "host": true
           }
         ],
-        "version": "8.0.2"
+        "version": "8.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -30829,7 +30836,7 @@
             "host": true
           }
         ],
-        "version": "11.2.0"
+        "version": "12.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -41221,7 +41228,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.16"
+        "version": "0.10.17"
       },
       "files": [
         "arith_osx.h",
@@ -42454,7 +42461,7 @@
         "description": "A collection of std-like single-header C++ libraries.",
         "homepage": "https://github.com/iboB/itlib",
         "license": "MIT",
-        "version": "1.11.7"
+        "version": "1.11.8"
       },
       "files": [
         "portfile.cmake",
@@ -52116,7 +52123,7 @@
             "host": true
           }
         ],
-        "version": "2025.9.2"
+        "version": "2025.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -59696,7 +59703,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.691"
+        "version": "0.692"
       },
       "files": [
         "cmake-config-export.patch",
@@ -74615,7 +74622,7 @@
         "description": "System profiling, app tracing and trace analysis",
         "homepage": "https://perfetto.dev",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !x86",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -74626,7 +74633,7 @@
             "host": true
           }
         ],
-        "version": "51.2"
+        "version": "52.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -75772,6 +75779,7 @@
       "name": "podofo",
       "manifest": {
         "name": "podofo",
+        "port-version": 1,
         "description": "PoDoFo is a library to work with the PDF file format",
         "homepage": "https://github.com/podofo/podofo",
         "license": "LGPL-2.0-or-later",
@@ -87757,7 +87765,7 @@
       "name": "seacas",
       "manifest": {
         "name": "seacas",
-        "port-version": 9,
+        "port-version": 10,
         "description": "The Sandia Engineering Analysis Code Access System (SEACAS) is a suite of preprocessing, postprocessing, translation, and utility applications supporting finite element analysis software using the Exodus database file format.",
         "homepage": "https://github.com/sandialabs/seacas",
         "license": null,
@@ -87840,6 +87848,7 @@
         "fix_tpl_libs.patch",
         "netcdf-c.diff",
         "portfile.cmake",
+        "use-std-localtime.patch",
         "vcpkg.json"
       ]
     },
@@ -89173,7 +89182,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.0.1"
+        "version": "4.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -89254,7 +89263,7 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
         "license": "MIT",
@@ -89278,6 +89287,7 @@
       },
       "files": [
         "portfile.cmake",
+        "use-std-localtime.patch",
         "vcpkg.json"
       ]
     },
@@ -96423,7 +96433,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -96803,11 +96813,11 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.11.0"
       },
       "files": [
-        "export-cmake-targets.patch",
         "portfile.cmake",
+        "unofficial-utf8proc-config.cmake",
         "vcpkg.json"
       ]
     },
