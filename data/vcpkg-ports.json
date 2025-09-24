@@ -1,5 +1,5 @@
 {
-  "version": "378d71bd945df7be820759d0fea48c97c459e116",
+  "version": "9c5c2a0ab75aff5bcd08142525f6ff7f6f7ddeee",
   "ports": [
     {
       "name": "3fd",
@@ -154,7 +154,6 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 4,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -173,18 +172,10 @@
           }
         ],
         "features": {
-          "cxx17": {
-            "description": "Enable compiler C++17."
-          },
           "test-helpers": {
             "description": "Build Abseil's test helpers",
             "dependencies": [
-              {
-                "name": "abseil",
-                "features": [
-                  "cxx17"
-                ]
-              },
+              "abseil",
               {
                 "name": "gtest",
                 "features": [
@@ -194,11 +185,12 @@
             ]
           }
         },
-        "version": "20250127.1"
+        "version": "20250512.1"
       },
       "files": [
         "001-mingw-dll.patch",
         "portfile.cmake",
+        "string-view.patch",
         "vcpkg.json"
       ]
     },
@@ -3783,7 +3775,7 @@
             "host": true
           }
         ],
-        "version": "0.8.7"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -20507,7 +20499,8 @@
           {
             "name": "vcpkg-cmake",
             "host": true
-          }
+          },
+          "zstd"
         ],
         "features": {
           "openssl": {
@@ -20517,11 +20510,10 @@
             ]
           }
         },
-        "version": "2.5.1"
+        "version": "2.6.0"
       },
       "files": [
         "fix-deps-and-build-type.patch",
-        "fix-timeval.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22178,7 +22170,7 @@
             "host": true
           }
         ],
-        "version": "1.17.0"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -33219,7 +33211,6 @@
       "name": "ggml",
       "manifest": {
         "name": "ggml",
-        "port-version": 1,
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
@@ -33283,10 +33274,9 @@
             ]
           }
         },
-        "version-date": "2025-08-18"
+        "version": "0.9.1"
       },
       "files": [
-        "android-vulkan.diff",
         "cmake-config.diff",
         "pkgconfig.diff",
         "portfile.cmake",
@@ -36974,17 +36964,12 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
-        "port-version": 2,
+        "port-version": 3,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
         "dependencies": [
-          {
-            "name": "abseil",
-            "features": [
-              "cxx17"
-            ]
-          },
+          "abseil",
           {
             "name": "c-ares",
             "platform": "!uwp"
@@ -41228,7 +41213,7 @@
             "description": "Use OpenMP parallelization in some functions"
           }
         },
-        "version": "0.10.17"
+        "version": "1.0.0"
       },
       "files": [
         "arith_osx.h",
@@ -43974,7 +43959,7 @@
             "description": "Pretty printer support for kerbal"
           }
         },
-        "version": "2025.5.1"
+        "version": "2025.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -47312,6 +47297,35 @@
       ]
     },
     {
+      "name": "libbluray",
+      "manifest": {
+        "name": "libbluray",
+        "description": "Library to access Blu-Ray disks",
+        "homepage": "https://www.videolan.org/developers/libbluray.html",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!uwp & !xbox",
+        "dependencies": [
+          {
+            "name": "fontconfig",
+            "platform": "!uwp & !windows"
+          },
+          "freetype",
+          "libudfread",
+          "libxml2",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version-semver": "1.4.0"
+      },
+      "files": [
+        "msvc.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libbson",
       "manifest": {
         "name": "libbson",
@@ -47946,7 +47960,6 @@
       "name": "libczi",
       "manifest": {
         "name": "libczi",
-        "port-version": 1,
         "description": "library to read and write CZI files.",
         "homepage": "https://github.com/ZEISS/libczi",
         "license": null,
@@ -47983,7 +47996,7 @@
             ]
           }
         },
-        "version": "0.66.6"
+        "version": "0.67.0"
       },
       "files": [
         "portfile.cmake",
@@ -50673,10 +50686,10 @@
             "description": "Build executables"
           }
         },
-        "version": "3.1.1"
+        "version": "3.1.2"
       },
       "files": [
-        "add-options-for-exes-docs-headers.patch",
+        "add-options-for-docs-headers.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -50901,7 +50914,7 @@
         "dependencies": [
           {
             "name": "igraph",
-            "version>=": "0.10.1"
+            "version>=": "1.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -50912,7 +50925,7 @@
             "host": true
           }
         ],
-        "version": "0.11.1"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -54614,19 +54627,17 @@
       "name": "libspatialite",
       "manifest": {
         "name": "libspatialite",
-        "port-version": 4,
+        "port-version": 5,
         "description": "SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.",
         "homepage": "https://www.gaia-gis.it/fossil/libspatialite/index",
         "license": null,
+        "supports": "!uwp",
         "dependencies": [
           "geos",
           "libiconv",
           {
             "name": "libxml2",
-            "default-features": false,
-            "features": [
-              "http"
-            ]
+            "default-features": false
           },
           "proj",
           {
@@ -54635,6 +54646,11 @@
             "features": [
               "rtree"
             ]
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
           },
           {
             "name": "vcpkg-pkgconfig-get-modules",
@@ -54671,6 +54687,7 @@
         "fix-mingw.patch",
         "fix-utf8-source.patch",
         "gaiaconfig-msvc.patch",
+        "libxml2-no-http.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55651,6 +55668,27 @@
         "u2f-server-version.h",
         "vcpkg.json",
         "windows.patch"
+      ]
+    },
+    {
+      "name": "libudfread",
+      "manifest": {
+        "name": "libudfread",
+        "description": "UDF filesystem access library",
+        "homepage": "https://code.videolan.org/videolan/libudfread",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version-semver": "1.2.0"
+      },
+      "files": [
+        "msvc.diff",
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -57099,10 +57137,6 @@
           "zlib"
         ],
         "features": {
-          "http": {
-            "description": "Add the HTTP support",
-            "supports": "!uwp"
-          },
           "iconv": {
             "description": "Add ICONV support",
             "dependencies": [
@@ -57127,12 +57161,6 @@
               }
             ]
           },
-          "lzma": {
-            "description": "Use LZMA",
-            "dependencies": [
-              "liblzma"
-            ]
-          },
           "tools": {
             "description": "Build tools"
           },
@@ -57143,11 +57171,10 @@
             ]
           }
         },
-        "version": "2.14.6"
+        "version": "2.15.0"
       },
       "files": [
         "cxx-for-icu.diff",
-        "disable-docs.patch",
         "disable-xml2-config.diff",
         "fix_cmakelist.patch",
         "fix_ios_compilation.patch",
@@ -58211,7 +58238,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.9.3"
+        "version-semver": "2.10.0"
       },
       "files": [
         "global_preferences.json",
@@ -58225,7 +58252,6 @@
       "name": "llama-cpp",
       "manifest": {
         "name": "llama-cpp",
-        "port-version": 1,
         "description": "LLM inference in C/C++",
         "homepage": "https://github.com/ggml-org/llama.cpp",
         "license": "MIT",
@@ -58254,7 +58280,7 @@
             "description": "Build tools"
           }
         },
-        "version": "6301"
+        "version": "6550"
       },
       "files": [
         "cmake-config.diff",
@@ -73176,7 +73202,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.490"
+        "version": "4.0.491"
       },
       "files": [
         "portfile.cmake",
@@ -74327,6 +74353,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
+        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.io/",
         "license": null,
@@ -74346,9 +74373,7 @@
           "libgeotiff",
           {
             "name": "libxml2",
-            "features": [
-              "http"
-            ]
+            "default-features": false
           },
           "nanoflann",
           "nlohmann-json",
@@ -76822,7 +76847,7 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -76853,6 +76878,7 @@
         "version": "5.29.5"
       },
       "files": [
+        "fix-abseil.patch",
         "fix-default-proto-file-path.patch",
         "fix-install-dirs.patch",
         "fix-mingw-tail-call.patch",
@@ -88173,7 +88199,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.11.0"
+        "version": "0.11.1"
       },
       "files": [
         "fix-cmake4.patch",
@@ -90538,10 +90564,11 @@
       "name": "spatialite-tools",
       "manifest": {
         "name": "spatialite-tools",
+        "port-version": 1,
         "description": "Contains spatialite.exe and other command line tools to work with SpatiaLite databases (import, export, SQL queries)",
         "homepage": "https://www.gaia-gis.it/fossil/spatialite-tools/index",
         "license": "GPL-3.0-or-later",
-        "supports": "!xbox",
+        "supports": "!uwp & !xbox",
         "dependencies": [
           "expat",
           "libiconv",
@@ -90554,20 +90581,29 @@
           },
           {
             "name": "libxml2",
-            "features": [
-              "http"
-            ]
+            "default-features": false
           },
           "readosm",
-          "sqlite3",
+          {
+            "name": "sqlite3",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          },
           {
             "name": "vcpkg-pkgconfig-get-modules",
-            "host": true
+            "host": true,
+            "platform": "windows & !mingw"
           }
         ],
         "version": "5.1.0-a"
       },
       "files": [
+        "android-builtin-iconv.diff",
+        "configure.diff",
         "fix-makefiles.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -101028,10 +101064,10 @@
       "name": "x86-simd-sort",
       "manifest": {
         "name": "x86-simd-sort",
-        "description": "C++ header file library for high-performance SIMD-based sorting algorithms for primitive datatypes",
-        "homepage": "https://github.com/intel/x86-simd-sort",
+        "description": "C++ template library for high performance SIMD based sorting algorithms",
+        "homepage": "https://github.com/numpy/x86-simd-sort",
         "license": "BSD-3-Clause",
-        "version": "5.0"
+        "version": "7.0"
       },
       "files": [
         "portfile.cmake",
