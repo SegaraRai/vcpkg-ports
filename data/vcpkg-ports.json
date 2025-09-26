@@ -1,5 +1,5 @@
 {
-  "version": "9a98f93671f984351377044210854900bfd73171",
+  "version": "e6e4bc74aaf5c63dfc358810594f662f7e9bc4d4",
   "ports": [
     {
       "name": "3fd",
@@ -19167,6 +19167,20 @@
       ]
     },
     {
+      "name": "cconfig",
+      "manifest": {
+        "name": "cconfig",
+        "description": "Header-only config parsing library",
+        "homepage": "https://github.com/Nouridin/cconfig",
+        "license": "MIT",
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cctag",
       "manifest": {
         "name": "cctag",
@@ -23343,9 +23357,9 @@
       "name": "cserialport",
       "manifest": {
         "name": "cserialport",
-        "description": "C++ lightweight cross-platform serial port library, also support C, C#, Java, Python, Node.js, Electron etc.",
+        "description": "C++ lightweight cross-platform serial port library and protocol parsing, also support C, C#, Java, Python, Node.js, Electron, Rust etc.",
         "homepage": "https://github.com/itas109/CSerialPort",
-        "license": "LGPL-3.0-only",
+        "license": "LGPL-3.0-only WITH LGPL-3.0-linking-exception",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -23357,7 +23371,7 @@
             "host": true
           }
         ],
-        "version": "4.3.1"
+        "version": "4.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -33920,7 +33934,7 @@
             ]
           }
         },
-        "version": "5.7.1"
+        "version": "5.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -52986,7 +53000,7 @@
             "host": true
           }
         ],
-        "version": "9.0.13"
+        "version": "9.0.14"
       },
       "files": [
         "disable-werror.patch",
@@ -66722,7 +66736,6 @@
       "name": "nghttp3",
       "manifest": {
         "name": "nghttp3",
-        "port-version": 1,
         "description": "Implementation of RFC 9114 HTTP/3 mapping over QUIC and RFC 9204 QPACK in C",
         "homepage": "https://github.com/ngtcp2/nghttp3",
         "license": "MIT",
@@ -66736,7 +66749,7 @@
             "host": true
           }
         ],
-        "version": "1.11.0"
+        "version": "1.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -72255,7 +72268,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-06-11"
+        "version-date": "2025-09-25"
       },
       "files": [
         "portfile.cmake",
@@ -101820,9 +101833,9 @@
       "name": "xproperty",
       "manifest": {
         "name": "xproperty",
-        "port-version": 3,
         "description": "Traitlets-like C++ properties and implementation of the observer pattern",
         "dependencies": [
+          "nlohmann-json",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -101830,10 +101843,9 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "xtl"
+          }
         ],
-        "version": "0.8.1"
+        "version": "0.12.1"
       },
       "files": [
         "fix-target.patch",
