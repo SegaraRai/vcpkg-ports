@@ -1,5 +1,5 @@
 {
-  "version": "e6e4bc74aaf5c63dfc358810594f662f7e9bc4d4",
+  "version": "2e6fcc44573d091af0321f99c89b212997a76f1f",
   "ports": [
     {
       "name": "3fd",
@@ -4031,6 +4031,9 @@
           "apptest": {
             "description": "C++ SDK for the AWS apptest service"
           },
+          "arc-region-switch": {
+            "description": "C++ SDK for the AWS arc-region-switch service"
+          },
           "arc-zonal-shift": {
             "description": "C++ SDK for the AWS arc-zonal-shift service"
           },
@@ -4070,11 +4073,17 @@
           "batch": {
             "description": "C++ SDK for the AWS batch service"
           },
+          "bcm-dashboards": {
+            "description": "C++ SDK for the AWS bcm-dashboards service"
+          },
           "bcm-data-exports": {
             "description": "C++ SDK for the AWS bcm-data-exports service"
           },
           "bcm-pricing-calculator": {
             "description": "C++ SDK for the AWS bcm-pricing-calculator service"
+          },
+          "bcm-recommended-actions": {
+            "description": "C++ SDK for the AWS bcm-recommended-actions service"
           },
           "bedrock": {
             "description": "C++ SDK for the AWS bedrock service"
@@ -4084,6 +4093,12 @@
           },
           "bedrock-agent-runtime": {
             "description": "C++ SDK for the AWS bedrock-agent-runtime service"
+          },
+          "bedrock-agentcore": {
+            "description": "C++ SDK for the AWS bedrock-agentcore service"
+          },
+          "bedrock-agentcore-control": {
+            "description": "C++ SDK for the AWS bedrock-agentcore-control service"
           },
           "bedrock-data-automation": {
             "description": "C++ SDK for the AWS bedrock-data-automation service"
@@ -4527,12 +4542,6 @@
           "iot-managed-integrations": {
             "description": "C++ SDK for the AWS iot-managed-integrations service"
           },
-          "iot1click-devices": {
-            "description": "C++ SDK for the AWS iot1click-devices service"
-          },
-          "iot1click-projects": {
-            "description": "C++ SDK for the AWS iot1click-projects service"
-          },
           "iotanalytics": {
             "description": "C++ SDK for the AWS iotanalytics service"
           },
@@ -4589,6 +4598,9 @@
           },
           "keyspaces": {
             "description": "C++ SDK for the AWS keyspaces service"
+          },
+          "keyspacesstreams": {
+            "description": "C++ SDK for the AWS keyspacesstreams service"
           },
           "kinesis": {
             "description": "C++ SDK for the AWS kinesis service"
@@ -4800,6 +4812,9 @@
           "observabilityadmin": {
             "description": "C++ SDK for the AWS observabilityadmin service"
           },
+          "odb": {
+            "description": "C++ SDK for the AWS odb service"
+          },
           "omics": {
             "description": "C++ SDK for the AWS omics service"
           },
@@ -4808,12 +4823,6 @@
           },
           "opensearchserverless": {
             "description": "C++ SDK for the AWS opensearchserverless service"
-          },
-          "opsworks": {
-            "description": "C++ SDK for the AWS opsworks service"
-          },
-          "opsworkscm": {
-            "description": "C++ SDK for the AWS opsworkscm service"
           },
           "organizations": {
             "description": "C++ SDK for the AWS organizations service"
@@ -5005,6 +5014,9 @@
           "s3tables": {
             "description": "C++ SDK for the AWS s3tables service"
           },
+          "s3vectors": {
+            "description": "C++ SDK for the AWS s3vectors service"
+          },
           "sagemaker": {
             "description": "C++ SDK for the AWS sagemaker service"
           },
@@ -5076,9 +5088,6 @@
           },
           "simspaceweaver": {
             "description": "C++ SDK for the AWS simspaceweaver service"
-          },
-          "sms": {
-            "description": "C++ SDK for the AWS sms service"
           },
           "sms-voice": {
             "description": "C++ SDK for the AWS sms-voice service"
@@ -5230,9 +5239,6 @@
           "workdocs": {
             "description": "C++ SDK for the AWS workdocs service"
           },
-          "worklink": {
-            "description": "C++ SDK for the AWS worklink service"
-          },
           "workmail": {
             "description": "C++ SDK for the AWS workmail service"
           },
@@ -5241,6 +5247,9 @@
           },
           "workspaces": {
             "description": "C++ SDK for the AWS workspaces service"
+          },
+          "workspaces-instances": {
+            "description": "C++ SDK for the AWS workspaces-instances service"
           },
           "workspaces-thin-client": {
             "description": "C++ SDK for the AWS workspaces-thin-client service"
@@ -5252,7 +5261,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.591"
+        "version": "1.11.646"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -7470,7 +7479,7 @@
             ]
           }
         },
-        "version": "2.21.2"
+        "version": "2.21.3"
       },
       "files": [
         "portfile.cmake",
@@ -7534,35 +7543,6 @@
         "CMakeLists.txt",
         "fix-android-build.patch",
         "fix-mingw-build.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "bond",
-      "manifest": {
-        "name": "bond",
-        "description": "Bond is a cross-platform framework for working with schematized data. It supports cross-language de/serialization and powerful generic mechanisms for efficiently manipulating data. Bond is broadly used at Microsoft in high scale services.",
-        "homepage": "https://github.com/Microsoft/bond",
-        "dependencies": [
-          "boost-assign",
-          "boost-config",
-          "boost-locale",
-          "boost-utility",
-          "rapidjson",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "13.0.1"
-      },
-      "files": [
-        "fix-install-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24924,6 +24904,122 @@
       ]
     },
     {
+      "name": "dawn",
+      "manifest": {
+        "name": "dawn",
+        "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
+        "homepage": "https://dawn.googlesource.com/dawn",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "abseil",
+            "platform": "!emscripten"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "d3d11",
+            "platform": "windows"
+          },
+          {
+            "name": "d3d12",
+            "platform": "windows"
+          },
+          {
+            "name": "gl",
+            "platform": "linux | freebsd | openbsd"
+          },
+          {
+            "name": "gles",
+            "platform": "android | linux | freebsd | openbsd"
+          },
+          {
+            "name": "metal",
+            "platform": "osx | ios"
+          },
+          {
+            "name": "vulkan",
+            "platform": "(windows & !uwp) | android | linux | freebsd | openbsd"
+          },
+          {
+            "name": "x11",
+            "platform": "linux | freebsd | openbsd"
+          }
+        ],
+        "features": {
+          "d3d11": {
+            "description": "Direct3D 11 backend support",
+            "supports": "windows"
+          },
+          "d3d12": {
+            "description": "Direct3D 12 backend support",
+            "supports": "windows"
+          },
+          "gl": {
+            "description": "Desktop OpenGL backend support",
+            "dependencies": [
+              "egl-registry",
+              "opengl-registry"
+            ],
+            "supports": "linux | freebsd | openbsd"
+          },
+          "gles": {
+            "description": "OpenGL ES backend support",
+            "dependencies": [
+              "egl-registry",
+              "opengl-registry"
+            ],
+            "supports": "android | linux | freebsd | openbsd"
+          },
+          "metal": {
+            "description": "Metal backend support",
+            "supports": "osx | ios"
+          },
+          "vulkan": {
+            "description": "Vulkan backend support",
+            "dependencies": [
+              "vulkan-headers",
+              "vulkan-utility-libraries"
+            ],
+            "supports": "(windows & !uwp) | android | linux | freebsd | openbsd"
+          },
+          "wayland": {
+            "description": "Wayland support",
+            "supports": "linux | freebsd | openbsd"
+          },
+          "x11": {
+            "description": "X11 support",
+            "supports": "linux | freebsd | openbsd"
+          }
+        },
+        "version": "20250922.223923"
+      },
+      "files": [
+        "000-fix-emdawnwebgpu.patch",
+        "001-fix-windows-build.patch",
+        "002-fix-uwp.patch",
+        "003-fix-d3d11.patch",
+        "004-deps.patch",
+        "DawnConfig.cmake",
+        "portfile.cmake",
+        "unofficial_webgpu_dawn.pc.in",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "daxa",
       "manifest": {
         "name": "daxa",
@@ -25521,7 +25617,7 @@
             "host": true
           }
         ],
-        "version": "1.616.0"
+        "version": "1.618.1"
       },
       "files": [
         "portfile.cmake",
@@ -25549,7 +25645,7 @@
             "host": true
           }
         ],
-        "version": "1.616.1"
+        "version": "1.618.1"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -27546,7 +27642,6 @@
       "name": "eigen3",
       "manifest": {
         "name": "eigen3",
-        "port-version": 1,
         "description": "C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
         "homepage": "http://eigen.tuxfamily.org",
         "license": "MPL-2.0",
@@ -27560,7 +27655,7 @@
             "host": true
           }
         ],
-        "version": "3.4.1-250818"
+        "version": "3.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -28234,7 +28329,7 @@
             "host": true
           }
         ],
-        "version": "2.7.2"
+        "version": "2.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -30493,7 +30588,7 @@
             "host": true
           }
         ],
-        "version": "25.2.10"
+        "version": "25.9.23"
       },
       "files": [
         "fix-uwp-build.patch",
@@ -33106,7 +33201,7 @@
       "name": "gettext",
       "manifest": {
         "name": "gettext",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A GNU framework to help produce multi-lingual messages.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "GPL-3.0-only",
@@ -33155,7 +33250,7 @@
       "name": "gettext-libintl",
       "manifest": {
         "name": "gettext-libintl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The libintl C library from GNU gettext-runtime.",
         "homepage": "https://www.gnu.org/software/gettext/",
         "license": "LGPL-2.1-or-later",
@@ -50282,7 +50377,7 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "iconv() text conversion.",
           "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
@@ -53000,7 +53095,7 @@
             "host": true
           }
         ],
-        "version": "9.0.14"
+        "version": "9.0.15"
       },
       "files": [
         "disable-werror.patch",
@@ -53812,9 +53907,10 @@
             ]
           }
         },
-        "version": "2.10.1"
+        "version": "2.11.1"
       },
       "files": [
+        "fix_oauthbearer_check.patch",
         "lz4.patch",
         "portfile.cmake",
         "usage",
@@ -65619,7 +65715,7 @@
             "host": true
           }
         ],
-        "version": "0.0.5"
+        "version": "0.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -66841,7 +66937,7 @@
             ]
           }
         },
-        "version": "1.15.1"
+        "version": "1.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -71518,9 +71614,10 @@
             ]
           }
         },
-        "version": "2.5.3"
+        "version": "2.5.4"
       },
       "files": [
+        "pkgconfig.diff",
         "portfile.cmake",
         "third-party.diff",
         "usage",
@@ -77663,7 +77760,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -77736,6 +77833,10 @@
                 "default-features": false
               },
               {
+                "name": "ncurses",
+                "platform": "!windows | mingw"
+              },
+              {
                 "name": "openssl",
                 "default-features": false
               },
@@ -77752,7 +77853,10 @@
             "supports": "!(staticcrt & windows)"
           },
           "readline": {
-            "description": "Build with readline. Requires system readline to be installed",
+            "description": "Build with readline.",
+            "dependencies": [
+              "readline"
+            ],
             "supports": "!windows"
           }
         },
@@ -82693,6 +82797,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt WebEngine provides functionality for rendering regions of dynamic web content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86339,7 +86444,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.5.25"
+        "version": "1.5.27"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -89536,7 +89641,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -89607,18 +89711,27 @@
           "dawn": {
             "description": "dawn support for skia",
             "dependencies": [
-              "egl-registry",
-              "opengl-registry",
+              {
+                "name": "dawn",
+                "default-features": false,
+                "features": [
+                  "x11"
+                ],
+                "platform": "linux"
+              },
+              {
+                "name": "dawn",
+                "platform": "osx | windows"
+              },
               {
                 "name": "skia",
                 "default-features": false,
                 "features": [
-                  "graphite",
-                  "vulkan"
+                  "graphite"
                 ]
-              },
-              "vulkan-utility-libraries"
-            ]
+              }
+            ],
+            "supports": "!android & !uwp"
           },
           "direct3d": {
             "description": "Direct3D support for skia",
@@ -89703,10 +89816,11 @@
             ]
           }
         },
-        "version": "134"
+        "version": "140"
       },
       "files": [
         "bentleyottmann-build.patch",
+        "dawn.patch",
         "disable-msvc-env-setup.patch",
         "example/CMakeLists.txt",
         "graphite.patch",
@@ -94280,6 +94394,30 @@
       ]
     },
     {
+      "name": "thermadiag-seq",
+      "manifest": {
+        "name": "thermadiag-seq",
+        "description": "a collection of original C++17 STL-like containers and related tools",
+        "homepage": "https://github.com/Thermadiag/seq",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "think-cell-range",
       "manifest": {
         "name": "think-cell-range",
@@ -94518,7 +94656,7 @@
             ]
           }
         },
-        "version": "4.7.0"
+        "version": "4.7.1"
       },
       "files": [
         "FindCMath.patch",
@@ -96466,7 +96604,7 @@
             "host": true
           }
         ],
-        "version": "2.3.4"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -97671,7 +97809,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-09-14"
+        "version-date": "2025-09-19"
       },
       "files": [
         "portfile.cmake",
