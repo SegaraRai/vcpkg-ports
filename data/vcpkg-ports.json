@@ -1,5 +1,5 @@
 {
-  "version": "73af4de996897cb45dcf5034d16a551a3cf476f7",
+  "version": "50c0cb48a0cf2f6fc5c7b2c0d2bafbe26d0a7ca2",
   "ports": [
     {
       "name": "3fd",
@@ -1689,6 +1689,7 @@
       "name": "arcticdb-sparrow",
       "manifest": {
         "name": "arcticdb-sparrow",
+        "port-version": 1,
         "description": "C++20 idiomatic APIs for the Apache Arrow Columnar Format",
         "homepage": "https://github.com/man-group/sparrow",
         "license": "Apache-2.0",
@@ -1704,6 +1705,17 @@
             "host": true
           }
         ],
+        "features": {
+          "examples": {
+            "description": "Build examples"
+          },
+          "json-reader": {
+            "description": "Generate json_reader target",
+            "dependencies": [
+              "nlohmann-json"
+            ]
+          }
+        },
         "version": "1.2.0"
       },
       "files": [
@@ -3782,7 +3794,7 @@
             "host": true
           }
         ],
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -41682,7 +41694,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -42596,7 +42608,7 @@
             "host": true
           }
         ],
-        "version": "3.5.3"
+        "version": "3.5.4"
       },
       "files": [
         "Config.cmake.in",
@@ -54176,7 +54188,7 @@
             ]
           }
         },
-        "version": "2.11.1"
+        "version": "2.12.0"
       },
       "files": [
         "fix_oauthbearer_check.patch",
@@ -63605,6 +63617,38 @@
       ]
     },
     {
+      "name": "mgclient",
+      "manifest": {
+        "name": "mgclient",
+        "description": "C/C++ Memgraph Client ",
+        "homepage": "https://github.com/memgraph/mgclient",
+        "license": "Apache-2.0",
+        "supports": "!android",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "cpp": {
+            "description": "build header only cpp bindings"
+          }
+        },
+        "version": "1.4.5"
+      },
+      "files": [
+        "export-cmake.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "mgnlibs",
       "manifest": {
         "name": "mgnlibs",
@@ -67719,6 +67763,30 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "nonstd-bit-lite",
+      "manifest": {
+        "name": "nonstd-bit-lite",
+        "description": "C++20/C++23 bit operations for C++98 and later in a single-file header-only library",
+        "homepage": "https://github.com/nonstd-lite/bit-lite",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92948,7 +93016,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.1.0"
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -97160,7 +97228,6 @@
       "name": "unixodbc",
       "manifest": {
         "name": "unixodbc",
-        "port-version": 1,
         "description": "unixODBC is an Open Source ODBC sub-system and an ODBC SDK for Linux, Mac OSX, and UNIX",
         "homepage": "https://github.com/lurcher/unixODBC",
         "license": null,
@@ -97172,10 +97239,9 @@
             "host": true
           }
         ],
-        "version": "2.3.12"
+        "version": "2.3.14"
       },
       "files": [
-        "pkgconfig-libiconv.diff",
         "portfile.cmake",
         "subdirs.diff",
         "unixodbcConfig.cmake",
@@ -97228,7 +97294,7 @@
             "host": true
           }
         ],
-        "version": "4.5.0"
+        "version": "4.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -98512,7 +98578,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
