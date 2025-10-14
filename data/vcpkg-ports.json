@@ -1,5 +1,5 @@
 {
-  "version": "50c0cb48a0cf2f6fc5c7b2c0d2bafbe26d0a7ca2",
+  "version": "9cb1999e57a48059706f90a7d57ddb8a284daf91",
   "ports": [
     {
       "name": "3fd",
@@ -1072,7 +1072,6 @@
         "description": "The AngelCode Scripting Library, or AngelScript as it is also known, is an extremely flexible cross-platform scripting library designed to allow applications to extend their functionality through external scripts. It has been designed from the beginning to be an easy to use component, both for the application programmer and the script writer.",
         "homepage": "https://angelcode.com/angelscript",
         "license": "Zlib",
-        "supports": "!arm",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -1088,10 +1087,13 @@
             "description": "Installs all addons for use in compiling scripts addons"
           }
         },
-        "version": "2.37.0"
+        "version": "2.38.0"
       },
       "files": [
         "fix-dependency.patch",
+        "fix-ndk-arm.patch",
+        "fix-osx-x64.patch",
+        "fix-win-arm64.patch",
         "mark-threads-private.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -2190,10 +2192,11 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
-        "supports": "x64 | (arm64 & !windows)",
+        "supports": "x64 | arm64",
         "dependencies": [
           "boost-filesystem",
           "boost-multiprecision",
@@ -2342,6 +2345,7 @@
         "0003-android-musl.patch",
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
+        "0006-pcg-msvc-arm64.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -3595,7 +3599,7 @@
             "host": true
           }
         ],
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -7175,7 +7179,7 @@
             "host": true
           }
         ],
-        "version": "5.2.4"
+        "version": "5.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -18702,6 +18706,7 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
+        "port-version": 1,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -18759,7 +18764,10 @@
                 "features": [
                   "fontconfig"
                 ]
-              }
+              },
+              "libx11",
+              "libxext",
+              "libxrender"
             ],
             "supports": "!windows"
           }
@@ -20132,7 +20140,7 @@
             "host": true
           }
         ],
-        "version": "3.6.1"
+        "version": "3.6.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -24564,7 +24572,7 @@
             "host": true
           }
         ],
-        "version": "1.11"
+        "version": "1.12"
       },
       "files": [
         "fix-install-header-and-force-static-compilation.patch",
@@ -25711,7 +25719,7 @@
             "platform": "linux & !static"
           }
         ],
-        "version-date": "2025-07-15"
+        "version-date": "2025-10-10"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -26324,7 +26332,7 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -26373,6 +26381,7 @@
       "files": [
         "find_blas.patch",
         "fix-dependencies.patch",
+        "fix-lapack.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26899,7 +26908,7 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "extensions.patch",
@@ -27199,6 +27208,7 @@
         "description": "C++ cross-platform wrapper around dynamic loading of shared libraries",
         "homepage": "https://github.com/martin-olivier/dylib",
         "license": "MIT",
+        "supports": "!android & !uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -27209,7 +27219,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.2.1"
+        "version-semver": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -28398,12 +28408,19 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
+        "port-version": 1,
         "description": "Image metadata library and tools",
         "homepage": "https://exiv2.org",
         "license": "GPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "inih",
+          {
+            "name": "inih",
+            "default-features": false,
+            "features": [
+              "cpp"
+            ]
+          },
           {
             "name": "libiconv",
             "platform": "!windows"
@@ -28442,9 +28459,6 @@
             "dependencies": [
               "zlib"
             ]
-          },
-          "video": {
-            "description": "Deprecated. it will be removed in the future."
           },
           "xmp": {
             "description": "Build with XMP metadata support",
@@ -29296,7 +29310,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 6,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30027,7 +30040,7 @@
             ]
           }
         },
-        "version": "7.1.1"
+        "version": "7.1.2"
       },
       "files": [
         "0001-create-lib-libraries.patch",
@@ -34206,7 +34219,7 @@
             ]
           }
         },
-        "version": "5.7.2"
+        "version": "6.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -41100,6 +41113,7 @@
       "name": "hyperscan",
       "manifest": {
         "name": "hyperscan",
+        "port-version": 1,
         "description": "A regular expression library with O(length of input) match times that takes advantage of Intel hardware to provide blazing speed.",
         "homepage": "https://www.hyperscan.io",
         "license": "BSD-3-Clause",
@@ -42094,6 +42108,31 @@
       },
       "files": [
         "fix-install.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "inflatelib",
+      "manifest": {
+        "name": "inflatelib",
+        "description": "A Deflate and Deflate64 decompression library",
+        "homepage": "https://github.com/microsoft/inflatelib",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -43507,7 +43546,7 @@
             "host": true
           }
         ],
-        "version": "1.4.2"
+        "version": "1.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -46522,6 +46561,7 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
+        "port-version": 1,
         "description": "LAPACK - Linear Algebra PACKage",
         "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
@@ -46573,6 +46613,7 @@
         "FindLAPACK.cmake",
         "cmake-config.patch",
         "fix_prefix.patch",
+        "implicit-link.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -48428,7 +48469,7 @@
             ]
           }
         },
-        "version": "0.67.0"
+        "version": "0.67.2"
       },
       "files": [
         "portfile.cmake",
@@ -48853,14 +48894,13 @@
           "zlib",
           "zstd"
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "dependencies.diff",
         "dwarfdump-conf.diff",
         "include-dir.diff",
         "msvc-runtime.diff",
-        "off_t.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52398,21 +52438,27 @@
       "name": "libmupdf",
       "manifest": {
         "name": "libmupdf",
-        "description": "a lightweight PDF, XPS, and E-book library",
-        "homepage": "https://github.com/ArtifexSoftware/mupdf",
+        "description": "A lightweight PDF, XPS, and E-book library",
+        "homepage": "https://mupdf.com/core",
+        "documentation": "https://mupdf.readthedocs.io/",
         "license": "AGPL-3.0-only",
-        "supports": "!osx",
         "dependencies": [
-          "curl",
           "freetype",
-          "glfw3",
           "gumbo",
           "harfbuzz",
           "jbig2dec",
           "libjpeg-turbo",
+          {
+            "name": "libmupdf",
+            "host": true
+          },
           "openjpeg",
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           },
           "zlib"
@@ -52426,13 +52472,12 @@
             ]
           }
         },
-        "version": "1.25.4"
+        "version": "1.26.10"
       },
       "files": [
         "CMakeLists.txt",
-        "dont-generate-extract-3rd-party-things.patch",
-        "fix-NAN-on-Win11.patch",
         "portfile.cmake",
+        "unofficial-libmupdf-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -53376,7 +53421,7 @@
             "host": true
           }
         ],
-        "version": "9.0.15"
+        "version": "9.0.16"
       },
       "files": [
         "disable-werror.patch",
@@ -54077,7 +54122,7 @@
           "harfbuzz",
           "vcpkg-cmake"
         ],
-        "version": "0.10.2"
+        "version": "0.10.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -60249,7 +60294,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.694"
+        "version": "0.695"
       },
       "files": [
         "cmake-config-export.patch",
@@ -62064,12 +62109,26 @@
       "name": "mapbox-variant",
       "manifest": {
         "name": "mapbox-variant",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++11/C++14 Variant",
+        "homepage": "https://github.com/mapbox/variant",
+        "license": "BSD-3-Clause AND BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
         "version": "1.2.0"
       },
       "files": [
+        "CMakeLists.txt",
         "portfile.cmake",
+        "unofficial-mapbox-variant-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -65696,6 +65755,7 @@
       "manifest": {
         "name": "muda",
         "description": "μ-Cuda, COVER THE LAST MILE OF CUDA. With features: intellisense-friendly, structured launch, automatic cuda graph generation and updating.",
+        "license": "Apache-2.0",
         "supports": "(windows & x64 & !uwp & !xbox) | (linux & x64) | (linux & arm64)",
         "dependencies": [
           "cuda",
@@ -65713,7 +65773,7 @@
             "description": "Enable compute graph feature"
           }
         },
-        "version": "2025.10.3"
+        "version": "2025.10.9"
       },
       "files": [
         "portfile.cmake",
@@ -73500,9 +73560,10 @@
             ]
           }
         },
-        "version": "3.8.2"
+        "version": "3.9.0"
       },
       "files": [
+        "fix-fastcall.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -74285,7 +74346,6 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
-        "port-version": 3,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -74413,10 +74473,9 @@
             ]
           }
         },
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
-        "avoid-vlas.diff",
         "devendor-palsigslot.patch",
         "portfile.cmake",
         "usage",
@@ -77197,20 +77256,6 @@
       },
       "files": [
         "cmake_build.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ppmagic",
-      "manifest": {
-        "name": "ppmagic",
-        "port-version": 2,
-        "description": "C/C++ preprocessor macros that you can use to simplify your life.",
-        "homepage": "https://github.com/kobalicek/ppmagic",
-        "version-date": "2020-07-03"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -85212,7 +85257,7 @@
             "host": true
           }
         ],
-        "version": "0.25.0"
+        "version": "0.25.1"
       },
       "files": [
         "portfile.cmake",
@@ -89311,7 +89356,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -93057,7 +93102,7 @@
         "dependencies": [
           {
             "name": "boost-type-index",
-            "version>=": "1.78.0"
+            "version>=": "1.80.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -93068,27 +93113,7 @@
             "host": true
           }
         ],
-        "features": {
-          "abseil": {
-            "description": "Dependencies for abseil extension",
-            "dependencies": [
-              {
-                "name": "abseil",
-                "version>=": "20211102.1"
-              }
-            ]
-          },
-          "fmt": {
-            "description": "Dependencies for fmt extension",
-            "dependencies": [
-              {
-                "name": "fmt",
-                "version>=": "9.0.0"
-              }
-            ]
-          }
-        },
-        "version-semver": "0.3.1"
+        "version-semver": "0.13.3"
       },
       "files": [
         "portfile.cmake",
@@ -94736,6 +94761,7 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
+        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -97294,7 +97320,7 @@
             "host": true
           }
         ],
-        "version": "4.6.0"
+        "version": "4.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -97494,6 +97520,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
