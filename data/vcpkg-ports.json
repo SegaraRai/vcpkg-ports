@@ -1,5 +1,5 @@
 {
-  "version": "9cb1999e57a48059706f90a7d57ddb8a284daf91",
+  "version": "de4773aeb4cf9b5afe5e9f985ee34ceca7e003de",
   "ports": [
     {
       "name": "3fd",
@@ -31585,7 +31585,7 @@
       "name": "freeglut",
       "manifest": {
         "name": "freeglut",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library.",
         "homepage": "https://sourceforge.net/projects/freeglut/",
         "license": null,
@@ -38583,7 +38583,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -38629,6 +38629,8 @@
             "host": true
           },
           "libepoxy",
+          "libxi",
+          "libxrandr",
           "pango",
           {
             "name": "vcpkg-tool-meson",
@@ -52718,6 +52720,53 @@
       ]
     },
     {
+      "name": "libnotify",
+      "manifest": {
+        "name": "libnotify",
+        "description": "A library for sending desktop notifications",
+        "homepage": "https://gitlab.gnome.org/GNOME/libnotify",
+        "license": "LGPL-2.1-or-later",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "gdk-pixbuf",
+            "default-features": false
+          },
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "features": {
+          "introspection": {
+            "description": "Enable GObject introspection",
+            "dependencies": [
+              {
+                "name": "gdk-pixbuf",
+                "default-features": false,
+                "features": [
+                  "introspection"
+                ]
+              },
+              "gobject-introspection"
+            ],
+            "supports": "!static"
+          }
+        },
+        "version": "0.8.7"
+      },
+      "files": [
+        "0001-fix-parameter-name-omitted-error.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libobfuscate",
       "manifest": {
         "name": "libobfuscate",
@@ -57231,7 +57280,7 @@
       "name": "libx11",
       "manifest": {
         "name": "libx11",
-        "port-version": 2,
+        "port-version": 4,
         "description": "The X Window System is a network-transparent window system that was designed at MIT.",
         "homepage": "https://www.x.org/wiki/",
         "license": "MIT",
@@ -72617,6 +72666,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -72653,6 +72703,7 @@
         "version": "3.6.0"
       },
       "files": [
+        "aes_cfb128_vaes_encdec_wrapper.diff",
         "cmake-config.patch",
         "command-line-length.patch",
         "install-pc-files.cmake",
@@ -73560,10 +73611,9 @@
             ]
           }
         },
-        "version": "3.9.0"
+        "version": "3.9.3"
       },
       "files": [
-        "fix-fastcall.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83351,7 +83401,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -83743,7 +83793,7 @@
             "host": true
           }
         ],
-        "version": "1.39"
+        "version": "1.40"
       },
       "files": [
         "portfile.cmake",
@@ -93061,7 +93111,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.2.0"
+        "version": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -97520,7 +97570,6 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
@@ -97584,7 +97633,6 @@
                 ]
               },
               "shaderc",
-              "spirv-reflect",
               "vulkan",
               "vulkan-memory-allocator",
               "vulkan-utility-libraries"
@@ -97592,7 +97640,7 @@
             "supports": "!ios"
           }
         },
-        "version": "25.5.1"
+        "version": "25.8"
       },
       "files": [
         "003-fix-dep.patch",
