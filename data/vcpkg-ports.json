@@ -1,5 +1,5 @@
 {
-  "version": "de4773aeb4cf9b5afe5e9f985ee34ceca7e003de",
+  "version": "67556daaf645f5e8b3c61fd39f2e207eace216b7",
   "ports": [
     {
       "name": "3fd",
@@ -2950,7 +2950,7 @@
       "name": "at-spi2-core",
       "manifest": {
         "name": "at-spi2-core",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -2965,6 +2965,9 @@
             "name": "glib",
             "host": true
           },
+          "libx11",
+          "libxi",
+          "libxtst",
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -3736,7 +3739,7 @@
             "host": true
           }
         ],
-        "version": "0.22.1"
+        "version": "0.23.1"
       },
       "files": [
         "portfile.cmake",
@@ -5277,7 +5280,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.646"
+        "version": "1.11.665"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -18515,19 +18518,6 @@
       ]
     },
     {
-      "name": "c-dbg-macro",
-      "manifest": {
-        "name": "c-dbg-macro",
-        "description": "A dbg(...) macro for C",
-        "homepage": "https://github.com/eerimoq/dbg-macro",
-        "version-date": "2020-02-29"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "c4core",
       "manifest": {
         "name": "c4core",
@@ -19065,24 +19055,6 @@
           "catch2"
         ],
         "version-string": "alias"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "catch-classic",
-      "manifest": {
-        "name": "catch-classic",
-        "port-version": 2,
-        "description": [
-          "A modern, header-only test framework for unit tests",
-          "This is specifically the legacy 1.x branch provided for compatibility",
-          "with older compilers."
-        ],
-        "homepage": "https://github.com/catchorg/Catch2",
-        "version": "1.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -20020,51 +19992,6 @@
         "pkgconfig-cxx-linkage.diff",
         "pkgconfig-dependencies.diff",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "chromium-base",
-      "manifest": {
-        "name": "chromium-base",
-        "port-version": 6,
-        "description": "Chromium is an open-source browser project that aims to build a safer, faster, and more stable way for all users to experience the web.",
-        "homepage": "https://chromium.googlesource.com/chromium/src",
-        "license": "BSD-3-Clause",
-        "supports": "x64 & (osx | windows | linux) & !uwp",
-        "dependencies": [
-          {
-            "name": "vcpkg-gn",
-            "host": true
-          },
-          {
-            "name": "vcpkg-tool-gn",
-            "host": true
-          }
-        ],
-        "version": "86.0.4199.1"
-      },
-      "files": [
-        "chromium-baseConfig.cmake.in",
-        "portfile.cmake",
-        "res/0001-base.patch",
-        "res/0002-build.patch",
-        "res/BUILD.gn",
-        "res/LASTCHANGE.committime",
-        "res/build_overrides/build.gni",
-        "res/fontconfig/BUILD.gn",
-        "res/gclient_args.gni",
-        "res/icu/BUILD.gn",
-        "res/icu/config.gni",
-        "res/libxml/BUILD.gn",
-        "res/protobuf/proto_library.gni",
-        "res/test_fonts/BUILD.gn",
-        "res/testing/gmock/BUILD.gn",
-        "res/testing/gtest/BUILD.gn",
-        "res/testing/libfuzzer/fuzzer_test.gni",
-        "res/testing/test.gni",
-        "res/tools/win/DebugVisualizers/BUILD.gn",
-        "res/tools/win/DebugVisualizers/chrome.natvis",
         "vcpkg.json"
       ]
     },
@@ -21097,6 +21024,7 @@
       "name": "coin-or-buildtools",
       "manifest": {
         "name": "coin-or-buildtools",
+        "port-version": 1,
         "description": "Macros and patches for GNU autotools ",
         "homepage": "https://coin-or-tools.github.io/BuildTools/",
         "license": "EPL-2.0",
@@ -21105,6 +21033,7 @@
       "files": [
         "buildtools.patch",
         "buildtools2.patch",
+        "disable-mkl.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -25747,7 +25676,7 @@
             "host": true
           }
         ],
-        "version": "1.618.1"
+        "version": "1.618.2"
       },
       "files": [
         "portfile.cmake",
@@ -25775,7 +25704,7 @@
             "host": true
           }
         ],
-        "version": "1.618.1"
+        "version": "1.618.2"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -41612,32 +41541,6 @@
       ]
     },
     {
-      "name": "ijg-libjpeg",
-      "manifest": {
-        "name": "ijg-libjpeg",
-        "description": "Independent JPEG Group's JPEG software",
-        "homepage": "http://www.ijg.org/",
-        "license": null,
-        "supports": "!emscripten & !wasm32",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-string": "9f"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "im3d",
       "manifest": {
         "name": "im3d",
@@ -52018,23 +51921,6 @@
       ]
     },
     {
-      "name": "libmesh",
-      "manifest": {
-        "name": "libmesh",
-        "port-version": 6,
-        "description": "The libMesh library provides a framework for the numerical simulation of partial differential equations using arbitrary unstructured discretizations on serial and parallel platforms. A major goal of the library is to provide support for adaptive mesh refinement (AMR) computations in parallel while allowing a research scientist to focus on the physics they are modeling.",
-        "homepage": "https://github.com/libMesh/libmesh",
-        "license": "LGPL-2.1-only",
-        "supports": "linux",
-        "version": "1.5.0"
-      },
-      "files": [
-        "copyright",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "libmicrodns",
       "manifest": {
         "name": "libmicrodns",
@@ -56861,36 +56747,6 @@
       ]
     },
     {
-      "name": "libvmdk",
-      "manifest": {
-        "name": "libvmdk",
-        "port-version": 1,
-        "description": "Library and tools to access the VMware Virtual Disk (VMDK) format",
-        "homepage": "https://github.com/libyal/libvmdk",
-        "supports": "!uwp",
-        "dependencies": [
-          "gettext",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "zlib"
-        ],
-        "version": "20221124"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "Config.cmake.in",
-        "android.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "libvorbis",
       "manifest": {
         "name": "libvorbis",
@@ -57335,9 +57191,11 @@
       "name": "libxaw",
       "manifest": {
         "name": "libxaw",
+        "port-version": 1,
         "description": "X Athena Widget Set, based on the X Toolkit Intrinsics (Xt) Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxaw",
         "license": null,
+        "supports": "!windows | !staticcrt",
         "dependencies": [
           "bzip2",
           "libx11",
@@ -64966,33 +64824,6 @@
         "portfile.cmake",
         "unofficial-mosquitto-config.cmake",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "mozjpeg",
-      "manifest": {
-        "name": "mozjpeg",
-        "port-version": 1,
-        "description": "MozJPEG reduces file sizes of JPEG images while retaining quality and compatibility with the vast majority of the world's deployed decoders. It's compatible with libjpeg API and ABI, and can be used as a drop-in replacement for libjpeg.",
-        "homepage": "https://github.com/mozilla/mozjpeg",
-        "license": "IJG AND BSD-3-Clause AND Zlib",
-        "dependencies": [
-          "libpng",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "4.1.5"
-      },
-      "files": [
-        "fix-install-error.patch",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -72666,7 +72497,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -73461,29 +73292,6 @@
           }
         ],
         "version": "0.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "optional-bare",
-      "manifest": {
-        "name": "optional-bare",
-        "port-version": 3,
-        "description": "A simple version of a C++17-like optional for default-constructible, copyable types, for C++98 and later in a single-file header-only library",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -80047,25 +79855,6 @@
       ]
     },
     {
-      "name": "qt5-canvas3d",
-      "manifest": {
-        "name": "qt5-canvas3d",
-        "port-version": 3,
-        "description": "Qt Canvas3D offers a low level OpenGL-like API that enables you to execute 3D drawing commands from JavaScript.",
-        "dependencies": [
-          {
-            "name": "qt5-base",
-            "default-features": false
-          }
-        ],
-        "version": "0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "qt5-charts",
       "manifest": {
         "name": "qt5-charts",
@@ -84210,20 +83999,6 @@
       ]
     },
     {
-      "name": "range-v3-vs2015",
-      "manifest": {
-        "name": "range-v3-vs2015",
-        "port-version": 4,
-        "description": "Range library for C++11/14/17.",
-        "homepage": "https://github.com/Microsoft/Range-V3-VS2015",
-        "version": "20151130-vcpkg5"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "rapidcheck",
       "manifest": {
         "name": "rapidcheck",
@@ -84523,23 +84298,6 @@
           }
         ],
         "version": "3.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "rbdl-orb",
-      "manifest": {
-        "name": "rbdl-orb",
-        "port-version": 2,
-        "description": "Rigid Body Dynamics Library - ORB",
-        "homepage": "https://github.com/orb-hd/rbdl-orb",
-        "dependencies": [
-          "rbdl"
-        ],
-        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -87650,20 +87408,6 @@
           }
         ],
         "version": "0.3.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sciter",
-      "manifest": {
-        "name": "sciter",
-        "port-version": 1,
-        "description": "Sciter is an embeddable HTML/CSS/scripting engine.",
-        "homepage": "https://github.com/c-smile/sciter-sdk",
-        "version": "0"
       },
       "files": [
         "portfile.cmake",
@@ -91524,101 +91268,6 @@
         "configure.diff",
         "fix-makefiles.patch",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "spdk",
-      "manifest": {
-        "name": "spdk",
-        "port-version": 1,
-        "description": "Storage Performance Development Kit",
-        "supports": "linux",
-        "dependencies": [
-          "spdk-dpdk",
-          "spdk-ipsec",
-          "spdk-isal",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version-string": "24.01"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "FindNuma.cmake",
-        "FindRDMA.cmake",
-        "Findibverbs.cmake",
-        "Finduuid.cmake",
-        "portfile.cmake",
-        "spdkConfig.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "spdk-dpdk",
-      "manifest": {
-        "name": "spdk-dpdk",
-        "port-version": 3,
-        "description": "SPDK mirror of DPDK. A set of libraries and drivers for fast packet processing",
-        "supports": "linux",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version-date": "2018-11-24"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "FindNuma.cmake",
-        "portfile.cmake",
-        "spdk-dpdkConfig.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "spdk-ipsec",
-      "manifest": {
-        "name": "spdk-ipsec",
-        "port-version": 3,
-        "description": "SPDK mirror of ipsec. Intel(R) Multi-Buffer Crypto for IPsec Library",
-        "supports": "x64 & linux",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version-date": "2018-07-11"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "spdk-ipsecConfig.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "spdk-isal",
-      "manifest": {
-        "name": "spdk-isal",
-        "port-version": 3,
-        "description": "SPDK mirror of isa-l. Intel(R) Intelligent Storage Acceleration Library",
-        "homepage": "https://github.com/spdk/isa-l",
-        "license": "BSD-3-Clause",
-        "supports": "!windows & !(osx & x64)",
-        "version-date": "2018-10-06"
-      },
-      "files": [
-        "portfile.cmake",
-        "spdk-isalConfig.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
