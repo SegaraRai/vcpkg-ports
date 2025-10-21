@@ -1,5 +1,5 @@
 {
-  "version": "74e6536215718009aae747d86d84b78376bf9e09",
+  "version": "f4fc135de213885b8d072203d324976e4aa1f171",
   "ports": [
     {
       "name": "3fd",
@@ -3708,7 +3708,7 @@
             "host": true
           }
         ],
-        "version": "0.10.4"
+        "version": "0.10.5"
       },
       "files": [
         "portfile.cmake",
@@ -6615,7 +6615,7 @@
             "host": true
           }
         ],
-        "version": "8.2.8"
+        "version": "8.2.10"
       },
       "files": [
         "portfile.cmake",
@@ -23311,7 +23311,7 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -23333,6 +23333,7 @@
         "version": "8.9.0"
       },
       "files": [
+        "cmake-support-pem-pack.patch",
         "cryptopp.patch",
         "patch.patch",
         "portfile.cmake",
@@ -28226,7 +28227,7 @@
             "host": true
           }
         ],
-        "version": "20.44.0"
+        "version": "20.44.1"
       },
       "files": [
         "portfile.cmake",
@@ -28842,7 +28843,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.3.0"
+        "version-semver": "2.3.3"
       },
       "files": [
         "pdb-file.patch",
@@ -31604,9 +31605,13 @@
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & (!bsd | freebsd)",
         "dependencies": [
           "cjson",
+          {
+            "name": "epoll-shim",
+            "platform": "bsd"
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -31667,7 +31672,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.14.1"
+        "version": "3.17.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33639,6 +33644,10 @@
           }
         ],
         "features": {
+          "bfloat16": {
+            "description": "Enable bfloat16 precision in Ginkgo",
+            "supports": "!windows"
+          },
           "cuda": {
             "description": "Build the CUDA backend of Ginkgo",
             "dependencies": [
@@ -33653,14 +33662,15 @@
             "description": "Build the distributed MPI backend of Ginkgo",
             "dependencies": [
               "mpi"
-            ]
+            ],
+            "supports": "!windows"
           },
           "openmp": {
             "description": "Build the OpenMP backend of Ginkgo",
             "supports": "mingw | !windows"
           }
         },
-        "version-semver": "1.9.0"
+        "version-semver": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -42224,7 +42234,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -69828,10 +69838,9 @@
             ]
           }
         },
-        "version": "7.9.1"
+        "version": "7.9.2"
       },
       "files": [
-        "csf-redifinition.patch",
         "dependencies.patch",
         "drop-bin-letter-d.patch",
         "fix-install-prefix-path.patch",
@@ -71715,6 +71724,7 @@
         "dependencies": [
           "imath",
           "libdeflate",
+          "openjph",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -71729,7 +71739,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.3.5"
+        "version": "3.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -84118,7 +84128,7 @@
             "host": true
           }
         ],
-        "version": "8.88"
+        "version": "8.89"
       },
       "files": [
         "portfile.cmake",
@@ -87774,7 +87784,6 @@
       "name": "sdl1-mixer",
       "manifest": {
         "name": "sdl1-mixer",
-        "port-version": 2,
         "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib",
@@ -87785,9 +87794,18 @@
           "libogg",
           "libvorbis",
           "mpg123",
-          "sdl1"
+          "sdl1",
+          {
+            "name": "vcpkg-make",
+            "platform": "!windows | mingw"
+          },
+          {
+            "name": "vcpkg-msbuild",
+            "host": true,
+            "platform": "windows & !mingw"
+          }
         ],
-        "version-date": "2023-03-25"
+        "version-date": "2025-09-10"
       },
       "files": [
         "SDL_mixer.vcxproj.in",
@@ -88335,6 +88353,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -88397,6 +88416,7 @@
         "version": "3.2.24"
       },
       "files": [
+        "fix-freebsd.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -89961,7 +89981,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.4.0"
+        "version-semver": "7.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -94315,6 +94335,38 @@
       ]
     },
     {
+      "name": "tdlib",
+      "manifest": {
+        "name": "tdlib",
+        "description": "Cross-platform library for building Telegram clients",
+        "homepage": "https://github.com/tdlib/td",
+        "license": "BSL-1.0",
+        "supports": "((windows & !uwp & !arm & !arm64 & !xbox) | linux | osx) & static",
+        "dependencies": [
+          {
+            "name": "gperf",
+            "host": true
+          },
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "1.8.55"
+      },
+      "files": [
+        "fix-pc.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tdscpp",
       "manifest": {
         "name": "tdscpp",
@@ -98425,7 +98477,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
@@ -99172,6 +99224,7 @@
       "name": "vsg",
       "manifest": {
         "name": "vsg",
+        "port-version": 1,
         "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
         "homepage": "http://www.vulkanscenegraph.org/",
         "license": "MIT",
@@ -99191,9 +99244,32 @@
             "platform": "!(android | windows | osx)"
           }
         ],
+        "features": {
+          "shader-optimizer": {
+            "description": "shader optimizer support",
+            "dependencies": [
+              {
+                "name": "glslang",
+                "features": [
+                  "opt"
+                ]
+              }
+            ]
+          },
+          "windowing": {
+            "description": "native windowing support providing a default implementation of vsg::Window::create()",
+            "dependencies": [
+              {
+                "name": "xcb",
+                "platform": "!(android | ios | osx | windows)"
+              }
+            ]
+          }
+        },
         "version": "1.1.11"
       },
       "files": [
+        "cmakedefine01.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -102320,7 +102396,6 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
-        "port-version": 1,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
@@ -102340,7 +102415,19 @@
             "host": true
           }
         ],
-        "version": "1.3.7"
+        "features": {
+          "with-dl": {
+            "description": "Build with dynamic loading of xmlsec-crypto libraries",
+            "dependencies": [
+              {
+                "name": "libltdl",
+                "platform": "!windows"
+              }
+            ],
+            "supports": "!static"
+          }
+        },
+        "version": "1.3.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -102840,6 +102927,28 @@
         "vcpkg.json",
         "yaml-cpp-pr-1212.patch",
         "yaml-cpp-pr-1310.patch"
+      ]
+    },
+    {
+      "name": "yandex-disk-cpp-client",
+      "manifest": {
+        "name": "yandex-disk-cpp-client",
+        "description": "Modern C++ client for Yandex.Disk REST API",
+        "homepage": "https://github.com/Krasnovvvvv/yandex-disk-cpp-client",
+        "documentation": "https://krasnovvvvv.github.io/yandex-disk-cpp-client/",
+        "license": "MIT",
+        "dependencies": [
+          "curl",
+          "nlohmann-json",
+          "vcpkg-cmake",
+          "vcpkg-cmake-config"
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
       ]
     },
     {
