@@ -1,5 +1,5 @@
 {
-  "version": "7220a4eebf20515cdd9c34721e15ca082bae9038",
+  "version": "58338d5bb59015a2a5fc057af7f81a41737c81fa",
   "ports": [
     {
       "name": "3fd",
@@ -46,6 +46,7 @@
       "name": "7zip",
       "manifest": {
         "name": "7zip",
+        "port-version": 1,
         "description": "Library for archiving file with a high compression ratio.",
         "homepage": "https://www.7-zip.org",
         "license": "LGPL-2.1-or-later",
@@ -154,6 +155,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
+        "port-version": 1,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -176,12 +178,7 @@
             "description": "Build Abseil's test helpers",
             "dependencies": [
               "abseil",
-              {
-                "name": "gtest",
-                "features": [
-                  "cxx17"
-                ]
-              }
+              "gtest"
             ]
           }
         },
@@ -23369,11 +23366,11 @@
       "name": "cspice",
       "manifest": {
         "name": "cspice",
-        "port-version": 3,
+        "port-version": 4,
         "description": "NASA C SPICE toolkit",
         "homepage": "https://naif.jpl.nasa.gov/naif/toolkit_C.html",
         "license": null,
-        "supports": "!((arm | arm64) & windows)",
+        "supports": "!(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -23390,7 +23387,6 @@
         "CMakeLists.txt",
         "License.txt",
         "isatty.patch",
-        "mktemp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46894,7 +46890,7 @@
         "name": "lest",
         "description": "A modern, C++11-native, single-file header-only, tiny framework for unit-tests, TDD and BDD (includes C++98 variant)",
         "homepage": "https://github.com/martinmoene/lest",
-        "version": "1.35.2"
+        "version": "1.36.0"
       },
       "files": [
         "portfile.cmake",
@@ -63842,7 +63838,7 @@
             "host": true
           }
         ],
-        "version": "8"
+        "version": "9.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -67355,7 +67351,7 @@
             ]
           }
         },
-        "version": "1.16.0"
+        "version": "1.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -85330,10 +85326,11 @@
             "host": true
           }
         ],
-        "version": "0.7.7"
+        "version": "0.7.8"
       },
       "files": [
         "portfile.cmake",
+        "restinio_cmake_file.patch",
         "vcpkg.json"
       ]
     },
@@ -96966,6 +96963,36 @@
       ]
     },
     {
+      "name": "unarr",
+      "manifest": {
+        "name": "unarr",
+        "description": "A decompression library for rar, tar, zip and 7z archives.",
+        "homepage": "https://github.com/selmf/unarr",
+        "license": "LGPL-3.0-only",
+        "supports": "!windows | static",
+        "dependencies": [
+          "7zip",
+          "bzip2",
+          "liblzma",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "1.1.1"
+      },
+      "files": [
+        "debundle-7zip.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "uni-algo",
       "manifest": {
         "name": "uni-algo",
@@ -98166,7 +98193,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_configure",
         "license": "MIT",
-        "version-date": "2024-04-23"
+        "version-date": "2025-08-07"
       },
       "files": [
         "portfile.cmake",
