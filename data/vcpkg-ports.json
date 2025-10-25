@@ -1,5 +1,5 @@
 {
-  "version": "a3f13aa71025968d2b476a1607547c0a29695907",
+  "version": "271a5b8850aa50f9a40269cbf3cf414b36e333d6",
   "ports": [
     {
       "name": "3fd",
@@ -2605,11 +2605,10 @@
       "name": "asiosdk",
       "manifest": {
         "name": "asiosdk",
-        "port-version": 7,
         "description": "ASIO is a low latency audio API from Steinberg.",
-        "homepage": "https://www.steinberg.net/en/company/developers.html",
+        "homepage": "https://www.steinberg.net/developers/asiosdk-open/",
         "supports": "windows & !(arm | uwp)",
-        "version": "2.3.3"
+        "version": "2.3.4"
       },
       "files": [
         "Findasiosdk.cmake",
@@ -3604,7 +3603,7 @@
             "host": true
           }
         ],
-        "version": "0.9.3"
+        "version": "0.9.5"
       },
       "files": [
         "portfile.cmake",
@@ -39859,6 +39858,36 @@
       ]
     },
     {
+      "name": "hanjingo-high-jump",
+      "manifest": {
+        "name": "hanjingo-high-jump",
+        "maintainers": [
+          "hanjingo",
+          "hehehunanchina@live.com"
+        ],
+        "description": "Modern C++ library framework implemented by C++17. High-jump(hj) is a comprehensive C++ library providing utilities for algorithms, compression, cryptography, databases, encoding, hardware, I/O, logging, math, networking, OS operations, synchronization, testing, time handling, types, and more.",
+        "homepage": "https://github.com/hanjingo/high-jump",
+        "license": "GPL-3.0-only",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "happly",
       "manifest": {
         "name": "happly",
@@ -41392,10 +41421,10 @@
               "glfw3",
               "irrlicht"
             ],
-            "supports": "!windows"
+            "supports": "!windows & !osx"
           }
         },
-        "version": "12.4.0"
+        "version": "14.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -46535,7 +46564,6 @@
       "name": "lastools",
       "manifest": {
         "name": "lastools",
-        "port-version": 1,
         "description": "LAStools: award-winning software for efficient LiDAR processing (with LASzip)",
         "homepage": "https://github.com/LAStools/LAStools",
         "supports": "!uwp",
@@ -46551,18 +46579,17 @@
         ],
         "features": {
           "tools": {
-            "description": "Build tools"
+            "description": "Build tools",
+            "supports": "static"
           }
         },
-        "version": "2.0.3"
+        "version": "2.0.4"
       },
       "files": [
-        "build-tools.diff",
+        "build_tools.diff",
         "fix_include_directories_lastools.patch",
         "fix_install_paths_lastools.patch",
-        "insecure-fprintf.diff",
         "portfile.cmake",
-        "signed-char.diff",
         "vcpkg.json"
       ]
     },
@@ -48903,7 +48930,7 @@
           },
           "xerces-c"
         ],
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -53416,7 +53443,7 @@
             "host": true
           }
         ],
-        "version": "9.0.16"
+        "version": "9.0.17"
       },
       "files": [
         "disable-werror.patch",
@@ -66137,7 +66164,7 @@
             "host": true
           }
         ],
-        "version": "0.0.6"
+        "version": "0.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -85187,7 +85214,7 @@
             "host": true
           }
         ],
-        "version": "0.25.1"
+        "version": "0.26.1"
       },
       "files": [
         "portfile.cmake",
@@ -94969,7 +94996,7 @@
             "description": "Build tools"
           }
         },
-        "version": "0.15.15"
+        "version": "0.15.16"
       },
       "files": [
         "portfile.cmake",
@@ -99367,6 +99394,38 @@
         "devendor.patch",
         "portfile.cmake",
         "remove-manual-font-creation.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vsgqt",
+      "manifest": {
+        "name": "vsgqt",
+        "description": "Qt integration with VulkanSceneGraph",
+        "homepage": "https://github.com/vsg-dev/vsgQt/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "default-features": false
+          },
+          "vsg"
+        ],
+        "version": "0.4.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
