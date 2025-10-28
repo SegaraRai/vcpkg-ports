@@ -1,5 +1,5 @@
 {
-  "version": "271a5b8850aa50f9a40269cbf3cf414b36e333d6",
+  "version": "cf1490f51190945a70666eaeeb6f63482da080b5",
   "ports": [
     {
       "name": "3fd",
@@ -2188,7 +2188,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2226,7 +2226,16 @@
         ],
         "features": {
           "acero": {
-            "description": "Acero support"
+            "description": "Acero support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "compute"
+                ]
+              }
+            ]
           },
           "compute": {
             "description": "Build all computational kernel functions"
@@ -2241,7 +2250,17 @@
             ]
           },
           "dataset": {
-            "description": "Dataset support"
+            "description": "Dataset support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "acero",
+                  "filesystem"
+                ]
+              }
+            ]
           },
           "example": {
             "description": "Install the minimal example (source code)"
@@ -2273,6 +2292,13 @@
           "gcs": {
             "description": "GCS support",
             "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "filesystem"
+                ]
+              },
               {
                 "name": "google-cloud-cpp",
                 "default-features": false,
@@ -2319,6 +2345,13 @@
             "description": "S3 support",
             "dependencies": [
               {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "filesystem"
+                ]
+              },
+              {
                 "name": "aws-sdk-cpp",
                 "default-features": false,
                 "features": [
@@ -2337,7 +2370,6 @@
       },
       "files": [
         "0001-msvc-static-name.patch",
-        "0002-utf8proc.patch",
         "0003-android-musl.patch",
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
@@ -32540,6 +32572,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -32622,6 +32655,12 @@
                 "name": "arrow",
                 "default-features": false
               }
+            ]
+          },
+          "arrow-adbc": {
+            "description": "Arrow ADBC support",
+            "dependencies": [
+              "arrow-adbc"
             ]
           },
           "aws-ec2-windows": {
@@ -32771,7 +32810,7 @@
             ]
           },
           "parquet": {
-            "description": "Enable parquet reading support",
+            "description": "Enable parquet reading support. Combine with arrow[compute] or arrow[dataset] for additional capabilities.",
             "dependencies": [
               {
                 "name": "arrow",
@@ -32874,9 +32913,11 @@
         "version-semver": "3.11.4"
       },
       "files": [
+        "adopt-compile-only.diff",
         "cmake-project-include.cmake",
         "find-link-libraries.patch",
         "fix-gdal-target-interfaces.patch",
+        "generate-config.diff",
         "libkml.patch",
         "portfile.cmake",
         "sqlite3.diff",
@@ -40599,7 +40640,7 @@
           },
           "zlib"
         ],
-        "version": "1.11.0"
+        "version": "1.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -58547,7 +58588,7 @@
             "description": "Build LIEF with VDEX module"
           }
         },
-        "version-semver": "0.17.0"
+        "version-semver": "0.17.1"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -67296,7 +67337,7 @@
             "host": true
           }
         ],
-        "version": "1.67.1"
+        "version": "1.68.0"
       },
       "files": [
         "portfile.cmake",
@@ -68096,7 +68137,7 @@
             "description": "Install example files"
           }
         },
-        "version": "4.12.7"
+        "version": "4.12.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -73567,7 +73608,7 @@
             ]
           }
         },
-        "version": "3.10.1"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -73997,7 +74038,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.491"
+        "version": "4.0.494"
       },
       "files": [
         "portfile.cmake",
@@ -93895,6 +93936,40 @@
       ]
     },
     {
+      "name": "supernovas",
+      "manifest": {
+        "name": "supernovas",
+        "description": "SuperNOVAS C/C++ high-precision astrometry library",
+        "homepage": "https://smithsonian.github.io/SuperNOVAS/",
+        "documentation": "https://smithsonian.github.io/SuperNOVAS/doc/html/",
+        "license": "Unlicense",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "solsys-calceph": {
+            "description": "Solar-system ephemeris support via the CALCEPH library",
+            "dependencies": [
+              "calceph"
+            ],
+            "supports": "!uwp"
+          }
+        },
+        "version": "1.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sushant-wayal-stringhash",
       "manifest": {
         "name": "sushant-wayal-stringhash",
@@ -97283,7 +97358,7 @@
             "host": true
           }
         ],
-        "version": "4.7.0"
+        "version": "4.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -99401,6 +99476,7 @@
       "name": "vsgqt",
       "manifest": {
         "name": "vsgqt",
+        "port-version": 1,
         "description": "Qt integration with VulkanSceneGraph",
         "homepage": "https://github.com/vsg-dev/vsgQt/",
         "license": "MIT",
@@ -99414,11 +99490,11 @@
           },
           {
             "name": "vcpkg-cmake",
-            "default-features": false
+            "host": true
           },
           {
             "name": "vcpkg-cmake-config",
-            "default-features": false
+            "host": true
           },
           "vsg"
         ],
