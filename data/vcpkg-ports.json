@@ -1,5 +1,5 @@
 {
-  "version": "cf1490f51190945a70666eaeeb6f63482da080b5",
+  "version": "0e39c10736341cc8135b560438229bbda3d3219a",
   "ports": [
     {
       "name": "3fd",
@@ -7329,6 +7329,7 @@
       "name": "blend2d",
       "manifest": {
         "name": "blend2d",
+        "port-version": 1,
         "description": "2D Vector Graphics Engine Powered by a JIT Compiler",
         "homepage": "https://github.com/blend2d/blend2d",
         "documentation": "https://blend2d.com/doc/index.html",
@@ -19945,6 +19946,44 @@
       ]
     },
     {
+      "name": "chenjunfu2-nbt-cpp",
+      "manifest": {
+        "name": "chenjunfu2-nbt-cpp",
+        "description": "A header-only C++ library for [NBT(Named Binary Tag)]",
+        "homepage": "https://github.com/chenjunfu2/NBT_CPP",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "xxhash": {
+            "description": "Enable XXHASH support for hash functionality",
+            "dependencies": [
+              "xxhash"
+            ]
+          },
+          "zlib": {
+            "description": "Enable ZLIB support for compression",
+            "dependencies": [
+              "zlib"
+            ]
+          }
+        },
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "chipmunk",
       "manifest": {
         "name": "chipmunk",
@@ -20520,7 +20559,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -20565,6 +20604,7 @@
       "name": "clipboardxx",
       "manifest": {
         "name": "clipboardxx",
+        "port-version": 1,
         "description": "Header only, lightweight and cross platform C++ library for copy and paste text from clipboard.",
         "homepage": "https://github.com/Arian8j2/ClipboardXX",
         "license": "MIT",
@@ -20582,6 +20622,7 @@
         "version": "0.5"
       },
       "files": [
+        "fix-install.patch",
         "portfile.cmake",
         "unofficial-clipboardxx-config.cmake.in",
         "vcpkg.json"
@@ -22026,11 +22067,10 @@
             ]
           }
         },
-        "version": "0.26.0"
+        "version": "0.27.0"
       },
       "files": [
         "fix-find-brotli.patch",
-        "fix-system-version.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -23046,7 +23086,7 @@
             "supports": "!uwp"
           }
         },
-        "version-date": "2025-07-25"
+        "version-date": "2025-09-06"
       },
       "files": [
         "add-clog-cmake.patch",
@@ -23734,7 +23774,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.14.0"
+        "version-semver": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -28517,7 +28557,7 @@
             "host": true
           }
         ],
-        "version": "1.5.19"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -72216,7 +72256,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.24.2"
+        "version": "0.24.3"
       },
       "files": [
         "portfile.cmake",
@@ -75818,7 +75858,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -83946,7 +83986,7 @@
             "host": true
           }
         ],
-        "version": "10.1.0"
+        "version": "10.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -87150,14 +87190,23 @@
               "giflib"
             ]
           },
+          "hdr": {
+            "description": "Enable HDR codec"
+          },
+          "heif": {
+            "description": "Enable HEIF codec",
+            "dependencies": [
+              "libheif"
+            ]
+          },
           "high-priority-codecs": {
-            "description": "Enable high priority codecs such as BMP",
+            "description": "Enable high priority codecs such as AVIF",
             "dependencies": [
               {
                 "name": "sail",
                 "features": [
-                  "bmp",
-                  "svg"
+                  "avif",
+                  "ico"
                 ]
               }
             ]
@@ -87171,13 +87220,20 @@
                   "gif",
                   "jpeg",
                   "png",
-                  "tiff"
+                  "svg",
+                  "webp"
                 ]
               }
             ]
           },
           "ico": {
             "description": "Enable ICO codec"
+          },
+          "jbig": {
+            "description": "Enable JBIG codec",
+            "dependencies": [
+              "jbigkit"
+            ]
           },
           "jpeg": {
             "description": "Enable JPEG codec",
@@ -87188,7 +87244,7 @@
           "jpeg2000": {
             "description": "Enable JPEG2000 codec",
             "dependencies": [
-              "jasper"
+              "openjpeg"
             ]
           },
           "jpegxl": {
@@ -87203,9 +87259,11 @@
               {
                 "name": "sail",
                 "features": [
-                  "ico",
-                  "pcx",
-                  "psd",
+                  "bmp",
+                  "hdr",
+                  "jpeg2000",
+                  "jpegxl",
+                  "pnm",
                   "qoi",
                   "tga"
                 ]
@@ -87218,8 +87276,12 @@
               {
                 "name": "sail",
                 "features": [
+                  "jbig",
+                  "pcx",
                   "wal",
-                  "xbm"
+                  "xbm",
+                  "xpm",
+                  "xwd"
                 ]
               }
             ]
@@ -87230,12 +87292,18 @@
               {
                 "name": "sail",
                 "features": [
-                  "avif",
-                  "jpeg2000",
-                  "jpegxl",
-                  "webp"
+                  "heif",
+                  "openexr",
+                  "psd",
+                  "tiff"
                 ]
               }
+            ]
+          },
+          "openexr": {
+            "description": "Enable OPENEXR codec",
+            "dependencies": [
+              "openexr"
             ]
           },
           "openmp": {
@@ -87249,6 +87317,9 @@
             "dependencies": [
               "libpng"
             ]
+          },
+          "pnm": {
+            "description": "Enable PNM codec"
           },
           "psd": {
             "description": "Enable PSD codec"
@@ -87285,11 +87356,18 @@
           },
           "xbm": {
             "description": "Enable XBM codec"
+          },
+          "xpm": {
+            "description": "Enable XPM codec"
+          },
+          "xwd": {
+            "description": "Enable XWD codec"
           }
         },
-        "version-semver": "0.9.9"
+        "version-semver": "0.9.10"
       },
       "files": [
+        "fix-heif.patch",
         "fix-include-directory.patch",
         "portfile.cmake",
         "usage",
@@ -90240,7 +90318,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -90250,10 +90328,8 @@
         "license": "BSD-3-Clause",
         "supports": "!(windows & arm32) & !mingw",
         "dependencies": [
+          "abseil",
           "expat",
-          "libjpeg-turbo",
-          "libpng",
-          "libwebp",
           {
             "name": "opengl",
             "default-features": false,
@@ -90288,11 +90364,11 @@
           },
           {
             "name": "dng",
-            "platform": "!(freebsd | openbsd)"
+            "platform": "!bsd"
           },
           {
             "name": "fontconfig",
-            "platform": "linux | freebsd | openbsd"
+            "platform": "linux | bsd"
           },
           {
             "name": "freetype",
@@ -90309,23 +90385,32 @@
           {
             "name": "icu",
             "platform": "!uwp"
-          }
+          },
+          "jpeg",
+          "png",
+          "webp"
         ],
         "features": {
+          "avif": {
+            "description": "AVIF support",
+            "dependencies": [
+              "libavif"
+            ]
+          },
           "dawn": {
             "description": "dawn support for skia",
             "dependencies": [
-              {
-                "name": "dawn",
-                "platform": "osx | windows"
-              },
               {
                 "name": "dawn",
                 "default-features": false,
                 "features": [
                   "x11"
                 ],
-                "platform": "linux | freebsd | openbsd"
+                "platform": "linux | bsd"
+              },
+              {
+                "name": "dawn",
+                "platform": "osx | windows"
               },
               {
                 "name": "skia",
@@ -90343,7 +90428,7 @@
           },
           "dng": {
             "description": "Support for DNG files",
-            "supports": "!(freebsd | openbsd)"
+            "supports": "!bsd"
           },
           "fontconfig": {
             "description": "Fontconfig support",
@@ -90412,9 +90497,24 @@
               "icu"
             ]
           },
+          "jpeg": {
+            "description": "Jpeg support",
+            "dependencies": [
+              "libjpeg-turbo"
+            ]
+          },
           "metal": {
             "description": "Metal support for skia",
             "supports": "ios, osx"
+          },
+          "pdf": {
+            "description": "PDF backend"
+          },
+          "png": {
+            "description": "PNG support",
+            "dependencies": [
+              "libpng"
+            ]
           },
           "vulkan": {
             "description": "Vulkan support for skia",
@@ -90422,21 +90522,29 @@
               "vulkan-headers",
               "vulkan-memory-allocator"
             ]
+          },
+          "webp": {
+            "description": "WebP support",
+            "dependencies": [
+              "libwebp"
+            ]
           }
         },
         "version": "140"
       },
       "files": [
         "allow-disabling-lib-dl.patch",
+        "always-build-pathops.patch",
         "bentleyottmann-build.patch",
         "dawn.patch",
         "disable-msvc-env-setup.patch",
         "dont-use-response-file.patch",
         "example/CMakeLists.txt",
-        "fix-openbsd.patch",
+        "fix-bsd.patch",
         "graphite.patch",
         "pdfsubsetfont-uwp.diff",
         "portfile.cmake",
+        "remove-directwrite-png-dependency.patch",
         "skia-functions.cmake",
         "skia-include-string.patch",
         "skiaConfig.cmake",
@@ -91897,11 +92005,16 @@
           },
           "zlib"
         ],
-        "version": "2.0.0"
+        "features": {
+          "tools": {
+            "description": "Build tools"
+          }
+        },
+        "version": "2.1.0"
       },
       "files": [
-        "android-log.diff",
         "portfile.cmake",
+        "tools-improvements.patch",
         "vcpkg.json"
       ]
     },
@@ -92962,7 +93075,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.2.1"
+        "version": "4.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -98328,7 +98441,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_configure",
         "license": "MIT",
-        "version-date": "2025-08-07"
+        "version-date": "2024-04-23"
       },
       "files": [
         "portfile.cmake",
