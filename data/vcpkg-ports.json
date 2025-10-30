@@ -1,5 +1,5 @@
 {
-  "version": "0e39c10736341cc8135b560438229bbda3d3219a",
+  "version": "d80785c4ee1df22a4119a3451452f59e978e06aa",
   "ports": [
     {
       "name": "3fd",
@@ -3635,7 +3635,7 @@
             "host": true
           }
         ],
-        "version": "0.9.5"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -7532,7 +7532,7 @@
             ]
           }
         },
-        "version": "2.21.3"
+        "version": "2.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -18075,7 +18075,6 @@
       "name": "brotli",
       "manifest": {
         "name": "brotli",
-        "port-version": 1,
         "description": "a generic-purpose lossless compression algorithm that compresses data using a combination of a modern variant of the LZ77 algorithm, Huffman coding and 2nd order context modeling.",
         "homepage": "https://github.com/google/brotli",
         "license": "MIT",
@@ -18089,11 +18088,9 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
-        "emscripten.patch",
-        "fix-arm-uwp.patch",
         "install.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -30845,6 +30842,7 @@
         "homepage": "https://github.com/SanderMertens/flecs",
         "documentation": "https://www.flecs.dev/flecs/",
         "license": "MIT",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -30855,7 +30853,7 @@
             "host": true
           }
         ],
-        "version": "4.1.1"
+        "version": "4.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -33274,7 +33272,7 @@
             "host": true
           }
         ],
-        "version": "3.14.0"
+        "version": "3.14.1"
       },
       "files": [
         "fix-exported-config.patch",
@@ -41952,7 +41950,7 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
-        "port-version": 1,
+        "port-version": 2,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
@@ -50203,6 +50201,7 @@
         "homepage": "https://github.com/caomengxuan666/libgossip",
         "license": "MIT",
         "dependencies": [
+          "asio",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -50212,10 +50211,13 @@
             "host": true
           }
         ],
-        "version": "1.0.0.2"
+        "version": "1.1.2.0"
       },
       "files": [
+        "fix-dependencies.patch",
         "portfile.cmake",
+        "remove-export-headers.patch",
+        "support-uwp.patch",
         "vcpkg.json"
       ]
     },
@@ -57408,7 +57410,7 @@
       "name": "libxcrypt",
       "manifest": {
         "name": "libxcrypt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libxcrypt is a modern library for one-way hashing of passwords. On Linux-based systems, by default libxcrypt will be binary backward compatible with the libcrypt.so.1 shipped as part of the GNU C Library.",
         "homepage": "https://github.com/besser82/libxcrypt",
         "license": null,
@@ -59164,6 +59166,32 @@
           }
         },
         "version": "0.13.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "lloyal-ai-inlined-vector",
+      "manifest": {
+        "name": "lloyal-ai-inlined-vector",
+        "description": "A C++17/20 header-only vector-like container with Small Buffer Optimization (SBO) and full allocator support. Zero external dependencies.",
+        "homepage": "https://github.com/lloyal-ai/inlined-vector",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "5.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -66396,7 +66424,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.5.0"
+        "version-semver": "2.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -85178,7 +85206,7 @@
             ]
           }
         },
-        "version": "0.21.0"
+        "version": "0.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -85946,7 +85974,7 @@
       "name": "robin-hood-hashing",
       "manifest": {
         "name": "robin-hood-hashing",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20",
         "homepage": "https://github.com/martinus/robin-hood-hashing",
         "license": "MIT",
@@ -85963,6 +85991,7 @@
         "version": "3.11.5"
       },
       "files": [
+        "fix-missing-stdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90128,7 +90157,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.0.7"
+        "version": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -98573,9 +98602,10 @@
             "host": true
           }
         ],
-        "version-date": "2025-09-29"
+        "version-date": "2025-10-26"
       },
       "files": [
+        "configure.ac",
         "portfile.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json",
