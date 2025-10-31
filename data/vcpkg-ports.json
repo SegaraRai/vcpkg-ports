@@ -1,5 +1,5 @@
 {
-  "version": "d80785c4ee1df22a4119a3451452f59e978e06aa",
+  "version": "83375d1ded4878305df9f5272f360f4f80ee0d83",
   "ports": [
     {
       "name": "3fd",
@@ -212,6 +212,41 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "abumq-ripe",
+      "manifest": {
+        "name": "abumq-ripe",
+        "description": "Lightweight cryptography library wrapper",
+        "homepage": "https://github.com/abumq/ripe",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "cryptopp",
+            "features": [
+              "pem-pack"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "4.2.2"
+      },
+      "files": [
+        "cmake-config-exports.patch",
+        "devendoring.patch",
+        "portfile.cmake",
+        "unofficial-ripe-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -3635,7 +3670,7 @@
             "host": true
           }
         ],
-        "version": "0.9.6"
+        "version": "0.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -3922,7 +3957,7 @@
             "host": true
           }
         ],
-        "version": "0.34.5"
+        "version": "0.35.1"
       },
       "files": [
         "no-werror.patch",
@@ -29309,7 +29344,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -58884,7 +58919,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.10.0"
+        "version-semver": "2.11.0"
       },
       "files": [
         "global_preferences.json",
@@ -63627,6 +63662,7 @@
       "name": "meshoptimizer",
       "manifest": {
         "name": "meshoptimizer",
+        "port-version": 1,
         "description": "Mesh optimization library that makes meshes smaller and faster to render",
         "homepage": "https://github.com/zeux/meshoptimizer",
         "license": "MIT",
@@ -63643,7 +63679,7 @@
         "features": {
           "gltfpack": {
             "description": "Build gltfpack tool",
-            "supports": "!uwp"
+            "supports": "!uwp & !(windows & arm)"
           }
         },
         "version": "0.25"
@@ -68087,7 +68123,6 @@
       "name": "nsync",
       "manifest": {
         "name": "nsync",
-        "port-version": 1,
         "description": "nsync is a C library that exports various synchronization primitives, such as mutexes",
         "homepage": "https://github.com/google/nsync",
         "license": "Apache-2.0",
@@ -68101,7 +68136,7 @@
             "host": true
           }
         ],
-        "version": "1.29.2"
+        "version": "1.30.0"
       },
       "files": [
         "add-include-chrono.patch",
@@ -72012,7 +72047,7 @@
       "name": "openh264",
       "manifest": {
         "name": "openh264",
-        "port-version": 3,
+        "port-version": 4,
         "description": "OpenH264 is a codec library which supports H.264 encoding and decoding. It is suitable for use in real time applications such as WebRTC.",
         "homepage": "https://www.openh264.org/",
         "license": "BSD-2-Clause",
@@ -72029,7 +72064,7 @@
         "version": "2.6.0"
       },
       "files": [
-        "add-openbsd-and-freebsd-to-meson.patch",
+        "001-add-bsds-to-meson.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72284,7 +72319,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.24.3"
+        "version": "0.24.4"
       },
       "files": [
         "portfile.cmake",
@@ -76253,9 +76288,10 @@
             "description": "Enable loading font face cache from files and directories"
           }
         },
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
+        "find_threads.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -77141,9 +77177,10 @@
       "name": "popsift",
       "manifest": {
         "name": "popsift",
-        "port-version": 6,
         "description": "PopSift is an implementation of the SIFT algorithm in CUDA.",
         "homepage": "https://github.com/alicevision/popsift",
+        "documentation": "https://popsift.readthedocs.io/",
+        "license": "MPL-2.0",
         "supports": "!(uwp | arm | arm64 | android | x86)",
         "dependencies": [
           "cuda",
@@ -77167,14 +77204,10 @@
             ]
           }
         },
-        "version": "0.9"
+        "version": "0.10.0"
       },
       "files": [
-        "144.patch",
-        "cuda_12_1.patch",
-        "fix_missing_thrust_include.patch",
         "portfile.cmake",
-        "remove-nvtx-macros.diff",
         "vcpkg.json"
       ]
     },
@@ -89147,7 +89180,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.11.3"
+        "version": "0.12.0"
       },
       "files": [
         "fix-cmake4.patch",
@@ -103577,7 +103610,7 @@
             "host": true
           }
         ],
-        "version": "4.15.3"
+        "version": "4.15.4"
       },
       "files": [
         "fix-install-path.patch",
