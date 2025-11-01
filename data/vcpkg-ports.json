@@ -1,5 +1,5 @@
 {
-  "version": "83375d1ded4878305df9f5272f360f4f80ee0d83",
+  "version": "e3ed41868d5034bc608eaaa58383cd6ecdbb5ffb",
   "ports": [
     {
       "name": "3fd",
@@ -6566,10 +6566,9 @@
         "name": "basisu",
         "description": "Basis Universal is a supercompressed GPU texture and video compression format that outputs a highly compressed intermediate file format (.basis) that can be quickly transcoded to a wide variety of GPU texture compression formats.",
         "homepage": "https://github.com/BinomialLLC/basis_universal",
-        "license": "Apache-2.0",
-        "supports": "!android & !arm",
+        "license": null,
+        "supports": "(x86 | x64) & !android",
         "dependencies": [
-          "lodepng",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -6579,11 +6578,13 @@
             "host": true
           }
         ],
-        "version": "1.50.0"
+        "version": "1.60"
       },
       "files": [
-        "0001-cmake.patch",
+        "examples.diff",
+        "export-cmake-config.diff",
         "portfile.cmake",
+        "skip-strip.diff",
         "vcpkg.json"
       ]
     },
@@ -6712,14 +6713,16 @@
       "name": "behaviortree-cpp",
       "manifest": {
         "name": "behaviortree-cpp",
-        "port-version": 1,
         "description": "Behavior Trees Library in C++.",
         "homepage": "https://www.behaviortree.dev",
         "supports": "!uwp",
         "dependencies": [
           "boost-coroutine2",
           "cppzmq",
+          "flatbuffers",
           "foonathan-lexy",
+          "minitrace",
+          "tinyxml2",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -6729,14 +6732,13 @@
             "host": true
           }
         ],
-        "version": "4.7.0"
+        "version": "4.8.0"
       },
       "files": [
         "fix-dependencies.patch",
         "fix-x86_build.patch",
         "portfile.cmake",
         "remove-source-charset.diff",
-        "use-external-lexy.patch",
         "vcpkg.json"
       ]
     },
@@ -27989,14 +27991,13 @@
       ]
     },
     {
-      "name": "embree3",
+      "name": "embree",
       "manifest": {
-        "name": "embree3",
-        "port-version": 6,
+        "name": "embree",
         "description": "High Performance Ray Tracing Kernels.",
-        "homepage": "https://github.com/embree/embree",
-        "license": "Apache-2.0",
-        "supports": "!arm | osx",
+        "homepage": "https://github.com/RenderKit/embree",
+        "license": null,
+        "supports": "linux | osx | (windows & !uwp & !arm)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -28067,11 +28068,11 @@
             ]
           }
         },
-        "version": "3.13.5"
+        "version": "4.4.0"
       },
       "files": [
-        "001-downgrade-find-package-tbb-2020.patch",
         "avoid-library-conflicts.diff",
+        "cmake-config.diff",
         "no-runtime-install.patch",
         "portfile.cmake",
         "usage",
@@ -31199,7 +31200,7 @@
             "host": true
           }
         ],
-        "version": "12.0.0"
+        "version": "12.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -50776,7 +50777,7 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "iconv() text conversion.",
           "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
@@ -50936,9 +50937,11 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
+        "port-version": 1,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
-        "license": null,
+        "license": "MPL-2.0",
+        "supports": "!uwp",
         "dependencies": [
           "eigen3",
           "stb",
@@ -50958,14 +50961,26 @@
               {
                 "name": "cgal",
                 "default-features": false
+              },
+              {
+                "name": "libigl",
+                "default-features": false,
+                "features": [
+                  "copyleft"
+                ]
               }
-            ]
+            ],
+            "supports": "!(x86 & windows & !mingw)"
+          },
+          "copyleft": {
+            "description": "Build copyleft core module",
+            "license": "MPL-2.0 AND GPL-2.0"
           },
           "embree": {
             "description": "Build with embree",
             "dependencies": [
               {
-                "name": "embree3",
+                "name": "embree",
                 "default-features": false
               }
             ]
@@ -51023,7 +51038,9 @@
       },
       "files": [
         "dependencies.patch",
+        "imgui-impl.diff",
         "install-extra-targets.patch",
+        "instantiations.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68252,6 +68269,7 @@
       "name": "numactl",
       "manifest": {
         "name": "numactl",
+        "port-version": 1,
         "description": "NUMA support for Linux",
         "homepage": "https://github.com/numactl/numactl",
         "license": null,
@@ -73711,7 +73729,7 @@
             ]
           }
         },
-        "version": "4.0.1"
+        "version": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -87914,6 +87932,7 @@
       "name": "sdflib",
       "manifest": {
         "name": "sdflib",
+        "port-version": 1,
         "description": "Library for accelerating the queries of signed distance fields from triangle meshes.",
         "homepage": "https://github.com/UPC-ViRVIG/SdfLib",
         "license": "MIT",
@@ -87933,6 +87952,7 @@
         "version-date": "2025-01-25"
       },
       "files": [
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
