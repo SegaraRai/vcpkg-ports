@@ -1,5 +1,5 @@
 {
-  "version": "e3ed41868d5034bc608eaaa58383cd6ecdbb5ffb",
+  "version": "46a114bc182fdeb162554f255f02a4fba10733b5",
   "ports": [
     {
       "name": "3fd",
@@ -912,10 +912,11 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
+        "port-version": 1,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
-        "supports": "linux",
+        "supports": "linux | android",
         "version": "1.2.14"
       },
       "files": [
@@ -3670,7 +3671,7 @@
             "host": true
           }
         ],
-        "version": "0.9.7"
+        "version": "0.9.8"
       },
       "files": [
         "portfile.cmake",
@@ -6732,7 +6733,7 @@
             "host": true
           }
         ],
-        "version": "4.8.0"
+        "version": "4.8.2"
       },
       "files": [
         "fix-dependencies.patch",
@@ -7175,12 +7176,14 @@
       "name": "bitmagic",
       "manifest": {
         "name": "bitmagic",
+        "port-version": 1,
         "description": "Algorithms and tools for Algebra of Sets for information retrieval, indexing of databases, scientific algorithms, ranking, clustering, unsupervised machine learning and signal processing.",
         "homepage": "http://bitmagic.io",
         "license": "Apache-2.0",
         "version": "8.0.1"
       },
       "files": [
+        "fix-clang.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22365,7 +22368,6 @@
       "name": "cppcms",
       "manifest": {
         "name": "cppcms",
-        "port-version": 7,
         "description": "CppCMS is a Free High Performance Web Development Framework (not a CMS) aimed at Rapid Web Application Development",
         "homepage": "https://github.com/artyom-beilis/cppcms",
         "license": null,
@@ -22380,7 +22382,7 @@
           },
           "zlib"
         ],
-        "version": "1.2.1"
+        "version": "2.0.1"
       },
       "files": [
         "dependencies.diff",
@@ -48206,6 +48208,45 @@
       ]
     },
     {
+      "name": "libcoap",
+      "manifest": {
+        "name": "libcoap",
+        "description": "libcoap — A C implementation of the Constrained Application Protocol (RFC 7252)",
+        "homepage": "https://libcoap.net/",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "dtls"
+        ],
+        "features": {
+          "dtls": {
+            "description": "compile with dtls support",
+            "dependencies": [
+              "openssl"
+            ]
+          },
+          "examples": {
+            "description": "Build examples"
+          }
+        },
+        "version": "4.3.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-hardcoded-tinydtls-path.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libconfig",
       "manifest": {
         "name": "libconfig",
@@ -48722,7 +48763,7 @@
             "description": "Support the zlib format"
           }
         },
-        "version": "1.24"
+        "version": "1.25"
       },
       "files": [
         "portfile.cmake",
@@ -51911,11 +51952,17 @@
         "dependencies": [
           {
             "name": "libmariadb",
-            "default-features": false,
             "features": [
               "iconv"
             ],
             "platform": "windows"
+          },
+          {
+            "name": "libmariadb",
+            "features": [
+              "openssl"
+            ],
+            "platform": "!windows"
           },
           {
             "name": "vcpkg-cmake",
@@ -51926,9 +51973,6 @@
             "host": true
           },
           "zlib"
-        ],
-        "default-features": [
-          "ssl"
         ],
         "features": {
           "iconv": {
@@ -51941,34 +51985,9 @@
             ]
           },
           "openssl": {
-            "description": "SSL support (OpenSSL)",
+            "description": "Use OpenSSL",
             "dependencies": [
               "openssl"
-            ]
-          },
-          "schannel": {
-            "description": "SSL support (Secure Channel)",
-            "supports": "windows"
-          },
-          "ssl": {
-            "description": "Default SSL backend",
-            "dependencies": [
-              {
-                "name": "libmariadb",
-                "default-features": false,
-                "features": [
-                  "schannel"
-                ],
-                "platform": "windows"
-              },
-              {
-                "name": "libmariadb",
-                "default-features": false,
-                "features": [
-                  "openssl"
-                ],
-                "platform": "!windows"
-              }
             ]
           },
           "zstd": {
@@ -51978,10 +51997,9 @@
             ]
           }
         },
-        "version-semver": "3.4.5"
+        "version-semver": "3.4.7"
       },
       "files": [
-        "android-patch.diff",
         "cmake-export.diff",
         "compiler-flags.diff",
         "dependencies.diff",
@@ -56917,6 +56935,32 @@
       ]
     },
     {
+      "name": "libversion",
+      "manifest": {
+        "name": "libversion",
+        "description": "Advanced version string comparison library",
+        "homepage": "https://github.com/repology/libversion",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.0.4"
+      },
+      "files": [
+        "disable-test.patch",
+        "portfile.cmake",
+        "separate-build-type.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libvhdi",
       "manifest": {
         "name": "libvhdi",
@@ -58583,11 +58627,11 @@
       "name": "licensepp",
       "manifest": {
         "name": "licensepp",
-        "port-version": 1,
         "description": "Cross platform software licensing library",
         "homepage": "https://github.com/amrayn/licensepp",
         "supports": "!uwp",
         "dependencies": [
+          "abumq-ripe",
           {
             "name": "cryptopp",
             "features": [
@@ -58603,13 +58647,12 @@
             "host": true
           }
         ],
-        "version-date": "2020-11-24"
+        "version": "1.2.0"
       },
       "files": [
-        "0001-use-old-pem-pack.patch",
-        "0002-fix-compilation-macos.patch",
         "FindCryptoPP.cmake",
         "add-stdint.diff",
+        "devendoring.patch",
         "portfile.cmake",
         "remove-werror.diff",
         "vcpkg.json"
@@ -63679,7 +63722,7 @@
       "name": "meshoptimizer",
       "manifest": {
         "name": "meshoptimizer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Mesh optimization library that makes meshes smaller and faster to render",
         "homepage": "https://github.com/zeux/meshoptimizer",
         "license": "MIT",
@@ -63696,12 +63739,16 @@
         "features": {
           "gltfpack": {
             "description": "Build gltfpack tool",
-            "supports": "!uwp & !(windows & arm)"
+            "dependencies": [
+              "basisu"
+            ],
+            "supports": "!uwp"
           }
         },
         "version": "0.25"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72337,7 +72384,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.24.4"
+        "version": "0.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -73729,7 +73776,7 @@
             ]
           }
         },
-        "version": "4.1.0"
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -77314,6 +77361,7 @@
       "name": "portmidi",
       "manifest": {
         "name": "portmidi",
+        "port-version": 1,
         "description": "PortMidi is a cross platform (Windows, macOS, Linux, and BSDs which support alsalib) library for interfacing with operating systems' MIDI I/O APIs.",
         "homepage": "https://github.com/PortMidi/portmidi",
         "license": "MIT",
@@ -77335,6 +77383,7 @@
         "version": "2.0.6"
       },
       "files": [
+        "android-support.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -85374,7 +85423,7 @@
             "host": true
           }
         ],
-        "version": "0.26.1"
+        "version": "0.26.2"
       },
       "files": [
         "portfile.cmake",
@@ -86512,11 +86561,11 @@
       "name": "rtabmap",
       "manifest": {
         "name": "rtabmap",
-        "port-version": 7,
         "description": "Real-Time Appearance-Based Mapping",
         "homepage": "https://introlab.github.io/rtabmap/",
         "license": null,
         "dependencies": [
+          "boost-crc",
           "ceres",
           "g2o",
           {
@@ -86666,17 +86715,13 @@
             ]
           }
         },
-        "version": "0.21.4.1"
+        "version": "0.23.2"
       },
       "files": [
         "0001-cmakelists-fixes.patch",
         "0002-fix-link.patch",
         "0003-multi-definition.patch",
-        "0004-fix-manfold-typo.patch",
-        "0005-fix-opencv3-aruco.patch",
-        "0006-remove-apple-sys-path.patch",
-        "0007-fix-g2o.patch",
-        "0008-fix-pcl-include.patch",
+        "0004-remove-apple-sys-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -86695,7 +86740,7 @@
             "host": true
           }
         ],
-        "version": "0.21.4.1"
+        "version": "0.23.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -87932,7 +87977,6 @@
       "name": "sdflib",
       "manifest": {
         "name": "sdflib",
-        "port-version": 1,
         "description": "Library for accelerating the queries of signed distance fields from triangle meshes.",
         "homepage": "https://github.com/UPC-ViRVIG/SdfLib",
         "license": "MIT",
@@ -87949,10 +87993,9 @@
             "host": true
           }
         ],
-        "version-date": "2025-01-25"
+        "version-date": "2025-11-03"
       },
       "files": [
-        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -89200,7 +89243,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.12.0"
+        "version": "0.12.1"
       },
       "files": [
         "fix-cmake4.patch",
@@ -94329,6 +94372,7 @@
       "manifest": {
         "name": "systemc",
         "description": "A set of C++ classes and macros which provide an event-driven simulation kernel in C++",
+        "homepage": "https://systemc.org/overview/systemc/",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -94339,7 +94383,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.0.2"
       },
       "files": [
         "install.patch",
@@ -97426,7 +97470,7 @@
             "host": true
           }
         ],
-        "version": "0.0.6"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -97553,7 +97597,7 @@
             "host": true
           }
         ],
-        "version": "4.8.0"
+        "version": "4.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -99295,7 +99339,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
