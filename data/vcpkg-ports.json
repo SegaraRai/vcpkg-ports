@@ -1,5 +1,5 @@
 {
-  "version": "46a114bc182fdeb162554f255f02a4fba10733b5",
+  "version": "9c147d5304087fe85104b776b019c45745fa9c11",
   "ports": [
     {
       "name": "3fd",
@@ -3808,7 +3808,7 @@
             "host": true
           }
         ],
-        "version": "0.23.1"
+        "version": "0.23.3"
       },
       "files": [
         "portfile.cmake",
@@ -6586,6 +6586,32 @@
         "export-cmake-config.diff",
         "portfile.cmake",
         "skip-strip.diff",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bbalouki-itch",
+      "manifest": {
+        "name": "bbalouki-itch",
+        "maintainers": "Bertin Balouki SIMYELI",
+        "description": "A High-Performance C++ library for parsing the ITCH 5.0 protocol.",
+        "homepage": "https://github.com/bbalouki/itchcpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -20223,7 +20249,7 @@
             "host": true
           }
         ],
-        "version": "0.15"
+        "version": "0.16"
       },
       "files": [
         "portfile.cmake",
@@ -21324,7 +21350,6 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
-        "port-version": 4,
         "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
@@ -21344,7 +21369,7 @@
             ]
           },
           "eigen3",
-          "flann",
+          "faiss",
           "freeimage",
           "gflags",
           "glog",
@@ -21384,7 +21409,8 @@
           "cuda-redist": {
             "description": "Redistributable CUDA support for common supported compute architectures.",
             "dependencies": [
-              "cuda"
+              "cuda",
+              "glew"
             ]
           },
           "gui": {
@@ -21393,19 +21419,11 @@
               "glew",
               "qt5-base"
             ]
-          },
-          "tests": {
-            "description": "Build all tests.",
-            "dependencies": [
-              "gtest"
-            ]
           }
         },
-        "version": "3.11.1"
+        "version": "3.12.6"
       },
       "files": [
-        "fix-flann.patch",
-        "fix-variable-names.diff",
         "no-glu.diff",
         "portfile.cmake",
         "usage",
@@ -22275,6 +22293,33 @@
         "fix-sleep_for.patch",
         "portfile.cmake",
         "tacopie/CMakeLists.txt",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cpp-smtpclient-library",
+      "manifest": {
+        "name": "cpp-smtpclient-library",
+        "description": "An SMTP client library built in C++ that support authentication and secure connections",
+        "homepage": "https://github.com/jeremydumais/CPP-SMTPClient-library",
+        "license": "MIT AND Zlib",
+        "supports": "!uwp",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.13"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -25917,7 +25962,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2025-07-10"
+        "version-date": "2025-10-27"
       },
       "files": [
         "portfile.cmake",
@@ -26035,7 +26080,7 @@
             "supports": "windows & x64 & !uwp & !xbox"
           }
         },
-        "version-date": "2025-07-10"
+        "version-date": "2025-10-27"
       },
       "files": [
         "portfile.cmake",
@@ -28951,7 +28996,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.3.3"
+        "version-semver": "2.3.4"
       },
       "files": [
         "pdb-file.patch",
@@ -40010,7 +40055,7 @@
         "name": "happly",
         "description": "A header-only C++ reader/writer for the PLY file format.",
         "homepage": "https://github.com/nmwsharp/happly",
-        "version-date": "2021-03-19"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -50550,6 +50595,47 @@
       ]
     },
     {
+      "name": "libhat",
+      "manifest": {
+        "name": "libhat",
+        "description": "A high-performance, modern, C++20 library designed around game hacking.",
+        "homepage": "https://github.com/BasedInc/libhat",
+        "license": "MIT",
+        "supports": "windows | linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "avx": {
+            "description": "Enables AVX512 scanning",
+            "supports": "!arm"
+          },
+          "hint": {
+            "description": "Enables support for the x86_64 scan hint, requires a small (2KB) data table"
+          },
+          "sse": {
+            "description": "Enables SSE scanning",
+            "supports": "!arm"
+          }
+        },
+        "version": "0.7.0"
+      },
+      "files": [
+        "0001-CMakeLists.patch",
+        "0002-fix-gcc.patch",
+        "libhat-config.cmake.in",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libhdfs3",
       "manifest": {
         "name": "libhdfs3",
@@ -50692,7 +50778,7 @@
             ]
           }
         },
-        "version-date": "2024-03-07"
+        "version-date": "2025-11-04"
       },
       "files": [
         "portfile.cmake",
@@ -60304,7 +60390,7 @@
         "description": "A lightweight, dependency-free library for binding Lua to C++",
         "homepage": "https://github.com/vinniefalco/LuaBridge",
         "license": "MIT",
-        "version": "2.8"
+        "version": "2.10"
       },
       "files": [
         "portfile.cmake",
@@ -60634,7 +60720,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -79965,7 +80051,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -79992,7 +80078,7 @@
             "host": true
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80012,7 +80098,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80032,7 +80118,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80043,7 +80129,6 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80169,7 +80254,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "cmake/configure_qt.cmake",
@@ -80184,7 +80269,6 @@
         "cmake/qt_port_functions.cmake",
         "cmake/qt_port_hashes.cmake",
         "cmake/qt_submodule_installation.cmake",
-        "patches/CVE-2024-39936-qtbase-5.15.patch",
         "patches/CVE-2025-30348-qtbase-5.15.diff",
         "patches/CVE-2025-4211-qtbase-5.15.diff",
         "patches/CVE-2025-5455-qtbase-5.15.patch",
@@ -80225,7 +80309,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80244,7 +80328,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80265,7 +80349,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80307,7 +80391,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80336,7 +80420,7 @@
             ]
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80356,7 +80440,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80376,7 +80460,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80437,7 +80521,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80448,7 +80532,6 @@
       "name": "qt5-location",
       "manifest": {
         "name": "qt5-location",
-        "port-version": 2,
         "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "license": null,
         "dependencies": [
@@ -80461,7 +80544,7 @@
           "qt5-quickcontrols2",
           "qt5-serialport"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "add-float-cast.diff",
@@ -80485,7 +80568,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80537,7 +80620,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80556,7 +80639,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80576,7 +80659,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80618,7 +80701,7 @@
           "qt5-declarative",
           "qt5-graphicaleffects"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80639,7 +80722,7 @@
           "qt5-declarative",
           "qt5-imageformats"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80680,7 +80763,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80700,7 +80783,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80720,7 +80803,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80740,7 +80823,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80760,7 +80843,7 @@
           },
           "qt5-serialport"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80779,7 +80862,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80804,7 +80887,7 @@
           "qt5-declarative",
           "qt5-multimedia"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80823,7 +80906,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80835,7 +80918,6 @@
       "name": "qt5-tools",
       "manifest": {
         "name": "qt5-tools",
-        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "license": null,
         "dependencies": [
@@ -80866,7 +80948,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "fix-pkgconfig-qt5uiplugin-not-found.patch",
@@ -80888,7 +80970,7 @@
           },
           "qt5-tools"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80906,7 +80988,7 @@
           "qt5-quickcontrols",
           "qt5-svg"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80926,7 +81008,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -80946,7 +81028,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -81001,7 +81083,7 @@
             "description": "Enable proprietary-codecs in qtwebengine"
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "0001-Fix-jumbo-build-error-due-to-ResolveColor-redefiniti.patch",
@@ -81027,7 +81109,7 @@
           },
           "qt5-websockets"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -81047,7 +81129,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -81063,7 +81145,7 @@
         "dependencies": [
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -81092,7 +81174,7 @@
             ]
           }
         },
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "patches/require_quick.patch",
@@ -81114,7 +81196,7 @@
             "default-features": false
           }
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -81134,7 +81216,7 @@
           },
           "qt5-declarative"
         ],
-        "version": "5.15.17"
+        "version": "5.15.18"
       },
       "files": [
         "portfile.cmake",
@@ -90253,7 +90335,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.1.0"
+        "version": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -92231,7 +92313,7 @@
             ]
           }
         },
-        "version": "0.3.0"
+        "version": "0.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -94544,9 +94626,21 @@
         "homepage": "https://github.com/alugowski/task-thread-pool",
         "documentation": "https://github.com/alugowski/task-thread-pool/blob/main/README.md",
         "license": "BSD-2-Clause OR MIT OR BSL-1.0",
-        "version": "1.0.7"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.10"
       },
       "files": [
+        "find-threads.patch",
+        "fix-header-file-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -95845,7 +95939,7 @@
           "nlohmann-json",
           "stb"
         ],
-        "version": "2.9.6"
+        "version": "2.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -96147,10 +96241,9 @@
       "name": "tinytoml",
       "manifest": {
         "name": "tinytoml",
-        "port-version": 3,
         "description": "A header only C++11 library for parsing TOML.",
         "homepage": "https://github.com/mayah/tinytoml",
-        "version": "20180219"
+        "version": "20240621"
       },
       "files": [
         "portfile.cmake",
@@ -96991,17 +97084,44 @@
       ]
     },
     {
-      "name": "tsl-hopscotch-map",
+      "name": "tsl-array-hash",
       "manifest": {
-        "name": "tsl-hopscotch-map",
-        "description": "C++ implementation of a fast hash map and hash set using hopscotch hashing",
+        "name": "tsl-array-hash",
+        "description": "C++ implementation of a memory efficient hash map and hash set",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "2.3.1"
+        "version": "0.7.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tsl-hopscotch-map",
+      "manifest": {
+        "name": "tsl-hopscotch-map",
+        "description": "C++ implementation of a fast hash map and hash set using hopscotch hashing",
+        "homepage": "https://github.com/Tessil/hopscotch-map",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -97013,13 +97133,18 @@
       "manifest": {
         "name": "tsl-ordered-map",
         "description": "C++ hash map and hash set which preserve the order of insertion",
+        "homepage": "https://github.com/Tessil/ordered-map",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -97030,15 +97155,19 @@
       "name": "tsl-sparse-map",
       "manifest": {
         "name": "tsl-sparse-map",
-        "port-version": 3,
         "description": "C++ implementation of a memory efficient hash map and hash set",
+        "homepage": "https://github.com/Tessil/sparse-map",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "0.6.2"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -98183,7 +98312,7 @@
             "description": "Build Spectre-mitigated library"
           },
           "tools": {
-            "description": "meshconvert command-line tool",
+            "description": "uvatlas command-line tool",
             "dependencies": [
               {
                 "name": "directxmesh",
@@ -98197,7 +98326,7 @@
             "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2025-07-10"
+        "version-date": "2025-10-28"
       },
       "files": [
         "portfile.cmake",
@@ -100824,7 +100953,7 @@
             "description": "Include the WABT C runtime implementation library"
           }
         },
-        "version": "1.0.37"
+        "version": "1.0.38"
       },
       "files": [
         "include_picosha2.cmake",
