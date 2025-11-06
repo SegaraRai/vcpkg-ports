@@ -1,5 +1,5 @@
 {
-  "version": "9c147d5304087fe85104b776b019c45745fa9c11",
+  "version": "c76ea2f16f17f457721dfba9c0dae728fd32fd31",
   "ports": [
     {
       "name": "3fd",
@@ -6593,6 +6593,7 @@
       "name": "bbalouki-itch",
       "manifest": {
         "name": "bbalouki-itch",
+        "port-version": 1,
         "maintainers": "Bertin Balouki SIMYELI",
         "description": "A High-Performance C++ library for parsing the ITCH 5.0 protocol.",
         "homepage": "https://github.com/bbalouki/itchcpp",
@@ -24149,7 +24150,7 @@
             ]
           }
         },
-        "version": "8.16.0"
+        "version": "8.17.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -26124,6 +26125,10 @@
             "description": "MakeSpriteFont and xwbtool command-line tools",
             "supports": "windows & !uwp & !xbox"
           },
+          "windows-gaming-input": {
+            "description": "Build using Windows.Gaming.Input for input processing",
+            "supports": "windows & !xbox"
+          },
           "xaudio2-8": {
             "description": "Build with XAudio 2.8 support for Windows 8.x or later"
           },
@@ -26137,9 +26142,10 @@
             ]
           }
         },
-        "version-date": "2025-07-10"
+        "version-date": "2025-10-27"
       },
       "files": [
+        "CMake-build-options-improvements.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -26204,11 +26210,16 @@
             "dependencies": [
               "xaudio2redist"
             ]
+          },
+          "xinput": {
+            "description": "Build using XInput for input processing",
+            "supports": "windows & !uwp & !xbox"
           }
         },
-        "version-date": "2025-07-10"
+        "version-date": "2025-10-27"
       },
       "files": [
+        "CMake-build-options-improvements.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -32693,7 +32704,6 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -33031,7 +33041,7 @@
             ]
           }
         },
-        "version-semver": "3.11.4"
+        "version-semver": "3.11.5"
       },
       "files": [
         "adopt-compile-only.diff",
@@ -40205,10 +40215,9 @@
             "supports": "!static"
           }
         },
-        "version": "11.3.3"
+        "version": "12.2.0"
       },
       "files": [
-        "add-parameter-name.patch",
         "fix-win32-build.patch",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
@@ -50613,19 +50622,11 @@
           }
         ],
         "features": {
-          "avx": {
-            "description": "Enables AVX512 scanning",
-            "supports": "!arm"
-          },
           "hint": {
             "description": "Enables support for the x86_64 scan hint, requires a small (2KB) data table"
-          },
-          "sse": {
-            "description": "Enables SSE scanning",
-            "supports": "!arm"
           }
         },
-        "version": "0.7.0"
+        "version": "0.8.0"
       },
       "files": [
         "0001-CMakeLists.patch",
@@ -53802,6 +53803,20 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libpopcnt",
+      "manifest": {
+        "name": "libpopcnt",
+        "description": "Fast C/C++ bit population count library",
+        "homepage": "https://github.com/kimwalisch/libpopcnt",
+        "license": "BSD-2-Clause",
+        "version": "3.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -58585,7 +58600,7 @@
             ]
           }
         },
-        "version": "9.0.0"
+        "version": "9.4.0"
       },
       "files": [
         "cross-builds.diff",
@@ -60579,7 +60594,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.695"
+        "version": "0.698"
       },
       "files": [
         "cmake-config-export.patch",
@@ -72092,7 +72107,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.2"
+        "version": "3.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -72939,7 +72954,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -86195,7 +86210,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.4.0"
+        "version-semver": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -88736,7 +88751,6 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -88796,7 +88810,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.24"
+        "version": "3.2.26"
       },
       "files": [
         "fix-freebsd.patch",
@@ -92460,7 +92474,7 @@
             ]
           }
         },
-        "version": "3.50.4"
+        "version": "3.51.0"
       },
       "files": [
         "CMakeLists.txt",
