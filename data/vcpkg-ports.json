@@ -1,5 +1,5 @@
 {
-  "version": "c4e4a719ed05ca08331ceb315a6cff1ad1bea3fc",
+  "version": "32c84a3684de01cb2a379c53381e39c82fb8577f",
   "ports": [
     {
       "name": "3fd",
@@ -3671,7 +3671,7 @@
             "host": true
           }
         ],
-        "version": "0.9.8"
+        "version": "0.9.10"
       },
       "files": [
         "portfile.cmake",
@@ -33340,7 +33340,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "2.6"
+        "version": "2.7"
       },
       "files": [
         "portfile.cmake",
@@ -41119,14 +41119,14 @@
             ]
           }
         },
-        "version": "1.21"
+        "version": "1.22.1"
       },
       "files": [
         "0001-set-linkage.patch",
         "0002-pthread-flag.patch",
         "0003-no-tests.patch",
         "0004-fix-find-htscodecs.patch",
-        "0005-remove-duplicate-lhts.patch",
+        "bzip2-use-pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73735,6 +73735,40 @@
       ]
     },
     {
+      "name": "openzl",
+      "manifest": {
+        "name": "openzl",
+        "description": "Format-aware compression framework delivering high ratios while preserving speed.",
+        "homepage": "https://github.com/facebook/openzl",
+        "license": "BSD-3-Clause AND Apache-2.0",
+        "supports": "!uwp & !x86 & !arm32",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          "xxhash",
+          "zstd"
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "use-system-zstd.patch",
+        "vcpkg.json",
+        "xxhash-wrapper.h"
+      ]
+    },
+    {
       "name": "optimus-cpp",
       "manifest": {
         "name": "optimus-cpp",
@@ -84776,7 +84810,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-08-12"
+        "version-date": "2025-11-05"
       },
       "files": [
         "portfile.cmake",
@@ -86887,6 +86921,27 @@
       },
       "files": [
         "fix-pulse.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rtc-benchmarksuite",
+      "manifest": {
+        "name": "rtc-benchmarksuite",
+        "description": "A header-only C++ benchmarking library with cross-platform hardware performance counter integration, providing precise measurements of cycles, instructions, branches, cache behavior, and throughput with minimal overhead.",
+        "homepage": "https://github.com/realtimechris/benchmarksuite",
+        "license": "MIT",
+        "supports": "(windows & x64 & !xbox) | (linux & x64) | (osx & x64)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
