@@ -1,5 +1,5 @@
 {
-  "version": "32c84a3684de01cb2a379c53381e39c82fb8577f",
+  "version": "365f6444ab40ee87c73c947b475b3a267b3cb77c",
   "ports": [
     {
       "name": "3fd",
@@ -54294,12 +54294,10 @@
       "name": "libqrencode",
       "manifest": {
         "name": "libqrencode",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libqrencode - a fast and compact QR Code encoding library",
         "homepage": "https://github.com/fukuchi/libqrencode",
         "dependencies": [
-          "libiconv",
-          "libpng",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -54312,7 +54310,8 @@
               {
                 "name": "getopt",
                 "platform": "windows"
-              }
+              },
+              "libpng"
             ]
           }
         },
@@ -67010,7 +67009,7 @@
             ]
           }
         },
-        "version": "20250503"
+        "version": "20250916"
       },
       "files": [
         "portfile.cmake",
@@ -101894,6 +101893,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
+        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
