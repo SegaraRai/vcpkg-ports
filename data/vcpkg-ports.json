@@ -1,5 +1,5 @@
 {
-  "version": "75583b5e4440efd149f34264d60b8fac97232969",
+  "version": "2d6a6cf3ac9a7cc93942c3d289a2f9c661a6f4a7",
   "ports": [
     {
       "name": "3fd",
@@ -20204,7 +20204,7 @@
             "host": true
           }
         ],
-        "version": "3.6.2"
+        "version": "3.6.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -25860,7 +25860,7 @@
             "host": true
           }
         ],
-        "version": "1.618.2"
+        "version": "1.618.3"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -26946,7 +26946,7 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": null,
@@ -32561,7 +32561,7 @@
         "homepage": "https://aka.ms/gameinput",
         "license": null,
         "supports": "windows & x64 & !uwp",
-        "version": "2.0.26100.5312"
+        "version": "2.2.26100.6114"
       },
       "files": [
         "gameinput-config.cmake.in",
@@ -41464,7 +41464,6 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 6,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -41491,20 +41490,17 @@
             "supports": "!uwp"
           }
         },
-        "version": "74.2"
+        "version": "78.1"
       },
       "files": [
-        "cleanup_msvc.patch",
-        "darwin-rpath.patch",
-        "disable-escapestr-tool.patch",
         "disable-static-prefix.patch",
-        "fix-extra.patch",
-        "fix-win-build.patch",
         "fix_parallel_build_on_windows.patch",
-        "mingw-dll-install.patch",
-        "mingw-strict-ansi.diff",
+        "mh-darwin.patch",
+        "mh-mingw.patch",
+        "mh-msys-msvc.patch",
         "portfile.cmake",
         "remove-MD-from-configure.patch",
+        "subdirs.patch",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-cross-data.patch",
         "vcpkg.json"
@@ -46532,7 +46528,7 @@
             "host": true
           }
         ],
-        "version": "0.13.0"
+        "version": "0.14.0"
       },
       "files": [
         "001-fix-destination.patch",
@@ -57630,7 +57626,7 @@
             "host": true
           }
         ],
-        "version": "4.5.1"
+        "version": "4.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -90418,7 +90414,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.2.1"
+        "version": "4.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -97197,7 +97193,7 @@
         "description": "C++ implementation of a fast and memory efficient HAT-trie",
         "homepage": "https://github.com/Tessil/hat-trie",
         "license": "MIT",
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -103061,6 +103057,7 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
+        "port-version": 1,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
@@ -103081,6 +103078,9 @@
           }
         ],
         "features": {
+          "tools": {
+            "description": "Build tools"
+          },
           "with-dl": {
             "description": "Build with dynamic loading of xmlsec-crypto libraries",
             "dependencies": [
