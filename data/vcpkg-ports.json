@@ -1,5 +1,5 @@
 {
-  "version": "d1ff36c6520ee43f1a656c03cd6425c2974a449e",
+  "version": "dce593dde6a57cdb75f14c5dd33d21915057457a",
   "ports": [
     {
       "name": "3fd",
@@ -2704,7 +2704,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-01-22"
+        "version-date": "2025-10-12"
       },
       "files": [
         "portfile.cmake",
@@ -24658,7 +24658,7 @@
             "host": true
           }
         ],
-        "version": "1.12"
+        "version": "1.13"
       },
       "files": [
         "fix-install-header-and-force-static-compilation.patch",
@@ -28662,7 +28662,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -32561,9 +32561,20 @@
         "homepage": "https://aka.ms/gameinput",
         "license": null,
         "supports": "windows & x64 & !uwp",
-        "version": "2.2.26100.6114"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.1.26100.6879"
       },
       "files": [
+        "CMakeLists.txt.in",
         "gameinput-config.cmake.in",
         "portfile.cmake",
         "usage",
@@ -50634,7 +50645,7 @@
             "description": "Enables support for the x86_64 scan hint, requires a small (2KB) data table"
           }
         },
-        "version": "0.8.0"
+        "version": "0.9.0"
       },
       "files": [
         "0001-CMakeLists.patch",
@@ -57252,7 +57263,7 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -57469,6 +57480,7 @@
         "0002-cmake-config.patch",
         "0003-simd.patch",
         "0008-sdl.patch",
+        "0009-cpufeatures-android.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -60602,7 +60614,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.698"
+        "version": "0.699"
       },
       "files": [
         "cmake-config-export.patch",
@@ -65552,29 +65564,23 @@
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
         "license": null,
-        "supports": "windows & x64 & !uwp & !xbox & !staticcrt",
+        "supports": "windows & (x64 | arm64) & !uwp & !xbox & !staticcrt",
         "dependencies": [
           {
             "name": "cpprestsdk",
             "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
           }
         ],
         "features": {
           "playfab": {
-            "description": "Include PlayFab Extension Libraries"
+            "description": "Include PlayFab Extension Libraries",
+            "supports": "windows & x64 & !uwp & !xbox & !staticcrt"
           }
         },
-        "version": "2504.4.4108"
+        "version": "2510.0.6194"
       },
       "files": [
+        "gdk-config.cmake.in",
         "pfusage",
         "portfile.cmake",
         "usage",
@@ -73919,7 +73925,7 @@
             ]
           }
         },
-        "version": "4.2.0"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -75803,7 +75809,7 @@
             "host": true
           }
         ],
-        "version": "52.0"
+        "version": "53.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -78447,20 +78453,12 @@
         "description": "The Apache Pulsar C++ library",
         "homepage": "https://github.com/apache/pulsar-client-cpp",
         "license": "Apache-2.0",
-        "supports": "!(arm & windows) & !android",
+        "supports": "!((arm | x86) & windows) & !android",
         "dependencies": [
           "asio",
           "boost-accumulators",
-          "boost-algorithm",
-          "boost-any",
-          "boost-circular-buffer",
-          "boost-date-time",
           "boost-format",
-          "boost-predef",
           "boost-property-tree",
-          "boost-random",
-          "boost-serialization",
-          "boost-xpressive",
           {
             "name": "curl",
             "default-features": false,
@@ -78489,7 +78487,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "3.7.0"
+        "version": "3.8.0"
       },
       "files": [
         "disable-warnings.patch",
@@ -78874,7 +78872,7 @@
             "host": true
           }
         ],
-        "version": "1.5.3"
+        "version": "1.6"
       },
       "files": [
         "install.patch",
@@ -98275,7 +98273,7 @@
             "host": true
           }
         ],
-        "version": "2.11.0"
+        "version": "2.11.1"
       },
       "files": [
         "portfile.cmake",
