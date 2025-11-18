@@ -1,5 +1,5 @@
 {
-  "version": "0804e3b55b7e435c593707071052363fa876f170",
+  "version": "3af1d1e60af2b2abf55760538cd607829029b07a",
   "ports": [
     {
       "name": "3fd",
@@ -155,7 +155,6 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 1,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -182,12 +181,13 @@
             ]
           }
         },
-        "version": "20250512.1"
+        "version": "20250814.1"
       },
       "files": [
         "001-mingw-dll.patch",
+        "002-string-view.patch",
+        "003-force-cxx-17.patch",
         "portfile.cmake",
-        "string-view.patch",
         "vcpkg.json"
       ]
     },
@@ -1067,7 +1067,7 @@
             "host": true
           }
         ],
-        "version": "0.14.1"
+        "version": "0.15.0"
       },
       "files": [
         "anari-lib-maybe-static-lib.patch",
@@ -3317,7 +3317,7 @@
             "host": true
           }
         ],
-        "version": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -18445,7 +18445,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -21455,7 +21455,7 @@
         "description": "Just another header-only C++17 CSV parser.",
         "homepage": "https://github.com/furfurylic/commata",
         "license": "Unlicense",
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -24670,6 +24670,7 @@
       "name": "darknet",
       "manifest": {
         "name": "darknet",
+        "port-version": 1,
         "description": "Darknet is an open source neural network framework written in C and CUDA. You only look once (YOLO) is a state-of-the-art, real-time object detection system, best example of darknet functionalities.",
         "homepage": "https://github.com/alexeyab/darknet",
         "license": null,
@@ -24733,7 +24734,8 @@
               {
                 "name": "darknet",
                 "features": [
-                  "cuda"
+                  "cuda",
+                  "opencv-base"
                 ]
               },
               {
@@ -24741,8 +24743,7 @@
                 "features": [
                   "contrib",
                   "cuda",
-                  "dnn",
-                  "ffmpeg"
+                  "dnn"
                 ]
               }
             ]
@@ -24751,6 +24752,8 @@
         "version-date": "2024-10-10"
       },
       "files": [
+        "android.diff",
+        "msvc-names.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26640,11 +26643,12 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
+        "port-version": 1,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
-        "documentation": "https://doc.dpdk.org/guides/index.html",
+        "documentation": "https://doc.dpdk.org/guides/",
         "license": "BSD-3-Clause",
-        "supports": "linux | freebsd",
+        "supports": "freebsd | linux | (windows & x64)",
         "dependencies": [
           {
             "name": "libarchive",
@@ -26654,7 +26658,6 @@
             "name": "numactl",
             "platform": "linux"
           },
-          "python3",
           {
             "name": "vcpkg-get-python-packages",
             "host": true
@@ -26678,7 +26681,7 @@
             "description": "Build with fast path traces enabled"
           }
         },
-        "version-string": "24.11.3"
+        "version": "24.11.3"
       },
       "files": [
         "0001-enable-either-static-or-shared-build.patch",
@@ -26687,7 +26690,7 @@
         "0004-stop-building-apps.patch",
         "0005-no-absolute-driver-path.patch",
         "portfile.cmake",
-        "usage",
+        "rename-sched.h.diff",
         "vcpkg.json"
       ]
     },
@@ -32156,7 +32159,7 @@
       "name": "ftgl",
       "manifest": {
         "name": "ftgl",
-        "port-version": 6,
+        "port-version": 7,
         "description": [
           "FTGL is a free open source library to enable developers to use arbitrary fonts in their OpenGL (www.opengl.org) applications.",
           "Unlike other OpenGL font libraries FTGL uses standard font file formats so doesn't need a preprocessing step to convert the high quality font data into a lesser quality, proprietary format.",
@@ -40321,6 +40324,52 @@
       ]
     },
     {
+      "name": "hazelcast-cpp-client",
+      "manifest": {
+        "name": "hazelcast-cpp-client",
+        "description": "C++ client library for Hazelcast in-memory database.",
+        "homepage": "https://github.com/hazelcast/hazelcast-cpp-client",
+        "documentation": "https://docs.hazelcast.com/hazelcast/latest/clients/cplusplus",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "boost-asio",
+          "boost-chrono",
+          "boost-format",
+          "boost-multiprecision",
+          "boost-optional",
+          "boost-property-tree",
+          "boost-system",
+          "boost-thread",
+          "boost-uuid",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "example": {
+            "description": "Build examples for Hazelcast C++ client"
+          },
+          "openssl": {
+            "description": "Build Hazelcast C++ client with SSL support",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
+        "version": "5.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
@@ -42561,7 +42610,7 @@
             "host": true
           }
         ],
-        "version": "0.13.0"
+        "version": "0.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -52292,15 +52341,15 @@
       "name": "libmicrohttpd",
       "manifest": {
         "name": "libmicrohttpd",
-        "port-version": 2,
         "description": "GNU libmicrohttpd is a small C library that is supposed to make it easy to run an HTTP server as part of another application",
         "homepage": "https://www.gnu.org/software/libmicrohttpd/",
         "license": "LGPL-2.1-or-later",
-        "supports": "!((arm & windows) | uwp)",
+        "supports": "!(arm & windows) & !uwp",
         "dependencies": [
           {
-            "name": "gettext",
-            "platform": "!windows"
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
           },
           {
             "name": "vcpkg-msbuild",
@@ -52317,7 +52366,7 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -60271,7 +60320,7 @@
             "host": true
           }
         ],
-        "version": "4.0.3"
+        "version": "4.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -63188,6 +63237,10 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
         "default-features": [
@@ -63214,9 +63267,6 @@
               }
             ]
           },
-          "pic": {
-            "description": "Enable position-independent code (PIC), i.e., compilation with the -fPIC flag"
-          },
           "zlib": {
             "description": "Check for zlib library",
             "dependencies": [
@@ -63224,12 +63274,11 @@
             ]
           }
         },
-        "version": "1.5.28"
+        "version": "1.5.29"
       },
       "files": [
-        "fix-dependencies.patch",
+        "cmake-config.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -63935,7 +63984,7 @@
         "homepage": "https://github.com/imakris/mexce",
         "license": "BSD-2-Clause",
         "supports": "(windows | linux) & (x86 | x64)",
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -64178,7 +64227,6 @@
       "name": "mimalloc",
       "manifest": {
         "name": "mimalloc",
-        "port-version": 1,
         "description": "Compact general purpose allocator with excellent performance",
         "homepage": "https://github.com/microsoft/mimalloc",
         "license": "MIT",
@@ -64202,7 +64250,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -65591,7 +65639,7 @@
       "name": "ms-gdkx",
       "manifest": {
         "name": "ms-gdkx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Stub port that ensures the Microsoft GDK with Xbox Extensions is installed.",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
@@ -66119,7 +66167,7 @@
       "manifest": {
         "name": "mujs",
         "description": "An embeddable Javascript interpreter in C",
-        "homepage": "https://github.com/ccxvii/mujs",
+        "homepage": "https://codeberg.org/ccxvii/mujs",
         "license": "ISC",
         "dependencies": [
           {
@@ -66131,13 +66179,12 @@
             "host": true
           }
         ],
-        "version": "1.3.7"
+        "version": "1.3.8"
       },
       "files": [
         "CMakeLists.txt",
         "mujs.pc",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -66697,7 +66744,7 @@
             "host": true
           }
         ],
-        "version": "1.7.1"
+        "version": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -71528,7 +71575,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 4,
+        "port-version": 5,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -72054,6 +72101,7 @@
         "0019-opencl-kernel.patch",
         "0020-fix-narrow-filesystem.diff",
         "0021-fix-qt-gen-def.patch",
+        "0022-fix-miss-exception-include.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -80185,6 +80233,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
+        "port-version": 1,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80334,6 +80383,7 @@
         "patches/create_cmake.patch",
         "patches/egl.patch",
         "patches/fix_angle.patch",
+        "patches/macos26-opengl.patch",
         "patches/mingw9.patch",
         "patches/mysql-configure.patch",
         "patches/mysql_plugin_include.patch",
@@ -84227,7 +84277,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -84531,7 +84581,7 @@
             "host": true
           }
         ],
-        "version": "8.89"
+        "version": "8.90"
       },
       "files": [
         "portfile.cmake",
@@ -85755,6 +85805,33 @@
       "files": [
         "portfile.cmake",
         "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rewolf-wow64ext",
+      "manifest": {
+        "name": "rewolf-wow64ext",
+        "description": "Helper library for x86 programs that runs under WOW64 layer on x64 versions of Microsoft Windows operating systems.",
+        "homepage": "https://github.com/rwfpl/rewolf-wow64ext/",
+        "license": "LGPL-3.0-or-later",
+        "supports": "windows & !mingw & x86",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0.9"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json",
+        "wow64extConfig.cmake.in"
       ]
     },
     {
@@ -97894,7 +97971,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -98141,7 +98218,7 @@
             ]
           }
         },
-        "version": "2.21.0"
+        "version": "2.21.3"
       },
       "files": [
         "portfile.cmake",
@@ -103441,7 +103518,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.1"
       },
       "files": [
         "fix-fixup-cmake.patch",
