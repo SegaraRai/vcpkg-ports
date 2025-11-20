@@ -1,5 +1,5 @@
 {
-  "version": "a196e0a40b97343c306b9dc0044a09d8ba6afbcf",
+  "version": "159b1ef540e52bea606584ba64c72e9570efd765",
   "ports": [
     {
       "name": "3fd",
@@ -706,7 +706,7 @@
             ]
           }
         },
-        "version": "1.8.8"
+        "version": "1.8.10"
       },
       "files": [
         "portfile.cmake",
@@ -3123,8 +3123,9 @@
       "name": "atl",
       "manifest": {
         "name": "atl",
+        "port-version": 1,
         "description": "A stub package that ensures Visual Studio has Active Template Library (ATL) installed.",
-        "supports": "windows",
+        "supports": "windows & !xbox",
         "version": "0"
       },
       "files": [
@@ -3161,9 +3162,9 @@
       "name": "atlmfc",
       "manifest": {
         "name": "atlmfc",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A stub package that ensures Visual Studio has ATL/MFC installed.",
-        "supports": "windows",
+        "supports": "windows & !xbox",
         "dependencies": [
           "atl"
         ],
@@ -28651,7 +28652,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -47742,7 +47743,7 @@
             ]
           }
         },
-        "version": "3.8.2"
+        "version": "3.8.3"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -60687,7 +60688,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.699"
+        "version": "0.700"
       },
       "files": [
         "cmake-config-export.patch",
@@ -65108,7 +65109,7 @@
             ]
           }
         },
-        "version": "7.19"
+        "version": "7.20"
       },
       "files": [
         "CMakeLists.txt",
@@ -74028,7 +74029,7 @@
             ]
           }
         },
-        "version": "4.3.0"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -76606,10 +76607,9 @@
             "description": "Enable loading font face cache from files and directories"
           }
         },
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "files": [
-        "find_threads.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -85866,6 +85866,7 @@
       "name": "rewolf-wow64ext",
       "manifest": {
         "name": "rewolf-wow64ext",
+        "port-version": 1,
         "description": "Helper library for x86 programs that runs under WOW64 layer on x64 versions of Microsoft Windows operating systems.",
         "homepage": "https://github.com/rwfpl/rewolf-wow64ext/",
         "license": "LGPL-3.0-or-later",
@@ -90579,7 +90580,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.5.0"
+        "version-semver": "7.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -91517,7 +91518,7 @@
             "host": true
           }
         ],
-        "version": "5.8.4"
+        "version": "5.8.5"
       },
       "files": [
         "portfile.cmake",
@@ -96139,6 +96140,7 @@
         "name": "tinyexif",
         "description": "tiny ISO-compliant C++ EXIF and XMP parsing library for JPEG images",
         "homepage": "https://github.com/cdcseacave/TinyEXIF",
+        "license": "MIT",
         "dependencies": [
           "tinyxml2",
           {
@@ -96150,7 +96152,7 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -96475,9 +96477,10 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
+        "fix-deprecated.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -102493,10 +102496,14 @@
       "name": "wtl",
       "manifest": {
         "name": "wtl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Windows Template Library (WTL) is a C++ library for developing Windows applications and UI components.",
         "homepage": "https://sourceforge.net/projects/wtl/",
         "license": "MS-PL",
+        "supports": "windows & !xbox",
+        "dependencies": [
+          "atl"
+        ],
         "version": "10.0.10320"
       },
       "files": [
