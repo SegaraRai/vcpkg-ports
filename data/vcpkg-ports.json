@@ -1,5 +1,5 @@
 {
-  "version": "159b1ef540e52bea606584ba64c72e9570efd765",
+  "version": "cc4df03682cc82ed847f9f0d678056cf54d7c56f",
   "ports": [
     {
       "name": "3fd",
@@ -3698,7 +3698,7 @@
             "host": true
           }
         ],
-        "version": "0.12.5"
+        "version": "0.12.6"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -6566,6 +6566,7 @@
       "name": "basisu",
       "manifest": {
         "name": "basisu",
+        "port-version": 1,
         "description": "Basis Universal is a supercompressed GPU texture and video compression format that outputs a highly compressed intermediate file format (.basis) that can be quickly transcoded to a wide variety of GPU texture compression formats.",
         "homepage": "https://github.com/BinomialLLC/basis_universal",
         "license": null,
@@ -6578,11 +6579,13 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zstd"
         ],
         "version": "1.60"
       },
       "files": [
+        "devendor-zstd.diff",
         "examples.diff",
         "export-cmake-config.diff",
         "portfile.cmake",
@@ -24670,6 +24673,30 @@
       ]
     },
     {
+      "name": "dagir",
+      "manifest": {
+        "name": "dagir",
+        "description": "Header-only C++20 library for read-only external DAG views, traversal, and IR rendering",
+        "homepage": "https://github.com/Alan-Jowett/dagir",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "darknet",
       "manifest": {
         "name": "darknet",
@@ -28329,7 +28356,7 @@
             "host": true
           }
         ],
-        "version": "3.15.0"
+        "version": "3.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -33513,8 +33540,8 @@
       "name": "getopt-win32",
       "manifest": {
         "name": "getopt-win32",
-        "description": "An implementation of getopt.",
-        "homepage": "https://www.codeproject.com/Articles/157001/Full-getopt-Port-for-Unicode-and-Multibyte-Microso/",
+        "description": "Full getopt port for unicode and multibyte windows applications",
+        "homepage": "https://github.com/ludvikjerabek/getopt-win/",
         "license": "LGPL-3.0-only",
         "supports": "windows & !mingw",
         "dependencies": [
@@ -33527,11 +33554,12 @@
             "host": true
           }
         ],
-        "version": "1.1.0.20220925"
+        "version": "2.42.0"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
+        "static-output-name.diff",
+        "unofficial-getopt-win32-config.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -51515,7 +51543,7 @@
             ]
           }
         },
-        "version": "1.6.1"
+        "version": "1.7.0"
       },
       "files": [
         "dependencies.diff",
@@ -58673,6 +58701,7 @@
       "name": "libzim",
       "manifest": {
         "name": "libzim",
+        "port-version": 1,
         "description": "The Libzim is the reference implementation for the ZIM file format. It's a software library to read and write ZIM files on many systems and architectures. More information about the ZIM format and the openZIM project at https://openzim.org/.",
         "homepage": "https://github.com/openzim/libzim",
         "license": "GPL-2.0-or-later",
@@ -58700,6 +58729,7 @@
         "cross-builds.diff",
         "dllexport.diff",
         "portfile.cmake",
+        "remove-sortpp-pass.diff",
         "subdirs.diff",
         "vcpkg.json"
       ]
@@ -67246,6 +67276,32 @@
           }
         ],
         "version": "1.0.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "neko-threadpool",
+      "manifest": {
+        "name": "neko-threadpool",
+        "description": "An easy-to-use and efficient C++ 20 thread pool that supports task priorities and task submission to specific threads.",
+        "homepage": "https://github.com/moehoshio/NekoThreadPool",
+        "license": "MIT OR Apache-2.0",
+        "dependencies": [
+          "neko-schema",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -84357,7 +84413,7 @@
             "host": true
           }
         ],
-        "version": "11.0.0"
+        "version": "11.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -91112,11 +91168,13 @@
       "name": "slick-logger",
       "manifest": {
         "name": "slick-logger",
+        "port-version": 1,
         "description": "A high-performance, cross-platform header-only logging library for C++20 using a multi-producer, multi-consumer ring buffer with multi-sink support and log rotation capabilities",
         "homepage": "https://github.com/SlickQuant/slick_logger",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          "slick-queue",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91130,6 +91188,7 @@
       },
       "files": [
         "portfile.cmake",
+        "slick-queue.patch",
         "vcpkg.json"
       ]
     },
