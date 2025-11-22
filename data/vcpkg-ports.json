@@ -1,5 +1,5 @@
 {
-  "version": "cc4df03682cc82ed847f9f0d678056cf54d7c56f",
+  "version": "2ad7bd06128280e02bfe02361d8ffd7d465cfcf0",
   "ports": [
     {
       "name": "3fd",
@@ -3643,7 +3643,7 @@
             "host": true
           }
         ],
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -3672,7 +3672,7 @@
             "host": true
           }
         ],
-        "version": "0.9.10"
+        "version": "0.9.11"
       },
       "files": [
         "portfile.cmake",
@@ -48811,11 +48811,10 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.23.2"
+        "version-semver": "0.24.0"
       },
       "files": [
         "dependencies.diff",
-        "disable-pdb.patch",
         "portfile.cmake",
         "uwp-warnings.patch",
         "vcpkg.json"
@@ -67253,6 +67252,32 @@
         "portfile.cmake",
         "quicklib-depheaders.patch",
         "sha_manifest.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "neko-event",
+      "manifest": {
+        "name": "neko-event",
+        "description": "A modern easy to use type-safe and high-performance event handling system for C++ ",
+        "homepage": "https://github.com/moehoshio/NekoEvent",
+        "license": "MIT OR Apache-2.0",
+        "dependencies": [
+          "neko-schema",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
