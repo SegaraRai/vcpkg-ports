@@ -1,5 +1,5 @@
 {
-  "version": "edffab1bcd2cb5b8c17d6ba34d5651ea0bf82979",
+  "version": "1d611efb49276c65d69fb6d010c2aaaf039322b0",
   "ports": [
     {
       "name": "3fd",
@@ -67283,6 +67283,46 @@
       ]
     },
     {
+      "name": "neko-function",
+      "manifest": {
+        "name": "neko-function",
+        "description": "A comprehensive modern C++ utility library that provides practical functions for common programming tasks.",
+        "homepage": "https://github.com/moehoshio/NekoFunction",
+        "license": "MIT OR Apache-2.0",
+        "dependencies": [
+          "neko-schema",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "archive": {
+            "description": "Enable archive support",
+            "dependencies": [
+              "minizip-ng"
+            ]
+          },
+          "hash": {
+            "description": "Enable hash support",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
+        "version": "1.0.7"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "neko-schema",
       "manifest": {
         "name": "neko-schema",
@@ -67823,7 +67863,7 @@
             "host": true
           }
         ],
-        "version": "1.12.0"
+        "version": "1.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -67915,7 +67955,7 @@
             ]
           }
         },
-        "version": "1.17.0"
+        "version": "1.18.0"
       },
       "files": [
         "portfile.cmake",
@@ -69974,7 +70014,7 @@
       "name": "onnx-optimizer",
       "manifest": {
         "name": "onnx-optimizer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Actively maintained ONNX Optimizer",
         "homepage": "https://github.com/onnx/optimizer",
         "license": "Apache-2.0",
@@ -69993,6 +70033,7 @@
       },
       "files": [
         "fix-cmakelists.patch",
+        "fix-pr-201.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70200,7 +70241,7 @@
             "host": true
           }
         ],
-        "version": "0.19.0"
+        "version": "0.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -79775,7 +79816,7 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -79931,9 +79972,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81542,9 +81584,10 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81583,9 +81626,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81665,9 +81709,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "stack-walker-arm64.patch",
         "vcpkg.json",
@@ -81678,7 +81723,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -81789,6 +81833,7 @@
             "name": "securetransport",
             "platform": "ios"
           },
+          "sessionmanager",
           "sql",
           "sql-psql",
           "sql-sqlite",
@@ -81797,6 +81842,10 @@
           "widgets",
           {
             "name": "xcb",
+            "platform": "linux"
+          },
+          {
+            "name": "xcb-sm",
             "platform": "linux"
           },
           {
@@ -82112,6 +82161,18 @@
             "description": "Enable Secure Transport",
             "supports": "ios | osx"
           },
+          "sessionmanager": {
+            "description": "Sessionmanager",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
+              }
+            ]
+          },
           "shared-mime-info": {
             "description": "Use GPL licensed shared-mime-info port from freedesktop.org",
             "dependencies": [
@@ -82216,6 +82277,19 @@
               "vulkan"
             ]
           },
+          "wayland": {
+            "description": "Enable Wayland platform plugin",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "gui"
+                ]
+              }
+            ],
+            "supports": "linux | osx"
+          },
           "widgets": {
             "description": "Qt Widgets",
             "dependencies": [
@@ -82238,6 +82312,19 @@
                   "thread",
                   "xkbcommon-x11",
                   "xlib"
+                ]
+              }
+            ]
+          },
+          "xcb-sm": {
+            "description": "xcb-sm",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "sessionmanager",
+                  "xcb"
                 ]
               }
             ]
@@ -82301,7 +82388,7 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "GLIB2-static.patch",
@@ -82310,7 +82397,6 @@
         "clang-cl_source_location.patch",
         "cmake/qt_install_copyright.cmake",
         "cmake/qt_install_submodule.cmake",
-        "cmake/qt_port_data.cmake",
         "cmake/qt_port_details.cmake",
         "config_install.patch",
         "dont_force_cmakecache_latest.patch",
@@ -82326,8 +82412,8 @@
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
-        "macos26-opengl.patch",
         "moltenvk.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "qmake.debug.bat",
         "qt.conf.in",
@@ -82375,9 +82461,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82398,9 +82485,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82430,9 +82518,10 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82458,9 +82547,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82493,9 +82583,10 @@
           },
           "qtsvg"
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82518,9 +82609,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82538,9 +82630,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82571,9 +82664,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82604,9 +82698,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "protoc-host.patch",
         "vcpkg.json"
@@ -82629,9 +82724,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82680,10 +82776,11 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "no_target_promotion_latest.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82728,9 +82825,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "requirements_minimal.txt",
         "vcpkg.json"
@@ -82840,9 +82938,10 @@
             "platform": "android"
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82879,9 +82978,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82911,9 +83011,10 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -82934,9 +83035,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83040,13 +83142,13 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
-        "9c33ede.diff",
+        "853b15cc.diff",
         "ffmpeg-compile-def.patch",
         "ffmpeg.patch",
-        "fix_avfoundation_target.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "remove-static-ssl-stub.patch",
         "static_find_modules.patch",
@@ -83069,9 +83171,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83146,10 +83249,11 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "fix-build.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83184,10 +83288,11 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "devendor-poly2tri.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83231,11 +83336,12 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
         "android-openxr-vulkan.diff",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83253,9 +83359,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83307,9 +83414,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83328,9 +83436,10 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83378,9 +83487,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83417,9 +83527,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83460,9 +83571,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83492,9 +83604,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83513,9 +83626,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83541,9 +83655,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83574,9 +83689,10 @@
             "default-features": false
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83597,9 +83713,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83724,10 +83841,11 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "devendor-litehtml.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json",
         "windeployqt.debug.bat"
@@ -83753,9 +83871,10 @@
             ]
           }
         ],
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83795,10 +83914,11 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "hunspell_include_path_fix.patch",
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83816,7 +83936,8 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "gui"
+              "gui",
+              "wayland"
             ]
           }
         ],
@@ -83831,9 +83952,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83862,9 +83984,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -83873,7 +83996,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 3,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84108,7 +84230,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
         "clang-cl.patch",
@@ -84116,11 +84238,11 @@
         "disable-host-pkgconfig.diff",
         "fix-error2275-2672.patch",
         "include-dir-order.diff",
-        "nested-name-fix.patch",
         "osx-sdk-info.diff",
         "pdf-system-libjpeg.diff",
         "pdf-system-libpng.diff",
         "pkg-config.diff",
+        "port.data.cmake",
         "portfile.cmake",
         "rpath.diff",
         "vcpkg.json"
@@ -84153,9 +84275,10 @@
             ]
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84195,9 +84318,10 @@
             "supports": "!static"
           }
         },
-        "version": "6.9.1"
+        "version": "6.9.2"
       },
       "files": [
+        "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -95069,7 +95193,7 @@
             "host": true
           }
         ],
-        "version": "3.10.0"
+        "version": "3.11.0"
       },
       "files": [
         "portfile.cmake",
