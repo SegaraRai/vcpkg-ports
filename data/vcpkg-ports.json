@@ -1,5 +1,5 @@
 {
-  "version": "1d611efb49276c65d69fb6d010c2aaaf039322b0",
+  "version": "9aee6e968f51e15ee93606f064691d8f6d228190",
   "ports": [
     {
       "name": "3fd",
@@ -20046,7 +20046,7 @@
             ]
           }
         },
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -31196,10 +31196,9 @@
             ]
           }
         },
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
-        "cmake-config-glib.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -34402,7 +34401,7 @@
             ]
           }
         },
-        "version": "6.0.3"
+        "version": "6.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -67863,7 +67862,7 @@
             "host": true
           }
         ],
-        "version": "1.13.0"
+        "version": "1.13.1"
       },
       "files": [
         "portfile.cmake",
@@ -69981,7 +69980,6 @@
       "name": "onnx",
       "manifest": {
         "name": "onnx",
-        "port-version": 2,
         "description": "Open standard for machine learning interoperability",
         "homepage": "https://onnx.ai",
         "license": "Apache-2.0",
@@ -70000,12 +69998,11 @@
             "host": true
           }
         ],
-        "version-semver": "1.17.0"
+        "version-semver": "1.19.0"
       },
       "files": [
         "fix-cmakelists.patch",
-        "fix-cxx_standard.patch",
-        "fix-dependency-protobuf.patch",
+        "fix-pr-7390.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -71748,7 +71745,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 6,
+        "port-version": 7,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -73460,7 +73457,7 @@
             ]
           }
         },
-        "version-semver": "1.23.0"
+        "version-semver": "1.24.0"
       },
       "files": [
         "fix-target_link.patch",
@@ -73475,7 +73472,7 @@
         "description": "This port manages the opentelemetry-cpp-version that will be used for opentelemetry-cpp",
         "homepage": "https://github.com/open-telemetry/opentelemetry-cpp-contrib",
         "license": "Apache-2.0",
-        "version-date": "2025-09-26"
+        "version-date": "2025-11-24"
       },
       "files": [
         "portfile.cmake",
@@ -74868,7 +74865,6 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 2,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-or-later",
@@ -74926,10 +74922,11 @@
             "supports": "!static"
           }
         },
-        "version": "1.56.1"
+        "version": "1.56.4"
       },
       "files": [
         "portfile.cmake",
+        "relax-gi-requirement.diff",
         "vcpkg.json"
       ]
     },
@@ -77705,7 +77702,7 @@
       "name": "portaudio",
       "manifest": {
         "name": "portaudio",
-        "port-version": 7,
+        "port-version": 8,
         "description": "PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.",
         "homepage": "https://www.portaudio.com",
         "license": "MIT",
@@ -77727,6 +77724,7 @@
         "version": "19.7"
       },
       "files": [
+        "fix-guid-linker-errors.patch",
         "jack.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -93846,6 +93844,7 @@
       "name": "stronk",
       "manifest": {
         "name": "stronk",
+        "port-version": 1,
         "description": "An easy to customize, strong type library with built in support for unit-like behavior",
         "homepage": "https://github.com/twig-energy/stronk",
         "license": "MIT",
@@ -102370,7 +102369,6 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
@@ -102393,9 +102391,6 @@
           "asio": {
             "description": "Enable asio support"
           },
-          "curve25519-blinding": {
-            "description": "Enables callback to provide TLS keys for debugging"
-          },
           "dtls": {
             "description": "DTLS support"
           },
@@ -102406,7 +102401,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.8.2"
+        "version": "5.8.4"
       },
       "files": [
         "portfile.cmake",
