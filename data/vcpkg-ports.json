@@ -1,5 +1,5 @@
 {
-  "version": "9aee6e968f51e15ee93606f064691d8f6d228190",
+  "version": "dac47c6016845bf418aad6ea2165d8cb6632ec53",
   "ports": [
     {
       "name": "3fd",
@@ -27002,6 +27002,7 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
+        "port-version": 1,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": null,
@@ -34535,7 +34536,6 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 2,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -34573,7 +34573,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.84.2"
+        "version": "2.86.2"
       },
       "files": [
         "libintl.patch",
@@ -35114,7 +35114,6 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "port-version": 1,
         "description": [
           "A middleware layer between C libraries (using GObject) and language bindings.",
           "Building (with) gobject-introspection is based on dynamic library linkage. Static builds of the core feature set are supported only for CI purposes.",
@@ -35147,11 +35146,11 @@
             "supports": "!static"
           }
         },
-        "version": "1.82.0"
+        "version": "1.86.0"
       },
       "files": [
         "0001-g-ir-tool-template.in.patch",
-        "0004-fastcall.patch",
+        "gir-scanner-runtime.diff",
         "portfile.cmake",
         "vcpkg-port-config.cmake",
         "vcpkg.json"
@@ -53914,7 +53913,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.50"
+        "version": "1.6.51"
       },
       "files": [
         "cmake.patch",
@@ -67313,7 +67312,34 @@
             ]
           }
         },
-        "version": "1.0.7"
+        "version": "1.0.11"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "neko-log",
+      "manifest": {
+        "name": "neko-log",
+        "description": "An easy-to-use, modern, lightweight, and efficient C++20 logging library",
+        "homepage": "https://github.com/moehoshio/NekoLog",
+        "license": "MIT OR Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "neko-schema",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -67339,7 +67365,35 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.1.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "neko-system",
+      "manifest": {
+        "name": "neko-system",
+        "description": "A cross-platform C++20 system information library providing memory information, platform detection, and system utilities.",
+        "homepage": "https://github.com/moehoshio/NekoSystem",
+        "license": "MIT OR Apache-2.0",
+        "supports": "windows | linux | osx",
+        "dependencies": [
+          "neko-function",
+          "neko-schema",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -71745,7 +71799,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 7,
+        "port-version": 8,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -71894,6 +71948,14 @@
                 "name": "flatbuffers",
                 "host": true,
                 "default-features": false
+              },
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "intrinsics"
+                ],
+                "platform": "arm64"
               },
               "protobuf"
             ],
@@ -78208,7 +78270,7 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -78240,6 +78302,7 @@
       },
       "files": [
         "fix-abseil.patch",
+        "fix-constinit-with-clang-cl.patch",
         "fix-default-proto-file-path.patch",
         "fix-install-dirs.patch",
         "fix-mingw-tail-call.patch",
@@ -85353,10 +85416,11 @@
           },
           "zlib"
         ],
-        "version": "14.10.4"
+        "version": "14.14.0"
       },
       "files": [
         "UWP_index_set.patch",
+        "cstdlib.diff",
         "fix-zlib.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -85870,7 +85934,7 @@
             "host": true
           }
         ],
-        "version": "0.26.2"
+        "version": "0.27.2"
       },
       "files": [
         "portfile.cmake",
