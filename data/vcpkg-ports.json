@@ -1,5 +1,5 @@
 {
-  "version": "dac47c6016845bf418aad6ea2165d8cb6632ec53",
+  "version": "ae8fa5ae5e6162a88e412618245809ed2aa579d9",
   "ports": [
     {
       "name": "3fd",
@@ -31493,7 +31493,6 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 4,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -31510,10 +31509,6 @@
             "host": true
           },
           {
-            "name": "libiconv",
-            "platform": "!windows"
-          },
-          {
             "name": "libuuid",
             "platform": "!osx & !windows"
           },
@@ -31526,7 +31521,19 @@
             "host": true
           }
         ],
+        "default-features": [
+          {
+            "name": "iconv",
+            "platform": "!windows"
+          }
+        ],
         "features": {
+          "iconv": {
+            "description": "Iconv support",
+            "dependencies": [
+              "libiconv"
+            ]
+          },
           "nls": {
             "description": "Native languages support",
             "dependencies": [
@@ -31549,12 +31556,13 @@
             "supports": "!emscripten"
           }
         },
-        "version": "2.15.0"
+        "version": "2.17.1"
       },
       "files": [
-        "emscripten.diff",
+        "dllexport.diff",
         "fix-wasm-shared-memory-atomics.patch",
         "libgetopt.patch",
+        "libintl.diff",
         "no-etc-symlinks.patch",
         "portfile.cmake",
         "usage",
@@ -53965,11 +53973,11 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
-        "supports": "!uwp",
+        "supports": "!uwp & !emscripten",
         "dependencies": [
           {
             "name": "libpq",
@@ -92859,6 +92867,12 @@
           }
         ],
         "features": {
+          "duckdb": {
+            "description": "Enable DuckDB support",
+            "dependencies": [
+              "duckdb"
+            ]
+          },
           "mariadb": {
             "description": "Enable MySQL/MariaDB support",
             "dependencies": [
@@ -92878,7 +92892,7 @@
             ]
           }
         },
-        "version": "0.4.0"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -105018,7 +105032,7 @@
             "description": "ZooKeeper with the sync API"
           }
         },
-        "version": "3.8.4"
+        "version": "3.8.5"
       },
       "files": [
         "cmake.patch",
