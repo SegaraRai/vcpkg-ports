@@ -1,5 +1,5 @@
 {
-  "version": "ae8fa5ae5e6162a88e412618245809ed2aa579d9",
+  "version": "1ee2e9d2920ba96be0b02c09915dd3c6d17fb50e",
   "ports": [
     {
       "name": "3fd",
@@ -25831,6 +25831,26 @@
           }
         ],
         "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "directfb2",
+      "manifest": {
+        "name": "directfb2",
+        "description": "A graphics library designed with embedded systems in mind. Clean and drop-in successor to DirectFB",
+        "homepage": "https://github.com/directfb2/DirectFB2",
+        "supports": "linux & !android",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version-date": "2025-11-25"
       },
       "files": [
         "portfile.cmake",
@@ -101229,7 +101249,7 @@
       "name": "vulkan-loader",
       "manifest": {
         "name": "vulkan-loader",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Vulkan Development Tools",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
         "license": null,
@@ -101247,7 +101267,10 @@
         ],
         "features": {
           "directfb": {
-            "description": "Build DirectFB WSI support"
+            "description": "Build DirectFB WSI support",
+            "dependencies": [
+              "directfb2"
+            ]
           },
           "wayland": {
             "description": "Build Wayland WSI support"
