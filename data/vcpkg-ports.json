@@ -1,5 +1,5 @@
 {
-  "version": "5bf0c55239da398b8c6f450818c9e28d36bf9966",
+  "version": "c39217bc52e4917e17971cc026bb861f40846264",
   "ports": [
     {
       "name": "3fd",
@@ -219,6 +219,7 @@
       "name": "abumq-ripe",
       "manifest": {
         "name": "abumq-ripe",
+        "port-version": 1,
         "description": "Lightweight cryptography library wrapper",
         "homepage": "https://github.com/abumq/ripe",
         "license": "Apache-2.0",
@@ -245,6 +246,7 @@
       "files": [
         "cmake-config-exports.patch",
         "devendoring.patch",
+        "fix-cryptopp-pem-api.patch",
         "portfile.cmake",
         "unofficial-ripe-config.cmake",
         "vcpkg.json"
@@ -741,7 +743,6 @@
       "name": "aliyun-oss-cpp-sdk",
       "manifest": {
         "name": "aliyun-oss-cpp-sdk",
-        "port-version": 4,
         "description": "Alibaba Cloud Object Storage Service (OSS) is a cloud storage service provided by Alibaba Cloud, featuring massive capacity, security, a low cost, and high reliability.",
         "homepage": "https://github.com/aliyun/aliyun-oss-cpp-sdk",
         "license": "Apache-2.0",
@@ -761,7 +762,7 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.10.1"
       },
       "files": [
         "0001-dependency-and-targets.patch",
@@ -900,7 +901,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -947,12 +948,11 @@
       "name": "amd-amf",
       "manifest": {
         "name": "amd-amf",
-        "port-version": 1,
         "description": "AMD Advanced Media Framework headers",
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
         "supports": "!osx",
-        "version": "1.4.36"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -1644,7 +1644,6 @@
       "name": "aravis",
       "manifest": {
         "name": "aravis",
-        "port-version": 1,
         "description": " A vision library for genicam based cameras.",
         "homepage": "https://github.com/AravisProject/aravis",
         "license": "LGPL-2.0-or-later",
@@ -1685,7 +1684,7 @@
             ]
           }
         },
-        "version": "0.8.34"
+        "version": "0.8.35"
       },
       "files": [
         "portfile.cmake",
@@ -1750,7 +1749,7 @@
             ]
           }
         },
-        "version": "1.3.0"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -2704,7 +2703,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-10-12"
+        "version-date": "2025-10-13"
       },
       "files": [
         "portfile.cmake",
@@ -2916,7 +2915,7 @@
             ]
           }
         },
-        "version": "10.2.5"
+        "version": "10.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -3672,7 +3671,7 @@
             "host": true
           }
         ],
-        "version": "0.9.11"
+        "version": "0.9.13"
       },
       "files": [
         "portfile.cmake",
@@ -3871,7 +3870,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.11.2"
       },
       "files": [
         "portfile.cmake",
@@ -6501,7 +6500,7 @@
           },
           "zlib"
         ],
-        "version": "3.23.0"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -6980,7 +6979,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -7334,7 +7333,7 @@
       "name": "blas",
       "manifest": {
         "name": "blas",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Metapackage for packages which provide BLAS",
         "license": null,
         "dependencies": [
@@ -7647,12 +7646,15 @@
       "name": "boinc",
       "manifest": {
         "name": "boinc",
-        "port-version": 1,
         "description": "Open-source software for volunteer computing and grid computing.",
         "homepage": "https://boinc.berkeley.edu/",
         "license": "LGPL-3.0-or-later",
         "supports": "!(windows & arm) & !uwp & !xbox",
         "dependencies": [
+          {
+            "name": "libzip",
+            "default-features": false
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -7663,12 +7665,10 @@
             "host": true
           }
         ],
-        "version": "8.2.5"
+        "version": "8.2.8"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-android-build.patch",
-        "fix-mingw-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19203,23 +19203,13 @@
         "description": "Metapackage for packages which provide CBLAS",
         "license": null,
         "dependencies": [
-          {
-            "name": "lapack-reference",
-            "features": [
-              "cblas"
-            ],
-            "platform": "!osx & !ios & !uwp & !(windows & arm) & windows & static"
-          },
-          {
-            "name": "openblas",
-            "platform": "!osx & !ios & (uwp | (windows & arm) | !windows | !static)"
-          },
+          "blas",
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2024-03-19"
+        "version-date": "2025-10-29"
       },
       "files": [
         "cblas.pc.in",
@@ -20977,7 +20967,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.10.1"
+        "version": "3.12.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -22130,7 +22120,7 @@
             ]
           }
         },
-        "version": "0.27.0"
+        "version": "0.28.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23080,7 +23070,7 @@
             ]
           }
         },
-        "version-semver": "1.13.0"
+        "version-semver": "1.14.1"
       },
       "files": [
         "disable_werror.patch",
@@ -23476,7 +23466,6 @@
       "name": "cryptopp",
       "manifest": {
         "name": "cryptopp",
-        "port-version": 2,
         "description": "Crypto++ is a free C++ class library of cryptographic schemes.",
         "homepage": "https://github.com/weidai11/cryptopp",
         "license": "BSL-1.0",
@@ -23495,10 +23484,9 @@
             "description": "Crypto++ with PEM pack"
           }
         },
-        "version": "8.9.0"
+        "version": "2025-12-01"
       },
       "files": [
-        "cmake-support-pem-pack.patch",
         "cryptopp.patch",
         "patch.patch",
         "portfile.cmake",
@@ -25580,12 +25568,13 @@
         "license": "Apache-2.0",
         "supports": "(osx & arm64) | (linux & arm64)",
         "dependencies": [
+          "libpcap",
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "0.1.0"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -33760,7 +33749,6 @@
       "name": "ggml",
       "manifest": {
         "name": "ggml",
-        "port-version": 1,
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
@@ -33824,7 +33812,7 @@
             ]
           }
         },
-        "version": "0.9.4"
+        "version-date": "2025-11-17"
       },
       "files": [
         "cmake-config.diff",
@@ -39118,7 +39106,7 @@
             "host": true
           }
         ],
-        "version": "25.4.1"
+        "version": "25.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -39898,7 +39886,7 @@
             "host": true
           }
         ],
-        "version": "3.12.1"
+        "version": "3.15.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -40802,7 +40790,7 @@
             "host": true
           }
         ],
-        "version": "2.9.0"
+        "version": "2.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -47266,11 +47254,11 @@
             "host": true
           }
         ],
-        "version": "1.20.5"
+        "version": "1.24.3"
       },
       "files": [
-        "patches/spdlog_include.patch",
         "portfile.cmake",
+        "spdlog_include.patch",
         "vcpkg.json"
       ]
     },
@@ -47963,7 +47951,7 @@
             "host": true
           }
         ],
-        "version": "7.8.4"
+        "version": "7.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -52883,7 +52871,7 @@
           },
           "zlib"
         ],
-        "version": "1.3.2"
+        "version": "1.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -53828,7 +53816,7 @@
             "host": true
           }
         ],
-        "version": "9.0.18"
+        "version": "9.0.19"
       },
       "files": [
         "disable-werror.patch",
@@ -54508,11 +54496,11 @@
       "name": "librabbitmq",
       "manifest": {
         "name": "librabbitmq",
+        "port-version": 1,
         "description": "A C-language AMQP client library for use with v2.0+ of the RabbitMQ broker.",
         "homepage": "https://github.com/alanxz/rabbitmq-c",
         "license": "MIT",
         "dependencies": [
-          "openssl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -54522,6 +54510,14 @@
             "host": true
           }
         ],
+        "features": {
+          "ssl": {
+            "description": "Enable SSL support",
+            "dependencies": [
+              "openssl"
+            ]
+          }
+        },
         "version": "0.15.0"
       },
       "files": [
@@ -54653,7 +54649,7 @@
             ]
           }
         },
-        "version": "2.12.0"
+        "version": "2.12.1"
       },
       "files": [
         "fix_oauthbearer_check.patch",
@@ -56850,6 +56846,52 @@
       ]
     },
     {
+      "name": "libupnp",
+      "manifest": {
+        "name": "libupnp",
+        "description": "libupnp: Build UPnP-compliant control points, devices, and bridges on several operating systems.",
+        "homepage": "https://github.com/pupnp/pupnp/",
+        "documentation": "https://github.com/pupnp/pupnp/",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          "pthreads",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "client-api": {
+            "description": "Enable control point code (client)"
+          },
+          "ipv6": {
+            "description": "Enable IPv6 support"
+          },
+          "ssl": {
+            "description": "OpenSSL support for encrypted connections",
+            "dependencies": [
+              "openssl"
+            ]
+          },
+          "webserver": {
+            "description": "Enable integrated webserver"
+          }
+        },
+        "version": "1.14.25"
+      },
+      "files": [
+        "fix-pthreads4w-targets.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "liburcu",
       "manifest": {
         "name": "liburcu",
@@ -57637,7 +57679,7 @@
           },
           "zlib"
         ],
-        "version-semver": "4.4.1"
+        "version-semver": "4.5.0"
       },
       "files": [
         "export-include-path.patch",
@@ -59270,7 +59312,7 @@
             "description": "Build tools"
           }
         },
-        "version": "6550"
+        "version": "7146"
       },
       "files": [
         "cmake-config.diff",
@@ -60742,7 +60784,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.700"
+        "version": "0.701"
       },
       "files": [
         "cmake-config-export.patch",
@@ -61012,7 +61054,7 @@
         "description": "Fast In-Memory Data Compression Algorithm (inline C/C++)",
         "homepage": "https://github.com/avaneev/lzav",
         "license": "MIT",
-        "version": "4.0"
+        "version": "5.6"
       },
       "files": [
         "portfile.cmake",
@@ -65883,7 +65925,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.12.1"
+        "version": "1.13"
       },
       "files": [
         "portfile.cmake",
@@ -67375,6 +67417,46 @@
       ]
     },
     {
+      "name": "neko-network",
+      "manifest": {
+        "name": "neko-network",
+        "description": "Neko Network is a modern, easy-to-use, and efficient C++20 network library built on top of libcurl.",
+        "homepage": "https://github.com/moehoshio/NekoNetwork",
+        "license": "MIT OR Apache-2.0",
+        "dependencies": [
+          "curl",
+          "neko-function",
+          "neko-schema",
+          "neko-system",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          "nlog"
+        ],
+        "features": {
+          "nlog": {
+            "description": "Use nlog as the default logger.",
+            "dependencies": [
+              "neko-log"
+            ]
+          }
+        },
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "neko-schema",
       "manifest": {
         "name": "neko-schema",
@@ -68327,7 +68409,7 @@
             "host": true
           }
         ],
-        "version": "8.3.1"
+        "version": "8.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -68356,7 +68438,7 @@
             "platform": "windows"
           }
         ],
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -72585,7 +72667,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -72725,6 +72807,7 @@
         "fix-static-ffmpeg.patch",
         "imath-version-guard.patch",
         "portfile.cmake",
+        "remove-agl-framework.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -74296,10 +74379,9 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.5.3"
       },
       "files": [
-        "export-include-dir.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78186,7 +78268,7 @@
             ]
           }
         },
-        "version": "4.1.4"
+        "version": "4.1.6"
       },
       "files": [
         "macos-pkgconfig.patch",
@@ -79695,14 +79777,6 @@
           },
           {
             "name": "qtapplicationmanager",
-            "default-features": false,
-            "features": [
-              "systemd-watchdog"
-            ],
-            "platform": "linux"
-          },
-          {
-            "name": "qtapplicationmanager",
             "features": [
               "installer",
               "package-server"
@@ -79904,7 +79978,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -80060,7 +80134,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -81672,7 +81746,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -81714,7 +81788,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -81789,15 +81863,9 @@
               },
               "qthttpserver"
             ]
-          },
-          "systemd-watchdog": {
-            "description": "Enable the systemd-watchdog component.",
-            "dependencies": [
-              "libsystemd"
-            ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82476,7 +82544,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "GLIB2-static.patch",
@@ -82549,7 +82617,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82573,7 +82641,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82606,7 +82674,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82635,7 +82703,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82671,7 +82739,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82697,7 +82765,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82718,7 +82786,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82752,7 +82820,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82786,7 +82854,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82812,7 +82880,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -82864,7 +82932,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -82913,7 +82981,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83026,7 +83094,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83066,7 +83134,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83099,7 +83167,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83123,7 +83191,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83230,10 +83298,9 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
-        "853b15cc.diff",
         "ffmpeg-compile-def.patch",
         "ffmpeg.patch",
         "port.data.cmake",
@@ -83259,7 +83326,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83337,7 +83404,7 @@
             "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "fix-build.patch",
@@ -83376,7 +83443,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -83424,7 +83491,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -83447,7 +83514,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83502,7 +83569,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83524,7 +83591,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83575,7 +83642,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83615,7 +83682,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83659,7 +83726,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83692,7 +83759,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83714,7 +83781,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83743,7 +83810,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83777,7 +83844,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83801,7 +83868,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -83929,7 +83996,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -83959,7 +84026,7 @@
             ]
           }
         ],
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -84002,7 +84069,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -84040,7 +84107,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -84072,7 +84139,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -84318,7 +84385,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "clang-cl.patch",
@@ -84363,7 +84430,7 @@
             ]
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -84406,7 +84473,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.9.2"
+        "version": "6.9.3"
       },
       "files": [
         "port.data.cmake",
@@ -86629,7 +86696,7 @@
             "host": true
           }
         ],
-        "version": "4.4.2"
+        "version": "4.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -86978,7 +87045,7 @@
         "description": "rioki's signal library",
         "homepage": "https://github.com/rioki/rsig",
         "license": "MIT",
-        "version-semver": "0.1.1"
+        "version-semver": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -87802,7 +87869,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.5.27"
+        "version": "1.6.1"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -89836,7 +89903,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.12.1"
+        "version": "0.12.2"
       },
       "files": [
         "fix-cmake4.patch",
@@ -90259,7 +90326,7 @@
             "host": true
           }
         ],
-        "version": "2025.14.3"
+        "version": "2025.22.1"
       },
       "files": [
         "portfile.cmake",
@@ -90875,7 +90942,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "7.6.0"
+        "version-semver": "7.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -93084,7 +93151,7 @@
             ]
           }
         },
-        "version": "3.51.0"
+        "version": "3.51.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -93941,7 +94008,6 @@
       "name": "stronk",
       "manifest": {
         "name": "stronk",
-        "port-version": 1,
         "description": "An easy to customize, strong type library with built in support for unit-like behavior",
         "homepage": "https://github.com/twig-energy/stronk",
         "license": "MIT",
@@ -93959,7 +94025,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.13.3"
+        "version-semver": "0.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -98639,7 +98705,7 @@
             "supports": "!ios"
           }
         },
-        "version": "25.8"
+        "version": "25.11"
       },
       "files": [
         "003-fix-dep.patch",
@@ -98648,7 +98714,6 @@
         "008-fix_clang8_compiler_error.patch",
         "009-vcpkg_install_folder_conventions.patch",
         "010-cmake_export_plugin_as_modules.patch",
-        "013-openimageio-3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -98822,7 +98887,7 @@
             "host": true
           }
         ],
-        "version": "2.11.1"
+        "version": "2.11.2"
       },
       "files": [
         "portfile.cmake",
