@@ -1,5 +1,5 @@
 {
-  "version": "c39217bc52e4917e17971cc026bb861f40846264",
+  "version": "b812b24fc5ddebc93e9cccc8c55a632cbb35983d",
   "ports": [
     {
       "name": "3fd",
@@ -3642,7 +3642,7 @@
             "host": true
           }
         ],
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -3778,7 +3778,7 @@
             "host": true
           }
         ],
-        "version": "0.10.6"
+        "version": "0.10.7"
       },
       "files": [
         "portfile.cmake",
@@ -3958,10 +3958,9 @@
             "host": true
           }
         ],
-        "version": "0.35.1"
+        "version": "0.35.3"
       },
       "files": [
-        "no-werror.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -7457,7 +7456,7 @@
             "host": true
           }
         ],
-        "version": "2.8.3"
+        "version": "2.13"
       },
       "files": [
         "portfile.cmake",
@@ -23804,7 +23803,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -24984,7 +24983,7 @@
         "description": "C++ reimplementation of VIS's datraw library.",
         "homepage": "https://github.com/UniStuttgart-VISUS/datraw",
         "license": "MIT",
-        "version": "1.0.9"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -28914,7 +28913,7 @@
             "host": true
           }
         ],
-        "version": "2.4.1"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -29136,7 +29135,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.4.1"
       },
       "files": [
         "disable-werror.patch",
@@ -30907,7 +30906,7 @@
             ]
           }
         },
-        "version": "0.0.4"
+        "version": "0.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -31263,6 +31262,7 @@
         "name": "fmi4cpp",
         "description": "FMI 2.0 implementation written in modern C++",
         "homepage": "https://github.com/NTNU-IHB/FMI4cpp",
+        "license": "MIT",
         "dependencies": [
           "boost-property-tree",
           {
@@ -31280,7 +31280,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -41731,7 +41731,7 @@
             "supports": "!windows & !osx"
           }
         },
-        "version": "14.0.0"
+        "version": "14.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -48388,7 +48388,7 @@
         "homepage": "https://github.com/libcgroup/libcgroup",
         "license": "LGPL-2.1-only",
         "supports": "linux",
-        "version": "3.1.0"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -64398,7 +64398,7 @@
             "host": true
           }
         ],
-        "version": "9.1.0"
+        "version": "9.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -74101,7 +74101,6 @@
       "name": "openxr-loader",
       "manifest": {
         "name": "openxr-loader",
-        "port-version": 1,
         "description": "A royalty-free, open standard that provides high-performance access to Augmented Reality (AR) and Virtual Reality (VR)—collectively known as XR—platforms and devices",
         "homepage": "https://github.com/KhronosGroup/OpenXR-SDK",
         "license": "Apache-2.0",
@@ -74134,7 +74133,7 @@
             "supports": "!(arm & windows) & !uwp"
           }
         },
-        "version": "1.1.45"
+        "version": "1.1.53"
       },
       "files": [
         "fix-openxr-sdk-jsoncpp.patch",
@@ -78225,7 +78224,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.7.0"
+        "version": "9.7.1"
       },
       "files": [
         "fix-proj4-targets-cmake.patch",
@@ -87442,7 +87441,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -90853,7 +90852,7 @@
             "host": true
           }
         ],
-        "version": "6.2.155"
+        "version": "6.2.156"
       },
       "files": [
         "SimdConfig.cmake",
@@ -90991,6 +90990,57 @@
       ]
     },
     {
+      "name": "simpleamqpclient",
+      "manifest": {
+        "name": "simpleamqpclient",
+        "description": "Simple C++ Interface to rabbitmq-c",
+        "homepage": "https://github.com/alanxz/SimpleAmqpClient",
+        "license": "MIT",
+        "supports": "!static",
+        "dependencies": [
+          "boost-algorithm",
+          "boost-chrono",
+          "boost-foreach",
+          "boost-lexical-cast",
+          "boost-optional",
+          "boost-smart-ptr",
+          "boost-variant",
+          {
+            "name": "librabbitmq",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "ssl": {
+            "description": "Enable SSL support",
+            "dependencies": [
+              {
+                "name": "librabbitmq",
+                "default-features": false,
+                "features": [
+                  "ssl"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "2.5.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "rabbitmqc-use-find-package-config.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
@@ -91029,7 +91079,7 @@
         "description": "Cross-platform C++ library providing a simple API to read and write INI-style configuration files",
         "homepage": "https://github.com/brofield/simpleini",
         "license": "MIT",
-        "version": "4.22"
+        "version": "4.25"
       },
       "files": [
         "portfile.cmake",
@@ -93872,7 +93922,7 @@
             "host": true
           }
         ],
-        "version": "0.5.4"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -93973,7 +94023,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.2.3"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -98755,7 +98805,7 @@
             ]
           }
         },
-        "version": "2.21.3"
+        "version": "2.21.4"
       },
       "files": [
         "portfile.cmake",
@@ -104172,7 +104222,7 @@
             "host": true
           }
         ],
-        "version": "0.5.5"
+        "version": "0.5.6"
       },
       "files": [
         "portfile.cmake",
