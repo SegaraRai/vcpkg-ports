@@ -1,5 +1,5 @@
 {
-  "version": "1914114b6028c6ebf1fa9f17facaf0828a02a3c6",
+  "version": "588319964489874699b378e3a94b4285126e112e",
   "ports": [
     {
       "name": "3fd",
@@ -4115,9 +4115,6 @@
           "appsync": {
             "description": "C++ SDK for the AWS appsync service"
           },
-          "apptest": {
-            "description": "C++ SDK for the AWS apptest service"
-          },
           "arc-region-switch": {
             "description": "C++ SDK for the AWS arc-region-switch service"
           },
@@ -4327,6 +4324,9 @@
           },
           "compute-optimizer": {
             "description": "C++ SDK for the AWS compute-optimizer service"
+          },
+          "compute-optimizer-automation": {
+            "description": "C++ SDK for the AWS compute-optimizer-automation service"
           },
           "config": {
             "description": "C++ SDK for the AWS config service"
@@ -4641,9 +4641,6 @@
           "iotevents-data": {
             "description": "C++ SDK for the AWS iotevents-data service"
           },
-          "iotfleethub": {
-            "description": "C++ SDK for the AWS iotfleethub service"
-          },
           "iotfleetwise": {
             "description": "C++ SDK for the AWS iotfleetwise service"
           },
@@ -4758,12 +4755,6 @@
           "lookoutequipment": {
             "description": "C++ SDK for the AWS lookoutequipment service"
           },
-          "lookoutmetrics": {
-            "description": "C++ SDK for the AWS lookoutmetrics service"
-          },
-          "lookoutvision": {
-            "description": "C++ SDK for the AWS lookoutvision service"
-          },
           "m2": {
             "description": "C++ SDK for the AWS m2 service"
           },
@@ -4866,6 +4857,9 @@
           "mwaa": {
             "description": "C++ SDK for the AWS mwaa service"
           },
+          "mwaa-serverless": {
+            "description": "C++ SDK for the AWS mwaa-serverless service"
+          },
           "neptune": {
             "description": "C++ SDK for the AWS neptune service"
           },
@@ -4892,6 +4886,9 @@
           },
           "notificationscontacts": {
             "description": "C++ SDK for the AWS notificationscontacts service"
+          },
+          "nova-act": {
+            "description": "C++ SDK for the AWS nova-act service"
           },
           "oam": {
             "description": "C++ SDK for the AWS oam service"
@@ -4922,6 +4919,15 @@
           },
           "panorama": {
             "description": "C++ SDK for the AWS panorama service"
+          },
+          "partnercentral-account": {
+            "description": "C++ SDK for the AWS partnercentral-account service"
+          },
+          "partnercentral-benefits": {
+            "description": "C++ SDK for the AWS partnercentral-benefits service"
+          },
+          "partnercentral-channel": {
+            "description": "C++ SDK for the AWS partnercentral-channel service"
           },
           "partnercentral-selling": {
             "description": "C++ SDK for the AWS partnercentral-selling service"
@@ -4983,12 +4989,6 @@
           "qconnect": {
             "description": "C++ SDK for the AWS qconnect service"
           },
-          "qldb": {
-            "description": "C++ SDK for the AWS qldb service"
-          },
-          "qldb-session": {
-            "description": "C++ SDK for the AWS qldb-session service"
-          },
           "queues": {
             "description": "C++ SDK for the AWS queues service",
             "dependencies": [
@@ -5043,9 +5043,6 @@
           "resourcegroupstaggingapi": {
             "description": "C++ SDK for the AWS resourcegroupstaggingapi service"
           },
-          "robomaker": {
-            "description": "C++ SDK for the AWS robomaker service"
-          },
           "rolesanywhere": {
             "description": "C++ SDK for the AWS rolesanywhere service"
           },
@@ -5064,11 +5061,17 @@
           "route53domains": {
             "description": "C++ SDK for the AWS route53domains service"
           },
+          "route53globalresolver": {
+            "description": "C++ SDK for the AWS route53globalresolver service"
+          },
           "route53profiles": {
             "description": "C++ SDK for the AWS route53profiles service"
           },
           "route53resolver": {
             "description": "C++ SDK for the AWS route53resolver service"
+          },
+          "rtbfabric": {
+            "description": "C++ SDK for the AWS rtbfabric service"
           },
           "rum": {
             "description": "C++ SDK for the AWS rum service"
@@ -5125,6 +5128,9 @@
           "sagemaker-runtime": {
             "description": "C++ SDK for the AWS sagemaker-runtime service"
           },
+          "sagemaker-runtime-http2": {
+            "description": "C++ SDK for the AWS sagemaker-runtime-http2 service"
+          },
           "savingsplans": {
             "description": "C++ SDK for the AWS savingsplans service"
           },
@@ -5172,6 +5178,9 @@
           },
           "signer": {
             "description": "C++ SDK for the AWS signer service"
+          },
+          "signin": {
+            "description": "C++ SDK for the AWS signin service"
           },
           "simspaceweaver": {
             "description": "C++ SDK for the AWS simspaceweaver service"
@@ -5348,7 +5357,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.665"
+        "version": "1.11.702"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -20099,7 +20108,6 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
-        "port-version": 1,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
@@ -20117,9 +20125,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.6.0"
       },
       "files": [
         "pkgconfig-cxx-linkage.diff",
@@ -20212,7 +20224,6 @@
       "name": "cinatra",
       "manifest": {
         "name": "cinatra",
-        "port-version": 1,
         "description": "Cinatra is a high performance HTTP framework with modern C++ features.",
         "homepage": "https://github.com/qicosmos/cinatra",
         "license": "MIT",
@@ -20223,7 +20234,7 @@
           "iguana",
           "tanakh-cmdline"
         ],
-        "version": "0.9.5"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -22667,14 +22678,14 @@
         "name": "cppp-reiconv",
         "description": "cppp-reiconv: A character set conversion library based on GNU LIBICONV for The C++ Plus Project.",
         "homepage": "https://github.com/cppp-project/cppp-reiconv",
-        "license": "LGPL-3.0",
+        "license": "LGPL-3.0-only",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -31839,6 +31850,7 @@
       "name": "freerdp",
       "manifest": {
         "name": "freerdp",
+        "port-version": 1,
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
@@ -34910,11 +34922,11 @@
             "description": "Build with dynamic typeinfo"
           },
           "tools": {
-            "description": "Build the glslangValidator and spirv-remap binaries",
-            "supports": "!ios"
+            "description": "Build the glslang binaries",
+            "supports": "!android & !ios"
           }
         },
-        "version": "15.1.0"
+        "version": "16.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -41833,7 +41845,7 @@
         "dependencies": [
           "protobuf"
         ],
-        "version": "1.0.9"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -43776,7 +43788,7 @@
             "host": true
           }
         ],
-        "version": "1.4.3"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -55995,6 +56007,7 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
+        "port-version": 1,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
@@ -56009,6 +56022,10 @@
           "libmount",
           "libxcrypt",
           "lz4",
+          {
+            "name": "vcpkg-get-python-packages",
+            "host": true
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -57664,7 +57681,7 @@
           },
           "zlib"
         ],
-        "version-semver": "4.5.0"
+        "version-semver": "4.5.2"
       },
       "files": [
         "export-include-path.patch",
@@ -60769,7 +60786,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.701"
+        "version": "0.702"
       },
       "files": [
         "cmake-config-export.patch",
@@ -63307,6 +63324,7 @@
       "name": "mathter",
       "manifest": {
         "name": "mathter",
+        "port-version": 1,
         "description": "A flexible and fast matrix, transform, and geometry library.",
         "homepage": "https://github.com/petiaccja/Mathter",
         "license": "MIT",
@@ -63328,6 +63346,7 @@
       },
       "files": [
         "portfile.cmake",
+        "support-xsimd-14.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -64383,7 +64402,7 @@
             "host": true
           }
         ],
-        "version": "9.2.0"
+        "version": "9.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -65165,6 +65184,7 @@
       "name": "mongoose",
       "manifest": {
         "name": "mongoose",
+        "port-version": 1,
         "description": "Embedded web server / embedded networking library",
         "homepage": "https://cesanta.com/",
         "license": null,
@@ -74277,10 +74297,11 @@
       "name": "orange-math",
       "manifest": {
         "name": "orange-math",
+        "port-version": 1,
         "description": "General purpose math library",
         "homepage": "https://github.com/orange-cpp/omath",
         "license": "Zlib",
-        "supports": "windows | linux",
+        "supports": "windows | linux | osx",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -77332,7 +77353,6 @@
       "name": "podofo",
       "manifest": {
         "name": "podofo",
-        "port-version": 1,
         "description": "PoDoFo is a library to work with the PDF file format",
         "homepage": "https://github.com/podofo/podofo",
         "license": "LGPL-2.0-or-later",
@@ -77389,7 +77409,7 @@
             ]
           }
         },
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "dependencies.diff",
@@ -87819,9 +87839,10 @@
             "host": true
           }
         ],
-        "version": "0.11.1"
+        "version": "0.13.1"
       },
       "files": [
+        "fix-msvc-build.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -87877,6 +87898,7 @@
       "name": "safetyhook",
       "manifest": {
         "name": "safetyhook",
+        "port-version": 1,
         "description": "C++23 procedure hooking library.",
         "homepage": "https://github.com/cursey/safetyhook",
         "license": "BSL-1.0",
@@ -89292,7 +89314,6 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -89356,7 +89377,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.26"
+        "version": "3.2.28"
       },
       "files": [
         "fix-freebsd.patch",
@@ -94006,7 +94027,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.4.0"
+        "version": "4.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -103948,7 +103969,7 @@
             ]
           }
         },
-        "version": "13.2.0"
+        "version": "14.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -105026,7 +105047,7 @@
             "host": true
           }
         ],
-        "version": "2.3.1"
+        "version": "2.3.2"
       },
       "files": [
         "portfile.cmake",
