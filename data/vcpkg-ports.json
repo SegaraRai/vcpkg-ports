@@ -1,5 +1,5 @@
 {
-  "version": "588319964489874699b378e3a94b4285126e112e",
+  "version": "3a3285c4878c7f5a957202201ba41e6fdeba8db4",
   "ports": [
     {
       "name": "3fd",
@@ -20234,7 +20234,7 @@
           "iguana",
           "tanakh-cmdline"
         ],
-        "version": "0.9.6"
+        "version": "0.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -26843,7 +26843,7 @@
         "description": "Single-file audio decoding libraries for C/C++",
         "homepage": "https://github.com/mackron/dr_libs",
         "license": "Unlicense OR MIT-0",
-        "version-date": "2025-09-10"
+        "version-date": "2025-12-01"
       },
       "files": [
         "portfile.cmake",
@@ -31499,6 +31499,7 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
+        "port-version": 1,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -33227,7 +33228,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -46802,7 +46803,7 @@
       "name": "lapack-reference",
       "manifest": {
         "name": "lapack-reference",
-        "port-version": 1,
+        "port-version": 2,
         "description": "LAPACK - Linear Algebra PACKage",
         "homepage": "https://netlib.org/lapack/",
         "license": "BSD-3-Clause-Open-MPI",
@@ -46845,7 +46846,7 @@
             "dependencies": [
               "blas"
             ],
-            "supports": "!windows | !static"
+            "supports": "!windows | !static | mingw"
           }
         },
         "version": "3.12.1"
@@ -53813,7 +53814,7 @@
             "host": true
           }
         ],
-        "version": "9.0.19"
+        "version": "9.0.20"
       },
       "files": [
         "disable-werror.patch",
@@ -59272,7 +59273,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.11.0"
+        "version-semver": "2.11.1"
       },
       "files": [
         "global_preferences.json",
@@ -66266,9 +66267,9 @@
           "lodepng",
           "marchingcubecpp",
           "qhull",
-          "sdflib",
           "tinyobjloader",
           "tinyxml2",
+          "trianglemeshdistance",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -66278,7 +66279,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.3.7"
       },
       "files": [
         "disable-werror.patch",
@@ -68569,7 +68570,7 @@
             "host": true
           }
         ],
-        "version": "11.3.0"
+        "version": "11.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -70204,14 +70205,141 @@
       ]
     },
     {
+      "name": "onnxruntime",
+      "manifest": {
+        "name": "onnxruntime",
+        "description": "ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator",
+        "homepage": "https://github.com/microsoft/onnxruntime",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "abseil",
+            "version>=": "20250512.1"
+          },
+          {
+            "name": "boost-config",
+            "version>=": "1.82.0"
+          },
+          {
+            "name": "boost-mp11",
+            "version>=": "1.82.0"
+          },
+          "cpuinfo",
+          "cxxopts",
+          "date",
+          "dlpack",
+          "eigen3",
+          {
+            "name": "flatbuffers",
+            "host": true,
+            "version>=": "23.5.26"
+          },
+          {
+            "name": "flatbuffers",
+            "version>=": "23.5.26"
+          },
+          "ms-gsl",
+          "nlohmann-json",
+          {
+            "name": "onnx",
+            "version>=": "1.19.0"
+          },
+          "optional-lite",
+          {
+            "name": "protobuf",
+            "version>=": "3.21.12"
+          },
+          {
+            "name": "protobuf",
+            "host": true,
+            "version>=": "3.21.12"
+          },
+          "re2",
+          "safeint",
+          "utf8-range",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "wil",
+            "platform": "windows"
+          }
+        ],
+        "features": {
+          "cuda": {
+            "description": "Build with CUDA support",
+            "dependencies": [
+              "cuda",
+              "cudnn",
+              "cudnn-frontend",
+              "nvidia-cutlass"
+            ],
+            "supports": "(x64 & windows & !static) | (x64 & linux)"
+          },
+          "framework": {
+            "description": "Build a macOS/iOS framework, Objective-C library",
+            "supports": "osx | ios"
+          },
+          "openvino": {
+            "description": "Build with OpenVINO support",
+            "dependencies": [
+              {
+                "name": "openvino",
+                "default-features": false,
+                "features": [
+                  "cpu",
+                  "gpu",
+                  "onnx"
+                ]
+              }
+            ],
+            "supports": "!(osx | ios | android | emscripten)"
+          },
+          "tensorrt": {
+            "description": "Build with TensorRT support",
+            "dependencies": [
+              {
+                "name": "onnxruntime",
+                "default-features": false,
+                "features": [
+                  "cuda"
+                ]
+              }
+            ]
+          }
+        },
+        "version-semver": "1.23.2"
+      },
+      "files": [
+        "fix-cmake-cuda.patch",
+        "fix-cmake.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "onnxruntime-gpu",
       "manifest": {
         "name": "onnxruntime-gpu",
         "description": "onnxruntime (GPU)",
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
-        "supports": "windows & !x86 & !uwp & !static & !arm",
-        "version": "1.19.2"
+        "dependencies": [
+          {
+            "name": "onnxruntime",
+            "features": [
+              "cuda",
+              "tensorrt"
+            ]
+          }
+        ],
+        "version": "1.23.2"
       },
       "files": [
         "portfile.cmake",
@@ -70834,6 +70962,7 @@
       "name": "opencv",
       "manifest": {
         "name": "opencv",
+        "port-version": 1,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -71080,6 +71209,18 @@
                 "default-features": false,
                 "features": [
                   "halide"
+                ]
+              }
+            ]
+          },
+          "hdf": {
+            "description": "Enable Hierarchical Data Format (hdf) I/O",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "hdf"
                 ]
               }
             ]
@@ -71344,6 +71485,18 @@
                 "default-features": false,
                 "features": [
                   "tbb"
+                ]
+              }
+            ]
+          },
+          "text": {
+            "description": "Enable Scene Text Detection and Recognition",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "text"
                 ]
               }
             ]
@@ -71913,7 +72066,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 8,
+        "port-version": 9,
         "description": "computer vision library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "Apache-2.0",
@@ -71942,10 +72095,7 @@
             "name": "directml",
             "platform": "windows & !uwp & !mingw"
           },
-          {
-            "name": "dnn",
-            "platform": "!android"
-          },
+          "dnn",
           {
             "name": "dshow",
             "platform": "windows & !uwp"
@@ -72002,19 +72152,11 @@
             "description": "opencv_contrib module",
             "dependencies": [
               {
-                "name": "hdf5",
-                "platform": "!uwp & !(windows & (arm | arm64)) & !ios"
-              },
-              {
                 "name": "opencv4",
                 "default-features": false,
                 "features": [
                   "calib3d"
                 ]
-              },
-              {
-                "name": "tesseract",
-                "platform": "!uwp & !(windows & (arm | arm64)) & !ios"
               }
             ]
           },
@@ -72072,8 +72214,7 @@
                 "platform": "arm64"
               },
               "protobuf"
-            ],
-            "supports": "!android"
+            ]
           },
           "dnn-cuda": {
             "description": "Build dnn module with CUDA support",
@@ -72173,6 +72314,19 @@
                 "name": "opencv4",
                 "features": [
                   "dnn"
+                ]
+              }
+            ]
+          },
+          "hdf": {
+            "description": "Enable Hierarchical Data Format (hdf) I/O",
+            "dependencies": [
+              "hdf5",
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "contrib"
                 ]
               }
             ]
@@ -72373,6 +72527,19 @@
               "tbb"
             ],
             "supports": "!static"
+          },
+          "text": {
+            "description": "Enable Scene Text Detection and Recognition",
+            "dependencies": [
+              {
+                "name": "opencv4",
+                "default-features": false,
+                "features": [
+                  "contrib"
+                ]
+              },
+              "tesseract"
+            ]
           },
           "thread": {
             "description": "Enable thread support"
@@ -74367,6 +74534,32 @@
       ]
     },
     {
+      "name": "orefkov-simstr",
+      "manifest": {
+        "name": "orefkov-simstr",
+        "description": "Yet another C++ strings library implementation",
+        "homepage": "https://github.com/orefkov/simstr",
+        "license": "MIT",
+        "dependencies": [
+          "simdutf",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.2.7"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "orocos-kdl",
       "manifest": {
         "name": "orocos-kdl",
@@ -75004,7 +75197,7 @@
             ]
           }
         },
-        "version": "1.5.2"
+        "version": "1.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -78043,7 +78236,7 @@
             "description": "Build with openmp, otherwise use native threads"
           }
         },
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -84153,6 +84346,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84390,6 +84584,7 @@
         "version": "6.9.3"
       },
       "files": [
+        "allow-msvc-145.diff",
         "clang-cl.patch",
         "cross-build.diff",
         "disable-host-pkgconfig.diff",
@@ -84682,6 +84877,7 @@
       "name": "quickjs-ng",
       "manifest": {
         "name": "quickjs-ng",
+        "port-version": 1,
         "description": "QuickJS, the Next Generation: a mighty JavaScript engine. A small and embeddable JavaScript engine supporting the latest ECMAScript specification.",
         "homepage": "https://github.com/quickjs-ng/quickjs",
         "license": "MIT",
@@ -84698,6 +84894,7 @@
         "version": "0.11.0"
       },
       "files": [
+        "pdb_name_conflict.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -86698,7 +86895,7 @@
             "host": true
           }
         ],
-        "version": "4.4.3"
+        "version": "4.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -87872,7 +88069,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.6.1"
+        "version": "1.6.2"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -93045,9 +93242,8 @@
       "manifest": {
         "name": "sqlite-flux",
         "description": "Modern C++20 type-safe, thread-safe SQLite query builder with fluent API and compile-time validation",
-        "homepage": "https://github.com/a-alomran/sqlite-flux",
+        "homepage": "https://github.com/a-alomran/sqlite_flux",
         "license": "MIT",
-        "supports": "!uwp",
         "dependencies": [
           "sqlite3",
           {
@@ -93059,7 +93255,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -94027,7 +94223,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.4.1"
+        "version": "4.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -97736,6 +97932,27 @@
         "portfile.cmake",
         "triangleConfig.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "trianglemeshdistance",
+      "manifest": {
+        "name": "trianglemeshdistance",
+        "description": "Header only library to compute the signed distance function (SDF) to a triangle mesh.",
+        "homepage": "https://github.com/InteractiveComputerGraphics/TriangleMeshDistance",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2024-08-17"
+      },
+      "files": [
+        "cmake-export.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -102100,7 +102317,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.3240.44"
+        "version": "1.0.3595.46"
       },
       "files": [
         "portfile.cmake",
@@ -102565,7 +102782,7 @@
         "name": "wolfmqtt",
         "description": "MQTT library used with wolfSSL library for many platforms",
         "homepage": "https://wolfssl.com",
-        "license": "GPL-2.0-or-later",
+        "license": "GPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -102578,7 +102795,7 @@
           },
           "wolfssl"
         ],
-        "version": "1.20.0"
+        "version": "1.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -102632,10 +102849,9 @@
       "name": "wolftpm",
       "manifest": {
         "name": "wolftpm",
-        "port-version": 1,
         "description": "TPM library used with wolfSSL library for many platforms",
         "homepage": "https://wolfssl.com",
-        "license": "GPL-2.0-or-later",
+        "license": "GPL-3.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -102648,7 +102864,7 @@
           },
           "wolfssl"
         ],
-        "version": "3.9.2"
+        "version": "3.10.0"
       },
       "files": [
         "portfile.cmake",
