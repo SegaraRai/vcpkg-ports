@@ -1,5 +1,5 @@
 {
-  "version": "ab2977be50c702126336e5088f4836060733c899",
+  "version": "52f93a645e9f4d4141c32f5bab12575278548367",
   "ports": [
     {
       "name": "3fd",
@@ -53928,7 +53928,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.51"
+        "version": "1.6.53"
       },
       "files": [
         "cmake.patch",
@@ -91747,6 +91747,52 @@
       "files": [
         "portfile.cmake",
         "slick-queue.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "slick-net",
+      "manifest": {
+        "name": "slick-net",
+        "description": "A modern C++20 networking library providing HTTP/HTTPS client, WebSocket/WebSocket Secure client, and HTTP streaming support built on Boost.Beast and Boost.Asio",
+        "homepage": "https://github.com/SlickQuant/slick_net",
+        "license": "MIT",
+        "supports": "!(uwp | arm)",
+        "dependencies": [
+          {
+            "name": "boost-asio",
+            "version>=": "1.83.0"
+          },
+          {
+            "name": "boost-beast",
+            "version>=": "1.83.0"
+          },
+          {
+            "name": "boost-context",
+            "version>=": "1.83.0"
+          },
+          {
+            "name": "boost-system",
+            "version>=": "1.83.0"
+          },
+          {
+            "name": "openssl",
+            "version>=": "3.0.2"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
