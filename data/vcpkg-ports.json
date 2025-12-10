@@ -1,5 +1,5 @@
 {
-  "version": "52f93a645e9f4d4141c32f5bab12575278548367",
+  "version": "e7b524242c8a5d718a7afa26794c3c19bb8b0c71",
   "ports": [
     {
       "name": "3fd",
@@ -546,14 +546,25 @@
       "name": "advobfuscator",
       "manifest": {
         "name": "advobfuscator",
-        "description": "Obfuscation library based on C++11/14 and metaprogramming",
+        "description": "Obfuscation library based on C++20 and metaprogramming",
+        "homepage": "https://github.com/andrivet/ADVobfuscator",
+        "license": "BSD-3-Clause-Clear",
         "dependencies": [
-          "boost-msm"
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
-        "version-date": "2020-06-26"
+        "version": "2.1"
       },
       "files": [
+        "cmake_export.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -1750,6 +1761,32 @@
           }
         },
         "version": "1.4.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arcticdb-sparrow-extensions",
+      "manifest": {
+        "name": "arcticdb-sparrow-extensions",
+        "description": "Apache Arrow canonical extensions for Sparrow",
+        "homepage": "https://github.com/QuantStack/sparrow-extensions",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "arcticdb-sparrow",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -3870,7 +3907,7 @@
             "host": true
           }
         ],
-        "version": "0.11.2"
+        "version": "0.11.3"
       },
       "files": [
         "portfile.cmake",
@@ -5369,6 +5406,21 @@
         "portfile.cmake",
         "usage",
         "vcpkg.in.json",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ayush272002-dotenv",
+      "manifest": {
+        "name": "ayush272002-dotenv",
+        "description": "A modern C++23 header-only library for loading and parsing .env files at runtime.",
+        "homepage": "https://github.com/Ayush272002/dotenv",
+        "license": "MIT",
+        "supports": "!uwp",
+        "version-semver": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -18600,7 +18652,6 @@
       "name": "c-ares",
       "manifest": {
         "name": "c-ares",
-        "port-version": 1,
         "description": "A C library for asynchronous DNS requests",
         "homepage": "https://github.com/c-ares/c-ares",
         "license": "MIT-CMU",
@@ -18619,7 +18670,7 @@
             "description": "Builds c-ares executables"
           }
         },
-        "version-semver": "1.34.5"
+        "version-semver": "1.34.6"
       },
       "files": [
         "avoid-docs.patch",
@@ -25569,7 +25620,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -27007,7 +27058,6 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
-        "port-version": 1,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": null,
@@ -27075,7 +27125,7 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.4.2"
+        "version": "1.4.3"
       },
       "files": [
         "library-linkage-excel.diff",
@@ -27931,7 +27981,8 @@
         "name": "egl-registry",
         "description": "EGL API and Extension Registry",
         "homepage": "https://github.com/KhronosGroup/EGL-Registry",
-        "version-date": "2024-01-25"
+        "license": "Apache-2.0",
+        "version-date": "2025-05-27"
       },
       "files": [
         "copyright",
@@ -31022,7 +31073,7 @@
             "host": true
           }
         ],
-        "version": "4.1.2"
+        "version": "4.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -31851,7 +31902,6 @@
       "name": "freerdp",
       "manifest": {
         "name": "freerdp",
-        "port-version": 1,
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
         "license": "Apache-2.0",
@@ -31922,7 +31972,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.18.0"
+        "version": "3.19.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33717,7 +33767,6 @@
       "name": "gflags",
       "manifest": {
         "name": "gflags",
-        "port-version": 9,
         "description": "A C++ library that implements commandline flags processing",
         "homepage": "https://github.com/gflags/gflags",
         "license": "BSD-3-Clause",
@@ -33732,11 +33781,10 @@
             "host": true
           }
         ],
-        "version": "2.2.2"
+        "version": "2.3.0"
       },
       "files": [
         "0001-patch-dir.patch",
-        "fix_cmake_config.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
@@ -35070,6 +35118,7 @@
       "name": "gmsh",
       "manifest": {
         "name": "gmsh",
+        "port-version": 1,
         "description": "Gmsh is an open source 3D finite element mesh generator with a built-in CAD engine and post-processor.",
         "homepage": "https://gmsh.info",
         "license": "LGPL-2.0-or-later",
@@ -35104,10 +35153,10 @@
           "occ": {
             "description": "Enable OpenCASCADE modules",
             "dependencies": [
-              "caf",
-              "freetype",
-              "opencascade",
-              "tbb"
+              {
+                "name": "opencascade",
+                "default-features": false
+              }
             ]
           },
           "zipper": {
@@ -35122,6 +35171,7 @@
       "files": [
         "installdirs.diff",
         "linking-and-naming.diff",
+        "opencascade.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -41063,7 +41113,7 @@
             "host": true
           }
         ],
-        "version": "3.6"
+        "version": "3.8"
       },
       "files": [
         "hlslpp-config.cmake",
@@ -47253,7 +47303,7 @@
             "host": true
           }
         ],
-        "version": "1.24.3"
+        "version": "1.26.1"
       },
       "files": [
         "portfile.cmake",
@@ -50296,7 +50346,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.9.1"
+        "version-semver": "1.9.2"
       },
       "files": [
         "c-standard.diff",
@@ -54217,11 +54267,10 @@
             "host": true
           }
         ],
-        "version": "7.10.1"
+        "version": "7.10.4"
       },
       "files": [
         "fix_build_with_vs2017.patch",
-        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61058,7 +61107,7 @@
         "description": "Fast In-Memory Data Compression Algorithm (inline C/C++)",
         "homepage": "https://github.com/avaneev/lzav",
         "license": "MIT",
-        "version": "5.6"
+        "version": "5.8"
       },
       "files": [
         "portfile.cmake",
@@ -64019,7 +64068,6 @@
       "name": "meshoptimizer",
       "manifest": {
         "name": "meshoptimizer",
-        "port-version": 2,
         "description": "Mesh optimization library that makes meshes smaller and faster to render",
         "homepage": "https://github.com/zeux/meshoptimizer",
         "license": "MIT",
@@ -64042,7 +64090,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.25"
+        "version": "1.0"
       },
       "files": [
         "dependencies.diff",
@@ -65835,7 +65883,7 @@
             "host": true
           }
         ],
-        "version": "4.2.0"
+        "version": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -66280,7 +66328,7 @@
             "host": true
           }
         ],
-        "version": "3.3.7"
+        "version": "3.4.0"
       },
       "files": [
         "disable-werror.patch",
@@ -66814,7 +66862,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.9.2"
+        "version-semver": "2.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -67415,7 +67463,7 @@
             "host": true
           }
         ],
-        "version": "1.0.6"
+        "version": "1.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -67535,7 +67583,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -68879,7 +68927,7 @@
             ]
           }
         },
-        "version": "2.14.2"
+        "version": "2.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -70698,7 +70746,10 @@
           "freetype": {
             "description": "Use of freetype",
             "dependencies": [
-              "fontconfig",
+              {
+                "name": "fontconfig",
+                "platform": "!android & !emscripten & !ios & !osx & !windows"
+              },
               {
                 "name": "freetype",
                 "default-features": false
@@ -70734,7 +70785,7 @@
             ]
           }
         },
-        "version": "7.9.2"
+        "version": "7.9.3"
       },
       "files": [
         "dependencies.patch",
@@ -70963,10 +71014,10 @@
       "name": "opencv",
       "manifest": {
         "name": "opencv",
-        "port-version": 1,
-        "description": "computer vision library",
-        "homepage": "https://github.com/opencv/opencv",
-        "license": "Apache-2.0",
+        "description": "Open Source Computer Vision Library",
+        "homepage": "https://opencv.org/",
+        "documentation": "https://docs.opencv.org/4.12.0/",
+        "license": null,
         "dependencies": [
           {
             "name": "opencv4",
@@ -71587,7 +71638,7 @@
             ]
           }
         },
-        "version": "4.11.0"
+        "version": "4.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -72067,10 +72118,10 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 9,
-        "description": "computer vision library",
-        "homepage": "https://github.com/opencv/opencv",
-        "license": "Apache-2.0",
+        "description": "Open Source Computer Vision Library",
+        "homepage": "https://opencv.org/",
+        "documentation": "https://docs.opencv.org/4.12.0/",
+        "license": null,
         "dependencies": [
           {
             "name": "cpu-features",
@@ -72232,7 +72283,7 @@
           },
           "dshow": {
             "description": "Enable DirectShow",
-            "supports": "windows"
+            "supports": "windows & !uwp"
           },
           "eigen": {
             "description": "Eigen support for opencv",
@@ -72365,8 +72416,7 @@
             "description": "Enable opencl support",
             "dependencies": [
               "opencl"
-            ],
-            "supports": "!osx"
+            ]
           },
           "openexr": {
             "description": "OpenEXR support for opencv",
@@ -72578,7 +72628,8 @@
                 "features": [
                   "dnn"
                 ]
-              }
+              },
+              "vulkan-headers"
             ]
           },
           "webp": {
@@ -72595,32 +72646,27 @@
             "description": "Compile to a single package support for opencv"
           }
         },
-        "version": "4.11.0"
+        "version": "4.12.0"
       },
       "files": [
         "0001-disable-downloading.patch",
         "0002-install-options.patch",
         "0003-force-package-requirements.patch",
-        "0004-fix-eigen.patch",
-        "0005-fix-policy-CMP0057.patch",
-        "0006-fix-uwp.patch",
+        "0004-opencl.diff",
+        "0005-vulkan.diff",
         "0007-contrib-fix-hdf5.patch",
         "0008-devendor-quirc.patch",
         "0009-fix-protobuf.patch",
         "0010-fix-uwp-tiff-imgcodecs.patch",
-        "0011-remove-python2.patch",
         "0012-miss-openexr.patch",
         "0013-contrib-fix-ogre.patch",
-        "0014-fix-cmake-in-list.patch",
         "0015-fix-freetype.patch",
         "0016-contrib-fix-freetype.patch",
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
-        "0019-opencl-kernel.patch",
         "0020-fix-narrow-filesystem.diff",
         "0021-fix-qt-gen-def.patch",
         "0022-android-use-vcpkg-cpu-features.patch",
-        "0022-fix-miss-exception-include.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -72630,9 +72676,9 @@
       "name": "opendnp3",
       "manifest": {
         "name": "opendnp3",
-        "port-version": 1,
         "description": "DNP3 (IEEE-1815) protocol stack. Modern C++ with bindings for .NET and Java.",
         "homepage": "https://github.com/dnp3/opendnp3/",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           "asio",
@@ -72653,7 +72699,7 @@
             ]
           }
         },
-        "version": "3.1.1"
+        "version": "3.1.2"
       },
       "files": [
         "deps/asio.cmake",
@@ -72688,7 +72734,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.3"
+        "version": "3.4.4"
       },
       "files": [
         "portfile.cmake",
@@ -72775,14 +72821,13 @@
       "name": "opengl-registry",
       "manifest": {
         "name": "opengl-registry",
-        "port-version": 1,
         "description": "OpenGL, OpenGL ES, and OpenGL ES-SC API and Extension Registry",
         "homepage": "https://github.com/KhronosGroup/OpenGL-Registry",
         "supports": "!xbox",
         "dependencies": [
           "egl-registry"
         ],
-        "version-date": "2024-02-10"
+        "version-date": "2025-10-23"
       },
       "files": [
         "copyright",
@@ -74948,7 +74993,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.494"
+        "version": "4.0.495"
       },
       "files": [
         "portfile.cmake",
@@ -76095,9 +76140,8 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
-        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
-        "homepage": "https://pdal.io/",
+        "homepage": "https://pdal.org/",
         "license": null,
         "supports": "!(static & staticcrt)",
         "dependencies": [
@@ -76210,7 +76254,7 @@
             ]
           }
         },
-        "version": "2.9.2"
+        "version": "2.9.3"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -76256,7 +76300,7 @@
       "manifest": {
         "name": "pdal-dimbuilder",
         "description": "A tool used by the PDAL build process",
-        "homepage": "https://pdal.io/",
+        "homepage": "https://pdal.org/",
         "license": "BSD-3-Clause",
         "supports": "native",
         "dependencies": [
@@ -76267,7 +76311,7 @@
             "host": true
           }
         ],
-        "version": "2.9.2"
+        "version": "2.9.3"
       },
       "files": [
         "namespace-nl.diff",
@@ -84918,7 +84962,7 @@
             "host": true
           }
         ],
-        "version": "11.0.1"
+        "version": "11.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -87012,7 +87056,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.6"
+        "version-semver": "1.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -90177,6 +90221,7 @@
       "name": "serd",
       "manifest": {
         "name": "serd",
+        "port-version": 1,
         "description": "Serd is a lightweight C library for RDF syntax which supports reading and writing Turtle, TRiG, NTriples, and NQuads.",
         "homepage": "https://drobilla.net/software/serd",
         "license": "ISC",
@@ -90186,6 +90231,12 @@
             "host": true
           }
         ],
+        "features": {
+          "tools": {
+            "description": "Build the serdi command-line tool",
+            "supports": "!emscripten"
+          }
+        },
         "version": "0.32.6"
       },
       "files": [
@@ -95692,7 +95743,7 @@
             "supports": "!static & !osx & !uwp"
           }
         },
-        "version": "2022.2.0"
+        "version": "2022.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -97995,11 +98046,11 @@
             "host": true
           }
         ],
-        "version-date": "2024-08-17"
+        "version-date": "2025-12-05"
       },
       "files": [
-        "cmake-export.patch",
         "portfile.cmake",
+        "remove-tests.patch",
         "vcpkg.json"
       ]
     },
