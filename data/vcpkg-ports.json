@@ -1,5 +1,5 @@
 {
-  "version": "e7b524242c8a5d718a7afa26794c3c19bb8b0c71",
+  "version": "2041718d8942de33c7d10e9e2fbf22b5e24d352e",
   "ports": [
     {
       "name": "3fd",
@@ -3026,7 +3026,7 @@
       "name": "at-spi2-atk",
       "manifest": {
         "name": "at-spi2-atk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Implementation of the ATK interfaces in terms of the libatspi2 API.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -3055,7 +3055,7 @@
       "name": "at-spi2-core",
       "manifest": {
         "name": "at-spi2-core",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Base DBus XML interfaces for accessibility, the accessibility registry daemon, and atspi library.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -3089,7 +3089,7 @@
       "name": "atk",
       "manifest": {
         "name": "atk",
-        "port-version": 10,
+        "port-version": 11,
         "description": "GNOME Accessibility Toolkit",
         "homepage": "https://developer.gnome.org/atk/",
         "license": "LGPL-2.0-or-later",
@@ -25112,7 +25112,6 @@
       "name": "daw-utf-range",
       "manifest": {
         "name": "daw-utf-range",
-        "port-version": 1,
         "description": "Header-only utf8 string range used by daw-json-link. Includes a constexpr/noexcept modified version of utfcpp.",
         "homepage": "https://github.com/beached/utf_range",
         "license": "BSL-1.0",
@@ -25127,7 +25126,7 @@
             "host": true
           }
         ],
-        "version": "2.2.5"
+        "version": "2.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -26713,7 +26712,7 @@
             "host": true
           }
         ],
-        "version": "3.3.1"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -28911,12 +28910,12 @@
       "manifest": {
         "name": "faiss",
         "description": "Faiss is a library for efficient similarity search and clustering of dense vectors.",
-        "homepage": "https://github.com/facebookresearch/faiss",
+        "homepage": "https://faiss.ai/",
         "license": "MIT",
-        "supports": "!uwp & !osx & !x86 & !(arm64 & windows)",
+        "supports": "!x86 & !uwp",
         "dependencies": [
+          "blas",
           "lapack",
-          "openblas",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -28931,15 +28930,15 @@
             "description": "Whether to enable GPU support",
             "dependencies": [
               "cuda"
-            ],
-            "supports": "!uwp & !osx & !x86 & !windows"
+            ]
           }
         },
-        "version": "1.8.0"
+        "version": "1.13.1"
       },
       "files": [
-        "fix-dependencies.patch",
+        "msvc-template.diff",
         "portfile.cmake",
+        "undef-small.diff",
         "vcpkg.json"
       ]
     },
@@ -33278,7 +33277,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -33739,7 +33738,7 @@
       "name": "gexiv2",
       "manifest": {
         "name": "gexiv2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A GObject-based Exiv2 wrapper.",
         "homepage": "https://gitlab.gnome.org/GNOME/gexiv2/",
         "license": "GPL-2.0-or-later",
@@ -34601,6 +34600,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -34651,6 +34651,7 @@
       "name": "glib-networking",
       "manifest": {
         "name": "glib-networking",
+        "port-version": 1,
         "description": "Network extensions for GLib",
         "homepage": "https://gitlab.gnome.org/GNOME/glib-networking",
         "license": "LGPL-2.1-only",
@@ -35181,6 +35182,7 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
+        "port-version": 1,
         "description": [
           "A middleware layer between C libraries (using GObject) and language bindings.",
           "Building (with) gobject-introspection is based on dynamic library linkage. Static builds of the core feature set are supported only for CI purposes.",
@@ -37375,7 +37377,7 @@
       "name": "graphene",
       "manifest": {
         "name": "graphene",
-        "port-version": 5,
+        "port-version": 6,
         "description": "A thin layer of types for graphic libraries.",
         "homepage": "https://www.gtk.org/",
         "license": "MIT",
@@ -38724,7 +38726,7 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
@@ -38829,7 +38831,6 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -38913,11 +38914,12 @@
             "supports": "!static"
           }
         },
-        "version": "3.24.43"
+        "version": "3.24.51"
       },
       "files": [
         "0001-build.patch",
         "cairo-cpp-linkage.patch",
+        "egl-conditional.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43674,6 +43676,7 @@
       "name": "json-glib",
       "manifest": {
         "name": "json-glib",
+        "port-version": 1,
         "description": "Implements a full JSON parser and generator using GLib and GObject, and integrates JSON with GLib data types.",
         "homepage": "https://wiki.gnome.org/Projects/JsonGlib",
         "license": "LGPL-2.1-or-later AND CC0-1.0 AND MIT",
@@ -47545,7 +47548,7 @@
       "name": "libadwaita",
       "manifest": {
         "name": "libadwaita",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Building blocks for modern GNOME applications",
         "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita",
         "license": "LGPL-2.1-or-later",
@@ -48698,7 +48701,7 @@
       "name": "libcroco",
       "manifest": {
         "name": "libcroco",
-        "port-version": 8,
+        "port-version": 9,
         "description": "A standalone css2 parsing and manipulation library",
         "license": "LGPL-2.0-only",
         "dependencies": [
@@ -49387,7 +49390,7 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.5.2"
       },
       "files": [
         "fix-dependencies.patch",
@@ -50728,7 +50731,7 @@
       "name": "libgxps",
       "manifest": {
         "name": "libgxps",
-        "port-version": 4,
+        "port-version": 5,
         "description": "libgxps is a GObject based library for handling and rendering XPS documents.",
         "homepage": "https://wiki.gnome.org/Projects/libgxps",
         "dependencies": [
@@ -53119,6 +53122,7 @@
       "name": "libnotify",
       "manifest": {
         "name": "libnotify",
+        "port-version": 1,
         "description": "A library for sending desktop notifications",
         "homepage": "https://gitlab.gnome.org/GNOME/libnotify",
         "license": "LGPL-2.1-or-later",
@@ -54814,7 +54818,7 @@
       "name": "librsvg",
       "manifest": {
         "name": "librsvg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A small library to render Scalable Vector Graphics (SVG)",
         "homepage": "https://gitlab.gnome.org/GNOME/librsvg",
         "license": "LGPL-2.0-or-later",
@@ -55139,7 +55143,7 @@
       "name": "libsecret",
       "manifest": {
         "name": "libsecret",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libsecret is a GObject-based library for accessing the Secret Service API of the freedesktop.org project, a cross-desktop effort to access passwords, tokens and other types of secrets. libsecret provides a convenient wrapper for these methods so consumers do not have to call the low-level DBus methods.",
         "homepage": "https://gitlab.gnome.org/GNOME/libsecret/",
         "license": "LGPL-2.1-or-later",
@@ -55599,6 +55603,7 @@
       "name": "libsoup",
       "manifest": {
         "name": "libsoup",
+        "port-version": 1,
         "description": "HTTP Library for GLib",
         "homepage": "https://libsoup.gnome.org/",
         "license": "LGPL-2.0-or-later",
@@ -58253,7 +58258,7 @@
             ]
           }
         },
-        "version": "2.15.0"
+        "version": "2.15.1"
       },
       "files": [
         "cxx-for-icu.diff",
@@ -65894,7 +65899,6 @@
       "name": "ms-ifc-sdk",
       "manifest": {
         "name": "ms-ifc-sdk",
-        "port-version": 1,
         "description": "SDK for the IFC specification at https://github.com/microsoft/ifc-spec",
         "homepage": "https://github.com/microsoft/ifc",
         "license": "Apache-2.0 WITH LLVM-exception",
@@ -65909,7 +65913,7 @@
             "host": true
           }
         ],
-        "version": "0.43.1"
+        "version": "0.43.5"
       },
       "files": [
         "portfile.cmake",
@@ -73112,11 +73116,12 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.25.2"
+        "version": "0.25.3"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "xsi-strerror_r.patch"
       ]
     },
     {
@@ -75278,6 +75283,7 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
+        "port-version": 1,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-or-later",
@@ -94102,6 +94108,38 @@
       ]
     },
     {
+      "name": "stella-cv-fbow",
+      "manifest": {
+        "name": "stella-cv-fbow",
+        "description": "This is a modified version of the original Fast Bag of Words by @rmsalinas.",
+        "homepage": "https://github.com/stella-cv/FBoW",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "opencv4",
+            "default-features": false,
+            "features": [
+              "highgui"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.0.1"
+      },
+      "files": [
+        "fix-arm-windows.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "stftpitchshift",
       "manifest": {
         "name": "stftpitchshift",
@@ -96216,18 +96254,22 @@
       "name": "tgbot-cpp",
       "manifest": {
         "name": "tgbot-cpp",
+        "port-version": 1,
         "description": "C++ library for Telegram bot API.",
         "homepage": "https://github.com/reo7sp/tgbot-cpp",
         "license": "MIT",
+        "supports": "!uwp",
         "dependencies": [
           "boost-algorithm",
           "boost-asio",
           "boost-lexical-cast",
           "boost-property-tree",
           "boost-system",
-          "boost-test",
           "boost-variant",
-          "curl",
+          {
+            "name": "curl",
+            "default-features": false
+          },
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -96253,6 +96295,7 @@
         "version": "1.9.1"
       },
       "files": [
+        "cmake-project-include.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -96815,6 +96858,30 @@
       },
       "files": [
         "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tinycolormap",
+      "manifest": {
+        "name": "tinycolormap",
+        "description": "A header-only, single-file library for colormaps written in C++11.",
+        "homepage": "https://github.com/yuki-koyama/tinycolormap",
+        "license": "MIT AND Apache-2.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.8.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -97902,7 +97969,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.25.10"
+        "version-semver": "0.26.2"
       },
       "files": [
         "portfile.cmake",
