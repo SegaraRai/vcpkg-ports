@@ -1,5 +1,5 @@
 {
-  "version": "cf6692675e04c036e21f26d64ae5fa3c8485f224",
+  "version": "7f636cf630a15cbbf8275844f78e50d40baefb03",
   "ports": [
     {
       "name": "3fd",
@@ -562,12 +562,10 @@
             "host": true
           }
         ],
-        "version": "2.1"
+        "version": "2.1.1"
       },
       "files": [
-        "cmake_export.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -1004,7 +1002,6 @@
       "name": "ampl-mp",
       "manifest": {
         "name": "ampl-mp",
-        "port-version": 5,
         "description": "An open-source library for mathematical programming",
         "homepage": "https://github.com/ampl/mp",
         "supports": "!uwp",
@@ -1023,7 +1020,7 @@
             "host": true
           }
         ],
-        "version-date": "2020-11-11"
+        "version": "4.1.0"
       },
       "files": [
         "0007-unofficial-export.cmake",
@@ -3682,7 +3679,7 @@
             "host": true
           }
         ],
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -3790,7 +3787,7 @@
             "host": true
           }
         ],
-        "version": "0.5.7"
+        "version": "0.5.9"
       },
       "files": [
         "portfile.cmake",
@@ -3848,7 +3845,7 @@
             "host": true
           }
         ],
-        "version": "0.23.3"
+        "version": "0.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -19846,7 +19843,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.9.4"
+        "version-semver": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -20266,7 +20263,7 @@
             "host": true
           }
         ],
-        "version": "3.6.4"
+        "version": "3.6.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -23489,6 +23486,7 @@
       "name": "crow",
       "manifest": {
         "name": "crow",
+        "port-version": 1,
         "description": "Very fast and easy to use C++ micro web framework",
         "homepage": "https://github.com/CrowCpp/crow",
         "license": "BSD-3-Clause",
@@ -23507,6 +23505,7 @@
       },
       "files": [
         "portfile.cmake",
+        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -24737,17 +24736,18 @@
       "name": "darknet",
       "manifest": {
         "name": "darknet",
-        "port-version": 1,
-        "description": "Darknet is an open source neural network framework written in C and CUDA. You only look once (YOLO) is a state-of-the-art, real-time object detection system, best example of darknet functionalities.",
-        "homepage": "https://github.com/alexeyab/darknet",
-        "license": null,
+        "description": "Darknet is an open source neural network framework written in C and CUDA for processing images or video frames in computer vision.",
+        "homepage": "https://darknetcv.ai/",
+        "license": "Apache-2.0 AND BSD-2-Clause",
+        "supports": "!android & !uwp & !(static & staticcrt)",
         "dependencies": [
           {
-            "name": "getopt",
-            "platform": "windows & !mingw"
+            "name": "opencv",
+            "default-features": false,
+            "features": [
+              "highgui"
+            ]
           },
-          "pthreads",
-          "stb",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -24761,68 +24761,41 @@
           "cuda": {
             "description": "Build darknet with support for CUDA",
             "dependencies": [
-              "cuda"
+              "cuda",
+              {
+                "name": "opencv",
+                "default-features": false
+              }
             ]
           },
           "cudnn": {
             "description": "Build darknet with support for cuDNN",
             "dependencies": [
-              "cuda",
-              "cudnn"
-            ]
-          },
-          "full": {
-            "description": "Build darknet fully featured",
-            "dependencies": [
+              "cudnn",
               {
                 "name": "darknet",
                 "features": [
-                  "cuda",
-                  "cudnn",
-                  "opencv-cuda"
+                  "cuda"
                 ]
               }
             ]
           },
-          "opencv-base": {
-            "description": "Build darknet with support for latest version of OpenCV",
-            "dependencies": [
-              {
-                "name": "opencv",
-                "features": [
-                  "ffmpeg"
-                ]
-              }
-            ]
-          },
-          "opencv-cuda": {
-            "description": "Build darknet with support for latest version of CUDA-enabled OpenCV",
-            "dependencies": [
-              {
-                "name": "darknet",
-                "features": [
-                  "cuda",
-                  "opencv-base"
-                ]
-              },
-              {
-                "name": "opencv",
-                "features": [
-                  "contrib",
-                  "cuda",
-                  "dnn"
-                ]
-              }
-            ]
+          "openmp": {
+            "description": "Build darknet with support for OpenMP"
           }
         },
-        "version-date": "2024-10-10"
+        "version-date": "2025-10-24"
       },
       "files": [
         "android.diff",
+        "installation.diff",
         "msvc-names.diff",
         "portfile.cmake",
-        "vcpkg.json"
+        "purely-openmp_cxx-target.diff",
+        "system-processor.diff",
+        "vcpkg.json",
+        "version-info.diff",
+        "windows-getopt.diff"
       ]
     },
     {
@@ -25140,7 +25113,6 @@
       "name": "dawn",
       "manifest": {
         "name": "dawn",
-        "port-version": 1,
         "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
         "homepage": "https://dawn.googlesource.com/dawn",
         "license": "BSD-3-Clause",
@@ -25238,7 +25210,7 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20250922.223923"
+        "version": "20251202.213730"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
@@ -25247,7 +25219,8 @@
         "003-fix-d3d11.patch",
         "004-deps.patch",
         "005-bsd-support.patch",
-        "006-fix-x11-include-dirs.patch",
+        "006-msvc-spirv-tools-disable-warnaserror.patch",
+        "007-fix-tint-null-only-writer.patch",
         "DawnConfig.cmake",
         "portfile.cmake",
         "unofficial_webgpu_dawn.pc.in",
@@ -25974,7 +25947,7 @@
             "host": true
           }
         ],
-        "version": "1.618.3"
+        "version": "1.618.5"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -28519,7 +28492,7 @@
             "host": true
           }
         ],
-        "version": "20.44.1"
+        "version": "20.44.2"
       },
       "files": [
         "portfile.cmake",
@@ -29464,7 +29437,6 @@
       "name": "fdk-aac",
       "manifest": {
         "name": "fdk-aac",
-        "port-version": 4,
         "description": "A standalone Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android. Uses a fork without HE-AAC, HE-AACv2, or xHE-AAC support to avoid patent licensing and GPL compatibility issues when built without the he-aac option.",
         "homepage": "https://gitlab.freedesktop.org/wtaymans/fdk-aac-stripped",
         "license": "FDK-AAC",
@@ -29484,9 +29456,10 @@
             "supports": "!android"
           }
         },
-        "version-semver": "2.0.2"
+        "version-semver": "2.0.3"
       },
       "files": [
+        "cmake_fix.patch",
         "cxx-linkage-pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -30291,11 +30264,10 @@
       "name": "ffnvcodec",
       "manifest": {
         "name": "ffnvcodec",
-        "port-version": 2,
         "description": "FFmpeg version of Nvidia Codec SDK headers.",
         "homepage": "https://github.com/FFmpeg/nv-codec-headers",
         "supports": "linux | (!osx & !uwp & !(arm64 & windows))",
-        "version": "12.2.72.0"
+        "version": "13.0.19.0"
       },
       "files": [
         "LICENSE.txt",
@@ -31211,6 +31183,7 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
+        "port-version": 1,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -31220,6 +31193,7 @@
             "name": "alsa",
             "platform": "linux"
           },
+          "gcem",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -31258,6 +31232,7 @@
         "version": "2.5.1"
       },
       "files": [
+        "fix-gcem.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -34469,7 +34444,7 @@
             ]
           }
         },
-        "version": "6.1.0"
+        "version": "6.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -42307,7 +42282,7 @@
             "description": "Build documentation"
           }
         },
-        "version": "0.8.1"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -52891,9 +52866,9 @@
       "name": "libmypaint",
       "manifest": {
         "name": "libmypaint",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Brush library used by MyPaint",
-        "homepage": "https://mypaint.org",
+        "homepage": "https://github.com/mypaint/libmypaint",
         "license": "ISC",
         "supports": "!windows | mingw",
         "dependencies": [
@@ -63946,7 +63921,7 @@
             "host": true
           }
         ],
-        "version": "4.5.0"
+        "version": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -66600,8 +66575,9 @@
       "name": "mypaint-brushes",
       "manifest": {
         "name": "mypaint-brushes",
+        "port-version": 1,
         "description": "Data package. Brushes used by MyPaint and other software using libmypaint.",
-        "homepage": "https://mypaint.org",
+        "homepage": "https://github.com/mypaint/mypaint-brushes",
         "license": "CC0-1.0",
         "dependencies": [
           {
@@ -66871,7 +66847,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.10.1"
+        "version-semver": "2.10.2"
       },
       "files": [
         "portfile.cmake",
@@ -67538,7 +67514,7 @@
             "host": true
           }
         ],
-        "version": "1.1.4"
+        "version": "1.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -78914,12 +78890,12 @@
       "name": "ptex",
       "manifest": {
         "name": "ptex",
-        "port-version": 1,
         "description": "Per-Face Texture Mapping for Production Rendering.",
         "homepage": "https://github.com/wdas/ptex",
         "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
+          "libdeflate",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -78927,12 +78903,12 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "zlib"
+          }
         ],
-        "version": "2.4.3"
+        "version": "2.5.0"
       },
       "files": [
+        "fix-android.patch",
         "fix-build.patch",
         "portfile.cmake",
         "usage",
@@ -85599,8 +85575,10 @@
       "name": "reactphysics3d",
       "manifest": {
         "name": "reactphysics3d",
+        "port-version": 1,
         "description": "Open source C++ physics engine library in 3D",
         "homepage": "https://www.reactphysics3d.com",
+        "documentation": "https://www.reactphysics3d.com/documentation/",
         "license": "Zlib",
         "dependencies": [
           {
@@ -91417,7 +91395,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -91629,7 +91606,7 @@
             ]
           }
         },
-        "version": "140"
+        "version": "144"
       },
       "files": [
         "allow-disabling-lib-dl.patch",
@@ -91639,15 +91616,19 @@
         "disable-msvc-env-setup.patch",
         "dont-use-response-file.patch",
         "example/CMakeLists.txt",
+        "example/skcms.cpp",
+        "example/skpathediting.cpp",
         "fix-bsd.patch",
         "graphite.patch",
         "pdfsubsetfont-uwp.diff",
         "portfile.cmake",
-        "remove-directwrite-png-dependency.patch",
+        "skcms-dllexport.patch",
         "skia-functions.cmake",
         "skia-include-string.patch",
         "skiaConfig.cmake",
         "skparagraph-dllexport.patch",
+        "skpath-enable-edit-methods.patch",
+        "skstrendswith-dllexport.patch",
         "third-party.gn.in",
         "unofficial-skia-config.cmake",
         "unofficial-skia-targets-details.cmake",
@@ -94172,6 +94153,7 @@
       "name": "stlab",
       "manifest": {
         "name": "stlab",
+        "port-version": 1,
         "description": [
           "stlab is the ongoing work of what was Adobe Software Technology Lab.",
           "The Concurrency library provides futures and channels, high level constructs for implementing algorithms that eases the use of multiple CPU cores while minimizing contention. This library solves several problems of the C++11 and C++17 TS futures."
@@ -98116,7 +98098,7 @@
         "homepage": "https://github.com/tree-sitter/tree-sitter",
         "license": null,
         "supports": "native",
-        "version": "0.25.3"
+        "version": "0.26.2"
       },
       "files": [
         "portfile.cmake",
@@ -98218,7 +98200,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-12-05"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -105457,7 +105439,7 @@
             "host": true
           }
         ],
-        "version": "0.6.2"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -105625,7 +105607,7 @@
             "host": true
           }
         ],
-        "version": "3.5"
+        "version": "3.6"
       },
       "files": [
         "portfile.cmake",
@@ -105978,7 +105960,7 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.5.2"
       },
       "files": [
         "portfile.cmake",
