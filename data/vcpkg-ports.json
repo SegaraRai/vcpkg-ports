@@ -1,5 +1,5 @@
 {
-  "version": "e40cbcc5a3f46a067f6f0f5cf7437628952c39da",
+  "version": "544a4c5c297e60e4ac4a5a1810df66748d908869",
   "ports": [
     {
       "name": "3fd",
@@ -2193,7 +2193,7 @@
       "name": "arrayfire",
       "manifest": {
         "name": "arrayfire",
-        "port-version": 8,
+        "port-version": 9,
         "description": "ArrayFire is a general-purpose library that simplifies the process of developing software that targets parallel and massively-parallel architectures including CPUs, GPUs, and other hardware acceleration devices.",
         "homepage": "https://github.com/arrayfire/arrayfire",
         "license": "BSD-3-Clause",
@@ -2253,6 +2253,7 @@
         "fix-dependency-clfft.patch",
         "fix-miss-header-file.patch",
         "portfile.cmake",
+        "remove-cl2hpp-download.diff",
         "vcpkg.json"
       ]
     },
@@ -3957,7 +3958,7 @@
             "host": true
           }
         ],
-        "version": "0.2.7"
+        "version": "0.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -43070,7 +43071,7 @@
         "description": "A collection of std-like single-header C++ libraries.",
         "homepage": "https://github.com/iboB/itlib",
         "license": "MIT",
-        "version": "1.11.8"
+        "version": "1.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -44083,6 +44084,34 @@
         "prefer-cmake.diff",
         "usage",
         "vcpkg-compile-definitions.diff",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "jwsung91-unilink",
+      "manifest": {
+        "name": "jwsung91-unilink",
+        "description": "Cross-platform communication middleware (Serial/TCP/UDP) using Boost.Asio.",
+        "homepage": "https://github.com/jwsung91/unilink",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "boost-asio",
+          "boost-system",
+          "boost-thread",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.9"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -48484,7 +48513,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -53504,7 +53533,6 @@
       "name": "libopusenc",
       "manifest": {
         "name": "libopusenc",
-        "port-version": 3,
         "description": "Library for encoding .opus audio files and live streams.",
         "homepage": "https://github.com/xiph/libopusenc",
         "supports": "!uwp",
@@ -53515,7 +53543,7 @@
             "host": true
           }
         ],
-        "version": "0.2.1"
+        "version": "0.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -56963,7 +56991,7 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.12"
+        "version": "2.13"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -86292,7 +86320,7 @@
             "host": true
           }
         ],
-        "version": "0.27.2"
+        "version": "0.27.3"
       },
       "files": [
         "portfile.cmake",
@@ -90486,7 +90514,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -92824,11 +92852,11 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
+        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
         "dependencies": [
-          "fmt",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -92838,11 +92866,20 @@
             "host": true
           }
         ],
+        "default-features": [
+          "fmt"
+        ],
         "features": {
           "benchmark": {
             "description": "Use google benchmark",
             "dependencies": [
               "benchmark"
+            ]
+          },
+          "fmt": {
+            "description": "Use fmt library",
+            "dependencies": [
+              "fmt"
             ]
           },
           "wchar": {
@@ -94378,7 +94415,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.4.2"
+        "version": "4.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -102509,6 +102546,36 @@
         "homepage": "https://www.atnf.csiro.au/people/mcalabre/WCS/",
         "supports": "!windows",
         "version": "8.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "webcraft",
+      "manifest": {
+        "name": "webcraft",
+        "description": "An async first C++ networking library leveraging powerful features of C++23 built for scale, speed, and ease.",
+        "homepage": "https://github.com/adityarao2005/WebCraft/",
+        "license": "MIT",
+        "supports": "!(uwp | android | emscripten)",
+        "dependencies": [
+          {
+            "name": "liburing",
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
