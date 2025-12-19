@@ -1,5 +1,5 @@
 {
-  "version": "a20d95d3c76906363896754eb1cc93db2a694f16",
+  "version": "d2452281016c6d77b6ef199d599d9929eafe4807",
   "ports": [
     {
       "name": "3fd",
@@ -19040,7 +19040,7 @@
             ]
           }
         },
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -20252,8 +20252,9 @@
       "name": "cimg",
       "manifest": {
         "name": "cimg",
+        "port-version": 1,
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
-        "homepage": "https://github.com/dtschump/CImg",
+        "homepage": "https://github.com/GreycLab/CImg",
         "license": "CECILL-C AND CECILL-2.0",
         "dependencies": [
           {
@@ -25066,7 +25067,7 @@
             "host": true
           }
         ],
-        "version": "2.123.2"
+        "version": "2.131.0"
       },
       "files": [
         "portfile.cmake",
@@ -35036,7 +35037,7 @@
             "host": true
           }
         ],
-        "version": "22.5.2"
+        "version": "22.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -41276,7 +41277,7 @@
             ]
           }
         },
-        "version": "1.22.1"
+        "version": "1.23"
       },
       "files": [
         "0001-set-linkage.patch",
@@ -41748,7 +41749,7 @@
             "supports": "!windows & !osx"
           }
         },
-        "version": "14.1.0"
+        "version": "14.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -42405,7 +42406,6 @@
       "name": "influxdb-cxx",
       "manifest": {
         "name": "influxdb-cxx",
-        "port-version": 1,
         "description": "InfluxDB C++ client library",
         "homepage": "https://github.com/offa/influxdb-cxx",
         "license": "MIT",
@@ -42431,7 +42431,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.7.4"
+        "version": "0.8.0"
       },
       "files": [
         "fix-dllexports.patch",
@@ -63788,7 +63788,7 @@
             ]
           }
         },
-        "version": "2025"
+        "version": "2025.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -69014,6 +69014,7 @@
       "name": "nvidia-cutlass",
       "manifest": {
         "name": "nvidia-cutlass",
+        "port-version": 1,
         "description": "CUDA Templates for Linear Algebra Subroutines",
         "homepage": "https://github.com/NVIDIA/cutlass",
         "license": "BSD-3-Clause",
@@ -69032,6 +69033,7 @@
         "version": "4.3.1"
       },
       "files": [
+        "fix-cudnn-path.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79690,6 +79692,37 @@
       },
       "files": [
         "config.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "qgis-o2",
+      "manifest": {
+        "name": "qgis-o2",
+        "description": "OAuth 2.0 for Qt",
+        "homepage": "https://github.com/qgis/o2",
+        "license": "BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "network"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -91815,7 +91848,7 @@
             ]
           }
         },
-        "version-date": "2025-02-08"
+        "version-date": "2025-12-18"
       },
       "files": [
         "fix-messing-header.patch",
@@ -102575,7 +102608,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
