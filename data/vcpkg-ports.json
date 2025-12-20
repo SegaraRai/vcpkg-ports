@@ -1,5 +1,5 @@
 {
-  "version": "d2452281016c6d77b6ef199d599d9929eafe4807",
+  "version": "00807e89724847a866033a2f042c38fafae3c534",
   "ports": [
     {
       "name": "3fd",
@@ -20252,7 +20252,7 @@
       "name": "cimg",
       "manifest": {
         "name": "cimg",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
         "homepage": "https://github.com/GreycLab/CImg",
         "license": "CECILL-C AND CECILL-2.0",
@@ -25092,7 +25092,7 @@
             "host": true
           }
         ],
-        "version": "3.30.2"
+        "version": "3.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -25128,6 +25128,7 @@
       "name": "dawn",
       "manifest": {
         "name": "dawn",
+        "port-version": 1,
         "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
         "homepage": "https://dawn.googlesource.com/dawn",
         "license": "BSD-3-Clause",
@@ -25208,6 +25209,13 @@
             "description": "Metal backend support",
             "supports": "osx | ios"
           },
+          "tint": {
+            "description": "Compiles a minimal tint compiler (mainly for WGSL validation)",
+            "dependencies": [
+              "glslang"
+            ],
+            "supports": "(windows & !uwp) | linux | freebsd | openbsd | osx"
+          },
           "vulkan": {
             "description": "Vulkan backend support",
             "dependencies": [
@@ -25236,6 +25244,9 @@
         "005-bsd-support.patch",
         "006-msvc-spirv-tools-disable-warnaserror.patch",
         "007-fix-tint-null-only-writer.patch",
+        "008-wrong-dxcapi-include.patch",
+        "009-fix-tint-install.patch",
+        "010-fix-glslang.patch",
         "DawnConfig.cmake",
         "portfile.cmake",
         "unofficial_webgpu_dawn.pc.in",
@@ -28424,12 +28435,17 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "2.2.1"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
+        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -29315,7 +29331,7 @@
           "openssl",
           "zlib"
         ],
-        "version": "0.0.8"
+        "version": "0.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -33155,7 +33171,7 @@
             ]
           }
         },
-        "version-semver": "3.12.0"
+        "version-semver": "3.12.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33707,7 +33723,7 @@
       "name": "gexiv2",
       "manifest": {
         "name": "gexiv2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A GObject-based Exiv2 wrapper.",
         "homepage": "https://gitlab.gnome.org/GNOME/gexiv2/",
         "license": "GPL-2.0-or-later",
@@ -33723,6 +33739,15 @@
             "host": true
           }
         ],
+        "features": {
+          "introspection": {
+            "description": "Enable introspection",
+            "dependencies": [
+              "gobject-introspection"
+            ],
+            "supports": "!static & !windows"
+          }
+        },
         "version": "0.14.3"
       },
       "files": [
@@ -34435,7 +34460,7 @@
             ]
           }
         },
-        "version": "6.2.0"
+        "version": "6.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -53880,7 +53905,7 @@
             "host": true
           }
         ],
-        "version": "9.0.20"
+        "version": "9.0.21"
       },
       "files": [
         "disable-werror.patch",
@@ -63749,6 +63774,7 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
+        "port-version": 1,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -63773,6 +63799,15 @@
         "features": {
           "dds": {
             "description": "Build image plugin for DDS"
+          },
+          "df-vulkan": {
+            "description": "Build the MDL SDK df_vulkan example",
+            "dependencies": [
+              "glfw3",
+              "glslang",
+              "volk",
+              "vulkan-validationlayers"
+            ]
           },
           "openimageio": {
             "description": "Build image plugin for various image formats using OpenImageIO",
@@ -66628,7 +66663,6 @@
       "name": "mypaint-brushes",
       "manifest": {
         "name": "mypaint-brushes",
-        "port-version": 1,
         "description": "Data package. Brushes used by MyPaint and other software using libmypaint.",
         "homepage": "https://github.com/mypaint/mypaint-brushes",
         "license": "CC0-1.0",
@@ -66638,7 +66672,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -88624,7 +88658,7 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
@@ -91245,7 +91279,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.2.3"
+        "version": "4.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -104827,7 +104861,7 @@
             "host": true
           }
         ],
-        "version": "0.5.6"
+        "version": "0.5.7"
       },
       "files": [
         "portfile.cmake",
