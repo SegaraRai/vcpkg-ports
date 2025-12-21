@@ -1,5 +1,5 @@
 {
-  "version": "00807e89724847a866033a2f042c38fafae3c534",
+  "version": "37dcabc43809a960f41758e00e615cc6e26e8bbf",
   "ports": [
     {
       "name": "3fd",
@@ -5451,7 +5451,7 @@
           "boost-utility",
           "zeromq"
         ],
-        "version-date": "2023-03-23"
+        "version-date": "2025-11-30"
       },
       "files": [
         "portfile.cmake",
@@ -6505,10 +6505,11 @@
             ]
           }
         },
-        "version": "0.1.114"
+        "version": "0.1.118"
       },
       "files": [
         "portfile.cmake",
+        "remove-consistency-check.patch",
         "vcpkg.json"
       ]
     },
@@ -29309,7 +29310,7 @@
             "host": true
           }
         ],
-        "version-string": "25.08"
+        "version": "25.12"
       },
       "files": [
         "portfile.cmake",
@@ -33354,11 +33355,27 @@
             "host": true
           }
         ],
-        "version": "0.4.62"
+        "features": {
+          "introspection": {
+            "description": "Enable introspection",
+            "dependencies": [
+              {
+                "name": "babl",
+                "features": [
+                  "introspection"
+                ]
+              },
+              "gobject-introspection"
+            ],
+            "supports": "!static"
+          }
+        },
+        "version": "0.4.66"
       },
       "files": [
         "disable_tests.patch",
         "portfile.cmake",
+        "remove-consistency-check.patch",
         "remove_execinfo_support.patch",
         "vcpkg.json"
       ]
@@ -42320,7 +42337,7 @@
             "host": true
           }
         ],
-        "version": "0.16"
+        "version": "0.17"
       },
       "files": [
         "CMakeLists.txt",
@@ -42346,7 +42363,7 @@
             "host": true
           }
         ],
-        "version": "0.2"
+        "version": "0.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -46415,7 +46432,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.8.0"
+        "version-semver": "1.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -60217,7 +60234,6 @@
       "name": "lockpp",
       "manifest": {
         "name": "lockpp",
-        "port-version": 1,
         "description": "A C++17 Library that provides mutex protected objects",
         "homepage": "https://github.com/Curve/lockpp",
         "license": "MIT",
@@ -60225,12 +60241,17 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "3.0"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
+        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -69503,7 +69524,7 @@
             "host": true
           }
         ],
-        "version": "1.8.0"
+        "version": "1.10.0"
       },
       "files": [
         "fix_install.patch",
@@ -88658,7 +88679,7 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
