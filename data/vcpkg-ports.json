@@ -1,5 +1,5 @@
 {
-  "version": "5d57f5a0a5469a23e005fc79a7c1814ab4fc967e",
+  "version": "64e1fbee7d9f40eab5d112aaff648c4dcffe9e47",
   "ports": [
     {
       "name": "3fd",
@@ -3843,7 +3843,7 @@
             "host": true
           }
         ],
-        "version": "0.24.0"
+        "version": "0.24.1"
       },
       "files": [
         "portfile.cmake",
@@ -6559,7 +6559,7 @@
           },
           "zlib"
         ],
-        "version": "4.3.0"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -22185,7 +22185,7 @@
             ]
           }
         },
-        "version": "0.28.0"
+        "version": "0.29.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22438,10 +22438,11 @@
       "name": "cppad",
       "manifest": {
         "name": "cppad",
+        "port-version": 1,
         "description": "CppAD: A Package for Differentiation of C++ Algorithms",
         "homepage": "https://github.com/coin-or/CppAD",
         "license": "EPL-2.0",
-        "supports": "!(arm | uwp)",
+        "supports": "!uwp & !(windows & arm64)",
         "dependencies": [
           "pkgconf",
           {
@@ -76956,7 +76957,7 @@
         "name": "plf-colony",
         "description": "An unordered C++ data container providing fast iteration/insertion/erasure while maintaining pointer/iterator validity to non-erased elements regardless of insertions/erasures.",
         "homepage": "https://plflib.org/colony.htm",
-        "version": "7.5.25"
+        "version": "7.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -76969,7 +76970,7 @@
         "name": "plf-hive",
         "description": "plf::hive is a fork of plf::colony to match the current C++ standards proposal.",
         "homepage": "https://plflib.org/colony.htm",
-        "version-date": "2021-12-11"
+        "version-date": "2025-12-22"
       },
       "files": [
         "portfile.cmake",
@@ -76993,10 +76994,9 @@
       "name": "plf-list",
       "manifest": {
         "name": "plf-list",
-        "port-version": 2,
         "description": "A drop-in replacement for std::list with 293% faster insertion, 57% faster erasure, 17% faster iteration and 77% faster sorting on average",
         "homepage": "https://www.plflib.org/",
-        "version-date": "2019-08-10"
+        "version": "2.7.24"
       },
       "files": [
         "portfile.cmake",
@@ -77007,10 +77007,9 @@
       "name": "plf-nanotimer",
       "manifest": {
         "name": "plf-nanotimer",
-        "port-version": 2,
         "description": "A simple C++ 03/11/etc timer class for ~microsecond-precision cross-platform benchmarking",
         "homepage": "https://www.plflib.org/",
-        "version-date": "2019-08-10"
+        "version": "1.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -77034,10 +77033,9 @@
       "name": "plf-stack",
       "manifest": {
         "name": "plf-stack",
-        "port-version": 2,
         "description": "A C++ data container replicating std::stack functionality but with better performance",
         "homepage": "https://www.plflib.org/",
-        "version-date": "2019-08-10"
+        "version": "2.0.13"
       },
       "files": [
         "portfile.cmake",
@@ -93173,6 +93171,7 @@
       "name": "spirv-cross",
       "manifest": {
         "name": "spirv-cross",
+        "port-version": 1,
         "description": "SPIRV-Cross is a practical tool and library for performing reflection on SPIR-V and disassembling SPIR-V back to high level languages.",
         "homepage": "https://github.com/KhronosGroup/SPIRV-Cross",
         "dependencies": [
@@ -97332,7 +97331,6 @@
       "name": "tinynpy",
       "manifest": {
         "name": "tinynpy",
-        "port-version": 6,
         "description": "tiny C++ loader/exporter of python numpy array NPY/NPZ files",
         "dependencies": [
           {
@@ -97345,7 +97343,7 @@
           },
           "zlib"
         ],
-        "version": "1.0.0"
+        "version": "1.1"
       },
       "files": [
         "portfile.cmake",
