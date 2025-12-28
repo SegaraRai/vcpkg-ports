@@ -1,5 +1,5 @@
 {
-  "version": "026ac03d99ca88e45b5f260267b22e103ec05ec0",
+  "version": "11bbc873e00e9e58d4e9dffb30b7a5493a030e0b",
   "ports": [
     {
       "name": "3fd",
@@ -3843,7 +3843,7 @@
             "host": true
           }
         ],
-        "version": "0.24.1"
+        "version": "0.24.2"
       },
       "files": [
         "portfile.cmake",
@@ -19355,6 +19355,7 @@
       "name": "cctag",
       "manifest": {
         "name": "cctag",
+        "port-version": 1,
         "maintainers": "alicevision-team@googlegroups.com",
         "description": "Computer vision library for detecting CCTag markers made up of concentric circles",
         "homepage": "https://github.com/alicevision/CCTag",
@@ -19421,6 +19422,7 @@
         "version-semver": "1.0.4"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19579,7 +19581,7 @@
       "name": "ceres",
       "manifest": {
         "name": "ceres",
-        "port-version": 5,
+        "port-version": 6,
         "description": "non-linear optimization package",
         "homepage": "https://github.com/ceres-solver/ceres-solver",
         "license": "Apache-2.0",
@@ -19650,6 +19652,7 @@
         "0005_link_cuda_static.patch",
         "0006_fix_cuda_architectures.patch",
         "0007_support_cuda_13.patch",
+        "0008_support_eigen3_5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20182,7 +20185,7 @@
       "name": "chronoengine",
       "manifest": {
         "name": "chronoengine",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Multi-physics Simulation Engine.",
         "homepage": "https://projectchrono.org/",
         "license": "BSD-3-Clause",
@@ -20213,8 +20216,7 @@
         "version": "8.0.0"
       },
       "files": [
-        "find_package_required.patch",
-        "fix_dependencies.patch",
+        "0001-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24831,7 +24833,7 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
@@ -24934,11 +24936,12 @@
         "version": "6.15.0"
       },
       "files": [
-        "add-cassert.patch",
-        "dependencies.diff",
-        "devendor-lodepng.diff",
-        "disable_unit_tests_examples_and_tutorials.patch",
-        "pkgconfig.diff",
+        "0001-dependencies.patch",
+        "0002-devendor-lodepng.patch",
+        "0003-disable_unit_tests_examples_and_tutorials.patch",
+        "0004-pkgconfig.patch",
+        "0005-add-cassert.patch",
+        "0006-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -27275,9 +27278,10 @@
             "description": "Build CLI utilities"
           }
         },
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -27960,7 +27964,6 @@
       "name": "eigen3",
       "manifest": {
         "name": "eigen3",
-        "port-version": 1,
         "description": "C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.",
         "homepage": "http://eigen.tuxfamily.org",
         "license": "MPL-2.0",
@@ -27974,7 +27977,7 @@
             "host": true
           }
         ],
-        "version": "3.4.1"
+        "version": "5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -29405,7 +29408,7 @@
       "name": "fcl",
       "manifest": {
         "name": "fcl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A library for performing three types of proximity queries on a pair of geometric models composed of triangles",
         "homepage": "https://github.com/flexible-collision-library/fcl",
         "dependencies": [
@@ -29424,7 +29427,8 @@
         "version": "0.7.0"
       },
       "files": [
-        "dont-lower-c++-std.diff",
+        "0001-fix-cxx-standard.patch",
+        "0002-fix-eigen3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32512,7 +32516,6 @@
       "name": "g2o",
       "manifest": {
         "name": "g2o",
-        "port-version": 5,
         "description": "g2o: A General Framework for Graph Optimization",
         "homepage": "https://openslam.org/g2o.html",
         "license": null,
@@ -32540,11 +32543,12 @@
             ]
           }
         },
-        "version-date": "2024-12-14"
+        "version-date": "2024-12-28"
       },
       "files": [
-        "dependencies.diff",
-        "fix-absolute.patch",
+        "0001-dependencies.patch",
+        "0002-fix-absolute.patch",
+        "0003-support-eigen3-5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33339,6 +33343,7 @@
       "name": "gegl",
       "manifest": {
         "name": "gegl",
+        "port-version": 1,
         "description": "Generic Graphical Library.",
         "homepage": "https://gegl.org/",
         "license": "LGPL-3.0-or-later",
@@ -33354,6 +33359,15 @@
           }
         ],
         "features": {
+          "cairo": {
+            "description": "Add cairo support",
+            "dependencies": [
+              {
+                "name": "cairo",
+                "default-features": false
+              }
+            ]
+          },
           "introspection": {
             "description": "Enable introspection",
             "dependencies": [
@@ -34032,7 +34046,7 @@
       "name": "gl2ps",
       "manifest": {
         "name": "gl2ps",
-        "port-version": 4,
+        "port-version": 5,
         "description": "OpenGL to PostScript Printing Library",
         "homepage": "https://gitlab.onelab.info/gl2ps/gl2ps",
         "supports": "!android",
@@ -34517,7 +34531,6 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
-        "port-version": 6,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
         "supports": "!android",
@@ -34532,11 +34545,22 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "features": {
+          "egl": {
+            "description": "Enable EGL mode",
+            "dependencies": [
+              "egl"
+            ],
+            "supports": "!windows"
+          },
+          "x11": {
+            "description": "Enable X11 mode",
+            "supports": "!ios & !osx & !windows"
+          }
+        },
+        "version": "2.3.0"
       },
       "files": [
-        "base_address.patch",
-        "cmake_version.patch",
         "fix-LNK2019.patch",
         "portfile.cmake",
         "usage",
@@ -39006,7 +39030,7 @@
       "name": "gtsam",
       "manifest": {
         "name": "gtsam",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GTSAM is a library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.",
         "homepage": "https://github.com/borglab/gtsam",
         "license": "BSD-3-Clause",
@@ -39040,6 +39064,7 @@
       },
       "files": [
         "build-fixes.patch",
+        "eigen3-fixes.patch",
         "path-fixes.patch",
         "portfile.cmake",
         "usage",
@@ -43084,7 +43109,7 @@
             ]
           }
         },
-        "version": "5.4.3"
+        "version": "5.4.4"
       },
       "files": [
         "dependencies.diff",
@@ -47270,7 +47295,7 @@
           },
           "zlib"
         ],
-        "version": "1.85.0"
+        "version": "1.87.0"
       },
       "files": [
         "fix-pc-and-config.patch",
@@ -47349,6 +47374,7 @@
       "name": "leveldb",
       "manifest": {
         "name": "leveldb",
+        "port-version": 1,
         "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
         "homepage": "https://github.com/google/leveldb",
         "license": "BSD-3-Clause",
@@ -48825,6 +48851,7 @@
       "name": "libczi",
       "manifest": {
         "name": "libczi",
+        "port-version": 1,
         "description": "library to read and write CZI files.",
         "homepage": "https://github.com/ZEISS/libczi",
         "license": null,
@@ -48864,6 +48891,7 @@
         "version": "0.67.2"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51494,6 +51522,7 @@
       "name": "libinterpolate",
       "manifest": {
         "name": "libinterpolate",
+        "port-version": 1,
         "description": "Header-only C++ interpolation library.",
         "homepage": "https://github.com/CD3/libInterpolate",
         "license": "MIT",
@@ -51520,6 +51549,7 @@
         "version": "2.7.2"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -54669,7 +54699,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.21.4"
+        "version": "0.21.5"
       },
       "files": [
         "dependencies.patch",
@@ -60491,6 +60521,7 @@
       "name": "ltla-cppirlba",
       "manifest": {
         "name": "ltla-cppirlba",
+        "port-version": 1,
         "description": "A C++ port of the IRLBA algorithm, based on the C code in the R package.",
         "homepage": "https://github.com/LTLA/CppIrlba",
         "license": "MIT",
@@ -60510,6 +60541,7 @@
         "version": "2.0.2"
       },
       "files": [
+        "0001-fix-eigen3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -62570,6 +62602,7 @@
       "name": "manif",
       "manifest": {
         "name": "manif",
+        "port-version": 1,
         "description": "A small C++11 header-only library for Lie theory.",
         "homepage": "https://github.com/artivis/manif",
         "documentation": "https://artivis.github.io/manif/",
@@ -62589,6 +62622,7 @@
         "version": "0.0.5"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67398,7 +67432,6 @@
       "name": "ned14-internal-quickcpplib",
       "manifest": {
         "name": "ned14-internal-quickcpplib",
-        "port-version": 1,
         "maintainers": [
           "Niall Douglas <s_github@nedprod.com>",
           "Henrik Gaßmann <henrik@gassmann.onl>"
@@ -67437,10 +67470,9 @@
             ]
           }
         },
-        "version-date": "2023-11-22"
+        "version-date": "2025-12-16"
       },
       "files": [
-        "fix-list_filter.patch",
         "portfile.cmake",
         "quicklib-depheaders.patch",
         "sha_manifest.cmake",
@@ -71872,6 +71904,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
+        "port-version": 1,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -71923,7 +71956,7 @@
             "dependencies": [
               {
                 "name": "hdf5",
-                "platform": "!uwp & !(windows & (arm | arm64))"
+                "platform": "!uwp & !(windows & arm)"
               },
               {
                 "name": "opencv3",
@@ -71934,7 +71967,7 @@
               },
               {
                 "name": "tesseract",
-                "platform": "!uwp & !(windows & (arm | arm64))"
+                "platform": "!uwp & !(windows & arm)"
               }
             ]
           },
@@ -72004,15 +72037,13 @@
               "halide",
               {
                 "name": "opencv3",
-                "default-features": false
-              },
-              {
-                "name": "opencv3",
+                "default-features": false,
                 "features": [
                   "dnn"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & static)"
           },
           "ipp": {
             "description": "Enable Intel Integrated Performance Primitives",
@@ -72051,7 +72082,8 @@
             "description": "opengl support for opencv",
             "dependencies": [
               "opengl"
-            ]
+            ],
+            "supports": "!uwp & !android"
           },
           "openmp": {
             "description": "Enable openmp support for opencv",
@@ -72138,14 +72170,9 @@
                 "name": "opencv3",
                 "default-features": false,
                 "features": [
-                  "contrib"
-                ]
-              },
-              {
-                "name": "opencv3",
-                "default-features": false,
-                "features": [
-                  "eigen"
+                  "contrib",
+                  "eigen",
+                  "flann"
                 ]
               }
             ]
@@ -72179,7 +72206,8 @@
                 "name": "vtk",
                 "default-features": false
               }
-            ]
+            ],
+            "supports": "!android & !uwp & !(windows & arm)"
           },
           "webp": {
             "description": "WebP support for opencv",
@@ -72212,6 +72240,7 @@
         "0016-contrib-fix-freetype.patch",
         "0017-enable-gtk.patch",
         "0019-enable-pkgconf.patch",
+        "0020-contrib-add-cassert.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -72221,6 +72250,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
+        "port-version": 1,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -73215,7 +73245,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.25.3"
+        "version": "0.26.0"
       },
       "files": [
         "portfile.cmake",
@@ -73347,7 +73377,7 @@
       "name": "openmvg",
       "manifest": {
         "name": "openmvg",
-        "port-version": 2,
+        "port-version": 3,
         "description": "open Multiple View Geometry library. Basis for 3D computer vision and Structure from Motion.",
         "license": null,
         "supports": "(x86 | x64 | arm64) & !xbox",
@@ -73408,10 +73438,9 @@
         "version": "2.1"
       },
       "files": [
-        "0001-eigen_3.4.0.patch",
-        "build_fixes.patch",
-        "fast-c-language.diff",
-        "no-absolute-paths.patch",
+        "0001-fix-build.patch",
+        "0002-fast-c-language.patch",
+        "0003-no-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73420,7 +73449,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 7,
+        "port-version": 8,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/openMVS",
         "license": "AGPL-3.0-only",
@@ -73482,9 +73511,9 @@
       },
       "files": [
         "fix-build.patch",
+        "fix-eigen3.patch",
         "fix-lib-name-conflict.patch",
         "fix-static-build.patch",
-        "fix_no_zstd.patch",
         "no-absolute-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -75239,6 +75268,7 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
+        "port-version": 1,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
@@ -75270,9 +75300,10 @@
         "version": "2.19.1"
       },
       "files": [
-        "disable-werror.patch",
-        "doxygen.patch",
-        "find-tbb.patch",
+        "0001-doxygen.patch",
+        "0002-find-tbb.patch",
+        "0003-disable-werror.patch",
+        "0004-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -75968,6 +75999,7 @@
       "name": "pcl",
       "manifest": {
         "name": "pcl",
+        "port-version": 1,
         "description": "Point Cloud Library (PCL) is open source library for 2D/3D image and point cloud processing.",
         "homepage": "https://github.com/PointCloudLibrary/pcl",
         "license": "BSD-3-Clause",
@@ -85639,7 +85671,6 @@
       "name": "rbdl",
       "manifest": {
         "name": "rbdl",
-        "port-version": 7,
         "description": "Rigid Body Dynamics Library",
         "homepage": "https://github.com/rbdl/rbdl",
         "dependencies": [
@@ -85656,9 +85687,10 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.3.1"
       },
       "files": [
+        "0001-fix-eigen3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -87228,6 +87260,7 @@
       "name": "robotraconteur-companion",
       "manifest": {
         "name": "robotraconteur-companion",
+        "port-version": 1,
         "homepage": "https://github.com/robotraconteur/robotraconteur_companion",
         "license": "Apache-2.0",
         "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64 | arm32)) | (osx & (x64 | arm64))",
@@ -87248,6 +87281,7 @@
         "version-semver": "0.4.2"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -88798,6 +88832,7 @@
       "name": "scenepic",
       "manifest": {
         "name": "scenepic",
+        "port-version": 1,
         "description": "A Powerful, easy to use, and portable visualization toolkit for mixed 3D and 2D content",
         "homepage": "https://microsoft.github.io/scenepic/",
         "license": "MIT",
@@ -88815,8 +88850,7 @@
         "version": "1.1.1"
       },
       "files": [
-        "fix-CMakeInstall.patch",
-        "fix_dependencies.patch",
+        "0001-fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92672,9 +92706,10 @@
             "host": true
           }
         ],
-        "version": "1.24.6-r1"
+        "version": "1.24.6"
       },
       "files": [
+        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -101111,7 +101146,7 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -101395,7 +101430,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 13,
+        "port-version": 14,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -101763,6 +101798,7 @@
         "devendor_exodusII.patch",
         "fast-float.patch",
         "ffmpeg.diff",
+        "fix-eigen3.patch",
         "fix-exprtk.patch",
         "fix-gdal.patch",
         "fix-tbbsmptool.patch",
