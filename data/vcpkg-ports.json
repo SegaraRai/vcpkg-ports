@@ -1,5 +1,5 @@
 {
-  "version": "e7d511847f12658e9bd196b29b223144e3f2f091",
+  "version": "14bb451131ccf6be50a63a8d9dfe7980e46b5958",
   "ports": [
     {
       "name": "3fd",
@@ -20192,7 +20192,6 @@
       "name": "cimg",
       "manifest": {
         "name": "cimg",
-        "port-version": 2,
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
         "homepage": "https://github.com/GreycLab/CImg",
         "license": "CECILL-C AND CECILL-2.0",
@@ -20202,7 +20201,7 @@
             "host": true
           }
         ],
-        "version": "3.6.5"
+        "version": "3.6.6"
       },
       "files": [
         "CMakeLists.txt",
@@ -25051,7 +25050,7 @@
       "name": "dawn",
       "manifest": {
         "name": "dawn",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
         "homepage": "https://dawn.googlesource.com/dawn",
         "license": "BSD-3-Clause",
@@ -25106,10 +25105,16 @@
         "features": {
           "d3d11": {
             "description": "Direct3D 11 backend support",
+            "dependencies": [
+              "directx-dxc"
+            ],
             "supports": "windows"
           },
           "d3d12": {
             "description": "Direct3D 12 backend support",
+            "dependencies": [
+              "directx-dxc"
+            ],
             "supports": "windows"
           },
           "gl": {
@@ -25170,6 +25175,7 @@
         "008-wrong-dxcapi-include.patch",
         "009-fix-tint-install.patch",
         "010-fix-glslang.patch",
+        "011-fix-dxc.patch",
         "DawnConfig.cmake",
         "portfile.cmake",
         "unofficial_webgpu_dawn.pc.in",
@@ -34420,7 +34426,7 @@
             ]
           }
         },
-        "version": "6.4.0"
+        "version": "6.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -46901,6 +46907,7 @@
         "description": "LASzip - free and lossless LiDAR compression",
         "homepage": "https://laszip.org/",
         "license": "Apache-2.0",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -46911,11 +46918,11 @@
             "host": true
           }
         ],
-        "version": "3.4.4"
+        "version": "3.5.0"
       },
       "files": [
         "compiler-options.diff",
-        "format-string.diff",
+        "include-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52262,7 +52269,6 @@
         "description": "Get most relevant technical and tag data from video and audio files",
         "homepage": "https://github.com/MediaArea/MediaInfoLib",
         "dependencies": [
-          "curl",
           "libzen",
           "tinyxml2",
           {
@@ -52275,7 +52281,18 @@
           },
           "zlib"
         ],
-        "version": "25.9"
+        "features": {
+          "curl": {
+            "description": "Use curl for network access",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "25.10"
       },
       "files": [
         "dependencies.diff",
@@ -73234,14 +73251,15 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
-        "port-version": 8,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
-        "homepage": "https://cdcseacave.github.io/openMVS",
+        "homepage": "https://cdcseacave.github.io/",
         "license": "AGPL-3.0-only",
         "supports": "!xbox",
         "dependencies": [
+          "boost-assert",
+          "boost-graph",
           "boost-iostreams",
-          "boost-program-options",
+          "boost-pool",
           "boost-serialization",
           "boost-system",
           "boost-throw-exception",
@@ -73250,14 +73268,22 @@
             "default-features": false
           },
           "eigen3",
-          "glew",
-          "glfw3",
+          "libjpeg-turbo",
           "libpng",
-          "opencv",
+          "nlohmann-json",
+          {
+            "name": "opencv",
+            "default-features": false,
+            "features": [
+              "highgui"
+            ]
+          },
           {
             "name": "tiff",
             "default-features": false
           },
+          "tinygltf",
+          "tinyxml2",
           "vcglib",
           {
             "name": "vcpkg-cmake",
@@ -73268,9 +73294,6 @@
             "host": true
           },
           "zlib"
-        ],
-        "default-features": [
-          "nonfree"
         ],
         "features": {
           "ceres": {
@@ -73285,22 +73308,48 @@
               "cuda"
             ]
           },
-          "nonfree": {
-            "description": "nonfree support for openmvs"
+          "opengl": {
+            "description": "OpenGL support for openmvs",
+            "dependencies": [
+              "opengl"
+            ]
           },
           "openmp": {
             "description": "OpenMP support for openmvs"
+          },
+          "tools": {
+            "description": "Install tools",
+            "dependencies": [
+              "boost-program-options"
+            ]
+          },
+          "viewer": {
+            "description": "Install Viewer tool",
+            "dependencies": [
+              "glew",
+              "glfw3",
+              {
+                "name": "openmvs",
+                "features": [
+                  "opengl",
+                  "tools"
+                ]
+              }
+            ]
           }
         },
-        "version": "2.1.0"
+        "version": "2.3.0"
       },
       "files": [
-        "fix-build.patch",
-        "fix-eigen3.patch",
-        "fix-lib-name-conflict.patch",
-        "fix-static-build.patch",
+        "ambiguous-uint_t.diff",
+        "cmake.diff",
+        "common-log.diff",
+        "devendor.diff",
+        "interface-metashape.diff",
+        "missing-include.diff",
         "no-absolute-paths.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74918,7 +74967,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.496"
+        "version": "4.0.497"
       },
       "files": [
         "portfile.cmake",
@@ -91246,10 +91295,8 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
-        "port-version": 1,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
-        "license": "GPL-3.0",
         "supports": "!android & !uwp",
         "dependencies": [
           {
@@ -91266,7 +91313,7 @@
             "host": true
           }
         ],
-        "version": "0.8.1"
+        "version": "0.10.4"
       },
       "files": [
         "portfile.cmake",
@@ -91603,13 +91650,10 @@
       "name": "skyr-url",
       "manifest": {
         "name": "skyr-url",
-        "port-version": 2,
         "description": "A C++ library that implements the WhatWG URL specification",
         "homepage": "https://github.com/cpp-netlib/url",
         "dependencies": [
           "nlohmann-json",
-          "range-v3",
-          "tl-expected",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91619,7 +91663,7 @@
             "host": true
           }
         ],
-        "version": "1.13.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -99388,7 +99432,7 @@
             "host": true
           }
         ],
-        "version": "2.11.2"
+        "version": "2.11.3"
       },
       "files": [
         "portfile.cmake",
@@ -103384,7 +103428,7 @@
             ]
           }
         },
-        "version": "4.12.0"
+        "version": "4.12.1"
       },
       "files": [
         "0005-XML_file_path.patch",
