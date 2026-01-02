@@ -1,5 +1,5 @@
 {
-  "version": "14bb451131ccf6be50a63a8d9dfe7980e46b5958",
+  "version": "af752f21c9d79ba3df9cb0250ce2233933f58486",
   "ports": [
     {
       "name": "3fd",
@@ -44244,6 +44244,7 @@
       "name": "kddockwidgets",
       "manifest": {
         "name": "kddockwidgets",
+        "port-version": 1,
         "description": "KDAB's Dock Widget Framework for Qt",
         "homepage": "https://www.kdab.com/development-resources/qt-tools/kddockwidgets/",
         "license": "GPL-2.0-only OR GPL-3.0-only",
@@ -44396,7 +44397,7 @@
       "name": "kdstatemachineeditor",
       "manifest": {
         "name": "kdstatemachineeditor",
-        "port-version": 1,
+        "port-version": 2,
         "description": "KDStateMachineEditor is a library for visualizing and editing state charts.",
         "homepage": "https://github.com/KDAB/KDStateMachineEditor",
         "license": "LGPL-2.1-only",
@@ -44426,6 +44427,7 @@
         "version": "2.0.0"
       },
       "files": [
+        "fix-missing-targets.diff",
         "portfile.cmake",
         "qt6.9.patch",
         "usage",
@@ -67547,6 +67549,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
+        "port-version": 1,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "license": null,
@@ -67673,6 +67676,7 @@
       "files": [
         "dependencies.diff",
         "fix-pkgconfig.patch",
+        "fstat.patch",
         "mremap.diff",
         "no-install-deps.patch",
         "plugin-install-dir.diff",
@@ -75544,7 +75548,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 4,
+        "port-version": 5,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -75648,6 +75652,7 @@
         "add-tools-option.patch",
         "fix-build.patch",
         "fix-configure.patch",
+        "plugin.patch",
         "portfile.cmake",
         "protobuf-version.patch",
         "removedoublesymbols.patch",
@@ -80192,7 +80197,8 @@
           },
           {
             "name": "qtwebview",
-            "default-features": false
+            "default-features": false,
+            "platform": "x64 | arm64"
           },
           {
             "name": "qtwebview",
@@ -80234,7 +80240,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -80245,6 +80251,7 @@
       "name": "qt-advanced-docking-system",
       "manifest": {
         "name": "qt-advanced-docking-system",
+        "port-version": 1,
         "description": "Create customizable layouts using an advanced window docking system similar to what is found in many popular IDEs such as Visual Studio",
         "homepage": "https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System",
         "license": "LGPL-2.1-only",
@@ -80390,7 +80397,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -81989,7 +81996,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82031,7 +82038,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82108,12 +82115,11 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
         "portfile.cmake",
-        "stack-walker-arm64.patch",
         "vcpkg.json",
         "wrapper-fixes.patch"
       ]
@@ -82131,6 +82137,7 @@
             "name": "libb2",
             "platform": "!windows"
           },
+          "md4c",
           {
             "name": "pcre2",
             "default-features": false
@@ -82787,9 +82794,10 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
+        "2d4915.diff",
         "GLIB2-static.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
@@ -82808,6 +82816,7 @@
         "fix_deploy_windows.patch",
         "fix_egl.patch",
         "fix_egl_2.patch",
+        "framework.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
@@ -82860,7 +82869,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82884,7 +82893,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82917,7 +82926,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82946,7 +82955,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -82982,7 +82991,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83008,7 +83017,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83029,7 +83038,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83063,7 +83072,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83097,7 +83106,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83123,7 +83132,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83175,7 +83184,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -83224,7 +83233,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83339,7 +83348,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83379,7 +83388,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83405,6 +83414,11 @@
           {
             "name": "qtdeclarative",
             "default-features": false
+          },
+          {
+            "name": "qtlottie",
+            "host": true,
+            "default-features": false
           }
         ],
         "features": {
@@ -83412,9 +83426,10 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
+        "fix_qt_version.patch",
         "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -83436,7 +83451,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83458,7 +83473,8 @@
             "features": [
               "concurrent",
               "gui",
-              "network"
+              "network",
+              "thread"
             ]
           },
           {
@@ -83543,7 +83559,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "ffmpeg-compile-def.patch",
@@ -83571,7 +83587,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83644,12 +83660,9 @@
                 "default-features": false
               }
             ]
-          },
-          "uacpp": {
-            "description": "Unified Automation C++ SDK"
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "fix-build.patch",
@@ -83688,7 +83701,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -83736,7 +83749,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -83759,7 +83772,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83814,7 +83827,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83836,7 +83849,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83887,7 +83900,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83927,7 +83940,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -83971,7 +83984,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84004,7 +84017,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84026,7 +84039,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84055,7 +84068,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84089,7 +84102,7 @@
             "default-features": false
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84113,7 +84126,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84241,7 +84254,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -84271,7 +84284,7 @@
             ]
           }
         ],
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84314,7 +84327,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -84352,7 +84365,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84384,7 +84397,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84396,7 +84409,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 1,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84631,14 +84643,13 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "allow-msvc-145.diff",
         "clang-cl.patch",
         "cross-build.diff",
         "disable-host-pkgconfig.diff",
-        "fix-error2275-2672.patch",
         "include-dir-order.diff",
         "osx-sdk-info.diff",
         "pdf-system-libjpeg.diff",
@@ -84677,7 +84688,7 @@
             ]
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -84692,6 +84703,7 @@
         "description": "Qt WebView provides a way to display web content in a QML application without necessarily including a full web browser stack by using native APIs where it makes sense.",
         "homepage": "https://www.qt.io/",
         "license": null,
+        "supports": "x64 | arm64",
         "dependencies": [
           {
             "name": "qtbase",
@@ -84720,7 +84732,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.9.3"
+        "version": "6.10.0"
       },
       "files": [
         "port.data.cmake",
@@ -87148,7 +87160,12 @@
           "snappy": {
             "description": "build with SNAPPY",
             "dependencies": [
-              "snappy"
+              {
+                "name": "snappy",
+                "features": [
+                  "rtti"
+                ]
+              }
             ]
           },
           "tbb": {
@@ -87170,12 +87187,13 @@
             ]
           }
         },
-        "version": "10.4.2"
+        "version": "10.7.5"
       },
       "files": [
         "0001-fix-dependencies.patch",
         "0002-fix-android.patch",
         "0003-include_cstdint.patch",
+        "0004-support-apple.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -93362,7 +93380,7 @@
             ]
           }
         },
-        "version": "0.5.0"
+        "version": "0.6.0"
       },
       "files": [
         "portfile.cmake",
