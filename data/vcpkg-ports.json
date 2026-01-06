@@ -1,5 +1,5 @@
 {
-  "version": "af752f21c9d79ba3df9cb0250ce2233933f58486",
+  "version": "e3db8f65d2414c301c29a8467c6aee94e3ba09fc",
   "ports": [
     {
       "name": "3fd",
@@ -3312,7 +3312,7 @@
             "host": true
           }
         ],
-        "version": "1.2"
+        "version": "1.3"
       },
       "files": [
         "portfile.cmake",
@@ -18268,7 +18268,7 @@
         "homepage": "https://github.com/bshoshany/thread-pool",
         "documentation": "https://github.com/bshoshany/thread-pool/blob/master/README.md",
         "license": "MIT",
-        "version": "5.0.0"
+        "version": "5.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -22117,7 +22117,7 @@
             ]
           }
         },
-        "version": "0.29.0"
+        "version": "0.30.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -29019,7 +29019,7 @@
             "host": true
           }
         ],
-        "version": "8.2.1"
+        "version": "8.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -29441,7 +29441,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30005,6 +30005,19 @@
             "description": "Intel QSV Codec",
             "dependencies": [
               "mfx-dispatch"
+            ]
+          },
+          "rubberband": {
+            "description": "Enable rubberband support",
+            "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "gpl"
+                ]
+              },
+              "rubberband"
             ]
           },
           "sdl2": {
@@ -30944,7 +30957,7 @@
             "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -34426,7 +34439,7 @@
             ]
           }
         },
-        "version": "6.4.1"
+        "version": "6.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -34726,7 +34739,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -37404,11 +37417,9 @@
       "name": "graphviz",
       "manifest": {
         "name": "graphviz",
-        "port-version": 3,
         "description": "Graph Visualization Tools",
         "homepage": "https://graphviz.org/",
         "license": "EPL-1.0",
-        "supports": "!staticcrt",
         "dependencies": [
           {
             "name": "cairo",
@@ -37416,7 +37427,10 @@
           },
           "expat",
           "gdk-pixbuf",
-          "getopt",
+          {
+            "name": "getopt-win32",
+            "platform": "windows & !mingw"
+          },
           "gts",
           {
             "name": "libgd",
@@ -37429,32 +37443,41 @@
               "tiff"
             ]
           },
+          {
+            "name": "libltdl",
+            "platform": "!windows | mingw"
+          },
           "librsvg",
           "libwebp",
           "pango",
           {
-            "name": "pkgconf",
+            "name": "vcpkg-cmake",
             "host": true
           },
           {
-            "name": "vcpkg-cmake",
+            "name": "vcpkg-cmake-config",
             "host": true
           },
           "zlib"
         ],
-        "version-semver": "10.0.1"
+        "features": {
+          "tools": {
+            "description": "Install graphviz executables"
+          }
+        },
+        "version-semver": "14.1.1"
       },
       "files": [
+        "build.diff",
         "cmake-project-include.cmake",
-        "disable-pragma-lib.patch",
-        "fix-dependencies.patch",
+        "dependencies.diff",
+        "install.diff",
         "no-absolute-paths.patch",
+        "official-include-dir.diff",
         "portfile.cmake",
-        "select-plugins.patch",
-        "static-linkage.patch",
+        "skip-configure-plugins.diff",
         "vcpkg.json",
-        "webp-install.patch",
-        "workaround-insufficiently-ugly-wchar-h.patch"
+        "version.diff"
       ]
     },
     {
@@ -40855,7 +40878,7 @@
             ]
           }
         },
-        "version": "3.2.0"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -53729,7 +53752,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.10.5"
+        "version-semver": "1.10.6"
       },
       "files": [
         "install.diff",
@@ -54192,7 +54215,7 @@
             "host": true
           }
         ],
-        "version": "7.10.4"
+        "version": "7.10.5"
       },
       "files": [
         "fix_build_with_vs2017.patch",
@@ -58732,7 +58755,6 @@
       "name": "libzim",
       "manifest": {
         "name": "libzim",
-        "port-version": 1,
         "description": "The Libzim is the reference implementation for the ZIM file format. It's a software library to read and write ZIM files on many systems and architectures. More information about the ZIM format and the openZIM project at https://openzim.org/.",
         "homepage": "https://github.com/openzim/libzim",
         "license": "GPL-2.0-or-later",
@@ -58754,13 +58776,12 @@
             ]
           }
         },
-        "version": "9.4.0"
+        "version": "9.4.1"
       },
       "files": [
         "cross-builds.diff",
         "dllexport.diff",
         "portfile.cmake",
-        "remove-sortpp-pass.diff",
         "subdirs.diff",
         "vcpkg.json"
       ]
@@ -86163,7 +86184,7 @@
             ]
           }
         },
-        "version": "0.22.0"
+        "version": "0.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -89635,7 +89656,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.2.28"
+        "version": "3.4.0"
       },
       "files": [
         "fix-freebsd.patch",
@@ -89694,7 +89715,7 @@
             ]
           }
         },
-        "version": "3.2.4"
+        "version": "3.2.6"
       },
       "files": [
         "dependencies.diff",
@@ -91121,7 +91142,7 @@
             "host": true
           }
         ],
-        "version": "6.2.156"
+        "version": "6.2.157"
       },
       "files": [
         "SimdConfig.cmake",
@@ -95386,7 +95407,6 @@
       "name": "supernovas",
       "manifest": {
         "name": "supernovas",
-        "port-version": 1,
         "description": "SuperNOVAS C/C++ high-precision astrometry library",
         "homepage": "https://smithsonian.github.io/SuperNOVAS/",
         "documentation": "https://smithsonian.github.io/SuperNOVAS/doc/html/",
@@ -95410,10 +95430,9 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
-        "cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -95791,7 +95810,7 @@
             "host": true
           }
         ],
-        "version": "3.11.0"
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
