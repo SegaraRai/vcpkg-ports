@@ -1,5 +1,5 @@
 {
-  "version": "2cf2bcc60add50f79b2c418487d9cd1b6c7c1fec",
+  "version": "5f4cddb220a4630a8ffc8db9270b8bf03483df60",
   "ports": [
     {
       "name": "3fd",
@@ -551,6 +551,37 @@
       ]
     },
     {
+      "name": "aeron",
+      "manifest": {
+        "name": "aeron",
+        "description": "Efficient reliable UDP unicast, UDP multicast, and IPC message transport",
+        "homepage": "https://github.com/aeron-io/aeron",
+        "license": "Apache-2.0",
+        "supports": "(x64 & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "archive": {
+            "description": "Build Aeron Archive API for recording and replaying message streams (requires Java)",
+            "supports": "(x64 & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)"
+          }
+        },
+        "version": "1.49.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "air-ctl",
       "manifest": {
         "name": "air-ctl",
@@ -679,8 +710,9 @@
       "name": "alembic",
       "manifest": {
         "name": "alembic",
+        "port-version": 1,
         "description": "Alembic is an open framework for storing and sharing scene data that includes a C++ library, a file format, and client plugins and applications.",
-        "homepage": "https://alembic.io/",
+        "homepage": "https://www.alembic.io",
         "supports": "!(windows & x86) & !uwp",
         "dependencies": [
           "imath",
@@ -3241,6 +3273,7 @@
       "name": "aubio",
       "manifest": {
         "name": "aubio",
+        "port-version": 1,
         "description": "Aubio is a tool designed for the extraction of annotations from audio signals. Its features include segmenting a sound file before each of its attacks, performing pitch detection, tapping the beat and producing midi streams from live audio.",
         "homepage": "https://github.com/aubio/aubio",
         "license": "GPL-3.0-or-later",
@@ -3286,8 +3319,8 @@
         "version-date": "2024-01-03"
       },
       "files": [
+        "0001-ffmpeg-deprecated.patch",
         "CMakeLists.txt",
-        "ffmpeg7.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3402,9 +3435,8 @@
       "name": "autodock-vina",
       "manifest": {
         "name": "autodock-vina",
-        "port-version": 1,
         "description": "AutoDock Vina is one of the fastest and most widely used open-source docking engines.",
-        "homepage": "https://vina.scripps.edu/",
+        "homepage": "https://autodock-vina.readthedocs.io",
         "dependencies": [
           "boost-algorithm",
           "boost-array",
@@ -3430,7 +3462,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.6"
+        "version-semver": "1.2.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -3442,6 +3474,7 @@
       "name": "avcpp",
       "manifest": {
         "name": "avcpp",
+        "port-version": 1,
         "description": "Wrapper for the FFmpeg that simplify usage it from C++ projects.",
         "homepage": "https://github.com/h4tr3d/avcpp",
         "license": "LGPL-2.1-only OR BSD-3-Clause",
@@ -3454,7 +3487,6 @@
               "avdevice",
               "avfilter",
               "avformat",
-              "postproc",
               "swresample",
               "swscale"
             ]
@@ -3530,10 +3562,11 @@
           },
           "zlib"
         ],
-        "version": "1.12.0"
+        "version": "1.12.1"
       },
       "files": [
         "avro.patch",
+        "bswap.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3825,7 +3858,7 @@
             "host": true
           }
         ],
-        "version": "0.24.2"
+        "version": "0.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -6787,7 +6820,7 @@
             "host": true
           }
         ],
-        "version": "4.8.2"
+        "version": "4.8.3"
       },
       "files": [
         "fix-dependencies.patch",
@@ -7714,6 +7747,7 @@
       "name": "boost",
       "manifest": {
         "name": "boost",
+        "port-version": 1,
         "description": "Peer-reviewed portable C++ source libraries",
         "homepage": "https://boost.org",
         "license": "BSL-1.0",
@@ -8386,8 +8420,10 @@
       "name": "boost-accumulators",
       "manifest": {
         "name": "boost-accumulators",
+        "port-version": 1,
         "description": "Boost accumulators module",
-        "homepage": "https://www.boost.org/libs/accumulators",
+        "homepage": "https://www.boost.org/library/latest/accumulators/",
+        "documentation": "https://www.boost.org/libs/accumulators",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8490,8 +8526,10 @@
       "name": "boost-algorithm",
       "manifest": {
         "name": "boost-algorithm",
+        "port-version": 1,
         "description": "Boost algorithm module",
-        "homepage": "https://www.boost.org/libs/algorithm",
+        "homepage": "https://www.boost.org/library/latest/algorithm/",
+        "documentation": "https://www.boost.org/libs/algorithm",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8582,8 +8620,10 @@
       "name": "boost-align",
       "manifest": {
         "name": "boost-align",
+        "port-version": 1,
         "description": "Boost align module",
-        "homepage": "https://www.boost.org/libs/align",
+        "homepage": "https://www.boost.org/library/latest/align/",
+        "documentation": "https://www.boost.org/libs/align",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8622,8 +8662,10 @@
       "name": "boost-any",
       "manifest": {
         "name": "boost-any",
+        "port-version": 1,
         "description": "Boost any module",
-        "homepage": "https://www.boost.org/libs/any",
+        "homepage": "https://www.boost.org/library/latest/any/",
+        "documentation": "https://www.boost.org/libs/any",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8662,8 +8704,10 @@
       "name": "boost-array",
       "manifest": {
         "name": "boost-array",
+        "port-version": 1,
         "description": "Boost array module",
-        "homepage": "https://www.boost.org/libs/array",
+        "homepage": "https://www.boost.org/library/latest/array/",
+        "documentation": "https://www.boost.org/libs/array",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8702,8 +8746,10 @@
       "name": "boost-asio",
       "manifest": {
         "name": "boost-asio",
+        "port-version": 1,
         "description": "Boost asio module",
-        "homepage": "https://www.boost.org/libs/asio",
+        "homepage": "https://www.boost.org/library/latest/asio/",
+        "documentation": "https://www.boost.org/libs/asio",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8785,8 +8831,10 @@
       "name": "boost-assert",
       "manifest": {
         "name": "boost-assert",
+        "port-version": 1,
         "description": "Boost assert module",
-        "homepage": "https://www.boost.org/libs/assert",
+        "homepage": "https://www.boost.org/library/latest/assert/",
+        "documentation": "https://www.boost.org/libs/assert",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8813,8 +8861,10 @@
       "name": "boost-assign",
       "manifest": {
         "name": "boost-assign",
+        "port-version": 1,
         "description": "Boost assign module",
-        "homepage": "https://www.boost.org/libs/assign",
+        "homepage": "https://www.boost.org/library/latest/assign/",
+        "documentation": "https://www.boost.org/libs/assign",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8881,8 +8931,10 @@
       "name": "boost-atomic",
       "manifest": {
         "name": "boost-atomic",
+        "port-version": 1,
         "description": "Boost atomic module",
-        "homepage": "https://www.boost.org/libs/atomic",
+        "homepage": "https://www.boost.org/library/latest/atomic/",
+        "documentation": "https://www.boost.org/libs/atomic",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -8934,8 +8986,10 @@
       "name": "boost-beast",
       "manifest": {
         "name": "boost-beast",
+        "port-version": 1,
         "description": "Boost beast module",
-        "homepage": "https://www.boost.org/libs/beast",
+        "homepage": "https://www.boost.org/library/latest/beast/",
+        "documentation": "https://www.boost.org/libs/beast",
         "license": "BSL-1.0",
         "supports": "!emscripten",
         "dependencies": [
@@ -9035,8 +9089,10 @@
       "name": "boost-bimap",
       "manifest": {
         "name": "boost-bimap",
+        "port-version": 1,
         "description": "Boost bimap module",
-        "homepage": "https://www.boost.org/libs/bimap",
+        "homepage": "https://www.boost.org/library/latest/bimap/",
+        "documentation": "https://www.boost.org/libs/bimap",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9111,8 +9167,10 @@
       "name": "boost-bind",
       "manifest": {
         "name": "boost-bind",
+        "port-version": 1,
         "description": "Boost bind module",
-        "homepage": "https://www.boost.org/libs/bind",
+        "homepage": "https://www.boost.org/library/latest/bind/",
+        "documentation": "https://www.boost.org/libs/bind",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9143,8 +9201,10 @@
       "name": "boost-bloom",
       "manifest": {
         "name": "boost-bloom",
+        "port-version": 1,
         "description": "Boost bloom module",
-        "homepage": "https://www.boost.org/libs/bloom",
+        "homepage": "https://www.boost.org/library/latest/bloom/",
+        "documentation": "https://www.boost.org/libs/bloom",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9191,6 +9251,7 @@
       "name": "boost-build",
       "manifest": {
         "name": "boost-build",
+        "port-version": 1,
         "description": "Boost build module",
         "homepage": "https://github.com/boostorg/build",
         "license": "BSL-1.0",
@@ -9214,8 +9275,10 @@
       "name": "boost-callable-traits",
       "manifest": {
         "name": "boost-callable-traits",
+        "port-version": 1,
         "description": "Boost callable_traits module",
-        "homepage": "https://www.boost.org/libs/callable_traits",
+        "homepage": "https://www.boost.org/library/latest/callable_traits/",
+        "documentation": "https://www.boost.org/libs/callable_traits",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9242,8 +9305,10 @@
       "name": "boost-charconv",
       "manifest": {
         "name": "boost-charconv",
+        "port-version": 1,
         "description": "Boost charconv module",
-        "homepage": "https://www.boost.org/libs/charconv",
+        "homepage": "https://www.boost.org/library/latest/charconv/",
+        "documentation": "https://www.boost.org/libs/charconv",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9278,8 +9343,10 @@
       "name": "boost-chrono",
       "manifest": {
         "name": "boost-chrono",
+        "port-version": 1,
         "description": "Boost chrono module",
-        "homepage": "https://www.boost.org/libs/chrono",
+        "homepage": "https://www.boost.org/library/latest/chrono/",
+        "documentation": "https://www.boost.org/libs/chrono",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9362,8 +9429,10 @@
       "name": "boost-circular-buffer",
       "manifest": {
         "name": "boost-circular-buffer",
+        "port-version": 1,
         "description": "Boost circular_buffer module",
-        "homepage": "https://www.boost.org/libs/circular_buffer",
+        "homepage": "https://www.boost.org/library/latest/circular_buffer/",
+        "documentation": "https://www.boost.org/libs/circular_buffer",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9418,6 +9487,7 @@
       "name": "boost-cmake",
       "manifest": {
         "name": "boost-cmake",
+        "port-version": 1,
         "description": "Boost cmake module",
         "homepage": "https://github.com/boostorg/cmake",
         "license": "BSL-1.0",
@@ -9447,8 +9517,10 @@
       "name": "boost-cobalt",
       "manifest": {
         "name": "boost-cobalt",
+        "port-version": 1,
         "description": "Boost cobalt module",
-        "homepage": "https://www.boost.org/libs/cobalt",
+        "homepage": "https://www.boost.org/library/latest/cobalt/",
+        "documentation": "https://www.boost.org/libs/cobalt",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -9538,8 +9610,10 @@
       "name": "boost-compat",
       "manifest": {
         "name": "boost-compat",
+        "port-version": 1,
         "description": "Boost compat module",
-        "homepage": "https://www.boost.org/libs/compat",
+        "homepage": "https://www.boost.org/library/latest/compat/",
+        "documentation": "https://www.boost.org/libs/compat",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9574,8 +9648,10 @@
       "name": "boost-compute",
       "manifest": {
         "name": "boost-compute",
+        "port-version": 1,
         "description": "Boost compute module",
-        "homepage": "https://www.boost.org/libs/compute",
+        "homepage": "https://www.boost.org/library/latest/compute/",
+        "documentation": "https://www.boost.org/libs/compute",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9712,8 +9788,10 @@
       "name": "boost-concept-check",
       "manifest": {
         "name": "boost-concept-check",
+        "port-version": 1,
         "description": "Boost concept_check module",
-        "homepage": "https://www.boost.org/libs/concept_check",
+        "homepage": "https://www.boost.org/library/latest/concept_check/",
+        "documentation": "https://www.boost.org/libs/concept_check",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9752,8 +9830,10 @@
       "name": "boost-config",
       "manifest": {
         "name": "boost-config",
+        "port-version": 1,
         "description": "Boost config module",
-        "homepage": "https://www.boost.org/libs/config",
+        "homepage": "https://www.boost.org/library/latest/config/",
+        "documentation": "https://www.boost.org/libs/config",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9776,8 +9856,10 @@
       "name": "boost-container",
       "manifest": {
         "name": "boost-container",
+        "port-version": 1,
         "description": "Boost container module",
-        "homepage": "https://www.boost.org/libs/container",
+        "homepage": "https://www.boost.org/library/latest/container/",
+        "documentation": "https://www.boost.org/libs/container",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9817,8 +9899,10 @@
       "name": "boost-container-hash",
       "manifest": {
         "name": "boost-container-hash",
+        "port-version": 1,
         "description": "Boost container_hash module",
-        "homepage": "https://www.boost.org/libs/container_hash",
+        "homepage": "https://www.boost.org/library/latest/container_hash/",
+        "documentation": "https://www.boost.org/libs/container_hash",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9853,8 +9937,10 @@
       "name": "boost-context",
       "manifest": {
         "name": "boost-context",
+        "port-version": 1,
         "description": "Boost context module",
-        "homepage": "https://www.boost.org/libs/context",
+        "homepage": "https://www.boost.org/library/latest/context/",
+        "documentation": "https://www.boost.org/libs/context",
         "license": "BSL-1.0",
         "supports": "!uwp & !emscripten",
         "dependencies": [
@@ -9906,8 +9992,10 @@
       "name": "boost-contract",
       "manifest": {
         "name": "boost-contract",
+        "port-version": 1,
         "description": "Boost contract module",
-        "homepage": "https://www.boost.org/libs/contract",
+        "homepage": "https://www.boost.org/library/latest/contract/",
+        "documentation": "https://www.boost.org/libs/contract",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -9994,8 +10082,10 @@
       "name": "boost-conversion",
       "manifest": {
         "name": "boost-conversion",
+        "port-version": 1,
         "description": "Boost conversion module",
-        "homepage": "https://www.boost.org/libs/conversion",
+        "homepage": "https://www.boost.org/library/latest/conversion/",
+        "documentation": "https://www.boost.org/libs/conversion",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10034,8 +10124,10 @@
       "name": "boost-convert",
       "manifest": {
         "name": "boost-convert",
+        "port-version": 1,
         "description": "Boost convert module",
-        "homepage": "https://www.boost.org/libs/convert",
+        "homepage": "https://www.boost.org/library/latest/convert/",
+        "documentation": "https://www.boost.org/libs/convert",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10102,8 +10194,10 @@
       "name": "boost-core",
       "manifest": {
         "name": "boost-core",
+        "port-version": 1,
         "description": "Boost core module",
-        "homepage": "https://www.boost.org/libs/core",
+        "homepage": "https://www.boost.org/library/latest/core/",
+        "documentation": "https://www.boost.org/libs/core",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10138,8 +10232,10 @@
       "name": "boost-coroutine",
       "manifest": {
         "name": "boost-coroutine",
+        "port-version": 1,
         "description": "Boost coroutine module",
-        "homepage": "https://www.boost.org/libs/coroutine",
+        "homepage": "https://www.boost.org/library/latest/coroutine/",
+        "documentation": "https://www.boost.org/libs/coroutine",
         "license": "BSL-1.0",
         "supports": "!(arm & windows) & !uwp & !emscripten",
         "dependencies": [
@@ -10204,8 +10300,10 @@
       "name": "boost-coroutine2",
       "manifest": {
         "name": "boost-coroutine2",
+        "port-version": 1,
         "description": "Boost coroutine2 module",
-        "homepage": "https://www.boost.org/libs/coroutine2",
+        "homepage": "https://www.boost.org/library/latest/coroutine2/",
+        "documentation": "https://www.boost.org/libs/coroutine2",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10240,8 +10338,10 @@
       "name": "boost-crc",
       "manifest": {
         "name": "boost-crc",
+        "port-version": 1,
         "description": "Boost crc module",
-        "homepage": "https://www.boost.org/libs/crc",
+        "homepage": "https://www.boost.org/library/latest/crc/",
+        "documentation": "https://www.boost.org/libs/crc",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10268,8 +10368,10 @@
       "name": "boost-date-time",
       "manifest": {
         "name": "boost-date-time",
+        "port-version": 1,
         "description": "Boost date_time module",
-        "homepage": "https://www.boost.org/libs/date_time",
+        "homepage": "https://www.boost.org/library/latest/date_time/",
+        "documentation": "https://www.boost.org/libs/date_time",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10352,8 +10454,10 @@
       "name": "boost-describe",
       "manifest": {
         "name": "boost-describe",
+        "port-version": 1,
         "description": "Boost describe module",
-        "homepage": "https://www.boost.org/libs/describe",
+        "homepage": "https://www.boost.org/library/latest/describe/",
+        "documentation": "https://www.boost.org/libs/describe",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10384,8 +10488,10 @@
       "name": "boost-detail",
       "manifest": {
         "name": "boost-detail",
+        "port-version": 1,
         "description": "Boost detail module",
-        "homepage": "https://www.boost.org/libs/detail",
+        "homepage": "https://www.boost.org/library/latest/detail/",
+        "documentation": "https://www.boost.org/libs/detail",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10428,8 +10534,10 @@
       "name": "boost-dll",
       "manifest": {
         "name": "boost-dll",
+        "port-version": 1,
         "description": "Boost dll module",
-        "homepage": "https://www.boost.org/libs/dll",
+        "homepage": "https://www.boost.org/library/latest/dll/",
+        "documentation": "https://www.boost.org/libs/dll",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -10493,8 +10601,10 @@
       "name": "boost-dynamic-bitset",
       "manifest": {
         "name": "boost-dynamic-bitset",
+        "port-version": 1,
         "description": "Boost dynamic_bitset module",
-        "homepage": "https://www.boost.org/libs/dynamic_bitset",
+        "homepage": "https://www.boost.org/library/latest/dynamic_bitset/",
+        "documentation": "https://www.boost.org/libs/dynamic_bitset",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10537,8 +10647,10 @@
       "name": "boost-endian",
       "manifest": {
         "name": "boost-endian",
+        "port-version": 1,
         "description": "Boost endian module",
-        "homepage": "https://www.boost.org/libs/endian",
+        "homepage": "https://www.boost.org/library/latest/endian/",
+        "documentation": "https://www.boost.org/libs/endian",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10565,8 +10677,10 @@
       "name": "boost-exception",
       "manifest": {
         "name": "boost-exception",
+        "port-version": 1,
         "description": "Boost exception module",
-        "homepage": "https://www.boost.org/libs/exception",
+        "homepage": "https://www.boost.org/library/latest/exception/",
+        "documentation": "https://www.boost.org/libs/exception",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10618,8 +10732,10 @@
       "name": "boost-fiber",
       "manifest": {
         "name": "boost-fiber",
+        "port-version": 1,
         "description": "Boost fiber module",
-        "homepage": "https://www.boost.org/libs/fiber",
+        "homepage": "https://www.boost.org/library/latest/fiber/",
+        "documentation": "https://www.boost.org/libs/fiber",
         "license": "BSL-1.0",
         "supports": "!uwp & !(arm & windows) & !emscripten",
         "dependencies": [
@@ -10690,8 +10806,10 @@
       "name": "boost-filesystem",
       "manifest": {
         "name": "boost-filesystem",
+        "port-version": 1,
         "description": "Boost filesystem module",
-        "homepage": "https://www.boost.org/libs/filesystem",
+        "homepage": "https://www.boost.org/library/latest/filesystem/",
+        "documentation": "https://www.boost.org/libs/filesystem",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -10771,8 +10889,10 @@
       "name": "boost-flyweight",
       "manifest": {
         "name": "boost-flyweight",
+        "port-version": 1,
         "description": "Boost flyweight module",
-        "homepage": "https://www.boost.org/libs/flyweight",
+        "homepage": "https://www.boost.org/library/latest/flyweight/",
+        "documentation": "https://www.boost.org/libs/flyweight",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10851,8 +10971,10 @@
       "name": "boost-foreach",
       "manifest": {
         "name": "boost-foreach",
+        "port-version": 1,
         "description": "Boost foreach module",
-        "homepage": "https://www.boost.org/libs/foreach",
+        "homepage": "https://www.boost.org/library/latest/foreach/",
+        "documentation": "https://www.boost.org/libs/foreach",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10899,8 +11021,10 @@
       "name": "boost-format",
       "manifest": {
         "name": "boost-format",
+        "port-version": 1,
         "description": "Boost format module",
-        "homepage": "https://www.boost.org/libs/format",
+        "homepage": "https://www.boost.org/library/latest/format/",
+        "documentation": "https://www.boost.org/libs/format",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10951,8 +11075,10 @@
       "name": "boost-function",
       "manifest": {
         "name": "boost-function",
+        "port-version": 1,
         "description": "Boost function module",
-        "homepage": "https://www.boost.org/libs/function",
+        "homepage": "https://www.boost.org/library/latest/function/",
+        "documentation": "https://www.boost.org/libs/function",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -10995,8 +11121,10 @@
       "name": "boost-function-types",
       "manifest": {
         "name": "boost-function-types",
+        "port-version": 1,
         "description": "Boost function_types module",
-        "homepage": "https://www.boost.org/libs/function_types",
+        "homepage": "https://www.boost.org/library/latest/function_types/",
+        "documentation": "https://www.boost.org/libs/function_types",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11043,8 +11171,10 @@
       "name": "boost-functional",
       "manifest": {
         "name": "boost-functional",
+        "port-version": 1,
         "description": "Boost functional module",
-        "homepage": "https://www.boost.org/libs/functional",
+        "homepage": "https://www.boost.org/library/latest/functional/",
+        "documentation": "https://www.boost.org/libs/functional",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11103,8 +11233,10 @@
       "name": "boost-fusion",
       "manifest": {
         "name": "boost-fusion",
+        "port-version": 1,
         "description": "Boost fusion module",
-        "homepage": "https://www.boost.org/libs/fusion",
+        "homepage": "https://www.boost.org/library/latest/fusion/",
+        "documentation": "https://www.boost.org/libs/fusion",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11175,8 +11307,10 @@
       "name": "boost-geometry",
       "manifest": {
         "name": "boost-geometry",
+        "port-version": 1,
         "description": "Boost geometry module",
-        "homepage": "https://www.boost.org/libs/geometry",
+        "homepage": "https://www.boost.org/library/latest/geometry/",
+        "documentation": "https://www.boost.org/libs/geometry",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -11332,8 +11466,10 @@
       "name": "boost-gil",
       "manifest": {
         "name": "boost-gil",
+        "port-version": 1,
         "description": "Boost gil module",
-        "homepage": "https://www.boost.org/libs/gil",
+        "homepage": "https://www.boost.org/library/latest/gil/",
+        "documentation": "https://www.boost.org/libs/gil",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11401,8 +11537,10 @@
       "name": "boost-graph",
       "manifest": {
         "name": "boost-graph",
+        "port-version": 1,
         "description": "Boost graph module",
-        "homepage": "https://www.boost.org/libs/graph",
+        "homepage": "https://www.boost.org/library/latest/graph/",
+        "documentation": "https://www.boost.org/libs/graph",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -11594,8 +11732,10 @@
       "name": "boost-graph-parallel",
       "manifest": {
         "name": "boost-graph-parallel",
+        "port-version": 1,
         "description": "Boost graph_parallel module",
-        "homepage": "https://www.boost.org/libs/graph_parallel",
+        "homepage": "https://www.boost.org/library/latest/graph_parallel/",
+        "documentation": "https://www.boost.org/libs/graph_parallel",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -11724,8 +11864,10 @@
       "name": "boost-hana",
       "manifest": {
         "name": "boost-hana",
+        "port-version": 1,
         "description": "Boost hana module",
-        "homepage": "https://www.boost.org/libs/hana",
+        "homepage": "https://www.boost.org/library/latest/hana/",
+        "documentation": "https://www.boost.org/libs/hana",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11768,8 +11910,10 @@
       "name": "boost-hash2",
       "manifest": {
         "name": "boost-hash2",
+        "port-version": 1,
         "description": "Boost hash2 module",
-        "homepage": "https://www.boost.org/libs/hash2",
+        "homepage": "https://www.boost.org/library/latest/hash2/",
+        "documentation": "https://www.boost.org/libs/hash2",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11812,8 +11956,9 @@
       "name": "boost-headers",
       "manifest": {
         "name": "boost-headers",
+        "port-version": 1,
         "description": "Boost headers module",
-        "homepage": "https://www.boost.org/libs/headers",
+        "homepage": "https://github.com/boostorg/headers",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11832,8 +11977,10 @@
       "name": "boost-heap",
       "manifest": {
         "name": "boost-heap",
+        "port-version": 1,
         "description": "Boost heap module",
-        "homepage": "https://www.boost.org/libs/heap",
+        "homepage": "https://www.boost.org/library/latest/heap/",
+        "documentation": "https://www.boost.org/libs/heap",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11896,8 +12043,10 @@
       "name": "boost-histogram",
       "manifest": {
         "name": "boost-histogram",
+        "port-version": 1,
         "description": "Boost histogram module",
-        "homepage": "https://www.boost.org/libs/histogram",
+        "homepage": "https://www.boost.org/library/latest/histogram/",
+        "documentation": "https://www.boost.org/libs/histogram",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11948,8 +12097,10 @@
       "name": "boost-hof",
       "manifest": {
         "name": "boost-hof",
+        "port-version": 1,
         "description": "Boost hof module",
-        "homepage": "https://www.boost.org/libs/hof",
+        "homepage": "https://www.boost.org/library/latest/hof/",
+        "documentation": "https://www.boost.org/libs/hof",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -11976,8 +12127,10 @@
       "name": "boost-icl",
       "manifest": {
         "name": "boost-icl",
+        "port-version": 1,
         "description": "Boost icl module",
-        "homepage": "https://www.boost.org/libs/icl",
+        "homepage": "https://www.boost.org/library/latest/icl/",
+        "documentation": "https://www.boost.org/libs/icl",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12060,8 +12213,10 @@
       "name": "boost-integer",
       "manifest": {
         "name": "boost-integer",
+        "port-version": 1,
         "description": "Boost integer module",
-        "homepage": "https://www.boost.org/libs/integer",
+        "homepage": "https://www.boost.org/library/latest/integer/",
+        "documentation": "https://www.boost.org/libs/integer",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12108,8 +12263,10 @@
       "name": "boost-interprocess",
       "manifest": {
         "name": "boost-interprocess",
+        "port-version": 1,
         "description": "Boost interprocess module",
-        "homepage": "https://www.boost.org/libs/interprocess",
+        "homepage": "https://www.boost.org/library/latest/interprocess/",
+        "documentation": "https://www.boost.org/libs/interprocess",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12156,8 +12313,10 @@
       "name": "boost-interval",
       "manifest": {
         "name": "boost-interval",
+        "port-version": 1,
         "description": "Boost interval module",
-        "homepage": "https://www.boost.org/libs/numeric/interval",
+        "homepage": "https://www.boost.org/library/latest/numericinterval/",
+        "documentation": "https://www.boost.org/libs/numeric/interval",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12192,8 +12351,10 @@
       "name": "boost-intrusive",
       "manifest": {
         "name": "boost-intrusive",
+        "port-version": 1,
         "description": "Boost intrusive module",
-        "homepage": "https://www.boost.org/libs/intrusive",
+        "homepage": "https://www.boost.org/library/latest/intrusive/",
+        "documentation": "https://www.boost.org/libs/intrusive",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12228,8 +12389,10 @@
       "name": "boost-io",
       "manifest": {
         "name": "boost-io",
+        "port-version": 1,
         "description": "Boost io module",
-        "homepage": "https://www.boost.org/libs/io",
+        "homepage": "https://www.boost.org/library/latest/io/",
+        "documentation": "https://www.boost.org/libs/io",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12256,8 +12419,10 @@
       "name": "boost-iostreams",
       "manifest": {
         "name": "boost-iostreams",
+        "port-version": 1,
         "description": "Boost iostreams module",
-        "homepage": "https://www.boost.org/libs/iostreams",
+        "homepage": "https://www.boost.org/library/latest/iostreams/",
+        "documentation": "https://www.boost.org/libs/iostreams",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -12387,8 +12552,10 @@
       "name": "boost-iterator",
       "manifest": {
         "name": "boost-iterator",
+        "port-version": 1,
         "description": "Boost iterator module",
-        "homepage": "https://www.boost.org/libs/iterator",
+        "homepage": "https://www.boost.org/library/latest/iterator/",
+        "documentation": "https://www.boost.org/libs/iterator",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12451,8 +12618,10 @@
       "name": "boost-json",
       "manifest": {
         "name": "boost-json",
+        "port-version": 1,
         "description": "Boost json module",
-        "homepage": "https://www.boost.org/libs/json",
+        "homepage": "https://www.boost.org/library/latest/json/",
+        "documentation": "https://www.boost.org/libs/json",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12515,8 +12684,10 @@
       "name": "boost-lambda",
       "manifest": {
         "name": "boost-lambda",
+        "port-version": 1,
         "description": "Boost lambda module",
-        "homepage": "https://www.boost.org/libs/lambda",
+        "homepage": "https://www.boost.org/library/latest/lambda/",
+        "documentation": "https://www.boost.org/libs/lambda",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12579,8 +12750,10 @@
       "name": "boost-lambda2",
       "manifest": {
         "name": "boost-lambda2",
+        "port-version": 1,
         "description": "Boost lambda2 module",
-        "homepage": "https://www.boost.org/libs/lambda2",
+        "homepage": "https://www.boost.org/library/latest/lambda2/",
+        "documentation": "https://www.boost.org/libs/lambda2",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12607,8 +12780,10 @@
       "name": "boost-leaf",
       "manifest": {
         "name": "boost-leaf",
+        "port-version": 1,
         "description": "Boost leaf module",
-        "homepage": "https://www.boost.org/libs/leaf",
+        "homepage": "https://www.boost.org/library/latest/leaf/",
+        "documentation": "https://www.boost.org/libs/leaf",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12635,8 +12810,10 @@
       "name": "boost-lexical-cast",
       "manifest": {
         "name": "boost-lexical-cast",
+        "port-version": 1,
         "description": "Boost lexical_cast module",
-        "homepage": "https://www.boost.org/libs/lexical_cast",
+        "homepage": "https://www.boost.org/library/latest/lexical_cast/",
+        "documentation": "https://www.boost.org/libs/lexical_cast",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12675,8 +12852,10 @@
       "name": "boost-local-function",
       "manifest": {
         "name": "boost-local-function",
+        "port-version": 1,
         "description": "Boost local_function module",
-        "homepage": "https://www.boost.org/libs/local_function",
+        "homepage": "https://www.boost.org/library/latest/local_function/",
+        "documentation": "https://www.boost.org/libs/local_function",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12727,8 +12906,10 @@
       "name": "boost-locale",
       "manifest": {
         "name": "boost-locale",
+        "port-version": 1,
         "description": "Boost locale module",
-        "homepage": "https://www.boost.org/libs/locale",
+        "homepage": "https://www.boost.org/library/latest/locale/",
+        "documentation": "https://www.boost.org/libs/locale",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -12793,8 +12974,10 @@
       "name": "boost-lockfree",
       "manifest": {
         "name": "boost-lockfree",
+        "port-version": 1,
         "description": "Boost lockfree module",
-        "homepage": "https://www.boost.org/libs/lockfree",
+        "homepage": "https://www.boost.org/library/latest/lockfree/",
+        "documentation": "https://www.boost.org/libs/lockfree",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -12857,8 +13040,10 @@
       "name": "boost-log",
       "manifest": {
         "name": "boost-log",
+        "port-version": 1,
         "description": "Boost log module",
-        "homepage": "https://www.boost.org/libs/log",
+        "homepage": "https://www.boost.org/library/latest/log/",
+        "documentation": "https://www.boost.org/libs/log",
         "license": "BSL-1.0",
         "supports": "!uwp & !emscripten",
         "dependencies": [
@@ -13026,8 +13211,10 @@
       "name": "boost-logic",
       "manifest": {
         "name": "boost-logic",
+        "port-version": 1,
         "description": "Boost logic module",
-        "homepage": "https://www.boost.org/libs/logic",
+        "homepage": "https://www.boost.org/library/latest/logictribool/",
+        "documentation": "https://www.boost.org/libs/logictribool",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13058,8 +13245,10 @@
       "name": "boost-math",
       "manifest": {
         "name": "boost-math",
+        "port-version": 1,
         "description": "Boost math module",
-        "homepage": "https://www.boost.org/libs/math",
+        "homepage": "https://www.boost.org/library/latest/math/",
+        "documentation": "https://www.boost.org/libs/math",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13131,8 +13320,10 @@
       "name": "boost-metaparse",
       "manifest": {
         "name": "boost-metaparse",
+        "port-version": 1,
         "description": "Boost metaparse module",
-        "homepage": "https://www.boost.org/libs/metaparse",
+        "homepage": "https://www.boost.org/library/latest/metaparse/",
+        "documentation": "https://www.boost.org/libs/metaparse",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13179,8 +13370,10 @@
       "name": "boost-move",
       "manifest": {
         "name": "boost-move",
+        "port-version": 1,
         "description": "Boost move module",
-        "homepage": "https://www.boost.org/libs/move",
+        "homepage": "https://www.boost.org/library/latest/move/",
+        "documentation": "https://www.boost.org/libs/move",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13207,8 +13400,10 @@
       "name": "boost-mp11",
       "manifest": {
         "name": "boost-mp11",
+        "port-version": 1,
         "description": "Boost mp11 module",
-        "homepage": "https://www.boost.org/libs/mp11",
+        "homepage": "https://www.boost.org/library/latest/mp11/",
+        "documentation": "https://www.boost.org/libs/mp11",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13235,8 +13430,10 @@
       "name": "boost-mpi",
       "manifest": {
         "name": "boost-mpi",
+        "port-version": 1,
         "description": "Boost mpi module",
-        "homepage": "https://www.boost.org/libs/mpi",
+        "homepage": "https://www.boost.org/library/latest/mpi/",
+        "documentation": "https://www.boost.org/libs/mpi",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -13343,8 +13540,10 @@
       "name": "boost-mpl",
       "manifest": {
         "name": "boost-mpl",
+        "port-version": 1,
         "description": "Boost mpl module",
-        "homepage": "https://www.boost.org/libs/mpl",
+        "homepage": "https://www.boost.org/library/latest/mpl/",
+        "documentation": "https://www.boost.org/libs/mpl",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13395,8 +13594,10 @@
       "name": "boost-mqtt5",
       "manifest": {
         "name": "boost-mqtt5",
+        "port-version": 1,
         "description": "Boost mqtt5 module",
-        "homepage": "https://www.boost.org/libs/mqtt5",
+        "homepage": "https://www.boost.org/library/latest/mqtt5/",
+        "documentation": "https://www.boost.org/libs/mqtt5",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -13464,8 +13665,10 @@
       "name": "boost-msm",
       "manifest": {
         "name": "boost-msm",
+        "port-version": 1,
         "description": "Boost msm module",
-        "homepage": "https://www.boost.org/libs/msm",
+        "homepage": "https://www.boost.org/library/latest/msm/",
+        "documentation": "https://www.boost.org/libs/msm",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13560,8 +13763,10 @@
       "name": "boost-multi-array",
       "manifest": {
         "name": "boost-multi-array",
+        "port-version": 1,
         "description": "Boost multi_array module",
-        "homepage": "https://www.boost.org/libs/multi_array",
+        "homepage": "https://www.boost.org/library/latest/multi_array/",
+        "documentation": "https://www.boost.org/libs/multi_array",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13624,8 +13829,10 @@
       "name": "boost-multi-index",
       "manifest": {
         "name": "boost-multi-index",
+        "port-version": 1,
         "description": "Boost multi_index module",
-        "homepage": "https://www.boost.org/libs/multi_index",
+        "homepage": "https://www.boost.org/library/latest/multi_index/",
+        "documentation": "https://www.boost.org/libs/multi_index",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13712,8 +13919,10 @@
       "name": "boost-multiprecision",
       "manifest": {
         "name": "boost-multiprecision",
+        "port-version": 1,
         "description": "Boost multiprecision module",
-        "homepage": "https://www.boost.org/libs/multiprecision",
+        "homepage": "https://www.boost.org/library/latest/multiprecision/",
+        "documentation": "https://www.boost.org/libs/multiprecision",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13774,8 +13983,10 @@
       "name": "boost-mysql",
       "manifest": {
         "name": "boost-mysql",
+        "port-version": 1,
         "description": "Boost mysql module",
-        "homepage": "https://www.boost.org/libs/mysql",
+        "homepage": "https://www.boost.org/library/latest/mysql/",
+        "documentation": "https://www.boost.org/libs/mysql",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13859,8 +14070,10 @@
       "name": "boost-nowide",
       "manifest": {
         "name": "boost-nowide",
+        "port-version": 1,
         "description": "Boost nowide module",
-        "homepage": "https://www.boost.org/libs/nowide",
+        "homepage": "https://www.boost.org/library/latest/nowide/",
+        "documentation": "https://www.boost.org/libs/nowide",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13892,8 +14105,10 @@
       "name": "boost-numeric-conversion",
       "manifest": {
         "name": "boost-numeric-conversion",
+        "port-version": 1,
         "description": "Boost numeric_conversion module",
-        "homepage": "https://www.boost.org/libs/numeric/conversion",
+        "homepage": "https://www.boost.org/library/latest/numericconversion/",
+        "documentation": "https://www.boost.org/libs/numeric/conversion",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -13944,8 +14159,10 @@
       "name": "boost-odeint",
       "manifest": {
         "name": "boost-odeint",
+        "port-version": 1,
         "description": "Boost odeint module",
-        "homepage": "https://www.boost.org/libs/numeric/odeint",
+        "homepage": "https://www.boost.org/library/latest/numericodeint/",
+        "documentation": "https://www.boost.org/libs/numeric/odeint",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14049,8 +14266,10 @@
       "name": "boost-openmethod",
       "manifest": {
         "name": "boost-openmethod",
+        "port-version": 1,
         "description": "Boost openmethod module",
-        "homepage": "https://www.boost.org/libs/openmethod",
+        "homepage": "https://www.boost.org/library/latest/openmethod/",
+        "documentation": "https://www.boost.org/libs/openmethod",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14097,8 +14316,10 @@
       "name": "boost-optional",
       "manifest": {
         "name": "boost-optional",
+        "port-version": 1,
         "description": "Boost optional module",
-        "homepage": "https://www.boost.org/libs/optional",
+        "homepage": "https://www.boost.org/library/latest/optional/",
+        "documentation": "https://www.boost.org/libs/optional",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14141,8 +14362,10 @@
       "name": "boost-outcome",
       "manifest": {
         "name": "boost-outcome",
+        "port-version": 1,
         "description": "Boost outcome module",
-        "homepage": "https://www.boost.org/libs/outcome",
+        "homepage": "https://www.boost.org/library/latest/outcome/",
+        "documentation": "https://www.boost.org/libs/outcome",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14185,8 +14408,10 @@
       "name": "boost-parameter",
       "manifest": {
         "name": "boost-parameter",
+        "port-version": 1,
         "description": "Boost parameter module",
-        "homepage": "https://www.boost.org/libs/parameter",
+        "homepage": "https://www.boost.org/library/latest/parameter/",
+        "documentation": "https://www.boost.org/libs/parameter",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14249,8 +14474,10 @@
       "name": "boost-parameter-python",
       "manifest": {
         "name": "boost-parameter-python",
+        "port-version": 1,
         "description": "Boost parameter_python module",
-        "homepage": "https://www.boost.org/libs/parameter_python",
+        "homepage": "https://www.boost.org/library/latest/parameter_python/",
+        "documentation": "https://www.boost.org/libs/parameter_python",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14293,8 +14520,10 @@
       "name": "boost-parser",
       "manifest": {
         "name": "boost-parser",
+        "port-version": 1,
         "description": "Boost parser module",
-        "homepage": "https://www.boost.org/libs/parser",
+        "homepage": "https://www.boost.org/library/latest/parser/",
+        "documentation": "https://www.boost.org/libs/parser",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14337,8 +14566,10 @@
       "name": "boost-pfr",
       "manifest": {
         "name": "boost-pfr",
+        "port-version": 1,
         "description": "Boost pfr module",
-        "homepage": "https://www.boost.org/libs/pfr",
+        "homepage": "https://www.boost.org/library/latest/pfr/",
+        "documentation": "https://www.boost.org/libs/pfr",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14365,8 +14596,10 @@
       "name": "boost-phoenix",
       "manifest": {
         "name": "boost-phoenix",
+        "port-version": 1,
         "description": "Boost phoenix module",
-        "homepage": "https://www.boost.org/libs/phoenix",
+        "homepage": "https://www.boost.org/library/latest/phoenix/",
+        "documentation": "https://www.boost.org/libs/phoenix",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14445,8 +14678,10 @@
       "name": "boost-poly-collection",
       "manifest": {
         "name": "boost-poly-collection",
+        "port-version": 1,
         "description": "Boost poly_collection module",
-        "homepage": "https://www.boost.org/libs/poly_collection",
+        "homepage": "https://www.boost.org/library/latest/poly_collection/",
+        "documentation": "https://www.boost.org/libs/poly_collection",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14501,8 +14736,10 @@
       "name": "boost-polygon",
       "manifest": {
         "name": "boost-polygon",
+        "port-version": 1,
         "description": "Boost polygon module",
-        "homepage": "https://www.boost.org/libs/polygon",
+        "homepage": "https://www.boost.org/library/latest/polygon/",
+        "documentation": "https://www.boost.org/libs/polygon",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14529,8 +14766,10 @@
       "name": "boost-pool",
       "manifest": {
         "name": "boost-pool",
+        "port-version": 1,
         "description": "Boost pool module",
-        "homepage": "https://www.boost.org/libs/pool",
+        "homepage": "https://www.boost.org/library/latest/pool/",
+        "documentation": "https://www.boost.org/libs/pool",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14577,8 +14816,10 @@
       "name": "boost-predef",
       "manifest": {
         "name": "boost-predef",
+        "port-version": 1,
         "description": "Boost predef module",
-        "homepage": "https://www.boost.org/libs/predef",
+        "homepage": "https://www.boost.org/library/latest/predef/",
+        "documentation": "https://www.boost.org/libs/predef",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14605,8 +14846,10 @@
       "name": "boost-preprocessor",
       "manifest": {
         "name": "boost-preprocessor",
+        "port-version": 1,
         "description": "Boost preprocessor module",
-        "homepage": "https://www.boost.org/libs/preprocessor",
+        "homepage": "https://www.boost.org/library/latest/preprocessor/",
+        "documentation": "https://www.boost.org/libs/preprocessor",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14633,8 +14876,10 @@
       "name": "boost-process",
       "manifest": {
         "name": "boost-process",
+        "port-version": 1,
         "description": "Boost process module",
-        "homepage": "https://www.boost.org/libs/process",
+        "homepage": "https://www.boost.org/library/latest/process/",
+        "documentation": "https://www.boost.org/libs/process",
         "license": "BSL-1.0",
         "supports": "!uwp & !emscripten & !android",
         "dependencies": [
@@ -14731,8 +14976,10 @@
       "name": "boost-program-options",
       "manifest": {
         "name": "boost-program-options",
+        "port-version": 1,
         "description": "Boost program_options module",
-        "homepage": "https://www.boost.org/libs/program_options",
+        "homepage": "https://www.boost.org/library/latest/program_options/",
+        "documentation": "https://www.boost.org/libs/program_options",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14807,8 +15054,10 @@
       "name": "boost-property-map",
       "manifest": {
         "name": "boost-property-map",
+        "port-version": 1,
         "description": "Boost property_map module",
-        "homepage": "https://www.boost.org/libs/property_map",
+        "homepage": "https://www.boost.org/library/latest/property_map/",
+        "documentation": "https://www.boost.org/libs/property_map",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14891,8 +15140,10 @@
       "name": "boost-property-map-parallel",
       "manifest": {
         "name": "boost-property-map-parallel",
+        "port-version": 1,
         "description": "Boost property_map_parallel module",
-        "homepage": "https://www.boost.org/libs/property_map_parallel",
+        "homepage": "https://www.boost.org/library/latest/property_map_parallel/",
+        "documentation": "https://www.boost.org/libs/property_map_parallel",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -14967,8 +15218,10 @@
       "name": "boost-property-tree",
       "manifest": {
         "name": "boost-property-tree",
+        "port-version": 1,
         "description": "Boost property_tree module",
-        "homepage": "https://www.boost.org/libs/property_tree",
+        "homepage": "https://www.boost.org/library/latest/property_tree/",
+        "documentation": "https://www.boost.org/libs/property_tree",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15047,8 +15300,10 @@
       "name": "boost-proto",
       "manifest": {
         "name": "boost-proto",
+        "port-version": 1,
         "description": "Boost proto module",
-        "homepage": "https://www.boost.org/libs/proto",
+        "homepage": "https://www.boost.org/library/latest/proto/",
+        "documentation": "https://www.boost.org/libs/proto",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15111,8 +15366,10 @@
       "name": "boost-ptr-container",
       "manifest": {
         "name": "boost-ptr-container",
+        "port-version": 1,
         "description": "Boost ptr_container module",
-        "homepage": "https://www.boost.org/libs/ptr_container",
+        "homepage": "https://www.boost.org/library/latest/ptr_container/",
+        "documentation": "https://www.boost.org/libs/ptr_container",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15187,8 +15444,10 @@
       "name": "boost-python",
       "manifest": {
         "name": "boost-python",
+        "port-version": 1,
         "description": "Boost python module",
-        "homepage": "https://www.boost.org/libs/python",
+        "homepage": "https://www.boost.org/library/latest/python/",
+        "documentation": "https://www.boost.org/libs/python",
         "license": "BSL-1.0",
         "supports": "!uwp & !emscripten & !ios & !android",
         "dependencies": [
@@ -15298,8 +15557,10 @@
       "name": "boost-qvm",
       "manifest": {
         "name": "boost-qvm",
+        "port-version": 1,
         "description": "Boost qvm module",
-        "homepage": "https://www.boost.org/libs/qvm",
+        "homepage": "https://www.boost.org/library/latest/qvm/",
+        "documentation": "https://www.boost.org/libs/qvm",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15326,8 +15587,10 @@
       "name": "boost-random",
       "manifest": {
         "name": "boost-random",
+        "port-version": 1,
         "description": "Boost random module",
-        "homepage": "https://www.boost.org/libs/random",
+        "homepage": "https://www.boost.org/library/latest/random/",
+        "documentation": "https://www.boost.org/libs/random",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -15395,8 +15658,10 @@
       "name": "boost-range",
       "manifest": {
         "name": "boost-range",
+        "port-version": 1,
         "description": "Boost range module",
-        "homepage": "https://www.boost.org/libs/range",
+        "homepage": "https://www.boost.org/library/latest/range/",
+        "documentation": "https://www.boost.org/libs/range",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15487,8 +15752,10 @@
       "name": "boost-ratio",
       "manifest": {
         "name": "boost-ratio",
+        "port-version": 1,
         "description": "Boost ratio module",
-        "homepage": "https://www.boost.org/libs/ratio",
+        "homepage": "https://www.boost.org/library/latest/ratio/",
+        "documentation": "https://www.boost.org/libs/ratio",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15515,8 +15782,10 @@
       "name": "boost-rational",
       "manifest": {
         "name": "boost-rational",
+        "port-version": 1,
         "description": "Boost rational module",
-        "homepage": "https://www.boost.org/libs/rational",
+        "homepage": "https://www.boost.org/library/latest/rational/",
+        "documentation": "https://www.boost.org/libs/rational",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15571,8 +15840,10 @@
       "name": "boost-redis",
       "manifest": {
         "name": "boost-redis",
+        "port-version": 1,
         "description": "Boost redis module",
-        "homepage": "https://www.boost.org/libs/redis",
+        "homepage": "https://www.boost.org/library/latest/redis/",
+        "documentation": "https://www.boost.org/libs/redis",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15623,8 +15894,10 @@
       "name": "boost-regex",
       "manifest": {
         "name": "boost-regex",
+        "port-version": 1,
         "description": "Boost regex module",
-        "homepage": "https://www.boost.org/libs/regex",
+        "homepage": "https://www.boost.org/library/latest/regex/",
+        "documentation": "https://www.boost.org/libs/regex",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15689,8 +15962,10 @@
       "name": "boost-safe-numerics",
       "manifest": {
         "name": "boost-safe-numerics",
+        "port-version": 1,
         "description": "Boost safe_numerics module",
-        "homepage": "https://www.boost.org/libs/safe_numerics",
+        "homepage": "https://www.boost.org/library/latest/safe_numerics/",
+        "documentation": "https://www.boost.org/libs/safe_numerics",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15737,8 +16012,10 @@
       "name": "boost-scope",
       "manifest": {
         "name": "boost-scope",
+        "port-version": 1,
         "description": "Boost scope module",
-        "homepage": "https://www.boost.org/libs/scope",
+        "homepage": "https://www.boost.org/library/latest/scope/",
+        "documentation": "https://www.boost.org/libs/scope",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15777,8 +16054,10 @@
       "name": "boost-scope-exit",
       "manifest": {
         "name": "boost-scope-exit",
+        "port-version": 1,
         "description": "Boost scope_exit module",
-        "homepage": "https://www.boost.org/libs/scope_exit",
+        "homepage": "https://www.boost.org/library/latest/scope_exit/",
+        "documentation": "https://www.boost.org/libs/scope_exit",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15821,8 +16100,10 @@
       "name": "boost-serialization",
       "manifest": {
         "name": "boost-serialization",
+        "port-version": 1,
         "description": "Boost serialization module",
-        "homepage": "https://www.boost.org/libs/serialization",
+        "homepage": "https://www.boost.org/library/latest/serialization/",
+        "documentation": "https://www.boost.org/libs/serialization",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -15937,8 +16218,10 @@
       "name": "boost-signals2",
       "manifest": {
         "name": "boost-signals2",
+        "port-version": 1,
         "description": "Boost signals2 module",
-        "homepage": "https://www.boost.org/libs/signals2",
+        "homepage": "https://www.boost.org/library/latest/signals2/",
+        "documentation": "https://www.boost.org/libs/signals2",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16025,8 +16308,10 @@
       "name": "boost-smart-ptr",
       "manifest": {
         "name": "boost-smart-ptr",
+        "port-version": 1,
         "description": "Boost smart_ptr module",
-        "homepage": "https://www.boost.org/libs/smart_ptr",
+        "homepage": "https://www.boost.org/library/latest/smart_ptr/",
+        "documentation": "https://www.boost.org/libs/smart_ptr",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16065,8 +16350,10 @@
       "name": "boost-sort",
       "manifest": {
         "name": "boost-sort",
+        "port-version": 1,
         "description": "Boost sort module",
-        "homepage": "https://www.boost.org/libs/sort",
+        "homepage": "https://www.boost.org/library/latest/sort/",
+        "documentation": "https://www.boost.org/libs/sort",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16109,8 +16396,10 @@
       "name": "boost-spirit",
       "manifest": {
         "name": "boost-spirit",
+        "port-version": 1,
         "description": "Boost spirit module",
-        "homepage": "https://www.boost.org/libs/spirit",
+        "homepage": "https://www.boost.org/library/latest/spirit/",
+        "documentation": "https://www.boost.org/libs/spirit",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16249,8 +16538,10 @@
       "name": "boost-stacktrace",
       "manifest": {
         "name": "boost-stacktrace",
+        "port-version": 1,
         "description": "Boost stacktrace module",
-        "homepage": "https://www.boost.org/libs/stacktrace",
+        "homepage": "https://www.boost.org/library/latest/stacktrace/",
+        "documentation": "https://www.boost.org/libs/stacktrace",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -16326,8 +16617,10 @@
       "name": "boost-statechart",
       "manifest": {
         "name": "boost-statechart",
+        "port-version": 1,
         "description": "Boost statechart module",
-        "homepage": "https://www.boost.org/libs/statechart",
+        "homepage": "https://www.boost.org/library/latest/statechart/",
+        "documentation": "https://www.boost.org/libs/statechart",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16398,8 +16691,10 @@
       "name": "boost-static-assert",
       "manifest": {
         "name": "boost-static-assert",
+        "port-version": 1,
         "description": "Boost static_assert module",
-        "homepage": "https://www.boost.org/libs/static_assert",
+        "homepage": "https://www.boost.org/library/latest/static_assert/",
+        "documentation": "https://www.boost.org/libs/static_assert",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16426,8 +16721,10 @@
       "name": "boost-static-string",
       "manifest": {
         "name": "boost-static-string",
+        "port-version": 1,
         "description": "Boost static_string module",
-        "homepage": "https://www.boost.org/libs/static_string",
+        "homepage": "https://www.boost.org/library/latest/static_string/",
+        "documentation": "https://www.boost.org/libs/static_string",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16474,8 +16771,10 @@
       "name": "boost-stl-interfaces",
       "manifest": {
         "name": "boost-stl-interfaces",
+        "port-version": 1,
         "description": "Boost stl_interfaces module",
-        "homepage": "https://www.boost.org/libs/stl_interfaces",
+        "homepage": "https://www.boost.org/library/latest/stl_interfaces/",
+        "documentation": "https://www.boost.org/libs/stl_interfaces",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16510,8 +16809,10 @@
       "name": "boost-system",
       "manifest": {
         "name": "boost-system",
+        "port-version": 1,
         "description": "Boost system module",
-        "homepage": "https://www.boost.org/libs/system",
+        "homepage": "https://www.boost.org/library/latest/system/",
+        "documentation": "https://www.boost.org/libs/system",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16554,8 +16855,10 @@
       "name": "boost-test",
       "manifest": {
         "name": "boost-test",
+        "port-version": 1,
         "description": "Boost test module",
-        "homepage": "https://www.boost.org/libs/test",
+        "homepage": "https://www.boost.org/library/latest/test/",
+        "documentation": "https://www.boost.org/libs/test",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -16651,8 +16954,10 @@
       "name": "boost-thread",
       "manifest": {
         "name": "boost-thread",
+        "port-version": 1,
         "description": "Boost thread module",
-        "homepage": "https://www.boost.org/libs/thread",
+        "homepage": "https://www.boost.org/library/latest/thread/",
+        "documentation": "https://www.boost.org/libs/thread",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16775,8 +17080,10 @@
       "name": "boost-throw-exception",
       "manifest": {
         "name": "boost-throw-exception",
+        "port-version": 1,
         "description": "Boost throw_exception module",
-        "homepage": "https://www.boost.org/libs/throw_exception",
+        "homepage": "https://www.boost.org/library/latest/throw_exception/",
+        "documentation": "https://www.boost.org/libs/throw_exception",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16807,8 +17114,10 @@
       "name": "boost-timer",
       "manifest": {
         "name": "boost-timer",
+        "port-version": 1,
         "description": "Boost timer module",
-        "homepage": "https://www.boost.org/libs/timer",
+        "homepage": "https://www.boost.org/library/latest/timer/",
+        "documentation": "https://www.boost.org/libs/timer",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16843,8 +17152,10 @@
       "name": "boost-tokenizer",
       "manifest": {
         "name": "boost-tokenizer",
+        "port-version": 1,
         "description": "Boost tokenizer module",
-        "homepage": "https://www.boost.org/libs/tokenizer",
+        "homepage": "https://www.boost.org/library/latest/tokenizer/",
+        "documentation": "https://www.boost.org/libs/tokenizer",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16891,8 +17202,10 @@
       "name": "boost-tti",
       "manifest": {
         "name": "boost-tti",
+        "port-version": 1,
         "description": "Boost tti module",
-        "homepage": "https://www.boost.org/libs/tti",
+        "homepage": "https://www.boost.org/library/latest/tti/",
+        "documentation": "https://www.boost.org/libs/tti",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16935,8 +17248,10 @@
       "name": "boost-tuple",
       "manifest": {
         "name": "boost-tuple",
+        "port-version": 1,
         "description": "Boost tuple module",
-        "homepage": "https://www.boost.org/libs/tuple",
+        "homepage": "https://www.boost.org/library/latest/tuple/",
+        "documentation": "https://www.boost.org/libs/tuple",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -16975,8 +17290,10 @@
       "name": "boost-type-erasure",
       "manifest": {
         "name": "boost-type-erasure",
+        "port-version": 1,
         "description": "Boost type_erasure module",
-        "homepage": "https://www.boost.org/libs/type_erasure",
+        "homepage": "https://www.boost.org/library/latest/type_erasure/",
+        "documentation": "https://www.boost.org/libs/type_erasure",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17055,8 +17372,10 @@
       "name": "boost-type-index",
       "manifest": {
         "name": "boost-type-index",
+        "port-version": 1,
         "description": "Boost type_index module",
-        "homepage": "https://www.boost.org/libs/type_index",
+        "homepage": "https://www.boost.org/library/latest/type_index/",
+        "documentation": "https://www.boost.org/libs/type_index",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17091,8 +17410,10 @@
       "name": "boost-type-traits",
       "manifest": {
         "name": "boost-type-traits",
+        "port-version": 1,
         "description": "Boost type_traits module",
-        "homepage": "https://www.boost.org/libs/type_traits",
+        "homepage": "https://www.boost.org/library/latest/type_traits/",
+        "documentation": "https://www.boost.org/libs/type_traits",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17123,8 +17444,10 @@
       "name": "boost-typeof",
       "manifest": {
         "name": "boost-typeof",
+        "port-version": 1,
         "description": "Boost typeof module",
-        "homepage": "https://www.boost.org/libs/typeof",
+        "homepage": "https://www.boost.org/library/latest/typeof/",
+        "documentation": "https://www.boost.org/libs/typeof",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17151,8 +17474,10 @@
       "name": "boost-ublas",
       "manifest": {
         "name": "boost-ublas",
+        "port-version": 1,
         "description": "Boost ublas module",
-        "homepage": "https://www.boost.org/libs/numeric/ublas",
+        "homepage": "https://www.boost.org/library/latest/numericublas/",
+        "documentation": "https://www.boost.org/libs/numeric/ublas",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17227,6 +17552,7 @@
       "name": "boost-uninstall",
       "manifest": {
         "name": "boost-uninstall",
+        "port-version": 1,
         "description": "Internal vcpkg port used to uninstall Boost",
         "license": "MIT",
         "version": "1.90.0"
@@ -17241,8 +17567,10 @@
       "name": "boost-units",
       "manifest": {
         "name": "boost-units",
+        "port-version": 1,
         "description": "Boost units module",
-        "homepage": "https://www.boost.org/libs/units",
+        "homepage": "https://www.boost.org/library/latest/units/",
+        "documentation": "https://www.boost.org/libs/units",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17313,8 +17641,10 @@
       "name": "boost-unordered",
       "manifest": {
         "name": "boost-unordered",
+        "port-version": 1,
         "description": "Boost unordered module",
-        "homepage": "https://www.boost.org/libs/unordered",
+        "homepage": "https://www.boost.org/library/latest/unordered/",
+        "documentation": "https://www.boost.org/libs/unordered",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17365,8 +17695,10 @@
       "name": "boost-url",
       "manifest": {
         "name": "boost-url",
+        "port-version": 1,
         "description": "Boost url module",
-        "homepage": "https://www.boost.org/libs/url",
+        "homepage": "https://www.boost.org/library/latest/url/",
+        "documentation": "https://www.boost.org/libs/url",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17429,8 +17761,10 @@
       "name": "boost-utility",
       "manifest": {
         "name": "boost-utility",
+        "port-version": 1,
         "description": "Boost utility module",
-        "homepage": "https://www.boost.org/libs/utility",
+        "homepage": "https://www.boost.org/library/latest/utility/",
+        "documentation": "https://www.boost.org/libs/utility",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17481,8 +17815,10 @@
       "name": "boost-uuid",
       "manifest": {
         "name": "boost-uuid",
+        "port-version": 1,
         "description": "Boost uuid module",
-        "homepage": "https://www.boost.org/libs/uuid",
+        "homepage": "https://www.boost.org/library/latest/uuid/",
+        "documentation": "https://www.boost.org/libs/uuid",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17521,8 +17857,10 @@
       "name": "boost-variant",
       "manifest": {
         "name": "boost-variant",
+        "port-version": 1,
         "description": "Boost variant module",
-        "homepage": "https://www.boost.org/libs/variant",
+        "homepage": "https://www.boost.org/library/latest/variant/",
+        "documentation": "https://www.boost.org/libs/variant",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17597,8 +17935,10 @@
       "name": "boost-variant2",
       "manifest": {
         "name": "boost-variant2",
+        "port-version": 1,
         "description": "Boost variant2 module",
-        "homepage": "https://www.boost.org/libs/variant2",
+        "homepage": "https://www.boost.org/library/latest/variant2/",
+        "documentation": "https://www.boost.org/libs/variant2",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17633,8 +17973,10 @@
       "name": "boost-vmd",
       "manifest": {
         "name": "boost-vmd",
+        "port-version": 1,
         "description": "Boost vmd module",
-        "homepage": "https://www.boost.org/libs/vmd",
+        "homepage": "https://www.boost.org/library/latest/vmd/",
+        "documentation": "https://www.boost.org/libs/vmd",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17665,8 +18007,10 @@
       "name": "boost-wave",
       "manifest": {
         "name": "boost-wave",
+        "port-version": 1,
         "description": "Boost wave module",
-        "homepage": "https://www.boost.org/libs/wave",
+        "homepage": "https://www.boost.org/library/latest/wave/",
+        "documentation": "https://www.boost.org/libs/wave",
         "license": "BSL-1.0",
         "supports": "!uwp",
         "dependencies": [
@@ -17766,8 +18110,10 @@
       "name": "boost-winapi",
       "manifest": {
         "name": "boost-winapi",
+        "port-version": 1,
         "description": "Boost winapi module",
-        "homepage": "https://www.boost.org/libs/winapi",
+        "homepage": "https://www.boost.org/library/latest/winapi/",
+        "documentation": "https://www.boost.org/libs/winapi",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17798,8 +18144,10 @@
       "name": "boost-xpressive",
       "manifest": {
         "name": "boost-xpressive",
+        "port-version": 1,
         "description": "Boost xpressive module",
-        "homepage": "https://www.boost.org/libs/xpressive",
+        "homepage": "https://www.boost.org/library/latest/xpressive/",
+        "documentation": "https://www.boost.org/libs/xpressive",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -17910,8 +18258,10 @@
       "name": "boost-yap",
       "manifest": {
         "name": "boost-yap",
+        "port-version": 1,
         "description": "Boost yap module",
-        "homepage": "https://www.boost.org/libs/yap",
+        "homepage": "https://www.boost.org/library/latest/yap/",
+        "documentation": "https://www.boost.org/libs/yap",
         "license": "BSL-1.0",
         "dependencies": [
           {
@@ -22209,6 +22559,7 @@
         "homepage": "https://github.com/Kaaserne/cpp-lazy",
         "license": "MIT",
         "dependencies": [
+          "fmt",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22218,7 +22569,7 @@
             "host": true
           }
         ],
-        "version": "8.0.1"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -22386,6 +22737,33 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cppadcodegen",
+      "manifest": {
+        "name": "cppadcodegen",
+        "description": "Source code generation for automatic differentiation using operator overloading (extension of CppAD)",
+        "homepage": "https://github.com/joaoleal/CppADCodeGen",
+        "license": "EPL-1.0 OR GPL-3.0-only",
+        "dependencies": [
+          "cppad",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.5.0"
+      },
+      "files": [
+        "change_main_cmake.diff",
+        "portfile.cmake",
+        "undef_CONST.diff",
         "vcpkg.json"
       ]
     },
@@ -24200,6 +24578,31 @@
         "fix-findzliberror.patch",
         "obsolete-curlopt.diff",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-coco",
+      "manifest": {
+        "name": "curve-coco",
+        "description": "a C++20 coroutine library that aims to be convenient and simple to use.",
+        "homepage": "https://github.com/Curve/coco",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.3.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -26657,7 +27060,6 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
-        "port-version": 1,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
         "documentation": "https://doc.dpdk.org/guides/",
@@ -26685,9 +27087,6 @@
           "docs": {
             "description": "Build and install docs"
           },
-          "kmods": {
-            "description": "Build and install kernel modules"
-          },
           "tests": {
             "description": "Build and install tests"
           },
@@ -26695,7 +27094,7 @@
             "description": "Build with fast path traces enabled"
           }
         },
-        "version": "24.11.3"
+        "version": "25.11"
       },
       "files": [
         "0001-enable-either-static-or-shared-build.patch",
@@ -26703,8 +27102,8 @@
         "0003-remove-examples-src-from-datadir.patch",
         "0004-stop-building-apps.patch",
         "0005-no-absolute-driver-path.patch",
+        "0006-rename-sched.h.patch",
         "portfile.cmake",
-        "rename-sched.h.diff",
         "vcpkg.json"
       ]
     },
@@ -27631,7 +28030,7 @@
             "host": true
           }
         ],
-        "version-semver": "5.13.3"
+        "version-semver": "5.13.4"
       },
       "files": [
         "0001-disable-app-plugins.patch",
@@ -27853,7 +28252,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -29441,7 +29840,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 5,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -29449,6 +29847,10 @@
         "homepage": "https://ffmpeg.org",
         "license": null,
         "dependencies": [
+          {
+            "name": "ffmpeg-bin2c",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake-get-vars",
             "host": true
@@ -29654,8 +30056,7 @@
                 "default-features": false,
                 "features": [
                   "all",
-                  "gpl",
-                  "postproc"
+                  "gpl"
                 ]
               },
               {
@@ -29989,18 +30390,6 @@
               "opus"
             ]
           },
-          "postproc": {
-            "description": "Build the postproc library",
-            "dependencies": [
-              {
-                "name": "ffmpeg",
-                "default-features": false,
-                "features": [
-                  "gpl"
-                ]
-              }
-            ]
-          },
           "qsv": {
             "description": "Intel QSV Codec",
             "dependencies": [
@@ -30191,7 +30580,7 @@
             ]
           }
         },
-        "version": "7.1.2"
+        "version": "8.0.1"
       },
       "files": [
         "0001-create-lib-libraries.patch",
@@ -30204,15 +30593,35 @@
         "0020-fix-aarch64-libswscale.patch",
         "0024-fix-osx-host-c11.patch",
         "0040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch",
-        "0041-add-const-for-opengl-definition.patch",
         "0042-fix-arm64-linux.patch",
-        "0043-fix-miss-head.patch",
         "0044-fix-vulkan-debug-callback-abi.patch",
+        "0045-use-prebuilt-bin2c.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ffmpeg-bin2c",
+      "manifest": {
+        "name": "ffmpeg-bin2c",
+        "description": "Host tool bin2c for FFmpeg build",
+        "license": "LGPL-2.1-or-later",
+        "supports": "native",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "8.0.1"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -41586,6 +41995,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
+        "port-version": 1,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -41616,6 +42026,7 @@
       },
       "files": [
         "disable-static-prefix.patch",
+        "fix_bsd_and_solaris.patch",
         "fix_parallel_build_on_windows.patch",
         "mh-darwin.patch",
         "mh-mingw.patch",
@@ -42593,6 +43004,7 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
+        "port-version": 1,
         "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
         "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
         "license": null,
@@ -47785,7 +48197,7 @@
             ]
           }
         },
-        "version": "3.8.4"
+        "version": "3.8.5"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -48428,7 +48840,7 @@
             "description": "Build examples"
           }
         },
-        "version": "4.3.5"
+        "version-string": "4.3.5a"
       },
       "files": [
         "portfile.cmake",
@@ -50252,6 +50664,9 @@
             "description": "SSL support (sectransp)",
             "supports": "osx"
           },
+          "sha256": {
+            "description": "[experimental] SHA256 OID support"
+          },
           "ssh": {
             "description": "SSH support via libssh2",
             "dependencies": [
@@ -50842,6 +51257,13 @@
             ],
             "supports": "!windows | mingw"
           },
+          "h264-decoder": {
+            "description": "OpenH264 decoder",
+            "dependencies": [
+              "openh264"
+            ],
+            "license": "BSD-2-Clause"
+          },
           "hevc": {
             "description": "HEVC encoding via x265",
             "dependencies": [
@@ -50869,9 +51291,16 @@
               "openjpeg"
             ],
             "license": "BSD-2-Clause"
+          },
+          "x264": {
+            "description": "x264 AVC encoder",
+            "dependencies": [
+              "x264"
+            ],
+            "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.20.2"
+        "version": "1.21.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -52783,13 +53212,12 @@
             "description": "Build MultiSense utility applications."
           }
         },
-        "version": "7.2.0"
+        "version": "7.4.0"
       },
       "files": [
         "0000-platform-specific-links.patch",
         "0001-find-public-api-dependencies.patch",
         "0002-disable-error-on-warning.patch",
-        "0003-utilities-cc-unreachable-code.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -54764,7 +55192,6 @@
       "name": "librsvg",
       "manifest": {
         "name": "librsvg",
-        "port-version": 2,
         "description": "A small library to render Scalable Vector Graphics (SVG)",
         "homepage": "https://gitlab.gnome.org/GNOME/librsvg",
         "license": "LGPL-2.0-or-later",
@@ -54773,6 +55200,10 @@
           "fontconfig",
           "gdk-pixbuf",
           "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
           "libcroco",
           {
             "name": "libxml2",
@@ -54780,16 +55211,15 @@
           },
           "pango",
           {
-            "name": "vcpkg-cmake",
+            "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
-        "version": "2.40.21"
+        "version": "2.40.23"
       },
       "files": [
-        "CMakeLists.txt",
-        "config.h.linux",
         "fix-libxml2-2.13.5.patch",
+        "meson-pkgconfig-and-def-file.patch",
         "portfile.cmake",
         "unofficial-librsvg-config.cmake",
         "usage",
@@ -55442,7 +55872,6 @@
       "name": "libsodium",
       "manifest": {
         "name": "libsodium",
-        "port-version": 3,
         "description": "A modern and easy-to-use crypto library",
         "homepage": "https://libsodium.org/",
         "license": "ISC",
@@ -55453,7 +55882,7 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "1.0.20"
+        "version": "1.0.21"
       },
       "files": [
         "001-mingw-i386.patch",
@@ -67096,7 +67525,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -68263,9 +68692,9 @@
       "name": "nmslib",
       "manifest": {
         "name": "nmslib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Non-Metric Space Library (NMSLIB) is an efficient similarity search library and a toolkit for evaluation of k-NN methods for generic non-metric spaces.",
-        "homepage": "https://github.com/searchivarius/nmslib",
+        "homepage": "https://github.com/nmslib/nmslib",
         "supports": "!(arm | uwp)",
         "dependencies": [
           {
@@ -70555,7 +70984,6 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
-        "port-version": 1,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later",
@@ -70593,7 +71021,7 @@
             ]
           }
         },
-        "version": "1.24.3"
+        "version": "1.25.0"
       },
       "files": [
         "devendor-fmt.diff",
@@ -72626,6 +73054,7 @@
         "0020-fix-narrow-filesystem.diff",
         "0021-fix-qt-gen-def.patch",
         "0022-android-use-vcpkg-cpu-features.patch",
+        "0023-ffmpeg8-support.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -74520,7 +74949,7 @@
             ]
           }
         },
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -74596,11 +75025,30 @@
             "host": true
           }
         ],
-        "version-semver": "1.3.0"
+        "version-semver": "1.3.1"
       },
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ormpp",
+      "manifest": {
+        "name": "ormpp",
+        "description": "A modern C++ ORM library for MySQL, PostgreSQL, and SQLite",
+        "homepage": "https://github.com/qicosmos/ormpp",
+        "license": "Apache-2.0",
+        "supports": "linux | osx | (windows & !uwp)",
+        "dependencies": [
+          "frozen",
+          "iguana"
+        ],
+        "version": "0.2.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -79997,6 +80445,32 @@
       ]
     },
     {
+      "name": "qpoases",
+      "manifest": {
+        "name": "qpoases",
+        "description": "Open-source C++ implementation of the online active set strategy for quadratic programming",
+        "homepage": "https://github.com/coin-or/qpOASES",
+        "license": "LGPL-2.1-only",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.2.2"
+      },
+      "files": [
+        "export_target.diff",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "qscintilla",
       "manifest": {
         "name": "qscintilla",
@@ -80857,7 +81331,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -80893,6 +81367,7 @@
           },
           "libjpeg-turbo",
           "libpng",
+          "md4c",
           {
             "name": "opengl",
             "platform": "!windows"
@@ -81008,6 +81483,7 @@
         "patches/egl.patch",
         "patches/fix_angle.patch",
         "patches/macos26-opengl.patch",
+        "patches/md4c.diff",
         "patches/mingw9.patch",
         "patches/mysql-configure.patch",
         "patches/mysql_plugin_include.patch",
@@ -85104,6 +85580,40 @@
       ]
     },
     {
+      "name": "qzxing",
+      "manifest": {
+        "name": "qzxing",
+        "description": "Qt/QML wrapper library for the ZXing library. 1D/2D barcode image processing library.",
+        "homepage": "https://github.com/ftylitak/qzxing",
+        "license": "Apache-2.0",
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.3.0"
+      },
+      "files": [
+        "add-cmake-config.patch",
+        "allow-shared-build.patch",
+        "portfile.cmake",
+        "use-qt6.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "rabit",
       "manifest": {
         "name": "rabit",
@@ -85134,9 +85644,9 @@
       "name": "ragel",
       "manifest": {
         "name": "ragel",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Ragel State Machine Compiler",
-        "homepage": "https://www.colm.net/files/ragel",
+        "homepage": "https://www.colm.net/open-source/ragel/",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -85808,7 +86318,6 @@
       "name": "realsense2",
       "manifest": {
         "name": "realsense2",
-        "port-version": 1,
         "description": "Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300).",
         "homepage": "https://github.com/IntelRealSense/librealsense",
         "license": "Apache-2.0",
@@ -85858,10 +86367,9 @@
             "supports": "!android"
           }
         },
-        "version": "2.56.3"
+        "version": "2.56.5"
       },
       "files": [
-        "add-include-chrono.patch",
         "add-stdexcept.diff",
         "android-config.diff",
         "build.diff",
@@ -86473,11 +86981,10 @@
             "host": true
           }
         ],
-        "version": "0.7.8"
+        "version": "0.7.9"
       },
       "files": [
         "portfile.cmake",
-        "restinio_cmake_file.patch",
         "vcpkg.json"
       ]
     },
@@ -90626,6 +91133,7 @@
       "name": "shaderc",
       "manifest": {
         "name": "shaderc",
+        "port-version": 1,
         "description": "A collection of tools, libraries and tests for shader compilation.",
         "homepage": "https://github.com/google/shaderc",
         "license": "Apache-2.0",
@@ -91812,7 +92320,6 @@
       "name": "slick-logger",
       "manifest": {
         "name": "slick-logger",
-        "port-version": 1,
         "description": "A high-performance, cross-platform header-only logging library for C++20 using a multi-producer, multi-consumer ring buffer with multi-sink support and log rotation capabilities",
         "homepage": "https://github.com/SlickQuant/slick_logger",
         "license": "MIT",
@@ -91828,7 +92335,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -92553,6 +93060,34 @@
       ]
     },
     {
+      "name": "sonivox",
+      "manifest": {
+        "name": "sonivox",
+        "description": "Software MIDI synthesizer evolved from the AOSP 'platform_external_sonivox' project to use it outside of Android. Uses embedded samples allowing also SF2 and DLS files. Plays MID, XMF, and RMI files.",
+        "homepage": "https://github.com/EmbeddedSynth/sonivox",
+        "license": "Apache-2.0",
+        "supports": "!x86",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "4.0.0"
+      },
+      "files": [
+        "option-install-dependencies.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sophus",
       "manifest": {
         "name": "sophus",
@@ -92864,7 +93399,6 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
-        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -92879,7 +93413,8 @@
           }
         ],
         "default-features": [
-          "fmt"
+          "fmt",
+          "tz-offset"
         ],
         "features": {
           "benchmark": {
@@ -92894,12 +93429,15 @@
               "fmt"
             ]
           },
+          "tz-offset": {
+            "description": "Omit %z timezone offset (use on platforms without tm_gmtoff)"
+          },
           "wchar": {
             "description": "Build with wchar_t (Windows only)",
             "supports": "windows"
           }
         },
-        "version-semver": "1.16.0"
+        "version-semver": "1.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -93859,7 +94397,7 @@
         "description": "A translator from Intel SSE intrinsics to Arm/Aarch64 NEON implementation",
         "homepage": "https://github.com/DLTcollab/sse2neon",
         "license": "MIT",
-        "version": "1.8.0"
+        "version": "1.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -94280,6 +94818,32 @@
           }
         ],
         "version": "1.1.0"
+      },
+      "files": [
+        "disable-cpm.patch",
+        "disable-tests.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stlab-enum-ops",
+      "manifest": {
+        "name": "stlab-enum-ops",
+        "description": "Type-safe bitmask and arithmetic operators for enum types.",
+        "homepage": "https://github.com/stlab/stlab-enum-ops",
+        "license": "BSL-1.0",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.0"
       },
       "files": [
         "disable-cpm.patch",
@@ -101698,7 +102262,6 @@
       "name": "vtk-dicom",
       "manifest": {
         "name": "vtk-dicom",
-        "port-version": 2,
         "description": "DICOM for VTK",
         "homepage": "https://github.com/dgobbi/vtk-dicom",
         "license": "BSD-3-Clause",
@@ -101730,7 +102293,7 @@
             ]
           }
         },
-        "version": "0.8.16"
+        "version": "0.8.17"
       },
       "files": [
         "portfile.cmake",
@@ -102999,7 +103562,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows | uwp",
-        "version": "6.3.2"
+        "version": "6.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -103554,6 +104117,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
+        "port-version": 1,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -103655,7 +104219,10 @@
           "webview": {
             "description": "The Edge backend uses Microsoft's Edge WebView2",
             "dependencies": [
-              "webview2"
+              {
+                "name": "webview2",
+                "platform": "windows"
+              }
             ]
           }
         },
@@ -104377,12 +104944,11 @@
       "name": "xorg-macros",
       "manifest": {
         "name": "xorg-macros",
-        "port-version": 1,
         "description": "X.org macros utilities.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "supports": "!uwp",
-        "version": "1.19.3"
+        "version": "1.20.2"
       },
       "files": [
         "portfile.cmake",
