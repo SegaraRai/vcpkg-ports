@@ -1,5 +1,5 @@
 {
-  "version": "6acb6ae25b2a70437436a3b23e3e9a427fca18a3",
+  "version": "39922dbab0cafd7a7150d459c6a181c7dee5dfbe",
   "ports": [
     {
       "name": "3fd",
@@ -420,7 +420,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.3.0"
+        "version": "3.4.1"
       },
       "files": [
         "no-cpm.patch",
@@ -19451,11 +19451,10 @@
       "name": "casadi",
       "manifest": {
         "name": "casadi",
-        "port-version": 1,
         "description": "CasADi is a symbolic framework for numeric optimization implementing automatic differentiation in forward and reverse modes on sparse matrix-valued computational graphs. It supports self-contained C-code generation and interfaces state-of-the-art codes such as SUNDIALS, IPOPT etc. It can be used from C++, Python or Matlab/Octave.",
         "homepage": "https://web.casadi.org",
         "license": "LGPL-3.0-only",
-        "supports": "!static & !uwp",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -19466,13 +19465,10 @@
             "host": true
           }
         ],
-        "version": "3.6.7"
+        "version": "3.7.2"
       },
       "files": [
-        "disable_fortran.patch",
-        "namespace.cmake",
         "portfile.cmake",
-        "relocatable.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -32141,7 +32137,6 @@
       "name": "freeglut",
       "manifest": {
         "name": "freeglut",
-        "port-version": 2,
         "description": "A free OpenGL utility toolkit, the open-sourced alternative to the GLUT library.",
         "homepage": "https://sourceforge.net/projects/freeglut/",
         "license": null,
@@ -32157,11 +32152,10 @@
             "host": true
           }
         ],
-        "version": "3.6.0"
+        "version": "3.8.0"
       },
       "files": [
         "android.patch",
-        "cmake-version.patch",
         "fix-debug-macro.patch",
         "portfile.cmake",
         "usage",
@@ -44715,6 +44709,36 @@
       ]
     },
     {
+      "name": "kdiagram",
+      "manifest": {
+        "name": "kdiagram",
+        "description": "Powerful libraries (KChart, KGantt) for creating business diagrams",
+        "homepage": "https://invent.kde.org/graphics/kdiagram",
+        "license": "LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
+          "qt5-svg",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.8.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kdreports",
       "manifest": {
         "name": "kdreports",
@@ -45469,23 +45493,13 @@
       "name": "kf5diagram",
       "manifest": {
         "name": "kf5diagram",
-        "port-version": 1,
         "description": "Powerful libraries (KChart, KGantt) for creating business diagrams",
-        "homepage": "https://api.kde.org/kdiagram/index.html",
+        "homepage": "https://invent.kde.org/graphics/kdiagram",
+        "license": "LGPL-2.0-or-later",
         "dependencies": [
-          "ecm",
-          "qt5-base",
-          "qt5-svg",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
+          "kdiagram"
         ],
-        "version": "2.8.0"
+        "version-string": "deprecated"
       },
       "files": [
         "portfile.cmake",
@@ -48703,7 +48717,6 @@
       "name": "libcap",
       "manifest": {
         "name": "libcap",
-        "port-version": 1,
         "description": "A library for getting and setting POSIX.1e (formerly POSIX 6) draft 15 capabilities.",
         "homepage": "https://sites.google.com/site/fullycapable/",
         "license": "BSD-3-Clause OR GPL-2.0-only",
@@ -48722,7 +48735,7 @@
             "host": true
           }
         ],
-        "version": "2.73"
+        "version": "2.77"
       },
       "files": [
         "configure",
@@ -53063,7 +53076,6 @@
       "name": "libmount",
       "manifest": {
         "name": "libmount",
-        "port-version": 1,
         "description": "Block device identification library from util-linux",
         "homepage": "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/about/",
         "license": null,
@@ -53083,7 +53095,7 @@
             ]
           }
         },
-        "version": "2.40"
+        "version": "2.41.3"
       },
       "files": [
         "hide-private-symbols.diff",
@@ -56574,7 +56586,7 @@
             ]
           }
         },
-        "version-semver": "2.2.1"
+        "version-semver": "2.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -75745,7 +75757,6 @@
       "name": "pango",
       "manifest": {
         "name": "pango",
-        "port-version": 1,
         "description": "Text and font handling library.",
         "homepage": "https://ftp.gnome.org/pub/GNOME/sources/pango/",
         "license": "LGPL-2.0-or-later",
@@ -75803,7 +75814,7 @@
             "supports": "!static"
           }
         },
-        "version": "1.56.4"
+        "version": "1.57.0"
       },
       "files": [
         "portfile.cmake",
@@ -82643,6 +82654,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -83342,6 +83354,7 @@
         "qt.conf.in",
         "qtpaths.debug.bat",
         "use-shared-mime-info.patch",
+        "use_inotify_on_freebsd.patch",
         "vcpkg.json",
         "windeployqt.debug.bat",
         "xcodebuild-not-installed.patch"
@@ -88677,7 +88690,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.6.2"
+        "version": "1.6.4"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -94792,7 +94805,6 @@
       "name": "stlab",
       "manifest": {
         "name": "stlab",
-        "port-version": 2,
         "description": [
           "stlab is the ongoing work of what was Adobe Software Technology Lab.",
           "The Concurrency library provides futures and channels, high level constructs for implementing algorithms that eases the use of multiple CPU cores while minimizing contention. This library solves several problems of the C++11 and C++17 TS futures."
@@ -94801,6 +94813,7 @@
         "license": "BSL-1.0",
         "dependencies": [
           "stlab-copy-on-write",
+          "stlab-enum-ops",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -94810,12 +94823,13 @@
             "host": true
           }
         ],
-        "version": "2.0.2"
+        "version": "2.2.0"
       },
       "files": [
         "cross-build.patch",
         "devendoring.patch",
         "portfile.cmake",
+        "use-cxx-20.patch",
         "vcpkg.json"
       ]
     },
@@ -102830,7 +102844,7 @@
             "description": "Include the WABT C runtime implementation library"
           }
         },
-        "version": "1.0.38"
+        "version": "1.0.39"
       },
       "files": [
         "include_picosha2.cmake",
