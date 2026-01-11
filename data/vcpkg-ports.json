@@ -1,5 +1,5 @@
 {
-  "version": "39922dbab0cafd7a7150d459c6a181c7dee5dfbe",
+  "version": "25b458671af03578e6a34edd8f0d1ac85e084df4",
   "ports": [
     {
       "name": "3fd",
@@ -6618,7 +6618,7 @@
             ]
           }
         },
-        "version-semver": "0.3.1"
+        "version-semver": "0.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -6825,7 +6825,7 @@
             "host": true
           }
         ],
-        "version": "4.8.3"
+        "version": "4.8.4"
       },
       "files": [
         "fix-dependencies.patch",
@@ -41422,7 +41422,7 @@
             "host": true
           }
         ],
-        "version": "2.4.1"
+        "version": "2.6"
       },
       "files": [
         "fix-runtime-destination.patch",
@@ -45073,14 +45073,17 @@
       "name": "kf5archive",
       "manifest": {
         "name": "kf5archive",
-        "port-version": 1,
         "description": "File compression",
-        "homepage": "https://api.kde.org/frameworks/karchive/html/index.html",
+        "homepage": "https://api.kde.org/karchive-index.html",
         "license": "LGPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
+          "qt5-tools",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -45114,7 +45117,7 @@
             ]
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "control-dependencies.patch",
@@ -45127,7 +45130,7 @@
       "manifest": {
         "name": "kf5attica",
         "description": "A Qt library that implements the Open Collaboration Services API",
-        "homepage": "https://api.kde.org/frameworks/attica/html/index.html",
+        "homepage": "https://api.kde.org/attica-index.html",
         "dependencies": [
           "ecm",
           "qt5-base",
@@ -45141,7 +45144,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45153,12 +45156,15 @@
       "manifest": {
         "name": "kf5auth",
         "description": "Execute actions as privileged user",
-        "homepage": "https://api.kde.org/frameworks/kauth/html/index.html",
+        "homepage": "https://api.kde.org/kauth-index.html",
         "supports": "!windows",
         "dependencies": [
           "ecm",
           "kf5coreaddons",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45169,10 +45175,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "0001-Config.cmake.in-declare-static-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45182,7 +45187,7 @@
       "manifest": {
         "name": "kf5bookmarks",
         "description": "Bookmarks management library",
-        "homepage": "https://api.kde.org/frameworks/kbookmarks/html/index.html",
+        "homepage": "https://api.kde.org/kbookmarks-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45198,7 +45203,10 @@
           "kf5coreaddons",
           "kf5widgetsaddons",
           "kf5xmlgui",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45209,7 +45217,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45221,14 +45229,17 @@
       "manifest": {
         "name": "kf5codecs",
         "description": "String encoding library",
-        "homepage": "https://api.kde.org/frameworks/kcodecs/html/index.html",
+        "homepage": "https://api.kde.org/kcodecs-index.html",
         "dependencies": [
           "ecm",
           {
             "name": "gperf",
             "host": true
           },
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45239,7 +45250,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45251,7 +45262,7 @@
       "manifest": {
         "name": "kf5completion",
         "description": "Text completion helpers and widgets",
-        "homepage": "https://api.kde.org/frameworks/kcompletion/html/index.html",
+        "homepage": "https://api.kde.org/kcompletion-index.html",
         "dependencies": [
           "ecm",
           "kf5config",
@@ -45266,7 +45277,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45278,10 +45289,13 @@
       "manifest": {
         "name": "kf5config",
         "description": "Configuration system",
-        "homepage": "https://api.kde.org/frameworks/kconfig/html/index.html",
+        "homepage": "https://api.kde.org/kconfig-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45292,7 +45306,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45304,7 +45318,7 @@
       "manifest": {
         "name": "kf5configwidgets",
         "description": "Widgets for configuration dialogs",
-        "homepage": "https://api.kde.org/frameworks/kconfigwidgets/html/index.html",
+        "homepage": "https://api.kde.org/kconfigwidgets-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45324,7 +45338,10 @@
           "kf5guiaddons",
           "kf5i18n",
           "kf5widgetsaddons",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45340,7 +45357,7 @@
             "description": "Enables a Qt Designer plugin"
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45351,9 +45368,8 @@
       "name": "kf5coreaddons",
       "manifest": {
         "name": "kf5coreaddons",
-        "port-version": 1,
         "description": "Addons to QtCore",
-        "homepage": "https://api.kde.org/frameworks/kcoreaddons/html/index.html",
+        "homepage": "https://api.kde.org/kcoreaddons-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45370,10 +45386,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "0001-Add-support-for-static-builds.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45383,7 +45398,7 @@
       "manifest": {
         "name": "kf5crash",
         "description": "KCrash provides support for intercepting and handling application crashes.",
-        "homepage": "https://api.kde.org/frameworks/kcrash/html/index.html",
+        "homepage": "https://api.kde.org/kcrash-index.html",
         "dependencies": [
           "ecm",
           "kf5coreaddons",
@@ -45401,7 +45416,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45413,10 +45428,13 @@
       "manifest": {
         "name": "kf5dbusaddons",
         "description": "Convenience classes for D-Bus",
-        "homepage": "https://api.kde.org/frameworks/kdbusaddons/html/index.html",
+        "homepage": "https://api.kde.org/kdbusaddons-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45427,10 +45445,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "fix_static_build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45440,7 +45457,7 @@
       "manifest": {
         "name": "kf5declarative",
         "description": "Integration of QML and KDE work spaces",
-        "homepage": "https://api.kde.org/frameworks/kdeclarative/html/index.html",
+        "homepage": "https://api.kde.org/kdeclarative-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45463,7 +45480,10 @@
           "kf5package",
           "kf5widgetsaddons",
           "kf5windowsystem",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45482,7 +45502,7 @@
             ]
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45511,7 +45531,7 @@
       "manifest": {
         "name": "kf5globalaccel",
         "description": "lobal desktop keyboard shortcuts",
-        "homepage": "https://api.kde.org/frameworks/kglobalaccel/html/index.html",
+        "homepage": "https://api.kde.org/kglobalaccel-index.html",
         "supports": "!windows",
         "dependencies": [
           "ecm",
@@ -45520,7 +45540,10 @@
           "kf5crash",
           "kf5dbusaddons",
           "kf5windowsystem",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "qt5-x11extras",
@@ -45539,7 +45562,7 @@
             "platform": "linux"
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45551,7 +45574,7 @@
       "manifest": {
         "name": "kf5guiaddons",
         "description": "Addons to QtGui",
-        "homepage": "https://api.kde.org/frameworks/kguiaddons/html/index.html",
+        "homepage": "https://api.kde.org/kguiaddons-index.html",
         "dependencies": [
           "ecm",
           "qt5-tools",
@@ -45609,10 +45632,9 @@
             ]
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "0001-Add-misisng-find_dependency-s-for-static-builds.patch",
         "fix_cmake.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -45623,9 +45645,13 @@
       "manifest": {
         "name": "kf5holidays",
         "description": "Holiday calculation library",
+        "homepage": "https://api.kde.org/kholidays-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45636,7 +45662,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45647,9 +45673,8 @@
       "name": "kf5i18n",
       "manifest": {
         "name": "kf5i18n",
-        "port-version": 1,
         "description": "Advanced internationalization framework",
-        "homepage": "https://api.kde.org/frameworks/ki18n/html/index.html",
+        "homepage": "https://api.kde.org/ki18n-index.html",
         "dependencies": [
           "ecm",
           "gettext",
@@ -45672,7 +45697,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "fix_static_builds.patch",
@@ -45685,7 +45710,7 @@
       "manifest": {
         "name": "kf5iconthemes",
         "description": "Icon GUI utilities",
-        "homepage": "https://api.kde.org/frameworks/kiconthemes/html/index.html",
+        "homepage": "https://api.kde.org/kiconthemes-index.html",
         "dependencies": [
           "ecm",
           "gettext",
@@ -45703,7 +45728,10 @@
           "kf5i18n",
           "kf5itemviews",
           "kf5widgetsaddons",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-svg",
           "qt5-tools",
           {
@@ -45720,7 +45748,7 @@
             "description": "Enables a Qt Designer plugin"
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45732,10 +45760,13 @@
       "manifest": {
         "name": "kf5itemmodels",
         "description": "Models for Qt Model/View system",
-        "homepage": "https://api.kde.org/frameworks/kitemmodels/html/index.html",
+        "homepage": "https://api.kde.org/kitemmodels-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45746,7 +45777,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45758,10 +45789,13 @@
       "manifest": {
         "name": "kf5itemviews",
         "description": "Widget addons for Qt Model/View",
-        "homepage": "https://api.kde.org/frameworks/kitemviews/html/index.html",
+        "homepage": "https://api.kde.org/kitemviews-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45772,7 +45806,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45784,12 +45818,15 @@
       "manifest": {
         "name": "kf5jobwidgets",
         "description": "Widgets for showing progress of asynchronous jobs",
-        "homepage": "https://api.kde.org/frameworks/kjobwidgets/html/index.html",
+        "homepage": "https://api.kde.org/kjobwidgets-index.html",
         "dependencies": [
           "ecm",
           "kf5coreaddons",
           "kf5widgetsaddons",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           {
             "name": "qt5-x11extras",
             "platform": "linux"
@@ -45803,7 +45840,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -45815,7 +45852,7 @@
       "manifest": {
         "name": "kf5kcmutils",
         "description": "Utilities for KDE System Settings modules",
-        "homepage": "https://api.kde.org/frameworks/kcmutils/html/index.html",
+        "homepage": "https://api.kde.org/kcmutils-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45833,7 +45870,10 @@
           "kf5itemviews",
           "kf5service",
           "kf5xmlgui",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -45844,10 +45884,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "0001-Fix-missing-kcmutils_proxy_model-export-in-static-bu.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45856,9 +45895,8 @@
       "name": "kf5kio",
       "manifest": {
         "name": "kf5kio",
-        "port-version": 1,
         "description": "Network transparent access to files and data",
-        "homepage": "https://api.kde.org/frameworks/kio/html/index.html",
+        "homepage": "https://api.kde.org/kio-index.html",
         "license": null,
         "dependencies": [
           "ecm",
@@ -45903,10 +45941,7 @@
             "name": "libmount",
             "platform": "linux"
           },
-          {
-            "name": "qt5-base",
-            "default-features": false
-          },
+          "qt5-base",
           {
             "name": "qt5-macextras",
             "platform": "osx"
@@ -45951,10 +45986,9 @@
             ]
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "fix_libiconv.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45964,7 +45998,7 @@
       "manifest": {
         "name": "kf5newstuff",
         "description": "Framework for downloading and sharing additional application data",
-        "homepage": "https://api.kde.org/frameworks/knewstuff/html/index.html",
+        "homepage": "https://api.kde.org/knewstuff-index.html",
         "dependencies": [
           "ecm",
           {
@@ -45999,10 +46033,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "0001-Fix-KF5NewStuffWidgets_EXPORTS-is-not-defined-on-cla.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46012,7 +46045,7 @@
       "manifest": {
         "name": "kf5notifications",
         "description": "Desktop notifications",
-        "homepage": "https://api.kde.org/frameworks/knotifications/html/index.html",
+        "homepage": "https://api.kde.org/knotifications-index.html",
         "dependencies": [
           "ecm",
           "kf5config",
@@ -46033,7 +46066,10 @@
             "name": "qt5-androidextras",
             "platform": "android"
           },
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           {
             "name": "qt5-macextras",
             "platform": "osx"
@@ -46052,7 +46088,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46064,7 +46100,7 @@
       "manifest": {
         "name": "kf5package",
         "description": "Installation and loading of additional content (ex: scripts, images...) as packages",
-        "homepage": "https://api.kde.org/frameworks/kpackage/html/index.html",
+        "homepage": "https://api.kde.org/kpackage-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46088,10 +46124,9 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
-        "fix_duplicate_symbol.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46100,9 +46135,8 @@
       "name": "kf5parts",
       "manifest": {
         "name": "kf5parts",
-        "port-version": 1,
         "description": "Plugin framework for user interface component",
-        "homepage": "https://api.kde.org/frameworks/kparts/html/index.html",
+        "homepage": "https://api.kde.org/kparts-index.html",
         "license": "LGPL-2.0-or-later",
         "dependencies": [
           "ecm",
@@ -46123,7 +46157,10 @@
           "kf5textwidgets",
           "kf5widgetsaddons",
           "kf5xmlgui",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -46133,7 +46170,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46144,12 +46181,14 @@
       "name": "kf5plotting",
       "manifest": {
         "name": "kf5plotting",
-        "port-version": 1,
         "description": "Lightweight plotting framework",
-        "homepage": "https://api.kde.org/frameworks/kplotting/html/index.html",
+        "homepage": "https://api.kde.org/kplotting-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46160,7 +46199,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46171,9 +46210,8 @@
       "name": "kf5service",
       "manifest": {
         "name": "kf5service",
-        "port-version": 1,
         "description": "Plugin framework for desktop services",
-        "homepage": "https://api.kde.org/frameworks/kservice/html/index.html",
+        "homepage": "https://api.kde.org/kservice-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46191,7 +46229,10 @@
           },
           "kf5i18n",
           "libiconv",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46202,7 +46243,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46213,12 +46254,14 @@
       "name": "kf5solid",
       "manifest": {
         "name": "kf5solid",
-        "port-version": 3,
         "description": "Desktop hardware abstraction",
-        "homepage": "https://api.kde.org/frameworks/solid/html/index.html",
+        "homepage": "https://api.kde.org/solid-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46251,7 +46294,7 @@
             "supports": "linux"
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "001_fix_libmount.patch",
@@ -46265,10 +46308,13 @@
       "manifest": {
         "name": "kf5sonnet",
         "description": "Multi-language spell checker",
-        "homepage": "https://api.kde.org/frameworks/sonnet/html/index.html",
+        "homepage": "https://api.kde.org/sonnet-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46287,7 +46333,7 @@
             ]
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46299,10 +46345,13 @@
       "manifest": {
         "name": "kf5syntaxhighlighting",
         "description": "Syntax highlighting engine for Kate syntax definitions",
-        "homepage": "https://github.com/KDE/syntax-highlighting",
+        "homepage": "https://api.kde.org/ksyntaxhighlighting-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           "qt5-xmlpatterns",
           {
@@ -46314,7 +46363,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46325,9 +46374,8 @@
       "name": "kf5texteditor",
       "manifest": {
         "name": "kf5texteditor",
-        "port-version": 2,
         "description": "Full text editor component",
-        "homepage": "https://api.kde.org/frameworks/ktexteditor/html/",
+        "homepage": "https://api.kde.org/ktexteditor-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46355,7 +46403,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46367,7 +46415,7 @@
       "manifest": {
         "name": "kf5textwidgets",
         "description": "Text editing widgets",
-        "homepage": "https://api.kde.org/frameworks/ktextwidgets/html/index.html",
+        "homepage": "https://api.kde.org/ktextwidgets-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46383,7 +46431,10 @@
           "kf5i18n",
           "kf5sonnet",
           "kf5widgetsaddons",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46394,7 +46445,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46406,7 +46457,7 @@
       "manifest": {
         "name": "kf5wallet",
         "description": "Safe desktop-wide storage for passwords",
-        "homepage": "https://api.kde.org/frameworks/kwallet/html/index.html",
+        "homepage": "https://api.kde.org/kwallet-index.html",
         "dependencies": [
           "ecm",
           "gettext",
@@ -46432,7 +46483,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46444,10 +46495,13 @@
       "manifest": {
         "name": "kf5widgetsaddons",
         "description": "Addons to QtWidgets",
-        "homepage": "https://api.kde.org/frameworks/kwidgetsaddons/html/index.html",
+        "homepage": "https://api.kde.org/kwidgetsaddons-index.html",
         "dependencies": [
           "ecm",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46458,7 +46512,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46470,7 +46524,7 @@
       "manifest": {
         "name": "kf5windowsystem",
         "description": "Access to the windowing system",
-        "homepage": "https://api.kde.org/frameworks/kwindowsystem/html/",
+        "homepage": "https://api.kde.org/kwindowsystem-index.html",
         "dependencies": [
           "ecm",
           "qt5-tools",
@@ -46491,7 +46545,7 @@
             "host": true
           }
         ],
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -46503,7 +46557,7 @@
       "manifest": {
         "name": "kf5xmlgui",
         "description": "Framework for managing menu and toolbar actions",
-        "homepage": "https://api.kde.org/frameworks/kxmlgui/html/index.html",
+        "homepage": "https://api.kde.org/kxmlgui-index.html",
         "dependencies": [
           "ecm",
           "gettext",
@@ -46532,7 +46586,10 @@
             "name": "libiconv",
             "platform": "windows & static"
           },
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46548,7 +46605,7 @@
             "description": "Enables a Qt Designer plugin"
           }
         },
-        "version": "5.98.0"
+        "version": "5.116.0"
       },
       "files": [
         "portfile.cmake",
@@ -50863,7 +50920,7 @@
             "description": "Enable the OpenSSL compatibility library."
           }
         },
-        "version": "3.8.10"
+        "version": "3.8.11"
       },
       "files": [
         "ccasflags.patch",
@@ -50962,7 +51019,7 @@
             ]
           }
         },
-        "version": "1.55"
+        "version": "1.58"
       },
       "files": [
         "android.diff",
@@ -59114,10 +59171,9 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.1.5"
+        "version": "1.1.6"
       },
       "files": [
-        "no-undefined.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79436,14 +79492,13 @@
       "name": "pthread-stubs",
       "manifest": {
         "name": "pthread-stubs",
-        "port-version": 1,
         "description": "Stub replacements for POSIX Threads functions.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs",
         "license": "X11-distribute-modifications-variant",
         "dependencies": [
           "pthread"
         ],
-        "version": "0.4"
+        "version": "0.5"
       },
       "files": [
         "portfile.cmake",
@@ -91941,6 +91996,21 @@
       ]
     },
     {
+      "name": "sintra",
+      "manifest": {
+        "name": "sintra",
+        "description": "Header-only C++17 IPC library using shared-memory ring buffers.",
+        "homepage": "https://github.com/imakris/sintra",
+        "license": "BSD-2-Clause",
+        "supports": "!android",
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sjpeg",
       "manifest": {
         "name": "sjpeg",
@@ -103255,7 +103325,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.3595.46"
+        "version": "1.0.3650.58"
       },
       "files": [
         "portfile.cmake",
@@ -105168,7 +105238,7 @@
             ]
           }
         },
-        "version": "0.27.0"
+        "version": "0.27.1"
       },
       "files": [
         "fix-find-tbb-and-install-destination.patch",
@@ -105283,14 +105353,13 @@
       "name": "xtrans",
       "manifest": {
         "name": "xtrans",
-        "port-version": 2,
         "description": "xtrans - X Network Transport layer shared code",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxtrans",
         "license": null,
         "dependencies": [
           "xorg-macros"
         ],
-        "version": "1.4.0"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
