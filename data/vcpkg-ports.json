@@ -1,5 +1,5 @@
 {
-  "version": "fafcc0e93bfba303e5e48790def745d27e6d449b",
+  "version": "bb1ad44ed8d7cfb77d180cdc1585f8b87c2c7428",
   "ports": [
     {
       "name": "3fd",
@@ -22453,7 +22453,7 @@
             ]
           }
         },
-        "version": "0.30.0"
+        "version": "0.30.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -27550,6 +27550,32 @@
       ]
     },
     {
+      "name": "duvc-ctl",
+      "manifest": {
+        "name": "duvc-ctl",
+        "description": "Windows DirectShow UVC camera control library",
+        "homepage": "https://github.com/allanhanan/duvc-ctl",
+        "license": "MIT",
+        "supports": "windows & !uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "dv-processing",
       "manifest": {
         "name": "dv-processing",
@@ -27770,6 +27796,7 @@
         "name": "eabase",
         "description": "Electronic Arts Base. EABase is a small set of header files that define platform-independent data types and macros.",
         "homepage": "https://github.com/electronicarts/EABase",
+        "license": "BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -27780,7 +27807,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-08-18"
+        "version-date": "2025-08-01"
       },
       "files": [
         "EABaseConfig.cmake.in",
@@ -27821,7 +27848,7 @@
             "host": true
           }
         ],
-        "version": "3.21.23"
+        "version": "3.27.1"
       },
       "files": [
         "0001-fix-cmake-install.patch",
@@ -29279,7 +29306,7 @@
             "host": true
           }
         ],
-        "version": "4.0.1"
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -34974,7 +35001,6 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
-        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later",
@@ -35012,7 +35038,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.86.2"
+        "version": "2.86.3"
       },
       "files": [
         "libintl.patch",
@@ -39402,7 +39428,6 @@
       "name": "guile",
       "manifest": {
         "name": "guile",
-        "port-version": 1,
         "description": "GNU's programming and extension language",
         "homepage": "https://www.gnu.org/software/guile/",
         "documentation": "https://www.gnu.org/software/guile/manual/",
@@ -39425,7 +39450,7 @@
           "libffi",
           "libunistring"
         ],
-        "version": "3.0.10"
+        "version": "3.0.11"
       },
       "files": [
         "portfile.cmake",
@@ -44460,7 +44485,7 @@
             "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "0.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -51542,7 +51567,7 @@
           "xproto",
           "xtrans"
         ],
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "fix_build.patch",
@@ -60895,13 +60920,13 @@
       "name": "ltla-cppirlba",
       "manifest": {
         "name": "ltla-cppirlba",
-        "port-version": 1,
         "description": "A C++ port of the IRLBA algorithm, based on the C code in the R package.",
         "homepage": "https://github.com/LTLA/CppIrlba",
         "license": "MIT",
         "dependencies": [
           "eigen3",
           "ltla-aarand",
+          "ltla-sanisizer",
           "ltla-subpar",
           {
             "name": "vcpkg-cmake",
@@ -60912,7 +60937,7 @@
             "host": true
           }
         ],
-        "version": "2.0.2"
+        "version": "3.0.1"
       },
       "files": [
         "0001-fix-eigen3.patch",
@@ -61282,7 +61307,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.703"
+        "version": "0.704"
       },
       "files": [
         "cmake-config-export.patch",
@@ -64115,7 +64140,6 @@
       "name": "mcpp",
       "manifest": {
         "name": "mcpp",
-        "port-version": 5,
         "description": "Fork of mcpp, a C/C++ preprocessor",
         "homepage": "https://github.com/zeroc-ice/mcpp",
         "dependencies": [
@@ -64124,10 +64148,9 @@
             "host": true
           }
         ],
-        "version": "2.7.2.14"
+        "version": "2.7.2.19"
       },
       "files": [
-        "0001-fix-_POSIX_C_SOURCE.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64863,7 +64886,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "2.2.4"
+        "version": "2.2.6"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -67702,7 +67725,7 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Free software emulation of curses in System V Release 4.0, and more.",
           "This port installs a wide character configuration (ncursesw)."
@@ -67713,6 +67736,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -75084,7 +75111,7 @@
             ]
           }
         },
-        "version": "2.2.1"
+        "version": "2.2.2"
       },
       "files": [
         "external-project.diff",
@@ -79078,7 +79105,7 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -79759,6 +79786,32 @@
       ]
     },
     {
+      "name": "pxlib",
+      "manifest": {
+        "name": "pxlib",
+        "description": "Library to read and write Paradox files",
+        "homepage": "https://github.com/steinm/pxlib",
+        "license": "GPL-2.0-only",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2025-12-16"
+      },
+      "files": [
+        "add_cmake_config.patch",
+        "add_extern_c.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pybind11",
       "manifest": {
         "name": "pybind11",
@@ -79849,7 +79902,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 7,
+        "port-version": 8,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -79922,10 +79975,6 @@
                 "default-features": false
               },
               {
-                "name": "ncurses",
-                "platform": "!windows | mingw"
-              },
-              {
                 "name": "openssl",
                 "default-features": false
               },
@@ -79960,7 +80009,6 @@
         "0007-workaround-windows-11-sdk-rc-compiler-error.patch",
         "0008-python.pc.patch",
         "0010-dont-skip-rpath.patch",
-        "0012-force-disable-modules.patch",
         "0015-dont-use-WINDOWS-def.patch",
         "0016-fix-win-cross.patch",
         "0016-undup-ffi-symbols.patch",
@@ -85887,6 +85935,23 @@
       "name": "rapidfuzz",
       "manifest": {
         "name": "rapidfuzz",
+        "description": "Rapid fuzzy string matching library for C++ using the Levenshtein Distance.",
+        "homepage": "https://github.com/maxbachmann/rapidfuzz-cpp",
+        "license": "MIT",
+        "dependencies": [
+          "rapidfuzz-cpp"
+        ],
+        "version-string": "deprecated"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rapidfuzz-cpp",
+      "manifest": {
+        "name": "rapidfuzz-cpp",
         "description": "Rapid fuzzy string matching library for C++ using the Levenshtein Distance.",
         "homepage": "https://github.com/maxbachmann/rapidfuzz-cpp",
         "license": "MIT",
@@ -92496,7 +92561,7 @@
       "manifest": {
         "name": "slick-object-pool",
         "description": "A high-performance, lock-free object pool for C++20 with multi-threading support",
-        "homepage": "https://github.com/SlickQuant/slick_object_pool",
+        "homepage": "https://github.com/SlickQuant/slick-object-pool",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
@@ -92509,7 +92574,7 @@
             "host": true
           }
         ],
-        "version": "0.1.2"
+        "version": "0.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -92522,7 +92587,7 @@
       "manifest": {
         "name": "slick-queue",
         "description": "A C++ Lock-Free MPMC queue - header-only library for high throughput concurrent messaging with optional shared memory support",
-        "homepage": "https://github.com/SlickQuant/slick_queue",
+        "homepage": "https://github.com/SlickQuant/slick-queue",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
@@ -92535,7 +92600,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -92548,7 +92613,7 @@
       "manifest": {
         "name": "slick-shm",
         "description": "A modern C++17 header-only, cross-platform shared memory library",
-        "homepage": "https://github.com/SlickQuant/slick_shm",
+        "homepage": "https://github.com/SlickQuant/slick-shm",
         "license": "MIT",
         "supports": "windows | linux | osx",
         "dependencies": [
@@ -92561,7 +92626,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.1.1"
+        "version-semver": "0.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -98072,7 +98137,7 @@
             "host": true
           }
         ],
-        "version": "2.3.4"
+        "version": "3.0"
       },
       "files": [
         "portfile.cmake",
@@ -99025,7 +99090,7 @@
             "host": true
           }
         ],
-        "version": "48"
+        "version": "49"
       },
       "files": [
         "portfile.cmake",
@@ -100161,7 +100226,7 @@
             "host": true
           }
         ],
-        "version": "4.0.6"
+        "version": "4.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -100785,7 +100850,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-10-26"
+        "version-date": "2026-01-01"
       },
       "files": [
         "configure.ac",
@@ -101714,7 +101779,6 @@
       "name": "vsg",
       "manifest": {
         "name": "vsg",
-        "port-version": 1,
         "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
         "homepage": "http://www.vulkanscenegraph.org/",
         "license": "MIT",
@@ -101756,10 +101820,9 @@
             ]
           }
         },
-        "version": "1.1.11"
+        "version": "1.1.13"
       },
       "files": [
-        "cmakedefine01.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -101890,7 +101953,7 @@
             ]
           }
         },
-        "version": "1.1.7"
+        "version": "1.1.9"
       },
       "files": [
         "portfile.cmake",
@@ -103396,6 +103459,32 @@
       ]
     },
     {
+      "name": "whereami",
+      "manifest": {
+        "name": "whereami",
+        "description": "A drop-in two files library to locate the current executable and the current module on the file system.",
+        "homepage": "https://github.com/gpakosz/whereami",
+        "license": "MIT OR WTFPL",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2024-08-26"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "unofficial-whereamiConfig.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
@@ -104546,7 +104635,7 @@
         "dependencies": [
           "xorg-macros"
         ],
-        "version": "1.1.2"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
