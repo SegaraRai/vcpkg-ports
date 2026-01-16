@@ -1,5 +1,5 @@
 {
-  "version": "97bbb13b57ea5ae4e9edd851601f36a1acb3868a",
+  "version": "2fa7118fb2ce0c27ab73e08ab1991f4cb67af880",
   "ports": [
     {
       "name": "3fd",
@@ -554,11 +554,16 @@
       "name": "aeron",
       "manifest": {
         "name": "aeron",
+        "port-version": 1,
         "description": "Efficient reliable UDP unicast, UDP multicast, and IPC message transport",
         "homepage": "https://github.com/aeron-io/aeron",
         "license": "Apache-2.0",
-        "supports": "(x64 & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)",
+        "supports": "(x64 & windows & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)",
         "dependencies": [
+          {
+            "name": "libuuid",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -571,12 +576,13 @@
         "features": {
           "archive": {
             "description": "Build Aeron Archive API for recording and replaying message streams (requires Java)",
-            "supports": "(x64 & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)"
+            "supports": "(x64 & windows & !uwp & !xbox) | ((x64 | arm64) & !windows & !android)"
           }
         },
         "version": "1.49.3"
       },
       "files": [
+        "patches/add-libuuid-vcpkg-support.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -6690,6 +6696,32 @@
           }
         ],
         "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "bbstrader",
+      "manifest": {
+        "name": "bbstrader",
+        "description": "High-performance MetaTrader 5 C++/Python Bridge",
+        "homepage": "https://github.com/bbalouki/bbstrader",
+        "license": "MIT",
+        "dependencies": [
+          "pybind11",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -20557,7 +20589,7 @@
           "iguana",
           "tanakh-cmdline"
         ],
-        "version": "0.9.7"
+        "version": "0.9.8"
       },
       "files": [
         "portfile.cmake",
@@ -20894,6 +20926,32 @@
         "portfile.cmake",
         "unofficial-cld3Config.cmake",
         "unofficial-export.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cleishm-thermo-cpp",
+      "manifest": {
+        "name": "cleishm-thermo-cpp",
+        "description": "Type-safe temperature handling library modeled after std::chrono",
+        "homepage": "https://github.com/cleishm/thermo-cpp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -42000,7 +42058,6 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 1,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -42027,7 +42084,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "78.1"
+        "version": "78.2"
       },
       "files": [
         "disable-static-prefix.patch",
@@ -42662,7 +42719,7 @@
             "description": "Build documentation"
           }
         },
-        "version": "0.9.0"
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -44218,6 +44275,23 @@
       ]
     },
     {
+      "name": "jsonfusion",
+      "manifest": {
+        "name": "jsonfusion",
+        "description": "Type-driven JSON/CBOR parser with declarative validation. Header-only C++23 library.",
+        "homepage": "https://github.com/tucher/JsonFusion",
+        "license": "MIT",
+        "dependencies": [
+          "boost-pfr"
+        ],
+        "version": "0.707.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "jsonifier",
       "manifest": {
         "name": "jsonifier",
@@ -44900,6 +44974,68 @@
         "fix-missing-targets.diff",
         "portfile.cmake",
         "qt6.9.patch",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kdutils",
+      "manifest": {
+        "name": "kdutils",
+        "description": "KD Utilities Library - Core utilities and helper functions",
+        "homepage": "https://github.com/KDAB/kdutils",
+        "license": "MIT",
+        "supports": "!uwp & (windows | linux | android | osx) & (arm | x86 | x64)",
+        "dependencies": [
+          {
+            "name": "kdbindings",
+            "version>=": "1.1.0"
+          },
+          {
+            "name": "mio",
+            "version>=": "2023-03-03"
+          },
+          {
+            "name": "spdlog",
+            "version>=": "1.15.3"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "whereami",
+            "version>=": "2024-08-26"
+          }
+        ],
+        "features": {
+          "mqtt": {
+            "description": "Enable mqtt support",
+            "dependencies": [
+              {
+                "name": "mosquitto",
+                "version>=": "2.0.20"
+              }
+            ]
+          },
+          "testing": {
+            "description": "Enable testing support",
+            "dependencies": [
+              {
+                "name": "doctest",
+                "version>=": "2.4.12"
+              }
+            ]
+          }
+        },
+        "version": "0.1.13"
+      },
+      "files": [
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -47313,7 +47449,7 @@
             "description": "Build documentation"
           }
         },
-        "version-date": "2023-03-19"
+        "version": "0.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -47592,7 +47728,7 @@
             ]
           }
         },
-        "version": "2.17"
+        "version": "2.18"
       },
       "files": [
         "fix-shared-library.patch",
@@ -52443,7 +52579,7 @@
             "host": true
           }
         ],
-        "version": "1.16.2"
+        "version": "1.17.4"
       },
       "files": [
         "portfile.cmake",
@@ -52895,7 +53031,7 @@
             "host": true
           }
         ],
-        "version": "5.1.1"
+        "version": "5.1.4"
       },
       "files": [
         "0001-CMakeLists.patch",
@@ -55123,7 +55259,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.21.5"
+        "version": "0.22.0"
       },
       "files": [
         "dependencies.patch",
@@ -55287,10 +55423,9 @@
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "4.2.0"
+        "version": "4.2.1"
       },
       "files": [
-        "aarch64-windows.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake.in",
@@ -58986,9 +59121,10 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.5.2"
+        "version": "1.5.4"
       },
       "files": [
+        "fix-configure.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -59004,9 +59140,10 @@
           "libx11",
           "xorg-macros"
         ],
-        "version": "0.9.10"
+        "version": "0.9.12"
       },
       "files": [
+        "fix-configure.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -59180,9 +59317,10 @@
           "libxi",
           "xproto"
         ],
-        "version": "1.2.4"
+        "version": "1.2.5"
       },
       "files": [
+        "fix-configure.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60819,7 +60957,7 @@
             ]
           }
         },
-        "version": "1.5.0"
+        "version": "1.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -66643,12 +66781,11 @@
       "name": "msmpi",
       "manifest": {
         "name": "msmpi",
-        "port-version": 5,
         "description": "Microsoft MPI (MS-MPI) is a Microsoft implementation of the Message Passing Interface standard for developing and running parallel applications on the Windows platform.",
         "homepage": "https://docs.microsoft.com/en-us/message-passing-interface/microsoft-mpi",
         "license": "MIT",
         "supports": "windows & !uwp & (x64 | x86)",
-        "version": "10.1.12498"
+        "version": "10.1.12498.52"
       },
       "files": [
         "mpi-wrapper.cmake",
@@ -71476,7 +71613,7 @@
             ]
           }
         },
-        "version-semver": "2.5.0"
+        "version-semver": "2.5.1"
       },
       "files": [
         "dependencies.diff",
@@ -73411,7 +73548,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/OpenImageIO/oiio",
         "license": "BSD-3-Clause",
@@ -77029,7 +77166,6 @@
       "name": "pffft",
       "manifest": {
         "name": "pffft",
-        "port-version": 1,
         "description": "PFFFT, a pretty fast Fourier Transform.",
         "homepage": "https://bitbucket.org/jpommier/pffft/",
         "license": null,
@@ -77043,7 +77179,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-10-09"
+        "version": "1.0.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -78813,9 +78949,10 @@
             "host": true
           }
         ],
-        "version": "2.0.4"
+        "version": "2.0.5"
       },
       "files": [
+        "fatal-errors.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -87571,7 +87708,7 @@
             ]
           }
         },
-        "version": "6.1"
+        "version": "6.2"
       },
       "files": [
         "add-itlib-and-robin-hood.patch",
@@ -96261,7 +96398,6 @@
       "name": "symengine",
       "manifest": {
         "name": "symengine",
-        "port-version": 2,
         "description": "SymEngine is a fast symbolic manipulation library",
         "homepage": "https://github.com/symengine/symengine",
         "license": "BSD-3-Clause",
@@ -96331,7 +96467,7 @@
             ]
           }
         },
-        "version": "0.11.2"
+        "version": "0.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -99682,7 +99818,7 @@
             "host": true
           }
         ],
-        "version": "3.1.1"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -104871,7 +105007,7 @@
         "description": "GNU autoconf macros shared across XCB projects",
         "homepage": "https://gitlab.freedesktop.org/xorg/util/xcb-util-m4",
         "license": null,
-        "version-date": "2022-01-24"
+        "version-date": "2022-07-01"
       },
       "files": [
         "portfile.cmake",
@@ -106842,7 +106978,7 @@
             "description": "Build documentation"
           }
         },
-        "version-date": "2024-04-26"
+        "version": "0.1.2"
       },
       "files": [
         "portfile.cmake",
