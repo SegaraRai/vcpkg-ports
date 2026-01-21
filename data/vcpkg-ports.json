@@ -1,5 +1,5 @@
 {
-  "version": "de51e6bfa96e1245f2a969a8cde249baac89f7be",
+  "version": "734f8130ffe2f02cf855a3a42a2958f01b3fb005",
   "ports": [
     {
       "name": "3fd",
@@ -3930,7 +3930,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.11.4"
+        "version": "0.11.5"
       },
       "files": [
         "portfile.cmake",
@@ -4018,7 +4018,7 @@
             "host": true
           }
         ],
-        "version": "0.37.0"
+        "version": "0.37.1"
       },
       "files": [
         "portfile.cmake",
@@ -6678,7 +6678,6 @@
       "name": "bbalouki-itch",
       "manifest": {
         "name": "bbalouki-itch",
-        "port-version": 1,
         "maintainers": "Bertin Balouki SIMYELI",
         "description": "A High-Performance C++ library for parsing the ITCH 5.0 protocol.",
         "homepage": "https://github.com/bbalouki/itchcpp",
@@ -6693,7 +6692,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -35005,6 +35004,7 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
+        "port-version": 1,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
         "supports": "!android",
@@ -35019,24 +35019,12 @@
             "host": true
           }
         ],
-        "features": {
-          "egl": {
-            "description": "Enable EGL mode",
-            "dependencies": [
-              "egl"
-            ],
-            "supports": "!windows"
-          },
-          "x11": {
-            "description": "Enable X11 mode",
-            "supports": "!ios & !osx & !windows"
-          }
-        },
         "version": "2.3.0"
       },
       "files": [
         "fix-LNK2019.patch",
         "portfile.cmake",
+        "trim-build.diff",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -42930,7 +42918,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.8.0"
+        "version": "0.8.1"
       },
       "files": [
         "fix-dllexports.patch",
@@ -47944,11 +47932,10 @@
       "name": "level-zero",
       "manifest": {
         "name": "level-zero",
-        "port-version": 1,
         "description": "oneAPI Level Zero Specification Headers and Loader.",
         "homepage": "https://github.com/oneapi-src/level-zero",
         "license": "MIT",
-        "supports": "x64 & !static & (linux | (windows & !uwp))",
+        "supports": "x64 & (linux | (windows & !uwp))",
         "dependencies": [
           "spdlog",
           {
@@ -47960,7 +47947,7 @@
             "host": true
           }
         ],
-        "version": "1.26.1"
+        "version": "1.26.3"
       },
       "files": [
         "portfile.cmake",
@@ -49533,7 +49520,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.24.0"
+        "version-semver": "0.24.1"
       },
       "files": [
         "dependencies.diff",
@@ -68759,7 +68746,7 @@
             "host": true
           }
         ],
-        "version": "1.14.0"
+        "version": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -68851,7 +68838,7 @@
             ]
           }
         },
-        "version": "1.19.0"
+        "version": "1.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -80741,7 +80728,7 @@
             ]
           }
         },
-        "version": "12.3.0"
+        "version": "12.3.1"
       },
       "files": [
         "cmake-library-only.patch",
@@ -86186,6 +86173,7 @@
       "name": "rapidhash",
       "manifest": {
         "name": "rapidhash",
+        "port-version": 1,
         "description": "Very fast, high quality, platform independent hashing algorithm.",
         "homepage": "https://github.com/Nicoshev/rapidhash",
         "license": "BSD-2-Clause",
@@ -105243,11 +105231,12 @@
       "name": "xlnt",
       "manifest": {
         "name": "xlnt",
+        "port-version": 1,
         "description": "Cross-platform user-friendly xlsx (Microsoft Excel®) library for C++11 (and above)",
         "homepage": "https://github.com/xlnt-community/xlnt",
         "documentation": "https://xlnt-community.gitbook.io/xlnt",
         "license": "MIT AND BSD-3-Clause AND BSD-2-Clause",
-        "supports": "windows & linux & osx",
+        "supports": "windows | linux | osx",
         "dependencies": [
           "fast-float",
           "fmt",
