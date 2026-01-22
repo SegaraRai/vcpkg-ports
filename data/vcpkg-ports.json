@@ -1,5 +1,5 @@
 {
-  "version": "734f8130ffe2f02cf855a3a42a2958f01b3fb005",
+  "version": "01e159b519b7e791cc5bb3548663a26d9c0922a3",
   "ports": [
     {
       "name": "3fd",
@@ -2822,7 +2822,6 @@
       "name": "assimp",
       "manifest": {
         "name": "assimp",
-        "port-version": 1,
         "description": "The Open Asset import library",
         "homepage": "https://github.com/assimp/assimp",
         "license": "BSD-3-Clause",
@@ -2846,7 +2845,7 @@
           },
           "zlib"
         ],
-        "version": "6.0.2"
+        "version": "6.0.3"
       },
       "files": [
         "build_fixes.patch",
@@ -3580,22 +3579,11 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
-        "port-version": 2,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
+        "supports": "!uwp",
         "dependencies": [
-          "boost-algorithm",
-          "boost-any",
-          "boost-crc",
-          "boost-filesystem",
-          "boost-format",
-          "boost-iostreams",
-          "boost-lexical-cast",
-          "boost-math",
-          "boost-program-options",
-          "boost-random",
-          "boost-tuple",
           "fmt",
           {
             "name": "vcpkg-cmake",
@@ -3613,14 +3601,15 @@
             "dependencies": [
               "snappy"
             ]
+          },
+          "tools": {
+            "description": "Build extra executables"
           }
         },
-        "version": "1.12.0"
+        "version": "1.12.1"
       },
       "files": [
         "fix-cmake.patch",
-        "fix-fmt.patch",
-        "fix-std32_t.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -6881,7 +6870,12 @@
             "host": true
           }
         ],
-        "version-semver": "1.9.4"
+        "features": {
+          "tools": {
+            "description": "Enable installation of tools"
+          }
+        },
+        "version-semver": "1.9.5"
       },
       "files": [
         "portfile.cmake",
@@ -20399,7 +20393,7 @@
             ]
           }
         },
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -21322,7 +21316,6 @@
       "name": "cminpack",
       "manifest": {
         "name": "cminpack",
-        "port-version": 4,
         "description": "A C/C++ rewrite of the MINPACK software (originally in FORTRAN) for solving nonlinear equations and nonlinear least squares problems",
         "homepage": "http://devernay.free.fr/hacks/cminpack/",
         "license": null,
@@ -21336,7 +21329,7 @@
             "host": true
           }
         ],
-        "version": "1.3.8"
+        "version": "1.3.11"
       },
       "files": [
         "portfile.cmake",
@@ -29954,7 +29947,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30487,7 +30480,7 @@
             ]
           },
           "openssl": {
-            "description": "Needed for https support if gnutls, libtls or mbedtls is not used",
+            "description": "Use OpenSSL for TLS support",
             "dependencies": [
               {
                 "name": "ffmpeg",
@@ -40934,7 +40927,7 @@
             ]
           }
         },
-        "version": "5.5.0"
+        "version": "5.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -40970,8 +40963,15 @@
           "fortran": {
             "description": "Build with fortran"
           },
+          "hl": {
+            "description": "Build HIGH Level HDF5 Library"
+          },
           "map": {
             "description": "Build the map API"
+          },
+          "mirror": {
+            "description": "Build the Mirror Virtual File Driver",
+            "supports": "!windows | mingw"
           },
           "parallel": {
             "description": "parallel support for HDF5",
@@ -40999,9 +40999,6 @@
           "tools": {
             "description": "Build hdf tools"
           },
-          "utils": {
-            "description": "Build HDF5 Utils"
-          },
           "zlib": {
             "description": "Build with zlib",
             "dependencies": [
@@ -41009,15 +41006,17 @@
             ]
           }
         },
-        "version": "1.14.6"
+        "version": "2.0.0"
       },
       "files": [
-        "hdf5_config.patch",
+        "default-plugin-dir.diff",
+        "libaec-config.diff",
         "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-port-config.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "win-compile-flags.diff"
       ]
     },
     {
@@ -43394,6 +43393,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
+        "port-version": 1,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -43406,7 +43406,8 @@
             "name": "hdf5",
             "default-features": false,
             "features": [
-              "cpp"
+              "cpp",
+              "hl"
             ]
           },
           "libjpeg-turbo",
@@ -65083,7 +65084,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "2.2.7"
+        "version": "3.2.7"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -68308,7 +68309,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "license": null,
@@ -68384,6 +68385,7 @@
                 "name": "hdf5",
                 "default-features": false,
                 "features": [
+                  "hl",
                   "zlib"
                 ]
               }
@@ -68433,6 +68435,7 @@
         "version": "4.9.3"
       },
       "files": [
+        "backport-d7895f6.diff",
         "dependencies.diff",
         "fix-pkgconfig.patch",
         "fstat.patch",
@@ -102246,7 +102249,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 14,
+        "port-version": 15,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -102270,6 +102273,7 @@
             "name": "hdf5",
             "default-features": false,
             "features": [
+              "hl",
               "zlib"
             ]
           },
@@ -102613,6 +102617,7 @@
         "cgns.patch",
         "devendor_exodusII.patch",
         "fast-float.patch",
+        "ffmpeg-8.diff",
         "ffmpeg.diff",
         "fix-eigen3.patch",
         "fix-exprtk.patch",
