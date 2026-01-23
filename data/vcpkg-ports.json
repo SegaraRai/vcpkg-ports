@@ -1,5 +1,5 @@
 {
-  "version": "01e159b519b7e791cc5bb3548663a26d9c0922a3",
+  "version": "890e0f0506f9dcb76800dfa2ea28b03ebc627bfa",
   "ports": [
     {
       "name": "3fd",
@@ -7392,7 +7392,7 @@
             ]
           }
         },
-        "version": "1.8.2"
+        "version": "1.8.3"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -24308,6 +24308,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -24573,7 +24574,8 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "winsock.diff"
       ]
     },
     {
@@ -32419,13 +32421,10 @@
           },
           "x11": {
             "description": "Enable X11 support",
-            "dependencies": [
-              "xcb"
-            ],
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.20.2"
+        "version": "3.21.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -40806,7 +40805,7 @@
             "supports": "!static"
           }
         },
-        "version": "12.3.0"
+        "version": "12.3.1"
       },
       "files": [
         "fix-win32-build.patch",
@@ -47125,7 +47124,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -47152,7 +47151,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "0.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -47179,7 +47178,7 @@
             "host": true
           }
         ],
-        "version": "0.2.1"
+        "version": "0.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -47206,7 +47205,7 @@
             "host": true
           }
         ],
-        "version": "0.1.0"
+        "version": "0.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -54634,7 +54633,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.53"
+        "version": "1.6.54"
       },
       "files": [
         "cmake.patch",
@@ -58818,10 +58817,13 @@
         "license": null,
         "dependencies": [
           "libx11",
-          "xorg-macros",
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          },
           "xproto"
         ],
-        "version": "1.1.0"
+        "version": "1.1.3"
       },
       "files": [
         "fix_u_char.patch",
@@ -61163,7 +61165,7 @@
             "host": true
           }
         ],
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -64346,7 +64348,7 @@
             "host": true
           }
         ],
-        "version": "2.7.2.19"
+        "version": "2.7.2.20"
       },
       "files": [
         "portfile.cmake",
