@@ -1,5 +1,5 @@
 {
-  "version": "890e0f0506f9dcb76800dfa2ea28b03ebc627bfa",
+  "version": "75a2e14262fc23c1f03bac18e135c4866dd25b51",
   "ports": [
     {
       "name": "3fd",
@@ -2727,7 +2727,7 @@
       "name": "asiosdk",
       "manifest": {
         "name": "asiosdk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "ASIO is a low latency audio API from Steinberg.",
         "homepage": "https://www.steinberg.net/developers/asiosdk-open/",
         "supports": "windows & !uwp",
@@ -2735,7 +2735,9 @@
       },
       "files": [
         "Findasiosdk.cmake",
+        "fix-new-delete-mismatch.patch",
         "portfile.cmake",
+        "unofficial-asiosdk-config.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -44322,7 +44324,7 @@
         "dependencies": [
           "boost-pfr"
         ],
-        "version": "0.707.0"
+        "version": "0.710.0"
       },
       "files": [
         "portfile.cmake",
@@ -78885,7 +78887,7 @@
       "name": "portaudio",
       "manifest": {
         "name": "portaudio",
-        "port-version": 8,
+        "port-version": 9,
         "description": "PortAudio Portable Cross-platform Audio I/O API PortAudio is a free, cross-platform, open-source, audio I/O library.  It lets you write simple audio programs in 'C' or C++ that will compile and run on many platforms including Windows, Macintosh OS X, and Unix (OSS/ALSA). It is intended to promote the exchange of audio software between developers on different platforms. Many applications use PortAudio for Audio I/O.",
         "homepage": "https://www.portaudio.com",
         "license": "MIT",
@@ -78904,12 +78906,21 @@
             "host": true
           }
         ],
+        "features": {
+          "asio": {
+            "description": "Enable support for Steinberg Audio Stream Input/Output (ASIO)",
+            "dependencies": [
+              "asiosdk"
+            ]
+          }
+        },
         "version": "19.7"
       },
       "files": [
         "fix-guid-linker-errors.patch",
         "jack.diff",
         "portfile.cmake",
+        "use-vcpkg-asiosdk.patch",
         "vcpkg.json"
       ]
     },
@@ -90577,7 +90588,7 @@
             ]
           }
         },
-        "version": "3.2.6"
+        "version": "3.4.0"
       },
       "files": [
         "dependencies.diff",
