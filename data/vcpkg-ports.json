@@ -1,5 +1,5 @@
 {
-  "version": "75a2e14262fc23c1f03bac18e135c4866dd25b51",
+  "version": "4e39a8622e56a113c89228e4e13944dce8654da7",
   "ports": [
     {
       "name": "3fd",
@@ -1777,7 +1777,7 @@
             ]
           }
         },
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -2972,7 +2972,7 @@
             ]
           }
         },
-        "version": "10.2.6"
+        "version": "10.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -18968,9 +18968,10 @@
       "name": "c-ares",
       "manifest": {
         "name": "c-ares",
+        "port-version": 1,
         "description": "A C library for asynchronous DNS requests",
         "homepage": "https://github.com/c-ares/c-ares",
-        "license": "MIT-CMU",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -32829,7 +32830,7 @@
             "host": true
           }
         ],
-        "version": "0.2.26"
+        "version": "0.2.27"
       },
       "files": [
         "portfile.cmake",
@@ -37970,7 +37971,7 @@
             "description": "Install graphviz executables"
           }
         },
-        "version-semver": "14.1.1"
+        "version-semver": "14.1.2"
       },
       "files": [
         "build.diff",
@@ -37978,7 +37979,6 @@
         "dependencies.diff",
         "install.diff",
         "no-absolute-paths.patch",
-        "official-include-dir.diff",
         "portfile.cmake",
         "skip-configure-plugins.diff",
         "vcpkg.json",
@@ -39277,6 +39277,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -39300,13 +39301,13 @@
             "features": [
               "x11"
             ],
-            "platform": "linux"
+            "platform": "linux | freebsd | openbsd"
           },
-          "gdk-pixbuf",
           {
             "name": "gdk-pixbuf",
             "host": true
           },
+          "gdk-pixbuf",
           {
             "name": "gettext",
             "host": true,
@@ -39328,6 +39329,14 @@
           {
             "name": "vcpkg-tool-meson",
             "host": true
+          },
+          {
+            "name": "wayland",
+            "platform": "linux | freebsd | openbsd"
+          },
+          {
+            "name": "wayland-protocols",
+            "platform": "linux | freebsd | openbsd"
           }
         ],
         "features": {
@@ -65461,7 +65470,6 @@
       "name": "minizip-ng",
       "manifest": {
         "name": "minizip-ng",
-        "port-version": 1,
         "description": "minizip-ng is a zip manipulation library written in C that is supported on Windows, macOS, and Linux.",
         "homepage": "https://github.com/zlib-ng/minizip-ng",
         "license": "Zlib",
@@ -65532,7 +65540,7 @@
             ]
           }
         },
-        "version": "4.0.10"
+        "version": "4.1.0"
       },
       "files": [
         "dependencies.diff",
@@ -75341,7 +75349,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.3.1"
+        "version-semver": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -75651,7 +75659,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 4,
+        "port-version": 5,
         "description": "osgEarth - 3D Maps for OpenSceneGraph / C++14",
         "homepage": "https://github.com/gwaldron/osgearth",
         "license": "LGPL-3.0-or-later",
@@ -75661,6 +75669,13 @@
           "draco",
           "geos",
           "glew",
+          {
+            "name": "imgui",
+            "features": [
+              "docking-experimental",
+              "opengl3-binding"
+            ]
+          },
           "libwebp",
           "opengl",
           {
@@ -75693,6 +75708,7 @@
         "version": "3.7.2"
       },
       "files": [
+        "devendor-imgui.diff",
         "namespace-gdal.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -89626,8 +89642,16 @@
         "name": "sciter-js",
         "description": "Sciter.JS - Sciter but with QuickJS on board instead of TIScript. Sciter is an embeddable HTML/CSS/scripting engine.",
         "homepage": "https://gitlab.com/sciter-engine/sciter-js-sdk",
-        "supports": "!uwp & !arm & !static",
-        "version": "6.0.1.3"
+        "supports": "!uwp & !arm & !static & !android & !freebsd & !openbsd & !netbsd",
+        "features": {
+          "sqlite": {
+            "description": "Add sciter-sqlite support"
+          },
+          "webview": {
+            "description": "Add sciter-webview support"
+          }
+        },
+        "version": "6.0.3.5"
       },
       "files": [
         "portfile.cmake",
