@@ -1,5 +1,5 @@
 {
-  "version": "4e39a8622e56a113c89228e4e13944dce8654da7",
+  "version": "f14401ca0f2754347c3864da7488a9b955b4e47a",
   "ports": [
     {
       "name": "3fd",
@@ -110,20 +110,29 @@
             "description": "Build LinkHut command line tool",
             "dependencies": [
               {
+                "name": "alsa",
+                "platform": "linux | android | freebsd | openbsd"
+              },
+              {
                 "name": "asiosdk",
                 "platform": "windows"
+              },
+              {
+                "name": "portaudio",
+                "platform": "linux | android | freebsd | openbsd"
               }
-            ]
+            ],
+            "supports": "!android"
           },
           "hutsilent": {
             "description": "Build LinkHutSilent command line tool",
             "supports": "!uwp"
           }
         },
-        "version": "3.1.2"
+        "version": "3.1.5"
       },
       "files": [
-        "correct_cmake_include_directory.patch",
+        "fix_android_build.patch",
         "no-werror.patch",
         "portfile.cmake",
         "replace_asiosdk_download_by_vcpkg_asiosdk.patch",
@@ -554,7 +563,6 @@
       "name": "aeron",
       "manifest": {
         "name": "aeron",
-        "port-version": 2,
         "description": "Efficient reliable UDP unicast, UDP multicast, and IPC message transport",
         "homepage": "https://github.com/aeron-io/aeron",
         "license": "Apache-2.0",
@@ -579,10 +587,11 @@
             "supports": "!((x86 | arm64) & windows) & !android & !uwp & !xbox"
           }
         },
-        "version": "1.49.3"
+        "version": "1.50.0"
       },
       "files": [
         "patches/add-libuuid-vcpkg-support.patch",
+        "patches/fix-static-crt-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -6638,11 +6647,11 @@
       "name": "basisu",
       "manifest": {
         "name": "basisu",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Basis Universal is a supercompressed GPU texture and video compression format that outputs a highly compressed intermediate file format (.basis) that can be quickly transcoded to a wide variety of GPU texture compression formats.",
         "homepage": "https://github.com/BinomialLLC/basis_universal",
         "license": null,
-        "supports": "(x86 | x64) & !android",
+        "supports": "!android",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -28161,12 +28170,41 @@
       ]
     },
     {
+      "name": "ecaludp",
+      "manifest": {
+        "name": "ecaludp",
+        "description": "UDP transport library for eCAL with fragmentation/reassembly support.",
+        "homepage": "https://github.com/eclipse-ecal/ecaludp",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "asio",
+          "recycle",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.2"
+      },
+      "files": [
+        "find-recycle.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ecm",
       "manifest": {
         "name": "ecm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Extra CMake Modules (ECM), extra modules and scripts for CMake",
-        "homepage": "https://github.com/KDE/extra-cmake-modules",
+        "homepage": "https://invent.kde.org/frameworks/extra-cmake-modules",
+        "documentation": "https://api.kde.org/ecm/",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -28182,8 +28220,13 @@
       "files": [
         "fix-wrong-version.patch",
         "fix_generateqmltypes.patch",
+        "kde-clang-format.diff",
         "portfile.cmake",
+        "uniform-dataroot-dir.patch",
+        "uniform-libexec-dir.patch",
+        "uniform-plugin-dir.patch",
         "usage",
+        "vcpkg-port-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -35734,6 +35777,28 @@
       },
       "files": [
         "packagable.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "goldy",
+      "manifest": {
+        "name": "goldy",
+        "description": "Modern GPU library with Slang shader support",
+        "homepage": "https://github.com/koubaa/goldy",
+        "license": "MIT",
+        "supports": "!(static & staticcrt) & !uwp & ((x64 & (windows | linux)) | osx)",
+        "features": {
+          "examples": {
+            "description": "Build example programs"
+          }
+        },
+        "version": "0.1.0"
+      },
+      "files": [
+        "goldy-config.cmake",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -45281,8 +45346,10 @@
       "name": "kf5archive",
       "manifest": {
         "name": "kf5archive",
+        "port-version": 1,
         "description": "File compression",
-        "homepage": "https://api.kde.org/karchive-index.html",
+        "homepage": "https://invent.kde.org/frameworks/karchive",
+        "documentation": "https://api.kde.org/karchive-index.html ",
         "license": "LGPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
@@ -45328,9 +45395,9 @@
         "version": "5.116.0"
       },
       "files": [
-        "control-dependencies.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "zstd.diff"
       ]
     },
     {
@@ -45363,8 +45430,10 @@
       "name": "kf5auth",
       "manifest": {
         "name": "kf5auth",
+        "port-version": 1,
         "description": "Execute actions as privileged user",
-        "homepage": "https://api.kde.org/kauth-index.html",
+        "homepage": "https://invent.kde.org/frameworks/kauth",
+        "documentation": "https://api.kde.org/kauth-index.html ",
         "supports": "!windows",
         "dependencies": [
           "ecm",
@@ -45496,8 +45565,10 @@
       "name": "kf5config",
       "manifest": {
         "name": "kf5config",
+        "port-version": 1,
         "description": "Configuration system",
-        "homepage": "https://api.kde.org/kconfig-index.html",
+        "homepage": "https://invent.kde.org/frameworks/kconfig",
+        "documentation": "https://api.kde.org/kconfig-index.html ",
         "dependencies": [
           "ecm",
           {
@@ -46059,8 +46130,10 @@
       "name": "kf5kcmutils",
       "manifest": {
         "name": "kf5kcmutils",
+        "port-version": 1,
         "description": "Utilities for KDE System Settings modules",
-        "homepage": "https://api.kde.org/kcmutils-index.html",
+        "homepage": "https://invent.kde.org/frameworks/kcmutils",
+        "documentation": "https://api.kde.org/kcmutils-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46103,8 +46176,10 @@
       "name": "kf5kio",
       "manifest": {
         "name": "kf5kio",
+        "port-version": 1,
         "description": "Network transparent access to files and data",
-        "homepage": "https://api.kde.org/kio-index.html",
+        "homepage": "https://invent.kde.org/frameworks/kio",
+        "documentation": "https://api.kde.org/kio-index.html ",
         "license": null,
         "dependencies": [
           "ecm",
@@ -46125,7 +46200,10 @@
           "kf5config",
           "kf5configwidgets",
           "kf5coreaddons",
-          "kf5crash",
+          {
+            "name": "kf5crash",
+            "platform": "!android"
+          },
           {
             "name": "kf5dbusaddons",
             "platform": "!android"
@@ -46137,26 +46215,31 @@
           "kf5jobwidgets",
           "kf5service",
           "kf5solid",
-          "kf5textwidgets",
+          {
+            "name": "kf5textwidgets",
+            "platform": "!android"
+          },
           "kf5widgetsaddons",
           "kf5windowsystem",
-          "kf5xmlgui",
           {
-            "name": "libiconv",
-            "platform": "windows & static"
+            "name": "kf5xmlgui",
+            "platform": "!android"
           },
           {
             "name": "libmount",
             "platform": "linux"
           },
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           {
             "name": "qt5-macextras",
             "platform": "osx"
           },
           {
             "name": "qt5-x11extras",
-            "platform": "linux"
+            "platform": "!(android | ios | osx | windows)"
           },
           {
             "name": "vcpkg-cmake",
@@ -46168,29 +46251,30 @@
           }
         ],
         "features": {
+          "designer-plugin": {
+            "description": "Build plugin for Qt Designer"
+          },
           "kf5notifications": {
-            "description": "Required to have error notification support in kpac",
-            "dependencies": [
-              {
-                "name": "kf5kio",
-                "default-features": false,
-                "features": [
-                  "unixkf5notifications"
-                ],
-                "platform": "!(windows | android)"
-              }
-            ]
-          },
-          "kf5wallet": {
-            "description": "Required to have permanent storage of passwords for kpasswdserver",
-            "dependencies": [
-              "kf5wallet"
-            ]
-          },
-          "unixkf5notifications": {
-            "description": "Required to have error notification support in kpac (windows only)",
+            "description": "Error notification support in kpac",
             "dependencies": [
               "kf5notifications"
+            ],
+            "supports": "!(windows | android)"
+          },
+          "kf5wallet": {
+            "description": "Safe desktop-wide storage for passwords",
+            "dependencies": [
+              "kf5wallet"
+            ],
+            "supports": "!android"
+          },
+          "qml": {
+            "description": "Enable QML support",
+            "dependencies": [
+              {
+                "name": "qt5-declarative",
+                "default-features": false
+              }
             ]
           }
         },
@@ -46205,8 +46289,10 @@
       "name": "kf5newstuff",
       "manifest": {
         "name": "kf5newstuff",
+        "port-version": 1,
         "description": "Framework for downloading and sharing additional application data",
-        "homepage": "https://api.kde.org/knewstuff-index.html",
+        "homepage": "https://invent.kde.org/frameworks/knewstuff",
+        "documentation": "https://api.kde.org/knewstuff-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46230,7 +46316,14 @@
           "kf5textwidgets",
           "kf5widgetsaddons",
           "kf5xmlgui",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
+          {
+            "name": "qt5-declarative",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -46241,9 +46334,15 @@
             "host": true
           }
         ],
+        "features": {
+          "designer-plugin": {
+            "description": "Build plugin for Qt Designer"
+          }
+        },
         "version": "5.116.0"
       },
       "files": [
+        "disable-macos-bundle.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -46389,8 +46488,10 @@
       "name": "kf5plotting",
       "manifest": {
         "name": "kf5plotting",
+        "port-version": 1,
         "description": "Lightweight plotting framework",
-        "homepage": "https://api.kde.org/kplotting-index.html",
+        "homepage": "https://invent.kde.org/frameworks/kplotting",
+        "documentation": "https://api.kde.org/kplotting-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46582,8 +46683,10 @@
       "name": "kf5texteditor",
       "manifest": {
         "name": "kf5texteditor",
+        "port-version": 1,
         "description": "Full text editor component",
-        "homepage": "https://api.kde.org/ktexteditor-index.html",
+        "homepage": "https://invent.kde.org/frameworks/ktexteditor",
+        "documentation": "https://api.kde.org/ktexteditor-index.html",
         "dependencies": [
           "ecm",
           {
@@ -46602,6 +46705,10 @@
           "kf5parts",
           "kf5sonnet",
           "kf5syntaxhighlighting",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -46824,21 +46931,17 @@
       "name": "kf6archive",
       "manifest": {
         "name": "kf6archive",
+        "port-version": 1,
         "description": "File compression",
-        "homepage": "https://api.kde.org/frameworks/karchive/html/index.html",
+        "homepage": "https://invent.kde.org/frameworks/karchive",
+        "documentation": "https://api.kde.org/karchive-index.html",
         "license": "LGPL-2.0-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "bzip2",
           "ecm",
-          "liblzma",
-          "openssl",
-          "qtbase",
           {
-            "name": "qttools",
-            "features": [
-              "linguist"
-            ]
+            "name": "qtbase",
+            "default-features": false
           },
           {
             "name": "vcpkg-cmake",
@@ -46848,11 +46951,7 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "zlib",
-          "zstd"
-        ],
-        "default-features": [
-          "bzip2"
+          "zlib"
         ],
         "features": {
           "bzip2": {
@@ -46867,10 +46966,16 @@
               "liblzma"
             ]
           },
-          "openssl": {
-            "description": "Support for compressed encrypted files and data streams",
+          "translations": {
+            "description": "Install translations",
             "dependencies": [
-              "openssl"
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
             ]
           },
           "zstd": {
@@ -46884,7 +46989,8 @@
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "zstd.diff"
       ]
     },
     {
@@ -48335,6 +48441,7 @@
       "name": "libalkimia",
       "manifest": {
         "name": "libalkimia",
+        "port-version": 1,
         "description": "Common functionality for finance applications.",
         "homepage": "https://community.kde.org/Alkimia/libalkimia",
         "license": "LGPL-2.1-or-later",
@@ -48358,7 +48465,14 @@
           "kf5newstuff",
           "kf5textwidgets",
           "kf5xmlgui",
-          "qt5-base",
+          {
+            "name": "qt5-base",
+            "default-features": false
+          },
+          {
+            "name": "qt5-declarative",
+            "default-features": false
+          },
           "qt5-tools",
           {
             "name": "vcpkg-cmake",
@@ -54696,7 +54810,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -54895,6 +55009,7 @@
         "unix/fix-configure.patch",
         "unix/installdirs.patch",
         "unix/mingw-install.patch",
+        "unix/mingw-static-importlib-fix.patch",
         "unix/no-server-tools.patch",
         "unix/python.patch",
         "unix/single-linkage.patch",
@@ -61383,12 +61498,19 @@
       "name": "luajit",
       "manifest": {
         "name": "luajit",
-        "port-version": 7,
         "description": "LuaJIT is a Just-In-Time (JIT) compiler for the Lua programming language.",
         "homepage": "https://github.com/LuaJIT/LuaJIT",
         "license": "MIT",
-        "supports": "!uwp & !(arm64 & windows)",
+        "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "luajit",
+            "host": true,
+            "features": [
+              "buildvm-32"
+            ],
+            "platform": "!native & (arm32 | x86) & (!windows | mingw)"
+          },
           {
             "name": "luajit",
             "host": true,
@@ -61396,14 +61518,6 @@
               "buildvm-64"
             ],
             "platform": "!native & (arm64 | x64) & (!windows | mingw)"
-          },
-          {
-            "name": "luajit",
-            "host": true,
-            "features": [
-              "buildvm-32"
-            ],
-            "platform": "!native & ((arm & !arm64) | x86) & (!windows | mingw)"
           },
           {
             "name": "vcpkg-cmake",
@@ -61421,18 +61535,17 @@
         "features": {
           "buildvm-32": {
             "description": "Install host tools for 32 bit targets",
-            "supports": "native & ((arm & !arm64) | x86) & (!windows | mingw)"
+            "supports": "native & (arm32 | x86) & (!windows | mingw)"
           },
           "buildvm-64": {
             "description": "Install host tools for 64 bit targets",
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2023-01-04"
+        "version-date": "2026-01-09"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
-        "005-do-not-pass-ld-e-macosx.patch",
         "Makefile.nmake",
         "configure",
         "luajit.pc",
@@ -75757,7 +75870,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -87387,6 +87500,32 @@
       ]
     },
     {
+      "name": "retropak",
+      "manifest": {
+        "name": "retropak",
+        "description": "A modern container format for retro software preservation. Provides JSON schema and metadata specification for Retropak software containers.",
+        "homepage": "https://retropak.org",
+        "license": "CC0-1.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "rewolf-wow64ext",
       "manifest": {
         "name": "rewolf-wow64ext",
@@ -94119,6 +94258,51 @@
         "fix-tool-deps.diff",
         "portfile.cmake",
         "spirv-tools-shared.diff",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "spix",
+      "manifest": {
+        "name": "spix",
+        "description": "A minimally invasive UI testing library for Qt/QML applications. Control your application and verify its behavior using a simple C++ API.",
+        "homepage": "https://github.com/faaxm/spix",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "anyrpc",
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qtwidgets": {
+            "description": "Build the QtWidgets scene library.",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "widgets"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "0.14"
+      },
+      "files": [
+        "portfile.cmake",
         "usage",
         "vcpkg.json"
       ]
@@ -106848,7 +107032,7 @@
         "description": "A lightweight C++20 serialization and RPC library",
         "homepage": "https://github.com/eyalz800/zpp_bits",
         "license": "MIT",
-        "version": "4.5"
+        "version": "4.6"
       },
       "files": [
         "portfile.cmake",
