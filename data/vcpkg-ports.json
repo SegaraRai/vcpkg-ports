@@ -1,5 +1,5 @@
 {
-  "version": "a2a478a93d582a4b395a4dc4b7052bfcb42c1f8e",
+  "version": "6a10a7d27f507bbdf11c834cd3abd4eac904ed0c",
   "ports": [
     {
       "name": "3fd",
@@ -1849,9 +1849,10 @@
       "name": "arcus",
       "manifest": {
         "name": "arcus",
-        "port-version": 4,
+        "port-version": 5,
         "description": "This library contains C++ bindings for creating a socket in a thread and using this socket to send and receive messages based on the Protocol Buffers library.",
         "homepage": "https://github.com/Ultimaker/libArcus",
+        "license": "LGPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
           "protobuf",
@@ -1869,6 +1870,7 @@
       "files": [
         "0001-fix-protobuf-deprecated.patch",
         "0002-protobuf-version.patch",
+        "0003-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -6673,7 +6675,6 @@
       "name": "basisu",
       "manifest": {
         "name": "basisu",
-        "port-version": 3,
         "description": "Basis Universal is a supercompressed GPU texture and video compression format that outputs a highly compressed intermediate file format (.basis) that can be quickly transcoded to a wide variety of GPU texture compression formats.",
         "homepage": "https://github.com/BinomialLLC/basis_universal",
         "license": null,
@@ -6689,15 +6690,12 @@
           },
           "zstd"
         ],
-        "version": "1.60"
+        "version": "2.0.2"
       },
       "files": [
-        "add_ctype.diff",
         "devendor-zstd.diff",
-        "examples.diff",
         "export-cmake-config.diff",
         "portfile.cmake",
-        "skip-strip.diff",
         "vcpkg.json"
       ]
     },
@@ -18456,7 +18454,7 @@
       "name": "braft",
       "manifest": {
         "name": "braft",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Consensus algorithm library",
         "homepage": "https://github.com/baidu/braft",
         "license": "Apache-2.0",
@@ -18485,6 +18483,7 @@
         "fix-dependency.patch",
         "fix-glog.patch",
         "portfile.cmake",
+        "protobuf-6.patch",
         "protobuf.patch",
         "vcpkg.json"
       ]
@@ -18587,6 +18586,7 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
+        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/brpc",
         "license": "Apache-2.0",
@@ -18621,6 +18621,7 @@
         "fix-build.patch",
         "fix-warnings.patch",
         "portfile.cmake",
+        "protobuf-6.patch",
         "vcpkg.json"
       ]
     },
@@ -20130,7 +20131,7 @@
             ]
           }
         },
-        "version": "6.1"
+        "version": "6.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -27528,7 +27529,7 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.4.3"
+        "version": "1.4.4"
       },
       "files": [
         "library-linkage-excel.diff",
@@ -28154,6 +28155,7 @@
       "name": "ecal",
       "manifest": {
         "name": "ecal",
+        "port-version": 1,
         "description": "eCAL - enhanced Communication Abstraction Layer",
         "homepage": "https://eclipse-ecal.github.io/ecal/",
         "license": "Apache-2.0",
@@ -28191,6 +28193,7 @@
         "0006-use-find_dependency-in-cmake-config.patch",
         "0007-allow-static-build-of-core.patch",
         "0008-protobuf-linkage.patch",
+        "0009-protobuf-6.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -29030,7 +29033,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.4.7"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -33274,7 +33277,7 @@
       "name": "gamenetworkingsockets",
       "manifest": {
         "name": "gamenetworkingsockets",
-        "port-version": 1,
+        "port-version": 2,
         "description": "GameNetworkingSockets is a basic transport layer for games.",
         "homepage": "https://github.com/ValveSoftware/GameNetworkingSockets",
         "license": "BSD-3-Clause",
@@ -33296,6 +33299,7 @@
       "files": [
         "fix-depend-protobuf.patch",
         "portfile.cmake",
+        "protobuf-6.patch",
         "vcpkg.json"
       ]
     },
@@ -38136,7 +38140,6 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
-        "port-version": 3,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -38183,7 +38186,7 @@
             ]
           }
         },
-        "version-semver": "1.71.0"
+        "version-semver": "1.76.0"
       },
       "files": [
         "00001-fix-uwp.patch",
@@ -38193,7 +38196,6 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
-        "00017-add-src-upb.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -39828,7 +39830,6 @@
       "name": "gz-common",
       "manifest": {
         "name": "gz-common",
-        "port-version": 2,
         "description": "Common libraries for robotics applications",
         "homepage": "https://gazebosim.org/libs/common/",
         "license": "Apache-2.0",
@@ -39866,7 +39867,7 @@
           },
           "tinyxml2"
         ],
-        "version": "6.0.2"
+        "version": "6.1.0"
       },
       "files": [
         "003-include-chrono.patch",
@@ -39947,7 +39948,6 @@
       "name": "gz-gui",
       "manifest": {
         "name": "gz-gui",
-        "port-version": 1,
         "description": "Gazebo GUI builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.",
         "homepage": "https://gazebosim.org/libs/gui",
         "license": "Apache-2.0",
@@ -39976,7 +39976,7 @@
           "sdformat",
           "tinyxml2"
         ],
-        "version": "9.0.0"
+        "version": "9.0.2"
       },
       "files": [
         "dependencies.patch",
@@ -40101,7 +40101,6 @@
       "name": "gz-physics",
       "manifest": {
         "name": "gz-physics",
-        "port-version": 2,
         "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
         "homepage": "https://gazebosim.org/libs/physics",
         "license": "Apache-2.0",
@@ -40128,7 +40127,7 @@
           },
           "sdformat"
         ],
-        "version": "8.0.0"
+        "version": "8.3.0"
       },
       "files": [
         "dependencies.patch",
@@ -40226,7 +40225,7 @@
           },
           "opengl"
         ],
-        "version": "9.0.0"
+        "version": "9.5.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -40273,7 +40272,7 @@
           "protobuf",
           "sdformat"
         ],
-        "version": "9.0.0"
+        "version": "9.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -40302,7 +40301,6 @@
       "name": "gz-sim",
       "manifest": {
         "name": "gz-sim",
-        "port-version": 1,
         "description": "Gazebo Sim is an open source robotics simulator.",
         "homepage": "https://gazebosim.org/libs/sim",
         "license": "Apache-2.0",
@@ -40325,7 +40323,7 @@
           },
           "sdformat"
         ],
-        "version": "9.0.0"
+        "version": "9.5.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -40349,7 +40347,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -44262,7 +44260,6 @@
       "name": "json-glib",
       "manifest": {
         "name": "json-glib",
-        "port-version": 1,
         "description": "Implements a full JSON parser and generator using GLib and GObject, and integrates JSON with GLib data types.",
         "homepage": "https://wiki.gnome.org/Projects/JsonGlib",
         "license": "LGPL-2.1-or-later AND CC0-1.0 AND MIT",
@@ -44277,7 +44274,7 @@
             "host": true
           }
         ],
-        "version": "1.10.6"
+        "version": "1.10.8"
       },
       "files": [
         "portfile.cmake",
@@ -48410,7 +48407,6 @@
       "name": "libaec",
       "manifest": {
         "name": "libaec",
-        "port-version": 1,
         "description": "Adaptive Entropy Coding library",
         "homepage": "https://gitlab.dkrz.de/k202009/libaec",
         "license": "BSD-2-Clause",
@@ -48424,12 +48420,10 @@
             "host": true
           }
         ],
-        "version": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
-        "cmake-config.patch",
         "portfile.cmake",
-        "static-shared.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -50275,7 +50269,7 @@
         "dependencies": [
           "zlib"
         ],
-        "version": "1.6.4"
+        "version": "1.7.1"
       },
       "files": [
         "fix-build.patch",
@@ -50920,7 +50914,7 @@
             "host": true
           }
         ],
-        "version": "1.11.1"
+        "version": "1.11.2"
       },
       "files": [
         "cross-tools.patch",
@@ -52743,7 +52737,7 @@
             "host": true
           }
         ],
-        "version": "0.32"
+        "version": "0.34"
       },
       "files": [
         "portfile.cmake",
@@ -54521,7 +54515,7 @@
           },
           "zlib"
         ],
-        "version-semver": "2.22.0"
+        "version-semver": "2.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -61449,9 +61443,10 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
+        "port-version": 1,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
-        "license": null,
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -61464,24 +61459,28 @@
         ],
         "features": {
           "cpp": {
-            "description": "Builds Lua for C++ linkage",
-            "supports": "!uwp"
+            "description": "Builds Lua for C++ linkage"
           },
           "tools": {
             "description": "Builds Lua compiler and interpreter",
+            "dependencies": [
+              {
+                "name": "readline-unix",
+                "platform": "!windows"
+              }
+            ],
             "supports": "!ios"
           }
         },
         "version": "5.5.0"
       },
       "files": [
-        "CMakeLists-cpp.txt",
         "CMakeLists.txt",
-        "COPYRIGHT",
         "fix-ios-system.patch",
         "portfile.cmake",
         "usage",
-        "vcpkg-cmake-wrapper.cmake.in",
+        "uwp-no-popen.diff",
+        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json",
         "vs2015-impl-c99.patch"
       ]
@@ -66507,7 +66506,6 @@
       "name": "mpg123",
       "manifest": {
         "name": "mpg123",
-        "port-version": 1,
         "description": "mpg123 is a real time MPEG 1.0/2.0/2.5 audio player/decoder for layers 1, 2 and 3 (MPEG 1.0 layer 3 also known as MP3).",
         "homepage": "https://sourceforge.net/projects/mpg123/",
         "license": "LGPL-2.1-or-later",
@@ -66530,10 +66528,9 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "1.32.9"
+        "version": "1.33.4"
       },
       "files": [
-        "fix-dllexport.diff",
         "have-fpu.diff",
         "pkgconfig.diff",
         "portfile.cmake",
@@ -70824,7 +70821,6 @@
       "name": "ogre-next",
       "manifest": {
         "name": "ogre-next",
-        "port-version": 3,
         "description": "Ogre Next - scene-oriented, flexible 3D engine written in C++",
         "homepage": "https://github.com/OGRECave/ogre-next",
         "license": "MIT",
@@ -70891,10 +70887,9 @@
             "supports": "!osx"
           }
         },
-        "version": "2.3.3"
+        "version": "3.0.0"
       },
       "files": [
-        "avoid-name-clashes.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "toolchain_fixes.patch",
@@ -72668,7 +72663,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -73005,6 +73000,8 @@
         "0017-enable-gtk.patch",
         "0019-enable-pkgconf.patch",
         "0020-contrib-add-cassert.patch",
+        "0021-protobuf-6.patch",
+        "0022-include-thread.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -74505,7 +74502,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 3,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -74539,10 +74535,9 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.6.0"
+        "version": "3.6.1"
       },
       "files": [
-        "aes_cfb128_vaes_encdec_wrapper.diff",
         "cmake-config.patch",
         "command-line-length.patch",
         "install-pc-files.cmake",
@@ -74970,6 +74965,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
+        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -75149,6 +75145,7 @@
       "files": [
         "onednn_gpu_includes.patch",
         "portfile.cmake",
+        "protobuf-6.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -75535,7 +75532,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.4.0"
+        "version-semver": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -75955,10 +75952,10 @@
       "name": "osqp",
       "manifest": {
         "name": "osqp",
+        "port-version": 1,
         "description": "The Operator Splitting QP Solver",
         "homepage": "https://osqp.org/",
         "license": "Apache-2.0",
-        "supports": "!android & !x86",
         "dependencies": [
           {
             "name": "qdldl",
@@ -75978,6 +75975,7 @@
       "files": [
         "osqp.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -75985,10 +75983,10 @@
       "name": "osqp-eigen",
       "manifest": {
         "name": "osqp-eigen",
+        "port-version": 1,
         "description": "Simple Eigen-C++ wrapper for OSQP library",
         "homepage": "https://gbionics.github.io/osqp-eigen/",
         "license": "BSD-3-Clause-Clear",
-        "supports": "!android & !x86",
         "dependencies": [
           "eigen3",
           {
@@ -76007,7 +76005,6 @@
         "version": "0.11.0"
       },
       "files": [
-        "osqp-eigen.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79662,7 +79659,6 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 3,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -79690,15 +79686,14 @@
             ]
           }
         },
-        "version": "5.29.5"
+        "version": "6.33.4"
       },
       "files": [
-        "fix-abseil.patch",
         "fix-constinit-with-clang-cl.patch",
         "fix-default-proto-file-path.patch",
         "fix-install-dirs.patch",
-        "fix-mingw-tail-call.patch",
         "fix-static-build.patch",
+        "fix-upb.patch",
         "fix-utf8-range.patch",
         "portfile.cmake",
         "protobuf-targets-vcpkg-protoc.cmake",
@@ -80164,7 +80159,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "3.8.0"
+        "version": "4.0.0"
       },
       "files": [
         "disable-warnings.patch",
@@ -80716,10 +80711,10 @@
       "name": "qdldl",
       "manifest": {
         "name": "qdldl",
+        "port-version": 1,
         "description": "A free LDL factorisation routine",
         "homepage": "https://osqp.org/",
         "license": "Apache-2.0",
-        "supports": "!android & !x86",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -80734,7 +80729,7 @@
       },
       "files": [
         "portfile.cmake",
-        "qdldl.patch",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -90141,7 +90136,6 @@
       "name": "sdformat",
       "manifest": {
         "name": "sdformat",
-        "port-version": 1,
         "description": "Simulation Description Format (SDF) parser and description files.",
         "homepage": "http://sdformat.org/",
         "license": "Apache-2.0",
@@ -90161,7 +90155,7 @@
             "host": true
           }
         ],
-        "version": "15.1.1"
+        "version": "15.3.0"
       },
       "files": [
         "cmake-config.patch",
@@ -91188,7 +91182,6 @@
       "name": "secp256k1",
       "manifest": {
         "name": "secp256k1",
-        "port-version": 1,
         "description": "Optimized C library for EC operations on curve",
         "homepage": "https://github.com/bitcoin-core/secp256k1",
         "license": "MIT",
@@ -91202,18 +91195,9 @@
             "host": true
           }
         ],
-        "features": {
-          "examples": {
-            "description": "Build examples"
-          },
-          "tools": {
-            "description": "Build tools"
-          }
-        },
-        "version-date": "2022-07-11"
+        "version": "0.7.1"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -93749,6 +93733,7 @@
       "name": "sol2",
       "manifest": {
         "name": "sol2",
+        "port-version": 1,
         "description": "Sol3 (sol2 v3.0) - a C++ <-> Lua API wrapper with advanced features and top notch performance",
         "homepage": "https://github.com/ThePhD/sol2",
         "license": "MIT",
@@ -93766,6 +93751,8 @@
       },
       "files": [
         "header-only.patch",
+        "lua-5.5.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94531,6 +94518,7 @@
       "name": "sproto",
       "manifest": {
         "name": "sproto",
+        "port-version": 1,
         "description": "Yet another protocol library like google protocol buffers, but simple and fast",
         "homepage": "https://github.com/cloudwu/sproto",
         "license": "MIT",
@@ -95147,9 +95135,9 @@
       "name": "srpc",
       "manifest": {
         "name": "srpc",
-        "port-version": 1,
         "description": "RPC based on Sogou C++ Workflow",
         "homepage": "https://github.com/sogou/srpc",
+        "license": "Apache-2.0",
         "dependencies": [
           "lz4",
           "openssl",
@@ -95166,7 +95154,7 @@
           "workflow",
           "zlib"
         ],
-        "version-semver": "0.10.3"
+        "version-semver": "0.10.4"
       },
       "files": [
         "portfile.cmake",
@@ -96729,7 +96717,7 @@
             "host": true
           }
         ],
-        "version-semver": "7.4.0"
+        "version-semver": "7.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -99136,6 +99124,7 @@
       "manifest": {
         "name": "tmx",
         "description": "A portable C library to load tiled maps in your games.",
+        "homepage": "https://github.com/baylej/tmx",
         "license": "BSD-2-Clause",
         "dependencies": [
           "libxml2",
@@ -99149,7 +99138,7 @@
           },
           "zlib"
         ],
-        "version": "1.10.0"
+        "version": "1.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -100490,6 +100479,7 @@
       "name": "urdfdom",
       "manifest": {
         "name": "urdfdom",
+        "port-version": 1,
         "description": "Provides core data structures and a simple XML parsers for populating the class data structures from an URDF file.",
         "homepage": "https://github.com/ros/urdfdom",
         "license": "BSD-3-Clause",
@@ -100817,7 +100807,7 @@
             "host": true
           }
         ],
-        "version": "5.29.5"
+        "version": "6.33.4"
       },
       "files": [
         "fix-cmake.patch",
@@ -104693,7 +104683,7 @@
             "host": true
           }
         ],
-        "version": "0.11.8"
+        "version": "0.11.11"
       },
       "files": [
         "portfile.cmake",
