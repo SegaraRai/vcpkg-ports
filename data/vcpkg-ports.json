@@ -1,5 +1,5 @@
 {
-  "version": "6a10a7d27f507bbdf11c834cd3abd4eac904ed0c",
+  "version": "9401ee272060dae4c80f530a04b8fbec143c8d21",
   "ports": [
     {
       "name": "3fd",
@@ -2735,7 +2735,7 @@
             "host": true
           }
         ],
-        "version": "3.5.2"
+        "version": "3.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -6556,7 +6556,7 @@
             ]
           }
         },
-        "version": "0.1.120"
+        "version": "0.1.122"
       },
       "files": [
         "portfile.cmake",
@@ -41864,10 +41864,11 @@
             ]
           }
         },
-        "version": "1.6.1"
+        "version": "1.6.5"
       },
       "files": [
         "0001-no-tests.patch",
+        "configure_bz2.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43493,7 +43494,7 @@
             ]
           }
         },
-        "version": "1.14.3"
+        "version": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -47527,9 +47528,10 @@
             "host": true
           }
         ],
-        "version": "0.3.5"
+        "version": "0.3.6"
       },
       "files": [
+        "disable-werror.patch",
         "fix-name-conflict.diff",
         "kubazipConfig.cmake",
         "portfile.cmake",
@@ -53256,7 +53258,7 @@
             "host": true
           }
         ],
-        "version": "5.1.4"
+        "version": "5.1.5"
       },
       "files": [
         "0001-CMakeLists.patch",
@@ -59407,13 +59409,12 @@
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver",
         "license": null,
         "dependencies": [
-          "bzip2",
           "libx11",
           "libxext",
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.2.3"
+        "version": "1.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -74502,6 +74503,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -74540,6 +74542,7 @@
       "files": [
         "cmake-config.patch",
         "command-line-length.patch",
+        "fix-mingw-build.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
@@ -82192,6 +82195,7 @@
       "name": "qt5-declarative",
       "manifest": {
         "name": "qt5-declarative",
+        "port-version": 1,
         "description": "Qt Declarative (Quick 2)",
         "license": null,
         "dependencies": [
@@ -82226,6 +82230,7 @@
         "version": "5.15.18"
       },
       "files": [
+        "linker-oom.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -93103,7 +93108,7 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -93156,7 +93161,7 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "1.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -103814,7 +103819,6 @@
       "name": "wavpack",
       "manifest": {
         "name": "wavpack",
-        "port-version": 2,
         "description": "WavPack encode/decode library, command-line programs, and several plugins",
         "homepage": "https://github.com/dbry/WavPack",
         "license": "BSD-3-Clause",
@@ -103828,7 +103832,7 @@
             "host": true
           }
         ],
-        "version": "5.8.1"
+        "version": "5.9.0"
       },
       "files": [
         "enable-asm.diff",
