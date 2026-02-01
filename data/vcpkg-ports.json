@@ -1,5 +1,5 @@
 {
-  "version": "1d483bc44f8c35627407d7024e0045743829c2e8",
+  "version": "6d7bf7ef2193e2d1c5798a5ff8811d533104c861",
   "ports": [
     {
       "name": "3fd",
@@ -2315,7 +2315,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2328,6 +2327,10 @@
           "bzip2",
           "gflags",
           "lz4",
+          {
+            "name": "mimalloc",
+            "default-features": false
+          },
           "openssl",
           "re2",
           "snappy",
@@ -2493,14 +2496,14 @@
             ]
           }
         },
-        "version": "21.0.0"
+        "version": "23.0.0"
       },
       "files": [
         "0001-msvc-static-name.patch",
         "0003-android-musl.patch",
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
-        "0006-pcg-msvc-arm64.patch",
+        "0007-use-vcpkg-mimalloc.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -76788,6 +76791,30 @@
       ]
     },
     {
+      "name": "patternia",
+      "manifest": {
+        "name": "patternia",
+        "description": "Providing pattern matching for modern c++.",
+        "homepage": "https://github.com/sentomk/patternia",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "pbc",
       "manifest": {
         "name": "pbc",
@@ -84596,6 +84623,7 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
+        "port-version": 1,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84695,6 +84723,7 @@
         "version": "6.10.0"
       },
       "files": [
+        "ae41d3e-ffmpeg8.diff",
         "ffmpeg-compile-def.patch",
         "ffmpeg.patch",
         "port.data.cmake",
