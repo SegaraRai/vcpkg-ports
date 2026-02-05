@@ -1,5 +1,5 @@
 {
-  "version": "3de03ab175a76f0abae69815e1ad1115e0e026c1",
+  "version": "4b4eeca5a6e645b22231281dd4f86fa622d04c0a",
   "ports": [
     {
       "name": "3fd",
@@ -1360,7 +1360,7 @@
       "name": "anyxx",
       "manifest": {
         "name": "anyxx",
-        "description": "any++ / header only C++ vocabulary for programming on a large scale",
+        "description": "any++ / Any++ : How to trait any virtual, static or variant?",
         "homepage": "https://github.com/bitfactory-software/anyxx",
         "license": "MIT",
         "dependencies": [
@@ -1373,7 +1373,7 @@
             "host": true
           }
         ],
-        "version": "0.4.1"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -27373,7 +27373,8 @@
                   "ctl"
                 ]
               }
-            ]
+            ],
+            "supports": "native"
           },
           "mysql": {
             "description": "Support reading and writing from/to MySQL databases.",
@@ -27443,14 +27444,13 @@
             ]
           }
         },
-        "version-semver": "1.9.11"
+        "version-semver": "1.9.12"
       },
       "files": [
         "0001-vcpkg.patch",
         "0002-drogon-config.patch",
         "0003-deps-redis.patch",
         "0004-drogon-ctl.patch",
-        "0005-drogon-cross-compile.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -35284,7 +35284,6 @@
       "name": "glib-networking",
       "manifest": {
         "name": "glib-networking",
-        "port-version": 1,
         "description": "Network extensions for GLib",
         "homepage": "https://gitlab.gnome.org/GNOME/glib-networking",
         "license": "LGPL-2.1-only",
@@ -35335,7 +35334,7 @@
             ]
           }
         },
-        "version": "2.78.0"
+        "version": "2.80.1"
       },
       "files": [
         "portfile.cmake",
@@ -39813,7 +39812,6 @@
       "name": "gz-cmake",
       "manifest": {
         "name": "gz-cmake",
-        "port-version": 1,
         "description": "CMake helper functions for building robotic applications",
         "homepage": "https://gazebosim.org/libs/cmake/",
         "license": null,
@@ -39823,7 +39821,7 @@
             "host": true
           }
         ],
-        "version": "4.1.1"
+        "version": "4.2.1"
       },
       "files": [
         "find-modules.diff",
@@ -39833,24 +39831,6 @@
         "pkg-check-modules.diff",
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-cmake3",
-      "manifest": {
-        "name": "gz-cmake3",
-        "port-version": 6,
-        "description": "CMake helper functions for building robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/cmake",
-        "license": null,
-        "dependencies": [
-          "gz-cmake"
-        ],
-        "version": "3.4.1"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -39895,7 +39875,7 @@
           },
           "tinyxml2"
         ],
-        "version": "6.1.0"
+        "version": "6.3.0"
       },
       "files": [
         "003-include-chrono.patch",
@@ -39904,24 +39884,6 @@
         "gz_remotery_vis.patch",
         "portfile.cmake",
         "pthread.diff",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-common5",
-      "manifest": {
-        "name": "gz-common5",
-        "port-version": 4,
-        "description": "Common libraries for robotics applications",
-        "homepage": "https://ignitionrobotics.org/libs/common",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-common"
-        ],
-        "version": "5.4.1"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -39946,7 +39908,7 @@
           "libzip",
           "tinyxml2"
         ],
-        "version": "10.0.0"
+        "version": "10.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -39955,27 +39917,10 @@
       ]
     },
     {
-      "name": "gz-fuel-tools8",
-      "manifest": {
-        "name": "gz-fuel-tools8",
-        "port-version": 1,
-        "description": "Tools for using fuel API to download robot models",
-        "homepage": "https://gazebosim.org/libs/fuel_tools",
-        "license": null,
-        "dependencies": [
-          "gz-fuel-tools"
-        ],
-        "version": "8.1.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-gui",
       "manifest": {
         "name": "gz-gui",
+        "port-version": 1,
         "description": "Gazebo GUI builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.",
         "homepage": "https://gazebosim.org/libs/gui",
         "license": "Apache-2.0",
@@ -40013,24 +39958,6 @@
       ]
     },
     {
-      "name": "gz-gui7",
-      "manifest": {
-        "name": "gz-gui7",
-        "port-version": 1,
-        "description": "Gazebo GUI builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.",
-        "homepage": "https://gazebosim.org/libs/gui",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-gui"
-        ],
-        "version": "7.2.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-math",
       "manifest": {
         "name": "gz-math",
@@ -40046,25 +39973,7 @@
             "host": true
           }
         ],
-        "version": "8.1.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-math7",
-      "manifest": {
-        "name": "gz-math7",
-        "port-version": 1,
-        "description": "Math API for robotic applications",
-        "homepage": "https://ignitionrobotics.org/libs/math",
-        "license": null,
-        "dependencies": [
-          "gz-math"
-        ],
-        "version": "7.3.0"
+        "version": "8.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -40075,6 +39984,7 @@
       "name": "gz-msgs",
       "manifest": {
         "name": "gz-msgs",
+        "port-version": 1,
         "description": "Protobuf messages and functions for robot applications",
         "license": "Apache-2.0",
         "supports": "!uwp",
@@ -40108,27 +40018,10 @@
       ]
     },
     {
-      "name": "gz-msgs9",
-      "manifest": {
-        "name": "gz-msgs9",
-        "port-version": 1,
-        "description": "Middleware protobuf messages for robotics",
-        "license": "Apache-2.0",
-        "supports": "!(android | arm | uwp)",
-        "dependencies": [
-          "gz-msgs"
-        ],
-        "version": "9.5.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-physics",
       "manifest": {
         "name": "gz-physics",
+        "port-version": 1,
         "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
         "homepage": "https://gazebosim.org/libs/physics",
         "license": "Apache-2.0",
@@ -40164,24 +40057,6 @@
       ]
     },
     {
-      "name": "gz-physics6",
-      "manifest": {
-        "name": "gz-physics6",
-        "port-version": 3,
-        "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
-        "homepage": "https://gazebosim.org/libs/physics",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-physics"
-        ],
-        "version": "6.5.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-plugin",
       "manifest": {
         "name": "gz-plugin",
@@ -40201,26 +40076,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-plugin2",
-      "manifest": {
-        "name": "gz-plugin2",
-        "port-version": 1,
-        "description": "Library for registering plugin libraries and dynamically loading them at runtime",
-        "homepage": "https://ignitionrobotics.org/libs/plugin",
-        "license": null,
-        "supports": "!arm & !android",
-        "dependencies": [
-          "gz-plugin"
-        ],
-        "version": "2.0.1"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -40231,6 +40087,7 @@
       "name": "gz-rendering",
       "manifest": {
         "name": "gz-rendering",
+        "port-version": 1,
         "description": "Gazebo Rendering is a C++ library designed to provide an abstraction for different rendering engines. It offers unified APIs for creating 3D graphics applications.",
         "homepage": "https://gazebosim.org/libs/rendering",
         "license": "Apache-2.0",
@@ -40262,27 +40119,10 @@
       ]
     },
     {
-      "name": "gz-rendering7",
-      "manifest": {
-        "name": "gz-rendering7",
-        "port-version": 2,
-        "description": "Gazebo Rendering is a C++ library designed to provide an abstraction for different rendering engines. It offers unified APIs for creating 3D graphics applications.",
-        "homepage": "https://gazebosim.org/libs/rendering",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-rendering"
-        ],
-        "version": "7.4.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-sensors",
       "manifest": {
         "name": "gz-sensors",
+        "port-version": 1,
         "description": "Component of Gazebo, provides numerous sensor models designed to generate realistic data from simulation environments.",
         "homepage": "https://gazebosim.org/libs/sensors",
         "license": "Apache-2.0",
@@ -40308,28 +40148,10 @@
       ]
     },
     {
-      "name": "gz-sensors7",
-      "manifest": {
-        "name": "gz-sensors7",
-        "port-version": 1,
-        "description": "Component of Gazebo, provides numerous sensor models designed to generate realistic data from simulation environments.",
-        "homepage": "https://gazebosim.org/libs/sensors",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-sensors"
-        ],
-        "version": "7.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "gz-sim",
       "manifest": {
         "name": "gz-sim",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Gazebo Sim is an open source robotics simulator.",
         "homepage": "https://gazebosim.org/libs/sim",
         "license": "Apache-2.0",
@@ -40365,6 +40187,7 @@
       "name": "gz-tools",
       "manifest": {
         "name": "gz-tools",
+        "port-version": 1,
         "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
         "homepage": "https://gazebosim.org",
         "license": "Apache-2.0",
@@ -40377,25 +40200,6 @@
           }
         ],
         "version": "2.0.3"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-tools2",
-      "manifest": {
-        "name": "gz-tools2",
-        "port-version": 2,
-        "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
-        "homepage": "https://gazebosim.org",
-        "license": "Apache-2.0",
-        "supports": "!(arm & windows) & !uwp",
-        "dependencies": [
-          "gz-tools"
-        ],
-        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -40425,28 +40229,11 @@
           "sqlite3",
           "zeromq"
         ],
-        "version": "14.1.0"
+        "version": "14.2.0"
       },
       "files": [
         "portfile.cmake",
         "uuid-osx.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-transport12",
-      "manifest": {
-        "name": "gz-transport12",
-        "port-version": 1,
-        "description": "Transport middleware for robotics",
-        "license": null,
-        "dependencies": [
-          "gz-transport"
-        ],
-        "version": "12.2.1"
-      },
-      "files": [
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -40465,25 +40252,7 @@
           },
           "spdlog"
         ],
-        "version": "3.1.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-utils2",
-      "manifest": {
-        "name": "gz-utils2",
-        "port-version": 1,
-        "description": "Ignition Utils, a component of Ignition Robotics, provides general purpose classes and functions designed for robotic applications.",
-        "homepage": "https://gazebosim.org",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-utils"
-        ],
-        "version": "2.0.0"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -44843,8 +44612,9 @@
       "name": "kaitai-struct-cpp-stl-runtime",
       "manifest": {
         "name": "kaitai-struct-cpp-stl-runtime",
+        "port-version": 1,
         "description": "Kaitai Struct is a declarative language used for describe various binary data structures, laid out in files or in memory. This library implements Kaitai Struct API for C++ using STL",
-        "homepage": "http://kaitai.io/",
+        "homepage": "https://kaitai.io",
         "documentation": "https://doc.kaitai.io/lang_cpp_stl.html",
         "license": "MIT",
         "dependencies": [
@@ -53255,7 +53025,7 @@
             ]
           }
         },
-        "version": "25.10"
+        "version": "26.1"
       },
       "files": [
         "dependencies.diff",
@@ -65318,7 +65088,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.2.7"
+        "version": "3.2.8"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -99547,7 +99317,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.5.24"
+        "version-semver": "1.5.26"
       },
       "files": [
         "000-fix-deps.patch",
@@ -100830,7 +100600,7 @@
             ]
           }
         },
-        "version": "2.22.0"
+        "version": "2.23.0"
       },
       "files": [
         "portfile.cmake",
