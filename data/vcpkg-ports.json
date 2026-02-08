@@ -1,5 +1,5 @@
 {
-  "version": "6283825b81bb60f952af1d0703638df1de611243",
+  "version": "aa2d37682e3318d93aef87efa7b0e88e81cd3d59",
   "ports": [
     {
       "name": "3fd",
@@ -45114,6 +45114,7 @@
       "name": "kedixa-coke",
       "manifest": {
         "name": "kedixa-coke",
+        "port-version": 1,
         "description": "Coroutine Workflow based on C++ 20",
         "homepage": "https://github.com/kedixa/coke",
         "license": "Apache-2.0",
@@ -45128,7 +45129,14 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "workflow"
+          {
+            "name": "workflow",
+            "platform": "!windows | mingw"
+          },
+          {
+            "name": "workflow-win",
+            "platform": "windows & !mingw"
+          }
         ],
         "version": "0.7.0"
       },
@@ -93110,6 +93118,36 @@
       ]
     },
     {
+      "name": "slick-socket",
+      "manifest": {
+        "name": "slick-socket",
+        "description": "A C++20 networking library providing cross-platform TCP and UDP multicast communication.",
+        "homepage": "https://github.com/SlickQuant/slick-socket",
+        "license": "MIT",
+        "supports": "windows | linux | osx",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "wepoll",
+            "platform": "windows"
+          }
+        ],
+        "version-semver": "1.0.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "slikenet",
       "manifest": {
         "name": "slikenet",
@@ -95053,6 +95091,7 @@
       "name": "srpc",
       "manifest": {
         "name": "srpc",
+        "port-version": 1,
         "description": "RPC based on Sogou C++ Workflow",
         "homepage": "https://github.com/sogou/srpc",
         "license": "Apache-2.0",
@@ -95069,7 +95108,14 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "workflow",
+          {
+            "name": "workflow",
+            "platform": "!windows | mingw"
+          },
+          {
+            "name": "workflow-win",
+            "platform": "windows & !mingw"
+          },
           "zlib"
         ],
         "version-semver": "0.10.4"
@@ -104590,9 +104636,11 @@
       "name": "workflow",
       "manifest": {
         "name": "workflow",
-        "description": "About C++ Parallel Computing and Asynchronous Networking Engine",
+        "port-version": 1,
+        "description": "C++ Parallel Computing and Asynchronous Networking Engine",
         "homepage": "https://github.com/sogou/workflow",
         "license": "Apache-2.0",
+        "supports": "!windows | mingw",
         "dependencies": [
           "openssl",
           {
@@ -104605,6 +104653,32 @@
           }
         ],
         "version": "0.11.11"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "workflow-win",
+      "manifest": {
+        "name": "workflow-win",
+        "description": "C++ Parallel Computing and Asynchronous Networking Engine (Windows version)",
+        "homepage": "https://github.com/sogou/workflow",
+        "license": "Apache-2.0",
+        "supports": "windows & !mingw",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2026-01-09"
       },
       "files": [
         "portfile.cmake",
