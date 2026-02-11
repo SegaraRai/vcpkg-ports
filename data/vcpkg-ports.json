@@ -1,5 +1,5 @@
 {
-  "version": "aa2d37682e3318d93aef87efa7b0e88e81cd3d59",
+  "version": "36fb57eb3878cc3422351a91d3e87c328388dabd",
   "ports": [
     {
       "name": "3fd",
@@ -1372,7 +1372,7 @@
             "host": true
           }
         ],
-        "version": "0.5.0"
+        "version": "0.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -1837,7 +1837,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -4010,7 +4010,7 @@
             "host": true
           }
         ],
-        "version": "0.2.8"
+        "version": "0.2.9"
       },
       "files": [
         "portfile.cmake",
@@ -4048,7 +4048,7 @@
             "host": true
           }
         ],
-        "version": "0.37.1"
+        "version": "0.37.2"
       },
       "files": [
         "portfile.cmake",
@@ -19479,7 +19479,7 @@
             "description": "Capstone disassembly support for XCore"
           }
         },
-        "version": "5.0.6"
+        "version": "5.0.7"
       },
       "files": [
         "001-silence-windows-crt-secure-warnings.patch",
@@ -22523,7 +22523,6 @@
       "name": "cpp-httplib",
       "manifest": {
         "name": "cpp-httplib",
-        "port-version": 1,
         "description": "A single file C++11 header-only HTTP/HTTPS server and client library",
         "homepage": "https://github.com/yhirose/cpp-httplib",
         "license": "MIT",
@@ -22566,7 +22565,7 @@
             ]
           }
         },
-        "version": "0.30.2"
+        "version": "0.31.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -27045,7 +27044,7 @@
             "host": true
           }
         ],
-        "version": "1.2"
+        "version": "1.3"
       },
       "files": [
         "portfile.cmake",
@@ -29085,7 +29084,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.5.0"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -29892,6 +29891,38 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "fastpfor",
+      "manifest": {
+        "name": "fastpfor",
+        "description": "Fast integer compression",
+        "homepage": "https://github.com/fast-pack/FastPFOR",
+        "license": "Apache-2.0",
+        "supports": "!(arm & !arm64)",
+        "dependencies": [
+          {
+            "name": "simde",
+            "platform": "arm"
+          },
+          "snappy",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.3.1"
+      },
+      "files": [
+        "fix-arm-checker.patch",
+        "portfile.cmake",
+        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -31605,7 +31636,6 @@
       "name": "flatbuffers",
       "manifest": {
         "name": "flatbuffers",
-        "port-version": 1,
         "description": "FlatBuffers is a cross platform serialization library architected for maximum memory efficiency. It allows you to directly access serialized data without parsing/unpacking it first, while still having great forwards/backwards compatibility.",
         "homepage": "https://google.github.io/flatbuffers/",
         "license": "Apache-2.0",
@@ -31623,7 +31653,7 @@
             "host": true
           }
         ],
-        "version": "25.9.23"
+        "version": "25.12.19"
       },
       "files": [
         "fix-runtime-flags-msvc.patch",
@@ -33812,7 +33842,7 @@
             ]
           }
         },
-        "version-semver": "3.12.1"
+        "version-semver": "3.12.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -34659,6 +34689,7 @@
       "name": "gklib",
       "manifest": {
         "name": "gklib",
+        "port-version": 1,
         "description": "General helper libraries for KarypisLab.",
         "homepage": "https://github.com/KarypisLab/GKlib/",
         "license": "Apache-2.0",
@@ -34677,6 +34708,7 @@
       "files": [
         "build-fixes.patch",
         "portfile.cmake",
+        "regex.patch",
         "vcpkg.json"
       ]
     },
@@ -41182,7 +41214,7 @@
         "description": "Header-only, lightweight C++ library for binary streaming & serialization.",
         "homepage": "https://github.com/EmberEmu/Hexi",
         "license": "MIT OR Apache-2.0",
-        "version": "1.3.4"
+        "version": "1.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -48805,7 +48837,7 @@
             "host": true
           }
         ],
-        "version": "1.30.6"
+        "version": "1.30.7"
       },
       "files": [
         "fix-include-directory.patch",
@@ -51438,7 +51470,6 @@
       "name": "libharu",
       "manifest": {
         "name": "libharu",
-        "port-version": 1,
         "description": "libharu - free PDF library",
         "homepage": "https://github.com/libharu/libharu",
         "license": "Zlib",
@@ -51454,11 +51485,10 @@
           },
           "zlib"
         ],
-        "version": "2.4.4"
+        "version": "2.4.5"
       },
       "files": [
         "export-targets.patch",
-        "fix-include-path.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -55268,7 +55298,6 @@
       "name": "libraqm",
       "manifest": {
         "name": "libraqm",
-        "port-version": 1,
         "description": "A library for complex text layout",
         "homepage": "https://github.com/HOST-Oman/libraqm",
         "dependencies": [
@@ -55280,7 +55309,7 @@
             "host": true
           }
         ],
-        "version": "0.10.3"
+        "version": "0.10.4"
       },
       "files": [
         "portfile.cmake",
@@ -57675,7 +57704,7 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.13"
+        "version": "2.14"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -58572,7 +58601,6 @@
       "name": "libxcvt",
       "manifest": {
         "name": "libxcvt",
-        "port-version": 1,
         "description": "A library providing a standalone version of the X server implementation of the VESA CVT standard timing modelines generator.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxcvt",
         "license": null,
@@ -58583,7 +58611,7 @@
             "host": true
           }
         ],
-        "version": "0.1.2"
+        "version": "0.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -61034,6 +61062,31 @@
       ]
     },
     {
+      "name": "logme",
+      "manifest": {
+        "name": "logme",
+        "description": "Cross-platform C/C++ logging framework: channels and routing, multiple backends, colored output, and runtime dynamic control.",
+        "homepage": "https://github.com/efmsoft/logme",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "jsoncpp",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.4.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "loguru",
       "manifest": {
         "name": "loguru",
@@ -61247,7 +61300,7 @@
             "host": true
           }
         ],
-        "version": "0.1.5"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -61542,7 +61595,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.707"
+        "version": "0.708"
       },
       "files": [
         "cmake-config-export.patch",
@@ -64798,6 +64851,7 @@
       "name": "metis",
       "manifest": {
         "name": "metis",
+        "port-version": 1,
         "description": "Serial Graph Partitioning and Fill-reducing Matrix Ordering",
         "homepage": "https://github.com/KarypisLab/METIS",
         "license": "Apache-2.0",
@@ -64815,6 +64869,7 @@
         "version-date": "2025-07-04"
       },
       "files": [
+        "build-fixes-gkregex.patch",
         "build-fixes.patch",
         "install_config.cmake",
         "portfile.cmake",
@@ -65883,7 +65938,7 @@
             ]
           }
         },
-        "version": "1.30.6"
+        "version": "1.30.7"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -68351,7 +68406,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "license": null,
@@ -69036,7 +69091,7 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -71716,7 +71771,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.8.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -74617,7 +74672,7 @@
             ]
           }
         },
-        "version-semver": "1.24.0"
+        "version-semver": "1.25.0"
       },
       "files": [
         "fix-target_link.patch",
@@ -75284,6 +75339,7 @@
         "name": "orange-math",
         "description": "General purpose math library",
         "homepage": "https://github.com/orange-cpp/omath",
+        "documentation": "https://libomath.org",
         "license": "Zlib",
         "dependencies": [
           {
@@ -75310,7 +75366,7 @@
             "description": "Omath will define some methods as inline"
           }
         },
-        "version": "4.7.0"
+        "version": "4.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -75386,7 +75442,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.6.4"
+        "version-semver": "1.6.5"
       },
       "files": [
         "portfile.cmake",
@@ -76652,7 +76708,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -89830,7 +89886,7 @@
             "description": "Add sciter-webview support"
           }
         },
-        "version": "6.0.3.5"
+        "version": "6.0.3.7"
       },
       "files": [
         "portfile.cmake",
@@ -91723,7 +91779,7 @@
             "host": true
           }
         ],
-        "version": "2025.22.1"
+        "version": "2026.2"
       },
       "files": [
         "portfile.cmake",
@@ -91886,10 +91942,14 @@
             "host": true
           }
         ],
-        "version": "2.9.0"
+        "features": {
+          "text-api": {
+            "description": "Enable the experimental text editing and analysis API"
+          }
+        },
+        "version": "3.0.0"
       },
       "files": [
-        "cmake-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -93028,7 +93088,7 @@
             "host": true
           }
         ],
-        "version": "1.2.3"
+        "version": "1.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -95091,7 +95151,7 @@
       "name": "srpc",
       "manifest": {
         "name": "srpc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "RPC based on Sogou C++ Workflow",
         "homepage": "https://github.com/sogou/srpc",
         "license": "Apache-2.0",
@@ -95121,8 +95181,8 @@
         "version-semver": "0.10.4"
       },
       "files": [
+        "cmake.diff",
         "portfile.cmake",
-        "protobuf.patch",
         "vcpkg.json"
       ]
     },
@@ -95348,7 +95408,6 @@
       "name": "stdexec",
       "manifest": {
         "name": "stdexec",
-        "port-version": 2,
         "description": "stdexec is an experimental reference implementation of the Senders model of asynchronous programming proposed by P2300 - std::execution for adoption into the C++ Standard.",
         "homepage": "https://github.com/NVIDIA/stdexec",
         "license": "Apache-2.0",
@@ -95362,9 +95421,10 @@
             "host": true
           }
         ],
-        "version-date": "2024-06-16"
+        "version-date": "2026-01-23"
       },
       "files": [
+        "fix-clangd-helper-file-basedir.patch",
         "fix-version.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -99262,7 +99322,6 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 2,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -99301,12 +99360,9 @@
                 "default-features": false,
                 "platform": "!windows"
               },
-              "freetype",
-              "glfw3",
-              {
-                "name": "tbb",
-                "platform": "!windows"
-              }
+              "nlohmann-json",
+              "ppqsort",
+              "zstd"
             ],
             "supports": "!(windows & x86)"
           },
@@ -99319,6 +99375,7 @@
           "gui-tools": {
             "description": "Build Tracy GUI tool: `profiler` (aka `Tracy` executable)",
             "dependencies": [
+              "aklomp-base64",
               {
                 "name": "capstone",
                 "features": [
@@ -99327,6 +99384,7 @@
                   "x86"
                 ]
               },
+              "curl",
               {
                 "name": "dbus",
                 "default-features": false,
@@ -99334,10 +99392,19 @@
               },
               "freetype",
               "glfw3",
+              "md4c",
+              "nativefiledialog-extended",
+              "nlohmann-json",
+              "ppqsort",
+              "pugixml",
+              "tidy-html5",
               {
-                "name": "tbb",
-                "platform": "!windows"
-              }
+                "name": "usearch",
+                "features": [
+                  "fp16"
+                ]
+              },
+              "zstd"
             ],
             "supports": "!(windows & x86)"
           },
@@ -99345,13 +99412,17 @@
             "description": "Enable on-demand profiling"
           },
           "verbose": {
-            "description": "Enables verbose logging"
+            "description": "Enables verbose logging",
+            "supports": "!android"
           }
         },
-        "version": "0.11.1"
+        "version": "0.13.1"
       },
       "files": [
         "build-tools.patch",
+        "downgrade-capstone-5.patch",
+        "fix-imgui-patch.patch",
+        "fix-vendor-versions.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99977,6 +100048,35 @@
           }
         ],
         "version": "0.2.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "typecast-ai",
+      "manifest": {
+        "name": "typecast-ai",
+        "description": "Text-to-Speech API client library for Typecast AI. Pure C with optional C++ wrapper.",
+        "homepage": "https://github.com/neosapience/typecast-sdk",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "curl",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -103321,7 +103421,6 @@
       "name": "vulkan-memory-allocator-hpp",
       "manifest": {
         "name": "vulkan-memory-allocator-hpp",
-        "port-version": 1,
         "description": "C++ bindings for VulkanMemoryAllocator (Development branch)",
         "homepage": "https://github.com/YaaZ/VulkanMemoryAllocator-Hpp",
         "license": "CC0-1.0",
@@ -103330,7 +103429,7 @@
           "vulkan",
           "vulkan-memory-allocator"
         ],
-        "version": "3.1.0"
+        "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -104636,11 +104735,10 @@
       "name": "workflow",
       "manifest": {
         "name": "workflow",
-        "port-version": 1,
         "description": "C++ Parallel Computing and Asynchronous Networking Engine",
         "homepage": "https://github.com/sogou/workflow",
         "license": "Apache-2.0",
-        "supports": "!windows | mingw",
+        "supports": "!windows",
         "dependencies": [
           "openssl",
           {
@@ -104652,9 +104750,10 @@
             "host": true
           }
         ],
-        "version": "0.11.11"
+        "version": "1.0.0"
       },
       "files": [
+        "cmake.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -106560,7 +106659,7 @@
             "host": true
           }
         ],
-        "version": "4.15.4"
+        "version": "4.15.7"
       },
       "files": [
         "fix-install-path.patch",
