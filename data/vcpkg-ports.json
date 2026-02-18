@@ -1,5 +1,5 @@
 {
-  "version": "e5a1490e1409d175932ef6014519e9ae149ddb7c",
+  "version": "1940ee77e81573713c0d364c42f5990172198be1",
   "ports": [
     {
       "name": "3fd",
@@ -46,7 +46,6 @@
       "name": "7zip",
       "manifest": {
         "name": "7zip",
-        "port-version": 1,
         "description": "Library for archiving file with a high compression ratio.",
         "homepage": "https://www.7-zip.org",
         "license": "LGPL-2.1-or-later",
@@ -61,7 +60,7 @@
             "host": true
           }
         ],
-        "version": "25.1"
+        "version": "26.0"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -2072,7 +2071,7 @@
             "host": true
           }
         ],
-        "version": "6.4.7"
+        "version": "6.4.8"
       },
       "files": [
         "portfile.cmake",
@@ -3582,10 +3581,11 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.90.1"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
+        "0003-fix-minmax.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4049,7 +4049,7 @@
             "host": true
           }
         ],
-        "version": "0.2.9"
+        "version": "0.2.10"
       },
       "files": [
         "portfile.cmake",
@@ -18420,6 +18420,7 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
+        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -18452,6 +18453,7 @@
         "version": "3.10.0"
       },
       "files": [
+        "botan-3.10-illegal-instruction.patch",
         "configure",
         "configure-zlib.patch",
         "embed-debug-info.patch",
@@ -19620,7 +19622,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.12.0"
+        "version-semver": "3.13.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -19719,20 +19721,6 @@
       "files": [
         "dll_exports.patch",
         "fix-dependency.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "cconfig",
-      "manifest": {
-        "name": "cconfig",
-        "description": "Header-only config parsing library",
-        "homepage": "https://github.com/Nouridin/cconfig",
-        "license": "MIT",
-        "version": "1.0.0"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20472,7 +20460,7 @@
             ]
           }
         },
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -20638,7 +20626,7 @@
             "host": true
           }
         ],
-        "version": "3.6.6"
+        "version": "3.7.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -21353,7 +21341,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "0.31.1"
+        "version-semver": "0.31.2"
       },
       "files": [
         "add-feature-tools.patch",
@@ -23591,7 +23579,7 @@
             ]
           }
         },
-        "version-semver": "1.14.1"
+        "version-semver": "1.14.2"
       },
       "files": [
         "disable_werror.patch",
@@ -32381,6 +32369,7 @@
       "name": "foonathan-memory",
       "manifest": {
         "name": "foonathan-memory",
+        "port-version": 1,
         "description": "STL compatible C++ memory allocator library",
         "homepage": "https://foonathan.net/doc/memory/",
         "license": "Zlib",
@@ -32405,6 +32394,7 @@
         "version": "0.7.4"
       },
       "files": [
+        "backport-0f5ebe9f.diff",
         "config-debug.diff",
         "config_impl.hpp",
         "portfile.cmake",
@@ -48908,7 +48898,7 @@
             "host": true
           }
         ],
-        "version": "1.30.7"
+        "version": "2.2.2"
       },
       "files": [
         "fix-include-directory.patch",
@@ -58188,7 +58178,6 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 3,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -58211,7 +58200,7 @@
             "description": "enable this option while building for real-time encoding"
           }
         },
-        "version": "1.15.2"
+        "version": "1.16.0"
       },
       "files": [
         "0003-add-uwp-v142-and-v143-support.patch",
@@ -61568,7 +61557,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-02-11"
+        "version-date": "2026-02-16"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -65998,7 +65987,7 @@
             ]
           }
         },
-        "version": "1.30.7"
+        "version": "2.2.2"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -66030,7 +66019,7 @@
             "host": true
           }
         ],
-        "version": "4.0.0"
+        "version": "4.1.4"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -73971,7 +73960,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.26.0"
+        "version": "0.26.1"
       },
       "files": [
         "portfile.cmake",
@@ -75426,7 +75415,7 @@
             "description": "Omath will define some methods as inline"
           }
         },
-        "version": "4.8.0"
+        "version": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -75503,7 +75492,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.6.7"
+        "version-semver": "1.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -76769,7 +76758,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77767,11 +77756,16 @@
       "name": "pixman",
       "manifest": {
         "name": "pixman",
+        "port-version": 1,
         "description": "Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.",
         "homepage": "https://www.cairographics.org/releases",
         "license": "MIT AND BSD-2-Clause",
         "dependencies": [
           "libpng",
+          {
+            "name": "pthreads",
+            "platform": "windows & !mingw"
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -90720,9 +90714,8 @@
       "name": "sdl2pp",
       "manifest": {
         "name": "sdl2pp",
-        "port-version": 12,
         "description": "C++11 bindings/wrapper for SDL2",
-        "homepage": "https://sdl2pp.amdmi3.ru",
+        "homepage": "https://github.com/libSDL2pp/libSDL2pp",
         "license": "Zlib",
         "dependencies": [
           {
@@ -90731,6 +90724,10 @@
           },
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -90754,14 +90751,11 @@
             ]
           }
         },
-        "version": "0.16.1"
+        "version": "0.18.1"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-usage.patch",
         "portfile.cmake",
-        "usage",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -91394,7 +91388,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.12.7"
+        "version": "0.12.8"
       },
       "files": [
         "fix-cmake4.patch",
@@ -93132,7 +93126,7 @@
             "host": true
           }
         ],
-        "version": "1.2.4"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -93186,7 +93180,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -93853,7 +93847,6 @@
         "description": "Software MIDI synthesizer evolved from the AOSP 'platform_external_sonivox' project to use it outside of Android. Uses embedded samples allowing also SF2 and DLS files. Plays MID, XMF, and RMI files.",
         "homepage": "https://github.com/EmbeddedSynth/sonivox",
         "license": "Apache-2.0",
-        "supports": "!x86",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -93865,10 +93858,9 @@
           },
           "zlib"
         ],
-        "version": "4.0.0"
+        "version": "4.0.1"
       },
       "files": [
-        "option-install-dependencies.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -101322,7 +101314,6 @@
       "name": "vanillapdf",
       "manifest": {
         "name": "vanillapdf",
-        "port-version": 1,
         "description": "Vanilla.PDF is a cross-platform SDK for creating and modifying PDF documents.",
         "homepage": "https://github.com/vanillapdf/vanillapdf",
         "documentation": "https://vanillapdf.github.io/vanillapdf",
@@ -101343,7 +101334,7 @@
           },
           "zlib"
         ],
-        "version": "2.1.0"
+        "version": "2.2.1"
       },
       "files": [
         "disable-autosubscribe.diff",
@@ -102119,7 +102110,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.4.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -103359,6 +103350,7 @@
       "name": "vulkan-headers",
       "manifest": {
         "name": "vulkan-headers",
+        "port-version": 1,
         "description": "Vulkan header files and API registry",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Headers",
         "license": "Apache-2.0 OR MIT",
@@ -103376,6 +103368,7 @@
         "version": "1.4.335.0"
       },
       "files": [
+        "fix-vulkan-video-module-name.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
