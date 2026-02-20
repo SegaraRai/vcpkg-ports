@@ -1,5 +1,5 @@
 {
-  "version": "ce35b1a53aac26d7fcdb8ee1ef7a8e4eea02d27b",
+  "version": "dd930e314f529c86d2703a60d5ea7dd6573d9e5a",
   "ports": [
     {
       "name": "3fd",
@@ -6837,7 +6837,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -71437,7 +71437,7 @@
             "host": true
           }
         ],
-        "version": "0.20.0"
+        "version": "0.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -76789,7 +76789,7 @@
             "host": true
           }
         ],
-        "version": "0.7.3"
+        "version": "0.7.5"
       },
       "files": [
         "portfile.cmake",
@@ -92464,7 +92464,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.2.4"
+        "version": "4.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -92643,7 +92643,7 @@
         "description": "Fastest similarity-measures and distance functions on the Wild West – vectors, strings, short molecules, and even DNA sequences. All with a pinch of SIMD for both x86 and ARM.",
         "homepage": "https://github.com/ashvardanian/SimSIMD",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !(arm64 & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -92654,11 +92654,13 @@
             "host": true
           }
         ],
-        "version": "6.0.0"
+        "version": "6.5.13"
       },
       "files": [
         "export-target.patch",
+        "force-c17-on-msvc.patch",
         "portfile.cmake",
+        "support-msvc.patch",
         "vcpkg.json"
       ]
     },
@@ -106762,7 +106764,7 @@
             "host": true
           }
         ],
-        "version": "4.15.8"
+        "version": "4.16.0"
       },
       "files": [
         "fix-install-path.patch",
