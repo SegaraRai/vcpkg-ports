@@ -1,5 +1,5 @@
 {
-  "version": "05442024c3fda64320bd25d2251cc9807b84fb6f",
+  "version": "860d81b2fcf6bf91679cc1a370a80d57cbe63e55",
   "ports": [
     {
       "name": "3fd",
@@ -2948,7 +2948,7 @@
             "host": true
           }
         ],
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -22591,7 +22591,7 @@
             ]
           }
         },
-        "version": "0.32.0"
+        "version": "0.33.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -29080,7 +29080,7 @@
         "name": "ethindp-prism",
         "description": "The Platform-agnostic Reader Interface for Speech and Messages",
         "license": "MPL-2.0",
-        "supports": "!uwp & !(static & staticcrt)",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -29110,7 +29110,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -41859,6 +41859,55 @@
       ]
     },
     {
+      "name": "huira",
+      "manifest": {
+        "name": "huira",
+        "description": "A ray tracing library for space engineering and planetary science.",
+        "homepage": "https://github.com/YOUR_ORG/huira",
+        "license": "MIT",
+        "supports": "!android & !uwp & !xbox",
+        "dependencies": [
+          "assimp",
+          "cfitsio",
+          "cspice",
+          "glm",
+          "libjpeg-turbo",
+          "libpng",
+          "tbb",
+          {
+            "name": "tiff",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
+            "description": "Build huira command line tools",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              },
+              "indicators"
+            ]
+          }
+        },
+        "version": "0.8.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "hungarian",
       "manifest": {
         "name": "hungarian",
@@ -43180,12 +43229,16 @@
       "name": "intelrdfpmathlib",
       "manifest": {
         "name": "intelrdfpmathlib",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Intel(R) Decimal Floating-Point Math Library",
         "supports": "!(arm & windows)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
             "host": true
           }
         ],
@@ -43193,6 +43246,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-types.patch",
         "missing-includes.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -51289,6 +51343,7 @@
         "license": "MIT",
         "dependencies": [
           "asio",
+          "nlohmann-json",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -51298,7 +51353,7 @@
             "host": true
           }
         ],
-        "version": "1.1.2.0"
+        "version": "1.2.1.2"
       },
       "files": [
         "fix-dependencies.patch",
@@ -59857,7 +59912,7 @@
             "description": "Build LIEF with VDEX module"
           }
         },
-        "version-semver": "0.17.3"
+        "version-semver": "0.17.4"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -61135,7 +61190,7 @@
             "host": true
           }
         ],
-        "version": "2.4.4"
+        "version": "2.4.11"
       },
       "files": [
         "portfile.cmake",
@@ -61652,7 +61707,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.708"
+        "version": "0.709"
       },
       "files": [
         "cmake-config-export.patch",
@@ -71485,7 +71540,7 @@
             ]
           }
         },
-        "version": "1.25.0"
+        "version": "1.25.1"
       },
       "files": [
         "devendor-fmt.diff",
@@ -73588,7 +73643,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.4"
+        "version": "3.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -75524,7 +75579,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.7.0"
+        "version-semver": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -76222,7 +76277,7 @@
             "host": true
           }
         ],
-        "version": "1.3.15"
+        "version": "1.3.16"
       },
       "files": [
         "fix-ODR-libuuid-linux.patch",
@@ -76790,7 +76845,7 @@
             "host": true
           }
         ],
-        "version": "0.7.5"
+        "version": "0.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -84616,7 +84671,7 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84674,7 +84729,8 @@
                   "qml"
                 ],
                 "platform": "linux"
-              }
+              },
+              "signalsmith-stretch"
             ]
           },
           "gstreamer": {
@@ -84718,7 +84774,7 @@
       },
       "files": [
         "ae41d3e-ffmpeg8.diff",
-        "ffmpeg-compile-def.patch",
+        "ffmpeg-compile-def-and-devendor-signalsmith-stretch.patch",
         "ffmpeg.patch",
         "port.data.cmake",
         "portfile.cmake",
@@ -90858,7 +90914,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.0"
+        "version": "3.4.2"
       },
       "files": [
         "fix-freebsd.patch",
@@ -92465,7 +92521,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.3.0"
+        "version": "4.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -92673,7 +92729,7 @@
         "homepage": "https://github.com/imakris/sintra",
         "license": "BSD-2-Clause",
         "supports": "!android",
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -92986,6 +93042,49 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "slang",
+      "manifest": {
+        "name": "slang",
+        "description": "SystemVerilog compiler and language services",
+        "homepage": "https://github.com/MikePopoloski/slang",
+        "license": "MIT",
+        "supports": "!arm32 & !(windows & !x64)",
+        "dependencies": [
+          "boost-unordered",
+          "expected-lite",
+          "fmt",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "mimalloc": {
+            "description": "Use the mimalloc allocator",
+            "dependencies": [
+              "mimalloc"
+            ],
+            "supports": "!(windows & !static)"
+          },
+          "tools": {
+            "description": "Build the slang command-line tool"
+          }
+        },
+        "version": "10.0"
+      },
+      "files": [
+        "fix-get-target-property.patch",
+        "portfile.cmake",
+        "usage",
+        "use-expected-lite.patch",
         "vcpkg.json"
       ]
     },
@@ -97156,7 +97255,7 @@
           },
           "zlib"
         ],
-        "version": "2.1.1"
+        "version": "2.2"
       },
       "files": [
         "portfile.cmake",
@@ -101180,6 +101279,12 @@
               "libdeflate"
             ]
           },
+          "simdutf": {
+            "description": "Enable simdutf support",
+            "dependencies": [
+              "simdutf"
+            ]
+          },
           "ssl": {
             "description": "Enable SSL support",
             "dependencies": [
@@ -101198,7 +101303,7 @@
             ]
           }
         },
-        "version-semver": "20.74.0"
+        "version-semver": "20.75.0"
       },
       "files": [
         "portfile.cmake",
@@ -101271,6 +101376,7 @@
       "manifest": {
         "name": "valijson",
         "description": "Header-only C++ library for JSON Schema validation",
+        "homepage": "https://github.com/tristanpenman/valijson",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -101281,7 +101387,7 @@
             "host": true
           }
         ],
-        "version": "1.0.6"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -102132,7 +102238,6 @@
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
-          "hedley",
           "mio",
           "string-view-lite",
           {
@@ -102144,7 +102249,7 @@
             "host": true
           }
         ],
-        "version": "2.4.2"
+        "version": "2.5.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -105060,7 +105165,7 @@
             ]
           }
         },
-        "version": "4.12.2"
+        "version": "4.12.3"
       },
       "files": [
         "0005-XML_file_path.patch",
