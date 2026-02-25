@@ -1,5 +1,5 @@
 {
-  "version": "860d81b2fcf6bf91679cc1a370a80d57cbe63e55",
+  "version": "26283ac5e8a068561a718ce18b169bfad84c7dab",
   "ports": [
     {
       "name": "3fd",
@@ -20460,7 +20460,7 @@
             ]
           }
         },
-        "version": "1.0.3"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -27974,7 +27974,7 @@
             "host": true
           }
         ],
-        "version": "0.14.4"
+        "version": "0.14.5"
       },
       "files": [
         "fix-install.patch",
@@ -43923,7 +43923,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "fix-install.patch",
@@ -65203,6 +65203,30 @@
       ]
     },
     {
+      "name": "microlog",
+      "manifest": {
+        "name": "microlog",
+        "description": "Extensible and configurable logging library for embedded and desktop applications with multi-output and logging topics",
+        "homepage": "https://github.com/an-dr/microlog",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "7.0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "microsoft-windows-devices-midi2",
       "manifest": {
         "name": "microsoft-windows-devices-midi2",
@@ -67933,7 +67957,7 @@
         "name": "nanoprintf",
         "description": "A tiny embeddable printf replacement written in C99",
         "homepage": "https://github.com/charlesnicholson/nanoprintf",
-        "version": "0.5.5"
+        "version": "0.5.6"
       },
       "files": [
         "portfile.cmake",
@@ -91389,11 +91413,16 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
         "supports": "osx | linux | (!arm & !uwp)",
         "dependencies": [
+          {
+            "name": "libunwind",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91479,6 +91508,7 @@
         "version": "0.13.0"
       },
       "files": [
+        "devendor-libunwind.patch",
         "fix-cmake4.patch",
         "fix-crashpad-wer.patch",
         "fix-usage-runtime.patch",
@@ -95859,7 +95889,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
