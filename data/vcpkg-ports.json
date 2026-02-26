@@ -1,5 +1,5 @@
 {
-  "version": "26283ac5e8a068561a718ce18b169bfad84c7dab",
+  "version": "cf28170220b9d1891c2c15877f5dd8959b61b710",
   "ports": [
     {
       "name": "3fd",
@@ -449,7 +449,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.4.2"
+        "version": "3.4.3"
       },
       "files": [
         "no-cpm.patch",
@@ -19604,6 +19604,7 @@
       "name": "catch2",
       "manifest": {
         "name": "catch2",
+        "port-version": 1,
         "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD.",
         "homepage": "https://github.com/catchorg/Catch2",
         "license": "BSL-1.0",
@@ -25191,7 +25192,7 @@
             "host": true
           }
         ],
-        "version": "1.13"
+        "version": "1.14"
       },
       "files": [
         "fix-install-header-and-force-static-compilation.patch",
@@ -35385,7 +35386,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.86.3"
+        "version": "2.86.4"
       },
       "files": [
         "libintl.patch",
@@ -48278,7 +48279,7 @@
         "description": "lib3mf is an implementation of the 3D Manufacturing Format file standard",
         "homepage": "https://github.com/3MFConsortium/lib3mf",
         "license": "BSD-2-Clause",
-        "supports": "(windows & (x86 | x64) & !static & !staticcrt) | (linux & x64) | (osx & (x64 | arm64))",
+        "supports": "(windows & (x86 | x64)) | (linux & x64) | (osx & (x64 | arm64))",
         "dependencies": [
           "cpp-base64",
           "fast-float",
@@ -48293,10 +48294,11 @@
           },
           "zlib"
         ],
-        "version": "2.4.1"
+        "version": "2.5.0"
       },
       "files": [
-        "lib3mf_vcpkg.patch",
+        "fix-dependency-resolution-required.patch",
+        "fix-lib3mf-config-root.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -52915,6 +52917,7 @@
       "name": "liblzma",
       "manifest": {
         "name": "liblzma",
+        "port-version": 1,
         "description": "Compression library with an API similar to that of zlib.",
         "homepage": "https://tukaani.org/xz/",
         "license": null,
@@ -54249,7 +54252,7 @@
           },
           "zlib"
         ],
-        "version": "0.7.13"
+        "version": "0.8.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -60416,10 +60419,9 @@
             "host": true
           }
         ],
-        "version": "9.2.1"
+        "version": "9.3.1"
       },
       "files": [
-        "fix-usage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -64487,7 +64489,7 @@
             ]
           }
         },
-        "version": "2.1.2"
+        "version": "2.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -93076,49 +93078,6 @@
       ]
     },
     {
-      "name": "slang",
-      "manifest": {
-        "name": "slang",
-        "description": "SystemVerilog compiler and language services",
-        "homepage": "https://github.com/MikePopoloski/slang",
-        "license": "MIT",
-        "supports": "!arm32 & !(windows & !x64)",
-        "dependencies": [
-          "boost-unordered",
-          "expected-lite",
-          "fmt",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "mimalloc": {
-            "description": "Use the mimalloc allocator",
-            "dependencies": [
-              "mimalloc"
-            ],
-            "supports": "!(windows & !static)"
-          },
-          "tools": {
-            "description": "Build the slang command-line tool"
-          }
-        },
-        "version": "10.0"
-      },
-      "files": [
-        "fix-get-target-property.patch",
-        "portfile.cmake",
-        "usage",
-        "use-expected-lite.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "sleef",
       "manifest": {
         "name": "sleef",
@@ -102279,12 +102238,11 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
         "001-fix-cmake.patch",
         "002-fix-include.patch",
-        "003-disable-coverage.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -104330,7 +104288,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.3719.77"
+        "version": "1.0.3800.47"
       },
       "files": [
         "portfile.cmake",
