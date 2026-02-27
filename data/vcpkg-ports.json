@@ -1,5 +1,5 @@
 {
-  "version": "cf28170220b9d1891c2c15877f5dd8959b61b710",
+  "version": "ffc071e0c08432c60c9b64f00334c0227667931b",
   "ports": [
     {
       "name": "3fd",
@@ -3581,11 +3581,10 @@
             "host": true
           }
         ],
-        "version": "2.90.1"
+        "version": "3.0.1"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
-        "0003-fix-minmax.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -5509,7 +5508,7 @@
         "homepage": "https://github.com/Ayush272002/dotenv",
         "license": "MIT",
         "supports": "!uwp",
-        "version-semver": "1.0.1"
+        "version-semver": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -23036,6 +23035,7 @@
       "name": "cppgraphqlgen",
       "manifest": {
         "name": "cppgraphqlgen",
+        "port-version": 1,
         "description": "C++ GraphQL schema service generator",
         "homepage": "https://github.com/microsoft/cppgraphqlgen",
         "license": "MIT",
@@ -23076,6 +23076,7 @@
         "version": "4.5.9"
       },
       "files": [
+        "356.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23703,7 +23704,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 9,
+        "port-version": 10,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -23738,6 +23739,7 @@
         "version-date": "2024-04-11"
       },
       "files": [
+        "crashpad-memset-errors-5758170.diff",
         "crashpadConfig.cmake.in",
         "fix-lib-name-conflict-1.patch",
         "fix-lib-name-conflict.patch",
@@ -41483,6 +41485,7 @@
       "name": "highway",
       "manifest": {
         "name": "highway",
+        "port-version": 1,
         "description": "Performance-portable, length-agnostic SIMD with runtime dispatch",
         "homepage": "https://github.com/google/highway",
         "license": "Apache-2.0",
@@ -41505,6 +41508,7 @@
         "version": "1.3.0"
       },
       "files": [
+        "2695.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -41863,8 +41867,9 @@
       "name": "huira",
       "manifest": {
         "name": "huira",
-        "description": "A ray tracing library for space engineering and planetary science.",
-        "homepage": "https://github.com/YOUR_ORG/huira",
+        "description": "A library for space rendering, LiDAR simulation, and solar radiation pressure modeling.",
+        "homepage": "https://github.com/huira-render/huira",
+        "documentation": "https://docs.huira.space",
         "license": "MIT",
         "supports": "!android & !uwp & !xbox",
         "dependencies": [
@@ -41900,7 +41905,7 @@
             ]
           }
         },
-        "version": "0.8.0"
+        "version": "0.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -48276,8 +48281,10 @@
       "name": "lib3mf",
       "manifest": {
         "name": "lib3mf",
+        "port-version": 1,
         "description": "lib3mf is an implementation of the 3D Manufacturing Format file standard",
         "homepage": "https://github.com/3MFConsortium/lib3mf",
+        "documentation": "https://lib3mf.readthedocs.io/",
         "license": "BSD-2-Clause",
         "supports": "(windows & (x86 | x64)) | (linux & x64) | (osx & (x64 | arm64))",
         "dependencies": [
@@ -48297,8 +48304,9 @@
         "version": "2.5.0"
       },
       "files": [
-        "fix-dependency-resolution-required.patch",
         "fix-lib3mf-config-root.patch",
+        "linkage.diff",
+        "pkgconfig.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -48406,10 +48414,9 @@
             "host": true
           }
         ],
-        "version": "1.1.5"
+        "version": "1.1.6"
       },
       "files": [
-        "fix_export_target.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -53174,9 +53181,10 @@
             "host": true
           }
         ],
-        "version": "1.12.2"
+        "version": "1.13.2"
       },
       "files": [
+        "fix-link-thread.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61192,7 +61200,7 @@
             "host": true
           }
         ],
-        "version": "2.4.11"
+        "version": "2.4.12"
       },
       "files": [
         "portfile.cmake",
@@ -75591,6 +75599,7 @@
       "name": "orefkov-simstr",
       "manifest": {
         "name": "orefkov-simstr",
+        "port-version": 1,
         "description": "Yet another C++ strings library implementation",
         "homepage": "https://github.com/orefkov/simstr",
         "license": "MIT",
@@ -76341,7 +76350,7 @@
             ]
           }
         },
-        "version": "1.5.3"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -98391,7 +98400,7 @@
             ]
           }
         },
-        "version": "2.30.0"
+        "version": "2.30.1"
       },
       "files": [
         "portfile.cmake",
