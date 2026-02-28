@@ -1,5 +1,5 @@
 {
-  "version": "ffc071e0c08432c60c9b64f00334c0227667931b",
+  "version": "62159a45e18f3a9ac0548628dcaf74fcb60c6ff9",
   "ports": [
     {
       "name": "3fd",
@@ -20626,7 +20626,7 @@
             "host": true
           }
         ],
-        "version": "3.7.0"
+        "version": "3.7.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -21111,7 +21111,7 @@
             "host": true
           }
         ],
-        "version": "2.6.1"
+        "version": "2.6.2"
       },
       "files": [
         "portfile.cmake",
@@ -26379,7 +26379,7 @@
             "platform": "linux & !static"
           }
         ],
-        "version-date": "2025-10-10"
+        "version-date": "2026-02-20"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -26407,7 +26407,7 @@
             "host": true
           }
         ],
-        "version": "1.618.2"
+        "version": "1.619.0"
       },
       "files": [
         "portfile.cmake",
@@ -26435,7 +26435,7 @@
             "host": true
           }
         ],
-        "version": "1.618.5"
+        "version": "1.619.0"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -47664,7 +47664,7 @@
             "description": "Build documentation"
           }
         },
-        "version": "0.1.2"
+        "version": "0.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -54691,6 +54691,33 @@
       ]
     },
     {
+      "name": "libpg-query",
+      "manifest": {
+        "name": "libpg-query",
+        "description": "C library for accessing the PostgreSQL parser outside of the server",
+        "homepage": "https://github.com/pganalyze/libpg_query",
+        "license": "BSD-3-Clause",
+        "supports": "!android",
+        "dependencies": [
+          "protobuf-c",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
+          "xxhash"
+        ],
+        "version": "17-6.2.1"
+      },
+      "files": [
+        "0001-use-system-deps.patch",
+        "configure",
+        "portfile.cmake",
+        "unofficial-libpg-query-config.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libphonenumber",
       "manifest": {
         "name": "libphonenumber",
@@ -54714,7 +54741,7 @@
             "host": true
           }
         ],
-        "version": "9.0.24"
+        "version": "9.0.25"
       },
       "files": [
         "disable-werror.patch",
@@ -66707,7 +66734,7 @@
             "supports": "windows & x64 & !uwp & !xbox & !staticcrt"
           }
         },
-        "version": "2510.1.6224"
+        "version": "2510.2.6247"
       },
       "files": [
         "gdk-config.cmake.in",
@@ -67767,7 +67794,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.11.0"
+        "version-semver": "2.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -69082,7 +69109,7 @@
             ]
           }
         },
-        "version": "1.20.0"
+        "version": "1.21.0"
       },
       "files": [
         "portfile.cmake",
@@ -76880,7 +76907,7 @@
             "host": true
           }
         ],
-        "version": "0.7.6"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -87582,7 +87609,7 @@
             "host": true
           }
         ],
-        "version": "0.29.2"
+        "version": "0.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -91424,7 +91451,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -91516,7 +91542,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.0"
+        "version": "0.13.1"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -94475,6 +94501,7 @@
       "name": "spine-runtimes",
       "manifest": {
         "name": "spine-runtimes",
+        "port-version": 1,
         "description": "2D skeletal animation runtimes for Spine",
         "homepage": "https://github.com/EsotericSoftware/spine-runtimes",
         "license": null,
@@ -95588,10 +95615,34 @@
             "host": true
           }
         ],
-        "version-date": "2026-01-23"
+        "features": {
+          "asio": {
+            "description": "stdexec enable asio",
+            "dependencies": [
+              "boost-asio",
+              "boost-system"
+            ]
+          },
+          "taskflow": {
+            "description": "stdexec enable taskflow",
+            "dependencies": [
+              "taskflow"
+            ]
+          },
+          "tbb": {
+            "description": "stdexec enable tbb",
+            "dependencies": [
+              "tbb"
+            ]
+          }
+        },
+        "version-date": "2026-02-26"
       },
       "files": [
+        "fix-boost-asio-dependency.patch",
         "fix-clangd-helper-file-basedir.patch",
+        "fix-taskflow-dependency.patch",
+        "fix-tbb-dependency.patch",
         "fix-version.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -98759,6 +98810,20 @@
       ]
     },
     {
+      "name": "tinyformat",
+      "manifest": {
+        "name": "tinyformat",
+        "description": "A minimal type safe printf() replacement",
+        "homepage": "https://github.com/c42f/tinyformat",
+        "license": "BSL-1.0",
+        "version-semver": "2.3.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tinyfsm",
       "manifest": {
         "name": "tinyfsm",
@@ -99714,7 +99779,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.5"
+        "version-semver": "0.26.6"
       },
       "files": [
         "portfile.cmake",
