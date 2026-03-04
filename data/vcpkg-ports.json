@@ -1,5 +1,5 @@
 {
-  "version": "39a6cc0e44641977a7ccdfdb01a14eaf832aa330",
+  "version": "dfefa2e7adba66f69b909e4bbdda23c7d1d1fda3",
   "ports": [
     {
       "name": "3fd",
@@ -19170,6 +19170,7 @@
           "gflags",
           "glog",
           "gtest",
+          "magic-enum",
           "tsl-sparse-map",
           {
             "name": "vcpkg-cmake",
@@ -19181,11 +19182,12 @@
           },
           "wangle"
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "fix-build.patch",
         "fix-glog.patch",
+        "fix-status-formmatable.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22591,7 +22593,7 @@
             ]
           }
         },
-        "version": "0.35.0"
+        "version": "0.36.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -29137,7 +29139,7 @@
             "host": true
           }
         ],
-        "version": "20.46.0"
+        "version": "20.46.2"
       },
       "files": [
         "portfile.cmake",
@@ -29247,7 +29249,6 @@
       "name": "exiv2",
       "manifest": {
         "name": "exiv2",
-        "port-version": 1,
         "description": "Image metadata library and tools",
         "homepage": "https://exiv2.org",
         "license": "GPL-2.0-or-later",
@@ -29306,7 +29307,7 @@
             ]
           }
         },
-        "version": "0.28.7"
+        "version": "0.28.8"
       },
       "files": [
         "dependencies.diff",
@@ -29553,7 +29554,7 @@
             ]
           }
         },
-        "version": "1.13.2"
+        "version": "1.14.0"
       },
       "files": [
         "msvc-template.diff",
@@ -30097,10 +30098,11 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "fix-deps.patch",
+        "fix-fmt-include.patch",
         "fix-test.patch",
         "folly-has-liburing.diff",
         "portfile.cmake",
@@ -31244,7 +31246,7 @@
           },
           "zstd"
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "fix-build.patch",
@@ -31256,6 +31258,7 @@
       "name": "fkyaml",
       "manifest": {
         "name": "fkyaml",
+        "port-version": 1,
         "description": "A C++ header-only YAML library",
         "homepage": "https://github.com/fktn-k/fkYAML",
         "license": "MIT",
@@ -31272,7 +31275,7 @@
         "version": "0.4.2"
       },
       "files": [
-        "fix-natvis-path.patch",
+        "fix-natvis-install.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32209,12 +32212,12 @@
             ]
           }
         },
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
-        "fix-absolute-dir.patch",
         "fix-deps.patch",
+        "fix-perf_scoped-target.patch",
         "fix-unistd-include.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -64660,6 +64663,7 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
+        "port-version": 1,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -64694,6 +64698,17 @@
               "vulkan-validationlayers"
             ]
           },
+          "materialx": {
+            "description": "Enables MaterialX support",
+            "dependencies": [
+              {
+                "name": "materialx",
+                "features": [
+                  "mdl-generator"
+                ]
+              }
+            ]
+          },
           "openimageio": {
             "description": "Build image plugin for various image formats using OpenImageIO",
             "dependencies": [
@@ -64711,6 +64726,7 @@
         "version": "2025.0.5"
       },
       "files": [
+        "fix_find_materialx.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67469,7 +67485,7 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "portfile.cmake",
@@ -73756,7 +73772,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.5"
+        "version": "3.4.6"
       },
       "files": [
         "portfile.cmake",
@@ -74146,7 +74162,6 @@
       "name": "openldap",
       "manifest": {
         "name": "openldap",
-        "port-version": 1,
         "description": "OpenLDAP Software is an open source implementation of the Lightweight Directory Access Protocol.",
         "homepage": "https://www.openldap.org/software/",
         "license": "OLDAP-2.8",
@@ -74169,7 +74184,7 @@
             "description": "Enable client tools"
           }
         },
-        "version": "2.6.10"
+        "version": "2.6.12"
       },
       "files": [
         "android.diff",
@@ -80061,6 +80076,7 @@
           "boost-regex",
           "boost-system",
           "boost-thread",
+          "c-ares",
           "fizz",
           "folly",
           "gflags",
@@ -80082,7 +80098,7 @@
           "zlib",
           "zstd"
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
         "fix-dependency.patch",
@@ -83457,7 +83473,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -89544,7 +89560,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.6.4"
+        "version": "1.7.1"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -102726,7 +102742,6 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
-        "port-version": 4,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -102753,13 +102768,10 @@
           },
           "zlib"
         ],
-        "version": "9.10.0"
+        "version": "9.11.1"
       },
       "files": [
-        "cmake_remove_bin_targets.patch",
         "fix-android-build.patch",
-        "fix-build-error-with-fmt11.patch",
-        "fix-external-libraries.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -104080,10 +104092,9 @@
             "host": true
           }
         ],
-        "version-string": "2025.05.19.00"
+        "version-string": "2026.02.23.00"
       },
       "files": [
-        "fix-config-cmake.patch",
         "fix_dependency.patch",
         "portfile.cmake",
         "usage",
@@ -107921,7 +107932,7 @@
             "host": true
           }
         ],
-        "version": "0.7.3"
+        "version": "0.8.1"
       },
       "files": [
         "portfile.cmake",
