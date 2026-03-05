@@ -1,5 +1,5 @@
 {
-  "version": "dfefa2e7adba66f69b909e4bbdda23c7d1d1fda3",
+  "version": "57987637aac17d62bac535bc839baca3754490e6",
   "ports": [
     {
       "name": "3fd",
@@ -182,21 +182,11 @@
             "host": true
           }
         ],
-        "features": {
-          "test-helpers": {
-            "description": "Build Abseil's test helpers",
-            "dependencies": [
-              "abseil",
-              "gtest"
-            ]
-          }
-        },
-        "version": "20250814.1"
+        "version": "20260107.1"
       },
       "files": [
-        "001-mingw-dll.patch",
-        "002-string-view.patch",
         "003-force-cxx-17.patch",
+        "fix-heterogeneous_lookup_testing-target.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3901,7 +3891,7 @@
             "host": true
           }
         ],
-        "version": "0.10.10"
+        "version": "0.10.11"
       },
       "files": [
         "portfile.cmake",
@@ -7749,7 +7739,7 @@
             ]
           }
         },
-        "version": "2.23.0"
+        "version": "2.23.1"
       },
       "files": [
         "portfile.cmake",
@@ -20377,7 +20367,7 @@
             "host": true
           }
         ],
-        "version": "2.4.2"
+        "version": "2.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -23474,9 +23464,10 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.4.0"
       },
       "files": [
+        "fix-linux.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -25901,7 +25892,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 2,
+        "port-version": 3,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -25920,7 +25911,7 @@
         "default-features": [
           {
             "name": "systemd",
-            "platform": "linux"
+            "platform": "linux & !arm"
           }
         ],
         "features": {
@@ -27356,7 +27347,7 @@
         "description": "Single-file audio decoding libraries for C/C++",
         "homepage": "https://github.com/mackron/dr_libs",
         "license": "Unlicense OR MIT-0",
-        "version-date": "2026-01-16"
+        "version-date": "2026-03-03"
       },
       "files": [
         "portfile.cmake",
@@ -38328,6 +38319,7 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
+        "port-version": 1,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -38384,6 +38376,7 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
+        "00017-add-missing-include-file.patch",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -57611,9 +57604,9 @@
       "name": "libu2f-server",
       "manifest": {
         "name": "libu2f-server",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Yubico Universal 2nd Factor (U2F) Server C Library",
-        "homepage": "https://developers.yubico.com/libu2f-server/",
+        "homepage": "https://github.com/Yubico/libu2f-server",
         "supports": "(x86 | x64) & windows",
         "dependencies": [
           "json-c",
@@ -65514,7 +65507,7 @@
         "description": "Audio playback and capture library written in C, in a single source file",
         "homepage": "https://github.com/mackron/miniaudio",
         "license": "Unlicense OR MIT-0",
-        "version": "0.11.24"
+        "version": "0.11.25"
       },
       "files": [
         "portfile.cmake",
@@ -76777,7 +76770,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 5,
+        "port-version": 6,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -76879,6 +76872,8 @@
       },
       "files": [
         "add-tools-option.patch",
+        "explicit_int_cast.patch",
+        "explicit_int_cast_2.patch",
         "fix-build.patch",
         "fix-configure.patch",
         "plugin.patch",
@@ -76983,7 +76978,7 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "version": "0.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -78082,7 +78077,7 @@
         "name": "plf-colony",
         "description": "An unordered C++ data container providing fast iteration/insertion/erasure while maintaining pointer/iterator validity to non-erased elements regardless of insertions/erasures.",
         "homepage": "https://plflib.org/colony.htm",
-        "version": "7.6.1"
+        "version": "7.6.10"
       },
       "files": [
         "portfile.cmake",
@@ -78121,7 +78116,7 @@
         "name": "plf-list",
         "description": "A drop-in replacement for std::list with 293% faster insertion, 57% faster erasure, 17% faster iteration and 77% faster sorting on average",
         "homepage": "https://www.plflib.org/",
-        "version": "2.7.24"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -81580,7 +81575,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -81738,7 +81733,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -83341,7 +83336,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -83383,7 +83378,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -83460,7 +83455,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -83473,7 +83468,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84140,10 +84134,9 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
-        "2d4915.diff",
         "GLIB2-static.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
@@ -84216,7 +84209,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84240,7 +84233,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84273,7 +84266,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84302,7 +84295,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84338,7 +84331,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84364,7 +84357,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84385,7 +84378,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84419,7 +84412,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84453,7 +84446,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84479,7 +84472,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84531,7 +84524,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -84580,7 +84573,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84695,7 +84688,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84735,7 +84728,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84773,7 +84766,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "fix_qt_version.patch",
@@ -84798,7 +84791,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -84810,7 +84803,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 3,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -84909,7 +84901,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "ae41d3e-ffmpeg8.diff",
@@ -84938,7 +84930,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85013,7 +85005,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "fix-build.patch",
@@ -85052,7 +85044,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -85100,7 +85092,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -85123,7 +85115,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85178,7 +85170,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85200,7 +85192,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85251,7 +85243,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85291,7 +85283,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85335,7 +85327,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85368,7 +85360,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85390,7 +85382,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85419,7 +85411,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85453,7 +85445,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85477,7 +85469,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85605,7 +85597,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -85635,7 +85627,7 @@
             ]
           }
         ],
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85678,7 +85670,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -85716,7 +85708,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85748,7 +85740,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -85994,7 +85986,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "allow-msvc-145.diff",
@@ -86039,7 +86031,7 @@
             ]
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -86083,7 +86075,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.10.0"
+        "version": "6.10.1"
       },
       "files": [
         "port.data.cmake",
@@ -92605,7 +92597,7 @@
             "host": true
           }
         ],
-        "version": "6.2.158"
+        "version": "6.2.159"
       },
       "files": [
         "SimdConfig.cmake",
@@ -105296,7 +105288,7 @@
             ]
           }
         },
-        "version": "4.12.3"
+        "version": "4.12.5"
       },
       "files": [
         "0005-XML_file_path.patch",
@@ -105663,12 +105655,16 @@
       "name": "xapian",
       "manifest": {
         "name": "xapian",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Xapian is an Open Source Search Engine Library, released under the GPL v2+. It's written in C++, with bindings to allow use from Perl, Python 2, Python 3, PHP 5, PHP 7, Java, Tcl, C#, Ruby, Lua, Erlang, Node.js and R (so far!)",
         "homepage": "https://xapian.org/",
         "license": "GPL-2.0-or-later",
         "supports": "(!arm | arm64) & !uwp & !xbox",
         "dependencies": [
+          {
+            "name": "libuuid",
+            "platform": "!windows & !osx"
+          },
           {
             "name": "vcpkg-cmake-config",
             "host": true
