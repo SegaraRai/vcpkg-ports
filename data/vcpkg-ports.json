@@ -1,5 +1,5 @@
 {
-  "version": "40c0d758e1cc99a505b039a9a7e792154119c927",
+  "version": "1e199d32ad53aab1defda61ce41c380302e3f95c",
   "ports": [
     {
       "name": "3fd",
@@ -6640,7 +6640,7 @@
           },
           "zlib"
         ],
-        "version": "4.4.0"
+        "version": "4.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -43976,7 +43976,7 @@
             "host": true
           }
         ],
-        "version": "4.2.8"
+        "version": "4.2.9"
       },
       "files": [
         "check-for-atomics-support.patch",
@@ -53252,7 +53252,7 @@
             "host": true
           }
         ],
-        "version": "1.13.2"
+        "version": "1.13.3"
       },
       "files": [
         "fix-link-thread.patch",
@@ -68273,7 +68273,7 @@
       "name": "ncurses",
       "manifest": {
         "name": "ncurses",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Free software emulation of curses in System V Release 4.0, and more.",
           "This port installs a wide character configuration (ncursesw)."
@@ -76066,34 +76066,27 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 5,
-        "description": "osgEarth - 3D Maps for OpenSceneGraph / C++14",
-        "homepage": "https://github.com/gwaldron/osgearth",
-        "license": "LGPL-3.0-or-later",
-        "supports": "!(arm32 | x86 | wasm32 | xbox) & !(windows & arm64)",
+        "description": "osgEarth - 3D Maps for OpenSceneGraph",
+        "homepage": "https://github.com/pelicanmapping/osgearth",
+        "license": "MIT",
+        "supports": "!(arm | x86 | wasm32 | android)",
         "dependencies": [
+          {
+            "name": "aws-sdk-cpp",
+            "features": [
+              "s3"
+            ]
+          },
           "blend2d",
           "draco",
+          "gdal",
           "geos",
-          "glew",
-          {
-            "name": "imgui",
-            "features": [
-              "docking-experimental",
-              "opengl3-binding"
-            ]
-          },
           "libwebp",
+          "meshoptimizer",
           "opengl",
-          {
-            "name": "osg",
-            "default-features": false,
-            "features": [
-              "plugins"
-            ]
-          },
+          "osg",
           "protobuf",
-          "pthreads",
+          "spdlog",
           "sqlite3",
           {
             "name": "vcpkg-cmake",
@@ -76112,11 +76105,9 @@
             "description": "Build command-line tools"
           }
         },
-        "version": "3.7.2"
+        "version": "3.8"
       },
       "files": [
-        "devendor-imgui.diff",
-        "namespace-gdal.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92893,7 +92884,7 @@
             "host": true
           }
         ],
-        "version": "6.5.13"
+        "version": "6.5.15"
       },
       "files": [
         "export-target.patch",
