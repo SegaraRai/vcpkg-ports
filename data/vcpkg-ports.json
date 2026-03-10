@@ -1,5 +1,5 @@
 {
-  "version": "1e199d32ad53aab1defda61ce41c380302e3f95c",
+  "version": "cdfdcd51b31c534c5ba991ee586c176c46385cd6",
   "ports": [
     {
       "name": "3fd",
@@ -3755,7 +3755,7 @@
             "host": true
           }
         ],
-        "version": "0.10.0"
+        "version": "0.10.1"
       },
       "files": [
         "portfile.cmake",
@@ -3863,7 +3863,7 @@
             "host": true
           }
         ],
-        "version": "0.5.9"
+        "version": "0.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -4076,7 +4076,7 @@
             "host": true
           }
         ],
-        "version": "0.37.3"
+        "version": "0.37.4"
       },
       "files": [
         "portfile.cmake",
@@ -22592,7 +22592,7 @@
             ]
           }
         },
-        "version": "0.36.0"
+        "version": "0.37.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23473,10 +23473,9 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.6.0"
       },
       "files": [
-        "fix-linux.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -26408,7 +26407,7 @@
             "host": true
           }
         ],
-        "version": "1.619.0"
+        "version": "1.619.1"
       },
       "files": [
         "portfile.cmake",
@@ -26436,7 +26435,7 @@
             "host": true
           }
         ],
-        "version": "1.619.0"
+        "version": "1.619.1"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -29553,7 +29552,7 @@
             ]
           }
         },
-        "version": "1.14.0"
+        "version": "1.14.1"
       },
       "files": [
         "msvc-template.diff",
@@ -32687,7 +32686,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.22.0"
+        "version": "3.23.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -39498,13 +39497,11 @@
       "name": "gtk",
       "manifest": {
         "name": "gtk",
-        "port-version": 4,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": "LGPL-2.0-only",
         "supports": "!android & !xbox & !(arm64 & windows)",
         "dependencies": [
-          "atk",
           {
             "name": "cairo",
             "default-features": false,
@@ -39519,6 +39516,10 @@
               "x11"
             ],
             "platform": "linux"
+          },
+          {
+            "name": "directx-headers",
+            "platform": "windows"
           },
           "gdk-pixbuf",
           {
@@ -39558,13 +39559,6 @@
             "description": "Build with introspection",
             "dependencies": [
               {
-                "name": "atk",
-                "default-features": false,
-                "features": [
-                  "introspection"
-                ]
-              },
-              {
                 "name": "gdk-pixbuf",
                 "default-features": false,
                 "features": [
@@ -39587,14 +39581,13 @@
                 ]
               }
             ],
-            "supports": "!static"
+            "supports": "!static & !windows"
           }
         },
-        "version": "4.16.3"
+        "version": "4.22.0"
       },
       "files": [
         "0001-build.patch",
-        "fix_vulkan_enabled.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -39710,6 +39703,7 @@
       "name": "gtkmm",
       "manifest": {
         "name": "gtkmm",
+        "port-version": 1,
         "description": "gtkmm is the official C++ interface for the popular GUI library GTK+.",
         "homepage": "https://www.gtkmm.org/",
         "license": "LGPL-3.0-or-later",
@@ -39729,6 +39723,7 @@
         "version": "4.14.0"
       },
       "files": [
+        "gtk.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -40912,7 +40907,7 @@
             "supports": "!static"
           }
         },
-        "version": "12.3.2"
+        "version": "13.0.1"
       },
       "files": [
         "fix-win32-build.patch",
@@ -49033,7 +49028,7 @@
             "host": true
           }
         ],
-        "version": "2.2.2"
+        "version": "2.2.3"
       },
       "files": [
         "fix-include-directory.patch",
@@ -49996,7 +49991,6 @@
       "name": "libdjinterop",
       "manifest": {
         "name": "libdjinterop",
-        "port-version": 1,
         "description": "C++ library for access to DJ record libraries. Currently only supports Denon Engine Prime databases",
         "homepage": "https://github.com/xsco/libdjinterop",
         "license": "LGPL-3.0-or-later",
@@ -50015,7 +50009,7 @@
           },
           "zlib"
         ],
-        "version": "0.27.0"
+        "version": "0.27.1"
       },
       "files": [
         "devendor_libs.diff",
@@ -53489,7 +53483,7 @@
             "host": true
           }
         ],
-        "version": "3.1.11"
+        "version": "3.1.12"
       },
       "files": [
         "cflags.diff",
@@ -58121,7 +58115,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.52.0"
+        "version-semver": "1.52.1"
       },
       "files": [
         "fix-build-type.patch",
@@ -58196,7 +58190,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.20.0"
+        "version": "2.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -59210,7 +59204,7 @@
             ]
           }
         },
-        "version": "2.15.1"
+        "version": "2.15.2"
       },
       "files": [
         "cxx-for-icu.diff",
@@ -60021,7 +60015,7 @@
             "description": "Build LIEF with VDEX module"
           }
         },
-        "version-semver": "0.17.4"
+        "version-semver": "0.17.5"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -61815,7 +61809,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.710"
+        "version": "0.711"
       },
       "files": [
         "cmake-config-export.patch",
@@ -66192,7 +66186,7 @@
             ]
           }
         },
-        "version": "2.2.2"
+        "version": "2.2.3"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -75756,7 +75750,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.7.2"
+        "version-semver": "1.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -77015,7 +77009,7 @@
             "host": true
           }
         ],
-        "version": "0.8.2"
+        "version": "0.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -80619,7 +80613,6 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 9,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -80683,7 +80676,11 @@
                 "name": "expat",
                 "default-features": false
               },
-              "libb2",
+              {
+                "name": "libb2",
+                "default-features": false,
+                "platform": "!windows"
+              },
               {
                 "name": "libffi",
                 "default-features": false
@@ -80716,7 +80713,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.12.9"
+        "version": "3.12.13"
       },
       "files": [
         "0001-only-build-required-projects.patch",
@@ -86352,6 +86349,7 @@
         "name": "quill",
         "description": "Asynchronous Low Latency C++ Logging Library",
         "homepage": "https://github.com/odygrd/quill/",
+        "documentation": "https://quillcpp.readthedocs.io/en/latest/",
         "license": "MIT",
         "dependencies": [
           {
@@ -86363,7 +86361,7 @@
             "host": true
           }
         ],
-        "version": "11.0.2"
+        "version": "11.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -91648,7 +91646,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.1"
+        "version": "0.13.2"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -92723,7 +92721,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "8.0.0"
+        "version-semver": "8.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -92884,7 +92882,7 @@
             "host": true
           }
         ],
-        "version": "6.5.15"
+        "version": "6.5.16"
       },
       "files": [
         "export-target.patch",
@@ -95197,7 +95195,7 @@
             ]
           }
         },
-        "version": "3.51.2"
+        "version": "3.52.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -106565,7 +106563,7 @@
             "host": true
           }
         ],
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "files": [
         "fix-fixup-cmake.patch",
@@ -107963,7 +107961,7 @@
             "host": true
           }
         ],
-        "version": "0.8.2"
+        "version": "0.8.3"
       },
       "files": [
         "portfile.cmake",
