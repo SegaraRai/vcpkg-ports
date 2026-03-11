@@ -1,5 +1,5 @@
 {
-  "version": "cdfdcd51b31c534c5ba991ee586c176c46385cd6",
+  "version": "58950f88544e4637524dbd6a01d0317cf4cb77fc",
   "ports": [
     {
       "name": "3fd",
@@ -19697,7 +19697,6 @@
       "name": "ccfits",
       "manifest": {
         "name": "ccfits",
-        "port-version": 13,
         "description": "CCfits is an object oriented interface to the cfitsio library. It is designed to make the capabilities of cfitsio available to programmers working in C++.",
         "homepage": "https://heasarc.gsfc.nasa.gov/fitsio/CCfits/",
         "license": "NASA-1.3",
@@ -19708,11 +19707,11 @@
             "host": true
           }
         ],
-        "version": "2.5"
+        "version": "2.7"
       },
       "files": [
+        "dependencies.diff",
         "dll_exports.patch",
-        "fix-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20027,7 +20026,6 @@
       "name": "cfitsio",
       "manifest": {
         "name": "cfitsio",
-        "port-version": 6,
         "description": "Library of C and Fortran subroutines for reading and writing data files in FITS (Flexible Image Transport System) data format",
         "homepage": "https://heasarc.gsfc.nasa.gov/fitsio/",
         "dependencies": [
@@ -20042,8 +20040,14 @@
           "zlib"
         ],
         "features": {
+          "bzip2": {
+            "description": "Bzip2 compression",
+            "dependencies": [
+              "bzip2"
+            ]
+          },
           "curl": {
-            "description": "UseCurl",
+            "description": "Network file access",
             "dependencies": [
               "curl"
             ]
@@ -20056,17 +20060,15 @@
                 "platform": "windows"
               }
             ]
+          },
+          "tools": {
+            "description": "Build utility programs"
           }
         },
-        "version": "3.49"
+        "version": "4.6.3"
       },
       "files": [
-        "0001-fix-dependencies.patch",
-        "0002-export-cmake-targets.patch",
-        "0003-add-Wno-error-implicit-funciton-declaration-to-cmake.patch",
-        "0004-pkg-config.patch",
-        "0005-fix-link2019-error.patch",
-        "0006-fix-uwp.patch",
+        "dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21425,7 +21427,7 @@
       "name": "cnats",
       "manifest": {
         "name": "cnats",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A C client for the NATS messaging system",
         "homepage": "https://github.com/nats-io/nats.c",
         "license": "Apache-2.0",
@@ -39703,7 +39705,6 @@
       "name": "gtkmm",
       "manifest": {
         "name": "gtkmm",
-        "port-version": 1,
         "description": "gtkmm is the official C++ interface for the popular GUI library GTK+.",
         "homepage": "https://www.gtkmm.org/",
         "license": "LGPL-3.0-or-later",
@@ -39720,10 +39721,9 @@
             "host": true
           }
         ],
-        "version": "4.14.0"
+        "version": "4.20.0"
       },
       "files": [
-        "gtk.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41158,17 +41158,21 @@
       "name": "healpix",
       "manifest": {
         "name": "healpix",
-        "port-version": 9,
-        "description": "HEALPix is an acronym for Hierarchical Equal Area isoLatitude Pixelation of a sphere.",
-        "homepage": "http://healpix.sourceforge.net/",
-        "supports": "linux",
+        "description": "C++ library for Data Analysis, Simulations and Visualization on the Sphere",
+        "homepage": "https://healpix.sourceforge.io/",
+        "license": "GPL-2.0-or-later",
+        "supports": "!windows | mingw",
         "dependencies": [
-          "cfitsio"
+          "cfitsio",
+          "libsharp",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
-        "version": "1.12.10"
+        "version": "3.83"
       },
       "files": [
-        "fix-dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41936,6 +41940,7 @@
       "name": "huira",
       "manifest": {
         "name": "huira",
+        "port-version": 1,
         "description": "A library for space rendering, LiDAR simulation, and solar radiation pressure modeling.",
         "homepage": "https://github.com/huira-render/huira",
         "documentation": "https://docs.huira.space",
@@ -41977,6 +41982,7 @@
         "version": "0.8.2"
       },
       "files": [
+        "cfitsio.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -48439,12 +48445,12 @@
       "name": "libadwaita",
       "manifest": {
         "name": "libadwaita",
-        "port-version": 3,
         "description": "Building blocks for modern GNOME applications",
         "homepage": "https://gnome.pages.gitlab.gnome.org/libadwaita",
         "license": "LGPL-2.1-or-later",
         "supports": "!xbox",
         "dependencies": [
+          "appstream",
           {
             "name": "glib",
             "host": true
@@ -48459,7 +48465,7 @@
             "host": true
           }
         ],
-        "version": "1.3.2"
+        "version": "1.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -56193,6 +56199,27 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libsharp",
+      "manifest": {
+        "name": "libsharp",
+        "description": "Library for fast spherical harmonic transforms, see http://arxiv.org/abs/1303.4945",
+        "homepage": "https://healpix.sourceforge.io/",
+        "license": null,
+        "supports": "!windows | mingw",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -67336,7 +67363,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "disable-werror.patch",
@@ -97452,9 +97479,9 @@
       "name": "taocpp-json",
       "manifest": {
         "name": "taocpp-json",
-        "port-version": 4,
         "description": "C++ header-only JSON library",
         "dependencies": [
+          "pegtl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -97464,7 +97491,7 @@
             "host": true
           }
         ],
-        "version-date": "2020-09-14"
+        "version-semver": "1.0.0-beta.14"
       },
       "files": [
         "portfile.cmake",
@@ -101062,7 +101089,7 @@
             "supports": "!ios"
           }
         },
-        "version": "25.11"
+        "version": "26.3"
       },
       "files": [
         "003-fix-dep.patch",
