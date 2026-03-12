@@ -1,5 +1,5 @@
 {
-  "version": "58950f88544e4637524dbd6a01d0317cf4cb77fc",
+  "version": "dd306f32e07d87fdb16837af64f33b6b415c770a",
   "ports": [
     {
       "name": "3fd",
@@ -5475,7 +5475,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.760"
+        "version": "1.11.766"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -22594,7 +22594,7 @@
             ]
           }
         },
-        "version": "0.37.0"
+        "version": "0.37.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -29729,7 +29729,7 @@
             "host": true
           }
         ],
-        "version": "8.2.3"
+        "version": "8.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -34020,11 +34020,10 @@
           },
           "zlib"
         ],
-        "version": "3.0.24"
+        "version": "3.2.2"
       },
       "files": [
         "copyright.diff",
-        "include-no-namespace.diff",
         "no-absolute-paths.diff",
         "portfile.cmake",
         "prefer-config.diff",
@@ -48738,7 +48737,7 @@
             ]
           }
         },
-        "version": "3.8.5"
+        "version": "3.8.6"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -50172,6 +50171,35 @@
         "include-dir.diff",
         "msvc-runtime.diff",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libdxfrw",
+      "manifest": {
+        "name": "libdxfrw",
+        "description": "libdxfrw is a free C++ library to read and write DXF files in both formats, ascii and binary form. It also has rudimentary capabilities to read DWG files.",
+        "license": "GPL-2.0-only",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "dwg2dxf": {
+            "description": "Build the dwg2dxf tool to convert DWG files to DXF format"
+          }
+        },
+        "version-date": "2025-09-25"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-werror.patch",
         "vcpkg.json"
       ]
     },
@@ -57882,8 +57910,7 @@
       "manifest": {
         "name": "libupnp",
         "description": "libupnp: Build UPnP-compliant control points, devices, and bridges on several operating systems.",
-        "homepage": "https://github.com/pupnp/pupnp/",
-        "documentation": "https://github.com/pupnp/pupnp/",
+        "homepage": "https://pupnp.github.io/pupnp/",
         "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
@@ -57914,7 +57941,7 @@
             "description": "Enable integrated webserver"
           }
         },
-        "version": "1.14.25"
+        "version": "1.18.2"
       },
       "files": [
         "fix-pthreads4w-targets.patch",
@@ -77036,7 +77063,7 @@
             "host": true
           }
         ],
-        "version": "0.8.3"
+        "version": "0.8.5"
       },
       "files": [
         "portfile.cmake",
@@ -88433,7 +88460,7 @@
             "host": true
           }
         ],
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
