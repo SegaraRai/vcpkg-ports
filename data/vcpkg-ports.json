@@ -1,5 +1,5 @@
 {
-  "version": "dd306f32e07d87fdb16837af64f33b6b415c770a",
+  "version": "efa4634bd526b87559684607d2cbbdeeec0f07d8",
   "ports": [
     {
       "name": "3fd",
@@ -26090,6 +26090,32 @@
         "pkgconfig-lib-order.diff",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ddtdanilo-lmdb-wrapper",
+      "manifest": {
+        "name": "ddtdanilo-lmdb-wrapper",
+        "description": "MISRA C compliant wrapper for LMDB (Lightning Memory-Mapped Database)",
+        "homepage": "https://github.com/ddtdanilo/LMDB-wrapper-MISRA-C",
+        "license": "MIT",
+        "supports": "!uwp & !x86",
+        "dependencies": [
+          "lmdb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
