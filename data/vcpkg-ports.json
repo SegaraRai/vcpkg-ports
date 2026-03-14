@@ -1,5 +1,5 @@
 {
-  "version": "efa4634bd526b87559684607d2cbbdeeec0f07d8",
+  "version": "47205630845bd49eaf16cdfb757cf9dfba144c52",
   "ports": [
     {
       "name": "3fd",
@@ -1777,34 +1777,6 @@
         "version": "0.8.35"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "arb",
-      "manifest": {
-        "name": "arb",
-        "port-version": 2,
-        "description": "a C library for arbitrary-precision interval arithmetic",
-        "homepage": "https://github.com/fredrik-johansson/arb",
-        "license": "LGPL-2.1",
-        "supports": "!xbox",
-        "dependencies": [
-          "flint",
-          {
-            "name": "pthreads",
-            "platform": "windows"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "2.21.1"
-      },
-      "files": [
-        "fix-build-error.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3951,7 +3923,7 @@
             "host": true
           }
         ],
-        "version": "0.14.0"
+        "version": "0.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -19081,7 +19053,7 @@
             "host": true
           }
         ],
-        "version": "0.2.8"
+        "version": "0.2.9"
       },
       "files": [
         "disable-cpack.patch",
@@ -22707,9 +22679,10 @@
       "name": "cpp-peglib",
       "manifest": {
         "name": "cpp-peglib",
-        "description": "C++11 header-only PEG (Parsing Expression Grammars) library.",
+        "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
+        "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.9.1"
+        "version": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -24407,7 +24380,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -24665,7 +24637,7 @@
             ]
           }
         },
-        "version": "8.18.0"
+        "version": "8.19.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -24673,8 +24645,7 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg.json",
-        "winsock.diff"
+        "vcpkg.json"
       ]
     },
     {
@@ -25323,7 +25294,7 @@
       "name": "dartsim",
       "manifest": {
         "name": "dartsim",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Dynamic Animation and Robotics Toolkit",
         "homepage": "https://dartsim.github.io/",
         "license": "BSD-2-Clause",
@@ -25432,6 +25403,7 @@
         "0004-pkgconfig.patch",
         "0005-add-cassert.patch",
         "0006-support-eigen3-5.patch",
+        "0007-fix-imgui.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -26510,12 +26482,13 @@
             "description": "XDSP Digital Signal Processing (DSP) for DirectXMath"
           }
         },
-        "version-date": "2025-04-03"
+        "version-date": "2026-03-12"
       },
       "files": [
         "Linux-SHMath-SAL.patch",
         "MinGW-fix.patch",
         "portfile.cmake",
+        "powerpc64le.patch",
         "shmathusage",
         "usage",
         "vcpkg.json"
@@ -31827,10 +31800,10 @@
       "name": "flint",
       "manifest": {
         "name": "flint",
-        "port-version": 1,
         "description": "Fast Library for Number Theory",
         "homepage": "https://www.flintlib.org/",
-        "supports": "!uwp",
+        "license": "GPL-3.0-only",
+        "supports": "!uwp & (!windows | x64)",
         "dependencies": [
           "gettimeofday",
           "gmp",
@@ -31841,13 +31814,24 @@
           },
           {
             "name": "vcpkg-cmake",
-            "host": true
+            "host": true,
+            "platform": "windows"
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true,
+            "platform": "windows"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           }
         ],
-        "version-semver": "2.9.0"
+        "version-semver": "3.4.0"
       },
       "files": [
-        "fix-cmakelists.patch",
+        "fix-static.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41219,7 +41203,6 @@
       "name": "hello-imgui",
       "manifest": {
         "name": "hello-imgui",
-        "port-version": 3,
         "description": [
           "Hello ImGui: unleash your creativity in app development and prototyping",
           "Note that at least on renderer backend and at least one platform backend must be chosen."
@@ -41329,13 +41312,14 @@
             ]
           }
         },
-        "version": "1.6.0"
+        "version": "1.92.5"
       },
       "files": [
         "cmake-config.diff",
+        "disable-sdl-android.patch",
+        "fix-vulkan-binding.patch",
         "imgui-test-engine.diff",
         "portfile.cmake",
-        "support-imgui-1_91_9.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -41883,7 +41867,7 @@
             ]
           }
         },
-        "version": "1.6.5"
+        "version": "1.6.6"
       },
       "files": [
         "0001-no-tests.patch",
@@ -42798,7 +42782,7 @@
           },
           "opengl2-binding": {
             "description": "Make available OpenGL (legacy) binding",
-            "supports": "!uwp"
+            "supports": "!(uwp | android)"
           },
           "opengl3-binding": {
             "description": "Make available OpenGL3/ES/ES2 (modern) binding"
@@ -42848,12 +42832,18 @@
           "wchar32": {
             "description": "Use WCHAR32 instead of WCHAR16"
           },
+          "webgpu-binding": {
+            "description": "Make available WebGPU binding",
+            "dependencies": [
+              "dawn"
+            ]
+          },
           "win32-binding": {
             "description": "Make available Win32 binding",
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.91.9"
+        "version": "1.92.6"
       },
       "files": [
         "CMakeLists.txt",
@@ -42866,7 +42856,7 @@
       "name": "imgui-node-editor",
       "manifest": {
         "name": "imgui-node-editor",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Node Editor built using Dear ImGui",
         "homepage": "https://github.com/thedmd/imgui-node-editor",
         "license": "MIT",
@@ -42885,6 +42875,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-imgui-v1.92.5.patch",
         "fix-vec2-math-operators.patch",
         "portfile.cmake",
         "remove-getkeyindex.patch",
@@ -42895,10 +42886,11 @@
       "name": "imgui-sfml",
       "manifest": {
         "name": "imgui-sfml",
-        "port-version": 2,
+        "port-version": 3,
         "description": "ImGui binding for use with SFML",
         "homepage": "https://github.com/eliasdaler/imgui-sfml",
         "license": "MIT",
+        "supports": "!android",
         "dependencies": [
           "imgui",
           "opengl",
@@ -42916,6 +42908,7 @@
       },
       "files": [
         "0001-fix_find_package.patch",
+        "0002-support-imgui-1.92.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -42925,7 +42918,7 @@
       "name": "imguizmo",
       "manifest": {
         "name": "imguizmo",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Immediate mode 3D gizmo for scene editing and other controls based on Dear ImGui",
         "homepage": "https://github.com/CedricGuillemet/ImGuizmo",
         "license": "MIT",
@@ -42944,6 +42937,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix-imgui-1.92.5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68313,6 +68307,7 @@
       "name": "ncnn",
       "manifest": {
         "name": "ncnn",
+        "port-version": 1,
         "description": "ncnn is a high-performance neural network inference computing framework.",
         "homepage": "https://github.com/Tencent/ncnn",
         "license": "BSD-3-Clause",
@@ -77076,8 +77071,8 @@
       "name": "patternia",
       "manifest": {
         "name": "patternia",
-        "description": "Providing pattern matching for modern c++.",
-        "homepage": "https://github.com/sentomk/patternia",
+        "description": "Header-only pattern matching library for modern C++",
+        "homepage": "https://github.com/SentoMK/patternia",
         "license": "MIT",
         "dependencies": [
           {
@@ -77089,7 +77084,7 @@
             "host": true
           }
         ],
-        "version": "0.8.5"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -87793,7 +87788,7 @@
             "host": true
           }
         ],
-        "version": "0.30.1"
+        "version": "0.30.2"
       },
       "files": [
         "portfile.cmake",
@@ -91230,6 +91225,85 @@
       ]
     },
     {
+      "name": "sdl3-mixer",
+      "manifest": {
+        "name": "sdl3-mixer",
+        "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
+        "homepage": "https://github.com/libsdl-org/SDL_mixer",
+        "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "sdl3",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "fluidsynth": {
+            "description": "Use FluidSynth to play MIDI audio format.",
+            "dependencies": [
+              "fluidsynth"
+            ]
+          },
+          "libflac": {
+            "description": "Use libflac to play FLAC audio format.",
+            "dependencies": [
+              {
+                "name": "libflac",
+                "default-features": false
+              }
+            ]
+          },
+          "libvorbis": {
+            "description": "Use libvorbis to play Vorbis audio format.",
+            "dependencies": [
+              "libvorbis"
+            ]
+          },
+          "libxmp": {
+            "description": "Use libxmp to open MOD files.",
+            "dependencies": [
+              {
+                "name": "libxmp",
+                "default-features": false
+              }
+            ]
+          },
+          "mpg123": {
+            "description": "Use mpg123 to play MP3 audio format.",
+            "dependencies": [
+              "mpg123"
+            ]
+          },
+          "opusfile": {
+            "description": "Use opusfile to play Opus audio format.",
+            "dependencies": [
+              "opusfile"
+            ]
+          },
+          "wavpack": {
+            "description": "Use wavpack to play WAV audio format.",
+            "dependencies": [
+              "wavpack"
+            ]
+          }
+        },
+        "version": "3.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sdl3-shadercross",
       "manifest": {
         "name": "sdl3-shadercross",
@@ -94155,7 +94229,7 @@
       "name": "solid3",
       "manifest": {
         "name": "solid3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Software Library for Interference Detection",
         "homepage": "https://github.com/dtecta/solid3",
         "license": "GPL-2.0-only OR QPL-1.0",
@@ -97294,6 +97368,7 @@
       "name": "symengine",
       "manifest": {
         "name": "symengine",
+        "port-version": 1,
         "description": "SymEngine is a fast symbolic manipulation library",
         "homepage": "https://github.com/symengine/symengine",
         "license": "BSD-3-Clause",
@@ -97326,7 +97401,12 @@
           "arb": {
             "description": "Build with arb",
             "dependencies": [
-              "arb"
+              {
+                "name": "symengine",
+                "features": [
+                  "flint"
+                ]
+              }
             ]
           },
           "flint": {
@@ -102962,6 +103042,7 @@
       "name": "vsgimgui",
       "manifest": {
         "name": "vsgimgui",
+        "port-version": 1,
         "description": "Library that integrates VulkanSceneGraph with Dear ImGui & ImPlot.",
         "homepage": "https://github.com/vsg-dev/vsgImGui",
         "license": "MIT",
@@ -102987,6 +103068,7 @@
       },
       "files": [
         "devendor.patch",
+        "fix-imgui-1.92.5.patch",
         "portfile.cmake",
         "remove-manual-font-creation.patch",
         "vcpkg.json"
@@ -104122,7 +104204,7 @@
             "description": "Include the WABT C runtime implementation library"
           }
         },
-        "version": "1.0.39"
+        "version": "1.0.40"
       },
       "files": [
         "include_picosha2.cmake",
@@ -105052,7 +105134,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
@@ -105091,6 +105173,7 @@
         "version": "5.8.4"
       },
       "files": [
+        "have-limits-h.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
