@@ -1,5 +1,5 @@
 {
-  "version": "47205630845bd49eaf16cdfb757cf9dfba144c52",
+  "version": "4b77da7fed37817f124936239197833469f1b9a8",
   "ports": [
     {
       "name": "3fd",
@@ -3276,7 +3276,17 @@
         "description": "Minimalistic header-only thread-safe ultra-low-latency multiple-producer-multiple-consumer lockless queues based on circular buffer with std::atomic.",
         "homepage": "https://github.com/max0x7ba/atomic_queue",
         "license": "MIT",
-        "version": "1.7.1"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -19400,7 +19410,7 @@
             ]
           }
         },
-        "version": "1.3.0"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -32279,7 +32289,7 @@
       "name": "fontconfig",
       "manifest": {
         "name": "fontconfig",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Library for configuring and customizing font access.",
         "homepage": "https://www.freedesktop.org/wiki/Software/fontconfig",
         "license": "MIT",
@@ -39730,7 +39740,7 @@
             "host": true
           }
         ],
-        "version": "4.20.0"
+        "version": "4.22.0"
       },
       "files": [
         "portfile.cmake",
@@ -41949,7 +41959,6 @@
       "name": "huira",
       "manifest": {
         "name": "huira",
-        "port-version": 1,
         "description": "A library for space rendering, LiDAR simulation, and solar radiation pressure modeling.",
         "homepage": "https://github.com/huira-render/huira",
         "documentation": "https://docs.huira.space",
@@ -41959,6 +41968,16 @@
           "assimp",
           "cfitsio",
           "cspice",
+          {
+            "name": "embree",
+            "default-features": false,
+            "features": [
+              "geometry-instance",
+              "geometry-triangle",
+              "ray-packets",
+              "tasking-tbb"
+            ]
+          },
           "glm",
           "libjpeg-turbo",
           "libpng",
@@ -41988,7 +42007,7 @@
             ]
           }
         },
-        "version": "0.8.2"
+        "version": "0.9.0"
       },
       "files": [
         "cfitsio.diff",
@@ -44812,9 +44831,10 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.4.1"
       },
       "files": [
+        "include-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60343,7 +60363,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.11.1"
+        "version-semver": "2.11.2"
       },
       "files": [
         "global_preferences.json",
@@ -64127,7 +64147,7 @@
       "name": "matajoh-libnpy",
       "manifest": {
         "name": "matajoh-libnpy",
-        "description": "Multi-platform C++ library for reading and writing NPY and NPZ files, with an additional .NET interface",
+        "description": "A C++17 library for reading and writing NumPy NPY and NPZ array files",
         "homepage": "https://github.com/matajoh/libnpy",
         "license": "MIT",
         "dependencies": [
@@ -64141,14 +64161,11 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.1.2"
       },
       "files": [
-        "fix-install.patch",
-        "fix-miniz.patch",
-        "fix-npy-config.patch",
-        "fix-zip-wrapper.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -68307,7 +68324,6 @@
       "name": "ncnn",
       "manifest": {
         "name": "ncnn",
-        "port-version": 1,
         "description": "ncnn is a high-performance neural network inference computing framework.",
         "homepage": "https://github.com/Tencent/ncnn",
         "license": "BSD-3-Clause",
@@ -68331,7 +68347,7 @@
             ]
           }
         },
-        "version": "20250916"
+        "version": "20260113"
       },
       "files": [
         "portfile.cmake",
@@ -80141,7 +80157,7 @@
       "manifest": {
         "name": "proxy",
         "description": "A single-header C++20 library that facilitates runtime polymorphism.",
-        "homepage": "https://github.com/microsoft/proxy",
+        "homepage": "https://github.com/ngcpp/proxy",
         "license": "MIT",
         "dependencies": [
           {
@@ -80153,7 +80169,7 @@
             "host": true
           }
         ],
-        "version": "4.0.1"
+        "version": "4.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -91709,10 +91725,11 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
-        "supports": "osx | linux | (!arm & !uwp)",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "libunwind",
@@ -92846,7 +92863,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.3.1"
+        "version": "4.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -92875,7 +92892,7 @@
             "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
           }
         },
-        "version-semver": "8.1.0"
+        "version-semver": "8.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -102241,7 +102258,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
