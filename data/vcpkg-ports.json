@@ -1,5 +1,5 @@
 {
-  "version": "d90a9b159c08169f39adcd1b0f1ac0ca12c4b96c",
+  "version": "c3867e714dd3a51c272826eea77267876517ed99",
   "ports": [
     {
       "name": "3fd",
@@ -319,12 +319,17 @@
       "name": "acl",
       "manifest": {
         "name": "acl",
+        "port-version": 1,
         "description": "Commands for Manipulating POSIX Access Control Lists",
         "homepage": "https://savannah.nongnu.org/projects/acl",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
         "dependencies": [
-          "attr"
+          "attr",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "features": {
           "nls": {
@@ -352,7 +357,7 @@
       "name": "activemq-cpp",
       "manifest": {
         "name": "activemq-cpp",
-        "port-version": 17,
+        "port-version": 18,
         "description": "Apache ActiveMQ is the most popular and powerful open source messaging and Integration Patterns server.",
         "license": "Apache-2.0",
         "supports": "(windows & !uwp & (x86 | x64)) | (!windows & !osx)",
@@ -361,6 +366,11 @@
           {
             "name": "libuuid",
             "platform": "!windows & !osx"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "linux"
           },
           {
             "name": "vcpkg-msbuild",
@@ -963,10 +973,17 @@
       "name": "alsa",
       "manifest": {
         "name": "alsa",
+        "port-version": 1,
         "description": "The Advanced Linux Sound Architecture (ALSA) - library",
         "homepage": "https://www.alsa-project.org/",
         "license": "LGPL-2.1-or-later",
         "supports": "linux | android",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.2.15.3"
       },
       "files": [
@@ -3297,10 +3314,17 @@
       "name": "attr",
       "manifest": {
         "name": "attr",
+        "port-version": 1,
         "description": "Commands for Manipulating Filesystem Extended Attributes",
         "homepage": "http://savannah.nongnu.org/projects/attr",
         "license": "LGPL-2.1-or-later",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "features": {
           "nls": {
             "description": "Enable native language support",
@@ -3434,10 +3458,17 @@
       "name": "audit",
       "manifest": {
         "name": "audit",
+        "port-version": 1,
         "description": "Library for working with audit subsystem",
         "homepage": "https://github.com/linux-audit/audit-userspace",
         "license": "GPL-2.0-or-later OR LGPL-2.1-or-later",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "4.1.3"
       },
       "files": [
@@ -3903,7 +3934,7 @@
             "host": true
           }
         ],
-        "version": "0.26.1"
+        "version": "0.26.2"
       },
       "files": [
         "portfile.cmake",
@@ -3933,7 +3964,7 @@
             "host": true
           }
         ],
-        "version": "0.15.0"
+        "version": "0.15.1"
       },
       "files": [
         "portfile.cmake",
@@ -4445,6 +4476,9 @@
           },
           "connectcases": {
             "description": "C++ SDK for the AWS connectcases service"
+          },
+          "connecthealth": {
+            "description": "C++ SDK for the AWS connecthealth service"
           },
           "connectparticipant": {
             "description": "C++ SDK for the AWS connectparticipant service"
@@ -5279,6 +5313,9 @@
           "signin": {
             "description": "C++ SDK for the AWS signin service"
           },
+          "simpledbv2": {
+            "description": "C++ SDK for the AWS simpledbv2 service"
+          },
           "simspaceweaver": {
             "description": "C++ SDK for the AWS simspaceweaver service"
           },
@@ -5457,7 +5494,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.766"
+        "version": "1.11.769"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -6702,7 +6739,7 @@
           },
           "zstd"
         ],
-        "version": "2.0.2"
+        "version": "2.1.0"
       },
       "files": [
         "devendor-zstd.diff",
@@ -18466,7 +18503,7 @@
       "name": "braft",
       "manifest": {
         "name": "braft",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Consensus algorithm library",
         "homepage": "https://github.com/baidu/braft",
         "license": "Apache-2.0",
@@ -18492,6 +18529,7 @@
       "files": [
         "export-target.patch",
         "fix-build.patch",
+        "fix-bvar-detail-sample.patch",
         "fix-dependency.patch",
         "fix-glog.patch",
         "portfile.cmake",
@@ -18598,7 +18636,6 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
-        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/brpc",
         "license": "Apache-2.0",
@@ -18627,7 +18664,7 @@
             "host": true
           }
         ],
-        "version": "1.15.0"
+        "version": "1.16.0"
       },
       "files": [
         "fix-build.patch",
@@ -19801,11 +19838,16 @@
       "name": "cddlib",
       "manifest": {
         "name": "cddlib",
+        "port-version": 1,
         "description": "C implementation of the Double Description Method",
         "homepage": "https://github.com/cddlib/cddlib",
         "license": "GPL-2.0-or-later",
         "dependencies": [
-          "gmp"
+          "gmp",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-string": "0.94n"
       },
@@ -21659,13 +21701,18 @@
       "name": "coin-or-cgl",
       "manifest": {
         "name": "coin-or-cgl",
+        "port-version": 1,
         "description": "The COIN-OR Cut Generation Library (Cgl) is a collection of cut generators that can be used with other COIN-OR packages that make use of cuts, such as, among others, the linear solver Clp or the mixed integer linear programming solvers Cbc or BCP.",
         "homepage": "https://github.com/coin-or/Cgl",
         "license": "EPL-2.0",
         "dependencies": [
           "coin-or-clp",
           "coin-or-osi",
-          "coinutils"
+          "coinutils",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-date": "2023-02-01"
       },
@@ -21679,11 +21726,16 @@
       "name": "coin-or-clp",
       "manifest": {
         "name": "coin-or-clp",
+        "port-version": 1,
         "description": "Clp (Coin-or linear programming) is an open-source linear programming solver written in C++. It is primarily meant to be used as a callable library, but a basic, stand-alone executable version is also available.",
         "license": "EPL-2.0",
         "dependencies": [
           "coin-or-osi",
-          "coinutils"
+          "coinutils",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-date": "2023-02-01"
       },
@@ -21715,10 +21767,15 @@
       "name": "coin-or-osi",
       "manifest": {
         "name": "coin-or-osi",
+        "port-version": 1,
         "description": "Osi (Open Solver Interface) provides an abstract base class to a generic linear programming (LP) solver, along with derived classes for specific solvers. Many applications may be able to use the Osi to insulate themselves from a specific LP solver.",
         "license": "EPL-2.0",
         "dependencies": [
-          "coinutils"
+          "coinutils",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-date": "2024-04-16"
       },
@@ -21732,6 +21789,7 @@
       "name": "coinutils",
       "manifest": {
         "name": "coinutils",
+        "port-version": 1,
         "description": "CoinUtils (Coin-or Utilities) is an open-source collection of classes and functions that are generally useful to more than one COIN-OR project",
         "homepage": "https://www.coin-or.org/",
         "license": "EPL-2.0",
@@ -21740,6 +21798,10 @@
           "bzip2",
           "coin-or-buildtools",
           "lapack",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib"
         ],
         "features": {
@@ -22576,7 +22638,7 @@
             ]
           }
         },
-        "version": "0.37.1"
+        "version": "0.38.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23391,7 +23453,7 @@
       "name": "cppunit",
       "manifest": {
         "name": "cppunit",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Unit testing framework module for the C++ programming language",
         "homepage": "https://www.freedesktop.org/wiki/Software/cppunit",
         "supports": "!uwp",
@@ -23405,6 +23467,11 @@
             "name": "vcpkg-cmake-config",
             "host": true,
             "platform": "windows"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           }
         ],
         "version": "1.15.1"
@@ -25027,7 +25094,7 @@
       "name": "cyrus-sasl",
       "manifest": {
         "name": "cyrus-sasl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.",
         "homepage": "https://github.com/cyrusimap/cyrus-sasl",
         "license": null,
@@ -25035,7 +25102,11 @@
         "dependencies": [
           "krb5",
           "lmdb",
-          "openssl"
+          "openssl",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "2.1.28"
       },
@@ -26184,15 +26255,13 @@
       "name": "detours",
       "manifest": {
         "name": "detours",
-        "port-version": 8,
         "description": "Detours is a software package for monitoring and instrumenting API calls on Windows.",
         "homepage": "https://github.com/microsoft/Detours",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version": "4.0.1"
+        "version-date": "2025-06-20"
       },
       "files": [
-        "find-jmp-bounds-arm64.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -28685,6 +28754,7 @@
       "name": "elfutils",
       "manifest": {
         "name": "elfutils",
+        "port-version": 1,
         "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
         "homepage": "https://sourceware.org/elfutils/",
         "license": null,
@@ -28692,6 +28762,10 @@
         "dependencies": [
           "bzip2",
           "liblzma",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib",
           "zstd"
         ],
@@ -29668,11 +29742,17 @@
       "name": "farmhash",
       "manifest": {
         "name": "farmhash",
-        "port-version": 6,
+        "port-version": 7,
         "description": "FarmHash, a family of hash functions.",
         "homepage": "https://github.com/google/farmhash",
         "license": "MIT",
         "supports": "!arm",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.1"
       },
       "files": [
@@ -29801,10 +29881,17 @@
       "name": "fastcgi",
       "manifest": {
         "name": "fastcgi",
+        "port-version": 1,
         "description": "The FastCGI interface combines the best aspects of CGI and vendor APIs. Like CGI, FastCGI applications run in separate, isolated processes.",
         "homepage": "https://fastcgi-archives.github.io",
         "license": "OML",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "2.4.7"
       },
       "files": [
@@ -32271,10 +32358,15 @@
       "name": "font-util",
       "manifest": {
         "name": "font-util",
+        "port-version": 1,
         "description": "X.Org font package creation/installation utilities",
         "homepage": "https://gitlab.freedesktop.org/xorg/font/util",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.4.1"
@@ -32708,7 +32800,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.23.0"
+        "version": "3.24.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -32888,14 +32980,18 @@
       "name": "freexl",
       "manifest": {
         "name": "freexl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "FreeXL is an open source library to extract valid data from within an Excel (.xls) spreadsheet",
         "homepage": "https://www.gaia-gis.it/gaia-sins/freexl-sources",
         "license": "MPL-1.1 OR GPL-2.0-or-later OR LGPL-2.1-or-later",
         "dependencies": [
           "expat",
           "libiconv",
-          "minizip"
+          "minizip",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "2.0.0"
       },
@@ -33627,6 +33723,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -33970,6 +34067,7 @@
         "cmake-project-include.cmake",
         "find-link-libraries.patch",
         "fix-gdal-target-interfaces.patch",
+        "iconv.diff",
         "libkml.patch",
         "portfile.cmake",
         "sqlite3.diff",
@@ -35281,7 +35379,7 @@
             ]
           }
         },
-        "version": "6.5.1"
+        "version": "7.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -40458,6 +40556,7 @@
       "name": "h3",
       "manifest": {
         "name": "h3",
+        "port-version": 1,
         "description": "A Hexagonal Hierarchical Geospatial Indexing System",
         "homepage": "https://github.com/uber/h3",
         "license": "Apache-2.0",
@@ -40967,6 +41066,7 @@
       "name": "hashids",
       "manifest": {
         "name": "hashids",
+        "port-version": 1,
         "description": "generate short unique ids from integers",
         "homepage": "https://hashids.org/c/",
         "license": "MIT",
@@ -40974,6 +41074,10 @@
           {
             "name": "getopt",
             "platform": "windows & !mingw"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "version": "1.2.2"
@@ -41058,6 +41162,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
+        "port-version": 1,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -41131,6 +41236,7 @@
       "files": [
         "default-plugin-dir.diff",
         "libaec-config.diff",
+        "mpi-flags.diff",
         "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -41865,10 +41971,17 @@
       "name": "htscodecs",
       "manifest": {
         "name": "htscodecs",
+        "port-version": 1,
         "description": "Custom compression for CRAM and others.",
         "homepage": "https://github.com/samtools/htscodecs",
         "license": "MIT",
         "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "features": {
           "bzip2": {
             "description": "Enable support for BZ2 within Arith streams",
@@ -47534,6 +47647,7 @@
       "name": "krb5",
       "manifest": {
         "name": "krb5",
+        "port-version": 1,
         "description": [
           "Kerberos is a network authentication protocol.",
           "It is designed to provide strong authentication for client/server applications by using secret-key cryptography.",
@@ -47546,7 +47660,13 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake",
-            "host": true
+            "host": true,
+            "platform": "windows & !mingw"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
           }
         ],
         "version": "1.22.2"
@@ -48068,10 +48188,17 @@
       "name": "lely-core",
       "manifest": {
         "name": "lely-core",
+        "port-version": 1,
         "description": "The Lely core libraries are a collection of C and C++ libraries and tools, providing hih-performance I/O and sensor/actuator control for robotics and IoT applications",
         "homepage": "https://gitlab.com/lely_industries/lely-core",
         "license": "Apache-2.0",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "2.3.5"
       },
       "files": [
@@ -48333,7 +48460,7 @@
             "supports": "!arm"
           }
         },
-        "version": "2.6.0"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -48678,16 +48805,15 @@
       "name": "libao",
       "manifest": {
         "name": "libao",
-        "port-version": 5,
+        "port-version": 6,
         "description": "libao - A Cross-platform Audio Library",
         "homepage": "https://github.com/xiph/libao",
-        "license": "GPL-2.0",
+        "license": "GPL-2.0-only",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
-            "name": "vcpkg-cmake",
-            "host": true,
-            "platform": "windows"
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "version": "1.2.2"
@@ -49016,10 +49142,17 @@
       "name": "libbacktrace",
       "manifest": {
         "name": "libbacktrace",
+        "port-version": 1,
         "description": "The libbacktrace library may be linked into a program or library and used to produce symbolic backtraces.",
         "homepage": "https://github.com/ianlancetaylor/libbacktrace",
         "license": "BSD-3-Clause",
         "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version-date": "2024-11-30"
       },
       "files": [
@@ -49374,10 +49507,17 @@
       "name": "libcgroup",
       "manifest": {
         "name": "libcgroup",
+        "port-version": 1,
         "description": "Library for working with cgroup",
         "homepage": "https://github.com/libcgroup/libcgroup",
         "license": "LGPL-2.1-only",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "3.2.0"
       },
       "files": [
@@ -49452,9 +49592,16 @@
       "name": "libconfuse",
       "manifest": {
         "name": "libconfuse",
+        "port-version": 1,
         "description": "Small configuration file parser library for C",
         "homepage": "https://github.com/libconfuse/libconfuse",
         "license": "ISC",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "3.3"
       },
       "files": [
@@ -49665,11 +49812,17 @@
       "name": "libcsv",
       "manifest": {
         "name": "libcsv",
-        "port-version": 1,
+        "port-version": 2,
         "description": "CSV parser and writer library",
         "homepage": "https://github.com/rgamble/libcsv",
         "license": "GPL-2.0-or-later",
         "supports": "!xbox",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "3.0.3"
       },
       "files": [
@@ -50087,11 +50240,16 @@
       "name": "libdmx",
       "manifest": {
         "name": "libdmx",
+        "port-version": 1,
         "description": "X Window System DMX (Distributed Multihead X) extension library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libdmx",
         "license": "MIT",
         "dependencies": [
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -50147,12 +50305,17 @@
       "name": "libdvdnav",
       "manifest": {
         "name": "libdvdnav",
+        "port-version": 1,
         "description": "Library to navigate DVD disks",
         "homepage": "https://www.videolan.org/developers/libdvdnav.html",
         "license": "GPL-2.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
-          "libdvdread"
+          "libdvdread",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-semver": "6.1.1"
       },
@@ -50334,10 +50497,17 @@
       "name": "libedit",
       "manifest": {
         "name": "libedit",
+        "port-version": 1,
         "description": "A command line editor library that provides generic line editing, history, and tokenization functions, similar to those found in GNU Readline.",
         "homepage": "https://thrysoee.dk/editline/",
         "license": "BSD-4-Clause-UC",
         "supports": "(!windows | mingw) & !android",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version-date": "2024-08-08"
       },
       "files": [
@@ -50402,11 +50572,16 @@
       "name": "liberasurecode",
       "manifest": {
         "name": "liberasurecode",
+        "port-version": 1,
         "description": "Erasure Code API library written in C with pluggable Erasure Code backends. Mirror of code maintained at opendev.org.",
         "homepage": "https://github.com/openstack/liberasurecode",
         "license": "BSD-2-Clause",
         "supports": "!android & !windows",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib"
         ],
         "version": "1.7.1"
@@ -50421,10 +50596,16 @@
       "name": "libev",
       "manifest": {
         "name": "libev",
-        "port-version": 4,
+        "port-version": 5,
         "description": "libev is a high-performance event loop/event model with lots of features.",
         "homepage": "http://software.schmorp.de/pkg/libev.html",
         "license": "BSD-2-Clause OR GPL-2.0-or-later",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "4.33"
       },
       "files": [
@@ -50626,6 +50807,7 @@
       "name": "libexif",
       "manifest": {
         "name": "libexif",
+        "port-version": 1,
         "description": "a library for parsing, editing, and saving EXIF data",
         "homepage": "https://libexif.github.io/",
         "license": "LGPL-2.1-or-later",
@@ -50636,7 +50818,7 @@
             "host": true
           },
           {
-            "name": "vcpkg-cmake",
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -50668,6 +50850,7 @@
       "name": "libfabric",
       "manifest": {
         "name": "libfabric",
+        "port-version": 1,
         "description": "Libfabric, aka Open Fabrics Interfaces (OFI), defines a communication API for high-performance parallel and distributed applications.",
         "homepage": "https://ofiwg.github.io/libfabric/",
         "license": "BSD-2-Clause OR GPL-2.0-only",
@@ -50676,6 +50859,11 @@
           {
             "name": "networkdirect-sdk",
             "platform": "windows"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           },
           {
             "name": "vcpkg-msbuild",
@@ -50797,11 +50985,16 @@
       "name": "libfontenc",
       "manifest": {
         "name": "libfontenc",
+        "port-version": 1,
         "description": "X font encoding library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libfontenc",
         "license": null,
         "dependencies": [
           "font-util",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto",
           "zlib"
@@ -50924,11 +51117,16 @@
       "name": "libfs",
       "manifest": {
         "name": "libfs",
+        "port-version": 1,
         "description": "X Font Service client library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libfs",
         "license": null,
         "supports": "!windows",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto",
           "xtrans"
@@ -51560,6 +51758,7 @@
       "name": "libgpiod",
       "manifest": {
         "name": "libgpiod",
+        "port-version": 1,
         "description": "C library and tools for interacting with the linux GPIO character device",
         "homepage": "https://git.kernel.org/pub/scm/libs/libgpiod/libgpiod.git",
         "license": "LGPL-2.1-or-later",
@@ -51567,6 +51766,10 @@
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -52054,13 +52257,17 @@
       "name": "libice",
       "manifest": {
         "name": "libice",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Inter-Client Exchange Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libice",
         "license": "MIT-open-group",
         "dependencies": [
           "bzip2",
           "libx11",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto",
           "xtrans"
@@ -53657,10 +53864,17 @@
       "name": "libmount",
       "manifest": {
         "name": "libmount",
+        "port-version": 1,
         "description": "Block device identification library from util-linux",
         "homepage": "https://git.kernel.org/pub/scm/utils/util-linux/util-linux.git/about/",
         "license": null,
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "features": {
           "nls": {
             "description": "Enable native language support",
@@ -53762,6 +53976,7 @@
       "name": "libmtp",
       "manifest": {
         "name": "libmtp",
+        "port-version": 1,
         "description": "A library to access MTP (Media Transfer Protocol) devices",
         "homepage": "https://sourceforge.net/projects/libmtp/",
         "license": "LGPL-2.1-or-later",
@@ -53776,7 +53991,11 @@
             "host": true,
             "platform": "android"
           },
-          "libusb"
+          "libusb",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version-semver": "1.1.22"
       },
@@ -54410,7 +54629,7 @@
       "name": "libopensp",
       "manifest": {
         "name": "libopensp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "SGML parser algorithm",
         "homepage": "https://openjade.sourceforge.net",
         "license": "MIT",
@@ -54428,6 +54647,11 @@
             "name": "vcpkg-cmake-config",
             "host": true,
             "platform": "windows"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           }
         ],
         "version": "1.5.2"
@@ -54615,16 +54839,21 @@
       "name": "libosip2",
       "manifest": {
         "name": "libosip2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "oSIP is an LGPL implementation of SIP. It's stable, portable, flexible and compliant! -may be more-! It is used mostly with eXosip2 stack (GPL) which provides simpler API for User-Agent implementation.",
         "homepage": "https://www.gnu.org/software/osip/",
         "supports": "!(windows & arm) & !uwp",
         "dependencies": [
           "pthread",
           {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          },
+          {
             "name": "vcpkg-msbuild",
             "host": true,
-            "platform": "windows"
+            "platform": "windows & !mingw"
           }
         ],
         "version": "5.3.1"
@@ -55915,10 +56144,17 @@
       "name": "librtpi",
       "manifest": {
         "name": "librtpi",
+        "port-version": 1,
         "description": "The Real-Time Priority Inheritance Library (librtpi) is intended to bridge the gap between the glibc pthread implementation and a functionally correct priority inheritance for pthread locking primitives, such as pthread_mutex and pthread_condvar.",
         "homepage": "https://gitlab.com/linux-rt/librtpi",
         "license": "LGPL-2.1-only",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.0.1"
       },
       "files": [
@@ -55931,12 +56167,16 @@
       "name": "librttopo",
       "manifest": {
         "name": "librttopo",
-        "port-version": 9,
+        "port-version": 10,
         "description": "The RT Topology Library exposes an API to create and manage standard (ISO 13249 aka SQL/MM) topologies using user-provided data stores.",
         "homepage": "https://git.osgeo.org/gitea/rttopo/librttopo",
         "license": "GPL-2.0-or-later",
         "dependencies": [
-          "geos"
+          "geos",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "1.1.0"
       },
@@ -55979,9 +56219,16 @@
       "name": "libsass",
       "manifest": {
         "name": "libsass",
+        "port-version": 1,
         "description": "LibSass - Sass compiler written in C++",
         "homepage": "https://github.com/sass/libsass",
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "3.6.6"
       },
       "files": [
@@ -56377,11 +56624,16 @@
       "name": "libsm",
       "manifest": {
         "name": "libsm",
+        "port-version": 1,
         "description": "X Session Management Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libsm",
         "license": null,
         "dependencies": [
           "libice",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.2.6"
@@ -56552,10 +56804,16 @@
       "name": "libsodium",
       "manifest": {
         "name": "libsodium",
+        "port-version": 1,
         "description": "A modern and easy-to-use crypto library",
         "homepage": "https://libsodium.org/",
         "license": "ISC",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          },
           {
             "name": "vcpkg-msbuild",
             "host": true,
@@ -56768,10 +57026,16 @@
       "name": "libspnav",
       "manifest": {
         "name": "libspnav",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Library for communicating with spacenavd or 3dxsrv to get input from 6-dof devices.",
         "homepage": "https://github.com/FreeSpacenav/libspnav",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "0.2.3"
       },
       "files": [
@@ -57155,7 +57419,7 @@
       "name": "libtasn1",
       "manifest": {
         "name": "libtasn1",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A secure communications library implementing the SSL, TLS and DTLS protocols",
         "homepage": "https://www.gnutls.org/",
         "license": null,
@@ -57168,6 +57432,10 @@
           {
             "name": "gettimeofday",
             "platform": "windows & !mingw"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "version": "4.19.0"
@@ -57926,12 +58194,17 @@
       "name": "libunwind",
       "manifest": {
         "name": "libunwind",
+        "port-version": 1,
         "description": "Unix libray for portable stack unwinding",
         "homepage": "https://www.nongnu.org/libunwind",
         "license": "MIT",
         "supports": "linux",
         "dependencies": [
-          "liblzma"
+          "liblzma",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "1.8.3"
       },
@@ -58469,6 +58742,7 @@
       "name": "libwandio",
       "manifest": {
         "name": "libwandio",
+        "port-version": 1,
         "description": "C library for simple and efficient file IO.",
         "homepage": "https://github.com/wanduow/wandio",
         "license": "LGPL-3.0-only",
@@ -58480,6 +58754,10 @@
           "lz4",
           "lzo",
           "pthread",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib",
           "zstd"
         ],
@@ -58772,7 +59050,7 @@
           },
           "zlib"
         ],
-        "version-semver": "4.5.4"
+        "version-semver": "4.5.7"
       },
       "files": [
         "export-include-path.patch",
@@ -58786,7 +59064,7 @@
       "name": "libx11",
       "manifest": {
         "name": "libx11",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The X Window System is a network-transparent window system that was designed at MIT.",
         "homepage": "https://www.x.org/wiki/",
         "license": "MIT",
@@ -58798,6 +59076,10 @@
           },
           {
             "name": "libxslt",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           },
           "xcb",
@@ -58822,11 +59104,16 @@
       "name": "libxau",
       "manifest": {
         "name": "libxau",
+        "port-version": 1,
         "description": "Functions for handling Xauthority files and entries.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxau",
         "license": "MIT-open-group",
         "dependencies": [
           "bzip2",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -58842,7 +59129,7 @@
       "name": "libxaw",
       "manifest": {
         "name": "libxaw",
-        "port-version": 1,
+        "port-version": 2,
         "description": "X Athena Widget Set, based on the X Toolkit Intrinsics (Xt) Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxaw",
         "license": null,
@@ -58854,6 +59141,10 @@
           "libxmu",
           "libxpm",
           "libxt",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -58869,12 +59160,17 @@
       "name": "libxcomposite",
       "manifest": {
         "name": "libxcomposite",
+        "port-version": 1,
         "description": "Xlib-based client library for the Composite extension to the X11 protocol",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxcomposite",
         "license": null,
         "dependencies": [
           "libx11",
           "libxfixes",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -58931,12 +59227,17 @@
       "name": "libxdamage",
       "manifest": {
         "name": "libxdamage",
+        "port-version": 1,
         "description": "X Damage Extension library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxdamage",
         "license": null,
         "dependencies": [
           "libx11",
           "libxfixes",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59002,11 +59303,16 @@
       "name": "libxdmcp",
       "manifest": {
         "name": "libxdmcp",
+        "port-version": 1,
         "description": "X Display Manager Control Protocol library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxdmcp",
         "license": "MIT-open-group",
         "dependencies": [
           "liblzma",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59022,11 +59328,16 @@
       "name": "libxext",
       "manifest": {
         "name": "libxext",
+        "port-version": 1,
         "description": "Xlib-based library for common extensions to the X11 protocol",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxext",
         "license": null,
         "dependencies": [
           "libx11",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59041,11 +59352,16 @@
       "name": "libxfixes",
       "manifest": {
         "name": "libxfixes",
+        "port-version": 1,
         "description": "Xlib-based library for the XFIXES Extension",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxfixes",
         "license": null,
         "dependencies": [
           "libx11",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59061,7 +59377,7 @@
       "name": "libxfont",
       "manifest": {
         "name": "libxfont",
-        "port-version": 1,
+        "port-version": 2,
         "description": "X font handling library for server & utilities",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxfont",
         "license": null,
@@ -59071,6 +59387,10 @@
           "libfontenc",
           "libx11",
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto",
           "xtrans",
@@ -59090,6 +59410,7 @@
       "name": "libxft",
       "manifest": {
         "name": "libxft",
+        "port-version": 1,
         "description": "X FreeType library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxft",
         "license": null,
@@ -59098,6 +59419,10 @@
           "freetype",
           "libx11",
           "libxrender",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59112,12 +59437,17 @@
       "name": "libxi",
       "manifest": {
         "name": "libxi",
+        "port-version": 1,
         "description": "Xlib library for the X Input Extension",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxi",
         "license": null,
         "dependencies": [
           "libxext",
-          "libxfixes"
+          "libxfixes",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "1.8.2"
       },
@@ -59131,12 +59461,17 @@
       "name": "libxinerama",
       "manifest": {
         "name": "libxinerama",
+        "port-version": 1,
         "description": "Xlib API for Xinerama extension to X11 Protocol",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxinerama",
         "license": null,
         "dependencies": [
           "libx11",
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.1.6"
@@ -59429,7 +59764,7 @@
       "name": "libxmu",
       "manifest": {
         "name": "libxmu",
-        "port-version": 1,
+        "port-version": 2,
         "description": "X miscellaneous utility routines library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxmu",
         "license": null,
@@ -59437,6 +59772,10 @@
           "bzip2",
           "libxext",
           "libxt",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.1.3"
@@ -59452,12 +59791,17 @@
       "name": "libxpm",
       "manifest": {
         "name": "libxpm",
+        "port-version": 1,
         "description": "XPM format pixmap library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxpm",
         "license": "MIT",
         "supports": "windows | linux",
         "dependencies": [
           "libx11",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59492,6 +59836,7 @@
       "name": "libxpresent",
       "manifest": {
         "name": "libxpresent",
+        "port-version": 1,
         "description": "Xlib-based library for the X Present Extension",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxpresent",
         "license": null,
@@ -59500,6 +59845,10 @@
           "libxext",
           "libxfixes",
           "libxrandr",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59514,6 +59863,7 @@
       "name": "libxrandr",
       "manifest": {
         "name": "libxrandr",
+        "port-version": 1,
         "description": "Xlib Resize, Rotate and Reflection (RandR) extension library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxrandr",
         "license": null,
@@ -59522,6 +59872,10 @@
           "libx11",
           "libxext",
           "libxrender",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59537,11 +59891,16 @@
       "name": "libxrender",
       "manifest": {
         "name": "libxrender",
+        "port-version": 1,
         "description": "library for the Render Extension to the X11 protocol",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxrender",
         "license": null,
         "dependencies": [
           "libx11",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "0.9.12"
@@ -59556,6 +59915,7 @@
       "name": "libxres",
       "manifest": {
         "name": "libxres",
+        "port-version": 1,
         "description": "Xlib-based X-Resource extension client library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxres",
         "license": null,
@@ -59563,6 +59923,10 @@
           "bzip2",
           "libx11",
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59578,12 +59942,17 @@
       "name": "libxscrnsaver",
       "manifest": {
         "name": "libxscrnsaver",
+        "port-version": 1,
         "description": "Xlib-based X11 Screen Saver extension client library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxscrnsaver",
         "license": null,
         "dependencies": [
           "libx11",
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -59711,6 +60080,7 @@
       "name": "libxtst",
       "manifest": {
         "name": "libxtst",
+        "port-version": 1,
         "description": "Xlib-based library for XTEST & RECORD extensions",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxtst",
         "license": null,
@@ -59718,6 +60088,10 @@
           "libx11",
           "libxext",
           "libxi",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xproto"
         ],
         "version": "1.2.5"
@@ -59732,12 +60106,17 @@
       "name": "libxv",
       "manifest": {
         "name": "libxv",
+        "port-version": 1,
         "description": "Xlib-based library for the X Video (Xv) extension to the X Window System",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxv",
         "license": null,
         "dependencies": [
           "libx11",
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.0.13"
@@ -59751,11 +60130,16 @@
       "name": "libxxf86vm",
       "manifest": {
         "name": "libxxf86vm",
+        "port-version": 1,
         "description": "Xlib-based library for the XFree86-VidMode X extension",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxxf86vm",
         "license": null,
         "dependencies": [
           "libxext",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros",
           "xproto"
         ],
@@ -65265,7 +65649,7 @@
       "name": "mfx-dispatch",
       "manifest": {
         "name": "mfx-dispatch",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Open source Intel media sdk dispatcher",
         "homepage": "https://github.com/lu-zero/mfx_dispatch",
         "license": "BSD-3-Clause",
@@ -65275,6 +65659,11 @@
             "name": "vcpkg-cmake",
             "host": true,
             "platform": "windows & !mingw"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
           }
         ],
         "version": "1.35.1"
@@ -66696,13 +67085,17 @@
       "name": "mpc",
       "manifest": {
         "name": "mpc",
-        "port-version": 2,
+        "port-version": 3,
         "description": "GNU MPC is a C library for the arithmetic of complex numbers with arbitrarily high precision and correct rounding of the result.",
         "homepage": "https://www.multiprecision.org/mpc/",
         "license": "LGPL-3.0-or-later",
         "dependencies": [
           "gmp",
-          "mpfr"
+          "mpfr",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "1.3.1"
       },
@@ -66715,12 +67108,17 @@
       "name": "mpfr",
       "manifest": {
         "name": "mpfr",
+        "port-version": 1,
         "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding",
         "homepage": "https://www.mpfr.org",
         "license": "LGPL-3.0-or-later",
         "supports": "!xbox",
         "dependencies": [
-          "gmp"
+          "gmp",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "4.2.2"
       },
@@ -66771,7 +67169,7 @@
       "name": "mpi",
       "manifest": {
         "name": "mpi",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. The standard defines the syntax and semantics of a core of library routines useful to a wide range of users writing portable message-passing programs in C, C++, and Fortran. There are several well-tested and efficient implementations of MPI, many of which are open-source or in the public domain.",
         "license": null,
         "supports": "!uwp",
@@ -69414,8 +69812,10 @@
       "name": "nlopt",
       "manifest": {
         "name": "nlopt",
+        "port-version": 1,
         "description": "Library for nonlinear local and global optimization, for functions with and without gradient information.",
         "homepage": "https://github.com/stevengj/nlopt",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -69426,6 +69826,12 @@
             "host": true
           }
         ],
+        "features": {
+          "luksan": {
+            "description": "Enable Luksan algorithms (LGPL)",
+            "license": "LGPL-2.1-or-later"
+          }
+        },
         "version": "2.10.1"
       },
       "files": [
@@ -69959,7 +70365,7 @@
             "description": "Install example files"
           }
         },
-        "version": "4.12.8"
+        "version": "4.13.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -70625,11 +71031,17 @@
       "name": "ocilib",
       "manifest": {
         "name": "ocilib",
+        "port-version": 1,
         "description": "OCILIB is an open source and cross platform Oracle Driver that delivers efficient access to Oracle databases.",
         "homepage": "https://vrogier.github.io/ocilib/",
         "license": "Apache-2.0",
         "supports": "!uwp & !(arm & windows)",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
+          },
           {
             "name": "vcpkg-msbuild",
             "host": true,
@@ -70648,7 +71060,7 @@
       "name": "octave",
       "manifest": {
         "name": "octave",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High-level interpreted language, primarily intended for numerical computations.",
         "homepage": "https://octave.org/",
         "documentation": "https://docs.octave.org/latest/",
@@ -70663,6 +71075,10 @@
           "opengl",
           "pcre2",
           "readline",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "zlib"
         ],
         "features": {
@@ -74384,11 +74800,21 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
-        "port-version": 1,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
         "supports": "!windows",
-        "version": "4.1.7"
+        "dependencies": [
+          {
+            "name": "pkgconf",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "4.1.8"
       },
       "files": [
         "keep_isystem.patch",
@@ -74764,7 +75190,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -80316,11 +80742,16 @@
       "name": "pthread-stubs",
       "manifest": {
         "name": "pthread-stubs",
+        "port-version": 1,
         "description": "Stub replacements for POSIX Threads functions.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/pthread-stubs",
         "license": "X11-distribute-modifications-variant",
         "dependencies": [
-          "pthread"
+          "pthread",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "0.5"
       },
@@ -81696,7 +82127,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "portfile.cmake",
@@ -81854,7 +82285,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -83457,7 +83888,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -83499,7 +83930,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -83572,11 +84003,19 @@
                   "installer"
                 ]
               },
+              {
+                "name": "qtapplicationmanager",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "package-server"
+                ]
+              },
               "qthttpserver"
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84255,7 +84694,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "GLIB2-static.patch",
@@ -84271,7 +84710,6 @@
         "fix-host-aliasing.patch",
         "fix-libresolv-test.patch",
         "fix-link-lib-discovery.patch",
-        "fix-missing-include.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -84330,7 +84768,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84354,7 +84792,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84387,7 +84825,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84416,7 +84854,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84452,7 +84890,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84478,7 +84916,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84499,7 +84937,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84533,7 +84971,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84567,7 +85005,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84593,7 +85031,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84645,7 +85083,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -84694,7 +85132,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84809,7 +85247,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84849,7 +85287,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84887,7 +85325,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "fix_qt_version.patch",
@@ -84912,7 +85350,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -84929,21 +85367,12 @@
         "license": null,
         "dependencies": [
           {
-            "name": "pipewire",
-            "platform": "linux"
-          },
-          {
-            "name": "pulseaudio",
-            "platform": "linux"
-          },
-          {
             "name": "qtbase",
             "default-features": false,
             "features": [
               "concurrent",
               "gui",
-              "network",
-              "thread"
+              "network"
             ]
           },
           {
@@ -84953,6 +85382,14 @@
         ],
         "default-features": [
           "ffmpeg",
+          {
+            "name": "pipewire",
+            "platform": "linux"
+          },
+          {
+            "name": "pulseaudio",
+            "platform": "linux"
+          },
           "widgets"
         ],
         "features": {
@@ -84971,6 +85408,13 @@
                 ]
               },
               {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "thread"
+                ]
+              },
+              {
                 "name": "qtdeclarative",
                 "default-features": false
               },
@@ -84978,6 +85422,7 @@
                 "name": "qtmultimedia",
                 "default-features": false,
                 "features": [
+                  "pulseaudio",
                   "qml"
                 ],
                 "platform": "linux"
@@ -84996,9 +85441,35 @@
                   "plugins-bad",
                   "plugins-base"
                 ]
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "thread"
+                ]
               }
             ],
             "supports": "linux"
+          },
+          "pipewire": {
+            "description": "Build with pipewire",
+            "dependencies": [
+              "pipewire",
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "thread"
+                ]
+              }
+            ]
+          },
+          "pulseaudio": {
+            "description": "Build with pulseaudio",
+            "dependencies": [
+              "pulseaudio"
+            ]
           },
           "qml": {
             "description": "Build QML imports",
@@ -85022,7 +85493,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "ae41d3e-ffmpeg8.diff",
@@ -85051,7 +85522,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85126,7 +85597,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "fix-build.patch",
@@ -85165,7 +85636,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -85213,7 +85684,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -85236,7 +85707,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85291,7 +85762,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85313,7 +85784,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85364,7 +85835,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85404,7 +85875,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85448,7 +85919,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85481,7 +85952,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85503,7 +85974,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85532,7 +86003,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85566,7 +86037,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85590,7 +86061,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85718,7 +86189,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -85748,7 +86219,7 @@
             ]
           }
         ],
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85791,7 +86262,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -85829,7 +86300,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -85861,7 +86332,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -86107,7 +86578,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "allow-msvc-145.diff",
@@ -86152,7 +86623,7 @@
             ]
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -86196,7 +86667,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.10.1"
+        "version": "6.10.2"
       },
       "files": [
         "port.data.cmake",
@@ -87250,12 +87721,16 @@
       "name": "readosm",
       "manifest": {
         "name": "readosm",
-        "port-version": 5,
+        "port-version": 6,
         "description": "ReadOSM is an open source library to extract valid data from within an Open Street Map input file (.osm or .osm.pbf)",
         "homepage": "https://www.gaia-gis.it/gaia-sins/readosm-sources",
         "license": "MPL-1.1",
         "dependencies": [
           "expat",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           {
             "name": "vcpkg-pkgconfig-get-modules",
             "host": true
@@ -90082,7 +90557,7 @@
       "name": "sassc",
       "manifest": {
         "name": "sassc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SassC is a wrapper around libsass (http://github.com/sass/libsass) used to generate a useful command-line application that can be installed and packaged for several operating systems.",
         "homepage": "https://github.com/sass/sassc",
         "dependencies": [
@@ -90090,7 +90565,11 @@
             "name": "getopt",
             "platform": "windows & !mingw"
           },
-          "libsass"
+          "libsass",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
         ],
         "version": "3.6.2"
       },
@@ -90104,7 +90583,7 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
@@ -90137,6 +90616,7 @@
       },
       "files": [
         "0001-use-local-packages.patch",
+        "0002-fix-glaze-opts.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92131,7 +92611,7 @@
             "host": true
           }
         ],
-        "version": "2.1.2"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -94680,10 +95160,16 @@
       "name": "speex",
       "manifest": {
         "name": "speex",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Speex is an Open Source/Free Software patent-free audio compression format designed for speech.",
         "homepage": "https://github.com/xiph/speex",
         "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.2.1"
       },
       "files": [
@@ -94767,10 +95253,9 @@
       ]
     },
     {
-      "name": "spine-runtimes",
+      "name": "spine-c",
       "manifest": {
-        "name": "spine-runtimes",
-        "port-version": 1,
+        "name": "spine-c",
         "description": "2D skeletal animation runtimes for Spine",
         "homepage": "https://github.com/EsotericSoftware/spine-runtimes",
         "license": null,
@@ -94780,7 +95265,28 @@
             "host": true
           }
         ],
-        "version": "4.1.0"
+        "version": "4.2.20260227"
+      },
+      "files": [
+        "fix-cmake.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "spine-cpp",
+      "manifest": {
+        "name": "spine-cpp",
+        "description": "2D skeletal animation runtimes for Spine",
+        "homepage": "https://github.com/EsotericSoftware/spine-runtimes",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "4.2.20260227"
       },
       "files": [
         "fix-cmake.patch",
@@ -96049,6 +96555,32 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stillwater-universal",
+      "manifest": {
+        "name": "stillwater-universal",
+        "description": "A header-only C++ library for plug-in replacement number systems for native types",
+        "homepage": "https://github.com/stillwater-sc/universal",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.96"
+      },
+      "files": [
+        "fix-install-path.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -98448,7 +98980,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -99695,7 +100227,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "1.4.4"
+        "version": "1.4.5"
       },
       "files": [
         "dependencies.patch",
@@ -104501,9 +105033,16 @@
       "name": "wcslib",
       "manifest": {
         "name": "wcslib",
+        "port-version": 1,
         "description": "World Coordinate System (WCS) (Library)",
         "homepage": "https://www.atnf.csiro.au/people/mcalabre/WCS/",
         "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "8.5"
       },
       "files": [
@@ -105911,10 +106450,15 @@
       "name": "xbitmaps",
       "manifest": {
         "name": "xbitmaps",
+        "port-version": 1,
         "description": "X BitMap (XBM) format bitmaps commonly used in X.Org applications",
         "homepage": "https://gitlab.freedesktop.org/xorg/data/bitmaps",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.1.3"
@@ -105953,7 +106497,7 @@
       "name": "xcb",
       "manifest": {
         "name": "xcb",
-        "port-version": 3,
+        "port-version": 4,
         "description": "C interface to the X Window System protocol, which replaces the traditional Xlib interface.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": "X11-distribute-modifications-variant",
@@ -105971,6 +106515,10 @@
           },
           "pthread",
           "pthread-stubs",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb-proto",
           "xcb-util-m4",
           "xorg-macros",
@@ -105992,10 +106540,15 @@
       "name": "xcb-image",
       "manifest": {
         "name": "xcb-image",
+        "port-version": 1,
         "description": "XCB port of Xlib's XImage and XShmImage functions.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb",
           "xcb-util"
         ],
@@ -106011,11 +106564,16 @@
       "name": "xcb-keysyms",
       "manifest": {
         "name": "xcb-keysyms",
+        "port-version": 1,
         "description": "Standard X key constants and conversion to/from keycodes",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "dependencies": [
           "bzip2",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb",
           "xorg-macros",
           "xproto"
@@ -106031,7 +106589,7 @@
       "name": "xcb-proto",
       "manifest": {
         "name": "xcb-proto",
-        "port-version": 2,
+        "port-version": 3,
         "description": "XML-XCB protocol descriptions used by libxcb for the X11 protocol & extensions",
         "homepage": "https://xcb.freedesktop.org/",
         "license": "X11-distribute-modifications-variant",
@@ -106043,6 +106601,10 @@
             "features": [
               "tools"
             ]
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           },
           "xorg-macros"
         ],
@@ -106057,10 +106619,15 @@
       "name": "xcb-render-util",
       "manifest": {
         "name": "xcb-render-util",
+        "port-version": 1,
         "description": "XCB convenience functions for the Render extension.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb"
         ],
         "version": "0.3.10"
@@ -106075,11 +106642,15 @@
       "name": "xcb-util",
       "manifest": {
         "name": "xcb-util",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C interface to the X Window System protocol, which replaces the traditional Xlib interface.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb",
           "xcb-util-m4",
           "xorg-macros"
@@ -106096,11 +106667,15 @@
       "name": "xcb-util-errors",
       "manifest": {
         "name": "xcb-util-errors",
-        "port-version": 1,
+        "port-version": 2,
         "description": "XCB utility library that gives human readable names to error, event, & request codes.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb",
           "xcb-util"
         ],
@@ -106129,12 +106704,16 @@
       "name": "xcb-util-wm",
       "manifest": {
         "name": "xcb-util-wm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "XCB client and window-manager helpers for ICCCM & EWMH.",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxcb-wm/",
         "license": null,
         "dependencies": [
           "bzip2",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xcb",
           "xorg-macros",
           "xproto"
@@ -106445,10 +107024,17 @@
       "name": "xorg-macros",
       "manifest": {
         "name": "xorg-macros",
+        "port-version": 1,
         "description": "X.org macros utilities.",
         "homepage": "https://xcb.freedesktop.org/",
         "license": null,
         "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.20.2"
       },
       "files": [
@@ -106751,10 +107337,15 @@
       "name": "xtrans",
       "manifest": {
         "name": "xtrans",
+        "port-version": 1,
         "description": "xtrans - X Network Transport layer shared code",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxtrans",
         "license": null,
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
           "xorg-macros"
         ],
         "version": "1.6.0"
