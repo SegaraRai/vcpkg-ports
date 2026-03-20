@@ -1,5 +1,5 @@
 {
-  "version": "c3867e714dd3a51c272826eea77267876517ed99",
+  "version": "c21f78db5a402441bfc8052462233a2aff079ac0",
   "ports": [
     {
       "name": "3fd",
@@ -165,6 +165,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
+        "port-version": 1,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -1580,6 +1581,7 @@
       "name": "apr",
       "manifest": {
         "name": "apr",
+        "port-version": 1,
         "description": "The Apache Portable Runtime (APR) is a C library that forms a system portability layer that covers many operating systems.",
         "homepage": "https://apr.apache.org/",
         "license": "Apache-2.0",
@@ -1599,6 +1601,11 @@
             "name": "vcpkg-cmake-config",
             "host": true,
             "platform": "windows"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows"
           }
         ],
         "features": {
@@ -18844,6 +18851,38 @@
       ]
     },
     {
+      "name": "bungee",
+      "manifest": {
+        "name": "bungee",
+        "description": "C++ library for time-stretching and pitch-shifting audio with high quality in realtime or offline",
+        "homepage": "https://bungee.parabolaresearch.com/",
+        "license": "MPL-2.0",
+        "dependencies": [
+          "eigen3",
+          "pffft",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.4.15"
+      },
+      "files": [
+        "assert-win32-compat.patch",
+        "cmake-use-vcpkg-deps-and-install-layout.patch",
+        "pffft-include-path.patch",
+        "portfile.cmake",
+        "resample-msvc-noinline.patch",
+        "unofficial-bungee-config.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "bustache",
       "manifest": {
         "name": "bustache",
@@ -27217,6 +27256,35 @@
       ]
     },
     {
+      "name": "docraft",
+      "manifest": {
+        "name": "docraft",
+        "description": "Docraft is a self-contained C++ library for generating professionally rendered PDF documents — without external tools, command-line utilities, or runtime dependencies beyond your own application",
+        "homepage": "https://cadons.github.io/Docraft/",
+        "license": "Apache-2.0",
+        "dependencies": [
+          "fmt",
+          "gtest",
+          "libharu",
+          "nlohmann-json",
+          "pugixml",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-string": "v1.0.0-beta.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "doctest",
       "manifest": {
         "name": "doctest",
@@ -32222,6 +32290,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
+        "port-version": 1,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -42031,7 +42100,7 @@
             ]
           }
         },
-        "version": "1.23"
+        "version": "1.23.1"
       },
       "files": [
         "0001-set-linkage.patch",
@@ -45190,6 +45259,89 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kdgpu",
+      "manifest": {
+        "name": "kdgpu",
+        "description": "KDGPU Library - C++ Vulkan wrapper for GPU programming",
+        "homepage": "https://github.com/KDAB/kdgpu",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "glslang",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kdutils",
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "vulkan-sdk-components"
+        ],
+        "features": {
+          "hlsl": {
+            "description": "Enable HLSL shader support",
+            "dependencies": [
+              {
+                "name": "directx-dxc",
+                "host": true
+              }
+            ],
+            "supports": "(windows & !arm32 & !uwp & !xbox) | (linux & x64)"
+          },
+          "kdgpuexample": {
+            "description": "Enable KDGpuExample",
+            "dependencies": [
+              "glm",
+              {
+                "name": "imgui",
+                "features": [
+                  "vulkan-binding"
+                ]
+              }
+            ]
+          },
+          "kdgpukdgui": {
+            "description": "Enable KDGui integration"
+          },
+          "kdgpuutils": {
+            "description": "Enable KDGpuUtils"
+          },
+          "openxr": {
+            "description": "Enable OpenXR support for VR/AR",
+            "dependencies": [
+              "kdbindings",
+              "openxr-loader"
+            ]
+          },
+          "slang": {
+            "description": "Enable Slang shader support",
+            "dependencies": [
+              {
+                "name": "shader-slang",
+                "host": true
+              }
+            ],
+            "supports": "(windows & !arm32 & !uwp & !xbox) | (linux & x64)"
+          }
+        },
+        "version": "0.10.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -65028,7 +65180,7 @@
             ]
           }
         },
-        "version": "3.6.4"
+        "version": "3.6.5"
       },
       "files": [
         "enable-pthread.patch",
@@ -67659,6 +67811,31 @@
       ]
     },
     {
+      "name": "msolve",
+      "manifest": {
+        "name": "msolve",
+        "description": "Computer algebra algorithms for solving polynomial systems",
+        "homepage": "https://msolve.lip6.fr/",
+        "license": "GPL-2.0-only",
+        "supports": "!windows",
+        "dependencies": [
+          "flint",
+          "gmp",
+          "mpfr",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "0.9.4"
+      },
+      "files": [
+        "fix-android.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "msquic",
       "manifest": {
         "name": "msquic",
@@ -69555,7 +69732,7 @@
             "host": true
           }
         ],
-        "version": "1.68.0"
+        "version": "1.68.1"
       },
       "files": [
         "portfile.cmake",
@@ -77522,7 +77699,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -90062,10 +90239,11 @@
             "description": "Enable ryml's default implementation of callbacks: allocate(), free(), error()"
           }
         },
-        "version": "0.10.0"
+        "version": "0.11.0"
       },
       "files": [
         "cmake-fix.patch",
+        "fix-param-name.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -91584,16 +91762,12 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
-          {
-            "name": "dbus",
-            "default-features": false,
-            "platform": "linux"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -91623,6 +91797,16 @@
             "dependencies": [
               {
                 "name": "alsa",
+                "platform": "linux"
+              }
+            ]
+          },
+          "dbus": {
+            "description": "Build with D-Bus support",
+            "dependencies": [
+              {
+                "name": "dbus",
+                "default-features": false,
                 "platform": "linux"
               }
             ]
@@ -92201,7 +92385,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT",
@@ -92293,7 +92476,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.2"
+        "version": "0.13.3"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -92828,7 +93011,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.6.2"
+        "version": "1.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -93339,7 +93522,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.4.0"
+        "version": "4.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -98965,6 +99148,7 @@
       "name": "thorvg",
       "manifest": {
         "name": "thorvg",
+        "port-version": 1,
         "description": "ThorVG is a platform-independent portable library for drawing vector-based scenes and animations",
         "homepage": "https://www.thorvg.org",
         "license": "MIT",
@@ -106036,7 +106220,7 @@
             ]
           }
         },
-        "version": "4.12.5"
+        "version": "4.12.6"
       },
       "files": [
         "0005-XML_file_path.patch",
