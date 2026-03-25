@@ -1,5 +1,5 @@
 {
-  "version": "eed289f6e06a5e7a5c9e6a729671b0a56af7dd69",
+  "version": "ff8f729804f07747ee5dae7d40a4a885066f9204",
   "ports": [
     {
       "name": "3fd",
@@ -450,7 +450,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.4.3"
+        "version": "3.4.4"
       },
       "files": [
         "no-cpm.patch",
@@ -1831,7 +1831,7 @@
             ]
           }
         },
-        "version": "2.3.0"
+        "version": "2.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -3464,7 +3464,6 @@
       "name": "audit",
       "manifest": {
         "name": "audit",
-        "port-version": 1,
         "description": "Library for working with audit subsystem",
         "homepage": "https://github.com/linux-audit/audit-userspace",
         "license": "GPL-2.0-or-later OR LGPL-2.1-or-later",
@@ -3475,7 +3474,7 @@
             "host": true
           }
         ],
-        "version": "4.1.3"
+        "version": "4.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -4007,7 +4006,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.11.5"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -7825,7 +7824,7 @@
             "host": true
           }
         ],
-        "version": "8.2.8"
+        "version": "8.2.9"
       },
       "files": [
         "CMakeLists.txt",
@@ -22676,7 +22675,7 @@
             ]
           }
         },
-        "version": "0.38.0"
+        "version": "0.39.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -30372,7 +30371,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31113,21 +31111,18 @@
             ]
           }
         },
-        "version": "8.0.1"
+        "version": "8.1"
       },
       "files": [
-        "0001-create-lib-libraries.patch",
         "0002-fix-msvc-link.patch",
         "0003-fix-windowsinclude.patch",
         "0004-dependencies.patch",
         "0005-fix-nasm.patch",
         "0007-fix-lib-naming.patch",
         "0013-define-WINVER.patch",
-        "0020-fix-aarch64-libswscale.patch",
         "0024-fix-osx-host-c11.patch",
         "0040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch",
         "0042-fix-arm64-linux.patch",
-        "0044-fix-vulkan-debug-callback-abi.patch",
         "0045-use-prebuilt-bin2c.patch",
         "0046-fix-msvc-detection.patch",
         "FindFFMPEG.cmake.in",
@@ -31151,7 +31146,7 @@
             "host": true
           }
         ],
-        "version": "8.0.1"
+        "version": "8.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -32868,7 +32863,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.24.0"
+        "version": "3.24.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -35953,7 +35948,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "16.1.0"
+        "version": "16.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -42829,7 +42824,7 @@
             "supports": "!android & !ios & !xbox & !wasm32"
           }
         },
-        "version-date": "2024-12-02"
+        "version-date": "2026-03-19"
       },
       "files": [
         "portfile.cmake",
@@ -43466,6 +43461,7 @@
       "name": "inja",
       "manifest": {
         "name": "inja",
+        "port-version": 1,
         "description": "Inja - A Template Engine for Modern C++",
         "homepage": "https://github.com/pantor/inja",
         "license": "MIT",
@@ -76332,7 +76328,7 @@
             "description": "Omath will define some methods as inline"
           }
         },
-        "version": "5.0.0"
+        "version": "5.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -99830,7 +99826,7 @@
           "nlohmann-json",
           "stb"
         ],
-        "version": "2.9.7"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -107909,6 +107905,32 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "yubico-piv-tool",
+      "manifest": {
+        "name": "yubico-piv-tool",
+        "description": "YubiKey PIV library (libykpiv) for interacting with the PIV application on a YubiKey",
+        "homepage": "https://github.com/Yubico/yubico-piv-tool",
+        "license": "BSD-2-Clause",
+        "supports": "!android & !ios",
+        "dependencies": [
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "2.7.3"
+      },
+      "files": [
+        "patches/fix-build-system.patch",
+        "portfile.cmake",
+        "unofficial-libykpiv-config.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
