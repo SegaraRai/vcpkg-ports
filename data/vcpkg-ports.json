@@ -1,5 +1,5 @@
 {
-  "version": "ff8f729804f07747ee5dae7d40a4a885066f9204",
+  "version": "dddca6fa87f177e0678e2545c4b4636a44aa05bd",
   "ports": [
     {
       "name": "3fd",
@@ -22346,7 +22346,6 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
-        "port-version": 3,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
@@ -22354,7 +22353,9 @@
           "eigen3",
           "fmt",
           "if97",
+          "miniz",
           "msgpack",
+          "nlohmann-json",
           "rapidjson",
           "refprop-headers",
           {
@@ -22362,14 +22363,11 @@
             "host": true
           }
         ],
-        "version-semver": "6.4.3"
+        "version-semver": "7.2.0"
       },
       "files": [
         "cmake-project-include.cmake",
-        "fix-builderror.patch",
-        "fix-dependency.patch",
         "fix-install.patch",
-        "fmt-fix.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55418,7 +55416,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 3,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -55437,7 +55434,7 @@
             "host": true
           },
           {
-            "name": "vcpkg-pkgconfig-get-modules",
+            "name": "vcpkg-tool-meson",
             "host": true,
             "platform": "windows & !mingw"
           }
@@ -55606,11 +55603,10 @@
             ]
           }
         },
-        "version": "16.9"
+        "version": "18.3"
       },
       "files": [
         "Makefile",
-        "android/unversioned_so.patch",
         "build-msvc.cmake",
         "libpq.props.in",
         "portfile.cmake",
@@ -55625,11 +55621,11 @@
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg-libs.props.in",
         "vcpkg.json",
+        "windows/getopt.patch",
         "windows/macro-def.patch",
-        "windows/msbuild.patch",
+        "windows/meson-vcpkg.patch",
         "windows/spin_delay.patch",
-        "windows/tcl-9.0-alpha.patch",
-        "windows/win_bison_flex.patch"
+        "windows/tcl-9.0-alpha.patch"
       ]
     },
     {
@@ -75623,7 +75619,7 @@
             ]
           }
         },
-        "version-semver": "1.25.0"
+        "version-semver": "1.26.0"
       },
       "files": [
         "fix-target_link.patch",
@@ -90844,7 +90840,6 @@
       "name": "scenepic",
       "manifest": {
         "name": "scenepic",
-        "port-version": 1,
         "description": "A Powerful, easy to use, and portable visualization toolkit for mixed 3D and 2D content",
         "homepage": "https://microsoft.github.io/scenepic/",
         "license": "MIT",
@@ -90859,7 +90854,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -92265,7 +92260,7 @@
             "host": true
           }
         ],
-        "version": "1.0"
+        "version": "2.0"
       },
       "files": [
         "portfile.cmake",
@@ -103326,7 +103321,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "CMakeLists.txt",
