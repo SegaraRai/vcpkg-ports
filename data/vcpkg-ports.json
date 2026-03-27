@@ -1,5 +1,5 @@
 {
-  "version": "dddca6fa87f177e0678e2545c4b4636a44aa05bd",
+  "version": "c27eeddba73f608f10605d80bc0144c1166f8fb7",
   "ports": [
     {
       "name": "3fd",
@@ -2759,7 +2759,7 @@
             "host": true
           }
         ],
-        "version": "3.6.0"
+        "version": "3.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -6797,7 +6797,7 @@
             "host": true
           }
         ],
-        "version": "2.0.6"
+        "version": "2.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -6868,6 +6868,7 @@
         "license": "Apache-2.0",
         "supports": "!android & !(arm64 & windows) & !uwp",
         "dependencies": [
+          "pcre2",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -6877,10 +6878,12 @@
             "host": true
           }
         ],
-        "version": "4.18.0.0"
+        "version": "4.36.0.0"
       },
       "files": [
+        "fix-bdlar-target.patch",
         "portfile.cmake",
+        "use-vcpkg-pcre2.patch",
         "vcpkg.json"
       ]
     },
@@ -7617,7 +7620,7 @@
             "host": true
           }
         ],
-        "version": "2.13"
+        "version": "2.15"
       },
       "files": [
         "portfile.cmake",
@@ -21199,7 +21202,7 @@
             ]
           }
         },
-        "version": "2.6.0"
+        "version": "2.6.1"
       },
       "files": [
         "fix-deps-and-build-type.patch",
@@ -21679,7 +21682,7 @@
             ]
           }
         },
-        "version": "4.0.6"
+        "version": "4.0.8"
       },
       "files": [
         "expat.diff",
@@ -22031,7 +22034,7 @@
             "host": true
           }
         ],
-        "version": "5.2.7"
+        "version": "5.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -22346,6 +22349,7 @@
       "name": "coolprop",
       "manifest": {
         "name": "coolprop",
+        "port-version": 1,
         "description": "Thermophysical properties for the masses",
         "homepage": "https://github.com/CoolProp/CoolProp",
         "license": "MIT",
@@ -22366,7 +22370,6 @@
         "version-semver": "7.2.0"
       },
       "files": [
-        "cmake-project-include.cmake",
         "fix-install.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -40902,6 +40905,7 @@
       "name": "hanjingo-high-jump",
       "manifest": {
         "name": "hanjingo-high-jump",
+        "port-version": 1,
         "maintainers": [
           "hanjingo",
           "hehehunanchina@live.com"
@@ -40911,6 +40915,15 @@
         "license": "GPL-3.0-only",
         "supports": "!uwp",
         "dependencies": [
+          "abseil",
+          "bext-sml",
+          "boost-filesystem",
+          "boost-stacktrace",
+          "concurrentqueue",
+          "fmt",
+          "libiconv",
+          "libnice",
+          "nlohmann-json",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -40920,6 +40933,151 @@
             "host": true
           }
         ],
+        "features": {
+          "ai": {
+            "description": "Enable ai module support",
+            "dependencies": [
+              "libqrencode",
+              "quirc"
+            ]
+          },
+          "algo": {
+            "description": "Enable algo module support",
+            "dependencies": [
+              "behaviortree-cpp",
+              "boost-algorithm",
+              "boost-multi-index",
+              "boost-uuid"
+            ]
+          },
+          "compress": {
+            "description": "Enable compress module support",
+            "dependencies": [
+              "zlib",
+              "zstd"
+            ]
+          },
+          "crypto": {
+            "description": "Enable crypto module support",
+            "dependencies": [
+              "openssl"
+            ]
+          },
+          "db": {
+            "description": "Enable db module support",
+            "dependencies": [
+              "clickhouse-cpp",
+              "hiredis",
+              "libpqxx",
+              "sqlite3"
+            ]
+          },
+          "encoding": {
+            "description": "Enable encoding module support",
+            "dependencies": [
+              "boost-property-tree",
+              "flatbuffers",
+              "protobuf",
+              "pugixml",
+              "yaml-cpp"
+            ]
+          },
+          "hardware": {
+            "description": "Enable hardware module support",
+            "dependencies": [
+              "hidapi",
+              "opencl"
+            ]
+          },
+          "io": {
+            "description": "Enable I/O module support",
+            "dependencies": [
+              "boost-circular-buffer"
+            ]
+          },
+          "log": {
+            "description": "Enable log module support",
+            "dependencies": [
+              "spdlog"
+            ]
+          },
+          "math": {
+            "description": "Enable math module support",
+            "dependencies": [
+              "boost-math",
+              "eigen3"
+            ]
+          },
+          "misc": {
+            "description": "Enable misc module support",
+            "dependencies": [
+              "hffix",
+              "libharu"
+            ]
+          },
+          "net": {
+            "description": "Enable net module support",
+            "dependencies": [
+              "boost-asio",
+              "boost-beast",
+              "cpp-httplib",
+              "zeromq"
+            ]
+          },
+          "os": {
+            "description": "Enable os module support",
+            "dependencies": [
+              "boost-program-options"
+            ]
+          },
+          "sync": {
+            "description": "Enable sync module support",
+            "dependencies": [
+              "boost-interprocess",
+              "boost-process",
+              "boost-thread",
+              "tbb"
+            ]
+          },
+          "testing": {
+            "description": "Enable testing module support",
+            "dependencies": [
+              "benchmark",
+              "breakpad",
+              "gtest",
+              {
+                "name": "opentelemetry-cpp",
+                "default-features": false,
+                "features": [
+                  "otlp-file",
+                  "otlp-http"
+                ]
+              }
+            ]
+          },
+          "time": {
+            "description": "Enable time module support",
+            "dependencies": [
+              "boost-timer"
+            ]
+          },
+          "types": {
+            "description": "Enable types module support",
+            "dependencies": [
+              "boost-any",
+              "boost-leaf",
+              "boost-optional",
+              "boost-serialization",
+              "boost-variant"
+            ]
+          },
+          "util": {
+            "description": "Enable util module support",
+            "dependencies": [
+              "jwt-cpp"
+            ]
+          }
+        },
         "version": "1.0.4"
       },
       "files": [
@@ -52804,7 +52962,7 @@
       "name": "libinterpolate",
       "manifest": {
         "name": "libinterpolate",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Header-only C++ interpolation library.",
         "homepage": "https://github.com/CD3/libInterpolate",
         "license": "MIT",
@@ -52831,7 +52989,7 @@
         "version": "2.7.2"
       },
       "files": [
-        "0001-support-eigen3-5.patch",
+        "0001-fix-eigen3.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -59407,7 +59565,7 @@
             "host": true
           }
         ],
-        "version": "0.99.9"
+        "version": "0.99.10"
       },
       "files": [
         "portfile.cmake",
@@ -67043,7 +67201,7 @@
             "host": true
           }
         ],
-        "version": "4.0"
+        "version": "4.1"
       },
       "files": [
         "portfile.cmake",
@@ -70672,7 +70830,7 @@
             ]
           }
         },
-        "version-semver": "5.1.6"
+        "version-semver": "5.1.7"
       },
       "files": [
         "portfile.cmake",
@@ -71896,7 +72054,7 @@
             "host": true
           }
         ],
-        "version": "3.11"
+        "version": "3.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -77245,7 +77403,7 @@
             "supports": "!static"
           }
         },
-        "version": "1.57.0"
+        "version": "1.57.1"
       },
       "files": [
         "portfile.cmake",
@@ -80704,7 +80862,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.8.0"
+        "version-semver": "1.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -80729,7 +80887,7 @@
             "host": true
           }
         ],
-        "version": "0.6.7"
+        "version": "0.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -80874,7 +81032,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
         "fix-android.patch",
@@ -86899,7 +87057,7 @@
             "host": true
           }
         ],
-        "version": "1.40"
+        "version": "1.41"
       },
       "files": [
         "portfile.cmake",
@@ -87632,7 +87790,6 @@
       "name": "raylib-cpp",
       "manifest": {
         "name": "raylib-cpp",
-        "port-version": 1,
         "description": "C++ Object Oriented Wrapper for raylib",
         "homepage": "https://github.com/RobLoach/raylib-cpp",
         "license": "Zlib",
@@ -87646,7 +87803,7 @@
             "host": true
           }
         ],
-        "version": "5.5.0"
+        "version": "5.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -94568,6 +94725,36 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "snmalloc",
+      "manifest": {
+        "name": "snmalloc",
+        "description": "A high-performance, message passing based allocator",
+        "homepage": "https://github.com/microsoft/snmalloc",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "static-shim": {
+            "description": "Build and install snmallocshim-static, a compiled static library that exports malloc/free with a configurable symbol prefix (default: sn_)"
+          }
+        },
+        "version-semver": "0.7.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -103675,7 +103862,7 @@
           },
           "zlib"
         ],
-        "version": "9.11.1"
+        "version": "9.11.2"
       },
       "files": [
         "fix-android-build.patch",
