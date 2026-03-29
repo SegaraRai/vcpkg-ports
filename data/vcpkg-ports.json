@@ -1,5 +1,5 @@
 {
-  "version": "515ffd8c4f08d6472adededd8f06a2f83fba1aa3",
+  "version": "b5d1a94fb7f88fd835e360fd23a45a09ceedbf48",
   "ports": [
     {
       "name": "3fd",
@@ -47566,12 +47566,310 @@
             ]
           }
         },
-        "version": "6.22.0"
+        "version": "6.23.0"
       },
       "files": [
         "portfile.cmake",
         "vcpkg.json",
         "zstd.diff"
+      ]
+    },
+    {
+      "name": "kf6breezeicons",
+      "manifest": {
+        "name": "kf6breezeicons",
+        "description": "Breeze icon theme for KDE Frameworks 6",
+        "homepage": "https://invent.kde.org/frameworks/breeze-icons",
+        "documentation": "https://api.kde.org/breeze-icons-index.html",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!windows & !android",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6codecs",
+      "manifest": {
+        "name": "kf6codecs",
+        "description": "String encoding library",
+        "homepage": "https://invent.kde.org/frameworks/kcodecs",
+        "documentation": "https://api.kde.org/kcodecs-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6coreaddons",
+      "manifest": {
+        "name": "kf6coreaddons",
+        "description": "Addons to QtCore",
+        "homepage": "https://invent.kde.org/frameworks/kcoreaddons",
+        "documentation": "https://api.kde.org/kcoreaddons-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build the QML plugin",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6dbusaddons",
+      "manifest": {
+        "name": "kf6dbusaddons",
+        "description": "Convenience classes for D-Bus",
+        "homepage": "https://invent.kde.org/frameworks/kdbusaddons",
+        "documentation": "https://api.kde.org/kdbusaddons-index.html",
+        "supports": "!android",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6globalaccel",
+      "manifest": {
+        "name": "kf6globalaccel",
+        "description": "Global desktop keyboard shortcuts",
+        "homepage": "https://invent.kde.org/frameworks/kglobalaccel",
+        "documentation": "https://api.kde.org/kglobalaccel-index.html",
+        "supports": "!windows & !android & !osx",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6i18n",
+      "manifest": {
+        "name": "kf6i18n",
+        "description": "Advanced internationalization framework",
+        "homepage": "https://invent.kde.org/frameworks/ki18n",
+        "documentation": "https://api.kde.org/ki18n-index.html",
+        "supports": "!android",
+        "dependencies": [
+          "ecm",
+          "gettext",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build with support for scripted translations",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kf6itemmodels",
+      "manifest": {
+        "name": "kf6itemmodels",
+        "description": "Models for Qt Model/View system",
+        "homepage": "https://invent.kde.org/frameworks/kitemmodels",
+        "documentation": "https://api.kde.org/kitemmodels-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -93914,6 +94212,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
+        "port-version": 1,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
