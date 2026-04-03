@@ -1,5 +1,5 @@
 {
-  "version": "dbbd673624c057174dd51ef85758951032717715",
+  "version": "cb2981c4e03d421fa03b9bb5044cd1986180e7e4",
   "ports": [
     {
       "name": "3fd",
@@ -1832,7 +1832,7 @@
             ]
           }
         },
-        "version": "2.3.1"
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -23796,6 +23796,31 @@
       ]
     },
     {
+      "name": "crashcatch",
+      "manifest": {
+        "name": "crashcatch",
+        "description": "A cross-platform, single-header C++ crash-reporting library for modern C++ applications.",
+        "homepage": "https://github.com/keithpotz/CrashCatch",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.4.0"
+      },
+      "files": [
+        "fix-disable-examples-tests.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
@@ -25275,6 +25300,7 @@
       "name": "dacap-clip",
       "manifest": {
         "name": "dacap-clip",
+        "port-version": 1,
         "description": "Cross-platform C++ library to copy/paste clipboard content.",
         "homepage": "https://github.com/dacap/clip",
         "license": "MIT",
@@ -27147,7 +27173,6 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
-        "port-version": 3,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -27191,7 +27216,7 @@
             ]
           }
         },
-        "version": "20.0"
+        "version": "20.0.1"
       },
       "files": [
         "find_blas.patch",
@@ -53890,7 +53915,6 @@
       "name": "liblzma",
       "manifest": {
         "name": "liblzma",
-        "port-version": 1,
         "description": "Compression library with an API similar to that of zlib.",
         "homepage": "https://tukaani.org/xz/",
         "license": null,
@@ -53909,7 +53933,7 @@
             "description": "Build tools"
           }
         },
-        "version": "5.8.2"
+        "version": "5.8.3"
       },
       "files": [
         "build-tools.patch",
@@ -67323,7 +67347,6 @@
       "name": "mongoose",
       "manifest": {
         "name": "mongoose",
-        "port-version": 1,
         "description": "Embedded web server / embedded networking library",
         "homepage": "https://cesanta.com/",
         "license": null,
@@ -67349,7 +67372,7 @@
             ]
           }
         },
-        "version": "7.20"
+        "version": "7.21"
       },
       "files": [
         "CMakeLists.txt",
@@ -77236,6 +77259,7 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
+        "port-version": 1,
         "description": "osgEarth - 3D Maps for OpenSceneGraph",
         "homepage": "https://github.com/pelicanmapping/osgearth",
         "license": "MIT",
@@ -77251,6 +77275,13 @@
           "draco",
           "gdal",
           "geos",
+          {
+            "name": "imgui",
+            "features": [
+              "docking-experimental",
+              "opengl3-binding"
+            ]
+          },
           "libwebp",
           "meshoptimizer",
           "opengl",
@@ -77278,6 +77309,7 @@
         "version": "3.8"
       },
       "files": [
+        "devendor-imgui.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -88939,7 +88971,7 @@
             "host": true
           }
         ],
-        "version": "0.30.2"
+        "version": "0.31.1"
       },
       "files": [
         "portfile.cmake",
@@ -89111,7 +89143,7 @@
             "host": true
           }
         ],
-        "version": "0.7.9"
+        "version": "0.7.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -98719,7 +98751,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -101453,6 +101485,39 @@
       ]
     },
     {
+      "name": "trieste",
+      "manifest": {
+        "name": "trieste",
+        "description": "A header-only C++20 term rewriting system for rapidly prototyping programming languages",
+        "homepage": "https://github.com/microsoft/Trieste",
+        "license": "MIT",
+        "supports": "!x86",
+        "dependencies": [
+          "cli11",
+          "snmalloc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "parsers": {
+            "description": "Build the JSON and YAML parser libraries (trieste::json, trieste::yaml)"
+          }
+        },
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "triton",
       "manifest": {
         "name": "triton",
@@ -102259,7 +102324,7 @@
             "platform": "windows"
           }
         ],
-        "version": "7.0.7"
+        "version": "7.2.5"
       },
       "files": [
         "Config.cmake.in",
@@ -106281,7 +106346,7 @@
         "homepage": "https://winsparkle.org",
         "license": "MIT",
         "supports": "windows & !(arm | uwp)",
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
