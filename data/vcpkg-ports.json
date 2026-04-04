@@ -1,5 +1,5 @@
 {
-  "version": "cb2981c4e03d421fa03b9bb5044cd1986180e7e4",
+  "version": "7ad1ed0b91263b3652472385e799ad764075ba92",
   "ports": [
     {
       "name": "3fd",
@@ -2760,7 +2760,7 @@
             "host": true
           }
         ],
-        "version": "3.6.1"
+        "version": "3.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -5721,7 +5721,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.16.2"
+        "version-semver": "1.16.3"
       },
       "files": [
         "portfile.cmake",
@@ -20707,7 +20707,7 @@
           "iguana",
           "tanakh-cmdline"
         ],
-        "version": "0.9.8"
+        "version": "0.9.9"
       },
       "files": [
         "portfile.cmake",
@@ -23465,6 +23465,7 @@
       "name": "cpptrace",
       "manifest": {
         "name": "cpptrace",
+        "port-version": 1,
         "description": "Simple, portable, and self-contained stacktrace library for C++11 and newer",
         "homepage": "https://github.com/jeremy-rifkin/cpptrace",
         "license": "MIT",
@@ -23483,6 +23484,18 @@
             "host": true
           }
         ],
+        "features": {
+          "libunwind": {
+            "description": "Use libunwind for stack unwinding",
+            "dependencies": [
+              {
+                "name": "libunwind",
+                "platform": "linux"
+              }
+            ],
+            "supports": "linux"
+          }
+        },
         "version": "1.0.4"
       },
       "files": [
@@ -30424,6 +30437,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31178,6 +31192,7 @@
         "0042-fix-arm64-linux.patch",
         "0045-use-prebuilt-bin2c.patch",
         "0046-fix-msvc-detection.patch",
+        "0047-fix-msvc-utf8.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
@@ -35492,7 +35507,7 @@
             ]
           }
         },
-        "version": "7.2.2"
+        "version": "7.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -40189,7 +40204,7 @@
             "host": true
           }
         ],
-        "version": "0.12.3"
+        "version": "0.13.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -42386,7 +42401,7 @@
             ]
           }
         },
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -49108,7 +49123,7 @@
             "supports": "!arm"
           }
         },
-        "version": "2.7.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -66174,7 +66189,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.0.1"
+        "version": "1.1"
       },
       "files": [
         "dependencies.diff",
@@ -71124,7 +71139,7 @@
             "host": true
           }
         ],
-        "version": "7.2.4"
+        "version": "7.3.0"
       },
       "files": [
         "export-target.patch",
@@ -76658,7 +76673,7 @@
             "supports": "!(arm & windows) & !uwp"
           }
         },
-        "version": "1.1.54"
+        "version": "1.1.58"
       },
       "files": [
         "fix-openxr-sdk-jsoncpp.patch",
@@ -90845,7 +90860,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.7.1"
+        "version": "1.7.2"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -93980,7 +93995,7 @@
             "host": true
           }
         ],
-        "version": "6.2.159"
+        "version": "7.0.160"
       },
       "files": [
         "SimdConfig.cmake",
@@ -94685,7 +94700,7 @@
             "host": true
           }
         ],
-        "version": "1.0.7"
+        "version": "1.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -97313,7 +97328,7 @@
             "host": true
           }
         ],
-        "version": "3.96"
+        "version": "4.6.8"
       },
       "files": [
         "fix-install-path.patch",
@@ -97446,7 +97461,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -101320,7 +101335,7 @@
       "manifest": {
         "name": "tree-sitter",
         "description": "An incremental parsing system for programming tools.",
-        "homepage": "https://github.com/tree-sitter/tree-sitter",
+        "homepage": "https://tree-sitter.github.io/",
         "license": "MIT",
         "dependencies": [
           {
@@ -101332,7 +101347,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.7"
+        "version-semver": "0.26.8"
       },
       "files": [
         "portfile.cmake",
@@ -101374,7 +101389,7 @@
         "homepage": "https://github.com/tree-sitter/tree-sitter",
         "license": null,
         "supports": "native",
-        "version": "0.26.2"
+        "version": "0.26.8"
       },
       "files": [
         "portfile.cmake",
