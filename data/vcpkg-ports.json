@@ -1,5 +1,5 @@
 {
-  "version": "7ad1ed0b91263b3652472385e799ad764075ba92",
+  "version": "77df67cfff9c12ccfdb52284e07c87c75092f723",
   "ports": [
     {
       "name": "3fd",
@@ -18437,7 +18437,6 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
-        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -18467,14 +18466,11 @@
             ]
           }
         },
-        "version": "3.10.0"
+        "version": "3.11.1"
       },
       "files": [
-        "botan-3.10-illegal-instruction.patch",
         "configure",
         "configure-zlib.patch",
-        "embed-debug-info.patch",
-        "fix-x86-msvc-amalgamation.patch",
         "fix_android.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -30056,12 +30052,12 @@
             "host": true
           }
         ],
-        "version": "3.4.1"
+        "version": "3.6.0"
       },
       "files": [
+        "disable-test.patch",
         "disable-werror.patch",
         "fix-deps.patch",
-        "include-cstdint.patch",
         "pdb-file.patch",
         "portfile.cmake",
         "usage",
@@ -43255,7 +43251,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.92.6"
+        "version": "1.92.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -43268,7 +43264,7 @@
       "name": "imgui-node-editor",
       "manifest": {
         "name": "imgui-node-editor",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Node Editor built using Dear ImGui",
         "homepage": "https://github.com/thedmd/imgui-node-editor",
         "license": "MIT",
@@ -53106,7 +53102,7 @@
       "name": "libigl",
       "manifest": {
         "name": "libigl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libigl is a simple C++ geometry processing library. We have a wide functionality including construction of sparse discrete differential geometry operators and finite-elements matrices such as the cotangent Laplacian and diagonalized mass matrix, simple facet and edge-based topology data structures, mesh-viewing utilities for OpenGL and GLSL, and many core functions for matrix manipulation which make Eigen feel a lot more like MATLAB.",
         "homepage": "https://github.com/libigl/libigl",
         "license": "MPL-2.0",
@@ -53143,7 +53139,7 @@
           },
           "copyleft": {
             "description": "Build copyleft core module",
-            "license": "MPL-2.0 AND GPL-2.0"
+            "license": "MPL-2.0 AND GPL-2.0-only"
           },
           "embree": {
             "description": "Build with embree",
@@ -53207,6 +53203,7 @@
       },
       "files": [
         "dependencies.patch",
+        "fix-imgui-combo-getter.patch",
         "imgui-impl.diff",
         "install-extra-targets.patch",
         "instantiations.diff",
@@ -55880,7 +55877,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.55"
+        "version": "1.6.56"
       },
       "files": [
         "cmake.patch",
@@ -77448,7 +77445,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.499"
+        "version": "4.0.500"
       },
       "files": [
         "portfile.cmake",
