@@ -1,5 +1,5 @@
 {
-  "version": "77df67cfff9c12ccfdb52284e07c87c75092f723",
+  "version": "81e3c888ef717a026eb57bb2f3cb0dbd30246271",
   "ports": [
     {
       "name": "3fd",
@@ -1426,7 +1426,7 @@
       "name": "aom",
       "manifest": {
         "name": "aom",
-        "port-version": 1,
+        "port-version": 2,
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
@@ -2886,11 +2886,11 @@
       "name": "assimp",
       "manifest": {
         "name": "assimp",
+        "port-version": 1,
         "description": "The Open Asset import library",
         "homepage": "https://github.com/assimp/assimp",
         "license": "BSD-3-Clause",
         "dependencies": [
-          "draco",
           "jhasse-poly2tri",
           "kubazip",
           "minizip",
@@ -2909,6 +2909,14 @@
           },
           "zlib"
         ],
+        "features": {
+          "draco": {
+            "description": "Enable Draco compressed mesh support",
+            "dependencies": [
+              "draco"
+            ]
+          }
+        },
         "version": "6.0.4"
       },
       "files": [
@@ -4007,7 +4015,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.12.1"
+        "version": "0.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -19651,7 +19659,6 @@
       "name": "catch2",
       "manifest": {
         "name": "catch2",
-        "port-version": 2,
         "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD.",
         "homepage": "https://github.com/catchorg/Catch2",
         "license": "BSL-1.0",
@@ -19670,7 +19677,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.13.0"
+        "version-semver": "3.14.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -22141,7 +22148,6 @@
       "name": "concurrentqueue",
       "manifest": {
         "name": "concurrentqueue",
-        "port-version": 1,
         "description": "A fast multi-producer, multi-consumer lock-free concurrent queue for C++11",
         "homepage": "https://github.com/cameron314/concurrentqueue",
         "license": "BSD-2-Clause OR BSL-1.0",
@@ -22155,7 +22161,7 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -22249,6 +22255,31 @@
           }
         ],
         "version-semver": "1.0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "consteig",
+      "manifest": {
+        "name": "consteig",
+        "description": "Header-only C++17 constexpr library for compile-time eigenvalue and eigenvector computation",
+        "homepage": "https://github.com/MitchellThompkins/consteig",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -22676,7 +22707,7 @@
             ]
           }
         },
-        "version": "0.40.0"
+        "version": "0.41.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -25584,7 +25615,7 @@
             "host": true
           }
         ],
-        "version": "4.0.0"
+        "version": "4.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -27182,6 +27213,7 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
+        "port-version": 1,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -27228,9 +27260,7 @@
         "version": "20.0.1"
       },
       "files": [
-        "find_blas.patch",
         "fix-dependencies.patch",
-        "fix-lapack.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27361,7 +27391,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -29350,7 +29380,7 @@
             "host": true
           }
         ],
-        "version": "20.46.2"
+        "version": "20.47.1"
       },
       "files": [
         "portfile.cmake",
@@ -29543,7 +29573,7 @@
             "host": true
           }
         ],
-        "version": "2.7.4"
+        "version": "2.7.5"
       },
       "files": [
         "portfile.cmake",
@@ -31959,7 +31989,7 @@
             "host": true
           }
         ],
-        "version": "1.3.2"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -33043,7 +33073,7 @@
             ]
           }
         },
-        "version": "2.13.3"
+        "version": "2.14.3"
       },
       "files": [
         "0003-Fix-UWP.patch",
@@ -41827,7 +41857,7 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -41947,10 +41977,9 @@
           },
           "zlib"
         ],
-        "version": "1.13.1"
+        "version": "1.14.0"
       },
       "files": [
-        "fix-install-dirs.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42698,6 +42727,60 @@
       ]
     },
     {
+      "name": "icey",
+      "manifest": {
+        "name": "icey",
+        "maintainers": "0state OSS <oss@0state.com>",
+        "description": "C++20 media stack and libwebrtc alternative for real-time video, signalling, TURN, and media servers",
+        "homepage": "https://0state.com/icey/",
+        "documentation": "https://0state.com/icey/docs",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "libuv",
+          "llhttp",
+          "minizip",
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "features": {
+          "ffmpeg": {
+            "description": "Enable FFmpeg-backed codecs and capture in icey::av",
+            "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "avcodec",
+                  "avformat",
+                  "swresample",
+                  "swscale"
+                ]
+              }
+            ]
+          },
+          "opencv": {
+            "description": "Enable OpenCV integration in icey::av",
+            "dependencies": [
+              "opencv"
+            ]
+          }
+        },
+        "version": "2.4.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "icu",
       "manifest": {
         "name": "icu",
@@ -43397,7 +43480,7 @@
             "host": true
           }
         ],
-        "version": "0.17"
+        "version": "1.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -43979,6 +44062,34 @@
         "portfile.cmake",
         "vcpkg.json",
         "win32_runtime_fix.patch"
+      ]
+    },
+    {
+      "name": "iso-codes",
+      "manifest": {
+        "name": "iso-codes",
+        "description": "Lists of the country, language, and currency names",
+        "homepage": "https://salsa.debian.org/iso-codes-team/iso-codes",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          {
+            "name": "gettext",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "4.20.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -52356,7 +52467,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1.3"
+        "version": "1.3.0.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -54373,7 +54484,7 @@
             "host": true
           }
         ],
-        "version": "0.15"
+        "version": "0.16"
       },
       "files": [
         "portfile.cmake",
@@ -56535,7 +56646,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.22.0"
+        "version": "0.22.1"
       },
       "files": [
         "dependencies.patch",
@@ -62935,10 +63046,11 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.714"
+        "version": "0.715"
       },
       "files": [
         "cmake-config-export.patch",
+        "fix-unittest.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -69776,7 +69888,7 @@
             "host": true
           }
         ],
-        "version-date": "2024-11-24"
+        "version-date": "2025-10-23"
       },
       "files": [
         "portfile.cmake",
@@ -75005,7 +75117,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.8"
+        "version": "3.4.9"
       },
       "files": [
         "portfile.cmake",
@@ -90660,7 +90772,7 @@
             ]
           }
         },
-        "version": "0.15.3"
+        "version": "0.17.3"
       },
       "files": [
         "portfile.cmake",
@@ -92291,7 +92403,6 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -92360,7 +92471,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.2"
+        "version": "3.4.4"
       },
       "files": [
         "fix-freebsd.patch",
@@ -92419,7 +92530,7 @@
             ]
           }
         },
-        "version": "3.4.0"
+        "version": "3.4.2"
       },
       "files": [
         "dependencies.diff",
@@ -94052,7 +94163,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -97458,7 +97569,7 @@
             "host": true
           }
         ],
-        "version": "0.7.3"
+        "version": "0.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -103909,7 +104020,7 @@
             "host": true
           }
         ],
-        "version": "2.5.2"
+        "version": "3.0.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -104198,7 +104309,7 @@
         "description": "VM detection library",
         "homepage": "https://github.com/kernelwernel/VMAware",
         "license": "MIT",
-        "version": "2.6.0"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
