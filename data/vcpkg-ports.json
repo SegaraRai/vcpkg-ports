@@ -1,5 +1,5 @@
 {
-  "version": "140057915cbe11472be91fab313694304aba43fb",
+  "version": "4497409a47f19db373a410a0efb84eca4747adbf",
   "ports": [
     {
       "name": "3fd",
@@ -30464,7 +30464,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -34425,7 +34425,7 @@
             "supports": "!static"
           }
         },
-        "version": "0.4.68"
+        "version": "0.4.70"
       },
       "files": [
         "disable_tests.patch",
@@ -34796,7 +34796,6 @@
       "name": "gexiv2",
       "manifest": {
         "name": "gexiv2",
-        "port-version": 3,
         "description": "A GObject-based Exiv2 wrapper.",
         "homepage": "https://gitlab.gnome.org/GNOME/gexiv2/",
         "license": "GPL-2.0-or-later",
@@ -34821,10 +34820,9 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "0.14.3"
+        "version": "0.14.6"
       },
       "files": [
-        "msvc_def.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35534,7 +35532,7 @@
             ]
           }
         },
-        "version": "7.2.3"
+        "version": "7.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -39870,7 +39868,6 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 3,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -39962,13 +39959,12 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "3.24.51"
+        "version": "3.24.52"
       },
       "files": [
         "0001-build.patch",
         "avoid-multiple-definition.diff",
         "cairo-cpp-linkage.patch",
-        "egl-conditional.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42392,8 +42388,9 @@
             "default-features": false,
             "features": [
               "geometry-instance",
+              "geometry-point",
               "geometry-triangle",
-              "ray-packets",
+              "ray-mask",
               "tasking-tbb"
             ]
           },
@@ -42416,6 +42413,12 @@
           }
         ],
         "features": {
+          "tests": {
+            "description": "Build huira tests",
+            "dependencies": [
+              "catch2"
+            ]
+          },
           "tools": {
             "description": "Build huira command line tools",
             "dependencies": [
@@ -42427,7 +42430,7 @@
             ]
           }
         },
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -49976,7 +49979,7 @@
             "host": true
           }
         ],
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "fix-include-directory.patch",
@@ -58067,7 +58070,7 @@
             "host": true
           }
         ],
-        "version": "2021.2.2.0"
+        "version": "2025.3.0.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -62471,7 +62474,6 @@
       "name": "log4cxx",
       "manifest": {
         "name": "log4cxx",
-        "port-version": 1,
         "description": "Apache log4cxx is a logging framework for C++ patterned after Apache log4j, which uses Apache Portable Runtime for most platform-specific code and should be usable on any platform supported by APR",
         "homepage": "https://logging.apache.org/log4cxx",
         "license": "Apache-2.0",
@@ -62503,13 +62505,13 @@
             "description": "Allow QString values in the LOG4CXX_WARN, LOG4CXX_INFO, LOG4CXX_DEBUG etc. macros",
             "dependencies": [
               {
-                "name": "qt5-base",
+                "name": "qtbase",
                 "default-features": false
               }
             ]
           }
         },
-        "version": "1.6.1"
+        "version": "1.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -67432,7 +67434,7 @@
             ]
           }
         },
-        "version": "2.2.3"
+        "version": "2.2.4"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -75603,13 +75605,13 @@
             "host": true
           }
         ],
-        "version": "10.0"
+        "version": "11.0"
       },
       "files": [
         "fix-library-install-path.patch",
         "fix-pkgconfig.patch",
         "portfile.cmake",
-        "restore-c++11-compatibility.patch",
+        "support-arm64-win.patch",
         "vcpkg.json"
       ]
     },
@@ -79277,7 +79279,7 @@
             "host": true
           }
         ],
-        "version": "1.4.10"
+        "version": "1.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -81708,7 +81710,6 @@
       "name": "pulsar-client-cpp",
       "manifest": {
         "name": "pulsar-client-cpp",
-        "port-version": 1,
         "description": "The Apache Pulsar C++ library",
         "homepage": "https://github.com/apache/pulsar-client-cpp",
         "license": "Apache-2.0",
@@ -81746,7 +81747,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "4.0.0"
+        "version": "4.1.0"
       },
       "files": [
         "disable-warnings.patch",
@@ -82553,7 +82554,7 @@
         "description": "The Quite OK Image Format for fast, lossless image compression",
         "homepage": "https://qoiformat.org/",
         "license": "MIT",
-        "version-date": "2023-08-10"
+        "version-date": "2025-05-09"
       },
       "files": [
         "portfile.cmake",
@@ -89046,7 +89047,7 @@
             "description": "Build and install the rego command-line interpreter"
           }
         },
-        "version": "1.3.1"
+        "version": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -90080,7 +90081,7 @@
             ]
           }
         },
-        "version": "10.10.1"
+        "version": "11.0.4"
       },
       "files": [
         "0001-fix-dependencies.patch",
@@ -100521,7 +100522,7 @@
             "host": true
           }
         ],
-        "version": "3.19.1"
+        "version": "3.21.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -101664,6 +101665,7 @@
       "name": "trieste",
       "manifest": {
         "name": "trieste",
+        "port-version": 1,
         "description": "A header-only C++20 term rewriting system for rapidly prototyping programming languages",
         "homepage": "https://github.com/microsoft/Trieste",
         "license": "MIT",
@@ -101688,6 +101690,7 @@
         "version": "1.0.0"
       },
       "files": [
+        "artifact-names.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -104073,7 +104076,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "001-fix-cmake.patch",
