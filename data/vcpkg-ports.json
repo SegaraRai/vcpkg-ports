@@ -1,5 +1,5 @@
 {
-  "version": "4497409a47f19db373a410a0efb84eca4747adbf",
+  "version": "bb4f525cbddd409bdc714ee3043b15ff7766af59",
   "ports": [
     {
       "name": "3fd",
@@ -34309,7 +34309,6 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 6,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -34372,7 +34371,7 @@
             ]
           }
         },
-        "version": "2.42.12"
+        "version": "2.44.6"
       },
       "files": [
         "fix-static-deps.patch",
@@ -35701,7 +35700,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.86.5"
+        "version": "2.88.0"
       },
       "files": [
         "libintl.patch",
@@ -39868,6 +39867,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
+        "port-version": 1,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -39913,8 +39913,14 @@
             "host": true
           },
           "libepoxy",
-          "libxi",
-          "libxrandr",
+          {
+            "name": "libxi",
+            "platform": "!windows & !osx"
+          },
+          {
+            "name": "libxrandr",
+            "platform": "!windows & !osx"
+          },
           "pango",
           {
             "name": "vcpkg-tool-meson",
@@ -42734,6 +42740,7 @@
       "name": "icey",
       "manifest": {
         "name": "icey",
+        "port-version": 1,
         "maintainers": "0state OSS <oss@0state.com>",
         "description": "C++20 media stack and libwebrtc alternative for real-time video, signalling, TURN, and media servers",
         "homepage": "https://0state.com/icey/",
@@ -42743,6 +42750,7 @@
           "libuv",
           "llhttp",
           "minizip",
+          "nlohmann-json",
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -42780,6 +42788,7 @@
         "version": "2.4.2"
       },
       "files": [
+        "001-devendor-nlohmann-json.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57993,7 +58002,7 @@
             ]
           }
         },
-        "version": "0.11.3"
+        "version": "0.12.0"
       },
       "files": [
         "0001-export-pkgconfig-file.patch",
@@ -62966,7 +62975,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-03-27"
+        "version-date": "2026-03-30"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -71363,6 +71372,38 @@
       ]
     },
     {
+      "name": "nvrhi",
+      "manifest": {
+        "name": "nvrhi",
+        "description": "NVIDIA Rendering Hardware Interface abstraction layer for D3D11, D3D12, and Vulkan",
+        "homepage": "https://github.com/NVIDIA-RTX/NVRHI",
+        "license": "MIT",
+        "supports": "(windows & x64 & !uwp & !xbox) | (linux & (x64 | arm64))",
+        "dependencies": [
+          {
+            "name": "directx-headers",
+            "platform": "windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "vulkan-headers"
+        ],
+        "version-date": "2026-02-26"
+      },
+      "files": [
+        "fix-vcpkg-deps.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "nvtt",
       "manifest": {
         "name": "nvtt",
@@ -75277,9 +75318,8 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
-        "port-version": 3,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
-        "homepage": "https://github.com/OpenImageIO/oiio",
+        "homepage": "https://github.com/AcademySoftwareFoundation/OpenImageIO",
         "license": "BSD-3-Clause",
         "dependencies": [
           "fmt",
@@ -75408,7 +75448,7 @@
             ]
           }
         },
-        "version": "3.0.9.1"
+        "version": "3.1.12.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -78350,7 +78390,7 @@
             "host": true
           }
         ],
-        "version": "0.9.1"
+        "version": "0.9.2"
       },
       "files": [
         "portfile.cmake",
@@ -81086,7 +81126,7 @@
             "description": "Build tools"
           }
         },
-        "version": "9.8.0"
+        "version": "9.8.1"
       },
       "files": [
         "pkgconfig.diff",
@@ -89149,7 +89189,7 @@
             "host": true
           }
         ],
-        "version": "0.31.1"
+        "version": "0.31.2"
       },
       "files": [
         "portfile.cmake",
@@ -93171,7 +93211,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.5"
+        "version": "0.13.6"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -93232,9 +93272,9 @@
       "name": "seqan",
       "manifest": {
         "name": "seqan",
-        "port-version": 3,
         "description": "SeqAn is an open source C++ library of efficient algorithms and data structures for the analysis of sequences with the focus on biological data.",
-        "version": "2.4.0"
+        "homepage": "https://www.seqan.de",
+        "version": "2.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -96783,7 +96823,7 @@
             ]
           }
         },
-        "version": "3.52.0"
+        "version": "3.53.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -96886,7 +96926,7 @@
             ]
           }
         },
-        "version": "0.65"
+        "version": "0.66"
       },
       "files": [
         "ddl2cpp_path.patch",
@@ -97024,7 +97064,7 @@
         "description": "SRELL (std::regex-like library) is a regular expression template library for C++.",
         "homepage": "https://www.akenotsuki.com/misc/srell/en/",
         "license": "BSD-2-Clause",
-        "version-string": "3.010"
+        "version-string": "2026.01"
       },
       "files": [
         "portfile.cmake",
