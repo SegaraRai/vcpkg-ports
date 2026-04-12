@@ -1,5 +1,5 @@
 {
-  "version": "bb4f525cbddd409bdc714ee3043b15ff7766af59",
+  "version": "0b88aacde46a853151730fbe7d0b7ee45f4b6864",
   "ports": [
     {
       "name": "3fd",
@@ -34309,6 +34309,7 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
+        "port-version": 1,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -34327,6 +34328,11 @@
           {
             "name": "glib",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true,
+            "platform": "android"
           },
           {
             "name": "vcpkg-tool-meson",
@@ -56001,7 +56007,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.56"
+        "version": "1.6.57"
       },
       "files": [
         "cmake.patch",
@@ -76049,7 +76055,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 3,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -76083,12 +76088,11 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.6.1"
+        "version": "3.6.2"
       },
       "files": [
         "cmake-config.patch",
         "command-line-length.patch",
-        "fix-mingw-build.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
@@ -89220,7 +89224,6 @@
       "name": "restbed",
       "manifest": {
         "name": "restbed",
-        "port-version": 3,
         "description": "Corvusoft's Restbed framework brings asynchronous RESTful functionality to C++14 applications.",
         "homepage": "https://github.com/corvusoft/restbed",
         "license": "AGPL-3.0-or-later OR CPL-1.0",
@@ -89250,7 +89253,7 @@
             ]
           }
         },
-        "version": "4.8"
+        "version": "5.0.0"
       },
       "files": [
         "fix-cmake.patch",
