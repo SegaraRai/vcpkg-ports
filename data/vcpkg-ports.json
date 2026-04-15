@@ -1,5 +1,5 @@
 {
-  "version": "b80e0066576f98276a53fd3a8aed379edaf945d6",
+  "version": "b21ff8f3cadbd8e0b175b49be2dd9202f1f208f4",
   "ports": [
     {
       "name": "3fd",
@@ -4539,6 +4539,9 @@
           "devicefarm": {
             "description": "C++ SDK for the AWS devicefarm service"
           },
+          "devops-agent": {
+            "description": "C++ SDK for the AWS devops-agent service"
+          },
           "devops-guru": {
             "description": "C++ SDK for the AWS devops-guru service"
           },
@@ -4756,6 +4759,9 @@
           "inspector2": {
             "description": "C++ SDK for the AWS inspector2 service"
           },
+          "interconnect": {
+            "description": "C++ SDK for the AWS interconnect service"
+          },
           "internetmonitor": {
             "description": "C++ SDK for the AWS internetmonitor service"
           },
@@ -4923,6 +4929,9 @@
           },
           "marketplace-deployment": {
             "description": "C++ SDK for the AWS marketplace-deployment service"
+          },
+          "marketplace-discovery": {
+            "description": "C++ SDK for the AWS marketplace-discovery service"
           },
           "marketplace-entitlement": {
             "description": "C++ SDK for the AWS marketplace-entitlement service"
@@ -5240,6 +5249,9 @@
           "s3control": {
             "description": "C++ SDK for the AWS s3control service"
           },
+          "s3files": {
+            "description": "C++ SDK for the AWS s3files service"
+          },
           "s3outposts": {
             "description": "C++ SDK for the AWS s3outposts service"
           },
@@ -5290,6 +5302,9 @@
           },
           "security-ir": {
             "description": "C++ SDK for the AWS security-ir service"
+          },
+          "securityagent": {
+            "description": "C++ SDK for the AWS securityagent service"
           },
           "securityhub": {
             "description": "C++ SDK for the AWS securityhub service"
@@ -5396,6 +5411,9 @@
           "support-app": {
             "description": "C++ SDK for the AWS support-app service"
           },
+          "sustainability": {
+            "description": "C++ SDK for the AWS sustainability service"
+          },
           "swf": {
             "description": "C++ SDK for the AWS swf service"
           },
@@ -5456,6 +5474,9 @@
           "trustedadvisor": {
             "description": "C++ SDK for the AWS trustedadvisor service"
           },
+          "uxc": {
+            "description": "C++ SDK for the AWS uxc service"
+          },
           "verifiedpermissions": {
             "description": "C++ SDK for the AWS verifiedpermissions service"
           },
@@ -5508,7 +5529,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.769"
+        "version": "1.11.790"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -49691,7 +49712,7 @@
             ]
           }
         },
-        "version": "3.8.6"
+        "version": "3.8.7"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -54891,11 +54912,10 @@
       "name": "libmypaint",
       "manifest": {
         "name": "libmypaint",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Brush library used by MyPaint",
         "homepage": "https://github.com/mypaint/libmypaint",
         "license": "ISC",
-        "supports": "!windows | mingw",
         "dependencies": [
           "glib",
           "json-c",
@@ -54907,8 +54927,11 @@
         "version": "1.6.1"
       },
       "files": [
+        "disable_tests.diff",
+        "fix_i18n.diff",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "win_math.patch"
       ]
     },
     {
