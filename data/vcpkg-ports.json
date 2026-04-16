@@ -1,5 +1,5 @@
 {
-  "version": "b21ff8f3cadbd8e0b175b49be2dd9202f1f208f4",
+  "version": "12159785447291b4069c82a3fe9c2770a393ac7f",
   "ports": [
     {
       "name": "3fd",
@@ -4103,7 +4103,7 @@
             "host": true
           }
         ],
-        "version": "0.38.4"
+        "version": "0.38.5"
       },
       "files": [
         "portfile.cmake",
@@ -6619,7 +6619,6 @@
         "description": "A pixel encoding and color space conversion engine.",
         "homepage": "https://gegl.org/babl/",
         "license": "LGPL-3.0-or-later",
-        "supports": "!windows | mingw",
         "dependencies": [
           {
             "name": "vcpkg-tool-meson",
@@ -6637,14 +6636,16 @@
             "description": "Enable introspection",
             "dependencies": [
               "gobject-introspection"
-            ]
+            ],
+            "supports": "!windows | mingw"
           }
         },
-        "version": "0.1.124"
+        "version": "0.1.126"
       },
       "files": [
         "portfile.cmake",
         "remove-consistency-check.patch",
+        "support-plugins.patch",
         "vcpkg.json"
       ]
     },
@@ -26083,7 +26084,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 3,
+        "port-version": 4,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -26134,6 +26135,7 @@
         "portfile.cmake",
         "remove-path.patch",
         "remove-var-lib-dbus-creation.patch",
+        "session-socket-dir.diff",
         "vcpkg.json"
       ]
     },
@@ -27413,7 +27415,7 @@
             "host": true
           }
         ],
-        "version": "2.5.1"
+        "version": "2.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -29370,6 +29372,7 @@
           "speech-dispatcher": {
             "description": "Enable the speech-dispatcher backend (requires libspeechd to be installed)",
             "dependencies": [
+              "libspeechd",
               {
                 "name": "pkgconf",
                 "host": true
@@ -29378,7 +29381,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.7.1"
+        "version": "0.11.4"
       },
       "files": [
         "portfile.cmake",
@@ -44636,7 +44639,6 @@
       "name": "jemalloc",
       "manifest": {
         "name": "jemalloc",
-        "port-version": 3,
         "description": "jemalloc is a general purpose malloc(3) implementation that emphasizes fragmentation avoidance and scalable concurrency support",
         "homepage": "https://jemalloc.net/",
         "license": "BSD-2-Clause",
@@ -44646,11 +44648,10 @@
             "host": true
           }
         ],
-        "version": "5.3.0"
+        "version": "5.3.1"
       },
       "files": [
         "fix-configure-ac.patch",
-        "fix-host-use-libc.patch",
         "portfile.cmake",
         "preprocessor.patch",
         "vcpkg.json"
@@ -50998,6 +50999,7 @@
       "name": "libdjinterop",
       "manifest": {
         "name": "libdjinterop",
+        "port-version": 1,
         "description": "C++ library for access to DJ record libraries. Currently only supports Denon Engine Prime databases",
         "homepage": "https://github.com/xsco/libdjinterop",
         "license": "LGPL-3.0-or-later",
@@ -51067,6 +51069,29 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libdotconf",
+      "manifest": {
+        "name": "libdotconf",
+        "description": "dot.conf configuration file parser",
+        "homepage": "https://github.com/williamh/dotconf",
+        "license": "LGPL-2.1-only",
+        "supports": "!uwp & !xbox",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "1.4.1"
+      },
+      "files": [
+        "no-undefined.patch",
+        "portfile.cmake",
+        "remove-docs-and-examples.patch",
         "vcpkg.json"
       ]
     },
@@ -51617,7 +51642,6 @@
       "name": "libexif",
       "manifest": {
         "name": "libexif",
-        "port-version": 1,
         "description": "a library for parsing, editing, and saving EXIF data",
         "homepage": "https://libexif.github.io/",
         "license": "LGPL-2.1-or-later",
@@ -51647,7 +51671,7 @@
             ]
           }
         },
-        "version": "0.6.25"
+        "version": "0.6.26"
       },
       "files": [
         "fix-ssize.patch",
@@ -55883,7 +55907,7 @@
           },
           "xxhash"
         ],
-        "version": "17-6.2.1"
+        "version": "17-6.2.2"
       },
       "files": [
         "0001-use-system-deps.patch",
@@ -57825,6 +57849,29 @@
         "fix-utf8-source.patch",
         "gaiaconfig-msvc.patch",
         "libxml2-no-http.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libspeechd",
+      "manifest": {
+        "name": "libspeechd",
+        "description": "Client library for Speech Dispatcher",
+        "homepage": "https://github.com/brailcom/speechd",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!windows & !uwp & !xbox & !android & !osx & !ios & !mingw & !emscripten",
+        "dependencies": [
+          "glib",
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "0.12.1"
+      },
+      "files": [
+        "libs-only.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60463,7 +60510,7 @@
             "host": true
           }
         ],
-        "version": "0.3.25"
+        "version": "0.3.26"
       },
       "files": [
         "portfile.cmake",
@@ -71292,7 +71339,7 @@
             "host": true
           }
         ],
-        "version": "7.3.0"
+        "version": "7.5.0"
       },
       "files": [
         "export-target.patch",
@@ -75570,7 +75617,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.26.3"
+        "version": "0.27.0"
       },
       "files": [
         "portfile.cmake",
@@ -76538,7 +76585,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -76613,6 +76659,7 @@
           "gpu": {
             "description": "Enables GPU plugin for inference",
             "dependencies": [
+              "level-zero",
               "opencl",
               "rapidjson"
             ],
@@ -76722,7 +76769,7 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2026.0.0"
+        "version": "2026.1.0"
       },
       "files": [
         "msvc_debug_info_only_in_pdb.patch",
@@ -85985,6 +86032,7 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
+        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -87627,7 +87675,7 @@
             "host": true
           }
         ],
-        "version": "1.41"
+        "version": "1.42"
       },
       "files": [
         "portfile.cmake",
@@ -89187,7 +89235,7 @@
             "host": true
           }
         ],
-        "version": "14.2.5"
+        "version": "14.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -95831,15 +95879,12 @@
       "name": "soundtouch",
       "manifest": {
         "name": "soundtouch",
+        "port-version": 1,
         "description": "SoundTouch is an open-source audio processing library for changing the Tempo, Pitch and Playback Rates of audio streams or audio files.",
         "homepage": "https://www.surina.net/soundtouch",
         "license": "LGPL-2.1-only",
         "supports": "!uwp",
         "dependencies": [
-          {
-            "name": "atlmfc",
-            "platform": "windows"
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -95855,12 +95900,19 @@
           },
           "soundtouchdll": {
             "description": "Build the SoundTouchDLL C wrapper dynamic library",
+            "dependencies": [
+              {
+                "name": "atlmfc",
+                "platform": "windows"
+              }
+            ],
             "supports": "!staticcrt"
           }
         },
         "version": "2.4.0"
       },
       "files": [
+        "fix-install-includes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99724,7 +99776,6 @@
       "name": "tgbot-cpp",
       "manifest": {
         "name": "tgbot-cpp",
-        "port-version": 1,
         "description": "C++ library for Telegram bot API.",
         "homepage": "https://github.com/reo7sp/tgbot-cpp",
         "license": "MIT",
@@ -99762,7 +99813,7 @@
             "description": "Socket Buffer Size Expansion"
           }
         },
-        "version": "1.9.1"
+        "version": "1.10"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -103926,7 +103977,7 @@
             "host": true
           }
         ],
-        "version-string": "2.02.00"
+        "version-string": "2.02.03"
       },
       "files": [
         "CMakeLists.txt",
@@ -106709,7 +106760,6 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 2,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
@@ -106745,7 +106795,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.8.4"
+        "version": "5.9.1"
       },
       "files": [
         "have-limits-h.diff",
@@ -107059,7 +107109,7 @@
             ]
           }
         },
-        "version": "4.12.6"
+        "version": "4.13.0"
       },
       "files": [
         "0005-XML_file_path.patch",
@@ -108703,7 +108753,7 @@
             "host": true
           }
         ],
-        "version": "2.1.11761"
+        "version": "2.1.12672"
       },
       "files": [
         "001-cmake_config.patch",
