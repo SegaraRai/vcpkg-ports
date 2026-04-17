@@ -1,5 +1,5 @@
 {
-  "version": "12159785447291b4069c82a3fe9c2770a393ac7f",
+  "version": "82bdf7810e67e803c3d75fd3ddded3d8106b8028",
   "ports": [
     {
       "name": "3fd",
@@ -6616,6 +6616,7 @@
       "name": "babl",
       "manifest": {
         "name": "babl",
+        "port-version": 1,
         "description": "A pixel encoding and color space conversion engine.",
         "homepage": "https://gegl.org/babl/",
         "license": "LGPL-3.0-or-later",
@@ -6636,13 +6637,13 @@
             "description": "Enable introspection",
             "dependencies": [
               "gobject-introspection"
-            ],
-            "supports": "!windows | mingw"
+            ]
           }
         },
         "version": "0.1.126"
       },
       "files": [
+        "gir-header-only-on-windows.patch",
         "portfile.cmake",
         "remove-consistency-check.patch",
         "support-plugins.patch",
@@ -30001,7 +30002,7 @@
             "host": true
           }
         ],
-        "version": "8.2.4"
+        "version": "8.2.5"
       },
       "files": [
         "portfile.cmake",
@@ -42466,7 +42467,7 @@
             ]
           }
         },
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -45510,6 +45511,200 @@
       ]
     },
     {
+      "name": "karchive",
+      "manifest": {
+        "name": "karchive",
+        "description": "File compression",
+        "homepage": "https://invent.kde.org/frameworks/karchive",
+        "documentation": "https://api.kde.org/karchive-index.html",
+        "license": "LGPL-2.0-or-later",
+        "supports": "!xbox",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "features": {
+          "bzip2": {
+            "description": "Support for bzip2 compressed files and data streams",
+            "dependencies": [
+              "bzip2"
+            ]
+          },
+          "lzma": {
+            "description": "Support for xz compressed files and data streams",
+            "dependencies": [
+              "liblzma"
+            ]
+          },
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          },
+          "zstd": {
+            "description": "Support for zstd compressed files and data streams",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json",
+        "zstd.diff"
+      ]
+    },
+    {
+      "name": "kbreezeicons",
+      "manifest": {
+        "name": "kbreezeicons",
+        "description": "Breeze icon theme for KDE Frameworks 6",
+        "homepage": "https://invent.kde.org/frameworks/breeze-icons",
+        "documentation": "https://api.kde.org/breeze-icons-index.html",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!windows & !android",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kcodecs",
+      "manifest": {
+        "name": "kcodecs",
+        "description": "String encoding library",
+        "homepage": "https://invent.kde.org/frameworks/kcodecs",
+        "documentation": "https://api.kde.org/kcodecs-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kcoreaddons",
+      "manifest": {
+        "name": "kcoreaddons",
+        "description": "Addons to QtCore",
+        "homepage": "https://invent.kde.org/frameworks/kcoreaddons",
+        "documentation": "https://api.kde.org/kcoreaddons-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build the QML plugin",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kcp",
       "manifest": {
         "name": "kcp",
@@ -45565,6 +45760,53 @@
           }
         ],
         "version": "1.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kdbusaddons",
+      "manifest": {
+        "name": "kdbusaddons",
+        "description": "Convenience classes for D-Bus",
+        "homepage": "https://invent.kde.org/frameworks/kdbusaddons",
+        "documentation": "https://api.kde.org/kdbusaddons-index.html",
+        "supports": "!android",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -47726,117 +47968,14 @@
       ]
     },
     {
-      "name": "kf6archive",
+      "name": "kfr",
       "manifest": {
-        "name": "kf6archive",
-        "description": "File compression",
-        "homepage": "https://invent.kde.org/frameworks/karchive",
-        "documentation": "https://api.kde.org/karchive-index.html",
-        "license": "LGPL-2.0-or-later",
-        "supports": "!xbox",
+        "name": "kfr",
+        "description": "Fast, modern C++ DSP framework.",
+        "homepage": "https://www.kfr.dev/",
+        "license": null,
+        "supports": "!(arm64 & windows) & !xbox",
         "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "zlib"
-        ],
-        "features": {
-          "bzip2": {
-            "description": "Support for bzip2 compressed files and data streams",
-            "dependencies": [
-              "bzip2"
-            ]
-          },
-          "lzma": {
-            "description": "Support for xz compressed files and data streams",
-            "dependencies": [
-              "liblzma"
-            ]
-          },
-          "translations": {
-            "description": "Install translations",
-            "dependencies": [
-              {
-                "name": "qttools",
-                "host": true,
-                "features": [
-                  "linguist"
-                ]
-              }
-            ]
-          },
-          "zstd": {
-            "description": "Support for zstd compressed files and data streams",
-            "dependencies": [
-              "zstd"
-            ]
-          }
-        },
-        "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json",
-        "zstd.diff"
-      ]
-    },
-    {
-      "name": "kf6breezeicons",
-      "manifest": {
-        "name": "kf6breezeicons",
-        "description": "Breeze icon theme for KDE Frameworks 6",
-        "homepage": "https://invent.kde.org/frameworks/breeze-icons",
-        "documentation": "https://api.kde.org/breeze-icons-index.html",
-        "license": "LGPL-2.1-or-later",
-        "supports": "!windows & !android",
-        "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false,
-            "features": [
-              "gui"
-            ]
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "kf6codecs",
-      "manifest": {
-        "name": "kf6codecs",
-        "description": "String encoding library",
-        "homepage": "https://invent.kde.org/frameworks/kcodecs",
-        "documentation": "https://api.kde.org/kcodecs-index.html",
-        "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -47847,20 +47986,23 @@
           }
         ],
         "features": {
-          "translations": {
-            "description": "Install translations",
+          "capi": {
+            "description": "Enable C API build.",
             "dependencies": [
               {
-                "name": "qttools",
-                "host": true,
+                "name": "kfr",
+                "default-features": false,
                 "features": [
-                  "linguist"
+                  "dft"
                 ]
               }
             ]
+          },
+          "dft": {
+            "description": "Enable DFT and related algorithms."
           }
         },
-        "version": "6.23.0"
+        "version-semver": "6.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -47868,108 +48010,9 @@
       ]
     },
     {
-      "name": "kf6coreaddons",
+      "name": "kglobalaccel",
       "manifest": {
-        "name": "kf6coreaddons",
-        "description": "Addons to QtCore",
-        "homepage": "https://invent.kde.org/frameworks/kcoreaddons",
-        "documentation": "https://api.kde.org/kcoreaddons-index.html",
-        "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "qml": {
-            "description": "Build the QML plugin",
-            "dependencies": [
-              {
-                "name": "qtdeclarative",
-                "default-features": false
-              }
-            ]
-          },
-          "translations": {
-            "description": "Install translations",
-            "dependencies": [
-              {
-                "name": "qttools",
-                "host": true,
-                "features": [
-                  "linguist"
-                ]
-              }
-            ]
-          }
-        },
-        "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "kf6dbusaddons",
-      "manifest": {
-        "name": "kf6dbusaddons",
-        "description": "Convenience classes for D-Bus",
-        "homepage": "https://invent.kde.org/frameworks/kdbusaddons",
-        "documentation": "https://api.kde.org/kdbusaddons-index.html",
-        "supports": "!android",
-        "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false,
-            "features": [
-              "dbus"
-            ]
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "translations": {
-            "description": "Install translations",
-            "dependencies": [
-              {
-                "name": "qttools",
-                "host": true,
-                "features": [
-                  "linguist"
-                ]
-              }
-            ]
-          }
-        },
-        "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "kf6globalaccel",
-      "manifest": {
-        "name": "kf6globalaccel",
+        "name": "kglobalaccel",
         "description": "Global desktop keyboard shortcuts",
         "homepage": "https://invent.kde.org/frameworks/kglobalaccel",
         "documentation": "https://api.kde.org/kglobalaccel-index.html",
@@ -48011,9 +48054,9 @@
       ]
     },
     {
-      "name": "kf6i18n",
+      "name": "ki18n",
       "manifest": {
-        "name": "kf6i18n",
+        "name": "ki18n",
         "description": "Advanced internationalization framework",
         "homepage": "https://invent.kde.org/frameworks/ki18n",
         "documentation": "https://api.kde.org/ki18n-index.html",
@@ -48053,77 +48096,6 @@
           }
         },
         "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "kf6itemmodels",
-      "manifest": {
-        "name": "kf6itemmodels",
-        "description": "Models for Qt Model/View system",
-        "homepage": "https://invent.kde.org/frameworks/kitemmodels",
-        "documentation": "https://api.kde.org/kitemmodels-index.html",
-        "dependencies": [
-          "ecm",
-          {
-            "name": "qtbase",
-            "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "6.23.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "kfr",
-      "manifest": {
-        "name": "kfr",
-        "description": "Fast, modern C++ DSP framework.",
-        "homepage": "https://www.kfr.dev/",
-        "license": null,
-        "supports": "!(arm64 & windows) & !xbox",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "capi": {
-            "description": "Enable C API build.",
-            "dependencies": [
-              {
-                "name": "kfr",
-                "default-features": false,
-                "features": [
-                  "dft"
-                ]
-              }
-            ]
-          },
-          "dft": {
-            "description": "Enable DFT and related algorithms."
-          }
-        },
-        "version-semver": "6.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -48238,6 +48210,35 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kitemmodels",
+      "manifest": {
+        "name": "kitemmodels",
+        "description": "Models for Qt Model/View system",
+        "homepage": "https://invent.kde.org/frameworks/kitemmodels",
+        "documentation": "https://api.kde.org/kitemmodels-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.23.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -56777,7 +56778,7 @@
             ]
           }
         },
-        "version": "2.14.0"
+        "version": "2.14.1"
       },
       "files": [
         "fix_oauthbearer_check.patch",
@@ -66754,7 +66755,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.2.8"
+        "version": "3.3.0"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -70548,7 +70549,7 @@
             ]
           }
         },
-        "version": "1.21.0"
+        "version": "1.22.1"
       },
       "files": [
         "portfile.cmake",
@@ -72245,6 +72246,36 @@
         "fix-isnan.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "odbccpp",
+      "manifest": {
+        "name": "odbccpp",
+        "description": "An object-oriented C++ wrapper of the ODBC API from SAP",
+        "homepage": "https://github.com/SAP/odbc-cpp-wrapper",
+        "license": "Apache-2.0",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          {
+            "name": "unixodbc",
+            "platform": "linux | osx"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.6"
+      },
+      "files": [
+        "portfile.cmake",
+        "use-vcpkg-unixodbc.patch",
         "vcpkg.json"
       ]
     },
@@ -89134,7 +89165,8 @@
             "name": "trieste",
             "features": [
               "parsers"
-            ]
+            ],
+            "version>=": "1.1.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -89159,7 +89191,7 @@
             "description": "Build and install the rego command-line interpreter"
           }
         },
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -93282,7 +93314,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.6"
+        "version": "0.13.7"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -106760,6 +106792,7 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
+        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
@@ -107109,7 +107142,7 @@
             ]
           }
         },
-        "version": "4.13.0"
+        "version": "4.13.1"
       },
       "files": [
         "0005-XML_file_path.patch",
@@ -109829,7 +109862,6 @@
       "name": "zxc",
       "manifest": {
         "name": "zxc",
-        "port-version": 1,
         "description": "High-performance asymmetric lossless compression library",
         "homepage": "https://github.com/hellobertrand/zxc",
         "license": "BSD-3-Clause AND MIT",
@@ -109849,7 +109881,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.9.1"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
