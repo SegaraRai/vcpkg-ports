@@ -1,5 +1,5 @@
 {
-  "version": "256acc64012b23a13041d8705805e1f23b43a024",
+  "version": "59be1d48beef55b35a249d467307ab8bfb2b9de7",
   "ports": [
     {
       "name": "3fd",
@@ -22288,6 +22288,7 @@
       "name": "consteig",
       "manifest": {
         "name": "consteig",
+        "port-version": 1,
         "description": "Header-only C++17 constexpr library for compile-time eigenvalue and eigenvector computation",
         "homepage": "https://github.com/MitchellThompkins/consteig",
         "license": "Apache-2.0",
@@ -25793,7 +25794,6 @@
       "name": "dawn",
       "manifest": {
         "name": "dawn",
-        "port-version": 1,
         "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
         "homepage": "https://dawn.googlesource.com/dawn",
         "license": "BSD-3-Clause",
@@ -25880,8 +25880,8 @@
             "description": "Metal backend support",
             "supports": "osx | ios"
           },
-          "tint": {
-            "description": "Compiles a minimal tint compiler (mainly for WGSL validation)",
+          "tint-tools": {
+            "description": "Build tint command-line tools",
             "dependencies": [
               "glslang"
             ],
@@ -25904,7 +25904,7 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20260219.200501"
+        "version": "20260410.140140"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
@@ -25919,6 +25919,7 @@
         "009-fix-tint-install.patch",
         "010-fix-glslang.patch",
         "011-fix-dxc.patch",
+        "012-fix-non-target-leaking.patch",
         "DawnConfig.cmake",
         "portfile.cmake",
         "unofficial_webgpu_dawn.pc.in",
@@ -35887,7 +35888,7 @@
       "name": "glog",
       "manifest": {
         "name": "glog",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ implementation of the Google logging module",
         "homepage": "https://github.com/google/glog",
         "license": "BSD-3-Clause",
@@ -35903,9 +35904,6 @@
           }
         ],
         "features": {
-          "customprefix": {
-            "description": "Enable support for user-generated message prefixes"
-          },
           "unwind": {
             "description": "Enable libunwind support",
             "dependencies": [
@@ -45596,7 +45594,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -45631,7 +45629,7 @@
             "host": true
           }
         ],
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -45674,7 +45672,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -45726,7 +45724,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -45835,7 +45833,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -48075,7 +48073,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -48124,7 +48122,7 @@
             ]
           }
         },
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -48264,7 +48262,7 @@
             "host": true
           }
         ],
-        "version": "6.23.0"
+        "version": "6.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -51847,7 +51845,6 @@
       "name": "libfontenc",
       "manifest": {
         "name": "libfontenc",
-        "port-version": 1,
         "description": "X font encoding library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libfontenc",
         "license": null,
@@ -51861,11 +51858,10 @@
           "xproto",
           "zlib"
         ],
-        "version": "1.1.4"
+        "version": "1.1.9"
       },
       "files": [
         "build.patch",
-        "configure.ac.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -72283,6 +72279,7 @@
       "name": "odbccpp",
       "manifest": {
         "name": "odbccpp",
+        "port-version": 1,
         "description": "An object-oriented C++ wrapper of the ODBC API from SAP",
         "homepage": "https://github.com/SAP/odbc-cpp-wrapper",
         "license": "Apache-2.0",
@@ -75301,7 +75298,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.9"
+        "version": "3.4.10"
       },
       "files": [
         "portfile.cmake",
@@ -89740,17 +89737,13 @@
       "name": "ripper37-libbase",
       "manifest": {
         "name": "ripper37-libbase",
+        "port-version": 1,
         "description": "Standalone reimplementation of //base module from Chromium",
         "homepage": "https://github.com/RippeR37/libbase",
         "documentation": "https://ripper37.github.io/libbase",
         "license": "MIT",
         "dependencies": [
-          {
-            "name": "glog",
-            "features": [
-              "customprefix"
-            ]
-          },
+          "glog",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -90143,7 +90136,7 @@
       "name": "robotraconteur-companion",
       "manifest": {
         "name": "robotraconteur-companion",
-        "port-version": 1,
+        "port-version": 2,
         "homepage": "https://github.com/robotraconteur/robotraconteur_companion",
         "license": "Apache-2.0",
         "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64 | arm32)) | (osx & (x64 | arm64))",
@@ -94647,7 +94640,6 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -94859,35 +94851,35 @@
             ]
           }
         },
-        "version": "146"
+        "version": "148"
       },
       "files": [
-        "allow-disabling-lib-dl.patch",
-        "always-build-pathops.patch",
-        "bentleyottmann-build.patch",
-        "dawn.patch",
-        "disable-msvc-env-setup.patch",
-        "dont-use-response-file.patch",
+        "001-bentleyottmann-build.patch",
+        "002-graphite.patch",
+        "003-vulkan-headers.patch",
+        "004-pdfsubsetfont-uwp.patch",
+        "005-skparagraph-dllexport.patch",
+        "006-use-pkgconfig-to-find-gl.patch",
+        "007-dont-use-response-file.patch",
+        "008-fix-bsd.patch",
+        "009-allow-disabling-lib-dl.patch",
+        "010-always-build-pathops.patch",
+        "011-skstrendswith-dllexport.patch",
+        "012-dawn.patch",
+        "013-skcms-dllexport.patch",
+        "014-fix-direct3d.patch",
         "example/CMakeLists.txt",
         "example/skcms.cpp",
         "example/skpathediting.cpp",
-        "fix-bsd.patch",
-        "graphite.patch",
-        "pdfsubsetfont-uwp.diff",
         "portfile.cmake",
-        "skcms-dllexport.patch",
         "skia-functions.cmake",
         "skiaConfig.cmake",
-        "skparagraph-dllexport.patch",
-        "skstrendswith-dllexport.patch",
         "third-party.gn.in",
         "unofficial-skia-config.cmake",
         "unofficial-skia-targets-details.cmake",
         "unofficial-skia-targets.cmake",
         "usage",
-        "use-pkgconfig-to-find-gl.patch",
-        "vcpkg.json",
-        "vulkan-headers.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -99494,16 +99486,24 @@
       "name": "tdlib",
       "manifest": {
         "name": "tdlib",
+        "maintainers": "luadebug <lin@sz.cn.eu.org>",
         "description": "Cross-platform library for building Telegram clients",
         "homepage": "https://github.com/tdlib/td",
         "license": "BSL-1.0",
-        "supports": "((windows & !uwp & !arm & !arm64 & !xbox) | linux | osx) & static",
         "dependencies": [
           {
             "name": "gperf",
             "host": true
           },
           "openssl",
+          {
+            "name": "tdlib",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "tools"
+            ]
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -99514,9 +99514,15 @@
           },
           "zlib"
         ],
-        "version": "1.8.55"
+        "features": {
+          "tools": {
+            "description": "Install source-generator executables (tl-parser, generate_mtproto, etc.) required for cross-compilation"
+          }
+        },
+        "version": "1.8.63"
       },
       "files": [
+        "fix-cross-compile.patch",
         "fix-pc.patch",
         "portfile.cmake",
         "vcpkg.json"
