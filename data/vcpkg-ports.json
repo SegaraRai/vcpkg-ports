@@ -1,5 +1,5 @@
 {
-  "version": "59be1d48beef55b35a249d467307ab8bfb2b9de7",
+  "version": "e778080f0d8019247d332ef3a3df1202578ca202",
   "ports": [
     {
       "name": "3fd",
@@ -2057,7 +2057,7 @@
             "host": true
           }
         ],
-        "version": "6.4.8"
+        "version": "6.4.9"
       },
       "files": [
         "portfile.cmake",
@@ -6750,7 +6750,7 @@
         "description": "Small C++ header to display async animations, counters, progress bars, and status messages",
         "homepage": "https://github.com/oir/barkeep",
         "license": "Apache-2.0",
-        "version": "0.1.5"
+        "version": "0.1.6"
       },
       "files": [
         "portfile.cmake",
@@ -22731,7 +22731,7 @@
             ]
           }
         },
-        "version": "0.42.0"
+        "version": "0.43.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -32213,7 +32213,6 @@
       "name": "fluidsynth",
       "manifest": {
         "name": "fluidsynth",
-        "port-version": 1,
         "description": "FluidSynth reads and handles MIDI events from the MIDI input device. It is the software analogue of a MIDI synthesizer. FluidSynth can also play midifiles using a Soundfont.",
         "homepage": "https://github.com/FluidSynth/fluidsynth",
         "license": "LGPL-2.1-or-later",
@@ -32259,7 +32258,7 @@
             ]
           }
         },
-        "version": "2.5.2"
+        "version": "2.5.4"
       },
       "files": [
         "cxx-linkage-pkgconfig.diff",
@@ -35563,7 +35562,7 @@
             ]
           }
         },
-        "version": "7.3.3"
+        "version": "7.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -41919,7 +41918,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -43978,6 +43977,31 @@
           }
         ],
         "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ipgeolocation-cpp-sdk",
+      "manifest": {
+        "name": "ipgeolocation-cpp-sdk",
+        "description": "Official C++ SDK for the IPGeolocation.io IP Location API.",
+        "homepage": "https://github.com/IPGeolocation/ip-geolocation-api-cpp-sdk",
+        "license": "MIT",
+        "dependencies": [
+          "curl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -50044,7 +50068,7 @@
             "host": true
           }
         ],
-        "version": "2.2.4"
+        "version": "2.3.0"
       },
       "files": [
         "fix-include-directory.patch",
@@ -50873,7 +50897,6 @@
       "name": "libde265",
       "manifest": {
         "name": "libde265",
-        "port-version": 1,
         "description": "Open h.265 video codec implementation.",
         "homepage": "https://www.libde265.org/",
         "license": "LGPL-3.0-only",
@@ -50888,10 +50911,10 @@
             "host": true
           }
         ],
-        "version": "1.0.16"
+        "version": "1.0.18"
       },
       "files": [
-        "fix-interface-include.patch",
+        "fix-arm-neon-clang.patch",
         "pkgconfig-cxx-linkage.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -53662,7 +53685,7 @@
             ]
           }
         },
-        "version": "1.7.0"
+        "version": "1.7.1"
       },
       "files": [
         "dependencies.diff",
@@ -54987,6 +55010,7 @@
       "name": "libmysofa",
       "manifest": {
         "name": "libmysofa",
+        "port-version": 1,
         "description": "Reader for AES SOFA files to get better HRTFs (Head-Relative Transfer Functions)",
         "homepage": "https://github.com/hoene/libmysofa",
         "license": "BSD-3-Clause",
@@ -55004,9 +55028,9 @@
         "version": "1.3.4"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
         "usage",
-        "use-vcpkg-zlib.patch",
         "vcpkg.json"
       ]
     },
@@ -57251,7 +57275,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.3.1"
       },
       "files": [
         "0001-make-find-dependency-not-required.diff",
@@ -59314,7 +59338,7 @@
       "name": "libuuid",
       "manifest": {
         "name": "libuuid",
-        "port-version": 16,
+        "port-version": 17,
         "description": "Universally unique id library",
         "homepage": "https://sourceforge.net/projects/libuuid/",
         "license": "BSD-3-Clause",
@@ -59334,6 +59358,7 @@
       "files": [
         "CMakeLists.txt",
         "config.linux.h",
+        "fix-usleep-with-nanosleep.patch",
         "portfile.cmake",
         "unofficial-libuuid-config.cmake.in",
         "vcpkg.json"
@@ -60508,7 +60533,7 @@
             ]
           }
         },
-        "version": "2.15.2"
+        "version": "2.15.3"
       },
       "files": [
         "cxx-for-icu.diff",
@@ -62456,7 +62481,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.9.33"
+        "version": "0.9.35"
       },
       "files": [
         "cmake/CMakeLists.txt",
@@ -63162,7 +63187,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.716"
+        "version": "0.717"
       },
       "files": [
         "cmake-config-export.patch",
@@ -66781,7 +66806,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.3.0"
+        "version": "3.3.1"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -67543,7 +67568,7 @@
             ]
           }
         },
-        "version": "2.2.4"
+        "version": "2.3.0"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -70459,7 +70484,7 @@
             "host": true
           }
         ],
-        "version": "1.68.1"
+        "version": "1.69.0"
       },
       "files": [
         "portfile.cmake",
@@ -71366,7 +71391,7 @@
             "host": true
           }
         ],
-        "version": "7.5.0"
+        "version": "7.6.0"
       },
       "files": [
         "export-target.patch",
@@ -72724,7 +72749,7 @@
             "host": true
           }
         ],
-        "version": "3.11.2"
+        "version": "3.11.3"
       },
       "files": [
         "portfile.cmake",
@@ -76502,7 +76527,6 @@
         "homepage": "https://openturns.github.io/",
         "license": null,
         "dependencies": [
-          "blas",
           "boost-geometry",
           "boost-math",
           "boost-multiprecision",
@@ -76554,7 +76578,7 @@
             ]
           }
         },
-        "version": "1.25.1"
+        "version": "1.26.1"
       },
       "files": [
         "dependencies.diff",
@@ -91929,6 +91953,7 @@
       "name": "sdbus-cpp",
       "manifest": {
         "name": "sdbus-cpp",
+        "port-version": 1,
         "description": "High-level C++ D-Bus library for Linux designed to provide easy-to-use yet powerful API in modern C++",
         "homepage": "https://github.com/Kistler-Group/sdbus-cpp",
         "license": "LGPL-2.1-only",
@@ -91947,7 +91972,7 @@
         ],
         "features": {
           "tool": {
-            "description": "build C++ codegen tool",
+            "description": "Build C++ codegen tool",
             "dependencies": [
               "expat"
             ]
@@ -91956,8 +91981,8 @@
         "version": "2.2.1"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -92763,7 +92788,7 @@
       "name": "sdl3-mixer",
       "manifest": {
         "name": "sdl3-mixer",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -94383,7 +94408,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.1"
+        "version": "4.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -94515,8 +94540,10 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
+        "port-version": 1,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
+        "license": "BUSL-1.1",
         "supports": "!android & !uwp",
         "dependencies": [
           {
@@ -94524,6 +94551,7 @@
             "platform": "linux"
           },
           "fmt",
+          "nanopb",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -94536,6 +94564,7 @@
         "version": "0.12.1"
       },
       "files": [
+        "devendor.diff",
         "portfile.cmake",
         "use-std-localtime.patch",
         "vcpkg.json"
@@ -97620,6 +97649,31 @@
       ]
     },
     {
+      "name": "stescobedo92-stellar",
+      "manifest": {
+        "name": "stescobedo92-stellar",
+        "description": "Header-only C++23 toolkit extensions (ste::) — string, collection, async and StringBuilder utilities.",
+        "homepage": "https://github.com/stescobedo92/stellar",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "stftpitchshift",
       "manifest": {
         "name": "stftpitchshift",
@@ -97659,7 +97713,7 @@
             "host": true
           }
         ],
-        "version": "4.6.8"
+        "version": "4.6.9"
       },
       "files": [
         "fix-install-path.patch",
@@ -99608,7 +99662,7 @@
             ]
           }
         },
-        "version": "4.0.0"
+        "version": "4.0.2"
       },
       "files": [
         "fix-install-paths-v3.patch",
@@ -102983,14 +103037,14 @@
               "jemalloc"
             ]
           },
-          "simsimd": {
-            "description": "Use SimSIMD hardware-accelerated metrics",
+          "numkong": {
+            "description": "Use NumKong hardware-accelerated metrics",
             "dependencies": [
-              "simsimd"
+              "numkong"
             ]
           }
         },
-        "version": "2.24.0"
+        "version": "2.25.1"
       },
       "files": [
         "portfile.cmake",
@@ -104289,7 +104343,7 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.1"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -104698,7 +104752,6 @@
       "name": "vsg",
       "manifest": {
         "name": "vsg",
-        "port-version": 1,
         "description": "A modern, cross platform, high performance scene graph library built upon Vulkan.",
         "homepage": "http://www.vulkanscenegraph.org/",
         "license": "MIT",
@@ -104747,7 +104800,7 @@
             ]
           }
         },
-        "version": "1.1.13"
+        "version": "1.1.14"
       },
       "files": [
         "portfile.cmake",
@@ -108666,21 +108719,26 @@
       "name": "yandex-disk-cpp-client",
       "manifest": {
         "name": "yandex-disk-cpp-client",
-        "description": "Modern C++ client for Yandex.Disk REST API",
+        "description": "C++ client library for Yandex Disk REST API",
         "homepage": "https://github.com/Krasnovvvvv/yandex-disk-cpp-client",
         "documentation": "https://krasnovvvvv.github.io/yandex-disk-cpp-client/",
         "license": "MIT",
         "dependencies": [
           "curl",
           "nlohmann-json",
-          "vcpkg-cmake",
-          "vcpkg-cmake-config"
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
