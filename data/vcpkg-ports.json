@@ -1,5 +1,5 @@
 {
-  "version": "8b76c264e6cd42a6e755b5f7704dd8b3957890a9",
+  "version": "7147ac1294ef9647e8679e1183ac440a5d0a63b7",
   "ports": [
     {
       "name": "3fd",
@@ -1426,7 +1426,6 @@
       "name": "aom",
       "manifest": {
         "name": "aom",
-        "port-version": 2,
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
         "license": "BSD-2-Clause",
@@ -1441,10 +1440,9 @@
             "host": true
           }
         ],
-        "version-semver": "3.13.1"
+        "version-semver": "3.13.3"
       },
       "files": [
-        "aom-fix-nasm.diff",
         "aom-rename-static.diff",
         "aom-uninitialized-pointer.diff",
         "portfile.cmake",
@@ -1689,6 +1687,7 @@
       "name": "apsi",
       "manifest": {
         "name": "apsi",
+        "port-version": 1,
         "description": "APSI is a research library for asymmetric private set intersection.",
         "homepage": "https://github.com/microsoft/APSI",
         "license": "MIT",
@@ -21721,7 +21720,7 @@
       "name": "coin-or-buildtools",
       "manifest": {
         "name": "coin-or-buildtools",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Macros and patches for GNU autotools ",
         "homepage": "https://coin-or-tools.github.io/BuildTools/",
         "license": "EPL-2.0",
@@ -23888,7 +23887,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 10,
+        "port-version": 11,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -27239,7 +27238,7 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -28938,6 +28937,7 @@
       "name": "elfutils",
       "manifest": {
         "name": "elfutils",
+        "port-version": 1,
         "description": "elfutils is a collection of utilities and libraries to read, create and modify ELF binary files, find and handle DWARF debug data, symbols, thread state and stacktraces for processes and core files on GNU/Linux.",
         "homepage": "https://sourceware.org/elfutils/",
         "license": null,
@@ -28981,6 +28981,7 @@
         "version": "0.195"
       },
       "files": [
+        "crc32.diff",
         "disable-werror.diff",
         "link-libs.diff",
         "portfile.cmake",
@@ -30489,7 +30490,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -45784,6 +45785,37 @@
       ]
     },
     {
+      "name": "kcrash",
+      "manifest": {
+        "name": "kcrash",
+        "description": "KCrash provides support for intercepting and handling application crashes.",
+        "homepage": "https://invent.kde.org/frameworks/kcrash",
+        "documentation": "https://api.kde.org/kcrash-index.html",
+        "supports": "!android",
+        "dependencies": [
+          "ecm",
+          "kcoreaddons",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.25.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kdalgorithms",
       "manifest": {
         "name": "kdalgorithms",
@@ -48112,6 +48144,45 @@
       ]
     },
     {
+      "name": "kguiaddons",
+      "manifest": {
+        "name": "kguiaddons",
+        "description": "Addons to QtGui",
+        "homepage": "https://invent.kde.org/frameworks/kguiaddons",
+        "documentation": "https://api.kde.org/kguiaddons-index.html",
+        "supports": "!android",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "plasma-wayland-protocols",
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "qtwayland",
+            "default-features": false,
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.25.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ki18n",
       "manifest": {
         "name": "ki18n",
@@ -48717,6 +48788,68 @@
         "version-date": "2019-08-06"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kwindowsystem",
+      "manifest": {
+        "name": "kwindowsystem",
+        "description": "Access to the windowing system",
+        "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
+        "documentation": "https://api.kde.org/kwindowsystem-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "plasma-wayland-protocols",
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "qtwayland",
+            "default-features": false,
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build QML bindings",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.25.0"
+      },
+      "files": [
+        "001_guard_ecm_qml_module_include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -54227,7 +54360,7 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
-        "port-version": 2,
+        "port-version": 3,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -54237,7 +54370,7 @@
             "platform": "windows"
           },
           {
-            "name": "getopt",
+            "name": "getopt-win32",
             "platform": "windows"
           },
           {
@@ -56000,7 +56133,7 @@
             "host": true
           }
         ],
-        "version": "9.0.28"
+        "version": "9.0.29"
       },
       "files": [
         "disable-werror.patch",
@@ -57284,10 +57417,9 @@
             "host": true
           }
         ],
-        "version": "3.3.1"
+        "version": "3.3.2"
       },
       "files": [
-        "0001-make-find-dependency-not-required.diff",
         "0002-remove-eigen3-version-constraint.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -59655,7 +59787,7 @@
       "name": "libwandio",
       "manifest": {
         "name": "libwandio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C library for simple and efficient file IO.",
         "homepage": "https://github.com/wanduow/wandio",
         "license": "LGPL-3.0-only",
@@ -60289,7 +60421,7 @@
       "name": "libxfont",
       "manifest": {
         "name": "libxfont",
-        "port-version": 2,
+        "port-version": 3,
         "description": "X font handling library for server & utilities",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxfont",
         "license": null,
@@ -67610,7 +67742,7 @@
             "host": true
           }
         ],
-        "version": "4.1.4"
+        "version": "4.3.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -72629,7 +72761,7 @@
       "name": "omniorb",
       "manifest": {
         "name": "omniorb",
-        "port-version": 4,
+        "port-version": 5,
         "description": "omniORB is a robust high performance CORBA ORB for C++",
         "homepage": "https://omniorb.sourceforge.io/",
         "license": "LGPL-2.1-or-later",
@@ -82159,6 +82291,7 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
+        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -82781,6 +82914,7 @@
       "name": "qpdf",
       "manifest": {
         "name": "qpdf",
+        "port-version": 1,
         "description": "A content-preserving PDF document transformer",
         "homepage": "https://qpdf.sourceforge.io/",
         "license": "Apache-2.0 AND MIT",
@@ -83751,7 +83885,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86390,6 +86524,7 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
+        "port-version": 1,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86409,7 +86544,10 @@
           }
         ],
         "default-features": [
-          "ffmpeg",
+          {
+            "name": "ffmpeg",
+            "platform": "!emscripten"
+          },
           {
             "name": "pipewire",
             "platform": "linux"
@@ -86456,7 +86594,8 @@
                 "platform": "linux"
               },
               "signalsmith-stretch"
-            ]
+            ],
+            "supports": "!emscripten"
           },
           "gstreamer": {
             "description": "Build with gstreamer",
@@ -88453,7 +88592,6 @@
       "name": "raylib",
       "manifest": {
         "name": "raylib",
-        "port-version": 1,
         "description": "A simple and easy-to-use library to enjoy videogames programming",
         "homepage": "https://github.com/raysan5/raylib",
         "license": "Zlib",
@@ -88490,11 +88628,11 @@
             ]
           }
         },
-        "version": "5.5"
+        "version": "6.0"
       },
       "files": [
         "android.diff",
-        "fix-link-path.patch",
+        "fix-cgltf.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -89353,7 +89491,7 @@
             "host": true
           }
         ],
-        "version": "0.31.2"
+        "version": "0.31.3"
       },
       "files": [
         "portfile.cmake",
@@ -92737,6 +92875,7 @@
       "name": "sdl3-image",
       "manifest": {
         "name": "sdl3-image",
+        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -93498,6 +93637,7 @@
       "name": "serf",
       "manifest": {
         "name": "serf",
+        "port-version": 1,
         "description": "The serf library is a high performance C-based HTTP client library built upon the Apache Portable Runtime (APR) library. It is permissively licensed under the Apache License, v2.",
         "homepage": "https://serf.apache.org/",
         "license": "Apache-2.0",
@@ -93511,9 +93651,8 @@
         "version": "1.3.10"
       },
       "files": [
+        "dependencies.diff",
         "portfile.cmake",
-        "serf-fix-expat.patch",
-        "serf-use-debug-libs.patch",
         "vcpkg.json"
       ]
     },
@@ -93999,13 +94138,12 @@
       "name": "shiftmedia-libgnutls",
       "manifest": {
         "name": "shiftmedia-libgnutls",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
         "homepage": "https://github.com/ShiftMediaProject/gnutls",
         "license": "LGPL-2.1-only",
         "supports": "windows & !arm & !mingw & !xbox",
         "dependencies": [
-          "gettext",
           "gmp",
           "libtasn1",
           "nettle",
@@ -104889,7 +105027,6 @@
       "name": "vsgxchange",
       "manifest": {
         "name": "vsgxchange",
-        "port-version": 1,
         "description": "Utility library for converting 3rd party images, models and fonts formats to/from VulkanSceneGraph.",
         "homepage": "https://github.com/vsg-dev/vsgXchange",
         "license": "MIT",
@@ -104956,7 +105093,7 @@
             ]
           }
         },
-        "version": "1.1.9"
+        "version": "1.1.11"
       },
       "files": [
         "portfile.cmake",
@@ -109521,14 +109658,15 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.3.1"
+        "version": "1.3.2"
       },
       "files": [
-        "0001-Prevent-invalid-inclusions-when-HAVE_-is-set-to-0.patch",
-        "0002-build-static-or-shared-not-both.patch",
-        "0003-android-and-mingw-fixes.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
