@@ -1,5 +1,5 @@
 {
-  "version": "3909e67a639d426ea939d9bff77bfe1d10443476",
+  "version": "89dd0f4d241136b843fb55813b2f0fa6448c204d",
   "ports": [
     {
       "name": "3fd",
@@ -68326,6 +68326,7 @@
       "name": "ms-gdk",
       "manifest": {
         "name": "ms-gdk",
+        "port-version": 1,
         "description": "Microsoft Game Development Kit (GDK)",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
@@ -96218,6 +96219,35 @@
           }
         ],
         "version": "0.11.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sparrow-ipc",
+      "manifest": {
+        "name": "sparrow-ipc",
+        "description": "C++20 idiomatic APIs for the Apache Arrow Serialization and Interprocess Communication (IPC)",
+        "homepage": "https://github.com/sparrow-org/sparrow-ipc",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          "arcticdb-sparrow",
+          "flatbuffers",
+          "lz4",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zstd"
+        ],
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
