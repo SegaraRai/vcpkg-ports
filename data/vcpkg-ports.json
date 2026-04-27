@@ -1,5 +1,5 @@
 {
-  "version": "89dd0f4d241136b843fb55813b2f0fa6448c204d",
+  "version": "d46283cf33cf5de7bd88e12156ce03882be1f179",
   "ports": [
     {
       "name": "3fd",
@@ -2056,7 +2056,7 @@
             "host": true
           }
         ],
-        "version": "6.4.11"
+        "version": "6.4.12"
       },
       "files": [
         "portfile.cmake",
@@ -4014,7 +4014,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.12.2"
+        "version": "0.12.3"
       },
       "files": [
         "portfile.cmake",
@@ -32938,6 +32938,9 @@
           "zlib"
         ],
         "features": {
+          "av1": {
+            "description": "Enable AV1 support for GFX channel encoding/decoding"
+          },
           "client": {
             "description": "Build client components"
           },
@@ -32983,7 +32986,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.24.1"
+        "version": "3.25.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -41361,9 +41364,21 @@
               }
             ],
             "supports": "!static"
+          },
+          "png": {
+            "description": "Use PNG library",
+            "dependencies": [
+              "libpng"
+            ]
+          },
+          "zlib": {
+            "description": "Use zlib library",
+            "dependencies": [
+              "zlib"
+            ]
           }
         },
-        "version": "13.0.1"
+        "version": "14.2.0"
       },
       "files": [
         "fix-win32-build.patch",
@@ -42882,7 +42897,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "78.2"
+        "version": "78.3"
       },
       "files": [
         "disable-static-prefix.patch",
@@ -48148,6 +48163,7 @@
       "name": "kguiaddons",
       "manifest": {
         "name": "kguiaddons",
+        "port-version": 1,
         "description": "Addons to QtGui",
         "homepage": "https://invent.kde.org/frameworks/kguiaddons",
         "documentation": "https://api.kde.org/kguiaddons-index.html",
@@ -48160,7 +48176,10 @@
           },
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
           },
           {
             "name": "qtwayland",
@@ -48176,6 +48195,14 @@
             "host": true
           }
         ],
+        "features": {
+          "qml": {
+            "description": "Build with QML support",
+            "dependencies": [
+              "qtdeclarative"
+            ]
+          }
+        },
         "version": "6.25.0"
       },
       "files": [
@@ -63330,7 +63357,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.717"
+        "version": "0.718"
       },
       "files": [
         "cmake-config-export.patch",
@@ -88656,7 +88683,7 @@
             "host": true
           }
         ],
-        "version": "5.5.1"
+        "version": "6.0.0"
       },
       "files": [
         "portfile.cmake",
