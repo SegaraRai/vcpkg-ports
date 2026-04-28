@@ -1,5 +1,5 @@
 {
-  "version": "d46283cf33cf5de7bd88e12156ce03882be1f179",
+  "version": "d64aa3825b1d52b799b424d48be2f7d5b42d42cf",
   "ports": [
     {
       "name": "3fd",
@@ -27477,12 +27477,11 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
-        "port-version": 1,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
         "documentation": "https://doc.dpdk.org/guides/",
         "license": "BSD-3-Clause",
-        "supports": "freebsd | linux",
+        "supports": "freebsd | linux | (windows & x64)",
         "dependencies": [
           {
             "name": "libarchive",
@@ -27512,7 +27511,7 @@
             "description": "Build with fast path traces enabled"
           }
         },
-        "version": "25.11"
+        "version": "26.3"
       },
       "files": [
         "0001-enable-either-static-or-shared-build.patch",
@@ -29600,7 +29599,7 @@
             "host": true
           }
         ],
-        "version": "2.7.5"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -39885,7 +39884,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.22.2"
+        "version": "4.22.3"
       },
       "files": [
         "0001-build.patch",
@@ -39897,7 +39896,7 @@
       "name": "gtk3",
       "manifest": {
         "name": "gtk3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
         "license": null,
@@ -39989,6 +39988,7 @@
           "wayland": {
             "description": "Build with Wayland support",
             "dependencies": [
+              "libxkbcommon",
               "wayland",
               "wayland-protocols"
             ],
@@ -54388,7 +54388,6 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
-        "port-version": 3,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -54436,7 +54435,7 @@
             ]
           }
         },
-        "version": "5.46"
+        "version": "5.47"
       },
       "files": [
         "0001-Use-libtre.patch",
@@ -55092,12 +55091,10 @@
             "description": "Build MultiSense utility applications."
           }
         },
-        "version": "7.4.0"
+        "version": "7.6.0"
       },
       "files": [
-        "0000-platform-specific-links.patch",
-        "0001-find-public-api-dependencies.patch",
-        "0002-disable-error-on-warning.patch",
+        "0000-disable-error-on-warning.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -59777,6 +59774,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
+        "port-version": 1,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -62823,7 +62821,6 @@
       "name": "logme",
       "manifest": {
         "name": "logme",
-        "port-version": 1,
         "description": "Cross-platform C/C++ logging framework: channels and routing, multiple backends, colored output, and runtime dynamic control.",
         "homepage": "https://github.com/efmsoft/logme",
         "documentation": "https://github.com/efmsoft/logme/wiki",
@@ -62839,7 +62836,7 @@
             "host": true
           }
         ],
-        "version": "2.4.15"
+        "version": "2.4.16"
       },
       "files": [
         "portfile.cmake",
@@ -93276,7 +93273,7 @@
             ]
           }
         },
-        "version": "4.1.2"
+        "version": "4.3.0"
       },
       "files": [
         "fix-hexl.patch",
@@ -93969,7 +93966,7 @@
             "host": true
           }
         ],
-        "version": "2026.5"
+        "version": "2026.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -97918,7 +97915,7 @@
             "host": true
           }
         ],
-        "version": "4.6.9"
+        "version": "4.6.10"
       },
       "files": [
         "fix-install-path.patch",
@@ -98465,7 +98462,7 @@
             ]
           }
         },
-        "version-semver": "7.8.3"
+        "version-semver": "7.12.2"
       },
       "files": [
         "portfile.cmake",
@@ -98490,7 +98487,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.3"
+        "version-semver": "3.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -98515,7 +98512,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.3.2"
+        "version-semver": "2.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -98540,7 +98537,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.3"
+        "version-semver": "3.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -98565,7 +98562,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.4"
+        "version-semver": "3.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -98605,7 +98602,8 @@
               {
                 "name": "suitesparse-cholmod",
                 "features": [
-                  "matrixops"
+                  "matrixops",
+                  "openmp"
                 ]
               }
             ],
@@ -98642,7 +98640,7 @@
             "license": "GPL-2.0-or-later AND LGPL-2.1-or-later AND Apache-2.0"
           }
         },
-        "version-semver": "5.3.0"
+        "version-semver": "5.3.4"
       },
       "files": [
         "001-dont-override-cuda-architectures.patch",
@@ -98668,7 +98666,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.4"
+        "version-semver": "3.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -98698,7 +98696,7 @@
             "description": "Enable OpenMP support (in SuiteSparse_config only)"
           }
         },
-        "version-semver": "7.8.3"
+        "version-semver": "7.12.2"
       },
       "files": [
         "SuiteSparseBLAS.cmake",
@@ -98724,7 +98722,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.4.1"
+        "version-semver": "4.4.2"
       },
       "files": [
         "001-detect-complex-support.patch",
@@ -98761,7 +98759,7 @@
             "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
           }
         },
-        "version-semver": "10.1.1"
+        "version-semver": "10.3.1"
       },
       "files": [
         "crossbuild.diff",
@@ -98798,7 +98796,7 @@
             ]
           }
         },
-        "version-semver": "2.3.5"
+        "version-semver": "2.3.6"
       },
       "files": [
         "portfile.cmake",
@@ -98809,7 +98807,6 @@
       "name": "suitesparse-lagraph",
       "manifest": {
         "name": "suitesparse-lagraph",
-        "port-version": 1,
         "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
         "homepage": "https://lagraph.readthedocs.io/en/latest/",
         "license": "BSD-2-Clause",
@@ -98837,7 +98834,7 @@
             ]
           }
         },
-        "version-semver": "1.1.4"
+        "version-semver": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -98863,7 +98860,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.3.2"
+        "version-semver": "3.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -98893,7 +98890,7 @@
             "description": "Build suitesparse_mongoose CLI tool"
           }
         },
-        "version-semver": "3.3.4"
+        "version-semver": "3.3.6"
       },
       "files": [
         "portfile.cmake",
@@ -98934,7 +98931,7 @@
             "supports": "!windows"
           }
         },
-        "version-semver": "1.0.0"
+        "version-semver": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -98959,7 +98956,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.3.4"
+        "version-semver": "4.3.5"
       },
       "files": [
         "portfile.cmake",
@@ -99001,7 +98998,7 @@
             ]
           }
         },
-        "version-semver": "3.2.1"
+        "version-semver": "3.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -99041,7 +99038,7 @@
             ]
           }
         },
-        "version-semver": "4.3.4"
+        "version-semver": "4.3.6"
       },
       "files": [
         "001-dont-override-cuda-architectures.patch",
@@ -99079,7 +99076,7 @@
             ]
           }
         },
-        "version-semver": "6.3.5"
+        "version-semver": "6.3.7"
       },
       "files": [
         "portfile.cmake",
@@ -104552,7 +104549,7 @@
             "host": true
           }
         ],
-        "version": "3.5.1"
+        "version": "4.0.0"
       },
       "files": [
         "001-fix-cmake.patch",
