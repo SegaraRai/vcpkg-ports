@@ -1,5 +1,5 @@
 {
-  "version": "d64aa3825b1d52b799b424d48be2f7d5b42d42cf",
+  "version": "0297aaaf1c7879d30af39d87dc484ba56bd7bbde",
   "ports": [
     {
       "name": "3fd",
@@ -2056,7 +2056,7 @@
             "host": true
           }
         ],
-        "version": "6.4.12"
+        "version": "6.4.13"
       },
       "files": [
         "portfile.cmake",
@@ -22287,7 +22287,6 @@
       "name": "consteig",
       "manifest": {
         "name": "consteig",
-        "port-version": 1,
         "description": "Header-only C++17 constexpr library for compile-time eigenvalue and eigenvector computation",
         "homepage": "https://github.com/MitchellThompkins/consteig",
         "license": "Apache-2.0",
@@ -22302,7 +22301,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -28781,7 +28780,7 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "version": "1.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -32082,7 +32081,7 @@
         "description": "Fast Library for Number Theory",
         "homepage": "https://www.flintlib.org/",
         "license": "GPL-3.0-only",
-        "supports": "!uwp & (!windows | x64)",
+        "supports": "!uwp & !(windows & arm64)",
         "dependencies": [
           "gettimeofday",
           "gmp",
@@ -32107,10 +32106,9 @@
             "platform": "!windows"
           }
         ],
-        "version-semver": "3.4.0"
+        "version-semver": "3.5.0"
       },
       "files": [
-        "fix-static.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32540,7 +32538,6 @@
       "name": "font-util",
       "manifest": {
         "name": "font-util",
-        "port-version": 1,
         "description": "X.Org font package creation/installation utilities",
         "homepage": "https://gitlab.freedesktop.org/xorg/font/util",
         "license": null,
@@ -32551,7 +32548,7 @@
           },
           "xorg-macros"
         ],
-        "version": "1.4.1"
+        "version": "1.4.2"
       },
       "files": [
         "build.patch",
@@ -33303,7 +33300,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.18.2"
+        "version-semver": "0.19.2"
       },
       "files": [
         "portfile.cmake",
@@ -33432,7 +33429,7 @@
             "host": true
           }
         ],
-        "version": "0.2.27"
+        "version": "0.2.28"
       },
       "files": [
         "portfile.cmake",
@@ -41469,6 +41466,7 @@
       "name": "hazelcast-cpp-client",
       "manifest": {
         "name": "hazelcast-cpp-client",
+        "port-version": 1,
         "description": "C++ client library for Hazelcast in-memory database.",
         "homepage": "https://github.com/hazelcast/hazelcast-cpp-client",
         "documentation": "https://docs.hazelcast.com/hazelcast/latest/clients/cplusplus",
@@ -41507,6 +41505,7 @@
         "version": "5.6.0"
       },
       "files": [
+        "fix-boost-optional.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -41838,9 +41837,9 @@
       "manifest": {
         "name": "hexl",
         "description": "Intel® HEXL is an open-source library which provides efficient implementations of integer arithmetic on Galois fields.",
-        "homepage": "https://github.com/intel/hexl",
+        "homepage": "https://github.com/IntelLabs/hexl",
         "license": "Apache-2.0",
-        "supports": "x64",
+        "supports": "x64 & !android",
         "dependencies": [
           "cpu-features",
           "easyloggingpp",
@@ -41853,7 +41852,7 @@
             "host": true
           }
         ],
-        "version": "1.2.5"
+        "version": "1.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -44243,7 +44242,7 @@
       "name": "itk",
       "manifest": {
         "name": "itk",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Insight Segmentation and Registration Toolkit (ITK) is used for image processing and analysis.",
         "homepage": "https://github.com/InsightSoftwareConsortium/ITK",
         "license": "Apache-2.0",
@@ -45129,7 +45128,7 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -63777,7 +63776,7 @@
       "name": "magma",
       "manifest": {
         "name": "magma",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Matrix Algebra on GPU and Multi-core Architectures (MAGMA) is a collection of next-generation linear algebra libraries for heterogeneous computing",
         "homepage": "https://icl.utk.edu/magma/",
         "license": "BSD-3-Clause",
@@ -63797,6 +63796,8 @@
         "disable-openmp-msvc.patch",
         "fix-cmake4.patch",
         "fix-cuda13-clockrate.patch",
+        "fix-cuda13-cpp17.patch",
+        "fix-cuda13-preprocessor.patch",
         "no-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -68747,7 +68748,7 @@
             "host": true
           }
         ],
-        "version": "0.9.4"
+        "version": "0.9.5"
       },
       "files": [
         "fix-android.patch",
@@ -77340,7 +77341,7 @@
             "description": "Omath will define some methods as inline"
           }
         },
-        "version": "5.1.1"
+        "version": "5.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -93992,7 +93993,7 @@
             "host": true
           }
         ],
-        "version": "2026.1"
+        "version": "2026.2"
       },
       "files": [
         "build-version.inc",
@@ -97915,7 +97916,7 @@
             "host": true
           }
         ],
-        "version": "4.6.10"
+        "version": "4.6.11"
       },
       "files": [
         "fix-install-path.patch",
@@ -100390,7 +100391,6 @@
       "name": "thrift",
       "manifest": {
         "name": "thrift",
-        "port-version": 2,
         "description": "Apache Thrift is a software project spanning a variety of programming languages and use cases. Our goal is to make reliable, performant communication and data serialization across languages as efficient and seamless as possible.",
         "homepage": "https://github.com/apache/thrift",
         "license": "Apache-2.0",
@@ -100413,7 +100413,7 @@
           },
           "zlib"
         ],
-        "version": "0.22.0"
+        "version": "0.23.0"
       },
       "files": [
         "fix_missing_quotes_in_config_and_bin_path.patch",
@@ -103089,7 +103089,7 @@
             "description": "Builds CLI tool uriparse."
           }
         },
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -107178,9 +107178,10 @@
           },
           "wolfssl"
         ],
-        "version": "3.10.0"
+        "version": "4.0.0"
       },
       "files": [
+        "fix-cmake-export.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
