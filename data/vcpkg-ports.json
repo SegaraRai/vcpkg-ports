@@ -1,5 +1,5 @@
 {
-  "version": "0297aaaf1c7879d30af39d87dc484ba56bd7bbde",
+  "version": "80f9bcfa455e875d9c1bf7a7c6692d7e1e481061",
   "ports": [
     {
       "name": "3fd",
@@ -609,7 +609,7 @@
             "supports": "!((x86 | arm64) & windows) & !android & !uwp & !xbox"
           }
         },
-        "version": "1.50.4"
+        "version": "1.51.0"
       },
       "files": [
         "patches/add-libuuid-vcpkg-support.patch",
@@ -2056,7 +2056,7 @@
             "host": true
           }
         ],
-        "version": "6.4.13"
+        "version": "6.4.15"
       },
       "files": [
         "portfile.cmake",
@@ -2544,14 +2544,6 @@
         "homepage": "https://arrow.apache.org/adbc/",
         "license": "Apache-2.0",
         "dependencies": [
-          {
-            "name": "arrow",
-            "default-features": false,
-            "features": [
-              "dataset",
-              "parquet"
-            ]
-          },
           "fmt",
           "nanoarrow",
           {
@@ -2589,13 +2581,10 @@
             ]
           }
         },
-        "version": "16"
+        "version": "22"
       },
       "files": [
-        "fix_static_build.patch",
-        "fix_windows_build.patch",
         "portfile.cmake",
-        "unvendor.patch",
         "vcpkg.json"
       ]
     },
@@ -3317,7 +3306,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -24939,6 +24928,145 @@
       ]
     },
     {
+      "name": "curve-eraser",
+      "manifest": {
+        "name": "curve-eraser",
+        "description": "A C++20 type-erasure library that supports user defined interfaces",
+        "homepage": "https://github.com/Curve/eraser",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.3.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-cpm.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-ereignis",
+      "manifest": {
+        "name": "curve-ereignis",
+        "description": "A thread-safe C++17 Event Library",
+        "homepage": "https://github.com/Curve/ereignis",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "4.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-flagpp",
+      "manifest": {
+        "name": "curve-flagpp",
+        "description": "A C++20 library that provides (opt-in) bit-wise operations for arbitrary `enum class`es",
+        "homepage": "https://github.com/Curve/flagpp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-cpm.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-lockpp",
+      "manifest": {
+        "name": "curve-lockpp",
+        "description": "A C++17 Library that provides mutex protected objects",
+        "homepage": "https://github.com/Curve/lockpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-cpm.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-poolparty",
+      "manifest": {
+        "name": "curve-poolparty",
+        "description": "A C++20 thread-pool library",
+        "homepage": "https://github.com/Curve/poolparty",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "3.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "curve-rebind",
+      "manifest": {
+        "name": "curve-rebind",
+        "description": "A C++23 reflection library for aggregates and enums",
+        "homepage": "https://github.com/Curve/rebind",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "5.3.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-cpm.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cute-headers",
       "manifest": {
         "name": "cute-headers",
@@ -29287,51 +29415,6 @@
       ]
     },
     {
-      "name": "eraser",
-      "manifest": {
-        "name": "eraser",
-        "description": "A C++20 type-erasure library that supports user defined interfaces",
-        "homepage": "https://github.com/Curve/eraser",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "remove-cpm.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "ereignis",
-      "manifest": {
-        "name": "ereignis",
-        "description": "A thread-safe C++17 Event Library",
-        "homepage": "https://github.com/Curve/ereignis",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "4.3"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "esaxx",
       "manifest": {
         "name": "esaxx",
@@ -31558,30 +31641,6 @@
       ]
     },
     {
-      "name": "flagpp",
-      "manifest": {
-        "name": "flagpp",
-        "description": "A C++20 library that provides (opt-in) bit-wise operations for arbitrary `enum class`es",
-        "homepage": "https://github.com/Curve/flagpp",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "3.1.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "remove-cpm.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "flann",
       "manifest": {
         "name": "flann",
@@ -32038,7 +32097,7 @@
             "host": true
           }
         ],
-        "version": "0.6.1"
+        "version": "0.6.2-pre-29201734bf2d12713a7a1a035d31e5123aac9c93"
       },
       "files": [
         "fix_install_dir.patch",
@@ -32078,6 +32137,7 @@
       "name": "flint",
       "manifest": {
         "name": "flint",
+        "port-version": 1,
         "description": "Fast Library for Number Theory",
         "homepage": "https://www.flintlib.org/",
         "license": "GPL-3.0-only",
@@ -33760,7 +33820,6 @@
       "name": "gamenetworkingsockets",
       "manifest": {
         "name": "gamenetworkingsockets",
-        "port-version": 2,
         "description": "GameNetworkingSockets is a basic transport layer for games.",
         "homepage": "https://github.com/ValveSoftware/GameNetworkingSockets",
         "license": "BSD-3-Clause",
@@ -33777,12 +33836,10 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "files": [
-        "fix-depend-protobuf.patch",
         "portfile.cmake",
-        "protobuf-6.patch",
         "vcpkg.json"
       ]
     },
@@ -34888,7 +34945,7 @@
       "name": "ggml",
       "manifest": {
         "name": "ggml",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
@@ -34956,6 +35013,7 @@
       },
       "files": [
         "cmake-config.diff",
+        "cuda-13-2.diff",
         "fix-dequant_funcs.diff",
         "pkgconfig.diff",
         "portfile.cmake",
@@ -35561,7 +35619,7 @@
             ]
           }
         },
-        "version": "7.4.0"
+        "version": "7.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -41276,6 +41334,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -41378,10 +41437,9 @@
         "version": "14.2.0"
       },
       "files": [
-        "fix-win32-build.patch",
+        "fix-eol-mismatch.diff",
         "harfbuzzConfig.cmake.in",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -41936,7 +41994,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -60984,12 +61042,10 @@
       "name": "libxres",
       "manifest": {
         "name": "libxres",
-        "port-version": 1,
         "description": "Xlib-based X-Resource extension client library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxres",
         "license": null,
         "dependencies": [
-          "bzip2",
           "libx11",
           "libxext",
           {
@@ -60999,7 +61055,7 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.2.1"
+        "version": "1.2.3"
       },
       "files": [
         "build.patch",
@@ -62657,31 +62713,6 @@
         "lmdb-config.cmake",
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "lockpp",
-      "manifest": {
-        "name": "lockpp",
-        "description": "A C++17 Library that provides mutex protected objects",
-        "homepage": "https://github.com/Curve/lockpp",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "3.2.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "remove-cpm.patch",
         "vcpkg.json"
       ]
     },
@@ -69391,7 +69422,7 @@
       "name": "nanoarrow",
       "manifest": {
         "name": "nanoarrow",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Helpers for Arrow C Data & Arrow C Stream interfaces",
         "homepage": "https://arrow.apache.org/nanoarrow",
         "license": "Apache-2.0",
@@ -69405,9 +69436,18 @@
             "host": true
           }
         ],
+        "features": {
+          "ipc": {
+            "description": "IPC support",
+            "dependencies": [
+              "flatcc"
+            ]
+          }
+        },
         "version": "0.8.0"
       },
       "files": [
+        "fix-flatccrt-name.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70200,7 +70240,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-10-23"
+        "version-date": "2026-04-28"
       },
       "files": [
         "portfile.cmake",
@@ -73014,6 +73054,7 @@
       "name": "onnxruntime",
       "manifest": {
         "name": "onnxruntime",
+        "port-version": 1,
         "description": "ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator",
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
@@ -73092,6 +73133,13 @@
             "description": "Build a macOS/iOS framework, Objective-C library",
             "supports": "osx | ios"
           },
+          "kleidiai": {
+            "description": "Build kleidiai support",
+            "dependencies": [
+              "kleidiai"
+            ],
+            "supports": "arm64"
+          },
           "openvino": {
             "description": "Build with OpenVINO support",
             "dependencies": [
@@ -73105,7 +73153,7 @@
                 ]
               }
             ],
-            "supports": "!(osx | ios | android | emscripten)"
+            "supports": "!(osx | ios | android | emscripten) & !static"
           },
           "tensorrt": {
             "description": "Build with TensorRT support",
@@ -73124,7 +73172,9 @@
       },
       "files": [
         "fix-cmake-cuda.patch",
+        "fix-cmake-mlas.patch",
         "fix-cmake.patch",
+        "fix-missing-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -74873,7 +74923,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -75424,6 +75474,8 @@
         "0021-fix-qt-gen-def.patch",
         "0022-android-use-vcpkg-cpu-features.patch",
         "0023-ffmpeg8-support.patch",
+        "0024-openvino-const-tensor-data.patch",
+        "0025-fix-cuda-host-std-flag-forwarding.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -80661,6 +80713,46 @@
       ]
     },
     {
+      "name": "polkit",
+      "manifest": {
+        "name": "polkit",
+        "description": "PolicyKit authorization libraries",
+        "homepage": "https://gitlab.freedesktop.org/polkit/polkit",
+        "license": "LGPL-2.0-or-later",
+        "supports": "linux",
+        "dependencies": [
+          "expat",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          "libxcrypt",
+          {
+            "name": "pkgconf",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "124"
+      },
+      "files": [
+        "libs-only-build-polkitagent.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "polyclipping",
       "manifest": {
         "name": "polyclipping",
@@ -80797,26 +80889,6 @@
       "files": [
         "github-121.patch",
         "no-install-unused.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "poolparty",
-      "manifest": {
-        "name": "poolparty",
-        "description": "A C++20 thread-pool library",
-        "homepage": "https://github.com/Curve/poolparty",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "3.0.1"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81000,6 +81072,7 @@
       "name": "popsift",
       "manifest": {
         "name": "popsift",
+        "port-version": 1,
         "description": "PopSift is an implementation of the SIFT algorithm in CUDA.",
         "homepage": "https://github.com/alicevision/popsift",
         "documentation": "https://popsift.readthedocs.io/",
@@ -81031,6 +81104,7 @@
       },
       "files": [
         "portfile.cmake",
+        "pr-183-add-zcpreprocessor-for-cuda-13-2.diff",
         "vcpkg.json"
       ]
     },
@@ -89047,31 +89121,6 @@
       ]
     },
     {
-      "name": "rebind",
-      "manifest": {
-        "name": "rebind",
-        "description": "A C++23 reflection library for aggregates and enums",
-        "homepage": "https://github.com/Curve/rebind",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "5.3.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "remove-cpm.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "recastnavigation",
       "manifest": {
         "name": "recastnavigation",
@@ -89518,7 +89567,7 @@
             "host": true
           }
         ],
-        "version": "0.31.3"
+        "version": "0.31.4"
       },
       "files": [
         "portfile.cmake",
@@ -91820,7 +91869,7 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
@@ -91828,18 +91877,18 @@
         "dependencies": [
           "boost-callable-traits",
           "boost-preprocessor",
-          "eraser",
-          "ereignis",
-          "flagpp",
+          "curve-eraser",
+          "curve-ereignis",
+          "curve-flagpp",
+          "curve-lockpp",
+          "curve-poolparty",
+          "curve-rebind",
           "fmt",
           "glaze",
           {
             "name": "gtk",
             "platform": "linux"
           },
-          "lockpp",
-          "poolparty",
-          "rebind",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -97916,7 +97965,7 @@
             "host": true
           }
         ],
-        "version": "4.6.11"
+        "version": "4.6.12"
       },
       "files": [
         "fix-install-path.patch",
@@ -99167,8 +99216,8 @@
       "manifest": {
         "name": "supernovas",
         "description": "SuperNOVAS C/C++ high-precision astrometry library",
-        "homepage": "https://smithsonian.github.io/SuperNOVAS/",
-        "documentation": "https://smithsonian.github.io/SuperNOVAS/doc/html/",
+        "homepage": "https://sigmyne.github.io/SuperNOVAS/",
+        "documentation": "https://sigmyne.github.io/SuperNOVAS/doc/html/",
         "license": "Unlicense",
         "dependencies": [
           {
@@ -99181,15 +99230,17 @@
           }
         ],
         "features": {
+          "cpp": {
+            "description": "C++11 API and runtime"
+          },
           "solsys-calceph": {
             "description": "Solar-system ephemeris support via the CALCEPH library",
             "dependencies": [
               "calceph"
-            ],
-            "supports": "!uwp"
+            ]
           }
         },
-        "version": "1.5.1"
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -104465,7 +104516,7 @@
             "host": true
           }
         ],
-        "version": "1.4.2"
+        "version": "1.4.5"
       },
       "files": [
         "fix_osx.patch",
