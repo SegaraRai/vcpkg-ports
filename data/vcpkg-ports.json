@@ -1,5 +1,5 @@
 {
-  "version": "80f9bcfa455e875d9c1bf7a7c6692d7e1e481061",
+  "version": "8e6be0084fab1936e34dd4092d96855967e63ad1",
   "ports": [
     {
       "name": "3fd",
@@ -7847,7 +7847,7 @@
             "host": true
           }
         ],
-        "version": "8.2.9"
+        "version": "8.2.12"
       },
       "files": [
         "CMakeLists.txt",
@@ -23630,6 +23630,7 @@
       "name": "cppwinrt",
       "manifest": {
         "name": "cppwinrt",
+        "port-version": 1,
         "description": "C++/WinRT is a standard C++ language projection for the Windows Runtime.",
         "homepage": "https://github.com/microsoft/cppwinrt",
         "documentation": "https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/",
@@ -24732,12 +24733,6 @@
               "libpsl"
             ]
           },
-          "rtmp": {
-            "description": "RTMP support",
-            "dependencies": [
-              "librtmp"
-            ]
-          },
           "ssh": {
             "description": "SSH support via libssh2",
             "dependencies": [
@@ -24831,7 +24826,7 @@
             ]
           }
         },
-        "version": "8.19.0"
+        "version": "8.20.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33962,6 +33957,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
+        "port-version": 1,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -34304,7 +34300,6 @@
       "files": [
         "cmake-project-include.cmake",
         "find-link-libraries.patch",
-        "fix-gdal-target-interfaces.patch",
         "iconv.diff",
         "libkml.patch",
         "portfile.cmake",
@@ -58364,7 +58359,7 @@
       "name": "libssh2",
       "manifest": {
         "name": "libssh2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "libssh2 is a client-side C library implementing the SSH2 protocol.",
         "homepage": "https://www.libssh2.org",
         "license": "BSD-3-Clause",
@@ -60504,7 +60499,6 @@
       "name": "libxfont",
       "manifest": {
         "name": "libxfont",
-        "port-version": 3,
         "description": "X font handling library for server & utilities",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxfont",
         "license": null,
@@ -60523,7 +60517,7 @@
           "xtrans",
           "zlib"
         ],
-        "version": "2.0.5"
+        "version": "2.0.7"
       },
       "files": [
         "build.patch",
@@ -61172,8 +61166,8 @@
         "description": "X Toolkit Intrinsics library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxt",
         "license": null,
+        "supports": "!(arm64 & windows)",
         "dependencies": [
-          "bzip2",
           "glib",
           "libice",
           "libsm",
@@ -61189,7 +61183,7 @@
           "xorg-macros",
           "xproto"
         ],
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "add-missing-process-h.patch",
@@ -61943,32 +61937,6 @@
           }
         ],
         "features": {
-          "polyfill-cxx17": {
-            "description": "Polyfill C++17 entities",
-            "dependencies": [
-              {
-                "name": "llfio",
-                "default-features": false,
-                "features": [
-                  "polyfill-cxx20"
-                ]
-              },
-              {
-                "name": "ned14-internal-quickcpplib",
-                "default-features": false,
-                "features": [
-                  "polyfill-cxx17"
-                ]
-              },
-              {
-                "name": "outcome",
-                "default-features": false,
-                "features": [
-                  "polyfill-cxx17"
-                ]
-              }
-            ]
-          },
           "polyfill-cxx20": {
             "description": "Polyfill C++20 entities",
             "dependencies": [
@@ -61986,7 +61954,8 @@
                   "polyfill-cxx20"
                 ]
               }
-            ]
+            ],
+            "supports": "!android"
           },
           "run-tests": {
             "description": "Build and run the dependency validation tests"
@@ -61995,7 +61964,7 @@
             "description": "Have LLFIO use SG14 `status_code` (proposed `std::error`) instead of `std::error_code`."
           }
         },
-        "version-date": "2025-01-13"
+        "version-date": "2026-04-29"
       },
       "files": [
         "portfile.cmake",
@@ -70001,7 +69970,7 @@
             ]
           }
         },
-        "version-date": "2025-12-16"
+        "version-date": "2026-04-29"
       },
       "files": [
         "portfile.cmake",
@@ -74923,7 +74892,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -75476,6 +75445,7 @@
         "0023-ffmpeg8-support.patch",
         "0024-openvino-const-tensor-data.patch",
         "0025-fix-cuda-host-std-flag-forwarding.patch",
+        "0026-cuda-msvc-preprocessor.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -75543,7 +75513,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.10"
+        "version": "3.4.11"
       },
       "files": [
         "portfile.cmake",
@@ -78046,7 +78016,7 @@
             "description": "Build and run the dependency validation tests"
           }
         },
-        "version": "2.2.14"
+        "version": "2.2.15"
       },
       "files": [
         "files-do-not-exist.patch",
@@ -94843,8 +94813,17 @@
         "description": "Header-only C++20 IPC library using shared-memory ring buffers.",
         "homepage": "https://github.com/imakris/sintra",
         "license": "BSD-2-Clause",
-        "supports": "!android",
-        "version": "1.1.0"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -95318,7 +95297,7 @@
           },
           {
             "name": "slick-queue",
-            "version>=": "1.2.2"
+            "version>=": "1.4.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -95329,7 +95308,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -97662,7 +97641,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-05-21"
+        "version-date": "2026-04-29"
       },
       "files": [
         "portfile.cmake",
