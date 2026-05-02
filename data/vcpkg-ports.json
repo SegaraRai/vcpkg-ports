@@ -1,5 +1,5 @@
 {
-  "version": "8e6be0084fab1936e34dd4092d96855967e63ad1",
+  "version": "3989e496cb7ea57c426d82debf8fe43e0a14dba1",
   "ports": [
     {
       "name": "3fd",
@@ -1797,7 +1797,7 @@
             ]
           }
         },
-        "version": "0.8.35"
+        "version": "0.8.36"
       },
       "files": [
         "portfile.cmake",
@@ -4091,7 +4091,7 @@
             "host": true
           }
         ],
-        "version": "0.38.5"
+        "version": "0.38.6"
       },
       "files": [
         "portfile.cmake",
@@ -5517,7 +5517,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.790"
+        "version": "1.11.800"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -19423,7 +19423,7 @@
       "name": "calceph",
       "manifest": {
         "name": "calceph",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C library to access the binary planetary ephemeris files.",
         "homepage": "https://www.imcce.fr/inpop/calceph/",
         "documentation": "https://calceph.imcce.fr/docs/latest/html/c/index.html",
@@ -19443,6 +19443,7 @@
       },
       "files": [
         "disable-gnu-source.diff",
+        "find-mathlib.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20144,7 +20145,7 @@
             "description": "Build utility programs"
           }
         },
-        "version": "4.6.3"
+        "version": "4.6.4"
       },
       "files": [
         "dependencies.diff",
@@ -20533,7 +20534,7 @@
             ]
           }
         },
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -20721,7 +20722,7 @@
           "iguana",
           "tanakh-cmdline"
         ],
-        "version": "0.9.9"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -33355,7 +33356,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.19.2"
+        "version-semver": "0.19.5"
       },
       "files": [
         "portfile.cmake",
@@ -41329,7 +41330,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 1,
+        "port-version": 2,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -51192,7 +51193,6 @@
       "name": "libdicom",
       "manifest": {
         "name": "libdicom",
-        "port-version": 1,
         "description": "libdicom is a C library and a set of command-line tools for reading DICOM WSI files",
         "homepage": "https://github.com/ImagingDataCommons/libdicom",
         "documentation": "https://libdicom.readthedocs.io/en/latest/",
@@ -51208,7 +51208,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "cross-build.diff",
@@ -56374,27 +56374,19 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
+        "port-version": 1,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
         "supports": "!uwp & !emscripten",
         "dependencies": [
           {
-            "name": "libpq",
-            "default-features": false,
-            "features": [
-              "bonjour"
-            ],
-            "platform": "osx"
-          },
-          {
             "name": "vcpkg-cmake-get-vars",
             "host": true
           },
           {
             "name": "vcpkg-tool-meson",
-            "host": true,
-            "platform": "windows & !mingw"
+            "host": true
           }
         ],
         "default-features": [
@@ -56411,24 +56403,12 @@
                 "features": [
                   "client",
                   "icu",
-                  "xml",
-                  "xslt",
+                  "lz4",
+                  "nls",
+                  "openssl",
+                  "zlib",
                   "zstd"
                 ]
-              },
-              {
-                "name": "libpq",
-                "features": [
-                  "bonjour"
-                ],
-                "platform": "osx"
-              },
-              {
-                "name": "libpq",
-                "features": [
-                  "nls"
-                ],
-                "platform": "!osx"
               },
               {
                 "name": "libpq",
@@ -56436,29 +56416,21 @@
                   "readline"
                 ],
                 "platform": "!windows"
-              },
-              {
-                "name": "libpq",
-                "features": [
-                  "python"
-                ],
-                "platform": "!android & !mingw"
-              },
-              {
-                "name": "libpq",
-                "features": [
-                  "tcl"
-                ],
-                "platform": "windows & !mingw & !arm"
               }
             ]
           },
-          "bonjour": {
-            "description": "Build with Bonjour support",
-            "supports": "osx"
-          },
           "client": {
-            "description": "Build all client tools and libraries"
+            "description": "Build all client tools and libraries",
+            "dependencies": [
+              {
+                "name": "libpq",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "client"
+                ]
+              }
+            ]
           },
           "icu": {
             "description": "Build with support for the ICU library",
@@ -56492,61 +56464,12 @@
               "openssl"
             ]
           },
-          "python": {
-            "description": "build the PL/Python server programming language",
-            "dependencies": [
-              {
-                "name": "libpq",
-                "default-features": false,
-                "features": [
-                  "client"
-                ]
-              },
-              "python3"
-            ]
-          },
           "readline": {
             "description": "Use readline",
             "dependencies": [
               "readline"
             ],
             "supports": "!windows, mingw"
-          },
-          "tcl": {
-            "description": "build the PL/Tcl procedural language",
-            "dependencies": [
-              {
-                "name": "libpq",
-                "default-features": false,
-                "features": [
-                  "client"
-                ]
-              },
-              "tcl"
-            ],
-            "supports": "windows & !mingw"
-          },
-          "xml": {
-            "description": "Build with libxml",
-            "dependencies": [
-              {
-                "name": "libxml2",
-                "default-features": false
-              }
-            ]
-          },
-          "xslt": {
-            "description": "Build with libxslt",
-            "dependencies": [
-              {
-                "name": "libpq",
-                "default-features": false,
-                "features": [
-                  "xml"
-                ]
-              },
-              "libxslt"
-            ]
           },
           "zlib": {
             "description": "Use zlib",
@@ -56564,26 +56487,17 @@
         "version": "18.3"
       },
       "files": [
-        "Makefile",
-        "build-msvc.cmake",
-        "libpq.props.in",
+        "libintl.diff",
+        "libpq-and-client-tools.diff",
+        "library-linkage.diff",
         "portfile.cmake",
-        "unix/fix-configure.patch",
-        "unix/installdirs.patch",
-        "unix/mingw-install.patch",
-        "unix/mingw-static-importlib-fix.patch",
-        "unix/no-server-tools.patch",
-        "unix/python.patch",
-        "unix/single-linkage.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
-        "vcpkg-libs.props.in",
         "vcpkg.json",
         "windows/getopt.patch",
         "windows/macro-def.patch",
-        "windows/meson-vcpkg.patch",
         "windows/spin_delay.patch",
-        "windows/tcl-9.0-alpha.patch"
+        "zic.diff"
       ]
     },
     {
@@ -60279,6 +60193,31 @@
       ]
     },
     {
+      "name": "libxchange",
+      "manifest": {
+        "name": "libxchange",
+        "description": "Structured data representation and JSON support for C/C++",
+        "homepage": "https://sigmyne.github.io/xchange/",
+        "documentation": "https://sigmyne.github.io/xchange/doc/html/",
+        "license": "Unlicense",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libxcomposite",
       "manifest": {
         "name": "libxcomposite",
@@ -60623,7 +60562,7 @@
           "xcb",
           "xcb-render-util"
         ],
-        "version": "1.7.0"
+        "version": "1.13.1"
       },
       "files": [
         "build.patch",
@@ -66974,7 +66913,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.3.1"
+        "version": "3.3.2"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -73483,6 +73422,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
+        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -83956,7 +83896,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -92908,7 +92848,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.4"
+        "version": "3.4.6"
       },
       "files": [
         "fix-freebsd.patch",
@@ -108656,11 +108596,10 @@
             ]
           }
         },
-        "version": "14.1.0"
+        "version": "14.2.0"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -108917,7 +108856,7 @@
             "host": true
           }
         ],
-        "version": "0.5.8"
+        "version": "0.6.1"
       },
       "files": [
         "portfile.cmake",
