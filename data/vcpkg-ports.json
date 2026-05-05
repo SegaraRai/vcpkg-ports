@@ -1,5 +1,5 @@
 {
-  "version": "522253caf47268c1724f486a035e927a42a90092",
+  "version": "9a407e5456652940e8cba0964f6048c1d1419d1c",
   "ports": [
     {
       "name": "3fd",
@@ -1687,7 +1687,7 @@
       "name": "apsi",
       "manifest": {
         "name": "apsi",
-        "port-version": 1,
+        "port-version": 2,
         "description": "APSI is a research library for asymmetric private set intersection.",
         "homepage": "https://github.com/microsoft/APSI",
         "license": "MIT",
@@ -1748,6 +1748,7 @@
       },
       "files": [
         "fix-c2398.patch",
+        "fix-find-kuku.patch",
         "fix-find-seal.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -22719,7 +22720,7 @@
             ]
           }
         },
-        "version": "0.43.1"
+        "version": "0.43.2"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -27600,6 +27601,7 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
+        "port-version": 1,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
         "documentation": "https://doc.dpdk.org/guides/",
@@ -30568,7 +30570,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 4,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31309,7 +31310,7 @@
             ]
           }
         },
-        "version": "8.1"
+        "version": "8.1.1"
       },
       "files": [
         "0002-fix-msvc-link.patch",
@@ -31345,7 +31346,7 @@
             "host": true
           }
         ],
-        "version": "8.1"
+        "version": "8.1.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -33248,7 +33249,7 @@
         "name": "frei0r",
         "description": "A large collection of free and portable video plugins",
         "homepage": "https://frei0r.dyne.org/",
-        "license": "GPL-2.0",
+        "license": "GPL-2.0-or-later",
         "supports": "!(static & windows)",
         "dependencies": [
           {
@@ -33274,7 +33275,7 @@
             ]
           }
         },
-        "version": "2.5.4"
+        "version": "3.1.1"
       },
       "files": [
         "install-dlls-to-bin.diff",
@@ -33833,7 +33834,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -41991,7 +41992,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -45847,7 +45848,7 @@
             "host": true
           }
         ],
-        "version": "1.7"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -48838,7 +48839,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -53388,7 +53389,7 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "iconv() text conversion.",
           "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
@@ -54186,7 +54187,7 @@
             "host": true
           }
         ],
-        "version": "0.34"
+        "version": "0.35"
       },
       "files": [
         "portfile.cmake",
@@ -63319,7 +63320,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.718"
+        "version": "0.719"
       },
       "files": [
         "cmake-config-export.patch",
@@ -70413,7 +70414,7 @@
       "name": "netgen",
       "manifest": {
         "name": "netgen",
-        "port-version": 2,
+        "port-version": 3,
         "description": "NETGEN is an automatic 3d tetrahedral mesh generator. It accepts input from constructive solid geometry (CSG) or boundary representation (BRep) from STL file format. The connection to a geometry kernel allows the handling of IGES and STEP files. NETGEN contains modules for mesh optimization and hierarchical mesh refinement.",
         "homepage": "https://ngsolve.org/",
         "license": "LGPL-2.1-or-later",
@@ -70465,6 +70466,11 @@
           "occ": {
             "description": "build with OpenCascade geometry kernel interface",
             "dependencies": [
+              {
+                "name": "fontconfig",
+                "default-features": false,
+                "platform": "!windows & !osx"
+              },
               {
                 "name": "opencascade",
                 "default-features": false
@@ -75972,6 +75978,7 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
+        "port-version": 1,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
         "supports": "!windows",
@@ -77320,6 +77327,13 @@
             "description": "Omath will use AVX2 to boost performance",
             "supports": "!arm"
           },
+          "hooking": {
+            "description": "Add interface for automatic hooking of DirectX",
+            "dependencies": [
+              "safetyhook"
+            ],
+            "supports": "windows & !arm & !uwp"
+          },
           "imgui": {
             "description": "Omath will define method to convert omath types to imgui types",
             "dependencies": [
@@ -77328,9 +77342,16 @@
           },
           "inline": {
             "description": "Omath will define some methods as inline"
+          },
+          "lua": {
+            "description": "omath will enable lua bindings",
+            "dependencies": [
+              "lua",
+              "sol2"
+            ]
           }
         },
-        "version": "5.1.2"
+        "version": "5.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -79558,7 +79579,7 @@
         "description": "A micro microbenchmarking library for C++11 in a single header file",
         "homepage": "https://github.com/iboB/picobench",
         "license": "MIT",
-        "version": "2.8.0"
+        "version": "2.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -80557,7 +80578,7 @@
         "name": "podofo",
         "description": "PoDoFo is a library to work with the PDF file format",
         "homepage": "https://github.com/podofo/podofo",
-        "license": "LGPL-2.0-or-later",
+        "license": "LGPL-2.0-or-later OR MPL-2.0",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "date",
@@ -80611,7 +80632,7 @@
             ]
           }
         },
-        "version": "1.0.3"
+        "version": "1.1.0"
       },
       "files": [
         "dependencies.diff",
@@ -85227,6 +85248,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -92414,7 +92436,6 @@
       "name": "sdl2-image",
       "manifest": {
         "name": "sdl2-image",
-        "port-version": 2,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -92462,7 +92483,7 @@
             ]
           }
         },
-        "version": "2.8.8"
+        "version": "2.8.12"
       },
       "files": [
         "fix-findwebp.patch",
@@ -92888,7 +92909,6 @@
       "name": "sdl3-image",
       "manifest": {
         "name": "sdl3-image",
-        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: BMP, GIF, JPEG, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
         "license": "Zlib",
@@ -92935,7 +92955,7 @@
             ]
           }
         },
-        "version": "3.4.2"
+        "version": "3.4.4"
       },
       "files": [
         "dependencies.diff",
@@ -93523,7 +93543,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.13.8"
+        "version": "0.14.0"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -94700,7 +94720,6 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
-        "port-version": 1,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
         "license": "BUSL-1.1",
@@ -94721,7 +94740,7 @@
             "host": true
           }
         ],
-        "version": "0.12.1"
+        "version": "0.14.0"
       },
       "files": [
         "devendor.diff",
@@ -95275,7 +95294,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -102951,7 +102970,7 @@
             "description": "Compile with thread safety support"
           }
         },
-        "version-date": "2025-04-29"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -103247,7 +103266,7 @@
             ]
           }
         },
-        "version": "2.25.1"
+        "version": "2.25.2"
       },
       "files": [
         "portfile.cmake",
@@ -106092,6 +106111,7 @@
       "name": "vxl",
       "manifest": {
         "name": "vxl",
+        "port-version": 1,
         "description": "A multi-platform collection of C++ software libraries for Computer Vision and Image Understanding.",
         "homepage": "https://vxl.github.io/",
         "license": null,
@@ -106138,12 +106158,11 @@
       },
       "files": [
         "cmake-package.diff",
-        "devendor.diff",
+        "devendor-and-conflicts.diff",
         "disable-tests.diff",
-        "file_formats.diff",
+        "file-formats.diff",
         "limits.diff",
         "mingw.diff",
-        "openjpeg.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
