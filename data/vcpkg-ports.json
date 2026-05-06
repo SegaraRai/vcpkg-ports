@@ -1,5 +1,5 @@
 {
-  "version": "9a407e5456652940e8cba0964f6048c1d1419d1c",
+  "version": "aea9a89b93b0bdbbdc0c5c576f9e52dae2e41b33",
   "ports": [
     {
       "name": "3fd",
@@ -20535,7 +20535,7 @@
             ]
           }
         },
-        "version": "2.1.0"
+        "version": "2.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -22720,7 +22720,7 @@
             ]
           }
         },
-        "version": "0.43.2"
+        "version": "0.43.3"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22836,7 +22836,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.10.2"
+        "version": "1.10.3"
       },
       "files": [
         "portfile.cmake",
@@ -24503,7 +24503,7 @@
       "name": "cudnn",
       "manifest": {
         "name": "cudnn",
-        "port-version": 16,
+        "port-version": 17,
         "description": "NVIDIA's cuDNN deep neural network acceleration library.",
         "homepage": "https://developer.nvidia.com/cudnn",
         "license": null,
@@ -27885,6 +27885,27 @@
         "dstorage-config.cmake.in",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "dtc",
+      "manifest": {
+        "name": "dtc",
+        "description": "Device Tree Compiler (dtc) toolchain for working with device tree source and binary files and also libfdt, a utility library for reading and manipulating the binary format.",
+        "homepage": "https://github.com/dgibson/dtc",
+        "license": "GPL-2.0-or-later OR BSD-2-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "version": "1.7.2"
+      },
+      "files": [
+        "0001-enable-static-or-shared.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -33358,7 +33379,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.19.5"
+        "version-semver": "0.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -36420,10 +36441,11 @@
       "name": "google-cloud-cpp",
       "manifest": {
         "name": "google-cloud-cpp",
+        "port-version": 1,
         "description": "C++ Client Libraries for Google Cloud Platform APIs.",
         "homepage": "https://github.com/googleapis/google-cloud-cpp",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !android",
         "dependencies": [
           "abseil",
           {
@@ -41269,7 +41291,7 @@
         "name": "happly",
         "description": "A header-only C++ reader/writer for the PLY file format.",
         "homepage": "https://github.com/nmwsharp/happly",
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -41992,7 +42014,16 @@
             "host": true
           }
         ],
-        "version": "2.4.0"
+        "features": {
+          "database": {
+            "description": "Database middleware with MySQL support (requires Boost.MySQL)",
+            "dependencies": [
+              "boost-charconv",
+              "boost-mysql"
+            ]
+          }
+        },
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -43551,7 +43582,6 @@
       "name": "imguizmo",
       "manifest": {
         "name": "imguizmo",
-        "port-version": 2,
         "description": "Immediate mode 3D gizmo for scene editing and other controls based on Dear ImGui",
         "homepage": "https://github.com/CedricGuillemet/ImGuizmo",
         "license": "MIT",
@@ -43566,11 +43596,10 @@
             "host": true
           }
         ],
-        "version-date": "2024-05-29"
+        "version": "1.9"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-imgui-1.92.5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45498,7 +45527,7 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version": "0.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -45729,6 +45758,39 @@
           }
         ],
         "version": "6.25.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kcenon-common-system",
+      "manifest": {
+        "name": "kcenon-common-system",
+        "description": "High-performance C++20 foundation library providing Result<T> pattern, interfaces, and common utilities",
+        "homepage": "https://github.com/kcenon/common_system",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "yaml": {
+            "description": "YAML configuration file support via yaml-cpp",
+            "dependencies": [
+              "yaml-cpp"
+            ]
+          }
+        },
+        "version-semver": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -48606,7 +48668,7 @@
             "host": true
           }
         ],
-        "version": "0.3.0"
+        "version": "0.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -49109,7 +49171,7 @@
             "supports": "static"
           }
         },
-        "version": "2.0.4"
+        "version": "2.0.5"
       },
       "files": [
         "build_tools.diff",
@@ -50060,6 +50122,7 @@
       "name": "libass",
       "manifest": {
         "name": "libass",
+        "port-version": 1,
         "description": "libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format",
         "homepage": "https://github.com/libass/libass",
         "license": "ISC",
@@ -50072,16 +50135,14 @@
           "fribidi",
           "harfbuzz",
           {
-            "name": "vcpkg-cmake",
+            "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
         "version": "0.17.4"
       },
       "files": [
-        "CMakeLists.txt",
-        "config.h.in",
-        "libass.def",
+        "arm64-windows-asm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57733,7 +57794,7 @@
       "name": "libsndfile",
       "manifest": {
         "name": "libsndfile",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for reading and writing audio files",
         "homepage": "https://github.com/erikd/libsndfile",
         "license": "LGPL-2.1-or-later",
@@ -57785,7 +57846,7 @@
       },
       "files": [
         "001-avoid-installing-find-modules.patch",
-        "mp3lame-static.diff",
+        "mp3lame.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61130,6 +61191,7 @@
       "name": "libxt",
       "manifest": {
         "name": "libxt",
+        "port-version": 1,
         "description": "X Toolkit Intrinsics library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxt",
         "license": null,
@@ -63717,7 +63779,6 @@
       "name": "magic-enum",
       "manifest": {
         "name": "magic-enum",
-        "port-version": 1,
         "description": "Header-only C++17 library provides static reflection for enums, work with any enum type without any macro or boilerplate code.",
         "homepage": "https://github.com/Neargye/magic_enum",
         "license": "MIT",
@@ -63731,7 +63792,7 @@
             "host": true
           }
         ],
-        "version": "0.9.7"
+        "version": "0.9.8"
       },
       "files": [
         "portfile.cmake",
@@ -68037,11 +68098,16 @@
       "name": "mp3lame",
       "manifest": {
         "name": "mp3lame",
-        "port-version": 16,
+        "port-version": 17,
         "description": "LAME is a high quality MPEG Audio Layer III (MP3) encoder licensed under the LGPL.",
         "homepage": "https://lame.sourceforge.io",
         "license": "LGPL-2.0-only",
         "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          },
           {
             "name": "vcpkg-msbuild",
             "host": true,
@@ -68063,12 +68129,11 @@
       },
       "files": [
         "00001-msvc-upgrade-solution-up-to-vc11.patch",
-        "Config.cmake.in",
         "add-macos-universal-config.patch",
         "fix-mingw-w64-compatibility.patch",
+        "mp3lame-config.cmake",
         "portfile.cmake",
         "remove_lame_init_old_from_symbol_list.patch",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -69293,7 +69358,7 @@
             "host": true
           }
         ],
-        "version": "0.10.4"
+        "version": "0.10.5"
       },
       "files": [
         "portfile.cmake",
@@ -76079,6 +76144,7 @@
       "name": "openmvs",
       "manifest": {
         "name": "openmvs",
+        "port-version": 1,
         "description": "OpenMVS: open Multi-View Stereo reconstruction library",
         "homepage": "https://cdcseacave.github.io/",
         "license": "AGPL-3.0-only",
@@ -76172,6 +76238,7 @@
         "ambiguous-uint_t.diff",
         "cmake.diff",
         "common-log.diff",
+        "cuda-13.diff",
         "devendor.diff",
         "interface-metashape.diff",
         "missing-include.diff",
@@ -90967,7 +91034,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -92969,7 +93036,7 @@
       "name": "sdl3-mixer",
       "manifest": {
         "name": "sdl3-mixer",
-        "port-version": 2,
+        "port-version": 3,
         "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -93040,6 +93107,7 @@
         "version": "3.2.0"
       },
       "files": [
+        "fluidsynth.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -93256,7 +93324,8 @@
             "description": "Use Intel® HEXL for acceleration of low-level kernels.",
             "dependencies": [
               "hexl"
-            ]
+            ],
+            "supports": "x64"
           },
           "ms-gsl": {
             "description": "Use ms-gsl for span view",
@@ -93280,10 +93349,9 @@
             ]
           }
         },
-        "version": "4.3.0"
+        "version": "4.3.2"
       },
       "files": [
-        "fix-hexl.patch",
         "portfile.cmake",
         "shared-zstd.patch",
         "vcpkg.json"
@@ -94528,7 +94596,7 @@
             "host": true
           }
         ],
-        "version": "7.0.160"
+        "version": "7.1.161"
       },
       "files": [
         "SimdConfig.cmake",
@@ -97116,6 +97184,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -104235,7 +104304,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
@@ -104547,6 +104616,20 @@
       ]
     },
     {
+      "name": "vincentlaucsb-classify-scalar",
+      "manifest": {
+        "name": "vincentlaucsb-classify-scalar",
+        "description": "High performance policy-driven scalar classification for C++",
+        "homepage": "https://github.com/vincentlaucsb/classify_scalar",
+        "license": "MIT",
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "vincentlaucsb-csv-parser",
       "manifest": {
         "name": "vincentlaucsb-csv-parser",
@@ -104563,9 +104646,10 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "vincentlaucsb-classify-scalar"
         ],
-        "version": "4.0.0"
+        "version": "4.1.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -106529,6 +106613,93 @@
         "portfile.cmake",
         "usage",
         "vcpkg.json"
+      ]
+    },
+    {
+      "name": "webrtc",
+      "manifest": {
+        "name": "webrtc",
+        "description": "WebRTC real-time communication library",
+        "homepage": "https://webrtc.googlesource.com/src",
+        "license": "BSD-3-Clause",
+        "supports": "(linux & (arm64 | x64)) | (osx & (arm64 | x64)) | (windows & (arm64 | x86 | x64))",
+        "dependencies": [
+          "abseil",
+          "aom",
+          "jsoncpp",
+          {
+            "name": "libsrtp",
+            "features": [
+              "openssl"
+            ]
+          },
+          "libvpx",
+          "libyuv",
+          "openssl",
+          "opus",
+          "pffft",
+          {
+            "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-gn",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-ninja",
+            "host": true
+          }
+        ],
+        "features": {
+          "alsa": {
+            "description": "Enable ALSA Linux audio backend",
+            "dependencies": [
+              {
+                "name": "alsa",
+                "platform": "linux"
+              }
+            ]
+          },
+          "pulseaudio": {
+            "description": "Enable PulseAudio Linux audio backend",
+            "dependencies": [
+              {
+                "name": "pulseaudio",
+                "platform": "linux"
+              }
+            ]
+          }
+        },
+        "version-date": "2026-03-17"
+      },
+      "files": [
+        "absl-labels.txt",
+        "build-0001-drop-module-deps-from-toolchain-invocations.patch",
+        "build-0002-fix-apple-arflags-usage.patch",
+        "build-0004-disable-sanitize-c-array-bounds.patch",
+        "build-0005-disable-sanitize-return.patch",
+        "build-0006-skip-local-vs-debugger-copy.patch",
+        "build-0007-fix-windows-pdb-commands.patch",
+        "build-0008-disable-crel-on-linux-arm64.patch",
+        "generate_external_absl.py",
+        "generate_external_absl_test.py",
+        "generate_external_third_party.py",
+        "generate_external_third_party_test.py",
+        "package-remove-paths.txt",
+        "portfile.cmake",
+        "unofficial-webrtcConfig.cmake.in",
+        "vcpkg.json",
+        "webrtc-0001-disable-perfetto-when-off.patch",
+        "webrtc-0002-export-enable-media-with-defaults.patch",
+        "webrtc-0005-use-external-openssl.patch",
+        "webrtc-0006-make-dav1d-decoder-deps-conditional.patch",
+        "webrtc-0007-fix-rtp-packet-info-eq-for-msvc.patch",
+        "webrtc-0008-fix-audio-device-core-win-goto-scope.patch",
+        "webrtc-0009-fix-avx2-intrinsics-for-msvc.patch",
+        "webrtc-0010-fix-denormal-disabler-for-msvc.patch",
+        "webrtc-0011-make-linux-audio-backends-optional.patch",
+        "webrtc-functions.cmake"
       ]
     },
     {
