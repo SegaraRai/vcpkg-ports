@@ -1,5 +1,5 @@
 {
-  "version": "aea9a89b93b0bdbbdc0c5c576f9e52dae2e41b33",
+  "version": "de03680510e75aa77d07750159adac4e570a6a81",
   "ports": [
     {
       "name": "3fd",
@@ -2228,6 +2228,33 @@
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "arp1it-minecraft-server-status",
+      "manifest": {
+        "name": "arp1it-minecraft-server-status",
+        "description": "A C++ library to fetch Minecraft server status",
+        "homepage": "https://github.com/Arp1it/Minecraft_Server_Status_CPP",
+        "license": "MIT",
+        "dependencies": [
+          "cpr",
+          "fmt",
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -28717,6 +28744,82 @@
       ]
     },
     {
+      "name": "ecbuild",
+      "manifest": {
+        "name": "ecbuild",
+        "description": "ECMWF CMake build system and CMake macro collection",
+        "homepage": "https://github.com/ecmwf/ecbuild",
+        "license": null,
+        "version": "3.12.0"
+      },
+      "files": [
+        "ecbuild-config-version.cmake.in",
+        "ecbuild-config.cmake.in",
+        "portfile.cmake",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "eccodes",
+      "manifest": {
+        "name": "eccodes",
+        "description": "ECMWF GRIB, BUFR and GTS decoding and encoding library and tools",
+        "homepage": "https://github.com/ecmwf/eccodes",
+        "license": "Apache-2.0",
+        "supports": "!x86 & !android",
+        "dependencies": [
+          {
+            "name": "ecbuild",
+            "host": true
+          },
+          "openjpeg",
+          {
+            "name": "python3",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "aec": {
+            "description": "Enable Adaptive Entropy Coding support via libaec",
+            "dependencies": [
+              "libaec"
+            ]
+          },
+          "fortran": {
+            "description": "Build the Fortran 90 interface",
+            "supports": "!windows & !(arm64 & linux)"
+          },
+          "netcdf": {
+            "description": "Enable grib_to_netcdf and NetCDF support",
+            "dependencies": [
+              "netcdf-c"
+            ]
+          },
+          "png": {
+            "description": "Enable PNG decoding and encoding support",
+            "dependencies": [
+              "libpng"
+            ]
+          }
+        },
+        "version": "2.46.0"
+      },
+      "files": [
+        "fix-netcdf-linkage.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ecm",
       "manifest": {
         "name": "ecm",
@@ -45667,7 +45770,7 @@
       "name": "karchive",
       "manifest": {
         "name": "karchive",
-        "port-version": 1,
+        "port-version": 2,
         "description": "File compression",
         "homepage": "https://invent.kde.org/frameworks/karchive",
         "documentation": "https://api.kde.org/karchive-index.html",
@@ -45700,6 +45803,12 @@
             "description": "Support for xz compressed files and data streams",
             "dependencies": [
               "liblzma"
+            ]
+          },
+          "openssl": {
+            "description": "Support for encrypted archives",
+            "dependencies": [
+              "openssl"
             ]
           },
           "translations": {
@@ -49472,12 +49581,11 @@
             "host": true
           }
         ],
-        "version": "4.0.4"
+        "version": "4.1.1"
       },
       "files": [
         "create_package.patch",
         "cxx-linkage-pkgconfig.patch",
-        "fix-climits-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -58464,7 +58572,7 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
@@ -58493,6 +58601,7 @@
       },
       "files": [
         "disable-warning-nonnull.patch",
+        "fix-2604-build.patch",
         "only-libsystemd.patch",
         "pkgconfig.patch",
         "portfile.cmake",
@@ -80778,6 +80887,41 @@
       ]
     },
     {
+      "name": "polkit-qt-1",
+      "manifest": {
+        "name": "polkit-qt-1",
+        "description": "Qt6 wrapper around polkit-1",
+        "homepage": "https://invent.kde.org/libraries/polkit-qt-1",
+        "license": "LGPL-2.0-or-later",
+        "supports": "linux",
+        "dependencies": [
+          "glib",
+          "polkit",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus",
+              "widgets"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.201.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "polyclipping",
       "manifest": {
         "name": "polyclipping",
@@ -83414,7 +83558,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "portfile.cmake",
@@ -83572,7 +83716,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -85175,7 +85319,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -85217,7 +85361,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -85302,7 +85446,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -85315,7 +85459,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -85982,10 +86125,11 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "GLIB2-static.patch",
+        "QTBUG-145239.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
         "clang-cl_source_location.patch",
@@ -86002,7 +86146,6 @@
         "fix_deploy_windows.patch",
         "fix_egl.patch",
         "fix_egl_2.patch",
-        "framework.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
@@ -86015,8 +86158,7 @@
         "use-shared-mime-info.patch",
         "use_inotify_on_freebsd.patch",
         "vcpkg.json",
-        "windeployqt.debug.bat",
-        "xcodebuild-not-installed.patch"
+        "windeployqt.debug.bat"
       ]
     },
     {
@@ -86056,7 +86198,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86080,7 +86222,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86113,7 +86255,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86142,7 +86284,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86178,7 +86320,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86204,7 +86346,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86225,7 +86367,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86259,7 +86401,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86293,7 +86435,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86319,7 +86461,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86371,7 +86513,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -86384,7 +86526,6 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
-        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86421,7 +86562,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86536,7 +86677,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86576,7 +86717,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86614,7 +86755,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "fix_qt_version.patch",
@@ -86639,7 +86780,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86651,7 +86792,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 1,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86787,11 +86927,10 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
-        "ae41d3e-ffmpeg8.diff",
-        "ffmpeg-compile-def-and-devendor-signalsmith-stretch.patch",
+        "ffmpeg-devendor-signalsmith-stretch.patch",
         "ffmpeg.patch",
         "port.data.cmake",
         "portfile.cmake",
@@ -86816,7 +86955,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -86891,7 +87030,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "fix-build.patch",
@@ -86930,7 +87069,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -86978,7 +87117,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -87001,7 +87140,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87056,7 +87195,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87078,7 +87217,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87129,7 +87268,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87169,7 +87308,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87213,7 +87352,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87246,7 +87385,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87268,7 +87407,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87297,7 +87436,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87331,7 +87470,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87355,7 +87494,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87483,7 +87622,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -87513,7 +87652,7 @@
             ]
           }
         ],
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87556,7 +87695,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -87594,7 +87733,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87626,7 +87765,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87872,10 +88011,9 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
-        "allow-msvc-145.diff",
         "clang-cl.patch",
         "cross-build.diff",
         "disable-host-pkgconfig.diff",
@@ -87917,7 +88055,7 @@
             ]
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -87961,7 +88099,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.10.2"
+        "version": "6.10.3"
       },
       "files": [
         "port.data.cmake",
@@ -97184,7 +97322,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -97267,7 +97404,7 @@
             ]
           }
         },
-        "version": "3.53.0"
+        "version": "3.53.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -98233,7 +98370,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.6.0"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -103062,7 +103199,7 @@
             "platform": "windows"
           }
         ],
-        "version": "7.2.5"
+        "version": "7.2.6"
       },
       "files": [
         "Config.cmake.in",
