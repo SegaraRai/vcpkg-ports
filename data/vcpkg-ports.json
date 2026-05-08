@@ -1,5 +1,5 @@
 {
-  "version": "de03680510e75aa77d07750159adac4e570a6a81",
+  "version": "4bc07e3eb00c5a9539a5a7a83415150a9260f8db",
   "ports": [
     {
       "name": "3fd",
@@ -18688,6 +18688,7 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
+        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/brpc",
         "license": "Apache-2.0",
@@ -18703,6 +18704,7 @@
           {
             "name": "protobuf",
             "features": [
+              "libprotoc",
               "zlib"
             ]
           },
@@ -28750,7 +28752,7 @@
         "description": "ECMWF CMake build system and CMake macro collection",
         "homepage": "https://github.com/ecmwf/ecbuild",
         "license": null,
-        "version": "3.12.0"
+        "version": "3.14.0"
       },
       "files": [
         "ecbuild-config-version.cmake.in",
@@ -28811,7 +28813,7 @@
             ]
           }
         },
-        "version": "2.46.0"
+        "version": "2.47.0"
       },
       "files": [
         "fix-netcdf-linkage.patch",
@@ -32299,6 +32301,7 @@
       "name": "fltk",
       "manifest": {
         "name": "fltk",
+        "port-version": 1,
         "description": "FLTK (pronounced fulltick) is a cross-platform C++ GUI toolkit for UNIX/Linux (X11), Microsoft Windows, and MacOS X. FLTK provides modern GUI functionality without the bloat and supports 3D graphics via OpenGL and its built-in GLUT emulation.",
         "homepage": "https://www.fltk.org/",
         "license": null,
@@ -49432,7 +49435,7 @@
             ]
           }
         },
-        "version": "2.18"
+        "version": "2.19.1"
       },
       "files": [
         "fix-shared-library.patch",
@@ -72684,12 +72687,17 @@
       "name": "offscale-libetcd-cpp",
       "manifest": {
         "name": "offscale-libetcd-cpp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A C++ client library for etcd. etcd is a distributed, reliable key-value store.",
         "homepage": "https://github.com/offscale/libetcd-cpp",
         "dependencies": [
           "grpc",
-          "protobuf",
+          {
+            "name": "protobuf",
+            "features": [
+              "libprotoc"
+            ]
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -78885,7 +78893,7 @@
       "manifest": {
         "name": "patternia",
         "description": "Header-only pattern matching library for modern C++",
-        "homepage": "https://github.com/SentoMK/patternia",
+        "homepage": "https://github.com/sentomk/patternia",
         "license": "MIT",
         "dependencies": [
           {
@@ -78897,7 +78905,7 @@
             "host": true
           }
         ],
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -81844,7 +81852,7 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -81865,6 +81873,10 @@
           }
         ],
         "features": {
+          "libprotoc": {
+            "description": "Build the libprotoc compiler library for target builds.",
+            "supports": "!uwp"
+          },
           "zlib": {
             "description": "ZLib based features like Gzip streams",
             "dependencies": [
