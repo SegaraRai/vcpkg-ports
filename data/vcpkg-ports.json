@@ -1,5 +1,5 @@
 {
-  "version": "d4db34445deb11168b595da1efd228df79a5f59d",
+  "version": "2a097d761428092eed3e356b846671d02f04b688",
   "ports": [
     {
       "name": "3fd",
@@ -416,7 +416,7 @@
             ]
           }
         },
-        "version": "0.5.0"
+        "version": "0.5.1"
       },
       "files": [
         "install.patch",
@@ -3938,7 +3938,7 @@
             "host": true
           }
         ],
-        "version": "0.10.14"
+        "version": "0.10.15"
       },
       "files": [
         "portfile.cmake",
@@ -4123,7 +4123,7 @@
             "host": true
           }
         ],
-        "version": "0.38.6"
+        "version": "0.38.7"
       },
       "files": [
         "portfile.cmake",
@@ -7538,7 +7538,7 @@
             ]
           }
         },
-        "version": "1.8.4"
+        "version": "1.8.5"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -19436,7 +19436,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.14.0"
+        "version-semver": "3.15.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -26018,7 +26018,6 @@
       "name": "dbus-cxx",
       "manifest": {
         "name": "dbus-cxx",
-        "port-version": 1,
         "description": "DBus-cxx provides an object-oriented interface to DBus.",
         "homepage": "https://dbus-cxx.github.io/",
         "license": "LGPL-3.0-or-later AND BSD-3-Clause",
@@ -26054,12 +26053,11 @@
             ]
           }
         },
-        "version": "2.6.0"
+        "version": "2.6.2"
       },
       "files": [
-        "create-cmakeconfig.patch",
+        "fix-cmake.patch",
         "portfile.cmake",
-        "use-cmakeconfig.patch",
         "vcpkg.json"
       ]
     },
@@ -28542,7 +28540,7 @@
         "description": "ECMWF CMake build system and CMake macro collection",
         "homepage": "https://github.com/ecmwf/ecbuild",
         "license": null,
-        "version": "3.14.0"
+        "version": "3.14.1"
       },
       "files": [
         "ecbuild-config-version.cmake.in",
@@ -29379,7 +29377,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.11.6"
+        "version": "0.14.4"
       },
       "files": [
         "portfile.cmake",
@@ -29596,7 +29594,7 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -33195,10 +33193,11 @@
             ]
           }
         },
-        "version": "3.1.1"
+        "version": "3.1.3"
       },
       "files": [
-        "install-dlls-to-bin.diff",
+        "001-fix-defs.patch",
+        "002-install-dlls-to-bin.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34953,13 +34952,12 @@
             ]
           }
         },
-        "version": "0.11.0"
+        "version": "0.11.1"
       },
       "files": [
         "cmake-config.diff",
         "fix-dequant_funcs.diff",
         "fix-vk-32bit.diff",
-        "fix-vulkan-spv-shadowing.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "relax-link-options.diff",
@@ -36068,7 +36066,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "16.2.0"
+        "version": "16.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -43558,7 +43556,7 @@
             "host": true
           }
         ],
-        "version": "1.9"
+        "version": "1.10"
       },
       "files": [
         "CMakeLists.txt",
@@ -48637,7 +48635,7 @@
             "host": true
           }
         ],
-        "version": "0.3.1"
+        "version": "0.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -79267,7 +79265,7 @@
             ]
           }
         },
-        "version": "2.9.3"
+        "version": "2.10.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -79324,7 +79322,7 @@
             "host": true
           }
         ],
-        "version": "2.9.3"
+        "version": "2.10.1"
       },
       "files": [
         "namespace-nl.diff",
@@ -81892,7 +81890,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -88854,6 +88852,7 @@
       "name": "rdma-core",
       "manifest": {
         "name": "rdma-core",
+        "port-version": 1,
         "description": "The userspace components for the Linux Kernel's drivers/infiniband subsystem.",
         "homepage": "https://github.com/linux-rdma/rdma-core",
         "license": "(GPL-2.0-only OR Linux-OpenIB) AND (GPL-2.0-only OR BSD-3-Clause) AND (GPL-2.0-only OR BSD-2-Clause) AND CC0-1.0 AND MIT",
@@ -92635,7 +92634,6 @@
       "name": "sdl2-mixer",
       "manifest": {
         "name": "sdl2-mixer",
-        "port-version": 2,
         "description": "Multi-channel audio mixer library for SDL.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -92699,7 +92697,7 @@
             ]
           }
         },
-        "version": "2.8.1"
+        "version": "2.8.2"
       },
       "files": [
         "fix-pkg-prefix.patch",
@@ -93108,7 +93106,6 @@
       "name": "sdl3-mixer",
       "manifest": {
         "name": "sdl3-mixer",
-        "port-version": 3,
         "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
         "homepage": "https://github.com/libsdl-org/SDL_mixer",
         "license": "Zlib",
@@ -93176,7 +93173,7 @@
             ]
           }
         },
-        "version": "3.2.0"
+        "version": "3.2.2"
       },
       "files": [
         "fluidsynth.diff",
@@ -98071,7 +98068,7 @@
             "host": true
           }
         ],
-        "version": "4.6.14"
+        "version": "4.6.15"
       },
       "files": [
         "fix-install-path.patch",
@@ -99635,7 +99632,7 @@
           },
           "zlib"
         ],
-        "version": "2.2.1"
+        "version": "2.3"
       },
       "files": [
         "portfile.cmake",
@@ -104404,7 +104401,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
@@ -105215,7 +105212,7 @@
             ]
           }
         },
-        "version": "1.1.14"
+        "version": "1.1.15"
       },
       "files": [
         "portfile.cmake",
@@ -107048,7 +107045,7 @@
             ]
           }
         },
-        "version": "1.8.3"
+        "version": "1.8.4"
       },
       "files": [
         "cmake-config.diff",
