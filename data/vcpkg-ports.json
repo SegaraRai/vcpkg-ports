@@ -1,5 +1,5 @@
 {
-  "version": "14da8d976f119dfcab9853755f92f6f388dc808b",
+  "version": "d60758467cbcf89c6a4375a1e11c2cafd9fb01b4",
   "ports": [
     {
       "name": "3fd",
@@ -60,7 +60,7 @@
             "host": true
           }
         ],
-        "version": "26.0"
+        "version": "26.1"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -416,7 +416,7 @@
             ]
           }
         },
-        "version": "0.5.1"
+        "version": "0.5.2"
       },
       "files": [
         "install.patch",
@@ -1019,7 +1019,7 @@
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
         "supports": "!osx",
-        "version": "1.5.0"
+        "version": "1.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -1057,6 +1057,7 @@
       "name": "ampl-mp",
       "manifest": {
         "name": "ampl-mp",
+        "port-version": 1,
         "description": "An open-source library for mathematical programming",
         "homepage": "https://github.com/ampl/mp",
         "supports": "!uwp",
@@ -1809,6 +1810,7 @@
       "name": "arcticdb-sparrow",
       "manifest": {
         "name": "arcticdb-sparrow",
+        "port-version": 1,
         "description": "C++20 idiomatic APIs for the Apache Arrow Columnar Format",
         "homepage": "https://github.com/man-group/sparrow",
         "license": "Apache-2.0",
@@ -2165,7 +2167,7 @@
             ]
           }
         },
-        "version": "0.2.0"
+        "version": "0.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -3543,6 +3545,31 @@
       "files": [
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "autodiff",
+      "manifest": {
+        "name": "autodiff",
+        "description": "A modern, fast and expressive C++ library for automatic differentiation.",
+        "homepage": "https://autodiff.github.io",
+        "license": "MIT",
+        "dependencies": [
+          "eigen3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.2"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -6723,7 +6750,7 @@
           },
           "zlib"
         ],
-        "version": "4.7.0"
+        "version": "4.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -6937,7 +6964,7 @@
             "host": true
           }
         ],
-        "version": "4.36.0.0"
+        "version": "4.37.0.0"
       },
       "files": [
         "fix-bdlar-target.patch",
@@ -7557,7 +7584,7 @@
       "name": "blas",
       "manifest": {
         "name": "blas",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Metapackage for packages which provide BLAS",
         "license": null,
         "dependencies": [
@@ -18318,6 +18345,7 @@
       "name": "breakpad",
       "manifest": {
         "name": "breakpad",
+        "port-version": 1,
         "description": "a set of client and server components which implement a crash-reporting system.",
         "homepage": "https://github.com/google/breakpad",
         "license": "BSD-3-Clause",
@@ -18352,6 +18380,7 @@
       "files": [
         "CMakeLists.txt",
         "add-algorithm-1.patch",
+        "avoid-checked-array-iterator.diff",
         "check_getcontext.cc",
         "portfile.cmake",
         "unofficial-breakpadConfig.cmake",
@@ -20291,7 +20320,7 @@
             ]
           }
         },
-        "version": "2.1.1"
+        "version": "2.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -22836,32 +22865,6 @@
       ]
     },
     {
-      "name": "cppcoro",
-      "manifest": {
-        "name": "cppcoro",
-        "description": "A library of C++ coroutine abstractions for the Coroutines TS",
-        "homepage": "https://github.com/lewissbaker/cppcoro",
-        "license": "MIT",
-        "supports": "!uwp",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-date": "2022-10-25"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "cppdap",
       "manifest": {
         "name": "cppdap",
@@ -23027,6 +23030,7 @@
       "name": "cppmicroservices",
       "manifest": {
         "name": "cppmicroservices",
+        "port-version": 1,
         "description": "An OSGi-like C++ dynamic module system and service registry",
         "homepage": "https://github.com/CppMicroServices/CppMicroServices",
         "license": "Apache-2.0",
@@ -23035,6 +23039,7 @@
           "boost-asio",
           "boost-nowide",
           "gtest",
+          "spdlog",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -23047,8 +23052,9 @@
         "version": "3.8.6"
       },
       "files": [
-        "devendor_boost_absl.patch",
-        "fix_strnicmp.patch",
+        "devendor-boost-absl.patch",
+        "devendor-spdlog.diff",
+        "fix-strnicmp.patch",
         "portfile.cmake",
         "remove-ut-macro.patch",
         "vcpkg.json",
@@ -23117,7 +23123,7 @@
       "name": "cpprestsdk",
       "manifest": {
         "name": "cpprestsdk",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "C++11 JSON, REST, and OAuth library",
           "The C++ REST SDK is a Microsoft project for cloud-based client-server communication in native code using a modern asynchronous C++ API design. This project aims to help C++ developers connect to and interact with services."
@@ -23204,10 +23210,10 @@
         "fix-asio-error.patch",
         "fix-clang-dllimport.patch",
         "fix-find-openssl.patch",
+        "fix-narrowing.patch",
         "fix-uwp.patch",
-        "fix_narrowing.patch",
         "portfile.cmake",
-        "silence-stdext-checked-array-iterators-warning.patch",
+        "remove-stdext-checked-array-iterator-1836.patch",
         "test.patch",
         "vcpkg.json"
       ]
@@ -23639,7 +23645,7 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 11,
+        "port-version": 12,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -23682,6 +23688,7 @@
         "fix-std-20.patch",
         "ndk-toolchain.diff",
         "portfile.cmake",
+        "support-build-tools-sku.diff",
         "vcpkg.json",
         "zlib.gn"
       ]
@@ -26797,6 +26804,7 @@
       "name": "directxtk",
       "manifest": {
         "name": "directxtk",
+        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 11.x code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK",
         "documentation": "https://github.com/microsoft/DirectXTK/wiki",
@@ -26819,7 +26827,7 @@
             "dependencies": [
               "gameinput"
             ],
-            "supports": "windows & x64 & !uwp"
+            "supports": "windows & (arm64 | x64) & !uwp"
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
@@ -26857,6 +26865,7 @@
       "name": "directxtk12",
       "manifest": {
         "name": "directxtk12",
+        "port-version": 1,
         "description": "A collection of helper classes for writing DirectX 12 code in C++.",
         "homepage": "https://github.com/Microsoft/DirectXTK12",
         "documentation": "https://github.com/microsoft/DirectXTK12/wiki",
@@ -26895,7 +26904,7 @@
             "dependencies": [
               "gameinput"
             ],
-            "supports": "windows & x64 & !uwp"
+            "supports": "windows & (arm64 | x64) & !uwp"
           },
           "spectre": {
             "description": "Build Spectre-mitigated library"
@@ -27752,6 +27761,7 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
+        "port-version": 1,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": null,
@@ -27822,6 +27832,7 @@
         "version": "1.4.4"
       },
       "files": [
+        "avoid-stdext-checked-array-iterator.diff",
         "library-linkage-excel.diff",
         "library-linkage-httpfs.diff",
         "library-linkage.diff",
@@ -29386,7 +29397,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.14.4"
+        "version": "0.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -29677,6 +29688,7 @@
       "name": "ezfoundation",
       "manifest": {
         "name": "ezfoundation",
+        "port-version": 1,
         "description": "Foundation library out of ezEngine",
         "homepage": "https://ezengine.net/",
         "license": "MIT",
@@ -29694,7 +29706,8 @@
         "version": "21.10"
       },
       "files": [
-        "ezFoundation_vcpkg.patch",
+        "disable-warnings-as-errors.diff",
+        "ezfoundation-vcpkg.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -30289,7 +30302,7 @@
             "host": true
           }
         ],
-        "version": "26.4"
+        "version": "26.5"
       },
       "files": [
         "portfile.cmake",
@@ -31301,7 +31314,6 @@
       "name": "fftw3",
       "manifest": {
         "name": "fftw3",
-        "port-version": 10,
         "description": "FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).",
         "homepage": "https://www.fftw.org/",
         "license": "GPL-2.0-or-later",
@@ -31343,14 +31355,13 @@
             "description": "Enable threads in fftw3"
           }
         },
-        "version": "3.3.10"
+        "version": "3.3.11"
       },
       "files": [
         "aligned_malloc.patch",
-        "bigobj.patch",
         "fftw3_arch_fix.patch",
+        "fix-avx2-fma-flags.patch",
         "fix-openmp.patch",
-        "fix-wrong-version.patch",
         "install-subtargets.patch",
         "neon.patch",
         "portfile.cmake",
@@ -33721,7 +33732,7 @@
         "description": "GameInput",
         "homepage": "https://aka.ms/gameinput",
         "license": null,
-        "supports": "windows & x64 & !uwp",
+        "supports": "windows & (arm64 | x64) & !uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -33732,7 +33743,7 @@
             "host": true
           }
         ],
-        "version": "3.2.138"
+        "version": "3.3.195"
       },
       "files": [
         "CMakeLists.txt.in",
@@ -34522,6 +34533,7 @@
       "name": "geogram",
       "manifest": {
         "name": "geogram",
+        "port-version": 1,
         "description": "Geogram is a programming library of geometric algorithms.",
         "homepage": "https://github.com/BrunoLevy/geogram",
         "license": "BSD-3-Clause",
@@ -34552,6 +34564,7 @@
         "Config.cmake.in",
         "fix-vcpkg-install.patch",
         "portfile.cmake",
+        "remove-hash-map.diff",
         "vcpkg.json"
       ]
     },
@@ -35740,7 +35753,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.88.0"
+        "version": "2.88.1"
       },
       "files": [
         "libintl.patch",
@@ -35832,7 +35845,7 @@
           },
           "zlib"
         ],
-        "version": "2.86.0"
+        "version": "2.88.0"
       },
       "files": [
         "portfile.cmake",
@@ -41960,13 +41973,12 @@
       "name": "hical61-hical",
       "manifest": {
         "name": "hical61-hical",
-        "description": "Modern C++20/C++26 high-performance web framework based on Boost.Asio/Beast",
+        "description": "Modern C++20/C++26 high-performance web framework based on Boost.Asio with native HTTP/WebSocket stack",
         "homepage": "https://github.com/Hical61/Hical",
         "license": "MIT",
         "supports": "!uwp & !xbox & !android & !emscripten",
         "dependencies": [
           "boost-asio",
-          "boost-beast",
           "boost-json",
           "boost-system",
           {
@@ -41974,6 +41986,7 @@
             "platform": "linux"
           },
           "openssl",
+          "picohttpparser",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -41981,7 +41994,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
         "features": {
           "database": {
@@ -41992,7 +42006,7 @@
             ]
           }
         },
-        "version": "2.5.2"
+        "version": "2.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -42602,7 +42616,6 @@
       "name": "hunspell",
       "manifest": {
         "name": "hunspell",
-        "port-version": 1,
         "description": "The most popular spellchecking library.",
         "homepage": "https://github.com/hunspell/hunspell",
         "license": "MPL-1.1 OR LGPL-2.1-or-later OR GPL-2.0-or-later",
@@ -42630,7 +42643,7 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "1.7.2"
+        "version": "1.7.3"
       },
       "files": [
         "0005-autotools-subdirs.patch",
@@ -42663,7 +42676,7 @@
       "name": "hyperscan",
       "manifest": {
         "name": "hyperscan",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A regular expression library with O(length of input) match times that takes advantage of Intel hardware to provide blazing speed.",
         "homepage": "https://www.hyperscan.io",
         "license": "BSD-3-Clause",
@@ -42703,6 +42716,7 @@
       "files": [
         "0001-remove-Werror.patch",
         "0002-fix-threads.patch",
+        "0003-disable-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -43476,7 +43490,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.92.7"
+        "version": "1.92.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -45703,6 +45717,71 @@
         "portfile.cmake",
         "vcpkg.json",
         "zstd.diff"
+      ]
+    },
+    {
+      "name": "kauth",
+      "manifest": {
+        "name": "kauth",
+        "description": "Execute actions as privileged user",
+        "homepage": "https://invent.kde.org/frameworks/kauth",
+        "documentation": "https://api.kde.org/kauth-index.html",
+        "license": "LGPL-2.1-or-later",
+        "supports": "!android & !windows",
+        "dependencies": [
+          "ecm",
+          "kcoreaddons",
+          {
+            "name": "kwindowsystem",
+            "platform": "linux"
+          },
+          {
+            "name": "polkit-qt-1",
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.25.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -50680,9 +50759,10 @@
             "description": "Build examples"
           }
         },
-        "version-string": "4.3.5a"
+        "version-string": "4.3.5b"
       },
       "files": [
+        "obgm-remove-self-configure-file.patch",
         "portfile.cmake",
         "remove-hardcoded-tinydtls-path.patch",
         "vcpkg.json"
@@ -52395,7 +52475,7 @@
             "host": true
           }
         ],
-        "version": "1.12.1"
+        "version": "1.12.2"
       },
       "files": [
         "cross-tools.patch",
@@ -52885,7 +52965,7 @@
             ]
           }
         },
-        "version": "1.59"
+        "version": "1.61"
       },
       "files": [
         "android.diff",
@@ -54833,7 +54913,7 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "1.0.2"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -55970,7 +56050,7 @@
             "host": true
           }
         ],
-        "version": "3.0.5"
+        "version": "3.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -57015,7 +57095,6 @@
       "name": "libredwg",
       "manifest": {
         "name": "libredwg",
-        "port-version": 1,
         "description": "GNU LibreDWG is a free C library to handle DWG files. It aims to be a free replacement for the OpenDWG libraries. DWG is the native file format of AutoCAD.",
         "homepage": "https://www.gnu.org/software/libredwg/",
         "license": "GPL-3.0",
@@ -57036,7 +57115,7 @@
             "description": "Build dwg/dxf manipulation command-line tools"
           }
         },
-        "version": "0.13.3"
+        "version": "0.13.4"
       },
       "files": [
         "fix_arm64_build.patch",
@@ -57051,7 +57130,6 @@
       "name": "libremidi",
       "manifest": {
         "name": "libremidi",
-        "port-version": 2,
         "description": "A modern C++ MIDI real-time & file I/O library",
         "homepage": "https://github.com/jcelerier/libremidi",
         "license": "BSD-2-Clause",
@@ -57069,7 +57147,7 @@
             "host": true
           }
         ],
-        "version": "4.5.0"
+        "version": "5.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -63584,7 +63662,7 @@
         "description": "Very fast synchronous and asynchronous C++17 logging library",
         "homepage": "https://github.com/ChristianPanov/lwlog",
         "license": "MIT",
-        "supports": "!android & !(arm & windows)",
+        "supports": "!android & !(arm & windows) & !x86",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -63595,7 +63673,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -66930,7 +67008,7 @@
             "host": true
           }
         ],
-        "version": "1.0.13-preview.13.192"
+        "version": "1.0.17-rc.4.25"
       },
       "files": [
         "microsoft-windows-devices-midi2-config.cmake",
@@ -68940,7 +69018,7 @@
             "host": true
           }
         ],
-        "version": "3.5.0"
+        "version": "3.8.1"
       },
       "files": [
         "disable-werror.patch",
@@ -68955,7 +69033,7 @@
       "manifest": {
         "name": "mujs",
         "description": "An embeddable Javascript interpreter in C",
-        "homepage": "https://codeberg.org/ccxvii/mujs",
+        "homepage": "https://mujs.com/",
         "license": "ISC",
         "dependencies": [
           {
@@ -68967,7 +69045,7 @@
             "host": true
           }
         ],
-        "version": "1.3.8"
+        "version": "1.3.9"
       },
       "files": [
         "CMakeLists.txt",
@@ -73497,9 +73575,10 @@
             ]
           }
         },
-        "version": "0.3.29"
+        "version": "0.3.33"
       },
       "files": [
+        "android-exclude-sme.diff",
         "cmake-project-include.cmake",
         "disable-testing.diff",
         "getarch.diff",
@@ -82375,7 +82454,7 @@
       "name": "pxlib",
       "manifest": {
         "name": "pxlib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Library to read and write Paradox files",
         "homepage": "https://github.com/steinm/pxlib",
         "license": "GPL-2.0-only",
@@ -82395,6 +82474,7 @@
       "files": [
         "add_cmake_config.patch",
         "add_extern_c.patch",
+        "fix_blob_targetencoding.patch",
         "fix_iconv_handle_check.patch",
         "portfile.cmake",
         "use_modern_find_iconv.patch",
@@ -89699,7 +89779,7 @@
             "host": true
           }
         ],
-        "version": "0.31.4"
+        "version": "0.32.0"
       },
       "files": [
         "portfile.cmake",
@@ -90377,6 +90457,7 @@
         "description": "A better compressed bitset in C (and C++)",
         "homepage": "https://github.com/RoaringBitmap/CRoaring",
         "license": "Apache-2.0 OR MIT",
+        "supports": "!(android & arm32)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -90387,7 +90468,7 @@
             "host": true
           }
         ],
-        "version": "4.6.1"
+        "version": "4.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -93000,6 +93081,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -93055,6 +93137,12 @@
           "ibus": {
             "description": "Build with ibus IME support",
             "supports": "linux"
+          },
+          "libusb": {
+            "description": "Use libusb for joystick support",
+            "dependencies": [
+              "libusb"
+            ]
           },
           "vulkan": {
             "description": "Vulkan functionality for SDL"
@@ -93715,7 +93803,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.14.0"
+        "version": "0.14.1"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -99856,6 +99944,7 @@
       "name": "tcl",
       "manifest": {
         "name": "tcl",
+        "port-version": 1,
         "description": "Tcl provides a powerful platform for creating integration applications that tie together diverse applications, protocols, devices, and frameworks. When paired with the Tk toolkit, Tcl provides the fastest and most powerful way to create GUI applications that run on PCs, Unix, and Mac OS X. Tcl can also be used for a variety of web-related tasks and for creating powerful command languages for applications.",
         "homepage": "https://github.com/tcltk/tcl",
         "license": null,
@@ -99907,6 +99996,7 @@
       },
       "files": [
         "dependencies.diff",
+        "fix-uuid-ctrl-z.diff",
         "nmake.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -104763,7 +104853,7 @@
         "description": "High performance policy-driven scalar classification for C++",
         "homepage": "https://github.com/vincentlaucsb/classify_scalar",
         "license": "MIT",
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -110540,7 +110630,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.10.0"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
