@@ -1,5 +1,5 @@
 {
-  "version": "d60758467cbcf89c6a4375a1e11c2cafd9fb01b4",
+  "version": "afe700a528316078d1ad6e7f7f41bbba15e1802b",
   "ports": [
     {
       "name": "3fd",
@@ -20486,7 +20486,7 @@
             "host": true
           }
         ],
-        "version": "3.7.5"
+        "version": "3.7.6"
       },
       "files": [
         "CMakeLists.txt",
@@ -26615,13 +26615,10 @@
             "description": "XDSP Digital Signal Processing (DSP) for DirectXMath"
           }
         },
-        "version-date": "2026-03-12"
+        "version-date": "2026-05-15"
       },
       "files": [
-        "Linux-SHMath-SAL.patch",
-        "MinGW-fix.patch",
         "portfile.cmake",
-        "powerpc64le.patch",
         "shmathusage",
         "usage",
         "vcpkg.json"
@@ -36060,6 +36057,7 @@
       "name": "glslang",
       "manifest": {
         "name": "glslang",
+        "port-version": 1,
         "description": "Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.",
         "homepage": "https://github.com/KhronosGroup/glslang",
         "license": "Apache-2.0 AND BSD-3-Clause AND MIT AND GPL-3.0-or-later",
@@ -36276,7 +36274,7 @@
             ]
           }
         },
-        "version": "4.15.1"
+        "version": "4.15.2"
       },
       "files": [
         "installdirs.diff",
@@ -39905,7 +39903,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.22.3"
+        "version": "4.22.4"
       },
       "files": [
         "0001-build.patch",
@@ -44848,7 +44846,7 @@
       "name": "jinja2cpplight",
       "manifest": {
         "name": "jinja2cpplight",
-        "port-version": 3,
+        "port-version": 4,
         "description": "(very) lightweight version of Jinja2 for C++, Lightweight templating engine for C++, based on Jinja2.",
         "homepage": "https://github.com/hughperkins/Jinja2CppLight",
         "supports": "!uwp",
@@ -44861,6 +44859,7 @@
         "version-date": "2018-05-08"
       },
       "files": [
+        "disable-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45511,7 +45510,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -58520,7 +58519,6 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
-        "port-version": 2,
         "description": "Libsystemd",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
@@ -58545,7 +58543,7 @@
           },
           "zstd"
         ],
-        "version": "257.8"
+        "version": "260.1"
       },
       "files": [
         "disable-warning-nonnull.patch",
@@ -60905,7 +60903,6 @@
       "name": "libxmlpp",
       "manifest": {
         "name": "libxmlpp",
-        "port-version": 1,
         "description": "A C++ wrapper for the libxml XML parser library.",
         "homepage": "https://libxmlplusplus.github.io/libxmlplusplus/",
         "license": "LGPL-2.1-or-later",
@@ -60919,7 +60916,7 @@
             "host": true
           }
         ],
-        "version": "5.4.0"
+        "version": "5.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -62075,7 +62072,7 @@
       "name": "llgi",
       "manifest": {
         "name": "llgi",
-        "port-version": 1,
+        "port-version": 2,
         "homepage": "https://github.com/altseed/LLGI",
         "license": null,
         "supports": "!(uwp | android)",
@@ -62111,8 +62108,9 @@
       },
       "files": [
         "fix-cmake-use-vcpkg.patch",
-        "fix-sources.patch",
+        "fix-missing-headers.diff",
         "portfile.cmake",
+        "remove-warnings-as-errors.diff",
         "vcpkg.json"
       ]
     },
@@ -63455,74 +63453,6 @@
         "cmake-config-export.patch",
         "fix-unittest.patch",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "luminoengine",
-      "manifest": {
-        "name": "luminoengine",
-        "port-version": 1,
-        "description": "C++17 games and visualization toolkit.",
-        "homepage": "https://github.com/LuminoEngine/Lumino",
-        "license": "MIT",
-        "supports": "x64 & windows & !uwp",
-        "dependencies": [
-          "gtest",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "engine": {
-            "description": "Make engine module.",
-            "dependencies": [
-              "box2d",
-              "bullet3",
-              {
-                "name": "freetype",
-                "features": [
-                  "png",
-                  "zlib"
-                ]
-              },
-              "glad",
-              "glfw3",
-              "glslang",
-              {
-                "name": "imgui",
-                "features": [
-                  "docking-experimental"
-                ]
-              },
-              "libogg",
-              "libpng",
-              "libvorbis",
-              "nanovg",
-              "openal-soft",
-              "pcre2",
-              "spirv-cross",
-              "stb",
-              "tinygltf",
-              "tinyobjloader",
-              "toml11",
-              "vulkan-headers",
-              "yaml-cpp",
-              "zlib"
-            ]
-          }
-        },
-        "version": "0.10.1"
-      },
-      "files": [
-        "fix-cmake-config.patch",
-        "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -66704,7 +66634,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.1"
+        "version": "1.1.1"
       },
       "files": [
         "dependencies.diff",
@@ -73835,7 +73765,7 @@
             ]
           }
         },
-        "version-semver": "2.5.1"
+        "version-semver": "2.5.2"
       },
       "files": [
         "dependencies.diff",
@@ -76773,7 +76703,7 @@
             ]
           }
         },
-        "version-semver": "1.26.0"
+        "version-semver": "1.27.0"
       },
       "files": [
         "fix-target_link.patch",
@@ -76971,6 +76901,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
+        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -77158,11 +77089,12 @@
         "version": "2026.1.0"
       },
       "files": [
-        "msvc_debug_info_only_in_pdb.patch",
-        "npu_deps.patch",
-        "onednn_gpu_includes.patch",
+        "msvc-debug-info-only-in-pdb.patch",
+        "npu-deps.patch",
+        "onednn-gpu-includes.patch",
         "portfile.cmake",
         "protobuf-6.patch",
+        "remove-stdext-on-new-msvc.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -98191,7 +98123,7 @@
             "host": true
           }
         ],
-        "version": "4.6.15"
+        "version": "4.6.16"
       },
       "files": [
         "fix-install-path.patch",
@@ -104880,7 +104812,7 @@
           },
           "vincentlaucsb-classify-scalar"
         ],
-        "version": "5.1.0"
+        "version": "5.2.0"
       },
       "files": [
         "001-fix-cmake.patch",
@@ -105483,7 +105415,7 @@
             ]
           }
         },
-        "version": "1.1.11"
+        "version": "1.1.13"
       },
       "files": [
         "portfile.cmake",
