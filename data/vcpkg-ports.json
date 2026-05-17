@@ -1,5 +1,5 @@
 {
-  "version": "afe700a528316078d1ad6e7f7f41bbba15e1802b",
+  "version": "2b65c20fc66eda893aa15a15a453c3cf09500b19",
   "ports": [
     {
       "name": "3fd",
@@ -2904,7 +2904,7 @@
       "name": "assimp",
       "manifest": {
         "name": "assimp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Open Asset import library",
         "homepage": "https://github.com/assimp/assimp",
         "license": "BSD-3-Clause",
@@ -56494,7 +56494,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -56506,7 +56506,8 @@
           },
           {
             "name": "vcpkg-tool-meson",
-            "host": true
+            "host": true,
+            "version>=": "1.9.0#7"
           }
         ],
         "default-features": [
@@ -59884,7 +59885,7 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
         "license": "BSD-3-Clause",
@@ -59913,6 +59914,8 @@
         "0003-add-uwp-v142-and-v143-support.patch",
         "0004-remove-library-suffixes.patch",
         "0005-dont-expect-gnu-diff.patch",
+        "0006-gen-vcxproj-ignore-unknown-flags.patch",
+        "0007-msvc-use-Fo-in-toolchain-probe.patch",
         "portfile.cmake",
         "unofficial-libvpx-config.cmake.in",
         "vcpkg.json",
@@ -75906,6 +75909,7 @@
       "name": "openjph",
       "manifest": {
         "name": "openjph",
+        "port-version": 1,
         "description": "Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)",
         "homepage": "https://github.com/aous72/OpenJPH",
         "license": "BSD-2-Clause",
@@ -78161,7 +78165,7 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
@@ -78197,6 +78201,7 @@
         "0002-find-tbb.patch",
         "0003-disable-werror.patch",
         "0004-support-eigen3-5.patch",
+        "0005-avoid-stdext-checked-array-iterator.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -79387,6 +79392,7 @@
       "name": "pe-parse",
       "manifest": {
         "name": "pe-parse",
+        "port-version": 1,
         "description": "pe-parse is a principled, lightweight C/C++ PE parser",
         "homepage": "https://github.com/trailofbits/pe-parse",
         "supports": "!uwp",
@@ -90671,7 +90677,7 @@
       "name": "rpclib",
       "manifest": {
         "name": "rpclib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "a RPC library for C++, providing both a client and server implementation. It is built using modern C++14.",
         "homepage": "https://github.com/rpclib/rpclib",
         "dependencies": [
@@ -90687,6 +90693,8 @@
         "version-semver": "2.3.0"
       },
       "files": [
+        "avoid-stdext-checked-array-iterator.diff",
+        "fix-arm64-windows.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92296,28 +92304,6 @@
       ]
     },
     {
-      "name": "scylla-wrapper",
-      "manifest": {
-        "name": "scylla-wrapper",
-        "port-version": 3,
-        "description": "This is a wrapper around Scylla.  It exports functions for IAT fixing, dumping and PE rebuilding. based on https://github.com/NtQuery/Scylla commit 0f6b7198be  (v0.9.6b).",
-        "supports": "windows & !uwp & !arm & !static",
-        "dependencies": [
-          "distorm",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "2018-08-26-16e6f435"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "sdbus-cpp",
       "manifest": {
         "name": "sdbus-cpp",
@@ -93735,7 +93721,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.14.1"
+        "version": "0.14.2"
       },
       "files": [
         "devendor-libunwind.patch",
@@ -93862,7 +93848,7 @@
       "name": "serf",
       "manifest": {
         "name": "serf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The serf library is a high performance C-based HTTP client library built upon the Apache Portable Runtime (APR) library. It is permissively licensed under the Apache License, v2.",
         "homepage": "https://serf.apache.org/",
         "license": "Apache-2.0",
@@ -93877,6 +93863,7 @@
       },
       "files": [
         "dependencies.diff",
+        "hardcoded-msvc-versions.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94912,6 +94899,7 @@
       "name": "simpleble",
       "manifest": {
         "name": "simpleble",
+        "port-version": 1,
         "description": "The ultimate fully-fledged cross-platform library and bindings for Bluetooth Low Energy (BLE).",
         "homepage": "https://github.com/OpenBluetoothToolbox/SimpleBLE",
         "license": "BUSL-1.1",
@@ -94937,6 +94925,7 @@
       "files": [
         "devendor.diff",
         "portfile.cmake",
+        "use-cpp20-on-windows.diff",
         "use-std-localtime.patch",
         "vcpkg.json"
       ]
@@ -95319,7 +95308,7 @@
       "name": "sleef",
       "manifest": {
         "name": "sleef",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SIMD Library for Evaluating Elementary Functions, vectorized libm and DFT",
         "homepage": "https://sleef.org/",
         "license": "BSL-1.0",
@@ -95356,6 +95345,7 @@
       },
       "files": [
         "android-neon.diff",
+        "disable-msvc-builtin-math.diff",
         "exclude-testerutil.diff",
         "export-link-libs.diff",
         "portfile.cmake",
@@ -99601,6 +99591,7 @@
       "name": "systemc",
       "manifest": {
         "name": "systemc",
+        "port-version": 1,
         "description": "A set of C++ classes and macros which provide an event-driven simulation kernel in C++",
         "homepage": "https://systemc.org/overview/systemc/",
         "dependencies": [
@@ -99617,6 +99608,7 @@
       },
       "files": [
         "install.patch",
+        "msvc-opfx-removal.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -105935,6 +105927,7 @@
       "name": "vtk-m",
       "manifest": {
         "name": "vtk-m",
+        "port-version": 1,
         "description": "VTK-m is a toolkit of scientific visualization algorithms for emerging processor architectures.",
         "homepage": "https://gitlab.kitware.com/vtk/vtk-m/",
         "license": null,
@@ -105978,6 +105971,7 @@
         "version": "2.3.0"
       },
       "files": [
+        "avoid-stdext.diff",
         "fix-macos-15-6.patch",
         "pkgconfig.diff",
         "portfile.cmake",
