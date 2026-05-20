@@ -1,5 +1,5 @@
 {
-  "version": "432412eecac55981cf608cc12e5b4bd91768ec57",
+  "version": "3855d4d6b52353ee2e2f73044327e59d01a18c84",
   "ports": [
     {
       "name": "3fd",
@@ -2366,6 +2366,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
+        "port-version": 1,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -3829,7 +3830,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.10.2"
       },
       "files": [
         "portfile.cmake",
@@ -3884,7 +3885,7 @@
             "host": true
           }
         ],
-        "version": "0.12.6"
+        "version": "0.13.0"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4062,7 +4063,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.12.3"
+        "version": "0.12.4"
       },
       "files": [
         "portfile.cmake",
@@ -5686,7 +5687,6 @@
       "name": "azure-core-amqp-cpp",
       "manifest": {
         "name": "azure-core-amqp-cpp",
-        "port-version": 3,
         "description": [
           "Microsoft Azure AMQP SDK for C++",
           "This library provides AMQP functionality to Azure SDK services."
@@ -5712,11 +5712,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.11"
+        "version-semver": "1.0.0-beta.12"
       },
       "files": [
         "portfile.cmake",
-        "set_version.patch",
         "vcpkg.json"
       ]
     },
@@ -6071,7 +6070,6 @@
       "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
       "manifest": {
         "name": "azure-messaging-eventhubs-checkpointstore-blob-cpp",
-        "port-version": 6,
         "description": [
           "Microsoft Azure Messaging Event Hubs Blob Checkpoint Store SDK for C++",
           "This library provides an Azure-Storage-Blobs based implementation of an Azure Messaging Event Hubs SDK Checkpoint Store."
@@ -6082,12 +6080,12 @@
           {
             "name": "azure-core-amqp-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.2"
+            "version>=": "1.0.0-beta.12"
           },
           {
             "name": "azure-messaging-eventhubs-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.2"
+            "version>=": "1.0.0-beta.11"
           },
           {
             "name": "azure-storage-blobs-cpp",
@@ -6103,12 +6101,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.1"
+        "version-semver": "1.0.0-beta.2"
       },
       "files": [
         "portfile.cmake",
-        "set_version.patch",
-        "useragent.patch",
         "vcpkg.json"
       ]
     },
@@ -6116,7 +6112,6 @@
       "name": "azure-messaging-eventhubs-cpp",
       "manifest": {
         "name": "azure-messaging-eventhubs-cpp",
-        "port-version": 2,
         "description": [
           "Microsoft Azure Messaging Event Hubs SDK for C++",
           "This library provides Azure Messaging Event Hubs SDK."
@@ -6127,7 +6122,7 @@
           {
             "name": "azure-core-amqp-cpp",
             "default-features": false,
-            "version>=": "1.0.0-beta.9"
+            "version>=": "1.0.0-beta.12"
           },
           {
             "name": "azure-core-cpp",
@@ -6143,7 +6138,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.10"
+        "version-semver": "1.0.0-beta.11"
       },
       "files": [
         "portfile.cmake",
@@ -7443,7 +7438,7 @@
             "description": "Enables the support for extracting files matching regular expressions"
           }
         },
-        "version": "4.0.11"
+        "version": "4.0.12"
       },
       "files": [
         "fix_compile_options.patch",
@@ -20320,7 +20315,7 @@
             ]
           }
         },
-        "version": "2.1.2"
+        "version": "2.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -22510,7 +22505,7 @@
             ]
           }
         },
-        "version": "0.44.0"
+        "version": "0.45.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -27398,7 +27393,7 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
         "documentation": "https://doc.dpdk.org/guides/",
@@ -27433,8 +27428,42 @@
             ],
             "supports": "linux"
           },
+          "pmd-bnx2x": {
+            "description": "Build BNX2X Poll Mode Driver",
+            "dependencies": [
+              "zlib"
+            ],
+            "supports": "!windows"
+          },
+          "pmd-compress-isal": {
+            "description": "Build ISA-L Compression Poll Mode Driver",
+            "dependencies": [
+              "isal"
+            ],
+            "supports": "!uwp & (x64 | (arm64 & linux))"
+          },
+          "pmd-compress-zlib": {
+            "description": "Build ZLIB Compression Poll Mode Driver",
+            "dependencies": [
+              "zlib"
+            ]
+          },
+          "pmd-crypto-ccp": {
+            "description": "Build AMD CCP Crypto Poll Mode Driver",
+            "dependencies": [
+              "openssl"
+            ],
+            "supports": "linux"
+          },
+          "pmd-crypto-openssl": {
+            "description": "Build OpenSSL Crypto Poll Mode Driver",
+            "dependencies": [
+              "openssl"
+            ],
+            "supports": "!windows"
+          },
           "pmd-ipn3ke": {
-            "description": "Build the IPN3KE Poll Mode Driver",
+            "description": "Build IPN3KE Poll Mode Driver",
             "dependencies": [
               "dtc"
             ],
@@ -27454,8 +27483,22 @@
             ],
             "supports": "linux"
           },
+          "pmd-pcap": {
+            "description": "Build PCAP Poll Mode Driver",
+            "dependencies": [
+              "libpcap"
+            ],
+            "supports": "!windows"
+          },
+          "qat": {
+            "description": "Build Intel QuickAssist drivers",
+            "dependencies": [
+              "openssl"
+            ],
+            "supports": "!windows"
+          },
           "rawdev-ifpga": {
-            "description": "Build the IFPGA Rawdev Driver",
+            "description": "Build IFPGA Rawdev Driver",
             "dependencies": [
               "dtc"
             ],
@@ -28557,7 +28600,7 @@
         "description": "ECMWF CMake build system and CMake macro collection",
         "homepage": "https://github.com/ecmwf/ecbuild",
         "license": null,
-        "version": "3.14.1"
+        "version": "3.14.2"
       },
       "files": [
         "ecbuild-config-version.cmake.in",
@@ -29366,6 +29409,10 @@
         "supports": "!uwp",
         "dependencies": [
           {
+            "name": "pkgconf",
+            "host": true
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -29378,23 +29425,19 @@
           "orca": {
             "description": "Enable the Orca backend",
             "dependencies": [
-              "glib"
+              "glibmm"
             ],
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           },
           "speech-dispatcher": {
             "description": "Enable the speech-dispatcher backend (requires libspeechd to be installed)",
             "dependencies": [
-              "libspeechd",
-              {
-                "name": "pkgconf",
-                "host": true
-              }
+              "libspeechd"
             ],
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.15.0"
+        "version": "0.16.1"
       },
       "files": [
         "portfile.cmake",
@@ -33896,7 +33939,7 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
@@ -34240,6 +34283,7 @@
         "cmake-project-include.cmake",
         "find-link-libraries.patch",
         "iconv.diff",
+        "libarchive.diff",
         "libkml.patch",
         "portfile.cmake",
         "sqlite3.diff",
@@ -44014,7 +44058,7 @@
             "host": true
           }
         ],
-        "version": "1.9"
+        "version": "1.10"
       },
       "files": [
         "portfile.cmake",
@@ -45510,7 +45554,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "0.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -45964,7 +46008,7 @@
             "host": true
           }
         ],
-        "version": "1.7.1"
+        "version": "2.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -55186,7 +55230,7 @@
             "host": true
           }
         ],
-        "version": "2.7.3"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -59455,7 +59499,6 @@
       "name": "libusb",
       "manifest": {
         "name": "libusb",
-        "port-version": 1,
         "description": "a cross-platform library to access USB devices",
         "homepage": "https://github.com/libusb/libusb",
         "license": "LGPL-2.1-or-later",
@@ -59484,7 +59527,7 @@
             "supports": "linux"
           }
         },
-        "version": "1.0.29"
+        "version": "1.0.30"
       },
       "files": [
         "portfile.cmake",
@@ -59505,7 +59548,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0.0"
+        "version": "1.4.0.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -60864,7 +60907,7 @@
             "host": true
           }
         ],
-        "version": "0.3.26"
+        "version": "0.3.27"
       },
       "files": [
         "portfile.cmake",
@@ -63278,7 +63321,7 @@
         "description": "A lightweight, dependency-free, suitable for game development library for binding Lua to C++17",
         "homepage": "https://github.com/kunitoki/LuaBridge3",
         "license": "MIT",
-        "version": "3.0-rc3"
+        "version": "3.0-rc11"
       },
       "files": [
         "portfile.cmake",
@@ -63496,7 +63539,7 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "disable-qtdeploy.patch",
@@ -80231,7 +80274,7 @@
             "description": "Enable loading font face cache from files and directories"
           }
         },
-        "version": "1.3.2"
+        "version": "1.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -85408,6 +85451,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86104,6 +86148,7 @@
         "qmake.debug.bat",
         "qt.conf.in",
         "qtpaths.debug.bat",
+        "silence-winrtbase-coroutine-warnings.diff",
         "use-shared-mime-info.patch",
         "use_inotify_on_freebsd.patch",
         "vcpkg.json",
@@ -86183,6 +86228,7 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
+        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86209,6 +86255,7 @@
       "files": [
         "port.data.cmake",
         "portfile.cmake",
+        "silence-qtconnectivity-coroutine-warnings.diff",
         "vcpkg.json"
       ]
     },
@@ -87397,6 +87444,7 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
+        "port-version": 1,
         "description": "The Qt Speech module enables a Qt application to support accessibility features such as text-to-speech, which is useful for end-users who are visually challenged or cannot access the application for whatever reason.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -87424,6 +87472,7 @@
       "files": [
         "port.data.cmake",
         "portfile.cmake",
+        "silence-qtspeech-coroutine-warnings.diff",
         "vcpkg.json"
       ]
     },
@@ -88167,13 +88216,9 @@
       "name": "quaternions",
       "manifest": {
         "name": "quaternions",
-        "port-version": 2,
         "description": "A C++11 library to work with quaternions, as a single header file.",
         "homepage": "https://github.com/ferd36/quaternions",
-        "dependencies": [
-          "boost-mpl"
-        ],
-        "version": "1.0.0"
+        "version-date": "2024-12-10"
       },
       "files": [
         "portfile.cmake",
@@ -88543,7 +88588,7 @@
             "host": true
           }
         ],
-        "version": "3.2"
+        "version": "3.3"
       },
       "files": [
         "portfile.cmake",
@@ -89447,6 +89492,15 @@
           }
         ],
         "features": {
+          "boost-serialization": {
+            "description": "Enable Boost.Serialization support",
+            "dependencies": [
+              {
+                "name": "boost-serialization",
+                "version>=": "1.74.0"
+              }
+            ]
+          },
           "bson": {
             "description": "Support for the BSON format",
             "dependencies": [
@@ -89471,6 +89525,15 @@
               {
                 "name": "jsoncons",
                 "version>=": "1.4.0"
+              }
+            ]
+          },
+          "cereal": {
+            "description": "Enable Cereal support",
+            "dependencies": [
+              {
+                "name": "cereal",
+                "version>=": "1.3.2"
               }
             ]
           },
@@ -89551,11 +89614,21 @@
                 "version>=": "0.8.0#1"
               }
             ]
+          },
+          "yas": {
+            "description": "Enable yas support",
+            "dependencies": [
+              {
+                "name": "yas",
+                "version>=": "7.1.0"
+              }
+            ]
           }
         },
-        "version": "0.24.0"
+        "version": "0.25.0"
       },
       "files": [
+        "fix-bson.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -91641,6 +91714,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
+        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -91868,6 +91942,7 @@
       "files": [
         "fix-heif.patch",
         "fix-include-directory.patch",
+        "no-binary-dependencies-install.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -96843,7 +96918,7 @@
             "host": true
           }
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -96866,7 +96941,7 @@
             "host": true
           }
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -96890,7 +96965,7 @@
             "host": true
           }
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "export-targets.patch",
@@ -96922,7 +96997,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -100593,7 +100668,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -103638,7 +103713,7 @@
             "host": true
           }
         ],
-        "version": "4.0.9"
+        "version": "4.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -104888,7 +104963,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.341"
+        "version": "1.4.350"
       },
       "files": [
         "fix-targets.patch",
@@ -105122,7 +105197,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -106029,7 +106104,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -106055,7 +106130,7 @@
             "host": true
           }
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -106117,7 +106192,7 @@
             "description": "Build Xlib WSI support"
           }
         },
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "link-directfb.patch",
@@ -106217,7 +106292,7 @@
             ]
           }
         },
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "LICENSE.txt",
@@ -106247,7 +106322,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -106272,7 +106347,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "portfile.cmake",
@@ -106304,7 +106379,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.341.0"
+        "version": "1.4.350.0"
       },
       "files": [
         "disable_vendored_phmap.diff",
@@ -106674,6 +106749,7 @@
       "name": "wayland-protocols",
       "manifest": {
         "name": "wayland-protocols",
+        "port-version": 1,
         "description": "wayland-protocols contains Wayland protocols that add functionality not available in the Wayland core protocol.",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
@@ -106707,7 +106783,7 @@
             ]
           }
         },
-        "version": "1.43"
+        "version": "1.48"
       },
       "files": [
         "cross-build.diff",
@@ -106776,6 +106852,7 @@
       "name": "webrtc",
       "manifest": {
         "name": "webrtc",
+        "port-version": 1,
         "description": "WebRTC real-time communication library",
         "homepage": "https://webrtc.googlesource.com/src",
         "license": "BSD-3-Clause",
@@ -106839,6 +106916,9 @@
         "build-0006-skip-local-vs-debugger-copy.patch",
         "build-0007-fix-windows-pdb-commands.patch",
         "build-0008-disable-crel-on-linux-arm64.patch",
+        "build-0009-disable-copying-msvc-dlls.patch",
+        "build-0010-use-none.patch",
+        "build-0011-do-not-detect-vs-path.patch",
         "generate_external_absl.py",
         "generate_external_absl_test.py",
         "generate_external_third_party.py",
@@ -107336,12 +107416,11 @@
       "name": "winsparkle",
       "manifest": {
         "name": "winsparkle",
-        "port-version": 1,
         "description": "WinSparkle is an easy-to-use software update library for Windows developers.",
         "homepage": "https://winsparkle.org",
         "license": "MIT",
         "supports": "windows & !(arm32 | uwp)",
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
