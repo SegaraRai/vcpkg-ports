@@ -1,5 +1,5 @@
 {
-  "version": "3855d4d6b52353ee2e2f73044327e59d01a18c84",
+  "version": "f7f94113c3b629c01df3d49d5edebae6d598c78c",
   "ports": [
     {
       "name": "3fd",
@@ -23118,7 +23118,7 @@
       "name": "cpprestsdk",
       "manifest": {
         "name": "cpprestsdk",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "C++11 JSON, REST, and OAuth library",
           "The C++ REST SDK is a Microsoft project for cloud-based client-server communication in native code using a modern asynchronous C++ API design. This project aims to help C++ developers connect to and interact with services."
@@ -23208,6 +23208,7 @@
         "fix-narrowing.patch",
         "fix-uwp.patch",
         "portfile.cmake",
+        "remove-openprot-1844.diff",
         "remove-stdext-checked-array-iterator-1836.patch",
         "test.patch",
         "vcpkg.json"
@@ -29756,6 +29757,7 @@
       "name": "f3d",
       "manifest": {
         "name": "f3d",
+        "port-version": 1,
         "description": "A fast and minimalist 3D viewer",
         "homepage": "https://f3d.app",
         "license": "BSD-3-Clause",
@@ -51721,6 +51723,7 @@
       "name": "libe57format",
       "manifest": {
         "name": "libe57format",
+        "port-version": 1,
         "description": "A library to provide read & write support for the E57 file format.",
         "homepage": "https://github.com/asmaloney/libE57Format",
         "license": "BSL-1.0",
@@ -51733,13 +51736,15 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "xerces-c"
+          {
+            "name": "xerces-c",
+            "default-features": false
+          }
         ],
         "version": "3.3.0"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -63493,11 +63498,12 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.720"
+        "version": "0.721"
       },
       "files": [
         "cmake-config-export.patch",
         "fix-unittest.patch",
+        "include-algorithm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -79219,6 +79225,7 @@
       "name": "pdal",
       "manifest": {
         "name": "pdal",
+        "port-version": 1,
         "description": "PDAL - Point Data Abstraction Library is a library for manipulating point cloud data.",
         "homepage": "https://pdal.org/",
         "license": null,
@@ -79271,7 +79278,11 @@
           "e57": {
             "description": "Build the E57 plugin",
             "dependencies": [
-              "xerces-c"
+              "libe57format",
+              {
+                "name": "xerces-c",
+                "default-features": false
+              }
             ]
           },
           "hdf": {
@@ -80245,7 +80256,7 @@
             ]
           }
         },
-        "version": "0.0.7"
+        "version": "0.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -88950,7 +88961,7 @@
       "name": "rdma-core",
       "manifest": {
         "name": "rdma-core",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The userspace components for the Linux Kernel's drivers/infiniband subsystem.",
         "homepage": "https://github.com/linux-rdma/rdma-core",
         "license": "(GPL-2.0-only OR Linux-OpenIB) AND (GPL-2.0-only OR BSD-3-Clause) AND (GPL-2.0-only OR BSD-2-Clause) AND CC0-1.0 AND MIT",
@@ -99174,6 +99185,7 @@
       "name": "suitesparse-paru",
       "manifest": {
         "name": "suitesparse-paru",
+        "port-version": 1,
         "description": "ParU: Routines for solving sparse linear system via parallel multifrontal LU factorization algorithms in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-or-later",
@@ -99943,7 +99955,7 @@
       "name": "tcl",
       "manifest": {
         "name": "tcl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Tcl provides a powerful platform for creating integration applications that tie together diverse applications, protocols, devices, and frameworks. When paired with the Tk toolkit, Tcl provides the fastest and most powerful way to create GUI applications that run on PCs, Unix, and Mac OS X. Tcl can also be used for a variety of web-related tasks and for creating powerful command languages for applications.",
         "homepage": "https://github.com/tcltk/tcl",
         "license": null,
@@ -99995,8 +100007,9 @@
       },
       "files": [
         "dependencies.diff",
-        "fix-uuid-ctrl-z.diff",
+        "fix-copy-binary.diff",
         "nmake.diff",
+        "no-werror.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -105532,7 +105545,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 15,
+        "port-version": 16,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -105896,6 +105909,7 @@
         "FindLZMA.patch",
         "NoUndefDebug.patch",
         "afxdll.patch",
+        "avoid-stdext.diff",
         "backport-bda8324.diff",
         "cgns.patch",
         "devendor_exodusII.patch",
@@ -107123,6 +107137,7 @@
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
+        "port-version": 1,
         "description": "Port of OpenAI's Whisper model in C/C++",
         "homepage": "https://github.com/ggml-org/whisper.cpp",
         "license": "MIT",
