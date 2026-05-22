@@ -1,5 +1,5 @@
 {
-  "version": "f7f94113c3b629c01df3d49d5edebae6d598c78c",
+  "version": "a0df28c67403290f611347d837ee849fe98e5ad1",
   "ports": [
     {
       "name": "3fd",
@@ -165,7 +165,7 @@
       "name": "abseil",
       "manifest": {
         "name": "abseil",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "Abseil is an open-source collection of C++ library code designed to augment the C++ standard library. The Abseil library code is collected from Google's own C++ code base, has been extensively tested and used in production, and is the same code we depend on in our daily coding lives.",
           "In some cases, Abseil provides pieces missing from the C++ standard; in others, Abseil provides alternatives to the standard for special needs we've found through usage in the Google code base. We denote those cases clearly within the library code we provide you.",
@@ -187,6 +187,7 @@
       },
       "files": [
         "003-force-cxx-17.patch",
+        "fix-gcc13-constexpr-function-pointer.patch",
         "fix-heterogeneous_lookup_testing-target.patch",
         "fix-mingw-dll.patch",
         "portfile.cmake",
@@ -51680,46 +51681,6 @@
       ]
     },
     {
-      "name": "libe57",
-      "manifest": {
-        "name": "libe57",
-        "description": "An open source implementation of the ASTM E2807 Standard Specification for 3D Imaging Data Exchange in the C++ language.",
-        "homepage": "http://www.libe57.org/",
-        "license": "BSL-1.0",
-        "supports": "!android",
-        "dependencies": [
-          "boost-crc",
-          "boost-filesystem",
-          "boost-format",
-          "boost-math",
-          "boost-program-options",
-          "boost-system",
-          "boost-thread",
-          "boost-uuid",
-          "boost-variant",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "xerces-c"
-        ],
-        "version-semver": "1.1.337"
-      },
-      "files": [
-        "boost_includes.patch",
-        "e57simple.patch",
-        "export_config.patch",
-        "portfile.cmake",
-        "usage",
-        "vcpkg.json",
-        "xercesc.patch"
-      ]
-    },
-    {
       "name": "libe57format",
       "manifest": {
         "name": "libe57format",
@@ -52497,7 +52458,7 @@
             "host": true
           }
         ],
-        "version": "3.17.3"
+        "version": "3.18.2"
       },
       "files": [
         "portfile.cmake",
@@ -56543,7 +56504,6 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -56555,8 +56515,7 @@
           },
           {
             "name": "vcpkg-tool-meson",
-            "host": true,
-            "version>=": "1.9.0#7"
+            "host": true
           }
         ],
         "default-features": [
@@ -56654,7 +56613,7 @@
             ]
           }
         },
-        "version": "18.3"
+        "version": "18.4"
       },
       "files": [
         "libintl.diff",
@@ -68432,7 +68391,6 @@
       "name": "ms-gdk",
       "manifest": {
         "name": "ms-gdk",
-        "port-version": 1,
         "description": "Microsoft Game Development Kit (GDK)",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
@@ -68446,11 +68404,10 @@
         ],
         "features": {
           "playfab": {
-            "description": "Include PlayFab Extension Libraries",
-            "supports": "windows & x64 & !uwp & !xbox & !staticcrt"
+            "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2510.2.6247"
+        "version": "2604.1.7839"
       },
       "files": [
         "gdk-config.cmake.in",
@@ -73575,7 +73532,6 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -73631,9 +73587,6 @@
               "rapidjson"
             ]
           },
-          "samples": {
-            "description": "Enable optional samples"
-          },
           "tbb": {
             "description": "Enable optional usage of tbb",
             "dependencies": [
@@ -73653,15 +73606,15 @@
             ]
           }
         },
-        "version": "7.9.3"
+        "version": "8.0.0"
       },
       "files": [
-        "dependencies.patch",
-        "drop-bin-letter-d.patch",
-        "fix-install-prefix-path.patch",
-        "install-include-dir.patch",
+        "0001-cmake-keep-build-use-vcpkg-explicit.patch",
+        "0002-cmake-load-exported-package-dependencies.patch",
+        "0003-image-remove-freeimage-msvc-autolink.patch",
+        "0004-cmake-add-additional-path-extraction-for-OpenCASCADE.patch",
+        "0005-drop-bin-letter.patch",
         "portfile.cmake",
-        "remove-vcpkg-enabling.patch",
         "vcpkg.json"
       ]
     },
@@ -83027,6 +82980,7 @@
       "name": "qlementine",
       "manifest": {
         "name": "qlementine",
+        "port-version": 1,
         "description": "Modern QStyle for desktop Qt6 applications.",
         "homepage": "https://github.com/oclero/qlementine/",
         "documentation": "https://oclero.github.io/qlementine/",
@@ -83052,6 +83006,7 @@
         "version": "1.4.2"
       },
       "files": [
+        "fix-wx-flag.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -83561,7 +83516,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -83719,7 +83674,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -85300,7 +85255,8 @@
                   "textcodec"
                 ]
               }
-            ]
+            ],
+            "supports": "!windows & !osx & !android"
           },
           "qml": {
             "description": "Build QML imports",
@@ -85322,7 +85278,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -85364,7 +85320,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -85449,7 +85405,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -85462,7 +85418,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86043,6 +85998,27 @@
               }
             ]
           },
+          "windeployqt": {
+            "description": "Qt Windows Deployment Tool",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "network"
+                ]
+              },
+              {
+                "name": "qtbase",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "windeployqt"
+                ]
+              }
+            ],
+            "supports": "windows"
+          },
           "xcb": {
             "description": "XCB",
             "dependencies": [
@@ -86129,7 +86105,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "GLIB2-static.patch",
@@ -86144,8 +86120,10 @@
         "dont_force_cmakecache_latest.patch",
         "env.patch",
         "fix-host-aliasing.patch",
+        "fix-ioring-32bit.patch",
         "fix-libresolv-test.patch",
         "fix-link-lib-discovery.patch",
+        "fix-wayland-opengl-guard.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -86203,7 +86181,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86227,7 +86205,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86239,7 +86217,6 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
-        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86261,7 +86238,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86291,7 +86268,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86327,7 +86304,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86353,7 +86330,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86374,7 +86351,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86408,7 +86385,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86442,7 +86419,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86468,7 +86445,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86520,7 +86497,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -86569,7 +86546,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86684,7 +86661,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86724,7 +86701,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86762,7 +86739,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "fix_qt_version.patch",
@@ -86787,7 +86764,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -86809,7 +86786,8 @@
             "features": [
               "concurrent",
               "gui",
-              "network"
+              "network",
+              "thread"
             ]
           },
           {
@@ -86934,11 +86912,12 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "ffmpeg-devendor-signalsmith-stretch.patch",
         "ffmpeg.patch",
+        "fix-msvc-x86-propvariant.patch",
         "port.data.cmake",
         "portfile.cmake",
         "remove-static-ssl-stub.patch",
@@ -86962,7 +86941,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87037,7 +87016,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "fix-build.patch",
@@ -87076,7 +87055,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -87124,7 +87103,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -87147,7 +87126,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87202,7 +87181,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87224,7 +87203,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87275,7 +87254,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87315,7 +87294,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87359,7 +87338,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87392,7 +87371,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87414,7 +87393,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87443,7 +87422,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87455,7 +87434,6 @@
       "name": "qtspeech",
       "manifest": {
         "name": "qtspeech",
-        "port-version": 1,
         "description": "The Qt Speech module enables a Qt application to support accessibility features such as text-to-speech, which is useful for end-users who are visually challenged or cannot access the application for whatever reason.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -87478,7 +87456,7 @@
             "default-features": false
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87503,7 +87481,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87631,7 +87609,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -87661,7 +87639,7 @@
             ]
           }
         ],
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87704,7 +87682,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -87742,7 +87720,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87774,7 +87752,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -87825,6 +87803,10 @@
           "pdf": {
             "description": "The Qt PDF module contains classes and functions for rendering PDF documents.",
             "dependencies": [
+              {
+                "name": "abseil",
+                "platform": "linux"
+              },
               {
                 "name": "freetype",
                 "platform": "!windows"
@@ -88020,7 +88002,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "clang-cl.patch",
@@ -88028,8 +88010,10 @@
         "disable-host-pkgconfig.diff",
         "include-dir-order.diff",
         "osx-sdk-info.diff",
+        "pdf-system-abseil.diff",
         "pdf-system-libjpeg.diff",
         "pdf-system-libpng.diff",
+        "pkg-config-sorted-libs.diff",
         "pkg-config.diff",
         "port.data.cmake",
         "portfile.cmake",
@@ -88064,7 +88048,7 @@
             ]
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -88108,7 +88092,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.10.3"
+        "version": "6.11.0"
       },
       "files": [
         "port.data.cmake",
@@ -89664,6 +89648,7 @@
       "name": "rego-cpp",
       "manifest": {
         "name": "rego-cpp",
+        "port-version": 1,
         "description": "A C++ interpreter for the OPA Rego policy language",
         "homepage": "https://github.com/microsoft/rego-cpp",
         "license": "MIT",
@@ -89702,6 +89687,7 @@
         "version": "1.4.1"
       },
       "files": [
+        "add-bigobj.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -90848,7 +90834,7 @@
         "description": "rioki's signal library",
         "homepage": "https://github.com/rioki/rsig",
         "license": "MIT",
-        "version-semver": "0.2.0"
+        "version-semver": "0.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -96045,7 +96031,7 @@
             "host": true
           }
         ],
-        "version": "5.8.5"
+        "version": "5.8.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -100094,7 +100080,7 @@
             "description": "Install source-generator executables (tl-parser, generate_mtproto, etc.) required for cross-compilation"
           }
         },
-        "version": "1.8.63"
+        "version": "1.8.64"
       },
       "files": [
         "fix-cross-compile.patch",
@@ -102293,7 +102279,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.8"
+        "version-semver": "0.26.9"
       },
       "files": [
         "portfile.cmake",
@@ -104603,9 +104589,8 @@
       "name": "vcpkg-tool-nodejs",
       "manifest": {
         "name": "vcpkg-tool-nodejs",
-        "port-version": 2,
         "supports": "native",
-        "version-semver": "16.18.0"
+        "version-semver": "24.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -105182,6 +105167,27 @@
         "homepage": "https://github.com/kernelwernel/VMAware",
         "license": "MIT",
         "version": "2.7.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "void-numerics",
+      "manifest": {
+        "name": "void-numerics",
+        "description": "The C++ standard library's <charconv> is already fast. void-numerics is faster - substantially so on hot integer-conversion paths - without sacrificing correctness, portability, or API compatibility.",
+        "homepage": "https://github.com/nihilai-collective/void-numerics",
+        "license": "MIT",
+        "supports": "!android & x64",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
