@@ -1,5 +1,5 @@
 {
-  "version": "22d9c655dc24ad24c6cac27607005e619ce46740",
+  "version": "aa40adda5352e87655b8583cfb2451d5e9e276fd",
   "ports": [
     {
       "name": "3fd",
@@ -29439,7 +29439,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.16.1"
+        "version": "0.16.2"
       },
       "files": [
         "portfile.cmake",
@@ -35628,7 +35628,7 @@
             ]
           }
         },
-        "version": "7.6.0"
+        "version": "7.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -41619,6 +41619,7 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
+        "port-version": 1,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -41690,6 +41691,7 @@
         "version": "2.1.1"
       },
       "files": [
+        "arm64-msvc-ice.diff",
         "default-plugin-dir.diff",
         "libaec-config.diff",
         "mpi-flags.diff",
@@ -52448,11 +52450,16 @@
       "name": "libfuse",
       "manifest": {
         "name": "libfuse",
+        "port-version": 1,
         "description": "The reference implementation of the Linux FUSE (Filesystem in Userspace) interface",
         "homepage": "https://github.com/libfuse/libfuse",
         "license": "LGPL-2.1-only AND GPL-2.0-only",
         "supports": "linux | freebsd",
         "dependencies": [
+          {
+            "name": "numactl",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-tool-meson",
             "host": true
@@ -56305,7 +56312,7 @@
           },
           "xxhash"
         ],
-        "version": "17-6.2.2"
+        "version": "18.0.0"
       },
       "files": [
         "0001-use-system-deps.patch",
@@ -56633,6 +56640,7 @@
       "name": "libpqxx",
       "manifest": {
         "name": "libpqxx",
+        "port-version": 1,
         "description": [
           "The official* C++ client API for PostgreSQL.",
           "*) NB https://pqxx.org/libpqxx/faq/"
@@ -68489,7 +68497,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "4.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -72238,7 +72246,6 @@
       "name": "ocilib",
       "manifest": {
         "name": "ocilib",
-        "port-version": 1,
         "description": "OCILIB is an open source and cross platform Oracle Driver that delivers efficient access to Oracle databases.",
         "homepage": "https://vrogier.github.io/ocilib/",
         "license": "Apache-2.0",
@@ -72255,7 +72262,7 @@
             "platform": "windows"
           }
         ],
-        "version": "4.8.0"
+        "version": "4.9.0"
       },
       "files": [
         "fix-DisableWC4191.patch",
@@ -90592,7 +90599,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.7"
+        "version-semver": "1.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -90604,7 +90611,6 @@
       "name": "robotraconteur-companion",
       "manifest": {
         "name": "robotraconteur-companion",
-        "port-version": 2,
         "homepage": "https://github.com/robotraconteur/robotraconteur_companion",
         "license": "Apache-2.0",
         "supports": "(windows & (x86 | x64)) | (linux & (x86 | x64 | arm64 | arm32)) | (osx & (x64 | arm64))",
@@ -90622,10 +90628,9 @@
           },
           "yaml-cpp"
         ],
-        "version-semver": "0.4.2"
+        "version-semver": "0.4.3"
       },
       "files": [
-        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -98185,7 +98190,7 @@
             "host": true
           }
         ],
-        "version": "4.6.16"
+        "version": "4.7.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -102018,6 +102023,35 @@
       ]
     },
     {
+      "name": "toomanycooks",
+      "manifest": {
+        "name": "toomanycooks",
+        "description": "The C++20 coroutine framework with no compromises. Excellent performance, simple syntax, and powerful features.",
+        "homepage": "https://github.com/tzcnt/TooManyCooks",
+        "documentation": "https://fleetcode.com/oss/tmc/docs",
+        "license": "BSL-1.0",
+        "supports": "!uwp & !android",
+        "dependencies": [
+          "boost-asio",
+          "hwloc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "torch-th",
       "manifest": {
         "name": "torch-th",
@@ -103712,7 +103746,7 @@
             "host": true
           }
         ],
-        "version": "4.1.0"
+        "version": "4.1.1"
       },
       "files": [
         "portfile.cmake",
