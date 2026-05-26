@@ -1,5 +1,5 @@
 {
-  "version": "aa40adda5352e87655b8583cfb2451d5e9e276fd",
+  "version": "d015e31e90838a4c9dfa3eed45979bc70d9357fc",
   "ports": [
     {
       "name": "3fd",
@@ -3831,7 +3831,7 @@
             "host": true
           }
         ],
-        "version": "0.10.2"
+        "version": "0.10.3"
       },
       "files": [
         "portfile.cmake",
@@ -3886,7 +3886,7 @@
             "host": true
           }
         ],
-        "version": "0.13.0"
+        "version": "0.13.1"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -3967,7 +3967,7 @@
             "host": true
           }
         ],
-        "version": "0.10.15"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -4152,7 +4152,7 @@
             "host": true
           }
         ],
-        "version": "0.38.7"
+        "version": "0.39.1"
       },
       "files": [
         "portfile.cmake",
@@ -18935,7 +18935,7 @@
             "host": true
           }
         ],
-        "version": "0.2.12"
+        "version": "0.3.0"
       },
       "files": [
         "disable-cpack.patch",
@@ -23119,7 +23119,7 @@
       "name": "cpprestsdk",
       "manifest": {
         "name": "cpprestsdk",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "C++11 JSON, REST, and OAuth library",
           "The C++ REST SDK is a Microsoft project for cloud-based client-server communication in native code using a modern asynchronous C++ API design. This project aims to help C++ developers connect to and interact with services."
@@ -23206,6 +23206,7 @@
         "fix-asio-error.patch",
         "fix-clang-dllimport.patch",
         "fix-find-openssl.patch",
+        "fix-incomplete-json-value.patch",
         "fix-narrowing.patch",
         "fix-uwp.patch",
         "portfile.cmake",
@@ -29439,7 +29440,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.16.2"
+        "version": "0.16.5"
       },
       "files": [
         "portfile.cmake",
@@ -40809,7 +40810,6 @@
       "name": "h3",
       "manifest": {
         "name": "h3",
-        "port-version": 1,
         "description": "A Hexagonal Hierarchical Geospatial Indexing System",
         "homepage": "https://github.com/uber/h3",
         "license": "Apache-2.0",
@@ -40824,7 +40824,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.4.1"
+        "version-semver": "4.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -45559,7 +45559,7 @@
             "host": true
           }
         ],
-        "version": "0.7.3"
+        "version": "0.7.4"
       },
       "files": [
         "portfile.cmake",
@@ -52758,7 +52758,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.9.3"
+        "version-semver": "1.9.4"
       },
       "files": [
         "c-standard.diff",
@@ -56347,7 +56347,7 @@
             "host": true
           }
         ],
-        "version": "9.0.30"
+        "version": "9.0.31"
       },
       "files": [
         "disable-werror.patch",
@@ -63465,12 +63465,11 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.721"
+        "version": "0.722"
       },
       "files": [
         "cmake-config-export.patch",
         "fix-unittest.patch",
-        "include-algorithm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -69248,7 +69247,6 @@
       "name": "mysql-connector-cpp",
       "manifest": {
         "name": "mysql-connector-cpp",
-        "port-version": 4,
         "description": "This is a release of MySQL Connector/C++, the C++ interface for communicating with MySQL servers.",
         "homepage": "https://github.com/mysql/mysql-connector-cpp",
         "license": null,
@@ -69287,7 +69285,7 @@
             "supports": "static"
           }
         },
-        "version": "9.1.0"
+        "version": "9.7.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -71130,7 +71128,7 @@
             "host": true
           }
         ],
-        "version": "8.7.0"
+        "version": "8.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -71159,7 +71157,7 @@
             "platform": "windows"
           }
         ],
-        "version": "1.8.0"
+        "version": "1.9.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -77233,7 +77231,7 @@
             "supports": "!(arm & windows) & !uwp"
           }
         },
-        "version": "1.1.59"
+        "version": "1.1.60"
       },
       "files": [
         "fix-openxr-sdk-jsoncpp.patch",
@@ -88318,10 +88316,9 @@
             "description": "Support for the quickjs standard library"
           }
         },
-        "version": "0.14.0"
+        "version": "0.15.0"
       },
       "files": [
-        "pdb_name_conflict.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -91576,7 +91573,7 @@
             "description": "Enable ryml's default implementation of callbacks: allocate(), free(), error()"
           }
         },
-        "version": "0.12.1"
+        "version": "0.13.0"
       },
       "files": [
         "cmake-fix.patch",
@@ -106285,6 +106282,7 @@
       "name": "vulkan-memory-allocator-hpp",
       "manifest": {
         "name": "vulkan-memory-allocator-hpp",
+        "port-version": 1,
         "description": "C++ bindings for VulkanMemoryAllocator (Development branch)",
         "homepage": "https://github.com/YaaZ/VulkanMemoryAllocator-Hpp",
         "license": "CC0-1.0",
