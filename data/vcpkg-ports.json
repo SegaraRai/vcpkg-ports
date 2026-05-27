@@ -1,5 +1,5 @@
 {
-  "version": "d015e31e90838a4c9dfa3eed45979bc70d9357fc",
+  "version": "9b965a116838c6cdcd36bca60d1b81b030c8ab8d",
   "ports": [
     {
       "name": "3fd",
@@ -417,7 +417,7 @@
             ]
           }
         },
-        "version": "0.5.2"
+        "version": "0.5.5"
       },
       "files": [
         "install.patch",
@@ -7704,7 +7704,7 @@
             "host": true
           }
         ],
-        "version": "2.15"
+        "version": "2.16"
       },
       "files": [
         "portfile.cmake",
@@ -19364,7 +19364,7 @@
             "description": "Capstone disassembly support for XCore"
           }
         },
-        "version": "5.0.7"
+        "version": "5.0.8"
       },
       "files": [
         "001-silence-windows-crt-secure-warnings.patch",
@@ -22506,7 +22506,7 @@
             ]
           }
         },
-        "version": "0.45.0"
+        "version": "0.46.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -27549,7 +27549,7 @@
           },
           "zlib"
         ],
-        "version": "10.1.4"
+        "version": "10.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -42053,7 +42053,7 @@
             ]
           }
         },
-        "version": "2.6.1"
+        "version": "2.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -42325,7 +42325,7 @@
             "host": true
           }
         ],
-        "version": "3.8"
+        "version": "3.9"
       },
       "files": [
         "hlslpp-config.cmake",
@@ -44063,7 +44063,7 @@
             "host": true
           }
         ],
-        "version": "1.10"
+        "version": "1.11"
       },
       "files": [
         "portfile.cmake",
@@ -45559,7 +45559,7 @@
             "host": true
           }
         ],
-        "version": "0.7.4"
+        "version": "0.7.5"
       },
       "files": [
         "portfile.cmake",
@@ -46362,7 +46362,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "fix-license-text.patch",
@@ -49616,7 +49616,7 @@
             "host": true
           }
         ],
-        "version": "1.28.2"
+        "version": "1.28.6"
       },
       "files": [
         "portfile.cmake",
@@ -50435,6 +50435,34 @@
         "version-semver": "1.4.1"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libbpf",
+      "manifest": {
+        "name": "libbpf",
+        "description": "Supports loading compiled BPF object files into the Linux Kernel",
+        "license": "LGPL-2.1-only OR BSD-2-Clause",
+        "supports": "linux",
+        "dependencies": [
+          "elfutils",
+          {
+            "name": "pkgconf",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "1.7.0"
+      },
+      "files": [
+        "0001-enable-static-or-shared.patch",
+        "0002-fix-dependency-lookup.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51298,11 +51326,10 @@
             "host": true
           }
         ],
-        "version": "1.0.18"
+        "version": "1.0.19"
       },
       "files": [
-        "fix-arm-neon-clang.patch",
-        "pkgconfig-cxx-linkage.diff",
+        "fix-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -53351,7 +53378,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.21.2"
+        "version": "1.22.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -54247,7 +54274,7 @@
             "host": true
           }
         ],
-        "version": "0.12.0"
+        "version": "0.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -54469,7 +54496,7 @@
             "host": true
           }
         ],
-        "version": "2.15.0"
+        "version": "2.15.1"
       },
       "files": [
         "portfile.cmake",
@@ -55203,7 +55230,7 @@
             "host": true
           }
         ],
-        "version": "2.8.0"
+        "version": "2.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -57738,7 +57765,7 @@
             "host": true
           }
         ],
-        "version": "3.8.0"
+        "version": "3.8.1"
       },
       "files": [
         "disable_tests_enable_static_build.patch",
@@ -61852,6 +61879,20 @@
       ]
     },
     {
+      "name": "linux-dfl-uapi-headers",
+      "manifest": {
+        "name": "linux-dfl-uapi-headers",
+        "description": "User space API headers of the linux-dfl (Device Feature List) kernel driver for FPGA devices",
+        "license": "GPL-2.0 WITH Linux-syscall-note AND GPL-2.0-only",
+        "supports": "linux",
+        "version-string": "intel-1.12.0-3"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "lionkor-commandline",
       "manifest": {
         "name": "lionkor-commandline",
@@ -63376,7 +63417,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-03-30"
+        "version-date": "2026-05-24"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -65121,7 +65162,7 @@
             "host": true
           }
         ],
-        "version": "3.4.1"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -65696,7 +65737,6 @@
       "name": "materialx",
       "manifest": {
         "name": "materialx",
-        "port-version": 2,
         "description": "MaterialX is an open standard for the exchange of rich material and look-development content across applications and renderers.",
         "homepage": "https://www.materialx.org/",
         "license": "Apache-2.0",
@@ -65722,10 +65762,11 @@
             "description": "Build the OSL shader generator back-end."
           },
           "render": {
-            "description": "Build the MaterialX Render library."
+            "description": "Build the MaterialX Render library.",
+            "supports": "!android"
           }
         },
-        "version": "1.39.1"
+        "version": "1.39.5"
       },
       "files": [
         "portfile.cmake",
@@ -71618,7 +71659,7 @@
             "host": true
           }
         ],
-        "version": "7.6.0"
+        "version": "7.7.0"
       },
       "files": [
         "export-target.patch",
@@ -72184,7 +72225,7 @@
             "host": true
           }
         ],
-        "version": "1.3.5"
+        "version": "1.3.6"
       },
       "files": [
         "portfile.cmake",
@@ -72979,7 +73020,7 @@
             "host": true
           }
         ],
-        "version": "3.11.3"
+        "version": "3.12"
       },
       "files": [
         "portfile.cmake",
@@ -73412,7 +73453,7 @@
             "host": true
           }
         ],
-        "version": "0.21.0"
+        "version": "0.21.1"
       },
       "files": [
         "portfile.cmake",
@@ -75564,7 +75605,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.11"
+        "version": "3.4.12"
       },
       "files": [
         "portfile.cmake",
@@ -77435,7 +77476,7 @@
             ]
           }
         },
-        "version": "5.2.0"
+        "version": "5.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -85423,6 +85464,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86115,6 +86157,7 @@
       "files": [
         "GLIB2-static.patch",
         "QTBUG-145239.patch",
+        "QTBUG-145703.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
         "clang-cl_source_location.patch",
@@ -88660,7 +88703,7 @@
             "host": true
           }
         ],
-        "version": "8.92"
+        "version": "8.97"
       },
       "files": [
         "portfile.cmake",
@@ -91233,7 +91276,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -91660,7 +91703,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.7.2"
+        "version": "1.7.3"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -93292,6 +93335,35 @@
       },
       "files": [
         "fluidsynth.diff",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sdl3-net",
+      "manifest": {
+        "name": "sdl3-net",
+        "description": "A simple, cross-platform wrapper over TCP/IP sockets.",
+        "homepage": "https://github.com/libsdl-org/SDL_net",
+        "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "sdl3",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-string": "prerelease-3.1.0"
+      },
+      "files": [
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -97998,7 +98070,7 @@
             ]
           }
         },
-        "version-date": "2026-02-26"
+        "version-date": "2026-05-25"
       },
       "files": [
         "fix-boost-asio-dependency.patch",
@@ -103551,7 +103623,6 @@
       "name": "usearch",
       "manifest": {
         "name": "usearch",
-        "port-version": 1,
         "description": "Fastest Search & Clustering engine × for Vectors & Strings",
         "homepage": "https://github.com/unum-cloud/usearch",
         "license": "Apache-2.0",
@@ -103585,7 +103656,7 @@
             ]
           }
         },
-        "version": "2.25.2"
+        "version": "2.25.3"
       },
       "files": [
         "fix-map-failed.patch",
