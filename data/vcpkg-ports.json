@@ -1,5 +1,5 @@
 {
-  "version": "9b965a116838c6cdcd36bca60d1b81b030c8ab8d",
+  "version": "15cd15b0da3c48a0c7720e4c87e0b6030334feed",
   "ports": [
     {
       "name": "3fd",
@@ -3860,7 +3860,7 @@
             "host": true
           }
         ],
-        "version": "0.9.13"
+        "version": "0.9.14"
       },
       "files": [
         "portfile.cmake",
@@ -3939,7 +3939,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -4027,7 +4027,7 @@
             "host": true
           }
         ],
-        "version": "0.15.2"
+        "version": "0.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -7830,7 +7830,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zfp"
         ],
         "default-features": [
           "zlib",
@@ -7850,7 +7851,7 @@
             ]
           }
         },
-        "version": "2.23.1"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -20691,7 +20692,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.7"
+        "version-semver": "1.2.8"
       },
       "files": [
         "portfile.cmake",
@@ -25223,7 +25224,7 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.1.0"
       },
       "files": [
         "0001-build-options.patch",
@@ -25251,7 +25252,6 @@
       "name": "dacap-clip",
       "manifest": {
         "name": "dacap-clip",
-        "port-version": 1,
         "description": "Cross-platform C++ library to copy/paste clipboard content.",
         "homepage": "https://github.com/dacap/clip",
         "license": "MIT",
@@ -25267,7 +25267,7 @@
             "host": true
           }
         ],
-        "version": "1.14"
+        "version": "1.15"
       },
       "files": [
         "fix-install-header-and-force-static-compilation.patch",
@@ -25973,7 +25973,7 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 4,
+        "port-version": 5,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -26406,9 +26406,10 @@
             "host": true
           }
         ],
-        "version-semver": "7.3.0"
+        "version-semver": "7.6.0"
       },
       "files": [
+        "fix-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29700,6 +29701,22 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "ez8-co-yapi",
+      "manifest": {
+        "name": "ez8-co-yapi",
+        "description": "A header-only fusion injector that reduces differences between x64, wow64 and x86 processes.",
+        "homepage": "https://github.com/ez8-co/yapi",
+        "license": "MIT",
+        "supports": "windows & !uwp",
+        "version-date": "2022-08-10"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -40853,7 +40870,7 @@
             "host": true
           }
         ],
-        "version": "3.15.1"
+        "version": "3.16.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -41329,7 +41346,6 @@
       "name": "hareflow",
       "manifest": {
         "name": "hareflow",
-        "port-version": 2,
         "description": "Hareflow: A RabbitMQ C++ stream client.",
         "homepage": "https://github.com/coveooss/hareflow",
         "license": "Apache-2.0",
@@ -41368,11 +41384,9 @@
             "version>=": "2021-02-26"
           }
         ],
-        "version-semver": "0.1.1"
+        "version-semver": "0.2.0"
       },
       "files": [
-        "fix-asio-error.patch",
-        "fix-missing-headers.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51326,7 +51340,7 @@
             "host": true
           }
         ],
-        "version": "1.0.19"
+        "version": "1.1.0"
       },
       "files": [
         "fix-linkage.patch",
@@ -51494,7 +51508,6 @@
       "name": "libdmtx",
       "manifest": {
         "name": "libdmtx",
-        "port-version": 1,
         "description": "Software library that enables programs to read and write Data Matrix barcodes of the modern ECC200 variety",
         "homepage": "https://github.com/dmtx/libdmtx",
         "license": "BSD-2-Clause",
@@ -51504,10 +51517,9 @@
             "host": true
           }
         ],
-        "version": "0.7.7"
+        "version": "0.7.8"
       },
       "files": [
-        "001-cmake-add-install-target.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52135,7 +52147,7 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "2.5.0"
+        "version-semver": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -52187,7 +52199,7 @@
           },
           "zlib"
         ],
-        "version": "1.16.0"
+        "version": "1.17.0"
       },
       "files": [
         "dependencies.diff",
@@ -54325,7 +54337,7 @@
             "host": true
           }
         ],
-        "version": "249"
+        "version": "250"
       },
       "files": [
         "CMakeLists.txt",
@@ -55883,7 +55895,7 @@
           },
           "zlib"
         ],
-        "version": "0.8.6"
+        "version": "0.8.7"
       },
       "files": [
         "CMakeLists.txt",
@@ -56150,7 +56162,7 @@
           },
           "zlib"
         ],
-        "version-semver": "2.23.0"
+        "version-semver": "2.23.1"
       },
       "files": [
         "portfile.cmake",
@@ -58563,7 +58575,7 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
-        "description": "Libsystemd",
+        "description": "System and Service Manager",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
         "supports": "linux",
@@ -58587,7 +58599,7 @@
           },
           "zstd"
         ],
-        "version": "260.1"
+        "version": "260.2"
       },
       "files": [
         "disable-warning-nonnull.patch",
@@ -59447,7 +59459,7 @@
             "description": "Enable integrated webserver"
           }
         },
-        "version": "1.18.2"
+        "version": "1.18.5"
       },
       "files": [
         "fix-pthreads4w-targets.patch",
@@ -61478,7 +61490,7 @@
             "host": true
           }
         ],
-        "version": "0.4.41"
+        "version-date": "2026-04-14"
       },
       "files": [
         "portfile.cmake",
@@ -61807,7 +61819,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -62308,7 +62320,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 5,
+        "port-version": 6,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0 WITH LLVM-exception",
@@ -62784,6 +62796,7 @@
         "0004-disable-libomp-aliases.patch",
         "0005-remove-numpy.patch",
         "0006-create-destination-mlir-directory.patch",
+        "0007-fix-missing-includes.patch",
         "75711.patch",
         "79694.patch",
         "82407.patch",
@@ -69933,7 +69946,7 @@
             ]
           }
         },
-        "version": "20260113"
+        "version": "20260526"
       },
       "files": [
         "portfile.cmake",
@@ -70964,7 +70977,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -92424,7 +92437,6 @@
       "name": "sdbus-cpp",
       "manifest": {
         "name": "sdbus-cpp",
-        "port-version": 1,
         "description": "High-level C++ D-Bus library for Linux designed to provide easy-to-use yet powerful API in modern C++",
         "homepage": "https://github.com/Kistler-Group/sdbus-cpp",
         "license": "LGPL-2.1-only",
@@ -92449,7 +92461,7 @@
             ]
           }
         },
-        "version": "2.2.1"
+        "version": "2.3.1"
       },
       "files": [
         "dependencies.diff",
@@ -96872,7 +96884,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.5.0"
+        "version-semver": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -101627,7 +101639,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.2.0"
       },
       "files": [
         "fix-deprecated.patch",
