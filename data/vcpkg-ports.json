@@ -1,5 +1,5 @@
 {
-  "version": "15cd15b0da3c48a0c7720e4c87e0b6030334feed",
+  "version": "9e53836916341b64a14162a78ba9802488034a5f",
   "ports": [
     {
       "name": "3fd",
@@ -86278,6 +86278,7 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
+        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -88327,10 +88328,12 @@
       "name": "quickfix",
       "manifest": {
         "name": "quickfix",
+        "port-version": 1,
         "description": "QuickFIX is a free and open source implementation of the FIX protocol.",
         "homepage": "https://github.com/quickfix/quickfix",
         "supports": "!uwp & !(osx & arm64)",
         "dependencies": [
+          "double-conversion",
           "openssl",
           {
             "name": "vcpkg-cmake",
@@ -88344,7 +88347,7 @@
         "version": "1.16.0"
       },
       "files": [
-        "00001-fix-build.patch",
+        "00001-devendor-double-conversion.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
