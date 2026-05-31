@@ -1,5 +1,5 @@
 {
-  "version": "d4424d012d982dc21529708ccc31fef27c55dcea",
+  "version": "00d899c410b31467733472fc3a83a25729046b13",
   "ports": [
     {
       "name": "3fd",
@@ -6746,7 +6746,7 @@
           },
           "zlib"
         ],
-        "version": "4.8.0"
+        "version": "4.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -7851,7 +7851,7 @@
             ]
           }
         },
-        "version": "3.1.0"
+        "version": "3.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -26567,7 +26567,7 @@
             "host": true
           }
         ],
-        "version": "1.619.1"
+        "version": "1.619.3"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -45356,6 +45356,35 @@
       ]
     },
     {
+      "name": "jsonrpcpp",
+      "manifest": {
+        "name": "jsonrpcpp",
+        "description": "C++ JSON-RPC 2.0 library",
+        "homepage": "https://github.com/badaix/jsonrpcpp",
+        "license": "MIT",
+        "dependencies": [
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "1.4.0"
+      },
+      "files": [
+        "add-cmake-targets.patch",
+        "fix-include-path.patch",
+        "portfile.cmake",
+        "unofficial-jsonrpcpp-config.cmake.in",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "juce",
       "manifest": {
         "name": "juce",
@@ -54082,7 +54111,7 @@
             ]
           }
         },
-        "version": "1.7.1"
+        "version": "1.7.2"
       },
       "files": [
         "dependencies.diff",
@@ -55434,7 +55463,6 @@
       "name": "libmysql",
       "manifest": {
         "name": "libmysql",
-        "port-version": 1,
         "description": "A MySQL client library for C development",
         "homepage": "https://github.com/mysql/mysql-server",
         "license": "GPL-2.0-or-later",
@@ -55467,7 +55495,7 @@
           "zlib",
           "zstd"
         ],
-        "version": "8.0.40"
+        "version": "8.0.46"
       },
       "files": [
         "cross-build.patch",
@@ -59196,6 +59224,38 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "libtwolame",
+      "manifest": {
+        "name": "libtwolame",
+        "description": "TwoLAME is an optimised MPEG Audio Layer 2 (MP2) encoder",
+        "homepage": "https://www.twolame.org",
+        "license": "LGPL-2.1-or-later",
+        "features": {
+          "tool": {
+            "description": "Build the twolame command-line frontend",
+            "dependencies": [
+              {
+                "name": "getopt-win32",
+                "platform": "windows & !mingw"
+              },
+              "libsndfile"
+            ]
+          }
+        },
+        "version": "0.4.0"
+      },
+      "files": [
+        "patches/001-fix-tl-api-export.patch",
+        "patches/002-disable-doc-subdir.patch",
+        "patches/003-fix-kr-declaration.patch",
+        "patches/004-fix-frontend-msvc.patch",
+        "patches/005-fix-pc-in-case.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -67260,7 +67320,7 @@
           },
           "zlib"
         ],
-        "version": "0.3.0"
+        "version": "0.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -69006,6 +69066,7 @@
           "glfw3",
           "lodepng",
           "marchingcubecpp",
+          "miniz",
           "qhull",
           "tinyobjloader",
           "tinyxml2",
@@ -69019,7 +69080,7 @@
             "host": true
           }
         ],
-        "version": "3.8.1"
+        "version": "3.9.0"
       },
       "files": [
         "disable-werror.patch",
@@ -79825,7 +79886,7 @@
             "host": true
           }
         ],
-        "version": "1.6.3"
+        "version": "1.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -98274,7 +98335,7 @@
             "host": true
           }
         ],
-        "version": "4.7.0"
+        "version": "4.7.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -104994,7 +105055,7 @@
           },
           "vincentlaucsb-classify-scalar"
         ],
-        "version": "5.2.0"
+        "version": "5.3.0"
       },
       "files": [
         "001-fix-cmake.patch",
