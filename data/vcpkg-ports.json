@@ -1,5 +1,5 @@
 {
-  "version": "00d899c410b31467733472fc3a83a25729046b13",
+  "version": "f9ffbaa46ad8e284b2b74919f7e0ba259564d424",
   "ports": [
     {
       "name": "3fd",
@@ -83637,7 +83637,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -83795,7 +83795,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -85399,7 +85399,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -85441,7 +85441,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -85526,7 +85526,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -85539,7 +85539,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -85607,6 +85606,7 @@
             "name": "appstore-compliant",
             "platform": "uwp"
           },
+          "async-io",
           "brotli",
           "concurrent",
           {
@@ -85680,6 +85680,19 @@
           "appstore-compliant": {
             "description": "Disable code that is not allowed in platform app stores. This is on by default for platforms which require distribution through an app store by default, in particular Android, iOS, tvOS, and watchOS."
           },
+          "async-io": {
+            "description": "Provides support for asynchronous file I/O",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "future",
+                  "thread"
+                ]
+              }
+            ]
+          },
           "brotli": {
             "description": "Support for downloading and decompressing resources compressed with Brotli through QNetworkAccessManager.",
             "dependencies": [
@@ -85700,7 +85713,7 @@
                 "name": "qtbase",
                 "default-features": false,
                 "features": [
-                  "thread"
+                  "future"
                 ]
               }
             ]
@@ -85810,6 +85823,9 @@
               }
             ]
           },
+          "future": {
+            "description": "Qt Future (QFuture) support"
+          },
           "gles2": {
             "description": "OpenGL ES 2.0",
             "dependencies": [
@@ -85910,6 +85926,23 @@
             "dependencies": [
               "icu"
             ]
+          },
+          "ioring": {
+            "description": "qioring for async-io",
+            "dependencies": [
+              {
+                "name": "liburing",
+                "platform": "linux"
+              },
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "async-io"
+                ]
+              }
+            ],
+            "supports": "linux | (windows & !x86)"
           },
           "jpeg": {
             "description": "Enable JPEG",
@@ -86227,11 +86260,10 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "GLIB2-static.patch",
-        "QTBUG-145239.patch",
         "QTBUG-145703.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
@@ -86245,8 +86277,8 @@
         "fix-host-aliasing.patch",
         "fix-ioring-32bit.patch",
         "fix-libresolv-test.patch",
+        "fix-liburing-config-test.patch",
         "fix-link-lib-discovery.patch",
-        "fix-wayland-opengl-guard.patch",
         "fix_cmake_build.patch",
         "fix_deploy_windows.patch",
         "fix_egl.patch",
@@ -86304,7 +86336,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86328,7 +86360,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86340,7 +86372,6 @@
       "name": "qtconnectivity",
       "manifest": {
         "name": "qtconnectivity",
-        "port-version": 1,
         "description": "The Qt Connectivity module provides access to Bluetooth and NFC hardware.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86362,7 +86393,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86392,7 +86423,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86428,7 +86459,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86454,7 +86485,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86475,7 +86506,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86509,7 +86540,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86543,7 +86574,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86569,7 +86600,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86621,7 +86652,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -86670,7 +86701,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86785,7 +86816,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86825,7 +86856,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -86863,7 +86894,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "fix_qt_version.patch",
@@ -86888,7 +86919,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87036,7 +87067,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "ffmpeg-devendor-signalsmith-stretch.patch",
@@ -87065,7 +87096,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87140,7 +87171,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "fix-build.patch",
@@ -87179,7 +87210,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -87227,7 +87258,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -87250,7 +87281,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87305,7 +87336,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87327,7 +87358,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87378,7 +87409,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87418,7 +87449,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87462,7 +87493,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87495,7 +87526,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87517,7 +87548,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87546,7 +87577,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87580,7 +87611,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87605,7 +87636,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87733,7 +87764,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -87763,7 +87794,7 @@
             ]
           }
         ],
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87806,7 +87837,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -87844,7 +87875,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -87876,7 +87907,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -88126,7 +88157,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "clang-cl.patch",
@@ -88172,7 +88203,7 @@
             ]
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
@@ -88216,7 +88247,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.11.0"
+        "version": "6.11.1"
       },
       "files": [
         "port.data.cmake",
