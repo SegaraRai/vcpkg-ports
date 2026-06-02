@@ -1,5 +1,5 @@
 {
-  "version": "f9ffbaa46ad8e284b2b74919f7e0ba259564d424",
+  "version": "f3e10653cc27d62a37a3763cd84b38bca07c6075",
   "ports": [
     {
       "name": "3fd",
@@ -3886,7 +3886,7 @@
             "host": true
           }
         ],
-        "version": "0.13.1"
+        "version": "0.14.0"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -7268,7 +7268,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -19365,7 +19365,7 @@
             "description": "Capstone disassembly support for XCore"
           }
         },
-        "version": "5.0.8"
+        "version": "5.0.9"
       },
       "files": [
         "001-silence-windows-crt-secure-warnings.patch",
@@ -19881,6 +19881,37 @@
         "0006_fix_cuda_architectures.patch",
         "0007_support_cuda_13.patch",
         "0008_support_eigen3_5.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "cesnet-ndk-sw",
+      "manifest": {
+        "name": "cesnet-ndk-sw",
+        "description": "The NDK (Network Development Kit) software framework",
+        "license": "BSD-3-Clause",
+        "supports": "linux",
+        "dependencies": [
+          "dtc",
+          "linux-dfl-uapi-headers",
+          "numactl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "6.30.3"
+      },
+      "files": [
+        "0001-disable-cpack.patch",
+        "0002-disable-drivers.patch",
+        "0003-disable-optional-deps.patch",
+        "0004-disable-tools.patch",
+        "0005-fix-pkgconfig-version.patch",
+        "0006-nfb-static-or-shared.patch",
+        "0007-fpga-image-load.patch",
+        "0008-fix-install-location.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27397,7 +27428,7 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A set of libraries and drivers for fast packet processing",
         "homepage": "https://www.dpdk.org/",
         "documentation": "https://doc.dpdk.org/guides/",
@@ -27424,6 +27455,13 @@
         "features": {
           "docs": {
             "description": "Build and install docs"
+          },
+          "gpu-cuda": {
+            "description": "Build CUDA GPU driver",
+            "dependencies": [
+              "cuda"
+            ],
+            "supports": "linux"
           },
           "mlx5": {
             "description": "Build NVIDIA MLX5 drivers",
@@ -33803,7 +33841,7 @@
             "host": true
           }
         ],
-        "version": "3.3.195"
+        "version": "3.4.218"
       },
       "files": [
         "CMakeLists.txt.in",
@@ -35645,7 +35683,7 @@
             ]
           }
         },
-        "version": "7.7.0"
+        "version": "7.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -40322,7 +40360,7 @@
             "host": true
           }
         ],
-        "version": "26.2.0"
+        "version": "26.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -42066,7 +42104,7 @@
             ]
           }
         },
-        "version": "2.6.3"
+        "version": "2.6.4"
       },
       "files": [
         "portfile.cmake",
@@ -42943,7 +42981,6 @@
       "name": "icey",
       "manifest": {
         "name": "icey",
-        "port-version": 1,
         "maintainers": "0state OSS <oss@0state.com>",
         "description": "C++20 media stack and libwebrtc alternative for real-time video, signalling, TURN, and media servers",
         "homepage": "https://0state.com/icey/",
@@ -42988,10 +43025,9 @@
             ]
           }
         },
-        "version": "2.4.2"
+        "version": "2.4.11"
       },
       "files": [
-        "001-devendor-nlohmann-json.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44002,7 +44038,7 @@
         "name": "intel-ipsec",
         "description": "Intel(R) Multi-Buffer Crypto for IPsec Library",
         "supports": "x64 & (windows | linux) & !uwp",
-        "version": "1.1"
+        "version": "2.0.2"
       },
       "files": [
         "always-generate-pdb.patch",
@@ -53418,7 +53454,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.22.2"
+        "version": "1.23.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -58173,7 +58209,7 @@
       "name": "libspatialite",
       "manifest": {
         "name": "libspatialite",
-        "port-version": 6,
+        "port-version": 7,
         "description": "SpatiaLite is an open source library intended to extend the SQLite core to support fully fledged Spatial SQL capabilities.",
         "homepage": "https://www.gaia-gis.it/fossil/libspatialite/index",
         "license": null,
@@ -61045,7 +61081,6 @@
       "name": "libxmp",
       "manifest": {
         "name": "libxmp",
-        "port-version": 1,
         "description": "Libxmp is a library that renders module files to PCM data.",
         "homepage": "https://sourceforge.net/projects/xmp/",
         "license": "LGPL-2.1-or-later",
@@ -61072,7 +61107,7 @@
             "description": "Enable ProWizard format loaders."
           }
         },
-        "version": "4.6.0"
+        "version": "4.7.0"
       },
       "files": [
         "fix-cmake-config-dir.patch",
@@ -63580,7 +63615,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.722"
+        "version": "0.723"
       },
       "files": [
         "cmake-config-export.patch",
@@ -68770,7 +68805,7 @@
             "host": true
           }
         ],
-        "version": "6.1.0"
+        "version": "7.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -70607,7 +70642,7 @@
       "name": "netgen",
       "manifest": {
         "name": "netgen",
-        "port-version": 3,
+        "port-version": 4,
         "description": "NETGEN is an automatic 3d tetrahedral mesh generator. It accepts input from constructive solid geometry (CSG) or boundary representation (BRep) from STL file format. The connection to a geometry kernel allows the handling of IGES and STEP files. NETGEN contains modules for mesh optimization and hierarchical mesh refinement.",
         "homepage": "https://ngsolve.org/",
         "license": "LGPL-2.1-or-later",
@@ -70688,7 +70723,7 @@
         "cross-build.patch",
         "downstream-fixes.patch",
         "git-ver.patch",
-        "occ-78.patch",
+        "occt-compat.patch",
         "portfile.cmake",
         "static-exports.patch",
         "vcpkg-fix-cgns-link.patch",
@@ -70851,7 +70886,7 @@
             "host": true
           }
         ],
-        "version": "1.15.0"
+        "version": "1.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -70943,7 +70978,7 @@
             ]
           }
         },
-        "version": "1.22.1"
+        "version": "1.23.0"
       },
       "files": [
         "portfile.cmake",
@@ -76092,7 +76127,7 @@
             "description": "Enable client tools"
           }
         },
-        "version": "2.6.12"
+        "version": "2.6.13"
       },
       "files": [
         "android.diff",
@@ -77587,7 +77622,7 @@
       "name": "orc",
       "manifest": {
         "name": "orc",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The smallest, fastest columnar storage for Hadoop workloads.",
         "homepage": "https://orc.apache.org/",
         "license": "Apache-2.0",
@@ -93223,7 +93258,6 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
-        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -93298,7 +93332,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.8"
+        "version": "3.4.10"
       },
       "files": [
         "fix-freebsd.patch",
@@ -93468,7 +93502,7 @@
             "host": true
           }
         ],
-        "version-string": "prerelease-3.1.0"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -93712,7 +93746,7 @@
             ]
           }
         },
-        "version": "4.3.2"
+        "version": "4.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -104119,7 +104153,7 @@
             ]
           }
         },
-        "version-semver": "20.77.0"
+        "version-semver": "20.78.0"
       },
       "files": [
         "portfile.cmake",
@@ -107353,7 +107387,6 @@
       "name": "whisper-cpp",
       "manifest": {
         "name": "whisper-cpp",
-        "port-version": 1,
         "description": "Port of OpenAI's Whisper model in C/C++",
         "homepage": "https://github.com/ggml-org/whisper.cpp",
         "license": "MIT",
@@ -107407,7 +107440,7 @@
             ]
           }
         },
-        "version": "1.8.4"
+        "version": "1.8.5"
       },
       "files": [
         "cmake-config.diff",
@@ -109854,6 +109887,43 @@
         "portfile.cmake",
         "unofficial-libykpiv-config.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "yunsmall-usbipdcpp",
+      "manifest": {
+        "name": "yunsmall-usbipdcpp",
+        "description": "A C++ library for creating usbip servers",
+        "homepage": "https://github.com/yunsmall/usbipdcpp",
+        "license": "LGPL-3.0",
+        "dependencies": [
+          "asio",
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "physical-usb-forwarding": {
+            "description": "Build components for forwarding physical USB devices",
+            "dependencies": [
+              "libusb"
+            ]
+          },
+          "virtual-device": {
+            "description": "Build virtual device components for creating software-emulated USB devices"
+          }
+        },
+        "version": "1.0.4"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
