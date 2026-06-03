@@ -1,5 +1,5 @@
 {
-  "version": "f3e10653cc27d62a37a3763cd84b38bca07c6075",
+  "version": "9e9398f90a6c386bbd6ed89714ddb036b2e969eb",
   "ports": [
     {
       "name": "3fd",
@@ -6394,60 +6394,6 @@
         "version-semver": "12.13.0"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "azure-storage-cpp",
-      "manifest": {
-        "name": "azure-storage-cpp",
-        "port-version": 8,
-        "description": [
-          "[legacy] Microsoft Azure Storage Client SDK for C++",
-          "A client library for working with Microsoft Azure storage services including blobs, files, tables, and queues. This client library enables working with the Microsoft Azure storage services which include the blob service for storing binary and text data, the file service for storing binary and text data, the table service for storing structured non-relational data, and the queue service for storing messages that may be accessed by a client."
-        ],
-        "homepage": "https://blogs.msdn.com/b/windowsazurestorage/",
-        "supports": "!uwp",
-        "dependencies": [
-          {
-            "name": "atlmfc",
-            "platform": "windows"
-          },
-          {
-            "name": "boost-locale",
-            "platform": "!windows & !uwp"
-          },
-          {
-            "name": "boost-log",
-            "platform": "!windows & !uwp"
-          },
-          {
-            "name": "cpprestsdk",
-            "default-features": false
-          },
-          {
-            "name": "libuuid",
-            "platform": "!windows & !uwp & !osx"
-          },
-          {
-            "name": "libxml2",
-            "platform": "!windows & !uwp"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "7.5.0"
-      },
-      "files": [
-        "cmake.diff",
-        "fix-asio-error.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -21321,7 +21267,6 @@
       "name": "cnats",
       "manifest": {
         "name": "cnats",
-        "port-version": 2,
         "description": "A C client for the NATS messaging system",
         "homepage": "https://github.com/nats-io/nats.c",
         "license": "Apache-2.0",
@@ -21352,7 +21297,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.12.0"
+        "version": "3.13.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -22110,7 +22055,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -22538,7 +22483,7 @@
             ]
           }
         },
-        "version": "0.46.0"
+        "version": "0.46.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23144,107 +23089,6 @@
         "missing-cstdint.diff",
         "portfile.cmake",
         "remove-overzealous-template.diff",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "cpprestsdk",
-      "manifest": {
-        "name": "cpprestsdk",
-        "port-version": 6,
-        "description": [
-          "C++11 JSON, REST, and OAuth library",
-          "The C++ REST SDK is a Microsoft project for cloud-based client-server communication in native code using a modern asynchronous C++ API design. This project aims to help C++ developers connect to and interact with services."
-        ],
-        "homepage": "https://github.com/Microsoft/cpprestsdk",
-        "license": "MIT",
-        "dependencies": [
-          {
-            "name": "boost-asio",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-chrono",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-date-time",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-filesystem",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-random",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-regex",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-system",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "boost-thread",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "openssl",
-            "platform": "!uwp & !windows"
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "default-features": [
-          {
-            "name": "brotli",
-            "platform": "windows"
-          },
-          "compression"
-        ],
-        "features": {
-          "brotli": {
-            "description": "Brotli compression support",
-            "dependencies": [
-              "brotli",
-              {
-                "name": "cpprestsdk",
-                "default-features": false,
-                "features": [
-                  "compression"
-                ]
-              }
-            ]
-          },
-          "compression": {
-            "description": "HTTP Compression support",
-            "dependencies": [
-              "zlib"
-            ]
-          }
-        },
-        "version": "2.10.19"
-      },
-      "files": [
-        "fix-asio-error.patch",
-        "fix-clang-dllimport.patch",
-        "fix-find-openssl.patch",
-        "fix-incomplete-json-value.patch",
-        "fix-narrowing.patch",
-        "fix-uwp.patch",
-        "portfile.cmake",
-        "remove-openprot-1844.diff",
-        "remove-stdext-checked-array-iterator-1836.patch",
-        "test.patch",
         "vcpkg.json"
       ]
     },
@@ -27669,6 +27513,7 @@
       "name": "drogon",
       "manifest": {
         "name": "drogon",
+        "port-version": 1,
         "description": "A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows",
         "homepage": "https://github.com/an-tao/drogon",
         "documentation": "https://drogon.docsforge.com/master/overview/",
@@ -27782,6 +27627,7 @@
         "0002-drogon-config.patch",
         "0003-deps-redis.patch",
         "0004-drogon-ctl.patch",
+        "0005-fix-1.9.13-chunked-encoding-close-connection.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -30117,7 +29963,7 @@
             "host": true
           }
         ],
-        "version": "8.2.5"
+        "version": "8.2.6"
       },
       "files": [
         "portfile.cmake",
@@ -30400,7 +30246,7 @@
             "host": true
           }
         ],
-        "version": "26.5"
+        "version": "26.6"
       },
       "files": [
         "portfile.cmake",
@@ -30605,7 +30451,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30668,6 +30514,7 @@
                   "swresample",
                   "swscale",
                   "theora",
+                  "twolame",
                   "vorbis",
                   "vpx",
                   "vulkan",
@@ -31256,6 +31103,12 @@
               "libtheora"
             ]
           },
+          "twolame": {
+            "description": "MP2 encoding via libtwolame",
+            "dependencies": [
+              "libtwolame"
+            ]
+          },
           "vaapi": {
             "description": "VAAPI video decoding/encoding acceleration",
             "dependencies": [
@@ -31362,6 +31215,7 @@
         "0046-fix-msvc-detection.patch",
         "0047-fix-msvc-utf8.patch",
         "0048-backport-23039.patch",
+        "0049-fix-twolame-pkgconfig.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
@@ -33076,7 +32930,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.25.0"
+        "version": "3.26.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -34620,7 +34474,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -43036,6 +42890,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
+        "port-version": 1,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -43066,6 +42921,7 @@
       },
       "files": [
         "disable-static-prefix.patch",
+        "fix-python-path-with-spaces.patch",
         "fix_bsd_and_solaris.patch",
         "fix_parallel_build_on_windows.patch",
         "mh-darwin.patch",
@@ -68548,17 +68404,12 @@
       "name": "ms-gdk",
       "manifest": {
         "name": "ms-gdk",
+        "port-version": 1,
         "description": "Microsoft Game Development Kit (GDK)",
         "homepage": "https://aka.ms/gdkx",
         "documentation": "https://aka.ms/gamedevdocs",
         "license": null,
         "supports": "windows & (x64 | arm64) & !uwp & !xbox & !staticcrt",
-        "dependencies": [
-          {
-            "name": "cpprestsdk",
-            "default-features": false
-          }
-        ],
         "features": {
           "playfab": {
             "description": "Include PlayFab Extension Libraries"
@@ -68781,7 +68632,7 @@
             ]
           }
         },
-        "version": "7.0.0"
+        "version": "8.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -78172,7 +78023,7 @@
         "description": "Oracle, Odbc and DB2-CLI Template Library",
         "homepage": "https://otl.sourceforge.net/",
         "license": "ISC",
-        "version": "4.0.500"
+        "version": "4.0.502"
       },
       "files": [
         "portfile.cmake",
@@ -89097,7 +88948,7 @@
             "host": true
           }
         ],
-        "version": "6.0.0"
+        "version": "6.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -92185,7 +92036,7 @@
       "name": "salome-med-fichier",
       "manifest": {
         "name": "salome-med-fichier",
-        "port-version": 4,
+        "port-version": 5,
         "description": "med-fichier provides a low level C API for fine-grained access to the structure of MED files (.med)",
         "homepage": "https://www.salome-platform.org",
         "license": "LGPL-3.0-or-later",
@@ -93258,6 +93109,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0",
@@ -93312,6 +93164,15 @@
           },
           "ibus": {
             "description": "Build with ibus IME support",
+            "dependencies": [
+              {
+                "name": "sdl3",
+                "default-features": false,
+                "features": [
+                  "dbus"
+                ]
+              }
+            ],
             "supports": "linux"
           },
           "libusb": {
@@ -94994,7 +94855,7 @@
             "host": true
           }
         ],
-        "version": "7.1.161"
+        "version": "7.1.162"
       },
       "files": [
         "SimdConfig.cmake",
@@ -98400,7 +98261,7 @@
             "host": true
           }
         ],
-        "version": "4.7.1"
+        "version": "4.7.2"
       },
       "files": [
         "fix-install-path.patch",
@@ -100596,6 +100457,33 @@
         "fix_static_link_icu.patch",
         "portfile.cmake",
         "target-curl.diff",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "tesults-cpp",
+      "manifest": {
+        "name": "tesults-cpp",
+        "description": "C++ library for uploading test results to Tesults",
+        "homepage": "https://github.com/tesults/cpp",
+        "license": "MIT",
+        "dependencies": [
+          "curl",
+          "nlohmann-json",
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.2"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -104767,7 +104655,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 8,
+        "port-version": 9,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0",
@@ -110435,6 +110323,7 @@
       "name": "zlib",
       "manifest": {
         "name": "zlib",
+        "port-version": 1,
         "description": "A compression library",
         "homepage": "https://www.zlib.net/",
         "license": "Zlib",
@@ -110451,6 +110340,7 @@
         "version": "1.3.2"
       },
       "files": [
+        "0001-no-version-script-on-ohos.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
