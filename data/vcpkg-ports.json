@@ -1,5 +1,5 @@
 {
-  "version": "9e9398f90a6c386bbd6ed89714ddb036b2e969eb",
+  "version": "81de6771512413aaf89ea77add5ad1fda126b9d0",
   "ports": [
     {
       "name": "3fd",
@@ -5234,6 +5234,9 @@
           "resiliencehub": {
             "description": "C++ SDK for the AWS resiliencehub service"
           },
+          "resiliencehubv2": {
+            "description": "C++ SDK for the AWS resiliencehubv2 service"
+          },
           "resource-explorer-2": {
             "description": "C++ SDK for the AWS resource-explorer-2 service"
           },
@@ -5333,6 +5336,9 @@
           },
           "sagemaker-runtime-http2": {
             "description": "C++ SDK for the AWS sagemaker-runtime-http2 service"
+          },
+          "sagemakerjobruntime": {
+            "description": "C++ SDK for the AWS sagemakerjobruntime service"
           },
           "savingsplans": {
             "description": "C++ SDK for the AWS savingsplans service"
@@ -5578,7 +5584,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.800"
+        "version": "1.11.820"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -7105,7 +7111,7 @@
         "description": "Your scalable C++14 one header only State Machine Library with no dependencies",
         "homepage": "https://github.com/boost-ext/sml",
         "license": "BSL-1.0",
-        "version": "1.1.13"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -7858,7 +7864,7 @@
             "host": true
           }
         ],
-        "version": "8.2.12"
+        "version": "8.2.13"
       },
       "files": [
         "CMakeLists.txt",
@@ -23383,7 +23389,6 @@
       "name": "cpu-features",
       "manifest": {
         "name": "cpu-features",
-        "port-version": 1,
         "description": "A cross-platform C library to retrieve CPU features (such as available instructions) at runtime",
         "homepage": "https://github.com/google/cpu_features",
         "license": "Apache-2.0",
@@ -23403,7 +23408,7 @@
             "description": "list_cpu_features command line tool"
           }
         },
-        "version": "0.10.1"
+        "version": "0.11.0"
       },
       "files": [
         "0001-ndk-compat-export-include-dirs.patch",
@@ -24219,7 +24224,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -41286,7 +41291,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 2,
+        "port-version": 3,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -45493,7 +45498,7 @@
             "host": true
           }
         ],
-        "version": "0.7.5"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -50418,7 +50423,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.3.1"
       },
       "files": [
         "fix-include-directory.patch",
@@ -71717,7 +71722,7 @@
             "host": true
           }
         ],
-        "version": "4.4.2"
+        "version": "4.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -100488,6 +100493,32 @@
       ]
     },
     {
+      "name": "tesults-gtest",
+      "manifest": {
+        "name": "tesults-gtest",
+        "description": "Google Test event listener for reporting test results to Tesults",
+        "homepage": "https://github.com/tesults/tesults-gtest",
+        "license": "MIT",
+        "dependencies": [
+          "gtest",
+          "tesults-cpp",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tevclient",
       "manifest": {
         "name": "tevclient",
@@ -102983,7 +103014,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -107328,7 +107359,7 @@
             ]
           }
         },
-        "version": "1.8.5"
+        "version": "1.8.6"
       },
       "files": [
         "cmake-config.diff",
