@@ -1,5 +1,5 @@
 {
-  "version": "eb35a05cc21c69ec1399f7532b7dd61d271ac0d1",
+  "version": "c16c1bd46c7f6de21efc6dcf19c1069d6825df23",
   "ports": [
     {
       "name": "3fd",
@@ -4152,7 +4152,7 @@
             "host": true
           }
         ],
-        "version": "0.39.1"
+        "version": "0.40.0"
       },
       "files": [
         "portfile.cmake",
@@ -20362,7 +20362,7 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
@@ -25114,7 +25114,7 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.2.0"
       },
       "files": [
         "0001-build-options.patch",
@@ -28201,12 +28201,14 @@
       "name": "earcut-hpp",
       "manifest": {
         "name": "earcut-hpp",
+        "port-version": 1,
         "description": "earcut.hpp is a C++ port of earcut.js, a fast, header-only polygon triangulation library.",
         "homepage": "https://github.com/mapbox/earcut.hpp",
         "license": "ISC",
         "version": "2.2.4"
       },
       "files": [
+        "include-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -30397,7 +30399,7 @@
       "name": "fdk-aac",
       "manifest": {
         "name": "fdk-aac",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A standalone Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library for Android. Uses a fork without HE-AAC, HE-AACv2, or xHE-AAC support to avoid patent licensing and GPL compatibility issues when built without the he-aac option.",
         "homepage": "https://gitlab.freedesktop.org/wtaymans/fdk-aac-stripped",
         "license": "FDK-AAC",
@@ -33733,7 +33735,7 @@
         "description": "GameNetworkingSockets is a basic transport layer for games.",
         "homepage": "https://github.com/ValveSoftware/GameNetworkingSockets",
         "license": "BSD-3-Clause",
-        "supports": "!(static & windows) & !uwp & !(arm64 & windows)",
+        "supports": "!uwp & !(arm64 & windows)",
         "dependencies": [
           "openssl",
           "protobuf",
@@ -33746,7 +33748,15 @@
             "host": true
           }
         ],
-        "version": "1.5.1"
+        "default-features": [
+          "ice"
+        ],
+        "features": {
+          "ice": {
+            "description": "Build support for P2P connections using the native ICE client (STUN and TURN)."
+          }
+        },
+        "version": "1.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -34287,10 +34297,9 @@
           },
           "zlib"
         ],
-        "version": "3.2.5"
+        "version": "3.2.7"
       },
       "files": [
-        "copyright.diff",
         "no-absolute-paths.diff",
         "portfile.cmake",
         "prefer-config.diff",
@@ -41495,7 +41504,6 @@
       "name": "hazelcast-cpp-client",
       "manifest": {
         "name": "hazelcast-cpp-client",
-        "port-version": 1,
         "description": "C++ client library for Hazelcast in-memory database.",
         "homepage": "https://github.com/hazelcast/hazelcast-cpp-client",
         "documentation": "https://docs.hazelcast.com/hazelcast/latest/clients/cplusplus",
@@ -41505,6 +41513,7 @@
           "boost-asio",
           "boost-chrono",
           "boost-format",
+          "boost-lockfree",
           "boost-multiprecision",
           "boost-optional",
           "boost-property-tree",
@@ -41531,10 +41540,9 @@
             ]
           }
         },
-        "version": "5.6.0"
+        "version": "5.7.0"
       },
       "files": [
-        "fix-boost-optional.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50865,7 +50873,7 @@
             "host": true
           }
         ],
-        "version": "2.3.1"
+        "version": "2.3.2"
       },
       "files": [
         "fix-x86-windows.patch",
@@ -53256,6 +53264,7 @@
       "name": "libheif",
       "manifest": {
         "name": "libheif",
+        "port-version": 1,
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
         "license": "LGPL-3.0-only",
@@ -53505,7 +53514,6 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
-        "port-version": 4,
         "description": [
           "iconv() text conversion.",
           "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
@@ -53517,9 +53525,13 @@
             "name": "vcpkg-cmake-get-vars",
             "host": true,
             "platform": "android"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
-        "version": "1.18"
+        "version": "1.19"
       },
       "files": [
         "0002-Config-for-MSVC.patch",
@@ -55036,7 +55048,7 @@
       "name": "libmodplug",
       "manifest": {
         "name": "libmodplug",
-        "port-version": 15,
+        "port-version": 16,
         "description": "The ModPlug mod file playing library.",
         "homepage": "https://github.com/Konstanty/libmodplug",
         "license": null,
@@ -55821,6 +55833,7 @@
       "name": "libopenmpt",
       "manifest": {
         "name": "libopenmpt",
+        "port-version": 1,
         "description": "A cross-platform C++ and C library to decode tracked music files (modules) into a raw PCM audio stream.",
         "homepage": "https://openmpt.org/",
         "license": "BSD-3-Clause",
@@ -56329,7 +56342,7 @@
             "host": true
           }
         ],
-        "version": "9.0.31"
+        "version": "9.0.32"
       },
       "files": [
         "disable-werror.patch",
@@ -57374,6 +57387,7 @@
       "name": "libsbml",
       "manifest": {
         "name": "libsbml",
+        "port-version": 1,
         "description": "A library for reading / writing SBML files",
         "homepage": "https://github.com/sbmlteam/libsbml",
         "license": null,
@@ -63330,7 +63344,7 @@
         "description": "A lightweight, dependency-free, suitable for game development library for binding Lua to C++17",
         "homepage": "https://github.com/kunitoki/LuaBridge3",
         "license": "MIT",
-        "version": "3.0-rc11"
+        "version": "3.0-rc12"
       },
       "files": [
         "portfile.cmake",
@@ -65158,7 +65172,7 @@
             "host": true
           }
         ],
-        "version": "3.5.0"
+        "version": "3.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -67819,7 +67833,7 @@
             ]
           }
         },
-        "version": "2.3.0"
+        "version": "2.3.1"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -73459,6 +73473,7 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
+        "port-version": 1,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later",
@@ -88388,7 +88403,7 @@
             "description": "Support for the quickjs standard library"
           }
         },
-        "version": "0.15.0"
+        "version": "0.15.1"
       },
       "files": [
         "portfile.cmake",
@@ -88877,7 +88892,7 @@
       "name": "rappture",
       "manifest": {
         "name": "rappture",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Rappture is a toolkit supporting Rapid application infrastructure, making it quick and easy to develop powerful scientific applications.",
         "license": null,
         "dependencies": [
@@ -88896,6 +88911,7 @@
       },
       "files": [
         "CMakeLists.txt",
+        "fix_c++17.patch",
         "include_functional.patch",
         "portfile.cmake",
         "rappture.patch",
@@ -92637,6 +92653,7 @@
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org/download-2.0.php",
         "license": "Zlib",
@@ -93367,7 +93384,7 @@
             ]
           }
         },
-        "version": "3.2.2"
+        "version": "3.2.4"
       },
       "files": [
         "fluidsynth.diff",
@@ -95975,7 +95992,7 @@
       "name": "snappy",
       "manifest": {
         "name": "snappy",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A fast compressor/decompressor.",
         "homepage": "https://github.com/google/snappy",
         "license": null,
@@ -97480,7 +97497,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -97563,7 +97579,7 @@
             ]
           }
         },
-        "version": "3.53.1"
+        "version": "3.53.2"
       },
       "files": [
         "CMakeLists.txt",
@@ -100830,7 +100846,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -106459,7 +106475,7 @@
             "host": true
           }
         ],
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
