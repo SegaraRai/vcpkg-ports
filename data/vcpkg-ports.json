@@ -1,5 +1,5 @@
 {
-  "version": "2a934a0a7fa27f5a308c163432feffaa29fa88de",
+  "version": "cac7d29f246eb789a84004fbfc11bb00db1aa89b",
   "ports": [
     {
       "name": "3fd",
@@ -28561,7 +28561,7 @@
       "name": "ecal",
       "manifest": {
         "name": "ecal",
-        "port-version": 1,
+        "port-version": 2,
         "description": "eCAL - enhanced Communication Abstraction Layer",
         "homepage": "https://eclipse-ecal.github.io/ecal/",
         "license": "Apache-2.0",
@@ -48706,6 +48706,7 @@
       "name": "kineto",
       "manifest": {
         "name": "kineto",
+        "port-version": 1,
         "description": "Kineto: PyTorch profiler library (headers)",
         "homepage": "https://github.com/pytorch/kineto",
         "license": "BSD-3-Clause",
@@ -63504,6 +63505,30 @@
       ]
     },
     {
+      "name": "lttb",
+      "manifest": {
+        "name": "lttb",
+        "description": "C++ implementation of the Largest Triangle Three Buckets downsampling algorithm.",
+        "homepage": "https://github.com/parkertomatoes/lttb-cpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "lua",
       "manifest": {
         "name": "lua",
@@ -66576,7 +66601,6 @@
       "name": "mdl-sdk",
       "manifest": {
         "name": "mdl-sdk",
-        "port-version": 1,
         "description": "NVIDIA Material Definition Language SDK",
         "homepage": "https://github.com/NVIDIA/MDL-SDK",
         "license": "BSD-3-Clause",
@@ -66636,10 +66660,9 @@
             ]
           }
         },
-        "version": "2025.0.5"
+        "version": "2026.0.0"
       },
       "files": [
-        "fix_find_materialx.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -83179,6 +83202,31 @@
       ]
     },
     {
+      "name": "qe6502",
+      "manifest": {
+        "name": "qe6502",
+        "description": "Cycle-oriented MOS 6502/65C02 CPU emulation core with C and C++ APIs",
+        "homepage": "https://github.com/nnqe/qe6502",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "qgis-o2",
       "manifest": {
         "name": "qgis-o2",
@@ -89777,6 +89825,7 @@
       "name": "redisx",
       "manifest": {
         "name": "redisx",
+        "port-version": 1,
         "description": "A free and independent Redis / Valkey client library for C/C++",
         "homepage": "https://sigmyne.github.io/redisx/",
         "documentation": "https://sigmyne.github.io/redisx/doc/html/",
@@ -89806,6 +89855,7 @@
         "version": "1.0.4"
       },
       "files": [
+        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -90996,6 +91046,7 @@
       "name": "rocksdb",
       "manifest": {
         "name": "rocksdb",
+        "port-version": 1,
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/facebook/rocksdb",
         "license": "GPL-2.0-only OR Apache-2.0",
@@ -95426,9 +95477,20 @@
         "description": "Cross-platform C++ library providing a simple API to read and write INI-style configuration files",
         "homepage": "https://github.com/brofield/simpleini",
         "license": "MIT",
-        "version": "4.25"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "4.26"
       },
       "files": [
+        "disable-tests.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
