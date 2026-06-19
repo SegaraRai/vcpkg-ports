@@ -1,5 +1,5 @@
 {
-  "version": "a4676fa5be1d5e94250745b4614d5d2a9034290b",
+  "version": "36393d1ca008d0086488a9041afac26ed3b8edb9",
   "ports": [
     {
       "name": "3fd",
@@ -6210,7 +6210,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.11"
+        "version-semver": "1.0.0-beta.13"
       },
       "files": [
         "portfile.cmake",
@@ -7864,7 +7864,7 @@
             ]
           }
         },
-        "version": "3.1.3"
+        "version": "3.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -19074,7 +19074,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -20059,9 +20059,10 @@
             ]
           }
         },
-        "version": "6.1.2"
+        "version": "6.2"
       },
       "files": [
+        "CGAL-6.2.0-gdb_autoload.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -22109,7 +22110,7 @@
             ]
           }
         },
-        "version": "4.0.5"
+        "version": "4.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -24031,7 +24032,7 @@
       "name": "ctbench",
       "manifest": {
         "name": "ctbench",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Compiler-assisted variable size benchmarking for the study of C++ metaprogram compile times.",
         "homepage": "https://github.com/JPenuchot/ctbench",
         "documentation": "https://jpenuchot.github.io/ctbench-docs/",
@@ -24059,6 +24060,7 @@
         "version": "1.3.4"
       },
       "files": [
+        "fix-fmt-header.patch",
         "fix_build_with_boost_1_88_0.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -26105,6 +26107,7 @@
       "name": "dcmtk",
       "manifest": {
         "name": "dcmtk",
+        "port-version": 1,
         "description": "This DICOM ToolKit (DCMTK) package consists of source code, documentation and installation instructions for a set of software libraries and applications implementing part of the DICOM/MEDICOM Standard.",
         "homepage": "https://github.com/DCMTK/dcmtk",
         "license": null,
@@ -26183,6 +26186,7 @@
         "dependencies.diff",
         "dictionary_paths.patch",
         "disable-test-setup.diff",
+        "emscripten-ofwhere.diff",
         "msvc.diff",
         "pkgconfig-lib-order.diff",
         "portfile.cmake",
@@ -30460,6 +30464,7 @@
       "name": "fbthrift",
       "manifest": {
         "name": "fbthrift",
+        "port-version": 1,
         "description": "Facebook's branch of Apache Thrift, including a new C++ server.",
         "homepage": "https://github.com/facebook/fbthrift",
         "license": "Apache-2.0",
@@ -30495,6 +30500,7 @@
       },
       "files": [
         "fix-deps.patch",
+        "fix-fmt-header.patch",
         "fix-fmt-include.patch",
         "fix-test.patch",
         "folly-has-liburing.diff",
@@ -30603,7 +30609,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31351,7 +31356,7 @@
             ]
           }
         },
-        "version": "8.1.1"
+        "version": "8.1.2"
       },
       "files": [
         "0002-fix-msvc-link.patch",
@@ -31362,7 +31367,6 @@
         "0013-define-WINVER.patch",
         "0024-fix-osx-host-c11.patch",
         "0040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch",
-        "0042-fix-arm64-linux.patch",
         "0045-use-prebuilt-bin2c.patch",
         "0046-fix-msvc-detection.patch",
         "0047-fix-msvc-utf8.patch",
@@ -32497,7 +32501,7 @@
             "host": true
           }
         ],
-        "version": "12.1.0"
+        "version": "12.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -32509,7 +32513,7 @@
       "name": "folly",
       "manifest": {
         "name": "folly",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An open-source C++ library developed and used at Facebook. The library is UNSTABLE on Windows",
         "homepage": "https://github.com/facebook/folly",
         "license": "Apache-2.0",
@@ -32612,6 +32616,7 @@
       "files": [
         "disable-uninitialized-resize-on-new-stl.patch",
         "fix-deps.patch",
+        "fix-fmt-header.patch",
         "fix-perf_scoped-target.patch",
         "fix-unistd-include.patch",
         "portfile.cmake",
@@ -44330,6 +44335,7 @@
       "name": "irsdkcpp",
       "manifest": {
         "name": "irsdkcpp",
+        "port-version": 1,
         "description": "iRacing Modern C++ SDK",
         "license": "MIT",
         "supports": "windows & !uwp & x64",
@@ -44378,6 +44384,7 @@
         "version": "1.0.9"
       },
       "files": [
+        "fix-format-header.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -52146,6 +52153,7 @@
       "name": "libenvpp",
       "manifest": {
         "name": "libenvpp",
+        "port-version": 1,
         "description": "A modern C++ library for type-safe environment variable parsing",
         "homepage": "https://github.com/ph3at/libenvpp",
         "license": "Apache-2.0",
@@ -52165,6 +52173,7 @@
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-fmt-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61931,7 +61940,7 @@
             ]
           }
         },
-        "version": "9.7.0"
+        "version": "9.8.0"
       },
       "files": [
         "cross-builds.diff",
@@ -63507,9 +63516,10 @@
           },
           "xxhash"
         ],
-        "version": "2.6.2"
+        "version": "2.6.3"
       },
       "files": [
+        "fix-version.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -73913,7 +73923,7 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later",
@@ -73955,6 +73965,7 @@
       },
       "files": [
         "devendor-fmt.diff",
+        "fix-fmt-header.patch",
         "pkgconfig-cxx.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -74028,6 +74039,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
+        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -79076,7 +79088,7 @@
       "name": "paraview",
       "manifest": {
         "name": "paraview",
-        "port-version": 6,
+        "port-version": 7,
         "description": "VTK-based Data Analysis and Visualization Application",
         "homepage": "https://www.paraview.org/",
         "license": "BSD-3-Clause",
@@ -79182,6 +79194,7 @@
         "explicit_int_cast_2.patch",
         "fix-build.patch",
         "fix-configure.patch",
+        "fix-fmt-header.patch",
         "plugin.patch",
         "portfile.cmake",
         "protobuf-version.patch",
@@ -92670,7 +92683,7 @@
       "name": "saucer",
       "manifest": {
         "name": "saucer",
-        "port-version": 7,
+        "port-version": 8,
         "description": "Next-gen desktop apps with web-frontend in C++",
         "homepage": "https://saucer.github.io/",
         "license": "MIT",
@@ -92704,6 +92717,7 @@
       "files": [
         "0001-use-local-packages.patch",
         "0002-fix-glaze-opts.patch",
+        "0003-fix-fmt-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92990,6 +93004,7 @@
       "name": "sdflib",
       "manifest": {
         "name": "sdflib",
+        "port-version": 1,
         "description": "Library for accelerating the queries of signed distance fields from triangle meshes.",
         "homepage": "https://github.com/UPC-ViRVIG/SdfLib",
         "license": "MIT",
@@ -93009,6 +93024,7 @@
         "version-date": "2025-11-03"
       },
       "files": [
+        "fix-missing-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94425,7 +94441,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.15.0"
+        "version": "0.15.1"
       },
       "files": [
         "fix-cmake4.patch",
@@ -100214,6 +100230,7 @@
         "documentation": "https://sigmyne.github.io/SuperNOVAS/doc/html/",
         "license": "Unlicense",
         "dependencies": [
+          "curl",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -100234,9 +100251,10 @@
             ]
           }
         },
-        "version": "1.6.0"
+        "version": "1.7.1"
       },
       "files": [
+        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -100689,7 +100707,7 @@
             "supports": "!static & !osx & !uwp"
           }
         },
-        "version": "2022.3.0"
+        "version": "2023.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -104316,6 +104334,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
@@ -104395,6 +104414,7 @@
         "008-fix_clang8_compiler_error.patch",
         "009-vcpkg_install_folder_conventions.patch",
         "010-cmake_export_plugin_as_modules.patch",
+        "011-fix-tbb2023-task-api.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -104943,6 +104963,7 @@
       "name": "vanillapdf",
       "manifest": {
         "name": "vanillapdf",
+        "port-version": 1,
         "description": "Vanilla.PDF is a cross-platform SDK for creating and modifying PDF documents.",
         "homepage": "https://github.com/vanillapdf/vanillapdf",
         "documentation": "https://vanillapdf.github.io/vanillapdf",
@@ -104967,6 +104988,7 @@
       },
       "files": [
         "disable-autosubscribe.diff",
+        "fix-missing-header.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -106137,6 +106159,7 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
+        "port-version": 1,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -106167,6 +106190,7 @@
       },
       "files": [
         "fix-android-build.patch",
+        "fix-fmt-header.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -106436,7 +106460,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 16,
+        "port-version": 17,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -106809,6 +106833,7 @@
         "ffmpeg.diff",
         "fix-eigen3.patch",
         "fix-exprtk.patch",
+        "fix-fmt-header.patch",
         "fix-gdal.patch",
         "fix-tbbsmptool.patch",
         "fix-using-hdf5.patch",
