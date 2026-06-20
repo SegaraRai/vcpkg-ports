@@ -1,5 +1,5 @@
 {
-  "version": "36393d1ca008d0086488a9041afac26ed3b8edb9",
+  "version": "a0b1c8d3a477c1cb4813d8e127a56961707ca42b",
   "ports": [
     {
       "name": "3fd",
@@ -21024,6 +21024,7 @@
       "name": "clickhouse-cpp",
       "manifest": {
         "name": "clickhouse-cpp",
+        "port-version": 1,
         "description": "C++ client for Yandex ClickHouse",
         "homepage": "https://github.com/ClickHouse/clickhouse-cpp",
         "license": "Apache-2.0",
@@ -21050,7 +21051,8 @@
       "files": [
         "fix-deps-and-build-type.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "werror.patch"
       ]
     },
     {
@@ -75446,7 +75448,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -75501,6 +75503,10 @@
           "quirc",
           "thread",
           "tiff",
+          {
+            "name": "v4l",
+            "platform": "linux"
+          },
           "webp",
           {
             "name": "win32ui",
@@ -75932,6 +75938,10 @@
                 "default-features": false
               }
             ]
+          },
+          "v4l": {
+            "description": "Video4Linux support for opencv",
+            "supports": "linux"
           },
           "vtk": {
             "description": "vtk support for opencv",
@@ -100278,6 +100288,7 @@
       "name": "svt-av1",
       "manifest": {
         "name": "svt-av1",
+        "port-version": 1,
         "description": "AV1 software video encoder library",
         "homepage": "https://gitlab.com/AOMediaCodec/SVT-AV1",
         "license": "BSD-3-Clause",
@@ -100293,6 +100304,7 @@
       },
       "files": [
         "no-force-llvm.diff",
+        "no-inline-yy_unpacklo_epi128.diff",
         "no-safestringlib.diff",
         "portfile.cmake",
         "unvendor-fastfeat.diff",
@@ -107680,7 +107692,6 @@
       "name": "wayland-protocols",
       "manifest": {
         "name": "wayland-protocols",
-        "port-version": 1,
         "description": "wayland-protocols contains Wayland protocols that add functionality not available in the Wayland core protocol.",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
@@ -107714,7 +107725,7 @@
             ]
           }
         },
-        "version": "1.48"
+        "version": "1.49"
       },
       "files": [
         "cross-build.diff",
@@ -111606,7 +111617,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.11.0"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
