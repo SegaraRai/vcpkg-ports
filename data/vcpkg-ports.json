@@ -1,5 +1,5 @@
 {
-  "version": "74a896d035ae4a333e7404d510aede88acea4e41",
+  "version": "7b4a20365d03a5343144850c7454ef9e22992474",
   "ports": [
     {
       "name": "3fd",
@@ -7452,14 +7452,11 @@
             "description": "Enables the support for extracting files matching regular expressions"
           }
         },
-        "version": "4.0.12"
+        "version": "4.1.0"
       },
       "files": [
-        "fix_compile_options.patch",
-        "fix_dependency.patch",
-        "fix_install.patch",
+        "fix_dependencies.patch",
         "portfile.cmake",
-        "unofficial-bit7z-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -20362,7 +20359,7 @@
             ]
           }
         },
-        "version": "2.1.3"
+        "version": "2.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -20737,7 +20734,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.8"
+        "version-semver": "1.2.9"
       },
       "files": [
         "portfile.cmake",
@@ -21699,7 +21696,7 @@
           },
           {
             "name": "slick-net",
-            "version>=": "2.1.0"
+            "version>=": "3.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -21710,7 +21707,7 @@
             "host": true
           }
         ],
-        "version": "0.3.0"
+        "version": "1.0.0"
       },
       "files": [
         "disable-config-fetchcontent-fallback.patch",
@@ -22638,7 +22635,7 @@
             ]
           }
         },
-        "version": "0.47.0"
+        "version": "0.48.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22833,7 +22830,7 @@
             "host": true
           }
         ],
-        "version": "1.1.13"
+        "version": "1.1.14"
       },
       "files": [
         "portfile.cmake",
@@ -28926,7 +28923,7 @@
             "host": true
           }
         ],
-        "version": "1.6.2"
+        "version": "1.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -29482,7 +29479,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.16.5"
+        "version": "0.16.7"
       },
       "files": [
         "portfile.cmake",
@@ -41325,6 +41322,12 @@
               "quirc"
             ]
           },
+          "llama": {
+            "description": "Enable llama support",
+            "dependencies": [
+              "llama-cpp"
+            ]
+          },
           "log": {
             "description": "Enable log support",
             "dependencies": [
@@ -41421,6 +41424,12 @@
               "hidapi"
             ]
           },
+          "vector-index": {
+            "description": "Enable vector database support",
+            "dependencies": [
+              "faiss"
+            ]
+          },
           "xml": {
             "description": "Enable XML support",
             "dependencies": [
@@ -41440,11 +41449,10 @@
             ]
           }
         },
-        "version": "1.0.7"
+        "version": "1.0.9"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -44215,7 +44223,7 @@
             "host": true
           }
         ],
-        "version": "1.12"
+        "version": "1.13"
       },
       "files": [
         "portfile.cmake",
@@ -48529,6 +48537,63 @@
       ]
     },
     {
+      "name": "kf6-solid",
+      "manifest": {
+        "name": "kf6-solid",
+        "description": "Desktop hardware abstraction",
+        "homepage": "https://invent.kde.org/frameworks/solid",
+        "documentation": "https://api.kde.org/solid-index.html",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "libmount",
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "imobile": {
+            "description": "Used by the imobile backend",
+            "dependencies": [
+              "libimobiledevice",
+              "libplist"
+            ]
+          },
+          "translations": {
+            "description": "Build and install translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.25.0"
+      },
+      "files": [
+        "001_fix_imobile.patch",
+        "002_fix_cpufeatures_arm64_msvc.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kfr",
       "manifest": {
         "name": "kfr",
@@ -49125,7 +49190,7 @@
         "description": "Very fast, high-quality hash function, discrete-incremental and streamed hashing-capable",
         "homepage": "https://github.com/avaneev/komihash",
         "license": "MIT",
-        "version": "5.28"
+        "version": "5.29"
       },
       "files": [
         "portfile.cmake",
@@ -49252,7 +49317,7 @@
             "host": true
           }
         ],
-        "version": "0.3.7"
+        "version": "0.3.14"
       },
       "files": [
         "disable-werror.patch",
@@ -52154,7 +52219,6 @@
       "name": "libenvpp",
       "manifest": {
         "name": "libenvpp",
-        "port-version": 1,
         "description": "A modern C++ library for type-safe environment variable parsing",
         "homepage": "https://github.com/ph3at/libenvpp",
         "license": "Apache-2.0",
@@ -52170,11 +52234,10 @@
             "host": true
           }
         ],
-        "version": "1.5.2"
+        "version": "1.5.3"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-fmt-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52505,7 +52568,7 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "2.5.1"
+        "version-semver": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -52529,7 +52592,7 @@
             "host": true
           }
         ],
-        "version": "3.5.2"
+        "version": "3.6.0"
       },
       "files": [
         "dll-bindir.diff",
@@ -56751,7 +56814,7 @@
             "host": true
           }
         ],
-        "version": "9.0.32"
+        "version": "9.0.33"
       },
       "files": [
         "disable-werror.patch",
@@ -57499,7 +57562,7 @@
             ]
           }
         },
-        "version": "2.14.1"
+        "version": "2.14.2"
       },
       "files": [
         "fix_oauthbearer_check.patch",
@@ -63517,10 +63580,9 @@
           },
           "xxhash"
         ],
-        "version": "2.6.3"
+        "version": "2.6.4"
       },
       "files": [
-        "fix-version.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -63880,7 +63942,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-05-29"
+        "version-date": "2026-06-16"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -63969,7 +64031,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.725"
+        "version": "0.726"
       },
       "files": [
         "cmake-config-export.patch",
@@ -64171,7 +64233,7 @@
         "description": "Fast In-Memory Data Compression Algorithm (inline C/C++)",
         "homepage": "https://github.com/avaneev/lzav",
         "license": "MIT",
-        "version": "5.8"
+        "version": "5.9"
       },
       "files": [
         "portfile.cmake",
@@ -67318,7 +67380,7 @@
             "description": "build header only cpp bindings"
           }
         },
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
         "export-cmake.patch",
@@ -70007,7 +70069,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.12.0"
+        "version-semver": "2.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -72215,7 +72277,7 @@
             "host": true
           }
         ],
-        "version": "4.5.1"
+        "version": "4.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -75447,7 +75509,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -76453,7 +76515,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.28.1"
+        "version": "0.30.1"
       },
       "files": [
         "portfile.cmake",
@@ -77934,7 +77996,7 @@
             ]
           }
         },
-        "version": "5.3.0"
+        "version": "5.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -92308,7 +92370,6 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
-        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -92345,11 +92406,19 @@
           "avif": {
             "description": "Enable AVIF codec",
             "dependencies": [
-              "libavif"
+              {
+                "name": "libavif",
+                "features": [
+                  "aom"
+                ]
+              }
             ]
           },
           "bmp": {
             "description": "Enable BMP codec"
+          },
+          "fli": {
+            "description": "Enable FLI codec"
           },
           "gif": {
             "description": "Enable GIF codec",
@@ -92443,6 +92512,7 @@
               {
                 "name": "sail",
                 "features": [
+                  "fli",
                   "jbig",
                   "pcx",
                   "wal",
@@ -92454,7 +92524,7 @@
             ]
           },
           "medium-priority-codecs": {
-            "description": "Enable medium priority codecs such as AVIF",
+            "description": "Enable medium priority codecs such as TIFF",
             "dependencies": [
               {
                 "name": "sail",
@@ -92462,7 +92532,9 @@
                   "heif",
                   "openexr",
                   "psd",
-                  "tiff"
+                  "raw",
+                  "tiff",
+                  "video"
                 ]
               }
             ]
@@ -92494,10 +92566,27 @@
           "qoi": {
             "description": "Enable QOI codec"
           },
+          "raw": {
+            "description": "Enable RAW codec",
+            "dependencies": [
+              "libraw"
+            ]
+          },
           "svg": {
             "description": "Enable SVG codec",
             "dependencies": [
               "nanosvg"
+            ]
+          },
+          "test": {
+            "description": "Build and run tests",
+            "dependencies": [
+              {
+                "name": "sail",
+                "features": [
+                  "all"
+                ]
+              }
             ]
           },
           "tga": {
@@ -92509,6 +92598,20 @@
               {
                 "name": "tiff",
                 "default-features": false
+              }
+            ]
+          },
+          "video": {
+            "description": "Enable VIDEO codec",
+            "dependencies": [
+              {
+                "name": "ffmpeg",
+                "features": [
+                  "avcodec",
+                  "avformat",
+                  "swresample",
+                  "swscale"
+                ]
               }
             ]
           },
@@ -92531,12 +92634,12 @@
             "description": "Enable XWD codec"
           }
         },
-        "version-semver": "0.9.10"
+        "version-semver": "1.0.3"
       },
       "files": [
+        "fix-always-nanosvg.diff",
         "fix-heif.patch",
         "fix-include-directory.patch",
-        "no-binary-dependencies-install.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -92747,7 +92850,7 @@
             "host": true
           }
         ],
-        "version": "5.6.2730"
+        "version": "5.7.626"
       },
       "files": [
         "portfile.cmake",
@@ -92872,7 +92975,7 @@
             "description": "Add sciter-webview support"
           }
         },
-        "version": "6.0.4.4"
+        "version": "6.0.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -96214,27 +96317,39 @@
         "dependencies": [
           {
             "name": "boost-asio",
-            "version>=": "1.83.0"
+            "version>=": "1.84.0#1"
           },
           {
             "name": "boost-beast",
-            "version>=": "1.83.0"
+            "version>=": "1.84.0#1"
           },
           {
             "name": "boost-context",
-            "version>=": "1.83.0"
+            "version>=": "1.84.0#1"
           },
           {
             "name": "boost-system",
-            "version>=": "1.83.0"
+            "version>=": "1.84.0#1"
           },
           {
             "name": "openssl",
             "version>=": "3.0.2"
           },
           {
+            "name": "slick-dynamic-buffer",
+            "version>=": "1.0.1"
+          },
+          {
             "name": "slick-queue",
-            "version>=": "1.4.1"
+            "version>=": "1.5.0"
+          },
+          {
+            "name": "slick-stream-buffer",
+            "version>=": "1.0.5"
+          },
+          {
+            "name": "slick-stream-buffer-multiplexer",
+            "version>=": "1.0.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -96245,12 +96360,11 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "3.0.0"
       },
       "files": [
         "portfile.cmake",
-        "slick-queue.patch",
-        "usage",
+        "slick-dependencies.patch",
         "vcpkg.json"
       ]
     },
@@ -96446,7 +96560,7 @@
           },
           {
             "name": "slick-net",
-            "version>=": "2.1.0"
+            "version>=": "3.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -96457,7 +96571,7 @@
             "host": true
           }
         ],
-        "version": "0.1.2"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -100437,6 +100551,58 @@
       ]
     },
     {
+      "name": "syntax-highlighting",
+      "manifest": {
+        "name": "syntax-highlighting",
+        "description": "Syntax highlighting engine for Kate syntax definitions",
+        "homepage": "https://invent.kde.org/frameworks/syntax-highlighting",
+        "documentation": "https://api.kde.org/ksyntaxhighlighting-index.html",
+        "supports": "!android & !(windows & arm64)",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "qttools",
+            "host": true,
+            "default-features": false,
+            "features": [
+              "linguist"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.25.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "syscalls-cpp",
       "manifest": {
         "name": "syscalls-cpp",
@@ -101451,7 +101617,7 @@
             "host": true
           }
         ],
-        "version": "2.0"
+        "version": "2.1"
       },
       "files": [
         "portfile.cmake",
@@ -103750,6 +103916,7 @@
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          "cjson",
           {
             "name": "curl",
             "default-features": false
@@ -103763,10 +103930,11 @@
             "host": true
           }
         ],
-        "version": "1.2.2"
+        "version": "1.2.6"
       },
       "files": [
         "portfile.cmake",
+        "use-vcpkg-cjson.patch",
         "vcpkg.json"
       ]
     },
@@ -104118,11 +104286,10 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.5.4"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -109777,7 +109944,7 @@
             "supports": "!static"
           }
         },
-        "version": "1.3.11"
+        "version": "1.3.12"
       },
       "files": [
         "CMakeLists.txt",
