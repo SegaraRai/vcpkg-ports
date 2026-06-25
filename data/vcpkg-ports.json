@@ -1,5 +1,5 @@
 {
-  "version": "7b4a20365d03a5343144850c7454ef9e22992474",
+  "version": "cd61e1e26a038e82d6550a3ebbe0fbbfe7da78e3",
   "ports": [
     {
       "name": "3fd",
@@ -21960,7 +21960,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0"
+        "version-semver": "3.0.7"
       },
       "files": [
         "copyright",
@@ -22545,7 +22545,10 @@
             "platform": "linux | android"
           },
           "nlohmann-json",
-          "sqlite3",
+          {
+            "name": "sqlite3",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22556,7 +22559,7 @@
           },
           "zlib"
         ],
-        "version": "3.10.161.1"
+        "version": "3.10.173.1"
       },
       "files": [
         "portfile.cmake",
@@ -24370,7 +24373,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 2,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -24619,7 +24621,7 @@
             ]
           }
         },
-        "version": "8.20.0"
+        "version": "8.21.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -27025,35 +27027,6 @@
       ]
     },
     {
-      "name": "discordcoreapi",
-      "manifest": {
-        "name": "discordcoreapi",
-        "description": "A Discord bot library written in C++ using custom asynchronous coroutines.",
-        "homepage": "https://discordcoreapi.com",
-        "license": "MIT",
-        "supports": "(windows & x64 & !xbox) | (linux & x64) | (osx & x64)",
-        "dependencies": [
-          "jsonifier",
-          "libsodium",
-          "openssl",
-          "opus",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "2.0.8"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "discount",
       "manifest": {
         "name": "discount",
@@ -28120,10 +28093,9 @@
             "description": "Build CLI utilities"
           }
         },
-        "version": "2.0.2"
+        "version": "2.0.3"
       },
       "files": [
-        "0001-support-eigen3-5.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -29937,7 +29909,7 @@
             ]
           }
         },
-        "version": "1.14.1"
+        "version": "1.14.3"
       },
       "files": [
         "msvc-template.diff",
@@ -35707,7 +35679,7 @@
             ]
           }
         },
-        "version": "7.8.2"
+        "version": "7.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -45469,7 +45441,7 @@
             "host": true
           }
         ],
-        "version": "0.9.98"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -50658,7 +50630,6 @@
       "name": "libass",
       "manifest": {
         "name": "libass",
-        "port-version": 1,
         "description": "libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format",
         "homepage": "https://github.com/libass/libass",
         "license": "ISC",
@@ -50675,7 +50646,7 @@
             "host": true
           }
         ],
-        "version": "0.17.4"
+        "version": "0.17.5"
       },
       "files": [
         "arm64-windows-asm.patch",
@@ -51127,7 +51098,7 @@
             "host": true
           }
         ],
-        "version": "2.77"
+        "version": "2.78"
       },
       "files": [
         "configure",
@@ -68417,7 +68388,7 @@
             ]
           }
         },
-        "version": "7.21"
+        "version": "7.22"
       },
       "files": [
         "CMakeLists.txt",
@@ -70269,7 +70240,7 @@
         "name": "nanoprintf",
         "description": "A tiny embeddable printf replacement written in C99",
         "homepage": "https://github.com/charlesnicholson/nanoprintf",
-        "version": "0.6.0"
+        "version": "0.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -91891,7 +91862,7 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -94552,7 +94523,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.15.1"
+        "version": "0.15.2"
       },
       "files": [
         "fix-cmake4.patch",
@@ -94810,10 +94781,11 @@
       "name": "sfcgal",
       "manifest": {
         "name": "sfcgal",
+        "port-version": 1,
         "description": "sfcgal is a C++ wrapper library around CGAL with the aim of supporting ISO 191007:2013 and OGC Simple Features for 3D operations.",
         "homepage": "https://gitlab.com/SFCGAL/SFCGAL",
         "license": "LGPL-2.0-or-later",
-        "supports": "(x64 & (windows | osx | linux)) | (arm64 & osx)",
+        "supports": "(x64 | arm64) & (linux | windows | osx)",
         "dependencies": [
           "cgal",
           "eigen3",
@@ -96571,7 +96543,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "0.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -98282,6 +98254,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -98334,6 +98307,9 @@
           },
           "omit-load-extension": {
             "description": "Enable loading of external extensions"
+          },
+          "percentile": {
+            "description": "Enable the aggregate functions percentile, percentile_cont, percentile_disc, and median"
           },
           "rtree": {
             "description": "Enable the RTREE extension"
