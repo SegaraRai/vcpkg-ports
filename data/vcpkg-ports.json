@@ -1,5 +1,5 @@
 {
-  "version": "c8f45a069ad0266bc70e703c1252cb51506ddcaf",
+  "version": "a0400024711b283056538ac19ced80b91a83c24c",
   "ports": [
     {
       "name": "3fd",
@@ -829,12 +829,18 @@
           "rtti": {
             "description": "Build with run-time type information"
           },
+          "tinyxml2": {
+            "description": "Use system tinyxml2 for XML parsing",
+            "dependencies": [
+              "tinyxml2"
+            ]
+          },
           "winhttp": {
             "description": "WinHTTP transport (Windows only)",
             "supports": "windows"
           }
         },
-        "version": "0.1.0"
+        "version": "0.1.1"
       },
       "files": [
         "fix-unused-variables.patch",
@@ -3937,9 +3943,10 @@
       "name": "aws-c-common",
       "manifest": {
         "name": "aws-c-common",
+        "port-version": 1,
         "description": "AWS common library for C",
         "homepage": "https://github.com/awslabs/aws-c-common",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause AND MIT",
         "supports": "!(windows & arm32) & !uwp",
         "dependencies": [
           {
@@ -29668,7 +29675,7 @@
             "host": true
           }
         ],
-        "version": "2.8.1"
+        "version": "2.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -42580,10 +42587,9 @@
       "name": "htscodecs",
       "manifest": {
         "name": "htscodecs",
-        "port-version": 1,
         "description": "Custom compression for CRAM and others.",
         "homepage": "https://github.com/samtools/htscodecs",
-        "license": "MIT",
+        "license": null,
         "supports": "!windows",
         "dependencies": [
           {
@@ -42599,7 +42605,7 @@
             ]
           }
         },
-        "version": "1.6.6"
+        "version": "1.6.7"
       },
       "files": [
         "0001-no-tests.patch",
@@ -44771,10 +44777,9 @@
             ]
           }
         },
-        "version-semver": "12.0.0"
+        "version-semver": "12.0.1"
       },
       "files": [
-        "582.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68349,7 +68354,7 @@
             "host": true
           }
         ],
-        "version": "4.3.1"
+        "version": "4.4.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -108621,7 +108626,6 @@
       "name": "wolfssl",
       "manifest": {
         "name": "wolfssl",
-        "port-version": 1,
         "description": "TLS and Cryptographic library for many platforms",
         "homepage": "https://wolfssl.com",
         "license": "GPL-3.0-or-later",
@@ -108657,10 +108661,9 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.9.1"
+        "version": "5.9.2"
       },
       "files": [
-        "have-limits-h.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -108742,7 +108745,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "cmake.diff",
