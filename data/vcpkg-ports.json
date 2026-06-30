@@ -1,5 +1,5 @@
 {
-  "version": "a0400024711b283056538ac19ced80b91a83c24c",
+  "version": "fb67f8d52560208f80b08db2528631a73a6e0d0c",
   "ports": [
     {
       "name": "3fd",
@@ -311,11 +311,12 @@
             ]
           }
         },
-        "version": "8.0.5"
+        "version": "8.0.6"
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "zlib.patch"
       ]
     },
     {
@@ -7868,7 +7869,7 @@
             ]
           }
         },
-        "version": "3.1.4"
+        "version": "3.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -18580,7 +18581,7 @@
             "host": true
           }
         ],
-        "version": "1.12.4"
+        "version": "1.12.5"
       },
       "files": [
         "portfile.cmake",
@@ -25827,16 +25828,14 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20260623.191042"
+        "version": "20260624.223603"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
         "001-fix-windows-build.patch",
-        "002-fix-uwp.patch",
         "003-force-disable-cxx-module.patch",
         "004-deps.patch",
         "005-bsd-support.patch",
-        "007-fix-tint-null-only-writer.patch",
         "008-wrong-dxcapi-include.patch",
         "009-fix-tint-install.patch",
         "010-fix-glslang.patch",
@@ -41152,11 +41151,12 @@
       "name": "hamlib",
       "manifest": {
         "name": "hamlib",
+        "port-version": 1,
         "description": "Ham radio control library for rigs (radios), rotators, and amplifiers.",
         "homepage": "https://hamlib.github.io/",
         "documentation": "https://github.com/Hamlib/Hamlib/wiki/Documentation",
         "license": null,
-        "supports": "(!windows | mingw) & !android",
+        "supports": "!windows | mingw",
         "dependencies": [
           {
             "name": "vcpkg-make",
@@ -41846,7 +41846,7 @@
             ]
           }
         },
-        "version-semver": "0.11.9"
+        "version-semver": "0.11.10"
       },
       "files": [
         "portfile.cmake",
@@ -60361,7 +60361,6 @@
       "name": "libvpl",
       "manifest": {
         "name": "libvpl",
-        "port-version": 1,
         "description": "Intel Video Processing Library (oneVPL) dispatcher",
         "homepage": "https://github.com/intel/libvpl",
         "license": "MIT",
@@ -60376,7 +60375,7 @@
             "host": true
           }
         ],
-        "version": "2.16.0"
+        "version": "2.17.0"
       },
       "files": [
         "001-fix-pkgconfig.patch",
@@ -63556,7 +63555,7 @@
           },
           "xxhash"
         ],
-        "version": "2.6.4"
+        "version": "2.6.5"
       },
       "files": [
         "portfile.cmake",
@@ -71273,7 +71272,7 @@
             "host": true
           }
         ],
-        "version": "1.16.0"
+        "version": "1.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -71582,7 +71581,7 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version": "1.11"
+        "version": "1.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -71665,7 +71664,7 @@
             "host": true
           }
         ],
-        "version": "8.8.0"
+        "version": "8.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -83014,7 +83013,7 @@
             "host": true
           }
         ],
-        "version": "1.1.5"
+        "version": "1.2.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -91772,13 +91771,14 @@
             ]
           }
         },
-        "version": "0.23.2"
+        "version": "0.23.7"
       },
       "files": [
         "0001-cmakelists-fixes.patch",
         "0002-fix-link.patch",
         "0003-multi-definition.patch",
         "0004-remove-apple-sys-path.patch",
+        "0005-fix-report-without-qt.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -100327,6 +100327,7 @@
       "name": "supernovas",
       "manifest": {
         "name": "supernovas",
+        "port-version": 1,
         "description": "SuperNOVAS C/C++ high-precision astrometry library",
         "homepage": "https://sigmyne.github.io/SuperNOVAS/",
         "documentation": "https://sigmyne.github.io/SuperNOVAS/doc/html/",
@@ -100356,6 +100357,7 @@
         "version": "1.7.1"
       },
       "files": [
+        "gmtime_s.patch",
         "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -109292,7 +109294,6 @@
       "name": "x265",
       "manifest": {
         "name": "x265",
-        "port-version": 1,
         "description": "x265 is a H.265 / HEVC video encoder application library, designed to encode video or images into an H.265 / HEVC encoded bitstream.",
         "homepage": "https://bitbucket.org/multicoreware/x265_git/",
         "license": "GPL-2.0-or-later",
@@ -109309,12 +109310,12 @@
             "supports": "!uwp"
           }
         },
-        "version": "4.1"
+        "version": "4.2"
       },
       "files": [
+        "advapi32.patch",
         "compiler-target.diff",
         "disable-install-pdb.patch",
-        "fix-cmake-4.patch",
         "linkage.diff",
         "neon.diff",
         "pkgconfig.diff",
