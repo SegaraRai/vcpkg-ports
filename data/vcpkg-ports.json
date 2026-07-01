@@ -1,5 +1,5 @@
 {
-  "version": "fb67f8d52560208f80b08db2528631a73a6e0d0c",
+  "version": "a3aa8b347b1fb40c6983adeaa3a22733254413f7",
   "ports": [
     {
       "name": "3fd",
@@ -30585,6 +30585,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -32157,7 +32158,6 @@
       "name": "flint",
       "manifest": {
         "name": "flint",
-        "port-version": 1,
         "description": "Fast Library for Number Theory",
         "homepage": "https://www.flintlib.org/",
         "license": "GPL-3.0-only",
@@ -32186,7 +32186,7 @@
             "platform": "!windows"
           }
         ],
-        "version-semver": "3.5.0"
+        "version-semver": "3.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -38970,7 +38970,7 @@
             "host": true
           }
         ],
-        "version": "1.26.4"
+        "version": "1.26.11"
       },
       "files": [
         "portfile.cmake",
@@ -38981,7 +38981,6 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
         "license": "LGPL-2.0-only",
@@ -39874,7 +39873,7 @@
             ]
           }
         },
-        "version": "1.26.5"
+        "version": "1.26.11"
       },
       "files": [
         "duplicate-unused.diff",
@@ -59945,7 +59944,7 @@
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
-        "version": "2.14"
+        "version": "2.15"
       },
       "files": [
         "disable-tests-and-examples.patch",
@@ -60361,6 +60360,7 @@
       "name": "libvpl",
       "manifest": {
         "name": "libvpl",
+        "port-version": 1,
         "description": "Intel Video Processing Library (oneVPL) dispatcher",
         "homepage": "https://github.com/intel/libvpl",
         "license": "MIT",
@@ -60379,6 +60379,7 @@
       },
       "files": [
         "001-fix-pkgconfig.patch",
+        "002-fix-cmake-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61376,7 +61377,7 @@
             "host": true
           }
         ],
-        "version": "0.3.27"
+        "version": "0.3.28"
       },
       "files": [
         "portfile.cmake",
@@ -65662,7 +65663,7 @@
             "host": true
           }
         ],
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -67465,7 +67466,7 @@
             "host": true
           }
         ],
-        "version": "7.0.3"
+        "version": "7.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -71364,7 +71365,7 @@
             ]
           }
         },
-        "version": "1.23.0"
+        "version": "1.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -107193,7 +107194,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -107219,7 +107220,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -107281,7 +107282,7 @@
             "description": "Build Xlib WSI support"
           }
         },
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "link-directfb.patch",
@@ -107412,7 +107413,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -107437,7 +107438,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -107469,7 +107470,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "disable_vendored_phmap.diff",
@@ -107800,6 +107801,7 @@
       "name": "wayland",
       "manifest": {
         "name": "wayland",
+        "port-version": 1,
         "description": "Core Wayland window system code and protocol",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
@@ -107811,7 +107813,10 @@
               "Requires triplet variable X_VCPKG_FORCE_VCPKG_WAYLAND_LIBRARIES to be set."
             ],
             "dependencies": [
-              "expat",
+              {
+                "name": "expat",
+                "platform": "native"
+              },
               "libffi",
               {
                 "name": "vcpkg-tool-meson",
@@ -107821,10 +107826,22 @@
                 "name": "wayland",
                 "host": true,
                 "features": [
-                  "force-build"
-                ]
+                  "scanner"
+                ],
+                "platform": "!native"
               }
             ]
+          },
+          "scanner": {
+            "description": "Build the wayland-scanner host tool without building the Wayland libraries.",
+            "dependencies": [
+              "expat",
+              {
+                "name": "vcpkg-tool-meson",
+                "host": true
+              }
+            ],
+            "supports": "native"
           }
         },
         "version": "1.25.0"
@@ -107839,35 +107856,51 @@
       "name": "wayland-protocols",
       "manifest": {
         "name": "wayland-protocols",
+        "port-version": 1,
         "description": "wayland-protocols contains Wayland protocols that add functionality not available in the Wayland core protocol.",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
         "dependencies": [
-          "wayland"
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
         ],
         "features": {
           "force-build": {
             "description": [
-              "Build wayland libraries instead of depending on system ones.",
-              "Requires triplet variable X_VCPKG_FORCE_VCPKG_WAYLAND_LIBRARIES to be set."
+              "Generate protocol helper headers.",
+              "Use the wayland-scanner host tool from vcpkg."
             ],
             "dependencies": [
-              {
-                "name": "vcpkg-tool-meson",
-                "host": true
-              },
-              {
-                "name": "wayland",
-                "features": [
-                  "force-build"
-                ]
-              },
               {
                 "name": "wayland",
                 "host": true,
                 "features": [
-                  "force-build"
+                  "scanner"
                 ]
+              },
+              {
+                "name": "wayland-protocols",
+                "features": [
+                  "generated-headers"
+                ]
+              }
+            ]
+          },
+          "generated-headers": {
+            "description": [
+              "Generate protocol helper headers.",
+              "Requires the wayland-scanner host tool."
+            ],
+            "dependencies": [
+              {
+                "name": "wayland",
+                "host": true,
+                "features": [
+                  "scanner"
+                ],
+                "platform": "!windows & !osx & !android"
               }
             ]
           }
@@ -107875,7 +107908,7 @@
         "version": "1.49"
       },
       "files": [
-        "cross-build.diff",
+        "generated-headers-option.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
