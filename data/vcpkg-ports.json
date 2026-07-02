@@ -1,5 +1,5 @@
 {
-  "version": "a3aa8b347b1fb40c6983adeaa3a22733254413f7",
+  "version": "3b0889cf230111ed798c9f5c4511a87cdbdc21ea",
   "ports": [
     {
       "name": "3fd",
@@ -6900,7 +6900,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -22179,7 +22179,7 @@
             "host": true
           }
         ],
-        "version": "1.1.2"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -24381,6 +24381,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -41823,6 +41824,7 @@
       "name": "hdr-histogram",
       "manifest": {
         "name": "hdr-histogram",
+        "port-version": 1,
         "description": "'C' port of High Dynamic Range (HDR) Histogram",
         "homepage": "https://github.com/HdrHistogram/HdrHistogram_c",
         "license": "CC0-1.0",
@@ -41848,6 +41850,7 @@
         "version-semver": "0.11.10"
       },
       "files": [
+        "001-fix-pkgconfig.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -60303,6 +60306,102 @@
       ]
     },
     {
+      "name": "libvips",
+      "manifest": {
+        "name": "libvips",
+        "description": "libvips is a demand-driven, horizontally threaded image processing library.",
+        "homepage": "https://github.com/libvips/libvips",
+        "license": "LGPL-2.1-or-later",
+        "dependencies": [
+          "expat",
+          "glib",
+          {
+            "name": "glib",
+            "host": true
+          },
+          {
+            "name": "vcpkg-tool-meson",
+            "host": true
+          }
+        ],
+        "features": {
+          "cplusplus": {
+            "description": "Build C++ API."
+          },
+          "deprecated": {
+            "description": "Build deprecated components."
+          },
+          "exif": {
+            "description": "Build with exif support.",
+            "dependencies": [
+              "libexif"
+            ]
+          },
+          "fontconfig": {
+            "description": "Build with fontconfig support.",
+            "dependencies": [
+              "fontconfig",
+              "pango"
+            ]
+          },
+          "jpeg": {
+            "description": "Build with jpeg support.",
+            "dependencies": [
+              "libjpeg-turbo"
+            ]
+          },
+          "lcms": {
+            "description": "Build with lcms support.",
+            "dependencies": [
+              "lcms"
+            ]
+          },
+          "pangocairo": {
+            "description": "Build with pangocairo support.",
+            "dependencies": [
+              "cairo",
+              "pango"
+            ]
+          },
+          "png": {
+            "description": "Build with png support.",
+            "dependencies": [
+              "libpng"
+            ]
+          },
+          "rsvg": {
+            "description": "Build with rsvg support.",
+            "dependencies": [
+              "librsvg"
+            ]
+          },
+          "tiff": {
+            "description": "Build with tiff support.",
+            "dependencies": [
+              "tiff"
+            ]
+          },
+          "webp": {
+            "description": "Build with WebP support.",
+            "dependencies": [
+              "libwebp"
+            ]
+          },
+          "zlib": {
+            "description": "Build with zlib support.",
+            "dependencies": [
+              "zlib-ng"
+            ]
+          }
+        },
+        "version": "8.18.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libvmaf",
       "manifest": {
         "name": "libvmaf",
@@ -64053,7 +64152,7 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "disable-qtdeploy.patch",
@@ -71678,6 +71777,7 @@
       "name": "node-api-headers",
       "manifest": {
         "name": "node-api-headers",
+        "port-version": 1,
         "description": "NodeJS API for writing modules in C++",
         "homepage": "https://nodejs.org/api/addons.html",
         "license": "MIT",
@@ -97552,6 +97652,7 @@
       "name": "spdlog",
       "manifest": {
         "name": "spdlog",
+        "port-version": 1,
         "description": "Very fast, header-only/compiled, C++ logging library.",
         "homepage": "https://github.com/gabime/spdlog",
         "license": "MIT",
@@ -97804,7 +97905,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -97827,7 +97928,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "portfile.cmake",
@@ -97851,7 +97952,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "export-targets.patch",
@@ -97883,7 +97984,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.4.350.0"
+        "version": "1.4.350.1"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -98259,7 +98360,6 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -98345,7 +98445,7 @@
             ]
           }
         },
-        "version": "3.53.2"
+        "version": "3.53.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -101030,11 +101130,10 @@
             "description": "Install source-generator executables (tl-parser, generate_mtproto, etc.) required for cross-compilation"
           }
         },
-        "version": "1.8.64"
+        "version": "1.8.65"
       },
       "files": [
         "fix-cross-compile.patch",
-        "fix-pc.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -103340,7 +103439,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.9"
+        "version-semver": "0.26.10"
       },
       "files": [
         "portfile.cmake",
