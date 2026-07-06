@@ -1,5 +1,5 @@
 {
-  "version": "d87340acc46bdeda386037b38aca30136e667e47",
+  "version": "dfcb04008a5a9e038a4ae0d1af57909e30d21359",
   "ports": [
     {
       "name": "3fd",
@@ -611,7 +611,7 @@
             "supports": "!((x86 | arm64) & windows) & !android & !uwp & !xbox"
           }
         },
-        "version": "1.51.0"
+        "version": "1.52.0"
       },
       "files": [
         "patches/add-libuuid-vcpkg-support.patch",
@@ -2439,7 +2439,7 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2629,6 +2629,7 @@
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
         "0007-use-vcpkg-mimalloc.patch",
+        "0008-ostringstring.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -4162,7 +4163,7 @@
             "host": true
           }
         ],
-        "version": "0.2.6"
+        "version": "0.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -22673,7 +22674,7 @@
             ]
           }
         },
-        "version": "0.48.0"
+        "version": "0.49.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -34651,7 +34652,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -35714,7 +35715,7 @@
             ]
           }
         },
-        "version": "7.8.3"
+        "version": "7.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -35975,7 +35976,7 @@
           },
           "zlib"
         ],
-        "version": "2.88.0"
+        "version": "2.88.1"
       },
       "files": [
         "portfile.cmake",
@@ -36319,7 +36320,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 3,
+        "port-version": 4,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -36331,6 +36332,10 @@
           },
           {
             "name": "vcpkg-cmake-get-vars",
+            "host": true
+          },
+          {
+            "name": "vcpkg-make",
             "host": true
           }
         ],
@@ -42203,7 +42208,7 @@
             ]
           }
         },
-        "version": "2.6.5"
+        "version": "2.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -45213,7 +45218,7 @@
             "host": true
           }
         ],
-        "version": "0.18-20240915"
+        "version": "0.19-20260627"
       },
       "files": [
         "portfile.cmake",
@@ -55046,6 +55051,7 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
+        "port-version": 1,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -55065,6 +55071,10 @@
           {
             "name": "tre",
             "platform": "windows | mingw"
+          },
+          {
+            "name": "vcpkg-make",
+            "host": true
           }
         ],
         "features": {
@@ -86103,6 +86113,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86860,6 +86871,7 @@
         "use-shared-mime-info.patch",
         "use_inotify_on_freebsd.patch",
         "vcpkg.json",
+        "windeployqt-webengine-debug-resources.patch",
         "windeployqt.debug.bat"
       ]
     },
@@ -91238,7 +91250,7 @@
             "host": true
           }
         ],
-        "version": "4.7.1"
+        "version": "4.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -93031,6 +93043,30 @@
       "files": [
         "0001-static-lib.patch",
         "0002-static-crt.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "scinumtools3",
+      "manifest": {
+        "name": "scinumtools3",
+        "description": "SciNumTools3: C++ toolkit for unit-aware scientific computation with runtime expressions and validated parameters.",
+        "homepage": "https://github.com/vrtulka23/scinumtools3",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.5.11"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -101995,10 +102031,11 @@
             ]
           }
         },
-        "version": "4.7.1"
+        "version": "4.7.2"
       },
       "files": [
         "FindCMath.patch",
+        "jpeccodec.patch",
         "portfile.cmake",
         "prefer-config.diff",
         "usage",
