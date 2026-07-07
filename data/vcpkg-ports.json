@@ -1,5 +1,5 @@
 {
-  "version": "dfcb04008a5a9e038a4ae0d1af57909e30d21359",
+  "version": "42e4e33e1505c9f47b58c21e0f557c1571b751ee",
   "ports": [
     {
       "name": "3fd",
@@ -771,7 +771,7 @@
             ]
           }
         },
-        "version": "1.8.11"
+        "version": "1.8.12"
       },
       "files": [
         "portfile.cmake",
@@ -19249,9 +19249,8 @@
       "name": "calceph",
       "manifest": {
         "name": "calceph",
-        "port-version": 2,
         "description": "C library to access the binary planetary ephemeris files.",
-        "homepage": "https://www.imcce.fr/inpop/calceph/",
+        "homepage": "https://calceph.imcce.fr/",
         "documentation": "https://calceph.imcce.fr/docs/latest/html/c/index.html",
         "license": "CECILL-2.1 OR CECILL-B OR CECILL-C",
         "supports": "!uwp",
@@ -19265,11 +19264,10 @@
             "host": true
           }
         ],
-        "version": "4.0.5"
+        "version": "5.0.0"
       },
       "files": [
         "disable-gnu-source.diff",
-        "find-mathlib.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -22790,7 +22788,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.12.0"
+        "version": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -30392,7 +30390,7 @@
         "name": "faudio",
         "description": "FAudio - accuracy-focused XAudio reimplementation for open platforms",
         "homepage": "https://fna-xna.github.io/",
-        "license": "Zlib",
+        "license": "Zlib AND MIT",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -30409,7 +30407,7 @@
             "host": true
           }
         ],
-        "version": "26.6"
+        "version": "26.7"
       },
       "files": [
         "portfile.cmake",
@@ -35849,7 +35847,7 @@
         "name": "glib",
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
-        "license": "LGPL-2.1-or-later",
+        "license": "LGPL-2.1-or-later AND (LGPL-2.1-only OR MPL-1.1)",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "dirent",
@@ -35884,7 +35882,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.88.1"
+        "version": "2.88.2"
       },
       "files": [
         "libintl.patch",
@@ -38956,29 +38954,6 @@
       "files": [
         "portfile.cmake",
         "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gsoap",
-      "manifest": {
-        "name": "gsoap",
-        "port-version": 2,
-        "description": "The gSOAP toolkit is a C and C++ software development toolkit for SOAP and REST XML Web services and generic C/C++ XML data bindings.",
-        "homepage": "https://sourceforge.net/projects/gsoap2/",
-        "supports": "!(linux | osx | arm | uwp)",
-        "dependencies": [
-          {
-            "name": "vcpkg-msbuild",
-            "host": true,
-            "platform": "windows"
-          }
-        ],
-        "version": "2.8.112"
-      },
-      "files": [
-        "fix-build-in-windows.patch",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -45331,32 +45306,6 @@
       ]
     },
     {
-      "name": "json-spirit",
-      "manifest": {
-        "name": "json-spirit",
-        "port-version": 5,
-        "description": "A C++ JSON parser/generator implemented with Boost Spirit",
-        "dependencies": [
-          "boost-config",
-          "boost-integer",
-          "boost-smart-ptr",
-          "boost-spirit",
-          "boost-variant",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "4.1.0"
-      },
-      "files": [
-        "Fix-link-error-C1128.patch",
-        "dll-wins.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "json11",
       "manifest": {
         "name": "json11",
@@ -49839,6 +49788,7 @@
       "name": "lcms",
       "manifest": {
         "name": "lcms",
+        "port-version": 1,
         "description": "Little CMS.",
         "homepage": "https://github.com/mm2/Little-CMS",
         "license": "MIT",
@@ -60246,7 +60196,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.23.0"
+        "version": "2.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -64051,7 +64001,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-06-16"
+        "version-date": "2026-06-29"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -71962,39 +71912,6 @@
       ]
     },
     {
-      "name": "nrf-ble-driver",
-      "manifest": {
-        "name": "nrf-ble-driver",
-        "port-version": 2,
-        "description": "BLE driver is a library for Bluetooth Low Energy communication using Nordic Semiconductor development kits.",
-        "homepage": "https://github.com/NordicSemiconductor/pc-ble-driver",
-        "license": "BSD-3-Clause",
-        "supports": "!uwp",
-        "dependencies": [
-          "asio",
-          "cli11",
-          "spdlog",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "4.1.4"
-      },
-      "files": [
-        "001-arm64-support.patch",
-        "add-include-chrono.patch",
-        "gcc-11.2.0-compilation.patch",
-        "portfile.cmake",
-        "support-arm64-osx.diff",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "nspr",
       "manifest": {
         "name": "nspr",
@@ -76187,42 +76104,6 @@
       ]
     },
     {
-      "name": "opendnp3",
-      "manifest": {
-        "name": "opendnp3",
-        "description": "DNP3 (IEEE-1815) protocol stack. Modern C++ with bindings for .NET and Java.",
-        "homepage": "https://github.com/dnp3/opendnp3/",
-        "license": "Apache-2.0",
-        "supports": "!uwp",
-        "dependencies": [
-          "asio",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "features": {
-          "tls": {
-            "description": "Build TLS client/server support",
-            "dependencies": [
-              "openssl"
-            ]
-          }
-        },
-        "version": "3.1.2"
-      },
-      "files": [
-        "deps/asio.cmake",
-        "opendnp3-config.cmake.in",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "openexr",
       "manifest": {
         "name": "openexr",
@@ -76248,7 +76129,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.12"
+        "version": "3.4.13"
       },
       "files": [
         "portfile.cmake",
@@ -79037,7 +78918,7 @@
             "supports": "!static"
           }
         },
-        "version": "1.57.1"
+        "version": "1.58.0"
       },
       "files": [
         "portfile.cmake",
@@ -94688,7 +94569,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.15.2"
+        "version": "0.15.3"
       },
       "files": [
         "fix-cmake4.patch",
@@ -94831,86 +94712,6 @@
         "dependencies.diff",
         "hardcoded-msvc-versions.diff",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sese",
-      "manifest": {
-        "name": "sese",
-        "port-version": 3,
-        "description": "A cross-platform framework for basic components.",
-        "homepage": "https://github.com/libsese/sese",
-        "license": "Apache-2.0",
-        "supports": "x64 & (windows | osx | linux) & !uwp",
-        "dependencies": [
-          {
-            "name": "asio",
-            "features": [
-              "openssl"
-            ]
-          },
-          "openssl",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "zlib"
-        ],
-        "default-features": [
-          "sqlite3"
-        ],
-        "features": {
-          "archive": {
-            "description": "add archive support",
-            "dependencies": [
-              "libarchive"
-            ]
-          },
-          "async-logger": {
-            "description": "use the async logger"
-          },
-          "mysql": {
-            "description": "add mysql and mariadb support",
-            "dependencies": [
-              "libmariadb"
-            ]
-          },
-          "psql": {
-            "description": "add postgresql support",
-            "dependencies": [
-              "libpq"
-            ]
-          },
-          "replace-execinfo": {
-            "description": "replace the system execinfo implementation",
-            "dependencies": [
-              "libunwind"
-            ]
-          },
-          "sqlite3": {
-            "description": "add sqlite3 support",
-            "dependencies": [
-              "sqlite3"
-            ]
-          },
-          "tests": {
-            "description": "build the unit test",
-            "dependencies": [
-              "benchmark",
-              "gtest"
-            ]
-          }
-        },
-        "version": "2.3.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -96435,7 +96236,7 @@
             "host": true
           }
         ],
-        "version": "1.0.9"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -101827,7 +101628,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.0.6"
+        "version": "1.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -105214,7 +105015,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -106005,32 +105806,6 @@
       "files": [
         "fix_osx.patch",
         "include.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "via-httplib",
-      "manifest": {
-        "name": "via-httplib",
-        "description": "C++ HTTP Library",
-        "homepage": "https://github.com/kenba/via-httplib",
-        "license": "GPL-2.0-or-later",
-        "dependencies": [
-          "boost-asio",
-          "json-spirit",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "1.9.0"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
