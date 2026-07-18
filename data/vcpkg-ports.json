@@ -1,5 +1,5 @@
 {
-  "version": "ec62869cdd9f80413abb5e4c1d8b68688df932f4",
+  "version": "908da3a305a0a8028d9602ab241b433652b3df69",
   "ports": [
     {
       "name": "3fd",
@@ -25466,22 +25466,12 @@
       "name": "darts-clone",
       "manifest": {
         "name": "darts-clone",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A static double-array trie structure",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
+        "license": "BSD-2-Clause",
         "version-string": "1767ab87cffe"
       },
       "files": [
-        "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -25833,9 +25823,6 @@
         "features": {
           "d3d11": {
             "description": "Direct3D 11 backend support",
-            "dependencies": [
-              "directx-dxc"
-            ],
             "supports": "windows"
           },
           "d3d12": {
@@ -25889,18 +25876,17 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20260624.223603"
+        "version": "20260714.215939"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
-        "001-fix-windows-build.patch",
+        "001-fix-linkage.patch",
+        "002-fix-windows-build.patch",
         "003-force-disable-cxx-module.patch",
         "004-deps.patch",
         "005-bsd-support.patch",
         "008-wrong-dxcapi-include.patch",
         "009-fix-tint-install.patch",
-        "010-fix-glslang.patch",
-        "011-fix-dxc.patch",
         "800-msvc-spirv-tools-disable-warnaserror.patch",
         "DawnConfig.cmake",
         "portfile.cmake",
@@ -107614,6 +107600,7 @@
       "name": "vulkan-validationlayers",
       "manifest": {
         "name": "vulkan-validationlayers",
+        "port-version": 1,
         "description": "Vulkan Validation Layers (VVL)",
         "homepage": "https://github.com/KhronosGroup/Vulkan-ValidationLayers",
         "license": null,
@@ -107639,6 +107626,7 @@
       },
       "files": [
         "disable_vendored_phmap.diff",
+        "fix-clang-windows-def-exports.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
