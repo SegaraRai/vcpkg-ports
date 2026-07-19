@@ -1,5 +1,5 @@
 {
-  "version": "908da3a305a0a8028d9602ab241b433652b3df69",
+  "version": "0878b5224d4a4968940ee296a2e7fae2d3b62983",
   "ports": [
     {
       "name": "3fd",
@@ -2132,7 +2132,7 @@
             "host": true
           }
         ],
-        "version": "6.4.16"
+        "version": "6.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -4070,7 +4070,7 @@
             "host": true
           }
         ],
-        "version": "0.27.3"
+        "version": "0.27.4"
       },
       "files": [
         "portfile.cmake",
@@ -4137,7 +4137,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.12.8"
+        "version": "0.13.1"
       },
       "files": [
         "portfile.cmake",
@@ -4225,7 +4225,7 @@
             "host": true
           }
         ],
-        "version": "0.41.0"
+        "version": "0.42.1"
       },
       "files": [
         "portfile.cmake",
@@ -7877,7 +7877,7 @@
             ]
           }
         },
-        "version": "3.2.1"
+        "version": "3.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -41594,7 +41594,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 1,
+        "port-version": 2,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant",
@@ -41698,6 +41698,8 @@
       },
       "files": [
         "harfbuzzConfig.cmake.in",
+        "ignore-unused-template.patch",
+        "no-threads-on-emscripten.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50236,8 +50238,10 @@
       "name": "lfreist-hwinfo",
       "manifest": {
         "name": "lfreist-hwinfo",
+        "port-version": 1,
         "description": "hwinfo provides an easy-to-use and modern C++ API for retrieving hardware information of your systems components such as CPU, RAM, GPU, Disks, Mainboard, ...",
         "homepage": "https://github.com/lfreist/hwinfo",
+        "license": "MIT AND BSD-3-Clause",
         "supports": "!(uwp | android)",
         "dependencies": [
           {
@@ -50252,6 +50256,7 @@
         "version-date": "2025-07-10"
       },
       "files": [
+        "fix-gcc-build.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
