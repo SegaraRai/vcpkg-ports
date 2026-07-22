@@ -1,5 +1,5 @@
 {
-  "version": "4bca8fd8654e5ba76f92661db7bfe954768ad8ef",
+  "version": "82b6bc886d7b0f8342e34babc2e0b8943f79b0e1",
   "ports": [
     {
       "name": "3fd",
@@ -6920,9 +6920,9 @@
       "name": "bcg729",
       "manifest": {
         "name": "bcg729",
-        "port-version": 4,
         "description": "Bcg729 is an open source implementation of the ITU G.729 Annex A and B codec.",
         "homepage": "https://github.com/BelledonneCommunications/bcg729",
+        "license": "GPL-3.0-or-later OR LicenseRef-Proprietary",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -6933,7 +6933,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "disable-alt-packaging.patch",
@@ -19502,6 +19502,7 @@
       "name": "catch2",
       "manifest": {
         "name": "catch2",
+        "port-version": 1,
         "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD.",
         "homepage": "https://github.com/catchorg/Catch2",
         "license": "BSL-1.0",
@@ -20971,9 +20972,10 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
+        "001-fix-flags.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -28708,7 +28710,6 @@
       "name": "eccodes",
       "manifest": {
         "name": "eccodes",
-        "port-version": 1,
         "description": "ECMWF GRIB, BUFR and GTS decoding and encoding library and tools",
         "homepage": "https://github.com/ecmwf/eccodes",
         "license": "Apache-2.0",
@@ -28723,6 +28724,7 @@
             "name": "python3",
             "host": true
           },
+          "tl-expected",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -28756,11 +28758,13 @@
             ]
           }
         },
-        "version": "2.47.0"
+        "version": "2.48.0"
       },
       "files": [
         "fix-netcdf-linkage.patch",
+        "fix-png-linkage.patch",
         "portfile.cmake",
+        "use-external-tl-expected.patch",
         "vcpkg.json"
       ]
     },
@@ -42269,7 +42273,7 @@
             ]
           }
         },
-        "version": "2.6.6"
+        "version": "2.6.7"
       },
       "files": [
         "portfile.cmake",
@@ -43258,9 +43262,10 @@
         "dependencies": [
           "onednn"
         ],
-        "version-date": "2026-03-31"
+        "version-date": "2026-05-11"
       },
       "files": [
+        "fix-missing-cassert-include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45797,25 +45802,14 @@
       "name": "jwsung91-unilink",
       "manifest": {
         "name": "jwsung91-unilink",
-        "description": "Unified, cross-platform async C++ library for Serial, TCP, UDP, and UDS",
-        "homepage": "https://github.com/jwsung91/unilink",
+        "description": "Deprecated alias for wirestead. unilink was renamed to Wirestead; this port installs nothing itself and only depends on wirestead to avoid conflicting with its installed files.",
+        "homepage": "https://github.com/wirestead/wirestead",
         "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
-          "boost-asio",
-          "boost-system",
-          "boost-thread",
-          "spdlog",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
+          "wirestead"
         ],
-        "version": "0.8.8"
+        "version": "0.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -61193,7 +61187,7 @@
         "name": "libxdf",
         "description": "C++ library for loading multimodal, multi-rate signals stored in XDF files.",
         "homepage": "https://xdf-modules.github.io/libxdf/",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND LGPL-3.0-or-later",
         "dependencies": [
           "pugixml",
           {
@@ -61205,7 +61199,7 @@
             "host": true
           }
         ],
-        "version": "0.99.10"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -67785,7 +67779,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.3.2"
+        "version": "3.4.3"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -82869,9 +82863,9 @@
       "name": "pthreadpool",
       "manifest": {
         "name": "pthreadpool",
-        "port-version": 2,
         "description": "Portable (POSIX/Windows/Emscripten) thread pool for C/C++",
         "homepage": "https://github.com/Maratyszcza/pthreadpool",
+        "license": "BSD-2-Clause",
         "dependencies": [
           "fxdiv",
           {
@@ -82883,11 +82877,10 @@
             "host": true
           }
         ],
-        "version-date": "2024-11-04"
+        "version-date": "2026-04-29"
       },
       "files": [
         "fix-cmakelists.patch",
-        "fix-uwp.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94736,7 +94729,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.15.3"
+        "version": "0.15.4"
       },
       "files": [
         "fix-cmake4.patch",
@@ -94751,7 +94744,7 @@
       "name": "septag-dmon",
       "manifest": {
         "name": "septag-dmon",
-        "description": "a tiny C library that monitors changes in a directory",
+        "description": "A tiny C library that monitors changes in a directory",
         "homepage": "https://github.com/septag/dmon",
         "license": "BSD-2-Clause",
         "supports": "!uwp",
@@ -94761,7 +94754,7 @@
             "host": true
           }
         ],
-        "version-date": "2022-02-08"
+        "version-date": "2026-02-23"
       },
       "files": [
         "portfile.cmake",
@@ -104525,7 +104518,7 @@
             "platform": "windows"
           }
         ],
-        "version": "7.2.6"
+        "version": "7.2.7"
       },
       "files": [
         "Config.cmake.in",
@@ -104540,7 +104533,7 @@
         "description": "An implementation of the WHATWG URL Standard in C++",
         "homepage": "https://github.com/upa-url/upa",
         "documentation": "https://upa-url.github.io/docs/",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND BSD-3-Clause AND Unicode-3.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -104551,7 +104544,7 @@
             "host": true
           }
         ],
-        "version": "2.4.0"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -105121,7 +105114,7 @@
         "name": "uwebsockets",
         "description": "Simple, secure & standards compliant web I/O for the most demanding of applications",
         "homepage": "https://github.com/uWebSockets/uWebSockets",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND MIT",
         "dependencies": [
           "usockets"
         ],
@@ -105129,7 +105122,8 @@
           "libdeflate": {
             "description": "Enable libdeflate support",
             "dependencies": [
-              "libdeflate"
+              "libdeflate",
+              "zlib"
             ]
           },
           "simdutf": {
@@ -105156,11 +105150,12 @@
             ]
           }
         },
-        "version-semver": "20.78.0"
+        "version-semver": "20.79.0"
       },
       "files": [
         "portfile.cmake",
         "unofficial-uwebsockets-config.cmake",
+        "vcpkg-config.h.in",
         "vcpkg.json"
       ]
     },
@@ -108727,6 +108722,35 @@
       "files": [
         "Config.cmake.in",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "wirestead",
+      "manifest": {
+        "name": "wirestead",
+        "description": "Unified, cross-platform async C++ library for Serial, TCP, UDP, and UDS",
+        "homepage": "https://github.com/wirestead/wirestead",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "boost-asio",
+          "boost-system",
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.9.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
