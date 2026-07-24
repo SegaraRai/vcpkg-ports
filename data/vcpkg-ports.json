@@ -1,5 +1,5 @@
 {
-  "version": "d99b2e01ef73a34daa2e6ef7983c70a890d9f31b",
+  "version": "e861f04798ca54fa70ff906b5e43e5fc99b7f406",
   "ports": [
     {
       "name": "3fd",
@@ -2439,7 +2439,6 @@
       "name": "arrow",
       "manifest": {
         "name": "arrow",
-        "port-version": 2,
         "description": "Cross-language development platform for in-memory analytics",
         "homepage": "https://arrow.apache.org",
         "license": "Apache-2.0",
@@ -2621,7 +2620,7 @@
             ]
           }
         },
-        "version": "24.0.0"
+        "version": "25.0.0"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -2629,7 +2628,6 @@
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
         "0007-use-vcpkg-mimalloc.patch",
-        "0008-ostringstring.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -21340,7 +21338,7 @@
             "host": true
           }
         ],
-        "version": "1.3.11"
+        "version": "1.3.13"
       },
       "files": [
         "portfile.cmake",
@@ -23742,7 +23740,6 @@
       "name": "crashpad",
       "manifest": {
         "name": "crashpad",
-        "port-version": 13,
         "description": [
           "Crashpad is a crash-reporting system.",
           "Crashpad is a library for capturing, storing and transmitting postmortem crash reports from a client to an upstream collection server. Crashpad aims to make it possible for clients to capture process state at the time of crash with the best possible fidelity and coverage, with the minimum of fuss."
@@ -23774,18 +23771,13 @@
           },
           "zlib"
         ],
-        "version-date": "2024-04-11"
+        "version-date": "2026-07-02"
       },
       "files": [
-        "crashpad-memset-errors-5758170.diff",
         "crashpadConfig.cmake.in",
-        "fix-lib-name-conflict-1.patch",
-        "fix-lib-name-conflict.patch",
-        "fix-linux.patch",
-        "fix-std-20.patch",
-        "ndk-toolchain.diff",
+        "fix-missing-stdint.patch",
+        "mini-chromium-toolchain.patch",
         "portfile.cmake",
-        "support-build-tools-sku.diff",
         "vcpkg.json",
         "zlib.gn"
       ]
@@ -28710,6 +28702,7 @@
       "name": "eccodes",
       "manifest": {
         "name": "eccodes",
+        "port-version": 1,
         "description": "ECMWF GRIB, BUFR and GTS decoding and encoding library and tools",
         "homepage": "https://github.com/ecmwf/eccodes",
         "license": "Apache-2.0",
@@ -29841,11 +29834,10 @@
       "name": "ezfoundation",
       "manifest": {
         "name": "ezfoundation",
-        "port-version": 1,
         "description": "Foundation library out of ezEngine",
         "homepage": "https://ezengine.net/",
         "license": "MIT",
-        "supports": "windows | uwp",
+        "supports": "windows & !uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -29856,11 +29848,11 @@
             "host": true
           }
         ],
-        "version": "21.10"
+        "version": "26.3"
       },
       "files": [
         "disable-warnings-as-errors.diff",
-        "ezfoundation-vcpkg.diff",
+        "ezengine-da345.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -30174,6 +30166,7 @@
       "name": "fast-float",
       "manifest": {
         "name": "fast-float",
+        "port-version": 1,
         "description": "Fast and exact implementation of the C++ from_chars functions for float and double types: 4x faster than strtod",
         "homepage": "https://github.com/fastfloat/fast_float",
         "license": "Apache-2.0 OR BSL-1.0 OR MIT",
@@ -30190,8 +30183,8 @@
         "version": "8.2.10"
       },
       "files": [
+        "min-max-macro.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -36265,10 +36258,9 @@
       "name": "glslang",
       "manifest": {
         "name": "glslang",
-        "port-version": 1,
         "description": "Khronos-reference front end for GLSL/ESSL, partial front end for HLSL, and a SPIR-V generator.",
         "homepage": "https://github.com/KhronosGroup/glslang",
-        "license": "Apache-2.0 AND BSD-3-Clause AND MIT AND GPL-3.0-or-later",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -36294,7 +36286,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "16.3.0"
+        "version": "16.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -42839,11 +42831,12 @@
                 "name": "curl",
                 "default-features": false
               },
-              "indicators"
+              "indicators",
+              "tclap"
             ]
           }
         },
-        "version": "0.9.5"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -49294,6 +49287,32 @@
         "windows_pc_files/krb5.pc.in",
         "windows_pc_files/mit-krb5-gssapi.pc.in",
         "windows_pc_files/mit-krb5.pc.in"
+      ]
+    },
+    {
+      "name": "krpc-cnano",
+      "manifest": {
+        "name": "krpc-cnano",
+        "description": "kRPC C-nano client — control Kerbal Space Program from C programs via RPC",
+        "homepage": "https://krpc.github.io/krpc",
+        "license": "LGPL-3.0-or-later AND Zlib",
+        "dependencies": [
+          "nanopb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
       ]
     },
     {
@@ -57173,7 +57192,6 @@
       "name": "libpqxx",
       "manifest": {
         "name": "libpqxx",
-        "port-version": 1,
         "description": [
           "The official* C++ client API for PostgreSQL.",
           "*) NB https://pqxx.org/libpqxx/faq/"
@@ -57198,7 +57216,7 @@
             "host": true
           }
         ],
-        "version": "8.0.1"
+        "version": "8.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -67412,7 +67430,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.1.1"
+        "version": "1.2"
       },
       "files": [
         "dependencies.diff",
@@ -68523,6 +68541,7 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
+        "port-version": 1,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": "Apache-2.0",
@@ -68570,6 +68589,7 @@
         "version": "2.3.1"
       },
       "files": [
+        "cmake-4.4.patch",
         "disable-dynamic-when-static.patch",
         "fix-dependencies.patch",
         "fix-include-directory.patch",
@@ -70747,7 +70767,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0-rc"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -72368,7 +72388,7 @@
             "host": true
           }
         ],
-        "version": "7.7.0"
+        "version": "7.7.1"
       },
       "files": [
         "export-target.patch",
@@ -75349,7 +75369,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -75688,6 +75708,7 @@
         "0020-contrib-add-cassert.patch",
         "0021-protobuf-6.patch",
         "0022-include-thread.patch",
+        "0023-cout.diff",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -75697,7 +75718,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -76259,6 +76280,7 @@
         "0024-openvino-const-tensor-data.patch",
         "0025-fix-cuda-host-std-flag-forwarding.patch",
         "0026-cuda-msvc-preprocessor.patch",
+        "0027-contrib-cuda-tuple.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -81907,7 +81929,7 @@
       "name": "popsift",
       "manifest": {
         "name": "popsift",
-        "port-version": 1,
+        "port-version": 2,
         "description": "PopSift is an implementation of the SIFT algorithm in CUDA.",
         "homepage": "https://github.com/alicevision/popsift",
         "documentation": "https://popsift.readthedocs.io/",
@@ -81938,6 +81960,7 @@
         "version": "0.10.0"
       },
       "files": [
+        "cuda-13.3-thrust-includes.patch",
         "portfile.cmake",
         "pr-183-add-zcpreprocessor-for-cuda-13-2.diff",
         "vcpkg.json"
@@ -98758,13 +98781,13 @@
       "name": "srell",
       "manifest": {
         "name": "srell",
-        "port-version": 1,
         "description": "SRELL (std::regex-like library) is a regular expression template library for C++.",
         "homepage": "https://www.akenotsuki.com/misc/srell/en/",
-        "license": "BSD-2-Clause",
-        "version-string": "2026.01"
+        "license": "BSD-2-Clause AND Unicode-3.0",
+        "version-string": "2026.05"
       },
       "files": [
+        "Unicode-license.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99253,7 +99276,7 @@
             "host": true
           }
         ],
-        "version": "4.7.2"
+        "version": "4.7.4"
       },
       "files": [
         "fix-install-path.patch",
@@ -101847,7 +101870,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.0.7"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -105472,7 +105495,7 @@
         "name": "vcpkg-cmake-config",
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_config_fixup",
         "license": "MIT",
-        "version-date": "2024-05-23"
+        "version-date": "2026-07-21"
       },
       "files": [
         "copyright",
@@ -111042,7 +111065,7 @@
             "host": true
           }
         ],
-        "version": "4.16.0"
+        "version": "5.0.0"
       },
       "files": [
         "fix-install-path.patch",
