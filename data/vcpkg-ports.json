@@ -1,5 +1,5 @@
 {
-  "version": "e861f04798ca54fa70ff906b5e43e5fc99b7f406",
+  "version": "40f3c709db80acf154ac4b17a1f83c564ebd022e",
   "ports": [
     {
       "name": "3fd",
@@ -49290,6 +49290,33 @@
       ]
     },
     {
+      "name": "krpc",
+      "manifest": {
+        "name": "krpc",
+        "description": "kRPC C++ client — control Kerbal Space Program from C++ programs via RPC",
+        "homepage": "https://krpc.github.io/krpc",
+        "license": "LGPL-3.0-or-later",
+        "dependencies": [
+          "asio",
+          "protobuf",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "krpc-cnano",
       "manifest": {
         "name": "krpc-cnano",
@@ -97437,10 +97464,10 @@
       "name": "soundtouch",
       "manifest": {
         "name": "soundtouch",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SoundTouch is an open-source audio processing library for changing the Tempo, Pitch and Playback Rates of audio streams or audio files.",
         "homepage": "https://www.surina.net/soundtouch",
-        "license": "LGPL-2.1-only",
+        "license": "LGPL-2.1-or-later",
         "supports": "!uwp",
         "dependencies": [
           {
