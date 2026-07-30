@@ -1,5 +1,5 @@
 {
-  "version": "9d7f79f56ae1a9b4704d6a7fb8237e347a974133",
+  "version": "827a2e1203bc19941126c657166da44f2623acc4",
   "ports": [
     {
       "name": "3fd",
@@ -43148,11 +43148,10 @@
       "name": "iceoryx",
       "manifest": {
         "name": "iceoryx",
-        "port-version": 1,
         "description": "True zero-copy inter-process-communication",
         "homepage": "https://iceoryx.io",
         "license": "Apache-2.0",
-        "supports": "!uwp",
+        "supports": "!uwp & !android",
         "dependencies": [
           {
             "name": "acl",
@@ -43182,11 +43181,10 @@
             ]
           }
         },
-        "version": "2.0.6"
+        "version": "2.0.8"
       },
       "files": [
         "acl.patch",
-        "add-include-chrono.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -71669,6 +71667,7 @@
         "homepage": "https://github.com/ngtcp2/nghttp3",
         "license": "MIT",
         "dependencies": [
+          "sfparse",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -71678,9 +71677,10 @@
             "host": true
           }
         ],
-        "version": "1.17.0"
+        "version": "1.18.0"
       },
       "files": [
+        "001-devendor-sfparse.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -83529,9 +83529,9 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
-        "port-version": 4,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
+        "license": "LGPL-2.1-or-later AND BSD-2-Clause AND MPL-2.0",
         "dependencies": [
           {
             "name": "qt5compat",
@@ -83567,13 +83567,12 @@
             ]
           }
         },
-        "version": "2.3.7"
+        "version": "2.3.10"
       },
       "files": [
         "0001-fix-path-for-vcpkg.patch",
         "0002-fix-build-error.patch",
         "0003-Define-NOMINMAX-for-botan-plugin-with-MSVC.patch",
-        "0004-fix-cmake4.patch",
         "mk-ca-bundle.pl",
         "portfile.cmake",
         "vcpkg.json"
@@ -95213,6 +95212,32 @@
       ]
     },
     {
+      "name": "sfparse",
+      "manifest": {
+        "name": "sfparse",
+        "description": "RFC 9651 Structured Field Values parser",
+        "homepage": "https://github.com/ngtcp2/sfparse",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2026-06-04"
+      },
+      "files": [
+        "001-fix-exports.patch",
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sfsexp",
       "manifest": {
         "name": "sfsexp",
@@ -95787,6 +95812,7 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
+        "port-version": 1,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -95807,6 +95833,7 @@
         "SimdConfig.cmake",
         "fix-platform-detection.patch",
         "portfile.cmake",
+        "use-preconfigured-version-header.patch",
         "vcpkg.json"
       ]
     },
