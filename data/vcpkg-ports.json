@@ -1,5 +1,5 @@
 {
-  "version": "827a2e1203bc19941126c657166da44f2623acc4",
+  "version": "94a541197763a4f449a1b91478df48c0584a6256",
   "ports": [
     {
       "name": "3fd",
@@ -455,7 +455,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "3.4.4"
+        "version": "4.0.0"
       },
       "files": [
         "no-cpm.patch",
@@ -613,10 +613,11 @@
             "supports": "!((x86 | arm64) & windows) & !android & !uwp & !xbox"
           }
         },
-        "version": "1.52.0"
+        "version": "1.52.2"
       },
       "files": [
         "patches/add-libuuid-vcpkg-support.patch",
+        "patches/fix-library-linkage.patch",
         "patches/fix-static-crt-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -1504,7 +1505,7 @@
         "name": "aom",
         "description": "AV1 codec library",
         "homepage": "https://aomedia.googlesource.com/aom",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND BSD-3-Clause AND MIT AND ISC",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -1516,7 +1517,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.13.3"
+        "version-semver": "3.14.1"
       },
       "files": [
         "aom-rename-static.diff",
@@ -1763,7 +1764,7 @@
       "name": "apsi",
       "manifest": {
         "name": "apsi",
-        "port-version": 2,
+        "port-version": 3,
         "description": "APSI is a research library for asymmetric private set intersection.",
         "homepage": "https://github.com/microsoft/APSI",
         "license": "MIT",
@@ -1826,6 +1827,8 @@
         "fix-c2398.patch",
         "fix-find-kuku.patch",
         "fix-find-seal.patch",
+        "fix-jsoncpp-target.patch",
+        "fix-log4cplus-byte-ambiguity.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -2280,7 +2283,6 @@
       "name": "armadillo",
       "manifest": {
         "name": "armadillo",
-        "port-version": 1,
         "description": "Armadillo is a high quality linear algebra library (matrix maths) for the C++ language, aiming towards a good balance between speed and ease of use",
         "homepage": "https://arma.sourceforge.net/",
         "license": "Apache-2.0",
@@ -2296,7 +2298,7 @@
             "host": true
           }
         ],
-        "version": "14.4.1"
+        "version": "15.4.2"
       },
       "files": [
         "cmake-config.patch",
@@ -2622,7 +2624,7 @@
             ]
           }
         },
-        "version": "25.0.0"
+        "version": "25.0.1"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -3422,7 +3424,6 @@
       "name": "attr",
       "manifest": {
         "name": "attr",
-        "port-version": 1,
         "description": "Commands for Manipulating Filesystem Extended Attributes",
         "homepage": "http://savannah.nongnu.org/projects/attr",
         "license": "LGPL-2.1-or-later",
@@ -3448,7 +3449,7 @@
             ]
           }
         },
-        "version-semver": "2.5.2"
+        "version-semver": "2.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -3837,7 +3838,6 @@
       "name": "awlib",
       "manifest": {
         "name": "awlib",
-        "port-version": 2,
         "description": "Cross-platform utility library",
         "homepage": "https://github.com/absurdworlds/awlib",
         "license": "LGPL-3.0-or-later",
@@ -3872,10 +3872,9 @@
             "description": "Build HuDF support"
           }
         },
-        "version-date": "2024-04-06"
+        "version-date": "2026-08-07"
       },
       "files": [
-        "fix-mac-build.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -3959,7 +3958,7 @@
             "host": true
           }
         ],
-        "version": "0.14.3"
+        "version": "0.14.5"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4070,7 +4069,7 @@
             "host": true
           }
         ],
-        "version": "0.27.5"
+        "version": "0.27.6"
       },
       "files": [
         "portfile.cmake",
@@ -4100,7 +4099,7 @@
             "host": true
           }
         ],
-        "version": "0.16.0"
+        "version": "0.16.1"
       },
       "files": [
         "portfile.cmake",
@@ -4137,7 +4136,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.13.2"
+        "version": "0.13.5"
       },
       "files": [
         "portfile.cmake",
@@ -4162,7 +4161,7 @@
             "host": true
           }
         ],
-        "version": "0.2.7"
+        "version": "0.2.9"
       },
       "files": [
         "portfile.cmake",
@@ -4225,7 +4224,7 @@
             "host": true
           }
         ],
-        "version": "0.43.0"
+        "version": "0.43.5"
       },
       "files": [
         "portfile.cmake",
@@ -4263,7 +4262,7 @@
         "name": "aws-sdk-cpp",
         "description": "AWS SDK for C++",
         "homepage": "https://github.com/aws/aws-sdk-cpp",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND MIT AND Zlib",
         "dependencies": [
           "aws-crt-cpp",
           {
@@ -5199,6 +5198,9 @@
           "partnercentral-channel": {
             "description": "C++ SDK for the AWS partnercentral-channel service"
           },
+          "partnercentral-revenue-measurement": {
+            "description": "C++ SDK for the AWS partnercentral-revenue-measurement service"
+          },
           "partnercentral-selling": {
             "description": "C++ SDK for the AWS partnercentral-selling service"
           },
@@ -5666,7 +5668,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.840"
+        "version": "1.11.860"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -6719,10 +6721,9 @@
             ]
           }
         },
-        "version": "0.1.126"
+        "version": "0.1.128"
       },
       "files": [
-        "gir-header-only-on-windows.patch",
         "portfile.cmake",
         "remove-consistency-check.patch",
         "support-plugins.patch",
@@ -6775,11 +6776,10 @@
           },
           "zlib"
         ],
-        "version": "4.9.0"
+        "version": "4.10.0"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -6855,10 +6855,9 @@
           },
           "zstd"
         ],
-        "version": "2.1.0"
+        "version": "2.50"
       },
       "files": [
-        "devendor-zstd.diff",
         "export-cmake-config.diff",
         "portfile.cmake",
         "vcpkg.json"
@@ -7079,7 +7078,7 @@
             ]
           }
         },
-        "version": "4.9.1"
+        "version": "4.10.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -7514,14 +7513,12 @@
       "name": "bitmagic",
       "manifest": {
         "name": "bitmagic",
-        "port-version": 1,
         "description": "Algorithms and tools for Algebra of Sets for information retrieval, indexing of databases, scientific algorithms, ranking, clustering, unsupervised machine learning and signal processing.",
         "homepage": "http://bitmagic.io",
-        "license": "Apache-2.0",
-        "version": "8.0.1"
+        "license": null,
+        "version": "9.2.1"
       },
       "files": [
-        "fix-clang.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -7628,7 +7625,7 @@
             ]
           }
         },
-        "version": "1.8.5"
+        "version": "1.8.6"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -7880,7 +7877,7 @@
         "name": "blosc2",
         "description": "A fast, compressed, persistent binary data store library for C.",
         "homepage": "https://github.com/Blosc/c-blosc2",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND MIT AND BSD-2-Clause",
         "dependencies": [
           "lz4",
           {
@@ -7911,9 +7908,10 @@
             ]
           }
         },
-        "version": "3.2.3"
+        "version": "3.3.2"
       },
       "files": [
+        "pkgconfig-dependencies.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -7972,10 +7970,11 @@
             "host": true
           }
         ],
-        "version": "8.2.13"
+        "version": "8.2.15"
       },
       "files": [
         "CMakeLists.txt",
+        "fix-base64-header.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -20055,7 +20054,7 @@
             "description": "Build utility programs"
           }
         },
-        "version": "4.6.4"
+        "version": "4.7.0"
       },
       "files": [
         "dependencies.diff",
@@ -20497,7 +20496,6 @@
       "name": "chromaprint",
       "manifest": {
         "name": "chromaprint",
-        "port-version": 2,
         "description": "C library for generating audio fingerprints used by AcoustID",
         "homepage": "https://github.com/acoustid/chromaprint",
         "license": "LGPL-2.1-or-later",
@@ -20521,12 +20519,13 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.6.1"
       },
       "files": [
         "pkgconfig-cxx-linkage.diff",
         "pkgconfig-dependencies.diff",
         "portfile.cmake",
+        "static-windows-dependencies.diff",
         "vcpkg.json"
       ]
     },
@@ -20594,14 +20593,14 @@
         "name": "cimg",
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
         "homepage": "https://github.com/GreycLab/CImg",
-        "license": "CECILL-C AND CECILL-2.0",
+        "license": "(CECILL-C OR CECILL-2.1) AND LicenseRef-LGPL",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "3.7.6"
+        "version": "4.0.3"
       },
       "files": [
         "CMakeLists.txt",
@@ -21086,7 +21085,7 @@
             "host": true
           }
         ],
-        "version": "2.6.2"
+        "version": "2.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -22741,7 +22740,7 @@
             ]
           }
         },
-        "version": "0.51.0"
+        "version": "0.53.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22857,7 +22856,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.15.0"
+        "version": "1.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -23764,7 +23763,7 @@
             "host": true
           }
         ],
-        "version": "1.4.0"
+        "version": "1.6.0"
       },
       "files": [
         "fix-disable-examples-tests.patch",
@@ -23908,11 +23907,16 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version": "1.2.1.0"
+        "version": "1.2.2.0"
       },
       "files": [
+        "install_fixes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23958,7 +23962,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-03-30"
+        "version-date": "2026-08-12"
       },
       "files": [
         "portfile.cmake",
@@ -24421,9 +24425,10 @@
         "name": "cudnn-frontend",
         "description": "cudnn_frontend provides a c++ wrapper for the cudnn backend API and samples on how to use it",
         "homepage": "https://github.com/NVIDIA/cudnn-frontend",
-        "license": "MIT",
+        "license": "Apache-2.0 AND MIT",
         "dependencies": [
           "cuda",
+          "cudnn",
           "nlohmann-json",
           {
             "name": "vcpkg-cmake",
@@ -24434,9 +24439,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.25.0"
+        "version-semver": "1.27.0"
       },
       "files": [
+        "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24808,7 +24814,7 @@
             "host": true
           }
         ],
-        "version": "4.3.0"
+        "version": "4.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -25239,7 +25245,7 @@
       "name": "cyrus-sasl",
       "manifest": {
         "name": "cyrus-sasl",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Cyrus SASL is an implementation of SASL that makes it easy for application developers to integrate authentication mechanisms into their application in a generic way.",
         "homepage": "https://github.com/cyrusimap/cyrus-sasl",
         "license": null,
@@ -25643,7 +25649,7 @@
             "host": true
           }
         ],
-        "version": "4.0.2"
+        "version": "4.1.0"
       },
       "files": [
         "0001-correct-version.diff",
@@ -25677,7 +25683,7 @@
             "supports": "!uwp & !android"
           }
         },
-        "version": "3.0.4"
+        "version": "3.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -25705,7 +25711,7 @@
         "name": "dav1d",
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND ISC",
         "supports": "!(windows & x86 & !static)",
         "dependencies": [
           {
@@ -25713,7 +25719,7 @@
             "host": true
           }
         ],
-        "version": "1.5.3"
+        "version": "1.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -25763,7 +25769,7 @@
             "host": true
           }
         ],
-        "version": "3.31.0"
+        "version": "3.35.0"
       },
       "files": [
         "portfile.cmake",
@@ -26652,7 +26658,7 @@
             "host": true
           }
         ],
-        "version": "1.619.4"
+        "version": "1.619.5"
       },
       "files": [
         "portfile.cmake",
@@ -26680,7 +26686,7 @@
             "host": true
           }
         ],
-        "version": "1.619.4"
+        "version": "1.619.5"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -27242,7 +27248,7 @@
       "name": "dlib",
       "manifest": {
         "name": "dlib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Modern C++ toolkit containing machine learning algorithms and tools for creating complex software in C++",
         "homepage": "https://github.com/davisking/dlib",
         "license": "BSL-1.0",
@@ -27290,6 +27296,7 @@
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-flags.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -27749,11 +27756,11 @@
       "name": "drogon",
       "manifest": {
         "name": "drogon",
-        "port-version": 1,
-        "description": "A C++14/17 based HTTP web application framework running on Linux/macOS/Unix/Windows",
+        "port-version": 2,
+        "description": "A C++17/20 based HTTP web application framework running on Linux/macOS/Unix/Windows",
         "homepage": "https://github.com/an-tao/drogon",
         "documentation": "https://drogon.docsforge.com/master/overview/",
-        "license": "MIT",
+        "license": "MIT AND BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           "brotli",
@@ -28423,14 +28430,23 @@
       "name": "earcut-hpp",
       "manifest": {
         "name": "earcut-hpp",
-        "port-version": 1,
         "description": "earcut.hpp is a C++ port of earcut.js, a fast, header-only polygon triangulation library.",
         "homepage": "https://github.com/mapbox/earcut.hpp",
         "license": "ISC",
-        "version": "2.2.4"
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.2.3"
       },
       "files": [
-        "include-cstdint.patch",
+        "disable-tools.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29335,7 +29351,8 @@
       "name": "enchantum",
       "manifest": {
         "name": "enchantum",
-        "description": "Header-only C++20 fast compile time enum reflection library.",
+        "port-version": 1,
+        "description": "Header-only C++17 fast compile time enum reflection library.",
         "homepage": "https://github.com/ZXShady/enchantum",
         "license": "MIT",
         "dependencies": [
@@ -29588,7 +29605,7 @@
             "host": true
           }
         ],
-        "version": "20.48.0"
+        "version": "20.48.1"
       },
       "files": [
         "portfile.cmake",
@@ -29781,7 +29798,7 @@
             "host": true
           }
         ],
-        "version": "2.8.2"
+        "version": "2.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -29860,7 +29877,7 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -30101,7 +30118,7 @@
         "description": "A fancy and easy-to-use command-line argument parser for C++. Support C++11/C++14/C++17/C++20/C++23",
         "homepage": "https://github.com/simfeo/FancyArgumentParser",
         "license": "MIT",
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -30305,7 +30322,7 @@
         "name": "fastdds",
         "description": "eprosima Fast DDS (formerly Fast RTPS) is a C++ implementation of the DDS (Data Distribution Service) standard of the OMG (Object Management Group). eProsima Fast DDS implements the RTPS (Real Time Publish Subscribe) protocol, which provides publisher-subscriber communications over unreliable transports such as UDP, as defined and maintained by the Object Management Group (OMG) consortium.",
         "homepage": "https://www.eprosima.com/",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSL-1.0 AND MIT AND blessing",
         "supports": "!uwp",
         "dependencies": [
           "asio",
@@ -30323,9 +30340,10 @@
             "host": true
           }
         ],
-        "version": "3.6.1"
+        "version": "3.6.2"
       },
       "files": [
+        "disable-autolink.patch",
         "disable-test.patch",
         "disable-werror.patch",
         "fix-deps.patch",
@@ -30500,7 +30518,7 @@
             "host": true
           }
         ],
-        "version": "26.7"
+        "version": "26.8"
       },
       "files": [
         "portfile.cmake",
@@ -30549,7 +30567,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
         "fix-cmakelists.patch",
@@ -30706,7 +30724,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -30997,7 +31014,11 @@
           "ass": {
             "description": "Libass subtitles rendering, needed for subtitles and ass filter support in ffmpeg",
             "dependencies": [
-              "libass"
+              "libass",
+              {
+                "name": "libiconv",
+                "platform": "windows & static"
+              }
             ]
           },
           "avcodec": {
@@ -31469,10 +31490,9 @@
             ]
           }
         },
-        "version": "8.1.2"
+        "version": "9.0.1"
       },
       "files": [
-        "0002-fix-msvc-link.patch",
         "0003-fix-windowsinclude.patch",
         "0004-dependencies.patch",
         "0005-fix-nasm.patch",
@@ -31483,9 +31503,10 @@
         "0045-use-prebuilt-bin2c.patch",
         "0046-fix-msvc-detection.patch",
         "0047-fix-msvc-utf8.patch",
-        "0048-backport-23039.patch",
         "0049-fix-twolame-pkgconfig.patch",
         "0050-fix-test-ld-absolute-lib-paths.patch",
+        "0051-fix-msvc-undef-flags.patch",
+        "0052-fix-disable-unstable-swscale-link.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
@@ -31499,7 +31520,7 @@
       "manifest": {
         "name": "ffmpeg-bin2c",
         "description": "Host tool bin2c for FFmpeg build",
-        "license": "LGPL-2.1-or-later",
+        "license": "MIT",
         "supports": "native",
         "dependencies": [
           {
@@ -31507,7 +31528,7 @@
             "host": true
           }
         ],
-        "version": "8.1.1"
+        "version": "9.0.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -32252,7 +32273,7 @@
             "host": true
           }
         ],
-        "version": "0.6.2-pre-29201734bf2d12713a7a1a035d31e5123aac9c93"
+        "version": "0.6.3"
       },
       "files": [
         "fix_install_dir.patch",
@@ -32471,7 +32492,7 @@
             ]
           }
         },
-        "version": "2.5.5"
+        "version": "2.5.7"
       },
       "files": [
         "cxx-linkage-pkgconfig.diff",
@@ -33138,7 +33159,7 @@
         "name": "freerdp",
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause",
         "supports": "!uwp & (!bsd | freebsd)",
         "dependencies": [
           "cjson",
@@ -33206,7 +33227,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.26.0"
+        "version": "3.30.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -33609,7 +33630,7 @@
             "host": true
           }
         ],
-        "version-semver": "7.0.0"
+        "version-semver": "7.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -34063,11 +34084,11 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
+        "fix-install.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -34722,16 +34743,16 @@
       "name": "genann",
       "manifest": {
         "name": "genann",
-        "port-version": 3,
         "description": "Genann is a minimal, well-tested library for training and using feedforward artificial neural networks (ANN) in C.",
         "homepage": "https://github.com/codeplea/genann",
+        "license": "Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2019-07-10"
+        "version": "1.1.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -35265,6 +35286,21 @@
         "fix-include-path.patch",
         "fix-install-error.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "gif-load",
+      "manifest": {
+        "name": "gif-load",
+        "description": "A slim, fast and header-only GIF loader written in C",
+        "homepage": "https://github.com/hidefromkgb/gif_load",
+        "license": "Unlicense",
+        "version-date": "2019-01-06"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-gif-load-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -35803,6 +35839,7 @@
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          "asio",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35820,9 +35857,10 @@
             ]
           }
         },
-        "version": "7.9.0"
+        "version": "8.0.0"
       },
       "files": [
+        "001-fix-asio.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35891,11 +35929,15 @@
       "name": "glfw3",
       "manifest": {
         "name": "glfw3",
-        "port-version": 1,
         "description": "GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.",
         "homepage": "https://github.com/glfw/glfw",
         "license": "Zlib",
+        "supports": "!android",
         "dependencies": [
+          {
+            "name": "libx11",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35914,7 +35956,7 @@
             "supports": "linux"
           }
         },
-        "version": "3.4"
+        "version": "3.5.1"
       },
       "files": [
         "glfw3Config.cmake",
@@ -35989,7 +36031,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.88.2"
+        "version": "2.88.3"
       },
       "files": [
         "libintl.patch",
@@ -36186,7 +36228,8 @@
         "name": "gloo",
         "description": "Collective communications library with various primitives for multi-machine training.",
         "homepage": "https://github.com/facebookincubator/gloo",
-        "supports": "x64 & linux",
+        "license": "BSD-3-Clause",
+        "supports": "linux",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -36218,7 +36261,7 @@
             ]
           }
         },
-        "version": "20251202"
+        "version": "20260212"
       },
       "files": [
         "portfile.cmake",
@@ -36229,7 +36272,7 @@
       "name": "glpk",
       "manifest": {
         "name": "glpk",
-        "port-version": 3,
+        "port-version": 4,
         "maintainers": "Fabio A. Correa Duran",
         "description": [
           "The GNU Linear Programming Kit (GLPK) solves large-scale linear programming (LP), mixed integer programming (MIP), and related problems.",
@@ -36405,7 +36448,7 @@
         "name": "gmmlib",
         "description": "Intel(R) Graphics Memory Management Library",
         "homepage": "https://github.com/intel/gmmlib",
-        "license": "MIT",
+        "license": "MIT AND BSD-2-Clause",
         "supports": "linux",
         "dependencies": [
           {
@@ -36413,9 +36456,10 @@
             "host": true
           }
         ],
-        "version": "22.10.0"
+        "version": "22.10.1"
       },
       "files": [
+        "fix-installed-header-includes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -36424,7 +36468,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -36530,7 +36574,7 @@
       "name": "gobject-introspection",
       "manifest": {
         "name": "gobject-introspection",
-        "port-version": 2,
+        "port-version": 3,
         "description": [
           "A middleware layer between C libraries (using GObject) and language bindings.",
           "Building (with) gobject-introspection is based on dynamic library linkage. Static builds of the core feature set are supported only for CI purposes.",
@@ -36567,6 +36611,7 @@
       },
       "files": [
         "0001-g-ir-tool-template.in.patch",
+        "gir-scanner-release-glib.patch",
         "gir-scanner-runtime.diff",
         "portfile.cmake",
         "setuptools-compat.patch",
@@ -38855,7 +38900,7 @@
             "description": "Install graphviz executables"
           }
         },
-        "version-semver": "15.1.0"
+        "version-semver": "15.1.1"
       },
       "files": [
         "build.diff",
@@ -39075,7 +39120,7 @@
         "name": "gst-rtsp-server",
         "description": "gst-rtsp-server is a library on top of GStreamer for building an RTSP server",
         "homepage": "https://gstreamer.freedesktop.org/",
-        "license": "LGPL-2.1-only",
+        "license": "LGPL-2.1-or-later",
         "supports": "!xbox",
         "dependencies": [
           "glib",
@@ -39091,7 +39136,7 @@
             "host": true
           }
         ],
-        "version": "1.28.4"
+        "version": "1.28.6"
       },
       "files": [
         "portfile.cmake",
@@ -39102,10 +39147,9 @@
       "name": "gstreamer",
       "manifest": {
         "name": "gstreamer",
-        "port-version": 1,
         "description": "GStreamer open-source multimedia framework core library",
         "homepage": "https://gstreamer.freedesktop.org/",
-        "license": "LGPL-2.0-only",
+        "license": "LGPL-2.1-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "glib",
@@ -39995,7 +40039,7 @@
             ]
           }
         },
-        "version": "1.28.4"
+        "version": "1.28.6"
       },
       "files": [
         "11894.diff",
@@ -40013,7 +40057,6 @@
       "name": "gtest",
       "manifest": {
         "name": "gtest",
-        "port-version": 3,
         "description": "Google Testing and Mocking Framework",
         "homepage": "https://github.com/google/googletest",
         "license": "BSD-3-Clause",
@@ -40027,7 +40070,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.17.0"
+        "version-semver": "1.18.0"
       },
       "files": [
         "001-fix-UWP-death-test.patch",
@@ -40498,6 +40541,7 @@
       "name": "gumbo",
       "manifest": {
         "name": "gumbo",
+        "port-version": 1,
         "description": "An HTML5 parsing library in pure C99",
         "homepage": "https://codeberg.org/gumbo-parser/gumbo-parser",
         "license": "Apache-2.0",
@@ -40532,7 +40576,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "4.3.0"
       },
       "files": [
         "find-modules.diff",
@@ -40684,7 +40728,7 @@
             "host": true
           }
         ],
-        "version": "8.2.1"
+        "version": "8.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -41645,10 +41689,9 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
-        "port-version": 2,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
-        "license": "MIT-Modern-Variant",
+        "license": "MIT-Modern-Variant AND MIT",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -41745,11 +41788,10 @@
             ]
           }
         },
-        "version": "14.2.1"
+        "version": "14.3.1"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
-        "ignore-unused-template.patch",
         "no-threads-on-emscripten.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -41883,7 +41925,6 @@
       "name": "hdf5",
       "manifest": {
         "name": "hdf5",
-        "port-version": 1,
         "description": "HDF5 is a data model, library, and file format for storing and managing data",
         "homepage": "https://www.hdfgroup.org/downloads/hdf5/",
         "license": "BSD-3-Clause",
@@ -41952,7 +41993,7 @@
             ]
           }
         },
-        "version": "2.1.1"
+        "version-semver": "2.2.0"
       },
       "files": [
         "arm64-msvc-ice.diff",
@@ -42319,7 +42360,7 @@
             ]
           }
         },
-        "version": "2.6.7"
+        "version": "2.6.8"
       },
       "files": [
         "portfile.cmake",
@@ -42424,9 +42465,10 @@
       "name": "highs",
       "manifest": {
         "name": "highs",
+        "port-version": 1,
         "description": "High performance library to solve linear, mixed-integer, and convex quadratic optimization problems.",
         "homepage": "https://highs.dev",
-        "license": "MIT",
+        "license": "MIT AND BSD-3-Clause AND Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -42438,10 +42480,12 @@
           },
           "zlib"
         ],
-        "version": "1.14.0"
+        "version": "1.15.1"
       },
       "files": [
+        "fix-pkgconfig-zlib.patch",
         "portfile.cmake",
+        "respect-user-selected-compiler.patch",
         "vcpkg.json"
       ]
     },
@@ -42874,12 +42918,6 @@
           }
         ],
         "features": {
-          "tests": {
-            "description": "Build huira tests",
-            "dependencies": [
-              "catch2"
-            ]
-          },
           "tools": {
             "description": "Build huira command line tools",
             "dependencies": [
@@ -42892,7 +42930,7 @@
             ]
           }
         },
-        "version": "0.9.6"
+        "version": "0.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -43251,7 +43289,7 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -43283,6 +43321,7 @@
       "files": [
         "disable-static-prefix.patch",
         "fix-python-path-with-spaces.patch",
+        "fix-using-install-sh.diff",
         "fix_bsd_and_solaris.patch",
         "fix_parallel_build_on_windows.patch",
         "mh-darwin.patch",
@@ -45521,7 +45560,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -45559,10 +45598,19 @@
         "description": "Type-driven JSON/CBOR parser with declarative validation. Header-only C++23 library.",
         "homepage": "https://github.com/tucher/JsonFusion",
         "license": "MIT",
+        "supports": "!windows",
         "dependencies": [
           "boost-pfr"
         ],
-        "version": "0.710.0"
+        "features": {
+          "yyjson": {
+            "description": "High-performance JSON backend (JsonFusion/yyjson.hpp) built on yyjson",
+            "dependencies": [
+              "yyjson"
+            ]
+          }
+        },
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -45574,7 +45622,7 @@
       "manifest": {
         "name": "jsonifier",
         "description": "A few classes for parsing and serializing json - very rapidly.",
-        "homepage": "https://github.com/realtimechris/jsonifier",
+        "homepage": "https://github.com/nihilai-collective/jsonifier",
         "license": "MIT",
         "supports": "(windows & x64 & !xbox) | (linux & x64) | (osx & x64)",
         "dependencies": [
@@ -45583,7 +45631,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -49295,7 +49343,7 @@
         "description": "Very fast, high-quality hash function, discrete-incremental and streamed hashing-capable",
         "homepage": "https://github.com/avaneev/komihash",
         "license": "MIT",
-        "version": "5.33"
+        "version": "5.34"
       },
       "files": [
         "portfile.cmake",
@@ -49320,7 +49368,7 @@
       "name": "krb5",
       "manifest": {
         "name": "krb5",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Kerberos is a network authentication protocol.",
           "It is designed to provide strong authentication for client/server applications by using secret-key cryptography.",
@@ -49345,6 +49393,7 @@
         "version": "1.22.2"
       },
       "files": [
+        "autoconf-2.72.patch",
         "define-des-zeroblock.diff",
         "portfile.cmake",
         "static-deps.diff",
@@ -51001,7 +51050,7 @@
       "name": "libbacktrace",
       "manifest": {
         "name": "libbacktrace",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The libbacktrace library may be linked into a program or library and used to produce symbolic backtraces.",
         "homepage": "https://github.com/ianlancetaylor/libbacktrace",
         "license": "BSD-3-Clause",
@@ -51016,6 +51065,7 @@
       },
       "files": [
         "portfile.cmake",
+        "unofficial-libbacktrace-config.cmake",
         "vcpkg.json"
       ]
     },
@@ -51804,7 +51854,7 @@
             ]
           }
         },
-        "version": "0.67.6"
+        "version": "0.69.1"
       },
       "files": [
         "portfile.cmake",
@@ -51864,7 +51914,6 @@
       "name": "libdatrie",
       "manifest": {
         "name": "libdatrie",
-        "port-version": 1,
         "description": "Implementation of double-array structure for representing trie",
         "homepage": "https://linux.thai.net/pub/ThaiLinux/software/libthai",
         "license": "LGPL-2.1-or-later",
@@ -51883,7 +51932,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.2.13"
+        "version": "0.2.14"
       },
       "files": [
         "CMakeLists.txt",
@@ -52763,7 +52812,7 @@
             "host": true
           }
         ],
-        "version": "3.7.1"
+        "version": "3.8.0"
       },
       "files": [
         "dll-bindir.diff",
@@ -53293,7 +53342,6 @@
       "name": "libgit2",
       "manifest": {
         "name": "libgit2",
-        "port-version": 1,
         "description": "A C library implementing the Git core methods with a solid API",
         "homepage": "https://github.com/libgit2/libgit2",
         "license": null,
@@ -53390,7 +53438,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version-semver": "1.9.4"
+        "version-semver": "1.9.6"
       },
       "files": [
         "c-standard.diff",
@@ -54659,9 +54707,10 @@
       "name": "libjuice",
       "manifest": {
         "name": "libjuice",
+        "port-version": 1,
         "description": "The library is a simplified implementation of the Interactive Connectivity Establishment (ICE) protocol in C for POSIX platforms (including Linux and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libjuice",
-        "license": "LGPL-2.1-only",
+        "license": "MPL-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -54685,6 +54734,7 @@
       "files": [
         "dependencies.diff",
         "portfile.cmake",
+        "soversion.diff",
         "vcpkg.json"
       ]
     },
@@ -54791,7 +54841,7 @@
       "name": "liblas",
       "manifest": {
         "name": "liblas",
-        "port-version": 16,
+        "port-version": 17,
         "description": "A C/C++ library for reading and writing the very common LAS LiDAR format.",
         "license": null,
         "supports": "!arm & !staticcrt",
@@ -55214,7 +55264,6 @@
       "name": "libmagic",
       "manifest": {
         "name": "libmagic",
-        "port-version": 1,
         "description": "This library can be used to classify files according to magic number tests.",
         "homepage": "https://github.com/file/file",
         "license": "BSD-2-Clause",
@@ -55266,7 +55315,7 @@
             ]
           }
         },
-        "version": "5.47"
+        "version": "5.48"
       },
       "files": [
         "0001-Use-libtre.patch",
@@ -55284,6 +55333,7 @@
         "0015-MSYS2-Remove-ioctl-call.patch",
         "0016-Fix-file_famagic-function.patch",
         "0017-Change-bzlib-name-to-match-CMake-output.patch",
+        "fix-public-ssize-t.diff",
         "portfile.cmake",
         "unofficial-libmagic-config.cmake.in",
         "usage",
@@ -55596,7 +55646,7 @@
             "host": true
           }
         ],
-        "version": "0.16"
+        "version": "0.20"
       },
       "files": [
         "portfile.cmake",
@@ -56265,6 +56315,34 @@
       ]
     },
     {
+      "name": "libnsgif",
+      "manifest": {
+        "name": "libnsgif",
+        "port-version": 1,
+        "description": "GIF image decompression library written in C",
+        "homepage": "https://www.netsurf-browser.org/projects/libnsgif/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "add-stddef-include.patch",
+        "portfile.cmake",
+        "unofficial-libnsgif-config.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libobfuscate",
       "manifest": {
         "name": "libobfuscate",
@@ -56694,8 +56772,8 @@
       "manifest": {
         "name": "libosdp",
         "description": "An cross-platform open source implementation of IEC 60839-11-5 Open Supervised Device Protocol (OSDP)",
-        "homepage": "https://github.com/goToMain/libosdp",
-        "documentation": "https://libosdp.sidcha.dev",
+        "homepage": "https://github.com/osdp-dev/libosdp",
+        "documentation": "https://doc.osdp.dev",
         "license": "Apache-2.0",
         "dependencies": [
           "openssl",
@@ -56708,9 +56786,10 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.2.6"
       },
       "files": [
+        "fix-export-macros.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -56989,7 +57068,7 @@
             "host": true
           }
         ],
-        "version": "9.0.33"
+        "version": "9.0.36"
       },
       "files": [
         "disable-werror.patch",
@@ -57119,7 +57198,7 @@
         "description": "Fast C/C++ bit population count library",
         "homepage": "https://github.com/kimwalisch/libpopcnt",
         "license": "BSD-2-Clause",
-        "version": "3.1"
+        "version": "4.2"
       },
       "files": [
         "portfile.cmake",
@@ -57604,9 +57683,10 @@
             ]
           }
         },
-        "version": "0.16.0"
+        "version": "0.17.0"
       },
       "files": [
+        "fix-pkgconfig.patch",
         "fix-uwpwarning.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -57618,6 +57698,7 @@
         "name": "libraqm",
         "description": "A library for complex text layout",
         "homepage": "https://github.com/HOST-Oman/libraqm",
+        "license": "MIT",
         "dependencies": [
           "freetype",
           "fribidi",
@@ -57627,7 +57708,44 @@
             "host": true
           }
         ],
-        "version": "0.10.5"
+        "version": "0.11.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "prefer-pkgconfig-freetype.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "librats",
+      "manifest": {
+        "name": "librats",
+        "description": "C++17 peer-to-peer networking library: encrypted P2P (Noise XX), DHT/mDNS discovery, NAT traversal (STUN/UPnP/NAT-PMP), GossipSub pub/sub, file transfer, optional BitTorrent.",
+        "homepage": "https://github.com/librats/librats",
+        "license": "MIT AND BSD-3-Clause AND BSD-2-Clause AND BSD-1-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "bindings": {
+            "description": "Build the C API used by Node.js / Python / Java bindings"
+          },
+          "search-features": {
+            "description": "Enable BitTorrent client (bt_*, tracker, disk_io, info_hash spider)"
+          },
+          "storage": {
+            "description": "Enable distributed key-value storage module"
+          }
+        },
+        "version": "2.0.12"
       },
       "files": [
         "portfile.cmake",
@@ -57736,13 +57854,11 @@
             ]
           }
         },
-        "version": "2.14.2"
+        "version": "2.15.0"
       },
       "files": [
-        "fix_oauthbearer_check.patch",
         "lz4.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -59248,10 +59364,16 @@
       "name": "libtar",
       "manifest": {
         "name": "libtar",
-        "port-version": 1,
+        "port-version": 2,
         "description": "libtar - C library for manipulating tar files",
         "homepage": "https://repo.or.cz/libtar.git",
         "supports": "!windows",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "1.2.20"
       },
       "files": [
@@ -59492,8 +59614,14 @@
         "license": null,
         "supports": "(windows & !static) | osx | linux",
         "dependencies": [
+          "concurrentqueue",
           "cpp-httplib",
-          "cpuinfo",
+          {
+            "name": "cpuinfo",
+            "features": [
+              "clog"
+            ]
+          },
           "eigen3",
           {
             "name": "fbgemm",
@@ -59542,8 +59670,7 @@
           {
             "name": "vcpkg-get-python-packages",
             "host": true
-          },
-          "xnnpack"
+          }
         ],
         "default-features": [
           "blas"
@@ -59647,14 +59774,20 @@
             ]
           }
         },
-        "version": "2.12.0"
+        "version": "2.13.0"
       },
       "files": [
         "fix-async-mm-cutlass.patch",
         "fix-cudnn-frontend.patch",
+        "fix-disable-xnnpack.patch",
+        "fix-fbgemm-arch-check.patch",
         "fix-glog.patch",
+        "fix-headeronly-glob.patch",
+        "fix-httplib-params.patch",
         "fix-osx-protobuf.patch",
+        "fix-python-package-data.patch",
         "fix-sleef.patch",
+        "fix-system-concurrentqueue.patch",
         "fix-system-cpuinfo.patch",
         "fix-system-cutlass.patch",
         "fix-system-fbgemm.patch",
@@ -59674,7 +59807,7 @@
         "fix-system-pocketfft.patch",
         "fix-system-pthreadpool.patch",
         "fix-system-tensorpipe.patch",
-        "fix-system-xnnpack.patch",
+        "fix-torch-global-deps.patch",
         "fix-torch-includes.patch",
         "fix-vulkan-vma.patch",
         "fix-windows-install-dirs.patch",
@@ -59690,7 +59823,7 @@
         "description": "An efficient feature complete C++ BitTorrent implementation",
         "homepage": "https://libtorrent.org",
         "documentation": "https://libtorrent.org/reference.html",
-        "license": "BSD-2-Clause",
+        "license": "BSD-3-Clause AND Zlib AND BSL-1.0 AND APSL-2.0 AND BSD-4-Clause",
         "supports": "!uwp",
         "dependencies": [
           "boost-asio",
@@ -59718,38 +59851,61 @@
           }
         ],
         "default-features": [
-          "iconv"
+          {
+            "name": "webtorrent",
+            "platform": "!xbox"
+          }
         ],
         "features": {
           "deprfun": {
-            "description": "build with deprecated functions enabled"
+            "description": "Build with deprecated libtorrent APIs enabled"
           },
           "examples": {
-            "description": "build the examples in the examples directory"
-          },
-          "iconv": {
-            "description": "build with libiconv",
-            "dependencies": [
-              "libiconv"
-            ]
+            "description": "Build the examples in the examples directory"
           },
           "python": {
-            "description": "build the python bindings in bindings/python directory",
+            "description": "Build the Python bindings",
             "dependencies": [
-              "boost-python"
-            ]
+              "boost-python",
+              {
+                "name": "libtorrent",
+                "default-features": false,
+                "features": [
+                  "deprfun"
+                ]
+              },
+              {
+                "name": "python3",
+                "default-features": false,
+                "features": [
+                  "extensions"
+                ]
+              }
+            ],
+            "supports": "native & !emscripten & !ios & !android & !mingw & !(staticcrt & windows)"
           },
           "test": {
-            "description": "build the libtorrent tests"
+            "description": "Build the libtorrent tests"
           },
           "tools": {
-            "description": "build the tools in the tools directory"
+            "description": "Build the libtorrent tools"
+          },
+          "webtorrent": {
+            "description": "Build with WebTorrent/WebRTC support",
+            "dependencies": [
+              "boost-beast",
+              "boost-json",
+              "libdatachannel"
+            ],
+            "supports": "!xbox"
           }
         },
-        "version": "2.0.11"
+        "version": "2.1.1"
       },
       "files": [
+        "fix-shared-extra-exports.patch",
         "portfile.cmake",
+        "use-system-libdatachannel.patch",
         "vcpkg.json"
       ]
     },
@@ -60622,7 +60778,7 @@
             ]
           }
         },
-        "version": "8.18.2"
+        "version": "8.18.5"
       },
       "files": [
         "portfile.cmake",
@@ -60715,10 +60871,10 @@
       "name": "libvpx",
       "manifest": {
         "name": "libvpx",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The reference software implementation for the video coding formats VP8 and VP9.",
         "homepage": "https://github.com/webmproject/libvpx",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND ISC",
         "dependencies": [
           {
             "name": "vcpkg-cmake-get-vars",
@@ -60746,6 +60902,7 @@
         "0005-dont-expect-gnu-diff.patch",
         "0006-gen-vcxproj-ignore-unknown-flags.patch",
         "0007-msvc-use-Fo-in-toolchain-probe.patch",
+        "0008-enable-shared-on-mingw.patch",
         "portfile.cmake",
         "unofficial-libvpx-config.cmake.in",
         "vcpkg.json",
@@ -61738,7 +61895,7 @@
         "name": "libxmlb",
         "description": "The libxmlb library takes XML source, and converts it to a structured binary representation with a deduplicated string table where the strings have the NULs included",
         "homepage": "https://github.com/hughsie/libxmlb/",
-        "license": "LGPL-2.1-only",
+        "license": "LGPL-2.1-or-later",
         "supports": "!windows | mingw",
         "dependencies": [
           "glib",
@@ -61747,7 +61904,7 @@
             "host": true
           }
         ],
-        "version": "0.3.28"
+        "version": "0.3.29"
       },
       "files": [
         "portfile.cmake",
@@ -63672,7 +63829,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "cmake/CMakeLists.txt",
@@ -63680,7 +63837,6 @@
         "cmake/lmdb.pc.in",
         "cmake/unofficial-lmdb-config.cmakein",
         "getopt-win32.diff",
-        "msvc.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -63717,7 +63873,7 @@
         "name": "log4cplus",
         "description": "A simple to use C++ logging API providing thread--safe, flexible, and arbitrarily granular control over log management and configuration",
         "homepage": "https://github.com/log4cplus/log4cplus",
-        "license": "Apache-2.0 AND BSD-2-Clause",
+        "license": "Apache-2.0 AND BSD-2-Clause AND Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -63733,7 +63889,7 @@
             "description": "Unicode logger"
           }
         },
-        "version": "2.1.2"
+        "version": "2.2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -63809,7 +63965,7 @@
             ]
           }
         },
-        "version": "1.7.0"
+        "version": "1.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -63927,7 +64083,7 @@
           },
           "xxhash"
         ],
-        "version": "2.6.6"
+        "version": "2.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -64118,7 +64274,6 @@
       "name": "lua",
       "manifest": {
         "name": "lua",
-        "port-version": 1,
         "description": "A powerful, fast, lightweight, embeddable scripting language",
         "homepage": "https://www.lua.org",
         "license": "MIT",
@@ -64147,11 +64302,10 @@
             "supports": "!ios"
           }
         },
-        "version": "5.5.0"
+        "version": "5.5.1"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-ios-system.patch",
         "portfile.cmake",
         "usage",
         "uwp-no-popen.diff",
@@ -64167,17 +64321,7 @@
         "description": "provide Lua-5.3-style C APIs for Lua 5.2 and 5.1",
         "homepage": "https://github.com/lunarmodules/lua-compat-5.3",
         "license": "MIT",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "0.14.4"
+        "version": "0.15.1"
       },
       "files": [
         "portfile.cmake",
@@ -64289,7 +64433,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-07-11"
+        "version-date": "2026-08-03"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -64378,7 +64522,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.729"
+        "version": "0.733"
       },
       "files": [
         "cmake-config-export.patch",
@@ -64424,9 +64568,10 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
+        "0001-apidump-Add-missing-calling-convention-attributes.patch",
         "disable-qtdeploy.patch",
         "portfile.cmake",
         "static-linkage.patch",
@@ -66555,6 +66700,99 @@
       ]
     },
     {
+      "name": "mas-bandwidth-netcode",
+      "manifest": {
+        "name": "mas-bandwidth-netcode",
+        "description": "A secure client/server protocol for multiplayer games built on top of UDP.",
+        "homepage": "https://github.com/mas-bandwidth/netcode",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "libsodium",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.4.3"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mas-bandwidth-reliable",
+      "manifest": {
+        "name": "mas-bandwidth-reliable",
+        "description": "A simple packet acknowledgement system for UDP-based protocols.",
+        "homepage": "https://github.com/mas-bandwidth/reliable",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.4.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mas-bandwidth-serialize",
+      "manifest": {
+        "name": "mas-bandwidth-serialize",
+        "description": "A simple bitpacking serializer for C++.",
+        "homepage": "https://github.com/mas-bandwidth/serialize",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.5.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mas-bandwidth-yojimbo",
+      "manifest": {
+        "name": "mas-bandwidth-yojimbo",
+        "description": "A network library for client/server games written in C++, designed around the networking requirements of competitive multiplayer games.",
+        "homepage": "https://github.com/mas-bandwidth/yojimbo",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          "libsodium",
+          "mas-bandwidth-netcode",
+          "mas-bandwidth-reliable",
+          "mas-bandwidth-serialize",
+          "tlsf",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "1.9.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "matajoh-libnpy",
       "manifest": {
         "name": "matajoh-libnpy",
@@ -67928,7 +68166,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.4.3"
+        "version": "3.4.5"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -68054,8 +68292,12 @@
         "description": "MiniFB (Mini FrameBuffer) is a small cross platform library that makes it easy to render (32-bit) pixels in a window.",
         "homepage": "https://github.com/emoon/minifb",
         "license": "MIT",
-        "supports": "!uwp",
+        "supports": "!uwp & !android",
         "dependencies": [
+          {
+            "name": "libx11",
+            "platform": "linux"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -68065,11 +68307,10 @@
             "host": true
           }
         ],
-        "version-date": "2023-09-21"
+        "version": "0.10.1"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -68791,7 +69032,7 @@
             ]
           }
         },
-        "version": "7.22"
+        "version": "7.23"
       },
       "files": [
         "CMakeLists.txt",
@@ -68931,6 +69172,7 @@
       "name": "morphologica",
       "manifest": {
         "name": "morphologica",
+        "port-version": 1,
         "description": "C++ header-only graphing and data visualization with Modern OpenGL",
         "homepage": "https://github.com/ABRG-Models/morphologica",
         "license": "Apache-2.0",
@@ -69216,7 +69458,7 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "1.33.4"
+        "version": "1.33.7"
       },
       "files": [
         "have-fpu.diff",
@@ -69349,7 +69591,7 @@
             "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2604.2.7849"
+        "version": "2604.3.7874"
       },
       "files": [
         "gdk-config.cmake.in",
@@ -70111,14 +70353,13 @@
       "name": "mygui",
       "manifest": {
         "name": "mygui",
-        "port-version": 4,
         "description": "Fast, flexible and simple GUI",
         "homepage": "http://mygui.info",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
           "freetype",
-          "sdl2-image",
+          "pugixml",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -70129,34 +70370,26 @@
           }
         ],
         "features": {
+          "msdf": {
+            "description": "Enable msdf support",
+            "dependencies": [
+              {
+                "name": "msdfgen",
+                "default-features": false,
+                "features": [
+                  "extensions"
+                ]
+              }
+            ]
+          },
           "obsolete": {
             "description": "Keep obsolete functions."
-          },
-          "opengl": {
-            "description": "Use OpenGL render system.",
-            "dependencies": [
-              "opengl"
-            ],
-            "supports": "!android"
-          },
-          "plugins": {
-            "description": "Build MyGUI plugins."
-          },
-          "tools": {
-            "description": "Install MyGUI tools.",
-            "supports": "!android"
           }
         },
-        "version": "3.4.3"
+        "version": "3.5.1"
       },
       "files": [
-        "Install-tools.patch",
-        "fix-generation.patch",
-        "fix-tools-lnk2005.patch",
-        "opengl.patch",
-        "platform-lib-static.patch",
         "portfile.cmake",
-        "sdl2-static.patch",
         "vcpkg.json"
       ]
     },
@@ -70372,7 +70605,6 @@
       "name": "nanoarrow",
       "manifest": {
         "name": "nanoarrow",
-        "port-version": 2,
         "description": "Helpers for Arrow C Data & Arrow C Stream interfaces",
         "homepage": "https://arrow.apache.org/nanoarrow",
         "license": "Apache-2.0",
@@ -70394,10 +70626,9 @@
             ]
           }
         },
-        "version": "0.8.0"
+        "version": "0.9.0"
       },
       "files": [
-        "fix-flatccrt-name.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70489,7 +70720,7 @@
         "name": "nanoflann",
         "description": "nanoflann is a C++11 header-only library for building KD-Trees of datasets with different topologies: R2, R3 (point clouds), SO(2) and SO(3) (2D and 3D rotation groups).",
         "homepage": "https://github.com/jlblancoc/nanoflann",
-        "license": "BSD-3-Clause",
+        "license": "BSD-2-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -70500,7 +70731,7 @@
             "host": true
           }
         ],
-        "version": "1.10.1"
+        "version": "1.12.1"
       },
       "files": [
         "portfile.cmake",
@@ -70593,7 +70824,7 @@
             "description": "nanomsg tool (nanocat)"
           }
         },
-        "version-semver": "1.2.2"
+        "version-semver": "1.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -70643,7 +70874,7 @@
         "description": "A tiny embeddable printf replacement written in C99",
         "homepage": "https://github.com/charlesnicholson/nanoprintf",
         "license": "Unlicense OR 0BSD",
-        "version": "0.7.0"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -70901,7 +71132,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -70965,7 +71196,7 @@
       "manifest": {
         "name": "neko-event",
         "description": "A modern easy to use type-safe and high-performance event handling system for C++ ",
-        "homepage": "https://github.com/moehoshio/NekoEvent",
+        "homepage": "https://github.com/hoshimoe/NekoEvent",
         "license": "MIT OR Apache-2.0",
         "dependencies": [
           "neko-schema",
@@ -70978,7 +71209,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -70991,7 +71222,7 @@
       "manifest": {
         "name": "neko-function",
         "description": "A comprehensive modern C++ utility library that provides practical functions for common programming tasks.",
-        "homepage": "https://github.com/moehoshio/NekoFunction",
+        "homepage": "https://github.com/hoshimoe/NekoFunction",
         "license": "MIT OR Apache-2.0",
         "dependencies": [
           "neko-schema",
@@ -71018,7 +71249,7 @@
             ]
           }
         },
-        "version": "1.0.11"
+        "version": "1.0.12"
       },
       "files": [
         "portfile.cmake",
@@ -71031,7 +71262,7 @@
       "manifest": {
         "name": "neko-log",
         "description": "An easy-to-use, modern, lightweight, and efficient C++20 logging library",
-        "homepage": "https://github.com/moehoshio/NekoLog",
+        "homepage": "https://github.com/hoshimoe/NekoLog",
         "license": "MIT OR Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
@@ -71045,7 +71276,7 @@
             "host": true
           }
         ],
-        "version": "1.0.7"
+        "version": "1.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -71058,7 +71289,7 @@
       "manifest": {
         "name": "neko-network",
         "description": "Neko Network is a modern, easy-to-use, and efficient C++20 network library built on top of libcurl.",
-        "homepage": "https://github.com/moehoshio/NekoNetwork",
+        "homepage": "https://github.com/hoshimoe/NekoNetwork",
         "license": "MIT OR Apache-2.0",
         "dependencies": [
           "curl",
@@ -71085,7 +71316,7 @@
             ]
           }
         },
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -71098,7 +71329,7 @@
       "manifest": {
         "name": "neko-schema",
         "description": "A lightweight C++20 header-only library providing fundamental type definitions and utilities for the Neko ecosystem",
-        "homepage": "https://github.com/moehoshio/NekoSchema",
+        "homepage": "https://github.com/hoshimoe/NekoSchema",
         "license": "MIT OR Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
@@ -71111,7 +71342,7 @@
             "host": true
           }
         ],
-        "version": "1.1.5"
+        "version": "1.1.6"
       },
       "files": [
         "portfile.cmake",
@@ -71124,7 +71355,7 @@
       "manifest": {
         "name": "neko-system",
         "description": "A cross-platform C++20 system information library providing memory information, platform detection, and system utilities.",
-        "homepage": "https://github.com/moehoshio/NekoSystem",
+        "homepage": "https://github.com/hoshimoe/NekoSystem",
         "license": "MIT OR Apache-2.0",
         "supports": "windows | linux | osx",
         "dependencies": [
@@ -71139,7 +71370,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -71152,7 +71383,7 @@
       "manifest": {
         "name": "neko-threadpool",
         "description": "An easy-to-use and efficient C++ 20 thread pool that supports task priorities and task submission to specific threads.",
-        "homepage": "https://github.com/moehoshio/NekoThreadPool",
+        "homepage": "https://github.com/hoshimoe/NekoThreadPool",
         "license": "MIT OR Apache-2.0",
         "dependencies": [
           "neko-schema",
@@ -71165,7 +71396,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -71546,7 +71777,7 @@
       "name": "nettle",
       "manifest": {
         "name": "nettle",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Nettle is a low-level cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
         "homepage": "https://git.lysator.liu.se/nettle/nettle",
         "license": null,
@@ -71652,7 +71883,7 @@
             "host": true
           }
         ],
-        "version": "1.69.0"
+        "version": "1.70.0"
       },
       "files": [
         "portfile.cmake",
@@ -72070,12 +72301,11 @@
             "host": true
           }
         ],
-        "version": "8.9.0"
+        "version": "8.9.1"
       },
       "files": [
         "portfile.cmake",
         "unofficial-node-addon-api-config.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -72529,7 +72759,7 @@
             "host": true
           }
         ],
-        "version": "7.7.1"
+        "version": "7.8.0"
       },
       "files": [
         "export-target.patch",
@@ -72600,7 +72830,7 @@
             ]
           }
         },
-        "version-semver": "5.1.7"
+        "version-semver": "5.1.8"
       },
       "files": [
         "portfile.cmake",
@@ -72626,7 +72856,7 @@
             "host": true
           }
         ],
-        "version": "4.5.2"
+        "version": "4.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -74451,7 +74681,6 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
-        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -74526,7 +74755,7 @@
             ]
           }
         },
-        "version": "8.0.0"
+        "version": "8.0.1"
       },
       "files": [
         "0001-cmake-keep-build-use-vcpkg-explicit.patch",
@@ -74542,7 +74771,6 @@
       "name": "opencc",
       "manifest": {
         "name": "opencc",
-        "port-version": 1,
         "description": "A project for conversions between Traditional Chinese, Simplified Chinese and Japanese Kanji (Shinjitai)",
         "homepage": "https://github.com/BYVoid/OpenCC",
         "license": "Apache-2.0",
@@ -74570,10 +74798,9 @@
             "description": "Build OpenCC command-line tools"
           }
         },
-        "version": "1.1.9"
+        "version": "1.4.1"
       },
       "files": [
-        "enable-cpp17.patch",
         "fix-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -75510,7 +75737,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -75859,7 +76086,7 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 7,
+        "port-version": 9,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
         "documentation": "https://docs.opencv.org/4.12.0/",
@@ -76423,6 +76650,7 @@
         "0025-fix-cuda-host-std-flag-forwarding.patch",
         "0026-cuda-msvc-preprocessor.patch",
         "0027-contrib-cuda-tuple.patch",
+        "0028-ffmpeg9-support.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -76454,7 +76682,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.13"
+        "version": "3.4.14"
       },
       "files": [
         "portfile.cmake",
@@ -76547,7 +76775,7 @@
         "dependencies": [
           "egl-registry"
         ],
-        "version-date": "2026-01-26"
+        "version-date": "2026-08-03"
       },
       "files": [
         "copyright",
@@ -76833,9 +77061,10 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.30.1"
+        "version": "0.31.0"
       },
       "files": [
+        "fix-pkgconfig-library-name.patch",
         "portfile.cmake",
         "vcpkg.json",
         "xsi-strerror_r.patch"
@@ -78082,7 +78311,7 @@
         "name": "openxr-loader",
         "description": "A royalty-free, open standard that provides high-performance access to Augmented Reality (AR) and Virtual Reality (VR)—collectively known as XR—platforms and devices",
         "homepage": "https://github.com/KhronosGroup/OpenXR-SDK",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND MIT",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -78112,7 +78341,7 @@
             "supports": "!(arm & windows) & !uwp"
           }
         },
-        "version": "1.1.60"
+        "version": "1.1.62"
       },
       "files": [
         "fix-openxr-sdk-jsoncpp.patch",
@@ -78204,7 +78433,6 @@
       "name": "opus",
       "manifest": {
         "name": "opus",
-        "port-version": 1,
         "description": "Totally open, royalty-free, highly versatile audio codec",
         "homepage": "https://github.com/xiph/opus",
         "license": "BSD-3-Clause",
@@ -78223,9 +78451,10 @@
             "description": "Builds the library with avx2 instruction set"
           }
         },
-        "version": "1.5.2"
+        "version": "1.6.1"
       },
       "files": [
+        "fix-arm64-windows-compile.diff",
         "fix-pkgconfig-version.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -78316,7 +78545,7 @@
             ]
           }
         },
-        "version": "5.5.1"
+        "version": "5.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -79687,7 +79916,7 @@
             "host": true
           }
         ],
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -80554,7 +80783,7 @@
         "description": "A micro microbenchmarking library for C++11 in a single header file",
         "homepage": "https://github.com/iboB/picobench",
         "license": "MIT",
-        "version": "2.9.0"
+        "version": "2.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -83327,7 +83556,7 @@
             "host": true
           }
         ],
-        "version": "3.0.4"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -83529,6 +83758,7 @@
       "name": "qca",
       "manifest": {
         "name": "qca",
+        "port-version": 1,
         "description": "Qt Cryptographic Architecture (QCA).",
         "homepage": "https://userbase.kde.org/QCA",
         "license": "LGPL-2.1-or-later AND BSD-2-Clause AND MPL-2.0",
@@ -83573,6 +83803,7 @@
         "0001-fix-path-for-vcpkg.patch",
         "0002-fix-build-error.patch",
         "0003-Define-NOMINMAX-for-botan-plugin-with-MSVC.patch",
+        "0004-fix-macos-rpath.patch",
         "mk-ca-bundle.pl",
         "portfile.cmake",
         "vcpkg.json"
@@ -84044,7 +84275,6 @@
       "name": "qpdf",
       "manifest": {
         "name": "qpdf",
-        "port-version": 1,
         "description": "A content-preserving PDF document transformer",
         "homepage": "https://qpdf.sourceforge.io/",
         "license": "Apache-2.0 AND MIT",
@@ -84082,7 +84312,7 @@
             ]
           }
         },
-        "version": "12.3.2"
+        "version": "12.4.0"
       },
       "files": [
         "cmake-library-only.patch",
@@ -85421,6 +85651,7 @@
       "name": "qt5-location",
       "manifest": {
         "name": "qt5-location",
+        "port-version": 1,
         "description": "The Qt Location API helps you create viable mapping solutions using the data available from some of the popular location services.",
         "license": null,
         "dependencies": [
@@ -85439,6 +85670,7 @@
         "add-float-cast.diff",
         "add-stdint.diff",
         "disable-enum-warning.patch",
+        "fix-boost-mpl-constant-expression.patch",
         "missing-include.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -89234,7 +89466,7 @@
         "name": "quickjs-ng",
         "description": "QuickJS, the Next Generation: a mighty JavaScript engine. A small and embeddable JavaScript engine supporting the latest ECMAScript specification.",
         "homepage": "https://github.com/quickjs-ng/quickjs",
-        "license": "MIT",
+        "license": "MIT AND Unicode-3.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -89250,7 +89482,7 @@
             "description": "Support for the quickjs standard library"
           }
         },
-        "version": "0.15.1"
+        "version": "0.16.1"
       },
       "files": [
         "portfile.cmake",
@@ -90149,6 +90381,7 @@
       "name": "realm-core",
       "manifest": {
         "name": "realm-core",
+        "port-version": 1,
         "description": "Realm is a mobile database that runs directly inside phones, tablets or wearables.",
         "homepage": "https://github.com/realm/realm-core",
         "license": null,
@@ -90174,6 +90407,7 @@
       "files": [
         "UWP_index_set.patch",
         "cstdlib.diff",
+        "fix-s2-is-pod.patch",
         "fix-zlib.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -90626,10 +90860,9 @@
       "name": "rego-cpp",
       "manifest": {
         "name": "rego-cpp",
-        "port-version": 1,
         "description": "A C++ interpreter for the OPA Rego policy language",
         "homepage": "https://github.com/microsoft/rego-cpp",
-        "license": "MIT",
+        "license": "MIT AND Zlib",
         "supports": "!x86",
         "dependencies": [
           {
@@ -90662,7 +90895,7 @@
             "description": "Build and install the rego command-line interpreter"
           }
         },
-        "version": "1.4.1"
+        "version": "1.5.2"
       },
       "files": [
         "add-bigobj.diff",
@@ -92364,7 +92597,7 @@
       "name": "rubberband",
       "manifest": {
         "name": "rubberband",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A high quality software library for audio time-stretching and pitch-shifting.",
         "homepage": "https://www.breakfastquay.com/rubberband/",
         "license": "GPL-2.0-or-later",
@@ -92404,6 +92637,7 @@
         "version": "4.0.0"
       },
       "files": [
+        "fix-size-t.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92635,7 +92869,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.7.3"
+        "version": "1.7.6"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -92951,7 +93185,7 @@
             "description": "Enable XWD codec"
           }
         },
-        "version-semver": "1.0.3"
+        "version-semver": "1.1.0"
       },
       "files": [
         "fix-always-nanosvg.diff",
@@ -93268,7 +93502,7 @@
             "host": true
           }
         ],
-        "version": "0.5.11"
+        "version": "0.6.3"
       },
       "files": [
         "portfile.cmake",
@@ -93420,6 +93654,7 @@
       "name": "sdbus-cpp",
       "manifest": {
         "name": "sdbus-cpp",
+        "port-version": 1,
         "description": "High-level C++ D-Bus library for Linux designed to provide easy-to-use yet powerful API in modern C++",
         "homepage": "https://github.com/Kistler-Group/sdbus-cpp",
         "license": "LGPL-2.1-only",
@@ -94116,7 +94351,7 @@
         "name": "sdl3",
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
-        "license": "Zlib AND MIT AND Apache-2.0",
+        "license": "Zlib AND MIT AND Apache-2.0 AND BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -94197,7 +94432,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.12"
+        "version": "3.4.14"
       },
       "files": [
         "fix-freebsd.patch",
@@ -94630,7 +94865,7 @@
             ]
           }
         },
-        "version": "4.4.0"
+        "version": "4.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -94803,7 +95038,7 @@
         "name": "sentry-native",
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
-        "license": "MIT",
+        "license": "MIT AND Apache-2.0 AND BSD-3-Clause AND ICU",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -94892,7 +95127,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.16.0"
+        "version": "0.16.3"
       },
       "files": [
         "fix-cmake4.patch",
@@ -95261,6 +95496,7 @@
       "name": "shader-slang",
       "manifest": {
         "name": "shader-slang",
+        "port-version": 1,
         "description": "Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is based on years of collaboration between researchers at NVIDIA, Carnegie Mellon University, and Stanford.",
         "homepage": "https://github.com/shader-slang/slang",
         "license": null,
@@ -95812,7 +96048,6 @@
       "name": "simd",
       "manifest": {
         "name": "simd",
-        "port-version": 1,
         "description": "Simd image processing and machine learning library, designed for C and C++ programmers",
         "homepage": "https://github.com/ermig1979/Simd",
         "license": "MIT",
@@ -95827,11 +96062,10 @@
             "host": true
           }
         ],
-        "version": "7.1.162"
+        "version": "7.2.164"
       },
       "files": [
         "SimdConfig.cmake",
-        "fix-platform-detection.patch",
         "portfile.cmake",
         "use-preconfigured-version-header.patch",
         "vcpkg.json"
@@ -95888,7 +96122,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.4"
+        "version": "4.6.6"
       },
       "files": [
         "portfile.cmake",
@@ -96587,7 +96821,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -98109,7 +98343,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -98132,7 +98366,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -98156,7 +98390,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "export-targets.patch",
@@ -98188,7 +98422,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -98874,7 +99108,7 @@
             ]
           }
         },
-        "version": "0.69"
+        "version": "0.70"
       },
       "files": [
         "ddl2cpp_path.patch",
@@ -99435,12 +99669,12 @@
             "host": true
           }
         ],
-        "version": "4.7.7"
+        "version": "4.8.0"
       },
       "files": [
         "fix-install-path.patch",
+        "fix-package-version.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -99492,7 +99726,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "disable-cpm.patch",
@@ -99532,6 +99766,8 @@
       "manifest": {
         "name": "stormlib",
         "description": "StormLib is a library for opening and manipulating Blizzard MPQ files",
+        "homepage": "http://www.zezula.net/en/mpq/stormlib.html",
+        "license": null,
         "dependencies": [
           "bzip2",
           {
@@ -99544,9 +99780,10 @@
           },
           "zlib"
         ],
-        "version": "9.31"
+        "version": "9.40"
       },
       "files": [
+        "disable-autolinking.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99568,9 +99805,10 @@
             "host": true
           }
         ],
-        "version": "0.7.7"
+        "version": "0.8.1"
       },
       "files": [
+        "fix-debug-install-destinations.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -99669,7 +99907,7 @@
         "description": "StringZilla is the GodZilla of string libraries, using SIMD and SWAR to accelerate string operations on modern CPUs.",
         "homepage": "https://github.com/ashvardanian/StringZilla",
         "license": "Apache-2.0",
-        "version": "4.6.2"
+        "version": "5.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -99982,7 +100220,7 @@
             ]
           }
         },
-        "version-semver": "7.12.3"
+        "version-semver": "7.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -99993,7 +100231,7 @@
       "name": "suitesparse-amd",
       "manifest": {
         "name": "suitesparse-amd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100019,7 +100257,7 @@
       "name": "suitesparse-btf",
       "manifest": {
         "name": "suitesparse-btf",
-        "port-version": 1,
+        "port-version": 2,
         "description": "BTF: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100045,7 +100283,7 @@
       "name": "suitesparse-camd",
       "manifest": {
         "name": "suitesparse-camd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100071,7 +100309,7 @@
       "name": "suitesparse-ccolamd",
       "manifest": {
         "name": "suitesparse-ccolamd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "CCOLAMD: Routines for constrained column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100097,6 +100335,7 @@
       "name": "suitesparse-cholmod",
       "manifest": {
         "name": "suitesparse-cholmod",
+        "port-version": 1,
         "description": "CHOLMOD: Routines for factorizing sparse symmetric positive definite matrices in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later AND Apache-2.0",
@@ -100176,7 +100415,7 @@
       "name": "suitesparse-colamd",
       "manifest": {
         "name": "suitesparse-colamd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "COLAMD: Routines for column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100221,7 +100460,7 @@
             "description": "Enable OpenMP support (in SuiteSparse_config only)"
           }
         },
-        "version-semver": "7.12.3"
+        "version-semver": "7.13.0"
       },
       "files": [
         "SuiteSparseBLAS.cmake",
@@ -100233,7 +100472,7 @@
       "name": "suitesparse-cxsparse",
       "manifest": {
         "name": "suitesparse-cxsparse",
-        "port-version": 1,
+        "port-version": 2,
         "description": "CXSparse: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100285,7 +100524,7 @@
             "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
           }
         },
-        "version-semver": "10.3.2"
+        "version-semver": "10.4.1"
       },
       "files": [
         "crossbuild.diff",
@@ -100297,7 +100536,7 @@
       "name": "suitesparse-klu",
       "manifest": {
         "name": "suitesparse-klu",
-        "port-version": 1,
+        "port-version": 2,
         "description": "KLU: Routines for solving sparse linear systems of equations in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100334,6 +100573,7 @@
       "name": "suitesparse-lagraph",
       "manifest": {
         "name": "suitesparse-lagraph",
+        "port-version": 1,
         "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
         "homepage": "https://lagraph.readthedocs.io/en/latest/",
         "license": "BSD-2-Clause",
@@ -100372,7 +100612,7 @@
       "name": "suitesparse-ldl",
       "manifest": {
         "name": "suitesparse-ldl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "LDL: A sparse LDL' factorization and solve package in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100399,7 +100639,7 @@
       "name": "suitesparse-mongoose",
       "manifest": {
         "name": "suitesparse-mongoose",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Mongoose: Graph partitioning library in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-only",
@@ -100460,7 +100700,7 @@
             "supports": "!windows"
           }
         },
-        "version-semver": "1.1.1"
+        "version-semver": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -100471,7 +100711,7 @@
       "name": "suitesparse-rbio",
       "manifest": {
         "name": "suitesparse-rbio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "RBio: routines for reading/writing sparse matrices in Rutherford/Boeing format in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100497,7 +100737,7 @@
       "name": "suitesparse-spex",
       "manifest": {
         "name": "suitesparse-spex",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SPEX: Software package for SParse EXact algebra in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later OR LGPL-3.0-or-later",
@@ -100540,7 +100780,7 @@
       "name": "suitesparse-spqr",
       "manifest": {
         "name": "suitesparse-spqr",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SPQR: Multithreaded, multifrontal, rank-revealing sparse QR factorization method in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100582,6 +100822,7 @@
       "name": "suitesparse-umfpack",
       "manifest": {
         "name": "suitesparse-umfpack",
+        "port-version": 1,
         "description": "UMFPACK: Routines solving sparse linear systems via LU factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100697,7 +100938,6 @@
       "name": "supernovas",
       "manifest": {
         "name": "supernovas",
-        "port-version": 1,
         "description": "SuperNOVAS C/C++ high-precision astrometry library",
         "homepage": "https://sigmyne.github.io/SuperNOVAS/",
         "documentation": "https://sigmyne.github.io/SuperNOVAS/doc/html/",
@@ -100724,11 +100964,9 @@
             ]
           }
         },
-        "version": "1.7.1"
+        "version": "1.7.2"
       },
       "files": [
-        "gmtime_s.patch",
-        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -102048,23 +102286,6 @@
       ]
     },
     {
-      "name": "threadpool",
-      "manifest": {
-        "name": "threadpool",
-        "port-version": 4,
-        "description": "threadpool is a cross-platform C++ thread pool library. It provides a convenient way for dispatching asynchronous tasks and can be easily customized. threadpool is based on the high-quality Boost source libraries.",
-        "homepage": "https://threadpool.sourceforge.net/",
-        "dependencies": [
-          "boost-thread"
-        ],
-        "version": "0.2.5"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "threadweaver",
       "manifest": {
         "name": "threadweaver",
@@ -102119,7 +102340,7 @@
           },
           "zlib"
         ],
-        "version": "0.23.0"
+        "version": "0.24.0"
       },
       "files": [
         "fix_missing_quotes_in_config_and_bin_path.patch",
@@ -102671,7 +102892,7 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.2.0"
       },
       "files": [
         "fixtargets.patch",
@@ -102736,8 +102957,10 @@
       "name": "tinygltf",
       "manifest": {
         "name": "tinygltf",
-        "description": "A header only C++11 glTF 2.0 library.",
+        "port-version": 1,
+        "description": "A header-only glTF 2.0 library with a C++11 v2 API and a C++17 v3 API.",
         "homepage": "https://github.com/syoyo/tinygltf",
+        "license": "MIT AND BSL-1.0 AND Zlib",
         "dependencies": [
           "nlohmann-json",
           "stb"
@@ -103248,6 +103471,28 @@
       ]
     },
     {
+      "name": "tlsf",
+      "manifest": {
+        "name": "tlsf",
+        "description": "Two-Level Segregated Fit memory allocator implementation. O(1) cost for malloc, free, realloc and memalign, with extremely low overhead per allocation.",
+        "homepage": "https://github.com/mattconte/tlsf",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2020-03-29"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tlx",
       "manifest": {
         "name": "tlx",
@@ -103479,6 +103724,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
+        "port-version": 1,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -103555,12 +103801,7 @@
               "ppqsort",
               "pugixml",
               "tidy-html5",
-              {
-                "name": "usearch",
-                "features": [
-                  "fp16"
-                ]
-              },
+              "usearch",
               "zstd"
             ],
             "supports": "!(windows & x86)"
@@ -103699,7 +103940,7 @@
       "manifest": {
         "name": "tree-sitter",
         "description": "An incremental parsing system for programming tools.",
-        "homepage": "https://tree-sitter.github.io/",
+        "homepage": "https://tree-sitter.github.io/tree-sitter/",
         "license": "MIT",
         "dependencies": [
           {
@@ -103711,7 +103952,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.11"
+        "version-semver": "0.26.12"
       },
       "files": [
         "portfile.cmake",
@@ -104539,7 +104780,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -104664,7 +104905,7 @@
             "host": true
           }
         ],
-        "version": "4.8.1"
+        "version": "4.9.0"
       },
       "files": [
         "portfile.cmake",
@@ -104954,6 +105195,7 @@
       "name": "usearch",
       "manifest": {
         "name": "usearch",
+        "port-version": 1,
         "description": "Fastest Search & Clustering engine × for Vectors & Strings",
         "homepage": "https://github.com/unum-cloud/usearch",
         "license": "Apache-2.0",
@@ -104968,12 +105210,6 @@
           }
         ],
         "features": {
-          "fp16": {
-            "description": "Use software emulation for half-precision types",
-            "dependencies": [
-              "fp16"
-            ]
-          },
           "jemalloc": {
             "description": "Use JeMalloc for faster memory allocations",
             "dependencies": [
@@ -104991,6 +105227,7 @@
       },
       "files": [
         "fix-map-failed.patch",
+        "fix-numkong-dynamic-dispatch.patch",
         "portfile.cmake",
         "use-vcpkg-ports.patch",
         "vcpkg.json"
@@ -105178,7 +105415,7 @@
         "description": "C macros for hash tables and more.",
         "homepage": "https://troydhanson.github.io/uthash/",
         "license": "BSD-1-Clause",
-        "version-semver": "2.3.0"
+        "version-semver": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -105518,14 +105755,13 @@
       "name": "vanillapdf",
       "manifest": {
         "name": "vanillapdf",
-        "port-version": 1,
         "description": "Vanilla.PDF is a cross-platform SDK for creating and modifying PDF documents.",
         "homepage": "https://github.com/vanillapdf/vanillapdf",
-        "documentation": "https://vanillapdf.github.io/vanillapdf",
+        "documentation": "https://vanillapdf.readthedocs.io/",
         "license": "Apache-2.0",
         "dependencies": [
+          "fmt",
           "libjpeg-turbo",
-          "nlohmann-json",
           "openjpeg",
           "openssl",
           "spdlog",
@@ -105539,13 +105775,10 @@
           },
           "zlib"
         ],
-        "version": "2.2.1"
+        "version": "2.3.0"
       },
       "files": [
-        "disable-autosubscribe.diff",
-        "fix-missing-header.patch",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -105669,7 +105902,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_configure",
         "license": "MIT",
-        "version-date": "2024-04-23"
+        "version-date": "2025-08-07"
       },
       "files": [
         "portfile.cmake",
@@ -106394,7 +106627,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.350"
+        "version": "1.4.357"
       },
       "files": [
         "fix-targets.patch",
@@ -106653,7 +106886,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -107565,7 +107798,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -107591,7 +107824,7 @@
             "host": true
           }
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -107653,9 +107886,10 @@
             "description": "Build Xlib WSI support"
           }
         },
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
+        "fix-marmasm-conditional-assembly.patch",
         "link-directfb.patch",
         "portfile.cmake",
         "usage",
@@ -107754,7 +107988,7 @@
             ]
           }
         },
-        "version": "1.4.350.0"
+        "version": "1.4.357.0"
       },
       "files": [
         "LICENSE.txt",
@@ -107784,7 +108018,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -107809,7 +108043,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
         "portfile.cmake",
@@ -107820,7 +108054,6 @@
       "name": "vulkan-validationlayers",
       "manifest": {
         "name": "vulkan-validationlayers",
-        "port-version": 1,
         "description": "Vulkan Validation Layers (VVL)",
         "homepage": "https://github.com/KhronosGroup/Vulkan-ValidationLayers",
         "license": null,
@@ -107842,11 +108075,11 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.350.1"
+        "version": "1.4.357.0"
       },
       "files": [
+        "disable-ltcg-on-x86.patch",
         "disable_vendored_phmap.diff",
-        "fix-clang-windows-def-exports.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -108962,7 +109195,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -109300,7 +109533,7 @@
         "name": "wt",
         "description": "Wt is a C++ library for developing web applications",
         "homepage": "https://github.com/emweb/wt",
-        "license": "GPL-2.0-only",
+        "license": "GPL-2.0-only AND MIT AND (BSL-1.0 OR MIT)",
         "supports": "!xbox",
         "dependencies": [
           "boost-algorithm",
@@ -109411,7 +109644,7 @@
             ]
           }
         },
-        "version": "4.13.3"
+        "version": "4.13.4"
       },
       "files": [
         "0005-XML_file_path.patch",
@@ -109501,14 +109734,13 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
-        "port-version": 1,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
           "Set WXWIDGETS_USE_STD_CONTAINERS in a custom triplet to build with the wxUSE_STD_CONTAINERS build option."
         ],
         "homepage": "https://github.com/wxWidgets/wxWidgets",
-        "license": "LGPL-2.0-or-later WITH WxWindows-exception-3.1",
+        "license": "LGPL-2.0-or-later WITH WxWindows-exception-3.1 AND HPND",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -109588,7 +109820,13 @@
             ]
           },
           "secretstore": {
-            "description": "Use wxSecretStore class"
+            "description": "Use wxSecretStore class",
+            "dependencies": [
+              {
+                "name": "libsecret",
+                "platform": "!windows & !osx & !ios"
+              }
+            ]
           },
           "sound": {
             "description": "Build wxSound support",
@@ -109610,7 +109848,7 @@
             ]
           }
         },
-        "version": "3.3.1"
+        "version": "3.3.3"
       },
       "files": [
         "example/CMakeLists.txt",
@@ -109618,6 +109856,7 @@
         "fix-pcre2.patch",
         "gtk3-link-libraries.patch",
         "install-layout.patch",
+        "libsecret-link-dirs.patch",
         "nanosvg-ext-depend.patch",
         "portfile.cmake",
         "relocatable-wx-config.patch",
@@ -109729,7 +109968,7 @@
       "manifest": {
         "name": "x265",
         "description": "x265 is a H.265 / HEVC video encoder application library, designed to encode video or images into an H.265 / HEVC encoded bitstream.",
-        "homepage": "https://bitbucket.org/multicoreware/x265_git/",
+        "homepage": "https://x265.org",
         "license": "GPL-2.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
@@ -109744,7 +109983,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "4.2"
+        "version": "4.3"
       },
       "files": [
         "advapi32.patch",
@@ -109839,18 +110078,16 @@
       "name": "xbitmaps",
       "manifest": {
         "name": "xbitmaps",
-        "port-version": 1,
         "description": "X BitMap (XBM) format bitmaps commonly used in X.Org applications",
         "homepage": "https://gitlab.freedesktop.org/xorg/data/bitmaps",
         "license": null,
         "dependencies": [
           {
-            "name": "vcpkg-make",
+            "name": "vcpkg-tool-meson",
             "host": true
-          },
-          "xorg-macros"
+          }
         ],
-        "version": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -110858,7 +111095,7 @@
         "name": "yara",
         "description": "The pattern matching swiss knife",
         "homepage": "https://github.com/VirusTotal/yara",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND MIT",
         "supports": "!uwp",
         "dependencies": [
           "openssl",
@@ -110879,10 +111116,11 @@
             ]
           },
           "dotnet": {
-            "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format."
+            "description": "The dotnet module allows you to create more fine-grained rules for .NET files by using attributes and features of the .NET file format.",
+            "license": "Apache-2.0"
           }
         },
-        "version": "4.5.5"
+        "version": "4.5.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -111649,7 +111887,7 @@
       "name": "zlib",
       "manifest": {
         "name": "zlib",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A compression library",
         "homepage": "https://www.zlib.net/",
         "license": "Zlib",
@@ -111871,7 +112109,7 @@
         "description": "A lightweight C++20 serialization and RPC library",
         "homepage": "https://github.com/eyalz800/zpp_bits",
         "license": "MIT",
-        "version": "4.7.3"
+        "version": "4.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -112152,7 +112390,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.13.1"
+        "version": "0.13.2"
       },
       "files": [
         "portfile.cmake",
