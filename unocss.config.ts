@@ -2,14 +2,14 @@ import { env } from "node:process";
 import {
   defineConfig,
   presetIcons,
-  presetWind,
+  presetWind3,
   transformerCompileClass,
   transformerDirectives,
 } from "unocss";
 
 export default defineConfig({
   presets: [
-    presetWind({
+    presetWind3({
       dark: {
         dark: ".theme-dark",
         light: ".theme-light",

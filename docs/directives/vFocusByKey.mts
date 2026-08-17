@@ -1,14 +1,11 @@
 import { useEventListener } from "@vueuse/core";
 import type { ObjectDirective } from "vue";
 
-declare global {
-  interface Navigator {
-    userAgentData?: {
-      platform?: string;
-    };
+type NavigatorWithUserAgentData = Navigator & {
+  userAgentData?: {
     platform?: string;
-  }
-}
+  };
+};
 
 const STOP_FN_KEY = Symbol("focusByKey.stop");
 
@@ -33,7 +30,9 @@ function moveFocus(container: HTMLElement, offset: number): void {
 function moveFocusByKey(container: HTMLElement, event: KeyboardEvent): void {
   if ((event.target as HTMLElement | null)?.tagName !== "INPUT") {
     const ctrlOrMeta = /Mac|iPhone|iPod|iPad/i.test(
-      navigator.userAgentData?.platform || navigator.platform || ""
+      (navigator as NavigatorWithUserAgentData).userAgentData?.platform ||
+        navigator.platform ||
+        ""
     )
       ? event.metaKey
       : event.ctrlKey;

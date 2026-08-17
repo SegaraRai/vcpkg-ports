@@ -1,4 +1,4 @@
-import LinkifyIt from "linkify-it";
+import { LinkifyIt } from "linkify-it";
 import { VCPKG_REPO_URL } from "../../../constants.mjs";
 import { escapeAll, renderExternalLink } from "./htmlUtils.mjs";
 

@@ -6,10 +6,17 @@ import IconSearch from "~icons/line-md/search";
 // https://github.com/vuejs/vitepress/blob/v1.0.0-alpha.29/src/client/theme-default/components/VPNavBarSearch.vue#L24-L27
 const modifier = ref("Ctrl");
 onMounted((): void => {
+  const browserNavigator = navigator as Navigator & {
+    userAgentData?: {
+      platform?: string;
+    };
+  };
   if (
     !import.meta.env.SSR &&
     /Mac|iPhone|iPod|iPad/i.test(
-      navigator?.userAgentData?.platform || navigator?.platform || ""
+      browserNavigator.userAgentData?.platform ||
+        browserNavigator.platform ||
+        ""
     )
   ) {
     modifier.value = "⌘";

@@ -56,7 +56,7 @@ export default defineConfig({
           if (!commits) {
             throw new Error(`No commits found for ${portName}`);
           }
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          // oxlint-disable-next-line @typescript-eslint/no-non-null-assertion
           const commitHash = commits.at(-1)!;
           const commit = commitMap.get(commitHash);
           if (!commit) {

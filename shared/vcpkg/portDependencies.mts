@@ -85,7 +85,7 @@ export function collectTransitiveDependencies(
       }
       const featInfo = depManifest.features?.[feat];
       if (!featInfo) {
-        // eslint-disable-next-line no-console
+        // oxlint-disable-next-line no-console
         console.warn(
           `WARN: Feature ${feat} not found in ${dep.name} (dependent: ${newPath})`
         );
@@ -99,7 +99,7 @@ export function collectTransitiveDependencies(
     for (const subDep of deps.filter(filter)) {
       const subDepManifest = portMap.get(subDep.name)?.manifest;
       if (!subDepManifest) {
-        // eslint-disable-next-line no-console
+        // oxlint-disable-next-line no-console
         console.warn(
           `WARN: Port ${subDep.name} not found (dependent: ${newPath})`
         );

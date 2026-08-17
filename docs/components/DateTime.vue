@@ -1,11 +1,6 @@
 <script lang="ts" setup>
-import {
-  type MaybeRef,
-  computedEager,
-  useMounted,
-  useTimeAgo,
-} from "@vueuse/core";
-import { type Ref, ref, unref } from "vue";
+import { useMounted, useTimeAgo } from "@vueuse/core";
+import { type MaybeRef, type Ref, computed, ref, unref } from "vue";
 
 const props = defineProps<{
   timestamp: string;
@@ -18,24 +13,24 @@ const useTernaryEager = <T, F>(
   truthy: Readonly<MaybeRef<T>>,
   falsy: Readonly<MaybeRef<F>>
 ): Readonly<Ref<T | F>> =>
-  computedEager(
-    (): Readonly<T | F> => (unref(condition) ? unref(truthy) : unref(falsy))
+  computed((): Readonly<T | F> =>
+    unref(condition) ? unref(truthy) : unref(falsy)
   );
 
 const mounted = useMounted();
-const timestamp = computedEager((): string => props.timestamp);
-const localTime = computedEager((): string =>
+const timestamp = computed((): string => props.timestamp);
+const localTime = computed((): string =>
   new Date(timestamp.value).toLocaleString()
 );
 const timeAgo = useTimeAgo(timestamp);
 const text = useTernaryEager(
   mounted,
   timeAgo,
-  computedEager((): string => timestamp.value.replace(/T.+/, ""))
+  computed((): string => timestamp.value.replace(/T.+/, ""))
 );
 const textLong = useTernaryEager(
-  computedEager((): boolean => mounted.value && !!props.long),
-  computedEager((): string => `(${localTime.value})`),
+  computed((): boolean => mounted.value && !!props.long),
+  computed((): string => `(${localTime.value})`),
   ref("")
 );
 const title = useTernaryEager(mounted, localTime, timestamp);

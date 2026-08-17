@@ -281,10 +281,8 @@ export function parseCMake(input: string): readonly CMakeCommand[] | undefined {
     parse(input.replaceAll("\r\n", "\n").replaceAll("\r", "\n") + "\n") as
       | readonly TokenTypeCommand[]
       | undefined
-  )?.map(
-    (e): CMakeCommand => ({
-      cmd: e.name.value,
-      args: e.arguments.map((e) => e.value),
-    })
-  );
+  )?.map((e): CMakeCommand => ({
+    cmd: e.name.value,
+    args: e.arguments.map((e) => e.value),
+  }));
 }

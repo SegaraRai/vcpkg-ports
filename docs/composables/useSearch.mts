@@ -1,4 +1,3 @@
-import { computedEager } from "@vueuse/core";
 import type * as Fuse from "fuse.js";
 import { type Ref, computed, shallowRef } from "vue";
 import type { DataSearchItem } from "../../shared/dataTypes/searchItem.mjs";
@@ -57,7 +56,7 @@ async function createFuseAsync(nameOnly: boolean) {
           toFuseResult
         );
       }
-      return fuse.search<DataSearchItem>(query);
+      return fuse.search(query);
     },
   };
 }
@@ -81,16 +80,16 @@ export function useSearch(
 ) {
   const fuse = shallowRef<FuseInstance | undefined>();
   if (eager) {
-    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    // oxlint-disable-next-line @typescript-eslint/no-floating-promises
     loadFuse(nameOnly);
   }
-  // eslint-disable-next-line @typescript-eslint/no-floating-promises
+  // oxlint-disable-next-line @typescript-eslint/no-floating-promises
   gFusePromiseMap.get(nameOnly)?.then((f): void => {
     fuse.value = f;
   });
 
   return {
-    loading: computedEager((): boolean => !fuse.value),
+    loading: computed((): boolean => !fuse.value),
     results: computed(
       (): Fuse.FuseResult<DataSearchItem>[] =>
         (query.value?.trim() && fuse.value?.search(query.value.trim())) || []
@@ -100,7 +99,7 @@ export function useSearch(
         return;
       }
       if (import.meta.env.SSR) {
-        // eslint-disable-next-line no-console
+        // oxlint-disable-next-line no-console
         console.info("Skip loading fuse.js in SSR/SSG");
         return;
       }

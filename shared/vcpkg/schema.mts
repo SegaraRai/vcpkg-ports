@@ -41,11 +41,7 @@ export const zVcpkgSupports = z
         return false;
       }
     },
-    (v: string) => {
-      return {
-        message: `Invalid vcpkg supports expression (${v})`,
-      };
-    }
+    { error: "Invalid vcpkg supports expression" }
   );
 export const zVcpkgLicense = z.string().min(1);
 

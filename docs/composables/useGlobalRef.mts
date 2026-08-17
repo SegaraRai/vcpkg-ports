@@ -16,6 +16,6 @@ export function useGlobalRef<T>(
     return ref(initialValue) as Ref<UnwrapRef<T> | undefined>;
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-return
   return ((window as any)[key] ||= ref(initialValue));
 }

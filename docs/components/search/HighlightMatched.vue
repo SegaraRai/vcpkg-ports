@@ -4,9 +4,9 @@ import { computed } from "vue";
 const props = defineProps<{
   text: string;
   indices: readonly (readonly [begin: number, end: number])[];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   highlightClass?: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   normalClass?: any;
 }>();
 

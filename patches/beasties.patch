@@ -1,29 +1,43 @@
 diff --git a/dist/index.cjs b/dist/index.cjs
-index dced5077c89f25d980283b97f999459eab7b474f..8e224bcfe574014cb8083355b10a2aa393c6a2e8 100644
+index 0000000000000000000000000000000000000000..1111111111111111111111111111111111111111 100644
 --- a/dist/index.cjs
 +++ b/dist/index.cjs
-@@ -783,8 +783,8 @@ class Beasties {
+@@ -510,5 +510,5 @@ const BEFORE_AFTER_PSEUDO_RE = /^::?(?:before|after)$/;
+ const FONT_FAMILY_RE = /\bfont(?:-family)?\b/i;
+-const BEASTIES_COMMENT_RE = /^(?<!! )beasties:(.*)/;
++const BEASTIES_COMMENT_RE = /^(!\s*)?beasties:(.*)/;
+ const LEADING_SLASH_RE = /^\//;
+ const WHITESPACE_RE = /\s+/;
+ const URL_RE = /url\s*\(\s*(['"]?)(.+?)\1\s*\)/;
+@@ -875,8 +875,8 @@ class Beasties {
        ast,
        markOnly((rule) => {
          if (rule.type === "comment") {
--          const beastiesComment = rule.text.match(/^(?<!! )beasties:(.*)/);
+-          const beastiesComment = rule.text.match(BEASTIES_COMMENT_RE);
 -          const command = beastiesComment && beastiesComment[1];
-+          const beastiesComment = rule.text.trim().match(/^(!\s*)?beasties:(.*)/);
++          const beastiesComment = rule.text.trim().match(BEASTIES_COMMENT_RE);
 +          const command = beastiesComment?.[2];
            if (command) {
              switch (command) {
                case "include":
 diff --git a/dist/index.mjs b/dist/index.mjs
-index 4d31c006b735cc8b9359e16ba6b1493ce1c07214..9a8c23ed881fa32d1b7dfdf0d86b89f34c949fbf 100644
+index 0000000000000000000000000000000000000000..2222222222222222222222222222222222222222 100644
 --- a/dist/index.mjs
 +++ b/dist/index.mjs
-@@ -774,8 +774,8 @@ class Beasties {
+@@ -500,5 +500,5 @@ const BEFORE_AFTER_PSEUDO_RE = /^::?(?:before|after)$/;
+ const FONT_FAMILY_RE = /\bfont(?:-family)?\b/i;
+-const BEASTIES_COMMENT_RE = /^(?<!! )beasties:(.*)/;
++const BEASTIES_COMMENT_RE = /^(!\s*)?beasties:(.*)/;
+ const LEADING_SLASH_RE = /^\//;
+ const WHITESPACE_RE = /\s+/;
+ const URL_RE = /url\s*\(\s*(['"]?)(.+?)\1\s*\)/;
+@@ -863,8 +863,8 @@ class Beasties {
        ast,
        markOnly((rule) => {
          if (rule.type === "comment") {
--          const beastiesComment = rule.text.match(/^(?<!! )beasties:(.*)/);
+-          const beastiesComment = rule.text.match(BEASTIES_COMMENT_RE);
 -          const command = beastiesComment && beastiesComment[1];
-+          const beastiesComment = rule.text.trim().match(/^(!\s*)?beasties:(.*)/);
++          const beastiesComment = rule.text.trim().match(BEASTIES_COMMENT_RE);
 +          const command = beastiesComment?.[2];
            if (command) {
              switch (command) {

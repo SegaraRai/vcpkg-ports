@@ -7,7 +7,7 @@ const props = defineProps<{
   modelValue: string;
   focused?: boolean;
   loading?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
   wrapperClass?: any;
 }>();
 

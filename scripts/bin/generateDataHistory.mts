@@ -45,7 +45,7 @@ async function gitLog<T extends Readonly<Record<string, string>>>(
   const DELIMITER = DELIMITER_SPEC.replaceAll("%n", "\n");
 
   const formatSpec = Object.entries(spec)
-    .map(([key, value]) => `////${key}=${value}`)
+    .map(([key, value]) => `////${key}=${String(value)}`)
     .join("%n");
   const args = [
     "log",

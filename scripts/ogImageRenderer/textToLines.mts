@@ -95,7 +95,7 @@ export function textToLines(
               wordTooLong: true,
             })
           ) {
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            // oxlint-disable-next-line @typescript-eslint/no-non-null-assertion
             truncatedWord += remaining.shift()!;
           }
           // NOTE: recursive overflow check is currently not supported
