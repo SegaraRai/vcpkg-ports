@@ -14,10 +14,7 @@ const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
 
 {
   !section.noHeading && (
-    <HeadingTag
-      id={section.slug}
-      class:list={["has-anchor", "flex items-center"]}
-    >
+    <HeadingTag id={section.slug} class="has-anchor flex items-center">
       <HeadingAnchor
         level={section.level}
         slug={section.slug}

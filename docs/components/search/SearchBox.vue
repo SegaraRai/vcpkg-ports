@@ -56,24 +56,24 @@ export default defineComponent({
 
 <template>
   <label
-    class="w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-[1.25px] transition-colors"
+    class="flex w-full flex-row items-center gap-x-2 rounded-full border-[1.25px] px-3 py-1.5 transition-colors"
     :class="[wrapperClass, wrapperClassEx]"
   >
-    <span class="flex-none block opacity-80 size-[1.25em] ml-0.5">
+    <span class="ml-0.5 block size-[1.25em] flex-none opacity-80">
       <IconSearch aria-hidden="true" />
     </span>
     <input
       ref="inputEl"
       v-model="modelValue"
-      class="flex-1 block w-full h-full !bg-transparent !outline-none"
+      class="block h-full w-full flex-1 bg-transparent! outline-none!"
       type="search"
       aria-label="Search"
       v-bind="$attrs"
     />
     <IconLoading
-      class="flex-none block opacity-80 size-[1.25em] mr-0.5 transition-all duration-250"
-      :class="(!mounted || !loading) && '!opacity-0'"
+      class="mr-0.5 block size-[1.25em] flex-none opacity-80 transition-all duration-250 data-[loaded=true]:opacity-0"
       aria-hidden="true"
+      :data-loaded="!mounted || !loading"
     />
   </label>
 </template>

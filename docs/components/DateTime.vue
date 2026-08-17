@@ -38,7 +38,7 @@ const title = useTernaryEager(mounted, localTime, timestamp);
 
 <template>
   <time
-    :class="['whitespace-nowrap']"
+    class="whitespace-nowrap"
     :dateTime="timestamp"
     :title="title"
     :itemprop="props.itemProp"
@@ -47,7 +47,7 @@ const title = useTernaryEager(mounted, localTime, timestamp);
   />
   <template v-if="textLong">
     <time
-      class="whitespace-nowrap max-sm:hidden ml-2 opacity-60 text-sm !leading-tight"
+      class="ml-2 text-sm leading-tight! whitespace-nowrap opacity-60 max-sm:hidden"
       :dateTime="timestamp"
       :title="title"
       v-text="textLong"

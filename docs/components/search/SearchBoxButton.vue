@@ -26,21 +26,22 @@ onMounted((): void => {
 
 <template>
   <button
-    class="select-none w-full flex flex-row items-center gap-x-2 px-3 py-1.5 rounded-full border-[1.25px] transition-colors text-(--theme-text-light) light:border-black/30 dark:border-white/50 light:hover:border-black/45 dark:hover:border-orange-400/70 light:bg-white/1 dark:bg-white/[0.02] light:hover:bg-white/10 dark:hover:bg-white/5"
+    type="button"
+    class="light:border-black/30 light:hover:border-black/45 light:bg-white/1 light:hover:bg-white/10 flex w-full flex-row items-center gap-x-2 rounded-full border-[1.25px] px-3 py-1.5 text-(--theme-text-light) transition-colors select-none dark:border-white/50 dark:bg-white/2 dark:hover:border-orange-400/70 dark:hover:bg-white/5"
     aria-label="Search"
     translate="no"
   >
-    <span class="flex-none block opacity-80 size-[1.25em] ml-0.5">
+    <span class="ml-0.5 block size-[1.25em] flex-none opacity-80">
       <IconSearch aria-hidden="true" />
     </span>
     <span class="flex-1"></span>
     <span
-      class="border border-(--theme-divider) rounded-sm px-2 py-1 text-sm leading-none"
+      class="rounded-sm border border-(--theme-divider) px-2 py-1 text-sm leading-none"
     >
       <kbd>/</kbd>
     </span>
     <span
-      class="border border-(--theme-divider) rounded-sm px-2 py-1 text-sm leading-none max-sm:hidden"
+      class="rounded-sm border border-(--theme-divider) px-2 py-1 text-sm leading-none max-sm:hidden"
     >
       <kbd v-text="`${modifier} K`" />
     </span>

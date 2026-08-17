@@ -12,9 +12,9 @@ const STOP_FN_KEY = Symbol("focusByKey.stop");
 function moveFocus(container: HTMLElement, offset: number): void {
   const tabbableElements = container.querySelectorAll(".tabbable");
   const tabbableElementsArray = Array.from(tabbableElements) as HTMLElement[];
-  const currentFocusIndex = tabbableElementsArray.findIndex(
-    (el): boolean => el === document.activeElement
-  );
+  const currentFocusIndex = (
+    tabbableElementsArray as (Element | null)[]
+  ).indexOf(document.activeElement);
   if (currentFocusIndex < 0) {
     return;
   }

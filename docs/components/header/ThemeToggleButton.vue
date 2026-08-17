@@ -18,10 +18,10 @@ onMounted((): void => {
 
 <template>
   <div
-    class="block !w-8 !h-8 p-1.5 rounded-full transition-colors duration-200 bg-white/0 hover:bg-white/20 select-none"
+    class="block !h-8 !w-8 rounded-full bg-white/0 p-1.5 transition-colors duration-200 select-none hover:bg-white/20"
   >
     <button
-      class="block !w-full !h-full light:text-gray-600 icon-[lucide--moon] dark:icon-[lucide--sun]"
+      class="light:text-gray-600 icon-[lucide--moon] dark:icon-[lucide--sun] block !h-full !w-full"
       :title="
         mounted
           ? `Switch to ${isDark ? 'light' : 'dark'} theme`

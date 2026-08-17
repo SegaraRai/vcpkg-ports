@@ -79,22 +79,12 @@ const description = stringifyPortDescription(feature.description);
           </summary>
           {!!supports.supportedMinified && !!supports.unsupportedMinified && (
             <div class="mb-4" translate="no">
-              <ul
-                class:list={[
-                  "plain-list",
-                  "my-2 flex flex-col gap-y-1 leading-tight",
-                ]}
-              >
+              <ul class="plain-list my-2 flex flex-col gap-y-1 leading-tight">
                 {supports.supportedMinified.map((triplet) => (
                   <SupportedListItem triplet={triplet} />
                 ))}
               </ul>
-              <ul
-                class:list={[
-                  "plain-list",
-                  "my-2 flex flex-col gap-y-1 leading-tight",
-                ]}
-              >
+              <ul class="plain-list my-2 flex flex-col gap-y-1 leading-tight">
                 {supports.unsupportedMinified.map((triplet) => (
                   <SupportedListItem triplet={triplet} unsupported />
                 ))}

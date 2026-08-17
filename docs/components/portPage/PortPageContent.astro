@@ -14,10 +14,7 @@ const { frontmatter, headings } = Astro.props as Props;
 const { portName, portVersion } = frontmatter;
 ---
 
-<article
-  id="article"
-  class:list={["content port-page", "p-0 w-full h-full flex flex-col"]}
->
+<article id="article" class="content port-page p-0 w-full h-full flex flex-col">
   <section class="mb-8" itemscope itemtype="https://schema.org/Article">
     <h1
       id="overview"
@@ -32,7 +29,7 @@ const { portName, portVersion } = frontmatter;
       createdAt={frontmatter.createdAt}
       modifiedAt={frontmatter.modifiedAt}
     />
-    <nav class:list={["toc", "block lg:hidden mt-4 mb-8"]}>
+    <nav class="toc block lg:hidden mt-4 mb-8">
       <div data-nosnippet>
         <!-- hydration is disabled as this TOC is not interactive -->
         <TableOfContents headings={headings} />
@@ -41,7 +38,7 @@ const { portName, portVersion } = frontmatter;
     <div class="rendered">
       <slot />
     </div>
-    <nav class:list={["toc", "block lg:hidden mt-16"]}>
+    <nav class="toc block lg:hidden mt-16">
       <div data-nosnippet>
         <MoreMenu />
       </div>

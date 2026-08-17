@@ -10,7 +10,7 @@ export function escapeAll(
     result = result.trim();
   }
   if (!keepNewlines) {
-    result = result.replace(/\n/g, " ");
+    result = result.replaceAll("\n", " ");
   }
   return result.replace(/[<>"'`:{}]/g, (c) => `&#${c.charCodeAt(0)};`);
 }

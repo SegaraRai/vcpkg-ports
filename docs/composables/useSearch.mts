@@ -51,7 +51,7 @@ async function createFuseAsync(nameOnly: boolean) {
       if (!query) {
         return [];
       }
-      if (/^\s*=\s*RAND\s*\(\s*\)\s*;*\s*$/i.test(query)) {
+      if (/^=RAND\(\)/i.test(query.replaceAll(/\s/g, ""))) {
         return pickRandom(searchItems, SEARCH_RANDOM_MAX_RESULTS).map(
           toFuseResult
         );

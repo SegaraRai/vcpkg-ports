@@ -332,6 +332,7 @@ export default defineConfig({
     organizeImportsSkipDestructiveCodeActions: true,
     printWidth: 80,
     sortPackageJson: false,
+    sortTailwindcss: true,
     ignorePatterns: [
       ".git",
       ".vcpkg",

@@ -76,13 +76,13 @@ const close = (focus?: boolean): void => {
 <template>
   <div
     v-focus-by-key
-    class="relative w-full max-h-full rounded-lg flex flex-col gap-y-4"
-    :class="large && 'text-xl'"
+    class="group/sbs relative flex max-h-full w-full flex-col gap-y-4 rounded-lg data-[size=large]:text-xl"
+    :data-size="large ? 'large' : 'normal'"
   >
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      :class="['tabbable tabbable-skip', 'w-full', large && 'py-0.5']"
+      class="tabbable tabbable-skip w-full group-data-[size=large]/sbs:py-0.5"
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.arrow-down="deferShow"
@@ -93,8 +93,7 @@ const close = (focus?: boolean): void => {
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">
       <div
-        class="z-1 absolute w-full border overflow-auto text-base bg-(--theme-bg) border-(--theme-divider) py-2 rounded-lg leading-tight"
-        :class="large ? 'top-14' : 'top-10'"
+        class="absolute top-10 z-1 w-full overflow-auto rounded-lg border border-(--theme-divider) bg-(--theme-bg) py-2 text-base leading-tight group-data-[size=large]/sbs:top-14"
       >
         <ul
           v-on-click-outside="() => close(false)"
@@ -106,10 +105,7 @@ const close = (focus?: boolean): void => {
             <li class="block">
               <a
                 :href="getPortPageURL(result.item.name)"
-                :class="[
-                  'tabbable',
-                  'block pl-12 py-2 text-(--theme-text-accent) hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent) !transition-colors !duration-200 !outline-none',
-                ]"
+                class="tabbable block py-2 pl-12 text-(--theme-text-accent) transition-colors! duration-200! outline-none! hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)"
                 tabindex="0"
               >
                 <HighlightMatched

@@ -105,14 +105,14 @@ const deferFocus = (): void => {
   <div
     ref="containerEl"
     v-focus-by-key
-    class="w-full max-h-full px-3 py-4 rounded-lg flex flex-col gap-y-4 bg-(--theme-bg) text-lg"
+    class="flex max-h-full w-full flex-col gap-y-4 rounded-lg bg-(--theme-bg) px-3 py-4 text-lg"
     @click.stop
     @keydown.escape.prevent.stop="emit('close')"
   >
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      :class="['tabbable', 'py-0.5']"
+      class="tabbable py-0.5"
       wrapper-class="text-xl"
       focused
       :loading="!!term && loadingOrWaiting"
@@ -122,7 +122,7 @@ const deferFocus = (): void => {
     <div class="overflow-auto text-base">
       <template v-if="loading || !termDebounced">
         <div
-          class="flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight"
+          class="flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight"
         >
           <div class="opacity-80">Type something to search</div>
           <template v-if="mounted">
@@ -130,6 +130,7 @@ const deferFocus = (): void => {
               <span class="opacity-80">Example:</span>
               <template v-for="example in exampleTerms" :key="example">
                 <button
+                  type="button"
                   class="text-(--theme-text-accent)"
                   translate="no"
                   @click="term = example"
@@ -142,10 +143,10 @@ const deferFocus = (): void => {
       </template>
       <template v-else-if="results.length === 0">
         <div
-          class="flex flex-col gap-y-4 items-center justify-center text-center pt-3 pb-1"
+          class="flex flex-col items-center justify-center gap-y-4 pt-3 pb-1 text-center"
         >
-          <div class="w-20 h-20 opacity-60">
-            <Component :is="noResultIcon" class="w-full h-full" />
+          <div class="h-20 w-20 opacity-60">
+            <Component :is="noResultIcon" class="h-full w-full" />
           </div>
           <div v-text="`No results for ${termDebounced}`" />
           <div class="mt-4 text-sm">
@@ -155,14 +156,11 @@ const deferFocus = (): void => {
         </div>
       </template>
       <template v-else>
-        <ul class="flex flex-col gap-y-4 mt-2 text-(--theme-text-light)">
+        <ul class="mt-2 flex flex-col gap-y-4 text-(--theme-text-light)">
           <template v-for="result in resultsSliced" :key="result.item.name">
             <li class="block">
               <a
-                :class="[
-                  'tabbable',
-                  'flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)',
-                ]"
+                class="tabbable flex flex-col gap-y-1 rounded px-2 pt-1 pb-2 leading-tight outline-none! hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)"
                 :href="getPortPageURL(result.item.name)"
               >
                 <div
@@ -172,14 +170,14 @@ const deferFocus = (): void => {
                 />
                 <template v-if="result.item.description">
                   <div
-                    class="text-sm line-clamp-2 overflow-hidden text-ellipsis"
+                    class="line-clamp-2 overflow-hidden text-sm text-ellipsis"
                     :title="result.item.description"
                     v-text="result.item.description"
                   />
                 </template>
                 <template v-else>
                   <div
-                    class="text-sm line-clamp-2 overflow-hidden text-ellipsis italic opacity-80"
+                    class="line-clamp-2 overflow-hidden text-sm text-ellipsis italic opacity-80"
                   >
                     No description provided
                   </div>
@@ -189,7 +187,7 @@ const deferFocus = (): void => {
           </template>
         </ul>
         <template v-if="hasMore">
-          <div class="text-left mt-8 px-2 text-sm">
+          <div class="mt-8 px-2 text-left text-sm">
             <a class="tabbable link" :href="getSearchPageURL(term)">
               Browse More
             </a>

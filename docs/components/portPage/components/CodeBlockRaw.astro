@@ -10,7 +10,7 @@ const { class: classList, lang, nosnippet } = Astro.props;
 
 <div
   class:list={[
-    "relative !whitespace-normal overflow-hidden !p-0 bg-[#35312b] dark:bg-[#16130d] rounded-lg text-sm",
+    "relative whitespace-normal! overflow-hidden p-0! bg-[#35312b] dark:bg-[#16130d] rounded-lg text-sm",
     `code-block language-${lang}`,
     classList || "",
   ]}
@@ -20,33 +20,21 @@ const { class: classList, lang, nosnippet } = Astro.props;
     class="block max-h-80 overflow-auto px-5 py-3"
     tabindex="0"><code class="block w-full h-full" translate="no"><slot /></code></pre>
   <button
-    class:list={[
-      "absolute top-2 right-6 select-none transition-all duration-250 !text-gray-300/60 w-8 h-8 p-1 flex items-center justify-center hover:bg-white/[0.17] rounded",
-      "copy",
-    ]}
+    class="copy absolute top-2 right-6 select-none transition-all duration-250 text-gray-300/60! w-8 h-8 p-1 flex items-center justify-center hover:bg-white/17 rounded"
     title="Copy Code"
   >
     <span
-      class:list={[
-        "opacity-0 block w-full h-full transition-opacity duration-250 relative",
-        "icon",
-      ]}
+      class="icon opacity-0 block w-full h-full transition-opacity duration-250 relative"
       data-mode="initial"
     >
-      <span class:list={["icon-[mdi--clipboard-text-outline]", "icon-initial"]}
-      ></span>
-      <span class:list={["icon-[mdi--clipboard-check-outline]", "icon-copied"]}
-      ></span>
-      <span class:list={["icon-[mdi--clipboard-remove-outline]", "icon-failed"]}
-      ></span>
+      <span class="icon-[mdi--clipboard-text-outline] icon-initial"></span>
+      <span class="icon-[mdi--clipboard-check-outline] icon-copied"></span>
+      <span class="icon-[mdi--clipboard-remove-outline] icon-failed"></span>
     </span>
     {
       lang !== "plaintext" && (
         <span
-          class:list={[
-            "block absolute top-0 right-1 pointer-events-none transition-opacity duration-250",
-            "lang",
-          ]}
+          class="lang block absolute top-0 right-1 pointer-events-none transition-opacity duration-250"
           translate="no"
           set:text={lang}
         />

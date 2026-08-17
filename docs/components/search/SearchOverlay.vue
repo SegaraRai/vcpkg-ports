@@ -36,17 +36,17 @@ watchEffect((): void => {
   <Transition enter-from-class="opacity-0" leave-to-class="opacity-0">
     <div
       v-if="show"
-      class="z-9999 fixed left-0 top-0 right-0 bottom-0 w-full h-full transition-opacity duration-200"
+      class="fixed top-0 right-0 bottom-0 left-0 z-9999 h-full w-full transition-opacity duration-200"
       @keydown.escape="close"
     >
       <div
-        class="-z-1 absolute left-0 top-0 w-full h-full bg-(--theme-text) opacity-15"
+        class="absolute top-0 left-0 -z-1 h-full w-full bg-(--theme-text) opacity-15"
       ></div>
       <div
-        class="w-full h-full mx-auto flex flex-col items-center justify-center"
+        class="mx-auto flex h-full w-full flex-col items-center justify-center"
         @click="close"
       >
-        <div class="w-full max-w-160 h-full pt-10 lg:pt-20">
+        <div class="h-full w-full max-w-160 pt-10 lg:pt-20">
           <SearchPopup v-model="term" @close="close" />
         </div>
       </div>

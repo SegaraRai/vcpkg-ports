@@ -6,12 +6,7 @@ interface Props {
 const { moreText } = Astro.props;
 ---
 
-<ul
-  class:list={[
-    "plain-list",
-    "flex flex-col flex-nowrap gap-y-1 leading-normal",
-  ]}
->
+<ul class="plain-list flex flex-col flex-nowrap gap-y-1 leading-normal">
   <slot />
 </ul>
 
@@ -21,12 +16,7 @@ const { moreText } = Astro.props;
       <summary>
         <em set:text={moreText} />
       </summary>
-      <ul
-        class:list={[
-          "plain-list",
-          "flex flex-col flex-nowrap gap-y-1 leading-normal",
-        ]}
-      >
+      <ul class="plain-list flex flex-col flex-nowrap gap-y-1 leading-normal">
         <slot name="more" />
       </ul>
     </details>
