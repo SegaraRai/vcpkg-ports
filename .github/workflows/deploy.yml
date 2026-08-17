@@ -39,24 +39,24 @@ jobs:
         run: vp install --frozen-lockfile
 
       - name: Check data
-        run: pnpm run validate:sync
+        run: vp run validate:sync
 
       - name: Check code
         run: |
           vp check
-          pnpm run fmt:astro
-          pnpm run lint:style
-          pnpm run typecheck
+          vp run fmt:astro
+          vp run lint:style
+          vp run typecheck
 
       - name: Generate social media images (OGP)
-        run: pnpm run generate:images
+        run: vp run generate:images
 
       - name: Set expires header
         run: echo "VP_ENABLE_EXPIRES_HEADER=1" >> $GITHUB_ENV
         if: github.ref == 'refs/heads/main'
 
       - name: Build
-        run: pnpm run build
+        run: vp run build
 
       - name: Deploy
         uses: cloudflare/pages-action@v1

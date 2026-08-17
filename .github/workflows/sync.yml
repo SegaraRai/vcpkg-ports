@@ -52,11 +52,11 @@ jobs:
         run: vp install --frozen-lockfile
 
       - name: Sync vcpkg (fast)
-        run: pnpm run sync:vcpkg
+        run: vp run sync:vcpkg
         if: (!inputs.no_sync && !inputs.no_incremental)
 
       - name: Sync vcpkg (full)
-        run: pnpm run sync:vcpkg-full
+        run: vp run sync:vcpkg-full
         if: (!inputs.no_sync && inputs.no_incremental)
 
       - name: Check for changes
@@ -77,11 +77,11 @@ jobs:
           git push origin "$BASE_BRANCH"
 
       - name: Generate social media images (OGP)
-        run: pnpm run generate:images
+        run: vp run generate:images
         if: inputs.no_sync || steps.check_for_changes.outputs.modified == '1'
 
       - name: Build
-        run: pnpm run build
+        run: vp run build
         if: inputs.no_sync || steps.check_for_changes.outputs.modified == '1'
         env:
           VP_ENABLE_EXPIRES_HEADER: 1
