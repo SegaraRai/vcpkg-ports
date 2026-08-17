@@ -1,9 +1,15 @@
+@import "tailwindcss";
+@import "../fonts/fonts.css";
+@plugin "@iconify/tailwind4";
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
+@custom-variant light (&:where(.theme-light, .theme-light *));
+
 /* stylelint-disable value-keyword-case */
 
 /* Global focus outline reset */
 
 *:focus:not(:focus-visible) {
-  @apply \!outline-none;
+  @apply !outline-none;
 }
 
 html {
@@ -14,7 +20,7 @@ html {
 body {
   @apply flex;
   @apply flex-col;
-  @apply font-[--font-body];
+  @apply font-(--font-body);
   @apply w-full;
   @apply min-h-full;
   @apply overflow-x-hidden;
@@ -42,7 +48,7 @@ html.stable-scrollbar-gutter body {
 }
 
 body.no-scroll {
-  @apply \!overflow-hidden;
+  @apply !overflow-hidden;
 }
 
 /* Scroll margin */
@@ -91,7 +97,7 @@ main :not(nav) {
 
   h1 {
     @apply text-5xl;
-    @apply font-800;
+    @apply font-extrabold;
   }
 
   h2 {
@@ -126,24 +132,24 @@ main :not(nav) {
 kbd,
 .code,
 .rendered code {
-  @apply font-[--font-mono];
+  @apply font-(--font-mono);
 
   font-feature-settings: var(--font-feat-mono);
 }
 
 .link,
 .rendered a {
-  @apply text-[--theme-text-accent];
+  @apply text-(--theme-text-accent);
   @apply font-normal;
-  @apply transition-colors-200;
+  @apply transition-colors duration-200;
 
   & > code {
-    @apply \!bg-[--theme-code-inline-bg-link];
+    @apply !bg-(--theme-code-inline-bg-link);
   }
 
   &:hover,
   &:focus {
-    @apply color-[--theme-text-accent-hover];
+    @apply text-(--theme-text-accent-hover);
   }
 
   &:focus-visible {
@@ -155,7 +161,7 @@ kbd,
 .code,
 .rendered :not(.code-block, pre) > code {
   @apply text-[0.875em];
-  @apply bg-[--theme-code-inline-bg];
+  @apply bg-(--theme-code-inline-bg);
   @apply px-1;
   @apply py-0.5;
   @apply -my-0.5;
@@ -173,7 +179,7 @@ kbd,
   ul,
   ol,
   summary {
-    @apply text-[--theme-text-light];
+    @apply text-(--theme-text-light);
   }
 
   ul:not(.plain-list) {
@@ -194,7 +200,7 @@ kbd,
   }
 
   ::marker {
-    @apply text-[--theme-text-light];
+    @apply text-(--theme-text-light);
   }
 
   details > summary {
@@ -218,7 +224,7 @@ kbd,
   }
 
   strong {
-    @apply font-600;
+    @apply font-semibold;
   }
 
   em {
@@ -249,9 +255,9 @@ nav.toc {
   }
 
   li.header-link {
-    @apply transition-colors-200;
-    @apply border-l-4px;
-    @apply border-color-[--theme-divider];
+    @apply transition-colors duration-200;
+    @apply border-l-4;
+    @apply border-(--theme-divider);
 
     padding-inline-start: 1rem;
 
@@ -276,17 +282,17 @@ nav.toc {
     &:hover,
     &:focus,
     &:focus-within {
-      @apply border-color-[--theme-text];
+      @apply border-(--theme-text);
     }
 
     &:hover a,
     & a:focus {
-      @apply \!color-[--theme-text-accent];
+      @apply !text-(--theme-text-accent);
     }
 
     /* Highlight TOC header link matching the current scroll position */
     &.current-header-link {
-      @apply bg-[--theme-bg-accent];
+      @apply bg-(--theme-bg-accent);
 
       /* Indicates the current heading for forced colors users in older browsers */
       outline: 1px solid transparent;
@@ -299,7 +305,7 @@ nav.toc {
     }
 
     &.current-header-link a {
-      @apply color-[--theme-text];
+      @apply text-(--theme-text);
     }
   }
 }

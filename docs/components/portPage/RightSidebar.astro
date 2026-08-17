@@ -10,11 +10,8 @@ interface Props {
 const { headings } = Astro.props as Props;
 ---
 
-<nav
-  class:list={["toc", ":uno: sticky top-18 w-full"]}
-  aria-labelledby="grid-right"
->
-  <div class=":uno: h-full overflow-auto p-0 pt-[--doc-padding]" data-nosnippet>
+<nav class:list={["toc", "sticky top-18 w-full"]} aria-labelledby="grid-right">
+  <div class="h-full overflow-auto p-0 pt-(--doc-padding)" data-nosnippet>
     <TableOfContents
       highlight
       client:media="(min-width: 1024px)"

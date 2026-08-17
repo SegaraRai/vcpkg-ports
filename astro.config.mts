@@ -1,8 +1,8 @@
 import sitemap from "@astrojs/sitemap";
+import tailwindcss from "@tailwindcss/vite";
 import vue from "@astrojs/vue";
 import compress from "astro-compress";
 import { defineConfig } from "astro/config";
-import unoCSS from "unocss/astro";
 import icons from "unplugin-icons/vite";
 import { CSP_HEADER_VALUE, DATA_HISTORY_FILE } from "./scripts/constants.mjs";
 import { readJSON } from "./scripts/jsonUtils.mjs";
@@ -40,9 +40,6 @@ export default defineConfig({
   site: `https://vcpkg.roundtrip.dev/`,
   trailingSlash: "never", // per CF Pages spec (https://developers.cloudflare.com/pages/platform/serving-pages/#route-matching)
   integrations: [
-    unoCSS({
-      injectReset: true,
-    }),
     vue(),
     sitemap({
       changefreq: "daily",
@@ -110,6 +107,7 @@ export default defineConfig({
       },
     },
     plugins: [
+      tailwindcss(),
       icons({
         // we import icons from vue components, not from astro components
         compiler: "vue3",

@@ -28,7 +28,7 @@ const usageChunks = usage ? renderUsage(portName, usage) : [];
     usageChunks.map((chunk) =>
       chunk.type === "text" ? (
         // eslint-disable-next-line astro/no-set-html-directive
-        <p class=":uno: overflow-hidden text-ellipsis" set:html={chunk.html} />
+        <p class="overflow-hidden text-ellipsis" set:html={chunk.html} />
       ) : (
         <CodeBlock lang={chunk.lang} code={chunk.code} />
       )

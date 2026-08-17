@@ -28,11 +28,9 @@ const links = (
 <SectionWrapper section={section}>
   {
     !!links.length && (
-      <ul
-        class:list={["plain-list", ":uno: flex flex-col gap-y-2 leading-tight"]}
-      >
+      <ul class:list={["plain-list", "flex flex-col gap-y-2 leading-tight"]}>
         {links.map(([label, url]) => (
-          <li class=":uno: overflow-hidden text-ellipsis">
+          <li class="overflow-hidden text-ellipsis">
             {label ? `${label}: ` : undefined}
             <LinkExternal href={url} />
           </li>

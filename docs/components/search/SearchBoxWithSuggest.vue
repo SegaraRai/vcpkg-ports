@@ -76,17 +76,13 @@ const close = (focus?: boolean): void => {
 <template>
   <div
     v-focus-by-key
-    class=":uno: relative w-full max-h-full rounded-2 flex flex-col gap-y-4"
-    :class="large && ':uno: text-xl'"
+    class="relative w-full max-h-full rounded-lg flex flex-col gap-y-4"
+    :class="large && 'text-xl'"
   >
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      :class="[
-        'tabbable tabbable-skip',
-        ':uno: w-full',
-        large && ':uno: py-0.5',
-      ]"
+      :class="['tabbable tabbable-skip', 'w-full', large && 'py-0.5']"
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.arrow-down="deferShow"
@@ -97,22 +93,22 @@ const close = (focus?: boolean): void => {
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">
       <div
-        class=":uno: z-1 absolute w-full border overflow-auto text-base bg-[--theme-bg] border-[--theme-divider] py-2 rounded-2 leading-tight"
-        :class="large ? ':uno: top-14' : ':uno: top-10'"
+        class="z-1 absolute w-full border overflow-auto text-base bg-(--theme-bg) border-(--theme-divider) py-2 rounded-lg leading-tight"
+        :class="large ? 'top-14' : 'top-10'"
       >
         <ul
           v-on-click-outside="() => close(false)"
-          class=":uno: flex flex-col text-[--theme-text-light]"
+          class="flex flex-col text-(--theme-text-light)"
           translate="no"
           @keydown.escape.prevent.stop="close(true)"
         >
           <template v-for="result in resultsSliced" :key="result.item.name">
-            <li class=":uno: block">
+            <li class="block">
               <a
                 :href="getPortPageURL(result.item.name)"
                 :class="[
                   'tabbable',
-                  ':uno: block pl-12 py-2 color-[--theme-text-accent] hover:bg-[--theme-bg-accent] focus:bg-[--theme-bg-accent] !transition-colors-200 !outline-none',
+                  'block pl-12 py-2 text-(--theme-text-accent) hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent) !transition-colors !duration-200 !outline-none',
                 ]"
                 tabindex="0"
               >
@@ -121,7 +117,7 @@ const close = (focus?: boolean): void => {
                   :indices="
                     result.matches?.find((m) => m.key === 'name')?.indices ?? []
                   "
-                  highlight-class=":uno: font-bold"
+                  highlight-class="font-bold"
                 />
               </a>
             </li>

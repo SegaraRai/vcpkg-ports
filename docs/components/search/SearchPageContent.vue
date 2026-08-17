@@ -17,6 +17,7 @@ import {
 } from "../../constants.mjs";
 import { pluralize } from "../portPage/utils/pluralize.mjs";
 import HighlightMatched from "./HighlightMatched.vue";
+import IconLoading from "~icons/line-md/loading-loop";
 
 const qsp = useUrlSearchParams("hash-params", {
   initialValue: {
@@ -107,23 +108,20 @@ onMounted((): (() => void) => {
 </script>
 
 <template>
-  <div class=":uno: overflow-auto text-base">
+  <div class="overflow-auto text-base">
     <template v-if="loading">
       <div
-        class=":uno: flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight text-[--theme-text-light]"
+        class="flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight text-(--theme-text-light)"
       >
-        <div
-          aria-label="Loading data"
-          class=":uno: w-32 h-32 opacity-80 i-line-md-loading-loop"
-        ></div>
+        <IconLoading aria-label="Loading data" class="w-32 h-32 opacity-80" />
       </div>
     </template>
     <template v-else-if="results.length === 0">
       <div
-        class=":uno: flex flex-col gap-y-4 items-center justify-center text-center pt-3 pb-1"
+        class="flex flex-col gap-y-4 items-center justify-center text-center pt-3 pb-1"
       >
         <div v-text="`No results for ${term}`" />
-        <div class=":uno: mt-4 text-sm">
+        <div class="mt-4 text-sm">
           &raquo;
           <a class="tabbable link" href="/ports">Port Catalog</a>
         </div>
@@ -131,7 +129,7 @@ onMounted((): (() => void) => {
     </template>
     <template v-else>
       <div
-        class=":uno: mb-8 text-base text-[--theme-text-light]"
+        class="mb-8 text-base text-(--theme-text-light)"
         v-text="
           `${page > 1 ? `Page ${page} of ` : ''}${pluralize(
             results.length,
@@ -140,24 +138,24 @@ onMounted((): (() => void) => {
           )} for ${term}`
         "
       />
-      <ul class=":uno: flex flex-col gap-y-8 mt-2 text-[--theme-text-light]">
+      <ul class="flex flex-col gap-y-8 mt-2 text-(--theme-text-light)">
         <template v-for="result in resultsSliced" :key="result.item.name">
-          <li class=":uno: block">
-            <div class=":uno: flex flex-col gap-y-1 leading-tight">
-              <div class=":uno: overflow-hidden text-ellipsis" translate="no">
+          <li class="block">
+            <div class="flex flex-col gap-y-1 leading-tight">
+              <div class="overflow-hidden text-ellipsis" translate="no">
                 <a
-                  :class="['link', ':uno: text-lg !font-bold mr-2']"
+                  :class="['link', 'text-lg !font-bold mr-2']"
                   :href="getPortPageURL(result.item.name)"
                   v-text="result.item.name"
                 />
                 <span
-                  class=":uno: text-sm opacity-80"
+                  class="text-sm opacity-80"
                   v-text="`v${result.item.version}`"
                 />
               </div>
               <template v-if="result.item.description">
                 <div
-                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[--theme-text-light]"
+                  class="text-sm line-clamp-3 overflow-hidden text-ellipsis text-(--theme-text-light)"
                   :title="result.item.description"
                 >
                   <HighlightMatched
@@ -166,13 +164,13 @@ onMounted((): (() => void) => {
                       result.matches?.find((e) => e.key === 'description')
                         ?.indices ?? []
                     "
-                    highlight-class=":uno: font-bold"
+                    highlight-class="font-bold"
                   />
                 </div>
               </template>
               <template v-else>
                 <div
-                  class=":uno: text-sm line-clamp-3 overflow-hidden text-ellipsis text-[--theme-text-light] font-italic opacity-80"
+                  class="text-sm line-clamp-3 overflow-hidden text-ellipsis text-(--theme-text-light) italic opacity-80"
                 >
                   No description provided
                 </div>
@@ -183,11 +181,11 @@ onMounted((): (() => void) => {
       </ul>
       <template v-if="pageCount > 1">
         <div
-          class=":uno: flex gap-x-4 mt-8 justify-center items-center text-[--theme-text-light]"
+          class="flex gap-x-4 mt-8 justify-center items-center text-(--theme-text-light)"
         >
           <a
             class="link"
-            :class="isFirstPage && ':uno: invisible'"
+            :class="isFirstPage && 'invisible'"
             :href="getPageURL(currentPage - 1)"
             @click.prevent="go(currentPage - 1)"
           >
@@ -208,7 +206,7 @@ onMounted((): (() => void) => {
           </template>
           <a
             class="link"
-            :class="isLastPage && ':uno: invisible'"
+            :class="isLastPage && 'invisible'"
             :href="getPageURL(currentPage + 1)"
             @click.prevent="go(currentPage + 1)"
           >

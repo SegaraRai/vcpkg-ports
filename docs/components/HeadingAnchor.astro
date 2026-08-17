@@ -11,6 +11,8 @@ const { slug } = Astro.props;
 <a class="anchor link" href={`#${slug}`} translate="no">#</a>
 
 <style is:global>
+  @reference "../styles/main.css";
+
   :is(h1, h2, h3, h4, h5, h6).has-anchor {
     @apply relative;
   }
@@ -29,7 +31,7 @@ const { slug } = Astro.props;
     @apply bottom-0;
     @apply my-auto;
     @apply opacity-0;
-    @apply !transition-all-200;
+    @apply transition-all! duration-200!;
 
     @apply focus:opacity-100;
     @apply hover:opacity-100;

@@ -6,10 +6,7 @@ import Header from "../components/header/Header.astro";
 import ManagedSearch from "../components/search/ManagedSearch.vue";
 import { SITE_LANGUAGE_KEBAB, formatPageTitle } from "../constants.mjs";
 
-import "../styles/main.scss";
-
-// HACK: make CSS utils recognized by UnoCSS
-import "../components/search/SearchOverlay.vue";
+import "../styles/main.css";
 
 interface Props {
   readonly title?: string | undefined;
@@ -56,7 +53,7 @@ const formattedTitle = formatPageTitle(title);
       <slot name="header" />
     </Header>
     <main
-      class=":uno: flex-1 w-full max-w-294 px-7 lg:px-12 pt-4 pb-10 mx-auto overflow-hidden"
+      class="flex-1 w-full max-w-294 px-7 lg:px-12 pt-4 pb-10 mx-auto overflow-hidden"
     >
       <slot />
     </main>

@@ -14,22 +14,22 @@ const items = [
     "Updated",
     modifiedAt,
     "dateModified",
-    ":uno: light:text-green-600 dark:text-green-400",
+    "light:text-green-600 dark:text-green-400",
   ],
 ] as const;
 ---
 
 <dl
-  class=":uno: flex flex-col my-4 py-1 leading-tight gap-y-1.5 text-[--theme-text-light]"
+  class="flex flex-col my-4 py-1 leading-tight gap-y-1.5 text-(--theme-text-light)"
 >
   {
     items.map(([label, datetime, itemProp, extraClass]) => (
       <div
-        class:list={[":uno: flex gap-x-4 items-center", extraClass]}
+        class:list={["flex gap-x-4 items-center", extraClass]}
         data-nosnippet
       >
-        <dt class=":uno: flex-none w-24 opacity-60" set:text={label} />
-        <dd class=":uno: flex-1">
+        <dt class="flex-none w-24 opacity-60" set:text={label} />
+        <dd class="flex-1">
           <DateTime client:load timestamp={datetime} itemProp={itemProp} long />
         </dd>
       </div>

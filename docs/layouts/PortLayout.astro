@@ -11,10 +11,7 @@ import RightSidebar from "../components/portPage/RightSidebar.astro";
 import ManagedSearch from "../components/search/ManagedSearch.vue";
 import { SITE_LANGUAGE_KEBAB, formatPageTitle } from "../constants.mjs";
 
-import "../styles/main.scss";
-
-// HACK: make CSS utils recognized by UnoCSS
-import "../components/search/SearchOverlay.vue";
+import "../styles/main.css";
 
 interface Props {
   readonly frontmatter: PortFrontmatter;
@@ -51,15 +48,15 @@ const formattedTitle = formatPageTitle(frontmatter.title);
   <body>
     <Header />
     <main
-      class=":uno: w-full max-w-320 lg:flex flex-row pr-7 lg:pr-12 pt-4 pb-10 mx-auto gap-x-12 justify-center lg:justify-between"
+      class="w-full max-w-7xl lg:flex flex-row pr-7 lg:pr-12 pt-4 pb-10 mx-auto gap-x-12 justify-center lg:justify-between"
     >
-      <div class=":uno: flex-1 overflow-hidden pl-7 lg:pl-12 max-w-190 mx-auto">
+      <div class="flex-1 overflow-hidden pl-7 lg:pl-12 max-w-190 mx-auto">
         <PortPageContent frontmatter={frontmatter} headings={headings}>
           <slot />
         </PortPageContent>
       </div>
       <aside
-        class=":uno: flex-none lt-lg:hidden w-70 overflow-visible"
+        class="flex-none max-lg:hidden w-70 overflow-visible"
         title="Table of Contents"
       >
         <RightSidebar headings={headings} />

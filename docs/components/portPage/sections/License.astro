@@ -45,10 +45,7 @@ const licenseText = fileContents.find(([filename]) =>
   {
     !!foundLicenses.length && (
       <ul
-        class:list={[
-          "plain-list",
-          ":uno: my-4 flex flex-col gap-y-2 leading-tight",
-        ]}
+        class:list={["plain-list", "my-4 flex flex-col gap-y-2 leading-tight"]}
       >
         {foundLicenses.map((license) => (
           <li>
@@ -66,14 +63,11 @@ const licenseText = fileContents.find(([filename]) =>
   {
     !!inferredCopyrightURLs.length && (
       <ul
-        class:list={[
-          "plain-list",
-          ":uno: my-4 flex flex-col gap-y-2 leading-tight",
-        ]}
+        class:list={["plain-list", "my-4 flex flex-col gap-y-2 leading-tight"]}
       >
         {inferredCopyrightURLs.map((url) => (
-          <li class=":uno: flex flex-row gap-x-2 items-center">
-            <span class=":uno: i-lucide-file-text" />
+          <li class="flex flex-row gap-x-2 items-center">
+            <span class="icon-[lucide--file-text]" />
             <LinkExternal
               href={url}
               set:text={

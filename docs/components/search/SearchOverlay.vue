@@ -33,23 +33,20 @@ watchEffect((): void => {
 </script>
 
 <template>
-  <Transition
-    enter-from-class=":uno: opacity-0"
-    leave-to-class=":uno: opacity-0"
-  >
+  <Transition enter-from-class="opacity-0" leave-to-class="opacity-0">
     <div
       v-if="show"
-      class=":uno: z-9999 fixed left-0 top-0 right-0 bottom-0 w-full h-full transition-opacity-200"
+      class="z-9999 fixed left-0 top-0 right-0 bottom-0 w-full h-full transition-opacity duration-200"
       @keydown.escape="close"
     >
       <div
-        class=":uno: -z-1 absolute left-0 top-0 w-full h-full bg-[--theme-text] opacity-15"
+        class="-z-1 absolute left-0 top-0 w-full h-full bg-(--theme-text) opacity-15"
       ></div>
       <div
-        class=":uno: w-full h-full mx-auto flex flex-col items-center justify-center"
+        class="w-full h-full mx-auto flex flex-col items-center justify-center"
         @click="close"
       >
-        <div class=":uno: w-full max-w-160 h-full pt-10 lg:pt-20">
+        <div class="w-full max-w-160 h-full pt-10 lg:pt-20">
           <SearchPopup v-model="term" @close="close" />
         </div>
       </div>

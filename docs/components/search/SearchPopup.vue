@@ -105,32 +105,32 @@ const deferFocus = (): void => {
   <div
     ref="containerEl"
     v-focus-by-key
-    class=":uno: w-full max-h-full px-3 py-4 rounded-2 flex flex-col gap-y-4 bg-[--theme-bg] text-lg"
+    class="w-full max-h-full px-3 py-4 rounded-lg flex flex-col gap-y-4 bg-(--theme-bg) text-lg"
     @click.stop
     @keydown.escape.prevent.stop="emit('close')"
   >
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      :class="['tabbable', ':uno: py-0.5']"
-      wrapper-class=":uno: text-xl"
+      :class="['tabbable', 'py-0.5']"
+      wrapper-class="text-xl"
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.escape.prevent.stop="term ? (term = '') : emit('close')"
     />
     <ShortcutKeyHandler @press="deferFocus" />
-    <div class=":uno: overflow-auto text-base">
+    <div class="overflow-auto text-base">
       <template v-if="loading || !termDebounced">
         <div
-          class=":uno: flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight"
+          class="flex flex-col gap-y-2 items-center justify-center text-center pt-10 pb-14 leading-tight"
         >
-          <div class=":uno: opacity-80">Type something to search</div>
+          <div class="opacity-80">Type something to search</div>
           <template v-if="mounted">
-            <div class=":uno: flex gap-x-2">
-              <span class=":uno: opacity-80">Example:</span>
+            <div class="flex gap-x-2">
+              <span class="opacity-80">Example:</span>
               <template v-for="example in exampleTerms" :key="example">
                 <button
-                  class=":uno: text-[--theme-text-accent]"
+                  class="text-(--theme-text-accent)"
                   translate="no"
                   @click="term = example"
                   v-text="example"
@@ -142,44 +142,44 @@ const deferFocus = (): void => {
       </template>
       <template v-else-if="results.length === 0">
         <div
-          class=":uno: flex flex-col gap-y-4 items-center justify-center text-center pt-3 pb-1"
+          class="flex flex-col gap-y-4 items-center justify-center text-center pt-3 pb-1"
         >
-          <div class=":uno: w-20 h-20 opacity-60">
-            <Component :is="noResultIcon" class=":uno: w-full h-full" />
+          <div class="w-20 h-20 opacity-60">
+            <Component :is="noResultIcon" class="w-full h-full" />
           </div>
           <div v-text="`No results for ${termDebounced}`" />
-          <div class=":uno: mt-4 text-sm">
+          <div class="mt-4 text-sm">
             &raquo;
             <a class="tabbable link" href="/ports">Port Catalog</a>
           </div>
         </div>
       </template>
       <template v-else>
-        <ul class=":uno: flex flex-col gap-y-4 mt-2 text-[--theme-text-light]">
+        <ul class="flex flex-col gap-y-4 mt-2 text-(--theme-text-light)">
           <template v-for="result in resultsSliced" :key="result.item.name">
-            <li class=":uno: block">
+            <li class="block">
               <a
                 :class="[
                   'tabbable',
-                  ':uno: flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-[--theme-bg-accent] focus:bg-[--theme-bg-accent]',
+                  'flex flex-col gap-y-1 leading-tight !outline-none px-2 pt-1 pb-2 rounded hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)',
                 ]"
                 :href="getPortPageURL(result.item.name)"
               >
                 <div
-                  class=":uno: text-lg font-bold text-[--theme-text-accent]"
+                  class="text-lg font-bold text-(--theme-text-accent)"
                   translate="no"
                   v-text="result.item.name"
                 />
                 <template v-if="result.item.description">
                   <div
-                    class=":uno: text-sm line-clamp-2 overflow-hidden text-ellipsis"
+                    class="text-sm line-clamp-2 overflow-hidden text-ellipsis"
                     :title="result.item.description"
                     v-text="result.item.description"
                   />
                 </template>
                 <template v-else>
                   <div
-                    class=":uno: text-sm line-clamp-2 overflow-hidden text-ellipsis font-italic opacity-80"
+                    class="text-sm line-clamp-2 overflow-hidden text-ellipsis italic opacity-80"
                   >
                     No description provided
                   </div>
@@ -189,7 +189,7 @@ const deferFocus = (): void => {
           </template>
         </ul>
         <template v-if="hasMore">
-          <div class=":uno: text-left mt-8 px-2 text-sm">
+          <div class="text-left mt-8 px-2 text-sm">
             <a class="tabbable link" :href="getSearchPageURL(term)">
               Browse More
             </a>

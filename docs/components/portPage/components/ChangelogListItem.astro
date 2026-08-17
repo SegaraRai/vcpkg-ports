@@ -24,36 +24,32 @@ const {
 
 <li
   class:list={[
-    ":uno: flex items-start w-full",
-    latest ? ":uno: light:text-green-600 dark:text-green-400" : "",
+    "flex items-start w-full",
+    latest ? "light:text-green-600 dark:text-green-400" : "",
     classList || "",
   ]}
 >
-  <div class=":uno: flex-none flex flex-row items-center">
+  <div class="flex-none flex flex-row items-center">
     <div
       class:list={[
-        ":uno: flex-none text-2xl opacity-80",
-        oldest ? ":uno: i-mdi-source-commit-end" : ":uno: i-mdi-source-commit",
+        "flex-none text-2xl opacity-80",
+        oldest ? "icon-[mdi--source-commit-end]" : "icon-[mdi--source-commit]",
       ]}
     >
     </div>
     <LinkVcpkgCommit
-      class=":uno: block flex-none mr-1.5 lt-sm:hidden"
+      class="block flex-none mr-1.5 max-sm:hidden"
       commit={commit}
     />
   </div>
-  <div class=":uno: flex-1">
+  <div class="flex-1">
     <span>
-      <LinkVcpkgCommit class=":uno: mr-1.5 sm:hidden" commit={commit} />
-      <MarkdownSubset
-        class=":uno: break-words"
-        content={message}
-        githubIssues
-      />
+      <LinkVcpkgCommit class="mr-1.5 sm:hidden" commit={commit} />
+      <MarkdownSubset class="break-words" content={message} githubIssues />
     </span>
-    <div class=":uno: float-right text-sm opacity-60 align-bottom pl-2 pt-1">
+    <div class="float-right text-sm opacity-60 align-bottom pl-2 pt-1">
       <DateTime client:visible timestamp={timestamp} />
     </div>
-    <div class=":uno: clear-both"></div>
+    <div class="clear-both"></div>
   </div>
 </li>

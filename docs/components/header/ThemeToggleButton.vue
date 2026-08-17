@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { useDark, useToggle } from "@vueuse/core";
+import { onMounted, ref } from "vue";
+
+const mounted = ref(false);
 
 const isDark = useDark({
   storageKey: "theme",
@@ -7,15 +10,23 @@ const isDark = useDark({
   valueLight: "theme-light",
 });
 const toggleDark = useToggle(isDark);
+
+onMounted((): void => {
+  mounted.value = true;
+});
 </script>
 
 <template>
   <div
-    class=":uno: block !w-8 !h-8 p-1.5 rounded-full transition-colors-200 !bg-opacity-0 hover:!bg-opacity-20 bg-white select-none"
+    class="block !w-8 !h-8 p-1.5 rounded-full transition-colors duration-200 bg-white/0 hover:bg-white/20 select-none"
   >
     <button
-      class=":uno: block !w-full !h-full light:text-true-gray-600 i-lucide-moon dark:i-lucide-sun"
-      :title="`Switch to ${isDark ? 'light' : 'dark'} theme`"
+      class="block !w-full !h-full light:text-gray-600 icon-[lucide--moon] dark:icon-[lucide--sun]"
+      :title="
+        mounted
+          ? `Switch to ${isDark ? 'light' : 'dark'} theme`
+          : 'Switch theme'
+      "
       @click="toggleDark()"
     ></button>
   </div>

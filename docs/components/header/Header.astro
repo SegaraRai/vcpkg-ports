@@ -14,56 +14,56 @@ const LinkElement = isHome ? "span" : "a";
 ---
 
 <header
-  class=":uno: flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-[--theme-navbar-bg] w-full"
+  class="flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-(--theme-navbar-bg) w-full"
 >
   <SkipToContent />
   <nav
-    class=":uno: relative flex-1 block w-full h-full max-w-204 lg:max-w-296 px-8"
+    class="relative flex-1 block w-full h-full max-w-204 lg:max-w-296 px-8"
     title="Top Navigation"
   >
     <div
-      class=":uno: lt-lg:-mx-4 h-full flex items-center justify-between gap-x-8"
+      class="max-lg:-mx-4 h-full flex items-center justify-between gap-x-8"
       data-nosnippet
     >
-      <div class=":uno: flex-none">
+      <div class="flex-none">
         <LinkElement
           class:list={[
-            ":uno: flex items-center select-none color-[--theme-text] leading-tight",
+            "flex items-center select-none text-(--theme-text) leading-tight",
             !isHome &&
-              ":uno: transition-colors-200 light:hover:color-[--theme-text-light] light:active:color-[--theme-text-light] dark:hover:color-[--theme-text-accent] dark:active:color-[--theme-text-accent]",
+              "transition-colors duration-200 light:hover:text-(--theme-text-light) light:active:text-(--theme-text-light) dark:hover:text-(--theme-text-accent) dark:active:text-(--theme-text-accent)",
           ]}
           href={isHome ? undefined : "/"}
           aria-label="Vcpkg Ports"
           translate="no"
         >
-          <span class=":uno: flex-none i-noto-package w-42px h-42px"></span>
+          <span class="flex-none icon-[noto--package] size-[42px]"></span>
           <span
             class:list={[
-              ":uno: ml-2 flex-1 text-3xl pb-1",
-              hideSearch ? ":uno: lt-sm:hidden" : ":uno: lt-sm:hidden",
+              "ml-2 flex-1 text-3xl pb-1",
+              hideSearch ? "max-sm:hidden" : "max-sm:hidden",
             ]}
           >
-            <span class=":uno: font-bold">Vcpkg</span>
-            <span class=":uno: font-normal">Ports</span>
+            <span class="font-bold">Vcpkg</span>
+            <span class="font-normal">Ports</span>
           </span>
         </LinkElement>
       </div>
       <slot />
       <div
         class:list={[
-          ":uno: flex items-center justify-end gap-x-4",
-          hideSearch ? ":uno: flex-none" : ":uno: flex-1 max-w-80",
+          "flex items-center justify-end gap-x-4",
+          hideSearch ? "flex-none" : "flex-1 max-w-80",
         ]}
         data-nosnippet
       >
         {
           !hideSearch && (
-            <div class=":uno: flex-1">
+            <div class="flex-1">
               <ManagedSearchBoxButton client:load />
             </div>
           )
         }
-        <div class=":uno: flex-none">
+        <div class="flex-none">
           <ThemeToggleButton client:load />
         </div>
       </div>
