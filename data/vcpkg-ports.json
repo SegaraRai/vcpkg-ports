@@ -1,5 +1,5 @@
 {
-  "version": "d1f2fece60ad5c8271ace08e9836bcc743ebd05b",
+  "version": "2afcafb8922834e87a6c3845395ba0fdc1886357",
   "ports": [
     {
       "name": "3fd",
@@ -50118,7 +50118,6 @@
       "name": "lemon-parser-generator",
       "manifest": {
         "name": "lemon-parser-generator",
-        "port-version": 1,
         "description": "The Lemon program is an LALR(1) parser generator. It takes a context free grammar and converts it into a subroutine that will parse a file using that grammar.",
         "homepage": "https://www.hwaci.com/sw/lemon/index.html",
         "license": "blessing",
@@ -50129,7 +50128,7 @@
             "host": true
           }
         ],
-        "version": "3.39.3"
+        "version": "3.53.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -58566,7 +58565,7 @@
       "name": "libsm",
       "manifest": {
         "name": "libsm",
-        "port-version": 1,
+        "port-version": 2,
         "description": "X Session Management Library",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libsm",
         "license": null,
@@ -58583,7 +58582,8 @@
       "files": [
         "msvc.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "xtrans.patch"
       ]
     },
     {
@@ -63016,7 +63016,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.11.3"
+        "version-semver": "2.11.4"
       },
       "files": [
         "global_preferences.json",
@@ -96146,12 +96146,19 @@
         ],
         "features": {
           "tools": {
-            "description": "Build the fastbase64 and simdutf command line tools for transcoding strings"
+            "description": "Build the fastbase64 and simdutf command line tools for transcoding strings",
+            "dependencies": [
+              {
+                "name": "libiconv",
+                "platform": "windows"
+              }
+            ]
           }
         },
-        "version-semver": "8.2.0"
+        "version-semver": "9.1.0"
       },
       "files": [
+        "bindir.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99533,6 +99540,34 @@
         "fix-tbb-dependency.patch",
         "fix-version.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "stdgpu",
+      "manifest": {
+        "name": "stdgpu",
+        "description": "Open-source library providing generic GPU data structures for fast and reliable data management",
+        "homepage": "https://github.com/stotko/stdgpu",
+        "license": "Apache-2.0",
+        "supports": "(windows & x64 & !uwp & !xbox) | (linux & x64)",
+        "dependencies": [
+          "cuda",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-date": "2026-07-08"
+      },
+      "files": [
+        "fix-msvc-preprocessor.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -109776,6 +109811,7 @@
       "name": "wxwidgets",
       "manifest": {
         "name": "wxwidgets",
+        "port-version": 1,
         "description": [
           "Widget toolkit and tools library for creating graphical user interfaces (GUIs) for cross-platform applications. ",
           "Set WXWIDGETS_USE_STL in a custom triplet to build with the wxUSE_STL build option.",
@@ -109806,6 +109842,10 @@
           },
           "libjpeg-turbo",
           "libpng",
+          {
+            "name": "libsm",
+            "platform": "!windows & !osx & !ios"
+          },
           "libwebp",
           "nanosvg",
           "opengl",
@@ -109896,6 +109936,7 @@
         "example/CMakeLists.txt",
         "fix-libs-export.patch",
         "fix-pcre2.patch",
+        "fix-wayland-build.patch",
         "gtk3-link-libraries.patch",
         "install-layout.patch",
         "libsecret-link-dirs.patch",
@@ -112432,7 +112473,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.13.2"
+        "version": "0.13.3"
       },
       "files": [
         "portfile.cmake",
