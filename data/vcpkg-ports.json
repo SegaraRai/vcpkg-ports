@@ -1,5 +1,5 @@
 {
-  "version": "127402f1c75bb3d5ff6bce04b285faa4930a5aca",
+  "version": "0ac8df3b98e3afcd8bf075fa74a6bd2c32613345",
   "ports": [
     {
       "name": "3fd",
@@ -3902,7 +3902,7 @@
             "host": true
           }
         ],
-        "version": "0.10.4"
+        "version": "0.10.5"
       },
       "files": [
         "portfile.cmake",
@@ -4135,7 +4135,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.13.5"
+        "version": "0.13.7"
       },
       "files": [
         "portfile.cmake",
@@ -4160,7 +4160,7 @@
             "host": true
           }
         ],
-        "version": "0.2.9"
+        "version": "0.2.10"
       },
       "files": [
         "portfile.cmake",
@@ -7008,7 +7008,7 @@
             "host": true
           }
         ],
-        "version": "4.38.0.0"
+        "version": "4.39.0.0"
       },
       "files": [
         "fix-bdlar-target.patch",
@@ -23129,7 +23129,7 @@
             "host": true
           }
         ],
-        "version": "0.9.2"
+        "version": "0.9.3"
       },
       "files": [
         "portfile.cmake",
@@ -40759,7 +40759,6 @@
       "name": "gz-msgs",
       "manifest": {
         "name": "gz-msgs",
-        "port-version": 1,
         "description": "Protobuf messages and functions for robot applications",
         "license": "Apache-2.0",
         "supports": "!uwp",
@@ -40774,14 +40773,19 @@
             "name": "ignition-modularscripts",
             "host": true
           },
-          "protobuf",
           {
             "name": "protobuf",
             "host": true
           },
+          {
+            "name": "protobuf",
+            "features": [
+              "libprotoc"
+            ]
+          },
           "tinyxml2"
         ],
-        "version": "11.1.0"
+        "version": "11.2.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -46122,7 +46126,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46188,7 +46192,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46222,7 +46226,7 @@
             "host": true
           }
         ],
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46298,7 +46302,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46350,7 +46354,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46402,7 +46406,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46456,7 +46460,7 @@
             "host": true
           }
         ],
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -46542,7 +46546,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -48763,7 +48767,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "001_fix_imobile.patch",
@@ -48851,7 +48855,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -48901,7 +48905,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -48950,7 +48954,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -49108,7 +49112,7 @@
             "host": true
           }
         ],
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -49165,7 +49169,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -49695,7 +49699,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -49760,7 +49764,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "001_guard_ecm_qml_module_include.patch",
@@ -64400,7 +64404,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-08-03"
+        "version-date": "2026-08-19"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -77985,7 +77989,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -78170,15 +78173,14 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2026.1.0"
+        "version": "2026.3.0"
       },
       "files": [
+        "android-ignore-onetbb-warning.patch",
+        "levelzero-prepareheaders.patch",
         "msvc-debug-info-only-in-pdb.patch",
-        "npu-deps.patch",
-        "onednn-gpu-includes.patch",
         "portfile.cmake",
         "protobuf-6.patch",
-        "remove-stdext-on-new-msvc.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -91561,7 +91563,7 @@
             ]
           }
         },
-        "version": "6.2"
+        "version": "6.3"
       },
       "files": [
         "add-itlib-and-robin-hood.patch",
@@ -94994,6 +94996,7 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
+        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT AND Apache-2.0 AND BSD-3-Clause AND ICU",
@@ -95028,11 +95031,6 @@
               "Cf. https://github.com/getsentry/sentry-native#compile-time-options"
             ],
             "dependencies": [
-              {
-                "name": "pkgconf",
-                "host": true,
-                "platform": "!android & !ios"
-              },
               {
                 "name": "sentry-native",
                 "features": [
@@ -100259,7 +100257,7 @@
             ]
           }
         },
-        "version-semver": "7.13.0"
+        "version-semver": "7.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -100270,7 +100268,7 @@
       "name": "suitesparse-amd",
       "manifest": {
         "name": "suitesparse-amd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100296,7 +100294,7 @@
       "name": "suitesparse-btf",
       "manifest": {
         "name": "suitesparse-btf",
-        "port-version": 2,
+        "port-version": 3,
         "description": "BTF: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100322,7 +100320,7 @@
       "name": "suitesparse-camd",
       "manifest": {
         "name": "suitesparse-camd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100348,7 +100346,7 @@
       "name": "suitesparse-ccolamd",
       "manifest": {
         "name": "suitesparse-ccolamd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "CCOLAMD: Routines for constrained column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100374,7 +100372,7 @@
       "name": "suitesparse-cholmod",
       "manifest": {
         "name": "suitesparse-cholmod",
-        "port-version": 1,
+        "port-version": 2,
         "description": "CHOLMOD: Routines for factorizing sparse symmetric positive definite matrices in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later AND Apache-2.0",
@@ -100454,7 +100452,7 @@
       "name": "suitesparse-colamd",
       "manifest": {
         "name": "suitesparse-colamd",
-        "port-version": 2,
+        "port-version": 3,
         "description": "COLAMD: Routines for column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100499,7 +100497,7 @@
             "description": "Enable OpenMP support (in SuiteSparse_config only)"
           }
         },
-        "version-semver": "7.13.0"
+        "version-semver": "7.14.0"
       },
       "files": [
         "SuiteSparseBLAS.cmake",
@@ -100511,7 +100509,7 @@
       "name": "suitesparse-cxsparse",
       "manifest": {
         "name": "suitesparse-cxsparse",
-        "port-version": 2,
+        "port-version": 3,
         "description": "CXSparse: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100563,7 +100561,7 @@
             "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
           }
         },
-        "version-semver": "10.4.1"
+        "version-semver": "10.5.0"
       },
       "files": [
         "crossbuild.diff",
@@ -100575,7 +100573,7 @@
       "name": "suitesparse-klu",
       "manifest": {
         "name": "suitesparse-klu",
-        "port-version": 2,
+        "port-version": 3,
         "description": "KLU: Routines for solving sparse linear systems of equations in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100612,7 +100610,7 @@
       "name": "suitesparse-lagraph",
       "manifest": {
         "name": "suitesparse-lagraph",
-        "port-version": 1,
+        "port-version": 2,
         "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
         "homepage": "https://lagraph.readthedocs.io/en/latest/",
         "license": "BSD-2-Clause",
@@ -100651,7 +100649,7 @@
       "name": "suitesparse-ldl",
       "manifest": {
         "name": "suitesparse-ldl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "LDL: A sparse LDL' factorization and solve package in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100678,7 +100676,7 @@
       "name": "suitesparse-mongoose",
       "manifest": {
         "name": "suitesparse-mongoose",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Mongoose: Graph partitioning library in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-only",
@@ -100709,6 +100707,7 @@
       "name": "suitesparse-paru",
       "manifest": {
         "name": "suitesparse-paru",
+        "port-version": 1,
         "description": "ParU: Routines for solving sparse linear system via parallel multifrontal LU factorization algorithms in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-or-later",
@@ -100750,7 +100749,7 @@
       "name": "suitesparse-rbio",
       "manifest": {
         "name": "suitesparse-rbio",
-        "port-version": 2,
+        "port-version": 3,
         "description": "RBio: routines for reading/writing sparse matrices in Rutherford/Boeing format in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100776,7 +100775,7 @@
       "name": "suitesparse-spex",
       "manifest": {
         "name": "suitesparse-spex",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SPEX: Software package for SParse EXact algebra in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later OR LGPL-3.0-or-later",
@@ -100819,7 +100818,7 @@
       "name": "suitesparse-spqr",
       "manifest": {
         "name": "suitesparse-spqr",
-        "port-version": 2,
+        "port-version": 3,
         "description": "SPQR: Multithreaded, multifrontal, rank-revealing sparse QR factorization method in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100861,7 +100860,7 @@
       "name": "suitesparse-umfpack",
       "manifest": {
         "name": "suitesparse-umfpack",
-        "port-version": 1,
+        "port-version": 2,
         "description": "UMFPACK: Routines solving sparse linear systems via LU factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -101227,7 +101226,7 @@
             ]
           }
         },
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -102346,7 +102345,7 @@
             "host": true
           }
         ],
-        "version": "6.28.0"
+        "version": "6.29.0"
       },
       "files": [
         "portfile.cmake",
@@ -102866,7 +102865,7 @@
         "name": "tinyexif",
         "description": "tiny ISO-compliant C++ EXIF and XMP parsing library for JPEG images",
         "homepage": "https://github.com/cdcseacave/TinyEXIF",
-        "license": "MIT",
+        "license": "MIT AND BSD-2-Clause",
         "dependencies": [
           "tinyxml2",
           {
@@ -102878,7 +102877,7 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -108405,7 +108404,7 @@
             "host": true
           }
         ],
-        "version-date": "2021-11-26"
+        "version-date": "2025-12-12"
       },
       "files": [
         "disable-test.patch",
