@@ -1,5 +1,5 @@
 {
-  "version": "0ac8df3b98e3afcd8bf075fa74a6bd2c32613345",
+  "version": "ddd0023b0eee70986e42ed49d9d4afb8098f212e",
   "ports": [
     {
       "name": "3fd",
@@ -3983,7 +3983,7 @@
             "host": true
           }
         ],
-        "version": "0.3.2"
+        "version": "0.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -4010,7 +4010,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -4038,7 +4038,7 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.11.1"
       },
       "files": [
         "portfile.cmake",
@@ -4068,7 +4068,7 @@
             "host": true
           }
         ],
-        "version": "0.27.6"
+        "version": "0.27.7"
       },
       "files": [
         "portfile.cmake",
@@ -4098,7 +4098,7 @@
             "host": true
           }
         ],
-        "version": "0.16.1"
+        "version": "0.16.2"
       },
       "files": [
         "portfile.cmake",
@@ -4185,9 +4185,10 @@
             "host": true
           }
         ],
-        "version": "0.2.10"
+        "version": "0.2.11"
       },
       "files": [
+        "fix-cmake-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -7624,7 +7625,7 @@
             ]
           }
         },
-        "version": "1.8.6"
+        "version": "1.8.7"
       },
       "files": [
         "fix-windows-arm-build-error.patch",
@@ -18264,7 +18265,6 @@
         "description": "BoringSSL is a fork of OpenSSL developed by Google",
         "homepage": "https://boringssl.googlesource.com/boringssl",
         "license": "Apache-2.0",
-        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -18275,12 +18275,10 @@
             "host": true
           }
         ],
-        "version-date": "2025-08-18"
+        "version-date": "2026-08-13"
       },
       "files": [
-        "0001-static-gtest.patch",
-        "0002-remove-WX-Werror.patch",
-        "0003-fix-shared-symbol-visibility.patch",
+        "0001-remove-WX-Werror.patch",
         "install-pc-files.cmake",
         "openssl.pc.in",
         "portfile.cmake",
@@ -18642,14 +18640,14 @@
         "description": "A supplemental C++ library with functionalities not directly supported from Modern C++ standard.",
         "homepage": "https://github.com/buck-yeh/bux",
         "license": "MIT",
-        "supports": "!(linux | uwp)",
+        "supports": "!uwp",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "1.12.5"
+        "version": "1.12.6"
       },
       "files": [
         "portfile.cmake",
@@ -22729,7 +22727,7 @@
             ]
           }
         },
-        "version": "0.53.0"
+        "version": "0.53.1"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -22845,7 +22843,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.16.0"
+        "version": "1.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -31829,7 +31827,7 @@
             "host": true
           }
         ],
-        "version": "0.4.3"
+        "version": "0.4.4"
       },
       "files": [
         "portfile.cmake",
@@ -34880,6 +34878,7 @@
       "name": "geos",
       "manifest": {
         "name": "geos",
+        "port-version": 1,
         "description": "Geometry Engine Open Source",
         "homepage": "https://libgeos.org/",
         "license": "LGPL-2.1-only",
@@ -42954,7 +42953,7 @@
             ]
           }
         },
-        "version": "0.9.7"
+        "version": "0.9.8"
       },
       "files": [
         "portfile.cmake",
@@ -49272,11 +49271,10 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.1.1"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -52049,11 +52047,10 @@
             "description": "Support the zlib format"
           }
         },
-        "version": "1.25"
+        "version": "1.26"
       },
       "files": [
         "portfile.cmake",
-        "remove_wrong_c_flags_modification.diff",
         "usage",
         "vcpkg.json"
       ]
@@ -52390,11 +52387,11 @@
       "name": "libe57format",
       "manifest": {
         "name": "libe57format",
-        "port-version": 1,
         "description": "A library to provide read & write support for the E57 file format.",
         "homepage": "https://github.com/asmaloney/libE57Format",
         "license": "BSL-1.0",
         "dependencies": [
+          "crcpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -52408,7 +52405,7 @@
             "default-features": false
           }
         ],
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -70646,7 +70643,7 @@
             "host": true
           }
         ],
-        "version-semver": "2.15.0"
+        "version-semver": "3.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -72722,7 +72719,7 @@
             "host": true
           }
         ],
-        "version": "7.8.0"
+        "version": "7.8.1"
       },
       "files": [
         "export-target.patch",
@@ -78507,7 +78504,7 @@
             ]
           }
         },
-        "version": "5.5.2"
+        "version": "5.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -93712,7 +93709,7 @@
       "name": "sdl1",
       "manifest": {
         "name": "sdl1",
-        "port-version": 23,
+        "port-version": 24,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "LGPL-2.1-or-later",
@@ -93731,6 +93728,7 @@
         "SDL1_2017.sln.in",
         "SDLmain.vcxproj.in",
         "export-symbols-only-in-shared-build.patch",
+        "fix-gcc15-function-signatures.patch",
         "fix-linux-build.patch",
         "portfile.cmake",
         "sdl-config.patch",
@@ -96972,11 +96970,10 @@
             "host": true
           }
         ],
-        "version-semver": "0.1.4"
+        "version-semver": "0.1.5"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -97476,7 +97473,7 @@
             "host": true
           }
         ],
-        "version": "5.8.5.1"
+        "version": "5.8.6"
       },
       "files": [
         "portfile.cmake",
@@ -99706,7 +99703,7 @@
             "host": true
           }
         ],
-        "version": "4.8.0"
+        "version": "4.10.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -104840,7 +104837,7 @@
             "host": true
           }
         ],
-        "version": "3.6.0"
+        "version": "3.6.1"
       },
       "files": [
         "portfile.cmake",
