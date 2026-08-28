@@ -1,5 +1,5 @@
 {
-  "version": "ddd0023b0eee70986e42ed49d9d4afb8098f212e",
+  "version": "7e43e0768a5af180a9cf75d87d692dce1b9da34f",
   "ports": [
     {
       "name": "3fd",
@@ -3136,7 +3136,7 @@
             ]
           }
         },
-        "version": "10.3.0"
+        "version": "10.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -45394,6 +45394,7 @@
       "name": "json-c",
       "manifest": {
         "name": "json-c",
+        "port-version": 1,
         "description": "A JSON implementation in C",
         "homepage": "https://github.com/json-c/json-c",
         "license": "MIT",
@@ -45410,6 +45411,7 @@
         "version": "0.19-20260627"
       },
       "files": [
+        "json_object_put-leak.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50294,7 +50296,6 @@
       "name": "leveldb",
       "manifest": {
         "name": "leveldb",
-        "port-version": 1,
         "description": "LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.",
         "homepage": "https://github.com/google/leveldb",
         "license": "BSD-3-Clause",
@@ -50321,14 +50322,18 @@
             "dependencies": [
               "snappy"
             ]
+          },
+          "zstd": {
+            "description": "Build with zstd",
+            "dependencies": [
+              "zstd"
+            ]
           }
         },
-        "version": "1.23"
+        "version-date": "2026-03-11"
       },
       "files": [
         "fix-dependencies.patch",
-        "fix-util-install.patch",
-        "leveldbConfig.cmake.in",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66727,7 +66732,7 @@
             "host": true
           }
         ],
-        "version": "1.9.0"
+        "version": "1.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -77555,7 +77560,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.6.3"
+        "version": "3.6.4"
       },
       "files": [
         "cmake-config.patch",
@@ -90955,7 +90960,7 @@
             "host": true
           }
         ],
-        "version": "0.36.0"
+        "version": "0.36.3"
       },
       "files": [
         "portfile.cmake",
