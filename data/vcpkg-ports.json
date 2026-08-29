@@ -1,5 +1,5 @@
 {
-  "version": "7e43e0768a5af180a9cf75d87d692dce1b9da34f",
+  "version": "114d9fe62faf35856b45cf55cb93b57028a45d63",
   "ports": [
     {
       "name": "3fd",
@@ -1516,11 +1516,10 @@
             "host": true
           }
         ],
-        "version-semver": "3.14.1"
+        "version-semver": "3.15.0"
       },
       "files": [
         "aom-rename-static.diff",
-        "aom-uninitialized-pointer.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4312,11 +4311,20 @@
           "account": {
             "description": "C++ SDK for the AWS account service"
           },
+          "account-access": {
+            "description": "C++ SDK for the AWS account-access service"
+          },
           "acm": {
             "description": "C++ SDK for the AWS acm service"
           },
           "acm-pca": {
             "description": "C++ SDK for the AWS acm-pca service"
+          },
+          "agent-registry": {
+            "description": "C++ SDK for the AWS agent-registry service"
+          },
+          "agent-registry-control": {
+            "description": "C++ SDK for the AWS agent-registry-control service"
           },
           "aiops": {
             "description": "C++ SDK for the AWS aiops service"
@@ -4849,6 +4857,9 @@
           "iam": {
             "description": "C++ SDK for the AWS iam service"
           },
+          "iam-toolbox": {
+            "description": "C++ SDK for the AWS iam-toolbox service"
+          },
           "identity-management": {
             "description": "C++ SDK for the AWS identity-management service",
             "dependencies": [
@@ -5248,6 +5259,9 @@
           },
           "pricing": {
             "description": "C++ SDK for the AWS pricing service"
+          },
+          "pricing-plan-manager": {
+            "description": "C++ SDK for the AWS pricing-plan-manager service"
           },
           "proton": {
             "description": "C++ SDK for the AWS proton service"
@@ -5668,7 +5682,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.860"
+        "version": "1.11.880"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -19551,7 +19565,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.15.3"
+        "version-semver": "3.16.0"
       },
       "files": [
         "fix-install-path.patch",
@@ -20587,7 +20601,7 @@
             "host": true
           }
         ],
-        "version": "4.0.3"
+        "version": "4.0.4"
       },
       "files": [
         "CMakeLists.txt",
@@ -28757,7 +28771,7 @@
         "description": "ECMWF CMake build system and CMake macro collection",
         "homepage": "https://github.com/ecmwf/ecbuild",
         "license": null,
-        "version": "3.15.0"
+        "version": "3.15.2"
       },
       "files": [
         "ecbuild-config-version.cmake.in",
@@ -35186,6 +35200,7 @@
       "name": "ggml",
       "manifest": {
         "name": "ggml",
+        "port-version": 1,
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
@@ -35876,7 +35891,7 @@
             ]
           }
         },
-        "version": "8.1.0"
+        "version": "8.2.0"
       },
       "files": [
         "001-fix-asio.patch",
@@ -41811,7 +41826,7 @@
             ]
           }
         },
-        "version": "14.3.1"
+        "version": "14.4.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -46558,9 +46573,8 @@
       "name": "kddockwidgets",
       "manifest": {
         "name": "kddockwidgets",
-        "port-version": 1,
         "description": "KDAB's Dock Widget Framework for Qt",
-        "homepage": "https://www.kdab.com/development-resources/qt-tools/kddockwidgets/",
+        "homepage": "https://www.kdab.com/software-technologies/developer-tools/kddockwidgets/",
         "license": "GPL-2.0-only OR GPL-3.0-only",
         "supports": "!android & !ios",
         "dependencies": [
@@ -46598,7 +46612,7 @@
             ]
           }
         },
-        "version": "2.4.0"
+        "version": "2.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -58980,9 +58994,10 @@
       "name": "libspng",
       "manifest": {
         "name": "libspng",
+        "port-version": 1,
         "description": "Simple, modern libpng alternative",
         "homepage": "https://github.com/randy408/libspng",
-        "license": "BSD-2-Clause",
+        "license": "BSD-2-Clause AND libpng-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -58998,6 +59013,7 @@
       },
       "files": [
         "fix-spngconfig-cmake.patch",
+        "libspng-pr-286.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -60945,7 +60961,7 @@
       "name": "libwebp",
       "manifest": {
         "name": "libwebp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "WebP codec: library to encode and decode images in WebP format",
         "homepage": "https://github.com/webmproject/libwebp",
         "license": "BSD-3-Clause",
@@ -61152,7 +61168,7 @@
                   "vwebp"
                 ]
               },
-              "sdl1"
+              "sdl2"
             ]
           }
         },
@@ -61344,7 +61360,6 @@
       "name": "libxchange",
       "manifest": {
         "name": "libxchange",
-        "port-version": 1,
         "description": "Structured data representation and JSON support for C/C++",
         "homepage": "https://sigmyne.github.io/xchange/",
         "documentation": "https://sigmyne.github.io/xchange/doc/html/",
@@ -61359,10 +61374,9 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
-        "0001.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -70133,7 +70147,7 @@
         "name": "mujs",
         "description": "An embeddable Javascript interpreter in C",
         "homepage": "https://mujs.com/",
-        "license": "ISC",
+        "license": "ISC AND Unicode-3.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -70144,7 +70158,7 @@
             "host": true
           }
         ],
-        "version": "1.3.9"
+        "version": "1.3.10"
       },
       "files": [
         "CMakeLists.txt",
@@ -76647,7 +76661,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.4.14"
+        "version": "3.4.15"
       },
       "files": [
         "portfile.cmake",
@@ -78693,7 +78707,7 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 27,
+        "port-version": 28,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
         "homepage": "https://www.openscenegraph.com/",
         "license": null,
@@ -78837,10 +78851,10 @@
               }
             ]
           },
-          "sdl1": {
-            "description": "Build SDL 1 plugin, and enable SDL 1 app features",
+          "sdl": {
+            "description": "Build SDL plugin, and enable SDL app features",
             "dependencies": [
-              "sdl1"
+              "sdl2"
             ]
           },
           "tools": {
@@ -78882,6 +78896,7 @@
         "osgdb_zip_nozip.patch",
         "plugin-pdb-install.patch",
         "portfile.cmake",
+        "sdl2-plugin.patch",
         "unofficial-export.patch",
         "unofficial-osg-config.cmake",
         "usage",
@@ -78920,7 +78935,6 @@
       "name": "osgearth",
       "manifest": {
         "name": "osgearth",
-        "port-version": 1,
         "description": "osgEarth - 3D Maps for OpenSceneGraph",
         "homepage": "https://github.com/pelicanmapping/osgearth",
         "license": "MIT",
@@ -78943,6 +78957,7 @@
               "opengl3-binding"
             ]
           },
+          "lerc",
           "libwebp",
           "meshoptimizer",
           "opengl",
@@ -78963,14 +78978,20 @@
           "controls": {
             "description": "Support for the old Controls API (superceded by imgui)"
           },
+          "stb": {
+            "description": "build optional STB DXT image compressor",
+            "dependencies": [
+              "stb"
+            ]
+          },
           "tools": {
             "description": "Build command-line tools"
           }
         },
-        "version": "3.8"
+        "version": "3.8.1"
       },
       "files": [
-        "devendor-imgui.diff",
+        "devendor-dependencies.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -89470,7 +89491,7 @@
             "host": true
           }
         ],
-        "version": "12.1.0"
+        "version": "12.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -93711,97 +93732,6 @@
       ]
     },
     {
-      "name": "sdl1",
-      "manifest": {
-        "name": "sdl1",
-        "port-version": 24,
-        "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
-        "homepage": "https://www.libsdl.org",
-        "license": "LGPL-2.1-or-later",
-        "supports": "!android & !osx & !uwp",
-        "dependencies": [
-          {
-            "name": "vcpkg-msbuild",
-            "host": true,
-            "platform": "windows & !mingw"
-          }
-        ],
-        "version": "1.2.15"
-      },
-      "files": [
-        "SDL.vcxproj.in",
-        "SDL1_2017.sln.in",
-        "SDLmain.vcxproj.in",
-        "export-symbols-only-in-shared-build.patch",
-        "fix-gcc15-function-signatures.patch",
-        "fix-linux-build.patch",
-        "portfile.cmake",
-        "sdl-config.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sdl1-mixer",
-      "manifest": {
-        "name": "sdl1-mixer",
-        "description": "An audio mixer that supports various file formats for Simple Directmedia Layer.",
-        "homepage": "https://www.libsdl.org",
-        "license": "Zlib",
-        "supports": "!osx & !uwp & !arm",
-        "dependencies": [
-          "libflac",
-          "libmikmod",
-          "libogg",
-          "libvorbis",
-          "mpg123",
-          "sdl1",
-          {
-            "name": "vcpkg-make",
-            "platform": "!windows | mingw"
-          },
-          {
-            "name": "vcpkg-msbuild",
-            "host": true,
-            "platform": "windows & !mingw"
-          }
-        ],
-        "version-date": "2025-09-10"
-      },
-      "files": [
-        "SDL_mixer.vcxproj.in",
-        "SDL_mixer_2017.sln.in",
-        "mpg123_ssize_t.patch",
-        "native_midi.vcxproj.in",
-        "playmus.vcxproj.in",
-        "playwave.vcxproj.in",
-        "portfile.cmake",
-        "timidity.vcxproj.in",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sdl1-net",
-      "manifest": {
-        "name": "sdl1-net",
-        "port-version": 6,
-        "description": "Networking library for SDL",
-        "dependencies": [
-          "sdl1",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "1.2.8"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
@@ -94828,7 +94758,7 @@
             ]
           }
         },
-        "version": "4.4.3"
+        "version": "4.4.4"
       },
       "files": [
         "portfile.cmake",
@@ -94999,7 +94929,6 @@
       "name": "sentry-native",
       "manifest": {
         "name": "sentry-native",
-        "port-version": 1,
         "description": "Sentry SDK for C, C++ and native applications.",
         "homepage": "https://sentry.io/",
         "license": "MIT AND Apache-2.0 AND BSD-3-Clause AND ICU",
@@ -95086,7 +95015,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.16.3"
+        "version": "0.16.4"
       },
       "files": [
         "fix-cmake4.patch",
@@ -105144,7 +105073,6 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
@@ -105215,7 +105143,7 @@
             "supports": "!ios"
           }
         },
-        "version": "26.5"
+        "version": "26.8"
       },
       "files": [
         "003-fix-dep.patch",
@@ -105224,7 +105152,6 @@
         "008-fix_clang8_compiler_error.patch",
         "009-vcpkg_install_folder_conventions.patch",
         "010-cmake_export_plugin_as_modules.patch",
-        "011-fix-tbb2023-task-api.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -109957,7 +109884,6 @@
       "name": "x264",
       "manifest": {
         "name": "x264",
-        "port-version": 2,
         "description": "x264 is a free software library and application for encoding video streams into the H.264/MPEG-4 AVC compression format",
         "homepage": "https://www.videolan.org/developers/x264.html",
         "license": "GPL-2.0-or-later",
@@ -109994,7 +109920,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.164.3108"
+        "version": "0.165.3222"
       },
       "files": [
         "allow-clang-cl.patch",
