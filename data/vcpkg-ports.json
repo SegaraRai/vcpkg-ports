@@ -1,5 +1,5 @@
 {
-  "version": "118bba14b94bc040c098c0c15e63c142148c05ca",
+  "version": "194964eec5d5601aef90b456d553412f0b2b0ea5",
   "ports": [
     {
       "name": "3fd",
@@ -3956,7 +3956,7 @@
             "host": true
           }
         ],
-        "version": "0.14.5"
+        "version": "1.0.0"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -34617,7 +34617,6 @@
       "name": "gdk-pixbuf",
       "manifest": {
         "name": "gdk-pixbuf",
-        "port-version": 1,
         "description": "Image loading library.",
         "homepage": "https://gitlab.gnome.org/GNOME/gdk-pixbuf",
         "license": "LGPL-2.1-or-later",
@@ -34685,7 +34684,7 @@
             ]
           }
         },
-        "version": "2.44.6"
+        "version": "2.44.8"
       },
       "files": [
         "fix-static-deps.patch",
@@ -35869,12 +35868,12 @@
       "name": "glaze",
       "manifest": {
         "name": "glaze",
+        "port-version": 1,
         "description": "One of the fastest JSON libraries in the world. Glaze reads and writes from C++ memory, simplifying interfaces and offering incredible performance.",
         "homepage": "https://github.com/stephenberry/glaze",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
-          "asio",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -35885,9 +35884,22 @@
           }
         ],
         "features": {
+          "networking": {
+            "description": "Enable networking support",
+            "dependencies": [
+              "asio"
+            ]
+          },
           "ssl": {
             "description": "Enable SSL/TLS support for HTTPS servers",
             "dependencies": [
+              {
+                "name": "glaze",
+                "default-features": false,
+                "features": [
+                  "networking"
+                ]
+              },
               "openssl"
             ]
           }
@@ -35897,6 +35909,7 @@
       "files": [
         "001-fix-asio.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -40815,7 +40828,6 @@
       "name": "gz-physics",
       "manifest": {
         "name": "gz-physics",
-        "port-version": 1,
         "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
         "homepage": "https://gazebosim.org/libs/physics",
         "license": "Apache-2.0",
@@ -40842,7 +40854,7 @@
           },
           "sdformat"
         ],
-        "version": "8.3.0"
+        "version": "8.4.0"
       },
       "files": [
         "dependencies.patch",
@@ -40945,7 +40957,6 @@
       "name": "gz-sim",
       "manifest": {
         "name": "gz-sim",
-        "port-version": 2,
         "description": "Gazebo Sim is an open source robotics simulator.",
         "homepage": "https://gazebosim.org/libs/sim",
         "license": "Apache-2.0",
@@ -40968,7 +40979,7 @@
           },
           "sdformat"
         ],
-        "version": "9.5.0"
+        "version": "9.6.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -40981,7 +40992,6 @@
       "name": "gz-tools",
       "manifest": {
         "name": "gz-tools",
-        "port-version": 1,
         "description": "Gazebo tools provide the ign command line tool that accepts multiple subcommands.",
         "homepage": "https://gazebosim.org",
         "license": "Apache-2.0",
@@ -40993,7 +41003,7 @@
             "host": true
           }
         ],
-        "version": "2.0.3"
+        "version": "2.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -41023,7 +41033,7 @@
           "sqlite3",
           "zeromq"
         ],
-        "version": "14.2.0"
+        "version": "14.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -49564,11 +49574,12 @@
             "host": true
           }
         ],
-        "version": "0.3.14"
+        "version": "0.3.15"
       },
       "files": [
         "disable-werror.patch",
         "fix-name-conflict.diff",
+        "fix-project-version.patch",
         "kubazipConfig.cmake",
         "portfile.cmake",
         "usage",
@@ -50660,6 +50671,7 @@
       "name": "libaio",
       "manifest": {
         "name": "libaio",
+        "port-version": 1,
         "description": "The Linux-native asynchronous I/O facility",
         "homepage": "https://pagure.io/libaio",
         "license": "LGPL-2.1",
@@ -50844,7 +50856,7 @@
             ]
           }
         },
-        "version": "3.8.7"
+        "version": "3.8.8"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -51572,7 +51584,6 @@
       "name": "libconfuse",
       "manifest": {
         "name": "libconfuse",
-        "port-version": 1,
         "description": "Small configuration file parser library for C",
         "homepage": "https://github.com/libconfuse/libconfuse",
         "license": "ISC",
@@ -51582,7 +51593,7 @@
             "host": true
           }
         ],
-        "version": "3.3"
+        "version": "3.4"
       },
       "files": [
         "portfile.cmake",
@@ -96010,7 +96021,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.7"
+        "version": "4.6.8"
       },
       "files": [
         "portfile.cmake",
@@ -97418,6 +97429,7 @@
       "name": "soci",
       "manifest": {
         "name": "soci",
+        "port-version": 1,
         "description": "SOCI - The C++ Database Access Library",
         "homepage": "https://soci.sourceforge.net/",
         "license": "BSL-1.0",
@@ -102247,7 +102259,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -105073,6 +105085,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
+        "port-version": 1,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
