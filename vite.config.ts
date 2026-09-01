@@ -2,7 +2,7 @@ import { defineConfig } from "vite-plus";
 
 export default defineConfig({
   lint: {
-    plugins: ["oxc", "typescript", "unicorn", "react", "vue"],
+    plugins: ["oxc", "typescript", "unicorn", "vue"],
     categories: {
       correctness: "warn",
     },

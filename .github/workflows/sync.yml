@@ -37,16 +37,23 @@ jobs:
       deployments: write
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           ref: ${{ env.BASE_BRANCH }}
           fetch-depth: 1
           submodules: true
 
-      - uses: voidzero-dev/setup-vp@v1.17.0
+      - name: Set up pnpm
+        uses: pnpm/setup@v2
         with:
-          node-version: "24"
           cache: true
+          install: false
+
+      - name: Set up Vite+ and Node.js
+        uses: voidzero-dev/setup-vp@v1.18.0
+        with:
+          node-version: "26"
+          run-install: false
 
       - name: Install dependencies
         run: vp install --frozen-lockfile
