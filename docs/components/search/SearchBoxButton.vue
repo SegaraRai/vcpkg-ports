@@ -22,8 +22,8 @@ import IconSearch from "~icons/line-md/search";
       class="@max-search-trigger/search-trigger:hidden inline-flex items-center gap-1 rounded-md border border-current px-1.5 py-1 text-[0.72rem] leading-none opacity-75"
     >
       <kbd>
-        <span class="keyboard-modifier-mac">⌘ + K</span>
-        <span class="keyboard-modifier-ctrl">Ctrl + K</span>
+        <span class="not-kbd-mac:hidden">⌘ + K</span>
+        <span class="not-kbd-ctrl:hidden">Ctrl + K</span>
       </kbd>
     </span>
   </button>
