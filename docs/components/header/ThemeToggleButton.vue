@@ -20,7 +20,7 @@ onMounted((): void => {
   <div class="select-none">
     <button
       type="button"
-      class="inline-flex !size-10 items-center justify-center rounded-xl border-0 bg-transparent text-(--theme-navbar-text)! transition-[background-color,color,transform] duration-150 hover:bg-(--theme-bg-accent) hover:text-(--theme-text-accent)! active:scale-95 max-[639px]:!size-9"
+      class="text-theme-navbar-text! hover:bg-theme-bg-accent hover:text-theme-text-accent! inline-flex size-10! items-center justify-center rounded-xl border-0 bg-transparent transition-[background-color,color,transform] duration-150 active:scale-95 max-sm:size-9!"
       :title="
         mounted
           ? `Switch to ${isDark ? 'light' : 'dark'} theme`

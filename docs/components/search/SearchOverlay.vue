@@ -36,12 +36,12 @@ watchEffect((): void => {
   <Transition enter-from-class="opacity-0" leave-to-class="opacity-0">
     <div
       v-if="show"
-      class="bg-theme-overlay-backdrop fixed inset-0 z-9999 overflow-auto px-4 pt-[clamp(4.75rem,9vh,7rem)] pb-8 backdrop-blur-lg transition-opacity duration-200"
+      class="bg-theme-overlay-backdrop @container/search-dialog fixed inset-0 z-9999 overflow-auto px-4 pt-[clamp(4.75rem,9vh,7rem)] pb-8 backdrop-blur-lg transition-opacity duration-200"
       @click="close"
       @keydown.escape="close"
     >
       <div
-        class="mx-auto w-full max-w-2xl rounded-2xl border border-(--theme-divider-strong) bg-(--theme-surface-raised) p-4 shadow-(--theme-shadow-overlay) max-[639px]:rounded-[0.85rem] max-[639px]:p-3"
+        class="@max-search-dialog/search-dialog:rounded-[0.85rem] @max-search-dialog/search-dialog:p-3 border-theme-divider-strong bg-theme-surface-raised mx-auto w-full max-w-2xl rounded-2xl border p-4 shadow-(--theme-shadow-overlay)"
         role="dialog"
         aria-modal="true"
         aria-label="Search ports"

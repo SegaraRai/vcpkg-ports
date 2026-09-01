@@ -20,29 +20,27 @@ const categories = [..."#ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => {
 
 <MainLayout title="Port Catalog" description="List of ports in vcpkg">
   <article id="article" class="catalog-page">
-    <header
-      class="mb-8 flex items-start justify-between gap-4 max-[639px]:block"
-    >
+    <header class="mb-8 flex items-start justify-between gap-4 max-sm:block">
       <div>
         <div class="page-eyebrow">vcpkg registry</div>
         <h1 class="page-title mt-1 mb-0">Port Catalog</h1>
-        <p class="catalog-summary max-[639px]:mt-2">
+        <p class="catalog-summary max-sm:mt-2">
           Browse every package by its first letter, from community ports to core
           C++ libraries.
         </p>
       </div>
       <div
-        class="grid flex-none justify-items-end gap-1 text-right text-[0.82rem] text-theme-text-muted max-[639px]:mt-4 max-[639px]:flex max-[639px]:items-baseline max-[639px]:justify-start max-[639px]:gap-2 max-[639px]:text-left"
+        class="grid flex-none justify-items-end gap-1 text-right text-[0.82rem] text-theme-text-muted max-sm:mt-4 max-sm:flex max-sm:items-baseline max-sm:justify-start max-sm:gap-2 max-sm:text-left self-end"
       >
         <strong
-          class="text-[1.8rem] leading-none tracking-[-0.04em] text-theme-text max-[639px]:text-[1.35rem]"
+          class="text-[1.8rem] leading-none tracking-[-0.04em] text-theme-text max-sm:text-[1.35rem]"
           >{portNames.length.toLocaleString()}</strong
         >
         <span>ports in the registry</span>
       </div>
     </header>
     <nav
-      class="mb-10 flex flex-wrap gap-2 border-y border-theme-divider py-3"
+      class="mb-10 flex flex-wrap gap-2 border-t border-theme-divider py-3"
       aria-label="Jump to a letter"
       translate="no"
     >
@@ -65,54 +63,41 @@ const categories = [..."#ABCDEFGHIJKLMNOPQRSTUVWXYZ"].map((letter) => {
         )
       }
     </nav>
-    <section aria-labelledby="catalog-results-title">
-      <div class="mb-4 flex items-baseline justify-between gap-4">
-        <h2
-          id="catalog-results-title"
-          class="m-0 font-[750] leading-[1.12] tracking-[-0.025em] text-theme-text text-[clamp(1.35rem,3vw,1.8rem)]"
-        >
-          All ports
-        </h2>
-        <span class="text-[0.82rem] text-theme-text-muted max-[639px]:hidden"
-          >Alphabetical index</span
-        >
-      </div>
-      <div
-        class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,15rem),1fr))] items-start gap-x-5 gap-y-10 max-[639px]:grid-cols-1 max-[639px]:gap-y-6"
-        translate="no"
-      >
-        {
-          categories.map(
-            ({ slug, title, portNames }) =>
-              !!portNames.length && (
-                <section
-                  class="min-w-0 border-t border-theme-divider pt-3 target:scroll-mt-24 target:border-theme-text-accent"
-                  id={slug}
-                  aria-labelledby={`${slug}-title`}
+    <section
+      class="grid grid-cols-[repeat(auto-fill,minmax(min(100%,15rem),1fr))] items-start gap-x-5 gap-y-10 max-sm:grid-cols-1 max-sm:gap-y-6"
+      translate="no"
+    >
+      {
+        categories.map(
+          ({ slug, title, portNames }) =>
+            !!portNames.length && (
+              <section
+                class="min-w-0 border-t border-theme-divider pt-3 target:scroll-mt-24 target:border-theme-text-accent"
+                id={slug}
+                aria-labelledby={`${slug}-title`}
+              >
+                <h2
+                  id={`${slug}-title`}
+                  class="section-heading section-heading-2 has-anchor mb-3 flex items-center gap-2 tracking-[0.04em]"
                 >
-                  <h2
-                    id={`${slug}-title`}
-                    class="section-heading section-heading-2 has-anchor mb-3 flex items-center gap-2 tracking-[0.04em]"
-                  >
-                    <HeadingAnchor slug={slug} />
-                    {title}
-                  </h2>
-                  <ol class="catalog-links">
-                    {portNames.map((portName) => (
-                      <li>
-                        <LinkPortPage
-                          class="link block wrap-anywhere rounded-md px-2 py-1 no-underline hover:bg-theme-bg-accent"
-                          translate={null}
-                          port={portName}
-                        />
-                      </li>
-                    ))}
-                  </ol>
-                </section>
-              )
-          )
-        }
-      </div>
+                  <HeadingAnchor slug={slug} />
+                  {title}
+                </h2>
+                <ol class="catalog-links">
+                  {portNames.map((portName) => (
+                    <li>
+                      <LinkPortPage
+                        class="link block wrap-anywhere rounded-md px-2 py-1 no-underline hover:bg-theme-bg-accent"
+                        translate={null}
+                        port={portName}
+                      />
+                    </li>
+                  ))}
+                </ol>
+              </section>
+            )
+        )
+      }
     </section>
   </article>
 </MainLayout>

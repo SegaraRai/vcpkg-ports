@@ -18,7 +18,7 @@ const LinkElement = isHome ? "span" : "a";
 >
   <SkipToContent />
   <nav
-    class="mx-auto flex min-h-17 w-full max-w-7xl items-center gap-6 px-6 max-[639px]:min-h-15 max-[639px]:gap-2.5 max-[639px]:px-3"
+    class="mx-auto flex min-h-17 w-full max-w-7xl items-center gap-6 px-6 max-sm:min-h-15 max-sm:gap-2.5 max-sm:px-3"
     aria-label="Primary navigation"
   >
     <LinkElement
@@ -31,10 +31,10 @@ const LinkElement = isHome ? "span" : "a";
       translate="no"
     >
       <span
-        class="icon-[noto--package] block size-10 flex-none max-[639px]:size-[2.15rem]"
+        class="icon-[noto--package] block size-10 flex-none max-sm:size-[2.15rem]"
       ></span>
       <span
-        class="ml-2.5 inline-flex items-baseline gap-1 text-[1.55rem] leading-none tracking-[-0.045em] max-[639px]:ml-1.5 max-[639px]:text-xl max-[374px]:hidden"
+        class="ml-2.5 inline-flex items-baseline gap-1 text-[1.55rem] leading-none tracking-[-0.045em] max-sm:ml-1.5 max-sm:text-xl max-compact:hidden"
       >
         <strong class="font-extrabold">Vcpkg</strong>
         <span class="font-normal text-theme-navbar-muted">Ports</span>
@@ -42,13 +42,13 @@ const LinkElement = isHome ? "span" : "a";
     </LinkElement>
     <slot />
     <div
-      class="flex min-w-0 flex-1 items-center justify-end gap-2.5 max-[639px]:gap-1.5"
+      class="flex min-w-0 flex-1 items-center justify-end gap-2.5 max-sm:gap-1.5"
       data-nosnippet
     >
       {
         !isHome && (
           <a
-            class="inline-flex min-h-10 items-center rounded-xl px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-theme-navbar-muted no-underline hover:bg-(--theme-navbar-text)/10 hover:text-theme-navbar-text max-[639px]:hidden"
+            class="inline-flex min-h-10 items-center rounded-xl px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-theme-navbar-muted no-underline hover:bg-(--theme-navbar-text)/10 hover:text-theme-navbar-text max-sm:hidden"
             href="/ports"
           >
             Catalog
@@ -57,7 +57,7 @@ const LinkElement = isHome ? "span" : "a";
       }
       {
         !hideSearch && (
-          <div class="min-w-0 w-full max-w-88 max-[639px]:w-10">
+          <div class="@container/search-trigger min-w-0 w-full max-w-88 max-sm:w-10">
             <ManagedSearchBoxButton client:load />
           </div>
         )

@@ -48,14 +48,14 @@ const formattedTitle = formatPageTitle(frontmatter.title);
   <body>
     <Header />
     <main
-      class="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_17rem] gap-[clamp(2rem,5vw,5rem)] px-[clamp(1rem,3vw,2rem)] pt-8 pb-16 max-[1023px]:block max-[1023px]:max-w-216 max-[639px]:px-4 max-[639px]:pt-5"
+      class="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_17rem] gap-[clamp(2rem,5vw,5rem)] px-[clamp(1rem,3vw,2rem)] pt-8 pb-16 max-lg:block max-lg:max-w-216 max-sm:px-4 max-sm:pt-5"
     >
-      <div class="min-w-0 max-w-208 max-[1023px]:max-w-none">
+      <div class="min-w-0 max-w-208 max-lg:max-w-none">
         <PortPageContent frontmatter={frontmatter} headings={headings}>
           <slot />
         </PortPageContent>
       </div>
-      <aside class="min-w-0 max-[1023px]:hidden" aria-label="Table of contents">
+      <aside class="min-w-0 max-lg:hidden" aria-label="Table of contents">
         <RightSidebar headings={headings} />
       </aside>
     </main>
