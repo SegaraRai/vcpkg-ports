@@ -42,7 +42,7 @@ watchEffect((): void => {
   searchBoxTerm.value = term.value;
 });
 
-const { loading, results } = useSearch(term, false, true);
+const { loading, results } = useSearch(term, true);
 
 const { currentPage, pageCount, isFirstPage, isLastPage } = useOffsetPagination(
   {

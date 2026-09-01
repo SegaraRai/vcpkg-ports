@@ -47,11 +47,10 @@ function runQuery(
   lunr: typeof import("lunr"),
   index: LunrIndex,
   queryText: string,
-  nameOnly: boolean,
   fuzzy: boolean
 ): LunrIndex.Result[] {
   const terms = lunr.tokenizer(queryText).map(String);
-  const fields = nameOnly ? ["name"] : [...SEARCHABLE_FIELDS];
+  const fields = [...SEARCHABLE_FIELDS];
   return index.query((query): void => {
     for (const term of terms) {
       if (fuzzy) {
@@ -79,6 +78,22 @@ function runQuery(
   });
 }
 
+function normalizePortName(value: string): string {
+  return value.trim().toLocaleLowerCase().replaceAll(/\s+/g, "-");
+}
+
+function getNameMatchRank(name: string, query: string): number {
+  const normalizedName = normalizePortName(name);
+  const normalizedQuery = normalizePortName(query);
+  if (normalizedName === normalizedQuery) {
+    return 0;
+  }
+  if (normalizedName.startsWith(normalizedQuery)) {
+    return 1;
+  }
+  return normalizedName.includes(normalizedQuery) ? 2 : 3;
+}
+
 async function createSearchAsync() {
   const [{ default: lunr }, response] = await Promise.all([
     import("lunr"),
@@ -95,7 +110,7 @@ async function createSearchAsync() {
   const allItems = Object.values(serialized.items);
 
   return {
-    search: (query: string, nameOnly: boolean): DataSearchResult[] => {
+    search: (query: string): DataSearchResult[] => {
       if (!query) {
         return [];
       }
@@ -107,13 +122,19 @@ async function createSearchAsync() {
         }));
       }
 
-      const directResults = runQuery(lunr, index, query, nameOnly, false);
+      const directResults = runQuery(lunr, index, query, false);
       const results = directResults.length
         ? directResults
-        : runQuery(lunr, index, query, nameOnly, true);
-      return results.map((result) =>
-        toSearchResult(result, serialized.items[result.ref])
-      );
+        : runQuery(lunr, index, query, true);
+      return results
+        .map((result) => toSearchResult(result, serialized.items[result.ref]))
+        .sort(
+          (left, right) =>
+            getNameMatchRank(left.item.name, query) -
+              getNameMatchRank(right.item.name, query) ||
+            right.score - left.score ||
+            left.item.name.localeCompare(right.item.name)
+        );
     },
   };
 }
@@ -128,7 +149,6 @@ function loadSearch(): Promise<SearchInstance> {
 
 export function useSearch(
   query: Readonly<Ref<string | null | undefined>>,
-  nameOnly = false,
   eager = false
 ) {
   const search = shallowRef<SearchInstance | undefined>();
@@ -145,9 +165,7 @@ export function useSearch(
     loading: computed((): boolean => !search.value),
     results: computed(
       (): DataSearchResult[] =>
-        (query.value?.trim() &&
-          search.value?.search(query.value.trim(), nameOnly)) ||
-        []
+        (query.value?.trim() && search.value?.search(query.value.trim())) || []
     ),
     load: async (): Promise<void> => {
       if (search.value) {

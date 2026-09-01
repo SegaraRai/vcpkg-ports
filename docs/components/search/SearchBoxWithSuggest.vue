@@ -33,7 +33,7 @@ const containerEl = shallowRef<HTMLElement | null>(null);
 const suggestionsStyle = ref<Record<string, string>>({});
 
 const termDebounced = useDebounce(term, SEARCH_TERM_DEBOUNCE);
-const { load, loading, results } = useSearch(termDebounced, true);
+const { load, loading, results } = useSearch(termDebounced);
 const loadingOrWaiting = computedEager(
   (): boolean => loading.value || termDebounced.value !== term.value
 );
