@@ -1,5 +1,5 @@
 {
-  "version": "194964eec5d5601aef90b456d553412f0b2b0ea5",
+  "version": "30ef65cad98f08e7197c9a1656fbd871bcb72f2d",
   "ports": [
     {
       "name": "3fd",
@@ -311,7 +311,7 @@
             ]
           }
         },
-        "version": "8.0.6"
+        "version": "8.0.7"
       },
       "files": [
         "portfile.cmake",
@@ -1568,7 +1568,7 @@
       "name": "appstream",
       "manifest": {
         "name": "appstream",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Tools and libraries to work with AppStream metadata",
         "homepage": "https://www.freedesktop.org/software/appstream/docs",
         "license": "LGPL-2.1-or-later",
@@ -3583,6 +3583,130 @@
       ]
     },
     {
+      "name": "aui",
+      "manifest": {
+        "name": "aui",
+        "description": "Declarative UI toolkit for modern C++20",
+        "homepage": "https://github.com/aui-framework/aui",
+        "license": "MPL-2.0",
+        "dependencies": [
+          {
+            "name": "aui-toolbox",
+            "host": true,
+            "platform": "!native"
+          },
+          "curl",
+          {
+            "name": "dbus",
+            "platform": "linux"
+          },
+          "fmt",
+          {
+            "name": "fontconfig",
+            "platform": "linux"
+          },
+          "freetype",
+          {
+            "name": "glew",
+            "platform": "windows | linux | osx"
+          },
+          "glm",
+          {
+            "name": "gtk3",
+            "platform": "linux"
+          },
+          {
+            "name": "libbacktrace",
+            "platform": "linux"
+          },
+          "libnsgif",
+          "libogg",
+          "libvorbis",
+          "libwebp",
+          {
+            "name": "libx11",
+            "platform": "linux"
+          },
+          "lunasvg",
+          "minizip",
+          {
+            "name": "oboe",
+            "platform": "android"
+          },
+          "openssl",
+          "opus",
+          {
+            "name": "pulseaudio",
+            "platform": "linux"
+          },
+          "range-v3",
+          "soxr",
+          "sqlite3",
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "7.1.2"
+      },
+      "files": [
+        "aui-config.cmake.in",
+        "debundle.patch",
+        "disable-auib.patch",
+        "disable-tests.patch",
+        "fix-arm64.patch",
+        "fix-fmt12.patch",
+        "fix-glm.patch",
+        "fix-macos.patch",
+        "fix-public-headers.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "aui-toolbox",
+      "manifest": {
+        "name": "aui-toolbox",
+        "description": "Host-side asset and shader compiler (aui.toolbox) for the AUI declarative UI toolkit",
+        "homepage": "https://github.com/aui-framework/aui",
+        "license": "MPL-2.0",
+        "supports": "native & !(linux & arm64)",
+        "dependencies": [
+          "fmt",
+          "glm",
+          {
+            "name": "libbacktrace",
+            "platform": "linux"
+          },
+          "libnsgif",
+          "libwebp",
+          "lunasvg",
+          "minizip",
+          "openssl",
+          "range-v3",
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          "zlib"
+        ],
+        "version": "7.1.2"
+      },
+      "files": [
+        "debundle.patch",
+        "disable-auib.patch",
+        "disable-tests.patch",
+        "fix-arm64.patch",
+        "fix-fmt12.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "aurora",
       "manifest": {
         "name": "aurora",
@@ -3767,10 +3891,9 @@
       "name": "avro-c",
       "manifest": {
         "name": "avro-c",
-        "port-version": 1,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause AND LicenseRef-Public-Domain",
         "supports": "!uwp",
         "dependencies": [
           "jansson",
@@ -3782,7 +3905,7 @@
           },
           "zlib"
         ],
-        "version": "1.12.1"
+        "version": "1.12.2"
       },
       "files": [
         "avro.patch",
@@ -3795,7 +3918,6 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
-        "port-version": 1,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
@@ -3821,9 +3943,15 @@
           },
           "tools": {
             "description": "Build extra executables"
+          },
+          "zstd": {
+            "description": "Support zstd for compression",
+            "dependencies": [
+              "zstd"
+            ]
           }
         },
-        "version": "1.12.1"
+        "version": "1.12.2"
       },
       "files": [
         "fix-cmake.patch",
@@ -3901,7 +4029,7 @@
             "host": true
           }
         ],
-        "version": "0.10.5"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -3930,11 +4058,10 @@
             "host": true
           }
         ],
-        "version": "0.9.15"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
-        "remove-libcrypto-messages.patch",
         "vcpkg.json"
       ]
     },
@@ -3982,7 +4109,7 @@
             "host": true
           }
         ],
-        "version": "0.3.3"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4009,7 +4136,7 @@
             "host": true
           }
         ],
-        "version": "0.7.2"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4037,7 +4164,7 @@
             "host": true
           }
         ],
-        "version": "0.11.1"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4067,7 +4194,7 @@
             "host": true
           }
         ],
-        "version": "0.27.7"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4097,7 +4224,7 @@
             "host": true
           }
         ],
-        "version": "0.16.2"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4134,7 +4261,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "0.13.7"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4159,7 +4286,7 @@
             "host": true
           }
         ],
-        "version": "0.2.10"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -4172,7 +4299,7 @@
         "name": "aws-checksums",
         "description": "Cross-Platform HW accelerated CRC32c and CRC32 with fallback to efficient SW implementations.",
         "homepage": "https://github.com/awslabs/aws-checksums",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-2-Clause",
         "dependencies": [
           "aws-c-common",
           {
@@ -4184,7 +4311,7 @@
             "host": true
           }
         ],
-        "version": "0.2.11"
+        "version": "1.0.0"
       },
       "files": [
         "fix-cmake-config.patch",
@@ -21810,7 +21937,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "disable-config-fetchcontent-fallback.patch",
@@ -23944,10 +24071,9 @@
             "host": true
           }
         ],
-        "version": "1.2.2.0"
+        "version": "1.2.3.0"
       },
       "files": [
-        "install_fixes.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -28668,10 +28794,11 @@
       "name": "ebml",
       "manifest": {
         "name": "ebml",
-        "port-version": 1,
         "description": "A C++ library to parse EBML files",
         "homepage": "https://github.com/Matroska-Org/libebml",
+        "license": "LGPL-2.1-or-later",
         "dependencies": [
+          "utfcpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -28681,9 +28808,10 @@
             "host": true
           }
         ],
-        "version": "1.4.5"
+        "version": "1.4.7"
       },
       "files": [
+        "find_dependency.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -29425,6 +29553,32 @@
       "files": [
         "fix-export.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "engitsdatalib",
+      "manifest": {
+        "name": "engitsdatalib",
+        "description": "C++ data structures, geometry, interpolation, and numerical utilities from enGits",
+        "homepage": "https://github.com/enGits/enGitsDataLib",
+        "license": "MIT",
+        "dependencies": [
+          "doctest",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "use-system-doctest.patch",
         "vcpkg.json"
       ]
     },
@@ -33213,7 +33367,10 @@
         ],
         "features": {
           "av1": {
-            "description": "Enable AV1 support for GFX channel encoding/decoding"
+            "description": "Enable AV1 support for GFX channel encoding/decoding",
+            "dependencies": [
+              "aom"
+            ]
           },
           "client": {
             "description": "Build client components"
@@ -33260,12 +33417,13 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.30.0"
+        "version": "3.31.0"
       },
       "files": [
         "cmake-project-include.cmake",
         "dependencies.patch",
         "ffmpeg.diff",
+        "fix-aom-target.patch",
         "install-layout.patch",
         "portfile.cmake",
         "vcpkg.json",
@@ -34547,12 +34705,15 @@
       "name": "gdbm",
       "manifest": {
         "name": "gdbm",
-        "port-version": 1,
         "description": "GDBM is a library of database functions that use extensible hashing and works similar to the standard UNIX dbm.",
         "homepage": "https://www.gnu.org.ua/software/gdbm/gdbm.html",
-        "license": "GPL-3.0-only",
+        "license": "GPL-3.0-or-later",
         "supports": "linux",
         "dependencies": [
+          {
+            "name": "gettext",
+            "host": true
+          },
           {
             "name": "vcpkg-make",
             "host": true
@@ -34572,9 +34733,10 @@
             ]
           }
         },
-        "version": "1.24"
+        "version": "1.26"
       },
       "files": [
+        "fix-readline-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -40589,7 +40751,6 @@
       "name": "gumbo",
       "manifest": {
         "name": "gumbo",
-        "port-version": 1,
         "description": "An HTML5 parsing library in pure C99",
         "homepage": "https://codeberg.org/gumbo-parser/gumbo-parser",
         "license": "Apache-2.0",
@@ -40603,7 +40764,7 @@
             "host": true
           }
         ],
-        "version": "0.13.2"
+        "version": "0.14.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -42611,7 +42772,7 @@
         "name": "hiredis",
         "description": "Hiredis is a minimalistic C client library for the Redis database.",
         "homepage": "https://github.com/redis/hiredis",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND MIT",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -42630,12 +42791,12 @@
             ]
           }
         },
-        "version": "1.3.0"
+        "version": "1.4.1"
       },
       "files": [
         "fix-cmake-conf-install-dir.patch",
-        "fix-ssize_t.patch",
         "fix-timeval.patch",
+        "fix-version.patch",
         "portfile.cmake",
         "support-static.patch",
         "vcpkg.json"
@@ -50540,6 +50701,7 @@
         "name": "libadlmidi",
         "description": "libADLMIDI is a free Software MIDI synthesizer library with OPL3 emulation",
         "homepage": "https://github.com/Wohlstand/libADLMIDI",
+        "license": "GPL-3.0-or-later AND LGPL-2.1-or-later AND LGPL-2.0-or-later AND GPL-2.0-or-later AND MIT AND BSD-3-Clause AND BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -50550,7 +50712,7 @@
             "host": true
           }
         ],
-        "version-date": "2025-04-14"
+        "version": "1.6.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -52951,6 +53113,31 @@
       ]
     },
     {
+      "name": "libfn",
+      "manifest": {
+        "name": "libfn",
+        "description": "Functional programming in C++",
+        "homepage": "https://libfn.org",
+        "license": "ISC",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version-semver": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libfontenc",
       "manifest": {
         "name": "libfontenc",
@@ -54030,7 +54217,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.23.1"
+        "version": "1.23.2"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -56056,7 +56243,6 @@
       "name": "libmysofa",
       "manifest": {
         "name": "libmysofa",
-        "port-version": 1,
         "description": "Reader for AES SOFA files to get better HRTFs (Head-Relative Transfer Functions)",
         "homepage": "https://github.com/hoene/libmysofa",
         "license": "BSD-3-Clause",
@@ -56071,10 +56257,11 @@
           },
           "zlib"
         ],
-        "version": "1.3.4"
+        "version": "1.3.5"
       },
       "files": [
         "dependencies.diff",
+        "fix-package-version.diff",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -56751,14 +56938,14 @@
         "name": "liborigin",
         "description": "A library for reading OriginLab OPJ project files.",
         "homepage": "https://sourceforge.net/projects/liborigin/",
-        "license": "GPL-2.0-or-later",
+        "license": "GPL-3.0-only",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "3.0.3"
+        "version": "3.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -56784,7 +56971,7 @@
             "host": true
           }
         ],
-        "version": "3.2.6"
+        "version": "3.2.7"
       },
       "files": [
         "fix-export-macros.patch",
@@ -57743,7 +57930,7 @@
             "description": "Enable distributed key-value storage module"
           }
         },
-        "version": "2.0.12"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -57756,7 +57943,7 @@
         "name": "libraw",
         "description": "raw image decoder library",
         "homepage": "https://www.libraw.org",
-        "license": "LGPL-2.1-only OR CDDL-1.0",
+        "license": "(LGPL-2.1-only OR CDDL-1.0) AND BSD-3-Clause",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -57790,7 +57977,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.22.1"
+        "version": "0.22.2"
       },
       "files": [
         "dependencies.patch",
@@ -59326,6 +59513,7 @@
       "name": "libsystemd",
       "manifest": {
         "name": "libsystemd",
+        "port-version": 1,
         "description": "System and Service Manager",
         "homepage": "https://github.com/systemd/systemd",
         "license": null,
@@ -61721,7 +61909,6 @@
       "name": "libxkbcommon",
       "manifest": {
         "name": "libxkbcommon",
-        "port-version": 1,
         "description": "keymap handling library for toolkits and window systems",
         "homepage": "https://xkbcommon.org/",
         "license": null,
@@ -61739,7 +61926,7 @@
           },
           "xcb-render-util"
         ],
-        "version": "1.13.1"
+        "version": "1.13.2"
       },
       "files": [
         "build.patch",
@@ -64521,7 +64708,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.734"
+        "version": "0.735"
       },
       "files": [
         "cmake-config-export.patch",
@@ -66783,7 +66970,7 @@
             "host": true
           }
         ],
-        "version": "1.9.0"
+        "version": "1.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -67483,7 +67670,7 @@
             ]
           }
         },
-        "version": "2026.0.0"
+        "version": "2026.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -68306,7 +68493,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.11.0"
       },
       "files": [
         "portfile.cmake",
@@ -69808,7 +69995,7 @@
             ]
           }
         },
-        "version": "8.0.0"
+        "version": "9.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -71861,7 +72048,7 @@
             "host": true
           }
         ],
-        "version": "0.8.3"
+        "version": "0.8.4"
       },
       "files": [
         "devendor-dirent.patch",
@@ -79277,7 +79464,7 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
@@ -79299,6 +79486,12 @@
           }
         ],
         "features": {
+          "ipopt": {
+            "description": "Enable the Ipopt wrappers",
+            "dependencies": [
+              "coin-or-ipopt"
+            ]
+          },
           "nlopt": {
             "description": "Enable the NLopt wrappers",
             "dependencies": [
@@ -79314,6 +79507,9 @@
         "0003-disable-werror.patch",
         "0004-support-eigen3-5.patch",
         "0005-avoid-stdext-checked-array-iterator.diff",
+        "0006-config-find-libipopt.patch",
+        "0007-ipopt-transitive-deps.patch",
+        "0008-ipopt-header-search.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -89502,7 +89698,7 @@
             "host": true
           }
         ],
-        "version": "12.2.2"
+        "version": "13.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -91899,12 +92095,6 @@
               }
             ]
           },
-          "tbb": {
-            "description": "build with Threading Building Blocks (TBB)",
-            "dependencies": [
-              "tbb"
-            ]
-          },
           "zlib": {
             "description": "build with zlib",
             "dependencies": [
@@ -91918,12 +92108,11 @@
             ]
           }
         },
-        "version": "11.1.2"
+        "version": "11.8.1"
       },
       "files": [
         "0001-fix-dependencies.patch",
         "0002-fix-android.patch",
-        "0003-include_cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -92358,7 +92547,7 @@
         "name": "rtabmap-res-tool",
         "description": "Real-Time Appearance-Based Mapping, resource generator",
         "homepage": "https://introlab.github.io/rtabmap/",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND LGPL-3.0-or-later",
         "supports": "native",
         "dependencies": [
           {
@@ -92366,7 +92555,7 @@
             "host": true
           }
         ],
-        "version": "0.23.2"
+        "version": "0.23.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -93109,7 +93298,10 @@
             "description": "Enable PSD codec"
           },
           "qoi": {
-            "description": "Enable QOI codec"
+            "description": "Enable QOI codec",
+            "dependencies": [
+              "qoi"
+            ]
           },
           "raw": {
             "description": "Enable RAW codec",
@@ -93154,8 +93346,11 @@
                 "features": [
                   "avcodec",
                   "avformat",
+                  "bzip2",
+                  "lzma",
                   "swresample",
-                  "swscale"
+                  "swscale",
+                  "zlib"
                 ]
               }
             ]
@@ -93179,12 +93374,13 @@
             "description": "Enable XWD codec"
           }
         },
-        "version-semver": "1.1.0"
+        "version-semver": "1.2.0"
       },
       "files": [
         "fix-always-nanosvg.diff",
         "fix-heif.patch",
         "fix-include-directory.patch",
+        "fix-video-zlib-debug-name.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -95059,30 +95255,6 @@
       ]
     },
     {
-      "name": "septag-sx",
-      "manifest": {
-        "name": "septag-sx",
-        "port-version": 5,
-        "description": "Portable base library for C programmers, designed for performance and simplicity.",
-        "supports": "!(uwp | arm)",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-date": "2019-05-07"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "seqan",
       "manifest": {
         "name": "seqan",
@@ -96773,7 +96945,7 @@
             "host": true
           }
         ],
-        "version": "1.1.4"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -96915,7 +97087,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.1.5"
+        "version-semver": "0.1.6"
       },
       "files": [
         "portfile.cmake",
@@ -97825,7 +97997,7 @@
       "name": "soxr",
       "manifest": {
         "name": "soxr",
-        "port-version": 8,
+        "port-version": 9,
         "description": "High quality audio resampling",
         "homepage": "https://sourceforge.net/projects/soxr/",
         "dependencies": [
@@ -97848,6 +98020,7 @@
         "001_initialize-resampler.patch",
         "002_disable_warning.patch",
         "003_detect_arm.patch",
+        "004_install-pkgconfig-windows.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -108727,7 +108900,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.3800.47"
+        "version": "1.0.4191.47"
       },
       "files": [
         "portfile.cmake",
@@ -109172,7 +109345,7 @@
             "host": true
           }
         ],
-        "version": "0.9.5"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
