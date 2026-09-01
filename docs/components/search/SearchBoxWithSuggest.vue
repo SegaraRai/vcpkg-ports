@@ -38,7 +38,7 @@ const loadingOrWaiting = computedEager(
   (): boolean => loading.value || termDebounced.value !== term.value
 );
 
-// lazy load data and fuse
+// Lazy-load the search index and runtime.
 watchEffect((): void => {
   if (term.value) {
     load();
@@ -170,7 +170,7 @@ onMounted((): (() => void) => {
           @keydown.escape.prevent.stop="close(true)"
         >
           <template v-for="result in resultsSliced" :key="result.item.name">
-            <li class="block">
+            <li class="block **:data-[highlight=true]:font-bold">
               <a
                 :href="getPortPageURL(result.item.name)"
                 class="text-theme-text hover:bg-theme-bg-accent hover:text-theme-text focus:bg-theme-bg-accent focus:text-theme-text block px-4 py-3 no-underline transition-[color,background-color] duration-150 outline-none!"
@@ -182,7 +182,6 @@ onMounted((): (() => void) => {
                   :indices="
                     result.matches?.find((m) => m.key === 'name')?.indices ?? []
                   "
-                  class="*:data-[highlight=true]:font-bold"
                 />
               </a>
             </li>

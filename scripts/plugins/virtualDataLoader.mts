@@ -1,4 +1,5 @@
 import { env } from "node:process";
+import lunr from "lunr";
 import type { Plugin } from "vite";
 import type { DataHistory } from "../../shared/dataTypes/history.mjs";
 import type { DataPortOGIndex } from "../../shared/dataTypes/ogIndex.mjs";
@@ -49,6 +50,16 @@ export default function virtualDataLoader(): Plugin {
       };
     }
     const portContexts = await createPortContexts(vcpkgPorts, history, ogIndex);
+    const searchItems = vcpkgPorts.ports.map(portToSearchItem);
+    const searchIndex = lunr(function (): void {
+      this.ref("name");
+      this.field("name", { boost: 4 });
+      this.field("description");
+      this.metadataWhitelist = ["position"];
+      for (const item of searchItems) {
+        this.add(item);
+      }
+    });
     return {
       commitMap: new Map(history.commits.map((e) => [e.oid, e])),
       dataOGIndex: ogIndex,
@@ -63,7 +74,10 @@ export default function virtualDataLoader(): Plugin {
       portPages: vcpkgPorts.ports
         .slice(0, MAX_PAGES)
         .map((port) => portNameToFilename(port.name)),
-      searchItems: vcpkgPorts.ports.map(portToSearchItem),
+      searchIndex: {
+        index: searchIndex.toJSON(),
+        items: Object.fromEntries(searchItems.map((item) => [item.name, item])),
+      },
     };
   })();
 

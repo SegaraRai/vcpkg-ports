@@ -163,7 +163,7 @@ onMounted((): (() => void) => {
               </div>
               <template v-if="result.item.description">
                 <div
-                  class="text-theme-text-light line-clamp-3 overflow-hidden text-sm text-ellipsis"
+                  class="text-theme-text-light line-clamp-3 overflow-hidden text-sm text-ellipsis **:data-[highlight=true]:font-bold"
                   :title="result.item.description"
                 >
                   <HighlightMatched
@@ -172,7 +172,6 @@ onMounted((): (() => void) => {
                       result.matches?.find((e) => e.key === 'description')
                         ?.indices ?? []
                     "
-                    class="*:data-[highlight=true]:font-bold"
                   />
                 </div>
               </template>

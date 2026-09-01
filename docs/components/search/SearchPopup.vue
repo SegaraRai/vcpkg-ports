@@ -17,6 +17,7 @@ import {
   getSearchPageURL,
 } from "../../constants.mjs";
 import { vFocusByKey } from "../../directives/vFocusByKey.mjs";
+import HighlightMatched from "./HighlightMatched.vue";
 import SearchBox from "./SearchBox.vue";
 import ShortcutKeyHandler from "./ShortcutKeyHandler.vue";
 
@@ -53,7 +54,7 @@ const loadingOrWaiting = computedEager(
   (): boolean => loading.value || termDebounced.value !== term.value
 );
 
-// lazy load data and fuse
+// Lazy-load the search index and runtime.
 watchEffect((): void => {
   if (term.value) {
     load();
@@ -178,10 +179,18 @@ const deferFocus = (): void => {
                 />
                 <template v-if="result.item.description">
                   <div
-                    class="line-clamp-2 overflow-hidden text-sm text-ellipsis"
+                    class="line-clamp-2 overflow-hidden text-sm text-ellipsis **:data-[highlight=true]:font-bold"
                     :title="result.item.description"
-                    v-text="result.item.description"
-                  />
+                  >
+                    <HighlightMatched
+                      :text="result.item.description"
+                      :indices="
+                        result.matches.find(
+                          (match) => match.key === 'description'
+                        )?.indices ?? []
+                      "
+                    />
+                  </div>
                 </template>
               </a>
             </li>

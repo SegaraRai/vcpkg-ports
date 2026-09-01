@@ -13,4 +13,4 @@ export { default as portManifests } from "./portManifests.mjs";
 export { default as portMap } from "./portMap.mjs";
 export { default as portNames } from "./portNames.mjs";
 export { default as portPages } from "./portPages.mjs";
-export { default as searchItems } from "./searchItems.mjs";
+export { default as searchIndex } from "./searchIndex.mjs";
