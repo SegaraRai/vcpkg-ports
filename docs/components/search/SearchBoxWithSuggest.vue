@@ -13,10 +13,15 @@ import HighlightMatched from "./HighlightMatched.vue";
 import SearchBox from "./SearchBox.vue";
 import ShortcutKeyHandler from "./ShortcutKeyHandler.vue";
 
-const props = defineProps<{
-  modelValue: string;
-  large?: boolean;
-}>();
+const props = withDefaults(
+  defineProps<{
+    modelValue: string;
+    autoFocus?: boolean;
+    large?: boolean;
+    placeholder?: string;
+  }>(),
+  { autoFocus: true, placeholder: undefined }
+);
 
 const emit = defineEmits<{
   (e: "update:modelValue" | "search", value: string): void;
@@ -144,12 +149,13 @@ onMounted((): (() => void) => {
       v-model="term"
       class="w-full group-data-[size=large]/sbs:py-0.5"
       data-tabbable
-      focused
+      :focused="props.autoFocus"
       :loading="!!term && loadingOrWaiting"
+      :placeholder="props.placeholder"
       @keydown.arrow-down="deferShow"
       @keydown.arrow-up="deferShow"
       @keydown.escape.stop="term ? (term = '') : close(show)"
-      @keydown.enter.stop="(close(false), emit('search', term))"
+      @keydown.enter.prevent.stop="(close(false), emit('search', term))"
     />
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">

@@ -19,6 +19,18 @@
   --color-theme-navbar-bg: var(--theme-navbar-bg);
   --color-theme-navbar-text: var(--theme-navbar-text);
   --color-theme-navbar-muted: var(--theme-navbar-muted);
+  --color-theme-action-bg: var(--theme-action-bg);
+  --color-theme-action-bg-hover: var(--theme-action-bg-hover);
+  --color-theme-action-text: var(--theme-action-text);
+  --color-theme-overlay-backdrop: var(--theme-overlay-backdrop);
+  --color-theme-code-block-bg: var(--theme-code-block-bg);
+  --color-theme-code-block-control: var(--theme-code-block-control);
+  --color-theme-code-block-control-hover-bg: var(
+    --theme-code-block-control-hover-bg
+  );
+  --color-theme-success-bg: var(--theme-success-bg);
+  --color-theme-success-text: var(--theme-success-text);
+  --color-theme-warning: var(--theme-warning);
   --color-theme-divider: var(--theme-divider);
   --color-theme-divider-strong: var(--theme-divider-strong);
   --color-theme-bg-accent: var(--theme-bg-accent);
@@ -50,7 +62,7 @@
 
   .button-primary {
     @apply inline-flex min-h-11 items-center justify-center rounded-xl px-4 py-2.5 font-bold no-underline transition-colors;
-    @apply bg-theme-text text-theme-bg hover:bg-theme-text-accent hover:text-white;
+    @apply bg-theme-text text-theme-bg hover:bg-theme-text-accent hover:text-theme-bg;
     @apply dark:bg-theme-text-accent dark:text-theme-bg dark:hover:bg-theme-text-accent-hover dark:hover:text-theme-bg;
   }
 
@@ -90,21 +102,6 @@
     margin: 0;
     padding: 0;
     list-style: none;
-  }
-
-  .home-quick-link {
-    display: grid;
-    grid-template-columns: 2rem minmax(0, 1fr) auto;
-    align-items: center;
-    gap: 0.75rem;
-    padding-block: 1rem;
-    border-top: 1px solid var(--theme-divider);
-    color: var(--theme-text);
-    text-decoration: none;
-  }
-
-  .home-quick-link:hover {
-    color: var(--theme-text-accent-hover);
   }
 
   .search-result-card {

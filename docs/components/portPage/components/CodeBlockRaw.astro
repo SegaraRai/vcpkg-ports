@@ -10,7 +10,7 @@ const { class: classList, lang, nosnippet } = Astro.props;
 
 <div
   class:list={[
-    "group/code-block relative whitespace-normal! overflow-hidden rounded-lg bg-[#35312b] p-0! text-sm dark:bg-[#16130d]",
+    "group/code-block relative whitespace-normal! overflow-hidden rounded-lg bg-theme-code-block-bg p-0! text-sm",
     `language-${lang}`,
     classList || "",
   ]}
@@ -22,7 +22,7 @@ const { class: classList, lang, nosnippet } = Astro.props;
     tabindex="0"><code data-copy-target class="block h-full w-full [&>.line]:block [&>.line]:whitespace-pre" translate="no"><slot /></code></pre>
   <button
     data-copy-button
-    class="absolute top-2 right-6 flex size-8 items-center justify-center rounded p-1 text-gray-300/60! transition-all duration-250 select-none hover:bg-white/17"
+    class="text-theme-code-block-control! hover:bg-theme-code-block-control-hover-bg absolute top-2 right-6 flex size-8 items-center justify-center rounded p-1 transition-all duration-250 select-none"
     title="Copy Code"
   >
     <span

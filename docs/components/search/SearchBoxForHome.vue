@@ -11,5 +11,24 @@ const search = (newTerm: string): void => {
 </script>
 
 <template>
-  <SearchBoxWithSuggest v-model="searchBoxTerm" large @search="search" />
+  <form
+    class="flex w-full items-start gap-3 max-[479px]:flex-col"
+    role="search"
+    @submit.prevent="search(searchBoxTerm)"
+  >
+    <SearchBoxWithSuggest
+      v-model="searchBoxTerm"
+      class="min-w-0 flex-1"
+      large
+      :auto-focus="false"
+      placeholder="Search for a port (e.g. openssl, boost, fmt)"
+      @search="search"
+    />
+    <button
+      class="bg-theme-action-bg text-theme-action-text hover:bg-theme-action-bg-hover min-h-13 shrink-0 rounded-lg border border-transparent px-7 font-semibold transition-[color,background-color,border-color,transform] duration-150 active:translate-y-px max-[479px]:w-full"
+      type="submit"
+    >
+      Search
+    </button>
+  </form>
 </template>
