@@ -1,27 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
 import IconSearch from "~icons/line-md/search";
-
-// meta key detect
-// https://github.com/vuejs/vitepress/blob/v1.0.0-alpha.29/src/client/theme-default/components/VPNavBarSearch.vue#L24-L27
-const modifier = ref("Ctrl");
-onMounted((): void => {
-  const browserNavigator = navigator as Navigator & {
-    userAgentData?: {
-      platform?: string;
-    };
-  };
-  if (
-    !import.meta.env.SSR &&
-    /Mac|iPhone|iPod|iPad/i.test(
-      browserNavigator.userAgentData?.platform ||
-        browserNavigator.platform ||
-        ""
-    )
-  ) {
-    modifier.value = "⌘";
-  }
-});
 </script>
 
 <template>
@@ -43,7 +21,10 @@ onMounted((): void => {
     <span
       class="@max-search-trigger/search-trigger:hidden inline-flex items-center gap-1 rounded-md border border-current px-1.5 py-1 text-[0.72rem] leading-none opacity-75"
     >
-      <kbd v-text="`${modifier} K`" />
+      <kbd>
+        <span class="keyboard-modifier-mac">⌘ + K</span>
+        <span class="keyboard-modifier-ctrl">Ctrl + K</span>
+      </kbd>
     </span>
   </button>
 </template>

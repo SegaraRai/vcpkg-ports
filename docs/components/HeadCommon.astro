@@ -11,6 +11,21 @@ import "../styles/theme.css";
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <script is:inline>
+  // Keep keyboard shortcut labels in sync without waiting for hydration.
+  document.documentElement.dataset.keyboard = (() => {
+    try {
+      const userAgentData = Reflect.get(navigator, "userAgentData");
+      const platform =
+        userAgentData?.platform ||
+        navigator.platform ||
+        navigator.userAgent ||
+        "";
+      return /Mac|iPhone|iPod|iPad/i.test(platform) ? "mac" : "ctrl";
+    } catch {
+      return "ctrl";
+    }
+  })();
+
   // prevent FOUC. note that
   // - inlined scripts are embedded as-is, meaning that we can't use TypeScript here
   // - we cannot use type="module" because it makes the script load deferred, which is not what we want
