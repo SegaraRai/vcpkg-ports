@@ -327,7 +327,7 @@ article h6 {
     color: var(--theme-text-muted);
   }
 
-  & details > summary {
+  & details:not(.narrowest) > summary {
     margin: 1rem 0;
     color: var(--theme-text);
     font-weight: 650;
@@ -337,7 +337,8 @@ article h6 {
     margin: 0.5rem 0;
   }
 
-  & details.narrowest > summary {
+  & details.narrowest > summary,
+  & details.narrowest > p {
     margin: 0;
   }
 
