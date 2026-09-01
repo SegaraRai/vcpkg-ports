@@ -331,7 +331,7 @@ export default defineConfig({
     trailingComma: "es5",
     organizeImportsSkipDestructiveCodeActions: true,
     printWidth: 80,
-    sortPackageJson: false,
+    sortPackageJson: true,
     sortTailwindcss: true,
     ignorePatterns: [
       ".git",

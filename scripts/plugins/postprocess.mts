@@ -1,11 +1,10 @@
 import type { AstroConfig, AstroIntegration } from "astro";
-import Beasties from "beasties";
 import fg from "fast-glob";
 import { createHash } from "node:crypto";
 import fsp from "node:fs/promises";
 import path from "node:path";
 import { env } from "node:process";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 import { asyncForeach } from "../../shared/asyncUtils.mjs";
 import { replaceTemplates } from "../../shared/templateProcessor.mjs";
 import { CONCURRENCY, CSP_HEADER_VALUE } from "../constants.mjs";
@@ -28,22 +27,10 @@ function extractScripts(content: string, set: Set<string>): void {
   }
 }
 
-async function processHTML(
-  filename: string,
-  outDir: string,
-  beasties: Beasties
-): Promise<void> {
+async function processHTML(filename: string, outDir: string): Promise<void> {
   const filepath = path.join(outDir, filename);
 
-  let content = await fsp.readFile(filepath, "utf-8");
-
-  // Set a temporary theme so dark-mode rules are retained in critical CSS.
-  content = content.replaceAll("HTML_ROOT_THEME_PLACEHOLDER", "dark");
-
-  content = await beasties.process(content);
-
-  // The inline head script sets the user's theme before the page is painted.
-  content = content.replace(/\sdata-theme=(?:"dark"|'dark'|dark)/, "");
+  const content = await fsp.readFile(filepath, "utf-8");
 
   const scriptSet = new Set<string>();
   extractScripts(content, scriptSet);
@@ -108,35 +95,10 @@ export default function postprocess(): AstroIntegration {
           replacements
         );
 
-        const beasties = new Beasties({
-          path: outDir,
-          logLevel: "warn",
-          external: true,
-          preloadFonts: true,
-          inlineFonts: false,
-          minimumExternalSize: 2048,
-        });
-
-        const cache = new Map<string, Promise<string>>();
-        beasties.readFile = (filename): Promise<string> => {
-          let promise = cache.get(filename);
-          if (!promise) {
-            promise = fsp.readFile(filename, "utf-8").then((code): string =>
-              // avoid inlining too large icons
-              code.replace(
-                /(?<=[\s;{])(?:background|--un-icon)\s*:\s*url\s*\(\s*["']data:[\s\S]+?["']\)[^};]*(?:;|(?=}))/g,
-                (match): string => (match.length <= 256 ? match : "")
-              )
-            );
-            cache.set(filename, promise);
-          }
-          return promise;
-        };
-
         // process HTML files
         await asyncForeach(
           htmlFilenames,
-          (filename) => processHTML(filename, outDir, beasties),
+          (filename) => processHTML(filename, outDir),
           CONCURRENCY
         );
 

@@ -16,7 +16,7 @@ import DateTime from "../DateTime.vue";
       <DateTime client:load timestamp={headCommit.committer[0]} />
     </span>
     <span aria-hidden="true">·</span>
-    <span set:text={`${portNames.length} ports`} />
+    <span set:text={`${portNames.length.toLocaleString("en")} ports`} />
     <span aria-hidden="true">·</span>
     <a class="link" href="/data.html">Data API</a>
   </div>

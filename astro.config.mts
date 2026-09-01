@@ -97,7 +97,6 @@ export default defineConfig({
   ],
   vite: {
     build: {
-      minify: "esbuild",
       rollupOptions: {
         output: {
           assetFileNames: "assets/[hash][extname]",

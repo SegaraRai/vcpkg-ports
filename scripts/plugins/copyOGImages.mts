@@ -2,7 +2,7 @@ import type { AstroConfig, AstroIntegration } from "astro";
 import fsp from "node:fs/promises";
 import path from "node:path";
 import { env } from "node:process";
-import { fileURLToPath } from "url";
+import { fileURLToPath } from "node:url";
 import { asyncForeach } from "../../shared/asyncUtils.mjs";
 import type { DataPortOGIndex } from "../../shared/dataTypes/ogIndex.mjs";
 import { PORT_OG_IMAGE_PATH } from "../../shared/pageConstants.mjs";
