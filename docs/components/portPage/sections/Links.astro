@@ -25,9 +25,9 @@ const links = (
 ).filter(([, url]) => url);
 ---
 
-<SectionWrapper section={section}>
-  {
-    !!links.length && (
+{
+  !!links.length && (
+    <SectionWrapper section={section}>
       <ul class="plain-list m-0 grid list-none gap-[0.6rem] p-0 leading-tight">
         {links.map(([label, url]) => (
           <li class="min-w-0 wrap-break-word">
@@ -39,6 +39,6 @@ const links = (
           </li>
         ))}
       </ul>
-    )
-  }
-</SectionWrapper>
+    </SectionWrapper>
+  )
+}
