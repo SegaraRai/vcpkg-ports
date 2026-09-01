@@ -50,6 +50,7 @@ export function evalVcpkgSupportsExpr(
   switch (cExpr.type) {
     case "Identifier":
       if (!VCPKG_SUPPORTS_VALID_IDENTIFIER_SET.has(cExpr.name)) {
+        // oxlint-disable-next-line no-console
         console.warn(`Unknown identifier "${cExpr.name}" in vcpkg supports`);
       }
       return truthyValues.includes(cExpr.name);
