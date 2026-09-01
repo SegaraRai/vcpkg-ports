@@ -42,9 +42,9 @@
   --color-theme-focus: var(--theme-focus);
 }
 
-@custom-variant dark (&:where(.theme-dark, .theme-dark *));
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-@custom-variant light (&:where(.theme-light, .theme-light *));
+@custom-variant light (&:where([data-theme="light"], [data-theme="light"] *));
 
 @custom-variant fvh (&:where(:hover, :focus-visible));
 
@@ -228,18 +228,18 @@ summary {
   outline-offset: 3px;
 }
 
-:root.fixed-height,
-:root.fixed-height body {
+:root[data-layout="fixed-height"],
+:root[data-layout="fixed-height"] body {
   height: 100%;
   overflow: hidden;
 }
 
-:root.stable-scrollbar-gutter,
-:root.stable-scrollbar-gutter body {
+:root[data-layout="stable-scrollbar-gutter"],
+:root[data-layout="stable-scrollbar-gutter"] body {
   scrollbar-gutter: stable;
 }
 
-body.no-scroll {
+body[data-no-scroll] {
   overflow: hidden !important;
 }
 

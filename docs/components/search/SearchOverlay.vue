@@ -21,14 +21,13 @@ const close = (): void => {
   show.value = false;
 };
 
-// no-scroll
 const mounted = useMounted();
 watchEffect((): void => {
   if (import.meta.env.SSR) {
     return;
   }
 
-  document.body.classList.toggle("no-scroll", mounted.value && show.value);
+  document.body.toggleAttribute("data-no-scroll", mounted.value && show.value);
 });
 </script>
 

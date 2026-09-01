@@ -37,19 +37,13 @@ async function processHTML(
 
   let content = await fsp.readFile(filepath, "utf-8");
 
-  // add theme classes to inline color schemes by theme
-  content = content.replaceAll(
-    "HTML_ROOT_CLASS_PLACEHOLDER",
-    "HTML_ROOT_CLASS_P_BEGIN theme-dark theme-light HTML_ROOT_CLASS_P_END"
-  );
+  // Set a temporary theme so dark-mode rules are retained in critical CSS.
+  content = content.replaceAll("HTML_ROOT_THEME_PLACEHOLDER", "dark");
 
   content = await beasties.process(content);
 
-  // remove theme classes
-  content = content.replaceAll(
-    /HTML_ROOT_CLASS_P_BEGIN theme-dark theme-light HTML_ROOT_CLASS_P_END\s*/g,
-    ""
-  );
+  // The inline head script sets the user's theme before the page is painted.
+  content = content.replace(/\sdata-theme=(?:"dark"|'dark'|dark)/, "");
 
   const scriptSet = new Set<string>();
   extractScripts(content, scriptSet);

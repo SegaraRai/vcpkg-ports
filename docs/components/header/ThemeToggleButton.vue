@@ -2,9 +2,10 @@
 import { useDark, useToggle } from "@vueuse/core";
 
 const isDark = useDark({
+  attribute: "data-theme",
   storageKey: "theme",
-  valueDark: "theme-dark",
-  valueLight: "theme-light",
+  valueDark: "dark",
+  valueLight: "light",
 });
 const toggleDark = useToggle(isDark);
 </script>
