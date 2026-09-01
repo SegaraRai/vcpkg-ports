@@ -1,6 +1,13 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 
+const dataLabels: Record<string, string> = {
+  "og-index.json": "Preview metadata",
+  "vcpkg-history.json": "Registry history",
+  "vcpkg-ports.json": "Port index",
+  "vcpkg-version.json": "Registry version",
+};
+
 const dataFilenames = Object.keys(import.meta.glob("./data/*.json.*"))
   .map((filename) =>
     // oxlint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -12,11 +19,15 @@ const dataFilenames = Object.keys(import.meta.glob("./data/*.json.*"))
   .sort();
 ---
 
-<MainLayout fixedHeight title="Data API" description="Data API of vcpkg ports">
+<MainLayout
+  fixedHeight
+  title="Data API"
+  description="Download the port index, versions, and registry history as JSON."
+>
   <article id="article" class="catalog-page">
     <div class="page-eyebrow">Developer tools</div>
     <h1 class="page-title mt-1 mb-0">Data API</h1>
-    <p class="catalog-summary">Machine-readable snapshots for vcpkg Ports.</p>
+    <p class="catalog-summary">Download registry data as JSON.</p>
     <ul class="catalog-links mt-6" translate="no">
       {
         dataFilenames.map((filename) => {
@@ -26,8 +37,13 @@ const dataFilenames = Object.keys(import.meta.glob("./data/*.json.*"))
                 class="link block wrap-anywhere rounded-md px-2 py-1 no-underline hover:bg-theme-bg-accent"
                 target="_blank"
                 href={`/data/${filename}`}
-                set:text={`/data/${filename}`}
-              />
+              >
+                <span set:text={dataLabels[filename] ?? filename} />
+                <code
+                  class="ml-2 text-sm text-theme-text-muted"
+                  set:text={`/data/${filename}`}
+                />
+              </a>
             </li>
           );
         })

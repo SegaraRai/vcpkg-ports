@@ -6,6 +6,7 @@ interface Props {
 }
 
 const { class: classList, lang, nosnippet } = Astro.props;
+const copyLabel = lang === "plaintext" ? "Copy text" : `Copy ${lang}`;
 ---
 
 <div
@@ -23,7 +24,8 @@ const { class: classList, lang, nosnippet } = Astro.props;
   <button
     data-copy-button
     class="text-theme-code-block-control! hover:bg-theme-code-block-control-hover-bg absolute top-2 right-6 flex size-8 items-center justify-center rounded p-1 transition-all duration-250 select-none"
-    title="Copy Code"
+    title={copyLabel}
+    aria-label={copyLabel}
   >
     <span
       data-copy-icon
@@ -78,6 +80,8 @@ const { class: classList, lang, nosnippet } = Astro.props;
     const icon = button.querySelector<HTMLElement>("[data-copy-icon]");
     let timer: ReturnType<typeof setTimeout> | null = null;
 
+    const initialLabel = button.getAttribute("aria-label") ?? "Copy";
+
     return (): void => {
       copyAsync(button).then((result): void => {
         if (!icon) {
@@ -85,11 +89,16 @@ const { class: classList, lang, nosnippet } = Astro.props;
         }
 
         icon.dataset.mode = result ? "copied" : "failed";
+        const statusLabel = result ? "Copied" : "Copy failed";
+        button.setAttribute("aria-label", statusLabel);
+        button.setAttribute("title", statusLabel);
         if (timer != null) {
           clearTimeout(timer);
         }
         timer = setTimeout((): void => {
           icon.dataset.mode = "initial";
+          button.setAttribute("aria-label", initialLabel);
+          button.setAttribute("title", initialLabel);
           timer = null;
         }, ICON_TIMEOUT);
       });

@@ -52,7 +52,7 @@ const hasDetails =
       ) : (
         <>
           <span translate="no" set:text={dependency.name} />
-          <WarningBadge title="Dependency not found in vcpkg repository." />
+          <WarningBadge title="Details unavailable in this registry snapshot." />
         </>
       )
     }
@@ -67,7 +67,7 @@ const hasDetails =
     {
       !!dependents.length && (
         <span class="opacity-90">
-          {" (by "}
+          {" (through "}
           {dependents.map((d, i) => (
             <>
               {!!i && ", "}

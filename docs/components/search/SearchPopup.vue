@@ -124,7 +124,7 @@ const deferFocus = (): void => {
         <div
           class="flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight"
         >
-          <div class="opacity-80">Type something to search</div>
+          <div class="opacity-80">Search by name or description</div>
           <template v-if="mounted">
             <div class="flex gap-x-2">
               <span class="opacity-80">Example:</span>
@@ -148,10 +148,15 @@ const deferFocus = (): void => {
           <div class="h-20 w-20 opacity-60">
             <Component :is="noResultIcon" class="h-full w-full" />
           </div>
-          <div v-text="`No results for ${termDebounced}`" />
-          <div class="mt-4 text-sm">
-            &raquo;
-            <a class="link" data-tabbable href="/ports">Port Catalog</a>
+          <div v-text="`No ports found for “${termDebounced}”`" />
+          <div class="text-sm opacity-80">
+            Try a shorter name or check the spelling.
+          </div>
+          <div class="mt-2 flex items-center justify-center gap-4 text-sm">
+            <button class="link" data-tabbable type="button" @click="term = ''">
+              Clear search
+            </button>
+            <a class="link" data-tabbable href="/ports">Browse ports</a>
           </div>
         </div>
       </template>
@@ -178,13 +183,6 @@ const deferFocus = (): void => {
                     v-text="result.item.description"
                   />
                 </template>
-                <template v-else>
-                  <div
-                    class="line-clamp-2 overflow-hidden text-sm text-ellipsis italic opacity-80"
-                  >
-                    No description provided
-                  </div>
-                </template>
               </a>
             </li>
           </template>
@@ -192,7 +190,7 @@ const deferFocus = (): void => {
         <template v-if="hasMore">
           <div class="mt-6 px-2 pb-1 text-left text-sm">
             <a class="link" data-tabbable :href="getSearchPageURL(term)">
-              Browse More
+              View all {{ results.length.toLocaleString() }} matches
             </a>
           </div>
         </template>

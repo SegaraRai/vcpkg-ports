@@ -49,10 +49,7 @@ const { portName, portVersion } = frontmatter;
         set:text={`v${portVersion}`}
       />
     </h1>
-    <PortPageMetadata
-      createdAt={frontmatter.createdAt}
-      modifiedAt={frontmatter.modifiedAt}
-    />
+    <PortPageMetadata modifiedAt={frontmatter.modifiedAt} />
   </header>
 
   <div class="block lg:hidden">
@@ -74,7 +71,7 @@ const { portName, portVersion } = frontmatter;
   <div class="block lg:hidden">
     <nav
       class="my-5 rounded-[0.85rem] border border-theme-divider bg-theme-surface p-3 lg:hidden"
-      aria-label="More resources"
+      aria-label="Repositories"
     >
       <div data-nosnippet>
         <MoreMenu />

@@ -15,7 +15,6 @@ import {
   getPortPageURL,
   getSearchPageURL,
 } from "../../constants.mjs";
-import { pluralize } from "../portPage/utils/pluralize.mjs";
 import HighlightMatched from "./HighlightMatched.vue";
 import IconLoading from "~icons/line-md/loading-loop";
 
@@ -113,17 +112,23 @@ onMounted((): (() => void) => {
       <div
         class="text-theme-text-light flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight"
       >
-        <IconLoading aria-label="Loading data" class="h-32 w-32 opacity-80" />
+        <IconLoading
+          aria-label="Loading search results"
+          class="h-32 w-32 opacity-80"
+        />
       </div>
     </template>
     <template v-else-if="results.length === 0">
       <div
         class="flex flex-col items-center justify-center gap-y-4 pt-3 pb-1 text-center"
       >
-        <div v-text="`No results for ${term}`" />
-        <div class="mt-4 text-sm">
-          &raquo;
-          <a class="link" data-tabbable href="/ports">Port Catalog</a>
+        <div v-text="`No ports found for “${term}”`" />
+        <div class="text-sm opacity-80">
+          Try a shorter name or check the spelling.
+        </div>
+        <div class="mt-2 flex items-center justify-center gap-4 text-sm">
+          <a class="link" data-tabbable href="/">New search</a>
+          <a class="link" data-tabbable href="/ports">Browse ports</a>
         </div>
       </div>
     </template>
@@ -131,11 +136,9 @@ onMounted((): (() => void) => {
       <div
         class="text-theme-text-light mb-8 text-base"
         v-text="
-          `${page > 1 ? `Page ${page} of ` : ''}${pluralize(
-            results.length,
-            'result',
-            page === 1
-          )} for ${term}`
+          `${page > 1 ? `Page ${page} · ` : ''}${results.length.toLocaleString()} ${
+            results.length === 1 ? 'match' : 'matches'
+          } for “${term}”`
         "
       />
       <ul
@@ -173,13 +176,6 @@ onMounted((): (() => void) => {
                   />
                 </div>
               </template>
-              <template v-else>
-                <div
-                  class="text-theme-text-light line-clamp-3 overflow-hidden text-sm text-ellipsis italic opacity-80"
-                >
-                  No description provided
-                </div>
-              </template>
             </a>
           </li>
         </template>
@@ -194,7 +190,7 @@ onMounted((): (() => void) => {
             :href="getPageURL(currentPage - 1)"
             @click.prevent="go(currentPage - 1)"
           >
-            prev
+            Previous
           </a>
           <template v-for="p in pageCount" :key="p">
             <template v-if="p === currentPage">
@@ -215,7 +211,7 @@ onMounted((): (() => void) => {
             :href="getPageURL(currentPage + 1)"
             @click.prevent="go(currentPage + 1)"
           >
-            next
+            Next
           </a>
         </div>
       </template>

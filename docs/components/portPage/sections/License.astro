@@ -37,7 +37,13 @@ const licenseText = fileContents.find(([filename]) =>
       license ? (
         <code translate="no" set:text={license} />
       ) : (
-        <em set:text={license === null ? "Unspecified" : "Unknown"} />
+        <em
+          set:text={
+            license === null
+              ? "Not declared in the port manifest"
+              : "Could not be determined"
+          }
+        />
       )
     }
   </p>

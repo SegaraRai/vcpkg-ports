@@ -2,7 +2,6 @@
 import headCommit from "../../virtual/headCommit.mjs";
 import portNames from "../../virtual/portNames.mjs";
 import DateTime from "../DateTime.vue";
-import LinkVcpkgCommit from "../LinkVcpkgCommit.astro";
 ---
 
 <footer
@@ -13,11 +12,10 @@ import LinkVcpkgCommit from "../LinkVcpkgCommit.astro";
     data-nosnippet
   >
     <span>
-      <span translate="no">vcpkg{" "}</span>
-      <LinkVcpkgCommit class="link" commit={headCommit.oid} type="tree" />
-      <span>
-        {" "}(<DateTime client:load timestamp={headCommit.committer[0]} />)
-      </span>
+      Registry updated <DateTime
+        client:load
+        timestamp={headCommit.committer[0]}
+      />
     </span>
     <span aria-hidden="true">·</span>
     <span set:text={`${portNames.length} ports`} />

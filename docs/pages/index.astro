@@ -29,7 +29,6 @@ import portNames from "../virtual/portNames.mjs";
       <div
         class="relative z-10 flex w-full max-w-176 flex-col items-start max-sm:items-center"
       >
-        <div class="page-eyebrow mt-0 mb-1">C++ package discovery</div>
         <h1
           id="home-title"
           class="home-title max-sm:max-w-[11ch]"
@@ -37,10 +36,7 @@ import portNames from "../virtual/portNames.mjs";
         >
           Find your next vcpkg port
         </h1>
-        <p class="home-description">
-          Search the registry by package name or description, then open the
-          exact version and dependency details you need.
-        </p>
+        <p class="home-description">Find versions, dependencies, and usage.</p>
         <div id="home-search" class="@container/home-search mt-8 w-full">
           <SearchBoxForHome client:load />
         </div>
@@ -55,7 +51,8 @@ import portNames from "../virtual/portNames.mjs";
         >
           <span>{portNames.length.toLocaleString()} ports indexed</span>
           <span class="max-sm:hidden" aria-hidden="true">·</span>
-          <span><kbd>⌘ /</kbd> or <kbd>Ctrl K</kbd> opens search anywhere.</span
+          <span
+            >Press <kbd>⌘ /</kbd> or <kbd>Ctrl K</kbd> to search anywhere.</span
           >
         </div>
       </div>
