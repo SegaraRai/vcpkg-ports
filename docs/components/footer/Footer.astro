@@ -12,10 +12,8 @@ import DateTime from "../DateTime.vue";
     data-nosnippet
   >
     <span>
-      Registry updated <DateTime
-        client:load
-        timestamp={headCommit.committer[0]}
-      />
+      Registry updated{" "}
+      <DateTime client:load timestamp={headCommit.committer[0]} />
     </span>
     <span aria-hidden="true">·</span>
     <span set:text={`${portNames.length} ports`} />
