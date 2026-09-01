@@ -27,7 +27,7 @@ onMounted((): void => {
 <template>
   <button
     type="button"
-    class="light:border-black/30 light:hover:border-black/45 light:bg-white/1 light:hover:bg-white/10 flex w-full flex-row items-center gap-x-2 rounded-full border-[1.25px] px-3 py-1.5 text-(--theme-text-light) transition-colors select-none dark:border-white/50 dark:bg-white/2 dark:hover:border-orange-400/70 dark:hover:bg-white/5"
+    class="text-theme-navbar-muted hover:text-theme-navbar-text flex min-h-10 w-full items-center gap-2.5 rounded-[0.85rem] border border-(--theme-navbar-text)/20 bg-(--theme-navbar-text)/10 px-3.5 py-2 shadow-none transition-[border-color,background-color,color] duration-150 select-none hover:border-(--theme-navbar-text)/40 hover:bg-(--theme-navbar-text)/15 focus-visible:border-(--theme-navbar-text)/40 max-[639px]:justify-center max-[639px]:px-2.5"
     aria-label="Search"
     translate="no"
   >
@@ -36,12 +36,12 @@ onMounted((): void => {
     </span>
     <span class="flex-1"></span>
     <span
-      class="rounded-sm border border-(--theme-divider) px-2 py-1 text-sm leading-none"
+      class="inline-flex items-center gap-1 rounded-md border border-current px-1.5 py-1 text-[0.72rem] leading-none opacity-75 max-[639px]:hidden"
     >
       <kbd>/</kbd>
     </span>
     <span
-      class="rounded-sm border border-(--theme-divider) px-2 py-1 text-sm leading-none max-sm:hidden"
+      class="inline-flex items-center gap-1 rounded-md border border-current px-1.5 py-1 text-[0.72rem] leading-none opacity-75 max-[639px]:hidden"
     >
       <kbd v-text="`${modifier} K`" />
     </span>

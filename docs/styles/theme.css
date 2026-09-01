@@ -2,85 +2,76 @@
 
 :root {
   --font-fallback:
-    -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji;
-  --font-body: system-ui, var(--font-fallback);
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji";
+  --font-body: Inter, ui-sans-serif, system-ui, var(--font-fallback);
   --font-mono:
-    "JetBrains Mono", Consolas, "Andale Mono WT", "Andale Mono",
-    "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono",
-    "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco,
-    "Courier New", Courier, monospace;
+    "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
   --font-feat-mono: "calt" 0, "zero" 1, "tnum" 1;
 
-  /*
-   * Variables with --color-base prefix define
-   * the hue, and saturation values to be used for
-   * hsla colors.
-   *
-   * ex:
-   *
-   * --color-base-{color}: {hue}, {saturation};
-   */
-
-  --color-base-gray: 215, 14%;
-  --color-base-blue: 212, 100%;
-  --color-base-blue-dark: 212, 72%;
-  --color-base-yellow: 41, 100%;
-
-  /*
-   * Color palettes are made using --color-base
-   * variables, along with a lightness value to
-   * define different variants.
-   */
+  --color-base-gray: 215, 16%;
+  --color-base-blue: 215, 92%;
+  --color-base-blue-dark: 215, 60%;
+  --color-base-yellow: 38, 96%;
 
   --color-gray-10: var(--color-base-gray), 10%;
   --color-gray-90: var(--color-base-gray), 90%;
-
   --color-blue: var(--color-base-blue), 61%;
   --color-blue-dark: var(--color-base-blue-dark), 39%;
   --color-yellow: var(--color-base-yellow), 59%;
 
   color-scheme: light;
 
-  /* cassis and orange */
-
-  --theme-text-accent: hsl(33, 98%, 49%, 1);
-  --theme-text-accent-hover: hsl(33, 67%, 45%, 1);
-  --theme-divider: hsl(var(--color-gray-10), 0.25);
-  --theme-text: #13161e;
-  --theme-text-light: #253242;
-
-  --theme-bg: hsl(36, 47%, 98%, 1);
-  --theme-bg-accent: hsl(var(--color-yellow), 0.35);
-  --theme-code-inline-bg: #dcbb7622;
-  --theme-code-inline-bg-link: #edba0924;
-  --theme-code-inline-text: #040913;
-  --theme-navbar-bg: #febc18;
-
-  --theme-selection-color: black;
-  --theme-selection-bg: hsl(var(--color-blue), 0.5);
+  --theme-bg: #fbf7f2;
+  --theme-surface: #fffdf9;
+  --theme-surface-raised: #fffaf4;
+  --theme-surface-muted: #f2e9df;
+  --theme-text: #2d211d;
+  --theme-text-light: #6e5b54;
+  --theme-text-muted: #917e75;
+  --theme-text-accent: #b45b29;
+  --theme-text-accent-hover: #8f421b;
+  --theme-divider: rgb(78, 49, 36, 0.14);
+  --theme-divider-strong: rgb(78, 49, 36, 0.26);
+  --theme-bg-accent: rgb(204, 119, 63, 0.14);
+  --theme-code-inline-bg: #f1e5d9;
+  --theme-code-inline-bg-link: #f3d6bd;
+  --theme-code-inline-text: #4a332b;
+  --theme-navbar-bg: #3a2721;
+  --theme-navbar-text: #fff8ef;
+  --theme-navbar-muted: #dec7b8;
+  --theme-focus: #c86627;
+  --theme-selection-color: #2d211d;
+  --theme-selection-bg: #f2c48f;
+  --theme-shadow-sm: 0 1px 2px rgb(78 49 36 / 10%);
+  --theme-shadow-md: 0 16px 36px rgb(78 49 36 / 14%);
 }
 
 :root.theme-dark {
   color-scheme: dark;
-
-  /* citrus chocolate */
-
-  --theme-text-accent: hsl(var(--color-yellow), 1);
-  --theme-text-accent-hover: hsl(var(--color-yellow), 0.7);
-  --theme-divider: hsl(var(--color-gray-90), 0.2);
-  --theme-text: #f8fafe;
-  --theme-text-light: #e1e2ea;
-
-  --theme-bg: hsl(36, 17%, 9%, 1);
-  --theme-bg-accent: #f9933541;
-  --theme-code-inline-bg: #fc7a0627;
-  --theme-code-inline-bg-link: #fed62b1f;
-  --theme-code-inline-text: #fdfdfd;
-  --theme-navbar-bg: hsl(31, 28%, 19%, 1);
-
-  --theme-selection-color: white;
-  --theme-selection-bg: hsl(var(--color-blue-dark), 0.5);
+  --theme-bg: #120d0b;
+  --theme-surface: #1c1310;
+  --theme-surface-raised: #261a15;
+  --theme-surface-muted: #31211a;
+  --theme-text: #fff7ef;
+  --theme-text-light: #d7c3b8;
+  --theme-text-muted: #ad9488;
+  --theme-text-accent: #f0a66a;
+  --theme-text-accent-hover: #ffd0a8;
+  --theme-divider: rgb(255, 236, 220, 0.14);
+  --theme-divider-strong: rgb(255, 236, 220, 0.26);
+  --theme-bg-accent: rgb(240, 166, 106, 0.15);
+  --theme-code-inline-bg: #3b2921;
+  --theme-code-inline-bg-link: rgb(240, 166, 106, 0.2);
+  --theme-code-inline-text: #fff7ef;
+  --theme-navbar-bg: #1b100d;
+  --theme-navbar-text: #fff7ef;
+  --theme-navbar-muted: #d2b8a9;
+  --theme-focus: #f0a66a;
+  --theme-selection-color: #120d0b;
+  --theme-selection-bg: #f0a66a;
+  --theme-shadow-sm: 0 1px 2px rgb(0 0 0 / 24%);
+  --theme-shadow-md: 0 18px 40px rgb(0 0 0 / 32%);
 }
 
 body {
@@ -89,6 +80,6 @@ body {
 }
 
 ::selection {
-  color: var(--theme-selection-color);
   background-color: var(--theme-selection-bg);
+  color: var(--theme-selection-color);
 }

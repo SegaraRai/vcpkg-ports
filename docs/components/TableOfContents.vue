@@ -15,20 +15,21 @@ const activeAnchor = useActiveAnchor(headings2);
 </script>
 
 <template>
-  <h2 class="heading">On this page</h2>
-  <ul class="plain-list">
-    <template v-for="heading in headings2" :key="heading.slug">
-      <li
-        class="header-link"
-        :class="[
-          `depth-${heading.depth}`,
-          props.highlight && activeAnchor === heading.slug
-            ? 'current-header-link'
-            : '',
-        ]"
-      >
-        <a :href="`#${heading.slug}`" v-text="heading.text" />
-      </li>
-    </template>
-  </ul>
+  <div>
+    <h2 class="sidebar-heading">On this page</h2>
+    <ul class="m-0 grid list-none gap-1 p-0">
+      <template v-for="heading in headings2" :key="heading.slug">
+        <li
+          class="group/toc-item data-[active=true]:border-theme-text-accent border-l-2 border-transparent pl-3"
+          :data-active="props.highlight && activeAnchor === heading.slug"
+        >
+          <a
+            class="text-theme-text-light hover:bg-theme-bg-accent hover:text-theme-text focus-visible:bg-theme-bg-accent focus-visible:text-theme-text group-data-[active=true]/toc-item:text-theme-text block rounded-md px-2 py-1 text-sm no-underline"
+            :href="`#${heading.slug}`"
+            v-text="heading.text"
+          />
+        </li>
+      </template>
+    </ul>
+  </div>
 </template>

@@ -10,8 +10,11 @@ interface Props {
 const { headings } = Astro.props as Props;
 ---
 
-<nav class="toc sticky top-18 w-full" aria-labelledby="grid-right">
-  <div class="h-full overflow-auto p-0 pt-(--doc-padding)" data-nosnippet>
+<nav
+  class="sticky top-30 max-h-[calc(100vh-7rem)] overflow-auto border-l border-theme-divider-strong py-3 pr-2 pl-4 text-theme-text-light"
+  aria-label="On this page"
+>
+  <div class="grid gap-8" data-nosnippet>
     <TableOfContents
       highlight
       client:media="(min-width: 1024px)"

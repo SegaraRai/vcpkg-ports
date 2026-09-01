@@ -11,18 +11,43 @@ const { href, label, title } = Astro.props;
 {
   href ? (
     <a
-      class="flex-none inline-block select-none text-[85%] icon-[mdi--help]"
+      class="help-badge inline-flex size-[1.3em] flex-none items-center justify-center rounded-sm select-none text-[85%]"
       href={href}
       title={title}
       aria-label={label}
       target="_blank"
       rel="noreferrer"
-    />
+    >
+      <span class="block size-full icon-[mdi--help]" aria-hidden="true" />
+    </a>
   ) : (
     <span
-      class="flex-none inline-block select-none text-[85%] icon-[mdi--help]"
+      class="inline-flex size-[1.3em] flex-none items-center justify-center select-none text-[85%]"
       title={title}
       aria-label={label}
-    />
+    >
+      <span class="block size-full icon-[mdi--help]" aria-hidden="true" />
+    </span>
   )
 }
+
+<style>
+  .help-badge {
+    border: 2px solid transparent;
+  }
+
+  .help-badge:focus-visible {
+    position: relative;
+    outline: none;
+    border-color: var(--theme-focus);
+  }
+
+  .help-badge:focus-visible::after {
+    position: absolute;
+    inset: -4px;
+    border: 3px solid var(--theme-focus);
+    border-radius: 0.35rem;
+    content: "";
+    pointer-events: none;
+  }
+</style>

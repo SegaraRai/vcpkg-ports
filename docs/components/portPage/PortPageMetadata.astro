@@ -9,26 +9,27 @@ interface Props {
 const { createdAt, modifiedAt } = Astro.props;
 
 const items = [
-  ["Created", createdAt, "datePublished", ""],
-  [
-    "Updated",
-    modifiedAt,
-    "dateModified",
-    "light:text-green-600 dark:text-green-400",
-  ],
+  ["Created", createdAt, "datePublished", false],
+  ["Updated", modifiedAt, "dateModified", true],
 ] as const;
 ---
 
 <dl
-  class="flex flex-col my-4 py-1 leading-tight gap-y-1.5 text-(--theme-text-light)"
+  class="mt-5 grid grid-cols-2 gap-x-6 gap-y-2 text-[0.88rem] text-theme-text-light max-[639px]:grid-cols-1"
 >
   {
-    items.map(([label, datetime, itemProp, extraClass]) => (
+    items.map(([label, datetime, itemProp, updated]) => (
       <div
-        class:list={["flex gap-x-4 items-center", extraClass]}
+        class:list={[
+          "flex items-baseline gap-x-3",
+          updated && "text-theme-text-accent",
+        ]}
         data-nosnippet
       >
-        <dt class="flex-none w-24 opacity-60" set:text={label} />
+        <dt
+          class="w-24 flex-none text-theme-text-muted font-semibold"
+          set:text={label}
+        />
         <dd class="flex-1">
           <DateTime client:load timestamp={datetime} itemProp={itemProp} long />
         </dd>

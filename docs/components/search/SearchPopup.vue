@@ -105,21 +105,21 @@ const deferFocus = (): void => {
   <div
     ref="containerEl"
     v-focus-by-key
-    class="flex max-h-full w-full flex-col gap-y-4 rounded-lg bg-(--theme-bg) px-3 py-4 text-lg"
+    class="flex max-h-full w-full flex-col gap-y-4 text-lg"
     @click.stop
     @keydown.escape.prevent.stop="emit('close')"
   >
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      class="tabbable py-0.5"
-      wrapper-class="text-xl"
+      class="py-0.5 text-xl"
+      data-tabbable
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.escape.prevent.stop="term ? (term = '') : emit('close')"
     />
     <ShortcutKeyHandler @press="deferFocus" />
-    <div class="overflow-auto text-base">
+    <div class="overflow-auto px-1 py-1 text-base">
       <template v-if="loading || !termDebounced">
         <div
           class="flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight"
@@ -131,7 +131,7 @@ const deferFocus = (): void => {
               <template v-for="example in exampleTerms" :key="example">
                 <button
                   type="button"
-                  class="text-(--theme-text-accent)"
+                  class="text-theme-text-accent"
                   translate="no"
                   @click="term = example"
                   v-text="example"
@@ -151,20 +151,23 @@ const deferFocus = (): void => {
           <div v-text="`No results for ${termDebounced}`" />
           <div class="mt-4 text-sm">
             &raquo;
-            <a class="tabbable link" href="/ports">Port Catalog</a>
+            <a class="link" data-tabbable href="/ports">Port Catalog</a>
           </div>
         </div>
       </template>
       <template v-else>
-        <ul class="mt-2 flex flex-col gap-y-4 text-(--theme-text-light)">
+        <ul
+          class="text-theme-text-light m-0 mt-2 flex list-none flex-col gap-3.5 p-0"
+        >
           <template v-for="result in resultsSliced" :key="result.item.name">
             <li class="block">
               <a
-                class="tabbable flex flex-col gap-y-1 rounded px-2 pt-1 pb-2 leading-tight outline-none! hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)"
+                class="search-result-card"
+                data-tabbable
                 :href="getPortPageURL(result.item.name)"
               >
                 <div
-                  class="text-lg font-bold text-(--theme-text-accent)"
+                  class="text-theme-text-accent font-bold"
                   translate="no"
                   v-text="result.item.name"
                 />
@@ -187,8 +190,8 @@ const deferFocus = (): void => {
           </template>
         </ul>
         <template v-if="hasMore">
-          <div class="mt-8 px-2 text-left text-sm">
-            <a class="tabbable link" :href="getSearchPageURL(term)">
+          <div class="mt-6 px-2 pb-1 text-left text-sm">
+            <a class="link" data-tabbable :href="getSearchPageURL(term)">
               Browse More
             </a>
           </div>

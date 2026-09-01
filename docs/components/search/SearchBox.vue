@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { computedEager, useFocus, useVModel } from "@vueuse/core";
+import { useFocus, useVModel } from "@vueuse/core";
 import { defineComponent, onMounted, ref, shallowRef } from "vue";
 import IconSearch from "~icons/line-md/search";
 import IconLoading from "~icons/line-md/loading-loop";
@@ -22,12 +22,6 @@ const mounted = ref(false);
 
 const inputEl = shallowRef<HTMLInputElement | null>(null);
 const { focused: inputFocused } = useFocus(inputEl);
-
-const wrapperClassEx = computedEager((): string =>
-  inputFocused.value
-    ? "light:border-orange-500/70 light:bg-black/[0.01] dark:border-orange-400/70 dark:bg-white/5"
-    : "light:border-black/20 light:hover:border-orange-500/70 light:bg-black/0 light:hover:bg-black/[0.01] dark:border-white/50 dark:hover:border-orange-400/70 dark:bg-white/[0.02] dark:hover:bg-white/5"
-);
 
 defineExpose({
   blur: (): void => {
@@ -56,8 +50,8 @@ export default defineComponent({
 
 <template>
   <label
-    class="flex w-full flex-row items-center gap-x-2 rounded-full border-[1.25px] px-3 py-1.5 transition-colors"
-    :class="[wrapperClass, wrapperClassEx]"
+    class="group border-theme-divider-strong bg-theme-surface text-theme-text-light focus-within:border-theme-focus hover:border-theme-text-accent flex min-h-11 w-full items-center gap-2.5 rounded-[0.85rem] border px-3.5 py-2 shadow-(--theme-shadow-sm) transition-[border-color,box-shadow,background-color] duration-150 focus-within:shadow-[0_0_0_4px_color-mix(in_srgb,var(--theme-focus)_18%,transparent)]"
+    data-search-field
   >
     <span class="ml-0.5 block size-[1.25em] flex-none opacity-80">
       <IconSearch aria-hidden="true" />
@@ -65,7 +59,7 @@ export default defineComponent({
     <input
       ref="inputEl"
       v-model="modelValue"
-      class="block h-full w-full flex-1 bg-transparent! outline-none!"
+      class="placeholder:text-theme-text-muted w-full min-w-0 flex-1 border-0 bg-transparent font-[inherit] text-inherit outline-none! [&::-webkit-search-cancel-button]:hidden"
       type="search"
       aria-label="Search"
       v-bind="$attrs"

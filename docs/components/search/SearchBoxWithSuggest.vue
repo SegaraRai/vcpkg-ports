@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { vOnClickOutside } from "@vueuse/components";
 import { computedEager, useDebounce, useVModel } from "@vueuse/core";
-import { ref, shallowRef, watch, watchEffect } from "vue";
+import { nextTick, onMounted, ref, shallowRef, watch, watchEffect } from "vue";
 import { useSearch } from "../../composables/useSearch.mjs";
 import {
   SEARCH_MAX_RESULTS_FOR_SUGGEST,
@@ -24,6 +24,8 @@ const emit = defineEmits<{
 
 const term = useVModel(props, "modelValue", emit);
 const show = ref(false);
+const containerEl = shallowRef<HTMLElement | null>(null);
+const suggestionsStyle = ref<Record<string, string>>({});
 
 const termDebounced = useDebounce(term, SEARCH_TERM_DEBOUNCE);
 const { load, loading, results } = useSearch(termDebounced, true);
@@ -71,10 +73,68 @@ const close = (focus?: boolean): void => {
     deferFocus(focus);
   }
 };
+
+const updateSuggestionsPosition = (): void => {
+  if (!containerEl.value || !show.value || typeof window === "undefined") {
+    return;
+  }
+
+  const field = containerEl.value.querySelector<HTMLElement>(
+    "[data-search-field]"
+  );
+  if (!field) {
+    return;
+  }
+
+  const rect = field.getBoundingClientRect();
+  const bottomSpace = window.innerHeight - rect.bottom - 16;
+  const topSpace = rect.top - 16;
+  const shouldOpenAbove = bottomSpace < 240 && topSpace > bottomSpace;
+
+  if (shouldOpenAbove) {
+    suggestionsStyle.value = {
+      position: "fixed",
+      top: "auto",
+      right: "auto",
+      bottom: "0.75rem",
+      left: `${rect.left}px`,
+      width: `${rect.width}px`,
+      maxHeight: `${Math.min(288, Math.max(160, topSpace))}px`,
+    };
+  } else {
+    suggestionsStyle.value = {
+      position: "absolute",
+      top: `${rect.height + 8}px`,
+      right: "auto",
+      bottom: "auto",
+      left: "0",
+      width: "100%",
+      maxHeight: `${Math.min(320, Math.max(160, bottomSpace))}px`,
+    };
+  }
+};
+
+watch(show, (value): void => {
+  if (value) {
+    void nextTick(updateSuggestionsPosition);
+  }
+});
+
+onMounted((): (() => void) => {
+  const update = (): void => updateSuggestionsPosition();
+  window.addEventListener("resize", update);
+  window.addEventListener("scroll", update, true);
+
+  return (): void => {
+    window.removeEventListener("resize", update);
+    window.removeEventListener("scroll", update, true);
+  };
+});
 </script>
 
 <template>
   <div
+    ref="containerEl"
     v-focus-by-key
     class="group/sbs relative flex max-h-full w-full flex-col gap-y-4 rounded-lg data-[size=large]:text-xl"
     :data-size="large ? 'large' : 'normal'"
@@ -82,7 +142,8 @@ const close = (focus?: boolean): void => {
     <SearchBox
       ref="searchBoxEl"
       v-model="term"
-      class="tabbable tabbable-skip w-full group-data-[size=large]/sbs:py-0.5"
+      class="w-full group-data-[size=large]/sbs:py-0.5"
+      data-tabbable
       focused
       :loading="!!term && loadingOrWaiting"
       @keydown.arrow-down="deferShow"
@@ -93,11 +154,12 @@ const close = (focus?: boolean): void => {
     <ShortcutKeyHandler @press="deferFocus()" />
     <template v-if="!!results.length && show">
       <div
-        class="absolute top-10 z-1 w-full overflow-auto rounded-lg border border-(--theme-divider) bg-(--theme-bg) py-2 text-base leading-tight group-data-[size=large]/sbs:top-14"
+        class="border-theme-divider-strong bg-theme-surface-raised absolute top-[calc(100%+0.5rem)] left-0 z-20 max-h-[min(24rem,calc(100dvh-6rem))] w-full overflow-y-auto overscroll-contain rounded-[0.85rem] border p-1 text-base leading-tight shadow-(--theme-shadow-md)"
+        :style="suggestionsStyle"
       >
         <ul
           v-on-click-outside="() => close(false)"
-          class="flex flex-col text-(--theme-text-light)"
+          class="text-theme-text-light m-0 flex list-none flex-col p-0"
           translate="no"
           @keydown.escape.prevent.stop="close(true)"
         >
@@ -105,7 +167,8 @@ const close = (focus?: boolean): void => {
             <li class="block">
               <a
                 :href="getPortPageURL(result.item.name)"
-                class="tabbable block py-2 pl-12 text-(--theme-text-accent) transition-colors! duration-200! outline-none! hover:bg-(--theme-bg-accent) focus:bg-(--theme-bg-accent)"
+                class="text-theme-text hover:bg-theme-bg-accent hover:text-theme-text focus:bg-theme-bg-accent focus:text-theme-text block px-4 py-3 no-underline transition-[color,background-color] duration-150 outline-none!"
+                data-tabbable
                 tabindex="0"
               >
                 <HighlightMatched
@@ -113,7 +176,7 @@ const close = (focus?: boolean): void => {
                   :indices="
                     result.matches?.find((m) => m.key === 'name')?.indices ?? []
                   "
-                  highlight-class="font-bold"
+                  class="*:data-[highlight=true]:font-bold"
                 />
               </a>
             </li>

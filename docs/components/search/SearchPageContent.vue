@@ -108,10 +108,10 @@ onMounted((): (() => void) => {
 </script>
 
 <template>
-  <div class="overflow-auto text-base">
+  <div class="overflow-auto px-1 py-1 text-base">
     <template v-if="loading">
       <div
-        class="flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight text-(--theme-text-light)"
+        class="text-theme-text-light flex flex-col items-center justify-center gap-y-2 pt-10 pb-14 text-center leading-tight"
       >
         <IconLoading aria-label="Loading data" class="h-32 w-32 opacity-80" />
       </div>
@@ -123,13 +123,13 @@ onMounted((): (() => void) => {
         <div v-text="`No results for ${term}`" />
         <div class="mt-4 text-sm">
           &raquo;
-          <a class="tabbable link" href="/ports">Port Catalog</a>
+          <a class="link" data-tabbable href="/ports">Port Catalog</a>
         </div>
       </div>
     </template>
     <template v-else>
       <div
-        class="mb-8 text-base text-(--theme-text-light)"
+        class="text-theme-text-light mb-8 text-base"
         v-text="
           `${page > 1 ? `Page ${page} of ` : ''}${pluralize(
             results.length,
@@ -138,16 +138,21 @@ onMounted((): (() => void) => {
           )} for ${term}`
         "
       />
-      <ul class="mt-2 flex flex-col gap-y-8 text-(--theme-text-light)">
+      <ul
+        class="text-theme-text-light m-0 mt-2 flex list-none flex-col gap-3.5 p-0"
+      >
         <template v-for="result in resultsSliced" :key="result.item.name">
-          <li class="block">
-            <div class="flex flex-col gap-y-1 leading-tight">
-              <div class="overflow-hidden text-ellipsis" translate="no">
-                <a
-                  class="link mr-2 text-lg font-bold!"
-                  :href="getPortPageURL(result.item.name)"
-                  v-text="result.item.name"
-                />
+          <li>
+            <a
+              class="search-result-card"
+              data-tabbable
+              :href="getPortPageURL(result.item.name)"
+            >
+              <div
+                class="space-x-1.5 overflow-hidden text-ellipsis"
+                translate="no"
+              >
+                <span class="font-bold!" v-text="result.item.name" />
                 <span
                   class="text-sm opacity-80"
                   v-text="`v${result.item.version}`"
@@ -155,7 +160,7 @@ onMounted((): (() => void) => {
               </div>
               <template v-if="result.item.description">
                 <div
-                  class="line-clamp-3 overflow-hidden text-sm text-ellipsis text-(--theme-text-light)"
+                  class="text-theme-text-light line-clamp-3 overflow-hidden text-sm text-ellipsis"
                   :title="result.item.description"
                 >
                   <HighlightMatched
@@ -164,28 +169,28 @@ onMounted((): (() => void) => {
                       result.matches?.find((e) => e.key === 'description')
                         ?.indices ?? []
                     "
-                    highlight-class="font-bold"
+                    class="*:data-[highlight=true]:font-bold"
                   />
                 </div>
               </template>
               <template v-else>
                 <div
-                  class="line-clamp-3 overflow-hidden text-sm text-ellipsis text-(--theme-text-light) italic opacity-80"
+                  class="text-theme-text-light line-clamp-3 overflow-hidden text-sm text-ellipsis italic opacity-80"
                 >
                   No description provided
                 </div>
               </template>
-            </div>
+            </a>
           </li>
         </template>
       </ul>
       <template v-if="pageCount > 1">
         <div
-          class="mt-8 flex items-center justify-center gap-x-4 text-(--theme-text-light)"
+          class="text-theme-text-light mt-8 flex items-center justify-center gap-x-4"
         >
           <a
-            class="link"
-            :class="isFirstPage && 'invisible'"
+            class="link data-[hidden=true]:invisible"
+            :data-hidden="isFirstPage"
             :href="getPageURL(currentPage - 1)"
             @click.prevent="go(currentPage - 1)"
           >
@@ -205,8 +210,8 @@ onMounted((): (() => void) => {
             </template>
           </template>
           <a
-            class="link"
-            :class="isLastPage && 'invisible'"
+            class="link data-[hidden=true]:invisible"
+            :data-hidden="isLastPage"
             :href="getPageURL(currentPage + 1)"
             @click.prevent="go(currentPage + 1)"
           >

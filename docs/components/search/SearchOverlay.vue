@@ -36,19 +36,18 @@ watchEffect((): void => {
   <Transition enter-from-class="opacity-0" leave-to-class="opacity-0">
     <div
       v-if="show"
-      class="fixed top-0 right-0 bottom-0 left-0 z-9999 h-full w-full transition-opacity duration-200"
+      class="fixed inset-0 z-9999 overflow-auto bg-black/55 px-4 pt-[clamp(4.75rem,9vh,7rem)] pb-8 backdrop-blur-lg transition-opacity duration-200 dark:bg-black/70"
+      @click="close"
       @keydown.escape="close"
     >
       <div
-        class="absolute top-0 left-0 -z-1 h-full w-full bg-(--theme-text) opacity-15"
-      ></div>
-      <div
-        class="mx-auto flex h-full w-full flex-col items-center justify-center"
-        @click="close"
+        class="mx-auto w-full max-w-2xl rounded-2xl border border-(--theme-divider-strong) bg-(--theme-surface-raised) p-4 shadow-[0_24px_80px_rgb(0_0_0_/_25%)] max-[639px]:rounded-[0.85rem] max-[639px]:p-3"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Search ports"
+        @click.stop
       >
-        <div class="h-full w-full max-w-160 pt-10 lg:pt-20">
-          <SearchPopup v-model="term" @close="close" />
-        </div>
+        <SearchPopup v-model="term" @close="close" />
       </div>
     </div>
   </Transition>

@@ -10,7 +10,7 @@ type NavigatorWithUserAgentData = Navigator & {
 const STOP_FN_KEY = Symbol("focusByKey.stop");
 
 function moveFocus(container: HTMLElement, offset: number): void {
-  const tabbableElements = container.querySelectorAll(".tabbable");
+  const tabbableElements = container.querySelectorAll("[data-tabbable]");
   const tabbableElementsArray = Array.from(tabbableElements) as HTMLElement[];
   const currentFocusIndex = (
     tabbableElementsArray as (Element | null)[]

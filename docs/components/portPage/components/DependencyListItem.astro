@@ -58,13 +58,16 @@ const hasDetails =
     }
     {
       !!dependency["version>="] && (
-        <code translate="no" set:text={`>= v${dependency["version>="]}`} />
+        <>
+          {" "}
+          <code translate="no" set:text={`>= v${dependency["version>="]}`} />
+        </>
       )
     }
     {
       !!dependents.length && (
-        <span class="dependency-dependent opacity-90">
-          {"(by "}
+        <span class="opacity-90">
+          {" (by "}
           {dependents.map((d, i) => (
             <>
               {!!i && ", "}

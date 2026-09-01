@@ -14,34 +14,71 @@ const { frontmatter, headings } = Astro.props as Props;
 const { portName, portVersion } = frontmatter;
 ---
 
-<article id="article" class="content port-page p-0 w-full h-full flex flex-col">
-  <section class="mb-8" itemscope itemtype="https://schema.org/Article">
+<article
+  id="article"
+  class="min-w-0"
+  itemscope
+  itemtype="https://schema.org/Article"
+>
+  <header class="mb-11 border-b border-theme-divider pb-9">
+    <nav
+      class="mb-7 flex flex-wrap items-center gap-x-2 gap-y-1 text-[0.82rem] text-theme-text-muted"
+      aria-label="Breadcrumbs"
+    >
+      <a
+        class="text-inherit no-underline hover:text-theme-text-accent hover:underline focus-visible:text-theme-text-accent focus-visible:underline"
+        href="/">Home</a
+      >
+      <span aria-hidden="true">/</span>
+      <a
+        class="text-inherit no-underline hover:text-theme-text-accent hover:underline focus-visible:text-theme-text-accent focus-visible:underline"
+        href="/ports">Catalog</a
+      >
+      <span aria-hidden="true">/</span>
+      <span aria-current="page" translate="no" set:text={portName} />
+    </nav>
     <h1
       id="overview"
-      class="space-x-4 not-sm:flex not-sm:flex-col"
+      class="page-title m-0 flex flex-wrap items-baseline gap-x-3 gap-y-1 wrap-anywhere"
       translate="no"
       itemprop="headline"
     >
       <span set:text={portName} />
-      <span class="opacity-60 text-2xl" set:text={`v${portVersion}`} />
+      <span
+        class="text-[clamp(1rem,2vw,1.45rem)] font-semibold text-theme-text-muted"
+        set:text={`v${portVersion}`}
+      />
     </h1>
     <PortPageMetadata
       createdAt={frontmatter.createdAt}
       modifiedAt={frontmatter.modifiedAt}
     />
-    <nav class="toc block lg:hidden mt-4 mb-8">
+  </header>
+
+  <div class="block lg:hidden">
+    <nav
+      class="my-5 mb-6 rounded-[0.85rem] border border-theme-divider bg-theme-surface p-3 lg:hidden"
+      aria-label="On this page"
+    >
       <div data-nosnippet>
         <!-- hydration is disabled as this TOC is not interactive -->
         <TableOfContents headings={headings} />
       </div>
     </nav>
-    <div class="rendered">
-      <slot />
-    </div>
-    <nav class="toc block lg:hidden mt-16">
+  </div>
+
+  <div class="rendered max-w-208">
+    <slot />
+  </div>
+
+  <div class="block lg:hidden">
+    <nav
+      class="my-5 rounded-[0.85rem] border border-theme-divider bg-theme-surface p-3 lg:hidden"
+      aria-label="More resources"
+    >
       <div data-nosnippet>
         <MoreMenu />
       </div>
     </nav>
-  </section>
+  </div>
 </article>

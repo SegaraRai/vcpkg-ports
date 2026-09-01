@@ -4,10 +4,6 @@ import { computed } from "vue";
 const props = defineProps<{
   text: string;
   indices: readonly (readonly [begin: number, end: number])[];
-  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
-  highlightClass?: any;
-  // oxlint-disable-next-line @typescript-eslint/no-explicit-any
-  normalClass?: any;
 }>();
 
 const chunks = computed(() => {
@@ -30,6 +26,6 @@ const chunks = computed(() => {
 
 <template>
   <template v-for="([chunk, highlight], _index) in chunks" :key="_index">
-    <span :class="highlight ? highlightClass : normalClass" v-text="chunk" />
+    <span :data-highlight="highlight" v-text="chunk" />
   </template>
 </template>

@@ -5,16 +5,13 @@ import MainLayout from "../layouts/MainLayout.astro";
 ---
 
 <MainLayout hideSearch>
-  <div slot="header" class="flex-1">
-    <div class="max-w-140">
+  <div slot="header" class="min-w-0 flex-1">
+    <div class="mx-auto w-full max-w-152">
       <SearchPageSearchBox client:idle />
     </div>
   </div>
-  <article
-    id="article"
-    class="h-full overflow-hidden flex flex-col gap-y-4 items-center"
-  >
-    <div class="flex-1 w-full max-w-160">
+  <article id="article" class="mx-auto w-full max-w-208 px-5 pt-10 pb-20">
+    <div class="w-full">
       <SearchPageContent client:load />
     </div>
   </article>

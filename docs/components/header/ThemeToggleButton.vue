@@ -17,17 +17,21 @@ onMounted((): void => {
 </script>
 
 <template>
-  <div
-    class="block !h-8 !w-8 rounded-full bg-white/0 p-1.5 transition-colors duration-200 select-none hover:bg-white/20"
-  >
+  <div class="select-none">
     <button
-      class="light:text-gray-600 icon-[lucide--moon] dark:icon-[lucide--sun] block !h-full !w-full"
+      type="button"
+      class="inline-flex !size-10 items-center justify-center rounded-xl border-0 bg-transparent text-(--theme-navbar-text)! transition-[background-color,color,transform] duration-150 hover:bg-(--theme-bg-accent) hover:text-(--theme-text-accent)! active:scale-95 max-[639px]:!size-9"
       :title="
         mounted
           ? `Switch to ${isDark ? 'light' : 'dark'} theme`
           : 'Switch theme'
       "
       @click="toggleDark()"
-    ></button>
+    >
+      <span
+        class="icon-[lucide--moon] dark:icon-[lucide--sun] block size-5"
+        aria-hidden="true"
+      ></span>
+    </button>
   </div>
 </template>

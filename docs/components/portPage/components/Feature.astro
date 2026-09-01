@@ -59,20 +59,14 @@ const description = stringifyPortDescription(feature.description);
 
   {
     description ? (
-      <MarkdownSubset
-        class="port-feature-description"
-        content={description}
-        newline="break"
-      />
-    ) : (
-      <p class="port-feature-no-description" />
-    )
+      <MarkdownSubset content={description} newline="break" />
+    ) : null
   }
 
   <div data-nosnippet>
     {
       !!supports && !!feature.supports && (
-        <details class="port-feature-supports narrow">
+        <details class="narrow">
           <summary>
             <em>Supports:</em>{" "}
             <code translate="no" set:text={feature.supports} />
@@ -95,7 +89,7 @@ const description = stringifyPortDescription(feature.description);
       )
     }
 
-    <details class="port-feature-dependencies narrow">
+    <details class="narrow">
       <summary><em>Dependencies:</em></summary>
       <Dependencies
         dependencies={directNormalDeps}
@@ -106,7 +100,7 @@ const description = stringifyPortDescription(feature.description);
       />
     </details>
 
-    <details class="port-feature-host-dependencies narrow">
+    <details class="narrow">
       <summary>
         <em>Host Dependencies:</em>
       </summary>

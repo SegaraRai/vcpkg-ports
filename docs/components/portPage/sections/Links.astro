@@ -28,11 +28,14 @@ const links = (
 <SectionWrapper section={section}>
   {
     !!links.length && (
-      <ul class="plain-list flex flex-col gap-y-2 leading-tight">
+      <ul class="plain-list m-0 grid list-none gap-[0.6rem] p-0 leading-tight">
         {links.map(([label, url]) => (
-          <li class="overflow-hidden text-ellipsis">
+          <li class="min-w-0 wrap-break-word">
             {label ? `${label}: ` : undefined}
-            <LinkExternal href={url} />
+            <LinkExternal
+              class="inline-flex max-w-full items-baseline wrap-anywhere"
+              href={url}
+            />
           </li>
         ))}
       </ul>

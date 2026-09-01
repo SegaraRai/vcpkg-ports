@@ -1,20 +1,36 @@
 ---
 import { VCPKG_PORTS_REPO_URL, VCPKG_REPO_URL } from "../../constants.mjs";
 import LinkExternal from "../LinkExternal.astro";
+
+const links = [
+  {
+    href: VCPKG_REPO_URL,
+    text: "vcpkg",
+    icon: "mdi--github",
+  },
+  {
+    href: VCPKG_PORTS_REPO_URL,
+    text: "vcpkg-ports",
+    icon: "mdi--github",
+  },
+];
 ---
 
-<h2 class="heading">More</h2>
-<ul class="plain-list" translate="no">
-  <li class="header-link depth-2">
-    <LinkExternal href={VCPKG_REPO_URL}>
-      <span class="flex-none block w-5 h-5 icon-[mdi--github]"></span>
-      <span>vcpkg</span>
-    </LinkExternal>
-  </li>
-  <li class="header-link depth-2">
-    <LinkExternal href={VCPKG_PORTS_REPO_URL}>
-      <span class="flex-none block w-5 h-5 icon-[mdi--github]"></span>
-      <span>vcpkg-ports</span>
-    </LinkExternal>
-  </li>
-</ul>
+<div>
+  <h2 class="sidebar-heading">More resources</h2>
+  <ul class="m-0 grid list-none gap-1 p-0" translate="no">
+    {
+      links.map((link) => (
+        <li>
+          <LinkExternal
+            class="flex min-h-8 w-full items-center gap-2 rounded-lg px-2 py-1 text-theme-text-light no-underline hover:bg-theme-bg-accent hover:text-theme-text"
+            href={link.href}
+          >
+            <span class="block size-5 flex-none icon-[mdi--github]" />
+            <span>{link.text}</span>
+          </LinkExternal>
+        </li>
+      ))
+    }
+  </ul>
+</div>

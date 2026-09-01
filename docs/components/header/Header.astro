@@ -14,54 +14,55 @@ const LinkElement = isHome ? "span" : "a";
 ---
 
 <header
-  class="flex-none sticky top-0 z-90 flex flex-col items-center justify-center h-14 bg-(--theme-navbar-bg) w-full"
+  class="sticky top-0 z-90 w-full border-b border-(--theme-navbar-text)/15 bg-theme-navbar-bg text-theme-navbar-text shadow-[0_4px_18px_rgb(5_17_33/12%)] backdrop-blur-lg"
 >
   <SkipToContent />
   <nav
-    class="relative flex-1 block w-full h-full max-w-204 lg:max-w-296 px-8"
-    title="Top Navigation"
+    class="mx-auto flex min-h-17 w-full max-w-7xl items-center gap-6 px-6 max-[639px]:min-h-15 max-[639px]:gap-2.5 max-[639px]:px-3"
+    aria-label="Primary navigation"
   >
+    <LinkElement
+      class:list={[
+        "site-brand inline-flex min-w-max items-center text-theme-navbar-text no-underline transition-colors duration-200 hover:text-theme-text-accent select-none",
+        !isHome && "transition-colors duration-200",
+      ]}
+      href={isHome ? undefined : "/"}
+      aria-label="Vcpkg Ports home"
+      translate="no"
+    >
+      <span
+        class="icon-[noto--package] block size-10 flex-none max-[639px]:size-[2.15rem]"
+      ></span>
+      <span
+        class="ml-2.5 inline-flex items-baseline gap-1 text-[1.55rem] leading-none tracking-[-0.045em] max-[639px]:ml-1.5 max-[639px]:text-xl max-[374px]:hidden"
+      >
+        <strong class="font-extrabold">Vcpkg</strong>
+        <span class="font-normal text-theme-navbar-muted">Ports</span>
+      </span>
+    </LinkElement>
+    <slot />
     <div
-      class="max-lg:-mx-4 h-full flex items-center justify-between gap-x-8"
+      class="flex min-w-0 flex-1 items-center justify-end gap-2.5 max-[639px]:gap-1.5"
       data-nosnippet
     >
-      <div class="flex-none">
-        <LinkElement
-          class:list={[
-            "flex items-center select-none text-(--theme-text) leading-tight",
-            !isHome &&
-              "transition-colors duration-200 light:hover:text-(--theme-text-light) light:active:text-(--theme-text-light) dark:hover:text-(--theme-text-accent) dark:active:text-(--theme-text-accent)",
-          ]}
-          href={isHome ? undefined : "/"}
-          aria-label="Vcpkg Ports"
-          translate="no"
-        >
-          <span class="flex-none icon-[noto--package] size-10.5"></span>
-          <span class="ml-2 flex-1 text-3xl pb-1 max-sm:hidden">
-            <span class="font-bold">Vcpkg</span>
-            <span class="font-normal">Ports</span>
-          </span>
-        </LinkElement>
-      </div>
-      <slot />
-      <div
-        class:list={[
-          "flex items-center justify-end gap-x-4",
-          hideSearch ? "flex-none" : "flex-1 max-w-80",
-        ]}
-        data-nosnippet
-      >
-        {
-          !hideSearch && (
-            <div class="flex-1">
-              <ManagedSearchBoxButton client:load />
-            </div>
-          )
-        }
-        <div class="flex-none">
-          <ThemeToggleButton client:load />
-        </div>
-      </div>
+      {
+        !isHome && (
+          <a
+            class="inline-flex min-h-10 items-center rounded-xl px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-theme-navbar-muted no-underline hover:bg-(--theme-navbar-text)/10 hover:text-theme-navbar-text max-[639px]:hidden"
+            href="/ports"
+          >
+            Catalog
+          </a>
+        )
+      }
+      {
+        !hideSearch && (
+          <div class="min-w-0 w-full max-w-88 max-[639px]:w-10">
+            <ManagedSearchBoxButton client:load />
+          </div>
+        )
+      }
+      <ThemeToggleButton client:load />
     </div>
   </nav>
 </header>

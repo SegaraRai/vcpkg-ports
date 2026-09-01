@@ -1,23 +1,100 @@
 ---
 import SearchBoxForHome from "../components/search/SearchBoxForHome.vue";
 import MainLayout from "../layouts/MainLayout.astro";
+import portNames from "../virtual/portNames.mjs";
 ---
 
-<MainLayout fixedHeight hideSearch isHome>
+<MainLayout hideSearch isHome>
   <article
     id="article"
-    class="h-full overflow-hidden! flex flex-col gap-y-4 items-center"
+    class="mx-auto grid h-full min-h-0 w-full max-w-304 grid-cols-[minmax(0,1fr)_minmax(18rem,24rem)] items-center gap-[clamp(2rem,6vw,6rem)] px-[clamp(1rem,4vw,2rem)] pt-[clamp(2rem,6vh,4.5rem)] pb-12 max-[639px]:h-auto max-[639px]:min-h-0 max-[639px]:grid-cols-1 max-[639px]:gap-[1.4rem] max-[639px]:px-4 max-[639px]:pt-8 max-[639px]:pb-10 max-[374px]:px-3"
   >
-    <h1
-      class="flex-none flex flex-col items-center justify-center gap-x-4 gap-y-4 mt-2 mb-4 lg:mt-4 lg:mb-8 max-lg:flex-row text-4xl text-center"
-      translate="no"
+    <section
+      class="flex min-w-0 flex-col items-start overflow-visible max-[639px]:items-center max-[639px]:text-center"
+      aria-labelledby="home-title"
     >
-      <div class="flex-none w-16 h-16 lg:w-36 lg:h-36 icon-[noto--package]">
+      <div
+        class="icon-[noto--package] size-[clamp(4rem,11vw,7rem)] drop-shadow-[0_18px_24px_rgb(0_0_0/20%)]"
+        aria-hidden="true"
+      >
       </div>
-      <div class="flex-1">Vcpkg Ports</div>
-    </h1>
-    <div class="flex-1 w-full max-w-160 overflow-hidden">
-      <SearchBoxForHome client:load />
-    </div>
+      <div class="page-eyebrow">C++ package discovery</div>
+      <h1
+        id="home-title"
+        class="home-title max-[639px]:max-w-[11ch]"
+        translate="no"
+      >
+        Find your next vcpkg port
+      </h1>
+      <p class="home-description">
+        Search the registry by package name or description, then open the exact
+        version and dependency details you need.
+      </p>
+      <div id="home-search" class="mt-8 w-full max-w-2xl">
+        <SearchBoxForHome client:load />
+      </div>
+      <div
+        class="mt-4 flex flex-wrap justify-start gap-3 max-[639px]:justify-center"
+      >
+        <a class="button-primary max-[374px]:w-full" href="/ports">
+          Browse all ports
+        </a>
+      </div>
+    </section>
+
+    <aside
+      class="min-w-0 rounded-2xl border border-theme-divider bg-theme-surface p-[clamp(1.1rem,3vw,1.5rem)] shadow-(--theme-shadow-md) max-[639px]:mx-auto max-[639px]:w-full max-[639px]:max-w-md"
+      aria-labelledby="home-explore-title"
+    >
+      <div class="page-eyebrow text-[0.75rem] tracking-[0.12em]">
+        Start here
+      </div>
+      <h2
+        id="home-explore-title"
+        class="m-0 mt-1 mb-4 font-[750] leading-[1.12] tracking-tight text-theme-text text-[1.35rem]"
+      >
+        Explore the registry
+      </h2>
+      <a class="home-quick-link" href="/ports">
+        <span
+          class="icon-[lucide--list-filter] block size-[1.35rem] text-theme-text-accent"
+          aria-hidden="true"></span>
+        <span class="grid min-w-0 gap-1">
+          <strong class="text-[0.95rem]">Browse by letter</strong>
+          <span class="text-[0.82rem] leading-[1.45] text-theme-text-light"
+            >Scan the full catalog when you know the package family.</span
+          >
+        </span>
+        <span class="text-xl text-theme-text-accent" aria-hidden="true">→</span>
+      </a>
+      <a class="home-quick-link" href="#home-search">
+        <span
+          class="icon-[lucide--search] block size-[1.35rem] text-theme-text-accent"
+          aria-hidden="true"></span>
+        <span class="grid min-w-0 gap-1">
+          <strong class="text-[0.95rem]">Search the registry</strong>
+          <span class="text-[0.82rem] leading-[1.45] text-theme-text-light"
+            >Find a package by name or description.</span
+          >
+        </span>
+        <span class="text-xl text-theme-text-accent" aria-hidden="true">→</span>
+      </a>
+      <p
+        class="mt-2 flex items-center gap-2 border-t border-theme-divider pt-4 text-[0.78rem] leading-[1.4] text-theme-text-muted"
+      >
+        <span
+          class="icon-[lucide--command] block size-[1.35rem] flex-none text-theme-text-accent"
+          aria-hidden="true"></span>
+        <span><kbd>/</kbd> or <kbd>Ctrl K</kbd> opens search anywhere.</span>
+      </p>
+      <div
+        class="mt-5 flex items-baseline gap-2 text-[0.78rem] text-theme-text-muted"
+      >
+        <strong class="text-[1.4rem] tracking-[-0.03em] text-theme-text"
+          >{portNames.length.toLocaleString()}</strong
+        >
+        <span>ports indexed</span>
+      </div>
+    </aside>
   </article>
 </MainLayout>

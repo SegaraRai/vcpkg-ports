@@ -9,24 +9,43 @@ interface Props {
 }
 
 const { section, translate, nosnippet } = Astro.props;
-const HeadingTag = `h${Math.min(Math.max(section.level, 1), 6)}` as any;
+const headingLevel = Math.min(Math.max(section.level, 1), 6);
+const HeadingTag = `h${headingLevel}` as any;
+const isOverview = section.slug === "overview";
+const isLinks = section.slug === "links";
+const dividerSections = new Set([
+  "license",
+  "features",
+  "dependencies",
+  "dependents",
+  "contributors",
+]);
 ---
 
-{
-  !section.noHeading && (
-    <HeadingTag id={section.slug} class="has-anchor flex items-center">
-      <HeadingAnchor
-        level={section.level}
-        slug={section.slug}
-        text={section.title}
-      />
-      <slot name="heading-before" />
-      <span translate={translate} set:text={section.title} />
-      <slot name="heading-after" />
-    </HeadingTag>
-  )
-}
-
-<div class={`port-${section.slug}`} data-nosnippet={nosnippet || undefined}>
+<div
+  class:list={[
+    isLinks
+      ? "mb-4 rounded-[0.85rem] bg-theme-surface-muted px-[1.1rem] py-4"
+      : ["pb-10", isOverview ? "pt-0" : "pt-8"],
+    dividerSections.has(section.slug) && "border-t border-theme-divider",
+  ]}
+  data-nosnippet={nosnippet || undefined}
+>
+  {
+    !section.noHeading && (
+      <HeadingTag
+        id={section.slug}
+        class:list={[
+          "has-anchor section-heading m-0 mb-4 flex items-center gap-2",
+          `section-heading-${headingLevel}`,
+        ]}
+      >
+        <HeadingAnchor slug={section.slug} />
+        <slot name="heading-before" />
+        <span translate={translate} set:text={section.title} />
+        <slot name="heading-after" />
+      </HeadingTag>
+    )
+  }
   <slot />
 </div>

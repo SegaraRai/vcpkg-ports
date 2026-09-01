@@ -24,17 +24,15 @@ const {
 
 <li
   class:list={[
-    "flex items-start w-full",
-    latest ? "light:text-green-600 dark:text-green-400" : "",
+    "flex items-start w-full data-[latest=true]:text-theme-text-accent",
     classList || "",
   ]}
+  data-latest={latest}
 >
   <div class="flex-none flex flex-row items-center">
     <div
-      class:list={[
-        "flex-none text-2xl opacity-80",
-        oldest ? "icon-[mdi--source-commit-end]" : "icon-[mdi--source-commit]",
-      ]}
+      class="flex-none text-2xl opacity-80 data-[oldest=true]:icon-[mdi--source-commit-end] icon-[mdi--source-commit]"
+      data-oldest={oldest}
     >
     </div>
     <LinkVcpkgCommit
