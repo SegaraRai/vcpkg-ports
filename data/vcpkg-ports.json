@@ -1,5 +1,5 @@
 {
-  "version": "04a9d8e5212d01ee1dd9478eadd9caade4f8b0d4",
+  "version": "86f61acf5a72d90847b8137f5a03cffa513f7c75",
   "ports": [
     {
       "name": "3fd",
@@ -844,7 +844,7 @@
             "supports": "windows"
           }
         },
-        "version": "0.1.2"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -5944,7 +5944,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.12"
+        "version-semver": "1.0.0-beta.13"
       },
       "files": [
         "portfile.cmake",
@@ -6369,7 +6369,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.13"
+        "version-semver": "1.0.0-beta.15"
       },
       "files": [
         "portfile.cmake",
@@ -21133,7 +21133,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.1.1"
       },
       "files": [
         "001-fix-flags.patch",
@@ -26492,9 +26492,9 @@
       "name": "decimal-for-cpp",
       "manifest": {
         "name": "decimal-for-cpp",
-        "port-version": 1,
         "description": "Decimal data type support, for COBOL-like fixed-point operations on currency values.",
-        "version": "1.18"
+        "license": "BSD-3-Clause",
+        "version": "1.21"
       },
       "files": [
         "portfile.cmake",
@@ -57913,7 +57913,7 @@
             "description": "Enable distributed key-value storage module"
           }
         },
-        "version": "2.2.0"
+        "version": "2.3.7"
       },
       "files": [
         "portfile.cmake",
@@ -61844,7 +61844,6 @@
       "name": "libxi",
       "manifest": {
         "name": "libxi",
-        "port-version": 1,
         "description": "Xlib library for the X Input Extension",
         "homepage": "https://gitlab.freedesktop.org/xorg/lib/libxi",
         "license": null,
@@ -61856,7 +61855,7 @@
             "host": true
           }
         ],
-        "version": "1.8.2"
+        "version": "1.8.3"
       },
       "files": [
         "fix-configure.patch",
@@ -62839,6 +62838,7 @@
       "name": "lief",
       "manifest": {
         "name": "lief",
+        "port-version": 1,
         "description": "LIEF - Library to Instrument Executable Formats",
         "homepage": "https://lief.quarkslab.com",
         "license": "Apache-2.0",
@@ -62905,8 +62905,10 @@
         "version-semver": "0.17.6"
       },
       "files": [
+        "disable-warnings-as-errors.patch",
         "fix-cmakelists.patch",
         "fix-liefconfig-cmake-in.patch",
+        "fix-utfcpp-4.patch",
         "fix-vcpkg-includes.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -64691,7 +64693,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.735"
+        "version": "0.737"
       },
       "files": [
         "cmake-config-export.patch",
@@ -67414,14 +67416,11 @@
       "name": "matroska",
       "manifest": {
         "name": "matroska",
-        "port-version": 3,
         "description": "a C++ library to parse Matroska files (.mkv and .mka)",
         "homepage": "https://github.com/Matroska-Org/libmatroska",
+        "license": "LGPL-2.1-or-later",
         "dependencies": [
-          {
-            "name": "ebml",
-            "version>=": "1.4.4"
-          },
+          "ebml",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -67431,7 +67430,7 @@
             "host": true
           }
         ],
-        "version": "1.7.1"
+        "version": "1.7.2"
       },
       "files": [
         "portfile.cmake",
@@ -68335,7 +68334,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.5.0"
+        "version": "3.5.1"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -70844,7 +70843,7 @@
             "host": true
           }
         ],
-        "version-semver": "3.0.0"
+        "version-semver": "3.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -90250,7 +90249,7 @@
             "host": true
           }
         ],
-        "version": "6.0.2"
+        "version": "6.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -91425,6 +91424,7 @@
         "name": "rexo",
         "description": "Rexo is a neat single-file cross-platform unit testing framework for C/C++",
         "homepage": "https://github.com/christophercrouzet/rexo",
+        "license": "Unlicense",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -91435,7 +91435,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.2.2"
+        "version-semver": "0.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -96899,7 +96899,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -97016,11 +97016,10 @@
             "host": true
           }
         ],
-        "version": "0.1.3"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -97043,7 +97042,7 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -105518,7 +105517,7 @@
             "host": true
           }
         ],
-        "version": "4.1.1"
+        "version": "4.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -111517,7 +111516,7 @@
         "name": "yunsmall-usbipdcpp",
         "description": "A C++ library for creating usbip servers",
         "homepage": "https://github.com/yunsmall/usbipdcpp",
-        "license": "LGPL-3.0",
+        "license": "LGPL-3.0-only",
         "dependencies": [
           "asio",
           "spdlog",
@@ -111541,7 +111540,7 @@
             "description": "Build virtual device components for creating software-emulated USB devices"
           }
         },
-        "version": "1.0.8"
+        "version": "1.0.9"
       },
       "files": [
         "portfile.cmake",
@@ -111619,7 +111618,7 @@
             "host": true
           }
         ],
-        "version": "5.0.0"
+        "version": "5.1.0"
       },
       "files": [
         "fix-install-path.patch",
