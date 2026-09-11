@@ -1,5 +1,5 @@
 {
-  "version": "3602fe706c659c3d837b6491e0b1be57cbe69dae",
+  "version": "f7aed1c7e74fe3a6937c27f72bb68f16a022828a",
   "ports": [
     {
       "name": "3fd",
@@ -18789,7 +18789,7 @@
             "host": true
           }
         ],
-        "version": "1.12.6"
+        "version": "1.12.7"
       },
       "files": [
         "portfile.cmake",
@@ -19083,7 +19083,7 @@
         "name": "bzip3",
         "description": "A better and stronger spiritual successor to BZip2.",
         "homepage": "https://github.com/kspalaiologos/bzip3/",
-        "license": "LGPL-3.0-or-later",
+        "license": "LGPL-3.0-or-later AND Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -19100,7 +19100,7 @@
             "supports": "!windows"
           }
         },
-        "version": "1.5.3"
+        "version": "1.5.4"
       },
       "files": [
         "disable-man.patch",
@@ -20726,7 +20726,7 @@
             "host": true
           }
         ],
-        "version": "4.0.4"
+        "version": "4.0.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -24181,7 +24181,7 @@
         "name": "crow",
         "description": "Very fast and easy to use C++ micro web framework",
         "homepage": "https://github.com/CrowCpp/crow",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND MIT AND ISC",
         "dependencies": [
           "asio",
           {
@@ -24193,7 +24193,7 @@
             "host": true
           }
         ],
-        "version": "1.3.3"
+        "version": "1.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -24632,6 +24632,7 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
+        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -24666,14 +24667,7 @@
           "gnutls": {
             "description": "TLS support (gnutls)",
             "dependencies": [
-              {
-                "name": "libgnutls",
-                "platform": "!windows | mingw"
-              },
-              {
-                "name": "shiftmedia-libgnutls",
-                "platform": "windows & !mingw"
-              }
+              "libgnutls"
             ]
           },
           "gsasl": {
@@ -33635,11 +33629,12 @@
             ]
           }
         },
-        "version": "3.1.3"
+        "version": "3.5.0"
       },
       "files": [
         "001-fix-defs.patch",
         "002-install-dlls-to-bin.patch",
+        "m_pi.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -34844,8 +34839,8 @@
       "manifest": {
         "name": "gegl",
         "description": "Generic Graphical Library.",
-        "homepage": "https://gegl.org/",
-        "license": "LGPL-3.0-or-later",
+        "homepage": "https://gegl.org",
+        "license": "LGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-3-Clause AND MIT AND ISC AND Apache-2.0",
         "supports": "!windows | mingw",
         "dependencies": [
           "babl",
@@ -34881,13 +34876,13 @@
             "supports": "!static"
           }
         },
-        "version": "0.4.70"
+        "version": "0.4.72"
       },
       "files": [
         "disable_tests.patch",
         "portfile.cmake",
         "remove-consistency-check.patch",
-        "remove_execinfo_support.patch",
+        "use-bundled-opencl-headers.patch",
         "vcpkg.json"
       ]
     },
@@ -35036,10 +35031,9 @@
       "name": "geos",
       "manifest": {
         "name": "geos",
-        "port-version": 1,
         "description": "Geometry Engine Open Source",
         "homepage": "https://libgeos.org/",
-        "license": "LGPL-2.1-only",
+        "license": "LGPL-2.1-only AND (Apache-2.0 OR BSL-1.0)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -35050,7 +35044,7 @@
             "host": true
           }
         ],
-        "version": "3.14.1"
+        "version": "3.15.0"
       },
       "files": [
         "fix-exported-config.patch",
@@ -36222,7 +36216,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.88.3"
+        "version": "2.90.0"
       },
       "files": [
         "libintl.patch",
@@ -36297,6 +36291,7 @@
       "name": "glibmm",
       "manifest": {
         "name": "glibmm",
+        "port-version": 1,
         "description": "This is glibmm, a C++ API for parts of glib that are useful for C++.",
         "homepage": "https://www.gtkmm.org.",
         "license": "LGPL-2.1-or-later",
@@ -36317,6 +36312,7 @@
         "version": "2.88.1"
       },
       "files": [
+        "glib_2_90_compatibility.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47744,23 +47740,6 @@
       ]
     },
     {
-      "name": "kf5diagram",
-      "manifest": {
-        "name": "kf5diagram",
-        "description": "Powerful libraries (KChart, KGantt) for creating business diagrams",
-        "homepage": "https://invent.kde.org/graphics/kdiagram",
-        "license": "LGPL-2.0-or-later",
-        "dependencies": [
-          "kdiagram"
-        ],
-        "version-string": "deprecated"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "kf5globalaccel",
       "manifest": {
         "name": "kf5globalaccel",
@@ -49769,7 +49748,7 @@
         "name": "kuku",
         "description": "Kuku is a compact and convenient cuckoo hashing library written in C++.",
         "homepage": "https://github.com/microsoft/Kuku",
-        "license": "MIT",
+        "license": "MIT AND CC0-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -49780,7 +49759,7 @@
             "host": true
           }
         ],
-        "version": "3.0.0"
+        "version": "4.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -50533,6 +50512,7 @@
         "name": "lexbor",
         "description": "Lexbor is development of an open source HTML Renderer library.",
         "homepage": "https://github.com/lexbor/lexbor",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -50550,9 +50530,10 @@
             "supports": "!arm"
           }
         },
-        "version": "3.0.0"
+        "version": "3.0.1"
       },
       "files": [
+        "fix-install-dirs.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52057,6 +52038,27 @@
       ]
     },
     {
+      "name": "libdaemon",
+      "manifest": {
+        "name": "libdaemon",
+        "description": "libdaemon is a lightweight C library that eases the writing of UNIX daemons",
+        "homepage": "https://0pointer.de/lennart/projects/libdaemon/",
+        "license": "LGPL-2.1-or-later",
+        "supports": "linux | osx | openbsd | freebsd",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
+        "version": "0.14"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
@@ -52285,6 +52287,7 @@
         "name": "libdivide",
         "description": "libdivide.h is a header-only C/C++ library for optimizing integer division.",
         "homepage": "https://github.com/ridiculousfish/libdivide",
+        "license": "BSL-1.0 OR Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -52300,7 +52303,7 @@
             "description": "Build test"
           }
         },
-        "version": "5.3.0"
+        "version": "5.4.0"
       },
       "files": [
         "no-werror.patch",
@@ -53295,7 +53298,6 @@
       "name": "libfuse",
       "manifest": {
         "name": "libfuse",
-        "port-version": 1,
         "description": "The reference implementation of the Linux FUSE (Filesystem in Userspace) interface",
         "homepage": "https://github.com/libfuse/libfuse",
         "license": "LGPL-2.1-only AND GPL-2.0-only",
@@ -53310,7 +53312,7 @@
             "host": true
           }
         ],
-        "version": "3.18.2"
+        "version": "3.18.3"
       },
       "files": [
         "portfile.cmake",
@@ -55611,7 +55613,7 @@
         "name": "libmaxminddb",
         "description": "C library for the MaxMind DB file format",
         "homepage": "https://github.com/maxmind/libmaxminddb",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause AND BSD-2-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -55622,7 +55624,7 @@
             "host": true
           }
         ],
-        "version": "1.13.3"
+        "version": "1.14.0"
       },
       "files": [
         "fix-link-thread.patch",
@@ -58690,7 +58692,7 @@
             "host": true
           }
         ],
-        "version": "1.2.53003"
+        "version": "1.2.53004"
       },
       "files": [
         "portfile.cmake",
@@ -63129,7 +63131,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.10"
       },
       "files": [
         "fix-relative-includes.patch",
@@ -66338,7 +66340,6 @@
         "license": "Apache-2.0",
         "dependencies": [
           "clipper2",
-          "tbb",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -66348,9 +66349,10 @@
             "host": true
           }
         ],
-        "version": "3.5.2"
+        "version": "3.5.3"
       },
       "files": [
+        "fix-pkgconfig-cflags.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67979,7 +67981,7 @@
       "name": "metis",
       "manifest": {
         "name": "metis",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Serial Graph Partitioning and Fill-reducing Matrix Ordering",
         "homepage": "https://github.com/KarypisLab/METIS",
         "license": "Apache-2.0",
@@ -67999,6 +68001,7 @@
       "files": [
         "build-fixes-gkregex.patch",
         "build-fixes.patch",
+        "fix-tls-check.patch",
         "install_config.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -71943,7 +71946,6 @@
       "name": "nettle",
       "manifest": {
         "name": "nettle",
-        "port-version": 2,
         "description": "Nettle is a low-level cryptographic library that is designed to fit easily in more or less any context: In crypto toolkits for object-oriented languages (C++, Python, Pike, ...), in applications like LSH or GNUPG, or even in kernel space.",
         "homepage": "https://git.lysator.liu.se/nettle/nettle",
         "license": null,
@@ -71963,13 +71965,11 @@
             "description": "Build tools"
           }
         },
-        "version": "3.10"
+        "version": "4.0"
       },
       "files": [
         "ccas.patch",
         "compile.patch",
-        "fix-libdir.patch",
-        "hogweed-arm.def",
         "hogweed-arm64.def",
         "hogweed-x64.def",
         "hogweed-x86.def",
@@ -71977,7 +71977,6 @@
         "lib-to-def.cmake",
         "libname-windows.patch",
         "msvc-support.patch",
-        "nettle-arm.def",
         "nettle-arm64.def",
         "nettle-x64.def",
         "nettle-x86.def",
@@ -72122,6 +72121,7 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
+        "port-version": 1,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -72139,14 +72139,7 @@
           "gnutls": {
             "description": "Compile with gnutls",
             "dependencies": [
-              {
-                "name": "libgnutls",
-                "platform": "!windows | mingw"
-              },
-              {
-                "name": "shiftmedia-libgnutls",
-                "platform": "windows & !mingw"
-              }
+              "libgnutls"
             ]
           },
           "openssl": {
@@ -74686,7 +74679,7 @@
             ]
           }
         },
-        "version": "1.4.14"
+        "version": "1.4.20"
       },
       "files": [
         "android.patch",
@@ -74712,7 +74705,7 @@
             "host": true
           }
         ],
-        "version": "0.21.1"
+        "version": "0.21.3"
       },
       "files": [
         "portfile.cmake",
@@ -79997,6 +79990,7 @@
       "name": "parmetis",
       "manifest": {
         "name": "parmetis",
+        "port-version": 1,
         "description": "Parallel Graph Partitioning and Fill-reducing Matrix Ordering",
         "homepage": "https://github.com/KarypisLab/ParMETIS",
         "license": null,
@@ -80016,6 +80010,7 @@
       },
       "files": [
         "build-fixes.patch",
+        "fix-tls-check.patch",
         "portfile.cmake",
         "use_stdint.patch",
         "vcpkg.json"
@@ -83377,11 +83372,12 @@
             "host": true
           }
         ],
-        "version": "2.5.2"
+        "version": "2.5.4"
       },
       "files": [
         "fix-android.patch",
         "fix-build.patch",
+        "fix-config-dependency.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -86722,7 +86718,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -88475,24 +88471,6 @@
       ]
     },
     {
-      "name": "qtquickcontrols2",
-      "manifest": {
-        "name": "qtquickcontrols2",
-        "port-version": 1,
-        "description": "Qt Quick Controls provides a set of controls that can be used to build complete interfaces in Qt Quick.",
-        "homepage": "https://www.qt.io/",
-        "license": null,
-        "dependencies": [
-          "qtdeclarative"
-        ],
-        "version-string": "deprecated"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "qtquickeffectmaker",
       "manifest": {
         "name": "qtquickeffectmaker",
@@ -88833,6 +88811,7 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
+        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -88953,6 +88932,7 @@
       },
       "files": [
         "devendor-litehtml.patch",
+        "fix-qlitehtml.patch",
         "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json",
@@ -89999,23 +89979,6 @@
           }
         ],
         "version": "8.99"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "rapidfuzz",
-      "manifest": {
-        "name": "rapidfuzz",
-        "description": "Rapid fuzzy string matching library for C++ using the Levenshtein Distance.",
-        "homepage": "https://github.com/maxbachmann/rapidfuzz-cpp",
-        "license": "MIT",
-        "dependencies": [
-          "rapidfuzz-cpp"
-        ],
-        "version-string": "deprecated"
       },
       "files": [
         "portfile.cmake",
@@ -93714,7 +93677,8 @@
         "name": "sciter-js",
         "description": "Sciter.JS - Sciter but with QuickJS on board instead of TIScript. Sciter is an embeddable HTML/CSS/scripting engine.",
         "homepage": "https://gitlab.com/sciter-engine/sciter-js-sdk",
-        "supports": "!uwp & !arm & !static & !android & !freebsd & !openbsd & !netbsd",
+        "license": null,
+        "supports": "!uwp & !arm & !static & !android & !freebsd & !openbsd & !netbsd & !(x86 & !windows)",
         "features": {
           "sqlite": {
             "description": "Add sciter-sqlite support"
@@ -93723,7 +93687,7 @@
             "description": "Add sciter-webview support"
           }
         },
-        "version": "6.0.4.5"
+        "version": "6.0.4.10"
       },
       "files": [
         "portfile.cmake",
@@ -95021,6 +94985,7 @@
       "name": "secp256k1",
       "manifest": {
         "name": "secp256k1",
+        "port-version": 1,
         "description": "Optimized C library for EC operations on curve",
         "homepage": "https://github.com/bitcoin-core/secp256k1",
         "license": "MIT",
@@ -95034,6 +94999,11 @@
             "host": true
           }
         ],
+        "features": {
+          "recovery": {
+            "description": "Enable the ECDSA public key recovery module (secp256k1_ecdsa_sign_recoverable / secp256k1_ecdsa_recover)"
+          }
+        },
         "version": "0.7.1"
       },
       "files": [
@@ -95752,39 +95722,6 @@
       },
       "files": [
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "shiftmedia-libgnutls",
-      "manifest": {
-        "name": "shiftmedia-libgnutls",
-        "port-version": 3,
-        "description": "Unofficial GnuTLS fork with added custom native Visual Studio project build tools. ",
-        "homepage": "https://github.com/ShiftMediaProject/gnutls",
-        "license": "LGPL-2.1-only",
-        "supports": "windows & !arm & !mingw & !xbox",
-        "dependencies": [
-          "gmp",
-          "libtasn1",
-          "nettle",
-          {
-            "name": "vs-yasm",
-            "host": true
-          },
-          {
-            "name": "yasm-tool-helper",
-            "host": true
-          },
-          "zlib"
-        ],
-        "version": "3.8.7"
-      },
-      "files": [
-        "external-libtasn1.patch",
-        "pkgconfig.patch",
-        "portfile.cmake",
-        "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
     },
@@ -96917,7 +96854,7 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "1.5.0"
+            "version>=": "2.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -96928,7 +96865,7 @@
             "host": true
           }
         ],
-        "version": "1.2.1"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -97117,7 +97054,7 @@
         "dependencies": [
           {
             "name": "slick-shm",
-            "version>=": "0.1.4"
+            "version>=": "0.1.6"
           },
           {
             "name": "vcpkg-cmake",
@@ -97128,7 +97065,7 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -97838,7 +97775,7 @@
         "name": "sonivox",
         "description": "Software MIDI synthesizer evolved from the AOSP 'platform_external_sonivox' project to use it outside of Android. Uses embedded samples allowing also SF2 and DLS files. Plays MID, XMF, and RMI files.",
         "homepage": "https://github.com/EmbeddedSynth/sonivox",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND CC0-1.0 AND BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -97850,7 +97787,7 @@
           },
           "zlib"
         ],
-        "version": "4.0.1"
+        "version": "4.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -99099,75 +99036,6 @@
         "ddl2cpp_path.patch",
         "dependencies.diff",
         "fix-miss-header.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sqlpp11-connector-mysql",
-      "manifest": {
-        "name": "sqlpp11-connector-mysql",
-        "description": "A C++ wrapper for MySQL meant to be used in combination with sqlpp11 (obsolete, use sqlpp11 with the mariadb/mysql feature instead)",
-        "homepage": "https://github.com/rbock/sqlpp11-connector-mysql",
-        "license": "BSD-2-Clause",
-        "default-features": [
-          "mariadb"
-        ],
-        "features": {
-          "mariadb": {
-            "description": "Use MariaDB connector",
-            "dependencies": [
-              {
-                "name": "sqlpp11",
-                "default-features": false,
-                "features": [
-                  "mariadb"
-                ],
-                "version>=": "0.61"
-              }
-            ]
-          },
-          "mysql": {
-            "description": "Use MySQL connector",
-            "dependencies": [
-              {
-                "name": "sqlpp11",
-                "default-features": false,
-                "features": [
-                  "mysql"
-                ],
-                "version>=": "0.61"
-              }
-            ]
-          }
-        },
-        "version": "0.61"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "sqlpp11-connector-sqlite3",
-      "manifest": {
-        "name": "sqlpp11-connector-sqlite3",
-        "description": "A C++ wrapper for sqlite3 meant to be used in combination with sqlpp11 (obsolete, use sqlpp11 with the sqlite3 feature instead)",
-        "homepage": "https://github.com/rbock/sqlpp11-connector-sqlite3",
-        "license": "BSD-2-Clause",
-        "dependencies": [
-          {
-            "name": "sqlpp11",
-            "default-features": false,
-            "features": [
-              "sqlite3"
-            ],
-            "version>=": "0.61"
-          }
-        ],
-        "version": "0.61"
-      },
-      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -107968,24 +107836,6 @@
       ]
     },
     {
-      "name": "vulkan-hpp",
-      "manifest": {
-        "name": "vulkan-hpp",
-        "description": "[deprecated] Header only C++ bindings for the Vulkan C API",
-        "license": null,
-        "supports": "!uwp & !xbox",
-        "dependencies": [
-          "vulkan-headers"
-        ],
-        "version-string": "deprecated"
-      },
-      "files": [
-        "portfile.cmake",
-        "usage",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "vulkan-loader",
       "manifest": {
         "name": "vulkan-loader",
@@ -108061,7 +107911,6 @@
       "name": "vulkan-memory-allocator-hpp",
       "manifest": {
         "name": "vulkan-memory-allocator-hpp",
-        "port-version": 1,
         "description": "C++ bindings for VulkanMemoryAllocator (Development branch)",
         "homepage": "https://github.com/YaaZ/VulkanMemoryAllocator-Hpp",
         "license": "CC0-1.0",
@@ -108070,7 +107919,7 @@
           "vulkan",
           "vulkan-memory-allocator"
         ],
-        "version": "3.3.0"
+        "version": "3.4.0"
       },
       "files": [
         "portfile.cmake",
