@@ -1,5 +1,5 @@
 {
-  "version": "f7aed1c7e74fe3a6937c27f72bb68f16a022828a",
+  "version": "a1cae005c39be7b18ba319fced856b68d7276271",
   "ports": [
     {
       "name": "3fd",
@@ -4350,7 +4350,7 @@
             "host": true
           }
         ],
-        "version": "0.43.5"
+        "version": "0.43.6"
       },
       "files": [
         "portfile.cmake",
@@ -23073,9 +23073,9 @@
       "name": "cpp-sort",
       "manifest": {
         "name": "cpp-sort",
-        "description": "Sorting algorithms & related tools for C++14",
+        "description": "Sorting algorithms & related tools for C++17",
         "homepage": "https://github.com/Morwenn/cpp-sort/",
-        "license": "MIT",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -23086,7 +23086,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -28162,7 +28162,7 @@
       "name": "duckx",
       "manifest": {
         "name": "duckx",
-        "port-version": 1,
+        "port-version": 2,
         "description": "DuckX is a library for creation of Office docx files.",
         "homepage": "https://github.com/amiremohamadi/DuckX",
         "license": "MIT",
@@ -28181,6 +28181,7 @@
         "version": "1.2.2"
       },
       "files": [
+        "fix-android-ssize-t.patch",
         "fix_dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -29949,7 +29950,7 @@
         "name": "expat",
         "description": "XML parser library written in C",
         "homepage": "https://github.com/libexpat/libexpat",
-        "license": "MIT",
+        "license": "MIT AND CC0-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -29960,7 +29961,7 @@
             "host": true
           }
         ],
-        "version": "2.8.3"
+        "version": "2.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -40274,7 +40275,7 @@
         "name": "gtk",
         "description": "Portable library for creating graphical user interfaces.",
         "homepage": "https://www.gtk.org/",
-        "license": "LGPL-2.0-only",
+        "license": "LGPL-2.1-or-later AND Apache-2.0",
         "supports": "!android & !xbox & !(arm64 & windows)",
         "dependencies": [
           {
@@ -40359,7 +40360,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.22.4"
+        "version": "4.22.5"
       },
       "files": [
         "0001-build.patch",
@@ -58022,7 +58023,7 @@
             ]
           }
         },
-        "version": "2.15.0"
+        "version": "2.15.1"
       },
       "files": [
         "lz4.patch",
@@ -71626,7 +71627,7 @@
       "name": "netcdf-c",
       "manifest": {
         "name": "netcdf-c",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A set of self-describing, machine-independent data formats that support the creation, access, and sharing of array-oriented scientific data.",
         "homepage": "https://github.com/Unidata/netcdf-c",
         "license": null,
@@ -71752,6 +71753,7 @@
         "version": "4.9.3"
       },
       "files": [
+        "android-pthread.diff",
         "backport-d7895f6.diff",
         "dependencies.diff",
         "fix-pkgconfig.patch",
@@ -73487,6 +73489,7 @@
       "name": "oboe",
       "manifest": {
         "name": "oboe",
+        "port-version": 1,
         "description": "Oboe is a C++ library which makes it easy to build high-performance audio apps on Android",
         "homepage": "https://developer.android.com/games/sdk/oboe",
         "license": "Apache-2.0",
@@ -73504,6 +73507,7 @@
         "version": "1.10.0"
       },
       "files": [
+        "fix-ndk-r30.patch",
         "fix_install.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -80813,10 +80817,14 @@
         "homepage": "https://github.com/ntop/PF_RING",
         "license": null,
         "supports": "linux",
-        "version": "8.8.0"
+        "dependencies": [
+          "libpcap"
+        ],
+        "version": "9.4.0"
       },
       "files": [
         "portfile.cmake",
+        "use-external-libpcap.patch",
         "vcpkg.json"
       ]
     },
@@ -97083,11 +97091,11 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "1.5.0"
+            "version>=": "2.0.0"
           },
           {
             "name": "slick-stream-buffer",
-            "version>=": "1.0.5"
+            "version>=": "2.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -97098,7 +97106,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "2.0.0"
       },
       "files": [
         "portfile.cmake",
