@@ -1,5 +1,5 @@
 {
-  "version": "a1cae005c39be7b18ba319fced856b68d7276271",
+  "version": "0c8f465c549616e897a34b9393054931fda6339c",
   "ports": [
     {
       "name": "3fd",
@@ -4261,7 +4261,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.0.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -8050,7 +8050,7 @@
             ]
           }
         },
-        "version": "3.3.2"
+        "version": "3.3.4"
       },
       "files": [
         "pkgconfig-dependencies.patch",
@@ -21106,7 +21106,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -22162,7 +22162,7 @@
             "host": true
           }
         ],
-        "version": "5.5.2"
+        "version": "5.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -22866,7 +22866,7 @@
             ]
           }
         },
-        "version": "0.54.1"
+        "version": "0.56.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -26060,7 +26060,7 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20260714.215939"
+        "version": "20260911.162847"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
@@ -27805,7 +27805,7 @@
         "name": "dpp",
         "description": "D++ Extremely Lightweight C++ Discord Library.",
         "homepage": "https://dpp.dev/",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT",
         "supports": "(windows & !static & !uwp) | linux | osx",
         "dependencies": [
           "nlohmann-json",
@@ -27821,11 +27821,11 @@
           },
           "zlib"
         ],
-        "version": "10.1.5"
+        "version": "10.1.6"
       },
       "files": [
         "portfile.cmake",
-        "usage",
+        "use-external-json.patch",
         "vcpkg.json"
       ]
     },
@@ -42653,7 +42653,7 @@
       "name": "highs",
       "manifest": {
         "name": "highs",
-        "port-version": 1,
+        "port-version": 2,
         "description": "High performance library to solve linear, mixed-integer, and convex quadratic optimization problems.",
         "homepage": "https://highs.dev",
         "license": "MIT AND BSD-3-Clause AND Zlib",
@@ -42668,10 +42668,27 @@
           },
           "zlib"
         ],
+        "features": {
+          "extras": {
+            "description": "Build the HiPO interior point solver, using OpenBLAS on Windows/Linux and Accelerate on macOS",
+            "dependencies": [
+              "blas",
+              {
+                "name": "openblas",
+                "features": [
+                  "threads"
+                ],
+                "platform": "!osx"
+              }
+            ],
+            "license": "Apache-2.0"
+          }
+        },
         "version": "1.15.1"
       },
       "files": [
-        "fix-pkgconfig-zlib.patch",
+        "fix-extras-metadata.patch",
+        "fix-pkgconfig.patch",
         "portfile.cmake",
         "respect-user-selected-compiler.patch",
         "vcpkg.json"
@@ -43118,7 +43135,7 @@
             ]
           }
         },
-        "version": "0.9.8"
+        "version": "0.9.9"
       },
       "files": [
         "portfile.cmake",
@@ -54126,7 +54143,7 @@
         "name": "libheif",
         "description": "libheif is an HEIF and AVIF file format decoder and encoder.",
         "homepage": "http://www.libheif.org/",
-        "license": "LGPL-3.0-only",
+        "license": "LGPL-3.0-only AND MIT",
         "supports": "!xbox",
         "dependencies": [
           "libde265",
@@ -54158,11 +54175,19 @@
             "supports": "!windows | mingw"
           },
           "h264-decoder": {
-            "description": "OpenH264 decoder",
+            "description": "OpenH264 AVC decoder",
             "dependencies": [
               "openh264"
             ],
             "license": "BSD-2-Clause"
+          },
+          "header-compression": {
+            "description": "Support for HEIF header compression",
+            "dependencies": [
+              "brotli",
+              "zlib"
+            ],
+            "license": "LGPL-3.0-only"
           },
           "hevc": {
             "description": "HEVC encoding via x265",
@@ -54172,8 +54197,9 @@
             "license": "GPL-2.0-or-later"
           },
           "iso23001-17": {
-            "description": "Support for ISO23001-17 (uncompressed) codec (experimental)",
+            "description": "Support for ISO23001-17 (uncompressed) codec",
             "dependencies": [
+              "brotli",
               "zlib"
             ],
             "license": "LGPL-3.0-only"
@@ -54192,6 +54218,14 @@
             ],
             "license": "BSD-2-Clause"
           },
+          "uvg266": {
+            "description": "uvg266 VVC encoder",
+            "dependencies": [
+              "uvg266"
+            ],
+            "supports": "!x86",
+            "license": "BSD-3-Clause"
+          },
           "x264": {
             "description": "x264 AVC encoder",
             "dependencies": [
@@ -54200,7 +54234,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.23.2"
+        "version": "1.23.4"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -68336,7 +68370,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -68477,7 +68511,7 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.13.0"
       },
       "files": [
         "portfile.cmake",
@@ -89986,7 +90020,7 @@
             "host": true
           }
         ],
-        "version": "8.99"
+        "version-string": "9.07"
       },
       "files": [
         "portfile.cmake",
@@ -96061,7 +96095,7 @@
             "host": true
           }
         ],
-        "version": "7.2.164"
+        "version": "7.2.165"
       },
       "files": [
         "SimdConfig.cmake",
@@ -96121,7 +96155,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.8"
+        "version": "4.6.11"
       },
       "files": [
         "portfile.cmake",
@@ -96308,7 +96342,7 @@
             "host": true
           }
         ],
-        "version": "4.26"
+        "version": "4.27"
       },
       "files": [
         "disable-tests.patch",
@@ -97517,7 +97551,7 @@
             "host": true
           }
         ],
-        "version": "5.8.6"
+        "version": "5.8.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -98850,6 +98884,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
+        "port-version": 1,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
