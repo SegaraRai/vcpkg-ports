@@ -1,5 +1,5 @@
 {
-  "version": "0c8f465c549616e897a34b9393054931fda6339c",
+  "version": "0f00916d00a6301c39a22fc9ec09319629326fcd",
   "ports": [
     {
       "name": "3fd",
@@ -4375,7 +4375,7 @@
             "host": true
           }
         ],
-        "version": "0.2.10"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -22176,9 +22176,12 @@
         "description": "UBLOX (UBX) protocol definition, generated out of cc.ublox.commsdsl",
         "homepage": "https://commschamp.github.io/",
         "documentation": "https://github.com/commschamp/cc.ublox.generated",
-        "license": null,
+        "license": "MPL-2.0",
         "dependencies": [
-          "comms",
+          {
+            "name": "comms",
+            "version>=": "5.5.3"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -22188,10 +22191,9 @@
             "host": true
           }
         ],
-        "version-semver": "3.0.7"
+        "version-semver": "3.0.8"
       },
       "files": [
-        "copyright",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50449,7 +50451,7 @@
             "host": true
           }
         ],
-        "version": "1.32.0"
+        "version": "1.33.1"
       },
       "files": [
         "portfile.cmake",
@@ -55401,7 +55403,7 @@
         "name": "liblzma",
         "description": "Compression library with an API similar to that of zlib.",
         "homepage": "https://tukaani.org/xz/",
-        "license": null,
+        "license": "0BSD",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -55414,10 +55416,11 @@
         ],
         "features": {
           "tools": {
-            "description": "Build tools"
+            "description": "Build tools",
+            "license": "LGPL-2.1-or-later"
           }
         },
-        "version": "5.8.3"
+        "version": "5.8.4"
       },
       "files": [
         "build-tools.patch",
@@ -93092,11 +93095,19 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
+        "port-version": 1,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "ffmpeg",
+            "default-features": false,
+            "features": [
+              "swscale"
+            ]
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -93368,7 +93379,7 @@
         "fix-always-nanosvg.diff",
         "fix-heif.patch",
         "fix-include-directory.patch",
-        "fix-video-zlib-debug-name.patch",
+        "fix-video-zlib-and-linking.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -94954,7 +94965,7 @@
             ]
           }
         },
-        "version": "4.4.4"
+        "version": "4.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -100268,7 +100279,7 @@
             ]
           }
         },
-        "version-semver": "7.14.0"
+        "version-semver": "7.14.1"
       },
       "files": [
         "portfile.cmake",
@@ -100279,7 +100290,7 @@
       "name": "suitesparse-amd",
       "manifest": {
         "name": "suitesparse-amd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100305,7 +100316,7 @@
       "name": "suitesparse-btf",
       "manifest": {
         "name": "suitesparse-btf",
-        "port-version": 3,
+        "port-version": 4,
         "description": "BTF: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100331,7 +100342,7 @@
       "name": "suitesparse-camd",
       "manifest": {
         "name": "suitesparse-camd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "AMD: Routines for permuting sparse matrices prior to factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100357,7 +100368,7 @@
       "name": "suitesparse-ccolamd",
       "manifest": {
         "name": "suitesparse-ccolamd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "CCOLAMD: Routines for constrained column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100383,7 +100394,7 @@
       "name": "suitesparse-cholmod",
       "manifest": {
         "name": "suitesparse-cholmod",
-        "port-version": 2,
+        "port-version": 3,
         "description": "CHOLMOD: Routines for factorizing sparse symmetric positive definite matrices in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later AND Apache-2.0",
@@ -100463,7 +100474,7 @@
       "name": "suitesparse-colamd",
       "manifest": {
         "name": "suitesparse-colamd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "COLAMD: Routines for column approximate minimum degree ordering algorithm in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "BSD-3-Clause",
@@ -100508,7 +100519,7 @@
             "description": "Enable OpenMP support (in SuiteSparse_config only)"
           }
         },
-        "version-semver": "7.14.0"
+        "version-semver": "7.14.1"
       },
       "files": [
         "SuiteSparseBLAS.cmake",
@@ -100520,7 +100531,7 @@
       "name": "suitesparse-cxsparse",
       "manifest": {
         "name": "suitesparse-cxsparse",
-        "port-version": 3,
+        "port-version": 4,
         "description": "CXSparse: Software package for permuting a matrix into block upper triangular form in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100572,7 +100583,7 @@
             "description": "Pre-compile kernels instead of using JIT compilation at runtime. Increases the library size and compile time by about 15x. Use the GRAPHBLAS_CACHE_PATH env var to set the JIT cache directory if not enabled."
           }
         },
-        "version-semver": "10.5.0"
+        "version-semver": "10.5.1"
       },
       "files": [
         "crossbuild.diff",
@@ -100584,7 +100595,7 @@
       "name": "suitesparse-klu",
       "manifest": {
         "name": "suitesparse-klu",
-        "port-version": 3,
+        "port-version": 4,
         "description": "KLU: Routines for solving sparse linear systems of equations in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100621,7 +100632,7 @@
       "name": "suitesparse-lagraph",
       "manifest": {
         "name": "suitesparse-lagraph",
-        "port-version": 2,
+        "port-version": 3,
         "description": "LAGraph: Library plus test harness for collecting algorithms that use GraphBLAS",
         "homepage": "https://lagraph.readthedocs.io/en/latest/",
         "license": "BSD-2-Clause",
@@ -100660,7 +100671,7 @@
       "name": "suitesparse-ldl",
       "manifest": {
         "name": "suitesparse-ldl",
-        "port-version": 3,
+        "port-version": 4,
         "description": "LDL: A sparse LDL' factorization and solve package in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "LGPL-2.1-or-later",
@@ -100687,7 +100698,7 @@
       "name": "suitesparse-mongoose",
       "manifest": {
         "name": "suitesparse-mongoose",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Mongoose: Graph partitioning library in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-only",
@@ -100718,7 +100729,7 @@
       "name": "suitesparse-paru",
       "manifest": {
         "name": "suitesparse-paru",
-        "port-version": 1,
+        "port-version": 2,
         "description": "ParU: Routines for solving sparse linear system via parallel multifrontal LU factorization algorithms in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-3.0-or-later",
@@ -100760,7 +100771,7 @@
       "name": "suitesparse-rbio",
       "manifest": {
         "name": "suitesparse-rbio",
-        "port-version": 3,
+        "port-version": 4,
         "description": "RBio: routines for reading/writing sparse matrices in Rutherford/Boeing format in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100786,7 +100797,7 @@
       "name": "suitesparse-spex",
       "manifest": {
         "name": "suitesparse-spex",
-        "port-version": 3,
+        "port-version": 4,
         "description": "SPEX: Software package for SParse EXact algebra in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later OR LGPL-3.0-or-later",
@@ -100829,7 +100840,7 @@
       "name": "suitesparse-spqr",
       "manifest": {
         "name": "suitesparse-spqr",
-        "port-version": 3,
+        "port-version": 4,
         "description": "SPQR: Multithreaded, multifrontal, rank-revealing sparse QR factorization method in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -100871,7 +100882,7 @@
       "name": "suitesparse-umfpack",
       "manifest": {
         "name": "suitesparse-umfpack",
-        "port-version": 2,
+        "port-version": 3,
         "description": "UMFPACK: Routines solving sparse linear systems via LU factorization in SuiteSparse",
         "homepage": "https://people.engr.tamu.edu/davis/suitesparse.html",
         "license": "GPL-2.0-or-later",
@@ -105154,7 +105165,7 @@
       "name": "usd",
       "manifest": {
         "name": "usd",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Universal Scene Description (USD) is an efficient, scalable system for authoring, reading, and streaming time-sampled scene description for interchange between graphics applications.",
         "homepage": "https://github.com/PixarAnimationStudios/OpenUSD",
         "license": null,
@@ -105235,6 +105246,7 @@
         "009-vcpkg_install_folder_conventions.patch",
         "010-cmake_export_plugin_as_modules.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
