@@ -1,5 +1,5 @@
 {
-  "version": "0f00916d00a6301c39a22fc9ec09319629326fcd",
+  "version": "a97c98d785fc0b1710bc711acf47767b756e6b7c",
   "ports": [
     {
       "name": "3fd",
@@ -28970,7 +28970,7 @@
             "host": true
           }
         ],
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "fix-wrong-version.patch",
@@ -30889,7 +30889,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31064,14 +31064,6 @@
                   "opengl"
                 ],
                 "platform": "!uwp & !(arm64 & windows)"
-              },
-              {
-                "name": "ffmpeg",
-                "default-features": false,
-                "features": [
-                  "tensorflow"
-                ],
-                "platform": "x64 & !static & !uwp & !windows"
               },
               {
                 "name": "ffmpeg",
@@ -31539,13 +31531,6 @@
           },
           "swscale": {
             "description": "Build the swscale library"
-          },
-          "tensorflow": {
-            "description": "TensorFlow as a DNN module backend for DNN based filters like sr",
-            "dependencies": [
-              "tensorflow"
-            ],
-            "supports": "!static"
           },
           "tesseract": {
             "description": "Tesseract, needed for ocr filter",
@@ -46310,7 +46295,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46376,7 +46361,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46410,7 +46395,7 @@
             "host": true
           }
         ],
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46486,7 +46471,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46538,7 +46523,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46590,7 +46575,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46644,7 +46629,7 @@
             "host": true
           }
         ],
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -46730,7 +46715,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -48933,7 +48918,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "001_fix_imobile.patch",
@@ -49021,7 +49006,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49071,7 +49056,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49110,6 +49095,12 @@
           }
         ],
         "features": {
+          "iso-codes": {
+            "description": "Build with support of iso-codes",
+            "dependencies": [
+              "iso-codes"
+            ]
+          },
           "qml": {
             "description": "Build with support for scripted translations",
             "dependencies": [
@@ -49120,7 +49111,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49278,7 +49269,18 @@
             "host": true
           }
         ],
-        "version": "6.29.0"
+        "features": {
+          "qml": {
+            "description": "Build QML integration and plugins",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49335,7 +49337,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49865,7 +49867,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -49930,7 +49932,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "001_guard_ecm_qml_module_include.patch",
@@ -93095,7 +93097,7 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
         "license": "MIT",
@@ -101249,7 +101251,7 @@
             ]
           }
         },
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -101385,7 +101387,7 @@
       "manifest": {
         "name": "talib",
         "description": "TA-Lib - Technical Analysis Library",
-        "homepage": "https://ta-lib.github.io/",
+        "homepage": "https://ta-lib.org/",
         "license": "BSD-3-Clause",
         "supports": "linux | osx | (windows & !uwp)",
         "dependencies": [
@@ -101394,11 +101396,9 @@
             "host": true
           }
         ],
-        "version-semver": "0.7.1"
+        "version-semver": "0.8.1"
       },
       "files": [
-        "fix-forced-install-prefix.patch",
-        "no-system-cleanup.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -101796,83 +101796,6 @@
         "fix-install-paths-v3.patch",
         "fix_include.patch",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "tensorflow",
-      "manifest": {
-        "name": "tensorflow",
-        "description": "Library for computation using data flow graphs for scalable machine learning (C API version)",
-        "homepage": "https://github.com/tensorflow/tensorflow",
-        "license": "Apache-2.0",
-        "supports": "!(x86 | arm | uwp) | (arm64 & osx)",
-        "dependencies": [
-          "tensorflow-common",
-          {
-            "name": "vcpkg-tool-bazel",
-            "host": true
-          }
-        ],
-        "version-semver": "2.10.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "tensorflow-cc",
-      "manifest": {
-        "name": "tensorflow-cc",
-        "description": "Library for computation using data flow graphs for scalable machine learning (C++ API version)",
-        "homepage": "https://github.com/tensorflow/tensorflow",
-        "license": "Apache-2.0",
-        "supports": "!(x86 | arm | uwp) | (arm64 & osx)",
-        "dependencies": [
-          "tensorflow-common",
-          {
-            "name": "vcpkg-tool-bazel",
-            "host": true
-          }
-        ],
-        "version-semver": "2.10.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "tensorflow-common",
-      "manifest": {
-        "name": "tensorflow-common",
-        "port-version": 4,
-        "description": "This meta package holds common files for the C [tensorflow] and the C++ [tensorflow-cc] API version of TensorFlow but is not installable on its own.",
-        "homepage": "https://github.com/tensorflow/tensorflow",
-        "license": "Apache-2.0",
-        "version-semver": "2.10.0"
-      },
-      "files": [
-        "LICENSE.txt",
-        "README-linux",
-        "README-macos",
-        "README-windows",
-        "change-macros-for-static-lib.patch",
-        "convert_lib_params_linux.py",
-        "convert_lib_params_macos.py",
-        "convert_lib_params_windows.py",
-        "fix-build-error.patch",
-        "fix-windows-build.patch",
-        "generate_static_link_cmd_linux.py",
-        "generate_static_link_cmd_macos.py",
-        "generate_static_link_cmd_windows.py",
-        "portfile.cmake",
-        "tensorflow-common.cmake",
-        "tensorflow-config-shared.cmake.in",
-        "tensorflow-config-static.cmake.in",
-        "tensorflow-config-windows-dll.cmake.in",
-        "tensorflow-config-windows-lib.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -102368,7 +102291,7 @@
             "host": true
           }
         ],
-        "version": "6.29.0"
+        "version": "6.30.0"
       },
       "files": [
         "portfile.cmake",
@@ -106192,21 +106115,6 @@
         "vcpkg_qmake_configure.cmake",
         "vcpkg_qmake_install.cmake",
         "z_vcpkg_qmake_fix_makefiles.cmake"
-      ]
-    },
-    {
-      "name": "vcpkg-tool-bazel",
-      "manifest": {
-        "name": "vcpkg-tool-bazel",
-        "description": "Bazel build system",
-        "homepage": "https://github.com/bazelbuild/bazel",
-        "license": "Apache-2.0",
-        "supports": "native",
-        "version": "5.2.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
       ]
     },
     {
