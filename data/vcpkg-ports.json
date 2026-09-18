@@ -1,5 +1,5 @@
 {
-  "version": "a97c98d785fc0b1710bc711acf47767b756e6b7c",
+  "version": "fa8cecf91d7f31a1715a7a6524f208897ffb33ce",
   "ports": [
     {
       "name": "3fd",
@@ -4261,7 +4261,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -23120,6 +23120,21 @@
       ]
     },
     {
+      "name": "cpp-unicodelib",
+      "manifest": {
+        "name": "cpp-unicodelib",
+        "description": "A C++17 header-only Unicode library. (Unicode 17.0.0)",
+        "homepage": "https://github.com/yhirose/cpp-unicodelib",
+        "license": "MIT AND Unicode-3.0",
+        "version-date": "2026-09-05"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "cppad",
       "manifest": {
         "name": "cppad",
@@ -23833,7 +23848,7 @@
         "name": "cpuid",
         "description": "Provides CPU identification for the x86 (and x86_64)",
         "homepage": "https://github.com/anrieff/libcpuid",
-        "license": "MIT",
+        "license": "BSD-2-Clause",
         "supports": "!uwp & !(windows & arm)",
         "dependencies": [
           {
@@ -23845,7 +23860,7 @@
             "host": true
           }
         ],
-        "version": "0.8.1"
+        "version": "0.8.2"
       },
       "files": [
         "fix-LNK2019.patch",
@@ -41283,7 +41298,6 @@
       "name": "halide",
       "manifest": {
         "name": "halide",
-        "port-version": 1,
         "description": "Halide is a programming language designed to make it easier to write high-performance image and array processing code on modern machines.",
         "homepage": "https://github.com/halide/Halide",
         "license": "MIT",
@@ -41326,9 +41340,13 @@
             "features": [
               "clang",
               "enable-rtti",
+              "lld",
+              "target-webassembly",
+              "target-x86",
               "tools"
             ]
           },
+          "spirv-headers",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -41336,7 +41354,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "vulkan-headers"
         ],
         "features": {
           "target-aarch64": {
@@ -41484,9 +41503,10 @@
             ]
           }
         },
-        "version": "18.0.0"
+        "version": "21.0.0"
       },
       "files": [
+        "fix-llvm-23.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -43219,7 +43239,7 @@
       "name": "hyperscan",
       "manifest": {
         "name": "hyperscan",
-        "port-version": 3,
+        "port-version": 4,
         "description": "A regular expression library with O(length of input) match times that takes advantage of Intel hardware to provide blazing speed.",
         "homepage": "https://www.hyperscan.io",
         "license": "BSD-3-Clause",
@@ -43260,6 +43280,7 @@
         "0001-remove-Werror.patch",
         "0002-fix-threads.patch",
         "0003-disable-tests.patch",
+        "0004-remove-rev.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -60539,10 +60560,17 @@
       "name": "liburing",
       "manifest": {
         "name": "liburing",
+        "port-version": 1,
         "description": "Linux-native io_uring I/O access library",
         "homepage": "https://github.com/axboe/liburing",
         "license": "(MIT OR LGPL-2.1) AND (MIT OR GPL-2.0 WITH Linux-syscall-note)",
         "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true
+          }
+        ],
         "version": "2.15"
       },
       "files": [
@@ -63522,7 +63550,6 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
-        "port-version": 6,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0 WITH LLVM-exception",
@@ -63549,7 +63576,7 @@
           "clang",
           "default-targets",
           "enable-bindings",
-          "enable-terminfo",
+          "enable-libxml2",
           "enable-zlib",
           "enable-zstd",
           "lld",
@@ -63576,6 +63603,19 @@
                 "default-features": false,
                 "features": [
                   "tools"
+                ]
+              }
+            ]
+          },
+          "clang-enable-cir": {
+            "description": "Include ClangIR.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "clang",
+                  "mlir"
                 ]
               }
             ]
@@ -63667,6 +63707,7 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
+                  "compiler-rt",
                   "target-arm"
                 ]
               }
@@ -63688,16 +63729,16 @@
                   "mlir"
                 ]
               },
-              "pybind11",
-              "python3"
+              "python3",
+              {
+                "name": "vcpkg-get-python-packages",
+                "host": true
+              }
             ],
             "supports": "!(windows & static)"
           },
           "enable-rtti": {
             "description": "Build LLVM with run-time type information."
-          },
-          "enable-terminfo": {
-            "description": "Use terminfo database if available."
           },
           "enable-zlib": {
             "description": "Build with ZLib.",
@@ -63715,15 +63756,14 @@
             "description": "Export symbols for plugins."
           },
           "flang": {
-            "description": "Include Fortran front end.",
+            "description": "Include the Flang compiler and runtime libraries.",
             "dependencies": [
               {
                 "name": "llvm",
                 "default-features": false,
                 "features": [
                   "clang",
-                  "mlir",
-                  "tools"
+                  "mlir"
                 ]
               }
             ]
@@ -63735,15 +63775,31 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
-                  "clang",
-                  "tools"
+                  "clang"
                 ]
+              },
+              {
+                "name": "vcpkg-get-python-packages",
+                "host": true
               }
             ],
             "supports": "linux"
           },
           "libclc": {
-            "description": "Include OpenCL library."
+            "description": "Include OpenCL library.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "clang",
+                  "target-amdgpu",
+                  "target-nvptx",
+                  "target-spirv",
+                  "tools"
+                ]
+              }
+            ]
           },
           "libcxx": {
             "description": "Include libcxx library.",
@@ -63753,8 +63809,7 @@
                 "default-features": false,
                 "features": [
                   "clang",
-                  "libcxxabi",
-                  "tools"
+                  "libcxxabi"
                 ]
               }
             ]
@@ -63767,11 +63822,14 @@
                 "default-features": false,
                 "features": [
                   "clang",
-                  "libcxx",
-                  "tools"
+                  "libcxx"
                 ]
               }
             ]
+          },
+          "libsycl": {
+            "description": "Export libsycl library.",
+            "supports": "!(windows & staticcrt)"
           },
           "libunwind": {
             "description": "Include libunwind library.",
@@ -63804,9 +63862,7 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
-                  "clang",
-                  "enable-terminfo",
-                  "tools"
+                  "clang"
                 ]
               }
             ]
@@ -63818,8 +63874,19 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
-                  "tools",
                   "utils"
+                ]
+              }
+            ]
+          },
+          "offload": {
+            "description": "Include offload library.",
+            "dependencies": [
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "openmp"
                 ]
               }
             ]
@@ -63837,6 +63904,9 @@
               }
             ]
           },
+          "orc-rt": {
+            "description": "Include orc-rt library."
+          },
           "polly": {
             "description": "Include Polly (Polyhedral optimizations for LLVM) project.",
             "dependencies": [
@@ -63844,20 +63914,7 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
-                  "tools",
                   "utils"
-                ]
-              }
-            ]
-          },
-          "pstl": {
-            "description": "Include pstl (Parallel STL) library.",
-            "dependencies": [
-              {
-                "name": "llvm",
-                "default-features": false,
-                "features": [
-                  "tools"
                 ]
               }
             ]
@@ -63953,7 +64010,7 @@
             "description": "Build with Sparc backend."
           },
           "target-spirv": {
-            "description": "Build with SPIRV backend (experimental)."
+            "description": "Build with SPIRV backend."
           },
           "target-systemz": {
             "description": "Build with SystemZ backend."
@@ -63989,20 +64046,18 @@
             ]
           }
         },
-        "version": "18.1.6"
+        "version": "23.1.1"
       },
       "files": [
         "0001-fix-install-package-dir.patch",
         "0002-fix-tools-install-dir.patch",
         "0003-fix-llvm-config.patch",
         "0004-disable-libomp-aliases.patch",
-        "0005-remove-numpy.patch",
+        "0005-fix-runtimes.patch",
         "0006-create-destination-mlir-directory.patch",
-        "0007-fix-missing-includes.patch",
-        "75711.patch",
-        "79694.patch",
-        "82407.patch",
-        "add-include-chrono.patch",
+        "0007-use-cxx-for-libxml2-check.patch",
+        "0008-fix-windows-system-library-names.patch",
+        "0009-fix-android-build.patch",
         "clang_usage",
         "cmake4.patch",
         "flang_usage",
@@ -67866,7 +67921,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
@@ -67914,11 +67969,20 @@
             "description": "Build with llvmpipe",
             "dependencies": [
               {
+                "name": "glslang",
+                "host": true,
+                "features": [
+                  "tools"
+                ],
+                "platform": "linux | android"
+              },
+              {
                 "name": "llvm",
                 "default-features": false,
                 "features": [
                   "enable-rtti",
-                  "libclc"
+                  "libclc",
+                  "tools"
                 ]
               },
               {
@@ -68375,7 +68439,7 @@
             "description": "Use full security mitigations (like guard pages, allocation randomization, double-free mitigation, and free-list corruption detection)"
           }
         },
-        "version": "3.5.2"
+        "version": "3.5.3"
       },
       "files": [
         "pkgconfig-cxx.diff",
@@ -69612,6 +69676,31 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mpdecimal",
+      "manifest": {
+        "name": "mpdecimal",
+        "description": "Correctly rounded arbitrary precision decimal floating point arithmetic (libmpdec)",
+        "homepage": "https://www.bytereef.org/mpdecimal/",
+        "license": "BSD-2-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-make",
+            "host": true,
+            "platform": "!windows | mingw"
+          }
+        ],
+        "version": "4.0.1"
+      },
+      "files": [
+        "libmpdec.pc.in",
+        "msvc-linkage.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -72889,6 +72978,7 @@
       "name": "numcpp",
       "manifest": {
         "name": "numcpp",
+        "port-version": 1,
         "description": "C++ implementation of the Python Numpy library",
         "homepage": "https://dpilger26.github.io/NumCpp",
         "license": "MIT",
@@ -72929,6 +73019,7 @@
         "version": "2.16.1"
       },
       "files": [
+        "fix-boost-config.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78220,6 +78311,7 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
+        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -78408,6 +78500,7 @@
       },
       "files": [
         "android-ignore-onetbb-warning.patch",
+        "fix-onednn-include-order.patch",
         "levelzero-prepareheaders.patch",
         "msvc-debug-info-only-in-pdb.patch",
         "portfile.cmake",
@@ -83840,7 +83933,6 @@
       "name": "python3",
       "manifest": {
         "name": "python3",
-        "port-version": 1,
         "description": "The Python programming language",
         "homepage": "https://github.com/python/cpython",
         "license": "Python-2.0",
@@ -83917,6 +84009,7 @@
                 "name": "liblzma",
                 "default-features": false
               },
+              "mpdecimal",
               {
                 "name": "openssl",
                 "default-features": false
@@ -83941,7 +84034,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.12.13"
+        "version": "3.13.15"
       },
       "files": [
         "0001-only-build-required-projects.patch",
@@ -83959,6 +84052,7 @@
         "0018-fix-sysconfig-include.patch",
         "0019-fix-ssl-linkage.patch",
         "0020-Py_NO_LINK_LIB.patch",
+        "0021-use-system-libmpdec.patch",
         "openssl.props.in",
         "portfile.cmake",
         "python_vcpkg.props.in",
@@ -91858,7 +91952,7 @@
         "name": "roaring",
         "description": "A better compressed bitset in C (and C++)",
         "homepage": "https://github.com/RoaringBitmap/CRoaring",
-        "license": "Apache-2.0 OR MIT",
+        "license": "(Apache-2.0 OR MIT) AND BSD-3-Clause",
         "supports": "!(android & arm32)",
         "dependencies": [
           {
@@ -91870,7 +91964,7 @@
             "host": true
           }
         ],
-        "version": "4.7.2"
+        "version": "5.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -101124,7 +101218,6 @@
       "name": "symengine",
       "manifest": {
         "name": "symengine",
-        "port-version": 1,
         "description": "SymEngine is a fast symbolic manipulation library",
         "homepage": "https://github.com/symengine/symengine",
         "license": "BSD-3-Clause",
@@ -101199,9 +101292,10 @@
             ]
           }
         },
-        "version": "0.14.0"
+        "version": "0.15.0"
       },
       "files": [
+        "fix-series-division.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -102557,6 +102651,30 @@
         "portfile.cmake",
         "rm-cpp17-pmr.patch",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "time-shield-cpp",
+      "manifest": {
+        "name": "time-shield-cpp",
+        "description": "Header-only C++ library for time conversions, formatting, and utilities.",
+        "homepage": "https://github.com/LimiNode/time-shield-cpp",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -104874,7 +104992,7 @@
       "name": "unordered-dense",
       "manifest": {
         "name": "unordered-dense",
-        "description": "A fast & densely stored hashmap and hashset based on robin-hood backward shift deletion",
+        "description": "A fast & densely stored hashmap and hashset",
         "homepage": "https://github.com/martinus/unordered_dense",
         "license": "MIT",
         "dependencies": [
@@ -104887,7 +105005,7 @@
             "host": true
           }
         ],
-        "version": "4.11.0"
+        "version": "5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -107190,7 +107308,7 @@
       "name": "vtk",
       "manifest": {
         "name": "vtk",
-        "port-version": 17,
+        "port-version": 18,
         "description": "Software system for 3D computer graphics, image processing, and visualization",
         "homepage": "https://github.com/Kitware/VTK",
         "license": null,
@@ -107579,6 +107697,7 @@
         "opencascade-7.8.0.patch",
         "pegtl.patch",
         "portfile.cmake",
+        "python313-module-init.patch",
         "pythonwrapper.patch",
         "remove-prefix-changes.patch",
         "usage",
