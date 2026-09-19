@@ -1,5 +1,5 @@
 {
-  "version": "fa8cecf91d7f31a1715a7a6524f208897ffb33ce",
+  "version": "e6f9e70a29a3e80a1fc510d8503304315447112f",
   "ports": [
     {
       "name": "3fd",
@@ -54895,10 +54895,12 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
+        "port-version": 1,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://libjpeg-turbo.org/",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND IJG",
         "dependencies": [
+          "libspng",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -54906,7 +54908,8 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zlib"
         ],
         "features": {
           "jpeg7": {
@@ -54924,6 +54927,7 @@
       "files": [
         "add-options-for-docs-headers.patch",
         "portfile.cmake",
+        "system-dependency-fixes-pr-901.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json",
@@ -72507,9 +72511,10 @@
             "description": "nng tools (nngcat, for example)"
           }
         },
-        "version": "1.12.0"
+        "version": "1.12.3"
       },
       "files": [
+        "fix-static-mbedtls-export.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
