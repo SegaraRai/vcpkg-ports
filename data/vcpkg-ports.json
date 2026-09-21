@@ -1,5 +1,5 @@
 {
-  "version": "319504a5326aa870edde46438c5455fa76305a56",
+  "version": "5f96cd15fd745122cf27e0524606d6c1efc5fd07",
   "ports": [
     {
       "name": "3fd",
@@ -19636,10 +19636,9 @@
             "host": true
           }
         ],
-        "version": "3.8.0"
+        "version": "3.8.1"
       },
       "files": [
-        "fmu-guard-fmi3.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81415,6 +81414,20 @@
       ]
     },
     {
+      "name": "plf-tools",
+      "manifest": {
+        "name": "plf-tools",
+        "description": "Toolsets shared across plf:: libraries",
+        "homepage": "https://www.plflib.org",
+        "license": "Zlib",
+        "version": "1.0.4"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "plib",
       "manifest": {
         "name": "plib",
@@ -94521,6 +94534,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0 AND BSD-3-Clause",
@@ -94591,6 +94605,10 @@
             "dependencies": [
               "libusb"
             ]
+          },
+          "macos-keyboard-grab": {
+            "description": "Let SDL_SetWindowKeyboardGrab() capture system keyboard shortcuts on macOS (uses private API, so it is not suitable for sandboxed apps)",
+            "supports": "osx"
           },
           "vulkan": {
             "description": "Vulkan functionality for SDL"
@@ -95645,7 +95663,6 @@
       "name": "shader-slang",
       "manifest": {
         "name": "shader-slang",
-        "port-version": 1,
         "description": "Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is based on years of collaboration between researchers at NVIDIA, Carnegie Mellon University, and Stanford.",
         "homepage": "https://github.com/shader-slang/slang",
         "license": null,
@@ -95656,10 +95673,11 @@
             "host": true
           }
         ],
-        "version": "2026.7.1"
+        "version": "2026.18"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
