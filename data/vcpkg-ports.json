@@ -1,5 +1,5 @@
 {
-  "version": "dafd627af0e6cb5cf2269ab3764ce52b50fc27bb",
+  "version": "67b9e21f86e3034657a04da429a8bf274de67925",
   "ports": [
     {
       "name": "3fd",
@@ -1762,22 +1762,25 @@
       "name": "apsi",
       "manifest": {
         "name": "apsi",
-        "port-version": 3,
         "description": "APSI is a research library for asymmetric private set intersection.",
         "homepage": "https://github.com/microsoft/APSI",
-        "license": "MIT",
+        "license": "MIT AND Zlib",
         "dependencies": [
           "flatbuffers",
-          "jsoncpp",
+          {
+            "name": "jsoncpp",
+            "version>=": "1.9.5"
+          },
           "kuku",
+          "ms-gsl",
           {
             "name": "seal",
             "default-features": false,
             "features": [
-              "ms-gsl",
               "no-throw-tran",
               "zstd"
-            ]
+            ],
+            "version>=": "4.4.5"
           },
           {
             "name": "vcpkg-cmake",
@@ -1789,7 +1792,6 @@
           }
         ],
         "default-features": [
-          "log4cplus",
           "zeromq"
         ],
         "features": {
@@ -1805,12 +1807,6 @@
               }
             ]
           },
-          "log4cplus": {
-            "description": "Use log4cplus for logging.",
-            "dependencies": [
-              "log4cplus"
-            ]
-          },
           "zeromq": {
             "description": "Use ZeroMQ for networking.",
             "dependencies": [
@@ -1819,14 +1815,9 @@
             ]
           }
         },
-        "version-semver": "0.11.0"
+        "version-semver": "1.0.1"
       },
       "files": [
-        "fix-c2398.patch",
-        "fix-find-kuku.patch",
-        "fix-find-seal.patch",
-        "fix-jsoncpp-target.patch",
-        "fix-log4cplus-byte-ambiguity.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4083,7 +4074,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4261,7 +4252,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.1.2"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -21563,7 +21554,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.13.0"
+        "version": "3.14.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -23281,7 +23272,7 @@
             "host": true
           }
         ],
-        "version": "0.9.3"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -28955,11 +28946,12 @@
             ]
           }
         },
-        "version": "2.48.2"
+        "version": "2.48.3"
       },
       "files": [
         "fix-netcdf-linkage.patch",
         "fix-png-linkage.patch",
+        "fix-static-dependencies.patch",
         "portfile.cmake",
         "use-external-tl-expected.patch",
         "vcpkg.json"
@@ -33643,7 +33635,7 @@
         "name": "fribidi",
         "description": "GNU FriBidi is an implementation of the Unicode Bidirectional Algorithm (bidi)",
         "homepage": "https://www.gnu.org/software/fribidi",
-        "license": "LGPL-2.1-or-later",
+        "license": "LGPL-2.1-or-later AND Unicode-3.0",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -33655,7 +33647,7 @@
             "host": true
           }
         ],
-        "version": "1.0.16"
+        "version": "1.0.17"
       },
       "files": [
         "meson-crosscompile.patch",
@@ -40355,7 +40347,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.22.5"
+        "version": "4.24.0"
       },
       "files": [
         "0001-build.patch",
@@ -40496,7 +40488,7 @@
             "host": true
           }
         ],
-        "version": "4.22.0"
+        "version": "4.24.0"
       },
       "files": [
         "portfile.cmake",
@@ -52172,7 +52164,7 @@
         "name": "libde265",
         "description": "Open h.265 video codec implementation.",
         "homepage": "https://www.libde265.org/",
-        "license": "LGPL-3.0-only",
+        "license": "LGPL-3.0-only AND DOC",
         "supports": "!uwp & !xbox",
         "dependencies": [
           {
@@ -52184,10 +52176,15 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "features": {
+          "decoder-tool": {
+            "description": "Build the dec265 decoder tool",
+            "license": "MIT AND BSD-4-Clause"
+          }
+        },
+        "version": "1.1.3"
       },
       "files": [
-        "fix-api-visibility.patch",
         "fix-linkage.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -54224,7 +54221,7 @@
             "license": "GPL-2.0-or-later"
           }
         },
-        "version": "1.23.4"
+        "version": "1.23.5"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -62202,7 +62199,7 @@
             "description": "Enable ProWizard format loaders."
           }
         },
-        "version": "4.7.2"
+        "version": "4.7.3"
       },
       "files": [
         "fix-cmake-config-dir.patch",
@@ -64758,7 +64755,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.738"
+        "version": "0.739"
       },
       "files": [
         "cmake-config-export.patch",
@@ -69740,7 +69737,7 @@
       "name": "mpi",
       "manifest": {
         "name": "mpi",
-        "port-version": 6,
+        "port-version": 7,
         "description": "Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. The standard defines the syntax and semantics of a core of library routines useful to a wide range of users writing portable message-passing programs in C, C++, and Fortran. There are several well-tested and efficient implementations of MPI, many of which are open-source or in the public domain.",
         "license": null,
         "supports": "!uwp",
@@ -73916,11 +73913,10 @@
             "host": true
           }
         ],
-        "version": "1.10.0"
+        "version": "1.10.1"
       },
       "files": [
         "001-fix-exported-targets.patch",
-        "fix-isnan.patch",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
@@ -77438,11 +77434,13 @@
       "name": "openmpi",
       "manifest": {
         "name": "openmpi",
-        "port-version": 2,
         "description": "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners. Open MPI is therefore able to combine the expertise, technologies, and resources from all across the High Performance Computing community in order to build the best MPI library available. Open MPI offers advantages for system and software vendors, application developers and computer science researchers.",
         "homepage": "https://www.open-mpi.org/",
-        "supports": "!windows",
+        "license": "BSD-3-Clause-Open-MPI AND mpich2 AND CECILL-B AND BSD-3-Clause",
+        "supports": "!windows & !android & !x86 & !arm32",
         "dependencies": [
+          "hwloc",
+          "libevent",
           {
             "name": "pkgconf",
             "host": true
@@ -77453,10 +77451,9 @@
           },
           "zlib"
         ],
-        "version": "4.1.8"
+        "version": "5.0.10"
       },
       "files": [
-        "keep_isystem.patch",
         "mpi-wrapper.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -81258,6 +81255,7 @@
       "name": "pkgconf",
       "manifest": {
         "name": "pkgconf",
+        "port-version": 1,
         "description": "pkgconf is a program which helps to configure compiler and linker flags for development libraries. It is similar to pkg-config from freedesktop.org.",
         "homepage": "https://github.com/pkgconf/pkgconf",
         "license": null,
@@ -81408,7 +81406,11 @@
         "name": "plf-queue",
         "description": "A data container replicating std::queue functionality but with better performance than standard library containers in a queue context. C++98/03/11/14/etc-compatible.",
         "homepage": "https://plflib.org/queue.htm",
-        "version": "2.2"
+        "license": "Zlib",
+        "dependencies": [
+          "plf-tools"
+        ],
+        "version": "2.0.21"
       },
       "files": [
         "portfile.cmake",
@@ -105512,7 +105514,7 @@
             "host": true
           }
         ],
-        "version": "4.2.0"
+        "version": "4.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -109452,10 +109454,10 @@
           },
           "wolfssl"
         ],
-        "version": "4.0.0"
+        "version": "4.2.0"
       },
       "files": [
-        "fix-cmake-export.patch",
+        "fix-static-consumer.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -111088,10 +111090,11 @@
         ],
         "features": {
           "xxhsum": {
-            "description": "Build the xxhsum binary"
+            "description": "Build the xxhsum binary",
+            "license": "GPL-2.0-or-later"
           }
         },
-        "version": "0.8.3"
+        "version": "0.8.4"
       },
       "files": [
         "portfile.cmake",
