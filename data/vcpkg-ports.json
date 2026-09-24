@@ -1,5 +1,5 @@
 {
-  "version": "67b9e21f86e3034657a04da429a8bf274de67925",
+  "version": "f907dc21e0e8699955b002d0fe7673de5db55fab",
   "ports": [
     {
       "name": "3fd",
@@ -1191,6 +1191,35 @@
       ]
     },
     {
+      "name": "amsozzer1-plusweb",
+      "manifest": {
+        "name": "amsozzer1-plusweb",
+        "description": "Express-style HTTP framework for C++17 built on libuv and llhttp, with a segment-trie router and a middleware chain",
+        "homepage": "https://github.com/Amsozzer1/PlusWeb",
+        "documentation": "https://amsozzer.com/projects/plusweb",
+        "license": "MIT",
+        "supports": "!windows",
+        "dependencies": [
+          "libuv",
+          "llhttp",
+          "nlohmann-json",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "anari",
       "manifest": {
         "name": "anari",
@@ -2234,7 +2263,7 @@
             ]
           }
         },
-        "version": "0.2.1"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -19312,7 +19341,6 @@
       "name": "cairo",
       "manifest": {
         "name": "cairo",
-        "port-version": 1,
         "description": "Cairo is a 2D graphics library with support for multiple output devices. Currently supported output targets include the X Window System (via both Xlib and XCB), Quartz, Win32, image buffers, PostScript, PDF, and SVG file output. Experimental backends include OpenGL, BeOS, OS/2, and DirectFB.",
         "homepage": "https://cairographics.org",
         "license": "LGPL-2.1-only OR MPL-1.1",
@@ -19378,7 +19406,7 @@
             "supports": "!windows"
           }
         },
-        "version": "1.18.4"
+        "version": "1.18.6"
       },
       "files": [
         "fix_clang-cl_build.patch",
@@ -21913,7 +21941,7 @@
           },
           {
             "name": "slick-net",
-            "version>=": "3.0.0"
+            "version>=": "4.0.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -21924,7 +21952,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "2.0.0"
       },
       "files": [
         "disable-config-fetchcontent-fallback.patch",
@@ -23272,7 +23300,7 @@
             "host": true
           }
         ],
-        "version": "0.9.4"
+        "version": "0.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -29968,7 +29996,7 @@
             "host": true
           }
         ],
-        "version": "2.8.4"
+        "version": "2.8.5"
       },
       "files": [
         "portfile.cmake",
@@ -32426,7 +32454,7 @@
             "host": true
           }
         ],
-        "version": "0.6.3"
+        "version": "0.6.4"
       },
       "files": [
         "fix_install_dir.patch",
@@ -35328,7 +35356,6 @@
       "name": "ggml",
       "manifest": {
         "name": "ggml",
-        "port-version": 1,
         "description": "Tensor library for machine learning",
         "homepage": "https://github.com/ggml-org/ggml",
         "license": "MIT",
@@ -35385,6 +35412,11 @@
                 ]
               },
               {
+                "name": "glslang",
+                "host": true,
+                "version>=": "16.1.0"
+              },
+              {
                 "name": "shaderc",
                 "host": true
               },
@@ -35393,12 +35425,10 @@
             ]
           }
         },
-        "version": "0.11.1"
+        "version": "0.24.0"
       },
       "files": [
         "cmake-config.diff",
-        "fix-dequant_funcs.diff",
-        "fix-vk-32bit.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "relax-link-options.diff",
@@ -36631,7 +36661,7 @@
             "host": true
           }
         ],
-        "version": "22.10.1"
+        "version": "22.10.2"
       },
       "files": [
         "fix-installed-header-includes.patch",
@@ -40547,18 +40577,8 @@
         "name": "gtsam",
         "description": "GTSAM is a library of C++ classes that implement smoothing and mapping (SAM) in robotics and vision, using factor graphs and Bayes networks as the underlying computing paradigm rather than sparse matrices.",
         "homepage": "https://github.com/borglab/gtsam",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND MIT AND MPL-2.0",
         "dependencies": [
-          "boost-assign",
-          "boost-chrono",
-          "boost-filesystem",
-          "boost-format",
-          "boost-graph",
-          "boost-math",
-          "boost-program-options",
-          "boost-ptr-container",
-          "boost-serialization",
-          "boost-timer",
           "eigen3",
           "metis",
           {
@@ -40571,6 +40591,17 @@
           }
         ],
         "features": {
+          "boost": {
+            "description": "Boost serialization and other remaining Boost-dependent features",
+            "dependencies": [
+              "boost-chrono",
+              "boost-graph",
+              "boost-program-options",
+              "boost-random",
+              "boost-serialization",
+              "boost-timer"
+            ]
+          },
           "tbb": {
             "description": "Use GTSAM parallelization",
             "dependencies": [
@@ -40578,11 +40609,10 @@
             ]
           }
         },
-        "version": "4.2.2"
+        "version": "4.3.0"
       },
       "files": [
         "build-fixes.patch",
-        "eigen3-fixes.patch",
         "path-fixes.patch",
         "portfile.cmake",
         "usage",
@@ -41968,7 +41998,7 @@
             ]
           }
         },
-        "version": "14.4.0"
+        "version": "14.5.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -43872,7 +43902,7 @@
             "host": true
           }
         ],
-        "version": "3.2.2"
+        "version": "3.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -52762,7 +52792,7 @@
       "name": "libevent",
       "manifest": {
         "name": "libevent",
-        "port-version": 1,
+        "port-version": 2,
         "description": "An event notification library",
         "homepage": "https://github.com/libevent/libevent",
         "license": "BSD-3-Clause",
@@ -56329,6 +56359,27 @@
       ]
     },
     {
+      "name": "libnatpmp",
+      "manifest": {
+        "name": "libnatpmp",
+        "description": "A client-side NAT traversal library implementing the NAT-PMP protocol",
+        "homepage": "http://miniupnp.free.fr/libnatpmp.html",
+        "license": "BSD-3-Clause",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version-date": "2025-04-03"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libnice",
       "manifest": {
         "name": "libnice",
@@ -59325,7 +59376,7 @@
             ]
           }
         },
-        "version": "2.8.0"
+        "version": "2.8.1"
       },
       "files": [
         "cmake-config.diff",
@@ -63229,9 +63280,12 @@
         "name": "llama-cpp",
         "description": "LLM inference in C/C++",
         "homepage": "https://github.com/ggml-org/llama.cpp",
-        "license": "MIT",
+        "license": "MIT AND Unlicense",
         "dependencies": [
-          "cpp-httplib",
+          {
+            "name": "cpp-httplib",
+            "default-features": false
+          },
           "ggml",
           "nlohmann-json",
           {
@@ -63248,23 +63302,35 @@
             "description": "Support downloading a model from an URL",
             "dependencies": [
               {
-                "name": "curl",
-                "default-features": false
+                "name": "cpp-httplib",
+                "default-features": false,
+                "features": [
+                  "openssl"
+                ]
               }
             ]
           },
           "server": {
-            "description": "Build llama-server and llama-cli"
+            "description": "Build llama-server and llama-cli",
+            "dependencies": [
+              {
+                "name": "llama-cpp",
+                "features": [
+                  "tools"
+                ]
+              }
+            ]
           },
           "tools": {
             "description": "Build tools",
             "dependencies": [
               "miniaudio",
               "stb"
-            ]
+            ],
+            "license": "BSD-2-Clause AND MIT AND LicenseRef-Public-Domain"
           }
         },
-        "version": "9030"
+        "version-semver": "0.4.1"
       },
       "files": [
         "cmake-config.diff",
@@ -64013,7 +64079,7 @@
             ]
           }
         },
-        "version": "23.1.1"
+        "version": "23.1.2"
       },
       "files": [
         "0001-fix-install-package-dir.patch",
@@ -67642,7 +67708,7 @@
             "host": true
           }
         ],
-        "version": "0.5.3"
+        "version": "0.6.0"
       },
       "files": [
         "cmake.patch",
@@ -74821,10 +74887,9 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
-        "port-version": 2,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
-        "license": "LGPL-2.0-or-later",
+        "license": "LGPL-2.0-or-later AND BSD-3-Clause AND MIT",
         "supports": "!xbox",
         "dependencies": [
           {
@@ -74859,12 +74924,13 @@
             ]
           }
         },
-        "version": "1.25.1"
+        "version": "1.25.2"
       },
       "files": [
-        "devendor-fmt.diff",
-        "fix-fmt-header.patch",
-        "pkgconfig-cxx.diff",
+        "001-devendor-fmt.patch",
+        "002-fix-non-blocking.patch",
+        "003-fix-fmt-header.patch",
+        "004-fix-libcxx-compatibility.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81170,18 +81236,23 @@
       "name": "pistache",
       "manifest": {
         "name": "pistache",
-        "port-version": 4,
-        "description": "Pistache is a modern and elegant HTTP and REST framework for C++. It is entirely written in pure-C++11 and provides a clear and pleasant API",
-        "homepage": "https://github.com/oktal/pistache",
-        "supports": "linux",
+        "description": "Pistache is a modern and elegant HTTP and REST framework for C++. It is entirely written in pure-C++17 and provides a clear and pleasant API",
+        "homepage": "https://github.com/pistacheio/pistache",
+        "license": "Apache-2.0",
+        "supports": "!android & !windows",
         "dependencies": [
+          "date",
+          {
+            "name": "libevent",
+            "platform": "osx | bsd"
+          },
           "rapidjson",
           {
             "name": "vcpkg-tool-meson",
             "host": true
           }
         ],
-        "version-date": "2021-03-31"
+        "version": "0.4.25"
       },
       "files": [
         "portfile.cmake",
@@ -82862,6 +82933,7 @@
       "name": "ppqsort",
       "manifest": {
         "name": "ppqsort",
+        "port-version": 1,
         "description": "a efficient implementation of parallel quicksort algorithm",
         "homepage": "https://gabtux.github.io/PPQSort/",
         "license": "MIT",
@@ -82883,6 +82955,7 @@
         "version": "1.0.6"
       },
       "files": [
+        "fix-semaphore-overflow.patch",
         "portfile.cmake",
         "remove-cpm.patch",
         "vcpkg.json"
@@ -85566,6 +85639,7 @@
       "name": "qt5-base",
       "manifest": {
         "name": "qt5-base",
+        "port-version": 1,
         "description": "Qt Base provides the basic non-GUI functionality required by all Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -86871,7 +86945,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -87619,6 +87693,7 @@
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
+        "md4c.diff",
         "moltenvk.patch",
         "port.data.cmake",
         "portfile.cmake",
@@ -95341,7 +95416,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.16.8"
+        "version": "0.17.0"
       },
       "files": [
         "fix-cmake4.patch",
@@ -97123,6 +97198,34 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "slick-perfmon",
+      "manifest": {
+        "name": "slick-perfmon",
+        "description": "Header-only C++20 latency measurement for code that cannot afford to be measured. ~200 cycles per stamp: one RDTSC read and a 16-byte publish to a lock-free MPMC ring. Pairing, Welford stats, histogram percentiles and file I/O happen on a collector thread or in a separate process.",
+        "homepage": "https://github.com/SlickQuant/slick-perfmon",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "slick-queue",
+          "slick-shm",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "slick-dependencies.patch",
         "vcpkg.json"
       ]
     },
@@ -103841,7 +103944,6 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
-        "port-version": 1,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -103865,7 +103967,7 @@
         ],
         "features": {
           "cli-tools": {
-            "description": "Build Tracy command-line tools: `capture`, `csvexport`, `import-chrome`, `import-fuchsia` and `update`",
+            "description": "Build Tracy command-line tools: `capture`, `capture-daemon`, `csvexport`, `import-chrome`, `import-fuchsia`, `merge` and `update`",
             "dependencies": [
               {
                 "name": "capstone",
@@ -103921,7 +104023,8 @@
               "usearch",
               "zstd"
             ],
-            "supports": "!(windows & x86)"
+            "supports": "!(windows & x86)",
+            "license": "MIT"
           },
           "on-demand": {
             "description": "Enable on-demand profiling"
@@ -103931,13 +104034,14 @@
             "supports": "!android"
           }
         },
-        "version": "0.13.1"
+        "version": "0.14.1"
       },
       "files": [
         "build-tools.patch",
         "downgrade-capstone-5.patch",
-        "fix-imgui-patch.patch",
+        "fix-debug-install-dirs.patch",
         "fix-vendor-versions.patch",
+        "imgui-loader.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
