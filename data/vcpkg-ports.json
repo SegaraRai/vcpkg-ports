@@ -1,5 +1,5 @@
 {
-  "version": "e143402b5545bab137cc465225a82da63cb2148f",
+  "version": "617ef1c0c422737d117eda00a471ea1be5bad088",
   "ports": [
     {
       "name": "3fd",
@@ -21879,7 +21879,7 @@
       "name": "coin-or-ipopt",
       "manifest": {
         "name": "coin-or-ipopt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Ipopt (Interior Point OPTimizer, pronounced eye-pea-Opt) is a software package for large-scale nonlinear optimization",
         "homepage": "https://github.com/coin-or/Ipopt",
         "license": "EPL-2.0",
@@ -21891,9 +21891,24 @@
             "host": true
           }
         ],
+        "default-features": [
+          {
+            "name": "mumps",
+            "platform": "!android & !ios & !emscripten & !uwp & !(windows & arm) & !(windows & !mingw & static)"
+          }
+        ],
+        "features": {
+          "mumps": {
+            "description": "Use the MUMPS sparse linear solver, required for Ipopt to solve problems",
+            "dependencies": [
+              "mumps-solver"
+            ]
+          }
+        },
         "version-date": "2023-02-01"
       },
       "files": [
+        "find-vcpkg-mumps.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -23721,11 +23736,23 @@
       "name": "cppwinrt",
       "manifest": {
         "name": "cppwinrt",
+        "port-version": 1,
         "description": "C++/WinRT is a standard C++ language projection for the Windows Runtime.",
         "homepage": "https://github.com/microsoft/cppwinrt",
         "documentation": "https://docs.microsoft.com/windows/uwp/cpp-and-winrt-apis/",
         "license": "MIT",
         "supports": "windows",
+        "features": {
+          "fastabi": {
+            "description": "Enables Fast ABI feature for both consuming and producing projections."
+          },
+          "modules": {
+            "description": "Provides C++ modules for C++/WinRT. The modules are named winrt.Ns.X."
+          },
+          "windowsapp": {
+            "description": "Links the WindowsApp.lib umbrella library for Windows Runtime."
+          }
+        },
         "version": "3.0.260818.1"
       },
       "files": [
@@ -33341,7 +33368,7 @@
         "name": "freerdp",
         "description": "A free implementation of the Remote Desktop Protocol (RDP)",
         "homepage": "https://github.com/FreeRDP/FreeRDP",
-        "license": "Apache-2.0 AND BSD-3-Clause",
+        "license": "Apache-2.0 AND BSD-3-Clause AND LicenseRef-Public-Domain",
         "supports": "!uwp & (!bsd | freebsd)",
         "dependencies": [
           "cjson",
@@ -33412,13 +33439,15 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.31.1"
+        "version": "3.32.0"
       },
       "files": [
         "cmake-project-include.cmake",
         "dependencies.patch",
         "ffmpeg.diff",
         "fix-aom-target.patch",
+        "fix-cjson-config.patch",
+        "fix-windows-pkgconfig.patch",
         "install-layout.patch",
         "portfile.cmake",
         "vcpkg.json",
@@ -42125,9 +42154,10 @@
             ]
           }
         },
-        "version": "5.7.0"
+        "version": "5.7.1"
       },
       "files": [
+        "define-boost-thread-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -49887,6 +49917,7 @@
       "name": "kwindowsystem",
       "manifest": {
         "name": "kwindowsystem",
+        "port-version": 1,
         "description": "Access to the windowing system",
         "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
         "documentation": "https://api.kde.org/kwindowsystem-index.html",
@@ -49898,7 +49929,15 @@
           },
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "future",
+              "gui",
+              {
+                "name": "xcb",
+                "platform": "linux"
+              }
+            ]
           },
           {
             "name": "qtwayland",
@@ -49945,6 +49984,7 @@
       },
       "files": [
         "001_guard_ecm_qml_module_include.patch",
+        "002_use_wayland_xml_from_qt.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51350,7 +51390,7 @@
             "host": true
           }
         ],
-        "version": "2.3.2"
+        "version": "2.5.5"
       },
       "files": [
         "fix-include-directory.patch",
@@ -69224,7 +69264,6 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
-        "port-version": 2,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": "Apache-2.0",
@@ -69269,10 +69308,9 @@
             ]
           }
         },
-        "version": "2.3.1"
+        "version": "2.5.5"
       },
       "files": [
-        "cmake-4.4.patch",
         "disable-dynamic-when-static.patch",
         "fix-dependencies.patch",
         "fix-include-directory.patch",
@@ -70515,6 +70553,61 @@
       ]
     },
     {
+      "name": "mumps-solver",
+      "manifest": {
+        "name": "mumps-solver",
+        "description": "MUMPS (MUltifrontal Massively Parallel sparse direct Solver) solves systems of linear equations Ax = b where A is a square sparse matrix",
+        "homepage": "https://mumps-solver.org/",
+        "license": "CECILL-C AND BSD-3-Clause AND LicenseRef-Public-Domain AND MIT",
+        "supports": "!android & !ios & !emscripten & !uwp & !(windows & arm) & !(windows & !mingw & static)",
+        "dependencies": [
+          "blas",
+          "lapack",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-gfortran",
+            "platform": "windows & !mingw"
+          }
+        ],
+        "default-features": [
+          "double"
+        ],
+        "features": {
+          "complex": {
+            "description": "Build single precision complex (cmumps) interface"
+          },
+          "complex-double": {
+            "description": "Build double precision complex (zmumps) interface"
+          },
+          "double": {
+            "description": "Build double precision real (dmumps) interface"
+          },
+          "single": {
+            "description": "Build single precision real (smumps) interface"
+          }
+        },
+        "version": "5.9.1"
+      },
+      "files": [
+        "export-fortran-runtime.patch",
+        "install-mpiseq-headers-in-subdir.patch",
+        "link-blas-explicitly.patch",
+        "portfile.cmake",
+        "unofficial-cmake-exports.patch",
+        "unofficial-mumps-solver-pkgconfig.patch",
+        "usage",
+        "use-vcpkg-lapack.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "munit",
       "manifest": {
         "name": "munit",
@@ -70660,11 +70753,10 @@
       "name": "mxml",
       "manifest": {
         "name": "mxml",
-        "port-version": 1,
         "description": "A tiny xml parsing library",
         "homepage": "https://github.com/michaelrsweet/mxml",
         "license": "Apache-2.0",
-        "supports": "!(windows & (uwp | static | arm))",
+        "supports": "!(windows & (uwp | static | arm32))",
         "dependencies": [
           {
             "name": "vcpkg-make",
@@ -70677,7 +70769,7 @@
             "platform": "windows & !mingw"
           }
         ],
-        "version": "4.0.4"
+        "version": "4.0.6"
       },
       "files": [
         "portfile.cmake",
@@ -71065,7 +71157,7 @@
             "host": true
           }
         ],
-        "version": "1.13.0"
+        "version": "1.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -78074,6 +78166,7 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
+        "port-version": 1,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -78181,6 +78274,7 @@
         "version-semver": "1.29.0"
       },
       "files": [
+        "fix-missing-cstdint.patch",
         "fix-span-limits-32-bit.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -85067,7 +85161,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "portfile.cmake",
@@ -85115,7 +85209,6 @@
       "name": "qt3d",
       "manifest": {
         "name": "qt3d",
-        "port-version": 1,
         "description": "Qt 3D provides a fully configurable renderer that enables developers to quickly implement any rendering pipeline that they need.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -85227,7 +85320,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -86832,7 +86925,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -86874,7 +86967,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -86959,7 +87052,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -86972,7 +87065,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 3,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -87092,6 +87184,10 @@
           "testlib",
           "thread",
           "widgets",
+          {
+            "name": "windeployqt",
+            "platform": "windows"
+          },
           {
             "name": "xcb",
             "platform": "linux"
@@ -87694,11 +87790,10 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "GLIB2-static.patch",
-        "QTBUG-145703.patch",
         "allow_outside_prefix.patch",
         "clang-cl_QGADGET_fix.diff",
         "clang-cl_source_location.patch",
@@ -87772,7 +87867,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87796,7 +87891,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87829,7 +87924,7 @@
             "platform": "!(windows & static) & !android & !ios"
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87859,7 +87954,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87895,7 +87990,7 @@
           },
           "qtsvg"
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87921,7 +88016,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87942,7 +88037,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -87976,7 +88071,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88010,7 +88105,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88036,7 +88131,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88088,7 +88183,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "no_target_promotion_latest.patch",
@@ -88137,7 +88232,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88252,7 +88347,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88292,7 +88387,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88330,7 +88425,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "fix_qt_version.patch",
@@ -88355,7 +88450,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88503,12 +88598,11 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "ffmpeg-devendor-signalsmith-stretch.patch",
         "ffmpeg.patch",
-        "fix-msvc-x86-propvariant.patch",
         "port.data.cmake",
         "portfile.cmake",
         "remove-static-ssl-stub.patch",
@@ -88532,7 +88626,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88607,7 +88701,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "fix-build.patch",
@@ -88646,7 +88740,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -88694,7 +88788,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -88717,7 +88811,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88754,7 +88848,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88776,7 +88870,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88827,7 +88921,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88867,7 +88961,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88911,7 +89005,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88944,7 +89038,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88966,7 +89060,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -88995,7 +89089,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89029,7 +89123,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89054,7 +89148,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89066,7 +89160,6 @@
       "name": "qttools",
       "manifest": {
         "name": "qttools",
-        "port-version": 1,
         "description": "A collection of tools and utilities that come with the Qt framework to assist developers in the creation, management, and deployment of Qt applications.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -89183,7 +89276,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -89214,7 +89307,7 @@
             ]
           }
         ],
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89257,7 +89350,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -89295,7 +89388,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89327,7 +89420,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89339,7 +89432,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 2,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io/",
         "license": null,
@@ -89578,7 +89670,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "clang-cl.patch",
@@ -89625,7 +89717,7 @@
             ]
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -89669,7 +89761,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.11.1"
+        "version": "6.11.2"
       },
       "files": [
         "port.data.cmake",
@@ -105889,52 +105981,6 @@
       ]
     },
     {
-      "name": "v8",
-      "manifest": {
-        "name": "v8",
-        "port-version": 8,
-        "description": "Google Chrome's JavaScript engine",
-        "homepage": "https://v8.dev",
-        "license": "BSD-3-Clause",
-        "supports": "!(arm | arm64 | uwp | osx | linux)",
-        "dependencies": [
-          {
-            "name": "glib",
-            "platform": "linux"
-          },
-          "icu",
-          {
-            "name": "pthread",
-            "platform": "linux"
-          },
-          {
-            "name": "vcpkg-gn",
-            "host": true
-          },
-          {
-            "name": "vcpkg-tool-python2",
-            "host": true
-          },
-          "zlib"
-        ],
-        "version": "9.1.269.39"
-      },
-      "files": [
-        "V8Config-shared.cmake",
-        "V8Config-static.cmake",
-        "build.patch",
-        "icu.gn",
-        "portfile.cmake",
-        "v8.patch",
-        "v8.pc.in",
-        "v8_libbase.pc.in",
-        "v8_libplatform.pc.in",
-        "v8_monolith.pc.in",
-        "vcpkg.json",
-        "zlib.gn"
-      ]
-    },
-    {
       "name": "valijson",
       "manifest": {
         "name": "valijson",
@@ -107169,7 +107215,6 @@
       "name": "vowpal-wabbit",
       "manifest": {
         "name": "vowpal-wabbit",
-        "port-version": 1,
         "description": "Reduction based online learning framework with a focus on contextual bandits and reinforcement learning.",
         "homepage": "https://github.com/vowpalwabbit/vowpal_wabbit",
         "license": "BSD-3-Clause",
@@ -107196,11 +107241,10 @@
           },
           "zlib"
         ],
-        "version": "9.11.2"
+        "version": "9.11.6"
       },
       "files": [
         "fix-android-build.patch",
-        "fix-fmt-header.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
