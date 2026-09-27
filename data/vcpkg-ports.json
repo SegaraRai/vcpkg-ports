@@ -1,5 +1,5 @@
 {
-  "version": "617ef1c0c422737d117eda00a471ea1be5bad088",
+  "version": "07f4812200df3d3c931c0c8a6081d3b21fe2bf9f",
   "ports": [
     {
       "name": "3fd",
@@ -2999,10 +2999,9 @@
       "name": "assimp",
       "manifest": {
         "name": "assimp",
-        "port-version": 3,
         "description": "The Open Asset import library",
         "homepage": "https://github.com/assimp/assimp",
-        "license": "BSD-3-Clause",
+        "license": "BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT",
         "dependencies": [
           "jhasse-poly2tri",
           "kubazip",
@@ -3030,7 +3029,7 @@
             ]
           }
         },
-        "version": "6.0.4"
+        "version": "6.0.5"
       },
       "files": [
         "build_fixes.patch",
@@ -4692,6 +4691,9 @@
           "cloudtrail-data": {
             "description": "C++ SDK for the AWS cloudtrail-data service"
           },
+          "cloudwatchomni": {
+            "description": "C++ SDK for the AWS cloudwatchomni service"
+          },
           "codeartifact": {
             "description": "C++ SDK for the AWS codeartifact service"
           },
@@ -4919,6 +4921,9 @@
           },
           "eventbridge": {
             "description": "C++ SDK for the AWS eventbridge service"
+          },
+          "eventbridgev2": {
+            "description": "C++ SDK for the AWS eventbridgev2 service"
           },
           "events": {
             "description": "C++ SDK for the AWS events service"
@@ -5301,6 +5306,9 @@
           },
           "network-firewall": {
             "description": "C++ SDK for the AWS network-firewall service"
+          },
+          "network-security-manager": {
+            "description": "C++ SDK for the AWS network-security-manager service"
           },
           "networkflowmonitor": {
             "description": "C++ SDK for the AWS networkflowmonitor service"
@@ -5829,7 +5837,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.880"
+        "version": "1.11.900"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -7002,6 +7010,7 @@
       "name": "basisu",
       "manifest": {
         "name": "basisu",
+        "port-version": 1,
         "description": "Basis Universal is a supercompressed GPU texture and video compression format that outputs a highly compressed intermediate file format (.basis) that can be quickly transcoded to a wide variety of GPU texture compression formats.",
         "homepage": "https://github.com/BinomialLLC/basis_universal",
         "license": null,
@@ -8070,7 +8079,7 @@
             ]
           }
         },
-        "version": "3.3.4"
+        "version": "3.3.5"
       },
       "files": [
         "pkgconfig-dependencies.patch",
@@ -25942,7 +25951,7 @@
         "name": "daw-header-libraries",
         "description": "Set of header-only algorithms used in daw-utf8-range and daw-json-link.",
         "homepage": "https://github.com/beached/header_libraries",
-        "license": "BSL-1.0",
+        "license": "BSL-1.0 AND Apache-2.0 WITH LLVM-exception",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -25953,7 +25962,7 @@
             "host": true
           }
         ],
-        "version": "2.135.0"
+        "version": "2.136.0"
       },
       "files": [
         "portfile.cmake",
@@ -25978,7 +25987,7 @@
             "host": true
           }
         ],
-        "version": "3.36.0"
+        "version": "3.38.1"
       },
       "files": [
         "portfile.cmake",
@@ -29002,7 +29011,7 @@
             ]
           }
         },
-        "version": "2.48.3"
+        "version": "2.49.0"
       },
       "files": [
         "fix-netcdf-linkage.patch",
@@ -46271,6 +46280,37 @@
       ]
     },
     {
+      "name": "kalshi-cpp",
+      "manifest": {
+        "name": "kalshi-cpp",
+        "description": "C++23 client for Kalshi's Predictions API: every REST operation and WebSocket channel.",
+        "homepage": "https://github.com/Reddimus/kalshi-cpp",
+        "documentation": "https://reddimus.github.io/kalshi-cpp/",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "curl",
+          "glaze",
+          "libwebsockets",
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.6.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kangaru",
       "manifest": {
         "name": "kangaru",
@@ -50256,7 +50296,7 @@
           "LCM is a set of libraries and tools for message passing and data marshalling, targeted at real-time systems where high-bandwidth and low latency are critical. It provides a publish/subscribe message passing model and automatic marshalling/unmarshalling code generation with bindings for applications in a variety of programming languages."
         ],
         "homepage": "https://github.com/lcm-proj/lcm",
-        "license": "LGPL-2.1-or-later",
+        "license": "LGPL-2.1-or-later AND BSD-3-Clause",
         "supports": "!osx & !xbox",
         "dependencies": [
           "glib",
@@ -50269,7 +50309,7 @@
             "host": true
           }
         ],
-        "version": "1.5.2"
+        "version": "1.5.3"
       },
       "files": [
         "disable-docs.patch",
@@ -56422,6 +56462,39 @@
       ]
     },
     {
+      "name": "libnfs",
+      "manifest": {
+        "name": "libnfs",
+        "description": "Client library for accessing NFS shares over a network",
+        "homepage": "https://github.com/sahlberg/libnfs",
+        "license": "LGPL-2.1-or-later AND BSD-2-Clause AND MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "multithreading": {
+            "description": "Enable libnfs multithreading support"
+          }
+        },
+        "version-semver": "8.0.0"
+      },
+      "files": [
+        "fix-android-pthread-detection.patch",
+        "fix-cmake-target-interface.patch",
+        "fix-win32-header-detection.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "libnice",
       "manifest": {
         "name": "libnice",
@@ -60194,7 +60267,7 @@
             "supports": "!xbox"
           }
         },
-        "version": "2.1.1"
+        "version": "2.1.2"
       },
       "files": [
         "fix-shared-extra-exports.patch",
@@ -61500,6 +61573,7 @@
       "name": "libwebsockets",
       "manifest": {
         "name": "libwebsockets",
+        "port-version": 1,
         "description": "Libwebsockets is a lightweight pure C library built to use minimal CPU and memory resources, and provide fast throughput in both directions as client or server.",
         "homepage": "https://libwebsockets.org/",
         "license": "MIT",
@@ -63275,7 +63349,7 @@
         "name": "live555",
         "description": "A complete RTSP server application",
         "homepage": "http://www.live555.com/liveMedia",
-        "license": "GPL-3.0-or-later",
+        "license": "LGPL-3.0-or-later",
         "supports": "!xbox",
         "dependencies": [
           "openssl",
@@ -63288,12 +63362,10 @@
             "host": true
           }
         ],
-        "version-date": "2026-03-23"
+        "version-date": "2026-09-23"
       },
       "files": [
         "CMakeLists.txt",
-        "fix-RTSPClient.patch",
-        "fix_operator_overload.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66520,10 +66592,11 @@
             "host": true
           }
         ],
-        "version": "3.5.3"
+        "version": "3.5.4"
       },
       "files": [
         "fix-pkgconfig-cflags.patch",
+        "fix-pkgconfig-requires-private.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -67997,12 +68070,25 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 4,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org/",
-        "license": "MIT AND BSL-1.0 AND SGI-B-2.0",
+        "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
         "supports": "!(windows & arm) & !staticcrt & !uwp",
         "dependencies": [
+          {
+            "name": "directx-headers",
+            "platform": "windows"
+          },
+          {
+            "name": "llvm",
+            "default-features": false,
+            "features": [
+              "enable-rtti",
+              "target-x86",
+              "tools"
+            ],
+            "platform": "windows"
+          },
           {
             "name": "vcpkg-get-python-packages",
             "host": true
@@ -68019,7 +68105,7 @@
           "gles2",
           {
             "name": "llvm",
-            "platform": "x64"
+            "platform": "(x64 | x86) & !android"
           }
         ],
         "features": {
@@ -68057,7 +68143,6 @@
                 "default-features": false,
                 "features": [
                   "enable-rtti",
-                  "libclc",
                   "tools"
                 ]
               },
@@ -68081,22 +68166,25 @@
                 "name": "llvm",
                 "default-features": false,
                 "features": [
+                  "libclc"
+                ],
+                "platform": "!windows"
+              },
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
                   "target-x86"
                 ],
                 "platform": "x64 | x86"
               }
             ]
-          },
-          "offscreen": {
-            "description": "Build with support for offscreen rendering (OSMesa)",
-            "dependencies": [
-              "opengl"
-            ]
           }
         },
-        "version": "24.0.7"
+        "version": "26.2.3"
       },
       "files": [
+        "001-windows-gles-dispatch.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -68149,7 +68237,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.2"
+        "version": "1.3"
       },
       "files": [
         "dependencies.diff",
@@ -73135,7 +73223,6 @@
       "name": "numcpp",
       "manifest": {
         "name": "numcpp",
-        "port-version": 1,
         "description": "C++ implementation of the Python Numpy library",
         "homepage": "https://dpilger26.github.io/NumCpp",
         "license": "MIT",
@@ -73173,7 +73260,7 @@
             ]
           }
         },
-        "version": "2.16.1"
+        "version": "2.17.0"
       },
       "files": [
         "fix-boost-config.patch",
@@ -77503,7 +77590,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.31.0"
+        "version": "0.32.0"
       },
       "files": [
         "fix-pkgconfig-library-name.patch",
@@ -79732,7 +79819,6 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
-        "port-version": 3,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
@@ -79767,14 +79853,11 @@
             ]
           }
         },
-        "version": "2.19.1"
+        "version": "2.20.0"
       },
       "files": [
         "0001-doxygen.patch",
-        "0002-find-tbb.patch",
         "0003-disable-werror.patch",
-        "0004-support-eigen3-5.patch",
-        "0005-avoid-stdext-checked-array-iterator.diff",
         "0006-config-find-libipopt.patch",
         "0007-ipopt-transitive-deps.patch",
         "0008-ipopt-header-search.patch",
@@ -81373,7 +81456,7 @@
             "host": true
           }
         ],
-        "version": "0.4.25"
+        "version": "0.4.26"
       },
       "files": [
         "portfile.cmake",
@@ -85692,6 +85775,7 @@
       "name": "qt5-3d",
       "manifest": {
         "name": "qt5-3d",
+        "port-version": 1,
         "description": "Qt 3D provides functionality for near-realtime simulation systems with support for 2D and 3D rendering in both Qt C++ and Qt Quick applications.",
         "license": null,
         "dependencies": [
@@ -85711,6 +85795,7 @@
         "version": "5.15.19"
       },
       "files": [
+        "assimp-config-test-cxx17.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -97214,7 +97299,7 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "2.0.0"
+            "version>=": "2.1.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -97225,7 +97310,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -100353,7 +100438,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.14.0"
+        "version-semver": "0.17.1"
       },
       "files": [
         "portfile.cmake",
@@ -105712,7 +105797,7 @@
             "host": true
           }
         ],
-        "version": "2.11.3"
+        "version": "2.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -110810,7 +110895,7 @@
             "host": true
           }
         ],
-        "version": "0.2.36"
+        "version": "0.2.37"
       },
       "files": [
         "fix-dependencies.patch",
