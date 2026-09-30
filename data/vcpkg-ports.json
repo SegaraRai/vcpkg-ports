@@ -1,5 +1,5 @@
 {
-  "version": "58845ed63eb19aff55e896ea1f5d51f2a0df5b66",
+  "version": "b3ae22aef2b857af6e80d756c13f15db12be4e8a",
   "ports": [
     {
       "name": "3fd",
@@ -24664,7 +24664,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.29.0"
+        "version-semver": "1.30.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -30008,7 +30008,7 @@
             ]
           }
         },
-        "version": "0.28.8"
+        "version": "0.28.9"
       },
       "files": [
         "dependencies.diff",
@@ -30852,6 +30852,20 @@
         "fix-fmt-include.patch",
         "fix-test.patch",
         "folly-has-liburing.diff",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "fcftest",
+      "manifest": {
+        "name": "fcftest",
+        "description": "fcfTest is a lightweight C++ (>= C++11) unit testing framework. Modern, zero-dependency, header-only cpp unittest library for TDD.",
+        "homepage": "https://github.com/fcf-framework/fcfTest",
+        "license": "MIT",
+        "version": "1.2.5"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -32456,7 +32470,7 @@
         "name": "flatbush",
         "description": "A C++11 header-only single file port of Flatbush",
         "homepage": "https://github.com/chusitoo/flatbush",
-        "license": "MIT",
+        "license": "MIT AND BSL-1.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -32467,7 +32481,7 @@
             "host": true
           }
         ],
-        "version": "1.4.1"
+        "version": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -33448,7 +33462,7 @@
             "supports": "!android & !ios & !windows & !osx"
           }
         },
-        "version": "3.32.0"
+        "version": "3.32.1"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -36100,7 +36114,7 @@
             ]
           }
         },
-        "version": "8.4.0"
+        "version": "9.0.0"
       },
       "files": [
         "001-fix-asio.patch",
@@ -43261,10 +43275,11 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "1.7.3"
+        "version": "1.7.4"
       },
       "files": [
         "0005-autotools-subdirs.patch",
+        "ax_cxx_compile_stdcxx.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45901,7 +45916,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -51090,7 +51105,7 @@
             ]
           }
         },
-        "version": "3.8.8"
+        "version": "3.8.9"
       },
       "files": [
         "fix-buildsystem.patch",
@@ -52209,7 +52224,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.24.5"
+        "version-semver": "0.24.6"
       },
       "files": [
         "dependencies.diff",
@@ -54551,11 +54566,10 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "1.7.1"
       },
       "files": [
         "portfile.cmake",
-        "real16.patch",
         "vcpkg.json"
       ]
     },
@@ -55012,7 +55026,6 @@
       "name": "libjuice",
       "manifest": {
         "name": "libjuice",
-        "port-version": 1,
         "description": "The library is a simplified implementation of the Interactive Connectivity Establishment (ICE) protocol in C for POSIX platforms (including Linux and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libjuice",
         "license": "MPL-2.0",
@@ -55034,12 +55047,11 @@
             ]
           }
         },
-        "version": "1.7.2"
+        "version": "1.7.4"
       },
       "files": [
         "dependencies.diff",
         "portfile.cmake",
-        "soversion.diff",
         "vcpkg.json"
       ]
     },
@@ -55047,7 +55059,6 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -55072,11 +55083,9 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "0.11.2"
+        "version-semver": "0.12.0"
       },
       "files": [
-        "avoid-exe-linker-flags.patch",
-        "disambiguate-pow-calls.patch",
         "fix-dependencies.patch",
         "msvc-remove-libm.patch",
         "portfile.cmake",
@@ -56711,7 +56720,7 @@
         "description": "Guaranteed compile-time string literal obfuscation header-only library for C++14.",
         "homepage": "https://github.com/adamyaxley/Obfuscate",
         "license": "Unlicense",
-        "version-date": "2024-07-10"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -61152,7 +61161,7 @@
             ]
           }
         },
-        "version": "8.18.5"
+        "version": "8.18.7"
       },
       "files": [
         "portfile.cmake",
@@ -64936,11 +64945,10 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.739"
+        "version": "0.740"
       },
       "files": [
         "cmake-config-export.patch",
-        "fix-unittest.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65208,6 +65216,37 @@
         "version-date": "2023-10-22"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "mach",
+      "manifest": {
+        "name": "mach",
+        "description": "A modern C++20 web framework designed for performance, type safety, and a great developer experience.",
+        "homepage": "https://machframework.dev",
+        "license": "MIT AND BSL-1.0",
+        "dependencies": [
+          "boost-asio",
+          "boost-beast",
+          "fmt",
+          "nlohmann-json",
+          "spdlog",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.0.0"
+      },
+      "files": [
+        "LICENSE-BSL-1.0.txt",
+        "fix-build-configuration.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84908,7 +84947,7 @@
             ]
           }
         },
-        "version": "12.4.0"
+        "version": "12.4.2"
       },
       "files": [
         "cmake-library-only.patch",
@@ -96558,7 +96597,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "4.6.11"
+        "version": "5.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -97310,7 +97349,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -99315,7 +99354,7 @@
       "name": "sqlite3",
       "manifest": {
         "name": "sqlite3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "SQLite is a software library that implements a self-contained, serverless, zero-configuration, transactional SQL database engine.",
         "homepage": "https://sqlite.org/",
         "license": "blessing",
@@ -102334,10 +102373,11 @@
             ]
           }
         },
-        "version": "5.5.2"
+        "version": "5.5.3"
       },
       "files": [
         "fix-link-include-path.patch",
+        "fix-msvc-training-tools.patch",
         "fix_static_link_icu.patch",
         "portfile.cmake",
         "target-curl.diff",
@@ -105345,7 +105385,7 @@
             "host": true
           }
         ],
-        "version": "5.0.1"
+        "version": "5.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -106418,6 +106458,7 @@
       "name": "vcpkg-make",
       "manifest": {
         "name": "vcpkg-make",
+        "port-version": 1,
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_make_configure",
         "license": null,
         "supports": "native",
@@ -107326,7 +107367,7 @@
           },
           "zlib"
         ],
-        "version": "9.11.6"
+        "version": "9.11.9"
       },
       "files": [
         "fix-android-build.patch",
@@ -108880,7 +108921,6 @@
       "name": "wcslib",
       "manifest": {
         "name": "wcslib",
-        "port-version": 1,
         "description": "World Coordinate System (WCS) (Library)",
         "homepage": "https://www.atnf.csiro.au/people/mcalabre/WCS/",
         "supports": "!windows",
@@ -108890,7 +108930,7 @@
             "host": true
           }
         ],
-        "version": "8.5"
+        "version": "8.10"
       },
       "files": [
         "portfile.cmake",
@@ -109688,7 +109728,7 @@
             "description": "Enables callback to provide TLS keys for debugging"
           }
         },
-        "version": "5.9.2"
+        "version": "5.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -112191,6 +112231,22 @@
       ]
     },
     {
+      "name": "zimg",
+      "manifest": {
+        "name": "zimg",
+        "description": "Scaling, colorspace conversion, and dithering library",
+        "homepage": "https://github.com/sekrit-twc/zimg",
+        "license": "WTFPL",
+        "version": "3.0.6"
+      },
+      "files": [
+        "fix-unsupported-compiler-flag.patch",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "zimpl",
       "manifest": {
         "name": "zimpl",
@@ -112594,7 +112650,7 @@
         "dependencies": [
           "zlib"
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
