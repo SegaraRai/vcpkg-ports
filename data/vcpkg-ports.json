@@ -1,5 +1,5 @@
 {
-  "version": "b3ae22aef2b857af6e80d756c13f15db12be4e8a",
+  "version": "4a1c77189c64dae7afd478333a64d1e604d5dc91",
   "ports": [
     {
       "name": "3fd",
@@ -311,7 +311,7 @@
             ]
           }
         },
-        "version": "8.0.7"
+        "version": "8.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -4280,7 +4280,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -23026,7 +23026,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.17.0"
+        "version": "1.18.0"
       },
       "files": [
         "portfile.cmake",
@@ -28649,7 +28649,7 @@
             "host": true
           }
         ],
-        "version": "3.2.3"
+        "version": "3.2.4"
       },
       "files": [
         "disable-tools.patch",
@@ -44502,7 +44502,7 @@
         "description": "Single-header INI file reader and writer for modern C++ (C++17), with type-aware getters and sensible defaults",
         "homepage": "https://github.com/SSARCandy/ini-cpp",
         "license": "BSD-3-Clause",
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -63134,13 +63134,14 @@
           "A fast, distributed, high performance gradient boosting (GBT, GBDT, GBRT, GBM or MART) framework based on decision tree algorithms.",
           "Designed to be distributed and efficient and comes with faster training speeds, higher efficiency, lower memory usage and support of parallel, distributed, and GPU learning."
         ],
-        "homepage": "https://github.com/microsoft/LightGBM",
-        "license": "Apache-2.0",
+        "homepage": "https://github.com/lightgbm-org/LightGBM",
+        "license": "MIT",
         "supports": "!android & !osx & !uwp",
         "dependencies": [
           "eigen3",
           "fast-double-parser",
           "fmt",
+          "nanoarrow",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -63161,7 +63162,7 @@
             "description": "Support for multi-threading using OpenMP"
           }
         },
-        "version": "4.5.0"
+        "version": "4.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -91230,7 +91231,6 @@
       "name": "redisx",
       "manifest": {
         "name": "redisx",
-        "port-version": 1,
         "description": "A free and independent Redis / Valkey client library for C/C++",
         "homepage": "https://sigmyne.github.io/redisx/",
         "documentation": "https://sigmyne.github.io/redisx/doc/html/",
@@ -91238,7 +91238,7 @@
         "dependencies": [
           {
             "name": "libxchange",
-            "version>=": "1.2.0#1"
+            "version>=": "1.3.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -91250,6 +91250,10 @@
           }
         ],
         "features": {
+          "parallel-cluster": {
+            "description": "Parallelized cluster connect / disconnect with OpenMP",
+            "supports": "!(osx & arm64)"
+          },
           "tls": {
             "description": "TLS encryption support",
             "dependencies": [
@@ -91257,10 +91261,9 @@
             ]
           }
         },
-        "version": "1.0.4"
+        "version": "1.1.0"
       },
       "files": [
-        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -98899,7 +98902,7 @@
             "host": true
           }
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -104188,6 +104191,7 @@
       "name": "tracy",
       "manifest": {
         "name": "tracy",
+        "port-version": 1,
         "description": "A real time, nanosecond resolution, remote telemetry, hybrid frame and sampling profiler for games and other applications.",
         "homepage": "https://github.com/wolfpld/tracy",
         "license": "BSD-3-Clause",
@@ -105385,7 +105389,7 @@
             "host": true
           }
         ],
-        "version": "5.1.0"
+        "version": "5.2.0"
       },
       "files": [
         "portfile.cmake",
