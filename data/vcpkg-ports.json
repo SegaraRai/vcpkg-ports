@@ -1,5 +1,5 @@
 {
-  "version": "4a1c77189c64dae7afd478333a64d1e604d5dc91",
+  "version": "fdd4e6059c803f56bb5df86e285bf374d9d44407",
   "ports": [
     {
       "name": "3fd",
@@ -3937,6 +3937,7 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
+        "port-version": 1,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
@@ -3974,6 +3975,7 @@
       },
       "files": [
         "fix-cmake.patch",
+        "fix-fmt12-include.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -23279,31 +23281,6 @@
       ]
     },
     {
-      "name": "cppdap",
-      "manifest": {
-        "name": "cppdap",
-        "description": "A C++11 library (\"SDK\") implementation of the Debug Adapter Protocol, providing an API for implementing a DAP client or server.",
-        "homepage": "https://github.com/google/cppdap",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "nlohmann-json",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version-semver": "1.58.0-a"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "cppduals",
       "manifest": {
         "name": "cppduals",
@@ -40801,7 +40778,7 @@
         "name": "gumbo",
         "description": "An HTML5 parsing library in pure C99",
         "homepage": "https://codeberg.org/gumbo-parser/gumbo-parser",
-        "license": "Apache-2.0",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -40812,7 +40789,7 @@
             "host": true
           }
         ],
-        "version": "0.14.0"
+        "version": "0.14.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -43435,6 +43412,112 @@
       "files": [
         "CMakeLists.txt",
         "LICENSE",
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "iceberg-cpp",
+      "manifest": {
+        "name": "iceberg-cpp",
+        "description": "C++ implementation of Apache Iceberg",
+        "homepage": "https://github.com/apache/iceberg-cpp",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          "nanoarrow",
+          "nlohmann-json",
+          "roaring",
+          "spdlog",
+          "utf8proc",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "default-features": [
+          "bundle"
+        ],
+        "features": {
+          "bundle": {
+            "description": "Build the bundle library with Arrow, Parquet and Avro file format support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "filesystem",
+                  "json",
+                  "parquet"
+                ]
+              },
+              "avro-cpp"
+            ]
+          },
+          "rest": {
+            "description": "Build the REST catalog client",
+            "dependencies": [
+              "cpr"
+            ]
+          },
+          "s3": {
+            "description": "Build with S3 file IO support",
+            "dependencies": [
+              {
+                "name": "arrow",
+                "default-features": false,
+                "features": [
+                  "s3"
+                ]
+              },
+              {
+                "name": "aws-sdk-cpp",
+                "default-features": false,
+                "features": [
+                  "config",
+                  "identity-management",
+                  "s3",
+                  "sts",
+                  "transfer"
+                ]
+              },
+              {
+                "name": "iceberg-cpp",
+                "default-features": false,
+                "features": [
+                  "bundle"
+                ]
+              }
+            ]
+          },
+          "sigv4": {
+            "description": "Build SigV4 request signing for the REST catalog client",
+            "dependencies": [
+              {
+                "name": "aws-sdk-cpp",
+                "default-features": false
+              },
+              {
+                "name": "iceberg-cpp",
+                "default-features": false,
+                "features": [
+                  "rest"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "0.4.0"
+      },
+      "files": [
+        "avro-1.12.patch",
+        "fix-avro-dependency.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -77229,7 +77312,7 @@
       "manifest": {
         "name": "openexr",
         "description": "OpenEXR is a high dynamic-range (HDR) image file format developed by Industrial Light & Magic for use in computer imaging applications",
-        "homepage": "https://www.openexr.com/",
+        "homepage": "https://www.openexr.com",
         "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
@@ -77243,14 +77326,15 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "zstd"
         ],
         "features": {
           "tools": {
             "description": "Build tools"
           }
         },
-        "version": "3.4.15"
+        "version": "3.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -78131,7 +78215,6 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -78165,7 +78248,7 @@
             "description": "Enable weak-ssl-ciphers"
           }
         },
-        "version": "3.6.4"
+        "version": "3.6.5"
       },
       "files": [
         "cmake-config.patch",
@@ -78929,7 +79012,7 @@
         "name": "openzl",
         "description": "Format-aware compression framework delivering high ratios while preserving speed.",
         "homepage": "https://github.com/facebook/openzl",
-        "license": "BSD-3-Clause AND Apache-2.0",
+        "license": "BSD-3-Clause",
         "supports": "!uwp & !x86 & !arm32",
         "dependencies": [
           "lz4",
@@ -78948,10 +79031,11 @@
           "xxhash",
           "zstd"
         ],
-        "version": "0.2.0"
+        "version": "0.3.0"
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-runtime.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json",
@@ -79074,8 +79158,9 @@
       "name": "orange-math",
       "manifest": {
         "name": "orange-math",
+        "port-version": 1,
         "description": "General purpose math library",
-        "homepage": "https://github.com/orange-cpp/omath",
+        "homepage": "https://git.libomath.org/orange/omath/",
         "documentation": "https://libomath.org",
         "license": "Zlib",
         "dependencies": [
@@ -96017,10 +96102,11 @@
             "host": true
           }
         ],
-        "version": "2026.18.2"
+        "version": "2026.18.3"
       },
       "files": [
         "portfile.cmake",
+        "update_shas.py",
         "usage",
         "vcpkg.json"
       ]
@@ -103308,7 +103394,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.0"
       },
       "files": [
         "portfile.cmake",
