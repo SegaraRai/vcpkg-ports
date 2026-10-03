@@ -1,5 +1,5 @@
 {
-  "version": "fdd4e6059c803f56bb5df86e285bf374d9d44407",
+  "version": "c748cb44f2a435fcf015c35225c9d5545fe0021c",
   "ports": [
     {
       "name": "3fd",
@@ -1094,7 +1094,7 @@
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
         "supports": "!osx",
-        "version": "1.5.2"
+        "version": "1.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -4104,7 +4104,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4332,7 +4332,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "fix-cmake-config.patch",
@@ -6906,10 +6906,9 @@
       "name": "backward-cpp",
       "manifest": {
         "name": "backward-cpp",
-        "port-version": 1,
         "description": "A beautiful stack trace pretty printer for C++",
         "homepage": "https://github.com/bombela/backward-cpp",
-        "supports": "!uwp & !(windows & arm)",
+        "supports": "!uwp & !android",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -6920,7 +6919,7 @@
             "host": true
           }
         ],
-        "version-date": "2023-11-24"
+        "version-date": "2025-04-14"
       },
       "files": [
         "portfile.cmake",
@@ -7687,9 +7686,9 @@
       "manifest": {
         "name": "bitmagic",
         "description": "Algorithms and tools for Algebra of Sets for information retrieval, indexing of databases, scientific algorithms, ranking, clustering, unsupervised machine learning and signal processing.",
-        "homepage": "http://bitmagic.io",
-        "license": null,
-        "version": "9.2.1"
+        "homepage": "https://bitmagic.io",
+        "license": "Apache-2.0 AND LicenseRef-BitMagic-Attribution AND MIT",
+        "version": "9.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -23028,7 +23027,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.18.0"
+        "version": "1.19.1"
       },
       "files": [
         "portfile.cmake",
@@ -29817,7 +29816,7 @@
             "host": true
           }
         ],
-        "version": "20.48.1"
+        "version": "20.49.0"
       },
       "files": [
         "portfile.cmake",
@@ -30677,6 +30676,7 @@
       "name": "fastpfor",
       "manifest": {
         "name": "fastpfor",
+        "port-version": 1,
         "description": "Fast integer compression",
         "homepage": "https://github.com/fast-pack/FastPFOR",
         "license": "Apache-2.0",
@@ -30700,6 +30700,7 @@
       },
       "files": [
         "fix-arm-checker.patch",
+        "fix-windows-namespace.patch",
         "portfile.cmake",
         "remove-cpm.patch",
         "vcpkg.json"
@@ -30710,7 +30711,7 @@
       "manifest": {
         "name": "faudio",
         "description": "FAudio - accuracy-focused XAudio reimplementation for open platforms",
-        "homepage": "https://fna-xna.github.io/",
+        "homepage": "https://fna-xna.github.io",
         "license": "Zlib AND MIT",
         "supports": "!uwp",
         "dependencies": [
@@ -30728,7 +30729,7 @@
             "host": true
           }
         ],
-        "version": "26.9"
+        "version": "26.10"
       },
       "files": [
         "portfile.cmake",
@@ -32458,9 +32459,10 @@
             "host": true
           }
         ],
-        "version": "1.5.0"
+        "version": "1.6.0"
       },
       "files": [
+        "fix-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -35635,7 +35637,6 @@
       "name": "gl2ps",
       "manifest": {
         "name": "gl2ps",
-        "port-version": 5,
         "description": "OpenGL to PostScript Printing Library",
         "homepage": "https://gitlab.onelab.info/gl2ps/gl2ps",
         "supports": "!android",
@@ -35648,11 +35649,11 @@
           },
           "zlib"
         ],
-        "version": "1.4.2"
+        "version": "1.4.3"
       },
       "files": [
         "portfile.cmake",
-        "separate-static-dynamic-build.patch",
+        "static-no-dll-exports.patch",
         "vcpkg.json"
       ]
     },
@@ -40321,7 +40322,7 @@
       "manifest": {
         "name": "gtk",
         "description": "Portable library for creating graphical user interfaces.",
-        "homepage": "https://www.gtk.org/",
+        "homepage": "https://www.gtk.org",
         "license": "LGPL-2.1-or-later AND Apache-2.0",
         "supports": "!android & !xbox & !(arm64 & windows)",
         "dependencies": [
@@ -40407,7 +40408,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.24.0"
+        "version": "4.24.1"
       },
       "files": [
         "0001-build.patch",
@@ -41604,7 +41605,7 @@
         ],
         "description": "Modern C++ library framework implemented by C++17. High-jump(hj) is a comprehensive C++ library providing utilities for algorithms, compression, cryptography, databases, encoding, hardware, I/O, logging, math, networking, OS operations, synchronization, testing, time handling, types, and more.",
         "homepage": "https://github.com/hanjingo/high-jump",
-        "license": "GPL-3.0-or-later",
+        "license": "Apache-2.0",
         "supports": "!uwp",
         "dependencies": [
           "bext-sml",
@@ -41719,6 +41720,18 @@
             "description": "Enable HTTP support",
             "dependencies": [
               "cpp-httplib"
+            ]
+          },
+          "https": {
+            "description": "Enable HTTPS support",
+            "dependencies": [
+              {
+                "name": "cpp-httplib",
+                "default-features": false,
+                "features": [
+                  "openssl"
+                ]
+              }
             ]
           },
           "lic": {
@@ -41855,10 +41868,10 @@
             ]
           }
         },
-        "version": "1.0.10"
+        "version": "1.1.0"
       },
       "files": [
-        "fix-msvc-core-headers.patch",
+        "fix-https-consumer-headers.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -42028,7 +42041,7 @@
             ]
           }
         },
-        "version": "14.5.0"
+        "version": "14.5.1"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -42491,13 +42504,13 @@
       "name": "hexl",
       "manifest": {
         "name": "hexl",
+        "port-version": 1,
         "description": "Intel® HEXL is an open-source library which provides efficient implementations of integer arithmetic on Galois fields.",
         "homepage": "https://github.com/IntelLabs/hexl",
         "license": "Apache-2.0",
         "supports": "x64 & !android",
         "dependencies": [
           "cpu-features",
-          "easyloggingpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -42510,6 +42523,7 @@
         "version": "1.2.6"
       },
       "files": [
+        "hexl-debug-override.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51091,7 +51105,7 @@
       "name": "libao",
       "manifest": {
         "name": "libao",
-        "port-version": 6,
+        "port-version": 7,
         "description": "libao - A Cross-platform Audio Library",
         "homepage": "https://github.com/xiph/libao",
         "license": "GPL-2.0-only",
@@ -55795,7 +55809,7 @@
             ]
           }
         },
-        "version-semver": "3.4.8"
+        "version-semver": "3.4.11"
       },
       "files": [
         "cmake-export.diff",
@@ -63401,7 +63415,7 @@
             "host": true
           }
         ],
-        "version": "1.8.0"
+        "version": "1.8.3"
       },
       "files": [
         "fix-fftw3.patch",
@@ -68194,7 +68208,7 @@
       "manifest": {
         "name": "mesa",
         "description": "Mesa - The 3D Graphics Library",
-        "homepage": "https://www.mesa3d.org/",
+        "homepage": "https://www.mesa3d.org",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
         "supports": "!(windows & arm) & !staticcrt & !uwp",
         "dependencies": [
@@ -68304,7 +68318,7 @@
             ]
           }
         },
-        "version": "26.2.3"
+        "version": "26.2.4"
       },
       "files": [
         "001-windows-gles-dispatch.patch",
@@ -69993,7 +70007,7 @@
       "name": "mpfr",
       "manifest": {
         "name": "mpfr",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The MPFR library is a C library for multiple-precision floating-point computations with correct rounding",
         "homepage": "https://www.mpfr.org",
         "license": "LGPL-3.0-or-later",
@@ -71645,7 +71659,7 @@
             "license": "MIT"
           }
         },
-        "version": "1.4.0"
+        "version": "1.4.1"
       },
       "files": [
         "portfile.cmake",
@@ -75635,7 +75649,7 @@
         "name": "opencv",
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
-        "documentation": "https://docs.opencv.org/4.12.0/",
+        "documentation": "https://docs.opencv.org/4.14.0/",
         "license": null,
         "dependencies": [
           {
@@ -76257,7 +76271,7 @@
             ]
           }
         },
-        "version": "4.12.0"
+        "version": "4.14.0"
       },
       "files": [
         "portfile.cmake",
@@ -76737,10 +76751,9 @@
       "name": "opencv4",
       "manifest": {
         "name": "opencv4",
-        "port-version": 9,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://opencv.org/",
-        "documentation": "https://docs.opencv.org/4.12.0/",
+        "documentation": "https://docs.opencv.org/4.14.0/",
         "license": null,
         "dependencies": [
           {
@@ -77029,6 +77042,10 @@
               "libjxl"
             ]
           },
+          "kleidicv": {
+            "description": "Use the ARM KleidiCV acceleration library",
+            "supports": "arm64 & !windows"
+          },
           "msmf": {
             "description": "Microsoft Media Foundation support for opencv",
             "supports": "windows & !uwp & !mingw"
@@ -77118,6 +77135,7 @@
           "python": {
             "description": "Python wrapper support for opencv",
             "dependencies": [
+              "dlpack",
               {
                 "name": "python3",
                 "default-features": false,
@@ -77274,7 +77292,7 @@
             "description": "Compile to a single package support for opencv"
           }
         },
-        "version": "4.12.0"
+        "version": "4.14.0"
       },
       "files": [
         "0001-disable-downloading.patch",
@@ -77293,15 +77311,13 @@
         "0017-fix-flatbuffers.patch",
         "0018-contrib-fix-tesseract.patch",
         "0019-contrib-cout.diff",
-        "0020-fix-narrow-filesystem.diff",
         "0021-fix-qt-gen-def.patch",
         "0022-android-use-vcpkg-cpu-features.patch",
-        "0023-ffmpeg8-support.patch",
-        "0024-openvino-const-tensor-data.patch",
         "0025-fix-cuda-host-std-flag-forwarding.patch",
         "0026-cuda-msvc-preprocessor.patch",
-        "0027-contrib-cuda-tuple.patch",
         "0028-ffmpeg9-support.patch",
+        "0029-dlpack-find-package.patch",
+        "0030-kleidicv-install-license.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -79386,9 +79402,9 @@
       "name": "osg",
       "manifest": {
         "name": "osg",
-        "port-version": 28,
+        "port-version": 29,
         "description": "The OpenSceneGraph is an open source high performance 3D graphics toolkit.",
-        "homepage": "https://www.openscenegraph.com/",
+        "homepage": "https://openscenegraph.github.io/openscenegraph.io/",
         "license": null,
         "supports": "!uwp",
         "dependencies": [
@@ -80914,7 +80930,6 @@
       "name": "pcre2",
       "manifest": {
         "name": "pcre2",
-        "port-version": 1,
         "description": "Regular Expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "https://github.com/PCRE2Project/pcre2",
         "license": "BSD-3-Clause",
@@ -80949,9 +80964,10 @@
             ]
           }
         },
-        "version": "10.47"
+        "version": "10.49"
       },
       "files": [
+        "fix-msvc-pdb-install.patch",
         "no-static-suffix.patch",
         "pcre2-10.35_fix-uwp.patch",
         "portfile.cmake",
@@ -90005,7 +90021,7 @@
         "name": "quantlib",
         "description": "The QuantLib C++ library",
         "homepage": "https://www.quantlib.org/",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND Minpack",
         "supports": "!(windows & !static)",
         "dependencies": [
           "boost-accumulators",
@@ -90042,7 +90058,7 @@
             "host": true
           }
         ],
-        "version": "1.42.1"
+        "version": "1.43"
       },
       "files": [
         "portfile.cmake",
@@ -91110,8 +91126,8 @@
       "manifest": {
         "name": "realsense2",
         "description": "Intel® RealSense™ SDK 2.0 is a cross-platform library for Intel® RealSense™ depth cameras (D400 series and the SR300).",
-        "homepage": "https://github.com/IntelRealSense/librealsense",
-        "license": "Apache-2.0",
+        "homepage": "https://github.com/realsenseai/librealsense",
+        "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND (BSL-1.0 OR MIT)",
         "supports": "!uwp & !(windows & arm)",
         "dependencies": [
           {
@@ -91155,23 +91171,22 @@
           },
           "tools": {
             "description": "Build Intel® RealSense™ tools",
-            "supports": "!android"
+            "supports": "!android",
+            "license": "MIT"
           }
         },
-        "version": "2.56.5"
+        "version": "2.58.4"
       },
       "files": [
-        "add-stdexcept.diff",
         "android-config.diff",
-        "build.diff",
         "devendor-lz4.diff",
-        "devendor-nlohmann-json.diff",
         "devendor-stb.diff",
+        "disable-network-check.diff",
+        "fix-pkgconfig.diff",
         "fix_openni2.patch",
         "libusb.diff",
         "portfile.cmake",
         "usage",
-        "using-firmware.diff",
         "vcpkg.json"
       ]
     },
@@ -92382,7 +92397,7 @@
             "host": true
           }
         ],
-        "version": "5.2.1"
+        "version": "5.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -95873,8 +95888,8 @@
       "name": "sf2cute",
       "manifest": {
         "name": "sf2cute",
-        "port-version": 4,
         "description": "C++14 Library for SoundFont 2",
+        "license": "Zlib",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -95890,7 +95905,7 @@
             "description": "Installs an example application"
           }
         },
-        "version": "0.2.0"
+        "version-date": "2026-03-21"
       },
       "files": [
         "portfile.cmake",
@@ -96102,7 +96117,7 @@
             "host": true
           }
         ],
-        "version": "2026.18.3"
+        "version": "2026.19"
       },
       "files": [
         "portfile.cmake",
@@ -96642,7 +96657,7 @@
         "description": "Implementations of SIMD instruction sets for systems which don't natively support them",
         "homepage": "https://github.com/simd-everywhere/simde",
         "license": "MIT",
-        "version": "0.8.2"
+        "version": "0.8.4-rc3"
       },
       "files": [
         "portfile.cmake",
@@ -99766,7 +99781,6 @@
       "name": "srpc",
       "manifest": {
         "name": "srpc",
-        "port-version": 2,
         "description": "RPC based on Sogou C++ Workflow",
         "homepage": "https://github.com/sogou/srpc",
         "license": "Apache-2.0",
@@ -99793,7 +99807,7 @@
           },
           "zlib"
         ],
-        "version-semver": "0.10.4"
+        "version-semver": "0.10.5"
       },
       "files": [
         "cmake.diff",
@@ -102871,7 +102885,7 @@
           },
           "zlib"
         ],
-        "version": "0.24.0"
+        "version": "0.25.0"
       },
       "files": [
         "fix_missing_quotes_in_config_and_bin_path.patch",
@@ -105523,7 +105537,7 @@
             "platform": "windows"
           }
         ],
-        "version": "7.2.7"
+        "version": "7.3.1"
       },
       "files": [
         "Config.cmake.in",
@@ -108575,6 +108589,32 @@
       ]
     },
     {
+      "name": "vvdec",
+      "manifest": {
+        "name": "vvdec",
+        "description": "VVdeC is a fast and efficient H.266/VVC decoder implementation.",
+        "homepage": "https://github.com/fraunhoferhhi/vvdec",
+        "license": "BSD-3-Clause-Clear",
+        "dependencies": [
+          "simde",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "3.2.0"
+      },
+      "files": [
+        "fix-dependency.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "vvenc",
       "manifest": {
         "name": "vvenc",
@@ -109683,7 +109723,7 @@
             "host": true
           }
         ],
-        "version": "0.9.6"
+        "version": "0.10.0"
       },
       "files": [
         "portfile.cmake",
