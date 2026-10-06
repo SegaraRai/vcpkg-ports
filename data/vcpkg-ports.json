@@ -1,5 +1,5 @@
 {
-  "version": "19780d9cdf84d0944cf9a318666703b89ab6629c",
+  "version": "0bc1a55f422ceb190877234b3ba88c372f04c485",
   "ports": [
     {
       "name": "3fd",
@@ -578,7 +578,7 @@
             "host": true
           }
         ],
-        "version": "2.1.2"
+        "version": "2.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -4282,7 +4282,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -22911,7 +22911,7 @@
             ]
           }
         },
-        "version": "0.58.0"
+        "version": "0.59.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23027,7 +23027,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.19.1"
+        "version": "1.20.0"
       },
       "files": [
         "portfile.cmake",
@@ -30444,7 +30444,7 @@
             "host": true
           }
         ],
-        "version": "8.3.0"
+        "version": "8.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -30601,7 +30601,7 @@
             "host": true
           }
         ],
-        "version": "0.9.0"
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
@@ -30840,8 +30840,9 @@
         "name": "fcftest",
         "description": "fcfTest is a lightweight C++ (>= C++11) unit testing framework. Modern, zero-dependency, header-only cpp unittest library for TDD.",
         "homepage": "https://github.com/fcf-framework/fcfTest",
+        "documentation": "https://fcf-framework.is-a-fullstack.dev/cpp-libraries/fcfTest",
         "license": "MIT",
-        "version": "1.2.5"
+        "version": "1.2.7"
       },
       "files": [
         "portfile.cmake",
@@ -30949,6 +30950,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
+        "port-version": 1,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31644,8 +31646,13 @@
             ]
           },
           "vulkan": {
-            "description": "H.264, HEVC and AV1 de/encoding via Vulkan",
+            "description": "Vulkan video de/encoding (H.264, HEVC, AV1), Vulkan encoding (FFV1, ProRes), and Vulkan filters",
             "dependencies": [
+              {
+                "name": "shaderc",
+                "host": true
+              },
+              "spirv-headers",
               "vulkan-headers"
             ]
           },
@@ -43264,11 +43271,10 @@
             "supports": "!windows | mingw"
           }
         },
-        "version": "1.7.4"
+        "version": "1.7.5"
       },
       "files": [
         "0005-autotools-subdirs.patch",
-        "ax_cxx_compile_stdcxx.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44654,7 +44660,7 @@
             "host": true
           }
         ],
-        "version": "4.3.0"
+        "version": "4.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -53577,7 +53583,7 @@
       "name": "libgd",
       "manifest": {
         "name": "libgd",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Open source code library for the dynamic creation of images by programmers.",
         "homepage": "https://github.com/libgd/libgd",
         "license": "GD",
@@ -53588,6 +53594,7 @@
           }
         ],
         "default-features": [
+          "avif-aom",
           "fontconfig",
           "freetype",
           "jpeg",
@@ -53596,6 +53603,50 @@
           "webp"
         ],
         "features": {
+          "avif": {
+            "description": "Support for AVIF",
+            "dependencies": [
+              "libavif"
+            ]
+          },
+          "avif-aom": {
+            "description": "Support for AVIF using the aom codec",
+            "dependencies": [
+              {
+                "name": "libavif",
+                "default-features": false,
+                "features": [
+                  "aom"
+                ]
+              },
+              {
+                "name": "libgd",
+                "default-features": false,
+                "features": [
+                  "avif"
+                ]
+              }
+            ]
+          },
+          "avif-dav1d": {
+            "description": "Support for AVIF decoding using the dav1d codec",
+            "dependencies": [
+              {
+                "name": "libavif",
+                "default-features": false,
+                "features": [
+                  "dav1d"
+                ]
+              },
+              {
+                "name": "libgd",
+                "default-features": false,
+                "features": [
+                  "avif"
+                ]
+              }
+            ]
+          },
           "fontconfig": {
             "description": "Support for Fontconfig",
             "dependencies": [
@@ -53606,6 +53657,53 @@
             "description": "Support for FreeType",
             "dependencies": [
               "freetype"
+            ]
+          },
+          "heif": {
+            "description": "Support for HEIF",
+            "dependencies": [
+              {
+                "name": "libheif",
+                "default-features": false
+              }
+            ]
+          },
+          "heif-aom": {
+            "description": "Support for HEIF AVIF decoding and encoding via the aom codec",
+            "dependencies": [
+              {
+                "name": "libgd",
+                "default-features": false,
+                "features": [
+                  "heif"
+                ]
+              },
+              {
+                "name": "libheif",
+                "default-features": false,
+                "features": [
+                  "aom"
+                ]
+              }
+            ]
+          },
+          "heif-hevc": {
+            "description": "Support for HEIF HEVC encoding via the x265 codec",
+            "dependencies": [
+              {
+                "name": "libgd",
+                "default-features": false,
+                "features": [
+                  "heif"
+                ]
+              },
+              {
+                "name": "libheif",
+                "default-features": false,
+                "features": [
+                  "hevc"
+                ]
+              }
             ]
           },
           "jpeg": {
@@ -53645,7 +53743,7 @@
       "files": [
         "cmake-project-include.cmake",
         "control-build.patch",
-        "fix-dependencies.cmake",
+        "fix-dependencies.patch",
         "fix-static-usage.patch",
         "fix_msvc_build.patch",
         "portfile.cmake",
@@ -58403,7 +58501,7 @@
           "LibreSSL provides much of the OpenSSL 1.1 API. Incompatibilities between the projects exist and are unavoidable since both evolve with different goals and priorities."
         ],
         "homepage": "https://www.libressl.org",
-        "license": "ISC",
+        "license": null,
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -58419,7 +58517,7 @@
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "4.2.1"
+        "version": "4.3.3"
       },
       "files": [
         "pkgconfig.diff",
@@ -59305,7 +59403,7 @@
       "manifest": {
         "name": "libsoup",
         "description": "HTTP Library for GLib",
-        "homepage": "https://libsoup.gnome.org/",
+        "homepage": "https://libsoup.gnome.org",
         "license": "LGPL-2.0-or-later",
         "supports": "!uwp & !xbox",
         "dependencies": [
@@ -59326,7 +59424,21 @@
             "host": true
           }
         ],
-        "version": "3.6.6"
+        "features": {
+          "brotli": {
+            "description": "Build with Brotli decompression support",
+            "dependencies": [
+              "brotli"
+            ]
+          },
+          "zstd": {
+            "description": "Build with Zstandard decompression support",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "3.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -70780,6 +70892,7 @@
       "name": "mumps-solver",
       "manifest": {
         "name": "mumps-solver",
+        "port-version": 1,
         "description": "MUMPS (MUltifrontal Massively Parallel sparse direct Solver) solves systems of linear equations Ax = b where A is a square sparse matrix",
         "homepage": "https://mumps-solver.org/",
         "license": "CECILL-C AND BSD-3-Clause AND LicenseRef-Public-Domain AND MIT",
@@ -71474,7 +71587,7 @@
             "description": "nanomsg tool (nanocat)"
           }
         },
-        "version-semver": "1.2.5"
+        "version-semver": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -75078,7 +75191,7 @@
         "name": "open62541",
         "description": "open62541 is an open source C (C99) implementation of OPC UA licensed under the Mozilla Public License v2.0.",
         "homepage": "https://open62541.org",
-        "license": "MPL-2.0",
+        "license": "MPL-2.0 AND Apache-2.0 AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND MIT",
         "supports": "!xbox",
         "dependencies": [
           {
@@ -75192,7 +75305,7 @@
             ]
           }
         },
-        "version": "1.4.20"
+        "version": "1.4.21"
       },
       "files": [
         "android.patch",
@@ -77357,7 +77470,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.5.1"
+        "version": "3.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -77712,6 +77825,7 @@
       "name": "openjph",
       "manifest": {
         "name": "openjph",
+        "port-version": 1,
         "description": "Open-source implementation of JPEG2000 Part-15 (or JPH or HTJ2K)",
         "homepage": "https://github.com/aous72/OpenJPH",
         "license": "BSD-2-Clause",
@@ -77740,6 +77854,7 @@
         "version": "0.32.0"
       },
       "files": [
+        "fix-msvc-x86-ice.patch",
         "fix-pkgconfig-library-name.patch",
         "portfile.cmake",
         "vcpkg.json",
@@ -79966,6 +80081,7 @@
       "name": "pagmo2",
       "manifest": {
         "name": "pagmo2",
+        "port-version": 1,
         "description": "A C++ platform to perform parallel computations of optimization tasks (global and local) via the asynchronous generalized island model.",
         "homepage": "https://esa.github.io/pagmo2/",
         "license": "GPL-3.0-or-later OR LGPL-3.0-or-later",
@@ -80008,6 +80124,7 @@
         "0006-config-find-libipopt.patch",
         "0007-ipopt-transitive-deps.patch",
         "0008-ipopt-header-search.patch",
+        "0009-ipopt-mumps-transitive.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -81278,6 +81395,31 @@
       ]
     },
     {
+      "name": "perf-cpp",
+      "manifest": {
+        "name": "perf-cpp",
+        "description": "Lightweight C++17 library for recording and sampling hardware performance counters directly from C++ applications, using the Linux perf subsystem.",
+        "homepage": "https://github.com/jmuehlig/perf-cpp",
+        "license": "Apache-2.0",
+        "supports": "linux",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.1.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "perfetto",
       "manifest": {
         "name": "perfetto",
@@ -81753,7 +81895,7 @@
         "dependencies": [
           "plf-tools"
         ],
-        "version": "7.7.11"
+        "version": "7.7.15"
       },
       "files": [
         "portfile.cmake",
@@ -81767,7 +81909,7 @@
         "description": "plf::hive is a fork of plf::colony to match the current C++ standards proposal.",
         "homepage": "https://plflib.org/colony.htm",
         "license": "Zlib",
-        "version-date": "2026-09-06"
+        "version": "1.55.0"
       },
       "files": [
         "portfile.cmake",
@@ -81801,7 +81943,7 @@
         "dependencies": [
           "plf-tools"
         ],
-        "version": "7.6.21"
+        "version": "7.6.36"
       },
       "files": [
         "portfile.cmake",
@@ -81832,7 +81974,7 @@
         "dependencies": [
           "plf-tools"
         ],
-        "version": "2.0.21"
+        "version": "2.0.36"
       },
       "files": [
         "portfile.cmake",
@@ -81849,7 +81991,7 @@
         "dependencies": [
           "plf-tools"
         ],
-        "version": "2.0.21"
+        "version": "2.0.37"
       },
       "files": [
         "portfile.cmake",
@@ -81863,7 +82005,7 @@
         "description": "Toolsets shared across plf:: libraries",
         "homepage": "https://www.plflib.org",
         "license": "Zlib",
-        "version": "1.0.4"
+        "version": "1.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -92398,7 +92540,7 @@
             "host": true
           }
         ],
-        "version": "5.2.2"
+        "version": "5.2.3"
       },
       "files": [
         "portfile.cmake",
@@ -92634,6 +92776,51 @@
       "files": [
         "0001-fix-dependencies.patch",
         "0002-fix-android.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rohit-singh-gautam-serializer",
+      "manifest": {
+        "name": "rohit-singh-gautam-serializer",
+        "description": "C++20 schema compiler and serialization runtime with multi-language output, JSON, binary, Protobuf codecs, and optional compression.",
+        "homepage": "https://github.com/rohit-singh-gautam/Serializer",
+        "license": "GPL-3.0-or-later",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "lz4": {
+            "description": "Enable LZ4 frame compression.",
+            "dependencies": [
+              "lz4"
+            ]
+          },
+          "zlib": {
+            "description": "Enable gzip, zlib, and raw DEFLATE compression.",
+            "dependencies": [
+              "zlib"
+            ]
+          },
+          "zstd": {
+            "description": "Enable Zstandard frame compression.",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "1.0.0"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -95079,10 +95266,9 @@
       "name": "sdl3-image",
       "manifest": {
         "name": "sdl3-image",
-        "port-version": 1,
         "description": "SDL_image is an image file loading library. It loads images as SDL surfaces and textures, and supports the following formats: AVIF, BMP, GIF, JPEG, JPEG XL, LBM, PCX, PNG, PNM, TGA, TIFF, WEBP, XCF, XPM, XV",
         "homepage": "https://github.com/libsdl-org/SDL_image",
-        "license": "Zlib",
+        "license": "Zlib AND MIT",
         "dependencies": [
           {
             "name": "sdl3",
@@ -95144,7 +95330,7 @@
             ]
           }
         },
-        "version": "3.4.4"
+        "version": "3.4.8"
       },
       "files": [
         "dependencies.diff",
@@ -96669,7 +96855,7 @@
       "manifest": {
         "name": "simdjson",
         "description": "An extremely fast JSON library that can parse gigabytes of JSON per second",
-        "homepage": "https://simdjson.org/",
+        "homepage": "https://simdjson.org",
         "license": "(Apache-2.0 OR MIT) AND BSL-1.0 AND BSD-3-Clause",
         "dependencies": [
           {
@@ -96701,7 +96887,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "5.0.1"
+        "version": "5.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -97557,7 +97743,10 @@
         "license": "MIT",
         "supports": "!uwp",
         "dependencies": [
-          "slick-queue",
+          {
+            "name": "slick-queue",
+            "version>=": "2.1.0"
+          },
           "slick-shm",
           {
             "name": "vcpkg-cmake",
@@ -97568,7 +97757,7 @@
             "host": true
           }
         ],
-        "version": "0.1.0"
+        "version": "0.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -97651,7 +97840,7 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "1.1.0"
+        "version-semver": "1.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -99141,6 +99330,7 @@
       "name": "spout2",
       "manifest": {
         "name": "spout2",
+        "port-version": 1,
         "description": "Spout is a video frame sharing system for Microsoft Windows, which allows applications to share OpenGL textures in a similar way to Syphon for the Mac.",
         "homepage": "https://github.com/leadedge/Spout2",
         "supports": "windows & !uwp & !arm64",
@@ -104910,21 +105100,6 @@
       ]
     },
     {
-      "name": "ttmath",
-      "manifest": {
-        "name": "ttmath",
-        "description": "A bignum library for C++",
-        "homepage": "https://www.ttmath.org/",
-        "license": "BSD-3-Clause",
-        "version-date": "2019-10-23"
-      },
-      "files": [
-        "disable-msvc-x64-asm.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "tuplet",
       "manifest": {
         "name": "tuplet",
@@ -105485,7 +105660,7 @@
             "host": true
           }
         ],
-        "version": "5.2.0"
+        "version": "5.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -107403,9 +107578,12 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
-          "vulkan-headers"
+          {
+            "name": "vulkan-headers",
+            "version>=": "1.4.363.0"
+          }
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -109274,7 +109452,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.4191.47"
+        "version": "1.0.4258.31"
       },
       "files": [
         "portfile.cmake",
@@ -112596,6 +112774,31 @@
         "add-include-chrono.patch",
         "fix-android.patch",
         "fix-dependency.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "zmij",
+      "manifest": {
+        "name": "zmij",
+        "description": "A fast floating-point-to-string conversion library for C and C++",
+        "homepage": "https://github.com/vitaut/zmij",
+        "license": "MIT OR BSL-1.0",
+        "supports": "!arm | arm64",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "1.2"
+      },
+      "files": [
         "portfile.cmake",
         "vcpkg.json"
       ]
