@@ -1,5 +1,5 @@
 {
-  "version": "0bc1a55f422ceb190877234b3ba88c372f04c485",
+  "version": "2976266a3b2aa358e0eed9e89bde2e0cf59daf0a",
   "ports": [
     {
       "name": "3fd",
@@ -60,7 +60,7 @@
             "host": true
           }
         ],
-        "version": "26.3"
+        "version": "26.4"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -3937,7 +3937,7 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
@@ -24436,26 +24436,6 @@
       ]
     },
     {
-      "name": "ctp",
-      "manifest": {
-        "name": "ctp",
-        "port-version": 4,
-        "description": "The Comprehensive Transaction Platform (CTP) is a future brokerage management system developed specially for futures companies. CTP API client library allows users to connect to CTP gateway for algorithmic trading.",
-        "homepage": "http://www.sfit.com.cn/index.htm",
-        "supports": "!osx & !uwp & !arm & !(static & staticcrt)",
-        "features": {
-          "datacollect": {
-            "description": "Data collect support of CTP"
-          }
-        },
-        "version-string": "6.6.1_P1_20210406_se"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "ctpg",
       "manifest": {
         "name": "ctpg",
@@ -29760,13 +29740,26 @@
       "manifest": {
         "name": "ethindp-prism",
         "description": "The Platform-agnostic Reader Interface for Speech and Messages",
-        "license": "MPL-2.0",
+        "license": "MPL-2.0 AND BSD-2-Clause AND Apache-2.0 AND Unlicense AND MIT AND Zlib",
         "supports": "!uwp",
         "dependencies": [
+          "concurrentqueue",
+          "fmt",
+          {
+            "name": "glibmm",
+            "platform": "linux | freebsd | openbsd"
+          },
+          {
+            "name": "highway",
+            "features": [
+              "contrib"
+            ]
+          },
           {
             "name": "pkgconf",
             "host": true
           },
+          "simdutf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -29776,14 +29769,13 @@
             "host": true
           }
         ],
+        "default-features": [
+          {
+            "name": "speech-dispatcher",
+            "platform": "linux | freebsd | openbsd"
+          }
+        ],
         "features": {
-          "orca": {
-            "description": "Enable the Orca backend",
-            "dependencies": [
-              "glibmm"
-            ],
-            "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
-          },
           "speech-dispatcher": {
             "description": "Enable the speech-dispatcher backend (requires libspeechd to be installed)",
             "dependencies": [
@@ -29792,7 +29784,7 @@
             "supports": "(linux | freebsd | openbsd) & !android & !emscripten"
           }
         },
-        "version": "0.16.7"
+        "version": "0.18.3"
       },
       "files": [
         "portfile.cmake",
@@ -43439,7 +43431,7 @@
       "name": "iceberg-cpp",
       "manifest": {
         "name": "iceberg-cpp",
-        "port-version": 1,
+        "port-version": 2,
         "description": "C++ implementation of Apache Iceberg",
         "homepage": "https://github.com/apache/iceberg-cpp",
         "license": "Apache-2.0",
@@ -43537,6 +43529,8 @@
       "files": [
         "avro-1.12.patch",
         "fix-avro-dependency.patch",
+        "int128-namespace.patch",
+        "msvc-14.42-compat.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -53408,7 +53402,6 @@
       "name": "libfort",
       "manifest": {
         "name": "libfort",
-        "port-version": 1,
         "description": "A simple crossplatform library to create formatted text tables",
         "homepage": "https://github.com/seleznevae/libfort",
         "license": "MIT",
@@ -53422,7 +53415,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.4.2"
+        "version-semver": "0.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -64412,7 +64405,7 @@
             ]
           }
         },
-        "version": "23.1.2"
+        "version": "23.1.3"
       },
       "files": [
         "0001-fix-install-package-dir.patch",
@@ -78353,6 +78346,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
+        "port-version": 1,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -83667,7 +83661,7 @@
             ]
           }
         },
-        "version": "4.1.7"
+        "version": "4.1.8"
       },
       "files": [
         "macos-pkgconfig.patch",
@@ -90744,6 +90738,7 @@
       "name": "rapidjson",
       "manifest": {
         "name": "rapidjson",
+        "port-version": 1,
         "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API <http://rapidjson.org/>",
         "homepage": "http://rapidjson.org/",
         "license": "MIT",
@@ -90760,6 +90755,7 @@
         "version-date": "2025-02-26"
       },
       "files": [
+        "fix-arm64ec-umul128.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -108792,6 +108788,7 @@
       "name": "vvenc",
       "manifest": {
         "name": "vvenc",
+        "port-version": 1,
         "description": "VVenC is a fast and efficient H.266/VVC encoder implementation.",
         "homepage": "https://github.com/fraunhoferhhi/vvenc",
         "license": "BSD-3-Clause-Clear",
