@@ -1,5 +1,5 @@
 {
-  "version": "2976266a3b2aa358e0eed9e89bde2e0cf59daf0a",
+  "version": "2750401336fb7c95f6619657a46a7e798661341c",
   "ports": [
     {
       "name": "3fd",
@@ -3937,7 +3937,7 @@
       "name": "avro-cpp",
       "manifest": {
         "name": "avro-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Apache Avro is a data serialization system",
         "homepage": "https://github.com/apache/avro",
         "license": "Apache-2.0",
@@ -21978,7 +21978,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "disable-config-fetchcontent-fallback.patch",
@@ -28826,13 +28826,13 @@
       "name": "ecal",
       "manifest": {
         "name": "ecal",
-        "port-version": 2,
         "description": "eCAL - enhanced Communication Abstraction Layer",
         "homepage": "https://eclipse-ecal.github.io/ecal/",
         "license": "Apache-2.0",
-        "supports": "!emscripten",
+        "supports": "!emscripten & !uwp & !android",
         "dependencies": [
           "asio",
+          "ecaludp",
           {
             "name": "hdf5",
             "default-features": false
@@ -28841,7 +28841,7 @@
             "name": "protobuf",
             "default-features": false
           },
-          "simpleini",
+          "protozero",
           "tclap",
           "tcp-pubsub",
           {
@@ -28851,20 +28851,21 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          }
+          },
+          "yaml-cpp"
         ],
-        "version-semver": "5.13.4"
+        "version-semver": "6.1.1"
       },
       "files": [
-        "0001-disable-app-plugins.patch",
         "0002-fix-build.patch",
         "0003-fix-dependencies.patch",
-        "0004-install-cmake-files-to-share.patch",
         "0005-remove-install-prefix-macro-value.patch",
         "0006-use-find_dependency-in-cmake-config.patch",
         "0007-allow-static-build-of-core.patch",
         "0008-protobuf-linkage.patch",
         "0009-protobuf-6.patch",
+        "0010-disable-build-time-tools.patch",
+        "dependencies.cmake",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -36103,7 +36104,6 @@
       "name": "glbinding",
       "manifest": {
         "name": "glbinding",
-        "port-version": 4,
         "description": "glbinding is an MIT licensed, cross-platform C++ binding for the OpenGL API",
         "homepage": "https://github.com/cginternals/glbinding",
         "license": "MIT",
@@ -36118,13 +36118,13 @@
             "host": true
           }
         ],
-        "version": "3.1.0"
+        "version": "3.5.0"
       },
       "files": [
-        "0001_force-system-install.patch",
         "0002_fix-uwpmacro.patch",
         "0003_fix-cmake-configs-paths.patch",
         "0004_fix-config-expected-paths.patch",
+        "0005_fix-khr-interface.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -36393,7 +36393,7 @@
       "name": "globjects",
       "manifest": {
         "name": "globjects",
-        "port-version": 6,
+        "port-version": 7,
         "description": "C++ library strictly wrapping OpenGL objects",
         "homepage": "https://github.com/cginternals/globjects",
         "dependencies": [
@@ -38767,6 +38767,7 @@
       "name": "gperf",
       "manifest": {
         "name": "gperf",
+        "port-version": 1,
         "description": "GNU perfect hash function generator",
         "homepage": "https://www.gnu.org/software/gperf/",
         "license": "GPL-3.0-or-later",
@@ -50008,6 +50009,34 @@
       ]
     },
     {
+      "name": "kvazaar",
+      "manifest": {
+        "name": "kvazaar",
+        "description": "An open-source HEVC encoder licensed under 3-clause BSD",
+        "homepage": "https://github.com/ultravideo/kvazaar",
+        "license": "BSD-3-Clause AND BSD-2-Clause AND ISC AND LicenseRef-Public-Domain",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "features": {
+          "tool": {
+            "description": "Build kvazaar tool",
+            "supports": "!uwp",
+            "license": "BSD-2-Clause"
+          }
+        },
+        "version": "2.3.2"
+      },
+      "files": [
+        "gate_getopt.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kwidgetsaddons",
       "manifest": {
         "name": "kwidgetsaddons",
@@ -57738,7 +57767,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.6.58"
+        "version": "1.6.59"
       },
       "files": [
         "cmake.patch",
@@ -68311,6 +68340,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
+        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
@@ -68367,6 +68397,28 @@
             "dependencies": [
               "opengl"
             ]
+          },
+          "lavapipe": {
+            "description": "Build the lavapipe software Vulkan driver",
+            "dependencies": [
+              {
+                "name": "glslang",
+                "host": true,
+                "features": [
+                  "tools"
+                ]
+              },
+              {
+                "name": "llvm",
+                "default-features": false,
+                "features": [
+                  "enable-rtti",
+                  "target-x86",
+                  "tools"
+                ]
+              }
+            ],
+            "supports": "windows & !uwp & (x64 | x86)"
           },
           "llvm": {
             "description": "Build with llvmpipe",
@@ -68426,6 +68478,8 @@
       },
       "files": [
         "001-windows-gles-dispatch.patch",
+        "002-fix-lavapipe-msvc-release.patch",
+        "lavapipe-usage",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -78196,6 +78250,31 @@
       ]
     },
     {
+      "name": "openpit",
+      "manifest": {
+        "name": "openpit",
+        "description": "C++17 binding for the OpenPit pre-trade risk SDK",
+        "homepage": "https://openpit.dev",
+        "license": "Apache-2.0 AND MIT AND Unicode-3.0",
+        "supports": "((windows & x64 & !uwp) | (osx & (arm64 | x64)) | (linux & (arm64 | x64))) & !(static & staticcrt)",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.9.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "openscap",
       "manifest": {
         "name": "openscap",
@@ -83687,7 +83766,7 @@
             "host": true
           }
         ],
-        "version": "1.0.7"
+        "version": "1.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -95944,7 +96023,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.17.1"
+        "version": "0.17.2"
       },
       "files": [
         "fix-cmake4.patch",
@@ -98220,7 +98299,7 @@
             "description": "Build and install snmallocshim-static, a compiled static library that exports malloc/free with a configurable symbol prefix (default: sn_)"
           }
         },
-        "version-semver": "0.7.4"
+        "version-semver": "0.7.6"
       },
       "files": [
         "portfile.cmake",
@@ -100178,11 +100257,10 @@
       "name": "stb",
       "manifest": {
         "name": "stb",
-        "port-version": 1,
         "description": "public domain header-only libraries",
         "homepage": "https://github.com/nothings/stb",
-        "license": "MIT OR CC-PDDC",
-        "version-date": "2024-07-29"
+        "license": null,
+        "version-date": "2026-08-02"
       },
       "files": [
         "FindStb.cmake",
@@ -102050,6 +102128,51 @@
       ]
     },
     {
+      "name": "sz",
+      "manifest": {
+        "name": "sz",
+        "description": "SZ3: a modular error-bounded lossy compressor for scientific floating-point data. Header-only C++17 library, with an optional command-line tool and HDF5 filter.",
+        "homepage": "https://github.com/szcompressor/SZ3",
+        "license": "LicenseRef-SZ3-BSD",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zstd"
+        ],
+        "features": {
+          "hdf5": {
+            "description": "Build the H5Z-SZ3 HDF5 filter library (SZ3::hdf5sz3)",
+            "dependencies": [
+              {
+                "name": "hdf5",
+                "default-features": false
+              }
+            ]
+          },
+          "openmp": {
+            "description": "Enable OpenMP parallel compression through the SZ3::SZ3 target",
+            "supports": "!osx"
+          },
+          "tools": {
+            "description": "Build the sz3 command-line tool and C API library (SZ3::SZ3c)"
+          }
+        },
+        "version": "3.4.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "use-zstd-config.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tabulate",
       "manifest": {
         "name": "tabulate",
@@ -102396,10 +102519,9 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "2.0.1"
       },
       "files": [
-        "fix-package-config-file.patch",
         "portfile.cmake",
         "use-ports-for-asio-and-recycle.patch",
         "vcpkg.json"
@@ -107317,7 +107439,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.357"
+        "version": "1.4.363"
       },
       "files": [
         "fix-targets.patch",
@@ -107903,10 +108025,9 @@
             "description": "Build examples for VST3 plugins"
           }
         },
-        "version-string": "v3.8.0_build_66"
+        "version-string": "v3.8.1_build_84"
       },
       "files": [
-        "fix-x86-architecture.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
