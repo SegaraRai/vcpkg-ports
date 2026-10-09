@@ -1,5 +1,5 @@
 {
-  "version": "2750401336fb7c95f6619657a46a7e798661341c",
+  "version": "0699a19d0c6386247ce50d4dedbb8217d484d536",
   "ports": [
     {
       "name": "3fd",
@@ -6601,6 +6601,12 @@
             "version>=": "12.14.0"
           },
           {
+            "name": "nanoarrow",
+            "features": [
+              "ipc"
+            ]
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -6609,7 +6615,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.18.0"
+        "version-semver": "12.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -6650,7 +6656,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.14.0"
+        "version-semver": "12.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -6682,7 +6688,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.16.0"
+        "version-semver": "12.17.0"
       },
       "files": [
         "portfile.cmake",
@@ -6714,7 +6720,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.18.0"
+        "version-semver": "12.19.0"
       },
       "files": [
         "portfile.cmake",
@@ -6725,7 +6731,6 @@
       "name": "azure-storage-queues-cpp",
       "manifest": {
         "name": "azure-storage-queues-cpp",
-        "port-version": 1,
         "description": [
           "Microsoft Azure Storage Queues SDK for C++",
           "This library provides Azure Storage Queues SDK."
@@ -6736,7 +6741,7 @@
           {
             "name": "azure-storage-common-cpp",
             "default-features": false,
-            "version>=": "12.13.0"
+            "version>=": "12.12.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -6747,7 +6752,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.7.0"
+        "version-semver": "12.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -28106,7 +28111,6 @@
       "name": "duckdb",
       "manifest": {
         "name": "duckdb",
-        "port-version": 1,
         "description": "High-performance in-process analytical database system",
         "homepage": "https://duckdb.org",
         "license": null,
@@ -28133,7 +28137,8 @@
                 "name": "minizip-ng",
                 "default-features": false
               }
-            ]
+            ],
+            "license": "MIT AND Apache-2.0"
           },
           "httpfs": {
             "description": "Statically link the httpfs extension into DuckDB",
@@ -28147,12 +28152,6 @@
                 "name": "zlib",
                 "platform": "mingw"
               }
-            ]
-          },
-          "iceberg": {
-            "description": "Statically link the iceberg extension into DuckDB",
-            "dependencies": [
-              "roaring"
             ]
           },
           "icu": {
@@ -28174,10 +28173,9 @@
             "description": "Statically link the tpch extension into DuckDB"
           }
         },
-        "version": "1.4.4"
+        "version": "1.5.6"
       },
       "files": [
-        "avoid-stdext-checked-array-iterator.diff",
         "library-linkage-excel.diff",
         "library-linkage-httpfs.diff",
         "library-linkage.diff",
@@ -42502,7 +42500,7 @@
       "name": "hexl",
       "manifest": {
         "name": "hexl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Intel® HEXL is an open-source library which provides efficient implementations of integer arithmetic on Galois fields.",
         "homepage": "https://github.com/IntelLabs/hexl",
         "license": "Apache-2.0",
@@ -42522,6 +42520,7 @@
       },
       "files": [
         "hexl-debug-override.patch",
+        "pkgconfig-cpu-features.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -44742,7 +44741,6 @@
       "name": "intelrdfpmathlib",
       "manifest": {
         "name": "intelrdfpmathlib",
-        "port-version": 7,
         "description": "Intel(R) Decimal Floating-Point Math Library",
         "supports": "!(arm & windows)",
         "dependencies": [
@@ -44755,7 +44753,7 @@
             "host": true
           }
         ],
-        "version-string": "20U2"
+        "version-string": "20U5"
       },
       "files": [
         "CMakeLists.txt",
@@ -92859,11 +92857,16 @@
       "name": "rohit-singh-gautam-serializer",
       "manifest": {
         "name": "rohit-singh-gautam-serializer",
-        "description": "C++20 schema compiler and serialization runtime with multi-language output, JSON, binary, Protobuf codecs, and optional compression.",
+        "description": "C++20 schema compiler and serialization runtime with multi-language output, JSON, binary, Protobuf codecs, managed snapshots, collaboration, and compression.",
         "homepage": "https://github.com/rohit-singh-gautam/Serializer",
         "license": "GPL-3.0-or-later",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "rohit-singh-gautam-serializer",
+            "host": true,
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -92872,6 +92875,11 @@
             "name": "vcpkg-cmake-config",
             "host": true
           }
+        ],
+        "default-features": [
+          "lz4",
+          "zlib",
+          "zstd"
         ],
         "features": {
           "lz4": {
@@ -92893,9 +92901,10 @@
             ]
           }
         },
-        "version": "1.0.0"
+        "version": "1.5.0"
       },
       "files": [
+        "managed-host-generator.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -94471,9 +94480,13 @@
       "manifest": {
         "name": "scinumtools3",
         "description": "SciNumTools3: C++ toolkit for unit-aware scientific computation with runtime expressions and validated parameters.",
-        "homepage": "https://github.com/vrtulka23/scinumtools3",
+        "homepage": "https://github.com/scinumtools/snt3",
         "license": "MIT",
         "dependencies": [
+          {
+            "name": "hdf5",
+            "default-features": false
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -94483,10 +94496,40 @@
             "host": true
           }
         ],
-        "version": "0.8.0"
+        "features": {
+          "report": {
+            "description": "Enable DIP report generation and the snt report command"
+          },
+          "server": {
+            "description": "Enable the snt server REST API",
+            "dependencies": [
+              {
+                "name": "cpp-httplib",
+                "default-features": false
+              }
+            ]
+          },
+          "viewer": {
+            "description": "Enable the snt view graphical parameter viewer",
+            "dependencies": [
+              "glfw3",
+              {
+                "name": "imgui",
+                "default-features": false,
+                "features": [
+                  "glfw-binding",
+                  "opengl3-binding"
+                ]
+              }
+            ],
+            "supports": "!android"
+          }
+        },
+        "version": "0.9.1"
       },
       "files": [
         "portfile.cmake",
+        "use-vcpkg-imgui-glfw.patch",
         "vcpkg.json"
       ]
     },
@@ -95760,7 +95803,7 @@
             ]
           }
         },
-        "version": "4.4.5"
+        "version": "4.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -96220,9 +96263,10 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
+        "fix-cmake-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -107094,7 +107138,7 @@
       "manifest": {
         "name": "vcpkg-tool-nodejs",
         "supports": "native",
-        "version-semver": "24.14.0"
+        "version-semver": "24.21.0"
       },
       "files": [
         "portfile.cmake",
