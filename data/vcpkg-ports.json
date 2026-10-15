@@ -1,5 +1,5 @@
 {
-  "version": "e456309491fd875487bf02b8a0dca76c1b1b00cc",
+  "version": "357b1a6f8343064ca982a20771e420fcecfe7efc",
   "ports": [
     {
       "name": "3fd",
@@ -24669,7 +24669,6 @@
       "name": "curl",
       "manifest": {
         "name": "curl",
-        "port-version": 1,
         "description": "A library for transferring data with URLs",
         "homepage": "https://curl.se/",
         "license": "curl AND ISC AND BSD-3-Clause",
@@ -24685,7 +24684,6 @@
           "zlib"
         ],
         "default-features": [
-          "non-http",
           "ssl"
         ],
         "features": {
@@ -24787,13 +24785,6 @@
             "description": "LDAP support",
             "dependencies": [
               {
-                "name": "curl",
-                "default-features": false,
-                "features": [
-                  "non-http"
-                ]
-              },
-              {
                 "name": "openldap",
                 "platform": "!windows"
               }
@@ -24805,9 +24796,6 @@
             "dependencies": [
               "mbedtls"
             ]
-          },
-          "non-http": {
-            "description": "Enables protocols beyond HTTP/HTTPS/HTTP2/HTTP3"
           },
           "openssl": {
             "description": "TLS support (OpenSSL)",
@@ -24824,13 +24812,6 @@
           "ssh": {
             "description": "SSH support via libssh2",
             "dependencies": [
-              {
-                "name": "curl",
-                "default-features": false,
-                "features": [
-                  "non-http"
-                ]
-              },
               {
                 "name": "curl",
                 "default-features": false,
@@ -24883,16 +24864,7 @@
             "supports": "!uwp"
           },
           "websockets": {
-            "description": "WebSocket support",
-            "dependencies": [
-              {
-                "name": "curl",
-                "default-features": false,
-                "features": [
-                  "non-http"
-                ]
-              }
-            ]
+            "description": "WebSocket support"
           },
           "winidn": {
             "description": "WinIDN support",
@@ -24911,7 +24883,7 @@
             ]
           }
         },
-        "version": "8.22.0"
+        "version": "8.23.0"
       },
       "files": [
         "cmake-project-include.cmake",
@@ -30839,10 +30811,11 @@
         "homepage": "https://github.com/fcf-framework/fcfTest",
         "documentation": "https://fcf-framework.is-a-fullstack.dev/cpp-libraries/fcfTest",
         "license": "MIT",
-        "version": "1.2.7"
+        "version": "1.2.9"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -60824,7 +60797,7 @@
       "name": "libunistring",
       "manifest": {
         "name": "libunistring",
-        "port-version": 3,
+        "port-version": 4,
         "description": "GNU libunistring provides functions for manipulating Unicode strings and for manipulating C strings according to the Unicode standard.",
         "homepage": "https://www.gnu.org/software/libunistring/",
         "license": "LGPL-3.0-or-later OR GPL-2.0-or-later",
@@ -71177,6 +71150,7 @@
         "dependencies": [
           "freetype",
           "pugixml",
+          "utfcpp",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -71203,7 +71177,7 @@
             "description": "Keep obsolete functions."
           }
         },
-        "version": "3.5.1"
+        "version": "3.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -92867,7 +92841,7 @@
         "name": "rohit-singh-gautam-serializer",
         "description": "C++20 schema compiler and serialization runtime with multi-language output, JSON, binary, Protobuf codecs, managed snapshots, collaboration, and compression.",
         "homepage": "https://github.com/rohit-singh-gautam/Serializer",
-        "license": "GPL-3.0-or-later",
+        "license": "GPL-3.0-or-later AND 0BSD",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -92909,9 +92883,10 @@
             ]
           }
         },
-        "version": "1.5.0"
+        "version": "2.0.1"
       },
       "files": [
+        "fix-extent-width.patch",
         "managed-host-generator.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -97755,7 +97730,7 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "2.1.0"
+            "version>=": "2.3.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -97766,7 +97741,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -98014,11 +97989,11 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "2.0.0"
+            "version>=": "2.3.0"
           },
           {
             "name": "slick-stream-buffer",
-            "version>=": "2.0.0"
+            "version>=": "2.1.0"
           },
           {
             "name": "vcpkg-cmake",
@@ -98029,7 +98004,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -101969,9 +101944,15 @@
           },
           "yaml-cpp"
         ],
-        "version": "0.3.0"
+        "features": {
+          "tools": {
+            "description": "Build the swaggercpp command-line tool for validation, conversion, bundling, and documentation serving"
+          }
+        },
+        "version": "0.4.0"
       },
       "files": [
+        "fix-pkgconfig-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
