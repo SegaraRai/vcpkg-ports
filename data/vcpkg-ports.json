@@ -1,5 +1,5 @@
 {
-  "version": "357b1a6f8343064ca982a20771e420fcecfe7efc",
+  "version": "c52f7bd748185ef0e0daf033d9f2ddfc8a3449ea",
   "ports": [
     {
       "name": "3fd",
@@ -35433,10 +35433,11 @@
             ]
           }
         },
-        "version": "0.24.0"
+        "version": "0.26.0"
       },
       "files": [
         "cmake-config.diff",
+        "fix-vulkan-buffer-stream.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "relax-link-options.diff",
@@ -63663,7 +63664,7 @@
             "license": "BSD-2-Clause AND MIT AND LicenseRef-Public-Domain"
           }
         },
-        "version-semver": "0.4.1"
+        "version-semver": "0.6.0"
       },
       "files": [
         "cmake-config.diff",
@@ -68582,7 +68583,30 @@
         "description": "Header-only JIT compiler for scalar mathematical expressions.",
         "homepage": "https://github.com/imakris/mexce",
         "license": "BSD-2-Clause",
-        "version": "1.0.2"
+        "supports": "((windows | linux) & (x86 | x64)) | (osx & (arm64 | x64))",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "protected": {
+            "description": "Install protected-expression support.",
+            "dependencies": [
+              {
+                "name": "libsodium",
+                "version>=": "1.0.22"
+              }
+            ],
+            "supports": "x64 | (osx & arm64)"
+          }
+        },
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -75467,10 +75491,11 @@
             ]
           }
         },
-        "version": "0.3.33"
+        "version": "0.3.34"
       },
       "files": [
         "android-exclude-sme.diff",
+        "arm64-generic-omatcopy.diff",
         "cmake-project-include.cmake",
         "disable-testing.diff",
         "getarch.diff",
@@ -78405,7 +78430,7 @@
       "name": "openssl",
       "manifest": {
         "name": "openssl",
-        "port-version": 1,
+        "port-version": 2,
         "description": "OpenSSL is an open source project that provides a robust, commercial-grade, and full-featured toolkit for the Transport Layer Security (TLS) and Secure Sockets Layer (SSL) protocols. It is also a general-purpose cryptography library.",
         "homepage": "https://www.openssl.org",
         "license": "Apache-2.0",
@@ -91415,6 +91440,21 @@
       ]
     },
     {
+      "name": "rectpack2d",
+      "manifest": {
+        "name": "rectpack2d",
+        "description": "A header-only 2D rectangle packing library",
+        "homepage": "https://github.com/TeamHypersomnia/rectpack2D",
+        "license": "MIT",
+        "version-date": "2026-08-09"
+      },
+      "files": [
+        "portfile.cmake",
+        "unofficial-rectpack2d-config.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "recycle",
       "manifest": {
         "name": "recycle",
@@ -102598,7 +102638,7 @@
             "license": "GPL-2.0-or-later AND LGPL-2.1-or-later"
           }
         },
-        "version": "1.8.67"
+        "version": "1.8.68"
       },
       "files": [
         "fix-cross-compile.patch",
@@ -107914,6 +107954,32 @@
         "fix-imgui-1.92.5.patch",
         "portfile.cmake",
         "remove-manual-font-creation.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "vsgpoints",
+      "manifest": {
+        "name": "vsgpoints",
+        "description": "VulkanSceneGraph Point Cloud rendering.",
+        "homepage": "https://github.com/vsg-dev/vsgPoints/",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "vsg",
+          "vsgxchange"
+        ],
+        "version": "0.7.0"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
