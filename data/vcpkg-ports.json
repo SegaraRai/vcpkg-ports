@@ -1,5 +1,5 @@
 {
-  "version": "7d5f3c6241729acbbb7774f54bf687429aaf6492",
+  "version": "bf19794383e8fb95eba5aa553235bc8ec2271688",
   "ports": [
     {
       "name": "3fd",
@@ -24631,7 +24631,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.30.0"
+        "version-semver": "1.31.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -42017,7 +42017,7 @@
             ]
           }
         },
-        "version": "14.5.1"
+        "version": "14.6.0"
       },
       "files": [
         "harfbuzzConfig.cmake.in",
@@ -54714,6 +54714,7 @@
       "name": "libiconv",
       "manifest": {
         "name": "libiconv",
+        "port-version": 1,
         "description": [
           "iconv() text conversion.",
           "This port installs GNU libiconv if the system C runtime doesn't provide a suitable iconv() implementation."
@@ -60148,7 +60149,7 @@
       "name": "libtomcrypt",
       "manifest": {
         "name": "libtomcrypt",
-        "port-version": 3,
+        "port-version": 4,
         "description": "LibTomCrypt is a fairly comprehensive, modular and portable cryptographic toolkit that provides developers with a vast array of well known published block ciphers, one-way hash functions, chaining modes, pseudo-random number generators, public key cryptography and a plethora of other routines.",
         "homepage": "https://www.libtom.net/LibTomCrypt/",
         "dependencies": [
@@ -60157,6 +60158,7 @@
         "version": "1.18.2"
       },
       "files": [
+        "fix-windows-arm.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65066,7 +65068,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-09-08"
+        "version-date": "2026-10-14"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -75007,11 +75009,10 @@
             "host": true
           }
         ],
-        "version-semver": "1.19.0"
+        "version-semver": "1.22.0"
       },
       "files": [
         "fix-cmakelists.patch",
-        "fix-pr-7390.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75046,7 +75047,6 @@
       "name": "onnxruntime",
       "manifest": {
         "name": "onnxruntime",
-        "port-version": 1,
         "description": "ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator",
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
@@ -75078,21 +75078,24 @@
             "name": "flatbuffers",
             "version>=": "23.5.26"
           },
-          "ms-gsl",
+          {
+            "name": "ms-gsl",
+            "version>=": "4.2.1"
+          },
           "nlohmann-json",
           {
             "name": "onnx",
-            "version>=": "1.19.0"
+            "version>=": "1.22.0"
           },
           "optional-lite",
           {
             "name": "protobuf",
-            "version>=": "3.21.12"
+            "version>=": "6.33.4"
           },
           {
             "name": "protobuf",
             "host": true,
-            "version>=": "3.21.12"
+            "version>=": "6.33.4"
           },
           "re2",
           "safeint",
@@ -75160,13 +75163,12 @@
             ]
           }
         },
-        "version-semver": "1.23.2"
+        "version-semver": "1.31.0"
       },
       "files": [
         "fix-cmake-cuda.patch",
         "fix-cmake-mlas.patch",
         "fix-cmake.patch",
-        "fix-missing-cstdint.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -97887,7 +97889,7 @@
         "dependencies": [
           {
             "name": "slick-queue",
-            "version>=": "2.1.0"
+            "version>=": "2.3.0"
           },
           "slick-shm",
           {
@@ -97899,7 +97901,7 @@
             "host": true
           }
         ],
-        "version": "0.2.0"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -98044,7 +98046,7 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -103200,7 +103202,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.1.2"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
