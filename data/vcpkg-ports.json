@@ -1,5 +1,5 @@
 {
-  "version": "bf19794383e8fb95eba5aa553235bc8ec2271688",
+  "version": "664933b8d385dfc01f4e0cdff4c7c74e71f6a740",
   "ports": [
     {
       "name": "3fd",
@@ -2481,6 +2481,7 @@
           "re2",
           "snappy",
           "thrift",
+          "uriparser",
           "utf8proc",
           {
             "name": "vcpkg-cmake",
@@ -2591,7 +2592,8 @@
           "json": {
             "description": "JSON support",
             "dependencies": [
-              "rapidjson"
+              "rapidjson",
+              "simdjson"
             ]
           },
           "mimalloc": {
@@ -2642,7 +2644,7 @@
             ]
           }
         },
-        "version": "25.0.1"
+        "version": "26.0.0"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -2650,6 +2652,7 @@
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
         "0007-use-vcpkg-mimalloc.patch",
+        "0008-msvc-no-sse2-define.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -2658,6 +2661,7 @@
         "usage-flight",
         "usage-flightsql",
         "usage-parquet",
+        "usage-s3",
         "vcpkg.json"
       ]
     },
@@ -74861,15 +74865,14 @@
         "name": "ompl",
         "description": "The Open Motion Planning Library, consists of many state-of-the-art sampling-based motion planning algorithms",
         "homepage": "https://ompl.kavrakilab.org/",
+        "license": "BSD-3-Clause",
         "supports": "!(static & staticcrt) | (windows & !mingw)",
         "dependencies": [
-          "boost-filesystem",
           "boost-graph",
           "boost-math",
           "boost-odeint",
           "boost-program-options",
           "boost-serialization",
-          "boost-system",
           "eigen3",
           {
             "name": "vcpkg-cmake",
@@ -74880,12 +74883,13 @@
             "host": true
           }
         ],
-        "version": "1.7.0"
+        "version": "2.0.2"
       },
       "files": [
         "0001-disable-pkgconfig.patch",
         "FindPython.cmake",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -74893,6 +74897,7 @@
       "name": "omplapp",
       "manifest": {
         "name": "omplapp",
+        "port-version": 1,
         "description": "Use OMPL for reading meshes and performing collision checking",
         "homepage": "https://ompl.kavrakilab.org/",
         "license": null,
@@ -106926,7 +106931,7 @@
       "name": "vcpkg-make",
       "manifest": {
         "name": "vcpkg-make",
-        "port-version": 1,
+        "port-version": 2,
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_make_configure",
         "license": null,
         "supports": "native",
@@ -110038,7 +110043,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version": "8.0.0"
+        "version": "10.0.0"
       },
       "files": [
         "portfile.cmake",
