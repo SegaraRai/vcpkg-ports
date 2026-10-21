@@ -1,5 +1,5 @@
 {
-  "version": "469a0504e4a6ebf6173d1c0f51a7fa34c382fd43",
+  "version": "7bb3ef7c1aebcb18a9ad7f5d7c6e3ea3be006196",
   "ports": [
     {
       "name": "3fd",
@@ -1090,6 +1090,7 @@
       "name": "amd-amf",
       "manifest": {
         "name": "amd-amf",
+        "port-version": 1,
         "description": "AMD Advanced Media Framework headers",
         "homepage": "https://github.com/GPUOpen-LibrariesAndSDKs/AMF",
         "license": "MIT",
@@ -4108,7 +4109,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4179,7 +4180,10 @@
           "aws-c-cal",
           "aws-c-common",
           "aws-c-compression",
-          "aws-c-io",
+          {
+            "name": "aws-c-io",
+            "version>=": "1.1.0"
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -4189,7 +4193,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -19741,7 +19745,7 @@
         "name": "catch2",
         "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD.",
         "homepage": "https://github.com/catchorg/Catch2",
-        "license": "BSL-1.0",
+        "license": "BSL-1.0 AND BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -19757,7 +19761,7 @@
             "description": "Enables thread safe assertions"
           }
         },
-        "version-semver": "3.16.0"
+        "version-semver": "3.16.1"
       },
       "files": [
         "fix-install-path.patch",
@@ -20552,7 +20556,7 @@
             "host": true
           }
         ],
-        "version": "2.4.4"
+        "version": "2.4.5"
       },
       "files": [
         "portfile.cmake",
@@ -20712,7 +20716,7 @@
             "host": true
           }
         ],
-        "version": "1.6.1"
+        "version": "1.6.2"
       },
       "files": [
         "pkgconfig-cxx-linkage.diff",
@@ -20784,7 +20788,6 @@
       "name": "cimg",
       "manifest": {
         "name": "cimg",
-        "port-version": 1,
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
         "homepage": "https://github.com/GreycLab/CImg",
         "license": "(CECILL-C OR CECILL-2.1) AND LicenseRef-LGPL",
@@ -20794,7 +20797,7 @@
             "host": true
           }
         ],
-        "version": "4.0.5"
+        "version": "4.0.6"
       },
       "files": [
         "CMakeLists.txt",
@@ -22789,6 +22792,45 @@
         "correlation-vector.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "countly-sdk-cpp",
+      "manifest": {
+        "name": "countly-sdk-cpp",
+        "description": "Countly analytics SDK for C++ applications",
+        "homepage": "https://github.com/Countly/countly-sdk-cpp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "curl",
+            "platform": "!windows"
+          },
+          "nlohmann-json",
+          "openssl",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "sqlite": {
+            "description": "Store events and requests in SQLite",
+            "dependencies": [
+              "sqlite3"
+            ]
+          }
+        },
+        "version": "26.8.1"
+      },
+      "files": [
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -27878,7 +27920,6 @@
       "name": "draco",
       "manifest": {
         "name": "draco",
-        "port-version": 1,
         "description": " A library for compressing and decompressing 3D geometric meshes and point clouds. It is intended to improve the storage and transmission of 3D graphics.",
         "homepage": "https://github.com/google/draco",
         "license": "Apache-2.0",
@@ -27892,7 +27933,7 @@
             "host": true
           }
         ],
-        "version": "1.5.7"
+        "version": "1.5.9"
       },
       "files": [
         "disable-symlinks.patch",
@@ -29007,7 +29048,7 @@
             "host": true
           }
         ],
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "fix-wrong-version.patch",
@@ -44252,7 +44293,7 @@
             "supports": "windows & !uwp"
           }
         },
-        "version": "1.92.9"
+        "version": "1.93.0"
       },
       "files": [
         "CMakeLists.txt",
@@ -46524,7 +46565,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46590,7 +46631,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46604,7 +46645,7 @@
         "description": "Breeze icon theme for KDE Frameworks 6",
         "homepage": "https://invent.kde.org/frameworks/breeze-icons",
         "documentation": "https://api.kde.org/breeze-icons-index.html",
-        "license": "LGPL-2.1-or-later",
+        "license": "LGPL-2.1-or-later AND LGPL-3.0-or-later",
         "supports": "!windows & !android",
         "dependencies": [
           "ecm",
@@ -46624,7 +46665,7 @@
             "host": true
           }
         ],
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46700,7 +46741,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46752,7 +46793,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46804,7 +46845,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46858,7 +46899,7 @@
             "host": true
           }
         ],
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -46944,7 +46985,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49119,7 +49160,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "001_fix_imobile.patch",
@@ -49207,7 +49248,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49257,7 +49298,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49312,7 +49353,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49481,7 +49522,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -49538,7 +49579,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -50096,7 +50137,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -50107,7 +50148,6 @@
       "name": "kwindowsystem",
       "manifest": {
         "name": "kwindowsystem",
-        "port-version": 1,
         "description": "Access to the windowing system",
         "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
         "documentation": "https://api.kde.org/kwindowsystem-index.html",
@@ -50170,7 +50210,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "001_guard_ecm_qml_module_include.patch",
@@ -56013,6 +56053,7 @@
         "name": "libmediainfo",
         "description": "Get most relevant technical and tag data from video and audio files",
         "homepage": "https://github.com/MediaArea/MediaInfoLib",
+        "license": "BSD-2-Clause AND MIT AND Brian-Gladman-2-Clause AND Brian-Gladman-3-Clause AND LicenseRef-Public-Domain",
         "dependencies": [
           "libzen",
           "tinyxml2",
@@ -56037,7 +56078,7 @@
             ]
           }
         },
-        "version": "26.5"
+        "version": "26.10"
       },
       "files": [
         "dependencies.diff",
@@ -68355,7 +68396,6 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
@@ -68489,7 +68529,7 @@
             ]
           }
         },
-        "version": "26.2.4"
+        "version": "26.2.5"
       },
       "files": [
         "001-windows-gles-dispatch.patch",
@@ -90490,7 +90530,7 @@
             "host": true
           }
         ],
-        "version": "13.0.0"
+        "version": "13.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -95862,7 +95902,7 @@
             ]
           }
         },
-        "version": "4.7.0"
+        "version": "4.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -100875,7 +100915,7 @@
             "host": true
           }
         ],
-        "version": "1.8.1"
+        "version": "1.8.2"
       },
       "files": [
         "portfile.cmake",
@@ -102178,7 +102218,7 @@
             ]
           }
         },
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -102298,9 +102338,10 @@
             "host": true
           }
         ],
-        "version": "1.5"
+        "version": "2.0"
       },
       "files": [
+        "fix-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -103265,9 +103306,10 @@
             "host": true
           }
         ],
-        "version": "6.30.0"
+        "version": "6.31.0"
       },
       "files": [
+        "disable-examples.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -105887,7 +105929,7 @@
             "host": true
           }
         ],
-        "version": "5.3.1"
+        "version": "5.3.2"
       },
       "files": [
         "portfile.cmake",
@@ -105961,7 +106003,7 @@
             "host": true
           }
         ],
-        "version": "2.5.0"
+        "version": "2.6.0"
       },
       "files": [
         "portfile.cmake",
