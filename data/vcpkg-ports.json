@@ -1,5 +1,5 @@
 {
-  "version": "03e46d78ff2d0b16b185445bc256b22e322f59a1",
+  "version": "a073c28e52d920cb2465a17512324b3b6684d03a",
   "ports": [
     {
       "name": "3fd",
@@ -60,7 +60,7 @@
             "host": true
           }
         ],
-        "version": "26.4"
+        "version": "26.5"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -4040,6 +4040,10 @@
         "license": "Apache-2.0",
         "dependencies": [
           "aws-c-cal",
+          {
+            "name": "aws-c-common",
+            "version>=": "1.0.3"
+          },
           "aws-c-http",
           "aws-c-sdkutils",
           {
@@ -4055,7 +4059,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -4238,7 +4242,10 @@
         "homepage": "https://github.com/awslabs/aws-c-mqtt",
         "license": "Apache-2.0",
         "dependencies": [
-          "aws-c-http",
+          {
+            "name": "aws-c-http",
+            "version>=": "1.1.1"
+          },
           "aws-c-io",
           {
             "name": "s2n",
@@ -4253,7 +4260,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -4363,7 +4370,10 @@
           "aws-c-event-stream",
           "aws-c-http",
           "aws-c-io",
-          "aws-c-mqtt",
+          {
+            "name": "aws-c-mqtt",
+            "version>=": "1.1.2"
+          },
           "aws-c-s3",
           "aws-checksums",
           {
@@ -4379,7 +4389,7 @@
             "host": true
           }
         ],
-        "version": "0.43.7"
+        "version": "0.44.1"
       },
       "files": [
         "portfile.cmake",
@@ -6623,7 +6633,7 @@
             "host": true
           }
         ],
-        "version-semver": "12.19.0"
+        "version-semver": "12.19.1"
       },
       "files": [
         "portfile.cmake",
@@ -18521,7 +18531,7 @@
         "name": "box2d",
         "description": "An open source C++ engine for simulating rigid bodies in 2D",
         "homepage": "https://box2d.org",
-        "supports": "!uwp",
+        "supports": "!uwp & !x86",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -18532,12 +18542,11 @@
             "host": true
           }
         ],
-        "version-semver": "3.1.1"
+        "version-semver": "3.2.0"
       },
       "files": [
         "libm.diff",
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -18737,7 +18746,6 @@
       "name": "brpc",
       "manifest": {
         "name": "brpc",
-        "port-version": 1,
         "description": "Industrial-grade RPC framework used throughout Baidu, with 1,000,000+ instances and thousands kinds of services, called \"baidu-rpc\" inside Baidu.",
         "homepage": "https://github.com/apache/brpc",
         "license": "Apache-2.0",
@@ -18767,13 +18775,13 @@
             "host": true
           }
         ],
-        "version": "1.16.0"
+        "version": "1.18.0"
       },
       "files": [
+        "disable-ubshm-without-ubring.patch",
         "fix-build.patch",
         "fix-warnings.patch",
         "portfile.cmake",
-        "protobuf-6.patch",
         "vcpkg.json"
       ]
     },
@@ -18951,9 +18959,10 @@
       "manifest": {
         "name": "bungee",
         "description": "C++ library for time-stretching and pitch-shifting audio with high quality in realtime or offline",
-        "homepage": "https://bungee.parabolaresearch.com/",
+        "homepage": "https://bungee.parabolaresearch.com",
         "license": "MPL-2.0",
         "dependencies": [
+          "cxxopts",
           "eigen3",
           "pffft",
           {
@@ -18965,7 +18974,7 @@
             "host": true
           }
         ],
-        "version": "2.4.30"
+        "version": "2.4.35"
       },
       "files": [
         "cmake-use-vcpkg-deps-and-install-layout.patch",
@@ -19256,10 +19265,9 @@
             "host": true
           }
         ],
-        "version": "0.0.2"
+        "version": "0.0.3"
       },
       "files": [
-        "no_flags.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -22009,7 +22017,7 @@
           },
           {
             "name": "slick-net",
-            "version>=": "4.0.0"
+            "version>=": "4.1.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -22020,7 +22028,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.1.1"
       },
       "files": [
         "disable-config-fetchcontent-fallback.patch",
@@ -29017,7 +29025,7 @@
             ]
           }
         },
-        "version": "2.49.0"
+        "version": "2.50.0"
       },
       "files": [
         "fix-netcdf-linkage.patch",
@@ -29566,7 +29574,6 @@
       "name": "enchantum",
       "manifest": {
         "name": "enchantum",
-        "port-version": 1,
         "description": "Header-only C++17 fast compile time enum reflection library.",
         "homepage": "https://github.com/ZXShady/enchantum",
         "license": "MIT",
@@ -29580,7 +29587,7 @@
             "host": true
           }
         ],
-        "version": "0.4.0"
+        "version": "0.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -30992,7 +30999,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -36320,7 +36327,7 @@
             "supports": "linux"
           }
         },
-        "version": "2.90.0"
+        "version": "2.90.1"
       },
       "files": [
         "libintl.patch",
@@ -36476,7 +36483,7 @@
       "name": "glog",
       "manifest": {
         "name": "glog",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ implementation of the Google logging module",
         "homepage": "https://github.com/google/glog",
         "license": "BSD-3-Clause",
@@ -43338,9 +43345,9 @@
           "The Portable Hardware Locality (hwloc) software package provides a portable abstraction (across OS, versions, architectures, ...) of the hierarchical topology of modern architectures, including NUMA memory nodes, sockets, shared caches, cores and simultaneous multithreading. It also gathers various system attributes such as cache and memory information as well as the locality of I/O devices such as network interfaces, InfiniBand HCAs or GPUs."
         ],
         "homepage": "https://github.com/open-mpi/hwloc",
-        "license": "BSD-2-Clause",
+        "license": "BSD-3-Clause AND ISC",
         "supports": "!uwp",
-        "version": "2.11.2"
+        "version": "2.14.0"
       },
       "files": [
         "fix_shared_win_build.patch",
@@ -46642,6 +46649,56 @@
       ]
     },
     {
+      "name": "kbookmarks",
+      "manifest": {
+        "name": "kbookmarks",
+        "description": "Bookmarks management library",
+        "homepage": "https://invent.kde.org/frameworks/kbookmarks",
+        "documentation": "https://api.kde.org/kbookmarks-index.html",
+        "license": "LGPL-2.0-only AND LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          "kconfig",
+          "kcoreaddons",
+          "kwidgetsaddons",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kbreezeicons",
       "manifest": {
         "name": "kbreezeicons",
@@ -47100,7 +47157,7 @@
             ]
           }
         },
-        "version": "2.4.1"
+        "version": "2.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -49374,6 +49431,7 @@
       "name": "ki18n",
       "manifest": {
         "name": "ki18n",
+        "port-version": 1,
         "description": "Advanced internationalization framework",
         "homepage": "https://invent.kde.org/frameworks/ki18n",
         "documentation": "https://api.kde.org/ki18n-index.html",
@@ -49836,6 +49894,78 @@
       ]
     },
     {
+      "name": "knotifications",
+      "manifest": {
+        "name": "knotifications",
+        "description": "Desktop notifications",
+        "homepage": "https://invent.kde.org/frameworks/knotifications",
+        "documentation": "https://api.kde.org/knotifications-index.html",
+        "license": "LGPL-2.0-only AND LGPL-2.0-or-later AND (LGPL-2.0-only OR LGPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL)",
+        "dependencies": [
+          "ecm",
+          "kconfig",
+          {
+            "name": "libcanberra",
+            "platform": "!(windows | uwp)"
+          },
+          {
+            "name": "libsnoretoast",
+            "platform": "windows"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "network"
+            ],
+            "platform": "windows"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "komihash",
       "manifest": {
         "name": "komihash",
@@ -49911,7 +50041,10 @@
         "homepage": "https://krpc.github.io/krpc",
         "license": "LGPL-3.0-or-later",
         "dependencies": [
-          "asio",
+          {
+            "name": "asio",
+            "version>=": "1.20.0"
+          },
           "protobuf",
           {
             "name": "vcpkg-cmake",
@@ -49922,7 +50055,7 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -51690,7 +51823,7 @@
             "host": true
           }
         ],
-        "version": "2.5.6"
+        "version": "2.5.7"
       },
       "files": [
         "fix-include-directory.patch",
@@ -57976,7 +58109,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -64100,7 +64233,7 @@
         "name": "llvm",
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
-        "license": "Apache-2.0 WITH LLVM-exception",
+        "license": "Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND (CC0-1.0 OR Apache-2.0)",
         "supports": "!uwp & !(arm & windows)",
         "dependencies": [
           {
@@ -64594,7 +64727,7 @@
             ]
           }
         },
-        "version": "23.1.3"
+        "version": "23.1.4"
       },
       "files": [
         "0001-fix-install-package-dir.patch",
@@ -68172,7 +68305,7 @@
             ]
           }
         },
-        "version": "2.1.3"
+        "version": "2.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -69874,7 +70007,7 @@
             ]
           }
         },
-        "version": "2.5.6"
+        "version": "2.5.7"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -70591,7 +70724,7 @@
             "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2604.4.7897"
+        "version": "2604.5.7903"
       },
       "files": [
         "gdk-config.cmake.in",
@@ -72122,7 +72255,7 @@
         "name": "ncnn",
         "description": "ncnn is a high-performance neural network inference computing framework.",
         "homepage": "https://github.com/Tencent/ncnn",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND Zlib",
         "supports": "!(windows & arm)",
         "dependencies": [
           {
@@ -72143,7 +72276,7 @@
             ]
           }
         },
-        "version": "20260526"
+        "version": "20261020"
       },
       "files": [
         "portfile.cmake",
@@ -76816,7 +76949,7 @@
       "name": "opencv3",
       "manifest": {
         "name": "opencv3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Open Source Computer Vision Library",
         "homepage": "https://github.com/opencv/opencv",
         "license": "BSD-3-Clause",
@@ -77156,6 +77289,7 @@
         "0021-protobuf-6.patch",
         "0022-include-thread.patch",
         "0023-cout.diff",
+        "0024-protobuf-7.patch",
         "portfile.cmake",
         "usage.in",
         "vcpkg.json"
@@ -84098,7 +84232,6 @@
       "name": "protobuf",
       "manifest": {
         "name": "protobuf",
-        "port-version": 2,
         "description": "Google's language-neutral, platform-neutral, extensible mechanism for serializing structured data.",
         "homepage": "https://github.com/protocolbuffers/protobuf",
         "license": "BSD-3-Clause",
@@ -84130,7 +84263,7 @@
             ]
           }
         },
-        "version": "6.33.4"
+        "version": "7.36.2"
       },
       "files": [
         "fix-constinit-with-clang-cl.patch",
@@ -92503,11 +92636,15 @@
       "name": "rhasheq",
       "manifest": {
         "name": "rhasheq",
+        "port-version": 1,
         "description": "Simple header-only librhash wrapper for verifying hashes from a file to a given `const char *`.",
         "homepage": "https://github.com/offscale/rhasheq",
         "license": "0BSD",
         "dependencies": [
-          "c89stringutils",
+          {
+            "name": "c89stringutils",
+            "version>=": "0.0.3"
+          },
           "rhash",
           {
             "name": "vcpkg-cmake",
@@ -92521,6 +92658,7 @@
         "version-date": "2023-06-17"
       },
       "files": [
+        "c89stringutils-0.0.3.patch",
         "find-rhash.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -94160,10 +94298,9 @@
       "name": "sail",
       "manifest": {
         "name": "sail",
-        "port-version": 2,
         "description": "The missing small and fast image decoding library for humans (not for machines)",
         "homepage": "https://github.com/HappySeaFox/sail",
-        "license": "MIT",
+        "license": "MIT AND BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
           {
@@ -94438,13 +94575,18 @@
             "description": "Enable XWD codec"
           }
         },
-        "version-semver": "1.2.0"
+        "version-semver": "1.3.0"
       },
       "files": [
         "fix-always-nanosvg.diff",
+        "fix-android-log.patch",
+        "fix-ffmpeg-opencl.patch",
         "fix-heif.patch",
         "fix-include-directory.patch",
-        "fix-video-zlib-and-linking.patch",
+        "fix-jpegxl-pkg-config.patch",
+        "fix-libraw-cmake.patch",
+        "fix-release-only-triplet.patch",
+        "fix-swscale-link-order.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -96721,7 +96863,7 @@
             "host": true
           }
         ],
-        "version": "2026.19"
+        "version": "2026.20"
       },
       "files": [
         "portfile.cmake",
@@ -97305,7 +97447,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "5.0.2"
+        "version": "5.0.5"
       },
       "files": [
         "portfile.cmake",
@@ -98325,6 +98467,46 @@
       "files": [
         "portfile.cmake",
         "slick-dependencies-fetching.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "slickquant-alpaca-cpp",
+      "manifest": {
+        "name": "slickquant-alpaca-cpp",
+        "description": "C++20 SDK for the Alpaca Trading, Market Data and streaming APIs",
+        "homepage": "https://github.com/SlickQuant/alpaca-cpp",
+        "license": "MIT",
+        "supports": "!uwp",
+        "dependencies": [
+          "nlohmann-json",
+          "openssl",
+          {
+            "name": "slick-net",
+            "version>=": "4.1.1"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "options-streaming": {
+            "description": "alpaca-options-streaming-cpp: MessagePack option trade/quote streams",
+            "dependencies": [
+              "msgpack"
+            ]
+          }
+        },
+        "version": "0.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "use-vcpkg-dependencies.patch",
         "vcpkg.json"
       ]
     },
@@ -106540,7 +106722,7 @@
             "host": true
           }
         ],
-        "version": "6.33.4"
+        "version": "7.36.2"
       },
       "files": [
         "fix-cmake.patch",
