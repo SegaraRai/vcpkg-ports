@@ -1,5 +1,5 @@
 {
-  "version": "0e5030f583a5427123cd3b714255e5ae62faa3ba",
+  "version": "866e9e258a76437074a5cf02d4c2d71b53bff2f8",
   "ports": [
     {
       "name": "3fd",
@@ -2153,7 +2153,7 @@
             "host": true
           }
         ],
-        "version": "6.6.0"
+        "version": "6.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -3940,7 +3940,7 @@
       "manifest": {
         "name": "avisynthplus",
         "description": "An improved version of the AviSynth frameserver, with improved features and developer friendliness",
-        "homepage": "https://avs-plus.net/",
+        "homepage": "https://avs-plus.net",
         "license": "GPL-2.0",
         "supports": "!arm & !uwp & !xbox",
         "dependencies": [
@@ -3949,10 +3949,9 @@
             "host": true
           }
         ],
-        "version": "3.7.5"
+        "version": "3.7.6"
       },
       "files": [
-        "backport_409369a.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4273,7 +4272,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -8149,7 +8148,7 @@
             ]
           }
         },
-        "version": "3.3.5"
+        "version": "3.4.0"
       },
       "files": [
         "pkgconfig-dependencies.patch",
@@ -18531,6 +18530,7 @@
       "name": "botan",
       "manifest": {
         "name": "botan",
+        "port-version": 1,
         "description": "A cryptography library written in C++11",
         "homepage": "https://botan.randombit.net",
         "license": "BSD-2-Clause",
@@ -20067,7 +20067,7 @@
             "description": "Templates for float and double will be instantiated and compiled into a library"
           }
         },
-        "version": "2.0.0"
+        "version": "2.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -20441,7 +20441,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.9.6"
+        "version-semver": "0.9.7"
       },
       "files": [
         "portfile.cmake",
@@ -20736,30 +20736,6 @@
       "files": [
         "export-targets.patch",
         "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "chmlib",
-      "manifest": {
-        "name": "chmlib",
-        "port-version": 8,
-        "description": "CHMLIB is a library for dealing with Microsoft ITSS/CHM format files. Right now, it is a very simple library, but sufficient for dealing with all of the .chm files I've come across. Due to the fairly well-designed indexing built into this particular file format, even a small library is able to gain reasonably good performance indexing into ITSS archives.",
-        "homepage": "http://www.jedrea.com/chmlib/",
-        "license": "LGPL-2.1-or-later",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version": "0.40"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "all-platforms.patch",
-        "portfile.cmake",
-        "strings_h.patch",
         "vcpkg.json"
       ]
     },
@@ -23189,7 +23165,7 @@
         "description": "A single file C++ header-only PEG (Parsing Expression Grammars) library",
         "homepage": "https://github.com/yhirose/cpp-peglib",
         "license": "MIT",
-        "version": "1.25.0"
+        "version": "1.27.0"
       },
       "files": [
         "portfile.cmake",
@@ -30959,7 +30935,7 @@
         "homepage": "https://github.com/fcf-framework/fcfTest",
         "documentation": "https://fcf-framework.is-a-fullstack.dev/cpp-libraries/fcfTest",
         "license": "MIT",
-        "version": "1.2.11"
+        "version": "1.2.12"
       },
       "files": [
         "portfile.cmake",
@@ -36459,7 +36435,7 @@
             ]
           }
         },
-        "version": "2.90.0"
+        "version": "2.90.1"
       },
       "files": [
         "portfile.cmake",
@@ -43802,7 +43778,6 @@
       "name": "icu",
       "manifest": {
         "name": "icu",
-        "port-version": 2,
         "description": "Mature and widely used Unicode and localization library.",
         "homepage": "https://icu.unicode.org/home",
         "license": "ICU",
@@ -43829,13 +43804,12 @@
             "supports": "!uwp"
           }
         },
-        "version": "78.3"
+        "version": "79.1"
       },
       "files": [
         "disable-static-prefix.patch",
         "fix-python-path-with-spaces.patch",
         "fix-using-install-sh.diff",
-        "fix_bsd_and_solaris.patch",
         "fix_parallel_build_on_windows.patch",
         "mh-darwin.patch",
         "mh-mingw.patch",
@@ -45685,7 +45659,7 @@
             "host": true
           }
         ],
-        "version": "5.3.1"
+        "version": "5.4.0"
       },
       "files": [
         "fix-configure-ac.patch",
@@ -46546,7 +46520,7 @@
             "host": true
           }
         ],
-        "version": "0.6.2"
+        "version": "0.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -46587,6 +46561,7 @@
       "name": "karchive",
       "manifest": {
         "name": "karchive",
+        "port-version": 1,
         "description": "File compression",
         "homepage": "https://invent.kde.org/frameworks/karchive",
         "documentation": "https://api.kde.org/karchive-index.html",
@@ -46658,7 +46633,7 @@
       "name": "kauth",
       "manifest": {
         "name": "kauth",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Execute actions as privileged user",
         "homepage": "https://invent.kde.org/frameworks/kauth",
         "documentation": "https://api.kde.org/kauth-index.html",
@@ -46724,6 +46699,7 @@
       "name": "kbookmarks",
       "manifest": {
         "name": "kbookmarks",
+        "port-version": 1,
         "description": "Bookmarks management library",
         "homepage": "https://invent.kde.org/frameworks/kbookmarks",
         "documentation": "https://api.kde.org/kbookmarks-index.html",
@@ -46841,6 +46817,7 @@
       "name": "kcodecs",
       "manifest": {
         "name": "kcodecs",
+        "port-version": 1,
         "description": "String encoding library",
         "homepage": "https://invent.kde.org/frameworks/kcodecs",
         "documentation": "https://api.kde.org/kcodecs-index.html",
@@ -46881,9 +46858,54 @@
       ]
     },
     {
+      "name": "kcolorscheme",
+      "manifest": {
+        "name": "kcolorscheme",
+        "description": "KDE Color Scheme library",
+        "homepage": "https://invent.kde.org/frameworks/kcolorscheme",
+        "documentation": "https://api.kde.org/kcolorscheme-index.html",
+        "license": "BSD-2-Clause AND LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kconfig",
+          "kguiaddons",
+          "ki18n",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.31.0"
+      },
+      "files": [
+        "fix-static-dependencies.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kcompletion",
       "manifest": {
         "name": "kcompletion",
+        "port-version": 1,
         "description": "Text completion helpers and widgets",
         "homepage": "https://invent.kde.org/frameworks/kcompletion",
         "documentation": "https://api.kde.org/kcompletion-index.html",
@@ -46946,6 +46968,7 @@
       "name": "kconfig",
       "manifest": {
         "name": "kconfig",
+        "port-version": 1,
         "description": "Configuration system",
         "homepage": "https://invent.kde.org/frameworks/kconfig",
         "documentation": "https://api.kde.org/kconfig-index.html",
@@ -46998,6 +47021,7 @@
       "name": "kcoreaddons",
       "manifest": {
         "name": "kcoreaddons",
+        "port-version": 1,
         "description": "Addons to QtCore",
         "homepage": "https://invent.kde.org/frameworks/kcoreaddons",
         "documentation": "https://api.kde.org/kcoreaddons-index.html",
@@ -47073,6 +47097,7 @@
       "name": "kcrash",
       "manifest": {
         "name": "kcrash",
+        "port-version": 1,
         "description": "KCrash provides support for intercepting and handling application crashes.",
         "homepage": "https://invent.kde.org/frameworks/kcrash",
         "documentation": "https://api.kde.org/kcrash-index.html",
@@ -47143,6 +47168,7 @@
       "name": "kdbusaddons",
       "manifest": {
         "name": "kdbusaddons",
+        "port-version": 1,
         "description": "Convenience classes for D-Bus",
         "homepage": "https://invent.kde.org/frameworks/kdbusaddons",
         "documentation": "https://api.kde.org/kdbusaddons-index.html",
@@ -47229,7 +47255,7 @@
             ]
           }
         },
-        "version": "2.5.0"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -49310,6 +49336,7 @@
       "name": "kf6-solid",
       "manifest": {
         "name": "kf6-solid",
+        "port-version": 1,
         "description": "Desktop hardware abstraction",
         "homepage": "https://invent.kde.org/frameworks/solid",
         "documentation": "https://api.kde.org/solid-index.html",
@@ -49409,6 +49436,7 @@
       "name": "kglobalaccel",
       "manifest": {
         "name": "kglobalaccel",
+        "port-version": 1,
         "description": "Global desktop keyboard shortcuts",
         "homepage": "https://invent.kde.org/frameworks/kglobalaccel",
         "documentation": "https://api.kde.org/kglobalaccel-index.html",
@@ -49453,6 +49481,7 @@
       "name": "kguiaddons",
       "manifest": {
         "name": "kguiaddons",
+        "port-version": 1,
         "description": "Addons to QtGui",
         "homepage": "https://invent.kde.org/frameworks/kguiaddons",
         "documentation": "https://api.kde.org/kguiaddons-index.html",
@@ -49500,13 +49529,69 @@
       ]
     },
     {
+      "name": "kholidays",
+      "manifest": {
+        "name": "kholidays",
+        "description": "Holiday calculation library",
+        "homepage": "https://invent.kde.org/frameworks/kholidays",
+        "documentation": "https://api.kde.org/kholidays-index.html",
+        "license": "LGPL-2.0-or-later AND (LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL) AND GPL-2.0-or-later AND BSD-2-Clause AND BSD-3-Clause",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build the QML module",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "optional-qml.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ki18n",
       "manifest": {
         "name": "ki18n",
-        "port-version": 1,
+        "port-version": 3,
         "description": "Advanced internationalization framework",
         "homepage": "https://invent.kde.org/frameworks/ki18n",
         "documentation": "https://api.kde.org/ki18n-index.html",
+        "license": "LGPL-2.0-or-later AND (LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL) AND BSD-3-Clause AND CC0-1.0 AND ODbL-1.0",
         "supports": "!android",
         "dependencies": [
           "ecm",
@@ -49552,6 +49637,7 @@
       },
       "files": [
         "portfile.cmake",
+        "use-cmake-intl.patch",
         "vcpkg.json"
       ]
     },
@@ -49688,6 +49774,7 @@
       "name": "kitemmodels",
       "manifest": {
         "name": "kitemmodels",
+        "port-version": 1,
         "description": "Models for Qt Model/View system",
         "homepage": "https://invent.kde.org/frameworks/kitemmodels",
         "documentation": "https://api.kde.org/kitemmodels-index.html",
@@ -49728,6 +49815,7 @@
       "name": "kitemviews",
       "manifest": {
         "name": "kitemviews",
+        "port-version": 1,
         "description": "Widget addons for Qt Model/View",
         "homepage": "https://invent.kde.org/frameworks/kitemviews",
         "documentation": "https://api.kde.org/kitemviews-index.html",
@@ -49969,6 +50057,7 @@
       "name": "knotifications",
       "manifest": {
         "name": "knotifications",
+        "port-version": 1,
         "description": "Desktop notifications",
         "homepage": "https://invent.kde.org/frameworks/knotifications",
         "documentation": "https://api.kde.org/knotifications-index.html",
@@ -50047,6 +50136,54 @@
         "version": "5.34"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kplotting",
+      "manifest": {
+        "name": "kplotting",
+        "description": "Lightweight plotting framework",
+        "homepage": "https://invent.kde.org/frameworks/kplotting",
+        "documentation": "https://api.kde.org/kplotting-index.html",
+        "license": "LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "designerplugin": {
+            "description": "Build Qt Designer plugin",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "default-features": false,
+                "features": [
+                  "designer"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "optional-examples.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50153,7 +50290,7 @@
             "host": true
           }
         ],
-        "version": "0.6.0"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -50361,7 +50498,7 @@
       "name": "kwidgetsaddons",
       "manifest": {
         "name": "kwidgetsaddons",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Addons to QtWidgets",
         "homepage": "https://invent.kde.org/frameworks/kwidgetsaddons",
         "documentation": "https://api.kde.org/kwidgetsaddons-index.html",
@@ -50423,6 +50560,7 @@
       "name": "kwindowsystem",
       "manifest": {
         "name": "kwindowsystem",
+        "port-version": 1,
         "description": "Access to the windowing system",
         "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
         "documentation": "https://api.kde.org/kwindowsystem-index.html",
@@ -50866,7 +51004,7 @@
             "host": true
           }
         ],
-        "version": "3.53.4"
+        "version": "3.54.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -55156,7 +55294,12 @@
         "name": "libid3tag",
         "description": "ID3 tag manipulation library",
         "homepage": "https://codeberg.org/tenacityteam/libid3tag",
+        "license": "GPL-2.0-or-later",
         "dependencies": [
+          {
+            "name": "gperf",
+            "host": true
+          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -55167,9 +55310,11 @@
           },
           "zlib"
         ],
-        "version": "0.16.3"
+        "version": "0.16.4"
       },
       "files": [
+        "fix-install-include-dir.patch",
+        "fix-pkgconfig-zlib.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -55636,6 +55781,7 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
+        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -55654,8 +55800,7 @@
             "dependencies": [
               "giflib",
               "libjpeg-turbo",
-              "libpng",
-              "zlib"
+              "libpng"
             ],
             "supports": "!uwp"
           }
@@ -55664,7 +55809,8 @@
       },
       "files": [
         "fix-dependencies.patch",
-        "msvc-remove-libm.patch",
+        "fix-jxl-static.diff",
+        "fix-pkgconfig.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -58707,7 +58853,6 @@
       "name": "libraw",
       "manifest": {
         "name": "libraw",
-        "port-version": 1,
         "description": "raw image decoder library",
         "homepage": "https://www.libraw.org",
         "license": "(LGPL-2.1-only OR CDDL-1.0) AND BSD-3-Clause",
@@ -58744,7 +58889,7 @@
             "description": "Build library with OpenMP support"
           }
         },
-        "version": "0.22.2"
+        "version": "0.22.3"
       },
       "files": [
         "dependencies.patch",
@@ -59498,7 +59643,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.9.1"
+        "version-semver": "4.9.6"
       },
       "files": [
         "portfile.cmake",
@@ -59825,7 +59970,7 @@
             ]
           }
         },
-        "version": "3.8.0"
+        "version": "3.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -60110,7 +60255,7 @@
       "manifest": {
         "name": "libssh",
         "description": "libssh is a multiplatform C library implementing the SSHv2 protocol on client and server side",
-        "homepage": "https://www.libssh.org/",
+        "homepage": "https://www.libssh.org",
         "license": "LGPL-2.1-only",
         "supports": "!uwp & !xbox",
         "dependencies": [
@@ -60151,7 +60296,7 @@
             ]
           }
         },
-        "version": "0.12.0"
+        "version": "0.12.2"
       },
       "files": [
         "0001-export-pkgconfig-file.patch",
@@ -63985,7 +64130,7 @@
         "documentation": "https://liveplusplus.tech/docs/documentation.html",
         "license": null,
         "supports": "windows",
-        "version-semver": "2.11.4"
+        "version-semver": "2.11.5"
       },
       "files": [
         "global_preferences.json",
@@ -65453,7 +65598,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-10-14"
+        "version-date": "2026-10-21"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -65542,7 +65687,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.743"
+        "version": "0.744"
       },
       "files": [
         "cmake-config-export.patch",
@@ -70828,6 +70973,7 @@
       "name": "ms-gltf",
       "manifest": {
         "name": "ms-gltf",
+        "port-version": 1,
         "description": "glTF-SDK is a C++ Software Development Kit for glTF",
         "homepage": "https://github.com/microsoft/glTF-SDK",
         "license": "MIT",
@@ -70858,7 +71004,9 @@
       },
       "files": [
         "fix-install.patch",
+        "fix-osx-deployment-target.patch",
         "portfile.cmake",
+        "samples-cxx17.patch",
         "vcpkg.json"
       ]
     },
@@ -71364,7 +71512,7 @@
       "manifest": {
         "name": "mujs",
         "description": "An embeddable Javascript interpreter in C",
-        "homepage": "https://mujs.com/",
+        "homepage": "https://mujs.com",
         "license": "ISC AND Unicode-3.0",
         "dependencies": [
           {
@@ -71376,7 +71524,7 @@
             "host": true
           }
         ],
-        "version": "1.3.10"
+        "version": "1.3.11"
       },
       "files": [
         "CMakeLists.txt",
@@ -71966,12 +72114,11 @@
             "host": true
           }
         ],
-        "version": "2.14.0"
+        "version": "2.20.0"
       },
       "files": [
-        "find-unixodbc.patch",
-        "no-werror.patch",
         "portfile.cmake",
+        "use-vcpkg-unixodbc.patch",
         "vcpkg.json"
       ]
     },
@@ -74130,7 +74277,7 @@
             "host": true
           }
         ],
-        "version": "4.8.0"
+        "version": "4.8.1"
       },
       "files": [
         "portfile.cmake",
@@ -78100,6 +78247,36 @@
       ]
     },
     {
+      "name": "openhtj2k",
+      "manifest": {
+        "name": "openhtj2k",
+        "description": "JPEG 2000 Part 1 and High-Throughput JPEG 2000 (HTJ2K, Part 15) encoder and decoder library",
+        "homepage": "https://github.com/osamu620/OpenHTJ2K",
+        "license": "BSD-3-Clause",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "tools": {
+            "description": "Build the open_htj2k_dec and open_htj2k_enc command-line tools",
+            "supports": "!uwp"
+          }
+        },
+        "version": "0.20.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "openigtlink",
       "manifest": {
         "name": "openigtlink",
@@ -80821,6 +80998,7 @@
       "name": "pangolin",
       "manifest": {
         "name": "pangolin",
+        "port-version": 1,
         "description": "Lightweight GUI Library",
         "homepage": "https://github.com/stevenlovegrove/Pangolin",
         "license": "MIT",
@@ -80952,6 +81130,7 @@
       },
       "files": [
         "devendor-palsigslot.patch",
+        "disable-werror.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -85131,7 +85310,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.14.8"
+        "version": "3.14.9"
       },
       "files": [
         "0001-only-build-required-projects.patch",
@@ -85351,7 +85530,7 @@
       "name": "qcustomplot",
       "manifest": {
         "name": "qcustomplot",
-        "port-version": 1,
+        "port-version": 2,
         "description": "QCustomPlot is a Qt C++ widget for plotting and data visualization.",
         "homepage": "https://www.qcustomplot.com/",
         "license": "GPL-3.0-or-later",
@@ -85359,7 +85538,10 @@
         "dependencies": [
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
           },
           {
             "name": "vcpkg-qmake",
@@ -85372,6 +85554,7 @@
       "files": [
         "config.patch",
         "portfile.cmake",
+        "unofficial-qcustomplot-config.cmake.in",
         "vcpkg.json"
       ]
     },
@@ -85622,9 +85805,9 @@
       "manifest": {
         "name": "qoi",
         "description": "The Quite OK Image Format for fast, lossless image compression",
-        "homepage": "https://qoiformat.org/",
+        "homepage": "https://qoiformat.org",
         "license": "MIT",
-        "version-date": "2025-05-09"
+        "version-date": "2026-09-27"
       },
       "files": [
         "portfile.cmake",
@@ -89108,6 +89291,7 @@
       "name": "qtkeychain",
       "manifest": {
         "name": "qtkeychain",
+        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt5 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
@@ -89148,6 +89332,7 @@
       "name": "qtkeychain-qt6",
       "manifest": {
         "name": "qtkeychain-qt6",
+        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt6 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
@@ -91126,7 +91311,7 @@
       "name": "range-v3",
       "manifest": {
         "name": "range-v3",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Range library for C++14/17/20, basis for C++20's std::ranges",
         "homepage": "https://github.com/ericniebler/range-v3",
         "license": "BSL-1.0 AND MIT AND (NCSA OR MIT)",
@@ -91730,7 +91915,7 @@
       "name": "realm-core",
       "manifest": {
         "name": "realm-core",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Realm is a mobile database that runs directly inside phones, tablets or wearables.",
         "homepage": "https://github.com/realm/realm-core",
         "license": null,
@@ -91756,6 +91941,7 @@
       "files": [
         "UWP_index_set.patch",
         "cstdlib.diff",
+        "fix-s2-comparison.patch",
         "fix-s2-is-pod.patch",
         "fix-zlib.patch",
         "portfile.cmake",
@@ -92679,7 +92865,6 @@
       "name": "rhasheq",
       "manifest": {
         "name": "rhasheq",
-        "port-version": 1,
         "description": "Simple header-only librhash wrapper for verifying hashes from a file to a given `const char *`.",
         "homepage": "https://github.com/offscale/rhasheq",
         "license": "0BSD",
@@ -92698,12 +92883,11 @@
             "host": true
           }
         ],
-        "version-date": "2023-06-17"
+        "version": "0.0.3"
       },
       "files": [
-        "c89stringutils-0.0.3.patch",
-        "find-rhash.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -96111,6 +96295,55 @@
       ]
     },
     {
+      "name": "sdl3pp",
+      "manifest": {
+        "name": "sdl3pp",
+        "description": "A C++ wrapper for SDL3",
+        "homepage": "https://github.com/talesm/SDL3pp",
+        "license": "Zlib",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "sdl3",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "image": {
+            "description": "Enable SDL3_image support",
+            "dependencies": [
+              "sdl3-image"
+            ]
+          },
+          "mixer": {
+            "description": "Enable SDL3_mixer support",
+            "dependencies": [
+              "sdl3-mixer"
+            ]
+          },
+          "ttf": {
+            "description": "Enable SDL3_ttf support",
+            "dependencies": [
+              "sdl3-ttf"
+            ]
+          }
+        },
+        "version": "0.11.5"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "seacas",
       "manifest": {
         "name": "seacas",
@@ -97047,7 +97280,7 @@
             "host": true
           }
         ],
-        "version": "2.4"
+        "version": "2.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -97178,7 +97411,7 @@
         "description": "Signalsmith Audio's C++ DSP support library ",
         "homepage": "https://signalsmith-audio.co.uk/code/dsp/",
         "license": "MIT",
-        "version-semver": "1.6.2"
+        "version-semver": "1.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -97526,7 +97759,7 @@
             "license": "LGPL-2.1-or-later"
           }
         },
-        "version-semver": "9.2.1"
+        "version-semver": "9.3.2"
       },
       "files": [
         "bindir.patch",
@@ -98573,7 +98806,7 @@
           },
           {
             "name": "slick-net",
-            "version>=": "4.0.0"
+            "version>=": "4.1.1"
           },
           {
             "name": "vcpkg-cmake",
@@ -98585,7 +98818,7 @@
           },
           "zlib"
         ],
-        "version": "0.4.0"
+        "version": "0.4.2"
       },
       "files": [
         "portfile.cmake",
@@ -102650,6 +102883,7 @@
       "name": "syntax-highlighting",
       "manifest": {
         "name": "syntax-highlighting",
+        "port-version": 1,
         "description": "Syntax highlighting engine for Kate syntax definitions",
         "homepage": "https://invent.kde.org/frameworks/syntax-highlighting",
         "documentation": "https://api.kde.org/ksyntaxhighlighting-index.html",
@@ -102879,9 +103113,13 @@
           {
             "name": "vcpkg-cmake",
             "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
           }
         ],
-        "version-semver": "0.8.1"
+        "version-semver": "0.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -103187,7 +103425,7 @@
             "license": "GPL-2.0-or-later AND LGPL-2.1-or-later"
           }
         },
-        "version": "1.8.68"
+        "version": "1.8.69"
       },
       "files": [
         "fix-cross-compile.patch",
@@ -103760,6 +103998,7 @@
       "name": "threadweaver",
       "manifest": {
         "name": "threadweaver",
+        "port-version": 1,
         "description": "KDE Threading library",
         "homepage": "https://invent.kde.org/frameworks/threadweaver",
         "documentation": "https://api.kde.org/threadweaver-index.html",
@@ -107419,6 +107658,7 @@
       "name": "vcpkg-get-python-packages",
       "manifest": {
         "name": "vcpkg-get-python-packages",
+        "port-version": 1,
         "documentation": "https://learn.microsoft.com/en-us/vcpkg/maintainers/functions/vcpkg_get_python_packages",
         "license": "MIT",
         "supports": "native",
@@ -110248,7 +110488,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.4258.31"
+        "version": "1.0.4314.35"
       },
       "files": [
         "portfile.cmake",
@@ -111554,6 +111794,34 @@
         "version": "7.0"
       },
       "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "xad",
+      "manifest": {
+        "name": "xad",
+        "description": "Comprehensive C++ library for automatic differentiation: forward and adjoint modes, higher-order derivatives, checkpointing and vector modes.",
+        "homepage": "https://auto-differentiation.github.io",
+        "license": "AGPL-3.0-or-later",
+        "supports": "!mingw",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.1.0"
+      },
+      "files": [
+        "fix-install-pdb.patch",
+        "fix-libcxx-21.patch",
+        "fix-msvc-stl-145.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -113515,7 +113783,7 @@
       "name": "zlmediakit",
       "manifest": {
         "name": "zlmediakit",
-        "port-version": 1,
+        "port-version": 2,
         "description": "A high-performance carrier-grade streaming media service framework based on C++11.",
         "homepage": "https://github.com/ZLMediaKit/ZLMediaKit",
         "license": "MIT",
