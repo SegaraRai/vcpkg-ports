@@ -1,5 +1,5 @@
 {
-  "version": "c653b77e80d1b61e5f5bd2eabf15bc6ec3bfe7ad",
+  "version": "afa249f12f52ed8a3b919f195495ba8b330288d1",
   "ports": [
     {
       "name": "3fd",
@@ -42260,9 +42260,10 @@
             ]
           }
         },
-        "version": "14.6.0"
+        "version": "15.0.0"
       },
       "files": [
+        "fix-meson-cxx-link.patch",
         "harfbuzzConfig.cmake.in",
         "no-threads-on-emscripten.patch",
         "portfile.cmake",
@@ -50505,6 +50506,60 @@
       ]
     },
     {
+      "name": "kpackage",
+      "manifest": {
+        "name": "kpackage",
+        "description": "Library to load and install packages of non binary files as they were a plugin",
+        "homepage": "https://invent.kde.org/frameworks/kpackage",
+        "documentation": "https://api.kde.org/kpackage-index.html",
+        "license": "LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "karchive",
+          "kcoreaddons",
+          "ki18n",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files"
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "remove-stale-static-install.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kplotting",
       "manifest": {
         "name": "kplotting",
@@ -50854,6 +50909,46 @@
       },
       "files": [
         "gate_getopt.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kwallet",
+      "manifest": {
+        "name": "kwallet",
+        "description": "Safe desktop-wide storage for passwords",
+        "homepage": "https://invent.kde.org/frameworks/kwallet",
+        "documentation": "https://api.kde.org/kwallet-index.html",
+        "license": "LGPL-2.0-or-later AND GPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          "kconfig",
+          {
+            "name": "kconfig",
+            "host": true
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus",
+              "widgets"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.31.0"
+      },
+      "files": [
+        "fix-static-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -99855,6 +99950,93 @@
       ]
     },
     {
+      "name": "sonnet",
+      "manifest": {
+        "name": "sonnet",
+        "description": "Support for spellchecking",
+        "homepage": "https://invent.kde.org/frameworks/sonnet",
+        "documentation": "https://api.kde.org/sonnet-index.html",
+        "license": "LGPL-2.1-or-later AND LGPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
+          },
+          {
+            "name": "sonnet",
+            "host": true,
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "hunspell",
+            "platform": "!windows & !osx"
+          }
+        ],
+        "features": {
+          "designerplugin": {
+            "description": "Build Qt Designer plugin",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "default-features": false,
+                "features": [
+                  "designer"
+                ]
+              }
+            ]
+          },
+          "hunspell": {
+            "description": "Spell checking support via Hunspell",
+            "dependencies": [
+              "hunspell"
+            ]
+          },
+          "qml": {
+            "description": "Build the QML module",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "use-given-parsetrigrams.patch",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sophus",
       "manifest": {
         "name": "sophus",
@@ -110018,7 +110200,7 @@
           "vulkan",
           "vulkan-memory-allocator"
         ],
-        "version": "3.4.0"
+        "version": "3.5.0"
       },
       "files": [
         "portfile.cmake",
