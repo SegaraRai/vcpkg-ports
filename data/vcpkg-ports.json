@@ -1,5 +1,5 @@
 {
-  "version": "afa249f12f52ed8a3b919f195495ba8b330288d1",
+  "version": "db00e0c76ae37ede9464c157a3ec8653f8fbb494",
   "ports": [
     {
       "name": "3fd",
@@ -3808,7 +3808,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.6.0"
+        "version-semver": "0.6.1"
       },
       "files": [
         "portfile.cmake",
@@ -4104,7 +4104,7 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "1.0.3"
       },
       "files": [
         "portfile.cmake",
@@ -4272,7 +4272,7 @@
             "host": true
           }
         ],
-        "version": "1.1.1"
+        "version": "1.1.2"
       },
       "files": [
         "portfile.cmake",
@@ -4346,7 +4346,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.4.1"
+        "version": "1.5.1"
       },
       "files": [
         "portfile.cmake",
@@ -4438,7 +4438,7 @@
             "host": true
           }
         ],
-        "version": "0.44.2"
+        "version": "0.44.3"
       },
       "files": [
         "portfile.cmake",
@@ -4844,6 +4844,9 @@
           "connectparticipant": {
             "description": "C++ SDK for the AWS connectparticipant service"
           },
+          "continuum": {
+            "description": "C++ SDK for the AWS continuum service"
+          },
           "controlcatalog": {
             "description": "C++ SDK for the AWS controlcatalog service"
           },
@@ -4982,6 +4985,9 @@
           "emr-serverless": {
             "description": "C++ SDK for the AWS emr-serverless service"
           },
+          "endusermessaging": {
+            "description": "C++ SDK for the AWS endusermessaging service"
+          },
           "entityresolution": {
             "description": "C++ SDK for the AWS entityresolution service"
           },
@@ -4999,12 +5005,6 @@
           },
           "evs": {
             "description": "C++ SDK for the AWS evs service"
-          },
-          "finspace": {
-            "description": "C++ SDK for the AWS finspace service"
-          },
-          "finspace-data": {
-            "description": "C++ SDK for the AWS finspace-data service"
           },
           "firehose": {
             "description": "C++ SDK for the AWS firehose service"
@@ -5219,6 +5219,9 @@
           },
           "lambda-microvms": {
             "description": "C++ SDK for the AWS lambda-microvms service"
+          },
+          "lambda-web": {
+            "description": "C++ SDK for the AWS lambda-web service"
           },
           "launch-wizard": {
             "description": "C++ SDK for the AWS launch-wizard service"
@@ -5662,6 +5665,9 @@
           "sagemakerjobruntime": {
             "description": "C++ SDK for the AWS sagemakerjobruntime service"
           },
+          "sagemakertrainingsessionruntime": {
+            "description": "C++ SDK for the AWS sagemakertrainingsessionruntime service"
+          },
           "savingsplans": {
             "description": "C++ SDK for the AWS savingsplans service"
           },
@@ -5824,9 +5830,6 @@
           "timestream-write": {
             "description": "C++ SDK for the AWS timestream-write service"
           },
-          "tnb": {
-            "description": "C++ SDK for the AWS tnb service"
-          },
           "transcribe": {
             "description": "C++ SDK for the AWS transcribe service"
           },
@@ -5906,7 +5909,7 @@
             "description": "C++ SDK for the AWS xray service"
           }
         },
-        "version": "1.11.900"
+        "version": "1.11.920"
       },
       "files": [
         "configure-binary-dir.patch",
@@ -23892,7 +23895,7 @@
       "name": "cppunit",
       "manifest": {
         "name": "cppunit",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Unit testing framework module for the C++ programming language",
         "homepage": "https://www.freedesktop.org/wiki/Software/cppunit",
         "supports": "!uwp",
@@ -23918,6 +23921,7 @@
       "files": [
         "CMakeLists.txt",
         "CppUnitConfig.cmake",
+        "fix-cppunit-pc-target.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -24874,12 +24878,13 @@
             "host": true
           }
         ],
-        "version-semver": "1.32.0"
+        "version-semver": "1.32.1"
       },
       "files": [
         "fix-dependencies.patch",
         "portfile.cmake",
-        "vcpkg.json"
+        "vcpkg.json",
+        "version.patch"
       ]
     },
     {
@@ -25757,7 +25762,7 @@
             "host": true
           }
         ],
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "0001-build-options.patch",
@@ -30652,7 +30657,7 @@
             "host": true
           }
         ],
-        "version": "8.3.2"
+        "version": "8.3.3"
       },
       "files": [
         "portfile.cmake",
@@ -30937,7 +30942,7 @@
             "host": true
           }
         ],
-        "version": "26.10"
+        "version": "26.11"
       },
       "files": [
         "portfile.cmake",
@@ -31159,7 +31164,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 3,
+        "port-version": 4,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -32917,7 +32922,7 @@
             ]
           }
         },
-        "version": "2.6.1"
+        "version": "2.6.2"
       },
       "files": [
         "cxx-linkage-pkgconfig.diff",
@@ -34593,13 +34598,15 @@
       "name": "gdal",
       "manifest": {
         "name": "gdal",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The Geographic Data Abstraction Library for reading and writing geospatial raster and vector data",
         "homepage": "https://gdal.org",
         "license": null,
         "supports": "!uwp",
         "dependencies": [
+          "fast-float",
           "json-c",
+          "libdivide",
           "libgeotiff",
           {
             "name": "pkgconf",
@@ -34637,6 +34644,7 @@
             "platform": "!uwp"
           },
           "iconv",
+          "libaec",
           "libkml",
           {
             "name": "libspatialite",
@@ -34773,6 +34781,12 @@
               "lerc"
             ]
           },
+          "libaec": {
+            "description": "Enable Adaptive Entropy Coding support (used by GRIB)",
+            "dependencies": [
+              "libaec"
+            ]
+          },
           "libkml": {
             "description": "Enable the LibKML driver",
             "dependencies": [
@@ -34801,6 +34815,12 @@
             "description": "Use LZMA library",
             "dependencies": [
               "liblzma"
+            ]
+          },
+          "muparser": {
+            "description": "Enable muparser support for VRT expressions",
+            "dependencies": [
+              "muparser"
             ]
           },
           "mysql-libmariadb": {
@@ -34939,10 +34959,10 @@
         "iconv.diff",
         "libarchive.diff",
         "libkml.patch",
+        "pkgconfig.diff",
         "portfile.cmake",
         "sqlite3.diff",
         "target-is-valid.patch",
-        "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json"
       ]
@@ -44835,7 +44855,6 @@
       "name": "inih",
       "manifest": {
         "name": "inih",
-        "port-version": 1,
         "description": "Simple .INI file parser",
         "homepage": "https://github.com/benhoyt/inih",
         "license": "BSD-3-Clause",
@@ -44853,7 +44872,7 @@
             "description": "Build the C++ library"
           }
         },
-        "version": "62"
+        "version": "63"
       },
       "files": [
         "portfile.cmake",
@@ -49789,7 +49808,7 @@
       "name": "ki18n",
       "manifest": {
         "name": "ki18n",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Advanced internationalization framework",
         "homepage": "https://invent.kde.org/frameworks/ki18n",
         "documentation": "https://api.kde.org/ki18n-index.html",
@@ -49838,6 +49857,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "fix-qml-dependencies.patch",
         "portfile.cmake",
         "use-cmake-intl.patch",
         "vcpkg.json"
@@ -51604,7 +51624,7 @@
             "host": true
           }
         ],
-        "version": "1.33.1"
+        "version": "1.35.0"
       },
       "files": [
         "portfile.cmake",
@@ -57383,7 +57403,7 @@
         "name": "libmt32emu",
         "description": "A MT-32 emulator",
         "homepage": "https://github.com/munt/munt",
-        "license": "GPL-2.0-or-later",
+        "license": "LGPL-2.1-or-later AND BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -57394,7 +57414,7 @@
             "host": true
           }
         ],
-        "version": "2.8.3"
+        "version": "2.8.4"
       },
       "files": [
         "portfile.cmake",
@@ -62217,7 +62237,6 @@
       "name": "libversion",
       "manifest": {
         "name": "libversion",
-        "port-version": 1,
         "description": "Advanced version string comparison library",
         "homepage": "https://github.com/repology/libversion",
         "license": "MIT",
@@ -62232,7 +62251,7 @@
             "host": true
           }
         ],
-        "version": "3.0.4"
+        "version": "3.0.5"
       },
       "files": [
         "disable-test.patch",
@@ -66056,7 +66075,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-10-21"
+        "version-date": "2026-10-30"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -66190,10 +66209,9 @@
           "vulkan-loader",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
-        "0001-apidump-Add-missing-calling-convention-attributes.patch",
         "disable-qtdeploy.patch",
         "portfile.cmake",
         "static-linkage.patch",
@@ -69595,7 +69613,7 @@
             "supports": "x64 | (osx & arm64)"
           }
         },
-        "version": "1.2.1"
+        "version": "1.2.2"
       },
       "files": [
         "portfile.cmake",
@@ -70002,7 +70020,7 @@
         "description": "Audio playback and capture library written in C, in a single source file",
         "homepage": "https://github.com/mackron/miniaudio",
         "license": "Unlicense OR MIT-0",
-        "version": "0.11.25"
+        "version": "0.11.26"
       },
       "files": [
         "portfile.cmake",
@@ -73774,7 +73792,7 @@
             "host": true
           }
         ],
-        "version": "1.70.0"
+        "version": "1.71.0"
       },
       "files": [
         "portfile.cmake",
@@ -73799,7 +73817,7 @@
             "host": true
           }
         ],
-        "version": "1.18.0"
+        "version": "1.19.0"
       },
       "files": [
         "001-devendor-sfparse.patch",
@@ -78586,7 +78604,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.5.2"
+        "version": "3.5.3"
       },
       "files": [
         "portfile.cmake",
@@ -78737,7 +78755,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.23.4"
+        "version": "0.25.0"
       },
       "files": [
         "portfile.cmake",
@@ -79681,7 +79699,6 @@
       "name": "opentelemetry-cpp",
       "manifest": {
         "name": "opentelemetry-cpp",
-        "port-version": 2,
         "description": [
           "OpenTelemetry is a collection of tools, APIs, and SDKs.",
           "You use it to instrument, generate, collect, and export telemetry data (metrics, logs, and traces) for analysis in order to understand your software's performance and behavior."
@@ -79786,12 +79803,10 @@
             ]
           }
         },
-        "version-semver": "1.29.0"
+        "version-semver": "1.30.0"
       },
       "files": [
         "enable-msvc-warnings.patch",
-        "fix-missing-cstdint.patch",
-        "fix-span-limits-32-bit.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84879,6 +84894,7 @@
       "name": "prometheus-cpp",
       "manifest": {
         "name": "prometheus-cpp",
+        "port-version": 1,
         "description": "Prometheus Client Library for Modern C++",
         "license": "MIT",
         "dependencies": [
@@ -84924,6 +84940,7 @@
         "version-semver": "1.3.0"
       },
       "files": [
+        "fix-pkgconfig-civetweb.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -96431,7 +96448,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.4.18"
+        "version": "3.4.20"
       },
       "files": [
         "fix-freebsd.patch",
@@ -97565,7 +97582,7 @@
             "host": true
           }
         ],
-        "version": "2026.20"
+        "version": "2026.21"
       },
       "files": [
         "portfile.cmake",
@@ -98149,7 +98166,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "5.1.0"
+        "version": "5.1.1"
       },
       "files": [
         "portfile.cmake",
@@ -100651,7 +100668,7 @@
             "host": true
           }
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -100675,7 +100692,7 @@
             "host": true
           }
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "export-targets.patch",
@@ -100707,7 +100724,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "cmake-config-dir.diff",
@@ -110082,7 +110099,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -110122,7 +110139,7 @@
         "name": "vulkan-loader",
         "description": "Vulkan Development Tools",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
-        "license": null,
+        "license": "Apache-2.0 AND MIT AND HPND-Kevlin-Henney",
         "supports": "!android",
         "dependencies": [
           {
@@ -110152,7 +110169,7 @@
             "description": "Build Xlib WSI support"
           }
         },
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "fix-marmasm-conditional-assembly.patch",
@@ -110253,7 +110270,7 @@
             ]
           }
         },
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "LICENSE.txt",
@@ -110283,7 +110300,7 @@
           "volk",
           "vulkan-headers"
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -110296,7 +110313,7 @@
         "name": "vulkan-utility-libraries",
         "description": "Utility libraries for Vulkan developers",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Utility-Libraries",
-        "license": null,
+        "license": "Apache-2.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -110308,7 +110325,7 @@
           },
           "vulkan-headers"
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "portfile.cmake",
@@ -110340,7 +110357,7 @@
           "vulkan-headers",
           "vulkan-utility-libraries"
         ],
-        "version": "1.4.357.0"
+        "version": "1.4.363.0"
       },
       "files": [
         "disable-ltcg-on-x86.patch",
@@ -112868,7 +112885,6 @@
       "name": "xmlsec",
       "manifest": {
         "name": "xmlsec",
-        "port-version": 1,
         "description": "XML Security Library is a C library based on LibXML2. The library supports major XML security standards.",
         "homepage": "https://www.aleksey.com/xmlsec/",
         "license": "X11 AND MPL-1.1",
@@ -112903,7 +112919,7 @@
             "supports": "!static"
           }
         },
-        "version": "1.3.12"
+        "version": "1.3.13"
       },
       "files": [
         "CMakeLists.txt",
@@ -114284,7 +114300,7 @@
       "name": "zlib",
       "manifest": {
         "name": "zlib",
-        "port-version": 2,
+        "port-version": 3,
         "description": "A compression library",
         "homepage": "https://www.zlib.net/",
         "license": "Zlib",
@@ -114302,6 +114318,7 @@
       },
       "files": [
         "0001-no-version-script-on-ohos.patch",
+        "CVE-2026-76844.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
