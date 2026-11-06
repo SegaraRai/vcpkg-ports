@@ -1,5 +1,5 @@
 {
-  "version": "db00e0c76ae37ede9464c157a3ec8653f8fbb494",
+  "version": "661e42cd1600603016ced1d76a15359e7dade9f5",
   "ports": [
     {
       "name": "3fd",
@@ -2642,7 +2642,7 @@
             ]
           }
         },
-        "version": "26.0.0"
+        "version": "26.0.1"
       },
       "files": [
         "0001-msvc-static-name.patch",
@@ -2650,7 +2650,6 @@
         "0004-android-datetime.patch",
         "0005-cmake-msvcruntime.patch",
         "0007-use-vcpkg-mimalloc.patch",
-        "0008-msvc-no-sse2-define.patch",
         "portfile.cmake",
         "usage",
         "usage-acero",
@@ -6179,7 +6178,6 @@
       "name": "azure-data-tables-cpp",
       "manifest": {
         "name": "azure-data-tables-cpp",
-        "port-version": 2,
         "description": [
           "Microsoft Azure Data Tables SDK for C++",
           "This library provides Azure Data Tables SDK."
@@ -6210,7 +6208,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.6"
+        "version-semver": "1.0.0-beta.7"
       },
       "files": [
         "portfile.cmake",
@@ -8169,9 +8167,9 @@
       "manifest": {
         "name": "blpapi",
         "description": "Bloomberg API Library (BLPAPI)",
-        "homepage": "https://www.bloomberg.com/professional/support/api-library/",
-        "supports": "(linux | (windows & !uwp)) & !static & (x86 | x64)",
-        "version": "3.25.1"
+        "homepage": "https://professional.bloomberg.com/support/api-library/",
+        "supports": "((linux | (windows & !uwp)) & !static & (x86 | x64)) | (osx & arm64)",
+        "version": "3.26.9"
       },
       "files": [
         "portfile.cmake",
@@ -31164,7 +31162,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 4,
+        "port-version": 5,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -36332,7 +36330,7 @@
             ]
           }
         },
-        "version": "9.0.0"
+        "version": "9.1.0"
       },
       "files": [
         "001-fix-asio.patch",
@@ -39263,7 +39261,6 @@
       "name": "graphicsmagick",
       "manifest": {
         "name": "graphicsmagick",
-        "port-version": 1,
         "description": "Image processing library",
         "homepage": "http://www.graphicsmagick.org/",
         "license": "MIT",
@@ -39286,11 +39283,11 @@
           },
           "zlib"
         ],
-        "version": "1.3.45"
+        "version": "1.3.49"
       },
       "files": [
         "dependencies.diff",
-        "magick-types.diff",
+        "msvc-static-coders.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -47481,6 +47478,75 @@
       ]
     },
     {
+      "name": "kdeclarative",
+      "manifest": {
+        "name": "kdeclarative",
+        "description": "Provides integration of QML and KDE Frameworks",
+        "homepage": "https://invent.kde.org/frameworks/kdeclarative",
+        "documentation": "https://api.kde.org/kdeclarative-index.html",
+        "license": "LGPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND (GPL-2.0-only OR GPL-3.0-only OR LicenseRef-KDE-Accepted-GPL)",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kconfig",
+          {
+            "name": "kglobalaccel",
+            "platform": "!windows & !osx & !ios & !android"
+          },
+          "kguiaddons",
+          {
+            "name": "ki18n",
+            "features": [
+              "qml"
+            ]
+          },
+          {
+            "name": "kwidgetsaddons",
+            "platform": "!android"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "qtshadertools",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files"
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kdgpu",
       "manifest": {
         "name": "kdgpu",
@@ -50738,6 +50804,47 @@
       ]
     },
     {
+      "name": "kservice",
+      "manifest": {
+        "name": "kservice",
+        "description": "Plugin framework for desktop services",
+        "homepage": "https://invent.kde.org/frameworks/kservice",
+        "documentation": "https://api.kde.org/kservice-index.html",
+        "license": "LGPL-2.0-only AND LGPL-2.0-or-later AND (LGPL-2.0-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL)",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kconfig",
+          "kcoreaddons",
+          "ki18n",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.31.0"
+      },
+      "files": [
+        "fix-static-dependencies.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ktx",
       "manifest": {
         "name": "ktx",
@@ -52512,7 +52619,7 @@
             "host": true
           }
         ],
-        "version": "2.5.7"
+        "version": "2.5.8"
       },
       "files": [
         "fix-include-directory.patch",
@@ -56184,7 +56291,6 @@
       "name": "libjpeg-turbo",
       "manifest": {
         "name": "libjpeg-turbo",
-        "port-version": 1,
         "description": "libjpeg-turbo is a JPEG image codec that uses SIMD instructions (MMX, SSE2, NEON, AltiVec) to accelerate baseline JPEG compression and decompression on x86, x86-64, ARM, and PowerPC systems.",
         "homepage": "https://libjpeg-turbo.org/",
         "license": "BSD-3-Clause AND IJG",
@@ -56211,12 +56317,11 @@
             "description": "Build executables"
           }
         },
-        "version": "3.2.0"
+        "version": "3.2.1"
       },
       "files": [
         "add-options-for-docs-headers.patch",
         "portfile.cmake",
-        "system-dependency-fixes-pr-901.patch",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
         "vcpkg.json",
@@ -57507,7 +57612,7 @@
         "description": "A lightweight PDF, XPS, and E-book library",
         "homepage": "https://mupdf.com/core",
         "documentation": "https://mupdf.readthedocs.io/",
-        "license": "AGPL-3.0-only",
+        "license": "AGPL-3.0-or-later",
         "dependencies": [
           "freetype",
           "gumbo",
@@ -57538,7 +57643,7 @@
             ]
           }
         },
-        "version": "1.26.10"
+        "version": "1.28.5"
       },
       "files": [
         "CMakeLists.txt",
@@ -58725,6 +58830,7 @@
       "name": "libpng",
       "manifest": {
         "name": "libpng",
+        "port-version": 1,
         "description": "libpng is a library implementing an interface for reading and writing PNG (Portable Network Graphics) format files",
         "homepage": "https://github.com/pnggroup/libpng",
         "license": "libpng-2.0",
@@ -58757,6 +58863,7 @@
       },
       "files": [
         "cmake.patch",
+        "genout-compiler-target.patch",
         "libpng-config.cmake",
         "portfile.cmake",
         "usage",
@@ -65422,7 +65529,7 @@
             ]
           }
         },
-        "version": "23.1.4"
+        "version": "23.1.5"
       },
       "files": [
         "0001-fix-install-package-dir.patch",
@@ -70701,7 +70808,7 @@
             ]
           }
         },
-        "version": "2.5.7"
+        "version": "2.5.8"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -73865,7 +73972,6 @@
       "name": "ngtcp2",
       "manifest": {
         "name": "ngtcp2",
-        "port-version": 1,
         "description": "ngtcp2 project is an effort to implement RFC9000 QUIC protocol.",
         "homepage": "https://github.com/ngtcp2/ngtcp2",
         "license": "MIT",
@@ -73904,7 +74010,7 @@
             ]
           }
         },
-        "version": "1.25.0"
+        "version": "1.26.0"
       },
       "files": [
         "portfile.cmake",
@@ -89726,6 +89832,7 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
+        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -101674,10 +101781,9 @@
       "name": "stdexec",
       "manifest": {
         "name": "stdexec",
-        "port-version": 1,
         "description": "stdexec is an experimental reference implementation of the Senders model of asynchronous programming proposed by P2300 - std::execution for adoption into the C++ Standard.",
         "homepage": "https://github.com/NVIDIA/stdexec",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 WITH LLVM-exception",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -101709,15 +101815,12 @@
             ]
           }
         },
-        "version-date": "2026-05-25"
+        "version-date": "2026-11-02"
       },
       "files": [
         "fix-boost-asio-dependency.patch",
-        "fix-clangd-helper-file-basedir.patch",
-        "fix-libdispatch-vector-include.patch",
         "fix-taskflow-dependency.patch",
         "fix-tbb-dependency.patch",
-        "fix-version.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -103829,7 +103932,7 @@
             "supports": "!static & !osx & !uwp"
           }
         },
-        "version": "2023.1.0"
+        "version": "2023.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -104170,6 +104273,7 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
+        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -104179,15 +104283,7 @@
             "name": "cpu-features",
             "platform": "android"
           },
-          {
-            "name": "curl",
-            "default-features": false
-          },
           "leptonica",
-          {
-            "name": "libarchive",
-            "default-features": false
-          },
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -104197,7 +104293,29 @@
             "host": true
           }
         ],
+        "default-features": [
+          "curl",
+          "libarchive"
+        ],
         "features": {
+          "curl": {
+            "description": "Support reading images from URLs via libcurl",
+            "dependencies": [
+              {
+                "name": "curl",
+                "default-features": false
+              }
+            ]
+          },
+          "libarchive": {
+            "description": "Support reading traineddata from archives via libarchive",
+            "dependencies": [
+              {
+                "name": "libarchive",
+                "default-features": false
+              }
+            ]
+          },
           "training-tools": {
             "description": "build training tools",
             "dependencies": [
@@ -106245,7 +106363,7 @@
         "name": "tree-sitter",
         "description": "An incremental parsing system for programming tools.",
         "homepage": "https://tree-sitter.github.io/tree-sitter/",
-        "license": "MIT",
+        "license": "MIT AND Unicode-DFS-2016",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -106256,7 +106374,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.26.12"
+        "version-semver": "0.27.1"
       },
       "files": [
         "portfile.cmake",
