@@ -1,5 +1,5 @@
 {
-  "version": "661e42cd1600603016ced1d76a15359e7dade9f5",
+  "version": "c34e55f474b3af4d8c46ee8538646e8ac463bf91",
   "ports": [
     {
       "name": "3fd",
@@ -20144,7 +20144,7 @@
             "description": "Templates for float and double will be instantiated and compiled into a library"
           }
         },
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -23088,7 +23088,7 @@
             "supports": "android"
           }
         },
-        "version": "3.10.281.1"
+        "version": "3.10.309.1"
       },
       "files": [
         "portfile.cmake",
@@ -23167,7 +23167,7 @@
             ]
           }
         },
-        "version": "0.64.0"
+        "version": "0.65.0"
       },
       "files": [
         "fix-find-brotli.patch",
@@ -23493,14 +23493,14 @@
         "dependencies": [
           "icu",
           "openssl",
-          "pcre",
+          "pcre2",
           {
             "name": "vcpkg-cmake",
             "host": true
           },
           "zlib"
         ],
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "dependencies.diff",
@@ -31162,7 +31162,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 5,
+        "port-version": 6,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31216,6 +31216,7 @@
                   "iconv",
                   "lzma",
                   "mp3lame",
+                  "network",
                   "openjpeg",
                   "openmpt",
                   "opus",
@@ -31656,6 +31657,9 @@
               "mp3lame"
             ]
           },
+          "network": {
+            "description": "Enable networking and the network protocols (HTTP, RTMP, TLS, etc.). Without it, only the local protocols (file, pipe, etc.) are built and no TLS library (schannel, SecureTransport, OpenSSL) is linked. With it, TLS uses schannel on Windows and SecureTransport on macOS/iOS unless the openssl feature is selected."
+          },
           "nonfree": {
             "description": "Allow use of nonfree code, the resulting libs and binaries will be unredistributable"
           },
@@ -31706,6 +31710,7 @@
                 "name": "ffmpeg",
                 "default-features": false,
                 "features": [
+                  "network",
                   "version3"
                 ]
               },
@@ -31782,6 +31787,13 @@
           "srt": {
             "description": "Haivision SRT protocol",
             "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "network"
+                ]
+              },
               "libsrt"
             ],
             "supports": "!uwp"
@@ -31789,6 +31801,13 @@
           "ssh": {
             "description": "SFTP protocol via libssh",
             "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "network"
+                ]
+              },
               "libssh"
             ]
           },
@@ -31915,6 +31934,13 @@
           "zmq": {
             "description": "Enable ZeroMQ support",
             "dependencies": [
+              {
+                "name": "ffmpeg",
+                "default-features": false,
+                "features": [
+                  "network"
+                ]
+              },
               "zeromq"
             ]
           }
@@ -36941,7 +36967,7 @@
       "name": "gmp",
       "manifest": {
         "name": "gmp",
-        "port-version": 5,
+        "port-version": 6,
         "description": "The GNU Multiple Precision Arithmetic Library",
         "homepage": "https://gmplib.org",
         "license": "LGPL-3.0-only OR GPL-2.0-only",
@@ -44624,10 +44650,11 @@
             "host": true
           }
         ],
-        "version": "1.0"
+        "version": "1.1"
       },
       "files": [
         "CMakeLists.txt",
+        "implot-config.cmake",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45091,7 +45118,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0"
+        "version-semver": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -50029,6 +50056,64 @@
       ]
     },
     {
+      "name": "kidletime",
+      "manifest": {
+        "name": "kidletime",
+        "description": "Monitoring user activity",
+        "homepage": "https://invent.kde.org/frameworks/kidletime",
+        "documentation": "https://api.kde.org/kidletime-index.html",
+        "license": "LGPL-2.1-or-later AND (LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL) AND MIT",
+        "supports": "!static & (linux | osx | (windows & !uwp & !xbox))",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "plasma-wayland-protocols",
+            "platform": "linux"
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "wayland",
+              "xcb"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "qtwayland",
+            "default-features": false,
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "wayland-protocols",
+            "platform": "linux"
+          }
+        ],
+        "version": "6.31.0"
+      },
+      "files": [
+        "optional-examples.patch",
+        "optional-xscreensaver.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "kinectsdk1",
       "manifest": {
         "name": "kinectsdk1",
@@ -50089,6 +50174,76 @@
       "files": [
         "portfile.cmake",
         "unofficial-kineto-config.cmake.in",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kirigami",
+      "manifest": {
+        "name": "kirigami",
+        "description": "QtQuick plugins to build user interfaces based on the KDE human interface guidelines",
+        "homepage": "https://invent.kde.org/frameworks/kirigami",
+        "documentation": "https://api.kde.org/kirigami-index.html",
+        "license": "LGPL-2.0-or-later AND LGPL-2.1-or-later AND (LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL) AND MIT AND BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause AND CC0-1.0 AND FSFAP",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "concurrent",
+              "gui"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "qtshadertools",
+            "default-features": false
+          },
+          {
+            "name": "qtsvg",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build and install translation files",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "fix-static-dependencies.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -55760,6 +55915,7 @@
       "name": "libical",
       "manifest": {
         "name": "libical",
+        "port-version": 1,
         "description": "Reference implementation of the iCalendar data type and serialization format",
         "homepage": "https://github.com/libical/libical",
         "license": "MPL-2.0",
@@ -55785,6 +55941,7 @@
         "version": "3.0.20"
       },
       "files": [
+        "generate-export-headers.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -57519,7 +57676,7 @@
             "host": true
           }
         ],
-        "version": "2.8.4"
+        "version": "2.8.5"
       },
       "files": [
         "portfile.cmake",
@@ -71525,7 +71682,7 @@
             "description": "Include PlayFab Extension Libraries"
           }
         },
-        "version": "2604.5.7903"
+        "version": "2610.0.9661"
       },
       "files": [
         "gdk-config.cmake.in",
@@ -80107,7 +80264,6 @@
       "name": "openvino",
       "manifest": {
         "name": "openvino",
-        "port-version": 1,
         "maintainers": "OpenVINO Developers <openvino@intel.com>",
         "description": [
           "Intel® Distribution of OpenVINO™ toolkit is an open-source toolkit for optimizing ",
@@ -80292,7 +80448,7 @@
           }
         },
         "summary": "This is a port for Open Visual Inference And Optimization toolkit for AI inference",
-        "version": "2026.3.1"
+        "version": "2026.4.1"
       },
       "files": [
         "android-ignore-onetbb-warning.patch",
@@ -80300,7 +80456,7 @@
         "levelzero-prepareheaders.patch",
         "msvc-debug-info-only-in-pdb.patch",
         "portfile.cmake",
-        "protobuf-6.patch",
+        "relax-protobuf-version.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -92845,6 +93001,10 @@
             "version>=": "3.10.0"
           },
           {
+            "name": "enchantum",
+            "version>=": "0.5.0"
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -92991,7 +93151,7 @@
             ]
           }
         },
-        "version": "0.26.2"
+        "version": "0.27.1"
       },
       "files": [
         "portfile.cmake",
@@ -94086,6 +94246,23 @@
         "0002-fix-android.patch",
         "portfile.cmake",
         "vcpkg.json"
+      ]
+    },
+    {
+      "name": "rocm",
+      "manifest": {
+        "name": "rocm",
+        "description": "AMD ROCm platform",
+        "homepage": "https://rocm.docs.amd.com/",
+        "license": null,
+        "supports": "linux & x64",
+        "version-date": "2026-11-05"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg-port-config.cmake",
+        "vcpkg.json",
+        "vcpkg_find_rocm.cmake"
       ]
     },
     {
@@ -97299,7 +97476,7 @@
             "supports": "windows & !static"
           }
         },
-        "version": "0.17.5"
+        "version": "0.17.6"
       },
       "files": [
         "fix-cmake4.patch",
@@ -100190,15 +100367,20 @@
       "name": "soqt",
       "manifest": {
         "name": "soqt",
-        "port-version": 4,
         "description": "A Qt Gui-toolkit binding for Coin",
         "homepage": "https://github.com/coin3d/soqt",
+        "license": "BSD-3-Clause",
         "supports": "!(arm | arm64 | uwp)",
         "dependencies": [
           "coin",
           {
-            "name": "qt5-base",
-            "default-features": false
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui",
+              "opengl",
+              "widgets"
+            ]
           },
           {
             "name": "vcpkg-cmake",
@@ -100209,11 +100391,9 @@
             "host": true
           }
         ],
-        "version": "1.6.0"
+        "version": "1.6.4"
       },
       "files": [
-        "disable-cpackd.patch",
-        "disable-test-code.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -101196,6 +101376,34 @@
       "files": [
         "fix-dependency.patch",
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sqlite-vec",
+      "manifest": {
+        "name": "sqlite-vec",
+        "description": "A vector search SQLite extension that runs anywhere.",
+        "homepage": "https://github.com/asg017/sqlite-vec",
+        "license": "MIT OR Apache-2.0",
+        "dependencies": [
+          "sqlite3",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "0.1.9"
+      },
+      "files": [
+        "CMakeLists.txt",
+        "fix-popcount.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -104273,7 +104481,6 @@
       "name": "tesseract",
       "manifest": {
         "name": "tesseract",
-        "port-version": 1,
         "description": "An OCR Engine that was developed at HP Labs between 1985 and 1995... and now at Google.",
         "homepage": "https://github.com/tesseract-ocr/tesseract",
         "license": "Apache-2.0",
@@ -104326,11 +104533,10 @@
             ]
           }
         },
-        "version": "5.5.3"
+        "version": "5.5.4"
       },
       "files": [
         "fix-link-include-path.patch",
-        "fix-msvc-training-tools.patch",
         "fix_static_link_icu.patch",
         "portfile.cmake",
         "target-curl.diff",
@@ -105260,7 +105466,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
