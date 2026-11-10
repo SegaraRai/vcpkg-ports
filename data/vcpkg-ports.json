@@ -1,5 +1,5 @@
 {
-  "version": "ec48c11eae9448c8c6e7739d93e06fa2433aa95f",
+  "version": "13eb3d17cbd0309c9ac279e62dfd6d98f2ac8784",
   "ports": [
     {
       "name": "3fd",
@@ -60,7 +60,7 @@
             "host": true
           }
         ],
-        "version": "26.5"
+        "version": "26.6"
       },
       "files": [
         "7zip-config.cmake.in",
@@ -4348,7 +4348,7 @@
             "description": "Whether to include the s3 endpoint resolver and related config files"
           }
         },
-        "version": "1.5.1"
+        "version": "1.5.2"
       },
       "files": [
         "portfile.cmake",
@@ -6046,7 +6046,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.13"
+        "version-semver": "1.0.0-beta.14"
       },
       "files": [
         "portfile.cmake",
@@ -19076,7 +19076,7 @@
             "host": true
           }
         ],
-        "version": "2.4.35"
+        "version": "2.4.39"
       },
       "files": [
         "cmake-use-vcpkg-deps-and-install-layout.patch",
@@ -24880,7 +24880,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.32.1"
+        "version-semver": "1.32.2"
       },
       "files": [
         "fix-dependencies.patch",
@@ -29513,30 +29513,48 @@
       "name": "elements",
       "manifest": {
         "name": "elements",
-        "port-version": 1,
         "description": "Elements is a lightweight, fine-grained, resolution independent, modular GUI library.",
         "homepage": "https://cycfi.github.io/elements",
         "license": "MIT",
         "supports": "(windows & staticcrt) | osx | linux",
         "dependencies": [
           "asio",
-          "cairo",
-          "fontconfig",
-          "freetype",
+          {
+            "name": "cairo",
+            "platform": "!osx & !windows"
+          },
+          {
+            "name": "fontconfig",
+            "platform": "!osx & !windows"
+          },
+          {
+            "name": "freetype",
+            "platform": "!osx & !windows"
+          },
           {
             "name": "gtk3",
             "platform": "!osx & !windows"
           },
-          "libwebp",
+          {
+            "name": "harfbuzz",
+            "platform": "!osx & !windows"
+          },
+          "libunibreak",
+          {
+            "name": "libwebp",
+            "platform": "!osx"
+          },
+          "quill",
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version-date": "2025-11-18"
+        "version": "1.0.1"
       },
       "files": [
         "fix-dependencies.patch",
+        "libunibreak.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -33077,7 +33095,6 @@
       "name": "fmt",
       "manifest": {
         "name": "fmt",
-        "port-version": 1,
         "description": "{fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.",
         "homepage": "https://github.com/fmtlib/fmt",
         "license": "MIT",
@@ -33091,7 +33108,7 @@
             "host": true
           }
         ],
-        "version": "12.2.0"
+        "version": "12.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -36497,6 +36514,7 @@
       "name": "glib",
       "manifest": {
         "name": "glib",
+        "port-version": 1,
         "description": "Portable, general-purpose utility library.",
         "homepage": "https://developer.gnome.org/glib/",
         "license": "LGPL-2.1-or-later AND (LGPL-2.1-only OR MPL-1.1)",
@@ -36547,19 +36565,22 @@
       "name": "glib-networking",
       "manifest": {
         "name": "glib-networking",
+        "port-version": 1,
         "description": "Network extensions for GLib",
         "homepage": "https://gitlab.gnome.org/GNOME/glib-networking",
-        "license": "LGPL-2.1-only",
-        "supports": "!uwp & !static",
+        "license": null,
+        "supports": "!uwp",
         "dependencies": [
           "glib",
           {
             "name": "glib",
-            "host": true
+            "host": true,
+            "version>=": "2.90.1#1"
           },
           {
             "name": "vcpkg-tool-meson",
-            "host": true
+            "host": true,
+            "version>=": "1.12.1#1"
           }
         ],
         "default-features": [
@@ -36600,7 +36621,9 @@
         "version": "2.90.1"
       },
       "files": [
+        "declaration-after-statement.patch",
         "portfile.cmake",
+        "static-module-dependencies.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -39638,7 +39661,7 @@
             "host": true
           }
         ],
-        "version": "1.28.7"
+        "version": "1.28.9"
       },
       "files": [
         "portfile.cmake",
@@ -40541,7 +40564,7 @@
             ]
           }
         },
-        "version": "1.28.7"
+        "version": "1.28.9"
       },
       "files": [
         "11894.diff",
@@ -40551,6 +40574,7 @@
         "fix-multiple-def.patch",
         "no-moltenvk-download.diff",
         "portfile.cmake",
+        "relocate-plugin-scanner.patch",
         "vcpkg.json",
         "x264-api-imports.diff"
       ]
@@ -51648,6 +51672,7 @@
       "name": "laszip",
       "manifest": {
         "name": "laszip",
+        "port-version": 1,
         "description": "LASzip - free and lossless LiDAR compression",
         "homepage": "https://laszip.org/",
         "license": "Apache-2.0",
@@ -60765,6 +60790,7 @@
       "name": "libsoup",
       "manifest": {
         "name": "libsoup",
+        "port-version": 1,
         "description": "HTTP Library for GLib",
         "homepage": "https://libsoup.gnome.org",
         "license": "LGPL-2.0-or-later",
@@ -60773,7 +60799,8 @@
           "glib",
           {
             "name": "glib",
-            "host": true
+            "host": true,
+            "version>=": "2.90.1#1"
           },
           "glib-networking",
           "libpsl",
@@ -60784,7 +60811,8 @@
           },
           {
             "name": "vcpkg-tool-meson",
-            "host": true
+            "host": true,
+            "version>=": "1.12.1#1"
           }
         ],
         "features": {
@@ -66517,7 +66545,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.745"
+        "version": "0.746"
       },
       "files": [
         "cmake-config-export.patch",
@@ -70173,6 +70201,39 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "microsoft-gacl",
+      "manifest": {
+        "name": "microsoft-gacl",
+        "description": "Game Asset Conditioning Library - improves Zstandard compression of game assets such as BCn textures using shuffle transforms and rate-distortion optimization",
+        "homepage": "https://github.com/microsoft/Game-Asset-Conditioning-Library",
+        "license": "MIT",
+        "supports": "windows & x64 & !mingw & !uwp & !xbox",
+        "dependencies": [
+          "directx-headers",
+          "directxmath",
+          {
+            "name": "directxtex",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zstd"
+        ],
+        "version-semver": "1.2.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -81537,6 +81598,33 @@
         "fix-status-code-path.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "oxygen-icons",
+      "manifest": {
+        "name": "oxygen-icons",
+        "description": "Oxygen icon theme",
+        "homepage": "https://invent.kde.org/frameworks/oxygen-icons",
+        "license": "LGPL-3.0-or-later AND CC0-1.0",
+        "supports": "!android & !windows",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "6.31.0"
+      },
+      "files": [
+        "optional-autotests.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -99517,7 +99605,7 @@
       "name": "slick-queue",
       "manifest": {
         "name": "slick-queue",
-        "description": "A C++ Lock-Free MPMC queue - header-only library for high throughput concurrent messaging with optional shared memory support",
+        "description": "A C++ Lock-Free MPMC and SPSC queue - header-only library for high throughput concurrent messaging with optional shared memory support",
         "homepage": "https://github.com/SlickQuant/slick-queue",
         "license": "MIT",
         "supports": "!uwp",
@@ -99532,7 +99620,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -106794,7 +106882,7 @@
             "host": true
           }
         ],
-        "version-semver": "0.27.1"
+        "version-semver": "0.27.2"
       },
       "files": [
         "portfile.cmake",
@@ -108999,6 +109087,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
+        "port-version": 1,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0 AND MIT",
@@ -111308,7 +111397,6 @@
       "name": "wayland-protocols",
       "manifest": {
         "name": "wayland-protocols",
-        "port-version": 1,
         "description": "wayland-protocols contains Wayland protocols that add functionality not available in the Wayland core protocol.",
         "homepage": "https://wayland.freedesktop.org",
         "license": "MIT",
@@ -111357,7 +111445,7 @@
             ]
           }
         },
-        "version": "1.49"
+        "version": "1.50"
       },
       "files": [
         "generated-headers-option.diff",
@@ -113539,7 +113627,7 @@
         "description": "Heavily vectorized c++17 compile time string encryption",
         "homepage": "https://github.com/JustasMasiulis/xorstr",
         "license": "Apache-2.0",
-        "version-date": "2021-11-20"
+        "version-date": "2026-11-08"
       },
       "files": [
         "portfile.cmake",
