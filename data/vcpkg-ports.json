@@ -1,5 +1,5 @@
 {
-  "version": "b58529e33332fbb6dfe20317a82009b78ceeab36",
+  "version": "ae1647e301508ab20eb38c757f3e407b32306e4c",
   "ports": [
     {
       "name": "3fd",
@@ -4105,7 +4105,7 @@
             "host": true
           }
         ],
-        "version": "1.0.3"
+        "version": "1.0.4"
       },
       "files": [
         "portfile.cmake",
@@ -8197,7 +8197,7 @@
       "name": "bluez-qt",
       "manifest": {
         "name": "bluez-qt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Qt wrapper for BlueZ 5 DBus API",
         "homepage": "https://invent.kde.org/frameworks/bluez-qt",
         "documentation": "https://api.kde.org/bluez-qt-index.html",
@@ -8236,6 +8236,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "fix-static-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -18700,7 +18701,7 @@
             "description": "Build and install the BqLog_CategoryLogGenerator and BqLog_LogDecoder command line tools"
           }
         },
-        "version": "2.7.3"
+        "version": "2.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -19038,6 +19039,57 @@
           }
         ],
         "version": "1.0.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "btoon",
+      "manifest": {
+        "name": "btoon",
+        "description": "BTOON reference implementation: compact binary serialization, MessagePack plus columnar tables, canonical and hardened against hostile input.",
+        "homepage": "https://btoon.net",
+        "license": "MIT",
+        "dependencies": [
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "zlib"
+        ],
+        "features": {
+          "brotli": {
+            "description": "Brotli compression envelopes",
+            "dependencies": [
+              "brotli"
+            ]
+          },
+          "lz4": {
+            "description": "LZ4 compression envelopes",
+            "dependencies": [
+              "lz4"
+            ]
+          },
+          "snappy": {
+            "description": "Snappy compression envelopes",
+            "dependencies": [
+              "snappy"
+            ]
+          },
+          "zstd": {
+            "description": "Zstandard compression envelopes",
+            "dependencies": [
+              "zstd"
+            ]
+          }
+        },
+        "version": "0.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -21787,7 +21839,7 @@
             "host": true
           }
         ],
-        "version": "1.3.14"
+        "version": "1.3.15"
       },
       "files": [
         "portfile.cmake",
@@ -27981,9 +28033,8 @@
       "name": "dpdk",
       "manifest": {
         "name": "dpdk",
-        "port-version": 6,
         "description": "A set of libraries and drivers for fast packet processing",
-        "homepage": "https://www.dpdk.org/",
+        "homepage": "https://www.dpdk.org",
         "documentation": "https://doc.dpdk.org/guides/",
         "license": "BSD-3-Clause",
         "supports": "freebsd | linux | (windows & x64)",
@@ -28053,7 +28104,10 @@
           "pmd-crypto-openssl": {
             "description": "Build OpenSSL Crypto Poll Mode Driver",
             "dependencies": [
-              "openssl"
+              {
+                "name": "openssl",
+                "version>=": "3.0.2"
+              }
             ],
             "supports": "!windows"
           },
@@ -28088,7 +28142,10 @@
           "qat": {
             "description": "Build Intel QuickAssist drivers",
             "dependencies": [
-              "openssl"
+              {
+                "name": "openssl",
+                "version>=": "3.0.2"
+              }
             ],
             "supports": "!windows"
           },
@@ -28106,7 +28163,7 @@
             "description": "Build with fast path traces enabled"
           }
         },
-        "version": "26.3"
+        "version": "26.7"
       },
       "files": [
         "0001-enable-either-static-or-shared-build.patch",
@@ -29500,7 +29557,7 @@
             "host": true
           }
         ],
-        "version": "1.7.2"
+        "version": "1.7.3"
       },
       "files": [
         "portfile.cmake",
@@ -29636,7 +29693,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "fix-dependencies.patch",
@@ -39331,33 +39388,6 @@
       ]
     },
     {
-      "name": "grantlee",
-      "manifest": {
-        "name": "grantlee",
-        "port-version": 2,
-        "description": "Libraries for text templating with Qt",
-        "homepage": "https://github.com/steveire/grantlee",
-        "license": "LGPL-2.1-or-later",
-        "supports": "!staticcrt & !xbox",
-        "dependencies": [
-          "qtdeclarative",
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          }
-        ],
-        "version": "5.3.1"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "graphene",
       "manifest": {
         "name": "graphene",
@@ -42328,6 +42358,7 @@
       "name": "harfbuzz",
       "manifest": {
         "name": "harfbuzz",
+        "port-version": 1,
         "description": "HarfBuzz OpenType text shaping engine",
         "homepage": "https://github.com/harfbuzz/harfbuzz",
         "license": "MIT-Modern-Variant AND MIT",
@@ -42430,6 +42461,7 @@
         "version": "15.1.0"
       },
       "files": [
+        "fix-clangcl-cxx14.patch",
         "fix-meson-cxx-link.patch",
         "harfbuzzConfig.cmake.in",
         "no-threads-on-emscripten.patch",
@@ -43107,7 +43139,6 @@
       "name": "highs",
       "manifest": {
         "name": "highs",
-        "port-version": 2,
         "description": "High performance library to solve linear, mixed-integer, and convex quadratic optimization problems.",
         "homepage": "https://highs.dev",
         "license": "MIT AND BSD-3-Clause AND Zlib",
@@ -43138,11 +43169,10 @@
             "license": "Apache-2.0"
           }
         },
-        "version": "1.15.1"
+        "version": "1.16.0"
       },
       "files": [
         "fix-extras-metadata.patch",
-        "fix-pkgconfig.patch",
         "portfile.cmake",
         "respect-user-selected-compiler.patch",
         "vcpkg.json"
@@ -47068,6 +47098,7 @@
       "name": "kcalendarcore",
       "manifest": {
         "name": "kcalendarcore",
+        "port-version": 1,
         "description": "The KDE calendar access library",
         "homepage": "https://invent.kde.org/frameworks/kcalendarcore",
         "documentation": "https://api.kde.org/kcalendarcore-index.html",
@@ -47122,6 +47153,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "use-libical-config.patch",
         "vcpkg.json"
@@ -47701,7 +47733,7 @@
       "name": "kdeclarative",
       "manifest": {
         "name": "kdeclarative",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Provides integration of QML and KDE Frameworks",
         "homepage": "https://invent.kde.org/frameworks/kdeclarative",
         "documentation": "https://api.kde.org/kdeclarative-index.html",
@@ -47764,6 +47796,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50041,7 +50074,7 @@
       "name": "kholidays",
       "manifest": {
         "name": "kholidays",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Holiday calculation library",
         "homepage": "https://invent.kde.org/frameworks/kholidays",
         "documentation": "https://api.kde.org/kholidays-index.html",
@@ -50089,6 +50122,7 @@
       },
       "files": [
         "detect-flex-types.patch",
+        "export-qml-modules.patch",
         "generate-flexlexer-header.patch",
         "optional-qml.patch",
         "portfile.cmake",
@@ -50099,7 +50133,7 @@
       "name": "ki18n",
       "manifest": {
         "name": "ki18n",
-        "port-version": 5,
+        "port-version": 6,
         "description": "Advanced internationalization framework",
         "homepage": "https://invent.kde.org/frameworks/ki18n",
         "documentation": "https://api.kde.org/ki18n-index.html",
@@ -50148,6 +50182,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "fix-qml-dependencies.patch",
         "portfile.cmake",
         "use-cmake-intl.patch",
@@ -50158,7 +50193,7 @@
       "name": "kiconthemes",
       "manifest": {
         "name": "kiconthemes",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Icon GUI utilities",
         "homepage": "https://invent.kde.org/frameworks/kiconthemes",
         "documentation": "https://api.kde.org/kiconthemes-index.html",
@@ -50250,6 +50285,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -50864,7 +50900,7 @@
       "name": "knotifications",
       "manifest": {
         "name": "knotifications",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Desktop notifications",
         "homepage": "https://invent.kde.org/frameworks/knotifications",
         "documentation": "https://api.kde.org/knotifications-index.html",
@@ -50913,6 +50949,15 @@
           }
         ],
         "features": {
+          "qml": {
+            "description": "Build the QML module",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
           "translations": {
             "description": "Build and install translation files",
             "dependencies": [
@@ -50929,6 +50974,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51244,6 +51290,49 @@
       ]
     },
     {
+      "name": "ktexttemplate",
+      "manifest": {
+        "name": "ktexttemplate",
+        "description": "Libraries for text templating with Qt",
+        "homepage": "https://invent.kde.org/frameworks/ktexttemplate",
+        "documentation": "https://api.kde.org/ktexttemplate-index.html",
+        "license": "LGPL-2.1-or-later AND LGPL-2.0-or-later",
+        "supports": "!staticcrt & !xbox",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "qtbase",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "qml": {
+            "description": "Build the scriptable tags plugin, to write tags and filters in JavaScript",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ktx",
       "manifest": {
         "name": "ktx",
@@ -51545,7 +51634,7 @@
       "name": "kwindowsystem",
       "manifest": {
         "name": "kwindowsystem",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Access to the windowing system",
         "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
         "documentation": "https://api.kde.org/kwindowsystem-index.html",
@@ -51614,6 +51703,7 @@
       "files": [
         "001_guard_ecm_qml_module_include.patch",
         "002_use_wayland_xml_from_qt.patch",
+        "export-qml-modules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -51637,6 +51727,95 @@
           }
         ],
         "version-date": "2021-08-06"
+      },
+      "files": [
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kxmlgui",
+      "manifest": {
+        "name": "kxmlgui",
+        "description": "Framework for managing menu and toolbar actions",
+        "homepage": "https://invent.kde.org/frameworks/kxmlgui",
+        "documentation": "https://api.kde.org/kxmlgui-index.html",
+        "license": "LGPL-2.0-only AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND (LGPL-2.1-or-later OR BSD-2-Clause)",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kconfig",
+          "kconfigwidgets",
+          "kcoreaddons",
+          {
+            "name": "kglobalaccel",
+            "platform": "linux"
+          },
+          "kguiaddons",
+          "ki18n",
+          "kiconthemes",
+          "kitemviews",
+          "kwidgetsaddons",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "network",
+              "widgets"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "designerplugin": {
+            "description": "Build Qt Designer plugin",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "default-features": false,
+                "features": [
+                  "designer"
+                ]
+              }
+            ],
+            "supports": "!static"
+          },
+          "translations": {
+            "description": "Build translations",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "host": true,
+                "default-features": false,
+                "features": [
+                  "linguist"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.31.0"
       },
       "files": [
         "portfile.cmake",
@@ -55804,7 +55983,7 @@
             "supports": "!(osx & static)"
           }
         },
-        "version-semver": "5.14.1"
+        "version-semver": "5.14.3"
       },
       "files": [
         "control-openssl.diff",
@@ -60063,7 +60242,7 @@
             "description": "Build openssl and ocspcheck executables"
           }
         },
-        "version": "4.4.0"
+        "version": "4.4.1"
       },
       "files": [
         "pkgconfig.diff",
@@ -61601,9 +61780,10 @@
             ]
           }
         },
-        "version-semver": "2.2.2"
+        "version-semver": "2.3.1"
       },
       "files": [
+        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -65397,7 +65577,7 @@
             "host": true
           }
         ],
-        "version": "9.3.1"
+        "version": "9.4.3"
       },
       "files": [
         "portfile.cmake",
@@ -65465,6 +65645,7 @@
       "name": "llvm",
       "manifest": {
         "name": "llvm",
+        "port-version": 1,
         "description": "The LLVM Compiler Infrastructure.",
         "homepage": "https://llvm.org",
         "license": "Apache-2.0 WITH LLVM-exception AND BSD-2-Clause AND (CC0-1.0 OR Apache-2.0)",
@@ -65724,7 +65905,10 @@
                 "default-features": false,
                 "features": [
                   "clang",
-                  "libcxxabi"
+                  {
+                    "name": "libcxxabi",
+                    "platform": "!(windows & !mingw)"
+                  }
                 ]
               }
             ]
@@ -65740,7 +65924,8 @@
                   "libcxx"
                 ]
               }
-            ]
+            ],
+            "supports": "!(windows & !mingw)"
           },
           "libsycl": {
             "description": "Export libsycl library.",
@@ -85355,6 +85540,7 @@
       "name": "prison",
       "manifest": {
         "name": "prison",
+        "port-version": 1,
         "description": "Barcode generation and scanning library",
         "homepage": "https://invent.kde.org/frameworks/prison",
         "documentation": "https://api.kde.org/prison-index.html",
@@ -85438,6 +85624,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "fix-dmtx-configurations.patch",
         "fix-qml-condition.patch",
         "fix-qrencode-debug-library.patch",
@@ -89287,6 +89474,7 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
+        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -90467,7 +90655,6 @@
       "name": "qtkeychain",
       "manifest": {
         "name": "qtkeychain",
-        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt5 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
@@ -90497,7 +90684,7 @@
             ]
           }
         },
-        "version": "0.17.0"
+        "version": "0.18.0"
       },
       "files": [
         "portfile.cmake",
@@ -90508,7 +90695,6 @@
       "name": "qtkeychain-qt6",
       "manifest": {
         "name": "qtkeychain-qt6",
-        "port-version": 1,
         "description": "(Unaffiliated with Qt) Platform-independent Qt6 API for storing passwords securely",
         "homepage": "https://github.com/frankosterfeld/qtkeychain",
         "license": "BSD-3-Clause",
@@ -90537,7 +90723,7 @@
             "host": true
           }
         ],
-        "version": "0.17.0"
+        "version": "0.18.0"
       },
       "files": [
         "dbus-emscripten.patch",
@@ -94637,7 +94823,7 @@
         "name": "rocksdb",
         "description": "A library that provides an embeddable, persistent key-value store for fast storage",
         "homepage": "https://github.com/meta/rocksdb",
-        "license": "(GPL-2.0-only OR Apache-2.0) AND BSD-3-Clause",
+        "license": "(GPL-2.0-only OR Apache-2.0) AND BSD-3-Clause AND BSD-2-Clause",
         "supports": "!uwp & !(arm & !arm64 & android)",
         "dependencies": [
           {
@@ -94709,12 +94895,14 @@
             ]
           }
         },
-        "version": "11.12"
+        "version": "11.13.2"
       },
       "files": [
         "0001-fix-dependencies.patch",
         "0002-fix-android.patch",
+        "fix-packaging.patch",
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -98338,7 +98526,7 @@
             "host": true
           }
         ],
-        "version": "2026.21"
+        "version": "2026.22"
       },
       "files": [
         "portfile.cmake",
@@ -100726,7 +100914,7 @@
       "name": "sonnet",
       "manifest": {
         "name": "sonnet",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Support for spellchecking",
         "homepage": "https://invent.kde.org/frameworks/sonnet",
         "documentation": "https://api.kde.org/sonnet-index.html",
@@ -100805,6 +100993,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "use-given-parsetrigrams.patch",
         "vcpkg.json"
@@ -104225,7 +104414,7 @@
       "name": "syntax-highlighting",
       "manifest": {
         "name": "syntax-highlighting",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Syntax highlighting engine for Kate syntax definitions",
         "homepage": "https://invent.kde.org/frameworks/syntax-highlighting",
         "documentation": "https://api.kde.org/ksyntaxhighlighting-index.html",
@@ -104254,6 +104443,15 @@
           }
         ],
         "features": {
+          "qml": {
+            "description": "Build the QML module",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
           "translations": {
             "description": "Build and install translation files",
             "dependencies": [
@@ -104270,6 +104468,7 @@
         "version": "6.31.0"
       },
       "files": [
+        "export-qml-modules.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -104400,7 +104599,7 @@
             "host": true
           }
         ],
-        "version": "1.1.0"
+        "version": "1.2.1"
       },
       "files": [
         "portfile.cmake",
@@ -108773,7 +108972,7 @@
             "host": true
           }
         ],
-        "version": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -109456,7 +109655,7 @@
             "description": "Dump code support"
           }
         },
-        "version": "5.4.13"
+        "version": "5.4.14"
       },
       "files": [
         "enable-chimera.patch",
@@ -113211,12 +113410,10 @@
             "host": true
           }
         ],
-        "version": "2.1.0"
+        "version": "2.2.0"
       },
       "files": [
         "fix-install-pdb.patch",
-        "fix-libcxx-21.patch",
-        "fix-msvc-stl-145.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -113999,7 +114196,7 @@
             ]
           }
         },
-        "version": "0.27.1"
+        "version": "0.27.2"
       },
       "files": [
         "fix-find-tbb-and-install-destination.patch",
@@ -115637,7 +115834,7 @@
         "name": "zxc",
         "description": "High-performance asymmetric lossless compression library",
         "homepage": "https://github.com/hellobertrand/zxc",
-        "license": "BSD-3-Clause AND MIT",
+        "license": "BSD-3-Clause",
         "dependencies": [
           "rapidhash",
           {
@@ -115654,7 +115851,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "0.15.0"
+        "version": "1.0.0"
       },
       "files": [
         "portfile.cmake",
