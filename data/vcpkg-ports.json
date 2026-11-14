@@ -1,5 +1,5 @@
 {
-  "version": "ae1647e301508ab20eb38c757f3e407b32306e4c",
+  "version": "414b5330a184ea5fbc6ca29f7960b189f6b0392f",
   "ports": [
     {
       "name": "3fd",
@@ -22341,7 +22341,7 @@
       "name": "collada-dom",
       "manifest": {
         "name": "collada-dom",
-        "port-version": 12,
+        "port-version": 13,
         "description": "The COLLADA Document Object Model (DOM) is an application programming interface (API) that provides a C++ object representation of a COLLADA XML instance document.",
         "homepage": "https://github.com/rdiankov/collada-dom",
         "license": null,
@@ -22355,10 +22355,8 @@
           "minizip",
           {
             "name": "minizip",
-            "features": [
-              "unofficial-iowin32"
-            ],
-            "platform": "windows"
+            "platform": "windows",
+            "version>=": "1.4"
           },
           "uriparser",
           {
@@ -26638,7 +26636,6 @@
       "name": "dbus",
       "manifest": {
         "name": "dbus",
-        "port-version": 5,
         "description": "D-Bus specification and reference implementation, including libdbus and dbus-daemon",
         "homepage": "https://gitlab.freedesktop.org/dbus/dbus",
         "license": "AFL-2.1 OR GPL-2.0-or-later",
@@ -26679,7 +26676,7 @@
             "supports": "!windows"
           }
         },
-        "version": "1.16.2"
+        "version": "1.16.4"
       },
       "files": [
         "cmake.dep.patch",
@@ -27177,7 +27174,7 @@
             "platform": "linux & !static"
           }
         ],
-        "version-date": "2026-05-27"
+        "version-date": "2026-09-29"
       },
       "files": [
         "directx-dxc-config.cmake.in",
@@ -27205,7 +27202,7 @@
             "host": true
           }
         ],
-        "version": "1.721.2"
+        "version": "1.620.2"
       },
       "files": [
         "portfile.cmake",
@@ -27233,7 +27230,7 @@
             "host": true
           }
         ],
-        "version": "1.619.5"
+        "version": "1.620.2"
       },
       "files": [
         "directx12-config.cmake.in",
@@ -30974,6 +30971,7 @@
         "license": "MIT",
         "dependencies": [
           "simdjson",
+          "simdutf",
           {
             "name": "vcpkg-cmake",
             "host": true
@@ -30983,7 +30981,7 @@
             "host": true
           }
         ],
-        "version": "0.9.1"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
@@ -33204,7 +33202,7 @@
       "name": "fmilib",
       "manifest": {
         "name": "fmilib",
-        "port-version": 3,
+        "port-version": 4,
         "description": "FMI library is intended as a foundation for applications interfacing FMUs (Functional Mockup Units) that follow FMI Standard. This version of the library supports FMI 1.0 and FMI2.0.",
         "homepage": "https://www.fmi-standard.org/",
         "license": "BSD-3-Clause",
@@ -33214,10 +33212,8 @@
           "minizip",
           {
             "name": "minizip",
-            "features": [
-              "unofficial-iowin32"
-            ],
-            "platform": "windows"
+            "platform": "windows",
+            "version>=": "1.4"
           },
           {
             "name": "vcpkg-cmake",
@@ -51333,6 +51329,89 @@
       ]
     },
     {
+      "name": "ktextwidgets",
+      "manifest": {
+        "name": "ktextwidgets",
+        "description": "Advanced text editing widgets",
+        "homepage": "https://invent.kde.org/frameworks/ktextwidgets",
+        "documentation": "https://api.kde.org/ktextwidgets-index.html",
+        "license": "LGPL-2.0-only AND LGPL-2.0-or-later AND LGPL-2.1-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          "kcompletion",
+          "kconfig",
+          "ki18n",
+          "kwidgetsaddons",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "widgets"
+            ]
+          },
+          {
+            "name": "sonnet",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "default-features": [
+          {
+            "name": "texttospeech",
+            "platform": "!(windows & x86)"
+          }
+        ],
+        "features": {
+          "designerplugin": {
+            "description": "Build Qt Designer plugin",
+            "dependencies": [
+              {
+                "name": "qttools",
+                "default-features": false,
+                "features": [
+                  "designer"
+                ]
+              }
+            ],
+            "supports": "!static"
+          },
+          "texttospeech": {
+            "description": "Text-to-speech support",
+            "dependencies": [
+              {
+                "name": "qtspeech",
+                "default-features": false
+              }
+            ],
+            "supports": "!(windows & x86)"
+          },
+          "translations": {
+            "description": "Build and install translation files"
+          }
+        },
+        "version": "6.31.0"
+      },
+      "files": [
+        "fix-static-dependencies.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "ktx",
       "manifest": {
         "name": "ktx",
@@ -56973,7 +57052,6 @@
       "name": "libjxl",
       "manifest": {
         "name": "libjxl",
-        "port-version": 1,
         "description": "JPEG XL image format reference implementation",
         "homepage": "https://github.com/libjxl/libjxl",
         "license": "BSD-3-Clause",
@@ -56997,7 +57075,7 @@
             "supports": "!uwp"
           }
         },
-        "version-semver": "0.12.0"
+        "version-semver": "0.13.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -64094,7 +64172,7 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "documentation": "https://libxlsxwriter.github.io",
@@ -64103,10 +64181,8 @@
           "minizip",
           {
             "name": "minizip",
-            "features": [
-              "unofficial-iowin32"
-            ],
-            "platform": "windows"
+            "platform": "windows",
+            "version>=": "1.4"
           },
           {
             "name": "vcpkg-cmake",
@@ -70184,11 +70260,11 @@
             ]
           }
         },
-        "version": "26.2.6"
+        "version": "26.3.0"
       },
       "files": [
         "001-windows-gles-dispatch.patch",
-        "002-fix-lavapipe-msvc-release.patch",
+        "001-workaround-we4189.patch",
         "lavapipe-usage",
         "portfile.cmake",
         "vcpkg.json"
@@ -71005,7 +71081,10 @@
             "name": "vcpkg-cmake-get-vars",
             "host": true
           },
-          "zlib"
+          {
+            "name": "zlib",
+            "version>=": "1.4"
+          }
         ],
         "features": {
           "bzip2": {
@@ -71017,24 +71096,15 @@
           "tools": {
             "description": "Install tools",
             "supports": "!ios"
-          },
-          "unofficial-iowin32": {
-            "description": [
-              "Include iowin32 API in minizip library.",
-              "Deprecated. This feature only exists to support devendoring minizip in vcpkg ports."
-            ],
-            "supports": "windows"
           }
         },
-        "version": "1.3.2"
+        "version": "1.4"
       },
       "files": [
         "header-destination.diff",
         "install-tools.diff",
         "pkgconfig.patch",
         "portfile.cmake",
-        "restore-32bit.diff",
-        "unofficial-iowin32.diff",
         "unofficial-minizipConfig.cmake",
         "usage",
         "vcpkg.json"
@@ -72356,7 +72426,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "1.13+new-skia-api"
+        "version": "1.13.1"
       },
       "files": [
         "portfile.cmake",
@@ -76870,7 +76940,7 @@
       "name": "onnxruntime",
       "manifest": {
         "name": "onnxruntime",
-        "port-version": 1,
+        "port-version": 2,
         "description": "ONNX Runtime: cross-platform, high performance ML inferencing and training accelerator",
         "homepage": "https://github.com/microsoft/onnxruntime",
         "license": "MIT",
@@ -77000,6 +77070,7 @@
         "fix-cmake-cuda.patch",
         "fix-cmake-mlas.patch",
         "fix-cmake.patch",
+        "fix-debug-schema-count.patch",
         "portfile.cmake",
         "use-vcpkg-coremltools.patch",
         "vcpkg.json"
@@ -98239,7 +98310,7 @@
       "name": "serf",
       "manifest": {
         "name": "serf",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The serf library is a high performance C-based HTTP client library built upon the Apache Portable Runtime (APR) library. It is permissively licensed under the Apache License, v2.",
         "homepage": "https://serf.apache.org/",
         "license": "Apache-2.0",
@@ -98248,13 +98319,17 @@
           "apr",
           "apr-util",
           "openssl",
-          "zlib"
+          {
+            "name": "zlib",
+            "version>=": "1.4"
+          }
         ],
         "version": "1.3.10"
       },
       "files": [
         "dependencies.diff",
         "hardcoded-msvc-versions.diff",
+        "pkgconfig-zlib.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -104865,7 +104940,7 @@
       "name": "tcl",
       "manifest": {
         "name": "tcl",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Tcl provides a powerful platform for creating integration applications that tie together diverse applications, protocols, devices, and frameworks. When paired with the Tk toolkit, Tcl provides the fastest and most powerful way to create GUI applications that run on PCs, Unix, and Mac OS X. Tcl can also be used for a variety of web-related tasks and for creating powerful command languages for applications.",
         "homepage": "https://github.com/tcltk/tcl",
         "license": null,
@@ -104897,7 +104972,10 @@
             "host": true,
             "platform": "!windows"
           },
-          "zlib"
+          {
+            "name": "zlib",
+            "version>=": "1.4"
+          }
         ],
         "features": {
           "profile": {
@@ -115322,7 +115400,6 @@
       "name": "zlib",
       "manifest": {
         "name": "zlib",
-        "port-version": 3,
         "description": "A compression library",
         "homepage": "https://www.zlib.net/",
         "license": "Zlib",
@@ -115336,11 +115413,10 @@
             "host": true
           }
         ],
-        "version": "1.3.2"
+        "version": "1.4"
       },
       "files": [
         "0001-no-version-script-on-ohos.patch",
-        "CVE-2026-76844.patch",
         "portfile.cmake",
         "usage",
         "vcpkg-cmake-wrapper.cmake",
