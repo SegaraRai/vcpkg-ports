@@ -1,5 +1,5 @@
 {
-  "version": "414b5330a184ea5fbc6ca29f7960b189f6b0392f",
+  "version": "4702e381dbbd9b54d3f7e1eb565cd8981c1814cd",
   "ports": [
     {
       "name": "3fd",
@@ -4439,7 +4439,7 @@
             "host": true
           }
         ],
-        "version": "0.44.3"
+        "version": "0.44.4"
       },
       "files": [
         "portfile.cmake",
@@ -7324,13 +7324,15 @@
             ]
           }
         },
-        "version": "4.11.0"
+        "version": "4.11.1"
       },
       "files": [
         "fix-dependencies.patch",
+        "mtr_enabled.patch",
         "portfile.cmake",
         "remove-source-charset.diff",
-        "vcpkg.json"
+        "vcpkg.json",
+        "warning_as_error.patch"
       ]
     },
     {
@@ -19089,7 +19091,7 @@
             ]
           }
         },
-        "version": "0.1.3"
+        "version": "0.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -22386,11 +22388,10 @@
       "name": "colmap",
       "manifest": {
         "name": "colmap",
-        "port-version": 1,
-        "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface. It offers a wide range of features for reconstruction of ordered and unordered image collections. The software is licensed under the new BSD license.",
+        "description": "COLMAP is a general-purpose Structure-from-Motion (SfM) and Multi-View Stereo (MVS) pipeline with a graphical and command-line interface.",
         "homepage": "https://colmap.github.io/",
         "license": "BSD-3-Clause",
-        "supports": "(linux | (windows & !static) | osx) & (x86 | x64 | arm64)",
+        "supports": "(linux | windows | osx) & (x86 | x64 | arm64)",
         "dependencies": [
           "boost-algorithm",
           "boost-graph",
@@ -22402,19 +22403,21 @@
             "name": "ceres",
             "features": [
               "lapack",
+              "schur",
               "suitesparse"
             ]
           },
           "eigen3",
           "faiss",
-          "freeimage",
           "gflags",
+          "glew",
           "glog",
           {
             "name": "jasper",
             "default-features": false
           },
           "metis",
+          "openimageio",
           "poselib",
           "sqlite3",
           {
@@ -22426,42 +22429,69 @@
             "host": true
           }
         ],
-        "default-features": [
-          "gui"
-        ],
         "features": {
           "cgal": {
-            "description": "Build with CGAL.",
+            "description": "Build with CGAL support.",
             "dependencies": [
               "cgal"
             ]
           },
           "cuda": {
-            "description": "Build with CUDA.",
+            "description": "Build with CUDA support for the native architecture.",
             "dependencies": [
-              "cuda",
-              "glew"
+              "cuda"
             ]
           },
           "cuda-redist": {
-            "description": "Redistributable CUDA support for common supported compute architectures.",
+            "description": "Build with redistributable CUDA support for common supported compute architectures.",
             "dependencies": [
-              "cuda",
-              "glew"
+              "cuda"
+            ]
+          },
+          "download": {
+            "description": "Build with automatic resource download support.",
+            "dependencies": [
+              {
+                "name": "cryptopp",
+                "platform": "windows & arm64"
+              },
+              {
+                "name": "curl",
+                "default-features": false,
+                "features": [
+                  "ssl"
+                ]
+              },
+              {
+                "name": "openssl",
+                "platform": "!(windows & arm64)"
+              }
             ]
           },
           "gui": {
-            "description": "Build the GUI.",
+            "description": "Build with GUI support.",
             "dependencies": [
-              "glew",
-              "qt5-base"
+              "qtbase",
+              "qtsvg"
             ]
+          },
+          "onnx": {
+            "description": "Build with ONNX support.",
+            "dependencies": [
+              {
+                "name": "onnxruntime",
+                "features": [
+                  "cuda"
+                ]
+              }
+            ],
+            "supports": "windows"
           }
         },
-        "version": "3.12.6"
+        "version": "4.1.1"
       },
       "files": [
-        "add-missing-cassert.patch",
+        "fix-dependencies.patch",
         "no-glu.diff",
         "portfile.cmake",
         "usage",
@@ -25016,13 +25046,12 @@
             "host": true
           }
         ],
-        "version-semver": "1.32.2"
+        "version-semver": "1.32.3"
       },
       "files": [
         "fix-dependencies.patch",
         "portfile.cmake",
-        "vcpkg.json",
-        "version.patch"
+        "vcpkg.json"
       ]
     },
     {
@@ -26349,7 +26378,6 @@
       "name": "dawn",
       "manifest": {
         "name": "dawn",
-        "port-version": 1,
         "description": "Dawn is an open-source and cross-platform implementation of the WebGPU standard.",
         "homepage": "https://dawn.googlesource.com/dawn",
         "license": "BSD-3-Clause",
@@ -26457,7 +26485,7 @@
             "supports": "linux | freebsd | openbsd"
           }
         },
-        "version": "20260911.162847"
+        "version": "20261111.144539"
       },
       "files": [
         "000-fix-emdawnwebgpu.patch",
@@ -33567,7 +33595,7 @@
       "name": "forge",
       "manifest": {
         "name": "forge",
-        "port-version": 3,
+        "port-version": 4,
         "description": "An OpenGL interop library that can be used with ArrayFire or any other application using CUDA or OpenCL compute backend.",
         "homepage": "https://github.com/arrayfire/forge",
         "license": "BSD-3-Clause",
@@ -33578,7 +33606,6 @@
             "name": "fontconfig",
             "platform": "!windows"
           },
-          "freeimage",
           "freetype",
           "glad",
           "glfw3",
@@ -33710,67 +33737,6 @@
         "vcpkg.json",
         "windows-output-name.patch",
         "x11-dependencies-export.patch"
-      ]
-    },
-    {
-      "name": "freeimage",
-      "manifest": {
-        "name": "freeimage",
-        "port-version": 27,
-        "description": "Support library for graphics image formats",
-        "homepage": "https://sourceforge.net/projects/freeimage/",
-        "license": "GPL-2.0-only OR GPL-3.0-only OR FreeImage",
-        "dependencies": [
-          "imath",
-          "jxrlib",
-          "libjpeg-turbo",
-          "libpng",
-          "libraw",
-          {
-            "name": "libwebp",
-            "default-features": false,
-            "platform": "!uwp"
-          },
-          "openexr",
-          "openjpeg",
-          {
-            "name": "tiff",
-            "default-features": false
-          },
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          },
-          {
-            "name": "vcpkg-cmake-config",
-            "host": true
-          },
-          "zlib"
-        ],
-        "version": "3.18.0"
-      },
-      "files": [
-        "CMakeLists.txt",
-        "FreeImageConfig-dynamic.h",
-        "FreeImageConfig-static.h",
-        "disable-plugins-depending-on-internal-third-party-libraries.patch",
-        "fix-function-overload.patch",
-        "portfile.cmake",
-        "rawlib-build-fix.patch",
-        "remove_auto_ptr.patch",
-        "typedef-xcode.patch",
-        "use-external-jpeg.patch",
-        "use-external-jxrlib.patch",
-        "use-external-libtiff.patch",
-        "use-external-openexr.patch",
-        "use-external-openjpeg.patch",
-        "use-external-png-zlib.patch",
-        "use-external-rawlib.patch",
-        "use-external-webp.patch",
-        "use-freeimage-config-include.patch",
-        "use-functions-to-override-libtiff-warning-error-handlers.patch",
-        "use-typedef-as-already-declared.patch",
-        "vcpkg.json"
       ]
     },
     {
@@ -41240,11 +41206,11 @@
       "name": "gz-common",
       "manifest": {
         "name": "gz-common",
+        "port-version": 1,
         "description": "Common libraries for robotics applications",
         "homepage": "https://gazebosim.org/libs/common/",
         "license": "Apache-2.0",
         "dependencies": [
-          "assimp",
           {
             "name": "dlfcn-win32",
             "platform": "windows | uwp"
@@ -41259,11 +41225,6 @@
               "swscale"
             ]
           },
-          "freeimage",
-          {
-            "name": "gdal",
-            "default-features": false
-          },
           "gz-cmake",
           "gz-math",
           "gz-utils",
@@ -41274,14 +41235,12 @@
           {
             "name": "libuuid",
             "platform": "!windows & !osx"
-          },
-          "tinyxml2"
+          }
         ],
         "version": "6.3.0"
       },
       "files": [
         "003-include-chrono.patch",
-        "gdal-3.11.diff",
         "gz-utils3-log.diff",
         "gz_remotery_vis.patch",
         "portfile.cmake",
@@ -41315,47 +41274,6 @@
       "files": [
         "portfile.cmake",
         "remove_docs.patch",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-gui",
-      "manifest": {
-        "name": "gz-gui",
-        "port-version": 1,
-        "description": "Gazebo GUI builds on top of Qt to provide widgets which are useful when developing robotics applications, such as a 3D view, plots, dashboard, etc, and can be used together in a convenient unified interface.",
-        "homepage": "https://gazebosim.org/libs/gui",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-cmake",
-          "gz-common",
-          "gz-math",
-          "gz-msgs",
-          "gz-plugin",
-          "gz-rendering",
-          "gz-transport",
-          "gz-utils",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "protobuf",
-          {
-            "name": "qt5-base",
-            "default-features": false
-          },
-          {
-            "name": "qt5-quickcontrols2",
-            "default-features": false
-          },
-          "sdformat",
-          "tinyxml2"
-        ],
-        "version": "9.0.2"
-      },
-      "files": [
-        "dependencies.patch",
-        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -41427,20 +41345,11 @@
       "name": "gz-physics",
       "manifest": {
         "name": "gz-physics",
+        "port-version": 1,
         "description": "component of Gazebo, provides an abstract physics interface designed to support simulation and rapid development of robot applications.",
         "homepage": "https://gazebosim.org/libs/physics",
         "license": "Apache-2.0",
         "dependencies": [
-          "bullet3",
-          {
-            "name": "dartsim",
-            "features": [
-              "collision-bullet",
-              "collision-ode",
-              "utils",
-              "utils-urdf"
-            ]
-          },
           "eigen3",
           "gz-cmake",
           "gz-common",
@@ -41484,105 +41393,6 @@
         "version": "3.1.0"
       },
       "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-rendering",
-      "manifest": {
-        "name": "gz-rendering",
-        "port-version": 1,
-        "description": "Gazebo Rendering is a C++ library designed to provide an abstraction for different rendering engines. It offers unified APIs for creating 3D graphics applications.",
-        "homepage": "https://gazebosim.org/libs/rendering",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "freeimage",
-          "gz-cmake",
-          "gz-common",
-          "gz-math",
-          "gz-plugin",
-          "gz-utils",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          {
-            "name": "ogre-next",
-            "features": [
-              "planar-reflections"
-            ]
-          },
-          "opengl"
-        ],
-        "version": "9.5.0"
-      },
-      "files": [
-        "fix-dependencies.patch",
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-sensors",
-      "manifest": {
-        "name": "gz-sensors",
-        "port-version": 1,
-        "description": "Component of Gazebo, provides numerous sensor models designed to generate realistic data from simulation environments.",
-        "homepage": "https://gazebosim.org/libs/sensors",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-cmake",
-          "gz-common",
-          "gz-math",
-          "gz-msgs",
-          "gz-rendering",
-          "gz-transport",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "protobuf",
-          "sdformat"
-        ],
-        "version": "9.2.0"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
-      "name": "gz-sim",
-      "manifest": {
-        "name": "gz-sim",
-        "description": "Gazebo Sim is an open source robotics simulator.",
-        "homepage": "https://gazebosim.org/libs/sim",
-        "license": "Apache-2.0",
-        "dependencies": [
-          "gz-cmake",
-          "gz-common",
-          "gz-fuel-tools",
-          "gz-gui",
-          "gz-math",
-          "gz-msgs",
-          "gz-physics",
-          "gz-plugin",
-          "gz-rendering",
-          "gz-sensors",
-          "gz-transport",
-          "gz-utils",
-          {
-            "name": "ignition-modularscripts",
-            "host": true
-          },
-          "sdformat"
-        ],
-        "version": "9.6.0"
-      },
-      "files": [
-        "cmake-project-include.cmake",
-        "dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61858,10 +61668,9 @@
             ]
           }
         },
-        "version-semver": "2.3.1"
+        "version-semver": "2.3.2"
       },
       "files": [
-        "pkgconfig.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -76482,6 +76291,7 @@
       "name": "ogre",
       "manifest": {
         "name": "ogre",
+        "port-version": 1,
         "description": "3D Object-Oriented Graphics Rendering Engine",
         "homepage": "https://github.com/OGRECave/ogre",
         "license": "MIT",
@@ -76509,7 +76319,6 @@
         ],
         "default-features": [
           "assimp",
-          "freeimage",
           "overlay",
           "zip"
         ],
@@ -76533,15 +76342,6 @@
           "d3d9": {
             "description": "Build Direct3D9 RenderSystem",
             "supports": "windows"
-          },
-          "freeimage": {
-            "description": "Build with FreeImage support (no effect for Emscripten)",
-            "dependencies": [
-              {
-                "name": "freeimage",
-                "platform": "!emscripten"
-              }
-            ]
           },
           "java": {
             "description": "Build Java (JNI) bindings",
@@ -76597,6 +76397,7 @@
         "version": "14.5.2"
       },
       "files": [
+        "assimp-cxx17.patch",
         "cfg-rel-paths.patch",
         "cmake4.patch",
         "fix-dependencies.patch",
@@ -76611,17 +76412,18 @@
       "name": "ogre-next",
       "manifest": {
         "name": "ogre-next",
+        "port-version": 1,
         "description": "Ogre Next - scene-oriented, flexible 3D engine written in C++",
         "homepage": "https://github.com/OGRECave/ogre-next",
         "license": "MIT",
         "supports": "!emscripten & !uwp & !xbox",
         "dependencies": [
-          "freeimage",
           {
             "name": "freetype",
             "default-features": false
           },
           "rapidjson",
+          "stb",
           "tinyxml",
           {
             "name": "vcpkg-cmake",
@@ -77415,6 +77217,7 @@
       "name": "opencascade",
       "manifest": {
         "name": "opencascade",
+        "port-version": 1,
         "description": "Open CASCADE Technology (OCCT) is an open-source software development platform for 3D CAD, CAM, CAE.",
         "homepage": "https://github.com/Open-Cascade-SAS/OCCT",
         "license": "LGPL-2.1-only",
@@ -77444,12 +77247,6 @@
           }
         ],
         "features": {
-          "freeimage": {
-            "description": "Enable optional usage of freeimage",
-            "dependencies": [
-              "freeimage"
-            ]
-          },
           "freetype": {
             "description": "Use of freetype",
             "dependencies": [
@@ -100139,7 +99936,7 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "1.3.0"
+        "version-semver": "1.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -107062,7 +106859,7 @@
             "host": true
           }
         ],
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
