@@ -1,5 +1,5 @@
 {
-  "version": "8f363bdc11359ede4bc51e5eb32a2617538049c8",
+  "version": "0df93a05b9de080129e653ec4776d7e14a1b2e4f",
   "ports": [
     {
       "name": "3fd",
@@ -4243,7 +4243,7 @@
             "host": true
           }
         ],
-        "version": "1.2.0"
+        "version": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -4306,7 +4306,7 @@
             "host": true
           }
         ],
-        "version": "1.1.2"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
@@ -7358,7 +7358,7 @@
             "description": "Enable installation of tools"
           }
         },
-        "version-semver": "1.9.5"
+        "version-semver": "1.10.0"
       },
       "files": [
         "portfile.cmake",
@@ -8156,7 +8156,7 @@
             ]
           }
         },
-        "version": "3.4.1"
+        "version": "3.6.2"
       },
       "files": [
         "pkgconfig-dependencies.patch",
@@ -13351,6 +13351,7 @@
       "name": "boost-locale",
       "manifest": {
         "name": "boost-locale",
+        "port-version": 1,
         "description": "Boost locale module",
         "homepage": "https://www.boost.org/library/latest/locale/",
         "documentation": "https://www.boost.org/libs/locale",
@@ -13410,6 +13411,7 @@
       },
       "files": [
         "features.cmake",
+        "fix-source-group.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -19091,7 +19093,7 @@
             ]
           }
         },
-        "version": "0.1.4"
+        "version": "0.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -26968,7 +26970,7 @@
         "homepage": "https://github.com/microsoft/Detours",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version-date": "2025-06-20"
+        "version-date": "2026-09-29"
       },
       "files": [
         "portfile.cmake",
@@ -34144,7 +34146,7 @@
             "description": "Use double precision"
           }
         },
-        "version-semver": "0.20.0"
+        "version-semver": "0.21.1"
       },
       "files": [
         "portfile.cmake",
@@ -35852,11 +35854,11 @@
             ]
           }
         },
-        "version": "0.26.0"
+        "version": "1.0.0"
       },
       "files": [
         "cmake-config.diff",
-        "fix-vulkan-buffer-stream.diff",
+        "fix-vulkan-32bit.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "relax-link-options.diff",
@@ -37003,7 +37005,7 @@
             "supports": "!android & !ios"
           }
         },
-        "version": "16.4.0"
+        "version": "16.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -44265,6 +44267,7 @@
       "name": "imath",
       "manifest": {
         "name": "imath",
+        "port-version": 1,
         "description": "Imath is a C++ and Python library of 2D and 3D vector, matrix, and math operations for computer graphics.",
         "homepage": "https://github.com/AcademySoftwareFoundation/Imath",
         "license": "BSD-3-Clause",
@@ -44950,12 +44953,11 @@
       "name": "intel-mkl",
       "manifest": {
         "name": "intel-mkl",
-        "port-version": 1,
         "description": "Intel® Math Kernel Library (Intel® MKL) accelerates math processing routines, increases application performance, and reduces development time on Intel® processors.",
         "homepage": "https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl.html",
         "license": null,
         "supports": "(windows | linux) & x64",
-        "version": "2025.2.0"
+        "version": "2026.2.0"
       },
       "files": [
         "copy-from-dmg.cmake",
@@ -53348,7 +53350,7 @@
             "host": true
           }
         ],
-        "version": "0.14.0"
+        "version": "0.14.1"
       },
       "files": [
         "portfile.cmake",
@@ -54809,7 +54811,7 @@
             "host": true
           }
         ],
-        "version": "3.8.0"
+        "version": "3.8.1"
       },
       "files": [
         "dll-bindir.diff",
@@ -65233,7 +65235,10 @@
             "name": "cpp-httplib",
             "default-features": false
           },
-          "ggml",
+          {
+            "name": "ggml",
+            "version>=": "1.0.0"
+          },
           "nlohmann-json",
           {
             "name": "vcpkg-cmake",
@@ -65277,10 +65282,11 @@
             "license": "BSD-2-Clause AND MIT AND LicenseRef-Public-Domain"
           }
         },
-        "version-semver": "0.6.0"
+        "version-semver": "1.0.0"
       },
       "files": [
         "cmake-config.diff",
+        "fix-msvc-x86-ctz64.diff",
         "pkgconfig.diff",
         "portfile.cmake",
         "unvendor.diff",
@@ -66773,7 +66779,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.746"
+        "version": "0.747"
       },
       "files": [
         "cmake-config-export.patch",
@@ -68457,7 +68463,7 @@
             "host": true
           }
         ],
-        "version": "3.5.4"
+        "version": "3.5.5"
       },
       "files": [
         "fix-pkgconfig-cflags.patch",
@@ -72649,9 +72655,9 @@
       "name": "mumps-solver",
       "manifest": {
         "name": "mumps-solver",
-        "port-version": 1,
+        "port-version": 2,
         "description": "MUMPS (MUltifrontal Massively Parallel sparse direct Solver) solves systems of linear equations Ax = b where A is a square sparse matrix",
-        "homepage": "https://mumps-solver.org/",
+        "homepage": "https://mumps-solver.org",
         "license": "CECILL-C AND BSD-3-Clause AND LicenseRef-Public-Domain AND MIT",
         "supports": "!android & !ios & !emscripten & !uwp & !(windows & arm) & !(windows & !mingw & static)",
         "dependencies": [
@@ -73251,7 +73257,7 @@
             "host": true
           }
         ],
-        "version": "2.0.1"
+        "version": "2.0.2"
       },
       "files": [
         "portfile.cmake",
@@ -79226,7 +79232,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.5.3"
+        "version": "3.5.4"
       },
       "files": [
         "portfile.cmake",
@@ -95729,7 +95735,7 @@
             "description": "Build and run the tests"
           }
         },
-        "version": "1.7.6"
+        "version": "1.7.14"
       },
       "files": [
         "fix-cmake-target-path.patch",
@@ -98983,7 +98989,7 @@
             "description": "Enable UTF-8 validation"
           }
         },
-        "version": "5.1.1"
+        "version": "5.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -99019,7 +99025,7 @@
             "license": "LGPL-2.1-or-later"
           }
         },
-        "version-semver": "9.3.3"
+        "version-semver": "9.4.0"
       },
       "files": [
         "bindir.patch",
@@ -101813,7 +101819,6 @@
       "name": "sqlgen",
       "manifest": {
         "name": "sqlgen",
-        "port-version": 1,
         "description": "sqlgen is an ORM and SQL query generator for C++-20, similar to Python's SQLAlchemy/SQLModel or Rust's Diesel.",
         "homepage": "https://github.com/munich-data-engineering/sqlgen/",
         "documentation": "https://munich-data-engineering.github.io/sqlgen/",
@@ -101855,7 +101860,7 @@
             ]
           }
         },
-        "version": "0.6.0"
+        "version": "0.7.0"
       },
       "files": [
         "portfile.cmake",
@@ -105992,26 +105997,6 @@
       ]
     },
     {
-      "name": "tinycthread",
-      "manifest": {
-        "name": "tinycthread",
-        "port-version": 3,
-        "description": "Small, portable implementation of the C11 threads API",
-        "homepage": "https://tinycthread.github.io/",
-        "dependencies": [
-          {
-            "name": "vcpkg-cmake",
-            "host": true
-          }
-        ],
-        "version-date": "2019-08-06"
-      },
-      "files": [
-        "portfile.cmake",
-        "vcpkg.json"
-      ]
-    },
-    {
       "name": "tinydir",
       "manifest": {
         "name": "tinydir",
@@ -108587,7 +108572,7 @@
             "host": true
           }
         ],
-        "version": "4.2.1"
+        "version": "5.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -115725,7 +115710,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "1.0.0"
+        "version": "1.0.1"
       },
       "files": [
         "portfile.cmake",
