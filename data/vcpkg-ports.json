@@ -1,5 +1,5 @@
 {
-  "version": "8f0be20f53767f13f27aea63d64d98990965fb1d",
+  "version": "cf82c6e6a919217c1c3a36b36dc40e370a71591e",
   "ports": [
     {
       "name": "3fd",
@@ -4105,7 +4105,7 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -19613,6 +19613,7 @@
       "name": "cadons-ctus",
       "manifest": {
         "name": "cadons-ctus",
+        "port-version": 1,
         "description": "Library implementing the tus protocol for resumable uploads",
         "homepage": "https://github.com/Cadons/ctus",
         "license": "MIT",
@@ -19636,6 +19637,7 @@
         "version": "1.0.1"
       },
       "files": [
+        "complete-chunk-type.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -26284,6 +26286,7 @@
       "name": "dav1d",
       "manifest": {
         "name": "dav1d",
+        "port-version": 1,
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
         "license": "BSD-2-Clause AND ISC",
@@ -43663,7 +43666,7 @@
       "name": "iceberg-cpp",
       "manifest": {
         "name": "iceberg-cpp",
-        "port-version": 2,
+        "port-version": 3,
         "description": "C++ implementation of Apache Iceberg",
         "homepage": "https://github.com/apache/iceberg-cpp",
         "license": "Apache-2.0",
@@ -43759,8 +43762,10 @@
         "version": "0.4.0"
       },
       "files": [
+        "arrow-s3-library.patch",
         "avro-1.12.patch",
         "fix-avro-dependency.patch",
+        "fix-incomplete-types.patch",
         "int128-namespace.patch",
         "msvc-14.42-compat.patch",
         "portfile.cmake",
@@ -53221,6 +53226,7 @@
       "name": "libbson",
       "manifest": {
         "name": "libbson",
+        "port-version": 1,
         "description": "libbson is a library providing useful routines related to building, parsing, and iterating BSON documents.",
         "homepage": "https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson",
         "license": null,
@@ -53237,6 +53243,7 @@
         "version": "2.5.8"
       },
       "files": [
+        "explicit-bool-predicates.patch",
         "fix-include-directory.patch",
         "libbson-1.0-config.cmake",
         "portfile.cmake",
@@ -54182,7 +54189,7 @@
       "name": "libdisasm",
       "manifest": {
         "name": "libdisasm",
-        "port-version": 12,
+        "port-version": 13,
         "description": "x86 Disassembler Library.",
         "homepage": "https://bastard.sourceforge.net",
         "license": "ClArtistic",
@@ -60200,6 +60207,7 @@
       "name": "libremidi",
       "manifest": {
         "name": "libremidi",
+        "port-version": 1,
         "description": "A modern C++ MIDI real-time & file I/O library",
         "homepage": "https://github.com/jcelerier/libremidi",
         "license": "BSD-2-Clause",
@@ -60220,6 +60228,7 @@
         "version": "5.4.3"
       },
       "files": [
+        "dependent-noexcept.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -61444,7 +61453,7 @@
             ]
           }
         },
-        "version": "2.8.1"
+        "version": "2.8.2"
       },
       "files": [
         "cmake-config.diff",
@@ -70060,6 +70069,7 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
+        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org",
         "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
@@ -70196,8 +70206,8 @@
         "version": "26.3.0"
       },
       "files": [
+        "001-warnings-not-errors.patch",
         "001-windows-gles-dispatch.patch",
-        "001-workaround-we4189.patch",
         "lavapipe-usage",
         "portfile.cmake",
         "vcpkg.json"
@@ -71417,6 +71427,7 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
+        "port-version": 1,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": "Apache-2.0",
@@ -71468,6 +71479,7 @@
         "fix-dependencies.patch",
         "fix-include-directory.patch",
         "fix-mingw.patch",
+        "msvc-warnings-not-errors.patch",
         "portfile.cmake",
         "remove_abs_patch.cmake",
         "usage",
@@ -71532,7 +71544,7 @@
             ]
           }
         },
-        "version": "7.23"
+        "version": "7.24"
       },
       "files": [
         "CMakeLists.txt",
@@ -72078,6 +72090,7 @@
       "name": "mpss",
       "manifest": {
         "name": "mpss",
+        "port-version": 1,
         "description": "A multi-platform C++ library for hardware-backed digital signature key storage and signing.",
         "homepage": "https://github.com/microsoft/mpss",
         "license": "MIT",
@@ -72130,6 +72143,7 @@
         "version": "2.1.1"
       },
       "files": [
+        "discover-android-sdk.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -72773,7 +72787,6 @@
       "name": "mumps-solver",
       "manifest": {
         "name": "mumps-solver",
-        "port-version": 2,
         "description": "MUMPS (MUltifrontal Massively Parallel sparse direct Solver) solves systems of linear equations Ax = b where A is a square sparse matrix",
         "homepage": "https://mumps-solver.org",
         "license": "CECILL-C AND BSD-3-Clause AND LicenseRef-Public-Domain AND MIT",
@@ -72811,7 +72824,7 @@
             "description": "Build single precision real (smumps) interface"
           }
         },
-        "version": "5.9.1"
+        "version": "5.9.2"
       },
       "files": [
         "export-fortran-runtime.patch",
@@ -73186,7 +73199,7 @@
             "host": true
           }
         ],
-        "version": "0.11.0"
+        "version": "0.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -77200,6 +77213,7 @@
       "name": "openal-soft",
       "manifest": {
         "name": "openal-soft",
+        "port-version": 1,
         "description": "OpenAL Soft is an LGPL-licensed, cross-platform, software implementation of the OpenAL 3D audio API.",
         "homepage": "https://github.com/kcat/openal-soft",
         "license": "LGPL-2.0-or-later AND BSD-3-Clause AND MIT",
@@ -79477,7 +79491,7 @@
             "supports": "!uwp"
           }
         },
-        "version": "0.27.0"
+        "version": "0.28.0"
       },
       "files": [
         "portfile.cmake",
@@ -82065,7 +82079,7 @@
       "name": "paho-mqtt",
       "manifest": {
         "name": "paho-mqtt",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Paho project provides open-source client implementations of MQTT and MQTT-SN messaging protocols aimed at new, existing, and emerging applications for the Internet of Things",
         "homepage": "https://github.com/eclipse/paho.mqtt.c",
         "license": "EPL-2.0 OR BSD-3-Clause",
@@ -82097,7 +82111,7 @@
       "name": "paho-mqttpp3",
       "manifest": {
         "name": "paho-mqttpp3",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Paho project provides open-source C++ wrapper for Paho C library",
         "homepage": "https://github.com/eclipse/paho.mqtt.cpp",
         "license": "EPL-2.0 OR BSD-3-Clause",
@@ -84960,6 +84974,7 @@
       "name": "poppler",
       "manifest": {
         "name": "poppler",
+        "port-version": 1,
         "description": "A PDF rendering library",
         "homepage": "https://poppler.freedesktop.org/",
         "license": "GPL-2.0-or-later",
@@ -85074,6 +85089,7 @@
       "files": [
         "cmake-project-include.cmake",
         "export-unofficial-poppler.patch",
+        "fix-incomplete-types.patch",
         "portfile.cmake",
         "private-namespace.patch",
         "unofficial-poppler-config.cmake",
@@ -88775,6 +88791,7 @@
       "name": "qt5-script",
       "manifest": {
         "name": "qt5-script",
+        "port-version": 1,
         "description": "Qt Script provides support for application scripting with ECMAScript.",
         "license": null,
         "dependencies": [
@@ -88787,6 +88804,8 @@
         "version": "5.15.19"
       },
       "files": [
+        "msvc-copysign.patch",
+        "msvc-jsvalue-tag.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -91825,6 +91844,7 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
+        "port-version": 1,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -92067,9 +92087,12 @@
       },
       "files": [
         "clang-cl.patch",
+        "cookie-store-projection.patch",
         "cross-build.diff",
+        "dav1d-msvc-stdatomic.patch",
         "disable-host-pkgconfig.diff",
         "include-dir-order.diff",
+        "msvc-pack-shadowing.patch",
         "node-wrapper-diagnostics.diff",
         "osx-sdk-info.diff",
         "pdf-system-abseil.diff",
@@ -96853,8 +96876,9 @@
       "name": "sdl2-gfx",
       "manifest": {
         "name": "sdl2-gfx",
-        "port-version": 11,
         "description": "Graphics primitives (line, circle, rectangle etc.) with AA support, rotozoomer and other drawing related support functions wrapped up in a C based add-on library for the Simple Direct Media (SDL) cross-platform API layer.",
+        "homepage": "https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/",
+        "license": "Zlib",
         "dependencies": [
           {
             "name": "sdl2",
@@ -96869,12 +96893,9 @@
             "host": true
           }
         ],
-        "version": "1.0.4"
+        "version": "1.1.0"
       },
       "files": [
-        "001-lrint-arm64.patch",
-        "002-use-the-lrintf-intrinsic.patch",
-        "CMakeLists.txt",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -104253,6 +104274,7 @@
       "name": "swaggercpp",
       "manifest": {
         "name": "swaggercpp",
+        "port-version": 1,
         "description": "Professional C++23 library for Swagger/OpenAPI parsing, validation, traversal, and serialization.",
         "homepage": "https://github.com/stescobedo92/swagger-cpp",
         "license": "MIT",
@@ -104277,6 +104299,7 @@
         "version": "0.4.0"
       },
       "files": [
+        "fix-incomplete-types.patch",
         "fix-pkgconfig-dependencies.patch",
         "portfile.cmake",
         "vcpkg.json"
@@ -107434,6 +107457,7 @@
       "name": "triton",
       "manifest": {
         "name": "triton",
+        "port-version": 1,
         "description": "Triton is a Dynamic Binary Analysis (DBA) framework. It provides internal components like a Dynamic Symbolic Execution (DSE) engine, a dynamic taint engine, AST representations of the x86, x86-64, ARM32 and AArch64 Instructions Set Architecture (ISA), SMT simplification passes, an SMT solver interface and, the last but not least, Python bindings.",
         "homepage": "https://github.com/JonathanSalwan/Triton",
         "license": "Apache-2.0",
@@ -107480,6 +107504,7 @@
       },
       "files": [
         "fix_bin_path.patch",
+        "portable-preprocessor.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -109140,7 +109165,7 @@
         "name": "vcpkg-cmake",
         "documentation": "https://learn.microsoft.com/vcpkg/maintainers/functions/vcpkg_cmake_configure",
         "license": "MIT",
-        "version-date": "2025-08-07"
+        "version-date": "2026-11-09"
       },
       "files": [
         "portfile.cmake",
@@ -109441,7 +109466,7 @@
       "name": "vcpkg-tool-meson",
       "manifest": {
         "name": "vcpkg-tool-meson",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Meson build system",
         "homepage": "https://github.com/mesonbuild/meson",
         "license": "Apache-2.0 AND MIT",
@@ -111117,6 +111142,7 @@
       "name": "vulkan-loader",
       "manifest": {
         "name": "vulkan-loader",
+        "port-version": 1,
         "description": "Vulkan Development Tools",
         "homepage": "https://github.com/KhronosGroup/Vulkan-Loader",
         "license": "Apache-2.0 AND MIT AND HPND-Kevlin-Henney",
@@ -111153,6 +111179,7 @@
       },
       "files": [
         "fix-marmasm-conditional-assembly.patch",
+        "fix-msvc-arm64-offset-generation.patch",
         "link-directfb.patch",
         "portfile.cmake",
         "usage",
