@@ -1,5 +1,5 @@
 {
-  "version": "3c8fa990c006f2def52cccf7f7c7e9f3bcff0333",
+  "version": "eb890efcc08f8daafa202c584e88217a92240222",
   "ports": [
     {
       "name": "3fd",
@@ -8162,7 +8162,7 @@
             ]
           }
         },
-        "version": "3.6.2"
+        "version": "3.7.0"
       },
       "files": [
         "pkgconfig-dependencies.patch",
@@ -20309,9 +20309,9 @@
       "name": "celero",
       "manifest": {
         "name": "celero",
-        "description": "Celero is a modern cross-platform (Windows, Linux, MacOS) Microbenchmarking library for C++ 11 and later.",
+        "description": "Celero is a modern cross-platform (Windows, Linux, MacOS) Microbenchmarking library for C++14 and later.",
         "homepage": "https://github.com/DigitalInBlue/Celero",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -20322,7 +20322,7 @@
             "host": true
           }
         ],
-        "version": "2.10.0"
+        "version": "2.11.0"
       },
       "files": [
         "fix-bin-install-path.patch",
@@ -21071,14 +21071,14 @@
         "name": "cimg",
         "description": "The CImg Library is a small, open-source, and modern C++ toolkit for image processing",
         "homepage": "https://github.com/GreycLab/CImg",
-        "license": "(CECILL-C OR CECILL-2.1) AND LicenseRef-LGPL",
+        "license": "(CECILL-C OR CECILL-2.1) AND CECILL-2.0 AND LicenseRef-LGPL",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "4.0.7"
+        "version": "4.0.8"
       },
       "files": [
         "CMakeLists.txt",
@@ -21917,7 +21917,7 @@
             "supports": "!windows"
           }
         },
-        "version": "3.14.0"
+        "version": "3.15.0"
       },
       "files": [
         "fix-sodium-dep.patch",
@@ -23476,7 +23476,7 @@
         "name": "cpp-pinyin",
         "description": "A lightweight Chinese/Cantonese to Pinyin library.",
         "homepage": "https://github.com/wolfgitpr/cpp-pinyin",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND CC-BY-SA-4.0 AND CC-BY-SA-3.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -23487,11 +23487,13 @@
             "host": true
           }
         ],
-        "version": "1.0.2"
+        "version": "2.0.0"
       },
       "files": [
+        "fix-mac-static-build.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg-dict-layout.patch",
         "vcpkg.json"
       ]
     },
@@ -26292,7 +26294,6 @@
       "name": "dav1d",
       "manifest": {
         "name": "dav1d",
-        "port-version": 1,
         "description": "dav1d is a new open-source AV1 decoder developed by the VideoLAN and FFmpeg communities and sponsored by the Alliance for Open Media.",
         "homepage": "https://code.videolan.org/videolan/dav1d",
         "license": "BSD-2-Clause AND ISC",
@@ -26303,7 +26304,7 @@
             "host": true
           }
         ],
-        "version": "1.5.4"
+        "version": "1.5.5"
       },
       "files": [
         "portfile.cmake",
@@ -29856,7 +29857,7 @@
         "description": "High Performance Ray Tracing Kernels.",
         "homepage": "https://github.com/RenderKit/embree",
         "license": null,
-        "supports": "linux | osx | (windows & !uwp & !arm)",
+        "supports": "linux | osx | (windows & !uwp)",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -29927,7 +29928,7 @@
             ]
           }
         },
-        "version": "4.4.1"
+        "version": "4.5.0"
       },
       "files": [
         "avoid-library-conflicts.diff",
@@ -36540,8 +36541,10 @@
       "name": "glew",
       "manifest": {
         "name": "glew",
+        "port-version": 1,
         "description": "The OpenGL Extension Wrangler Library (GLEW) is a cross-platform open-source C/C++ extension loading library.",
         "homepage": "https://github.com/nigels-com/glew",
+        "license": null,
         "supports": "!android",
         "dependencies": [
           "opengl",
@@ -36558,6 +36561,7 @@
       },
       "files": [
         "fix-LNK2019.patch",
+        "no-glu.diff",
         "portfile.cmake",
         "trim-build.diff",
         "usage",
@@ -41516,7 +41520,7 @@
             "host": true
           }
         ],
-        "version-semver": "4.5.0"
+        "version-semver": "4.6.0"
       },
       "files": [
         "portfile.cmake",
@@ -43085,7 +43089,7 @@
             ]
           }
         },
-        "version": "1.5.0"
+        "version": "1.5.1"
       },
       "files": [
         "fix-cmake-conf-install-dir.patch",
@@ -43865,7 +43869,10 @@
         "dependencies": [
           "libuv",
           "llhttp",
-          "minizip",
+          {
+            "name": "minizip",
+            "version>=": "1.3.2"
+          },
           "nlohmann-json",
           "openssl",
           {
@@ -43887,6 +43894,8 @@
                 "default-features": false,
                 "features": [
                   "avcodec",
+                  "avdevice",
+                  "avfilter",
                   "avformat",
                   "swresample",
                   "swscale"
@@ -43901,10 +43910,9 @@
             ]
           }
         },
-        "version": "2.5.1"
+        "version": "2.5.3"
       },
       "files": [
-        "fix-minizip-config.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -45025,7 +45033,7 @@
             "host": true
           }
         ],
-        "version": "1.13"
+        "version": "1.14"
       },
       "files": [
         "portfile.cmake",
@@ -45543,11 +45551,11 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
-          },
-          "zlib"
+          }
         ],
         "default-features": [
-          "ssl"
+          "ssl",
+          "zlib"
         ],
         "features": {
           "mbedtls": {
@@ -45572,6 +45580,7 @@
             "dependencies": [
               {
                 "name": "ixwebsocket",
+                "default-features": false,
                 "features": [
                   "mbedtls"
                 ],
@@ -45579,6 +45588,7 @@
               },
               {
                 "name": "ixwebsocket",
+                "default-features": false,
                 "features": [
                   "sectransp"
                 ],
@@ -45586,6 +45596,7 @@
               },
               {
                 "name": "ixwebsocket",
+                "default-features": false,
                 "features": [
                   "mbedtls"
                 ],
@@ -45593,15 +45604,22 @@
               },
               {
                 "name": "ixwebsocket",
+                "default-features": false,
                 "features": [
                   "openssl"
                 ],
                 "platform": "!uwp & !windows & !osx & !ios"
               }
             ]
+          },
+          "zlib": {
+            "description": "WebSocket per-message deflate and HTTP gzip compression",
+            "dependencies": [
+              "zlib"
+            ]
           }
         },
-        "version-semver": "12.1.0"
+        "version-semver": "13.0.0"
       },
       "files": [
         "portfile.cmake",
@@ -45931,7 +45949,6 @@
       "name": "joltphysics",
       "manifest": {
         "name": "joltphysics",
-        "port-version": 1,
         "description": "A multi core friendly rigid body physics and collision detection library suitable for games and VR applications",
         "homepage": "https://github.com/jrouwe/JoltPhysics",
         "license": "MIT",
@@ -45942,6 +45959,10 @@
           },
           {
             "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-get-vars",
             "host": true
           }
         ],
@@ -45956,10 +45977,11 @@
             "description": "Enable C++ RTTI"
           }
         },
-        "version": "5.6.0"
+        "version": "5.7.0"
       },
       "files": [
         "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -47172,7 +47194,7 @@
       "name": "kconfig",
       "manifest": {
         "name": "kconfig",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Configuration system",
         "homepage": "https://invent.kde.org/frameworks/kconfig",
         "documentation": "https://api.kde.org/kconfig-index.html",
@@ -49846,7 +49868,7 @@
       "name": "kguiaddons",
       "manifest": {
         "name": "kguiaddons",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Addons to QtGui",
         "homepage": "https://invent.kde.org/frameworks/kguiaddons",
         "documentation": "https://api.kde.org/kguiaddons-index.html",
@@ -50492,7 +50514,7 @@
       "name": "kitemmodels",
       "manifest": {
         "name": "kitemmodels",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Models for Qt Model/View system",
         "homepage": "https://invent.kde.org/frameworks/kitemmodels",
         "documentation": "https://api.kde.org/kitemmodels-index.html",
@@ -50840,7 +50862,7 @@
       "name": "knotifications",
       "manifest": {
         "name": "knotifications",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Desktop notifications",
         "homepage": "https://invent.kde.org/frameworks/knotifications",
         "documentation": "https://api.kde.org/knotifications-index.html",
@@ -50915,6 +50937,7 @@
       },
       "files": [
         "export-qml-modules.patch",
+        "optional-qml.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -52723,10 +52746,10 @@
       "name": "libaio",
       "manifest": {
         "name": "libaio",
-        "port-version": 1,
+        "port-version": 2,
         "description": "The Linux-native asynchronous I/O facility",
-        "homepage": "https://pagure.io/libaio",
-        "license": "LGPL-2.1",
+        "homepage": "https://codeberg.org/jmoyer/libaio",
+        "license": "LGPL-2.0-or-later",
         "supports": "linux",
         "dependencies": [
           {
@@ -53235,7 +53258,6 @@
       "name": "libbson",
       "manifest": {
         "name": "libbson",
-        "port-version": 1,
         "description": "libbson is a library providing useful routines related to building, parsing, and iterating BSON documents.",
         "homepage": "https://github.com/mongodb/mongo-c-driver/tree/master/src/libbson",
         "license": null,
@@ -53249,7 +53271,7 @@
             "host": true
           }
         ],
-        "version": "2.5.8"
+        "version": "2.5.9"
       },
       "files": [
         "explicit-bool-predicates.patch",
@@ -53993,6 +54015,7 @@
       "name": "libdatachannel",
       "manifest": {
         "name": "libdatachannel",
+        "port-version": 1,
         "description": "libdatachannel is a standalone implementation of WebRTC Data Channels, WebRTC Media Transport, and WebSockets in C++17 with C bindings for POSIX platforms (including GNU/Linux, Android, and Apple macOS) and Microsoft Windows.",
         "homepage": "https://github.com/paullouisageneau/libdatachannel",
         "license": "MPL-2.0",
@@ -54033,6 +54056,7 @@
       },
       "files": [
         "dependencies.diff",
+        "nominmax.patch",
         "portfile.cmake",
         "uwp-warnings.patch",
         "vcpkg.json"
@@ -55073,7 +55097,7 @@
           "xproto",
           "zlib"
         ],
-        "version": "1.1.9"
+        "version": "1.1.10"
       },
       "files": [
         "build.patch",
@@ -58445,7 +58469,7 @@
             "description": "Enable libnfs multithreading support"
           }
         },
-        "version-semver": "8.0.0"
+        "version-semver": "8.0.1"
       },
       "files": [
         "fix-android-pthread-detection.patch",
@@ -62590,7 +62614,7 @@
       "name": "libunwind",
       "manifest": {
         "name": "libunwind",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Unix libray for portable stack unwinding",
         "homepage": "https://www.nongnu.org/libunwind",
         "license": "MIT",
@@ -62602,6 +62626,14 @@
             "host": true
           }
         ],
+        "features": {
+          "coredump": {
+            "description": "Build libunwind-coredump, for unwinding the threads of a core file"
+          },
+          "ptrace": {
+            "description": "Build libunwind-ptrace, for unwinding another live process via ptrace"
+          }
+        },
         "version": "1.8.3"
       },
       "files": [
@@ -62616,7 +62648,7 @@
         "name": "libupnp",
         "description": "libupnp: Build UPnP-compliant control points, devices, and bridges on several operating systems.",
         "homepage": "https://pupnp.github.io/pupnp/",
-        "license": "BSD-3-Clause",
+        "license": "BSD-3-Clause AND ISC AND LicenseRef-HP-1989-variant AND LicenseRef-Public-Domain",
         "supports": "!uwp",
         "dependencies": [
           "pthreads",
@@ -62646,7 +62678,7 @@
             "description": "Enable integrated webserver"
           }
         },
-        "version": "1.18.5"
+        "version": "22.2.4"
       },
       "files": [
         "fix-pthreads4w-targets.patch",
@@ -63991,7 +64023,7 @@
           "xtrans",
           "zlib"
         ],
-        "version": "2.0.9"
+        "version": "2.0.10"
       },
       "files": [
         "build.patch",
@@ -66839,7 +66871,7 @@
             "supports": "native & (arm64 | x64) & (!windows | mingw)"
           }
         },
-        "version-date": "2026-10-30"
+        "version-date": "2026-11-19"
       },
       "files": [
         "003-do-not-set-macosx-deployment-target.patch",
@@ -70123,10 +70155,9 @@
       "name": "mesa",
       "manifest": {
         "name": "mesa",
-        "port-version": 1,
         "description": "Mesa - The 3D Graphics Library",
         "homepage": "https://www.mesa3d.org",
-        "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0",
+        "license": "MIT AND BSL-1.0 AND SGI-B-2.0 AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause",
         "supports": "!(windows & arm) & !staticcrt & !uwp",
         "dependencies": [
           {
@@ -70257,7 +70288,7 @@
             ]
           }
         },
-        "version": "26.3.0"
+        "version": "26.3.1"
       },
       "files": [
         "001-warnings-not-errors.patch",
@@ -71027,7 +71058,7 @@
             "host": true
           }
         ],
-        "version": "2.3.2"
+        "version": "2.3.4"
       },
       "files": [
         "portfile.cmake",
@@ -71481,7 +71512,6 @@
       "name": "mongo-c-driver",
       "manifest": {
         "name": "mongo-c-driver",
-        "port-version": 1,
         "description": "Client library written in C for MongoDB.",
         "homepage": "https://github.com/mongodb/mongo-c-driver",
         "license": "Apache-2.0",
@@ -71526,7 +71556,7 @@
             ]
           }
         },
-        "version": "2.5.8"
+        "version": "2.5.9"
       },
       "files": [
         "disable-dynamic-when-static.patch",
@@ -72225,7 +72255,7 @@
             "host": true
           }
         ],
-        "version-semver": "13.2.3"
+        "version-semver": "13.2.4"
       },
       "files": [
         "portfile.cmake",
@@ -73417,7 +73447,7 @@
             "host": true
           }
         ],
-        "version": "2.20.0"
+        "version": "3.0.8"
       },
       "files": [
         "portfile.cmake",
@@ -93467,7 +93497,7 @@
             "license": "MIT"
           }
         },
-        "version": "2.59.1"
+        "version": "2.59.2"
       },
       "files": [
         "android-config.diff",
@@ -98575,7 +98605,7 @@
             "host": true
           }
         ],
-        "version": "2026.22"
+        "version": "2026.22.1"
       },
       "files": [
         "portfile.cmake",
@@ -105631,7 +105661,7 @@
             "description": "Build tools"
           }
         },
-        "version": "1.1.3"
+        "version": "1.1.4"
       },
       "files": [
         "portfile.cmake",
@@ -108639,7 +108669,7 @@
       "name": "usrsctp",
       "manifest": {
         "name": "usrsctp",
-        "port-version": 4,
+        "port-version": 5,
         "description": "A userland SCTP stack supporting FreeBSD, Linux, Mac OS X and Windows.",
         "homepage": "https://github.com/sctplab/usrsctp",
         "license": "BSD-3-Clause",
@@ -108656,6 +108686,7 @@
         "version": "0.9.5.0"
       },
       "files": [
+        "clang-gnu-driver.patch",
         "fix_export.patch",
         "mingw.diff",
         "portfile.cmake",
@@ -112485,7 +112516,7 @@
         "homepage": "https://github.com/GiovanniDicanio/WinReg",
         "license": "MIT",
         "supports": "windows & !uwp",
-        "version": "14.0.0"
+        "version": "14.1.1"
       },
       "files": [
         "portfile.cmake",
