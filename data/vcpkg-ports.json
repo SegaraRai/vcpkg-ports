@@ -1,5 +1,5 @@
 {
-  "version": "eb890efcc08f8daafa202c584e88217a92240222",
+  "version": "93ad765c7b66ab9ce97469ec23a90b15c3a14ee5",
   "ports": [
     {
       "name": "3fd",
@@ -20298,7 +20298,7 @@
             "description": "Templates for float and double will be instantiated and compiled into a library"
           }
         },
-        "version": "2.0.2"
+        "version": "2.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -27899,7 +27899,7 @@
             "host": true
           }
         ],
-        "version": "1.3"
+        "version": "1.4"
       },
       "files": [
         "portfile.cmake",
@@ -35779,7 +35779,7 @@
             "host": true
           }
         ],
-        "version": "2.3.0"
+        "version": "2.3.1"
       },
       "files": [
         "0001-patch-dir.patch",
@@ -42864,12 +42864,15 @@
       "name": "hidapi",
       "manifest": {
         "name": "hidapi",
-        "port-version": 1,
         "description": "A Simple library for communicating with USB and Bluetooth HID devices on Linux, Mac and Windows.",
         "homepage": "https://github.com/libusb/hidapi",
-        "license": "BSD-3-Clause-Clear",
+        "license": "BSD-3-Clause",
         "supports": "!uwp",
         "dependencies": [
+          {
+            "name": "libiconv",
+            "platform": "openbsd"
+          },
           {
             "name": "libusb",
             "platform": "!(windows | osx)"
@@ -42889,10 +42892,12 @@
             "supports": "windows"
           }
         },
-        "version-semver": "0.15.0"
+        "version-semver": "0.16.0"
       },
       "files": [
+        "pkgconfig-private-dependencies.patch",
         "portfile.cmake",
+        "vcpkg-pkgconfig-iconv.patch",
         "vcpkg.json"
       ]
     },
@@ -43530,12 +43535,11 @@
         "homepage": "https://github.com/open-mpi/hwloc",
         "license": "BSD-3-Clause AND ISC",
         "supports": "!uwp",
-        "version": "2.15.0"
+        "version": "2.16.0"
       },
       "files": [
         "fix_shared_win_build.patch",
         "portfile.cmake",
-        "rename_ANDROID_define.patch",
         "stdout_fileno.patch",
         "vcpkg.json"
       ]
@@ -46679,7 +46683,7 @@
             "host": true
           }
         ],
-        "version": "0.7.1"
+        "version": "0.9.4"
       },
       "files": [
         "portfile.cmake",
@@ -51161,7 +51165,7 @@
         "name": "krpc",
         "description": "kRPC C++ client — control Kerbal Space Program from C++ programs via RPC",
         "homepage": "https://krpc.github.io/krpc",
-        "license": "LGPL-3.0-or-later",
+        "license": "MIT",
         "dependencies": [
           {
             "name": "asio",
@@ -51177,7 +51181,7 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
@@ -51191,7 +51195,7 @@
         "name": "krpc-cnano",
         "description": "kRPC C-nano client — control Kerbal Space Program from C programs via RPC",
         "homepage": "https://krpc.github.io/krpc",
-        "license": "LGPL-3.0-or-later AND Zlib",
+        "license": "MIT AND Zlib",
         "dependencies": [
           "nanopb",
           {
@@ -51203,11 +51207,10 @@
             "host": true
           }
         ],
-        "version": "0.7.0"
+        "version": "0.8.0"
       },
       "files": [
         "portfile.cmake",
-        "usage",
         "vcpkg.json"
       ]
     },
@@ -51432,6 +51435,7 @@
       "name": "kubazip",
       "manifest": {
         "name": "kubazip",
+        "port-version": 1,
         "description": "A portable, simple zip library written in C",
         "homepage": "https://github.com/kuba--/zip",
         "license": "MIT",
@@ -53332,10 +53336,9 @@
       "name": "libcamera",
       "manifest": {
         "name": "libcamera",
-        "port-version": 1,
         "description": "A complex camera support library for Linux, Android, and ChromeOS",
-        "homepage": "https://git.libcamera.org/libcamera/libcamera.git/",
-        "license": "LGPL-2.1-or-later",
+        "homepage": "https://gitlab.freedesktop.org/camera/libcamera/",
+        "license": "LGPL-2.1-or-later AND GPL-2.0-or-later AND BSD-2-Clause AND CC0-1.0",
         "supports": "linux",
         "dependencies": [
           "elfutils",
@@ -53369,7 +53372,7 @@
             ]
           }
         },
-        "version": "0.5.0"
+        "version": "0.8.0"
       },
       "files": [
         "fix-absolute-paths.patch",
@@ -53506,7 +53509,7 @@
             "host": true
           }
         ],
-        "version": "0.14.1"
+        "version": "0.15.0"
       },
       "files": [
         "portfile.cmake",
@@ -55780,10 +55783,11 @@
             "description": "Enable the OpenSSL compatibility library."
           }
         },
-        "version": "3.8.13"
+        "version": "3.8.14"
       },
       "files": [
         "ccasflags.patch",
+        "isolate-inih.patch",
         "portfile.cmake",
         "use-gmp-pkgconfig.patch",
         "vcpkg.json"
@@ -56032,7 +56036,7 @@
             "supports": "!(osx & static)"
           }
         },
-        "version-semver": "5.14.3"
+        "version-semver": "5.14.4"
       },
       "files": [
         "control-openssl.diff",
@@ -58041,7 +58045,6 @@
       "name": "libmodplug",
       "manifest": {
         "name": "libmodplug",
-        "port-version": 16,
         "description": "The ModPlug mod file playing library.",
         "homepage": "https://github.com/Konstanty/libmodplug",
         "license": null,
@@ -58052,13 +58055,11 @@
             "host": true
           }
         ],
-        "version": "0.8.9.0"
+        "version": "0.8.9.2"
       },
       "files": [
         "002-detect_sinf.patch",
-        "003-use-static-cast-for-ctype.patch",
         "004-export-pkgconfig.patch",
-        "005-fix-install-paths.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -58469,7 +58470,7 @@
             "description": "Enable libnfs multithreading support"
           }
         },
-        "version-semver": "8.0.1"
+        "version-semver": "8.1.0"
       },
       "files": [
         "fix-android-pthread-detection.patch",
@@ -59582,7 +59583,7 @@
       "name": "libpq",
       "manifest": {
         "name": "libpq",
-        "port-version": 2,
+        "port-version": 3,
         "description": "The official database access API of postgresql",
         "homepage": "https://www.postgresql.org/",
         "license": "PostgreSQL",
@@ -59704,6 +59705,7 @@
         "vcpkg.json",
         "windows/getopt.patch",
         "windows/macro-def.patch",
+        "windows/postgresql-14.0-use-mingw-setjmp-on-ucrt.patch",
         "windows/pthread-symbols.patch",
         "windows/spin_delay.patch",
         "zic.diff"
@@ -60682,9 +60684,10 @@
             "host": true
           }
         ],
-        "version": "0.21.7"
+        "version": "0.21.8.2"
       },
       "files": [
+        "disable-tests.diff",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -84715,7 +84718,7 @@
         "name": "podofo",
         "description": "PoDoFo is a library to work with the PDF file format",
         "homepage": "https://github.com/podofo/podofo",
-        "license": "LGPL-2.0-or-later OR MPL-2.0",
+        "license": "(LGPL-2.0-or-later OR MPL-2.0) AND MIT AND Apache-2.0 AND BSD-3-Clause",
         "supports": "!uwp & !xbox",
         "dependencies": [
           "date",
@@ -84750,6 +84753,7 @@
           "zlib"
         ],
         "default-features": [
+          "fontconfig",
           "fontmanager"
         ],
         "features": {
@@ -84776,10 +84780,11 @@
             ]
           }
         },
-        "version": "1.1.1"
+        "version": "1.1.3"
       },
       "files": [
         "portfile.cmake",
+        "skip-pkg_config-check.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -96266,18 +96271,14 @@
             "description": "Enable XWD codec"
           }
         },
-        "version-semver": "1.3.0"
+        "version-semver": "1.4.0"
       },
       "files": [
         "fix-always-nanosvg.diff",
-        "fix-android-log.patch",
-        "fix-ffmpeg-opencl.patch",
         "fix-heif.patch",
         "fix-include-directory.patch",
         "fix-jpegxl-pkg-config.patch",
         "fix-libraw-cmake.patch",
-        "fix-release-only-triplet.patch",
-        "fix-swscale-link-order.patch",
         "portfile.cmake",
         "usage",
         "vcpkg.json"
@@ -100144,7 +100145,7 @@
             "platform": "windows"
           }
         ],
-        "version-semver": "1.4.0"
+        "version-semver": "1.5.0"
       },
       "files": [
         "portfile.cmake",
@@ -101137,6 +101138,34 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "soralog",
+      "manifest": {
+        "name": "soralog",
+        "description": "Fast and flexible C++ logger with low-overhead logging calls",
+        "homepage": "https://github.com/xDimon/soralog",
+        "license": "Apache-2.0",
+        "supports": "!windows",
+        "dependencies": [
+          "fmt",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          },
+          "yaml-cpp"
+        ],
+        "version": "0.3.2"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -107821,6 +107850,32 @@
       ]
     },
     {
+      "name": "tvm-ffi",
+      "manifest": {
+        "name": "tvm-ffi",
+        "description": "Open ABI and FFI for machine learning systems",
+        "homepage": "https://github.com/apache/tvm-ffi",
+        "license": "Apache-2.0",
+        "supports": "!uwp",
+        "dependencies": [
+          {
+            "name": "dlpack",
+            "version>=": "1.4"
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          }
+        ],
+        "version": "0.1.16"
+      },
+      "files": [
+        "cmake-install.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "tweeny",
       "manifest": {
         "name": "tweeny",
@@ -111477,7 +111532,7 @@
             "host": true
           }
         ],
-        "version": "3.2.1"
+        "version": "3.3.0"
       },
       "files": [
         "fix-dependency.patch",
