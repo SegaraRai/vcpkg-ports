@@ -1,5 +1,5 @@
 {
-  "version": "93ad765c7b66ab9ce97469ec23a90b15c3a14ee5",
+  "version": "a954e2f0aac7d731cae54c20c8dff61f0624e054",
   "ports": [
     {
       "name": "3fd",
@@ -2314,7 +2314,7 @@
             "host": true
           }
         ],
-        "version": "15.6.2"
+        "version": "15.8.0"
       },
       "files": [
         "cmake-config.patch",
@@ -4159,7 +4159,7 @@
             "host": true
           }
         ],
-        "version": "1.0.5"
+        "version": "1.0.6"
       },
       "files": [
         "disable-internal-crt-option.patch",
@@ -4243,7 +4243,7 @@
             "host": true
           }
         ],
-        "version": "1.3.0"
+        "version": "1.3.1"
       },
       "files": [
         "portfile.cmake",
@@ -6045,7 +6045,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.0.0-beta.14"
+        "version-semver": "1.0.0-beta.15"
       },
       "files": [
         "portfile.cmake",
@@ -7781,7 +7781,7 @@
       "name": "bitserializer",
       "manifest": {
         "name": "bitserializer",
-        "description": "Multi-format serialization library (JSON, XML, YAML, CSV, MsgPack)",
+        "description": "C++17 serialization to JSON/JSONC, XML, YAML, CSV and MsgPack via one API, with self-contained built-in formats and optional fast_float acceleration.",
         "homepage": "https://github.com/PavelKisliak/BitSerializer",
         "license": "MIT",
         "dependencies": [
@@ -7794,9 +7794,21 @@
             "host": true
           }
         ],
+        "default-features": [
+          "fast-float"
+        ],
         "features": {
           "csv-archive": {
             "description": "Module for support CSV"
+          },
+          "fast-float": {
+            "description": "Use fast_float for faster floating-point parsing",
+            "dependencies": [
+              "fast-float"
+            ]
+          },
+          "json-archive": {
+            "description": "Module for support JSON (built-in implementation)"
           },
           "msgpack-archive": {
             "description": "Module for support MsgPack"
@@ -7808,7 +7820,7 @@
             ]
           },
           "rapidjson-archive": {
-            "description": "Module for support JSON (implementation based on the RapidJson library)",
+            "description": "Module for support JSON (deprecated; use json-archive instead)",
             "dependencies": [
               "rapidjson"
             ]
@@ -7820,7 +7832,7 @@
             ]
           }
         },
-        "version": "0.85"
+        "version": "0.91"
       },
       "files": [
         "portfile.cmake",
@@ -25058,7 +25070,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.32.3"
+        "version-semver": "1.33.0"
       },
       "files": [
         "fix-dependencies.patch",
@@ -30861,7 +30873,7 @@
             "host": true
           }
         ],
-        "version": "8.3.3"
+        "version": "8.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -31369,7 +31381,6 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 7,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -31537,14 +31548,6 @@
                   "svt-av1"
                 ],
                 "platform": "!x86 & !arm32 & !uwp"
-              },
-              {
-                "name": "ffmpeg",
-                "default-features": false,
-                "features": [
-                  "opengl"
-                ],
-                "platform": "!uwp & !(arm64 & windows)"
               },
               {
                 "name": "ffmpeg",
@@ -31884,14 +31887,6 @@
             ],
             "supports": "!uwp"
           },
-          "opengl": {
-            "description": "OpenGL rendering",
-            "dependencies": [
-              "opengl",
-              "opengl-registry"
-            ],
-            "supports": "!uwp"
-          },
           "openh264": {
             "description": "H.264 de/encoding via openh264",
             "dependencies": [
@@ -32152,7 +32147,7 @@
             ]
           }
         },
-        "version": "9.0.2"
+        "version": "9.1"
       },
       "files": [
         "0003-fix-windowsinclude.patch",
@@ -32164,11 +32159,9 @@
         "0040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch",
         "0045-use-prebuilt-bin2c.patch",
         "0046-fix-msvc-detection.patch",
-        "0047-fix-msvc-utf8.patch",
         "0049-fix-twolame-pkgconfig.patch",
         "0050-fix-test-ld-absolute-lib-paths.patch",
         "0051-fix-msvc-undef-flags.patch",
-        "0052-fix-disable-unstable-swscale-link.patch",
         "FindFFMPEG.cmake.in",
         "build.sh.in",
         "portfile.cmake",
@@ -32190,7 +32183,7 @@
             "host": true
           }
         ],
-        "version": "9.0.2"
+        "version": "9.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -33153,7 +33146,7 @@
             ]
           }
         },
-        "version": "2.6.2"
+        "version": "2.6.3"
       },
       "files": [
         "cxx-linkage-pkgconfig.diff",
@@ -37286,7 +37279,7 @@
             "host": true
           }
         ],
-        "version": "4.4"
+        "version-semver": "10.0.0"
       },
       "files": [
         "packagable.patch",
@@ -40795,7 +40788,7 @@
             "supports": "!static & !windows"
           }
         },
-        "version": "4.24.1"
+        "version": "4.24.2"
       },
       "files": [
         "0001-build.patch",
@@ -46683,7 +46676,7 @@
             "host": true
           }
         ],
-        "version": "0.9.4"
+        "version": "0.9.5"
       },
       "files": [
         "portfile.cmake",
@@ -46796,7 +46789,7 @@
       "name": "kauth",
       "manifest": {
         "name": "kauth",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Execute actions as privileged user",
         "homepage": "https://invent.kde.org/frameworks/kauth",
         "documentation": "https://api.kde.org/kauth-index.html",
@@ -47198,7 +47191,7 @@
       "name": "kconfig",
       "manifest": {
         "name": "kconfig",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Configuration system",
         "homepage": "https://invent.kde.org/frameworks/kconfig",
         "documentation": "https://api.kde.org/kconfig-index.html",
@@ -47208,6 +47201,14 @@
           {
             "name": "qtbase",
             "default-features": false
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -47252,7 +47253,7 @@
       "name": "kconfigwidgets",
       "manifest": {
         "name": "kconfigwidgets",
-        "port-version": 1,
+        "port-version": 2,
         "description": "Widgets for configuration dialogs",
         "homepage": "https://invent.kde.org/frameworks/kconfigwidgets",
         "documentation": "https://api.kde.org/kconfigwidgets-index.html",
@@ -47286,7 +47287,7 @@
             "features": [
               "dbus"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -47335,7 +47336,7 @@
       "name": "kcoreaddons",
       "manifest": {
         "name": "kcoreaddons",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Addons to QtCore",
         "homepage": "https://invent.kde.org/frameworks/kcoreaddons",
         "documentation": "https://api.kde.org/kcoreaddons-index.html",
@@ -47345,6 +47346,14 @@
           {
             "name": "qtbase",
             "default-features": false
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -47412,7 +47421,7 @@
       "name": "kcrash",
       "manifest": {
         "name": "kcrash",
-        "port-version": 2,
+        "port-version": 3,
         "description": "KCrash provides support for intercepting and handling application crashes.",
         "homepage": "https://invent.kde.org/frameworks/kcrash",
         "documentation": "https://api.kde.org/kcrash-index.html",
@@ -47484,7 +47493,7 @@
       "name": "kdbusaddons",
       "manifest": {
         "name": "kdbusaddons",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Convenience classes for D-Bus",
         "homepage": "https://invent.kde.org/frameworks/kdbusaddons",
         "documentation": "https://api.kde.org/kdbusaddons-index.html",
@@ -47498,6 +47507,15 @@
             "features": [
               "dbus"
             ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui",
+              "xcb"
+            ],
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -49725,7 +49743,7 @@
       "name": "kf6-solid",
       "manifest": {
         "name": "kf6-solid",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Desktop hardware abstraction",
         "homepage": "https://invent.kde.org/frameworks/solid",
         "documentation": "https://api.kde.org/solid-index.html",
@@ -49739,6 +49757,14 @@
           {
             "name": "qtbase",
             "default-features": false
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -49826,7 +49852,7 @@
       "name": "kglobalaccel",
       "manifest": {
         "name": "kglobalaccel",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Global desktop keyboard shortcuts",
         "homepage": "https://invent.kde.org/frameworks/kglobalaccel",
         "documentation": "https://api.kde.org/kglobalaccel-index.html",
@@ -49836,7 +49862,20 @@
           "ecm",
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "dbus",
+              "gui",
+              "widgets"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "xcb"
+            ],
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -49872,7 +49911,7 @@
       "name": "kguiaddons",
       "manifest": {
         "name": "kguiaddons",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Addons to QtGui",
         "homepage": "https://invent.kde.org/frameworks/kguiaddons",
         "documentation": "https://api.kde.org/kguiaddons-index.html",
@@ -49892,6 +49931,15 @@
             ]
           },
           {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus",
+              "xcb"
+            ],
+            "platform": "linux | bsd"
+          },
+          {
             "name": "qtwayland",
             "default-features": false,
             "platform": "linux"
@@ -49903,6 +49951,10 @@
           {
             "name": "vcpkg-cmake-config",
             "host": true
+          },
+          {
+            "name": "wayland-protocols",
+            "platform": "linux"
           }
         ],
         "features": {
@@ -50043,7 +50095,7 @@
       "name": "kiconthemes",
       "manifest": {
         "name": "kiconthemes",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Icon GUI utilities",
         "homepage": "https://invent.kde.org/frameworks/kiconthemes",
         "documentation": "https://api.kde.org/kiconthemes-index.html",
@@ -50074,7 +50126,7 @@
             "features": [
               "dbus"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "qtsvg",
@@ -50382,7 +50434,7 @@
       "name": "kirigami",
       "manifest": {
         "name": "kirigami",
-        "port-version": 1,
+        "port-version": 2,
         "description": "QtQuick plugins to build user interfaces based on the KDE human interface guidelines",
         "homepage": "https://invent.kde.org/frameworks/kirigami",
         "documentation": "https://api.kde.org/kirigami-index.html",
@@ -50403,7 +50455,7 @@
             "features": [
               "dbus"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "qtdeclarative",
@@ -50618,6 +50670,7 @@
       "name": "kjobwidgets",
       "manifest": {
         "name": "kjobwidgets",
+        "port-version": 1,
         "description": "Widgets for showing progress of asynchronous jobs",
         "homepage": "https://invent.kde.org/frameworks/kjobwidgets",
         "documentation": "https://api.kde.org/kjobwidgets-index.html",
@@ -50641,7 +50694,7 @@
               "dbus",
               "xcb"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -50866,7 +50919,7 @@
       "name": "knotifications",
       "manifest": {
         "name": "knotifications",
-        "port-version": 4,
+        "port-version": 5,
         "description": "Desktop notifications",
         "homepage": "https://invent.kde.org/frameworks/knotifications",
         "documentation": "https://api.kde.org/knotifications-index.html",
@@ -50893,17 +50946,17 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "dbus"
+              "network"
             ],
-            "platform": "linux"
+            "platform": "windows"
           },
           {
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "network"
+              "dbus"
             ],
-            "platform": "windows"
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -50964,6 +51017,7 @@
       "name": "kpackage",
       "manifest": {
         "name": "kpackage",
+        "port-version": 1,
         "description": "Library to load and install packages of non binary files as they were a plugin",
         "homepage": "https://invent.kde.org/frameworks/kpackage",
         "documentation": "https://api.kde.org/kpackage-index.html",
@@ -50990,7 +51044,7 @@
             "features": [
               "dbus"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -51684,7 +51738,7 @@
       "name": "kwindowsystem",
       "manifest": {
         "name": "kwindowsystem",
-        "port-version": 3,
+        "port-version": 4,
         "description": "Access to the windowing system",
         "homepage": "https://invent.kde.org/frameworks/kwindowsystem",
         "documentation": "https://api.kde.org/kwindowsystem-index.html",
@@ -51703,7 +51757,7 @@
               "gui",
               {
                 "name": "xcb",
-                "platform": "linux"
+                "platform": "linux | bsd"
               }
             ]
           },
@@ -51787,6 +51841,7 @@
       "name": "kxmlgui",
       "manifest": {
         "name": "kxmlgui",
+        "port-version": 1,
         "description": "Framework for managing menu and toolbar actions",
         "homepage": "https://invent.kde.org/frameworks/kxmlgui",
         "documentation": "https://api.kde.org/kxmlgui-index.html",
@@ -51805,7 +51860,7 @@
           "kcoreaddons",
           {
             "name": "kglobalaccel",
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           "kguiaddons",
           "ki18n",
@@ -51826,7 +51881,7 @@
             "features": [
               "dbus"
             ],
-            "platform": "linux"
+            "platform": "linux | bsd"
           },
           {
             "name": "vcpkg-cmake",
@@ -57028,7 +57083,7 @@
             ]
           }
         },
-        "version": "1.7.4"
+        "version": "1.7.5"
       },
       "files": [
         "dependencies.diff",
@@ -61847,9 +61902,10 @@
             ]
           }
         },
-        "version-semver": "2.3.2"
+        "version-semver": "2.3.3"
       },
       "files": [
+        "missing_include.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -66524,7 +66580,7 @@
           },
           "xxhash"
         ],
-        "version": "2.7.0"
+        "version": "2.7.1"
       },
       "files": [
         "portfile.cmake",
@@ -75487,7 +75543,7 @@
             ]
           }
         },
-        "version": "2.17.0"
+        "version": "2.18.0"
       },
       "files": [
         "fix-boost-config.patch",
@@ -79427,7 +79483,7 @@
             "description": "Build tools"
           }
         },
-        "version": "3.5.4"
+        "version": "3.5.5"
       },
       "files": [
         "portfile.cmake",
@@ -79574,11 +79630,11 @@
         ],
         "features": {
           "tools": {
-            "description": "Build the open_htj2k_dec and open_htj2k_enc command-line tools",
+            "description": "Build the open_htj2k_dec, open_htj2k_enc and open_htj2k_transcode command-line tools",
             "supports": "!uwp"
           }
         },
-        "version": "0.28.0"
+        "version": "0.29.1"
       },
       "files": [
         "portfile.cmake",
@@ -79609,6 +79665,7 @@
       "name": "openimageio",
       "manifest": {
         "name": "openimageio",
+        "port-version": 1,
         "description": "A library for reading and writing images, and a bunch of related classes, utilities, and application.",
         "homepage": "https://github.com/AcademySoftwareFoundation/OpenImageIO",
         "license": "Apache-2.0",
@@ -79641,7 +79698,9 @@
                 "name": "ffmpeg",
                 "default-features": false,
                 "features": [
-                  "avresample"
+                  "avcodec",
+                  "avformat",
+                  "swscale"
                 ]
               }
             ]
@@ -83089,7 +83148,7 @@
       "name": "pcre2",
       "manifest": {
         "name": "pcre2",
-        "port-version": 2,
+        "port-version": 3,
         "description": "Regular Expression pattern matching using the same syntax and semantics as Perl 5.",
         "homepage": "https://github.com/PCRE2Project/pcre2",
         "license": "BSD-3-Clause WITH PCRE2-exception",
@@ -99480,7 +99539,7 @@
       "name": "skia",
       "manifest": {
         "name": "skia",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "Skia is an open source 2D graphics library which provides common APIs that work across a variety of hardware and software platforms.",
           "It serves as the graphics engine for Google Chrome and Chrome OS, Android, Mozilla Firefox and Firefox OS, and many other products.",
@@ -101148,7 +101207,6 @@
         "description": "Fast and flexible C++ logger with low-overhead logging calls",
         "homepage": "https://github.com/xDimon/soralog",
         "license": "Apache-2.0",
-        "supports": "!windows",
         "dependencies": [
           "fmt",
           {
@@ -101161,7 +101219,7 @@
           },
           "yaml-cpp"
         ],
-        "version": "0.3.2"
+        "version": "0.4.0"
       },
       "files": [
         "portfile.cmake",
@@ -102518,7 +102576,7 @@
         "description": "SRELL (std::regex-like library) is a regular expression template library for C++.",
         "homepage": "https://www.akenotsuki.com/misc/srell/en/",
         "license": "BSD-2-Clause AND Unicode-3.0",
-        "version-string": "2026.05"
+        "version": "2026.11"
       },
       "files": [
         "Unicode-license.txt",
@@ -112649,7 +112707,7 @@
             "host": true
           }
         ],
-        "version": "0.10.1"
+        "version": "0.10.2"
       },
       "files": [
         "portfile.cmake",
