@@ -1,5 +1,5 @@
 {
-  "version": "15f012269634c31d5f4b204f8ecd51681f130fa5",
+  "version": "9d1fc4d0609cd98b9ad221f626bf030e856b6345",
   "ports": [
     {
       "name": "3fd",
@@ -18722,7 +18722,7 @@
             "description": "Build and install the BqLog_CategoryLogGenerator and BqLog_LogDecoder command line tools"
           }
         },
-        "version": "2.8.1"
+        "version": "2.8.3"
       },
       "files": [
         "portfile.cmake",
@@ -28270,7 +28270,7 @@
           },
           "zlib"
         ],
-        "version": "10.1.6"
+        "version": "10.1.7"
       },
       "files": [
         "portfile.cmake",
@@ -31380,7 +31380,7 @@
       "name": "ffmpeg",
       "manifest": {
         "name": "ffmpeg",
-        "port-version": 1,
+        "port-version": 2,
         "description": [
           "A library to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created.",
           "FFmpeg is the leading multimedia framework, able to decode, encode, transcode, mux, demux, stream, filter and play pretty much anything that humans and machines have created. It supports the most obscure ancient formats up to the cutting edge. No matter if they were designed by some standards committee, the community or a corporation. It is also highly portable: FFmpeg compiles, runs, and passes our testing infrastructure FATE across Linux, Mac OS X, Microsoft Windows, the BSDs, Solaris, etc. under a wide variety of build environments, machine architectures, and configurations."
@@ -39543,6 +39543,7 @@
       "name": "grpc",
       "manifest": {
         "name": "grpc",
+        "port-version": 1,
         "description": "gRPC is a modern, open source, high-performance remote procedure call (RPC) framework that can run anywhere. gRPC enables client and server applications to communicate transparently, and simplifies the building of connected systems.",
         "homepage": "https://github.com/grpc/grpc",
         "license": "Apache-2.0",
@@ -39607,6 +39608,7 @@
         "00006-utf8-range.patch",
         "00015-disable-download-archive.patch",
         "00016-fix-plugin-targets.patch",
+        "cmake-project-include.cmake",
         "gRPCTargets-vcpkg-tools.cmake",
         "portfile.cmake",
         "vcpkg-cmake-wrapper.cmake",
@@ -43798,7 +43800,7 @@
             "host": true
           }
         ],
-        "version": "1.0.0"
+        "version": "1.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -45052,7 +45054,7 @@
             "host": true
           }
         ],
-        "version": "0.15.0"
+        "version": "0.16.0"
       },
       "files": [
         "portfile.cmake",
@@ -46577,7 +46579,7 @@
             ]
           }
         },
-        "version-semver": "0.7.2"
+        "version-semver": "0.7.3"
       },
       "files": [
         "picojson_from_vcpkg.patch",
@@ -47023,6 +47025,85 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "kcmutils",
+      "manifest": {
+        "name": "kcmutils",
+        "description": "Utilities for interacting with KCModules",
+        "homepage": "https://invent.kde.org/frameworks/kcmutils",
+        "documentation": "https://api.kde.org/kcmutils-index.html",
+        "license": "LGPL-2.0-or-later AND LGPL-2.0-only AND BSD-3-Clause AND GPL-2.0-or-later",
+        "dependencies": [
+          "ecm",
+          {
+            "name": "gettext",
+            "host": true,
+            "features": [
+              "tools"
+            ]
+          },
+          {
+            "name": "kconfig",
+            "features": [
+              "qml"
+            ]
+          },
+          "kconfigwidgets",
+          "kcoreaddons",
+          "kguiaddons",
+          {
+            "name": "ki18n",
+            "features": [
+              "qml"
+            ]
+          },
+          "kio",
+          "kirigami",
+          "kitemviews",
+          "kwidgetsaddons",
+          "kxmlgui",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "testlib",
+              "widgets"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux | bsd"
+          },
+          "qtdeclarative",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "translations": {
+            "description": "Build translations"
+          }
+        },
+        "version": "6.32.0"
+      },
+      "files": [
+        "export-qml-modules.patch",
+        "fix-static-dependencies.patch",
+        "install-static-logging-library.patch",
+        "portfile.cmake",
+        "usage",
         "vcpkg.json"
       ]
     },
@@ -62559,14 +62640,14 @@
         "name": "libunibreak",
         "description": "an implementation of the line breaking and word breaking algorithms as described in [Unicode Standard Annex 14] 1 and [Unicode Standard Annex 29] 2. Check the project's [home page] 3 for up-to-date information.",
         "homepage": "https://github.com/adah1972/libunibreak",
-        "license": "zlib-acknowledgement",
+        "license": "zlib-acknowledgement AND Unicode-3.0",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
             "host": true
           }
         ],
-        "version": "7.0"
+        "version": "8.0.1"
       },
       "files": [
         "CMakeLists.txt",
@@ -64820,7 +64901,7 @@
             "host": true
           }
         ],
-        "version": "0.2.6"
+        "version": "0.2.7"
       },
       "files": [
         "export-pkgconfig.patch",
@@ -71483,6 +71564,7 @@
       "name": "modemmanager-headers",
       "manifest": {
         "name": "modemmanager-headers",
+        "port-version": 1,
         "description": [
           "Headers of the ModemManager D-Bus API (enums, errors, interface names and version), to talk to the system ModemManager daemon.",
           "Headers only: the daemon and libmm-glib are not built."
@@ -71503,7 +71585,44 @@
         "version": "1.24.2"
       },
       "files": [
-        "pkgconfig-include-root.patch",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "modemmanager-qt",
+      "manifest": {
+        "name": "modemmanager-qt",
+        "description": "Qt wrapper for ModemManager DBus API",
+        "homepage": "https://invent.kde.org/frameworks/modemmanager-qt",
+        "documentation": "https://api.kde.org/modemmanager-qt-index.html",
+        "license": "LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL",
+        "supports": "linux",
+        "dependencies": [
+          "ecm",
+          "modemmanager-headers",
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ]
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "6.32.0"
+      },
+      "files": [
+        "exclude-test-only-target.patch",
+        "fix-static-dependencies.patch",
+        "fix-static-library.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -75200,7 +75319,7 @@
       "name": "nonstd-bit-lite",
       "manifest": {
         "name": "nonstd-bit-lite",
-        "description": "C++20/C++23 bit operations for C++98 and later in a single-file header-only library",
+        "description": "C++20/C++23/C++29 bit operations for C++98 and later in a single-file header-only library",
         "homepage": "https://github.com/nonstd-lite/bit-lite",
         "license": "BSL-1.0",
         "dependencies": [
@@ -75213,7 +75332,7 @@
             "host": true
           }
         ],
-        "version": "2.0.0"
+        "version": "3.1.0"
       },
       "files": [
         "portfile.cmake",
@@ -94916,7 +95035,7 @@
             "host": true
           }
         ],
-        "version-semver": "1.2.9"
+        "version-semver": "1.3.0"
       },
       "files": [
         "portfile.cmake",
@@ -96926,6 +97045,68 @@
       ]
     },
     {
+      "name": "sdl-painter",
+      "manifest": {
+        "name": "sdl-painter",
+        "description": "Modern C++17 2D drawing library for SDL3 with interchangeable OpenGL 3.3 and Vulkan 1.1 backends.",
+        "homepage": "https://github.com/yazilimperver/sdl-painter",
+        "license": "MIT",
+        "supports": "(windows & !uwp) | linux",
+        "dependencies": [
+          "glad",
+          "glm",
+          "opengl",
+          {
+            "name": "sdl3",
+            "default-features": false,
+            "features": [
+              {
+                "name": "wayland",
+                "platform": "linux"
+              },
+              {
+                "name": "x11",
+                "platform": "linux"
+              }
+            ]
+          },
+          "sdl3-ttf",
+          "spdlog",
+          "stb",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "vulkan": {
+            "description": "Vulkan 1.1 backend",
+            "dependencies": [
+              {
+                "name": "sdl3",
+                "default-features": false,
+                "features": [
+                  "vulkan"
+                ]
+              },
+              "vulkan-headers",
+              "vulkan-loader"
+            ]
+          }
+        },
+        "version": "1.5.1"
+      },
+      "files": [
+        "portfile.cmake",
+        "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
       "name": "sdl2",
       "manifest": {
         "name": "sdl2",
@@ -97527,6 +97708,35 @@
         "fix-freebsd.patch",
         "portfile.cmake",
         "usage",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "sdl3-gfx",
+      "manifest": {
+        "name": "sdl3-gfx",
+        "description": "Graphics primitives, surface rotozoomer, framerate control and image filters for SDL3.",
+        "homepage": "https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/",
+        "license": "Zlib",
+        "dependencies": [
+          {
+            "name": "sdl3",
+            "default-features": false
+          },
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "version": "2.0.0"
+      },
+      "files": [
+        "fix-pkgconfig-lm.patch",
+        "portfile.cmake",
         "vcpkg.json"
       ]
     },
@@ -104411,7 +104621,7 @@
       "manifest": {
         "name": "svt-av1",
         "description": "AV1 software video encoder library",
-        "homepage": "https://gitlab.com/AOMediaCodec/SVT-AV1",
+        "homepage": "https://github.com/AOMediaCodec/SVT-AV1",
         "license": null,
         "supports": "!x86 & !arm32 & !uwp",
         "dependencies": [
@@ -104425,11 +104635,10 @@
             "host": true
           }
         ],
-        "version-semver": "4.1.0"
+        "version-semver": "4.3.1"
       },
       "files": [
         "no-force-llvm.diff",
-        "no-inline-yy_unpacklo_epi128.diff",
         "no-safestringlib.diff",
         "portfile.cmake",
         "unvendor-fastfeat.diff",
@@ -107090,8 +107299,7 @@
       "name": "tomlplusplus",
       "manifest": {
         "name": "tomlplusplus",
-        "port-version": 1,
-        "description": "Header-only TOML config file parser and serializer for modern C++.",
+        "description": "TOML config file parser and serializer for modern C++.",
         "homepage": "https://marzer.github.io/tomlplusplus/",
         "license": "MIT",
         "supports": "!uwp",
@@ -107105,10 +107313,9 @@
             "host": true
           }
         ],
-        "version": "3.4.0"
+        "version": "3.5.1"
       },
       "files": [
-        "fix-android-fileapi.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -112259,7 +112466,7 @@
         "dependencies": [
           "wil"
         ],
-        "version": "1.0.4314.35"
+        "version": "1.0.4370.26"
       },
       "files": [
         "portfile.cmake",
@@ -113574,7 +113781,7 @@
       "manifest": {
         "name": "xad",
         "description": "Comprehensive C++ library for automatic differentiation: forward and adjoint modes, higher-order derivatives, checkpointing and vector modes.",
-        "homepage": "https://auto-differentiation.github.io",
+        "homepage": "https://www.xcelerit.com/xad/docs/",
         "license": "AGPL-3.0-or-later",
         "supports": "!mingw",
         "dependencies": [
@@ -113587,7 +113794,7 @@
             "host": true
           }
         ],
-        "version": "2.2.0"
+        "version": "2.3.0"
       },
       "files": [
         "fix-install-pdb.patch",
@@ -116026,7 +116233,7 @@
             "description": "Build the command-line interface"
           }
         },
-        "version": "1.0.1"
+        "version": "1.0.2"
       },
       "files": [
         "portfile.cmake",
