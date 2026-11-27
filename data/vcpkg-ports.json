@@ -1,5 +1,5 @@
 {
-  "version": "9d1fc4d0609cd98b9ad221f626bf030e856b6345",
+  "version": "9fa95bf687fa6ae7f2da0673a8067e5fc1515c27",
   "ports": [
     {
       "name": "3fd",
@@ -3914,10 +3914,13 @@
             "host": true
           }
         ],
-        "version": "3.0.1"
+        "version": "3.2.1"
       },
       "files": [
         "0002-av_init_packet_deprecation.patch",
+        "0003-use-ffmpeg-pkgconfig.patch",
+        "0004-fix-pkgconfig-libs.patch",
+        "0005-install-filter-headers.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -4439,7 +4442,7 @@
             "host": true
           }
         ],
-        "version": "0.44.5"
+        "version": "0.44.6"
       },
       "files": [
         "portfile.cmake",
@@ -53107,6 +53110,7 @@
       "name": "libass",
       "manifest": {
         "name": "libass",
+        "port-version": 1,
         "description": "libass is a portable subtitle renderer for the ASS/SSA (Advanced Substation Alpha/Substation Alpha) subtitle format",
         "homepage": "https://github.com/libass/libass",
         "license": "ISC",
@@ -53123,6 +53127,14 @@
             "host": true
           }
         ],
+        "features": {
+          "unibreak": {
+            "description": "Enable Unicode line breaking using libunibreak",
+            "dependencies": [
+              "libunibreak"
+            ]
+          }
+        },
         "version": "0.17.5"
       },
       "files": [
@@ -54126,7 +54138,6 @@
         "supports": "!xbox",
         "dependencies": [
           "libjuice",
-          "nlohmann-json",
           "openssl",
           "plog",
           "usrsctp",
@@ -54156,7 +54167,7 @@
             "description": "Web Socket support"
           }
         },
-        "version-semver": "0.24.7"
+        "version-semver": "0.24.8"
       },
       "files": [
         "dependencies.diff",
@@ -64270,7 +64281,6 @@
       "name": "libxlsxwriter",
       "manifest": {
         "name": "libxlsxwriter",
-        "port-version": 3,
         "description": "Libxlsxwriter is a C library that can be used to write text, numbers, formulas and hyperlinks to multiple worksheets in an Excel 2007+ XLSX file.",
         "homepage": "https://github.com/jmcnamara/libxlsxwriter",
         "documentation": "https://libxlsxwriter.github.io",
@@ -64290,7 +64300,8 @@
         ],
         "features": {
           "dtoa": {
-            "description": "Use the Milo Yip DTOA library"
+            "description": "Use the Milo Yip DTOA library",
+            "license": "MIT"
           },
           "mem-file": {
             "description": "Use memory files instead of temp files",
@@ -64303,7 +64314,7 @@
             ]
           }
         },
-        "version": "1.2.4"
+        "version": "1.2.5"
       },
       "files": [
         "minizip.diff",
@@ -75541,7 +75552,7 @@
         "name": "nu-book-zxing-cpp",
         "description": "Barcode detection and decoding library.",
         "homepage": "https://github.com/zxing-cpp/zxing-cpp",
-        "license": "Apache-2.0",
+        "license": "Apache-2.0 AND BSD-3-Clause AND LicenseRef-Hoehrmann-UTF-8",
         "dependencies": [
           {
             "name": "vcpkg-cmake",
@@ -75552,7 +75563,7 @@
             "host": true
           }
         ],
-        "version": "3.1.1"
+        "version": "3.2.0"
       },
       "files": [
         "portfile.cmake",
@@ -77339,6 +77350,7 @@
           }
         ],
         "default-features": [
+          "discovery",
           "methodcalls",
           "subscriptions",
           "subscriptions-events"
@@ -77356,7 +77368,7 @@
             ]
           },
           "discovery": {
-            "description": "Enable Discovery Service (LDS)",
+            "description": "Enable Discovery Service (LDS). Since 1.5 this also enables the client API.",
             "dependencies": [
               {
                 "name": "open62541",
@@ -77433,10 +77445,9 @@
             ]
           }
         },
-        "version": "1.4.22"
+        "version": "1.5.9"
       },
       "files": [
-        "android.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -77445,6 +77456,7 @@
       "name": "open62541pp",
       "manifest": {
         "name": "open62541pp",
+        "port-version": 1,
         "description": "C++ wrapper of the open62541 OPC UA library",
         "homepage": "https://open62541pp.github.io",
         "license": "MPL-2.0",
@@ -77462,6 +77474,7 @@
         "version": "0.22.0"
       },
       "files": [
+        "open62541-1.5.patch",
         "portfile.cmake",
         "vcpkg.json"
       ]
@@ -81326,6 +81339,7 @@
       "name": "openzl",
       "manifest": {
         "name": "openzl",
+        "port-version": 1,
         "description": "Format-aware compression framework delivering high ratios while preserving speed.",
         "homepage": "https://github.com/facebook/openzl",
         "license": "BSD-3-Clause",
@@ -81351,6 +81365,7 @@
       },
       "files": [
         "fix-dependencies.patch",
+        "fix-misuse-of-include-directories.patch",
         "fix-runtime.patch",
         "portfile.cmake",
         "usage",
@@ -87622,10 +87637,17 @@
             "default-features": false
           },
           {
+            "name": "qtcanvaspainter",
+            "default-features": false,
+            "features": [
+              "qml",
+              "widgets"
+            ]
+          },
+          {
             "name": "qtcharts",
             "default-features": false,
             "features": [
-              "designer",
               "qml"
             ]
           },
@@ -87639,8 +87661,18 @@
             "platform": "linux"
           },
           "qtdoc",
-          "qtgraphs",
-          "qtgrpc",
+          {
+            "name": "qtgraphs",
+            "features": [
+              "canvaspainter"
+            ]
+          },
+          {
+            "name": "qtgrpc",
+            "features": [
+              "qml"
+            ]
+          },
           {
             "name": "qtimageformats",
             "default-features": false,
@@ -87650,7 +87682,12 @@
               "webp"
             ]
           },
-          "qtinterfaceframework",
+          {
+            "name": "qtinterfaceframework",
+            "features": [
+              "mqtt"
+            ]
+          },
           "qtlanguageserver",
           {
             "name": "qtlottie",
@@ -87659,7 +87696,12 @@
               "qml"
             ]
           },
-          "qtmqtt",
+          {
+            "name": "qtmqtt",
+            "features": [
+              "websockets"
+            ]
+          },
           {
             "name": "qtmultimedia",
             "default-features": false,
@@ -87728,7 +87770,13 @@
             "default-features": false,
             "platform": "!(windows & x86)"
           },
-          "qtsvg",
+          {
+            "name": "qtsvg",
+            "features": [
+              "widgets"
+            ]
+          },
+          "qttasktree",
           {
             "name": "qttools",
             "default-features": false,
@@ -87791,9 +87839,6 @@
             "dependencies": [
               {
                 "name": "qtactiveqt",
-                "features": [
-                  "qml"
-                ],
                 "platform": "windows"
               },
               {
@@ -87813,7 +87858,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "portfile.cmake",
@@ -87865,7 +87910,6 @@
         "homepage": "https://www.qt.io",
         "license": null,
         "dependencies": [
-          "assimp",
           {
             "name": "qtbase",
             "default-features": false,
@@ -87873,8 +87917,7 @@
               "concurrent",
               "gui",
               "network",
-              "opengl",
-              "widgets"
+              "opengl"
             ]
           }
         ],
@@ -87972,7 +88015,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -89582,7 +89625,7 @@
             "description": "Supports conversions between text encodings."
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -89615,16 +89658,10 @@
         ],
         "features": {
           "qml": {
-            "description": "Build QML imports",
-            "dependencies": [
-              {
-                "name": "qtdeclarative",
-                "default-features": false
-              }
-            ]
+            "description": "(deprecated) No effect: Qt ActiveQt does not use QML"
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -89646,8 +89683,18 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "concurrent"
+              "concurrent",
+              "gui",
+              "network"
             ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "openssl"
+            ],
+            "platform": "!windows & !osx & !ios"
           },
           {
             "name": "qtdeclarative",
@@ -89709,7 +89756,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -89722,7 +89769,6 @@
       "name": "qtbase",
       "manifest": {
         "name": "qtbase",
-        "port-version": 1,
         "description": "Qt Base (Core, Gui, Widgets, Network, ...)",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -89783,12 +89829,17 @@
             "name": "vcpkg-cmake-config",
             "host": true
           },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
+          },
           "zlib"
         ],
         "default-features": [
           {
             "name": "appstore-compliant",
-            "platform": "uwp"
+            "platform": "android | ios"
           },
           "async-io",
           "brotli",
@@ -89856,10 +89907,6 @@
           },
           {
             "name": "xcb-xlib",
-            "platform": "linux"
-          },
-          {
-            "name": "xrender",
             "platform": "linux"
           },
           "zstd"
@@ -90428,19 +90475,6 @@
               }
             ]
           },
-          "xrender": {
-            "description": "XRender for native painting",
-            "dependencies": [
-              {
-                "name": "qtbase",
-                "default-features": false,
-                "features": [
-                  "fontconfig",
-                  "xcb-xlib"
-                ]
-              }
-            ]
-          },
           "zstd": {
             "description": "Zstandard support",
             "dependencies": [
@@ -90448,7 +90482,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "GLIB2-static.patch",
@@ -90470,9 +90504,11 @@
         "fix_deploy_windows.patch",
         "fix_egl.patch",
         "fix_egl_2.patch",
+        "gradle-sdk-root.patch",
         "harfbuzz.patch",
         "installed_dir.patch",
         "macdeployqt-symlinks.patch",
+        "md4c.diff",
         "moltenvk.patch",
         "port.data.cmake",
         "portfile.cmake",
@@ -90481,10 +90517,62 @@
         "qtpaths.debug.bat",
         "silence-winrtbase-coroutine-warnings.diff",
         "use-shared-mime-info.patch",
-        "use_inotify_on_freebsd.patch",
         "vcpkg.json",
         "windeployqt-webengine-debug-resources.patch",
         "windeployqt.debug.bat"
+      ]
+    },
+    {
+      "name": "qtcanvaspainter",
+      "manifest": {
+        "name": "qtcanvaspainter",
+        "description": "Qt Canvas Painter provides a hardware-accelerated imperative 2D painting API on QRhi for Qt Quick and Qt Widgets.",
+        "homepage": "https://www.qt.io",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "gui"
+            ]
+          },
+          {
+            "name": "qtcanvaspainter",
+            "host": true,
+            "default-features": false
+          },
+          "qtshadertools"
+        ],
+        "features": {
+          "qml": {
+            "description": "Build Qt Quick integration and QML imports",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          },
+          "widgets": {
+            "description": "Build Qt Widgets integration",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "widgets"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
+      },
+      "files": [
+        "port.data.cmake",
+        "portfile.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -90506,13 +90594,7 @@
         ],
         "features": {
           "designer": {
-            "description": "Build Designer plugin",
-            "dependencies": [
-              {
-                "name": "qttools",
-                "default-features": false
-              }
-            ]
+            "description": "(deprecated) No effect: the Qt Designer plugin is not built upstream since Qt 6"
           },
           "qml": {
             "description": "Build QML imports",
@@ -90524,7 +90606,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90548,7 +90630,7 @@
             ]
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90579,9 +90661,14 @@
               "dbus"
             ],
             "platform": "!(windows & static) & !android & !ios"
+          },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90603,7 +90690,9 @@
             "default-features": false,
             "features": [
               "gui",
-              "testlib"
+              "opengl",
+              "testlib",
+              "widgets"
             ]
           },
           {
@@ -90611,7 +90700,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90631,6 +90720,7 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
+              "gui",
               "network",
               "testlib"
             ]
@@ -90645,9 +90735,14 @@
             "name": "qtshadertools",
             "default-features": false
           },
-          "qtsvg"
+          "qtsvg",
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
+          }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90665,15 +90760,19 @@
         "supports": "linux",
         "dependencies": [
           {
-            "name": "qtdeclarative",
-            "default-features": false
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus",
+              "network"
+            ]
           },
           {
-            "name": "qttools",
+            "name": "qtdeclarative",
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90691,10 +90790,23 @@
         "dependencies": [
           {
             "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "concurrent",
+              "gui",
+              "network"
+            ]
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
+          },
+          {
+            "name": "qttasktree",
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90728,7 +90840,21 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "canvaspainter": {
+            "description": "Qt Canvas Painter based high-performance 2D rendering backend",
+            "dependencies": [
+              {
+                "name": "qtcanvaspainter",
+                "default-features": false,
+                "features": [
+                  "qml"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90745,16 +90871,15 @@
         "license": null,
         "dependencies": [
           {
-            "name": "grpc",
-            "default-features": false
-          },
-          {
             "name": "protobuf",
             "default-features": false
           },
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "network"
+            ]
           },
           {
             "name": "qtgrpc",
@@ -90762,7 +90887,18 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "qml": {
+            "description": "Build QML integration (QtProtobufQuick, QtGrpcQuick, Qt GUI types)",
+            "dependencies": [
+              {
+                "name": "qtdeclarative",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90783,12 +90919,23 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "concurrent",
+              "future",
               "network"
             ]
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "websockets": {
+            "description": "Enable WebSocket support (QHttpServer::addWebSocketUpgradeVerifier etc.)",
+            "dependencies": [
+              {
+                "name": "qtwebsockets",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90840,10 +90987,9 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
-        "no_target_promotion_latest.patch",
         "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -90853,7 +90999,6 @@
       "name": "qtinterfaceframework",
       "manifest": {
         "name": "qtinterfaceframework",
-        "port-version": 1,
         "description": "The Qt Interface Framework module provides both the tools and the core APIs, for you to implement Middleware APIs, Middleware Back ends, and Middleware Services.",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -90872,10 +91017,6 @@
             "default-features": false
           },
           {
-            "name": "qtmultimedia",
-            "default-features": false
-          },
-          {
             "name": "qtremoteobjects",
             "default-features": false
           },
@@ -90883,14 +91024,24 @@
             "name": "qttools",
             "default-features": false
           },
-          "taglib",
           {
             "name": "vcpkg-get-python-packages",
             "host": true,
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "mqtt": {
+            "description": "Enable the QtMqtt based ifcodegen backend templates",
+            "dependencies": [
+              {
+                "name": "qtmqtt",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -90989,11 +91140,7 @@
         "dependencies": [
           {
             "name": "qtbase",
-            "default-features": false,
-            "features": [
-              "concurrent",
-              "network"
-            ]
+            "default-features": false
           },
           {
             "name": "qtbase",
@@ -91004,7 +91151,7 @@
             "platform": "android"
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91022,15 +91169,16 @@
         "dependencies": [
           {
             "name": "qtbase",
-            "default-features": false
-          },
-          {
-            "name": "qtbase",
             "default-features": false,
             "features": [
-              "dbus"
-            ],
-            "platform": "linux"
+              "gui",
+              "network",
+              "testlib"
+            ]
+          },
+          {
+            "name": "qtdeclarative",
+            "default-features": false
           },
           {
             "name": "qtpositioning",
@@ -91038,13 +91186,9 @@
             "features": [
               "qml"
             ]
-          },
-          {
-            "name": "qtshadertools",
-            "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91075,6 +91219,10 @@
             "name": "qtlottie",
             "host": true,
             "default-features": false
+          },
+          {
+            "name": "qtquicktimeline",
+            "default-features": false
           }
         ],
         "features": {
@@ -91082,7 +91230,7 @@
             "description": "(deprecated since Qt 6.4)"
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "fix_qt_version.patch",
@@ -91107,7 +91255,18 @@
             ]
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "websockets": {
+            "description": "Enable MQTT over WebSockets",
+            "dependencies": [
+              {
+                "name": "qtwebsockets",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91119,7 +91278,6 @@
       "name": "qtmultimedia",
       "manifest": {
         "name": "qtmultimedia",
-        "port-version": 1,
         "description": "Qt Multimedia is an add-on module that provides a rich set of QML types and C++ classes to handle multimedia content.",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -91137,6 +91295,11 @@
           {
             "name": "qtshadertools",
             "default-features": false
+          },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
           }
         ],
         "default-features": [
@@ -91163,7 +91326,6 @@
                 "default-features": false,
                 "features": [
                   "avcodec",
-                  "avdevice",
                   "avformat",
                   "swresample",
                   "swscale"
@@ -91256,7 +91418,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "ffmpeg-devendor-signalsmith-stretch.patch",
@@ -91284,7 +91446,7 @@
             ]
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91314,13 +91476,26 @@
           }
         ],
         "default-features": [
-          "gds",
+          {
+            "name": "gds",
+            "platform": "!osx & !ios & !uwp"
+          },
           "ns0idnames",
           "open62541"
         ],
         "features": {
           "gds": {
-            "description": "Support for global discovery server"
+            "description": "Support for global discovery server",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "openssl"
+                ]
+              }
+            ],
+            "supports": "!osx & !ios & !uwp"
           },
           "ns0idgenerator": {
             "description": "Namespace 0 NodeIds generator from the NodeIds.csv file.",
@@ -91336,6 +91511,7 @@
                 "name": "open62541",
                 "default-features": false,
                 "features": [
+                  "discovery",
                   "historizing",
                   "openssl"
                 ]
@@ -91359,10 +91535,11 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "fix-build.patch",
+        "internalgenerator-cast-from-ascii.patch",
         "port.data.cmake",
         "portfile.cmake",
         "vcpkg.json"
@@ -91379,12 +91556,28 @@
           "jhasse-poly2tri",
           {
             "name": "qtbase",
-            "default-features": false
+            "default-features": false,
+            "features": [
+              "network"
+            ]
+          },
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "dbus"
+            ],
+            "platform": "linux"
           },
           {
             "name": "qtserialport",
             "default-features": false,
             "platform": "!ios"
+          },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
           }
         ],
         "features": {
@@ -91398,7 +91591,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "devendor-poly2tri.patch",
@@ -91446,7 +91639,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "0001-devendor-meshoptimizer.patch",
@@ -91469,7 +91662,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91506,7 +91699,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91528,7 +91721,7 @@
           },
           "qtdeclarative"
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91550,10 +91743,6 @@
             "features": [
               "network"
             ]
-          },
-          {
-            "name": "qtdeclarative",
-            "default-features": false
           },
           {
             "name": "qtremoteobjects",
@@ -91579,7 +91768,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91619,7 +91808,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91646,10 +91835,6 @@
               "dbus"
             ],
             "platform": "!(windows & static) & !android & !ios"
-          },
-          {
-            "name": "qtconnectivity",
-            "default-features": false
           }
         ],
         "features": {
@@ -91663,7 +91848,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91690,13 +91875,26 @@
             "name": "qtserialbus",
             "host": true,
             "default-features": false
-          },
-          {
-            "name": "qtserialport",
-            "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "default-features": [
+          {
+            "name": "modbus-serialport",
+            "platform": "!ios"
+          }
+        ],
+        "features": {
+          "modbus-serialport": {
+            "description": "Serial-based Modbus support",
+            "dependencies": [
+              {
+                "name": "qtserialport",
+                "default-features": false
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91718,7 +91916,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91747,7 +91945,7 @@
             "default-features": false
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91768,8 +91966,7 @@
             "name": "qtbase",
             "default-features": false,
             "features": [
-              "gui",
-              "widgets"
+              "gui"
             ]
           },
           {
@@ -91779,6 +91976,11 @@
           {
             "name": "qtmultimedia",
             "default-features": false
+          },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
           }
         ],
         "default-features": [
@@ -91796,7 +91998,7 @@
             "supports": "linux | freebsd"
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91821,7 +92023,46 @@
             ]
           }
         ],
-        "version": "6.11.3"
+        "features": {
+          "widgets": {
+            "description": "Build the Qt SVG Widgets module",
+            "dependencies": [
+              {
+                "name": "qtbase",
+                "default-features": false,
+                "features": [
+                  "widgets"
+                ]
+              }
+            ]
+          }
+        },
+        "version": "6.12.0"
+      },
+      "files": [
+        "port.data.cmake",
+        "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "qttasktree",
+      "manifest": {
+        "name": "qttasktree",
+        "description": "Qt TaskTree provides a declarative way to compose and execute asynchronous tasks.",
+        "homepage": "https://www.qt.io",
+        "license": null,
+        "dependencies": [
+          {
+            "name": "qtbase",
+            "default-features": false,
+            "features": [
+              "concurrent",
+              "network"
+            ]
+          }
+        ],
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -91899,7 +92140,8 @@
                 "name": "qttools",
                 "default-features": false,
                 "features": [
-                  "designer"
+                  "designer",
+                  "qml"
                 ]
               }
             ]
@@ -91927,9 +92169,16 @@
                   "clang",
                   "enable-rtti"
                 ]
+              },
+              {
+                "name": "qttools",
+                "default-features": false,
+                "features": [
+                  "qml"
+                ]
               }
             ],
-            "supports": "!android"
+            "supports": "!android & !uwp & !(arm & windows)"
           },
           "qml": {
             "description": "Build QML imports",
@@ -91939,6 +92188,8 @@
                 "default-features": false,
                 "features": [
                   "gui",
+                  "png",
+                  "thread",
                   "widgets"
                 ]
               },
@@ -91949,7 +92200,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "devendor-litehtml.patch",
@@ -91980,7 +92231,7 @@
             ]
           }
         ],
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -92021,9 +92272,18 @@
             "dependencies": [
               "hunspell"
             ]
+          },
+          "sound-effects": {
+            "description": "Keyboard sound effects (uses Qt Multimedia)",
+            "dependencies": [
+              {
+                "name": "qtmultimedia",
+                "default-features": false
+              }
+            ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "hunspell_include_path_fix.patch",
@@ -92061,7 +92321,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -92093,7 +92353,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -92105,7 +92365,6 @@
       "name": "qtwebengine",
       "manifest": {
         "name": "qtwebengine",
-        "port-version": 1,
         "description": "Qt modules for rendering web and PDF content.",
         "homepage": "https://www.qt.io",
         "license": null,
@@ -92130,7 +92389,7 @@
             "description": "Build with Geolocation",
             "dependencies": [
               {
-                "name": "qtlocation",
+                "name": "qtpositioning",
                 "default-features": false
               },
               {
@@ -92239,10 +92498,6 @@
                 "default-features": false
               },
               {
-                "name": "qttools",
-                "default-features": false
-              },
-              {
                 "name": "qtwebengine",
                 "host": true,
                 "default-features": false
@@ -92334,6 +92589,10 @@
                 "platform": "!windows"
               },
               {
+                "name": "qttools",
+                "default-features": false
+              },
+              {
                 "name": "qtwebengine",
                 "default-features": false,
                 "features": [
@@ -92344,7 +92603,7 @@
             "supports": "(linux | osx | (windows & x64)) & !static"
           }
         },
-        "version": "6.11.3"
+        "version-semver": "6.140.0"
       },
       "files": [
         "clang-cl.patch",
@@ -92394,7 +92653,7 @@
             ]
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -92421,6 +92680,11 @@
           {
             "name": "qtdeclarative",
             "default-features": false
+          },
+          {
+            "name": "vcpkg-qt-android-gradle",
+            "host": true,
+            "platform": "android"
           }
         ],
         "features": {
@@ -92438,7 +92702,7 @@
             "supports": "!static"
           }
         },
-        "version": "6.11.3"
+        "version": "6.12.0"
       },
       "files": [
         "port.data.cmake",
@@ -95063,7 +95327,7 @@
           },
           "yaml-cpp"
         ],
-        "version-semver": "0.4.3"
+        "version-semver": "0.4.4"
       },
       "files": [
         "portfile.cmake",
@@ -97615,6 +97879,7 @@
       "name": "sdl3",
       "manifest": {
         "name": "sdl3",
+        "port-version": 1,
         "description": "Simple DirectMedia Layer is a cross-platform development library designed to provide low level access to audio, keyboard, mouse, joystick, and graphics hardware via OpenGL and Direct3D.",
         "homepage": "https://www.libsdl.org",
         "license": "Zlib AND MIT AND Apache-2.0 AND BSD-3-Clause",
@@ -97631,7 +97896,27 @@
         ],
         "default-features": [
           {
-            "name": "ibus",
+            "name": "alsa",
+            "platform": "linux"
+          },
+          {
+            "name": "dbus",
+            "platform": "linux"
+          },
+          {
+            "name": "liburing",
+            "platform": "linux"
+          },
+          {
+            "name": "pipewire",
+            "platform": "linux"
+          },
+          {
+            "name": "pulseaudio",
+            "platform": "linux"
+          },
+          {
+            "name": "udev",
             "platform": "linux"
           },
           {
@@ -97680,6 +97965,27 @@
             ],
             "supports": "linux"
           },
+          "jack": {
+            "description": "Build with JACK audio support",
+            "dependencies": [
+              "jack2"
+            ],
+            "supports": "linux"
+          },
+          "kmsdrm": {
+            "description": "Build with KMS/DRM video support (requires system libdrm and GBM development packages)",
+            "dependencies": [
+              "egl"
+            ],
+            "supports": "linux"
+          },
+          "liburing": {
+            "description": "Build with io_uring asynchronous I/O support",
+            "dependencies": [
+              "liburing"
+            ],
+            "supports": "linux"
+          },
           "libusb": {
             "description": "Use libusb for joystick support",
             "dependencies": [
@@ -97690,23 +97996,107 @@
             "description": "Let SDL_SetWindowKeyboardGrab() capture system keyboard shortcuts on macOS (uses private API, so it is not suitable for sandboxed apps)",
             "supports": "osx"
           },
+          "pipewire": {
+            "description": "Build with PipeWire audio and camera support",
+            "dependencies": [
+              "pipewire"
+            ],
+            "supports": "linux"
+          },
+          "pulseaudio": {
+            "description": "Build with PulseAudio support",
+            "dependencies": [
+              {
+                "name": "pulseaudio",
+                "default-features": false
+              }
+            ],
+            "supports": "linux"
+          },
+          "sndio": {
+            "description": "Build with sndio audio support (requires system sndio development packages)",
+            "supports": "linux"
+          },
+          "udev": {
+            "description": "Build with udev device discovery (requires system libudev development packages)",
+            "supports": "linux"
+          },
           "vulkan": {
             "description": "Vulkan functionality for SDL"
           },
           "wayland": {
             "description": "Build with Wayland support",
+            "dependencies": [
+              "egl",
+              "libxkbcommon",
+              "wayland"
+            ],
+            "supports": "linux"
+          },
+          "wayland-libdecor": {
+            "description": "Support Wayland window decorations through system libdecor",
+            "dependencies": [
+              {
+                "name": "sdl3",
+                "default-features": false,
+                "features": [
+                  "wayland"
+                ]
+              }
+            ],
             "supports": "linux"
           },
           "x11": {
             "description": "Build with X11 support",
-            "supports": "!windows"
+            "dependencies": [
+              "fribidi",
+              "libx11",
+              "libxext",
+              "libxfixes",
+              "libxi",
+              "libxrandr",
+              "libxrender",
+              "libxtst"
+            ],
+            "supports": "linux | bsd"
+          },
+          "x11-libthai": {
+            "description": "Support Thai text rendering in X11 message boxes through system libthai",
+            "dependencies": [
+              {
+                "name": "sdl3",
+                "default-features": false,
+                "features": [
+                  "x11"
+                ]
+              }
+            ],
+            "supports": "linux | bsd"
+          },
+          "x11-xscrnsaver": {
+            "description": "Support X11 screensaver inhibition through the XScreenSaver extension",
+            "dependencies": [
+              "libxscrnsaver",
+              {
+                "name": "sdl3",
+                "default-features": false,
+                "features": [
+                  "x11"
+                ]
+              }
+            ],
+            "supports": "linux | bsd"
           }
         },
         "version": "3.4.20"
       },
       "files": [
         "fix-freebsd.patch",
+        "liburing-static.patch",
+        "libusb-pkgconfig.patch",
         "portfile.cmake",
+        "require-dependencies.patch",
+        "runtime-loaded-dependencies.patch",
         "usage",
         "vcpkg.json"
       ]
@@ -101991,6 +102381,46 @@
       },
       "files": [
         "portfile.cmake",
+        "vcpkg.json"
+      ]
+    },
+    {
+      "name": "spirv-llvm-translator",
+      "manifest": {
+        "name": "spirv-llvm-translator",
+        "description": "A tool and a library for bi-directional translation between SPIR-V and LLVM IR",
+        "homepage": "https://github.com/KhronosGroup/SPIRV-LLVM-Translator",
+        "license": "NCSA AND Apache-2.0 AND Apache-2.0 WITH LLVM-exception",
+        "supports": "!uwp & !(arm & windows)",
+        "dependencies": [
+          {
+            "name": "llvm",
+            "default-features": false
+          },
+          "spirv-headers",
+          {
+            "name": "vcpkg-cmake",
+            "host": true
+          },
+          {
+            "name": "vcpkg-cmake-config",
+            "host": true
+          }
+        ],
+        "features": {
+          "spirv-tools": {
+            "description": "Enable --spirv-tools-dis support in llvm-spirv",
+            "dependencies": [
+              "spirv-tools"
+            ]
+          }
+        },
+        "version": "23.1.2"
+      },
+      "files": [
+        "cmake-config.patch",
+        "portfile.cmake",
+        "spirv-tools-dis.patch",
         "vcpkg.json"
       ]
     },
@@ -109354,7 +109784,7 @@
             "host": true
           }
         ],
-        "version": "1.1.4"
+        "version": "1.1.5"
       },
       "files": [
         "portfile.cmake",
@@ -109801,6 +110231,31 @@
         "vcpkg_qmake_configure.cmake",
         "vcpkg_qmake_install.cmake",
         "z_vcpkg_qmake_fix_makefiles.cmake"
+      ]
+    },
+    {
+      "name": "vcpkg-qt-android-gradle",
+      "manifest": {
+        "name": "vcpkg-qt-android-gradle",
+        "description": "Gradle distribution and Android Gradle Plugin artifacts required to build the Java parts of Qt for Android without network access.",
+        "homepage": "https://doc.qt.io/qt-6/android-building.html",
+        "license": null,
+        "supports": "native",
+        "version": "6.12.0"
+      },
+      "files": [
+        "generate-artifacts.py",
+        "generate-in-docker.sh",
+        "gradle-artifacts.cmake",
+        "gradle.properties",
+        "portfile.cmake",
+        "tests/sdk.cmake",
+        "vcpkg-android-sdk.cmake",
+        "vcpkg-compile-sdk.gradle",
+        "vcpkg-offline-repository.gradle.in",
+        "vcpkg-port-config.cmake",
+        "vcpkg-qt-android-gradle-inputs.cmake",
+        "vcpkg.json"
       ]
     },
     {
@@ -115996,7 +116451,7 @@
             "supports": "!uwp & static"
           }
         },
-        "version": "1.5.7"
+        "version": "1.6.0"
       },
       "files": [
         "fix-emscripten-and-clang-cl.patch",
