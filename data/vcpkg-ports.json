@@ -1,5 +1,5 @@
 {
-  "version": "9fa95bf687fa6ae7f2da0673a8067e5fc1515c27",
+  "version": "ba33ef1a2fb3c6519e819cd767bb8fd1677f1323",
   "ports": [
     {
       "name": "3fd",
@@ -54070,6 +54070,12 @@
         "dependencies": [
           "eigen3",
           {
+            "name": "libjpeg-turbo",
+            "features": [
+              "turbojpeg"
+            ]
+          },
+          {
             "name": "vcpkg-cmake",
             "host": true
           },
@@ -54100,7 +54106,7 @@
             ]
           }
         },
-        "version": "0.69.1"
+        "version": "0.73.0"
       },
       "files": [
         "portfile.cmake",
@@ -71604,6 +71610,7 @@
       "name": "modemmanager-qt",
       "manifest": {
         "name": "modemmanager-qt",
+        "port-version": 1,
         "description": "Qt wrapper for ModemManager DBus API",
         "homepage": "https://invent.kde.org/frameworks/modemmanager-qt",
         "documentation": "https://api.kde.org/modemmanager-qt-index.html",
@@ -71632,6 +71639,7 @@
       },
       "files": [
         "exclude-test-only-target.patch",
+        "fix-modemmanager-includes.patch",
         "fix-static-dependencies.patch",
         "fix-static-library.patch",
         "portfile.cmake",
